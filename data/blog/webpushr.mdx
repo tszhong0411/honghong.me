@@ -1,0 +1,96 @@
+---
+title: Webpushr 推送部落格通知! (Hexo)
+tags: ['電子報', '教學', '軟件']
+images: '/static/images/blog/webpushr-cover.png'
+summary: 免費部落格電子報服務
+date: '2021-02-04'
+draft: false
+layout: PostLayout
+---
+
+<TOCInline toc={props.toc} asDisclosure />
+
+# 前言
+
+---
+
+能第一時間發送文章通知給用戶是一件很重要的事情，這次我就介紹 Webpushr!
+
+# 註冊及安裝
+
+先到這個網站註冊一個帳號。
+
+網址: [https://app.webpushr.com/signup](https://app.webpushr.com/signup)
+
+![註冊界面](/static/images/blog/webpushr-2.png)
+
+點擊 log in 以便登入。
+
+![登入](/static/images/blog/webpushr-3.png)
+
+![登入界面](/static/images/blog/webpushr-4.png)
+
+## 安裝
+
+---
+
+![安裝（1）](/static/images/blog/webpushr-5.png)
+
+如果你也是使用 `Hexo` 的話，你就可以把 `webpushr-sw.js` 放到 `/themes/主題/source/` 底下。（記得不是 `__MACOSX` 裏面那個），`script` 就放在 `/themes/主題/_partial/layout.ejs`。
+
+![安裝（2）](/static/images/blog/webpushr-6.png)
+
+![安裝（3）](/static/images/blog/webpushr-7.png)
+
+## 安裝插件
+
+---
+
+終端內輸入，如果沒有 `npm`，請自行下載並安裝。
+
+```bash
+npm i hexo-web-push-notification --save
+```
+
+Hexo 根目錄的 `_config.yml` （注意不是主題的 `_config.yml`）
+
+```yaml:_config.yml
+webPushNotification:
+  webpushrKey: 'your webpushr rest api key'
+  webpushrAuthToken: 'your webpushr authorize token'
+  trackingCode: 'your tracking code'
+```
+
+### 查看 webpushrkey & webpushrAuthToken
+
+![Key && Auth Token](/static/images/blog/webpushr-8.png)
+
+### 查看 Tracking code
+
+![Tracking code](/static/images/blog/webpushr-9.png)
+
+# 控制台
+
+我會介紹一些主要的功能，其他有興趣請自行查看，其實也不難!
+
+![通知設定](/static/images/blog/webpushr-10.png)
+![訂閱按鈕](/static/images/blog/webpushr-11.png)
+![通知預覽](/static/images/blog/webpushr-12.png)
+
+# 報錯
+
+如報錯:
+
+```bash
+ERROR Push Notification failed {"status":"failure","type":"missing_parameter","description":"Missing required parameter 'message'"}
+```
+
+請安裝:
+
+```bash
+npm install hexo-excerpt --save
+```
+
+# 成功發送通知示例
+
+![成功發送通知示例](/static/images/blog/webpushr-13.png)

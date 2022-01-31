@@ -1,0 +1,36 @@
+---
+title: "解決 Next.js 錯誤 syntaxerror: Unexpected token 'export'"
+tags: ['教學', 'Nextjs']
+images: '/static/images/blog/syntaxerror-export-cover.png'
+summary: 解決 Next.js 報錯
+date: '2021-11-14'
+draft: false
+layout: PostLayout
+---
+
+<TOCInline toc={props.toc} asDisclosure />
+
+# 步驟 1
+
+## 安裝 next-transpile-modules
+
+```bash
+# 用 yarn
+yarn add next-transpile-modules
+
+# 用 npm
+npm install next-transpile-modules
+```
+
+# 步驟 2
+
+## 編輯 next.config.js
+
+```js
+// 把 Package name 換成有問題的 Package 名稱
+const withTM = require('next-transpile-modules')(['Package name'])
+
+module.exports = withTM({
+  reactStrictMode: true,
+})
+```

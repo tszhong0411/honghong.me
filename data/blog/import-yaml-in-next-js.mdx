@@ -1,0 +1,59 @@
+---
+title: 在 Next.js 引入 yaml
+tags: ['Nextjs', '教學']
+images: '/static/images/blog/import-yaml-in-next-js-cover.png'
+summary: 簡單地在 Next.js 引人 yaml
+date: '2021-11-07'
+draft: false
+layout: PostLayout
+---
+
+<TOCInline toc={props.toc} asDisclosure />
+
+## 安裝 yaml-loader
+
+```bash
+npm i yaml-loader
+```
+
+## 配置 next.config.js
+
+```js
+// root/next.config.js
+module.exports = {
+  webpack: function (config) {
+    config.module.rules.push({
+      test: /\.ya?ml$/,
+      type: 'json',
+      use: 'yaml-loader',
+    })
+    return config
+  },
+}
+```
+
+## 引入 yaml
+
+```js
+// root/pages/example.js
+import config from '../config.yaml'
+
+export default function exmaple() {
+  return <h1>{config.title}</h1>
+}
+```
+
+## 備註
+
+如使用 `.tsx` ，請在根目建立 `global.d.ts` ，並輸入:
+
+```ts
+declare module '*.yaml' {
+  const data: any
+  export default data
+}
+```
+
+這樣才不會發生錯誤
+
+Enjoy coding!!
