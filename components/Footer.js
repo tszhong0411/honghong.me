@@ -85,7 +85,7 @@ export default function Footer() {
         id="versionHistoryWrapper"
         onClick={(e) => releaseHandler(e)}
       >
-        <div className="z-[1100] grid h-full w-[90vw] gap-[1rem] overflow-y-scroll rounded-[0.5rem] bg-[#111] p-[1rem] sm:p-[2rem]">
+        <div className="z-[1100] grid h-full w-[75vw] gap-[1rem] overflow-y-scroll rounded-[0.5rem] bg-[#111] p-[1rem] sm:p-[2rem]">
           <div className="grid gap-[4rem]" id="releases"></div>
         </div>
       </div>
