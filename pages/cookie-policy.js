@@ -31,7 +31,7 @@ export default function CookiePolicy() {
               是由你訪問的網站放置在你的設備上的小型文字檔案。它們被廣泛使用，以使網站工作，或更有效地工作，以及向網站所有者提供資料。Cookies
               可以是 "persistent " 或 "session" cookies。
             </p>
-            <p>我們使用持久性cookies和會話cookies。</p>
+            <p>我們使用 persistent cookies 和 session cookies。</p>
             <h2>Persistent Cookies</h2>
             <p>
               Persistent cookie 是瀏覽器 sessions
@@ -156,7 +156,7 @@ export default function CookiePolicy() {
               </li>
             </ul>
             <p className="mx-2 rounded-xl bg-red-500 p-2 text-center text-white">
-              最近更新時間: 2022 / 01 / 30
+              最近更新時間: 2022 / 02 / 01
             </p>
           </div>
         </div>

@@ -7,7 +7,7 @@ const siteMetadata = {
   language: 'zh-tw',
   theme: 'system', // system, dark or light
   siteUrl: 'https://tszhong.top',
-  siteRepo: 'https://github.com/tszhong0411/blog',
+  siteRepo: 'https://github.com/tszhong0411/home',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
   socialBanner: '/static/images/twitter-card.png',
