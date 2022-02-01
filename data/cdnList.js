@@ -7,7 +7,7 @@ const cdnList = {
   ],
   javascript: [
     'https://cdn.jsdelivr.net/npm/pace-js@1/pace.min.js',
-    'https://cdn.jsdelivr.net/gh/tszhong0411/cdn@1.7.4/twikoo.all.min.js',
+    'https://cdn.jsdelivr.net/gh/tszhong0411/cdn@1.7.5/twikoo.all.min.js',
     'https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js',
   ],
 }
