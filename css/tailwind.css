@@ -38,11 +38,17 @@ samp {
 ::-webkit-scrollbar-thumb {
   background: #444444;
   transition: 0.25s;
-  border-radius: 2px !important;
+  border-radius: 2px;
 }
 
 ::-webkit-scrollbar-track {
   background: 0 0;
+}
+
+/* post image */
+div[nextjs-image='true'] {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 /* release */

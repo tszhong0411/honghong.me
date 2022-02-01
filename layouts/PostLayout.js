@@ -7,6 +7,7 @@ import siteMetadata from '@/data/siteMetadata'
 import Comments from '@/components/comments'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 import NewsletterForm from '@/components/NewsletterForm'
+import TOCInline from '@/components/TOCInline'
 
 const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/main/data/blog/${fileName}`
 
@@ -188,8 +189,9 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                 </div>
               </div>
             </div>
-            <footer className="sticky top-[104px] h-full xl:ml-[1.5rem] xl:w-1/4">
-              <div className="divide-gray-200 text-sm font-medium leading-5 dark:divide-gray-700 xl:divide-y">
+            <footer className="sticky top-[104px] h-full divide-gray-200 dark:divide-gray-700 xl:ml-[1.5rem] xl:w-1/4 xl:divide-y">
+              <TOCInline toc={toc} />
+              <div className=" text-sm font-medium leading-5 ">
                 {tags && (
                   <div className="py-4 xl:py-8">
                     <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
@@ -203,7 +205,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                   </div>
                 )}
                 {(next || prev) && (
-                  <div className="flex justify-between py-4 xl:block xl:space-y-8 xl:py-8">
+                  <div className="flex justify-between py-4 xl:block xl:space-y-8 xl:pb-8">
                     {prev && (
                       <div>
                         <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
@@ -227,7 +229,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                   </div>
                 )}
               </div>
-              <div className="pt-4 xl:pt-8">
+              <div className="pt-4 xl:pt-8 xl:pb-[17px]">
                 <Link
                   href="/blog"
                   className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"

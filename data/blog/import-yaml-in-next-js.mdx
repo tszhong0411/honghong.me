@@ -8,17 +8,17 @@ draft: false
 layout: PostLayout
 ---
 
-<TOCInline toc={props.toc} asDisclosure />
+<TOCInline toc={props.toc} mobile />
 
 ## 安裝 yaml-loader
 
-```bash
+```bash:Terminal
 npm i yaml-loader
 ```
 
 ## 配置 next.config.js
 
-```js
+```js:next.config.js
 // root/next.config.js
 module.exports = {
   webpack: function (config) {
@@ -34,7 +34,7 @@ module.exports = {
 
 ## 引入 yaml
 
-```js
+```js:example.js
 // root/pages/example.js
 import config from '../config.yaml'
 
@@ -47,7 +47,7 @@ export default function exmaple() {
 
 如使用 `.tsx` ，請在根目建立 `global.d.ts` ，並輸入:
 
-```ts
+```ts:global.d.ts
 declare module '*.yaml' {
   const data: any
   export default data

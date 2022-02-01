@@ -8,13 +8,13 @@ draft: false
 layout: PostLayout
 ---
 
-<TOCInline toc={props.toc} asDisclosure />
+<TOCInline toc={props.toc} mobile />
 
 # 步驟 1
 
 ## 安裝 next-transpile-modules
 
-```bash
+```bash:Terminal
 # 用 yarn
 yarn add next-transpile-modules
 
@@ -26,7 +26,7 @@ npm install next-transpile-modules
 
 ## 編輯 next.config.js
 
-```js
+```js:next.config.js
 // 把 Package name 換成有問題的 Package 名稱
 const withTM = require('next-transpile-modules')(['Package name'])
 

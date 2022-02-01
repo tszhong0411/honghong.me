@@ -44,40 +44,26 @@ module.exports = {
               code: { color: theme('colors.primary.400') },
             },
             h1: {
-              paddingTop: '154px',
               fontWeight: '700',
-              fontSize: '30px',
-              color: '#1f2d3d',
-              lineHeight: '1.5',
               letterSpacing: theme('letterSpacing.tight'),
-              marginTop: '-104px',
-              marginBottom: '14px',
+              color: theme('colors.gray.900'),
             },
             h2: {
-              paddingTop: '154px',
-              marginTop: '-84px',
-              marginBottom: '14px',
-              color: '#1f2d3d',
-              fontSize: '26px',
               fontWeight: '700',
               letterSpacing: theme('letterSpacing.tight'),
+              color: theme('colors.gray.900'),
             },
             h3: {
-              color: '#1f2d3d',
-              fontSize: '22px',
-              marginTop: '-75px',
-              marginBottom: '14px',
-              paddingTop: '104px',
               fontWeight: '600',
+              color: theme('colors.gray.900'),
             },
             'h4,h5,h6': {
-              paddingTop: '0.5rem',
-              fontSize: '16px',
-              marginBottom: '0px',
               color: theme('colors.gray.900'),
             },
             pre: {
               backgroundColor: '#24283b',
+              marginLeft: '0.5rem',
+              marginRight: '0.5rem',
             },
             code: {
               color: theme('colors.primary.500'),
@@ -148,10 +134,10 @@ module.exports = {
               color: theme('colors.gray.100'),
             },
             pre: {
-              backgroundColor: '#24283b',
+              backgroundColor: '#171717',
             },
             code: {
-              backgroundColor: '#24283b',
+              backgroundColor: '#171717',
             },
             details: {
               backgroundColor: theme('colors.gray.800'),
