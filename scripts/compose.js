@@ -38,7 +38,7 @@ const genFrontMatter = (answers) => {
   tags: [${answers.tags ? tags : ''}]
   draft: ${answers.draft === 'yes' ? true : false}
   summary: ${answers.summary ? answers.summary : ' '}
-  images: []
+  images: '${answers.cover}'
   layout: ${answers.layout}
   `
 
@@ -53,6 +53,11 @@ const genFrontMatter = (answers) => {
 
 inquirer
   .prompt([
+    {
+      name: 'filename',
+      message: 'input the filename:',
+      type: 'input',
+    },
     {
       name: 'title',
       message: 'Enter post title:',
@@ -87,6 +92,11 @@ inquirer
       type: 'input',
     },
     {
+      name: 'cover',
+      message: 'input the path of cover:',
+      type: 'input',
+    },
+    {
       name: 'layout',
       message: 'Select layout',
       type: 'list',
@@ -95,11 +105,7 @@ inquirer
   ])
   .then((answers) => {
     // Remove special characters and replace space with -
-    const fileName = answers.title
-      .toLowerCase()
-      .replace(/[^a-zA-Z0-9 ]/g, '')
-      .replace(/ /g, '-')
-      .replace(/-+/g, '-')
+    const fileName = answers.filename
     const frontMatter = genFrontMatter(answers)
     if (!fs.existsSync('data/blog')) fs.mkdirSync('data/blog', { recursive: true })
     const filePath = `data/blog/${fileName ? fileName : 'untitled'}.${
