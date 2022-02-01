@@ -190,7 +190,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
               </div>
             </div>
             <footer className="sticky top-[104px] h-full divide-gray-200 dark:divide-gray-700 xl:ml-[1.5rem] xl:w-1/4 xl:divide-y">
-              <TOCInline toc={toc} />
+              {toc.length !== 0 && <TOCInline toc={toc} />}
               <div className=" text-sm font-medium leading-5 ">
                 {tags && (
                   <div className="py-4 xl:py-8">
