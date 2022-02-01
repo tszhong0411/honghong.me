@@ -19,7 +19,7 @@ export default function CookiePolicy() {
           <div>
             <h1>Cookie 政策</h1>
             <p>
-              本 cookies 政策適用於 <Link href="https://tszhong.top">tszhong.top</Link> 及
+              本 cookies 政策適用於 <Link href="https://honghong.me">honghong.me</Link> 及
               所有子域名上 cookies 的使用。
             </p>
             <p>

@@ -5,8 +5,8 @@ const footerNavLinks = {
       list: [
         {
           class: 'fas fa-envelope',
-          href: 'mailto:info@tszhong.top',
-          title: 'info@tszhong.top',
+          href: 'mailto:info@honghong.me',
+          title: 'info@honghong.me',
         },
         {
           class: 'far fa-compass',

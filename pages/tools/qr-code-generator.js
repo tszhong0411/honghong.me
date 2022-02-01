@@ -10,7 +10,7 @@ export default function QrCodeGenerator() {
   useEffect(() => {
     new QRious({
       size: 250,
-      value: 'https://tszhong.top',
+      value: 'https://honghong.me',
       element: document.querySelector('#qr-code-img'),
     })
   }, [])

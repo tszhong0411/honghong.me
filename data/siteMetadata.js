@@ -6,12 +6,12 @@ const siteMetadata = {
     '小康的個人網站 - 小康 Blog 分享編寫網頁技巧、不同類型的教學、實用軟體，你在這裡可以學到更多開發技巧。',
   language: 'zh-tw',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://tszhong.top',
+  siteUrl: 'https://honghong.me',
   siteRepo: 'https://github.com/tszhong0411/home',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
   socialBanner: '/static/images/twitter-card.png',
-  email: 'info@tszhong.top',
+  email: 'info@honghong.me',
   github: 'https://github.com/tszhong0411',
   twitter: 'https://twitter.com/TszhongLai0411',
   facebook: 'https://www.facebook.com/tszhonglai.0411',
@@ -23,7 +23,7 @@ const siteMetadata = {
     plausibleDataDomain: '', // e.g. tailwind-nextjs-starter-blog.vercel.app
     simpleAnalytics: false, // true or false
     umamiWebsiteId: '', // e.g. 123e4567-e89b-12d3-a456-426614174000
-    googleAnalyticsId: 'UA-185110551-3', // e.g. UA-000000-2 or G-XXXXXXX
+    googleAnalyticsId: 'UA-185110551-5', // e.g. UA-000000-2 or G-XXXXXXX
   },
   newsletter: {
     // supports mailchimp, buttondown, convertkit, klaviyo
