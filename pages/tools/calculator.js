@@ -25,7 +25,7 @@ class AutoScalingText extends React.Component {
     return (
       <div
         className=""
-        style={{ transform: `scale(${scale},${scale})` }}
+        style={{ transform: `scale(${scale},${scale})`, transformOrigin: 'right center' }}
         ref={(node) => (this.node = node)}
       >
         {this.props.children}
@@ -47,7 +47,7 @@ class CalculatorDisplay extends React.Component {
     return (
       <div
         {...props}
-        className="mb-[10px] flex h-[100px] w-full items-center justify-end rounded-xl bg-[#000] px-[10px] text-[70px] font-bold text-white"
+        className="mb-[10px] flex h-[100px] w-full items-center justify-end rounded-xl bg-[#000] text-[70px] font-bold text-white"
       >
         <AutoScalingText>{formattedValue}</AutoScalingText>
       </div>
