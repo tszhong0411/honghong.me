@@ -15,6 +15,14 @@ export default function QrCodeGenerator() {
     })
   }, [])
 
+  const realTimeUpdate = () => {
+    new QRious({
+      size: 250,
+      value: textRef.current.value,
+      element: document.querySelector('#qr-code-img'),
+    })
+  }
+
   const generateHandler = () => {
     if (textRef.current.value === '') {
       Snackbar('請輸入文字或網址', 'error')
@@ -50,7 +58,7 @@ export default function QrCodeGenerator() {
               id="text"
               className="w-full rounded-md border-red-400 px-4 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary-600 dark:bg-black"
               ref={textRef}
-              onChange={() => (checked ? generateHandler() : null)}
+              onChange={() => (checked ? realTimeUpdate() : null)}
             />
           </div>
           <div className="my-4 grid">
