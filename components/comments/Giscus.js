@@ -4,7 +4,9 @@ import { useTheme } from 'next-themes'
 import siteMetadata from '@/data/siteMetadata'
 
 const Giscus = ({ mapping }) => {
-  const [enableLoadComments, setEnabledLoadComments] = useState(true)
+  const [enableLoadComments, setEnabledLoadComments] = useState(
+    siteMetadata.comment.enableLoadComments
+  )
   const { theme, resolvedTheme } = useTheme()
   const commentsTheme =
     siteMetadata.comment.giscusConfig.themeURL === ''
@@ -27,6 +29,7 @@ const Giscus = ({ mapping }) => {
     script.setAttribute('data-reactions-enabled', siteMetadata.comment.giscusConfig.reactions)
     script.setAttribute('data-emit-metadata', siteMetadata.comment.giscusConfig.metadata)
     script.setAttribute('data-theme', commentsTheme)
+    script.setAttribute('data-lang', siteMetadata.comment.giscusConfig.lang)
     script.setAttribute('crossorigin', 'anonymous')
     script.async = true
 
@@ -41,10 +44,11 @@ const Giscus = ({ mapping }) => {
 
   // Reload on theme change
   useEffect(() => {
+    !enableLoadComments && LoadComments()
     const iframe = document.querySelector('iframe.giscus-frame')
     if (!iframe) return
-    LoadComments()
-  }, [LoadComments])
+    enableLoadComments && LoadComments()
+  }, [LoadComments, enableLoadComments])
 
   return (
     <div className="pt-6 pb-6 text-center text-gray-700 dark:text-gray-300">

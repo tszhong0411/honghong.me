@@ -4,7 +4,9 @@ import { useTheme } from 'next-themes'
 import siteMetadata from '@/data/siteMetadata'
 
 const Utterances = ({ issueTerm }) => {
-  const [enableLoadComments, setEnabledLoadComments] = useState(true)
+  const [enableLoadComments, setEnabledLoadComments] = useState(
+    siteMetadata.comment.enableLoadComments
+  )
   const { theme, resolvedTheme } = useTheme()
   const commentsTheme =
     theme === 'dark' || resolvedTheme === 'dark'
@@ -35,10 +37,11 @@ const Utterances = ({ issueTerm }) => {
 
   // Reload on theme change
   useEffect(() => {
-    const iframe = document.querySelector('iframe.utterances-frame')
+    !enableLoadComments && LoadComments()
+    const iframe = document.querySelector('iframe.giscus-frame')
     if (!iframe) return
-    LoadComments()
-  }, [LoadComments])
+    enableLoadComments && LoadComments()
+  }, [LoadComments, enableLoadComments])
 
   // Added `relative` to fix a weird bug with `utterances-frame` position
   return (

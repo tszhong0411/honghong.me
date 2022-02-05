@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import siteMetadata from '@/data/siteMetadata'
 
 const Disqus = ({ frontMatter }) => {
-  const [enableLoadComments, setEnabledLoadComments] = useState(true)
+  const [enableLoadComments, setEnabledLoadComments] = useState(
+    siteMetadata.comment.enableLoadComments
+  )
 
   const COMMENTS_ID = 'disqus_thread'
 
@@ -25,6 +27,10 @@ const Disqus = ({ frontMatter }) => {
       window.DISQUS.reset({ reload: true })
     }
   }
+
+  useEffect(() => {
+    !enableLoadComments && LoadComments()
+  })
 
   return (
     <div className="pt-6 pb-6 text-center text-gray-700 dark:text-gray-300">

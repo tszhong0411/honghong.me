@@ -20,13 +20,6 @@ const DisqusComponent = dynamic(
   { ssr: false }
 )
 
-const TwikooComponent = dynamic(
-  () => {
-    return import('@/components/comments/Twikoo')
-  },
-  { ssr: false }
-)
-
 const Comments = ({ frontMatter }) => {
   let term
   switch (
@@ -54,7 +47,6 @@ const Comments = ({ frontMatter }) => {
       {siteMetadata.comment && siteMetadata.comment.provider === 'disqus' && (
         <DisqusComponent frontMatter={frontMatter} />
       )}
-      {siteMetadata.comment && siteMetadata.comment.provider === 'twikoo' && <TwikooComponent />}
     </div>
   )
 }

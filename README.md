@@ -26,7 +26,9 @@
 </a>
 </p>
 
-<p align="center"><img src="./public/static/images/readme/screencapture-2022-02-01.png" /></p>
+<p align="center">
+  <img src="https://socialify.git.ci/tszhong0411/honghong.me/image?description=1&font=KoHo&logo=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Ftszhong0411%2Fimage%2Ffavicon.png&name=1&owner=1&pattern=Circuit%20Board&stargazers=1&theme=Dark"  alt="Banner">
+</p>
 
 <p align="center">
     <a href="https://honghong.me" target="blank">View Demo</a>

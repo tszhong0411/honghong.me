@@ -31,9 +31,10 @@ const siteMetadata = {
     provider: '',
   },
   comment: {
+    enableLoadComments: false,
     // Select a provider and use the environment variables associated to it
     // https://vercel.com/docs/environment-variables
-    provider: 'twikoo', // supported providers: giscus, utterances, disqus, twikoo
+    provider: 'giscus', // supported providers: giscus, utterances, disqus
     giscusConfig: {
       // Visit the link below, and follow the steps in the 'configuration' section
       // https://giscus.app/
@@ -49,11 +50,13 @@ const siteMetadata = {
       // transparent_dark, preferred_color_scheme, custom
       theme: 'light',
       // theme when dark mode
-      darkTheme: 'transparent_dark',
+      darkTheme: 'dark',
       // If the theme option above is set to 'custom`
       // please provide a link below to your custom theme css file.
       // example: https://giscus.app/themes/custom_example.css
       themeURL: '',
+      // language
+      lang: 'zh-TW',
     },
     utterancesConfig: {
       // Visit the link below, and follow the steps in the 'configuration' section
