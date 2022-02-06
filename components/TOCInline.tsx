@@ -20,7 +20,7 @@ import { useEffect } from 'react'
  * }} props
  *
  */
-const TOCInline = ({ toc, fromHeading = 1, toHeading = 6, mobile = false, exclude = '' }) => {
+const TOCInline = ({ toc, fromHeading = 1, toHeading = 6, exclude = '' }) => {
   const re = Array.isArray(exclude)
     ? new RegExp('^(' + exclude.join('|') + ')$', 'i')
     : new RegExp('^(' + exclude + ')$', 'i')
@@ -28,9 +28,9 @@ const TOCInline = ({ toc, fromHeading = 1, toHeading = 6, mobile = false, exclud
     (heading) =>
       heading.depth >= fromHeading && heading.depth <= toHeading && !re.test(heading.value)
   )
-  const scrollHeading = (name, e) => {
+  const scrollHeading = (url, e) => {
     e.preventDefault()
-    var element = document.querySelector(`#${name}`)
+    var element = document.querySelector(url)
     var headerOffset = document.querySelector('header').offsetHeight
     var elementPosition = element.getBoundingClientRect().top
     var offsetPosition = elementPosition + window.pageYOffset - headerOffset
@@ -44,12 +44,13 @@ const TOCInline = ({ toc, fromHeading = 1, toHeading = 6, mobile = false, exclud
   const tocList = (
     <ul>
       {filteredToc.map((heading) => {
+        console.log(heading)
         return (
           <li key={heading.value} style={{ marginLeft: (heading.depth - 1) * 16 }}>
             <a
               href={heading.url}
               onClick={(e) => {
-                scrollHeading(heading.value, e)
+                scrollHeading(heading.url, e)
               }}
             >
               {heading.value}

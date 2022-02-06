@@ -1,6 +1,6 @@
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
-import { useState } from 'react'
+import { ComponentProps, useState } from 'react'
 import Pagination from '@/components/Pagination'
 import formatDate from '@/lib/utils/formatDate'
 import { PostFrontMatter } from 'types/PostFrontMatter'
@@ -56,7 +56,7 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
         <ul>
           {!filteredBlogPosts.length && <p className="p-4">沒有找到文章</p>}
           {displayPosts.map((frontMatter) => {
-            const { slug, date, title, summary, tags, images } = frontMatter
+            const { slug, date, title, summary, tags, images }: any = frontMatter
             return (
               <li key={slug} className="py-12">
                 <article>

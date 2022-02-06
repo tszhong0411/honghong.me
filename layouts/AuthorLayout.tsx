@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { PageSEO } from '@/components/SEO'
 import Link from '@/components/Link'
+import { ReactNode } from 'react'
 import { AuthorFrontMatter } from 'types/AuthorFrontMatter'
 
 interface Props {

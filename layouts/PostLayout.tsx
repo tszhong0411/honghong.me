@@ -11,6 +11,14 @@ import TOCInline from '@/components/TOCInline'
 import TOC from '@/components/TOC'
 import { PostFrontMatter } from 'types/PostFrontMatter'
 import { AuthorFrontMatter } from 'types/AuthorFrontMatter'
+import { ReactNode } from 'react'
+
+const postDateTemplate: Intl.DateTimeFormatOptions = {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+}
 
 interface Props {
   frontMatter: PostFrontMatter
@@ -30,8 +38,6 @@ const facebookShare = (slug) =>
   `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
     `${siteMetadata.siteUrl}/blog/${slug}`
   )}`
-
-const postDateTemplate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
 
 export default function PostLayout({ frontMatter, authorDetails, next, prev, children, toc }) {
   const { slug, fileName, date, title, tags, readingTime } = frontMatter
