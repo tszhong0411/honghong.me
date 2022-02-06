@@ -19,8 +19,8 @@ class MyDocument extends Document {
           />
           <link rel="manifest" href="/manifest.json" />
           <link rel="mask-icon" href="/static/favicons/safari-pinned-tab.svg" color="#5bbad5" />
-          <meta name="msapplication-TileColor" content="#dc2626" />
-          <meta name="theme-color" content="#dc2626" />
+          <meta name="msapplication-TileColor" content="#ef4444" />
+          <meta name="theme-color" content="#ef4444" />
           <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
           <link
