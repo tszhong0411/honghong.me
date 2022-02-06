@@ -9,20 +9,20 @@
 </h1>
 
 <p align="center">
-<a href="https://github.com/tszhong0411/home/blob/main/LICENSE" target="blank">
-<img src="https://img.shields.io/github/license/tszhong0411/home?style=flat-square" alt="home license" />
+<a href="https://github.com/tszhong0411/honghong.me/blob/main/LICENSE" target="blank">
+<img src="https://img.shields.io/github/license/tszhong0411/honghong.me?style=flat-square" alt="honghong.me license" />
 </a>
-<a href="https://github.com/tszhong0411/home/fork" target="blank">
-<img src="https://img.shields.io/github/forks/tszhong0411/home?style=flat-square" alt="home forks"/>
+<a href="https://github.com/tszhong0411/honghong.me/fork" target="blank">
+<img src="https://img.shields.io/github/forks/tszhong0411/honghong.me?style=flat-square" alt="honghong.me forks"/>
 </a>
-<a href="https://github.com/tszhong0411/home/stargazers" target="blank">
-<img src="https://img.shields.io/github/stars/tszhong0411/home?style=flat-square" alt="home stars"/>
+<a href="https://github.com/tszhong0411/honghong.me/stargazers" target="blank">
+<img src="https://img.shields.io/github/stars/tszhong0411/honghong.me?style=flat-square" alt="honghong.me stars"/>
 </a>
-<a href="https://github.com/tszhong0411/home/issues" target="blank">
-<img src="https://img.shields.io/github/issues/tszhong0411/home?style=flat-square" alt="home issues"/>
+<a href="https://github.com/tszhong0411/honghong.me/issues" target="blank">
+<img src="https://img.shields.io/github/issues/tszhong0411/honghong.me?style=flat-square" alt="honghong.me issues"/>
 </a>
-<a href="https://github.com/tszhong0411/home/pulls" target="blank">
-<img src="https://img.shields.io/github/issues-pr/tszhong0411/home?style=flat-square" alt="home pull-requests"/>
+<a href="https://github.com/tszhong0411/honghong.me/pulls" target="blank">
+<img src="https://img.shields.io/github/issues-pr/tszhong0411/honghong.me?style=flat-square" alt="honghong.me pull-requests"/>
 </a>
 </p>
 
@@ -33,9 +33,9 @@
 <p align="center">
     <a href="https://honghong.me" target="blank">View Demo</a>
     ·
-    <a href="https://github.com/tszhong0411/home/issues/new/choose">Report Bug</a>
+    <a href="https://github.com/tszhong0411/honghong.me/issues/new/choose">Report Bug</a>
     ·
-    <a href="https://github.com/tszhong0411/home/issues/new/choose">Request Feature</a>
+    <a href="https://github.com/tszhong0411/honghong.me/issues/new/choose">Request Feature</a>
 </p>
 
 ## 🚀 Demo
@@ -57,13 +57,13 @@
 1. Clone the repository
 
 ```bash
-git clone https://github.com/tszhong0411/home.git
+git clone https://github.com/tszhong0411/honghong.me.git
 ```
 
 2. Change the working directory
 
 ```bash
-cd home
+cd honghong.me
 ```
 
 3. Install dependencies
@@ -82,7 +82,7 @@ npm run dev
 
 ## 🍰 Contributing
 
-Please contribute by [open a pull request](https://github.com/tszhong0411/home/compare).
+Please contribute by [open a pull request](https://github.com/tszhong0411/honghong.me/compare).
 
 ## 💻 Built with
 
