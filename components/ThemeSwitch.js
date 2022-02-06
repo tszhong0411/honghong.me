@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
+import { motion } from 'framer-motion'
 
 const ThemeSwitch = () => {
   const [mounted, setMounted] = useState(false)
@@ -9,7 +10,16 @@ const ThemeSwitch = () => {
   useEffect(() => setMounted(true), [])
 
   return (
-    <button
+    <motion.button
+      whileHover={{
+        scale: 1.2,
+        transition: { duration: 0.2 },
+      }}
+      whileTap={{
+        scale: 0.7,
+        rotate: 360,
+        transition: { duration: 0.2 },
+      }}
       aria-label="Toggle Dark Mode"
       type="button"
       className="ml-1 mr-1 h-8 w-8 rounded p-1 sm:ml-4"
@@ -31,7 +41,7 @@ const ThemeSwitch = () => {
           <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
         )}
       </svg>
-    </button>
+    </motion.button>
   )
 }
 
