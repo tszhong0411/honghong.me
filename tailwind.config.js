@@ -41,6 +41,7 @@ module.exports = {
             },
             color: theme('colors.gray.700'),
             a: {
+              fontWeight: '600',
               color: theme('colors.primary.500'),
               '&:hover': {
                 color: `${theme('colors.primary.600')} !important`,

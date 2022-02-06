@@ -193,7 +193,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                 </div>
               </div>
             </div>
-            <footer className="sticky top-[104px] h-full divide-gray-200 dark:divide-gray-700 xl:ml-[1.5rem] xl:w-1/4 xl:divide-y">
+            <footer className="sticky top-[104px] h-full divide-gray-200 font-semibold dark:divide-gray-700 xl:ml-[1.5rem] xl:w-1/4 xl:divide-y">
               {toc.length !== 0 && <TOC toc={toc} />}
               <div className=" text-sm font-medium leading-5 ">
                 {tags && (
@@ -215,7 +215,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                         <h2 className="font-bold uppercase tracking-wide text-gray-600 dark:text-gray-400">
                           上一篇文章
                         </h2>
-                        <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
+                        <div className="font-semibold text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
                           <Link href={`/blog/${prev.slug}`}>{prev.title}</Link>
                         </div>
                       </div>
@@ -225,7 +225,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                         <h2 className="font-bold uppercase tracking-wide text-gray-600 dark:text-gray-400">
                           下一篇文章
                         </h2>
-                        <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
+                        <div className="font-semibold text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
                           <Link href={`/blog/${next.slug}`}>{next.title}</Link>
                         </div>
                       </div>
