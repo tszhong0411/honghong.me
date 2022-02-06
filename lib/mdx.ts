@@ -13,6 +13,9 @@ import remarkExtractFrontmatter from './remark-extract-frontmatter'
 import remarkCodeTitles from './remark-code-title'
 import remarkTocHeadings from './remark-toc-headings'
 import remarkImgToJsx from './remark-img-to-jsx'
+import { PostFrontMatter } from 'types/PostFrontMatter'
+import { AuthorFrontMatter } from 'types/AuthorFrontMatter'
+import { Toc } from 'types/Toc'
 // Rehype packages
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
@@ -41,6 +44,7 @@ export function dateSortDesc(a, b) {
 }
 
 export async function getFileBySlug(type, slug) {
+  const section = require('@agentofuser/rehype-section').default
   const mdxPath = path.join(root, 'data', type, `${slug}.mdx`)
   const mdPath = path.join(root, 'data', type, `${slug}.md`)
   const source = fs.existsSync(mdxPath)
@@ -79,6 +83,7 @@ export async function getFileBySlug(type, slug) {
       options.rehypePlugins = [
         ...(options.rehypePlugins ?? []),
         rehypeSlug,
+        section,
         rehypeAutolinkHeadings,
         rehypeKatex,
         [rehypeCitation, { path: path.join(root, 'data') }],
@@ -123,7 +128,8 @@ export async function getAllFilesFrontMatter(folder) {
       return
     }
     const source = fs.readFileSync(file, 'utf8')
-    const { data: frontmatter } = matter(source)
+    const matterFile = matter(source)
+    const frontmatter = matterFile.data as AuthorFrontMatter | PostFrontMatter
     if (frontmatter.draft !== true) {
       allFrontMatter.push({
         ...frontmatter,

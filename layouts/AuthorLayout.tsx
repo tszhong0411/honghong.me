@@ -1,6 +1,12 @@
 import Image from 'next/image'
 import { PageSEO } from '@/components/SEO'
 import Link from '@/components/Link'
+import { AuthorFrontMatter } from 'types/AuthorFrontMatter'
+
+interface Props {
+  children: ReactNode
+  frontMatter: AuthorFrontMatter
+}
 
 export default function AuthorLayout({ children, frontMatter }) {
   const { name, avatar, occupation, location, email, twitter, instagram, github, facebook } =

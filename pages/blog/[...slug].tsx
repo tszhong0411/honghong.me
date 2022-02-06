@@ -3,6 +3,9 @@ import PageTitle from '@/components/PageTitle'
 import generateRss from '@/lib/generate-rss'
 import { MDXLayoutRenderer } from '@/components/MDXComponents'
 import { formatSlug, getAllFilesFrontMatter, getFileBySlug, getFiles } from '@/lib/mdx'
+import { AuthorFrontMatter } from 'types/AuthorFrontMatter'
+import { PostFrontMatter } from 'types/PostFrontMatter'
+import { Toc } from 'types/Toc'
 
 const DEFAULT_LAYOUT = 'PostLayout'
 
@@ -18,15 +21,21 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params }) {
+// @ts-ignore
+export const getStaticProps: GetStaticProps<{
+  post: { mdxSource: string; toc: Toc; frontMatter: PostFrontMatter }
+  authorDetails: AuthorFrontMatter[]
+  prev?: { slug: string; title: string }
+  next?: { slug: string; title: string }
+}> = async function getStaticProps({ params }) {
   const allPosts = await getAllFilesFrontMatter('blog')
   const postIndex = allPosts.findIndex((post) => formatSlug(post.slug) === params.slug.join('/'))
-  const prev = allPosts[postIndex + 1] || null
-  const next = allPosts[postIndex - 1] || null
+  const prev: { slug: string; title: string } = allPosts[postIndex + 1] || null
+  const next: { slug: string; title: string } = allPosts[postIndex - 1] || null
   const post = await getFileBySlug('blog', params.slug.join('/'))
   const authorList = post.frontMatter.authors || ['default']
   const authorPromise = authorList.map(async (author) => {
-    const authorResults = await getFileBySlug('authors', [author])
+    const authorResults = await getFileBySlug<AuthorFrontMatter>('authors', [author])
     return authorResults.frontMatter
   })
   const authorDetails = await Promise.all(authorPromise)

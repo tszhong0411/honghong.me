@@ -1,8 +1,11 @@
+// @ts-check
+
 const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 
+/** @type {import("tailwindcss/tailwind-config").TailwindConfig } */
 module.exports = {
-  content: ['./pages/**/*.js', './components/**/*.js', './layouts/**/*.js', './lib/**/*.js'],
+  content: ['./pages/**/*.tsx', './components/**/*.tsx', './layouts/**/*.tsx', './lib/**/*.ts'],
   darkMode: 'class',
   theme: {
     extend: {
@@ -35,6 +38,10 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
+            p: {
+              fontWeight: '500',
+              fontFamily: 'Noto Sans TC',
+            },
             color: theme('colors.gray.700'),
             a: {
               color: theme('colors.primary.500'),

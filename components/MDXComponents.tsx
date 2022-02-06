@@ -9,9 +9,11 @@ import { BlogNewsletterForm } from './NewsletterForm'
 
 export const MDXComponents = {
   Image,
+  //@ts-ignore
   TOCInline,
   a: CustomLink,
   pre: Pre,
+  //@ts-ignore
   BlogNewsletterForm: BlogNewsletterForm,
   wrapper: ({ components, layout, ...rest }) => {
     const Layout = require(`../layouts/${layout}`).default

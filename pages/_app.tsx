@@ -4,6 +4,7 @@ import '@/css/prism.css'
 import 'react-toastify/dist/ReactToastify.css'
 
 import { ThemeProvider } from 'next-themes'
+import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { useEffect } from 'react'
 import CdnList from '@/data/cdnList'
@@ -15,7 +16,7 @@ import { ClientReload } from '@/components/ClientReload'
 const isDevelopment = process.env.NODE_ENV === 'development'
 const isSocket = process.env.SOCKET
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     CdnList.css.map((item) => {
       var style = document.createElement('link')

@@ -3,6 +3,7 @@ import siteMetadata from '@/data/siteMetadata'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 import ListLayout from '@/layouts/ListLayout'
 import { POSTS_PER_PAGE } from '../../blog'
+import { PostFrontMatter } from 'types/PostFrontMatter'
 
 export async function getStaticPaths() {
   const totalPosts = await getAllFilesFrontMatter('blog')

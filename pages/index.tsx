@@ -4,17 +4,18 @@ import { PageSEO } from '@/components/SEO'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
+import { PostFrontMatter } from 'types/PostFrontMatter'
 import formatDate from '@/lib/utils/formatDate'
 
 const MAX_DISPLAY = 5
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps<{ posts: PostFrontMatter[] }> = async () => {
   const posts = await getAllFilesFrontMatter('blog')
 
   return { props: { posts } }
 }
 
-export default function Home({ posts }) {
+export default function Home({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
