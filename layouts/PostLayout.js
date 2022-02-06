@@ -125,14 +125,14 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
               </dl>
             </div>
           </header>
-          <div className="flex flex-col divide-y divide-gray-200 pb-8 dark:divide-gray-700 xl:flex-row xl:divide-y-0">
+          <div className="flex flex-col divide-y divide-gray-200 pb-2 dark:divide-gray-700 xl:flex-row xl:divide-y-0">
             <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:w-3/4 xl:pb-0">
               <div className="prose max-w-none pt-10 pb-8 dark:prose-dark">
                 {toc.length !== 0 && <TOCInline toc={toc} />}
                 {children}
               </div>
               <div className="flex justify-between pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
-                <div>
+                <div className="flex items-center">
                   <Link href={editUrl(fileName)}>{'在 GitHub 上編輯'}</Link>
                 </div>
                 <div className="flex">
@@ -233,7 +233,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                   </div>
                 )}
               </div>
-              <div className="pt-4 xl:pt-8 xl:pb-[17px]">
+              <div className="pt-4 xl:pt-6 xl:pb-6">
                 <Link
                   href="/blog"
                   className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
