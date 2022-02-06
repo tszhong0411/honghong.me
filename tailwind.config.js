@@ -35,6 +35,10 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
+            p: {
+              fontWeight: '500',
+              fontFamily: 'Noto Sans TC',
+            },
             color: theme('colors.gray.700'),
             a: {
               color: theme('colors.primary.500'),

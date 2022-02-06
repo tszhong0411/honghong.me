@@ -13,6 +13,7 @@
     "update": "npx npm-check-updates -u && npm install"
   },
   "dependencies": {
+    "@agentofuser/rehype-section": "^1.0.5",
     "@mailchimp/mailchimp_marketing": "^3.0.74",
     "@tailwindcss/forms": "^0.4.0",
     "@tailwindcss/typography": "^0.5.1",

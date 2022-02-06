@@ -20,7 +20,8 @@ import { useEffect } from 'react'
  * }} props
  *
  */
-const TOCInline = ({ toc, fromHeading = 1, toHeading = 6, exclude = '' }) => {
+
+export default function TOC({ toc, fromHeading = 1, toHeading = 6, exclude = '' }) {
   const re = Array.isArray(exclude)
     ? new RegExp('^(' + exclude.join('|') + ')$', 'i')
     : new RegExp('^(' + exclude + ')$', 'i')
@@ -42,32 +43,47 @@ const TOCInline = ({ toc, fromHeading = 1, toHeading = 6, exclude = '' }) => {
   }
 
   const tocList = (
-    <ul>
+    <div className="mt-1 transform space-y-1 transition duration-500 ease-in-out">
       {filteredToc.map((heading) => {
         return (
-          <li key={heading.value} style={{ marginLeft: (heading.depth - 1) * 16 }}>
+          <div
+            key={heading.value}
+            className={`transition-all duration-500 ease-in-out`}
+            style={{ marginLeft: (heading.depth - 1) * 16 }}
+          >
             <a
               href={heading.url}
               onClick={(e) => {
                 scrollHeading(heading.url, e)
               }}
+              className="text-red-500 hover:text-red-600"
             >
               {heading.value}
             </a>
-          </li>
+          </div>
         )
       })}
-    </ul>
+    </div>
   )
+  // Todo: add active style
+  // useEffect(() => {
+  //   filteredToc.map((heading) => {
+  //     console.log(
+  //       document
+  //         .querySelector(`h${heading.depth}[id="${heading.value}"]`)
+  //         .parentElement.getBoundingClientRect().top
+  //     )
+  //   })
+  // })
 
   return (
     <>
-      <details open className="mt-5 mb-14 rounded-xl dark:bg-[#191919] xl:hidden">
-        <summary className="ml-2 pt-2 pb-2 text-xl font-bold sm:ml-6">目錄</summary>
-        <div className="ml-2 sm:ml-6">{tocList}</div>
-      </details>
+      <div className="mt-10 hidden xl:block" id="toc">
+        <div className="mb-4 text-sm tracking-tight text-gray-500 dark:text-gray-500">
+          <span className="mb-2 text-lg font-bold text-black dark:text-gray-100">目錄</span>
+          {tocList}
+        </div>
+      </div>
     </>
   )
 }
-
-export default TOCInline

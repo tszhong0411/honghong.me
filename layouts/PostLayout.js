@@ -8,6 +8,7 @@ import Comments from '@/components/comments'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 import NewsletterForm from '@/components/NewsletterForm'
 import TOCInline from '@/components/TOCInline'
+import TOC from '@/components/TOC'
 
 const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/main/data/blog/${fileName}`
 
@@ -126,7 +127,10 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
           </header>
           <div className="flex flex-col divide-y divide-gray-200 pb-8 dark:divide-gray-700 xl:flex-row xl:divide-y-0">
             <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:w-3/4 xl:pb-0">
-              <div className="prose max-w-none pt-10 pb-8 dark:prose-dark">{children}</div>
+              <div className="prose max-w-none pt-10 pb-8 dark:prose-dark">
+                {toc.length !== 0 && <TOCInline toc={toc} />}
+                {children}
+              </div>
               <div className="flex justify-between pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
                 <div>
                   <Link href={editUrl(fileName)}>{'在 GitHub 上編輯'}</Link>
@@ -190,11 +194,11 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
               </div>
             </div>
             <footer className="sticky top-[104px] h-full divide-gray-200 dark:divide-gray-700 xl:ml-[1.5rem] xl:w-1/4 xl:divide-y">
-              {toc.length !== 0 && <TOCInline toc={toc} />}
+              {toc.length !== 0 && <TOC toc={toc} />}
               <div className=" text-sm font-medium leading-5 ">
                 {tags && (
                   <div className="py-4 xl:py-8">
-                    <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
+                    <h2 className="font-bold uppercase tracking-wide text-gray-600 dark:text-gray-400">
                       標籤
                     </h2>
                     <div className="flex flex-wrap">
@@ -208,7 +212,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                   <div className="flex justify-between py-4 xl:block xl:space-y-8 xl:pb-8">
                     {prev && (
                       <div>
-                        <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
+                        <h2 className="font-bold uppercase tracking-wide text-gray-600 dark:text-gray-400">
                           上一篇文章
                         </h2>
                         <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
@@ -218,7 +222,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                     )}
                     {next && (
                       <div>
-                        <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
+                        <h2 className="font-bold uppercase tracking-wide text-gray-600 dark:text-gray-400">
                           下一篇文章
                         </h2>
                         <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
