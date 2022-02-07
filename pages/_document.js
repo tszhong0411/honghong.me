@@ -40,10 +40,6 @@ class MyDocument extends Document {
                         crossOrigin="anonymous"
                     />
                     <link
-                        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-                        rel="stylesheet"
-                    />
-                    <link
                         rel="stylesheet"
                         href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css"
                         integrity="sha384-Um5gpz1odJg5Z4HAmzPtgZKdTBHZdw8S29IecapCSB31ligYPhHQZMIlWLYQGVoc"

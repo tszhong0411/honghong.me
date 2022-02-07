@@ -78,7 +78,7 @@ export default function Footer() {
                                 <Link
                                     key={index}
                                     href={item.href}
-                                    className="mr-4 text-base font-bold"
+                                    className="mr-4 text-base font-medium"
                                 >
                                     {item.title}
                                 </Link>
