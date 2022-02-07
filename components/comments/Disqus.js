@@ -1,43 +1,48 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 
-import siteMetadata from '@/data/siteMetadata'
+import siteMetadata from "@/data/siteMetadata";
 
 const Disqus = ({ frontMatter }) => {
-  const [enableLoadComments, setEnabledLoadComments] = useState(
-    siteMetadata.comment.enableLoadComments
-  )
+    const [enableLoadComments, setEnabledLoadComments] = useState(
+        siteMetadata.comment.enableLoadComments
+    );
 
-  const COMMENTS_ID = 'disqus_thread'
+    const COMMENTS_ID = "disqus_thread";
 
-  function LoadComments() {
-    setEnabledLoadComments(false)
+    function LoadComments() {
+        setEnabledLoadComments(false);
 
-    window.disqus_config = function () {
-      this.page.url = window.location.href
-      this.page.identifier = frontMatter.slug
+        window.disqus_config = function () {
+            this.page.url = window.location.href;
+            this.page.identifier = frontMatter.slug;
+        };
+        if (window.DISQUS === undefined) {
+            const script = document.createElement("script");
+            script.src =
+                "https://" +
+                siteMetadata.comment.disqusConfig.shortname +
+                ".disqus.com/embed.js";
+            script.setAttribute("data-timestamp", +new Date());
+            script.setAttribute("crossorigin", "anonymous");
+            script.async = true;
+            document.body.appendChild(script);
+        } else {
+            window.DISQUS.reset({ reload: true });
+        }
     }
-    if (window.DISQUS === undefined) {
-      const script = document.createElement('script')
-      script.src = 'https://' + siteMetadata.comment.disqusConfig.shortname + '.disqus.com/embed.js'
-      script.setAttribute('data-timestamp', +new Date())
-      script.setAttribute('crossorigin', 'anonymous')
-      script.async = true
-      document.body.appendChild(script)
-    } else {
-      window.DISQUS.reset({ reload: true })
-    }
-  }
 
-  useEffect(() => {
-    !enableLoadComments && LoadComments()
-  })
+    useEffect(() => {
+        !enableLoadComments && LoadComments();
+    });
 
-  return (
-    <div className="pt-6 pb-6 text-center text-gray-700 dark:text-gray-300">
-      {enableLoadComments && <button onClick={LoadComments}>Load Comments</button>}
-      <div className="disqus-frame" id={COMMENTS_ID} />
-    </div>
-  )
-}
+    return (
+        <div className="pt-6 pb-6 text-center text-gray-700 dark:text-gray-300">
+            {enableLoadComments && (
+                <button onClick={LoadComments}>Load Comments</button>
+            )}
+            <div className="disqus-frame" id={COMMENTS_ID} />
+        </div>
+    );
+};
 
-export default Disqus
+export default Disqus;

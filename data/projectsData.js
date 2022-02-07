@@ -1,10 +1,10 @@
 const projectsData = [
-  {
-    title: 'Coming Soon',
-    description: ``,
-    imgSrc: '',
-    href: '',
-  },
-]
+    {
+        title: "Coming Soon",
+        description: ``,
+        imgSrc: "",
+        href: "",
+    },
+];
 
-export default projectsData
+export default projectsData;
