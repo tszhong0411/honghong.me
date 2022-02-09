@@ -8,7 +8,7 @@ const siteMetadata = {
     theme: "system", // system, dark or light
     siteUrl: "https://honghong.me",
     siteRepo: "https://github.com/tszhong0411/home",
-    siteLogo: "/static/images/logo.png",
+    siteLogo: "/static/images/HONG.png",
     image: "/static/images/avatar.png",
     socialBanner: "/static/images/twitter-card.png",
     email: "info@honghong.me",

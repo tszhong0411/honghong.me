@@ -3,7 +3,6 @@ import headerNavLinks from "@/data/headerNavLinks";
 import Link from "./Link";
 import MobileNav from "./MobileNav";
 import ThemeSwitch from "./ThemeSwitch";
-import Image from "next/image";
 
 export default function Navbar() {
     return (
@@ -11,24 +10,12 @@ export default function Navbar() {
             <div className="mx-auto flex w-full max-w-3xl items-center justify-between py-8 px-[20px] xl:max-w-5xl">
                 <div>
                     <Link href="/" aria-label={siteMetadata.headerTitle}>
-                        <div className="flex items-center justify-between">
-                            <div className="mr-3">
-                                <Image
-                                    src={siteMetadata.image}
-                                    width="32px"
-                                    height="32px"
-                                    alt="avatar"
-                                    className="rounded-full"
-                                />
-                            </div>
-                            {typeof siteMetadata.headerTitle === "string" ? (
-                                <div className="hidden text-2xl font-semibold sm:block">
-                                    {siteMetadata.headerTitle}
-                                </div>
-                            ) : (
-                                siteMetadata.headerTitle
-                            )}
-                        </div>
+                        <img
+                            src="/static/images/HONG.png"
+                            width="109.2125"
+                            height="50.8333333"
+                            alt="avatar"
+                        />
                     </Link>
                 </div>
                 <div className="flex items-center text-base leading-5">

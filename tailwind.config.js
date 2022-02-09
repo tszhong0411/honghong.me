@@ -21,7 +21,7 @@ module.exports = {
                 14: "3.5rem",
             },
             fontFamily: {
-                sans: ["Noto Sans TC", ...defaultTheme.fontFamily.sans],
+                sans: ["Inter", ...defaultTheme.fontFamily.sans],
             },
             colors: {
                 "black-75": "rgba(0,0,0,0.75)",
@@ -47,7 +47,7 @@ module.exports = {
                         color: theme("colors.gray.700"),
                         a: {
                             fontWeight: "600",
-                            color: theme("colors.primary.500"),
+                            color: "#ec0000",
                             "&:hover": {
                                 color: `${theme(
                                     "colors.primary.600"
@@ -78,7 +78,7 @@ module.exports = {
                             marginRight: "0.5rem",
                         },
                         code: {
-                            color: theme("colors.primary.500"),
+                            color: "#ce0000",
                             backgroundColor: theme("colors.gray.200"),
                             paddingLeft: "4px",
                             paddingRight: "4px",

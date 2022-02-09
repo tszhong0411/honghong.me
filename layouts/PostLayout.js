@@ -139,7 +139,7 @@ export default function PostLayout({
                                                                 href={
                                                                     author.instagram
                                                                 }
-                                                                className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                                                                className="text-[#ec0000] hover:text-primary-600 dark:hover:text-primary-400"
                                                             >
                                                                 {author.instagram.replace(
                                                                     "https://www.instagram.com/",
@@ -256,7 +256,7 @@ export default function PostLayout({
                                                 <h2 className="font-bold uppercase tracking-wide text-gray-600 dark:text-gray-400">
                                                     上一篇文章
                                                 </h2>
-                                                <div className="font-semibold text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
+                                                <div className="font-semibold text-[#ec0000] hover:text-primary-600 dark:hover:text-primary-400">
                                                     <Link
                                                         href={`/blog/${prev.slug}`}
                                                     >
@@ -270,7 +270,7 @@ export default function PostLayout({
                                                 <h2 className="font-bold uppercase tracking-wide text-gray-600 dark:text-gray-400">
                                                     下一篇文章
                                                 </h2>
-                                                <div className="font-semibold text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
+                                                <div className="font-semibold text-[#ec0000] hover:text-primary-600 dark:hover:text-primary-400">
                                                     <Link
                                                         href={`/blog/${next.slug}`}
                                                     >
@@ -285,7 +285,7 @@ export default function PostLayout({
                             <div className="pt-4 xl:pt-6 xl:pb-6">
                                 <Link
                                     href="/blog"
-                                    className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                                    className="text-[#ec0000] hover:text-primary-600 dark:hover:text-primary-400"
                                 >
                                     &larr; 回到 Blog
                                 </Link>

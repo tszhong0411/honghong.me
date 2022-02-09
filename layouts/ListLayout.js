@@ -3,6 +3,7 @@ import Tag from "@/components/Tag";
 import { useState } from "react";
 import Pagination from "@/components/Pagination";
 import formatDate from "@/lib/utils/formatDate";
+import Image from "next/image";
 
 export default function ListLayout({
     posts,
@@ -29,7 +30,7 @@ export default function ListLayout({
         <>
             <div className="divide-y">
                 <div className="space-y-2 pt-6 pb-8 md:space-y-5">
-                    <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:leading-14">
+                    <h1 className="text-3xl font-semibold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:leading-14">
                         {title}
                     </h1>
                     <div className="relative max-w-lg">
@@ -80,11 +81,14 @@ export default function ListLayout({
                                         <div className="flex flex-col items-center sm:flex-row xl:col-span-3">
                                             <div className="mx-2 my-8 w-full sm:my-0 sm:w-1/3">
                                                 <Link href={`/blog/${slug}`}>
-                                                    <img
-                                                        src={images}
-                                                        alt="Cover"
-                                                        className="rounded-[12px]"
-                                                    />
+                                                    <div className="custom-image-container">
+                                                        <Image
+                                                            src={images}
+                                                            alt="Cover"
+                                                            layout="fill"
+                                                            className="custom-image"
+                                                        />
+                                                    </div>
                                                 </Link>
                                             </div>
                                             <div className="mx-2 w-full sm:w-2/3">
@@ -114,7 +118,7 @@ export default function ListLayout({
                                                 <div className="text-base font-medium leading-6">
                                                     <Link
                                                         href={`/blog/${slug}`}
-                                                        className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                                                        className="text-[#ec0000] hover:text-primary-600 dark:hover:text-primary-400"
                                                         aria-label={`Read "${title}"`}
                                                     >
                                                         閱讀更多 &rarr;

@@ -2,6 +2,7 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
     enabled: process.env.ANALYZE === "true",
 });
 const withPWA = require("next-pwa");
+const CompressionPlugin = require("compression-webpack-plugin");
 // You might need to insert additional domains in script-src if you are using external services
 const ContentSecurityPolicy = `
   default-src 'self';
@@ -10,7 +11,7 @@ const ContentSecurityPolicy = `
   img-src * blob: data:;
   media-src cdn.jsdelivr.net;
   connect-src *;
-  font-src 'self' fonts.gstatic.com cdn.jsdelivr.net *.fontawesome.com;
+  font-src 'self' fonts.gstatic.com cdn.jsdelivr.net *.fontawesome.com fonts.googleapis.com;
   frame-src giscus.app
 `;
 
@@ -45,6 +46,11 @@ const securityHeaders = [
         key: "Strict-Transport-Security",
         value: "max-age=31536000; includeSubDomains; preload",
     },
+    // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection
+    {
+        key: "X-XSS-Protection",
+        value: "1; mode=block",
+    },
     // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy
     {
         key: "Permissions-Policy",
@@ -72,6 +78,7 @@ module.exports = withPWA(
             ];
         },
         webpack: (config, { dev, isServer }) => {
+            config.plugins.push(new CompressionPlugin());
             config.module.rules.push({
                 test: /\.(png|jpe?g|gif|mp4)$/i,
                 use: [

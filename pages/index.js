@@ -5,6 +5,7 @@ import Tag from "@/components/Tag";
 import siteMetadata from "@/data/siteMetadata";
 import { getAllFilesFrontMatter } from "@/lib/mdx";
 import formatDate from "@/lib/utils/formatDate";
+import Image from "next/image";
 
 const MAX_DISPLAY = 5;
 
@@ -24,7 +25,7 @@ export default function Home({ posts }) {
             <div className="divide-y divide-gray-200 dark:divide-gray-700">
                 <div className="space-y-2 pt-6 pb-8 md:space-y-5">
                     <Hero />
-                    <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:leading-14">
+                    <h1 className="text-3xl font-semibold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:leading-14">
                         最新文章
                     </h1>
                 </div>
@@ -50,11 +51,14 @@ export default function Home({ posts }) {
                                         <div className="flex flex-col items-center sm:flex-row xl:col-span-3">
                                             <div className="mx-2 my-8 w-full sm:my-0 sm:w-1/3">
                                                 <Link href={`/blog/${slug}`}>
-                                                    <img
-                                                        src={images}
-                                                        alt="Cover"
-                                                        className="rounded-[12px]"
-                                                    />
+                                                    <div className="custom-image-container">
+                                                        <Image
+                                                            src={images}
+                                                            alt="Cover"
+                                                            layout="fill"
+                                                            className="custom-image"
+                                                        />
+                                                    </div>
                                                 </Link>
                                             </div>
                                             <div className="mx-2 w-full sm:w-2/3">
@@ -83,7 +87,7 @@ export default function Home({ posts }) {
                                                     <div className="text-base font-medium leading-6">
                                                         <Link
                                                             href={`/blog/${slug}`}
-                                                            className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                                                            className="text-[#ec0000] hover:text-primary-600 dark:hover:text-primary-400"
                                                             aria-label={`Read "${title}"`}
                                                         >
                                                             閱讀更多 &rarr;
@@ -103,7 +107,7 @@ export default function Home({ posts }) {
                 <div className="flex justify-end text-base font-medium leading-6">
                     <Link
                         href="/blog"
-                        className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                        className="text-[#ec0000] hover:text-primary-600 dark:hover:text-primary-400"
                         aria-label="all posts"
                     >
                         全部文章 &rarr;

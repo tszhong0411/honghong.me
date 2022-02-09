@@ -1,11 +1,11 @@
 <p align="center">
   <a href="https://honghong.me">
-    <img src="./public/static/images/logo.png" width="90" />
+    <img src="./public/static/images/HONG.svg" />
   </a>
 </p>
 
 <h1 align="center">
- 小康's personal website
+ 小康's personal website & blog
 </h1>
 
 <p align="center">
@@ -46,11 +46,11 @@
 
 ## 🧐 Features
 
-- Hero section
-- Blog
-- Projects
-- Tools
-- About
+-   Hero section
+-   Blog
+-   Projects
+-   Tools
+-   About
 
 ## 🛠️ Installation Steps
 
@@ -86,8 +86,8 @@ Please contribute by [open a pull request](https://github.com/tszhong0411/hongho
 
 ## 💻 Built with
 
-- [Next.js](https://nextjs.org): The React Framework
-- [Tailwind CSS](https://tailwindcss.com/): For styling
+-   [Next.js](https://nextjs.org): The React Framework
+-   [Tailwind CSS](https://tailwindcss.com/): For styling
 
 <hr>
 <p align="center">

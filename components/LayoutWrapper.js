@@ -1,8 +1,16 @@
 import Footer from "./Footer";
 import { ToastContainer } from "react-toastify";
 import Navbar from "./Navbar";
+import consoleInfo from "./consoleInfo";
+
+let consoleInfoMessage = false;
 
 const LayoutWrapper = ({ children }) => {
+    if (!consoleInfoMessage) {
+        consoleInfo();
+        consoleInfoMessage = true;
+    }
+
     return (
         <>
             <div className="flex flex-col justify-between">

@@ -18,14 +18,14 @@ export default function Footer() {
                 data.forEach((release) => {
                     if (!release.draft && !release.prerelease) {
                         document.querySelector("#releases").innerHTML += `
-          <div class="release">
-            <div class="title">${release.name}</div>
-            <div class="date">${moment(release.published_at).format(
-                "DD MMM YYYY"
-            )}</div>
-            <div class="body">${release.body.replace(/\r\n/g, "<br>")}</div>
-          </div>
-          `;
+            <div class="release">
+                <div class="title">${release.name}</div>
+                <div class="date">${moment(release.published_at).format(
+                    "DD MMM YYYY"
+                )}</div>
+                <div class="body">${release.body.replace(/\r\n/g, "<br>")}</div>
+            </div>
+            `;
                     }
                 });
             });
@@ -49,7 +49,7 @@ export default function Footer() {
                                 key={index}
                                 className="w-full sm:w-1/2 md:w-1/4"
                             >
-                                <h3 className="mt-[1rem] mb-[0.7rem] pt-[0.5rem] pl-0 text-[16px] font-semibold text-[#707070]">
+                                <h3 className="mt-[1rem] mb-[0.7rem] pt-[0.5rem] pl-0 text-[16px] font-medium ">
                                     {item.name}
                                 </h3>
                                 <div className="flex flex-col">
@@ -85,7 +85,7 @@ export default function Footer() {
                             );
                         })}
                     </div>
-                    <div className="font-semibold text-gray-500">
+                    <div className="font-semibold">
                         © {new Date().getFullYear()} {siteMetadata.author}{" "}
                         <span
                             className="cursor-pointer hover:text-red-500"
