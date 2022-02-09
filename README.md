@@ -52,34 +52,6 @@
 -   Tools
 -   About
 
-## 🛠️ Installation Steps
-
-1. Clone the repository
-
-```bash
-git clone https://github.com/tszhong0411/honghong.me.git
-```
-
-2. Change the working directory
-
-```bash
-cd honghong.me
-```
-
-3. Install dependencies
-
-```bash
-npm install
-```
-
-4. Run the app
-
-```bash
-npm run dev
-```
-
-🌟 You are all set!
-
 ## 🍰 Contributing
 
 Please contribute by [open a pull request](https://github.com/tszhong0411/honghong.me/compare).
@@ -88,6 +60,10 @@ Please contribute by [open a pull request](https://github.com/tszhong0411/hongho
 
 -   [Next.js](https://nextjs.org): The React Framework
 -   [Tailwind CSS](https://tailwindcss.com/): For styling
+
+## ❤️ Credits
+
+-   [Tailwind nextjs starter blog template](https://github.com/timlrx/tailwind-nextjs-starter-blog) © [Timothy](https://www.timlrx.com/)
 
 <hr>
 <p align="center">
