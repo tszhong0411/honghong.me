@@ -11,7 +11,7 @@ export default function Navbar() {
                 <div>
                     <Link href="/" aria-label={siteMetadata.headerTitle}>
                         <img
-                            src="/static/images/HONG.png"
+                            src="/static/images/HONG.webp"
                             width="109.2125"
                             height="50.8333333"
                             alt="avatar"
