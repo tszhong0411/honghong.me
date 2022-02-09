@@ -38,6 +38,12 @@
     <a href="https://github.com/tszhong0411/honghong.me/issues/new/choose">Request Feature</a>
 </p>
 
+## ⭐ Lighthouse
+
+<p align="center">
+  <img src="./public/static/images/screenshot/honghong.me-lighthouse-202202092158.png"  alt="lighthouse">
+</p>
+
 ## 🚀 Demo
 
 <a href="https://honghong.me" target="blank">
