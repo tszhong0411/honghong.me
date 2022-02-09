@@ -73,16 +73,6 @@ export default function TOC({
             })}
         </div>
     );
-    // Todo: add active style
-    // useEffect(() => {
-    //   filteredToc.map((heading) => {
-    //     console.log(
-    //       document
-    //         .querySelector(`h${heading.depth}[id="${heading.value}"]`)
-    //         .parentElement.getBoundingClientRect().top
-    //     )
-    //   })
-    // })
 
     return (
         <>

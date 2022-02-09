@@ -6,7 +6,7 @@ import ThemeSwitch from "./ThemeSwitch";
 
 export default function Navbar() {
     return (
-        <header className="sticky top-0 z-40 bg-white/95 dark:bg-[#171717]/95">
+        <header className="sticky top-0 z-40 bg-white/95 dark:bg-[#060606]/95">
             <div className="mx-auto flex w-full max-w-3xl items-center justify-between py-8 px-[20px] xl:max-w-5xl">
                 <div>
                     <Link href="/" aria-label={siteMetadata.headerTitle}>

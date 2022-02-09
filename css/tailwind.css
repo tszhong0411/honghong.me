@@ -92,3 +92,59 @@ div[nextjs-image="true"] {
     height: unset !important;
     border-radius: 12px;
 }
+
+/* remark hint */
+p.hint {
+    position: relative;
+    margin: 0 0 20px;
+    padding: 15px 15px 15px 3em;
+    border-radius: 3px;
+    border: initial;
+    border-left: 5px solid #eee;
+    background-color: #f9f9f9;
+    color: #4c4948;
+}
+
+p.hint::before {
+    display: inline-block;
+    font-weight: 600;
+    font-style: normal;
+    font-variant: normal;
+    font-family: "Font Awesome 5 Free";
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    position: absolute;
+    top: calc(50% - 0.95em);
+    left: 0.8em;
+    font-size: larger;
+}
+
+p.hint.warn {
+    background-color: #fdf8ea;
+    border-left-color: #f0ad4e;
+}
+
+p.hint.warn::before {
+    content: "\f06a";
+    color: #f0ad4e;
+}
+
+p.hint.error {
+    background: #fcf1f2;
+    border-left-color: #d9534f;
+}
+
+p.hint.error::before {
+    content: "\f056";
+    color: #d9534f;
+}
+
+p.hint.tip {
+    background: #eef7fa;
+    border-left-color: #428bca;
+}
+
+p.hint.tip::before {
+    content: "\f05a";
+    color: #428bca;
+}
