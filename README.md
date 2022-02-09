@@ -41,7 +41,7 @@
 ## ⭐ Lighthouse
 
 <p align="center">
-  <img src="./public/static/images/screenshot/honghong.me-lighthouse-202202092158.png"  alt="lighthouse">
+  <a href="https://googlechrome.github.io/lighthouse/viewer/?gist=50f0c8da918422944d8ee2e815eeecc1"><img src="./public/static/images/screenshot/honghong.me-lighthouse-202202092158.png"  alt="lighthouse"></a>
 </p>
 
 ## 🚀 Demo
