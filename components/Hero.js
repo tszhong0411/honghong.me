@@ -19,7 +19,7 @@ export default function Hero() {
                 </div>
                 <div className="grid grid-cols-1 grid-rows-3 gap-8 py-12">
                     <div className="my-2 grid items-start gap-8">
-                        <div className="group relative shadow-lg duration-300 hover:shadow-2xl">
+                        <div className="group relative rounded-xl border-4 border-red-400">
                             <Link
                                 href="/blog"
                                 className="relative flex items-center justify-between divide-x divide-gray-600 rounded-lg bg-white px-7 py-4 leading-none dark:bg-black"
@@ -36,14 +36,14 @@ export default function Hero() {
                                         各種軟件推薦和介紹，分享編寫網頁技巧、教學。
                                     </span>
                                 </span>
-                                <span className="pl-6 text-[#ec0000] transition duration-200 group-hover:text-gray-900 dark:group-hover:text-gray-100">
+                                <span className="pl-6 text-[#ec0000]">
                                     Blog →
                                 </span>
                             </Link>
                         </div>
                     </div>
                     <div className="my-2 grid items-start gap-8">
-                        <div className="group relative shadow-lg duration-300 hover:shadow-2xl">
+                        <div className="group relative rounded-xl border-4 border-blue-400">
                             <Link
                                 href="https://www.youtube.com/channel/UC2hMWOaOlk9vrkvFVaGmn0Q"
                                 className="relative flex items-center justify-between divide-x divide-gray-600 rounded-lg bg-white px-7 py-4 leading-none dark:bg-black"
@@ -60,14 +60,14 @@ export default function Hero() {
                                         分享不同軟件的教學，把我的技巧分享給大家。
                                     </span>
                                 </span>
-                                <span className="pl-6 text-[#656ec3] transition duration-200 group-hover:text-gray-900 dark:group-hover:text-gray-100">
+                                <span className="pl-6 text-[#656ec3]">
                                     YouTube →
                                 </span>
                             </Link>
                         </div>
                     </div>
                     <div className="my-2 grid items-start gap-8">
-                        <div className="group relative shadow-lg duration-300 hover:shadow-2xl">
+                        <div className="group relative rounded-xl border-4 border-green-400">
                             <Link
                                 href="/projects"
                                 className="relative flex items-center justify-between divide-x divide-gray-600 rounded-lg bg-white px-7 py-4 leading-none dark:bg-black"
@@ -84,7 +84,7 @@ export default function Hero() {
                                         我不斷嘗試開發不同類型的網站
                                     </span>
                                 </span>
-                                <span className="pl-6 text-[#018911] transition duration-200 group-hover:text-gray-900 dark:group-hover:text-gray-100">
+                                <span className="pl-6 text-[#018911]">
                                     Projects →
                                 </span>
                             </Link>
