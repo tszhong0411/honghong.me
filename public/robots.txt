@@ -1,3 +1,2 @@
 User-agent: *
-Disallow: 
 Sitemap: https://honghong.me/sitemap.xml

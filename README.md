@@ -44,6 +44,13 @@
   <a href="https://googlechrome.github.io/lighthouse/viewer/?gist=50f0c8da918422944d8ee2e815eeecc1"><img src="./public/static/images/screenshot/honghong.me-lighthouse-202202092158.png"  alt="lighthouse"></a>
 </p>
 
+## 🌍 honghong.me
+
+-   **Framework**: [Next.js](https://nextjs.org/)
+-   **Deployment**: [Vercel](https://vercel.com)
+-   **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+-   **Comment**: [Giscus](https://giscus.app/)
+
 ## 🚀 Demo
 
 <a href="https://honghong.me" target="blank">
@@ -52,7 +59,6 @@
 
 ## 🧐 Features
 
--   Hero section
 -   Blog
 -   Projects
 -   Tools
@@ -62,10 +68,9 @@
 
 Please contribute by [open a pull request](https://github.com/tszhong0411/honghong.me/compare).
 
-## 💻 Built with
+## 💡 Todo
 
--   [Next.js](https://nextjs.org): The React Framework
--   [Tailwind CSS](https://tailwindcss.com/): For styling
+-   i18n blog
 
 ## ❤️ Credits
 

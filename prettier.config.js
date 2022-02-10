@@ -4,7 +4,7 @@ module.exports = {
     printWidth: 100,
     tabWidth: 4,
     useTabs: false,
-    trailingComma: "es5",
+    trailingComma: "none",
     bracketSpacing: true,
     tailwindConfig: "./tailwind.config.js",
 };
