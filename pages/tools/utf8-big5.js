@@ -38,7 +38,10 @@ export default function PasswordGenerator() {
     };
 
     return (
-        <ToolLayout title={"中文繁簡轉換器"}>
+        <ToolLayout
+            title={"中文繁簡轉換器"}
+            description={"方便地把簡體轉換成繁體"}
+        >
             <div className="">
                 <button
                     type="button"

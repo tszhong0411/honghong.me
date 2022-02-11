@@ -4,32 +4,32 @@ import siteMetadata from "@/data/siteMetadata";
 import footerNavLinks from "@/data/footerNavLinks";
 import { useState, useEffect } from "react";
 import moment from "moment";
+import useSWR from "swr";
+import fetcher from "@/lib/fetcher";
 
 export default function Footer() {
     const [isOpen, setIsOpen] = useState(false);
+    const { data } = useSWR("/api/repoReleases", fetcher);
 
     useEffect(() => {
-        fetch("https://api.github.com/repos/tszhong0411/home/releases")
-            .then((res) => res.text())
-            .then((result) => {
-                var data = JSON.parse(result);
-                document.querySelector("#version").innerHTML = data[0].name;
-
-                data.forEach((release) => {
-                    if (!release.draft && !release.prerelease) {
-                        document.querySelector("#releases").innerHTML += `
-            <div class="release">
-                <div class="title">${release.name}</div>
-                <div class="date">${moment(release.published_at).format(
-                    "DD MMM YYYY"
-                )}</div>
-                <div class="body">${release.body.replace(/\r\n/g, "<br>")}</div>
-            </div>
-            `;
-                    }
-                });
+        data &&
+            data.forEach((release) => {
+                if (!release.draft && !release.prerelease) {
+                    document.querySelector("#releases").innerHTML += `
+                <div class="release">
+                    <div class="title">${release.name}</div>
+                    <div class="date">${moment(release.published_at).format(
+                        "DD MMM YYYY"
+                    )}</div>
+                    <div class="body">${release.body.replace(
+                        /\r\n/g,
+                        "<br>"
+                    )}</div>
+                </div>
+                `;
+                }
             });
-    }, []);
+    }, [data]);
 
     const releaseHandler = (e) => {
         if (
@@ -42,36 +42,33 @@ export default function Footer() {
     return (
         <>
             <footer className="mt-[2rem] flex flex-col">
-                <div className="mx-auto mt-[20px] mb-[60px] flex w-full max-w-3xl flex-wrap py-0 px-[20px] xl:max-w-5xl">
-                    {footerNavLinks.middleLinks.map((item, index) => {
-                        return (
-                            <div
-                                key={index}
-                                className="w-full sm:w-1/2 md:w-1/4"
-                            >
-                                <h3 className="mt-[1rem] mb-[0.7rem] pt-[0.5rem] pl-0 text-[16px] font-medium ">
-                                    {item.name}
-                                </h3>
-                                <div className="flex flex-col">
+                <div className="mx-auto mt-[20px] mb-[60px] flex w-full max-w-3xl flex-wrap py-0 px-[20px] xl:max-w-5xl ">
+                    <hr className="border-1 mb-8 w-full border-gray-200 dark:border-gray-800" />
+                    <NowPlaying />
+                    <div className="grid w-full grid-cols-1 gap-4 pb-16 sm:grid-cols-3">
+                        {footerNavLinks.middleLinks.map((item, index) => {
+                            return (
+                                <div
+                                    key={index}
+                                    className="flex flex-col space-y-4"
+                                >
                                     {item.list.map((item, index) => {
                                         return (
                                             <Link
                                                 key={index}
                                                 href={item.href}
-                                                className="my-1 mr-auto text-[16px]"
+                                                className="transitio text-gray-500 hover:text-gray-600"
                                             >
-                                                <i className={item.class}></i>{" "}
                                                 {item.title}
                                             </Link>
                                         );
                                     })}
                                 </div>
-                            </div>
-                        );
-                    })}
+                            );
+                        })}
+                    </div>
                 </div>
-                <div className="mx-auto mb-8 flex w-full max-w-3xl flex-wrap justify-between px-[20px] xl:max-w-5xl">
-                    <NowPlaying />
+                <div className="mx-auto mb-8 flex w-full max-w-3xl flex-wrap justify-between px-[20px] xl:max-w-5xl ">
                     <div>
                         {footerNavLinks.bottomLinks.map((item, index) => {
                             return (
@@ -89,9 +86,11 @@ export default function Footer() {
                         © {new Date().getFullYear()} {siteMetadata.author}{" "}
                         <span
                             className="cursor-pointer hover:text-red-500"
-                            id="version"
                             onClick={(e) => releaseHandler(e)}
-                        ></span>
+                            id="version"
+                        >
+                            {data ? data[0].name : "Loading.."}
+                        </span>
                     </div>
                 </div>
             </footer>

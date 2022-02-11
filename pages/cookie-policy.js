@@ -1,23 +1,22 @@
-import { PageSEO } from "@/components/SEO";
 import siteMetadata from "@/data/siteMetadata";
 import Link from "@/components/Link";
+import { PageSEO } from "@/components/SEO";
 
 export default function CookiePolicy() {
     return (
         <>
             <PageSEO
                 title={`Cookies 政策 - ${siteMetadata.author}`}
-                description={siteMetadata.description}
+                description={
+                    "本 cookies 政策適用於honghong.me 及 所有子域名上 cookies 的使用。"
+                }
             />
-            <div className="divide-y divide-gray-200 dark:divide-gray-700">
-                <div className="space-y-2 pt-6 pb-8 md:space-y-5">
-                    <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-                        Cookie 政策
-                    </h1>
-                </div>
-                <div className="prose max-w-full py-12 dark:prose-dark">
+            <div className="mx-auto flex flex-col justify-center">
+                <h1 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
+                    Cookie 政策
+                </h1>
+                <div className="prose max-w-full pb-12 dark:prose-dark">
                     <div>
-                        <h1>Cookie 政策</h1>
                         <p>
                             本 cookies 政策適用於{" "}
                             <Link href="https://honghong.me">honghong.me</Link>{" "}
@@ -119,7 +118,7 @@ export default function CookiePolicy() {
                                     </tr>
                                     <tr>
                                         <td className="break-all border border-black bg-gray-100 px-4 py-4 font-medium text-black dark:bg-gray-900 dark:text-white">
-                                            _gat_gtag_UA_185110551_3
+                                            _gat_gtag_UA_185110551_5
                                         </td>
                                         <td className="break-all border border-black bg-gray-100 px-4 py-4 font-medium text-black dark:bg-gray-900 dark:text-white">
                                             https
@@ -169,7 +168,7 @@ export default function CookiePolicy() {
                             </li>
                         </ul>
                         <p className="mx-2 rounded-xl bg-red-500 p-2 text-center text-white">
-                            最近更新時間: 2022 / 02 / 01
+                            最近更新時間: 2022 / 02 / 10
                         </p>
                     </div>
                 </div>

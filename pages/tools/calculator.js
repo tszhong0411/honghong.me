@@ -1,6 +1,5 @@
 import ToolLayout from "@/layouts/ToolLayout";
-import React, { useState } from "react";
-import { Textfit } from "react-textfit";
+import React from "react";
 
 class AutoScalingText extends React.Component {
     state = {
@@ -335,7 +334,7 @@ class ToolsCalculator extends React.Component {
 export default function Calculator() {
     return (
         <>
-            <ToolLayout title="計算機">
+            <ToolLayout title="計算機" description="簡單－iOS 風格的計算機">
                 <div className="mx-auto h-[610px] w-full max-w-[350px] rounded-3xl bg-[#000] p-[10px] pt-[50px] shadow-md">
                     <ToolsCalculator />
                 </div>

@@ -43,7 +43,7 @@ export default function QrCodeGenerator() {
     };
 
     return (
-        <ToolLayout title={"QR 碼生成器"}>
+        <ToolLayout title={"QR 碼生成器"} description={"線上 QR Code 生成器"}>
             <div>
                 <div className="mx-auto w-full max-w-[250px]">
                     <img alt="qr-code" id="qr-code-img" />

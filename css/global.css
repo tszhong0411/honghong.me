@@ -50,6 +50,27 @@ samp {
     background: 0 0;
 }
 
+/* https://seek-oss.github.io/capsize/ */
+.capsize::before {
+    content: "";
+    margin-bottom: -0.098em;
+    display: table;
+}
+
+.capsize::after {
+    content: "";
+    margin-top: -0.219em;
+    display: table;
+}
+
+.skip-nav {
+    @apply absolute -left-1/4 -top-8 -translate-y-12 transform px-4 py-3 transition-transform duration-200 focus:top-4 focus:translate-y-3;
+}
+
+#skip {
+    scroll-margin-top: 1.125rem;
+}
+
 /* post image */
 div[nextjs-image="true"] {
     margin-top: 1.5rem;
@@ -152,4 +173,32 @@ p.hint.tip {
 p.hint.tip::before {
     content: "\f05a";
     color: #428bca;
+}
+
+/* heading anchor */
+.prose .anchor {
+    @apply invisible absolute;
+
+    margin-left: -1em;
+    padding-right: 0.5em;
+    width: 80%;
+    max-width: calc(768px + 1em);
+    cursor: pointer;
+}
+
+.anchor:hover {
+    @apply visible no-underline;
+}
+
+.prose a {
+    @apply transition-all;
+}
+
+.prose .anchor:after {
+    @apply text-gray-300 dark:text-gray-700;
+    content: "#";
+}
+
+.prose *:hover > .anchor {
+    @apply visible no-underline;
 }

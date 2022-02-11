@@ -1,5 +1,5 @@
 /* eslint-disable no-irregular-whitespace */
-import "@/css/tailwind.css";
+import "@/css/global.css";
 import "@/css/prism.css";
 import "react-toastify/dist/ReactToastify.css";
 

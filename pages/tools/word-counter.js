@@ -76,39 +76,39 @@ export default function WordCounter() {
     };
 
     return (
-        <ToolLayout title={"字數統計"}>
+        <ToolLayout title={"字數統計"} description={"輕鬆計算字數"}>
             <div>
                 <textarea
                     placeholder="在此處輸入 ..."
                     spellCheck="false"
                     rows="10"
                     ref={text}
-                    className="h-[250px] w-full rounded-md border-none bg-[#2d2d2d] p-4  text-white focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary-600 dark:bg-[#0e0f15]"
+                    className="h-[250px] w-full rounded-md border-none bg-[#2d2d2d] p-4  text-white focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary-600 dark:bg-[#2d2d2d]"
                     onChange={changeHandler}
                 ></textarea>
                 <div className="grid grid-cols-2 gap-x-4 gap-y-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-                    <div className="w-full rounded-md bg-gray-300 p-4 dark:bg-[#0e0f15]">
+                    <div className="w-full rounded-md bg-gray-300 p-4 dark:bg-[#2d2d2d]">
                         <div>{total}</div> 個字數
                     </div>
-                    <div className="w-full rounded-md bg-gray-300 p-4 dark:bg-[#0e0f15]">
+                    <div className="w-full rounded-md bg-gray-300 p-4 dark:bg-[#2d2d2d]">
                         <div>{engWords}</div> 個英文字
                     </div>
-                    <div className="w-full rounded-md bg-gray-300 p-4 dark:bg-[#0e0f15]">
+                    <div className="w-full rounded-md bg-gray-300 p-4 dark:bg-[#2d2d2d]">
                         <div>{char}</div> 個字元
                     </div>
-                    <div className="w-full rounded-md bg-gray-300 p-4 dark:bg-[#0e0f15]">
+                    <div className="w-full rounded-md bg-gray-300 p-4 dark:bg-[#2d2d2d]">
                         <div>{paragraphs}</div> 段落
                     </div>
-                    <div className="w-full rounded-md bg-gray-300 p-4 dark:bg-[#0e0f15]">
+                    <div className="w-full rounded-md bg-gray-300 p-4 dark:bg-[#2d2d2d]">
                         <div>{sentences}</div> 句子
                     </div>
-                    <div className="w-full rounded-md bg-gray-300 p-4 dark:bg-[#0e0f15]">
+                    <div className="w-full rounded-md bg-gray-300 p-4 dark:bg-[#2d2d2d]">
                         <div>{line}</div> 行
                     </div>
-                    <div className="w-full rounded-md bg-gray-300 p-4 dark:bg-[#0e0f15]">
+                    <div className="w-full rounded-md bg-gray-300 p-4 dark:bg-[#2d2d2d]">
                         <div>{chiWords}</div> 個中文字
                     </div>
-                    <div className="w-full rounded-md bg-gray-300 p-4 dark:bg-[#0e0f15]">
+                    <div className="w-full rounded-md bg-gray-300 p-4 dark:bg-[#2d2d2d]">
                         <div>{num}</div> 個數字
                     </div>
                 </div>

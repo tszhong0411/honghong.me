@@ -7,6 +7,7 @@ import { getAllTags } from "@/lib/tags";
 import kebabCase from "@/lib/utils/kebabCase";
 import fs from "fs";
 import path from "path";
+import { PageSEO } from "@/components/SEO";
 
 const root = process.cwd();
 
@@ -47,11 +48,16 @@ export default function Tag({ posts, tag }) {
     const title = tag[0].toUpperCase() + tag.split(" ").join("-").slice(1);
     return (
         <>
-            <TagSEO
-                title={`${tag} - ${siteMetadata.author}`}
-                description={`${tag} tags - ${siteMetadata.author}`}
-            />
-            <ListLayout posts={posts} title={title} />
+            <div className="mx-auto flex flex-col justify-center">
+                <h1 className="mb-12 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
+                    {tag}
+                </h1>
+                <TagSEO
+                    title={`${tag} - ${siteMetadata.author}`}
+                    description={`${tag} tags - ${siteMetadata.author}`}
+                />
+                <ListLayout posts={posts} title={title} />
+            </div>
         </>
     );
 }

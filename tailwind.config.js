@@ -43,7 +43,7 @@ module.exports = {
                         color: theme("colors.gray.700"),
                         a: {
                             fontWeight: "600",
-                            color: "#ec0000",
+                            color: "#e10000",
                             "&:hover": {
                                 color: `${theme(
                                     "colors.primary.600"
@@ -51,22 +51,8 @@ module.exports = {
                             },
                             code: { color: theme("colors.primary.400") },
                         },
-                        h1: {
-                            fontWeight: "700",
-                            letterSpacing: theme("letterSpacing.tight"),
-                            color: theme("colors.gray.900"),
-                        },
-                        h2: {
-                            fontWeight: "700",
-                            letterSpacing: theme("letterSpacing.tight"),
-                            color: theme("colors.gray.900"),
-                        },
-                        h3: {
-                            fontWeight: "600",
-                            color: theme("colors.gray.900"),
-                        },
-                        "h4,h5,h6": {
-                            color: theme("colors.gray.900"),
+                        "h2,h3,h4": {
+                            "scroll-margin-top": defaultTheme.spacing[32],
                         },
                         pre: {
                             backgroundColor: "#24283b",
@@ -74,8 +60,8 @@ module.exports = {
                             marginRight: "0.5rem",
                         },
                         code: {
-                            color: "#ce0000",
-                            backgroundColor: theme("colors.gray.200"),
+                            color: "#de0000",
+                            backgroundColor: "#f3f3f3",
                             paddingLeft: "4px",
                             paddingRight: "4px",
                             paddingTop: "2px",
@@ -126,21 +112,7 @@ module.exports = {
                             },
                             code: { color: theme("colors.primary.400") },
                         },
-                        h1: {
-                            fontWeight: "700",
-                            letterSpacing: theme("letterSpacing.tight"),
-                            color: theme("colors.gray.100"),
-                        },
-                        h2: {
-                            fontWeight: "700",
-                            letterSpacing: theme("letterSpacing.tight"),
-                            color: theme("colors.gray.100"),
-                        },
-                        h3: {
-                            fontWeight: "600",
-                            color: theme("colors.gray.100"),
-                        },
-                        "h4,h5,h6": {
+                        "h1,h2,h3,h4,h5,h6": {
                             color: theme("colors.gray.100"),
                         },
                         pre: {

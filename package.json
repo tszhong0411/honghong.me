@@ -22,6 +22,7 @@
         "framer-motion": "^6.2.4",
         "generate-password": "^1.7.0",
         "github-slugger": "^1.4.0",
+        "googleapis": "^95.0.0",
         "gray-matter": "^4.0.3",
         "image-size": "1.0.1",
         "js-yaml": "^4.1.0",

@@ -52,7 +52,7 @@ export default function PostPage({ posts, initialDisplayPosts, pagination }) {
                 posts={posts}
                 initialDisplayPosts={initialDisplayPosts}
                 pagination={pagination}
-                title="全部文章"
+                title="Blog"
             />
         </>
     );

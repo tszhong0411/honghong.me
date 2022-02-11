@@ -7,16 +7,17 @@ export default function PcSpecs() {
         <>
             <PageSEO
                 title={`電腦配置 - ${siteMetadata.author}`}
-                description={siteMetadata.description}
+                description={"小康在 2021 年 4 月購買的電腦的配置"}
             />
-            <div className="divide-y divide-gray-200 dark:divide-gray-700">
-                <div className="space-y-2 pt-6 pb-8 md:space-y-5">
-                    <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-                        電腦配置
-                    </h1>
-                </div>
-                <div className="container prose max-w-full py-12 dark:prose-dark">
-                    <div className="-m-4 flex flex-wrap">
+            <div className="mx-auto flex flex-col justify-center">
+                <h1 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
+                    電腦配置
+                </h1>
+                <p className="mb-12 text-gray-600 dark:text-gray-400">
+                    小康在 2021 年 4 月購買的電腦的配置
+                </p>
+                <div className="prose max-w-full dark:prose-dark">
+                    <div className="flex flex-wrap">
                         <table className="m-auto w-full table-fixed">
                             <thead>
                                 <tr>

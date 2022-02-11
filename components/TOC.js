@@ -36,19 +36,6 @@ export default function TOC({
             heading.depth <= toHeading &&
             !re.test(heading.value)
     );
-    const scrollHeading = (url, e) => {
-        e.preventDefault();
-        var element = document.querySelector(url);
-        var headerOffset = document.querySelector("header").offsetHeight;
-        var elementPosition = element.getBoundingClientRect().top;
-        var offsetPosition =
-            elementPosition + window.pageYOffset - headerOffset;
-
-        window.scrollTo({
-            top: offsetPosition,
-            behavior: "smooth",
-        });
-    };
 
     const tocList = (
         <div className="mt-1 transform space-y-1 transition duration-500 ease-in-out">
@@ -57,14 +44,11 @@ export default function TOC({
                     <div
                         key={heading.value}
                         className={`transition-all duration-500 ease-in-out`}
-                        style={{ marginLeft: (heading.depth - 1) * 16 }}
+                        style={{ marginLeft: (heading.depth - 2) * 16 }}
                     >
                         <a
                             href={heading.url}
-                            onClick={(e) => {
-                                scrollHeading(heading.url, e);
-                            }}
-                            className="text-red-500 hover:text-red-600"
+                            className="text-[#e10000] hover:text-[#b50000] dark:text-[#f20000] dark:hover:text-[#ff6666]"
                         >
                             {heading.value}
                         </a>

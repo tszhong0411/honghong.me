@@ -1,23 +1,22 @@
-import { PageSEO } from "@/components/SEO";
 import siteMetadata from "@/data/siteMetadata";
 import Link from "@/components/Link";
+import { PageSEO } from "@/components/SEO";
 
 export default function PrivacyPolicy() {
     return (
         <>
             <PageSEO
                 title={`隱私權政策 - ${siteMetadata.author}`}
-                description={siteMetadata.description}
+                description={
+                    "非常歡迎您光臨「小康」（以下簡稱本網站），為了讓您能夠安心使用本網站的各項服務與資訊，特此向您說明本網站的隱私權保護政策，以保障您的權益。"
+                }
             />
-            <div className="divide-y divide-gray-200 dark:divide-gray-700">
-                <div className="space-y-2 pt-6 pb-8 md:space-y-5">
-                    <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-                        隱私權政策
-                    </h1>
-                </div>
-                <div className="prose max-w-full py-12 dark:prose-dark">
+            <div className="mx-auto flex flex-col justify-center">
+                <h1 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
+                    隱私權政策
+                </h1>
+                <div className="prose max-w-full pb-12 dark:prose-dark">
                     <div>
-                        <h1>隱私權政策</h1>
                         <p>
                             非常歡迎您光臨「小康」（以下簡稱本網站），為了讓您能夠安心使用本網站的各項服務與資訊，特此向您說明本網站的隱私權保護政策，以保障您的權益，請您詳閱下列內容:
                         </p>

@@ -136,7 +136,7 @@ class MyDocument extends Document {
                         media="print"
                     />
                 </Head>
-                <body className="bg-white text-black antialiased dark:bg-[#060606] dark:text-white">
+                <body className="bg-[#f9fafb] text-black antialiased dark:bg-gray-900 dark:text-white">
                     <Main />
                     <NextScript />
                 </body>

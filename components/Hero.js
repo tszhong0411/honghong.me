@@ -22,7 +22,7 @@ export default function Hero() {
                         <div className="group relative rounded-xl border-4 border-red-400">
                             <Link
                                 href="/blog"
-                                className="relative flex items-center justify-between divide-x divide-gray-600 rounded-lg bg-white px-7 py-4 leading-none dark:bg-black"
+                                className="relative flex items-center justify-between divide-x divide-gray-600 rounded-lg bg-white px-7 py-4 leading-none dark:bg-gray-900"
                             >
                                 <span className="flex items-center space-x-5">
                                     <img
@@ -46,7 +46,7 @@ export default function Hero() {
                         <div className="group relative rounded-xl border-4 border-blue-400">
                             <Link
                                 href="https://www.youtube.com/channel/UC2hMWOaOlk9vrkvFVaGmn0Q"
-                                className="relative flex items-center justify-between divide-x divide-gray-600 rounded-lg bg-white px-7 py-4 leading-none dark:bg-black"
+                                className="relative flex items-center justify-between divide-x divide-gray-600 rounded-lg bg-white px-7 py-4 leading-none dark:bg-gray-900"
                             >
                                 <span className="flex items-center space-x-5">
                                     <img
@@ -70,7 +70,7 @@ export default function Hero() {
                         <div className="group relative rounded-xl border-4 border-green-400">
                             <Link
                                 href="/projects"
-                                className="relative flex items-center justify-between divide-x divide-gray-600 rounded-lg bg-white px-7 py-4 leading-none dark:bg-black"
+                                className="relative flex items-center justify-between divide-x divide-gray-600 rounded-lg bg-white px-7 py-4 leading-none dark:bg-gray-900"
                             >
                                 <span className="flex items-center space-x-5">
                                     <img

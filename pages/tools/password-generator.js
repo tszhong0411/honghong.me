@@ -47,7 +47,10 @@ export default function PasswordGenerator() {
     };
 
     return (
-        <ToolLayout title={"密碼生成器"}>
+        <ToolLayout
+            title={"密碼生成器"}
+            description={"想不到密碼？試試我的密碼生成器！"}
+        >
             <div className="mx-auto max-w-xl rounded-md bg-[#2d2d2d] p-5">
                 <div className="relative mb-4 h-11 bg-[#1b1b1b] py-3 px-2 text-white">
                     <span>{password}</span>

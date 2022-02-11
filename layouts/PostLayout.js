@@ -49,8 +49,8 @@ export default function PostLayout({
             <article>
                 <div className="xl:divide-y xl:divide-gray-200 xl:dark:divide-gray-700">
                     <header className="pt-6 xl:pb-6">
-                        <div className="space-y-1 text-center">
-                            <dl className="space-y-10">
+                        <div className="text-center md:space-y-2">
+                            <dl>
                                 <div>
                                     <dt className="sr-only">Published on</dt>
                                     <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
@@ -82,7 +82,7 @@ export default function PostLayout({
                                             d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
                                         />
                                     </svg>
-                                    {readingTime.words} 字
+                                    {readingTime.words} words
                                 </span>
                                 <span className="flex items-center gap-1">
                                     <svg
@@ -99,16 +99,13 @@ export default function PostLayout({
                                             d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                                         />
                                     </svg>
-                                    {readingTime.text.replace(
-                                        "min read",
-                                        "分鐘閱讀"
-                                    )}
+                                    {readingTime.text}
                                 </span>
                             </div>
-                            <dl className="pt-6 pb-10">
+                            <dl>
                                 <dt className="sr-only">Authors</dt>
                                 <dd>
-                                    <ul className="flex justify-center space-x-8">
+                                    <ul className="mt-6 flex justify-center">
                                         {authorDetails.map((author) => (
                                             <li
                                                 className="flex items-center space-x-2"
@@ -158,7 +155,7 @@ export default function PostLayout({
                     </header>
                     <div className="flex flex-col divide-y divide-gray-200 pb-2 dark:divide-gray-700 xl:flex-row xl:divide-y-0">
                         <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:w-3/4 xl:pb-0">
-                            <div className="prose max-w-none pt-10 pb-8 dark:prose-dark">
+                            <div className="prose max-w-none pt-4 pb-8 dark:prose-dark">
                                 {toc.length !== 0 && <TOCInline toc={toc} />}
                                 {children}
                             </div>
@@ -234,11 +231,11 @@ export default function PostLayout({
                                 </div>
                             </div>
                         </div>
-                        <footer className="sticky top-[104px] h-full divide-gray-200 font-semibold dark:divide-gray-700 xl:ml-[1.5rem] xl:w-1/4 xl:divide-y">
+                        <footer className="sticky top-[104px] h-full divide-gray-200 font-medium dark:divide-gray-700 dark:font-bold xl:ml-[1.5rem] xl:w-1/4 xl:divide-y">
                             {toc.length !== 0 && <TOC toc={toc} />}
                             <div className=" text-sm font-medium leading-5 ">
                                 {tags && (
-                                    <div className="py-4 xl:py-8">
+                                    <div className="pb-4 pt-8">
                                         <h2 className="font-bold uppercase tracking-wide text-gray-600 dark:text-gray-400">
                                             標籤
                                         </h2>
@@ -250,7 +247,7 @@ export default function PostLayout({
                                     </div>
                                 )}
                                 {(next || prev) && (
-                                    <div className="flex justify-between py-4 xl:block xl:space-y-8 xl:pb-8">
+                                    <div className="flex justify-between py-6 xl:block xl:space-y-8">
                                         {prev && (
                                             <div>
                                                 <h2 className="font-bold uppercase tracking-wide text-gray-600 dark:text-gray-400">
