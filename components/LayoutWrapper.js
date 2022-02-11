@@ -15,7 +15,7 @@ const LayoutWrapper = ({ children }) => {
         <>
             <div className="flex flex-col justify-between">
                 <Navbar />
-                <main className="mx-auto w-full max-w-3xl px-4 py-12 sm:px-6  xl:max-w-5xl xl:px-0">
+                <main className="mx-auto w-full max-w-3xl px-8 py-12 sm:px-6  xl:max-w-5xl xl:px-0">
                     {children}
                 </main>
                 <Footer />
