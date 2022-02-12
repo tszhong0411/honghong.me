@@ -14,6 +14,8 @@
     },
     "dependencies": {
         "@agentofuser/rehype-section": "^1.0.5",
+        "@fontsource/inter": "^4.5.4",
+        "@fontsource/noto-sans-tc": "^4.5.3",
         "@mailchimp/mailchimp_marketing": "^3.0.74",
         "@tailwindcss/forms": "^0.4.0",
         "@tailwindcss/typography": "^0.5.1",

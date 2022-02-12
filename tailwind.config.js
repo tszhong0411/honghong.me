@@ -21,7 +21,11 @@ module.exports = {
                 14: "3.5rem",
             },
             fontFamily: {
-                sans: ["Inter", ...defaultTheme.fontFamily.sans],
+                sans: [
+                    "Noto Sans TC",
+                    "InterVariable",
+                    ...defaultTheme.fontFamily.sans,
+                ],
             },
             colors: {
                 "black-75": "rgba(0,0,0,0.75)",

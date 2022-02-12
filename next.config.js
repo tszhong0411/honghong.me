@@ -5,14 +5,14 @@ const withPWA = require("next-pwa");
 const CompressionPlugin = require("compression-webpack-plugin");
 // You might need to insert additional domains in script-src if you are using external services
 const ContentSecurityPolicy = `
-  default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app cdn.jsdelivr.net www.googletagmanager.com www.google-analytics.com;
+    default-src 'self';
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app cdn.jsdelivr.net www.googletagmanager.com www.google-analytics.com;
   style-src 'self' 'unsafe-inline' *.googleapis.com cdn.jsdelivr.net *.fontawesome.com;
   img-src * blob: data:;
-  media-src cdn.jsdelivr.net;
+    media-src cdn.jsdelivr.net;
   connect-src *;
-  font-src 'self' fonts.gstatic.com cdn.jsdelivr.net *.fontawesome.com fonts.googleapis.com;
-  frame-src giscus.app
+  font-src 'self' fonts.gstatic.com cdn.jsdelivr.net *.fontawesome.com *.googleapis.com;
+    frame-src giscus.app
 `;
 
 const securityHeaders = [

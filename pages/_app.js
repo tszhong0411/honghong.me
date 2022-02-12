@@ -2,6 +2,8 @@
 import "@/css/global.css";
 import "@/css/prism.css";
 import "react-toastify/dist/ReactToastify.css";
+import "@fontsource/noto-sans-tc";
+import "@fontsource/inter/variable-full.css";
 
 import { ThemeProvider } from "next-themes";
 import Head from "next/head";

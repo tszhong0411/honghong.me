@@ -236,9 +236,9 @@ export default function PostLayout({
                             <div className=" text-sm font-medium leading-5 ">
                                 {tags && (
                                     <div className="pb-4 pt-8">
-                                        <h2 className="font-bold uppercase tracking-wide text-gray-600 dark:text-gray-400">
+                                        <span className="font-bold uppercase tracking-wide text-gray-600 dark:text-gray-400">
                                             標籤
-                                        </h2>
+                                        </span>
                                         <div className="flex flex-wrap">
                                             {tags.map((tag) => (
                                                 <Tag key={tag} text={tag} />
@@ -250,9 +250,9 @@ export default function PostLayout({
                                     <div className="flex justify-between py-6 xl:block xl:space-y-8">
                                         {prev && (
                                             <div>
-                                                <h2 className="font-bold uppercase tracking-wide text-gray-600 dark:text-gray-400">
+                                                <span className="font-bold uppercase tracking-wide text-gray-600 dark:text-gray-400">
                                                     上一篇文章
-                                                </h2>
+                                                </span>
                                                 <div className="font-semibold text-[#ec0000] hover:text-primary-600 dark:hover:text-primary-400">
                                                     <Link
                                                         href={`/blog/${prev.slug}`}
@@ -264,9 +264,9 @@ export default function PostLayout({
                                         )}
                                         {next && (
                                             <div>
-                                                <h2 className="font-bold uppercase tracking-wide text-gray-600 dark:text-gray-400">
+                                                <span className="font-bold uppercase tracking-wide text-gray-600 dark:text-gray-400">
                                                     下一篇文章
-                                                </h2>
+                                                </span>
                                                 <div className="font-semibold text-[#ec0000] hover:text-primary-600 dark:hover:text-primary-400">
                                                     <Link
                                                         href={`/blog/${next.slug}`}
