@@ -89,7 +89,7 @@ export default function Guestbook({ fallbackData }) {
         <>
             <div className="my-4 w-full max-w-2xl rounded border border-gray-200 bg-gray-100 p-6 dark:border-gray-800 dark:bg-gray-800">
                 <h5 className="text-lg font-bold text-gray-900 dark:text-gray-100 md:text-xl">
-                    登入留言簿
+                    {session?.user ? "登入留言簿" : "留言簿"}
                 </h5>
                 <p className="my-1 text-gray-800 dark:text-gray-200">
                     分享你的想法
