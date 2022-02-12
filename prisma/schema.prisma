@@ -1,0 +1,26 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["mongoDb"]
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model guestbook {
+  id         String @id @default(dbgenerated()) @map("_id") @db.ObjectId
+  email      String
+  body       String
+  created_by String
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+}
+
+model views {
+  slug  String @id @map("_id")
+  count BigInt @default(1)
+}

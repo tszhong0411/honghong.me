@@ -60,6 +60,9 @@ const securityHeaders = [
 
 module.exports = withPWA(
     withBundleAnalyzer({
+        images: {
+            domains: ["cdn.jsdelivr.net", "avatars.githubusercontent.com"],
+        },
         pwa: {
             dest: "public",
             disable: process.env.NODE_ENV === "development",

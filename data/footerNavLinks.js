@@ -23,6 +23,14 @@ const footerNavLinks = {
         {
             list: [
                 {
+                    href: "/guestbook",
+                    title: "Guestbook",
+                },
+                {
+                    href: "/uses",
+                    title: "Uses",
+                },
+                {
                     href: "/tags",
                     title: "Tags",
                 },

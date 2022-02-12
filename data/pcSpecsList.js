@@ -31,12 +31,4 @@ export const pcSpecsList = [
         name: "電源",
         content: "FSP Hydro 700 80Plus Bronze",
     },
-    {
-        name: "顯示器",
-        content: "AOC G2490W1G4 144Hz",
-    },
-    {
-        name: "滑鼠",
-        content: "Logitech G402 Hyperion Fury",
-    },
 ];

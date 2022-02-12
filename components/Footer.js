@@ -12,10 +12,13 @@ export default function Footer() {
     const { data } = useSWR("/api/repoReleases", fetcher);
 
     useEffect(() => {
-        data &&
-            data.forEach((release) => {
-                if (!release.draft && !release.prerelease) {
-                    document.querySelector("#releases").innerHTML += `
+        data && typeof data.message === "string"
+            ? (document.querySelector("#releases").innerHTML =
+                  "API rate limit exceeded")
+            : data &&
+              data.forEach((release) => {
+                  if (!release.draft && !release.prerelease) {
+                      document.querySelector("#releases").innerHTML += `
                 <div class="release">
                     <div class="title">${release.name}</div>
                     <div class="date">${moment(release.published_at).format(
@@ -27,10 +30,9 @@ export default function Footer() {
                     )}</div>
                 </div>
                 `;
-                }
-            });
+                  }
+              });
     }, [data]);
-
     const releaseHandler = (e) => {
         if (
             e.target.id === "versionHistoryWrapper" ||
@@ -89,7 +91,11 @@ export default function Footer() {
                             onClick={(e) => releaseHandler(e)}
                             id="version"
                         >
-                            {data ? data[0].name : "Loading.."}
+                            {data && typeof data.message === "string"
+                                ? "API rate limit exceeded"
+                                : data
+                                ? data[0].name
+                                : "Loading.."}
                         </span>
                     </div>
                 </div>

@@ -5,7 +5,7 @@ export const Snackbar = (message, style) => {
         case "success":
             toast.success(message, {
                 position: "bottom-right",
-                autoClose: 2500,
+                autoClose: 5000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,
@@ -17,7 +17,7 @@ export const Snackbar = (message, style) => {
         case "warn":
             toast.warn(message, {
                 position: "bottom-right",
-                autoClose: 2500,
+                autoClose: 5000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,
@@ -29,7 +29,7 @@ export const Snackbar = (message, style) => {
         case "info":
             toast.info(message, {
                 position: "bottom-right",
-                autoClose: 2500,
+                autoClose: 5000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,
@@ -41,7 +41,7 @@ export const Snackbar = (message, style) => {
         case "error":
             toast.error(message, {
                 position: "bottom-right",
-                autoClose: 2500,
+                autoClose: 5000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,
