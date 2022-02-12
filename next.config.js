@@ -7,11 +7,11 @@ const CompressionPlugin = require("compression-webpack-plugin");
 const ContentSecurityPolicy = `
     default-src 'self';
     script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app cdn.jsdelivr.net www.googletagmanager.com www.google-analytics.com;
-  style-src 'self' 'unsafe-inline' *.googleapis.com cdn.jsdelivr.net *.fontawesome.com;
-  img-src * blob: data:;
+    style-src 'self' 'unsafe-inline' cdn.jsdelivr.net *.fontawesome.com;
+    img-src * blob: data:;
     media-src cdn.jsdelivr.net;
-  connect-src *;
-  font-src 'self' fonts.gstatic.com cdn.jsdelivr.net *.fontawesome.com *.googleapis.com;
+    connect-src *;
+    font-src 'self' cdn.jsdelivr.net *.fontawesome.com;
     frame-src giscus.app
 `;
 
