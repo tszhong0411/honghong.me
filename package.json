@@ -80,7 +80,7 @@
         "lint-staged": "^12.3.2",
         "next-remote-watch": "^1.0.0",
         "prettier": "^2.5.1",
-        "prettier-plugin-tailwindcss": "^0.1.4",
+        "prettier-plugin-tailwindcss": "0.1.7",
         "prisma": "^3.9.2",
         "socket.io": "4.4.1",
         "socket.io-client": "4.4.1"
