@@ -44,7 +44,7 @@
         "react-dom": "17.0.2",
         "react-icons": "^4.3.1",
         "react-textfit": "^1.1.1",
-        "react-toastify": "^8.1.0",
+        "react-toastify": "8.1.1",
         "reading-time": "1.5.0",
         "rehype-autolink-headings": "^6.1.1",
         "rehype-citation": "^0.2.0",
