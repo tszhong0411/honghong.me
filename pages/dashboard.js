@@ -1,6 +1,7 @@
 import siteMetadata from "@/data/siteMetadata";
 import Youtube from "@/components/metrics/Youtube";
 import Github from "@/components/metrics/Github";
+import BlogTotalViews from "@/components/metrics/BlogTotalViews";
 import TopTracks from "@/components/TopTracks";
 import { PageSEO } from "@/components/SEO";
 
@@ -26,6 +27,7 @@ export default function Dashboard() {
                 <div className="flex w-full flex-col">
                     <Youtube />
                     <Github />
+                    <BlogTotalViews />
                 </div>
                 <h2 className="mb-4 mt-16 text-3xl font-bold tracking-tight text-black dark:text-white">
                     熱門曲目
