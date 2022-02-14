@@ -283,7 +283,7 @@ export default function PostLayout({
                                     {(next || prev) && (
                                         <div className="flex justify-between py-6 xl:block xl:space-y-8">
                                             {prev && (
-                                                <div>
+                                                <div className="w-full">
                                                     <span className="font-bold uppercase tracking-wide text-gray-600 dark:text-gray-400">
                                                         上一篇文章
                                                     </span>
@@ -297,7 +297,7 @@ export default function PostLayout({
                                                 </div>
                                             )}
                                             {next && (
-                                                <div>
+                                                <div className="w-full">
                                                     <span className="font-bold uppercase tracking-wide text-gray-600 dark:text-gray-400">
                                                         下一篇文章
                                                     </span>

@@ -11,36 +11,6 @@ export default function Footer() {
     const [isOpen, setIsOpen] = useState(false);
     const { data } = useSWR("/api/repoReleases", fetcher);
 
-    useEffect(() => {
-        data && typeof data.message === "string"
-            ? (document.querySelector("#releases").innerHTML =
-                  "API rate limit exceeded")
-            : data &&
-              data.forEach((release) => {
-                  if (!release.draft && !release.prerelease) {
-                      document.querySelector("#releases").innerHTML += `
-                <div class="release">
-                    <div class="title">${release.name}</div>
-                    <div class="date">${moment(release.published_at).format(
-                        "DD MMM YYYY"
-                    )}</div>
-                    <div class="body">${release.body.replace(
-                        /\r\n/g,
-                        "<br>"
-                    )}</div>
-                </div>
-                `;
-                  }
-              });
-    }, [data]);
-    const releaseHandler = (e) => {
-        if (
-            e.target.id === "versionHistoryWrapper" ||
-            e.target.id === "version"
-        ) {
-            isOpen ? setIsOpen(false) : setIsOpen(true);
-        }
-    };
     return (
         <>
             <footer className="mt-[2rem] flex flex-col">
@@ -86,31 +56,19 @@ export default function Footer() {
                     </div>
                     <div className="font-semibold">
                         © {new Date().getFullYear()} {siteMetadata.author}{" "}
-                        <span
-                            className="cursor-pointer hover:text-red-500"
-                            onClick={(e) => releaseHandler(e)}
-                            id="version"
+                        <Link
+                            href={`${siteMetadata.siteRepo}/releases`}
+                            className="hover:text-red-500"
                         >
                             {data && typeof data.message === "string"
                                 ? "API rate limit exceeded"
                                 : data
                                 ? data[0].name
                                 : "Loading.."}
-                        </span>
+                        </Link>
                     </div>
                 </div>
             </footer>
-            <div
-                className={`${
-                    isOpen ? "grid" : "hidden"
-                } fixed left-0 top-0 z-[1000] h-full w-full items-start justify-center bg-black-75 py-[5rem] px-0`}
-                id="versionHistoryWrapper"
-                onClick={(e) => releaseHandler(e)}
-            >
-                <div className="z-[1100] grid h-full w-[75vw] gap-[1rem] overflow-y-scroll rounded-[0.5rem] bg-[#111] p-[1rem] sm:p-[2rem]">
-                    <div className="grid gap-[4rem]" id="releases"></div>
-                </div>
-            </div>
         </>
     );
 }

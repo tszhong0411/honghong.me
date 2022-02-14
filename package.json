@@ -1,6 +1,6 @@
 {
     "name": "tszhong-blog",
-    "version": "1.0.0",
+    "version": "1.0.5",
     "private": true,
     "scripts": {
         "start": "cross-env SOCKET=true node ./scripts/next-remote-watch.js ./data",
