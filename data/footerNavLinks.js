@@ -38,6 +38,10 @@ const footerNavLinks = {
                     href: "/projects",
                     title: "Projects",
                 },
+                {
+                    href: "https://umami.honghong.me/share/KTWjRi4f/blog",
+                    title: "Analytics",
+                },
             ],
         },
         {

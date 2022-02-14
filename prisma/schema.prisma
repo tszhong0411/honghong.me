@@ -3,24 +3,23 @@
 
 generator client {
   provider        = "prisma-client-js"
-  previewFeatures = ["mongoDb"]
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 model guestbook {
-  id         String @id @default(dbgenerated()) @map("_id") @db.ObjectId
-  email      String
-  body       String
-  created_by String
-  created_at DateTime @default(now())
-  updated_at DateTime @default(now())
+  id         BigInt   @id @default(autoincrement())
+  email      String   @db.VarChar(256)
+  body       String   @db.VarChar(500)
+  created_by String   @db.VarChar(256)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
 }
 
 model views {
-  slug  String @id @map("_id")
+  slug  String @id @db.VarChar(128)
   count BigInt @default(1)
 }

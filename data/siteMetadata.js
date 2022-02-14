@@ -22,8 +22,8 @@ const siteMetadata = {
         // supports plausible, simpleAnalytics, umami or googleAnalytics
         plausibleDataDomain: "", // e.g. tailwind-nextjs-starter-blog.vercel.app
         simpleAnalytics: false, // true or false
-        umamiWebsiteId: "", // e.g. 123e4567-e89b-12d3-a456-426614174000
-        googleAnalyticsId: "UA-185110551-5", // e.g. UA-000000-2 or G-XXXXXXX
+        umamiWebsiteId: "f9234f5f-8348-47d2-8808-9dce193bb82c", // e.g. 123e4567-e89b-12d3-a456-426614174000
+        googleAnalyticsId: "", // e.g. UA-000000-2 or G-XXXXXXX
     },
     newsletter: {
         // supports mailchimp, buttondown, convertkit, klaviyo
