@@ -128,13 +128,6 @@ class MyDocument extends Document {
                         rel="preconnect"
                         href="https://fonts.googleapis.com"
                     />
-                    <link
-                        rel="stylesheet"
-                        href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css"
-                        integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET"
-                        crossOrigin="anonymous"
-                        media="print"
-                    />
                 </Head>
                 <body className="bg-[#f9fafb] text-black antialiased dark:bg-gray-900 dark:text-white">
                     <Main />

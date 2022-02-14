@@ -1,6 +1,7 @@
 /* eslint-disable no-irregular-whitespace */
 import "@/css/global.css";
 import "@/css/prism.css";
+import "katex/dist/katex.css";
 import "react-toastify/dist/ReactToastify.css";
 import "@fontsource/noto-sans-tc";
 import "@fontsource/jetbrains-mono";
