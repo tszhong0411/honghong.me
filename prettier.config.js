@@ -1,10 +1,11 @@
 module.exports = {
-    semi: false,
-    singleQuote: true,
-    printWidth: 100,
+    semi: true,
+    singleQuote: false,
+    printWidth: 80,
     tabWidth: 4,
     useTabs: false,
-    trailingComma: "none",
+    trailingComma: "all",
+    endOfLine: "auto",
     bracketSpacing: true,
     tailwindConfig: "./tailwind.config.js",
 };

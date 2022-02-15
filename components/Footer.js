@@ -2,13 +2,10 @@ import NowPlaying from "./NowPlaying";
 import Link from "./Link";
 import siteMetadata from "@/data/siteMetadata";
 import footerNavLinks from "@/data/footerNavLinks";
-import { useState, useEffect } from "react";
-import moment from "moment";
 import useSWR from "swr";
 import fetcher from "@/lib/fetcher";
 
 export default function Footer() {
-    const [isOpen, setIsOpen] = useState(false);
     const { data } = useSWR("/api/repoReleases", fetcher);
 
     return (
