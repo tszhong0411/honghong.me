@@ -26,7 +26,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
     const allPosts = await getAllFilesFrontMatter("blog");
     const postIndex = allPosts.findIndex(
-        (post) => formatSlug(post.slug) === params.slug.join("/")
+        (post) => formatSlug(post.slug) === params.slug.join("/"),
     );
     const prev = allPosts[postIndex + 1] || null;
     const next = allPosts[postIndex - 1] || null;

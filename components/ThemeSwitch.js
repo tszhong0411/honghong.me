@@ -27,7 +27,7 @@ const ThemeSwitch = () => {
                 setTheme(
                     theme === "dark" || resolvedTheme === "dark"
                         ? "light"
-                        : "dark"
+                        : "dark",
                 )
             }
         >

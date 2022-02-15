@@ -16,7 +16,7 @@ const GAScript = () => {
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', '${siteMetadata.analytics.googleAnalyticsId}', {
-              page_path: window.location.pathname,
+                page_path: window.location.pathname,
             });
         `}
             </Script>

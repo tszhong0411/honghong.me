@@ -4,7 +4,7 @@ import siteMetadata from "@/data/siteMetadata";
 
 const Disqus = ({ frontMatter }) => {
     const [enableLoadComments, setEnabledLoadComments] = useState(
-        siteMetadata.comment.enableLoadComments
+        siteMetadata.comment.enableLoadComments,
     );
 
     const COMMENTS_ID = "disqus_thread";

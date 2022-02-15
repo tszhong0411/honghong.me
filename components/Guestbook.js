@@ -28,7 +28,7 @@ function GuestbookEntry({ entry, user }) {
                 <p className="text-sm text-gray-400 dark:text-gray-600">
                     {format(
                         new Date(entry.updated_at),
-                        "d MMM yyyy 'at' h:mm bb"
+                        "d MMM yyyy 'at' h:mm bb",
                     )}
                 </p>
                 {user && entry.created_by === user.name && (

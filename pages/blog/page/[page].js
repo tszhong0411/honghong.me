@@ -25,7 +25,7 @@ export async function getStaticProps(context) {
     const pageNumber = parseInt(page);
     const initialDisplayPosts = posts.slice(
         POSTS_PER_PAGE * (pageNumber - 1),
-        POSTS_PER_PAGE * pageNumber
+        POSTS_PER_PAGE * pageNumber,
     );
     const pagination = {
         currentPage: pageNumber,

@@ -29,7 +29,7 @@ export async function getStaticProps({ params }) {
     const filteredPosts = allPosts.filter(
         (post) =>
             post.draft !== true &&
-            post.tags.map((t) => kebabCase(t)).includes(params.tag)
+            post.tags.map((t) => kebabCase(t)).includes(params.tag),
     );
 
     // rss

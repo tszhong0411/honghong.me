@@ -31,7 +31,7 @@ const useIntersectionObserver = (setActiveId) => {
                     map[headingElement.target.id] = headingElement;
                     return map;
                 },
-                headingElementsRef.current
+                headingElementsRef.current,
             );
 
             const visibleHeadings = [];
@@ -49,7 +49,7 @@ const useIntersectionObserver = (setActiveId) => {
                 const sortedVisibleHeadings = visibleHeadings.sort(
                     (a, b) =>
                         getIndexFromId(a.target.id) >
-                        getIndexFromId(b.target.id)
+                        getIndexFromId(b.target.id),
                 );
                 setActiveId(sortedVisibleHeadings[0].target.id);
             }
@@ -115,7 +115,7 @@ export default function TOC({
         (heading) =>
             heading.depth >= fromHeading &&
             heading.depth <= toHeading &&
-            !re.test(heading.value)
+            !re.test(heading.value),
     );
 
     return (

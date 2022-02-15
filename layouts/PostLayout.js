@@ -18,11 +18,11 @@ const editUrl = (fileName) =>
 
 const twitterShare = (slug) =>
     `https://twitter.com/intent/tweet?url=${encodeURIComponent(
-        `${siteMetadata.siteUrl}/blog/${slug}`
+        `${siteMetadata.siteUrl}/blog/${slug}`,
     )}`;
 const facebookShare = (slug) =>
     `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-        `${siteMetadata.siteUrl}/blog/${slug}`
+        `${siteMetadata.siteUrl}/blog/${slug}`,
     )}`;
 
 const postDateTemplate = {
@@ -63,10 +63,10 @@ export default function PostLayout({
                                         <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
                                             <time dateTime={date}>
                                                 {new Date(
-                                                    date
+                                                    date,
                                                 ).toLocaleDateString(
                                                     siteMetadata.locale,
-                                                    postDateTemplate
+                                                    postDateTemplate,
                                                 )}
                                             </time>
                                         </dd>
@@ -172,7 +172,7 @@ export default function PostLayout({
                                                                 >
                                                                     {author.instagram.replace(
                                                                         "https://www.instagram.com/",
-                                                                        "@"
+                                                                        "@",
                                                                     )}
                                                                 </Link>
                                                             )}

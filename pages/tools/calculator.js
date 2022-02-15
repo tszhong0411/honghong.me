@@ -154,7 +154,7 @@ class ToolsCalculator extends React.Component {
             const currentValue = value || 0;
             const newValue = CalculatorOperations[operator](
                 currentValue,
-                inputValue
+                inputValue,
             );
 
             this.setState({

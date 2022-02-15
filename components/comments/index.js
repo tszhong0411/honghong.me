@@ -5,19 +5,19 @@ const UtterancesComponent = dynamic(
     () => {
         return import("@/components/comments/Utterances");
     },
-    { ssr: false }
+    { ssr: false },
 );
 const GiscusComponent = dynamic(
     () => {
         return import("@/components/comments/Giscus");
     },
-    { ssr: false }
+    { ssr: false },
 );
 const DisqusComponent = dynamic(
     () => {
         return import("@/components/comments/Disqus");
     },
-    { ssr: false }
+    { ssr: false },
 );
 
 const Comments = ({ frontMatter }) => {

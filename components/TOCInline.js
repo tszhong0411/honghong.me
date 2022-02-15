@@ -28,7 +28,7 @@ const TOCInline = ({ toc, fromHeading = 1, toHeading = 6, exclude = "" }) => {
         (heading) =>
             heading.depth >= fromHeading &&
             heading.depth <= toHeading &&
-            !re.test(heading.value)
+            !re.test(heading.value),
     );
 
     const tocList = (

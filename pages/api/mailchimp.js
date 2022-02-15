@@ -19,7 +19,7 @@ export default async (req, res) => {
             {
                 email_address: email,
                 status: "subscribed",
-            }
+            },
         );
         return res.status(201).json({ error: "" });
     } catch (error) {

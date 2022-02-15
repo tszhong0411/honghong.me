@@ -38,15 +38,15 @@ const genFrontMatter = (answers) => {
             : "";
 
     let frontMatter = dedent`---
-  title: ${answers.title ? answers.title : "Untitled"}
-  date: '${date}'
-  tags: [${answers.tags ? tags : ""}]
-  draft: ${answers.draft === "yes" ? true : false}
-  summary: ${answers.summary ? answers.summary : " "}
-  images: '${answers.cover}'
-  layout: ${answers.layout}
-  canonicalUrl: ${answers.canonicalUrl}
-  `;
+    title: ${answers.title ? answers.title : "Untitled"}
+    date: '${date}'
+    tags: [${answers.tags ? tags : ""}]
+    draft: ${answers.draft === "yes" ? true : false}
+    summary: ${answers.summary ? answers.summary : " "}
+    images: '${answers.cover}'
+    layout: ${answers.layout}
+    canonicalUrl: ${answers.canonicalUrl}
+    `;
 
     if (answers.authors.length > 0) {
         frontMatter = frontMatter + "\n" + `authors: [${authorArray}]`;
@@ -135,7 +135,7 @@ inquirer
     .catch((error) => {
         if (error.isTtyError) {
             console.log(
-                "Prompt couldn't be rendered in the current environment"
+                "Prompt couldn't be rendered in the current environment",
             );
         } else {
             console.log("Something went wrong, sorry!");

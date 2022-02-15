@@ -5,7 +5,7 @@ import siteMetadata from "@/data/siteMetadata";
 
 const Utterances = ({ issueTerm }) => {
     const [enableLoadComments, setEnabledLoadComments] = useState(
-        siteMetadata.comment.enableLoadComments
+        siteMetadata.comment.enableLoadComments,
     );
     const { theme, resolvedTheme } = useTheme();
     const commentsTheme =
@@ -23,7 +23,7 @@ const Utterances = ({ issueTerm }) => {
         script.setAttribute("issue-term", issueTerm);
         script.setAttribute(
             "label",
-            siteMetadata.comment.utterancesConfig.label
+            siteMetadata.comment.utterancesConfig.label,
         );
         script.setAttribute("theme", commentsTheme);
         script.setAttribute("crossorigin", "anonymous");

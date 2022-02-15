@@ -26,7 +26,7 @@ export default function WordCounter() {
             text.current.value
                 // eslint-disable-next-line no-control-regex
                 .replace(/[^\x00-\xff]/g, "xx")
-                .replace(/(\r\n|\n|\r)/gm, "").length
+                .replace(/(\r\n|\n|\r)/gm, "").length,
         );
 
         // Line
@@ -57,7 +57,7 @@ export default function WordCounter() {
         count();
         //  Paragraphs
         setParagraphs(
-            text.current.value.replace(/\n$/gm, "").split(/\n/).length
+            text.current.value.replace(/\n$/gm, "").split(/\n/).length,
         );
 
         // Sentences
@@ -66,12 +66,12 @@ export default function WordCounter() {
                 ? Math.max(
                       (
                           (text.current.value || "").match(
-                              /[^?!.。][?!.。]/g
+                              /[^?!.。][?!.。]/g,
                           ) || []
                       ).length,
-                      1
+                      1,
                   )
-                : 0
+                : 0,
         );
     };
 

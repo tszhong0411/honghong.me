@@ -26,22 +26,22 @@ program
     .option(
         "-s, --script [path]",
         "path to the script you want to trigger on a watcher event",
-        false
+        false,
     )
     .option(
         "-c, --command [cmd]",
         "command to execute on a watcher event",
-        false
+        false,
     )
     .option(
         "-e, --event [name]",
         `name of event to watch, defaults to ${defaultWatchEvent}`,
-        defaultWatchEvent
+        defaultWatchEvent,
     )
     .option(
         "-p, --polling [name]",
         `use polling for the watcher, defaults to false`,
-        false
+        false,
     )
     .parse(process.argv);
 
@@ -74,7 +74,7 @@ app.prepare().then(() => {
                             ],
                             {
                                 stdio: "inherit",
-                            }
+                            },
                         );
                     }
 
@@ -83,7 +83,7 @@ app.prepare().then(() => {
                             // find the path of your --script script
                             const scriptPath = path.join(
                                 process.cwd(),
-                                program.script.toString()
+                                program.script.toString(),
                             );
 
                             // require your --script script
@@ -99,7 +99,7 @@ app.prepare().then(() => {
                     }
 
                     app.server.hotReloader.send("reloadPage");
-                }
+                },
             );
     }
 

@@ -5,7 +5,7 @@ import siteMetadata from "@/data/siteMetadata";
 
 const Giscus = ({ mapping }) => {
     const [enableLoadComments, setEnabledLoadComments] = useState(
-        siteMetadata.comment.enableLoadComments
+        siteMetadata.comment.enableLoadComments,
     );
     const { theme, resolvedTheme } = useTheme();
     const commentsTheme =
@@ -23,33 +23,33 @@ const Giscus = ({ mapping }) => {
         script.src = "https://giscus.app/client.js";
         script.setAttribute(
             "data-repo",
-            siteMetadata.comment.giscusConfig.repo
+            siteMetadata.comment.giscusConfig.repo,
         );
         script.setAttribute(
             "data-repo-id",
-            siteMetadata.comment.giscusConfig.repositoryId
+            siteMetadata.comment.giscusConfig.repositoryId,
         );
         script.setAttribute(
             "data-category",
-            siteMetadata.comment.giscusConfig.category
+            siteMetadata.comment.giscusConfig.category,
         );
         script.setAttribute(
             "data-category-id",
-            siteMetadata.comment.giscusConfig.categoryId
+            siteMetadata.comment.giscusConfig.categoryId,
         );
         script.setAttribute("data-mapping", mapping);
         script.setAttribute(
             "data-reactions-enabled",
-            siteMetadata.comment.giscusConfig.reactions
+            siteMetadata.comment.giscusConfig.reactions,
         );
         script.setAttribute(
             "data-emit-metadata",
-            siteMetadata.comment.giscusConfig.metadata
+            siteMetadata.comment.giscusConfig.metadata,
         );
         script.setAttribute("data-theme", commentsTheme);
         script.setAttribute(
             "data-lang",
-            siteMetadata.comment.giscusConfig.lang
+            siteMetadata.comment.giscusConfig.lang,
         );
         script.setAttribute("crossorigin", "anonymous");
         script.async = true;
