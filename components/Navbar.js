@@ -16,9 +16,11 @@ function NavItem({ href, text }) {
                 isActive
                     ? "font-semibold text-gray-800 dark:text-gray-200"
                     : "font-normal text-gray-600 dark:text-gray-400"
-            } hidden rounded-lg p-1 transition-all hover:bg-gray-200 dark:hover:bg-gray-800 sm:inline-block sm:px-4 sm:py-3`}
+            } hidden rounded-lg py-1 px-2 transition-all hover:bg-gray-200 dark:hover:bg-gray-800 sm:inline-block sm:py-3 md:px-4`}
         >
-            <span className="capsize">{text}</span>
+            <span className={`${isActive ? "border-b-2 pb-1" : ""}`}>
+                {text}
+            </span>
         </Link>
     );
 }
