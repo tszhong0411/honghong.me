@@ -4,9 +4,15 @@ import siteMetadata from "@/data/siteMetadata";
 import footerNavLinks from "@/data/footerNavLinks";
 import useSWR from "swr";
 import fetcher from "@/lib/fetcher";
+import { useState, useEffect } from "react";
 
 export default function Footer() {
+    const [version, setVersion] = useState("Loading");
     const { data } = useSWR("/api/repoReleases", fetcher);
+
+    useEffect(() => {
+        data && setVersion(data.name);
+    }, [data]);
 
     return (
         <>
@@ -57,11 +63,7 @@ export default function Footer() {
                             href={`${siteMetadata.siteRepo}/releases`}
                             className="hover:text-red-500"
                         >
-                            {data && typeof data.message === "string"
-                                ? "API rate limit exceeded"
-                                : data
-                                ? data[0].name
-                                : "Loading.."}
+                            {version}
                         </Link>
                     </div>
                 </div>

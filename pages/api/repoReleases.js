@@ -1,6 +1,6 @@
 export default async function handler(req, res) {
     const userResponse = await fetch(
-        "https://api.github.com/repos/tszhong0411/honghong.me/releases",
+        "https://api.github.com/repos/tszhong0411/honghong.me/releases/latest",
     );
     const data = await userResponse.json();
 
