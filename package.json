@@ -56,7 +56,7 @@
         "remark-gfm": "3.0.1",
         "remark-hint": "1.0.10",
         "remark-math": "5.1.1",
-        "sass": "1.49.7",
+        "sass": "1.49.8",
         "sharp": "0.30.1",
         "smoothscroll-polyfill": "0.4.4",
         "swr": "1.1.2",
