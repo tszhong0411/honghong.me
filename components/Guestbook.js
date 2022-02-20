@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { format } from "date-fns";
 import { signIn, useSession } from "next-auth/react";
 import useSWR, { useSWRConfig } from "swr";
@@ -6,8 +6,10 @@ import { Snackbar } from "@/components/Snackbar";
 import Image from "next/image";
 import { signOut } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
-
+import ContentLoader from "react-content-loader";
 import fetcher from "lib/fetcher";
+import { useTheme } from "next-themes";
+import { motion } from "framer-motion";
 
 function GuestbookEntry({ entry, user }) {
     const { mutate } = useSWRConfig();
@@ -52,6 +54,9 @@ function GuestbookEntry({ entry, user }) {
 }
 
 export default function Guestbook({ fallbackData }) {
+    const { theme, resolvedTheme } = useTheme();
+    const [loading, setLoading] = useState(false);
+    const [dark, setDark] = useState();
     const { data: session } = useSession();
     const { mutate } = useSWRConfig();
     const inputEl = useRef(null);
@@ -64,6 +69,7 @@ export default function Guestbook({ fallbackData }) {
         e.preventDefault();
 
         if (inputEl.current.value !== "") {
+            setLoading(true);
             const res = await fetch("/api/guestbook", {
                 body: JSON.stringify({
                     body: inputEl.current.value,
@@ -83,10 +89,43 @@ export default function Guestbook({ fallbackData }) {
             inputEl.current.value = "";
             mutate("/api/guestbook");
             Snackbar(t("guestbook:success"), "success");
+            setLoading(false);
         } else {
             Snackbar(t("guestbook:error"), "error");
         }
     };
+
+    useEffect(() => {
+        setDark(theme === "dark" || resolvedTheme === "dark");
+    }, [resolvedTheme, theme]);
+
+    const containerStyle = {
+        position: "relative",
+        width: "1rem",
+        height: "1rem",
+        boxSizing: "border-box",
+        margin: "0 auto",
+    };
+
+    const circleStyle = {
+        display: "block",
+        width: "1rem",
+        height: "1rem",
+        border: "3px solid #e9e9e9",
+        borderTop: "3px solid #ff4532",
+        borderRadius: "50%",
+        position: "absolute",
+        boxSizing: "border-box",
+        top: 0,
+        left: 0,
+    };
+
+    const spinTransition = {
+        repeat: Infinity,
+        ease: "linear",
+        duration: 1,
+    };
+
     return (
         <>
             <div className="my-4 w-full max-w-2xl rounded border border-gray-200 bg-gray-100 p-6 dark:border-gray-800 dark:bg-gray-800">
@@ -124,7 +163,17 @@ export default function Guestbook({ fallbackData }) {
                             className="h-10 w-28 rounded bg-gray-200 px-4 font-medium text-gray-900 dark:bg-gray-700 dark:text-gray-100"
                             type="submit"
                         >
-                            {t("guestbook:sign")}
+                            {loading ? (
+                                <div style={containerStyle}>
+                                    <motion.span
+                                        style={circleStyle}
+                                        animate={{ rotate: 360 }}
+                                        transition={spinTransition}
+                                    />
+                                </div>
+                            ) : (
+                                t("guestbook:sign")
+                            )}
                         </button>
                     </form>
                 )}
@@ -155,6 +204,41 @@ export default function Guestbook({ fallbackData }) {
                 )}
             </div>
             <div className="mt-4 space-y-8">
+                {loading && (
+                    <ContentLoader
+                        speed={0.5}
+                        width={340}
+                        height={30}
+                        viewBox="0 0 340 30"
+                        backgroundColor={dark ? "#2e2e2e" : "#efefef"}
+                        foregroundColor={dark ? "#333333" : "#eaeaea"}
+                    >
+                        <rect
+                            x="0"
+                            y="0"
+                            rx="3"
+                            ry="3"
+                            width="70"
+                            height="10"
+                        />
+                        <rect
+                            x="76"
+                            y="0"
+                            rx="3"
+                            ry="3"
+                            width="140"
+                            height="10"
+                        />
+                        <rect
+                            x="0"
+                            y="20"
+                            rx="3"
+                            ry="3"
+                            width="140"
+                            height="10"
+                        />
+                    </ContentLoader>
+                )}
                 {entries?.map((entry) => (
                     <GuestbookEntry
                         key={entry.id}

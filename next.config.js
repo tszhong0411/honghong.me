@@ -16,7 +16,7 @@ const ContentSecurityPolicy = `
     media-src cdn.jsdelivr.net;
     connect-src *;
     font-src 'self' cdn.jsdelivr.net *.fontawesome.com;
-    frame-src giscus.app
+    frame-src giscus.app *.youtube.com
 `;
 
 const securityHeaders = [
