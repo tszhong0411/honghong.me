@@ -63,14 +63,11 @@
 -   Projects
 -   Tools
 -   About
+-   i18n
 
 ## 🍰 Contributing
 
 Please contribute by [open a pull request](https://github.com/tszhong0411/honghong.me/compare).
-
-## 💡 Todo
-
--   i18n blog
 
 ## ❤️ Credits
 
