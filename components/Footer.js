@@ -3,9 +3,11 @@ import Link from "./Link";
 import siteMetadata from "@/data/siteMetadata";
 import footerNavLinks from "@/data/footerNavLinks";
 import useTranslation from "next-translate/useTranslation";
+import { useRouter } from "next/router";
 
 export default function Footer() {
     const { t } = useTranslation();
+    const { locale, defaultLocale } = useRouter();
 
     return (
         <>
@@ -47,7 +49,16 @@ export default function Footer() {
                                         return (
                                             <Link
                                                 key={index}
-                                                href={item.href}
+                                                href={
+                                                    item.href === "/feed.xml"
+                                                        ? `/feed${
+                                                              locale ===
+                                                              defaultLocale
+                                                                  ? ""
+                                                                  : `.${locale}`
+                                                          }.xml`
+                                                        : item.href
+                                                }
                                                 className="hover:text-[#ff4532] hover:underline"
                                             >
                                                 {item.title}
