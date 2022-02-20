@@ -20,7 +20,6 @@ const Giscus = ({ mapping }) => {
             : siteMetadata.comment.giscusConfig.themeURL;
 
     const COMMENTS_ID = "comments-container";
-    console.log(locale);
     const LoadComments = useCallback(() => {
         setEnabledLoadComments(false);
         const script = document.createElement("script");
