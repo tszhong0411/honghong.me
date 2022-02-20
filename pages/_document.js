@@ -105,28 +105,19 @@ class MyDocument extends Document {
                     <link
                         rel="mask-icon"
                         href="/static/favicons/safari-pinned-tab.svg"
-                        color="#ef4444"
+                        color="#ff4532"
                     />
                     <link rel="manifest" href="/static/manifest.json" />
                     <meta
                         name="msapplication-TileImage"
                         content="/static/favicons/mstile-144x144.png"
                     ></meta>
-                    <meta name="msapplication-TileColor" content="#ef4444" />
-                    <meta name="theme-color" content="#ef4444" />
+                    <meta name="msapplication-TileColor" content="#ff4532" />
+                    <meta name="theme-color" content="#ff4532" />
                     <link
                         rel="alternate"
                         type="application/rss+xml"
                         href="/feed.xml"
-                    />
-                    <link
-                        rel="preconnect"
-                        href="https://fonts.gstatic.com"
-                        crossOrigin="anonymous"
-                    />
-                    <link
-                        rel="preconnect"
-                        href="https://fonts.googleapis.com"
                     />
                 </Head>
                 <body className="bg-[#f9fafb] text-black antialiased dark:bg-gray-900 dark:text-white">

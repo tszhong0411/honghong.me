@@ -2,20 +2,28 @@ import prisma from "lib/prisma";
 import { PageSEO } from "@/components/SEO";
 import siteMetadata from "@/data/siteMetadata";
 import Guestbook from "@/components/Guestbook";
+import useTranslation from "next-translate/useTranslation";
 
-export default function GuestbookPage({ fallbackData }) {
+export default function GuestbookPage({
+    fallbackData,
+    locale,
+    availableLocales,
+}) {
+    const { t } = useTranslation();
+
     return (
         <>
             <PageSEO
                 title={`Guestbook - ${siteMetadata.author}`}
-                description={"小康的留言簿"}
+                description={siteMetadata.description[locale]}
+                availableLocales={availableLocales}
             />
             <div className="mx-auto flex flex-col justify-center">
                 <h1 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
                     Guestbook
                 </h1>
                 <p className="mb-12 text-gray-600 dark:text-gray-400">
-                    在下方發表評論，有什麼想說的嗎？
+                    {t("guestbook:description")}
                 </p>
                 <Guestbook fallbackData={fallbackData} />
             </div>
@@ -23,7 +31,7 @@ export default function GuestbookPage({ fallbackData }) {
     );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({ locale, locales }) {
     const entries = await prisma.guestbook.findMany({
         orderBy: {
             updated_at: "desc",
@@ -40,6 +48,8 @@ export async function getStaticProps() {
     return {
         props: {
             fallbackData,
+            locale,
+            availableLocales: locales,
         },
         revalidate: 60,
     };

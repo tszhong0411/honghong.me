@@ -1,5 +1,6 @@
 import ToolLayout from "@/layouts/ToolLayout";
 import { useState, useRef } from "react";
+import useTranslation from "next-translate/useTranslation";
 
 export default function WordCounter() {
     const text = useRef();
@@ -11,6 +12,7 @@ export default function WordCounter() {
     const [line, setLine] = useState(1);
     const [chiWords, setChiWords] = useState(0);
     const [num, setNum] = useState(0);
+    const { t } = useTranslation();
 
     const changeHandler = () => {
         let chinese = 0;
@@ -76,10 +78,13 @@ export default function WordCounter() {
     };
 
     return (
-        <ToolLayout title={"字數統計"} description={"輕鬆計算字數"}>
+        <ToolLayout
+            title={t("tools:toolsList.wordCounter")}
+            description={t("tools:toolsList.wordCounterDesc")}
+        >
             <div>
                 <textarea
-                    placeholder="在此處輸入 ..."
+                    placeholder={t("tools:wordCounter.placeholder")}
                     spellCheck="false"
                     rows="10"
                     ref={text}
@@ -88,28 +93,31 @@ export default function WordCounter() {
                 ></textarea>
                 <div className="grid grid-cols-2 gap-x-4 gap-y-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
                     <div className="w-full rounded-md bg-gray-300 p-4 dark:bg-[#2d2d2d]">
-                        <div>{total}</div> 個字數
+                        <div>{total}</div> {t("tools:wordCounter.total")}
                     </div>
                     <div className="w-full rounded-md bg-gray-300 p-4 dark:bg-[#2d2d2d]">
-                        <div>{engWords}</div> 個英文字
+                        <div>{engWords}</div> {t("tools:wordCounter.words")}
                     </div>
                     <div className="w-full rounded-md bg-gray-300 p-4 dark:bg-[#2d2d2d]">
-                        <div>{char}</div> 個字元
+                        <div>{char}</div> {t("tools:wordCounter.characters")}
                     </div>
                     <div className="w-full rounded-md bg-gray-300 p-4 dark:bg-[#2d2d2d]">
-                        <div>{paragraphs}</div> 段落
+                        <div>{paragraphs}</div>{" "}
+                        {t("tools:wordCounter.paragraphs")}
                     </div>
                     <div className="w-full rounded-md bg-gray-300 p-4 dark:bg-[#2d2d2d]">
-                        <div>{sentences}</div> 句子
+                        <div>{sentences}</div>{" "}
+                        {t("tools:wordCounter.sentences")}
                     </div>
                     <div className="w-full rounded-md bg-gray-300 p-4 dark:bg-[#2d2d2d]">
-                        <div>{line}</div> 行
+                        <div>{line}</div> {t("tools:wordCounter.line")}
                     </div>
                     <div className="w-full rounded-md bg-gray-300 p-4 dark:bg-[#2d2d2d]">
-                        <div>{chiWords}</div> 個中文字
+                        <div>{chiWords}</div>{" "}
+                        {t("tools:wordCounter.chineseWords")}
                     </div>
                     <div className="w-full rounded-md bg-gray-300 p-4 dark:bg-[#2d2d2d]">
-                        <div>{num}</div> 個數字
+                        <div>{num}</div> {t("tools:wordCounter.numbers")}
                     </div>
                 </div>
             </div>

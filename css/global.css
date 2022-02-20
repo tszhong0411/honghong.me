@@ -41,7 +41,7 @@ samp {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #444444;
+    background: #ff4532;
     transition: 0.25s;
     border-radius: 2px;
 }
@@ -50,44 +50,10 @@ samp {
     background: 0 0;
 }
 
-.skip-nav {
-    @apply absolute -left-1/4 -top-8 -translate-y-12 transform px-4 py-3 transition-transform duration-200 focus:top-4 focus:translate-y-3;
-}
-
-#skip {
-    scroll-margin-top: 1.125rem;
-}
-
 /* post image */
 div[nextjs-image="true"] {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
-}
-
-/* release */
-#releases .release {
-    display: grid;
-    grid-template-areas:
-        "title date"
-        "body body";
-}
-
-#releases .title {
-    grid-area: title;
-    font-size: 2rem;
-    color: rgb(118, 117, 117);
-}
-
-#releases .date {
-    grid-area: date;
-    text-align: right;
-    color: rgb(118, 117, 117);
-    align-self: center;
-}
-
-#releases .body {
-    grid-area: body;
-    color: #eee;
 }
 
 .custom-image-container {
@@ -105,62 +71,6 @@ div[nextjs-image="true"] {
     border-radius: 12px;
 }
 
-/* remark hint */
-p.hint {
-    position: relative;
-    margin: 0 0 20px;
-    padding: 15px 15px 15px 3em;
-    border-radius: 3px;
-    border: initial;
-    border-left: 5px solid #eee;
-    background-color: #f9f9f9;
-    color: #4c4948;
-}
-
-p.hint::before {
-    display: inline-block;
-    font-weight: 600;
-    font-style: normal;
-    font-variant: normal;
-    font-family: "Font Awesome 5 Free";
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    position: absolute;
-    top: calc(50% - 0.95em);
-    left: 0.8em;
-    font-size: larger;
-}
-
-p.hint.warn {
-    background-color: #fdf8ea;
-    border-left-color: #f0ad4e;
-}
-
-p.hint.warn::before {
-    content: "\f06a";
-    color: #f0ad4e;
-}
-
-p.hint.error {
-    background: #fcf1f2;
-    border-left-color: #d9534f;
-}
-
-p.hint.error::before {
-    content: "\f056";
-    color: #d9534f;
-}
-
-p.hint.tip {
-    background: #eef7fa;
-    border-left-color: #428bca;
-}
-
-p.hint.tip::before {
-    content: "\f05a";
-    color: #428bca;
-}
-
 /* heading anchor */
 .prose .anchor {
     @apply invisible absolute;
@@ -170,6 +80,7 @@ p.hint.tip::before {
     width: 80%;
     max-width: calc(768px + 1em);
     cursor: pointer;
+    border: 0 !important;
 }
 
 .anchor:hover {

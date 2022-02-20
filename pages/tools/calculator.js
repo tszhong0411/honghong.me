@@ -1,5 +1,6 @@
 import ToolLayout from "@/layouts/ToolLayout";
 import React from "react";
+import useTranslation from "next-translate/useTranslation";
 
 class AutoScalingText extends React.Component {
     state = {
@@ -332,9 +333,14 @@ class ToolsCalculator extends React.Component {
     }
 }
 export default function Calculator() {
+    const { t } = useTranslation();
+
     return (
         <>
-            <ToolLayout title="計算機" description="簡單－iOS 風格的計算機">
+            <ToolLayout
+                title={t("tools:toolsList.calculator")}
+                description={t("tools:toolsList.calculatorDesc")}
+            >
                 <div className="mx-auto h-[610px] w-full max-w-[350px] rounded-3xl bg-[#000] p-[10px] pt-[50px] shadow-md">
                     <ToolsCalculator />
                 </div>

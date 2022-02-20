@@ -2,20 +2,28 @@ import { PageSEO } from "@/components/SEO";
 import siteMetadata from "@/data/siteMetadata";
 import Image from "@/components/PostImage";
 import Link from "@/components/Link";
+import useTranslation from "next-translate/useTranslation";
 
-export default function Uses() {
+export async function getStaticProps({ locale, locales }) {
+    return { props: { locale, availableLocales: locales } };
+}
+
+export default function Uses({ locale, availableLocales }) {
+    const { t } = useTranslation();
+
     return (
         <>
             <PageSEO
                 title={`Uses - ${siteMetadata.author}`}
-                description={"小康的裝備"}
+                description={siteMetadata.description[locale]}
+                availableLocales={availableLocales}
             />
             <div className="mx-auto flex flex-col justify-center">
                 <h1 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
                     My Gear
                 </h1>
                 <p className="mb-12 text-gray-600 dark:text-gray-400">
-                    這是我目前用於遊戲、編程、製作影片和日常的設備。
+                    {t("uses:description")}
                 </p>
                 <div className="prose dark:prose-dark">
                     <Image
@@ -55,6 +63,7 @@ export default function Uses() {
                         <li>Postman</li>
                         <li>Chrome</li>
                         <li>Caesium</li>
+                        <li>Figma</li>
                         <li>OBS</li>
                     </ul>
                 </div>

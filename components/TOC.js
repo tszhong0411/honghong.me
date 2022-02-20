@@ -6,6 +6,7 @@
  */
 
 import { useEffect, useRef, useState } from "react";
+import useTranslation from "next-translate/useTranslation";
 
 /**
  * Generates an inline table of contents
@@ -56,7 +57,7 @@ const useIntersectionObserver = (setActiveId) => {
         };
 
         const observer = new IntersectionObserver(callback, {
-            rootMargin: "-104px 0px -60% 0px",
+            rootMargin: "-65px 0px -60% 0px",
         });
 
         const headingElements = Array.from(document.querySelectorAll("h2, h3"));
@@ -73,7 +74,7 @@ const TocList = ({ filteredToc, activeId }) => {
                 return (
                     <div
                         key={heading.value}
-                        className={`flex transition-all duration-500 ease-in-out`}
+                        className={`flex items-center transition-all duration-500 ease-in-out`}
                         style={{ marginLeft: (heading.depth - 2) * 16 }}
                     >
                         <div
@@ -85,10 +86,10 @@ const TocList = ({ filteredToc, activeId }) => {
                         ></div>
                         <a
                             href={heading.url}
-                            className={`hover:text-[#b50000] dark:hover:text-[#ff6666] ${
+                            className={`block py-1 font-medium ${
                                 heading.url.replace("#", "") === activeId
-                                    ? "text-[#e10000] dark:text-[#e10000]"
-                                    : "text-[#ff6b6b] dark:text-[#b12727]"
+                                    ? "text-[#cb3728] dark:text-[#ff4532]"
+                                    : "hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300"
                             }`}
                         >
                             {heading.value}
@@ -106,6 +107,8 @@ export default function TOC({
     toHeading = 6,
     exclude = "",
 }) {
+    const { t } = useTranslation();
+
     const [activeId, setActiveId] = useState();
     useIntersectionObserver(setActiveId);
     const re = Array.isArray(exclude)
@@ -123,7 +126,7 @@ export default function TOC({
             <div className="mt-10 hidden xl:block" id="toc">
                 <div className="mb-4 text-sm tracking-tight text-gray-500 dark:text-gray-500">
                     <span className="mb-2 text-lg font-bold text-black dark:text-gray-100">
-                        目錄
+                        {t("common:toc")}
                     </span>
                     <TocList activeId={activeId} filteredToc={filteredToc} />
                 </div>

@@ -1,10 +1,11 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import { format } from "date-fns";
 import { signIn, useSession } from "next-auth/react";
 import useSWR, { useSWRConfig } from "swr";
 import { Snackbar } from "@/components/Snackbar";
 import Image from "next/image";
 import { signOut } from "next-auth/react";
+import useTranslation from "next-translate/useTranslation";
 
 import fetcher from "lib/fetcher";
 
@@ -18,6 +19,7 @@ function GuestbookEntry({ entry, user }) {
 
         mutate("/api/guestbook");
     };
+    const { t } = useTranslation();
 
     return (
         <div className="flex flex-col space-y-2">
@@ -40,7 +42,7 @@ function GuestbookEntry({ entry, user }) {
                             className="text-sm text-red-600 dark:text-red-400"
                             onClick={deleteEntry}
                         >
-                            Delete
+                            {t("guestbook:delete")}
                         </button>
                     </>
                 )}
@@ -56,6 +58,7 @@ export default function Guestbook({ fallbackData }) {
     const { data: entries } = useSWR("/api/guestbook", fetcher, {
         fallbackData,
     });
+    const { t } = useTranslation();
 
     const leaveEntry = async (e) => {
         e.preventDefault();
@@ -79,20 +82,19 @@ export default function Guestbook({ fallbackData }) {
 
             inputEl.current.value = "";
             mutate("/api/guestbook");
-            Snackbar("哦耶！感謝簽到！", "success");
+            Snackbar(t("guestbook:success"), "success");
         } else {
-            Snackbar("留言不能為空", "error");
+            Snackbar(t("guestbook:error"), "error");
         }
     };
     return (
         <>
             <div className="my-4 w-full max-w-2xl rounded border border-gray-200 bg-gray-100 p-6 dark:border-gray-800 dark:bg-gray-800">
                 <h5 className="text-lg font-bold text-gray-900 dark:text-gray-100 md:text-xl">
-                    {session?.user ? "留言簿" : "登入留言簿"}
+                    {session?.user
+                        ? t("guestbook:guestbook")
+                        : t("guestbook:signInGuestbook")}
                 </h5>
-                <p className="my-1 text-gray-800 dark:text-gray-200">
-                    分享你的想法
-                </p>
                 {!session && (
                     // eslint-disable-next-line @next/next/no-html-link-for-pages
                     <a
@@ -103,7 +105,7 @@ export default function Guestbook({ fallbackData }) {
                             signIn("github");
                         }}
                     >
-                        登入
+                        {t("guestbook:signIn")}
                     </a>
                 )}
                 {session?.user && (
@@ -113,8 +115,8 @@ export default function Guestbook({ fallbackData }) {
                     >
                         <input
                             ref={inputEl}
-                            aria-label="你的留言"
-                            placeholder="你的留言 ..."
+                            aria-label={t("guestbook:yourComment")}
+                            placeholder={t("guestbook:placeholder")}
                             required
                             className="mr-3 block h-10 w-full rounded-md border-2 border-red-500 bg-white py-2 px-4 text-gray-900 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary-600 dark:bg-[#2d2d2d] dark:text-gray-100"
                         />
@@ -122,13 +124,13 @@ export default function Guestbook({ fallbackData }) {
                             className="h-10 w-28 rounded bg-gray-200 px-4 font-medium text-gray-900 dark:bg-gray-700 dark:text-gray-100"
                             type="submit"
                         >
-                            簽到
+                            {t("guestbook:sign")}
                         </button>
                     </form>
                 )}
 
                 <p className="text-sm text-gray-800 dark:text-gray-200">
-                    您的資料僅用於顯示您的姓名和通過電子郵件回覆。
+                    {t("guestbook:tip")}
                 </p>
 
                 {session?.user && (
@@ -147,7 +149,7 @@ export default function Guestbook({ fallbackData }) {
                             className="h-10 w-28 rounded bg-gray-200 px-4 font-medium text-gray-900 dark:bg-gray-700 dark:text-gray-100"
                             onClick={signOut}
                         >
-                            登出
+                            {t("guestbook:signOut")}
                         </button>
                     </div>
                 )}

@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 
+import useTranslation from "next-translate/useTranslation";
 import siteMetadata from "@/data/siteMetadata";
 
 const NewsletterForm = ({ title = "喜歡我的文章？訂閱我們的電子報!" }) => {
@@ -7,6 +8,7 @@ const NewsletterForm = ({ title = "喜歡我的文章？訂閱我們的電子報
     const [error, setError] = useState(false);
     const [message, setMessage] = useState("");
     const [subscribed, setSubscribed] = useState(false);
+    const { t } = useTranslation();
 
     const subscribe = async (e) => {
         e.preventDefault();
@@ -24,14 +26,14 @@ const NewsletterForm = ({ title = "喜歡我的文章？訂閱我們的電子報
         const { error } = await res.json();
         if (error) {
             setError(true);
-            setMessage("您的電子郵件地址無效或您已訂閱!");
+            setMessage(t("newsletter:subscriptionFailure"));
             return;
         }
 
         inputEl.current.value = "";
         setError(false);
         setSubscribed(true);
-        setMessage("成功! 🎉 你已訂閱本電子報");
+        setMessage(t("newsletter:subscriptionSucceeded"));
     };
 
     return (
@@ -40,7 +42,7 @@ const NewsletterForm = ({ title = "喜歡我的文章？訂閱我們的電子報
                 {title}
             </div>
             <p className="mb-2 text-sm text-gray-800 dark:text-gray-300">
-                不要錯過😉 每當我發佈文章時你都會收到一封電子郵件
+                {t("newsletter:promote")}
             </p>
             <form className="flex flex-col" onSubmit={subscribe}>
                 <div>
@@ -54,8 +56,8 @@ const NewsletterForm = ({ title = "喜歡我的文章？訂閱我們的電子報
                         name="email"
                         placeholder={
                             subscribed
-                                ? "你已訂閱本電子報 !  🎉"
-                                : "輸入你的電郵..."
+                                ? t("newsletter:placeholder.subscribed")
+                                : t("newsletter:placeholder.notSubscribed")
                         }
                         ref={inputEl}
                         required
@@ -73,7 +75,9 @@ const NewsletterForm = ({ title = "喜歡我的文章？訂閱我們的電子報
                         type="submit"
                         disabled={subscribed}
                     >
-                        {subscribed ? "感謝!" : "訂閱"}
+                        {subscribed
+                            ? t("newsletter:buttonSuccess")
+                            : t("newsletter:buttonDefault")}
                     </button>
                 </div>
             </form>

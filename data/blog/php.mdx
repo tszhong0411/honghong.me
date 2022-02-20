@@ -1,10 +1,10 @@
 ---
-title: PHP 自學筆記
+title: PHP 學習筆記
 date: "2021-02-18"
 draft: false
 tags: ["PHP"]
 summary: 關於 PHP 的基礎，例如註解、Echo、變量、算術運算子
-images: "/static/images/blog/php-cover.webp"
+images: "/static/images/blog/php/php-cover.webp"
 layout: PostLayout
 ---
 
@@ -44,7 +44,7 @@ PHP 的副檔名是 `.php` ，如 `index.php`。上面說到 `PHP` 能夠直接�
 
 ## 註解的方式
 
-幾乎大部分的網頁程式語言都有註解的功能，而 `PHP` 的註解 **單行** 方式是 `//` 和 **多行** 方式是 `/* Some command here */`。
+幾乎大部分的網頁程式語言都有註解的功能，而 `PHP` 的註解 **單行** 方式是 `//` 和 **多行** 方式是 `/* Some code here */`。
 
 ```php:Hello-word.php
 <?php
@@ -59,7 +59,7 @@ PHP 的副檔名是 `.php` ，如 `index.php`。上面說到 `PHP` 能夠直接�
 
 ## Echo
 
-`PHP` 裏最簡單的指令就是 `Echo`，`Echo` 的內容必須是用 雙引號 `""` 或 單引號 `''`。每段指令必須使用分號結束 `;`，`Javascript` 則不用。
+`PHP` 裏最簡單的指令就是 `Echo`，`Echo` 的內容必須是用 雙引號 `""` 或 單引號 `''`。每段指令必須使用分號結束 `;`。
 
 ```php:Hello-word.php
 <?php
@@ -68,13 +68,13 @@ PHP 的副檔名是 `.php` ，如 `index.php`。上面說到 `PHP` 能夠直接�
 ?>
 ```
 
-`Echo` 中的內容也可以使用 `HTML` 語法。例如我這裏使用了 `<br/>`，這樣便可以斷行。
+`Echo` 中的內容也可以使用 `HTML` 語法。例如我這裡使用了 `<br/>`，這樣便可以斷行。
 
 ```php:Hello-word.php
 <?php
     echo "這是第一句<br/>";
     echo "這是第二句";
-    echo "<a href="url">這是一個鏈接</a>";
+    echo "<a href=\"https://example.com\">這是一個鏈接</a>";
 ?>
 ```
 
@@ -90,18 +90,18 @@ PHP 的副檔名是 `.php` ，如 `index.php`。上面說到 `PHP` 能夠直接�
 
 我們命名變數時，有一些規則要遵守。
 
--   $value | 英文小寫 -- 可以
--   $Value | 英文大寫 -- 可以
--   $\_value | 底線 -- 可以
--   $1value | 數字開頭 -- 不可以
+-   $value | 英文小寫 -- ✅
+-   $Value | 英文大寫 -- ✅
+-   $\_value | 下劃線 -- ✅
+-   $1value | 數字開頭 -- ❌
 
 在變數名稱裏 `大寫` 跟 `小寫` 是有區別的。大寫變數不等於小寫變數。
 
-## 變數名稱命名技巧
+## 變數命名技巧
 
 ### 駱峰式大小寫
 
-當變數名和函數名稱是由二個或多個單字連結在一起，而構成的唯一識別字時，利用「駝峰式大小寫」來表示，可以增加變數和函數的可讀性。因為我們不能在變數中有 `空格` 。
+當變數名和函數名稱是由二個或多個單字連結在一起，而構成的唯一識別字時，利用「駝峰式大小寫」來表示，可以增加變數和函數的可讀性。因為我們不能在變數中有 `空格`。
 
 ```php:Hello-word.php
 <?php
@@ -112,7 +112,7 @@ PHP 的副檔名是 `.php` ，如 `index.php`。上面說到 `PHP` 能夠直接�
 
 ### 蛇形命名法
 
-Snake case（如 snake*case）是指一種寫作風格，其中每個空格都用下劃線（*）字符替換，並且每個單詞的首字母都用小寫字母書寫。
+Snake case（如 snake_case）是指一種寫作風格，其中每個空格都用下劃線（ \_ ）字符替換，並且每個單詞的首字母都用小寫字母書寫。
 
 ```php:Hello-word.php
 <?php
@@ -123,7 +123,7 @@ Snake case（如 snake*case）是指一種寫作風格，其中每個空格都�
 
 ## 字符串運算符
 
-有兩個字符串（string）運算符。第一個是連接運算符（“.”），它返回其左右參數連接後的字符串。第二個是連接賦值運算符（“.=”），它將右邊參數附加到左邊的參數之後。
+有兩個字符串（string）運算符。第一個是連接運算符（"."），它返回其左右參數連接後的字符串。第二個是連接賦值運算符（".="），它將右邊參數附加到左邊的參數之後。
 
 ```php:Hello-word.php
 <?php
@@ -148,6 +148,6 @@ Snake case（如 snake*case）是指一種寫作風格，其中每個空格都�
 ## 參考資料
 
 -   [PHP - 維基百科，自由的百科全書](https://en.wikipedia.org/wiki/PHP)
--   [駝峰式大小寫- 維基百科，自由的百科全書](https://en.wikipedia.org/wiki/Camel_case)
+-   [Camel case- 維基百科，自由的百科全書](https://en.wikipedia.org/wiki/Camel_case)
 -   [Snake case - 維基百科，自由的百科全書](https://en.wikipedia.org/wiki/Snake_case)
 -   [String Operators](https://www.php.net/manual/en/language.operators.string.php)

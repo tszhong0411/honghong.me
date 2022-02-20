@@ -1,0 +1,61 @@
+{
+    "description": "小康製作的小工具",
+    "backTools": "回到工具",
+    "category": {
+        "calc": "計算",
+        "calcDesc": "有關計算的工具",
+        "generate": "產生",
+        "generateDesc": "有關產生的工具",
+        "encode": "編碼",
+        "encodeDesc": "有關編碼的工具"
+    },
+    "toolsList": {
+        "calculator": "計算機",
+        "calculatorDesc": "簡單計算機",
+        "wordCounter": "字數計算",
+        "wordCounterDesc": "計算中英文字數",
+        "qrCodeGenerator": "QR Code 產生器",
+        "qrCodeGeneratorDesc": "QR 碼產生器",
+        "passwordGenerator": "密碼產生器",
+        "passwordGeneratorDesc": "產生高強度的密碼",
+        "simpToTrad": "中文繁簡轉換器",
+        "simpToTradDesc": "繁體中文轉簡體中文"
+    },
+    "passwordGenerator": {
+        "copySuccess": "成功複製到剪貼板",
+        "chooseAtLeastOne": "請選擇至少一個選項",
+        "noTextCanBeCopied": "沒有文字可複製",
+        "passwordLength": "密碼長度",
+        "uppercaseLetters": "包含大寫字母",
+        "lowercaseLetters": "包含小寫字母",
+        "includeNumbers": "包含數字",
+        "includeSymbols": "包含符號",
+        "genaratePassword": "生成密碼"
+    },
+    "qrCodeGenerator": {
+        "inputError": "請輸入文字或網址",
+        "URLorText": "網址 / 文字",
+        "options": "選項",
+        "liveUpdate": "即時更新",
+        "generate": "生成",
+        "download": "下載",
+        "tip": "如 ios 用戶下載時顯示 \"document\"，而不是 \"QR Code.png\"，請嘗試使用 Safari 下載"
+    },
+    "simpToTrad": {
+        "TradToSimp": "繁體轉簡體",
+        "SimpToTrad": "簡體轉繁體",
+        "inputEmpty": "請輸入文字",
+        "placeholder": "在此處輸入 ..."
+    },
+    "wordCounter": {
+        "placeholder": "在此處輸入 ...",
+        "total": "個字數",
+        "words": "個英文字",
+        "characters": "個字元",
+        "paragraphs": "段落",
+        "sentences": "句子",
+        "line": "行",
+        "chineseWords": "個中文字",
+        "numbers": "個數字"
+    }
+}

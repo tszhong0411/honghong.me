@@ -1,13 +1,9 @@
-import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "./Link";
 import headerNavLinks from "@/data/headerNavLinks";
-import { useTheme } from "next-themes";
+import { useState, useEffect } from "react";
 
-const MobileNav = () => {
-    const [navShow, setNavShow] = useState(false);
-    const [mode, setMode] = useState();
-    const { theme, resolvedTheme } = useTheme();
-
+export default function MobileNav({ navShow, setNavShow }) {
     const onToggleNav = () => {
         setNavShow((status) => {
             if (status) {
@@ -20,83 +16,70 @@ const MobileNav = () => {
         });
     };
 
+    // https://github.com/framer/motion/issues/578
+    const [isLoaded, setLoaded] = useState(false);
     useEffect(() => {
-        setMode(theme === "dark" || resolvedTheme === "dark");
-    }, [resolvedTheme, theme]);
+        setLoaded(true);
+    }, []);
 
     return (
-        <div className="sm:hidden">
-            <div onClick={onToggleNav}>
-                <div className="relative h-12 w-12 cursor-pointer select-none transition-all duration-[0.4s] ease-[cubic-bezier(0,0,0,1)] ">
-                    <div
-                        className={`duration-[0.2s] ease-[cubic-bezier(0,0,0,1)] ${
-                            navShow
-                                ? "translate-y-[7px] transition-all"
-                                : "transform-none delay-[0.2s]"
-                        }`}
-                    >
-                        <div
-                            className={`absolute left-[12px] top-[16px] h-[2px] w-[24px] rounded-[9em] duration-[0.2s] ease-[cubic-bezier(0,0,0,1)] ${
-                                navShow
-                                    ? "rotate-[45deg] transition-all delay-[0.2s]"
-                                    : "transform-none "
-                            } ${mode ? "bg-[#f5f5f5]" : "bg-[#171717]"}`}
-                        ></div>
-                    </div>
-                    <div
-                        className={`duration-[0.2s] ease-[cubic-bezier(0,0,0,1)] ${
-                            navShow
-                                ? "opacity-[0] transition-all"
-                                : "opacity-[1]"
-                        }`}
-                    >
-                        <div
-                            className={`absolute left-[12px] top-[23px] h-[2px] w-[24px] transform-none rounded-[9em] duration-[0.2s] ease-[cubic-bezier(0,0,0,1)] ${
-                                mode ? "bg-[#f5f5f5]" : "bg-[#171717]"
-                            }`}
-                        ></div>
-                    </div>
-                    <div
-                        className={`duration-[0.2s] ease-[cubic-bezier(0,0,0,1)] ${
-                            navShow
-                                ? "translate-y-[-7px] transition-all"
-                                : "transform-none delay-[0.2s]"
-                        }`}
-                    >
-                        <div
-                            className={`absolute left-[12px] top-[30px] h-[2px] w-[24px] rounded-[9em] duration-[0.2s] ease-[cubic-bezier(0,0,0,1)] ${
-                                navShow
-                                    ? "rotate-[-45deg] transition-all delay-[0.2s]"
-                                    : "transform-none"
-                            } ${mode ? "bg-[#f5f5f5]" : "bg-[#171717]"}`}
-                        ></div>
-                    </div>
-                </div>
-            </div>
-            <div
-                className={`fixed top-[104px] right-0 z-10 h-full w-full transform bg-gray-200 opacity-95 duration-300 ease-in-out dark:bg-black ${
-                    navShow ? "translate-x-0" : "translate-x-full"
-                }`}
+        <>
+            <button
+                className="ml-1 h-11 w-11 p-1 px-2 text-[22.4px] sm:ml-4 sm:hidden"
+                onClick={onToggleNav}
             >
-                <nav className="fixed mt-8 h-full w-full">
-                    {headerNavLinks.map((link) => (
-                        <div
-                            key={link.title}
-                            className="hover:bg-gray-300 dark:hover:bg-gray-700"
+                {navShow ? (
+                    <i className="fa-solid fa-xmark"></i>
+                ) : (
+                    <i className="fa-solid fa-bars"></i>
+                )}
+            </button>
+            {isLoaded && (
+                <AnimatePresence>
+                    {navShow && (
+                        <motion.nav
+                            className="visible fixed left-0 right-0 top-[65px] bottom-0 z-50 block h-full w-full max-w-[100vw] overflow-hidden overflow-y-scroll bg-white px-6 pb-6 dark:bg-gray-900 sm:hidden"
+                            animate={{ x: 0 }}
+                            initial={{ x: "100vw" }}
+                            transition={{
+                                type: "spring",
+                                stiffness: 300,
+                                damping: 30,
+                            }}
+                            exit={{ x: "100vw" }}
                         >
-                            <Link
-                                href={link.href}
-                                className="block px-12 py-4 text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100"
-                                onClick={onToggleNav}
-                            >
-                                {link.title}
-                            </Link>
-                        </div>
-                    ))}
-                </nav>
-            </div>
-        </div>
+                            <div className="flex flex-row divide-x divide-gray-200 px-2 py-4 dark:divide-gray-700">
+                                <div className="w-full text-center">
+                                    <Link href="https://github.com/tszhong0411">
+                                        <i className="fa-brands fa-github mr-1"></i>
+                                        Github
+                                    </Link>
+                                </div>
+                                <div className="w-full text-center">
+                                    <Link href="https://instagram.com/tszhong0411/">
+                                        <i className="fa-brands fa-instagram mr-1"></i>
+                                        Instagram
+                                    </Link>
+                                </div>
+                            </div>
+                            {headerNavLinks.map((link) => (
+                                <div
+                                    key={link.title}
+                                    className="border-b border-gray-300 dark:border-gray-700"
+                                >
+                                    <Link
+                                        href={link.href}
+                                        className="block py-4 text-base font-bold tracking-widest text-gray-900 transition-colors duration-200 hover:bg-[#fafafa] dark:text-gray-100 dark:hover:bg-[#111]"
+                                        onClick={onToggleNav}
+                                    >
+                                        {link.title}
+                                    </Link>
+                                </div>
+                            ))}
+                        </motion.nav>
+                    )}
+                </AnimatePresence>
+            )}
+        </>
     );
-};
-
-export default MobileNav;
+}

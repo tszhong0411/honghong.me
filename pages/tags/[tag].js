@@ -1,3 +1,5 @@
+import fs from "fs";
+import path from "path";
 import { TagSEO } from "@/components/SEO";
 import siteMetadata from "@/data/siteMetadata";
 import ListLayout from "@/layouts/ListLayout";
@@ -5,27 +7,37 @@ import generateRss from "@/lib/generate-rss";
 import { getAllFilesFrontMatter } from "@/lib/mdx";
 import { getAllTags } from "@/lib/tags";
 import kebabCase from "@/lib/utils/kebabCase";
-import fs from "fs";
-import path from "path";
-import { PageSEO } from "@/components/SEO";
 
 const root = process.cwd();
 
-export async function getStaticPaths() {
-    const tags = await getAllTags("blog");
+export async function getStaticPaths({ locales, defaultLocale }) {
+    const tags = await Promise.all(
+        locales.map(async (locale) => {
+            const otherLocale = locale !== defaultLocale ? locale : "";
+            const tags = await getAllTags("blog", otherLocale);
+            return Object.entries(tags).map((k) => [k[0], locale]);
+        }),
+    );
 
     return {
-        paths: Object.keys(tags).map((tag) => ({
+        paths: tags.flat().map(([tag, locale]) => ({
             params: {
                 tag,
             },
+            locale,
         })),
         fallback: false,
     };
 }
 
-export async function getStaticProps({ params }) {
-    const allPosts = await getAllFilesFrontMatter("blog");
+export async function getStaticProps({
+    params,
+    defaultLocale,
+    locale,
+    locales,
+}) {
+    const otherLocale = locale !== defaultLocale ? locale : "";
+    const allPosts = await getAllFilesFrontMatter("blog", otherLocale);
     const filteredPosts = allPosts.filter(
         (post) =>
             post.draft !== true &&
@@ -34,30 +46,53 @@ export async function getStaticProps({ params }) {
 
     // rss
     if (filteredPosts.length > 0) {
-        const rss = generateRss(filteredPosts, `tags/${params.tag}/feed.xml`);
+        const rss = generateRss(
+            filteredPosts,
+            locale,
+            defaultLocale,
+            `tags/${params.tag}/feed.xml`,
+        );
         const rssPath = path.join(root, "public", "tags", params.tag);
         fs.mkdirSync(rssPath, { recursive: true });
-        fs.writeFileSync(path.join(rssPath, "feed.xml"), rss);
+        fs.writeFileSync(
+            path.join(
+                rssPath,
+                `feed${otherLocale === "" ? "" : `.${otherLocale}`}.xml`,
+            ),
+            rss,
+        );
     }
 
-    return { props: { posts: filteredPosts, tag: params.tag } };
+    // Checking if available in other locale for SEO
+    const availableLocales = [];
+    await locales.forEach(async (ilocal) => {
+        const otherLocale = ilocal !== defaultLocale ? ilocal : "";
+        const itags = await getAllTags("blog", otherLocale);
+        Object.entries(itags).map((itag) => {
+            if (itag[0] === params.tag) availableLocales.push(ilocal);
+        });
+    });
+
+    return {
+        props: {
+            posts: filteredPosts,
+            tag: params.tag,
+            locale,
+            availableLocales,
+        },
+    };
 }
 
-export default function Tag({ posts, tag }) {
-    // Capitalize first letter and convert space to dash
+export default function Tag({ posts, tag, locale, availableLocales }) {
     const title = tag[0].toUpperCase() + tag.split(" ").join("-").slice(1);
     return (
         <>
-            <div className="mx-auto flex flex-col justify-center">
-                <h1 className="mb-12 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
-                    {tag}
-                </h1>
-                <TagSEO
-                    title={`${tag} - ${siteMetadata.author}`}
-                    description={`${tag} tags - ${siteMetadata.author}`}
-                />
-                <ListLayout posts={posts} title={title} />
-            </div>
+            <TagSEO
+                title={`${tag} - ${siteMetadata.title[locale]}`}
+                description={`${tag} tags - ${siteMetadata.author}`}
+                availableLocales={availableLocales}
+            />
+            <ListLayout posts={posts} title={title} />
         </>
     );
 }

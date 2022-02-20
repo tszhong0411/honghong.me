@@ -10,6 +10,7 @@ module.exports = {
         "./components/**/*.js",
         "./layouts/**/*.js",
         "./lib/**/*.js",
+        "./data/**/*.mdx",
     ],
     darkMode: "class",
     theme: {
@@ -49,12 +50,11 @@ module.exports = {
                     css: {
                         color: theme("colors.gray.700"),
                         a: {
-                            fontWeight: "600",
-                            color: "#e10000",
+                            color: "#000",
+                            textDecoration: "none",
+                            borderBottom: "2px solid #ff4532",
                             "&:hover": {
-                                color: `${theme(
-                                    "colors.primary.600"
-                                )} !important`,
+                                color: `#ff4532 !important`,
                             },
                             code: { color: theme("colors.primary.400") },
                         },
@@ -67,7 +67,7 @@ module.exports = {
                             marginRight: "0.5rem",
                         },
                         code: {
-                            color: "#de0000",
+                            color: "#cb3728",
                             backgroundColor: "#f3f3f3",
                             paddingLeft: "4px",
                             paddingRight: "4px",
@@ -110,22 +110,26 @@ module.exports = {
                 dark: {
                     css: {
                         color: theme("colors.gray.300"),
+                        p: {
+                            color: "#adadad",
+                        },
                         a: {
-                            color: theme("colors.primary.500"),
+                            color: "#fff",
+                            textDecoration: "none",
+                            borderBottom: "2px solid #ff4532",
                             "&:hover": {
-                                color: `${theme(
-                                    "colors.primary.400"
-                                )} !important`,
+                                color: `#ff4532 !important`,
                             },
                             code: { color: theme("colors.primary.400") },
                         },
                         "h1,h2,h3,h4,h5,h6": {
-                            color: theme("colors.gray.100"),
+                            color: "#e2e8f0",
                         },
                         pre: {
                             backgroundColor: "#171717",
                         },
                         code: {
+                            color: "#ff4532",
                             backgroundColor: "#171717",
                         },
                         details: {

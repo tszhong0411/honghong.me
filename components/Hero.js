@@ -1,95 +1,58 @@
-import siteMetadata from "@/data/siteMetadata";
+import Image from "next/image";
 import Link from "@/components/Link";
 
 export default function Hero() {
     return (
         <>
-            <div className="my-6 flex flex-col items-center gap-x-12 xl:mb-12 xl:flex-row">
-                <div className="pt-6">
+            <div className="mx-auto mt-12 mb-24 flex max-w-5xl items-center justify-between">
+                <div>
                     <h1 className="pb-6 text-3xl font-semibold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-                        哈囉，我是小康
+                        小康
                     </h1>
-                    <h2 className="prose text-lg text-gray-600 dark:text-gray-400">
-                        {`歡迎來到${siteMetadata.description}我現在是一名學生，編寫網頁是我的興趣。在空閒時間，我喜歡開發 `}
-                        <Link href="/projects">不同項目</Link>
-                        {" 和寫 "}
-                        <Link href="/blog">Blog</Link>
-                        {"。"}
-                    </h2>
+                    <p className="text-gray-700 dark:text-gray-300">
+                        A teenager who loves web development
+                    </p>
+                    <div>
+                        <ul className="flex gap-x-2 text-sm text-gray-500 dark:text-gray-400">
+                            <li>#react</li>
+                            <li>#next.js</li>
+                            <li>#tailwind</li>
+                        </ul>
+                    </div>
+                    <div className="mt-8">
+                        <div className="flex gap-x-4">
+                            <Link
+                                href="https://instagram.com/tszhong0411/"
+                                className="border-[#ff4532] hover:border-b-2"
+                            >
+                                <i className="fa-brands fa-instagram mr-1"></i>
+                                Instagram
+                            </Link>
+                            <Link
+                                href="https://github.com/tszhong0411"
+                                className="border-[#ff4532] hover:border-b-2"
+                            >
+                                <i className="fa-brands fa-github mr-1"></i>
+                                Github
+                            </Link>
+                            <Link
+                                href="https://honghong.me/youtube"
+                                className="border-[#ff4532] hover:border-b-2"
+                            >
+                                <i className="fa-brands fa-youtube mr-1"></i>
+                                Youtube
+                            </Link>
+                        </div>
+                    </div>
                 </div>
-                <div className="grid grid-cols-1 grid-rows-3 gap-8 py-12">
-                    <div className="my-2 grid items-start gap-8">
-                        <div className="group relative rounded-xl border-4 border-red-400">
-                            <Link
-                                href="/blog"
-                                className="relative flex items-center justify-between divide-x divide-gray-600 rounded-lg bg-white px-7 py-4 leading-none dark:bg-gray-900"
-                            >
-                                <span className="flex items-center space-x-5">
-                                    <img
-                                        src="/static/images/blog.svg"
-                                        alt="Blog svg"
-                                        className="h-6 w-6 -rotate-6"
-                                        width="24"
-                                        height="24"
-                                    />
-                                    <span className="pr-6 text-gray-900 dark:text-gray-100">
-                                        各種軟件推薦和介紹，分享編寫網頁技巧、教學。
-                                    </span>
-                                </span>
-                                <span className="pl-6 text-[#ec0000]">
-                                    Blog →
-                                </span>
-                            </Link>
-                        </div>
-                    </div>
-                    <div className="my-2 grid items-start gap-8">
-                        <div className="group relative rounded-xl border-4 border-blue-400">
-                            <Link
-                                href="https://www.youtube.com/channel/UC2hMWOaOlk9vrkvFVaGmn0Q"
-                                className="relative flex items-center justify-between divide-x divide-gray-600 rounded-lg bg-white px-7 py-4 leading-none dark:bg-gray-900"
-                            >
-                                <span className="flex items-center space-x-5">
-                                    <img
-                                        src="/static/images/youtube.svg"
-                                        alt="youtube svg"
-                                        className="h-6 w-6 -rotate-6"
-                                        width="24"
-                                        height="24"
-                                    />
-                                    <span className="pr-6 text-gray-900 dark:text-gray-100">
-                                        分享不同軟件的教學，把我的技巧分享給大家。
-                                    </span>
-                                </span>
-                                <span className="pl-6 text-[#656ec3]">
-                                    YouTube →
-                                </span>
-                            </Link>
-                        </div>
-                    </div>
-                    <div className="my-2 grid items-start gap-8">
-                        <div className="group relative rounded-xl border-4 border-green-400">
-                            <Link
-                                href="/projects"
-                                className="relative flex items-center justify-between divide-x divide-gray-600 rounded-lg bg-white px-7 py-4 leading-none dark:bg-gray-900"
-                            >
-                                <span className="flex items-center space-x-5">
-                                    <img
-                                        src="/static/images/earth.svg"
-                                        alt="Website svg"
-                                        className="h-6 w-6 -rotate-6"
-                                        width="24"
-                                        height="24"
-                                    />
-                                    <span className="pr-6 text-gray-900 dark:text-gray-100">
-                                        我不斷嘗試開發不同類型的網站
-                                    </span>
-                                </span>
-                                <span className="pl-6 text-[#018911]">
-                                    Projects →
-                                </span>
-                            </Link>
-                        </div>
-                    </div>
+                <div className="hidden md:block">
+                    <Image
+                        src="/static/images/avatar.png"
+                        alt="Avatar"
+                        height="200px"
+                        width="200px"
+                        className="transform select-none rounded-full duration-700 ease-in-out hover:rotate-[360deg]"
+                    />
                 </div>
             </div>
         </>

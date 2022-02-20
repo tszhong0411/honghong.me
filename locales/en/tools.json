@@ -1,0 +1,61 @@
+{
+    "description": "Some tools made by 小康",
+    "backTools": "Back to tools",
+    "category": {
+        "calc": "Calculate",
+        "calcDesc": "Tools for calculate",
+        "generate": "Generate",
+        "generateDesc": "Tools for generate",
+        "encode": "Encode",
+        "encodeDesc": "Tools for encode"
+    },
+    "toolsList": {
+        "calculator": "Calculator",
+        "calculatorDesc": "Simple calculator",
+        "wordCounter": "Word counter",
+        "wordCounterDesc": "Count English / Chinese words",
+        "qrCodeGenerator": "QR Code generator",
+        "qrCodeGeneratorDesc": "Generate QR Code quickly",
+        "passwordGenerator": "Password generator",
+        "passwordGeneratorDesc": "Generate a strong password",
+        "simpToTrad": "Chinese Converter",
+        "simpToTradDesc": "Simplified 👉 Traditional"
+    },
+    "passwordGenerator": {
+        "copySuccess": "Successfully copied to clipboard",
+        "chooseAtLeastOne": "Choose at least one",
+        "noTextCanBeCopied": "No text can be copied",
+        "passwordLength": "Password length",
+        "uppercaseLetters": "Uppercase letters",
+        "lowercaseLetters": "Lowercase letters",
+        "includeNumbers": "Include numbers",
+        "includeSymbols": "Include symbols",
+        "generatePassword": "Generate password"
+    },
+    "qrCodeGenerator": {
+        "inputError": "Please enter text or URL",
+        "URLorText": "URL or text",
+        "options": "Options",
+        "liveUpdate": "Live update",
+        "generate": "Generate",
+        "download": "Download",
+        "tip": "If ios users download \"document\" instead of \"QR Code.png\", please try to use Safari to download"
+    },
+    "simpToTrad": {
+        "TradToSimp": "Traditional Chinese to Simplified Chinese",
+        "SimpToTrad": "Simplified Chinese to Traditional Chinese",
+        "inputEmpty": "Please enter text",
+        "placeholder": "Type here ..."
+    },
+    "wordCounter": {
+        "placeholder": "Type here ...",
+        "total": "Total",
+        "words": "Words",
+        "characters": "Characters",
+        "paragraphs": "Paragraphs",
+        "sentences": "Sentences",
+        "line": "Line",
+        "chineseWords": "Chinese words",
+        "numbers": "Numbers"
+    }
+}

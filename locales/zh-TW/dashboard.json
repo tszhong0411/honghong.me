@@ -1,0 +1,4 @@
+{
+    "description": "這是我的個人儀表板，使用 Next.js API routes 部署為 serverless functions。我用這個儀表板以跟踪跨平台的各種指標，例如 YouTube、GitHub 等。",
+    "spotifyTitle": "我的 Spotify 熱門歌曲"
+}

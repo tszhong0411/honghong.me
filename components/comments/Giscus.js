@@ -1,9 +1,13 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useTheme } from "next-themes";
+import { useRouter } from "next/router";
 
+import useTranslation from "next-translate/useTranslation";
 import siteMetadata from "@/data/siteMetadata";
 
 const Giscus = ({ mapping }) => {
+    const { locale } = useRouter();
+    const { t } = useTranslation();
     const [enableLoadComments, setEnabledLoadComments] = useState(
         siteMetadata.comment.enableLoadComments,
     );
@@ -16,7 +20,7 @@ const Giscus = ({ mapping }) => {
             : siteMetadata.comment.giscusConfig.themeURL;
 
     const COMMENTS_ID = "comments-container";
-
+    console.log(locale);
     const LoadComments = useCallback(() => {
         setEnabledLoadComments(false);
         const script = document.createElement("script");
@@ -47,10 +51,7 @@ const Giscus = ({ mapping }) => {
             siteMetadata.comment.giscusConfig.metadata,
         );
         script.setAttribute("data-theme", commentsTheme);
-        script.setAttribute(
-            "data-lang",
-            siteMetadata.comment.giscusConfig.lang,
-        );
+        script.setAttribute("data-lang", locale);
         script.setAttribute("crossorigin", "anonymous");
         script.async = true;
 
@@ -74,7 +75,9 @@ const Giscus = ({ mapping }) => {
     return (
         <div className="pt-6 pb-6 text-center text-gray-700 dark:text-gray-300">
             {enableLoadComments && (
-                <button onClick={LoadComments}>Load Comments</button>
+                <button onClick={LoadComments}>
+                    {t("common:loadComments")}
+                </button>
             )}
             <div className="giscus" id={COMMENTS_ID} />
         </div>

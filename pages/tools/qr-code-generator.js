@@ -2,10 +2,12 @@ import ToolLayout from "@/layouts/ToolLayout";
 import QRious from "qrious";
 import { Snackbar } from "@/components/Snackbar";
 import { useEffect, useRef, useState } from "react";
+import useTranslation from "next-translate/useTranslation";
 
 export default function QrCodeGenerator() {
     const [checked, setChecked] = useState(false);
     const textRef = useRef();
+    const { t } = useTranslation();
 
     useEffect(() => {
         new QRious({
@@ -25,7 +27,7 @@ export default function QrCodeGenerator() {
 
     const generateHandler = () => {
         if (textRef.current.value === "") {
-            Snackbar("請輸入文字或網址", "error");
+            Snackbar(t("tools:qrCodeGenerator.inputError"), "error");
         } else {
             new QRious({
                 size: 250,
@@ -43,7 +45,10 @@ export default function QrCodeGenerator() {
     };
 
     return (
-        <ToolLayout title={"QR 碼生成器"} description={"線上 QR Code 生成器"}>
+        <ToolLayout
+            title={t("tools:toolsList.qrCodeGenerator")}
+            description={t("tools:toolsList.qrCodeGeneratorDesc")}
+        >
             <div>
                 <div className="mx-auto w-full max-w-[250px]">
                     <img alt="qr-code" id="qr-code-img" />
@@ -51,7 +56,7 @@ export default function QrCodeGenerator() {
                 <div>
                     <div className="my-4 grid gap-y-3">
                         <label htmlFor="text" className="text-lg font-bold">
-                            網址 / 文字
+                            {t("tools:qrCodeGenerator.URLorText")}
                         </label>
                         <input
                             type="text"
@@ -62,13 +67,17 @@ export default function QrCodeGenerator() {
                         />
                     </div>
                     <div className="my-4 grid">
-                        <span className="text-lg font-bold">選項</span>
+                        <span className="text-lg font-bold">
+                            {t("tools:qrCodeGenerator.options")}
+                        </span>
                         <label className="flex items-center">
                             <input
                                 type="checkbox"
                                 onChange={() => setChecked(!checked)}
                             />
-                            <span className="ml-2 font-bold">即時更新</span>
+                            <span className="ml-2 font-bold">
+                                {t("tools:qrCodeGenerator.liveUpdate")}
+                            </span>
                         </label>
                     </div>
                     <div className="my-4 grid gap-y-4">
@@ -77,21 +86,18 @@ export default function QrCodeGenerator() {
                             className="w-full rounded-md bg-red-500 py-2 px-4 text-lg font-bold text-white"
                             onClick={generateHandler}
                         >
-                            生成
+                            {t("tools:qrCodeGenerator.generate")}
                         </button>
                         <button
                             type="button"
                             className="w-full rounded-md bg-red-500 py-2 px-4 text-lg font-bold text-white"
                             onClick={downloadHandler}
                         >
-                            下載
+                            {t("tools:qrCodeGenerator.download")}
                         </button>
                     </div>
                 </div>
-                <p className="my-4 text-sm">
-                    如 ios 用戶下載時顯示 <code>document</code>，而不是{" "}
-                    <code>QR Code.png</code>，請嘗試使用 Safari 下載
-                </p>
+                <p className="my-4 text-sm">{t("tools:qrCodeGenerator.tip")}</p>
             </div>
         </ToolLayout>
     );

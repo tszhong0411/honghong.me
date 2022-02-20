@@ -2,9 +2,12 @@ import ToolLayout from "@/layouts/ToolLayout";
 import { Snackbar } from "@/components/Snackbar";
 import { useState } from "react";
 import generator from "generate-password";
+import useTranslation from "next-translate/useTranslation";
 
 export default function PasswordGenerator() {
-    const COPY_SUCCESS = "成功複製到剪貼板";
+    const { t } = useTranslation();
+
+    const COPY_SUCCESS = t("tools:passwordGenerator.copySuccess");
 
     const [password, setPassword] = useState("");
     const [length, setLength] = useState(10);
@@ -15,7 +18,7 @@ export default function PasswordGenerator() {
 
     const handleGeneratePassword = () => {
         if (!isLowerCase && !isUpperCase && !isNumbers && !isSymbols) {
-            Snackbar("請選擇至少一個選項", "error");
+            Snackbar(t("tools:passwordGenerator.chooseAtLeastOne"), "error");
         } else {
             const pwd = generator.generate({
                 length: length,
@@ -39,7 +42,7 @@ export default function PasswordGenerator() {
 
     const handleCopyPassword = (e) => {
         if (password === "") {
-            Snackbar("沒有文字可複製", "error");
+            Snackbar(t("tools:passwordGenerator.noTextCanBeCopied"), "error");
         } else {
             copyToClipboard();
             Snackbar(COPY_SUCCESS, "success");
@@ -48,8 +51,8 @@ export default function PasswordGenerator() {
 
     return (
         <ToolLayout
-            title={"密碼生成器"}
-            description={"想不到密碼？試試我的密碼生成器！"}
+            title={t("tools:toolsList.passwordGenerator")}
+            description={t("tools:toolsList.passwordGeneratorDesc")}
         >
             <div className="mx-auto max-w-xl rounded-md bg-[#2d2d2d] p-5">
                 <div className="relative mb-4 h-11 bg-[#1b1b1b] py-3 px-2 text-white">
@@ -63,7 +66,9 @@ export default function PasswordGenerator() {
                 </div>
 
                 <div className="mb-4 flex items-center justify-between text-white">
-                    <label htmlFor="password-strength">密碼長度</label>
+                    <label htmlFor="password-strength">
+                        {t("tools:passwordGenerator.passwordLength")}
+                    </label>
                     <input
                         defaultValue={length}
                         onChange={(e) => setLength(e.target.value)}
@@ -75,7 +80,9 @@ export default function PasswordGenerator() {
                 </div>
 
                 <div className="mb-4 flex justify-between text-white">
-                    <label htmlFor="uppercase-letters">包含大寫字母</label>
+                    <label htmlFor="uppercase-letters">
+                        {t("tools:passwordGenerator.uppercaseLetters")}
+                    </label>
                     <input
                         checked={isUpperCase}
                         onChange={(e) => setIsUpperCase(e.target.checked)}
@@ -86,7 +93,9 @@ export default function PasswordGenerator() {
                 </div>
 
                 <div className="mb-4 flex justify-between text-white">
-                    <label htmlFor="lowercase-letters">包含小寫字母</label>
+                    <label htmlFor="lowercase-letters">
+                        {t("tools:passwordGenerator.lowercaseLetters")}
+                    </label>
                     <input
                         checked={isLowerCase}
                         onChange={(e) => setIsLowerCase(e.target.checked)}
@@ -97,7 +106,9 @@ export default function PasswordGenerator() {
                 </div>
 
                 <div className="mb-4 flex justify-between text-white">
-                    <label htmlFor="include-numbers">包含數字</label>
+                    <label htmlFor="include-numbers">
+                        {t("tools:passwordGenerator.includeNumbers")}
+                    </label>
                     <input
                         checked={isNumbers}
                         onChange={(e) => setIsNumbers(e.target.checked)}
@@ -108,7 +119,9 @@ export default function PasswordGenerator() {
                 </div>
 
                 <div className="mb-4 flex justify-between text-white">
-                    <label htmlFor="include-symbols">包含符號</label>
+                    <label htmlFor="include-symbols">
+                        {t("tools:passwordGenerator.includeSymbols")}
+                    </label>
                     <input
                         checked={isSymbols}
                         onChange={(e) => setIsSymbols(e.target.checked)}
@@ -122,7 +135,7 @@ export default function PasswordGenerator() {
                     onClick={handleGeneratePassword}
                     className="block w-full border-none bg-red-500 p-3 text-base font-bold text-white"
                 >
-                    生成密碼
+                    {t("tools:passwordGenerator.generatePassword")}
                 </button>
             </div>
         </ToolLayout>

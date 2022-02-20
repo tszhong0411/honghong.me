@@ -4,25 +4,28 @@ import Github from "@/components/metrics/Github";
 import BlogTotalViews from "@/components/metrics/BlogTotalViews";
 import TopTracks from "@/components/TopTracks";
 import { PageSEO } from "@/components/SEO";
+import useTranslation from "next-translate/useTranslation";
 
-export default function Dashboard() {
+export async function getStaticProps({ locale, locales }) {
+    return { props: { locale, availableLocales: locales } };
+}
+
+export default function Dashboard({ locale, availableLocales }) {
+    const { t } = useTranslation();
+
     return (
         <>
             <PageSEO
                 title={`Dashboard - ${siteMetadata.author}`}
-                description={
-                    "這是我的個人儀表板，使用 Next.js API routes 部署為serverless functions。我用這個儀表板以跟踪跨平台的各種指標，例如YouTube、GitHub 等。"
-                }
+                description={siteMetadata.description[locale]}
+                availableLocales={availableLocales}
             />
             <div className="mx-auto flex flex-col justify-center">
                 <h1 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
                     Dashboard
                 </h1>
                 <p className="mb-12 text-gray-600 dark:text-gray-400">
-                    這是我的個人儀表板，使用 Next.js API routes 部署為
-                    serverless
-                    functions。我用這個儀表板以跟踪跨平台的各種指標，例如YouTube、GitHub
-                    等。
+                    {t("dashboard:description")}
                 </p>
                 <div className="flex w-full flex-col">
                     <Youtube />
@@ -30,11 +33,8 @@ export default function Dashboard() {
                     <BlogTotalViews />
                 </div>
                 <h2 className="mb-4 mt-16 text-3xl font-bold tracking-tight text-black dark:text-white">
-                    熱門曲目
+                    {t("dashboard:spotifyTitle")}
                 </h2>
-                <p className="mb-4 text-gray-600 dark:text-gray-400">
-                    這是我在 Spotify 上每天更新的熱門曲目
-                </p>
                 <TopTracks />
             </div>
         </>

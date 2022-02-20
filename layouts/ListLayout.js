@@ -4,6 +4,8 @@ import { useState } from "react";
 import Pagination from "@/components/Pagination";
 import formatDate from "@/lib/utils/formatDate";
 import Image from "next/image";
+import useTranslation from "next-translate/useTranslation";
+import { useRouter } from "next/router";
 
 export default function ListLayout({
     posts,
@@ -26,15 +28,21 @@ export default function ListLayout({
             ? initialDisplayPosts
             : filteredBlogPosts;
 
+    const { t } = useTranslation();
+    const { locale } = useRouter();
+
     return (
         <>
             <div className="space-y-2 md:space-y-5">
+                <h1 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
+                    {title}
+                </h1>
                 <div className="relative">
                     <input
-                        aria-label="搜尋文章"
+                        aria-label={t("common:search")}
                         type="text"
                         onChange={(e) => setSearchValue(e.target.value)}
-                        placeholder="搜尋文章"
+                        placeholder={t("common:search")}
                         className="block w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-900 dark:bg-gray-800 dark:text-gray-100"
                     />
                     <svg
@@ -55,7 +63,7 @@ export default function ListLayout({
             </div>
             <ul>
                 {!filteredBlogPosts.length && (
-                    <p className="p-4">沒有找到文章</p>
+                    <p className="p-4">{t("common:noPostsFound")}</p>
                 )}
                 {displayPosts.map((frontMatter) => {
                     const { slug, date, title, summary, tags, images } =
@@ -66,23 +74,23 @@ export default function ListLayout({
                                 <div className="space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0">
                                     <dl>
                                         <dt className="sr-only">
-                                            Published on
+                                            {t("common:publishOn")}
                                         </dt>
-                                        <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+                                        <dd className="mb-4 text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
                                             <time dateTime={date}>
-                                                {formatDate(date)}
+                                                {formatDate(date, locale)}
                                             </time>
                                         </dd>
                                     </dl>
                                     <div className="flex flex-col items-center sm:flex-row xl:col-span-3">
                                         <div className="mx-2 my-8 w-full sm:my-0 sm:w-1/3">
                                             <Link href={`/blog/${slug}`}>
-                                                <div className="custom-image-container">
+                                                <div className="custom-image-container overflow-hidden rounded-[12px]">
                                                     <Image
                                                         src={images}
                                                         alt="Cover"
                                                         layout="fill"
-                                                        className="custom-image"
+                                                        className="custom-image duration-500 hover:scale-[1.1]"
                                                     />
                                                 </div>
                                             </Link>
@@ -93,7 +101,8 @@ export default function ListLayout({
                                                     <h2 className="text-2xl font-bold leading-8 tracking-tight">
                                                         <Link
                                                             href={`/blog/${slug}`}
-                                                            className="text-gray-900 dark:text-gray-100"
+                                                            className="text-gray-900 transition-all hover:text-[#ff4532] 
+                                                            dark:text-gray-100 dark:hover:text-[#ff4532]"
                                                         >
                                                             {title}
                                                         </Link>
@@ -110,15 +119,16 @@ export default function ListLayout({
                                                 <div className="prose max-w-none text-gray-500 dark:text-gray-400">
                                                     {summary}
                                                 </div>
-                                            </div>
-                                            <div className="text-base font-medium leading-6">
-                                                <Link
-                                                    href={`/blog/${slug}`}
-                                                    className="text-[#ec0000] hover:text-primary-600 dark:hover:text-primary-400"
-                                                    aria-label={`Read "${title}"`}
-                                                >
-                                                    閱讀更多 &rarr;
-                                                </Link>
+                                                <div className="text-base font-medium leading-6">
+                                                    <Link
+                                                        href={`/blog/${slug}`}
+                                                        className="group inline-flex h-9 items-center whitespace-nowrap rounded-full bg-red-100 px-3 text-sm font-medium text-red-700 hover:bg-red-200 hover:text-red-900 focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-red-700 dark:text-red-100 dark:hover:bg-red-600 dark:hover:text-white dark:focus:ring-red-500"
+                                                        aria-label={`Read "${title}"`}
+                                                    >
+                                                        {t("common:readMore")}{" "}
+                                                        &rarr;
+                                                    </Link>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

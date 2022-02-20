@@ -1,0 +1,15 @@
+{
+    "latestPosts": "Latest posts",
+    "readMore": "Read more",
+    "search": "Search articles",
+    "noPostsFound": "No posts found.",
+    "publishedOn": "Published on",
+    "toc": "Table of Contents",
+    "blogDesc": "I started writing articles in December 2021, mainly for software sharing and skills sharing. In total, I have written {{count}} articles on my blog. You can search by title in the search bar below.",
+    "backToTheBlog": "Back to the blog",
+    "prev": "Previous article",
+    "next": "Next article",
+    "editOnGithub": "Edit on Github",
+    "loadComments": "Load Comments",
+    "allPosts": "All Posts"
+}

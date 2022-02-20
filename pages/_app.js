@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import CdnList from "@/data/cdnList";
 import siteMetadata from "@/data/siteMetadata";
 import Analytics from "@/components/analytics";
+import RSS from "@/components/Rss";
 import LayoutWrapper from "@/components/LayoutWrapper";
 import { ClientReload } from "@/components/ClientReload";
 import { SessionProvider } from "next-auth/react";
@@ -51,6 +52,7 @@ export default function App({
                 <LayoutWrapper>
                     <Component {...pageProps} />
                 </LayoutWrapper>
+                <RSS />
             </ThemeProvider>
         </SessionProvider>
     );

@@ -1,13 +1,27 @@
 import { PageSEO } from "@/components/SEO";
 import siteMetadata from "@/data/siteMetadata";
 import Link from "@/components/Link";
+import useTranslation from "next-translate/useTranslation";
 
-export default function ToolLayout({ children, title, description }) {
+export async function getStaticProps({ locale, locales }) {
+    return { props: { locale, availableLocales: locales } };
+}
+
+export default function ToolLayout({
+    children,
+    title,
+    description,
+    locale,
+    availableLocales,
+}) {
+    const { t } = useTranslation();
+
     return (
         <>
             <PageSEO
                 title={`${title} - ${siteMetadata.author}`}
-                description={`小康製作的${title}`}
+                description={siteMetadata.description[locale]}
+                availableLocales={availableLocales}
             />
             <div className="mx-auto flex flex-col justify-center">
                 <h1 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
@@ -17,8 +31,13 @@ export default function ToolLayout({ children, title, description }) {
                     {description}
                 </p>
                 <div className="max-w-full py-12">{children}</div>
-                <div className="prose">
-                    <Link href={"/tools"}>← 回到工具</Link>
+                <div>
+                    <Link
+                        href={"/tools"}
+                        className="text-[#cb3728] hover:text-[#dc2626] dark:text-[#ff4532] dark:hover:text-primary-400"
+                    >
+                        ← {t("tools:backTools")}
+                    </Link>
                 </div>
             </div>
         </>

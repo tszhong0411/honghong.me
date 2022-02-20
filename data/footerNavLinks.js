@@ -66,8 +66,8 @@ const footerNavLinks = {
         },
     ],
     bottomLinks: [
-        { href: "/privacy-policy", title: "隱私權政策" },
-        { href: "/cookie-policy", title: "Cookie 政策" },
+        { href: "/privacy-policy", title: "privacypolicy" },
+        { href: "/cookie-policy", title: "cookiepolicy" },
     ],
 };
 export default footerNavLinks;

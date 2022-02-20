@@ -2,9 +2,12 @@ const siteMetadata = {
     title: "小康",
     author: "小康",
     headerTitle: "小康",
-    description:
-        "小康的個人網站 - 小康 Blog 分享編寫網頁技巧、不同類型的教學、實用軟體，你在這裡可以學到更多開發技巧。",
-    language: "zh-tw",
+    description: {
+        "zh-TW":
+            "小康的個人網站 - 小康 Blog 分享編寫網頁技巧、不同類型的教學、實用軟體，你在這裡可以學到更多開發技巧。",
+        en: "小康's Personal website - 小康 Blog share web development skills, different types of teaching, useful software, you can learn more development skills here.",
+    },
+    language: "zh-TW",
     theme: "system", // system, dark or light
     siteUrl: "https://honghong.me",
     siteRepo: "https://github.com/tszhong0411/honghong.me",
@@ -17,7 +20,7 @@ const siteMetadata = {
     facebook: "https://www.facebook.com/tszhonglai.0411",
     youtube: "https://www.youtube.com/channel/UC2hMWOaOlk9vrkvFVaGmn0Q",
     instagram: "https://www.instagram.com/tszhong0411",
-    locale: "zh-tw",
+    locale: "zh-TW",
     analytics: {
         // supports plausible, simpleAnalytics, umami or googleAnalytics
         plausibleDataDomain: "", // e.g. tailwind-nextjs-starter-blog.vercel.app
@@ -55,8 +58,6 @@ const siteMetadata = {
             // please provide a link below to your custom theme css file.
             // example: https://giscus.app/themes/custom_example.css
             themeURL: "",
-            // language
-            lang: "zh-TW",
         },
         utterancesConfig: {
             // Visit the link below, and follow the steps in the 'configuration' section
