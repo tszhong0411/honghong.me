@@ -62,7 +62,7 @@ const Giscus = ({ mapping }) => {
             const comments = document.getElementById(COMMENTS_ID);
             if (comments) comments.innerHTML = "";
         };
-    }, [commentsTheme, mapping]);
+    }, [commentsTheme, locale, mapping]);
 
     // Reload on theme change
     useEffect(() => {

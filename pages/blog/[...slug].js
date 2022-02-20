@@ -64,7 +64,7 @@ export async function getStaticProps({
     if (allPosts.length > 0) {
         const rss = generateRss(allPosts, locale, defaultLocale);
         fs.writeFileSync(
-            `./public/${otherLocale === "" ? "" : `${otherLocale}/`}feed.xml`,
+            `./public/feed${otherLocale === "" ? "" : `.${otherLocale}`}.xml`,
             rss,
         );
     }
