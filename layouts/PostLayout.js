@@ -133,9 +133,11 @@ export default function PostLayout({
                                     </Link>
                                 </div>
                                 <div className="flex">
-                                    <Link
+                                    <a
                                         className="mx-2"
                                         href={facebookShare(slug)}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                     >
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
@@ -163,10 +165,12 @@ export default function PostLayout({
                                                 className="cls-2"
                                             ></path>
                                         </svg>
-                                    </Link>
-                                    <Link
+                                    </a>
+                                    <a
                                         className="mx-2"
                                         href={twitterShare(slug)}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                     >
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
@@ -191,7 +195,7 @@ export default function PostLayout({
                                                 fill="#1A91DA"
                                             ></path>
                                         </svg>
-                                    </Link>
+                                    </a>
                                 </div>
                             </div>
                         </div>
