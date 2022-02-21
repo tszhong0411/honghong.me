@@ -29,7 +29,7 @@ const siteMetadata = {
         googleAnalyticsId: "", // e.g. UA-000000-2 or G-XXXXXXX
     },
     newsletter: {
-        // supports mailchimp, buttondown, convertkit, klaviyo
+        // supports mailchimp, buttondown, convertkit, klaviyo, revue
         // Please add your .env file and modify it according to your selection
         provider: "",
     },
@@ -58,6 +58,10 @@ const siteMetadata = {
             // please provide a link below to your custom theme css file.
             // example: https://giscus.app/themes/custom_example.css
             themeURL: "",
+            // Place the comment box above the comments. options: bottom, top
+            inputPosition: "bottom",
+            // Choose the language giscus will be displayed in. options: en, es, zh-CN, zh-TW, ko, ja etc (locale for i18n)
+            lang: "locale",
         },
         utterancesConfig: {
             // Visit the link below, and follow the steps in the 'configuration' section
