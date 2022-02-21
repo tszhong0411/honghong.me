@@ -1,4 +1,4 @@
-import MetricsContentLoader from "@/components/metrics/metricsContentLoader";
+import MetricsContentLoader from "@/components/metrics/MetricsContentLoader";
 import { useState, useEffect } from "react";
 
 export default function MetricCard({ header, link, metric, isCurrency }) {
