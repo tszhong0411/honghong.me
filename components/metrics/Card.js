@@ -1,4 +1,14 @@
+import MetricsContentLoader from "@/components/metrics/metricsContentLoader";
+import { useState, useEffect } from "react";
+
 export default function MetricCard({ header, link, metric, isCurrency }) {
+    const [mounted, setMounted] = useState(false);
+
+    // When mounted on client, now we can show the UI
+    useEffect(() => setMounted(true), []);
+
+    if (!mounted) return null;
+
     return (
         <div className="metric-card max-w-72 w-full rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-gray-900">
             <a
@@ -27,7 +37,11 @@ export default function MetricCard({ header, link, metric, isCurrency }) {
             </a>
             <p className="spacing-sm mt-2 text-3xl font-bold text-black dark:text-white">
                 {metric > 0 && isCurrency && "$"}
-                {metric > 0 ? metric.toLocaleString() : "---"}
+                {metric > 0 ? (
+                    metric.toLocaleString()
+                ) : (
+                    <MetricsContentLoader />
+                )}
             </p>
         </div>
     );

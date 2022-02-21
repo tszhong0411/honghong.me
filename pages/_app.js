@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "@fontsource/noto-sans-tc";
 import "@fontsource/jetbrains-mono";
 import "@fontsource/inter/variable-full.css";
+import "react-loading-skeleton/dist/skeleton.css";
 
 import { ThemeProvider } from "next-themes";
 import Head from "next/head";

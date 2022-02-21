@@ -10,7 +10,7 @@ const nextTranslate = require("next-translate");
 // You might need to insert additional domains in script-src if you are using external services
 const ContentSecurityPolicy = `
     default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app cdn.jsdelivr.net www.googletagmanager.com www.google-analytics.com *.honghong.me;
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app cdn.jsdelivr.net www.googletagmanager.com www.google-analytics.com *.honghong.me data:;
     style-src 'self' 'unsafe-inline' cdn.jsdelivr.net *.fontawesome.com;
     img-src * blob: data:;
     media-src cdn.jsdelivr.net;

@@ -6,10 +6,10 @@ import { Snackbar } from "@/components/Snackbar";
 import Image from "next/image";
 import { signOut } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
-import ContentLoader from "react-content-loader";
 import fetcher from "lib/fetcher";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 function GuestbookEntry({ entry, user }) {
     const { mutate } = useSWRConfig();
@@ -54,9 +54,9 @@ function GuestbookEntry({ entry, user }) {
 }
 
 export default function Guestbook({ fallbackData }) {
+    const [mounted, setMounted] = useState(false);
     const { theme, resolvedTheme } = useTheme();
     const [loading, setLoading] = useState(false);
-    const [dark, setDark] = useState();
     const { data: session } = useSession();
     const { mutate } = useSWRConfig();
     const inputEl = useRef(null);
@@ -95,10 +95,6 @@ export default function Guestbook({ fallbackData }) {
         }
     };
 
-    useEffect(() => {
-        setDark(theme === "dark" || resolvedTheme === "dark");
-    }, [resolvedTheme, theme]);
-
     const containerStyle = {
         position: "relative",
         width: "1rem",
@@ -125,6 +121,11 @@ export default function Guestbook({ fallbackData }) {
         ease: "linear",
         duration: 1,
     };
+
+    // When mounted on client, now we can show the UI
+    useEffect(() => setMounted(true), []);
+
+    if (!mounted) return null;
 
     return (
         <>
@@ -205,39 +206,29 @@ export default function Guestbook({ fallbackData }) {
             </div>
             <div className="mt-4 space-y-8">
                 {loading && (
-                    <ContentLoader
-                        speed={0.5}
-                        width={340}
-                        height={30}
-                        viewBox="0 0 340 30"
-                        backgroundColor={dark ? "#2e2e2e" : "#efefef"}
-                        foregroundColor={dark ? "#333333" : "#eaeaea"}
+                    <SkeletonTheme
+                        baseColor={
+                            theme === "dark" || resolvedTheme === "dark"
+                                ? "#202020"
+                                : "#d9d9d9"
+                        }
+                        highlightColor={
+                            theme === "dark" || resolvedTheme === "dark"
+                                ? "#444444"
+                                : "#ecebeb"
+                        }
                     >
-                        <rect
-                            x="0"
-                            y="0"
-                            rx="3"
-                            ry="3"
-                            width="70"
-                            height="10"
-                        />
-                        <rect
-                            x="76"
-                            y="0"
-                            rx="3"
-                            ry="3"
-                            width="140"
-                            height="10"
-                        />
-                        <rect
-                            x="0"
-                            y="20"
-                            rx="3"
-                            ry="3"
-                            width="140"
-                            height="10"
-                        />
-                    </ContentLoader>
+                        <div className="flex flex-col gap-y-2">
+                            <Skeleton width={150} height={20} />
+                            <div className="flex gap-x-2">
+                                <Skeleton width={80} height={20} />
+                                <span className="text-gray-200 dark:text-gray-800">
+                                    /
+                                </span>
+                                <Skeleton width={140} height={20} />
+                            </div>
+                        </div>
+                    </SkeletonTheme>
                 )}
                 {entries?.map((entry) => (
                     <GuestbookEntry
