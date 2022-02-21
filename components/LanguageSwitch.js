@@ -33,7 +33,7 @@ export default function LanguageSwitch({ open, setOpen }) {
                 <AnimatePresence>
                     {open && (
                         <motion.div
-                            className="fixed top-[64px] right-0 z-50 flex flex-row gap-x-8 rounded-md border-2 border-slate-900/10 bg-white py-2 px-4 dark:border-slate-300/10 dark:bg-gray-900 xl:absolute xl:top-[56px]"
+                            className="fixed top-[64px] right-0 z-50 flex flex-row gap-x-4 rounded-md border-2 border-slate-900/10 bg-white py-2 px-4 dark:border-slate-300/10 dark:bg-gray-900 xl:absolute xl:top-[56px]"
                             animate={{ y: 0 }}
                             initial={{ y: -200 }}
                             exit={{ y: -200, opacity: 0 }}
