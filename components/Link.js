@@ -20,7 +20,6 @@ const CustomLink = ({ href, children, ...rest }) => {
             </a>
         );
     }
-    console.log(rest);
     return (
         <a
             target="_blank"

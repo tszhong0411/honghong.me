@@ -46,7 +46,7 @@ export default function Home({ posts, locale, availableLocales }) {
                         return (
                             <li key={slug} className="py-12">
                                 <article>
-                                    <div className="space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0">
+                                    <div className="space-y-2 xl:grid xl:grid-cols-3 xl:space-y-0">
                                         <dl>
                                             <dt className="sr-only">
                                                 Published on
@@ -60,7 +60,7 @@ export default function Home({ posts, locale, availableLocales }) {
                                         <div className="flex flex-col items-center sm:flex-row xl:col-span-3">
                                             <div className="mx-2 my-8 w-full sm:my-0 sm:w-1/3">
                                                 <Link href={`/blog/${slug}`}>
-                                                    <div className="custom-image-container overflow-hidden rounded-[12px]">
+                                                    <div className="custom-image-container overflow-hidden rounded-[12px] px-8 sm:px-0">
                                                         <Image
                                                             src={images}
                                                             alt="Cover"

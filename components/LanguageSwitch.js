@@ -18,7 +18,7 @@ export default function LanguageSwitch({ open, setOpen }) {
     return (
         <>
             <motion.button
-                className="ml-1 h-11 w-11 p-1 px-2 text-[22.4px] sm:ml-4"
+                className="ml-1 h-11 w-11 p-1 px-2 text-[18px] sm:ml-4"
                 whileHover={{
                     scale: 1.2,
                     transition: { duration: 0.2 },

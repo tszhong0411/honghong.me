@@ -4,7 +4,7 @@ import Link from "@/components/Link";
 export default function Hero() {
     return (
         <>
-            <div className="mx-auto mt-12 mb-24 flex max-w-5xl items-center justify-between">
+            <div className="mx-auto mt-12 mb-24 flex max-w-3xl items-center justify-between">
                 <div>
                     <h1 className="pb-6 text-3xl font-semibold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
                         小康
@@ -20,7 +20,7 @@ export default function Hero() {
                         </ul>
                     </div>
                     <div className="mt-8">
-                        <div className="flex gap-x-4">
+                        <div className="flex flex-col gap-x-4 gap-y-3 sm:flex-row">
                             <Link
                                 href="https://instagram.com/tszhong0411/"
                                 className="border-[#ff4532] hover:border-b-2"
@@ -45,12 +45,12 @@ export default function Hero() {
                         </div>
                     </div>
                 </div>
-                <div className="hidden md:block">
+                <div className="hidden sm:block">
                     <Image
                         src="/static/images/avatar.png"
                         alt="Avatar"
-                        height="200px"
-                        width="200px"
+                        height="130px"
+                        width="130px"
                         className="transform select-none rounded-full duration-700 ease-in-out hover:rotate-[360deg]"
                     />
                 </div>

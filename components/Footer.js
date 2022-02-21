@@ -11,8 +11,8 @@ export default function Footer() {
 
     return (
         <>
-            <footer className="mt-[2rem] flex flex-col">
-                <div className="mx-auto mt-[20px] flex w-full max-w-7xl flex-wrap py-0 px-[20px] ">
+            <footer className="mx-auto mt-[2rem] flex max-w-3xl flex-col">
+                <div className="mx-auto mt-[20px] flex w-full flex-wrap py-0 px-[20px] ">
                     <hr className="border-1 mb-8 w-full border-gray-200 dark:border-gray-800" />
                     <div className="mb-12">
                         <Link href="/" aria-label={siteMetadata.headerTitle}>
@@ -71,7 +71,7 @@ export default function Footer() {
                     </div>
                     <NowPlaying />
                 </div>
-                <div className="mx-auto mb-8 flex w-full max-w-7xl flex-wrap justify-between px-[20px]">
+                <div className="mx-auto mb-8 flex w-full flex-wrap justify-between px-[20px]">
                     <div>
                         {footerNavLinks.bottomLinks.map((item, index) => {
                             return (

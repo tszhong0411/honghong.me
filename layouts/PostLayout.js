@@ -120,8 +120,8 @@ export default function PostLayout({
                             </div>
                         </div>
                     </div>
-                    <div className="flex flex-col divide-y divide-gray-200 border-b border-gray-200 pb-2 dark:divide-gray-700 dark:border-gray-700 xl:flex-row xl:divide-y-0">
-                        <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:w-3/4 xl:pb-0">
+                    <div className="mx-auto flex flex-col divide-y divide-gray-200 border-b border-gray-200 pb-2 dark:divide-gray-700 dark:border-gray-700 xl:divide-y-0">
+                        <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:pb-0">
                             <div className="prose max-w-none pt-4 pb-8 dark:prose-dark">
                                 {toc.length !== 0 && <TOCInline toc={toc} />}
                                 {children}
@@ -199,17 +199,6 @@ export default function PostLayout({
                                 </div>
                             </div>
                         </div>
-                        <footer className="sticky top-[65px] h-full divide-gray-200 font-medium dark:divide-gray-700 dark:font-bold xl:ml-[1.5rem] xl:w-1/4 xl:divide-y">
-                            {toc.length !== 0 && <TOC toc={toc} />}
-                            <div className="pb-2 pt-4 xl:pt-6 xl:pb-6">
-                                <Link
-                                    href="/blog"
-                                    className="text-[#cb3728] hover:text-[#dc2626] dark:text-[#ff4532] dark:hover:text-primary-400"
-                                >
-                                    &larr; {t("common:backToTheBlog")}
-                                </Link>
-                            </div>
-                        </footer>
                     </div>
                     <Comments frontMatter={frontMatter} />
                     {siteMetadata.newsletter.provider !== "" && (

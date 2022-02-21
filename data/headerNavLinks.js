@@ -4,7 +4,6 @@ const headerNavLinks = [
     { href: "/guestbook", title: "Guestbook" },
     { href: "/dashboard", title: "Dashboard" },
     { href: "/tools", title: "Tools" },
-    { href: "/tags", title: "Tags" },
 ];
 
 export default headerNavLinks;

@@ -64,9 +64,9 @@ export default function Navbar() {
                 ></div>
             )}
             <header
-                className={`duration-0 sticky top-0 z-40 w-full flex-none transition-colors dark:border-slate-50/[0.06] lg:z-50 lg:border-b lg:border-slate-900/10 ${
+                className={`duration-0 sticky top-0 z-40 w-full flex-none transition-colors lg:z-50 ${
                     isTop
-                        ? "supports-backdrop-blur:bg-white/60 bg-white/95 dark:bg-transparent"
+                        ? "supports-backdrop-blur:bg-white/60 dark:bg-transparent"
                         : `supports-backdrop-blur:bg-white/95 ${
                               navShow
                                   ? "bg-white dark:bg-gray-900"
@@ -74,8 +74,8 @@ export default function Navbar() {
                           }`
                 }`}
             >
-                <div className="mx-auto max-w-7xl">
-                    <div className="border-b border-slate-900/10 py-2 px-4 dark:border-slate-300/10 lg:border-0 lg:px-[20px]">
+                <div className="mx-auto max-w-3xl">
+                    <div className="py-2 px-4 xl:px-0">
                         <div className="relative flex items-center justify-between">
                             <div className="flex items-center text-sm font-semibold leading-6 text-slate-700 dark:text-slate-200">
                                 <div className="sm:hidden">
@@ -88,7 +88,7 @@ export default function Navbar() {
                                             version="1.0"
                                             width="582.000000pt"
                                             height="195.000000pt"
-                                            className="h-12 w-16"
+                                            className="ml-4 h-12 w-16"
                                             viewBox="0 0 582.000000 195.000000"
                                             preserveAspectRatio="xMidYMid meet"
                                         >

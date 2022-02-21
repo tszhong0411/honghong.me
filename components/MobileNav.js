@@ -25,7 +25,7 @@ export default function MobileNav({ navShow, setNavShow }) {
     return (
         <>
             <button
-                className="ml-1 h-11 w-11 p-1 px-2 text-[22.4px] sm:ml-4 sm:hidden"
+                className="ml-1 h-11 w-11 p-1 px-2 text-[18px] sm:ml-4 sm:hidden"
                 onClick={onToggleNav}
             >
                 {navShow ? (
