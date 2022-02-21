@@ -47,6 +47,7 @@ export default function Navbar() {
     const [navShow, setNavShow] = useState(false);
     const [mode, setMode] = useState();
     const { theme, resolvedTheme } = useTheme();
+    const [open, setOpen] = useState(false);
 
     useEffect(() => {
         setMode(theme === "dark" || resolvedTheme === "dark");
@@ -54,6 +55,14 @@ export default function Navbar() {
 
     return (
         <>
+            {open && (
+                <div
+                    className="fixed inset-0 z-40 h-full w-full"
+                    onClick={() => {
+                        setOpen(false);
+                    }}
+                ></div>
+            )}
             <header
                 className={`duration-0 sticky top-0 z-40 w-full flex-none transition-colors dark:border-slate-50/[0.06] lg:z-50 lg:border-b lg:border-slate-900/10 ${
                     isTop
@@ -108,7 +117,7 @@ export default function Navbar() {
                             </div>
                             <div className="flex items-center border-l border-gray-200 dark:border-gray-700">
                                 <ThemeSwitch />
-                                <LanguageSwitch />
+                                <LanguageSwitch open={open} setOpen={setOpen} />
                                 <MobileNav
                                     navShow={navShow}
                                     setNavShow={setNavShow}

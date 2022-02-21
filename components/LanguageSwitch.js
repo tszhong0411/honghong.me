@@ -2,9 +2,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 
-export default function LanguageSwitch() {
+export default function LanguageSwitch({ open, setOpen }) {
     const router = useRouter();
-    const [open, setOpen] = useState(false);
 
     const changeLanguage = (locale) => {
         router.push(router.asPath, router.asPath, { locale });
@@ -34,13 +33,13 @@ export default function LanguageSwitch() {
                 <AnimatePresence>
                     {open && (
                         <motion.div
-                            className="fixed top-[64px] right-0 flex flex-row gap-x-8 rounded-md border-2 border-slate-900/10 bg-white py-4 px-6 dark:border-slate-300/10 dark:bg-gray-900 xl:absolute xl:top-[56px]"
+                            className="fixed top-[64px] right-0 z-50 flex flex-row gap-x-8 rounded-md border-2 border-slate-900/10 bg-white py-2 px-4 dark:border-slate-300/10 dark:bg-gray-900 xl:absolute xl:top-[56px]"
                             animate={{ y: 0 }}
                             initial={{ y: -200 }}
                             exit={{ y: -200, opacity: 0 }}
                         >
                             <div
-                                className="cursor-pointer"
+                                className="cursor-pointer rounded-md px-4 py-2 duration-300 hover:bg-gray-300 dark:hover:bg-gray-700"
                                 onClick={() => {
                                     setOpen(false);
                                     changeLanguage("zh-TW");
@@ -49,7 +48,7 @@ export default function LanguageSwitch() {
                                 繁體中文
                             </div>
                             <div
-                                className="cursor-pointer"
+                                className="cursor-pointer rounded-md px-4 py-2 duration-300 hover:bg-gray-300 dark:hover:bg-gray-700"
                                 onClick={() => {
                                     setOpen(false);
                                     changeLanguage("en");
