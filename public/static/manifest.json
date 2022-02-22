@@ -1,94 +1,22 @@
 {
-    "theme_color": "#f90606",
-    "background_color": "#f90606",
-    "display": "standalone",
-    "scope": "/",
-    "start_url": "/",
-    "name": "\u5c0f\u5eb7 Blog",
-    "short_name": "\u5c0f\u5eb7 Blog",
-    "description": "\u5c0f\u5eb7 Blog \u5206\u4eab\u7de8\u5beb\u7db2\u9801\u6280\u5de7\u3001\u4e0d\u540c\u985e\u578b\u7684\u6559\u5b78\u3001\u5be6\u7528\u8edf\u9ad4\uff0c\u4f60\u5728\u9019\u88e1\u53ef\u4ee5\u5b78\u5230\u66f4\u591a\u958b\u767c\u6280\u5de7\u3002",
-    "icons": [
-        {
-            "src": "/static/favicons/maskable_icon_x48.png",
-            "sizes": "48x48",
-            "type": "image/png",
-            "purpose": "maskable"
-        },
-        {
-            "src": "/static/favicons/maskable_icon_x72.png",
-            "sizes": "72x72",
-            "type": "image/png",
-            "purpose": "maskable"
-        },
-        {
-            "src": "/static/favicons/maskable_icon_x96.png",
-            "sizes": "96x96",
-            "type": "image/png",
-            "purpose": "maskable"
-        },
-        {
-            "src": "/static/favicons/maskable_icon_x128.png",
-            "sizes": "128x128",
-            "type": "image/png",
-            "purpose": "maskable"
-        },
-        {
-            "src": "/static/favicons/maskable_icon_x192.png",
-            "sizes": "192x192",
-            "type": "image/png",
-            "purpose": "maskable"
-        },
-        {
-            "src": "/static/favicons/maskable_icon_x384.png",
-            "sizes": "384x384",
-            "type": "image/png",
-            "purpose": "maskable"
-        },
-        {
-            "src": "/static/favicons/maskable_icon_x512.png",
-            "sizes": "512x512",
-            "type": "image/png",
-            "purpose": "maskable"
-        },
-        {
-            "src": "/static/favicons/favicon-16x16.png",
-            "sizes": "16x16",
-            "type": "image/png"
-        },
-        {
-            "src": "/static/favicons/favicon-32x32.png",
-            "sizes": "32x32",
-            "type": "image/png"
-        },
-        {
-            "src": "/static/favicons/android-icon-48x48.png",
-            "sizes": "48x48",
-            "type": "image/png"
-        },
-        {
-            "src": "/static/favicons/android-icon-72x72.png",
-            "sizes": "72x72",
-            "type": "image/png"
-        },
-        {
-            "src": "/static/favicons/favicon-96x96.png",
-            "sizes": "96x96",
-            "type": "image/png"
-        },
-        {
-            "src": "/static/favicons/android-icon-144x144.png",
-            "sizes": "144x144",
-            "type": "image/png"
-        },
-        {
-            "src": "/static/favicons/android-chrome-192x192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "/static/favicons/android-chrome-512x512.png",
-            "sizes": "512x512",
-            "type": "image/png"
-        }
-    ]
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "name": "\u5c0f\u5eb7 Blog",
+  "short_name": "\u5c0f\u5eb7 Blog",
+  "description": "\u5c0f\u5eb7 Blog \u5206\u4eab\u7de8\u5beb\u7db2\u9801\u6280\u5de7\u3001\u4e0d\u540c\u985e\u578b\u7684\u6559\u5b78\u3001\u5be6\u7528\u8edf\u9ad4\uff0c\u4f60\u5728\u9019\u88e1\u53ef\u4ee5\u5b78\u5230\u66f4\u591a\u958b\u767c\u6280\u5de7\u3002",
+  "icons": [
+    {
+      "src": "/static/favicons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/favicons/android-chrome-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    }
+  ]
 }

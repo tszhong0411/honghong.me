@@ -1,19 +1,12 @@
 {
-    "locales": ["zh-TW", "en"],
-    "defaultLocale": "zh-TW",
-    "localeDetection": true,
-    "pages": {
-        "*": [
-            "common",
-            "SEO",
-            "projects",
-            "404",
-            "newsletter",
-            "footerNavLinks"
-        ],
-        "/uses": ["uses"],
-        "/guestbook": ["guestbook"],
-        "/dashboard": ["dashboard"],
-        "/pc-specs": ["pcSpecs"]
-    }
+  "locales": ["zh-TW", "en"],
+  "defaultLocale": "zh-TW",
+  "localeDetection": true,
+  "pages": {
+    "*": ["common", "SEO", "projects", "404", "newsletter", "footerNavLinks"],
+    "/uses": ["uses"],
+    "/guestbook": ["guestbook"],
+    "/dashboard": ["dashboard"],
+    "/pc-specs": ["pcSpecs"]
+  }
 }

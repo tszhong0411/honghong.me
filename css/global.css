@@ -3,104 +3,104 @@
 @tailwind utilities;
 
 .task-list-item::before {
-    @apply hidden;
+  @apply hidden;
 }
 
 .task-list-item {
-    @apply list-none;
+  @apply list-none;
 }
 
 .footnotes {
-    @apply mt-12 border-t border-gray-200 pt-8 dark:border-gray-700;
+  @apply mt-12 border-t border-gray-200 pt-8 dark:border-gray-700;
 }
 
 .csl-entry {
-    @apply my-5;
+  @apply my-5;
 }
 
 /* https://stackoverflow.com/questions/61083813/how-to-avoid-internal-autofill-selected-style-to-be-applied */
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
-    transition: background-color 600000s 0s, color 600000s 0s;
+  transition: background-color 600000s 0s, color 600000s 0s;
 }
 
 code,
 kbd,
 pre,
 samp {
-    font-family: "JetBrains Mono", monospace;
+  font-family: "JetBrains Mono", monospace;
 }
 
 ::selection {
-    background: rgb(249, 6, 6, 0.05);
-    color: #f90606;
+  background: rgb(249, 6, 6, 0.05);
+  color: #f90606;
 }
 
 html.dark ::selection {
-    background: rgb(251, 81, 81, 0.1);
-    color: #fb5151;
+  background: rgb(251, 81, 81, 0.1);
+  color: #fb5151;
 }
 
 ::-webkit-scrollbar {
-    width: 7px;
+  width: 7px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #f90606;
-    transition: 0.25s;
-    border-radius: 2px;
+  background: #f90606;
+  transition: 0.25s;
+  border-radius: 2px;
 }
 
 ::-webkit-scrollbar-track {
-    background: 0 0;
+  background: 0 0;
 }
 
 /* post image */
 div[nextjs-image="true"] {
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .custom-image-container {
-    width: 100%;
-    position: relative;
+  width: 100%;
+  position: relative;
 }
 .custom-image-container > span {
-    position: unset !important;
+  position: unset !important;
 }
 .custom-image-container .custom-image {
-    object-fit: contain;
-    width: 100% !important;
-    position: relative !important;
-    height: unset !important;
-    border-radius: 12px;
+  object-fit: contain;
+  width: 100% !important;
+  position: relative !important;
+  height: unset !important;
+  border-radius: 12px;
 }
 
 /* heading anchor */
 .prose .anchor {
-    @apply invisible absolute;
+  @apply invisible absolute;
 
-    margin-left: -1em;
-    padding-right: 0.5em;
-    width: 80%;
-    max-width: calc(768px + 1em);
-    cursor: pointer;
-    border: 0 !important;
+  margin-left: -1em;
+  padding-right: 0.5em;
+  width: 80%;
+  max-width: calc(768px + 1em);
+  cursor: pointer;
+  border: 0 !important;
 }
 
 .anchor:hover {
-    @apply visible no-underline;
+  @apply visible no-underline;
 }
 
 .prose a.anchor {
-    @apply transition-all;
+  @apply transition-all;
 }
 
 .prose .anchor:after {
-    @apply text-gray-300 dark:text-gray-700;
-    content: "#";
+  @apply text-gray-300 dark:text-gray-700;
+  content: "#";
 }
 
 .prose *:hover > .anchor {
-    @apply visible no-underline;
+  @apply visible no-underline;
 }

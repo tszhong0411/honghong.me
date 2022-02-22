@@ -1,14 +1,14 @@
 {
-    "description": "Any idea? Comment below",
-    "delete": "Delete",
-    "success": "Oh yeah! Thanks for signing!",
-    "error": "Message cannot be empty",
-    "guestbook": "Guestbook",
-    "signInGuestbook": "Sign in guest",
-    "signIn": "Sign in",
-    "placeholder": "Your comment here...",
-    "yourComment": "Your comment",
-    "sign": "Sign",
-    "tip": "Your information is only used to display your name and reply by email",
-    "signOut": "Sign out"
+  "description": "Any idea? Comment below",
+  "delete": "Delete",
+  "success": "Oh yeah! Thanks for signing!",
+  "error": "Message cannot be empty",
+  "guestbook": "Guestbook",
+  "signInGuestbook": "Sign in Guestbook",
+  "signIn": "Sign in",
+  "placeholder": "Your comment here...",
+  "yourComment": "Your comment",
+  "sign": "Sign",
+  "tip": "Your information is only used to display your name and reply by email",
+  "signOut": "Sign out"
 }

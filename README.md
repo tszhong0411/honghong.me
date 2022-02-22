@@ -46,10 +46,11 @@
 
 ## 🌍 honghong.me
 
--   **Framework**: [Next.js](https://nextjs.org/)
--   **Deployment**: [Vercel](https://vercel.com)
--   **Styling**: [Tailwind CSS](https://tailwindcss.com/)
--   **Comment**: [Giscus](https://giscus.app/)
+- **Framework**: [Next.js](https://nextjs.org/)
+- **Deployment**: [Vercel](https://vercel.com)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Comment**: [Giscus](https://giscus.app/)
+- **favicon**: [realfavicongenerator](https://realfavicongenerator.net/)
 
 ## 🚀 Demo
 
@@ -59,10 +60,10 @@
 
 ## 🧐 Features
 
--   Blog
--   Projects
--   About
--   i18n
+- Blog
+- Projects
+- About
+- i18n
 
 ## 🍰 Contributing
 
@@ -70,7 +71,7 @@ Please contribute by [open a pull request](https://github.com/tszhong0411/hongho
 
 ## ❤️ Credits
 
--   [Tailwind nextjs starter blog template](https://github.com/timlrx/tailwind-nextjs-starter-blog) © [Timothy](https://www.timlrx.com/)
+- [Tailwind nextjs starter blog template](https://github.com/timlrx/tailwind-nextjs-starter-blog) © [Timothy](https://www.timlrx.com/)
 
 <hr>
 <p align="center">
