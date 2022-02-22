@@ -7,7 +7,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import useTranslation from "next-translate/useTranslation";
-
 /**
  * Generates an inline table of contents
  * Exclude titles matching this string (new RegExp('^(' + string + ')$', 'i')).
@@ -123,7 +122,12 @@ export default function TOC({
 
     return (
         <>
-            <div className="mt-10 hidden xl:block" id="toc">
+            <div
+                className="fixed left-8 top-1/3 mt-10 hidden xl:block"
+                id="toc"
+                initial={{ opacity: 0, x: "-100vw" }}
+                animate={{ opacity: 1, x: 0 }}
+            >
                 <div className="mb-4 text-sm tracking-tight text-gray-500 dark:text-gray-500">
                     <span className="mb-2 text-lg font-bold text-black dark:text-gray-100">
                         {t("common:toc")}

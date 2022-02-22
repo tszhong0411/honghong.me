@@ -44,17 +44,41 @@ module.exports = {
                     blue: "#93ddfd",
                     white: "#fff",
                 },
+                themeColor: {
+                    50: "#fee6e6",
+                    100: "#fecdcd",
+                    150: "#fdb4b4",
+                    200: "#fc9c9c",
+                    250: "#fc8383",
+                    300: "#fb6a6a",
+                    350: "#fb5151",
+                    400: "#fa3838",
+                    450: "#f91f1f",
+                    500: "#f90606",
+                    550: "#e00606",
+                    600: "#c70505",
+                    650: "#ae0404",
+                    700: "#950404",
+                    750: "#7c0303",
+                    800: "#630303",
+                    850: "#4b0202",
+                    900: "#320101",
+                },
             },
             typography: (theme) => ({
                 DEFAULT: {
                     css: {
                         color: theme("colors.gray.700"),
                         a: {
-                            color: "#000",
+                            color: theme("colors.themeColor.500"),
                             textDecoration: "none",
-                            borderBottom: "2px solid #ff4532",
+                            borderBottom: `2px solid transparent`,
+                            transition:
+                                "border-color 0.3s ease, color 0.3s ease",
                             "&:hover": {
-                                color: `#ff4532 !important`,
+                                borderBottom: `2px solid ${theme(
+                                    "colors.themeColor.500",
+                                )}`,
                             },
                             code: { color: theme("colors.primary.400") },
                         },
@@ -114,11 +138,15 @@ module.exports = {
                             color: "#adadad",
                         },
                         a: {
-                            color: "#fff",
+                            color: theme("colors.themeColor.350"),
                             textDecoration: "none",
-                            borderBottom: "2px solid #ff4532",
+                            borderBottom: `2px solid transparent`,
+                            transition:
+                                "border-color 0.3s ease, color 0.3s ease",
                             "&:hover": {
-                                color: `#ff4532 !important`,
+                                borderBottom: `2px solid ${theme(
+                                    "colors.themeColor.350",
+                                )}`,
                             },
                             code: { color: theme("colors.primary.400") },
                         },

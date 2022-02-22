@@ -7,11 +7,11 @@ const LayoutWrapper = ({ children }) => {
     useEffect(() => {
         console.log(
             "%c小康 Blog",
-            "color:white;background-color:#ff4532;padding:16px 52px;border-radius:12px;font-size: 36px;font-weight: bold;",
+            "color:white;background-color:#f90606;padding:16px 52px;border-radius:12px;font-size: 36px;font-weight: bold;",
         );
         console.log(
             "%cWebsite",
-            "color:white;background-color:#ff4532;padding:4px 8px;border-radius:12px;",
+            "color:white;background-color:#f90606;padding:4px 8px;border-radius:12px;",
             "https://honghong.me",
         );
         console.log(

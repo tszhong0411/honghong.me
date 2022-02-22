@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "@/components/Link";
+import { motion } from "framer-motion";
 
 export default function Hero() {
     return (
@@ -23,21 +24,21 @@ export default function Hero() {
                         <div className="flex flex-col gap-x-4 gap-y-3 sm:flex-row">
                             <Link
                                 href="https://instagram.com/tszhong0411/"
-                                className="border-[#ff4532] hover:border-b-2"
+                                className="border-b-2 border-transparent duration-300  hover:border-themeColor-500 dark:hover:border-themeColor-350"
                             >
                                 <i className="fa-brands fa-instagram mr-1"></i>
                                 Instagram
                             </Link>
                             <Link
                                 href="https://github.com/tszhong0411"
-                                className="border-[#ff4532] hover:border-b-2"
+                                className="border-b-2 border-transparent duration-300  hover:border-themeColor-500 dark:hover:border-themeColor-350"
                             >
                                 <i className="fa-brands fa-github mr-1"></i>
                                 Github
                             </Link>
                             <Link
                                 href="https://honghong.me/youtube"
-                                className="border-[#ff4532] hover:border-b-2"
+                                className="border-b-2 border-transparent duration-300  hover:border-themeColor-500 dark:hover:border-themeColor-350"
                             >
                                 <i className="fa-brands fa-youtube mr-1"></i>
                                 Youtube
@@ -46,13 +47,18 @@ export default function Hero() {
                     </div>
                 </div>
                 <div className="hidden sm:block">
-                    <Image
-                        src="/static/images/avatar.png"
-                        alt="Avatar"
-                        height="130px"
-                        width="130px"
-                        className="transform select-none rounded-full duration-700 ease-in-out hover:rotate-[360deg]"
-                    />
+                    <motion.div
+                        whileHover={{ rotate: 360 }}
+                        transition={{ duration: 0.3 }}
+                    >
+                        <Image
+                            src="/static/images/avatar.png"
+                            alt="Avatar"
+                            height="130px"
+                            width="130px"
+                            className="transform select-none rounded-full duration-700 ease-in-out hover:rotate-[360deg]"
+                        />
+                    </motion.div>
                 </div>
             </div>
         </>

@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://honghong.me">
-    <img src="./public/static/images/HONG.png" width="150" />
+    <img src="./public/static/images/logo/bg-transparent-white.png" width="64" />
   </a>
 </p>
 

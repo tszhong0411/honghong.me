@@ -34,7 +34,7 @@ export default function ToolLayout({
                 <div>
                     <Link
                         href={"/tools"}
-                        className="text-[#cb3728] hover:text-[#dc2626] dark:text-[#ff4532] dark:hover:text-primary-400"
+                        className="border-b-2 border-transparent text-themeColor-500 duration-300 hover:border-themeColor-500 dark:text-themeColor-350 dark:hover:border-themeColor-350"
                     >
                         ← {t("tools:backTools")}
                     </Link>

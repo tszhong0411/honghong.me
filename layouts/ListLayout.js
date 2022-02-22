@@ -71,7 +71,7 @@ export default function ListLayout({
                     return (
                         <li key={slug} className="py-12">
                             <article>
-                                <div className="space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0">
+                                <div className="space-y-2 xl:grid xl:grid-cols-3 xl:space-y-0">
                                     <dl>
                                         <dt className="sr-only">
                                             {t("common:publishOn")}
@@ -101,8 +101,7 @@ export default function ListLayout({
                                                     <h2 className="text-2xl font-bold leading-8 tracking-tight">
                                                         <Link
                                                             href={`/blog/${slug}`}
-                                                            className="text-gray-900 transition-all hover:text-[#ff4532] 
-                                                            dark:text-gray-100 dark:hover:text-[#ff4532]"
+                                                            className="text-gray-900 duration-300 hover:text-themeColor-500 dark:text-gray-50 dark:hover:text-themeColor-350"
                                                         >
                                                             {title}
                                                         </Link>
@@ -122,7 +121,7 @@ export default function ListLayout({
                                                 <div className="text-base font-medium leading-6">
                                                     <Link
                                                         href={`/blog/${slug}`}
-                                                        className="group inline-flex h-9 items-center whitespace-nowrap rounded-full bg-red-100 px-3 text-sm font-medium text-red-700 hover:bg-red-200 hover:text-red-900 focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-red-700 dark:text-red-100 dark:hover:bg-red-600 dark:hover:text-white dark:focus:ring-red-500"
+                                                        className="group inline-flex h-9 items-center whitespace-nowrap rounded-full bg-red-100 px-3 text-sm font-medium text-red-700 duration-300 hover:bg-red-200 hover:text-red-900 focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-red-700 dark:text-red-100 dark:hover:bg-red-600 dark:hover:text-white dark:focus:ring-red-500"
                                                         aria-label={`Read "${title}"`}
                                                     >
                                                         {t("common:readMore")}{" "}

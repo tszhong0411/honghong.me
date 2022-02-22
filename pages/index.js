@@ -76,8 +76,7 @@ export default function Home({ posts, locale, availableLocales }) {
                                                         <h2 className="text-2xl font-bold leading-8 tracking-tight">
                                                             <Link
                                                                 href={`/blog/${slug}`}
-                                                                className="text-gray-900 transition-all hover:text-[#ff4532] 
-                                                                dark:text-gray-100 dark:hover:text-[#ff4532]"
+                                                                className="text-gray-900 duration-300 hover:text-themeColor-500 dark:text-gray-50 dark:hover:text-themeColor-350"
                                                             >
                                                                 {title}
                                                             </Link>
@@ -97,7 +96,7 @@ export default function Home({ posts, locale, availableLocales }) {
                                                     <div className="text-base font-medium leading-6">
                                                         <Link
                                                             href={`/blog/${slug}`}
-                                                            className="group inline-flex h-9 items-center whitespace-nowrap rounded-full bg-red-100 px-3 text-sm font-medium text-red-700 hover:bg-red-200 hover:text-red-900 focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-red-700 dark:text-red-100 dark:hover:bg-red-600 dark:hover:text-white dark:focus:ring-red-500"
+                                                            className="group inline-flex h-9 items-center whitespace-nowrap rounded-full bg-red-100 px-3 text-sm font-medium text-red-700 duration-300 hover:bg-red-200 hover:text-red-900 focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-red-700 dark:text-red-100 dark:hover:bg-red-600 dark:hover:text-white dark:focus:ring-red-500"
                                                             aria-label={`Read "${title}"`}
                                                         >
                                                             {t(
@@ -120,7 +119,7 @@ export default function Home({ posts, locale, availableLocales }) {
                 <div className="flex justify-end text-base font-medium leading-6">
                     <Link
                         href="/blog"
-                        className="font-medium text-[#cb3728] hover:text-[#dc2626] dark:text-[#ff4532] dark:hover:text-primary-400"
+                        className="border-b-2 border-transparent font-medium text-themeColor-500 duration-300 hover:border-themeColor-500 dark:text-themeColor-350 dark:hover:border-themeColor-350"
                         aria-label="all posts"
                     >
                         {t("common:allPosts")} &rarr;

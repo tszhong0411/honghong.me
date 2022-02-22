@@ -47,6 +47,7 @@ export default function PostLayout({
                 {...frontMatter}
             />
             <ScrollTopAndComment />
+            <TOC toc={toc} />
             <article>
                 <div>
                     <div className="mb-12">
@@ -57,7 +58,7 @@ export default function PostLayout({
                                         <li key={tag}>
                                             <Link
                                                 href={`/tags/${kebabCase(tag)}`}
-                                                className="mr-3 text-base font-semibold uppercase text-[#ff4532] hover:text-primary-400"
+                                                className="mr-3 border-b-2 border-transparent text-base font-medium uppercase text-themeColor-500 duration-300 hover:border-themeColor-500 dark:text-themeColor-350 dark:hover:border-themeColor-350"
                                             >
                                                 {tag.split(" ").join("-")}
                                             </Link>
@@ -77,13 +78,15 @@ export default function PostLayout({
                                     return (
                                         <div key={author.name}>
                                             {author.avatar && (
-                                                <Image
-                                                    src={author.avatar}
-                                                    width="70px"
-                                                    height="70px"
-                                                    alt="avatar"
-                                                    className="h-[70px] w-[70px] rounded-full"
-                                                />
+                                                <div>
+                                                    <Image
+                                                        src={author.avatar}
+                                                        width="70px"
+                                                        height="70px"
+                                                        alt="avatar"
+                                                        className="h-[70px] w-[70px] rounded-full"
+                                                    />
+                                                </div>
                                             )}
                                         </div>
                                     );
@@ -100,7 +103,7 @@ export default function PostLayout({
                                             {author.instagram && (
                                                 <Link
                                                     href={author.instagram}
-                                                    className="font-semibold text-[#cb3728] hover:text-[#dc2626] dark:text-[#ff4532] dark:hover:text-primary-400"
+                                                    className="border-b-2 border-transparent font-medium text-themeColor-500 duration-300 hover:border-themeColor-500 dark:text-themeColor-350 dark:hover:border-themeColor-350"
                                                 >
                                                     {author.instagram.replace(
                                                         "https://www.instagram.com/",
@@ -217,18 +220,19 @@ export default function PostLayout({
                                     </span>
                                     <div className="flex flex-col">
                                         <div className="font-medium">
-                                            <Link href={`/blog/${prev.slug}`}>
-                                                <h2 className="mb-4 text-xl font-bold tracking-tight hover:text-[#ff4532] hover:underline">
-                                                    {prev.title}
-                                                </h2>
+                                            <Link
+                                                href={`/blog/${prev.slug}`}
+                                                className="border-b-2 border-transparent text-xl font-medium tracking-tight duration-300 hover:border-themeColor-500 hover:text-themeColor-500 dark:hover:border-themeColor-350 dark:hover:text-themeColor-350"
+                                            >
+                                                {prev.title}
                                             </Link>
-                                            <div className="prose mb-6 dark:prose-dark">
+                                            <div className="prose mb-6 mt-4 dark:prose-dark">
                                                 <p>{prev.summary}</p>
                                             </div>
                                             <div>
                                                 <Link
                                                     href={`/blog/${prev.slug}`}
-                                                    className="group inline-flex h-9 items-center whitespace-nowrap rounded-full bg-red-100 px-3 text-sm font-medium text-red-700 hover:bg-red-200 hover:text-red-900 focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-red-700 dark:text-red-100 dark:hover:bg-red-600 dark:hover:text-white dark:focus:ring-red-500"
+                                                    className="group inline-flex h-9 items-center whitespace-nowrap rounded-full bg-red-100 px-3 text-sm font-medium text-red-700 duration-300 hover:bg-red-200 hover:text-red-900 focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-red-700 dark:text-red-100 dark:hover:bg-red-600 dark:hover:text-white dark:focus:ring-red-500"
                                                     aria-label={`Read "${prev.title}"`}
                                                 >
                                                     {t("common:readMore")}{" "}
@@ -246,18 +250,19 @@ export default function PostLayout({
                                     </span>
                                     <div className="flex flex-col">
                                         <div className="font-medium">
-                                            <Link href={`/blog/${next.slug}`}>
-                                                <h2 className="mb-4 text-xl font-bold tracking-tight hover:text-[#ff4532] hover:underline">
-                                                    {next.title}
-                                                </h2>
+                                            <Link
+                                                href={`/blog/${next.slug}`}
+                                                className="border-b-2 border-transparent text-xl font-medium tracking-tight duration-300 hover:border-themeColor-500 hover:text-themeColor-500 dark:hover:border-themeColor-350 dark:hover:text-themeColor-350"
+                                            >
+                                                {next.title}
                                             </Link>
-                                            <div className="prose mb-6 dark:prose-dark">
+                                            <div className="prose mb-6 mt-4 dark:prose-dark">
                                                 <p>{next.summary}</p>
                                             </div>
                                             <div>
                                                 <Link
                                                     href={`/blog/${next.slug}`}
-                                                    className="group inline-flex h-9 items-center whitespace-nowrap rounded-full bg-red-100 px-3 text-sm font-medium text-red-700 hover:bg-red-200 hover:text-red-900 focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-red-700 dark:text-red-100 dark:hover:bg-red-600 dark:hover:text-white dark:focus:ring-red-500"
+                                                    className="group inline-flex h-9 items-center whitespace-nowrap rounded-full bg-red-100 px-3 text-sm font-medium text-red-700 duration-300 hover:bg-red-200 hover:text-red-900 focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-red-700 dark:text-red-100 dark:hover:bg-red-600 dark:hover:text-white dark:focus:ring-red-500"
                                                     aria-label={`Read "${next.title}"`}
                                                 >
                                                     {t("common:readMore")}{" "}

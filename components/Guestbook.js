@@ -108,7 +108,7 @@ export default function Guestbook({ fallbackData }) {
         width: "1rem",
         height: "1rem",
         border: "3px solid #e9e9e9",
-        borderTop: "3px solid #ff4532",
+        borderTop: "3px solid #f90606",
         borderRadius: "50%",
         position: "absolute",
         boxSizing: "border-box",

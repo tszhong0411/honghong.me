@@ -105,15 +105,15 @@ class MyDocument extends Document {
                     <link
                         rel="mask-icon"
                         href="/static/favicons/safari-pinned-tab.svg"
-                        color="#ff4532"
+                        color="#f90606"
                     />
                     <link rel="manifest" href="/static/manifest.json" />
                     <meta
                         name="msapplication-TileImage"
                         content="/static/favicons/mstile-144x144.png"
                     ></meta>
-                    <meta name="msapplication-TileColor" content="#ff4532" />
-                    <meta name="theme-color" content="#ff4532" />
+                    <meta name="msapplication-TileColor" content="#f90606" />
+                    <meta name="theme-color" content="#f90606" />
                     <link
                         rel="alternate"
                         type="application/rss+xml"

@@ -32,8 +32,13 @@ samp {
 }
 
 ::selection {
-    background: #ec0000;
-    color: #fefefe;
+    background: rgb(249, 6, 6, 0.05);
+    color: #f90606;
+}
+
+html.dark ::selection {
+    background: rgb(251, 81, 81, 0.1);
+    color: #fb5151;
 }
 
 ::-webkit-scrollbar {
@@ -41,7 +46,7 @@ samp {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #ff4532;
+    background: #f90606;
     transition: 0.25s;
     border-radius: 2px;
 }
@@ -87,7 +92,7 @@ div[nextjs-image="true"] {
     @apply visible no-underline;
 }
 
-.prose a {
+.prose a.anchor {
     @apply transition-all;
 }
 
