@@ -13,7 +13,6 @@ const i18nConfig = require("../i18n.json");
         "pages/*.tsx",
         "data/blog/**/*.mdx",
         "data/blog/**/*.md",
-        "pages/tools/*.js",
         "public/tags/**/*.xml",
         "!pages/_*.js",
         "!pages/_*.tsx",

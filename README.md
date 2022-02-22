@@ -61,7 +61,6 @@
 
 -   Blog
 -   Projects
--   Tools
 -   About
 -   i18n
 

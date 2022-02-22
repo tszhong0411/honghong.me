@@ -14,8 +14,6 @@
         "/uses": ["uses"],
         "/guestbook": ["guestbook"],
         "/dashboard": ["dashboard"],
-        "/tools": ["tools"],
-        "rgx:^/tools/": ["tools"],
         "/pc-specs": ["pcSpecs"]
     }
 }
