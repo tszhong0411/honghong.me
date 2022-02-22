@@ -55,7 +55,7 @@ const footerNavLinks = {
                     title: "Instagram",
                 },
                 {
-                    href: "https://github.comszHong0411",
+                    href: "https://github.com/tszHong0411",
                     title: "Github",
                 },
                 {
