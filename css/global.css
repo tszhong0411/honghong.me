@@ -55,6 +55,15 @@ html.dark ::selection {
   background: 0 0;
 }
 
+/* post iframe */
+.iframe-container {
+  @apply relative h-0 w-full pb-[56.25%];
+}
+
+.iframe-container iframe {
+  @apply absolute top-0 left-0 h-full w-full;
+}
+
 /* post image */
 div[nextjs-image="true"] {
   margin-top: 1.5rem;

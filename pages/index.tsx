@@ -19,7 +19,6 @@ export const getStaticProps: GetStaticProps<{
 }> = async ({ locale, defaultLocale, locales }) => {
   const otherLocale = locale !== defaultLocale ? locale : "";
   const posts = await getAllFilesFrontMatter("blog", otherLocale);
-
   return { props: { posts, locale, availableLocales: locales } };
 };
 
@@ -29,7 +28,6 @@ export default function Home({
   availableLocales,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t } = useTranslation();
-
   return (
     <>
       <PageSEO
@@ -78,6 +76,7 @@ export default function Home({
                               <Link
                                 href={`/blog/${slug}`}
                                 className="text-gray-900 duration-300 hover:text-themeColor-500 dark:text-gray-50 dark:hover:text-themeColor-350"
+                                data-cy="post-title"
                               >
                                 {title}
                               </Link>

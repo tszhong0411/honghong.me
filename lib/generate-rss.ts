@@ -1,7 +1,14 @@
 import { escape } from "@/lib/utils/htmlEscaper";
 import siteMetadata from "@/data/siteMetadata";
+import { PostFrontMatter } from "@/lib/types";
 
-const generateRssItem = ({ post, locale, defaultLocale }) => {
+interface Props {
+  post: PostFrontMatter;
+  locale: string;
+  defaultLocale: string;
+}
+
+const generateRssItem = ({ post, locale, defaultLocale }: Props): string => {
   return `
   <item>
     <guid>${siteMetadata.siteUrl}${defaultLocale === locale ? "" : "/" + locale}/blog/${
@@ -19,22 +26,29 @@ const generateRssItem = ({ post, locale, defaultLocale }) => {
 `;
 };
 
-const generateRss = (posts, locale, defaultLocale, page = "feed.xml") => `
-  <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-      <title>${escape(siteMetadata.title)}</title>
-      <link>${siteMetadata.siteUrl}${defaultLocale === locale ? "" : "/" + locale}/blog</link>
-      <description>${escape(siteMetadata.description[locale])}</description>
-      <language>${locale}</language>
-      <managingEditor>${siteMetadata.email} (${siteMetadata.author})</managingEditor>
-      <webMaster>${siteMetadata.email} (${siteMetadata.author})</webMaster>
-      <lastBuildDate>${new Date(posts[0].date).toLocaleDateString(locale)}</lastBuildDate>
-      <atom:link href="${siteMetadata.siteUrl}/${page.replace(
-  ".xml",
-  defaultLocale === locale ? ".xml" : "." + locale + ".xml",
-)}" rel="self" type="application/rss+xml"/>
-      ${posts.map((post) => generateRssItem(post, locale, defaultLocale)).join("")}
-    </channel>
-  </rss>
-`;
+const generateRss = (
+  posts: PostFrontMatter[],
+  locale: string,
+  defaultLocale: string,
+  page: string = "feed.xml",
+): string => {
+  return `
+    <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+      <channel>
+        <title>${escape(siteMetadata.title)}</title>
+        <link>${siteMetadata.siteUrl}${defaultLocale === locale ? "" : "/" + locale}/blog</link>
+        <description>${escape(siteMetadata.description[locale])}</description>
+        <language>${locale}</language>
+        <managingEditor>${siteMetadata.email} (${siteMetadata.author})</managingEditor>
+        <webMaster>${siteMetadata.email} (${siteMetadata.author})</webMaster>
+        <lastBuildDate>${new Date(posts[0].date).toLocaleDateString(locale)}</lastBuildDate>
+        <atom:link href="${siteMetadata.siteUrl}/${page.replace(
+    ".xml",
+    defaultLocale === locale ? ".xml" : "." + locale + ".xml",
+  )}" rel="self" type="application/rss+xml"/>
+        ${posts.map((post) => generateRssItem({ post, locale, defaultLocale })).join("")}
+      </channel>
+    </rss>
+    `;
+};
 export default generateRss;

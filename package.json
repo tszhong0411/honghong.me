@@ -19,7 +19,6 @@
     "@fontsource/inter": "4.5.4",
     "@fontsource/jetbrains-mono": "4.5.3",
     "@fontsource/noto-sans-tc": "4.5.4",
-    "@mailchimp/mailchimp_marketing": "3.0.74",
     "@prisma/client": "3.9.2",
     "@react-spring/web": "^9.4.3",
     "@tailwindcss/forms": "0.4.0",
@@ -29,7 +28,6 @@
     "esbuild": "0.14.23",
     "eslint-plugin-cypress": "^2.12.1",
     "framer-motion": "6.2.6",
-    "generate-password": "1.7.0",
     "github-slugger": "1.4.0",
     "googleapis": "95.0.0",
     "gray-matter": "4.0.3",
@@ -43,12 +41,9 @@
     "next-translate": "^1.3.4",
     "postcss": "8.4.6",
     "preact": "10.6.6",
-    "qrious": "4.0.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-icons": "4.3.1",
     "react-loading-skeleton": "^3.0.3",
-    "react-textfit": "1.1.1",
     "react-toastify": "8.2.0",
     "reading-time": "1.5.0",
     "rehype-autolink-headings": "6.1.1",
@@ -60,8 +55,6 @@
     "remark-footnotes": "4.0.1",
     "remark-gfm": "3.0.1",
     "remark-math": "5.1.1",
-    "sass": "1.49.8",
-    "sharp": "0.30.1",
     "smoothscroll-polyfill": "0.4.4",
     "swr": "1.1.2",
     "tailwindcss": "3.0.23",
@@ -70,7 +63,7 @@
   "devDependencies": {
     "@next/bundle-analyzer": "12.1.0",
     "@svgr/webpack": "6.2.1",
-    "@types/node": "^17.0.19",
+    "@types/node": "^17.0.20",
     "@types/react": "^17.0.39",
     "compression-webpack-plugin": "9.2.0",
     "cross-env": "7.0.3",
@@ -91,7 +84,7 @@
     "prisma": "3.9.2",
     "socket.io": "4.4.1",
     "socket.io-client": "4.4.1",
-    "typescript": "^4.5.5"
+    "typescript": "4.5.5"
   },
   "lint-staged": {
     "*.+(js|jsx|ts|tsx)": [

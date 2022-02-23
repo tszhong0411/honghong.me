@@ -4,6 +4,7 @@ import { ComponentMap, getMDXComponent } from "mdx-bundler/client";
 import CustomLink from "./Link";
 import Image from "./PostImage";
 import TOCInline from "./TOCInline";
+import CustomIframe from "./Iframe";
 import Pre from "./Pre";
 import { BlogNewsletterForm } from "./NewsletterForm";
 
@@ -15,6 +16,7 @@ const Wrapper: React.ComponentType<{ layout: string }> = ({ layout, ...rest }) =
 export const MDXComponents: ComponentMap = {
   Image,
   TOCInline,
+  CustomIframe,
   a: CustomLink,
   pre: Pre,
   BlogNewsletterForm: BlogNewsletterForm,

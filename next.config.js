@@ -88,6 +88,9 @@ module.exports = nextTranslate(
           },
         ];
       },
+      future: {
+        webpack5: true,
+      },
       webpack: (config, { dev, isServer }) => {
         config.plugins.push(new CompressionPlugin());
         config.module.rules.push({

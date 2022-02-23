@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { TagSEO } from "@/components/SEO";
-import siteMetadata from "@/data/siteMetadata";
+import siteMetadata, { locale } from "@/data/siteMetadata";
 import ListLayout from "@/layouts/ListLayout";
 import generateRss from "@/lib/generate-rss";
 import { getAllFilesFrontMatter } from "@/lib/mdx";
@@ -39,17 +39,17 @@ export const getStaticProps: GetStaticProps<{
   locale: string;
   availableLocales: string[];
 }> = async ({ params, defaultLocale, locale, locales }) => {
+  const tag = params.tag as string;
   const otherLocale = locale !== defaultLocale ? locale : "";
   const allPosts = await getAllFilesFrontMatter("blog", otherLocale);
   const filteredPosts = allPosts.filter(
-    (post) =>
-      post.draft !== true && post.tags.map((t: string) => kebabCase(t)).includes(params.tag),
+    (post) => post.draft !== true && post.tags.map((t) => kebabCase(t)).includes(params.tag),
   );
-
+  const page = `tags/${tag}/feed.xml`;
   // rss
   if (filteredPosts.length > 0) {
-    const rss = generateRss(filteredPosts, locale, defaultLocale, `tags/${params.tag}/feed.xml`);
-    const rssPath = path.join(root, "public", "tags", params.tag as string);
+    const rss = generateRss(filteredPosts, locale, defaultLocale, page);
+    const rssPath = path.join(root, "public", "tags", tag);
     fs.mkdirSync(rssPath, { recursive: true });
     fs.writeFileSync(
       path.join(rssPath, `feed${otherLocale === "" ? "" : `.${otherLocale}`}.xml`),
@@ -87,7 +87,7 @@ export default function Tag({
   return (
     <>
       <TagSEO
-        title={`${tag} - ${siteMetadata.title[locale]}`}
+        title={`${tag} - ${siteMetadata.title}`}
         description={`${tag} tags - ${siteMetadata.author}`}
         availableLocales={availableLocales}
       />
