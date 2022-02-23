@@ -1,9 +1,13 @@
 import Footer from "./Footer";
 import { ToastContainer } from "react-toastify";
 import Navbar from "./Navbar";
-import { useEffect } from "react";
+import { useEffect, ReactNode } from "react";
 
-const LayoutWrapper = ({ children }) => {
+interface Props {
+  children: ReactNode;
+}
+
+const LayoutWrapper = ({ children }: Props) => {
   useEffect(() => {
     console.log(
       "%c小康 Blog",

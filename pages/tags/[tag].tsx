@@ -7,10 +7,12 @@ import generateRss from "@/lib/generate-rss";
 import { getAllFilesFrontMatter } from "@/lib/mdx";
 import { getAllTags } from "@/lib/tags";
 import kebabCase from "@/lib/utils/kebabCase";
+import { GetStaticProps, InferGetStaticPropsType, GetStaticPaths } from "next";
+import { PostFrontMatter } from "@/lib/types";
 
 const root = process.cwd();
 
-export async function getStaticPaths({ locales, defaultLocale }) {
+export const getStaticPaths: GetStaticPaths = async ({ locales, defaultLocale }) => {
   const tags = await Promise.all(
     locales.map(async (locale) => {
       const otherLocale = locale !== defaultLocale ? locale : "";
@@ -28,19 +30,26 @@ export async function getStaticPaths({ locales, defaultLocale }) {
     })),
     fallback: false,
   };
-}
+};
 
-export async function getStaticProps({ params, defaultLocale, locale, locales }) {
+//@ts-ignore
+export const getStaticProps: GetStaticProps<{
+  posts: PostFrontMatter[];
+  tag: string;
+  locale: string;
+  availableLocales: string[];
+}> = async ({ params, defaultLocale, locale, locales }) => {
   const otherLocale = locale !== defaultLocale ? locale : "";
   const allPosts = await getAllFilesFrontMatter("blog", otherLocale);
   const filteredPosts = allPosts.filter(
-    (post) => post.draft !== true && post.tags.map((t) => kebabCase(t)).includes(params.tag),
+    (post) =>
+      post.draft !== true && post.tags.map((t: string) => kebabCase(t)).includes(params.tag),
   );
 
   // rss
   if (filteredPosts.length > 0) {
     const rss = generateRss(filteredPosts, locale, defaultLocale, `tags/${params.tag}/feed.xml`);
-    const rssPath = path.join(root, "public", "tags", params.tag);
+    const rssPath = path.join(root, "public", "tags", params.tag as string);
     fs.mkdirSync(rssPath, { recursive: true });
     fs.writeFileSync(
       path.join(rssPath, `feed${otherLocale === "" ? "" : `.${otherLocale}`}.xml`),
@@ -66,9 +75,14 @@ export async function getStaticProps({ params, defaultLocale, locale, locales })
       availableLocales,
     },
   };
-}
+};
 
-export default function Tag({ posts, tag, locale, availableLocales }) {
+export default function Tag({
+  posts,
+  tag,
+  locale,
+  availableLocales,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   const title = tag[0].toUpperCase() + tag.split(" ").join("-").slice(1);
   return (
     <>

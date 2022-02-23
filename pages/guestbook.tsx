@@ -2,6 +2,7 @@ import prisma from "lib/prisma";
 import { PageSEO } from "@/components/SEO";
 import siteMetadata from "@/data/siteMetadata";
 import Guestbook from "@/components/Guestbook";
+import { GetStaticProps } from "next";
 import useTranslation from "next-translate/useTranslation";
 
 export default function GuestbookPage({ fallbackData, locale, availableLocales }) {
@@ -25,7 +26,7 @@ export default function GuestbookPage({ fallbackData, locale, availableLocales }
   );
 }
 
-export async function getStaticProps({ locale, locales }) {
+export const getStaticProps: GetStaticProps = async ({ locale, locales }) => {
   const entries = await prisma.guestbook.findMany({
     orderBy: {
       updated_at: "desc",
@@ -47,4 +48,4 @@ export async function getStaticProps({ locale, locales }) {
     },
     revalidate: 60,
   };
-}
+};

@@ -10,7 +10,7 @@ const esca = {
   "'": "&#39;",
   '"': "&quot;",
 };
-const pe = (m) => esca[m];
+const pe = (m: keyof typeof esca) => esca[m];
 
 /**
  * Safely escape HTML entities such as `&`, `<`, `>`, `"`, and `'`.
@@ -19,4 +19,4 @@ const pe = (m) => esca[m];
  *  the input type is unexpected, except for boolean and numbers,
  *  converted as string.
  */
-export const escape = (es) => replace.call(es, ca, pe);
+export const escape = (es: string): string => replace.call(es, ca, pe);

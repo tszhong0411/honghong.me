@@ -3,10 +3,18 @@ import siteMetadata from "@/data/siteMetadata";
 import ListLayout from "@/layouts/ListLayout";
 import { PageSEO } from "@/components/SEO";
 import useTranslation from "next-translate/useTranslation";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
+import { ComponentProps } from "react";
 
 export const POSTS_PER_PAGE = 10;
 
-export async function getStaticProps({ locale, defaultLocale, locales }) {
+export const getStaticProps: GetStaticProps<{
+  posts: ComponentProps<typeof ListLayout>["posts"];
+  initialDisplayPosts: ComponentProps<typeof ListLayout>["initialDisplayPosts"];
+  pagination: ComponentProps<typeof ListLayout>["pagination"];
+  locale: string;
+  availableLocales: string[];
+}> = async ({ locale, defaultLocale, locales }) => {
   const otherLocale = locale !== defaultLocale ? locale : "";
   const posts = await getAllFilesFrontMatter("blog", otherLocale);
   const initialDisplayPosts = posts.slice(0, POSTS_PER_PAGE);
@@ -23,9 +31,15 @@ export async function getStaticProps({ locale, defaultLocale, locales }) {
       availableLocales: locales,
     },
   };
-}
+};
 
-export default function Blog({ posts, initialDisplayPosts, pagination, locale, availableLocales }) {
+export default function Blog({
+  posts,
+  initialDisplayPosts,
+  pagination,
+  locale,
+  availableLocales,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t } = useTranslation();
   return (
     <>
@@ -45,6 +59,7 @@ export default function Blog({ posts, initialDisplayPosts, pagination, locale, a
           posts={posts}
           initialDisplayPosts={initialDisplayPosts}
           pagination={pagination}
+          title={""}
         />
       </div>
     </>

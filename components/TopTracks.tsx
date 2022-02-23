@@ -2,6 +2,7 @@ import useSWR from "swr";
 import { useTheme } from "next-themes";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { useState, useEffect } from "react";
+import { TopTracks } from "@/lib/types";
 
 import fetcher from "lib/fetcher";
 import Track from "components/Track";
@@ -22,7 +23,7 @@ export default function Tracks() {
   const { theme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  const { data } = useSWR("/api/top-tracks", fetcher);
+  const { data } = useSWR<TopTracks>("/api/top-tracks", fetcher);
 
   // When mounted on client, now we can show the UI
   useEffect(() => setMounted(true), []);

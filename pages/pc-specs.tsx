@@ -1,11 +1,12 @@
 import siteMetadata from "@/data/siteMetadata";
 import { PageSEO } from "@/components/SEO";
 import { pcSpecsList } from "@/data/pcSpecsList";
+import { GetStaticProps } from "next";
 import useTranslation from "next-translate/useTranslation";
 
-export async function getStaticProps({ locale, locales }) {
+export const getStaticProps: GetStaticProps = async ({ locale, locales }) => {
   return { props: { locale, availableLocales: locales } };
-}
+};
 
 export default function PcSpecs({ locale, availableLocales }) {
   const { t } = useTranslation();

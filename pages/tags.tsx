@@ -5,15 +5,22 @@ import siteMetadata from "@/data/siteMetadata";
 import { getAllTags } from "@/lib/tags";
 import kebabCase from "@/lib/utils/kebabCase";
 import useTranslation from "next-translate/useTranslation";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 
-export async function getStaticProps({ defaultLocale, locale, locales }) {
+export const getStaticProps: GetStaticProps<{
+  tags: Record<string, number>;
+  availableLocales: string[];
+}> = async ({ defaultLocale, locale, locales }) => {
   const otherLocale = locale !== defaultLocale ? locale : "";
   const tags = await getAllTags("blog", otherLocale);
 
   return { props: { tags, locale, availableLocales: locales } };
-}
+};
 
-export default function Tags({ tags, availableLocales }) {
+export default function Tags({
+  tags,
+  availableLocales,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   const sortedTags = Object.keys(tags).sort((a, b) => tags[b] - tags[a]);
   const { t } = useTranslation();
   return (

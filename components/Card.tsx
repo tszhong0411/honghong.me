@@ -4,13 +4,6 @@ import { useSpring, animated, config } from "@react-spring/web";
 import { useRef, useState } from "react";
 import useTranslation from "next-translate/useTranslation";
 
-interface CardProps {
-  title: string;
-  description: string;
-  imgSrc?: string;
-  href: string;
-}
-
 const calc = (
   x: number,
   y: number,
@@ -25,7 +18,7 @@ const calc = (
 const trans = (x: number, y: number, s: number) =>
   `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 
-const Card = ({ title, description, imgSrc, href }: CardProps) => {
+const Card = ({ title, description, imgSrc, href }) => {
   const ref = useRef(null);
   const [xys, set] = useState([0, 0, 1]);
   const props = useSpring({

@@ -2,11 +2,12 @@ import siteMetadata from "@/data/siteMetadata";
 import projectsData from "@/data/projectsData";
 import Card from "@/components/Card";
 import { PageSEO } from "@/components/SEO";
+import { GetStaticProps } from "next";
 import useTranslation from "next-translate/useTranslation";
 
-export async function getStaticProps({ locale, locales }) {
+export const getStaticProps: GetStaticProps = async ({ locale, locales }) => {
   return { props: { locale, availableLocales: locales } };
-}
+};
 
 export default function Projects({ locale, availableLocales }) {
   const { t } = useTranslation();
@@ -25,7 +26,13 @@ export default function Projects({ locale, availableLocales }) {
         <p className="mb-12 text-gray-600 dark:text-gray-400">{t("projects:description")}</p>
         <div className="flex flex-wrap">
           {projectsData[locale]?.map((d) => (
-            <Card key={d.title} title={d.title} description={d.description} href={d.href} />
+            <Card
+              key={d.title}
+              title={d.title}
+              description={d.description}
+              href={d.href}
+              imgSrc={d.imgSrc}
+            />
           ))}
         </div>
       </div>

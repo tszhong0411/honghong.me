@@ -18,11 +18,12 @@ import RSS from "@/components/Rss";
 import LayoutWrapper from "@/components/LayoutWrapper";
 import { ClientReload } from "@/components/ClientReload";
 import { SessionProvider } from "next-auth/react";
+import type { AppProps } from "next/app";
 
 const isDevelopment = process.env.NODE_ENV === "development";
 const isSocket = process.env.SOCKET;
 
-export default function App({ Component, pageProps: { session, ...pageProps } }) {
+export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   useEffect(() => {
     CdnList.css.map((item) => {
       var style = document.createElement("link");

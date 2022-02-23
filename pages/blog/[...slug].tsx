@@ -4,11 +4,11 @@ import generateRss from "@/lib/generate-rss";
 import { MDXLayoutRenderer } from "@/components/MDXComponents";
 import { formatSlug, getAllFilesFrontMatter, getFileBySlug, getFiles } from "@/lib/mdx";
 import { AuthorFrontMatter, PostFrontMatter, Toc } from "@/lib/types";
-import { GetStaticProps, InferGetStaticPropsType } from "next";
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 
 const DEFAULT_LAYOUT = "PostLayout";
 
-export async function getStaticPaths({ locales, defaultLocale }) {
+export const getStaticPaths: GetStaticPaths = async ({ locales, defaultLocale }) => {
   const localesPost = locales
     .map((locale) => {
       const otherLocale = locale !== defaultLocale ? locale : "";
@@ -26,7 +26,7 @@ export async function getStaticPaths({ locales, defaultLocale }) {
     })),
     fallback: false,
   };
-}
+};
 
 // @ts-ignore
 export const getStaticProps: GetStaticProps<{

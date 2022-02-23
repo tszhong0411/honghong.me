@@ -1,16 +1,16 @@
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 
 import useTranslation from "next-translate/useTranslation";
 import siteMetadata from "@/data/siteMetadata";
 
 const NewsletterForm = ({ title = "喜歡我的文章？訂閱我們的電子報!" }) => {
-  const inputEl = useRef(null);
+  const inputEl = useRef<HTMLInputElement>(null);
   const [error, setError] = useState(false);
   const [message, setMessage] = useState("");
   const [subscribed, setSubscribed] = useState(false);
   const { t } = useTranslation();
 
-  const subscribe = async (e) => {
+  const subscribe = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const res = await fetch(`/api/${siteMetadata.newsletter.provider}`, {

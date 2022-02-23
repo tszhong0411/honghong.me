@@ -7,17 +7,27 @@ import { getAllFilesFrontMatter } from "@/lib/mdx";
 import formatDate from "@/lib/utils/formatDate";
 import Image from "next/image";
 import useTranslation from "next-translate/useTranslation";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
+import { PostFrontMatter } from "@/lib/types";
 
 const MAX_DISPLAY = 3;
 
-export async function getStaticProps({ locale, defaultLocale, locales }) {
+export const getStaticProps: GetStaticProps<{
+  posts: PostFrontMatter[];
+  locale: string;
+  availableLocales: string[];
+}> = async ({ locale, defaultLocale, locales }) => {
   const otherLocale = locale !== defaultLocale ? locale : "";
   const posts = await getAllFilesFrontMatter("blog", otherLocale);
 
   return { props: { posts, locale, availableLocales: locales } };
-}
+};
 
-export default function Home({ posts, locale, availableLocales }) {
+export default function Home({
+  posts,
+  locale,
+  availableLocales,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t } = useTranslation();
 
   return (

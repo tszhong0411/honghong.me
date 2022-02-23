@@ -13,6 +13,8 @@ import kebabCase from "@/lib/utils/kebabCase";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 import formatDate from "@/lib/utils/formatDate";
+import { PostFrontMatter, AuthorFrontMatter, Toc } from "@/lib/types";
+import { ReactNode } from "react";
 
 const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/main/data/blog/${fileName}`;
 
@@ -25,6 +27,16 @@ const facebookShare = (slug) =>
     `${siteMetadata.siteUrl}/blog/${slug}`,
   )}`;
 
+type Props = {
+  frontMatter: PostFrontMatter;
+  authorDetails: AuthorFrontMatter[];
+  next?: { slug: string; title: string; summary: string };
+  prev?: { slug: string; title: string; summary: string };
+  children: ReactNode;
+  toc: Toc;
+  availableLocales: string[];
+};
+
 export default function PostLayout({
   frontMatter,
   authorDetails,
@@ -33,7 +45,7 @@ export default function PostLayout({
   children,
   toc,
   availableLocales,
-}) {
+}: Props) {
   const { slug, fileName, date, title, tags } = frontMatter;
   const { t } = useTranslation();
   const { locale } = useRouter();
@@ -65,7 +77,7 @@ export default function PostLayout({
                   ))}
                 </ul>
               )}
-              <PageTitle style={{ marginBottom: "16px" }}>{title}</PageTitle>
+              <PageTitle className="mb-[16px]">{title}</PageTitle>
             </div>
           </div>
           <div className="my-6">

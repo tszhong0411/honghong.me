@@ -8,8 +8,8 @@ import { PostFrontMatter } from "@/lib/types";
 const root = process.cwd();
 
 export async function getAllTags(type: "blog" | "authors", otherLocale: string) {
-  const files = await getFiles(type, otherLocale);
-  let tagCount = {};
+  const files = getFiles(type, otherLocale);
+  const tagCount: Record<string, number> = {};
   // Iterate through each post, putting all found tags into `tags`
   files.forEach((file) => {
     const source = fs.readFileSync(path.join(root, "data", type, file), "utf8");

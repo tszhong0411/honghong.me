@@ -1,13 +1,21 @@
 import Link from "@/components/Link";
 import Tag from "@/components/Tag";
-import { useState } from "react";
+import { ComponentProps, useState } from "react";
 import Pagination from "@/components/Pagination";
 import formatDate from "@/lib/utils/formatDate";
 import Image from "next/image";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
+import { PostFrontMatter } from "@/lib/types";
 
-export default function ListLayout({ posts, title, initialDisplayPosts = [], pagination }) {
+interface Props {
+  posts: PostFrontMatter[];
+  title: string;
+  initialDisplayPosts?: PostFrontMatter[];
+  pagination?: ComponentProps<typeof Pagination>;
+}
+
+export default function ListLayout({ posts, title, initialDisplayPosts = [], pagination }: Props) {
   const [searchValue, setSearchValue] = useState("");
   const filteredBlogPosts = posts.filter((frontMatter) => {
     const searchContent = frontMatter.title + frontMatter.summary + frontMatter.tags.join(" ");

@@ -4,6 +4,8 @@ import matter from "gray-matter";
 import path from "path";
 import readingTime from "reading-time";
 import getAllFilesRecursively from "./utils/files";
+import { Toc } from "@/lib/types";
+
 // Remark packages
 import remarkGfm from "remark-gfm";
 import remarkFootnotes from "remark-footnotes";
@@ -22,7 +24,7 @@ import rehypePresetMinify from "rehype-preset-minify";
 
 const root = process.cwd();
 
-export function getFiles(type, otherLocale = "") {
+export function getFiles(type: "blog" | "authors", otherLocale = "") {
   const prefixPaths = path.join(root, "data", type);
   const files =
     otherLocale === ""
@@ -32,17 +34,21 @@ export function getFiles(type, otherLocale = "") {
   return files.map((file) => file.slice(prefixPaths.length + 1).replace(/\\/g, "/"));
 }
 
-export function formatSlug(slug) {
+export function formatSlug(slug: string) {
   return slug.split(".")[0];
 }
 
-export function dateSortDesc(a, b) {
+export function dateSortDesc(a: string, b: string) {
   if (a > b) return -1;
   if (a < b) return 1;
   return 0;
 }
 
-export async function getFileBySlug(type, slug, otherLocale = "") {
+export async function getFileBySlug<T>(
+  type: "authors" | "blog" | "cookiePolicy" | "privacyPolicy",
+  slug: string | string[],
+  otherLocale = "",
+) {
   const section = require("@agentofuser/rehype-section").default;
   const [mdxPath, mdPath] =
     otherLocale === ""
@@ -62,7 +68,7 @@ export async function getFileBySlug(type, slug, otherLocale = "") {
     process.env.ESBUILD_BINARY_PATH = path.join(root, "node_modules", "esbuild", "bin", "esbuild");
   }
 
-  let toc = [];
+  const toc: Toc = [];
 
   // Parsing frontmatter here to pass it in as options to rehype plugin
   const { code, frontmatter } = await bundleMDX({
@@ -110,6 +116,7 @@ export async function getFileBySlug(type, slug, otherLocale = "") {
       return options;
     },
   });
+
   return {
     mdxSource: code,
     toc,
@@ -124,7 +131,7 @@ export async function getFileBySlug(type, slug, otherLocale = "") {
 }
 
 // otherLocale === locale if locale !== defaultLocale
-export async function getAllFilesFrontMatter(folder, otherLocale) {
+export async function getAllFilesFrontMatter(folder: "blog", otherLocale: string[] | string) {
   const prefixPaths = path.join(root, "data", folder);
 
   const files =

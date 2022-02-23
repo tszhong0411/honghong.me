@@ -3,10 +3,11 @@ import siteMetadata from "@/data/siteMetadata";
 import Image from "@/components/PostImage";
 import Link from "@/components/Link";
 import useTranslation from "next-translate/useTranslation";
+import { GetStaticProps } from "next";
 
-export async function getStaticProps({ locale, locales }) {
+export const getStaticProps: GetStaticProps = async ({ locale, locales }) => {
   return { props: { locale, availableLocales: locales } };
-}
+};
 
 export default function Uses({ locale, availableLocales }) {
   const { t } = useTranslation();

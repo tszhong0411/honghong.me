@@ -1,26 +1,32 @@
-/**
- * @typedef TocHeading
- * @prop {string} value
- * @prop {number} depth
- * @prop {string} url
- */
-
 import useTranslation from "next-translate/useTranslation";
+import { Toc } from "@/lib/types";
+
+interface TOCInlineProps {
+  toc: Toc;
+  indentDepth?: number;
+  fromHeading?: number;
+  toHeading?: number;
+  asDisclosure?: boolean;
+  exclude?: string | string[];
+}
 
 /**
  * Generates an inline table of contents
  * Exclude titles matching this string (new RegExp('^(' + string + ')$', 'i')).
  * If an array is passed the array gets joined with a pipe (new RegExp('^(' + array.join('|') + ')$', 'i')).
  *
- * @param {{
- *  toc: TocHeading[],
- *  fromHeading?: number,
- *  toHeading?: number,
- *  exclude?: string|string[]
- * }} props
+ * @param {TOCInlineProps} {
+ *   toc,
+ *   indentDepth = 3,
+ *   fromHeading = 1,
+ *   toHeading = 6,
+ *   asDisclosure = false,
+ *   exclude = '',
+ * }
  *
  */
-const TOCInline = ({ toc, fromHeading = 1, toHeading = 6, exclude = "" }) => {
+
+const TOCInline = ({ toc, fromHeading = 1, toHeading = 6, exclude = "" }: TOCInlineProps) => {
   const { t } = useTranslation();
   const re = Array.isArray(exclude)
     ? new RegExp("^(" + exclude.join("|") + ")$", "i")

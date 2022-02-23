@@ -1,7 +1,15 @@
 import { PageSEO } from "@/components/SEO";
 import useTranslation from "next-translate/useTranslation";
+import { ReactNode } from "react";
+import { AuthorFrontMatter } from "@/lib/types";
 
-export default function AuthorLayout({ children, frontMatter, availableLocales }) {
+type Props = {
+  children: ReactNode;
+  frontMatter: AuthorFrontMatter;
+  availableLocales: string[];
+};
+
+export default function AuthorLayout({ children, frontMatter, availableLocales }: Props) {
   const { name } = frontMatter;
   const { t } = useTranslation();
 

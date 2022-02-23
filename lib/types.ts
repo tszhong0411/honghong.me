@@ -6,6 +6,7 @@ export type AuthorFrontMatter = {
   company: string;
   email: string;
   twitter: string;
+  instagram: string;
   linkedin: string;
   github: string;
 };
@@ -17,12 +18,16 @@ export type PostFrontMatter = {
   lastmod?: string;
   draft?: boolean;
   summary?: string;
-  images?: string[];
+  images?: string;
   authors?: string[];
   layout?: string;
   canonicalUrl?: string;
   slug: string;
   fileName: string;
+};
+
+export type PolicyFrontMatter = {
+  title: string;
 };
 
 export type Toc = {
@@ -52,4 +57,19 @@ export type NowPlayingSong = {
   isPlaying: boolean;
   songUrl: string;
   title: string;
+};
+
+export type Policy = {
+  title: string;
+  layout?: string;
+};
+
+export type Song = {
+  songUrl: string;
+  artist: string;
+  title: string;
+};
+
+export type TopTracks = {
+  tracks: Song[];
 };

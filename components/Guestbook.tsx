@@ -2,7 +2,7 @@ import { useRef, useState, useEffect, CSSProperties } from "react";
 import { format } from "date-fns";
 import { signIn, useSession } from "next-auth/react";
 import useSWR, { useSWRConfig } from "swr";
-import { Snackbar } from "@/components/Snackbar";
+import { toast } from "react-toastify";
 import Image from "next/image";
 import { signOut } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
@@ -15,12 +15,14 @@ function GuestbookEntry({ entry, user }) {
   const { mutate } = useSWRConfig();
   const deleteEntry = async (e) => {
     e.preventDefault();
+
     await fetch(`/api/guestbook/${entry.id}`, {
       method: "DELETE",
     });
 
     mutate("/api/guestbook");
   };
+
   const { t } = useTranslation();
 
   return (
@@ -74,16 +76,43 @@ export default function Guestbook({ fallbackData }) {
 
       const { error } = await res.json();
       if (error) {
-        Snackbar(error, "error");
+        toast.error(error, {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
         return;
       }
 
       inputEl.current.value = "";
       mutate("/api/guestbook");
-      Snackbar(t("guestbook:success"), "success");
+      toast.success(t("guestbook:success"), {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
       setLoading(false);
     } else {
-      Snackbar(t("guestbook:error"), "error");
+      toast.error(t("guestbook:error"), {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     }
   };
 

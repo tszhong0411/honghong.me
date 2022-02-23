@@ -1,5 +1,5 @@
-import { google } from "googleapis";
 import type { NextApiRequest, NextApiResponse } from "next";
+import { google } from "googleapis";
 
 import googleAuth from "lib/google";
 
@@ -11,11 +11,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   });
 
   const response = await youtube.channels.list({
-    // @ts-ignore
-    id: "UC2hMWOaOlk9vrkvFVaGmn0Q",
-    part: "statistics",
+    id: ["UC2hMWOaOlk9vrkvFVaGmn0Q"],
+    part: ["statistics"],
   });
-  // @ts-ignore
+
   const channel = response.data.items[0];
   const { subscriberCount, viewCount } = channel.statistics;
 

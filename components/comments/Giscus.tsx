@@ -7,7 +7,7 @@ import useTranslation from "next-translate/useTranslation";
 import siteMetadata from "@/data/siteMetadata";
 
 interface Props {
-  mapping: string | undefined;
+  mapping: string;
 }
 
 interface Comment {

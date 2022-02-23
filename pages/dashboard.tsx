@@ -5,10 +5,14 @@ import BlogTotalViews from "@/components/metrics/BlogTotalViews";
 import TopTracks from "@/components/TopTracks";
 import { PageSEO } from "@/components/SEO";
 import useTranslation from "next-translate/useTranslation";
+import { GetStaticProps } from "next";
 
-export async function getStaticProps({ locale, locales }) {
+export const getStaticProps: GetStaticProps<{
+  locale: string;
+  availableLocales: string[];
+}> = async ({ locale, locales }) => {
   return { props: { locale, availableLocales: locales } };
-}
+};
 
 export default function Dashboard({ locale, availableLocales }) {
   const { t } = useTranslation();

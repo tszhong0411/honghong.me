@@ -3,8 +3,13 @@ import siteMetadata from "@/data/siteMetadata";
 import { getAllFilesFrontMatter } from "@/lib/mdx";
 import ListLayout from "@/layouts/ListLayout";
 import { POSTS_PER_PAGE } from "../../blog";
+import { PostFrontMatter } from "@/lib/types";
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 
-export async function getStaticPaths({ locales, defaultLocale }) {
+export const getStaticPaths: GetStaticPaths<{ page: string }> = async ({
+  locales,
+  defaultLocale,
+}) => {
   const paths = (
     await Promise.all(
       locales.map(async (locale) => {
@@ -25,9 +30,15 @@ export async function getStaticPaths({ locales, defaultLocale }) {
     })),
     fallback: false,
   };
-}
+};
 
-export async function getStaticProps(context) {
+export const getStaticProps: GetStaticProps<{
+  posts: PostFrontMatter[];
+  initialDisplayPosts: PostFrontMatter[];
+  pagination: { currentPage: number; totalPages: number };
+  locale: string;
+  availableLocales: string[];
+}> = async (context) => {
   const {
     params: { page },
     defaultLocale,
@@ -36,7 +47,7 @@ export async function getStaticProps(context) {
   } = context;
   const otherLocale = locale !== defaultLocale ? locale : "";
   const posts = await getAllFilesFrontMatter("blog", otherLocale);
-  const pageNumber = parseInt(page);
+  const pageNumber = parseInt(page as string);
   const initialDisplayPosts = posts.slice(
     POSTS_PER_PAGE * (pageNumber - 1),
     POSTS_PER_PAGE * pageNumber,
@@ -69,7 +80,7 @@ export async function getStaticProps(context) {
       availableLocales,
     },
   };
-}
+};
 
 export default function PostPage({
   posts,
@@ -77,7 +88,7 @@ export default function PostPage({
   pagination,
   locale,
   availableLocales,
-}) {
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
       <PageSEO

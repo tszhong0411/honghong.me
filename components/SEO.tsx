@@ -1,8 +1,24 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import siteMetadata from "@/data/siteMetadata";
+import { PostFrontMatter, AuthorFrontMatter } from "@/lib/types";
 
-const generateLinks = (router, availableLocales) =>
+interface CommonSEOProps {
+  title: string;
+  description: string;
+  ogType: string;
+  ogImage:
+    | string
+    | {
+        "@type": string;
+        url: string;
+      }[];
+  twImage: string;
+  canonicalUrl?: string;
+  availableLocales: string[];
+}
+
+const generateLinks = (router: any, availableLocales: string[]) =>
   availableLocales.map((locale) => (
     <link
       key={locale}
@@ -23,7 +39,14 @@ const generateLinks = (router, availableLocales) =>
     />
   ));
 
-const CommonSEO = ({ title, description, ogType, ogImage, twImage, availableLocales }) => {
+const CommonSEO = ({
+  title,
+  description,
+  ogType,
+  ogImage,
+  twImage,
+  availableLocales,
+}: CommonSEOProps) => {
   const router = useRouter();
   return (
     <Head>
@@ -35,7 +58,7 @@ const CommonSEO = ({ title, description, ogType, ogImage, twImage, availableLoca
       <meta property="og:site_name" content={siteMetadata.title[router.locale]} />
       <meta property="og:description" content={description} />
       <meta property="og:title" content={title} />
-      {ogImage.constructor.name === "Array" ? (
+      {Array.isArray(ogImage) ? (
         ogImage.map(({ url }) => <meta property="og:image" content={url} key={url} />)
       ) : (
         <meta property="og:image" content={ogImage} key={ogImage} />
@@ -55,7 +78,13 @@ const CommonSEO = ({ title, description, ogType, ogImage, twImage, availableLoca
   );
 };
 
-export const PageSEO = ({ title, description, availableLocales }) => {
+interface PageSEOProps {
+  title: string;
+  description: string;
+  availableLocales: string[];
+}
+
+export const PageSEO = ({ title, description, availableLocales }: PageSEOProps) => {
   const ogImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner;
   const twImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner;
   return (
@@ -70,7 +99,7 @@ export const PageSEO = ({ title, description, availableLocales }) => {
   );
 };
 
-export const TagSEO = ({ title, description, availableLocales }) => {
+export const TagSEO = ({ title, description, availableLocales }: PageSEOProps) => {
   const ogImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner;
   const twImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner;
   const router = useRouter();
@@ -98,6 +127,12 @@ export const TagSEO = ({ title, description, availableLocales }) => {
   );
 };
 
+interface BlogSeoProps extends PostFrontMatter {
+  authorDetails?: AuthorFrontMatter[];
+  url: string;
+  availableLocales: string[];
+}
+
 export const BlogSEO = ({
   authorDetails,
   title,
@@ -106,8 +141,8 @@ export const BlogSEO = ({
   lastmod,
   url,
   availableLocales,
-  images = [],
-}) => {
+  images,
+}: BlogSeoProps) => {
   const router = useRouter();
   const publishedAt = new Date(date).toISOString();
   const modifiedAt = new Date(lastmod || date).toISOString();

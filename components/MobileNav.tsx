@@ -1,9 +1,15 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "./Link";
 import headerNavLinks from "@/data/headerNavLinks";
 import { useState, useEffect } from "react";
+import { Dispatch, SetStateAction } from "react";
 
-export default function MobileNav({ navShow, setNavShow }) {
+interface Props {
+  navShow: boolean;
+  setNavShow: Dispatch<SetStateAction<boolean>>;
+}
+
+export default function MobileNav({ navShow, setNavShow }: Props) {
   const onToggleNav = () => {
     setNavShow((status: boolean) => {
       if (status) {

@@ -1,7 +1,16 @@
 import { PageSEO } from "@/components/SEO";
 import siteMetadata from "@/data/siteMetadata";
+import { ReactNode } from "react";
+import { PolicyFrontMatter } from "@/lib/types";
 
-export default function PolicyLayout({ children, frontMatter, availableLocales, locale }) {
+type Props = {
+  children: ReactNode;
+  frontMatter: PolicyFrontMatter;
+  availableLocales: string[];
+  locale: string;
+};
+
+export default function PolicyLayout({ children, frontMatter, availableLocales, locale }: Props) {
   const { title } = frontMatter;
   return (
     <>

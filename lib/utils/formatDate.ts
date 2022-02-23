@@ -1,5 +1,5 @@
-const formatDate = (date, locale) => {
-  const options: object = {
+const formatDate = (date: string | Date, locale: string) => {
+  const options: Intl.DateTimeFormatOptions = {
     year: "numeric",
     month: "long",
     day: "numeric",
