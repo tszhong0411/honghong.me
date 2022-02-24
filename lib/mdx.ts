@@ -4,8 +4,7 @@ import matter from "gray-matter";
 import path from "path";
 import readingTime from "reading-time";
 import getAllFilesRecursively from "./utils/files";
-import { Toc } from "@/lib/types";
-
+import { Toc, PostFrontMatter, AuthorFrontMatter } from "@/lib/types";
 // Remark packages
 import remarkGfm from "remark-gfm";
 import remarkFootnotes from "remark-footnotes";
@@ -24,7 +23,7 @@ import rehypePresetMinify from "rehype-preset-minify";
 
 const root = process.cwd();
 
-export function getFiles(type: "blog" | "authors", otherLocale = "") {
+export function getFiles(type: "blog" | "authors", otherLocale: string = "") {
   const prefixPaths = path.join(root, "data", type);
   const files =
     otherLocale === ""
@@ -47,7 +46,7 @@ export function dateSortDesc(a: string, b: string) {
 export async function getFileBySlug<T>(
   type: "authors" | "blog" | "cookiePolicy" | "privacyPolicy",
   slug: string | string[],
-  otherLocale = "",
+  otherLocale: string = "",
 ) {
   const section = require("@agentofuser/rehype-section").default;
   const [mdxPath, mdPath] =
@@ -75,7 +74,7 @@ export async function getFileBySlug<T>(
     source,
     // mdx imports can be automatically source from the components directory
     cwd: path.join(root, "components"),
-    xdmOptions(options) {
+    xdmOptions(options, frontmatter) {
       // this is the recommended way to add custom remark/rehype plugins:
       // The syntax might look weird, but it protects you in case we add/remove
       // plugins in the future.
@@ -131,7 +130,7 @@ export async function getFileBySlug<T>(
 }
 
 // otherLocale === locale if locale !== defaultLocale
-export async function getAllFilesFrontMatter(folder: "blog", otherLocale: string[] | string) {
+export async function getAllFilesFrontMatter(folder: "blog", otherLocale: string) {
   const prefixPaths = path.join(root, "data", folder);
 
   const files =
@@ -141,9 +140,9 @@ export async function getAllFilesFrontMatter(folder: "blog", otherLocale: string
 
   // Check if the file exist in the otherlocale. If not, fallback to defaultLangage
 
-  const allFrontMatter = [];
+  const allFrontMatter: PostFrontMatter[] = [];
 
-  files.forEach((file) => {
+  files.forEach((file: string) => {
     // Replace is needed to work on Windows
     const fileName = file.slice(prefixPaths.length + 1).replace(/\\/g, "/");
     // Remove Unexpected File
@@ -151,8 +150,9 @@ export async function getAllFilesFrontMatter(folder: "blog", otherLocale: string
       return;
     }
     const source = fs.readFileSync(file, "utf8");
-    const { data: frontmatter } = matter(source);
-    if (frontmatter.draft !== true) {
+    const matterFile = matter(source);
+    const frontmatter = matterFile.data as AuthorFrontMatter | PostFrontMatter;
+    if ("draft" in frontmatter && frontmatter.draft !== true) {
       allFrontMatter.push({
         ...frontmatter,
         slug: formatSlug(fileName),

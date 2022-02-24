@@ -56,7 +56,7 @@ const Giscus = ({ mapping }: Props) => {
 
     const script = document.createElement("script");
     script.src = "https://giscus.app/client.js";
-    script.setAttribute("data-repo", repo!);
+    script.setAttribute("data-repo", repo);
     script.setAttribute("data-repo-id", repositoryId);
     script.setAttribute("data-category", category);
     script.setAttribute("data-category-id", categoryId);
