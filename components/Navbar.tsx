@@ -55,6 +55,7 @@ export default function Navbar() {
           onClick={() => {
             setOpen(false);
           }}
+          aria-hidden="true"
         ></div>
       )}
       <header

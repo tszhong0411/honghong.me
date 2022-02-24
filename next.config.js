@@ -1,9 +1,9 @@
+const { withContentlayer } = require("next-contentlayer");
+
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 });
 const withPWA = require("next-pwa");
-
-const CompressionPlugin = require("compression-webpack-plugin");
 
 const nextTranslate = require("next-translate");
 
@@ -62,55 +62,49 @@ const securityHeaders = [
   },
 ];
 
-/**
- * @type {import('next').NextConfig}
- */
-module.exports = nextTranslate(
-  withPWA(
-    withBundleAnalyzer({
-      images: {
-        domains: ["cdn.jsdelivr.net", "avatars.githubusercontent.com"],
-      },
-      pwa: {
-        dest: "public",
-        disable: process.env.NODE_ENV === "development",
-      },
-      reactStrictMode: true,
-      pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
-      eslint: {
-        dirs: ["pages", "components", "lib", "layouts", "scripts"],
-      },
-      async headers() {
-        return [
-          {
-            source: "/(.*)",
-            headers: securityHeaders,
-          },
-        ];
-      },
-      future: {
-        webpack5: true,
-      },
-      webpack: (config, { dev, isServer }) => {
-        config.plugins.push(new CompressionPlugin());
-        config.module.rules.push({
-          test: /\.svg$/,
-          issuer: /\.(js|ts)x?$/,
-          use: ["@svgr/webpack"],
-        });
-
-        if (!dev && !isServer) {
-          // Replace React with Preact only in client production build
-          Object.assign(config.resolve.alias, {
-            "react/jsx-runtime.js": "preact/compat/jsx-runtime",
-            react: "preact/compat",
-            "react-dom/test-utils": "preact/test-utils",
-            "react-dom": "preact/compat",
+module.exports = withContentlayer()(
+  nextTranslate(
+    withPWA(
+      withBundleAnalyzer({
+        images: {
+          domains: ["cdn.jsdelivr.net", "avatars.githubusercontent.com"],
+        },
+        pwa: {
+          dest: "public",
+          disable: process.env.NODE_ENV === "development",
+        },
+        reactStrictMode: true,
+        pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
+        eslint: {
+          dirs: ["pages", "components", "lib", "layouts", "scripts"],
+        },
+        async headers() {
+          return [
+            {
+              source: "/(.*)",
+              headers: securityHeaders,
+            },
+          ];
+        },
+        webpack: (config, { dev, isServer }) => {
+          config.module.rules.push({
+            test: /\.svg$/,
+            use: ["@svgr/webpack"],
           });
-        }
 
-        return config;
-      },
-    }),
+          if (!dev && !isServer) {
+            // Replace React with Preact only in client production build
+            Object.assign(config.resolve.alias, {
+              "react/jsx-runtime.js": "preact/compat/jsx-runtime",
+              react: "preact/compat",
+              "react-dom/test-utils": "preact/test-utils",
+              "react-dom": "preact/compat",
+            });
+          }
+
+          return config;
+        },
+      }),
+    ),
   ),
 );

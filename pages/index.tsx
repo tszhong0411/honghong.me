@@ -3,38 +3,31 @@ import Link from "@/components/Link";
 import { PageSEO } from "@/components/SEO";
 import Tag from "@/components/Tag";
 import siteMetadata from "@/data/siteMetadata";
-import { getAllFilesFrontMatter } from "@/lib/mdx";
 import formatDate from "@/lib/utils/formatDate";
 import Image from "next/image";
 import useTranslation from "next-translate/useTranslation";
-import { GetStaticProps, InferGetStaticPropsType } from "next";
-import { PostFrontMatter } from "@/lib/types";
+import { InferGetStaticPropsType } from "next";
+import { sortedBlogPost, allCoreContent } from "@/lib/utils/contentlayer";
+import { allBlogs } from "contentlayer/generated";
+import { useRouter } from "next/router";
 
 const MAX_DISPLAY = 3;
 
-export const getStaticProps: GetStaticProps<{
-  posts: PostFrontMatter[];
-  locale: string;
-  availableLocales: string[];
-}> = async ({ locale, defaultLocale, locales }) => {
-  const otherLocale = locale !== defaultLocale ? locale : "";
-  const posts = await getAllFilesFrontMatter("blog", otherLocale);
-  return { props: { posts, locale, availableLocales: locales } };
+export const getStaticProps = async () => {
+  // TODO: move computation to get only the essential frontmatter to contentlayer.config
+  const sortedPosts = sortedBlogPost(allBlogs);
+  const posts = allCoreContent(sortedPosts);
+
+  return { props: { posts } };
 };
 
-export default function Home({
-  posts,
-  locale,
-  availableLocales,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Home({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t } = useTranslation();
+  const { locale } = useRouter();
+
   return (
     <>
-      <PageSEO
-        title={siteMetadata.title}
-        description={siteMetadata.description[locale]}
-        availableLocales={availableLocales}
-      />
+      <PageSEO title={siteMetadata.title} description={siteMetadata.description[locale]} />
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
         <div className="space-y-2 pt-6 pb-8 md:space-y-5">
           <Hero />
@@ -44,8 +37,8 @@ export default function Home({
         </div>
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
           {!posts.length && <span className="my-8 block text-xl">{t("common:noPostsFound")}</span>}
-          {posts.slice(0, MAX_DISPLAY).map((frontMatter) => {
-            const { slug, date, title, summary, tags, images } = frontMatter;
+          {posts.slice(0, MAX_DISPLAY).map((post) => {
+            const { slug, date, title, summary, tags, images } = post;
             return (
               <li key={slug} className="py-12">
                 <article>
@@ -61,7 +54,7 @@ export default function Home({
                         <Link href={`/blog/${slug}`}>
                           <div className="custom-image-container overflow-hidden rounded-[12px] px-8 sm:px-0">
                             <Image
-                              src={images}
+                              src={images[0]}
                               alt="Cover"
                               layout="fill"
                               className="custom-image duration-500 hover:scale-[1.1]"

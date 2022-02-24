@@ -1,35 +1,14 @@
 import { MDXLayoutRenderer } from "@/components/MDXComponents";
-import { getFileBySlug } from "@/lib/mdx";
-import { GetStaticProps, InferGetStaticPropsType } from "next";
-import { Policy } from "@/lib/types";
+import { InferGetStaticPropsType } from "next";
+import { allOtherPages } from "contentlayer/generated";
 
 const DEFAULT_LAYOUT = "PolicyLayout";
 
-// @ts-ignore
-export const getStaticProps: GetStaticProps<{
-  locale: string;
-  defaultLocale: string;
-  locales: string[];
-  pageInfo: { mdxSource: string; frontMatter: Policy };
-  availableLocales: string[];
-}> = async ({ locale, defaultLocale, locales }) => {
-  const otherLocale = locale !== defaultLocale ? locale : "";
-  const pageInfo = await getFileBySlug("cookiePolicy", [`default`], otherLocale);
-  return { props: { pageInfo, availableLocales: locales } };
+export const getStaticProps = async () => {
+  const policy = allOtherPages.find((p) => p.slug === "cookie-policy");
+  return { props: { policy } };
 };
 
-export default function About({
-  pageInfo,
-  availableLocales,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
-  const { mdxSource, frontMatter } = pageInfo;
-
-  return (
-    <MDXLayoutRenderer
-      layout={frontMatter.layout || DEFAULT_LAYOUT}
-      mdxSource={mdxSource}
-      frontMatter={frontMatter}
-      availableLocales={availableLocales}
-    />
-  );
+export default function PrivacyPolicy({ policy }: InferGetStaticPropsType<typeof getStaticProps>) {
+  return <MDXLayoutRenderer layout={policy.layout || DEFAULT_LAYOUT} content={policy} />;
 }

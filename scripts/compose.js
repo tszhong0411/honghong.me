@@ -33,15 +33,14 @@ const genFrontMatter = (answers) => {
   const authorArray = answers.authors.length > 0 ? "'" + answers.authors.join("','") + "'" : "";
 
   let frontMatter = dedent`---
-    title: ${answers.title ? answers.title : "Untitled"}
-    date: '${date}'
-    tags: [${answers.tags ? tags : ""}]
-    draft: ${answers.draft === "yes" ? true : false}
-    summary: ${answers.summary ? answers.summary : " "}
-    images: '${answers.cover}'
-    layout: ${answers.layout}
-    canonicalUrl: ${answers.canonicalUrl}
-    `;
+  title: ${answers.title ? answers.title : "Untitled"}
+  date: '${date}'
+  tags: [${answers.tags ? tags : ""}]
+  draft: ${answers.draft === "yes" ? true : false}
+  summary: ${answers.summary ? answers.summary : " "}
+  images: []
+  layout: ${answers.layout}
+  `;
 
   if (answers.authors.length > 0) {
     frontMatter = frontMatter + "\n" + `authors: [${authorArray}]`;
@@ -54,11 +53,6 @@ const genFrontMatter = (answers) => {
 
 inquirer
   .prompt([
-    {
-      name: "filename",
-      message: "input the filename:",
-      type: "input",
-    },
     {
       name: "title",
       message: "Enter post title:",
@@ -93,25 +87,19 @@ inquirer
       type: "input",
     },
     {
-      name: "cover",
-      message: "input the path of cover:",
-      type: "input",
-    },
-    {
       name: "layout",
       message: "Select layout",
       type: "list",
       choices: getLayouts,
     },
-    {
-      name: "canonicalUrl",
-      message: "Enter canonical url:",
-      type: "input",
-    },
   ])
   .then((answers) => {
     // Remove special characters and replace space with -
-    const fileName = answers.filename;
+    const fileName = answers.title
+      .toLowerCase()
+      .replace(/[^a-zA-Z0-9 ]/g, "")
+      .replace(/ /g, "-")
+      .replace(/-+/g, "-");
     const frontMatter = genFrontMatter(answers);
     if (!fs.existsSync("data/blog")) fs.mkdirSync("data/blog", { recursive: true });
     const filePath = `data/blog/${fileName ? fileName : "untitled"}.${

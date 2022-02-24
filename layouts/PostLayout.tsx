@@ -13,10 +13,13 @@ import kebabCase from "@/lib/utils/kebabCase";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 import formatDate from "@/lib/utils/formatDate";
-import { PostFrontMatter, AuthorFrontMatter, Toc } from "@/lib/types";
+import { Toc } from "@/lib/types";
 import { ReactNode } from "react";
+import { CoreContent } from "@/lib/utils/contentlayer";
+import type { Blog, Authors } from "contentlayer/generated";
+import useScrollSpy from "@/hooks/useScrollspy";
 
-const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/main/data/blog/${fileName}`;
+const editUrl = (slug) => `${siteMetadata.siteRepo}/blob/main/data/blog/${slug}.mdx`;
 
 const twitterShare = (slug) =>
   `https://twitter.com/intent/tweet?url=${encodeURIComponent(
@@ -28,37 +31,29 @@ const facebookShare = (slug) =>
   )}`;
 
 type Props = {
-  frontMatter: PostFrontMatter;
-  authorDetails: AuthorFrontMatter[];
+  content: CoreContent<Blog>;
+  authorDetails: CoreContent<Authors>[];
   next?: { slug: string; title: string; summary: string };
   prev?: { slug: string; title: string; summary: string };
   children: ReactNode;
   toc: Toc;
-  availableLocales: string[];
 };
 
-export default function PostLayout({
-  frontMatter,
-  authorDetails,
-  next,
-  prev,
-  children,
-  toc,
-  availableLocales,
-}: Props) {
-  const { slug, fileName, date, title, tags } = frontMatter;
+export default function PostLayout({ content, authorDetails, next, prev, children, toc }: Props) {
+  const { slug, date, title, tags } = content;
   const { t } = useTranslation();
   const { locale } = useRouter();
+  const activeSection = useScrollSpy();
+
   return (
     <>
       <BlogSEO
         url={`${siteMetadata.siteUrl}/blog/${slug}`}
         authorDetails={authorDetails}
-        availableLocales={availableLocales}
-        {...frontMatter}
+        {...content}
       />
       <ScrollTopAndComment />
-      <TOC toc={toc} />
+      <TOC toc={toc} activeSection={activeSection} />
       <article>
         <div>
           <div className="mb-12">
@@ -77,7 +72,7 @@ export default function PostLayout({
                   ))}
                 </ul>
               )}
-              <PageTitle className="mb-[16px]">{title}</PageTitle>
+              <PageTitle>{title}</PageTitle>
             </div>
           </div>
           <div className="my-6">
@@ -132,7 +127,7 @@ export default function PostLayout({
               </div>
               <div className="flex justify-between pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
                 <div className="flex items-center">
-                  <Link href={editUrl(fileName)}>{t("common:editOnGithub")}</Link>
+                  <Link href={editUrl(slug)}>{t("common:editOnGithub")}</Link>
                 </div>
                 <div className="flex">
                   <a
@@ -202,7 +197,7 @@ export default function PostLayout({
               </div>
             </div>
           </div>
-          <Comments frontMatter={frontMatter} />
+          <Comments frontMatter={content} />
           {siteMetadata.newsletter.provider !== "" && <NewsletterForm />}
         </div>
       </article>
@@ -215,26 +210,24 @@ export default function PostLayout({
                   <span className="mb-10 block text-lg font-medium text-slate-900 dark:text-slate-200">
                     {t("common:prev")}
                   </span>
-                  <div className="flex flex-col">
-                    <div className="font-medium">
+                  <div className="flex flex-col font-medium">
+                    <Link
+                      href={`/blog/${prev.slug}`}
+                      className="border-b-2 border-transparent text-xl font-medium tracking-tight duration-300 hover:border-themeColor-500 hover:text-themeColor-500 dark:hover:border-themeColor-350 dark:hover:text-themeColor-350"
+                    >
+                      {prev.title}
+                    </Link>
+                    <div className="prose mb-6 mt-4 dark:prose-dark">
+                      <p>{prev.summary}</p>
+                    </div>
+                    <div>
                       <Link
                         href={`/blog/${prev.slug}`}
-                        className="border-b-2 border-transparent text-xl font-medium tracking-tight duration-300 hover:border-themeColor-500 hover:text-themeColor-500 dark:hover:border-themeColor-350 dark:hover:text-themeColor-350"
+                        className="group inline-flex h-9 items-center whitespace-nowrap rounded-full bg-red-100 px-3 text-sm font-medium text-red-700 duration-300 hover:bg-red-200 hover:text-red-900 focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-red-700 dark:text-red-100 dark:hover:bg-red-600 dark:hover:text-white dark:focus:ring-red-500"
+                        aria-label={`Read "${prev.title}"`}
                       >
-                        {prev.title}
+                        {t("common:readMore")} &rarr;
                       </Link>
-                      <div className="prose mb-6 mt-4 dark:prose-dark">
-                        <p>{prev.summary}</p>
-                      </div>
-                      <div>
-                        <Link
-                          href={`/blog/${prev.slug}`}
-                          className="group inline-flex h-9 items-center whitespace-nowrap rounded-full bg-red-100 px-3 text-sm font-medium text-red-700 duration-300 hover:bg-red-200 hover:text-red-900 focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-red-700 dark:text-red-100 dark:hover:bg-red-600 dark:hover:text-white dark:focus:ring-red-500"
-                          aria-label={`Read "${prev.title}"`}
-                        >
-                          {t("common:readMore")} &rarr;
-                        </Link>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -244,26 +237,24 @@ export default function PostLayout({
                   <span className="mb-10 block text-lg font-medium text-slate-900 dark:text-slate-200">
                     {t("common:next")}
                   </span>
-                  <div className="flex flex-col">
-                    <div className="font-medium">
+                  <div className="flex flex-col font-medium">
+                    <Link
+                      href={`/blog/${next.slug}`}
+                      className="border-b-2 border-transparent text-xl font-medium tracking-tight duration-300 hover:border-themeColor-500 hover:text-themeColor-500 dark:hover:border-themeColor-350 dark:hover:text-themeColor-350"
+                    >
+                      {next.title}
+                    </Link>
+                    <div className="prose mb-6 mt-4 dark:prose-dark">
+                      <p>{next.summary}</p>
+                    </div>
+                    <div>
                       <Link
                         href={`/blog/${next.slug}`}
-                        className="border-b-2 border-transparent text-xl font-medium tracking-tight duration-300 hover:border-themeColor-500 hover:text-themeColor-500 dark:hover:border-themeColor-350 dark:hover:text-themeColor-350"
+                        className="group inline-flex h-9 items-center whitespace-nowrap rounded-full bg-red-100 px-3 text-sm font-medium text-red-700 duration-300 hover:bg-red-200 hover:text-red-900 focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-red-700 dark:text-red-100 dark:hover:bg-red-600 dark:hover:text-white dark:focus:ring-red-500"
+                        aria-label={`Read "${next.title}"`}
                       >
-                        {next.title}
+                        {t("common:readMore")} &rarr;
                       </Link>
-                      <div className="prose mb-6 mt-4 dark:prose-dark">
-                        <p>{next.summary}</p>
-                      </div>
-                      <div>
-                        <Link
-                          href={`/blog/${next.slug}`}
-                          className="group inline-flex h-9 items-center whitespace-nowrap rounded-full bg-red-100 px-3 text-sm font-medium text-red-700 duration-300 hover:bg-red-200 hover:text-red-900 focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-red-700 dark:text-red-100 dark:hover:bg-red-600 dark:hover:text-white dark:focus:ring-red-500"
-                          aria-label={`Read "${next.title}"`}
-                        >
-                          {t("common:readMore")} &rarr;
-                        </Link>
-                      </div>
                     </div>
                   </div>
                 </div>

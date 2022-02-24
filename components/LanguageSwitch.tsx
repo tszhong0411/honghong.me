@@ -44,6 +44,7 @@ export default function LanguageSwitch({ open, setOpen }) {
                   setOpen(false);
                   changeLanguage("zh-TW");
                 }}
+                aria-hidden="true"
               >
                 繁體中文
               </div>
@@ -53,6 +54,7 @@ export default function LanguageSwitch({ open, setOpen }) {
                   setOpen(false);
                   changeLanguage("en");
                 }}
+                aria-hidden="true"
               >
                 English
               </div>

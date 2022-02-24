@@ -1,6 +1,9 @@
+// @ts-check
+
 const defaultTheme = require("tailwindcss/defaultTheme");
 const colors = require("tailwindcss/colors");
 
+/** @type {import("tailwindcss/tailwind-config").TailwindConfig } */
 module.exports = {
   experimental: {
     optimizeUniversalDefaults: true,

@@ -4,16 +4,17 @@ import siteMetadata from "@/data/siteMetadata";
 import Guestbook from "@/components/Guestbook";
 import { GetStaticProps } from "next";
 import useTranslation from "next-translate/useTranslation";
+import { useRouter } from "next/router";
 
-export default function GuestbookPage({ fallbackData, locale, availableLocales }) {
+export default function GuestbookPage({ fallbackData }) {
   const { t } = useTranslation();
+  const { locale } = useRouter();
 
   return (
     <>
       <PageSEO
         title={`Guestbook - ${siteMetadata.author}`}
         description={siteMetadata.description[locale]}
-        availableLocales={availableLocales}
       />
       <div className="mx-auto flex flex-col justify-center">
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
@@ -26,7 +27,7 @@ export default function GuestbookPage({ fallbackData, locale, availableLocales }
   );
 }
 
-export const getStaticProps: GetStaticProps = async ({ locale, locales }) => {
+export const getStaticProps: GetStaticProps = async () => {
   const entries = await prisma.guestbook.findMany({
     orderBy: {
       updated_at: "desc",
@@ -43,8 +44,6 @@ export const getStaticProps: GetStaticProps = async ({ locale, locales }) => {
   return {
     props: {
       fallbackData,
-      locale,
-      availableLocales: locales,
     },
     revalidate: 60,
   };

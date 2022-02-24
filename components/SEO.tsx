@@ -1,8 +1,8 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import siteMetadata from "@/data/siteMetadata";
-import { PostFrontMatter, AuthorFrontMatter } from "@/lib/types";
-
+import { CoreContent } from "@/lib/utils/contentlayer";
+import type { Blog, Authors } from "contentlayer/generated";
 interface CommonSEOProps {
   title: string;
   description: string;
@@ -15,29 +15,7 @@ interface CommonSEOProps {
       }[];
   twImage: string;
   canonicalUrl?: string;
-  availableLocales: string[];
 }
-
-const generateLinks = (router: any, availableLocales: string[]) =>
-  availableLocales.map((locale) => (
-    <link
-      key={locale}
-      rel={
-        // Here we do as follow: Default langage is canonical
-        // if default langage is not present, we get the first element of the langage array by default
-        // Because the functions should be deterministic, it keep the same(s) link as canonical or alternante
-        locale === router.defaultLocale
-          ? "canonical"
-          : !availableLocales.includes(router.defaultLocale) && locale === availableLocales[0]
-          ? "canonical"
-          : "alternate"
-      }
-      hrefLang={locale}
-      href={`${siteMetadata.siteUrl}${locale === router.defaultLocale ? "" : `/${locale}`}${
-        router.asPath
-      }`}
-    />
-  ));
 
 const CommonSEO = ({
   title,
@@ -45,7 +23,7 @@ const CommonSEO = ({
   ogType,
   ogImage,
   twImage,
-  availableLocales,
+  canonicalUrl,
 }: CommonSEOProps) => {
   const router = useRouter();
   return (
@@ -63,17 +41,15 @@ const CommonSEO = ({
       ) : (
         <meta property="og:image" content={ogImage} key={ogImage} />
       )}
-      <meta property="og:locale" content={router.locale} />
-      {availableLocales &&
-        availableLocales
-          .filter((locale) => locale !== router.locale)
-          .map((locale) => <meta key={locale} property="og:locale:alternate" content={locale} />)}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content={siteMetadata.twitter} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={twImage} />
-      {availableLocales && generateLinks(router, availableLocales)}
+      <link
+        rel="canonical"
+        href={canonicalUrl ? canonicalUrl : `${siteMetadata.siteUrl}${router.asPath}`}
+      />
     </Head>
   );
 };
@@ -81,10 +57,9 @@ const CommonSEO = ({
 interface PageSEOProps {
   title: string;
   description: string;
-  availableLocales: string[];
 }
 
-export const PageSEO = ({ title, description, availableLocales }: PageSEOProps) => {
+export const PageSEO = ({ title, description }: PageSEOProps) => {
   const ogImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner;
   const twImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner;
   return (
@@ -94,12 +69,11 @@ export const PageSEO = ({ title, description, availableLocales }: PageSEOProps) 
       ogType="website"
       ogImage={ogImageUrl}
       twImage={twImageUrl}
-      availableLocales={availableLocales}
     />
   );
 };
 
-export const TagSEO = ({ title, description, availableLocales }: PageSEOProps) => {
+export const TagSEO = ({ title, description }: PageSEOProps) => {
   const ogImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner;
   const twImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner;
   const router = useRouter();
@@ -111,26 +85,22 @@ export const TagSEO = ({ title, description, availableLocales }: PageSEOProps) =
         ogType="website"
         ogImage={ogImageUrl}
         twImage={twImageUrl}
-        availableLocales={availableLocales}
       />
       <Head>
         <link
           rel="alternate"
           type="application/rss+xml"
           title={`${description} - RSS feed`}
-          href={`${siteMetadata.siteUrl}${router.asPath}/feed${
-            router.locale === router.defaultLocale ? "" : `.${router.locale}`
-          }.xml`}
+          href={`${siteMetadata.siteUrl}${router.asPath}/feed.xml`}
         />
       </Head>
     </>
   );
 };
 
-interface BlogSeoProps extends PostFrontMatter {
-  authorDetails?: AuthorFrontMatter[];
+interface BlogSeoProps extends CoreContent<Blog> {
+  authorDetails?: CoreContent<Authors>[];
   url: string;
-  availableLocales: string[];
 }
 
 export const BlogSEO = ({
@@ -140,13 +110,12 @@ export const BlogSEO = ({
   date,
   lastmod,
   url,
-  availableLocales,
-  images,
+  images = [],
+  canonicalUrl,
 }: BlogSeoProps) => {
-  const router = useRouter();
   const publishedAt = new Date(date).toISOString();
   const modifiedAt = new Date(lastmod || date).toISOString();
-  let imagesArr =
+  const imagesArr =
     images.length === 0
       ? [siteMetadata.socialBanner]
       : typeof images === "string"
@@ -208,12 +177,11 @@ export const BlogSEO = ({
         ogType="article"
         ogImage={featuredImages}
         twImage={twImageUrl}
-        availableLocales={availableLocales}
+        canonicalUrl={canonicalUrl}
       />
       <Head>
         {date && <meta property="article:published_time" content={publishedAt} />}
         {lastmod && <meta property="article:modified_time" content={modifiedAt} />}
-        {availableLocales && generateLinks(router, availableLocales)}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

@@ -5,11 +5,11 @@ import Link from "@/components/Link";
 import useTranslation from "next-translate/useTranslation";
 import { GetStaticProps } from "next";
 
-export const getStaticProps: GetStaticProps = async ({ locale, locales }) => {
-  return { props: { locale, availableLocales: locales } };
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  return { props: { locale } };
 };
 
-export default function Uses({ locale, availableLocales }) {
+export default function Uses({ locale }) {
   const { t } = useTranslation();
 
   return (
@@ -17,7 +17,6 @@ export default function Uses({ locale, availableLocales }) {
       <PageSEO
         title={`Uses - ${siteMetadata.author}`}
         description={siteMetadata.description[locale]}
-        availableLocales={availableLocales}
       />
       <div className="mx-auto flex flex-col justify-center">
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">

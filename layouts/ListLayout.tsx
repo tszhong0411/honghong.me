@@ -1,30 +1,26 @@
 import Link from "@/components/Link";
 import Tag from "@/components/Tag";
-import { ComponentProps, useState } from "react";
-import Pagination from "@/components/Pagination";
+import { useState } from "react";
 import formatDate from "@/lib/utils/formatDate";
 import Image from "next/image";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
-import { PostFrontMatter } from "@/lib/types";
+import type { Blog } from "contentlayer/generated";
+import { CoreContent } from "@/lib/utils/contentlayer";
 
 interface Props {
-  posts: PostFrontMatter[];
+  posts: CoreContent<Blog>[];
   title: string;
-  initialDisplayPosts?: PostFrontMatter[];
-  pagination?: ComponentProps<typeof Pagination>;
 }
 
-export default function ListLayout({ posts, title, initialDisplayPosts = [], pagination }: Props) {
+export default function ListLayout({ posts, title }: Props) {
   const [searchValue, setSearchValue] = useState("");
-  const filteredBlogPosts = posts.filter((frontMatter) => {
-    const searchContent = frontMatter.title + frontMatter.summary + frontMatter.tags.join(" ");
+  const filteredBlogPosts = posts.filter((post) => {
+    const searchContent = post.title + post.summary + post.tags.join(" ");
     return searchContent.toLowerCase().includes(searchValue.toLowerCase());
   });
 
-  // If initialDisplayPosts exist, display it if no searchValue is specified
-  const displayPosts =
-    initialDisplayPosts.length > 0 && !searchValue ? initialDisplayPosts : filteredBlogPosts;
+  const displayPosts = filteredBlogPosts;
 
   const { t } = useTranslation();
   const { locale } = useRouter();
@@ -61,8 +57,8 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
       </div>
       <ul>
         {!filteredBlogPosts.length && <p className="p-4">{t("common:noPostsFound")}</p>}
-        {displayPosts.map((frontMatter) => {
-          const { slug, date, title, summary, tags, images } = frontMatter;
+        {displayPosts.map((post) => {
+          const { slug, date, title, summary, tags, images } = post;
           return (
             <li key={slug} className="py-12">
               <article>
@@ -78,7 +74,7 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
                       <Link href={`/blog/${slug}`}>
                         <div className="custom-image-container overflow-hidden rounded-[12px]">
                           <Image
-                            src={images}
+                            src={images[0]}
                             alt="Cover"
                             layout="fill"
                             className="custom-image duration-500 hover:scale-[1.1]"
@@ -124,9 +120,6 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
           );
         })}
       </ul>
-      {pagination && pagination.totalPages > 1 && !searchValue && (
-        <Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} />
-      )}
     </>
   );
 }

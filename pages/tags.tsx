@@ -2,34 +2,26 @@ import Link from "@/components/Link";
 import { PageSEO } from "@/components/SEO";
 import Tag from "@/components/Tag";
 import siteMetadata from "@/data/siteMetadata";
-import { getAllTags } from "@/lib/tags";
+import { getAllTags } from "@/lib/utils/contentlayer";
 import kebabCase from "@/lib/utils/kebabCase";
 import useTranslation from "next-translate/useTranslation";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
+import { allBlogs } from "contentlayer/generated";
 
-export const getStaticProps: GetStaticProps<{
-  tags: Record<string, number>;
-  availableLocales: string[];
-}> = async ({ defaultLocale, locale, locales }) => {
-  const otherLocale = locale !== defaultLocale ? locale : "";
-  const tags = await getAllTags("blog", otherLocale);
+// TODO: refactor into contentlayer once compute over all docs is enabled
 
-  return { props: { tags, locale, availableLocales: locales } };
+export const getStaticProps: GetStaticProps<{ tags: Record<string, number> }> = async () => {
+  const tags = await getAllTags(allBlogs);
+
+  return { props: { tags } };
 };
 
-export default function Tags({
-  tags,
-  availableLocales,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Tags({ tags }: InferGetStaticPropsType<typeof getStaticProps>) {
   const sortedTags = Object.keys(tags).sort((a, b) => tags[b] - tags[a]);
   const { t } = useTranslation();
   return (
     <>
-      <PageSEO
-        title={`Tags - ${siteMetadata.author}`}
-        description={t("SEO:tags")}
-        availableLocales={availableLocales}
-      />
+      <PageSEO title={`Tags - ${siteMetadata.author}`} description={t("SEO:tags")} />
       <div className="mx-auto flex flex-col justify-center">
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
           Tags

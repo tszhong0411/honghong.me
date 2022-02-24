@@ -5,24 +5,17 @@ import BlogTotalViews from "@/components/metrics/BlogTotalViews";
 import TopTracks from "@/components/TopTracks";
 import { PageSEO } from "@/components/SEO";
 import useTranslation from "next-translate/useTranslation";
-import { GetStaticProps } from "next";
+import { useRouter } from "next/router";
 
-export const getStaticProps: GetStaticProps<{
-  locale: string;
-  availableLocales: string[];
-}> = async ({ locale, locales }) => {
-  return { props: { locale, availableLocales: locales } };
-};
-
-export default function Dashboard({ locale, availableLocales }) {
+export default function Dashboard() {
   const { t } = useTranslation();
+  const { locale } = useRouter();
 
   return (
     <>
       <PageSEO
         title={`Dashboard - ${siteMetadata.author}`}
         description={siteMetadata.description[locale]}
-        availableLocales={availableLocales}
       />
       <div className="mx-auto flex flex-col justify-center">
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">

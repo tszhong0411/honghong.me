@@ -1,22 +1,18 @@
 import siteMetadata from "@/data/siteMetadata";
 import { PageSEO } from "@/components/SEO";
 import { pcSpecsList } from "@/data/pcSpecsList";
-import { GetStaticProps } from "next";
 import useTranslation from "next-translate/useTranslation";
+import { useRouter } from "next/router";
 
-export const getStaticProps: GetStaticProps = async ({ locale, locales }) => {
-  return { props: { locale, availableLocales: locales } };
-};
-
-export default function PcSpecs({ locale, availableLocales }) {
+export default function PcSpecs() {
   const { t } = useTranslation();
+  const { locale } = useRouter();
 
   return (
     <>
       <PageSEO
-        title={`電腦配置 - ${siteMetadata.author}`}
+        title={`PC Specs - ${siteMetadata.author}`}
         description={siteMetadata.description[locale]}
-        availableLocales={availableLocales}
       />
       <div className="mx-auto flex flex-col justify-center">
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
