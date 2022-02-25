@@ -1,18 +1,18 @@
-import { PageSEO } from "@/components/SEO";
-import siteMetadata from "@/data/siteMetadata";
-import { ReactNode } from "react";
-import { useRouter } from "next/router";
-import { CoreContent } from "@/lib/utils/contentlayer";
-import { OtherPage } from "contentlayer/generated";
+import { PageSEO } from '@/components/SEO'
+import siteMetadata from '@/data/siteMetadata'
+import { ReactNode } from 'react'
+import { useRouter } from 'next/router'
+import { CoreContent } from '@/lib/utils/contentlayer'
+import { OtherPage } from 'contentlayer/generated'
 
 type Props = {
-  content: CoreContent<OtherPage>;
-  children: ReactNode;
-};
+  content: CoreContent<OtherPage>
+  children: ReactNode
+}
 
 export default function PolicyLayout({ content, children }: Props) {
-  const { title } = content;
-  const { locale } = useRouter();
+  const { title } = content
+  const { locale } = useRouter()
 
   return (
     <>
@@ -29,5 +29,5 @@ export default function PolicyLayout({ content, children }: Props) {
         </div>
       </div>
     </>
-  );
+  )
 }

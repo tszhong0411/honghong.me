@@ -1,29 +1,29 @@
-import siteMetadata from "@/data/siteMetadata";
-import ListLayout from "@/layouts/ListLayout";
-import { PageSEO } from "@/components/SEO";
-import useTranslation from "next-translate/useTranslation";
-import { InferGetStaticPropsType } from "next";
-import { sortedBlogPost, allCoreContent } from "@/lib/utils/contentlayer";
-import { allBlogs } from "contentlayer/generated";
-import { useRouter } from "next/router";
+import siteMetadata from '@/data/siteMetadata'
+import ListLayout from '@/layouts/ListLayout'
+import { PageSEO } from '@/components/SEO'
+import useTranslation from 'next-translate/useTranslation'
+import { InferGetStaticPropsType } from 'next'
+import { sortedBlogPost, allCoreContent } from '@/lib/utils/contentlayer'
+import { allBlogs } from 'contentlayer/generated'
+import { useRouter } from 'next/router'
 
-export const POSTS_PER_PAGE = 10;
+export const POSTS_PER_PAGE = 10
 
 export const getStaticProps = async (locale) => {
-  const sortedPosts = sortedBlogPost(allBlogs);
-  const posts = allCoreContent(sortedPosts);
-  const filteredPosts = posts.filter((slug) => slug.slug.split("/")[0] === locale.locale);
+  const sortedPosts = sortedBlogPost(allBlogs)
+  const posts = allCoreContent(sortedPosts)
+  const filteredPosts = posts.filter((slug) => slug.slug.split('/')[0] === locale.locale)
 
   return {
     props: {
       filteredPosts,
     },
-  };
-};
+  }
+}
 
 export default function Blog({ filteredPosts }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const { t } = useTranslation();
-  const { locale } = useRouter();
+  const { t } = useTranslation()
+  const { locale } = useRouter()
 
   return (
     <>
@@ -36,10 +36,10 @@ export default function Blog({ filteredPosts }: InferGetStaticPropsType<typeof g
           Blog
         </h1>
         <p className="mb-4 text-gray-600 dark:text-gray-400">
-          {t("common:blogDesc", { count: filteredPosts?.length })}
+          {t('common:blogDesc', { count: filteredPosts?.length })}
         </p>
-        <ListLayout posts={filteredPosts} title={""} />
+        <ListLayout posts={filteredPosts} title={''} />
       </div>
     </>
-  );
+  )
 }

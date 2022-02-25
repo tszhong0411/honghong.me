@@ -1,28 +1,28 @@
-import Link from "@/components/Link";
-import { useState } from "react";
-import formatDate from "@/lib/utils/formatDate";
-import Image from "next/image";
-import useTranslation from "next-translate/useTranslation";
-import { useRouter } from "next/router";
-import type { Blog } from "contentlayer/generated";
-import { CoreContent } from "@/lib/utils/contentlayer";
+import Link from '@/components/Link'
+import { useState } from 'react'
+import formatDate from '@/lib/utils/formatDate'
+import Image from 'next/image'
+import useTranslation from 'next-translate/useTranslation'
+import { useRouter } from 'next/router'
+import type { Blog } from 'contentlayer/generated'
+import { CoreContent } from '@/lib/utils/contentlayer'
 
 interface Props {
-  posts: CoreContent<Blog>[];
-  title: string;
+  posts: CoreContent<Blog>[]
+  title: string
 }
 
 export default function ListLayout({ posts, title }: Props) {
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState('')
   const filteredBlogPosts = posts?.filter((post) => {
-    const searchContent = post.title + post.summary;
-    return searchContent.toLowerCase().includes(searchValue.toLowerCase());
-  });
+    const searchContent = post.title + post.summary
+    return searchContent.toLowerCase().includes(searchValue.toLowerCase())
+  })
 
-  const displayPosts = filteredBlogPosts;
+  const displayPosts = filteredBlogPosts
 
-  const { t } = useTranslation();
-  const { locale } = useRouter();
+  const { t } = useTranslation()
+  const { locale } = useRouter()
 
   return (
     <>
@@ -32,10 +32,10 @@ export default function ListLayout({ posts, title }: Props) {
         </h1>
         <div className="relative">
           <input
-            aria-label={t("common:search")}
+            aria-label={t('common:search')}
             type="text"
             onChange={(e) => setSearchValue(e.target.value)}
-            placeholder={t("common:search")}
+            placeholder={t('common:search')}
             className="block w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-900 dark:bg-gray-800 dark:text-gray-100"
           />
           <svg
@@ -55,16 +55,16 @@ export default function ListLayout({ posts, title }: Props) {
         </div>
       </div>
       <ul>
-        {!filteredBlogPosts?.length && <p className="p-4">{t("common:noPostsFound")}</p>}
+        {!filteredBlogPosts?.length && <p className="p-4">{t('common:noPostsFound')}</p>}
         {displayPosts?.map((post) => {
-          const { slug, date, title, summary, images } = post;
-          const formattedSlug = slug.split("/")[slug.split("/").length - 1];
+          const { slug, date, title, summary, images } = post
+          const formattedSlug = slug.split('/')[slug.split('/').length - 1]
           return (
             <li key={formattedSlug} className="py-12">
               <article>
                 <div className="space-y-2 xl:grid xl:grid-cols-3 xl:space-y-0">
                   <dl>
-                    <dt className="sr-only">{t("common:publishedOn")}</dt>
+                    <dt className="sr-only">{t('common:publishedOn')}</dt>
                     <dd className="mb-4 text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
                       <time dateTime={date}>{formatDate(date, locale)}</time>
                     </dd>
@@ -103,7 +103,7 @@ export default function ListLayout({ posts, title }: Props) {
                             className="group inline-flex h-9 items-center whitespace-nowrap rounded-full bg-red-100 px-3 text-sm font-medium text-red-700 duration-300 hover:bg-red-200 hover:text-red-900 focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-red-700 dark:text-red-100 dark:hover:bg-red-600 dark:hover:text-white dark:focus:ring-red-500"
                             aria-label={`Read "${title}"`}
                           >
-                            {t("common:readMore")} &rarr;
+                            {t('common:readMore')} &rarr;
                           </Link>
                         </div>
                       </div>
@@ -112,9 +112,9 @@ export default function ListLayout({ posts, title }: Props) {
                 </div>
               </article>
             </li>
-          );
+          )
         })}
       </ul>
     </>
-  );
+  )
 }

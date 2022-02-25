@@ -1,8 +1,8 @@
-import { writeFileSync } from "fs";
-import { escape } from "./htmlEscaper.mjs";
-import siteMetadata from "../data/siteMetadata.js";
-import { allBlogs } from "../.contentlayer/generated/index.mjs";
-import i18n from "../i18n.json";
+import { writeFileSync } from 'fs'
+import { escape } from './htmlEscaper.mjs'
+import siteMetadata from '../data/siteMetadata.js'
+import { allBlogs } from '../.contentlayer/generated/index.mjs'
+import i18n from '../i18n.json'
 
 const generateRssItem = (post) => {
   return `
@@ -14,10 +14,10 @@ const generateRssItem = (post) => {
     <pubDate>${new Date(post.date).toUTCString()}</pubDate>
     <author>${siteMetadata.email} (${siteMetadata.author})</author>
   </item>
-`;
-};
+`
+}
 
-const generateRss = (posts, page = "feed.xml", lang) => {
+const generateRss = (posts, page = 'feed.xml', lang) => {
   return `
   <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
@@ -29,11 +29,11 @@ const generateRss = (posts, page = "feed.xml", lang) => {
       <webMaster>${siteMetadata.email} (${siteMetadata.author})</webMaster>
       <lastBuildDate>${new Date(posts[0].date).toUTCString()}</lastBuildDate>
       <atom:link href="${siteMetadata.siteUrl}/${page}" rel="self" type="application/rss+xml"/>
-      ${posts.map(generateRssItem).join("")}
+      ${posts.map(generateRssItem).join('')}
     </channel>
   </rss>
-`;
-};
+`
+}
 
 async function generate() {
   // RSS for blog post
@@ -41,13 +41,13 @@ async function generate() {
     // for each lang
     i18n.locales.forEach((lang) => {
       var rss = generateRss(
-        allBlogs.filter((post) => post.slug.split("/")[0] === lang),
-        `feed${lang !== i18n.defaultLocale ? `.${lang}` : ""}.xml`,
-        lang,
-      );
-      writeFileSync(`./public/feed${lang !== i18n.defaultLocale ? `.${lang}` : ""}.xml`, rss);
-    });
+        allBlogs.filter((post) => post.slug.split('/')[0] === lang),
+        `feed${lang !== i18n.defaultLocale ? `.${lang}` : ''}.xml`,
+        lang
+      )
+      writeFileSync(`./public/feed${lang !== i18n.defaultLocale ? `.${lang}` : ''}.xml`, rss)
+    })
   }
 }
 
-generate();
+generate()

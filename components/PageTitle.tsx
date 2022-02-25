@@ -1,6 +1,6 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react'
 interface Props {
-  children: ReactNode;
+  children: ReactNode
 }
 
 export default function PageTitle({ children }: Props) {
@@ -8,5 +8,5 @@ export default function PageTitle({ children }: Props) {
     <h1 className="mb-[16px] text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
       {children}
     </h1>
-  );
+  )
 }

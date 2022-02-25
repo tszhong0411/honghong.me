@@ -1,12 +1,12 @@
-import siteMetadata from "@/data/siteMetadata";
-import { PageSEO } from "@/components/SEO";
-import { pcSpecsList } from "@/data/pcSpecsList";
-import useTranslation from "next-translate/useTranslation";
-import { useRouter } from "next/router";
+import siteMetadata from '@/data/siteMetadata'
+import { PageSEO } from '@/components/SEO'
+import { pcSpecsList } from '@/data/pcSpecsList'
+import useTranslation from 'next-translate/useTranslation'
+import { useRouter } from 'next/router'
 
 export default function PcSpecs() {
-  const { t } = useTranslation();
-  const { locale } = useRouter();
+  const { t } = useTranslation()
+  const { locale } = useRouter()
 
   return (
     <>
@@ -16,9 +16,9 @@ export default function PcSpecs() {
       />
       <div className="mx-auto flex flex-col justify-center">
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
-          {t("pcSpecs:title")}
+          {t('pcSpecs:title')}
         </h1>
-        <p className="mb-12 text-gray-600 dark:text-gray-400">{t("pcSpecs:description")}</p>
+        <p className="mb-12 text-gray-600 dark:text-gray-400">{t('pcSpecs:description')}</p>
         <div className="prose max-w-full dark:prose-dark">
           <div className="flex flex-wrap">
             <table className="m-auto w-full table-fixed">
@@ -43,7 +43,7 @@ export default function PcSpecs() {
                         {item.content}
                       </td>
                     </tr>
-                  );
+                  )
                 })}
               </tbody>
             </table>
@@ -51,5 +51,5 @@ export default function PcSpecs() {
         </div>
       </div>
     </>
-  );
+  )
 }

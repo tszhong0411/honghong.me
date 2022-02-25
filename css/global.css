@@ -28,7 +28,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family: "JetBrains Mono", monospace;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 ::selection {
@@ -66,7 +66,7 @@ html.dark ::selection {
 }
 
 /* post image */
-div[nextjs-image="true"] {
+div[nextjs-image='true'] {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
 }
@@ -108,7 +108,7 @@ div[nextjs-image="true"] {
 
 .prose .anchor:after {
   @apply text-gray-300 dark:text-gray-700;
-  content: "#";
+  content: '#';
 }
 
 .prose *:hover > .anchor {

@@ -20,7 +20,7 @@
   background: #fc625d;
   -webkit-box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
   box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
-  content: " ";
+  content: ' ';
 }
 
 .remark-code-title + div > pre {
@@ -31,7 +31,7 @@
   word-wrap: normal;
   color: #fff;
   background: #171717;
-  font-family: "JetBrains Mono", "Noto Sans TC", "Inter";
+  font-family: 'JetBrains Mono', 'Noto Sans TC', 'Inter';
   font-size: 1em;
   line-height: 1.5em;
   -moz-tab-size: 4;

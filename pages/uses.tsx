@@ -1,16 +1,16 @@
-import { PageSEO } from "@/components/SEO";
-import siteMetadata from "@/data/siteMetadata";
-import Image from "@/components/PostImage";
-import Link from "@/components/Link";
-import useTranslation from "next-translate/useTranslation";
-import { GetStaticProps } from "next";
+import { PageSEO } from '@/components/SEO'
+import siteMetadata from '@/data/siteMetadata'
+import Image from '@/components/PostImage'
+import Link from '@/components/Link'
+import useTranslation from 'next-translate/useTranslation'
+import { GetStaticProps } from 'next'
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  return { props: { locale } };
-};
+  return { props: { locale } }
+}
 
 export default function Uses({ locale }) {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   return (
     <>
@@ -22,7 +22,7 @@ export default function Uses({ locale }) {
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
           My Gear
         </h1>
-        <p className="mb-12 text-gray-600 dark:text-gray-400">{t("uses:description")}</p>
+        <p className="mb-12 text-gray-600 dark:text-gray-400">{t('uses:description')}</p>
         <div className="prose dark:prose-dark">
           <Image
             src="/static/images/desk.webp"
@@ -45,7 +45,7 @@ export default function Uses({ locale }) {
           <ul>
             <li>Editor: Visual Studio Code</li>
             <li>
-              Theme:{" "}
+              Theme:{' '}
               <Link href="https://marketplace.visualstudio.com/items?itemName=enkia.tokyo-night">
                 Tokyo Night - Tokyo Night Storm
               </Link>
@@ -67,5 +67,5 @@ export default function Uses({ locale }) {
         </div>
       </div>
     </>
-  );
+  )
 }

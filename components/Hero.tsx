@@ -1,6 +1,6 @@
-import Image from "next/image";
-import Link from "@/components/Link";
-import { motion } from "framer-motion";
+import Image from 'next/image'
+import Link from '@/components/Link'
+import { motion } from 'framer-motion'
 
 export default function Hero() {
   return (
@@ -45,7 +45,11 @@ export default function Hero() {
           </div>
         </div>
         <div className="hidden sm:block">
-          <motion.div whileHover={{ rotate: 360 }} transition={{ duration: 0.3 }}>
+          <motion.div
+            whileHover={{ rotate: 360 }}
+            transition={{ duration: 0.6 }}
+            style={{ height: '130px', width: '130px' }}
+          >
             <Image
               src="/static/images/avatar.png"
               alt="Avatar"
@@ -57,5 +61,5 @@ export default function Hero() {
         </div>
       </div>
     </>
-  );
+  )
 }

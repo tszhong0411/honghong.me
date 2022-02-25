@@ -1,31 +1,31 @@
-import Image from "next/image";
-import Link from "./Link";
-import { useSpring, animated, config } from "@react-spring/web";
-import { useRef, useState } from "react";
-import useTranslation from "next-translate/useTranslation";
+import Image from 'next/image'
+import Link from './Link'
+import { useSpring, animated, config } from '@react-spring/web'
+import { useRef, useState } from 'react'
+import useTranslation from 'next-translate/useTranslation'
 
 const calc = (
   x: number,
   y: number,
   rect: {
-    top: number;
-    height: number;
-    left: number;
-    width: number;
-  },
-) => [-(y - rect.top - rect.height / 2) / 20, (x - rect.left - rect.width / 2) / 20, 1.01];
+    top: number
+    height: number
+    left: number
+    width: number
+  }
+) => [-(y - rect.top - rect.height / 2) / 20, (x - rect.left - rect.width / 2) / 20, 1.01]
 
 const trans = (x: number, y: number, s: number) =>
-  `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
+  `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`
 
 const Card = ({ title, description, imgSrc, href }) => {
-  const ref = useRef(null);
-  const [xys, set] = useState([0, 0, 1]);
+  const ref = useRef(null)
+  const [xys, set] = useState([0, 0, 1])
   const props = useSpring({
     xys,
     config: config.molasses,
-  });
-  const { t } = useTranslation();
+  })
+  const { t } = useTranslation()
 
   return (
     <div className="rounded-md bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-[2px] md:w-1/2">
@@ -33,15 +33,15 @@ const Card = ({ title, description, imgSrc, href }) => {
         ref={ref}
         onMouseLeave={() => set([0, 0, 1])}
         onMouseMove={(e) => {
-          const rect = ref.current.getBoundingClientRect();
-          set(calc(e.clientX, e.clientY, rect));
+          const rect = ref.current.getBoundingClientRect()
+          set(calc(e.clientX, e.clientY, rect))
         }}
         style={{ transform: props.xys.to(trans) }}
         className="rounded-md bg-white dark:bg-gray-900"
       >
         <div
           className={`${
-            imgSrc ? "h-full" : ""
+            imgSrc ? 'h-full' : ''
           } overflow-hidden rounded-md border-2 border-gray-200 border-opacity-60 dark:border-gray-700`}
         >
           {imgSrc &&
@@ -83,14 +83,14 @@ const Card = ({ title, description, imgSrc, href }) => {
                 className="text-base font-medium leading-6 text-[#cb3728] hover:text-[#dc2626] dark:hover:text-primary-400"
                 aria-label={`Link to ${title}`}
               >
-                {t("projects:learn")} &rarr;
+                {t('projects:learn')} &rarr;
               </a>
             )}
           </div>
         </div>
       </animated.div>
     </div>
-  );
-};
+  )
+}
 
-export default Card;
+export default Card

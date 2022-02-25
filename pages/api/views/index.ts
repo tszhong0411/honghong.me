@@ -1,5 +1,5 @@
-import prisma from "@/lib/prisma";
-import type { NextApiRequest, NextApiResponse } from "next";
+import prisma from '@/lib/prisma'
+import type { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
@@ -7,10 +7,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       _sum: {
         count: true,
       },
-    });
+    })
 
-    return res.status(200).json({ total: totalViews._sum.count.toString() });
+    return res.status(200).json({ total: totalViews._sum.count.toString() })
   } catch (e) {
-    return res.status(500).json({ message: e.message });
+    return res.status(500).json({ message: e.message })
   }
 }
