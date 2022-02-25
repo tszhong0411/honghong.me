@@ -2,10 +2,10 @@ import { MDXLayoutRenderer } from "@/components/MDXComponents";
 import { InferGetStaticPropsType } from "next";
 import { allOtherPages } from "contentlayer/generated";
 
-const DEFAULT_LAYOUT = "PolicyLayout";
+const DEFAULT_LAYOUT = "PageLayout";
 
-export const getStaticProps = async () => {
-  const policy = allOtherPages.find((p) => p.slug === "privacy-policy");
+export const getStaticProps = async (locale) => {
+  const policy = allOtherPages.find((p) => p.slug === `${locale.locale}/privacy-policy`);
   return { props: { policy } };
 };
 

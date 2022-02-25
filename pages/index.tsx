@@ -1,7 +1,6 @@
 import Hero from "@/components/Hero";
 import Link from "@/components/Link";
 import { PageSEO } from "@/components/SEO";
-import Tag from "@/components/Tag";
 import siteMetadata from "@/data/siteMetadata";
 import formatDate from "@/lib/utils/formatDate";
 import Image from "next/image";
@@ -13,15 +12,16 @@ import { useRouter } from "next/router";
 
 const MAX_DISPLAY = 3;
 
-export const getStaticProps = async () => {
+export const getStaticProps = async (locale) => {
   // TODO: move computation to get only the essential frontmatter to contentlayer.config
   const sortedPosts = sortedBlogPost(allBlogs);
   const posts = allCoreContent(sortedPosts);
+  const filteredPosts = posts.filter((slug) => slug.slug.split("/")[0] === locale.locale);
 
-  return { props: { posts } };
+  return { props: { filteredPosts } };
 };
 
-export default function Home({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Home({ filteredPosts }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t } = useTranslation();
   const { locale } = useRouter();
 
@@ -36,11 +36,14 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
           </h1>
         </div>
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
-          {!posts.length && <span className="my-8 block text-xl">{t("common:noPostsFound")}</span>}
-          {posts.slice(0, MAX_DISPLAY).map((post) => {
-            const { slug, date, title, summary, tags, images } = post;
+          {!filteredPosts.length && (
+            <span className="my-8 block text-xl">{t("common:noPostsFound")}</span>
+          )}
+          {filteredPosts.slice(0, MAX_DISPLAY).map((post) => {
+            const { slug, date, title, summary, images } = post;
+            const formattedSlug = slug.split("/")[slug.split("/").length - 1];
             return (
-              <li key={slug} className="py-12">
+              <li key={formattedSlug} className="py-12">
                 <article>
                   <div className="space-y-2 xl:grid xl:grid-cols-3 xl:space-y-0">
                     <dl>
@@ -51,7 +54,7 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
                     </dl>
                     <div className="flex flex-col items-center sm:flex-row xl:col-span-3">
                       <div className="mx-2 my-8 w-full sm:my-0 sm:w-1/3">
-                        <Link href={`/blog/${slug}`}>
+                        <Link href={`/blog/${formattedSlug}`}>
                           <div className="custom-image-container overflow-hidden rounded-[12px] px-8 sm:px-0">
                             <Image
                               src={images[0]}
@@ -67,25 +70,20 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
                           <div>
                             <h2 className="text-2xl font-bold leading-8 tracking-tight">
                               <Link
-                                href={`/blog/${slug}`}
+                                href={`/blog/${formattedSlug}`}
                                 className="text-gray-900 duration-300 hover:text-themeColor-500 dark:text-gray-50 dark:hover:text-themeColor-350"
                                 data-cy="post-title"
                               >
                                 {title}
                               </Link>
                             </h2>
-                            <div className="flex flex-wrap">
-                              {tags.map((tag) => (
-                                <Tag key={tag} text={tag} />
-                              ))}
-                            </div>
                           </div>
                           <div className="prose max-w-none text-gray-500 dark:text-gray-400">
                             {summary}
                           </div>
                           <div className="text-base font-medium leading-6">
                             <Link
-                              href={`/blog/${slug}`}
+                              href={`/blog/${formattedSlug}`}
                               className="group inline-flex h-9 items-center whitespace-nowrap rounded-full bg-red-100 px-3 text-sm font-medium text-red-700 duration-300 hover:bg-red-200 hover:text-red-900 focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-red-700 dark:text-red-100 dark:hover:bg-red-600 dark:hover:text-white dark:focus:ring-red-500"
                               aria-label={`Read "${title}"`}
                             >
@@ -102,7 +100,7 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
           })}
         </ul>
       </div>
-      {posts.length > MAX_DISPLAY && (
+      {filteredPosts.length > MAX_DISPLAY && (
         <div className="flex justify-end text-base font-medium leading-6">
           <Link
             href="/blog"

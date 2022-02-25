@@ -1,4 +1,4 @@
-import prisma from "lib/prisma";
+import prisma from "@/lib/prisma";
 import { PageSEO } from "@/components/SEO";
 import siteMetadata from "@/data/siteMetadata";
 import Guestbook from "@/components/Guestbook";

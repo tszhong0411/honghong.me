@@ -5,7 +5,7 @@ import { Heading } from "mdast";
 import slugger from "github-slugger";
 import { toString } from "mdast-util-to-string";
 import { remark } from "remark";
-import { Toc } from "lib/types";
+import { Toc } from "@/lib/types";
 
 export function remarkTocHeadings() {
   return (tree: Parent, file: VFile) => {

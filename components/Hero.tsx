@@ -19,7 +19,7 @@ export default function Hero() {
             </ul>
           </div>
           <div className="mt-8">
-            <div className="flex flex-col gap-x-4 gap-y-3 sm:flex-row">
+            <div className="inline-flex flex-col gap-x-4 gap-y-3 sm:flex-row">
               <Link
                 href="https://instagram.com/tszhong0411/"
                 className="border-b-2 border-transparent duration-300  hover:border-themeColor-500 dark:hover:border-themeColor-350"

@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import Image from "next/image";
 import { signOut } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
-import fetcher from "lib/fetcher";
+import fetcher from "@/lib/fetcher";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
@@ -168,16 +168,19 @@ export default function Guestbook({ fallbackData }) {
           </a>
         )}
         {session?.user && (
-          <form className="my-4 flex items-center" onSubmit={leaveEntry}>
+          <form
+            className="my-4 flex flex-col items-center gap-y-2 s:flex-row s:gap-0"
+            onSubmit={leaveEntry}
+          >
             <input
               ref={inputEl}
               aria-label={t("guestbook:yourComment")}
               placeholder={t("guestbook:placeholder")}
               required
-              className="mr-3 block h-10 w-full rounded-md border-2 border-red-500 bg-white py-2 px-4 text-gray-900 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary-600 dark:bg-[#2d2d2d] dark:text-gray-100"
+              className="block h-10 w-full rounded-md border-2 border-red-500 bg-white py-2 px-4 text-gray-900 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary-600 dark:bg-[#2d2d2d] dark:text-gray-100 s:mr-3"
             />
             <button
-              className="h-10 w-28 rounded bg-gray-200 px-4 font-medium text-gray-900 dark:bg-gray-700 dark:text-gray-100"
+              className="h-10 w-full rounded bg-gray-200 px-4 font-medium text-gray-900 dark:bg-gray-700 dark:text-gray-100 s:w-28"
               type="submit"
             >
               {loading ? (
@@ -210,7 +213,7 @@ export default function Guestbook({ fallbackData }) {
               <span>{session.user.name}</span>
             </div>
             <button
-              className="h-10 w-28 rounded bg-gray-200 px-4 font-medium text-gray-900 dark:bg-gray-700 dark:text-gray-100"
+              className="h-10 w-full rounded bg-gray-200 px-4 text-sm font-medium text-gray-900 dark:bg-gray-700 dark:text-gray-100 s:w-28"
               onClick={(e) => {
                 e.preventDefault();
                 signOut();

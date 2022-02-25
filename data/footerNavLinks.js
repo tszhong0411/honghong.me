@@ -31,10 +31,6 @@ const footerNavLinks = {
           title: "Uses",
         },
         {
-          href: "/tags",
-          title: "Tags",
-        },
-        {
           href: "/projects",
           title: "Projects",
         },

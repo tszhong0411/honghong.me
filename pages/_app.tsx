@@ -16,8 +16,11 @@ import Analytics from "@/components/analytics";
 import LayoutWrapper from "@/components/LayoutWrapper";
 import { SessionProvider } from "next-auth/react";
 import type { AppProps } from "next/app";
+import { useRouter } from "next/router";
 
 export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
+  const { locale, defaultLocale } = useRouter();
+
   useEffect(() => {
     CdnList.css.map((item) => {
       const style = document.createElement("link");
@@ -36,6 +39,11 @@ export default function App({ Component, pageProps: { session, ...pageProps } }:
       <ThemeProvider attribute="class" defaultTheme={siteMetadata.theme}>
         <Head>
           <meta content="width=device-width, initial-scale=1" name="viewport" />
+          <link
+            rel="alternate"
+            type="application/rss+xml"
+            href={`/feed${locale !== defaultLocale ? `.${locale}` : ""}.xml`}
+          />
         </Head>
         <Analytics />
         <LayoutWrapper>

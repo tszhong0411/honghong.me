@@ -30,7 +30,6 @@ class MyDocument extends Document {
           <meta name="theme-color" content="#ffffff" />
 
           <link rel="manifest" href="/static/manifest.json" />
-          <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
         </Head>
         <body className="bg-[#f9fafb] text-black antialiased dark:bg-gray-900 dark:text-white">
           <Main />

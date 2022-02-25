@@ -19,7 +19,7 @@
       "@/components/*": ["components/*"],
       "@/data/*": ["data/*"],
       "@/layouts/*": ["layouts/*"],
-      "@/lib/*": ["lib/*"],
+      "@/lib/*": ["temp/lib/*"],
       "@/css/*": ["css/*"],
       "@/hooks/*": ["hooks/*"],
       "contentlayer/generated": ["./.contentlayer/generated"]

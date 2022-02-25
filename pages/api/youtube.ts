@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { google } from "googleapis";
 
-import googleAuth from "lib/google";
+import googleAuth from "@/lib/google";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const auth = await googleAuth.getClient();

@@ -9,16 +9,19 @@ import { useRouter } from "next/router";
 
 export const POSTS_PER_PAGE = 10;
 
-export const getStaticProps = async () => {
-  const posts = sortedBlogPost(allBlogs);
+export const getStaticProps = async (locale) => {
+  const sortedPosts = sortedBlogPost(allBlogs);
+  const posts = allCoreContent(sortedPosts);
+  const filteredPosts = posts.filter((slug) => slug.slug.split("/")[0] === locale.locale);
+
   return {
     props: {
-      posts: allCoreContent(posts),
+      filteredPosts,
     },
   };
 };
 
-export default function Blog({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Blog({ filteredPosts }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t } = useTranslation();
   const { locale } = useRouter();
 
@@ -33,9 +36,9 @@ export default function Blog({ posts }: InferGetStaticPropsType<typeof getStatic
           Blog
         </h1>
         <p className="mb-4 text-gray-600 dark:text-gray-400">
-          {t("common:blogDesc", { count: posts.length })}
+          {t("common:blogDesc", { count: filteredPosts?.length })}
         </p>
-        <ListLayout posts={posts} title={""} />
+        <ListLayout posts={filteredPosts} title={""} />
       </div>
     </>
   );

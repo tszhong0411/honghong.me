@@ -9,7 +9,6 @@ import NewsletterForm from "@/components/NewsletterForm";
 import TOCInline from "@/components/TOCInline";
 import TOC from "@/components/TOC";
 import ViewCounter from "@/components/ViewCounter";
-import kebabCase from "@/lib/utils/kebabCase";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 import formatDate from "@/lib/utils/formatDate";
@@ -40,7 +39,7 @@ type Props = {
 };
 
 export default function PostLayout({ content, authorDetails, next, prev, children, toc }: Props) {
-  const { slug, date, title, tags } = content;
+  const { slug, date, title } = content;
   const { t } = useTranslation();
   const { locale } = useRouter();
   const activeSection = useScrollSpy();
@@ -58,20 +57,6 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
         <div>
           <div className="mb-12">
             <div>
-              {tags && (
-                <ul className="my-6 flex list-none flex-row">
-                  {tags.map((tag) => (
-                    <li key={tag}>
-                      <Link
-                        href={`/tags/${kebabCase(tag)}`}
-                        className="mr-3 border-b-2 border-transparent text-base font-medium uppercase text-themeColor-500 duration-300 hover:border-themeColor-500 dark:text-themeColor-350 dark:hover:border-themeColor-350"
-                      >
-                        {tag.split(" ").join("-")}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              )}
               <PageTitle>{title}</PageTitle>
             </div>
           </div>
@@ -82,13 +67,13 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                   return (
                     <div key={author.name}>
                       {author.avatar && (
-                        <div>
+                        <div className="h-[45px] w-[45px] sm:h-[70px] sm:w-[70px]">
                           <Image
                             src={author.avatar}
                             width="70px"
                             height="70px"
                             alt="avatar"
-                            className="h-[70px] w-[70px] rounded-full"
+                            className="rounded-full"
                           />
                         </div>
                       )}
@@ -104,7 +89,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                       {author.instagram && (
                         <Link
                           href={author.instagram}
-                          className="border-b-2 border-transparent font-medium text-themeColor-500 duration-300 hover:border-themeColor-500 dark:text-themeColor-350 dark:hover:border-themeColor-350"
+                          className="border-b-2 border-transparent text-sm font-medium text-themeColor-500 duration-300 hover:border-themeColor-500 dark:text-themeColor-350 dark:hover:border-themeColor-350 sm:text-base"
                         >
                           {author.instagram.replace("https://www.instagram.com/", "@")}
                         </Link>
@@ -129,7 +114,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                 <div className="flex items-center">
                   <Link href={editUrl(slug)}>{t("common:editOnGithub")}</Link>
                 </div>
-                <div className="flex">
+                <div className="flex flex-col gap-y-2 xs:flex-row xs:gap-0">
                   <a
                     className="mx-2"
                     href={facebookShare(slug)}
@@ -212,7 +197,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                   </span>
                   <div className="flex flex-col font-medium">
                     <Link
-                      href={`/blog/${prev.slug}`}
+                      href={`/blog/${prev.slug.replace(`${locale}/`, "")}`}
                       className="border-b-2 border-transparent text-xl font-medium tracking-tight duration-300 hover:border-themeColor-500 hover:text-themeColor-500 dark:hover:border-themeColor-350 dark:hover:text-themeColor-350"
                     >
                       {prev.title}
@@ -222,7 +207,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                     </div>
                     <div>
                       <Link
-                        href={`/blog/${prev.slug}`}
+                        href={`/blog/${prev.slug.replace(`${locale}/`, "")}`}
                         className="group inline-flex h-9 items-center whitespace-nowrap rounded-full bg-red-100 px-3 text-sm font-medium text-red-700 duration-300 hover:bg-red-200 hover:text-red-900 focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-red-700 dark:text-red-100 dark:hover:bg-red-600 dark:hover:text-white dark:focus:ring-red-500"
                         aria-label={`Read "${prev.title}"`}
                       >
@@ -239,7 +224,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                   </span>
                   <div className="flex flex-col font-medium">
                     <Link
-                      href={`/blog/${next.slug}`}
+                      href={`/blog/${next.slug.replace(`${locale}/`, "")}`}
                       className="border-b-2 border-transparent text-xl font-medium tracking-tight duration-300 hover:border-themeColor-500 hover:text-themeColor-500 dark:hover:border-themeColor-350 dark:hover:text-themeColor-350"
                     >
                       {next.title}
@@ -249,7 +234,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                     </div>
                     <div>
                       <Link
-                        href={`/blog/${next.slug}`}
+                        href={`/blog/${next.slug.replace(`${locale}/`, "")}`}
                         className="group inline-flex h-9 items-center whitespace-nowrap rounded-full bg-red-100 px-3 text-sm font-medium text-red-700 duration-300 hover:bg-red-200 hover:text-red-900 focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-red-700 dark:text-red-100 dark:hover:bg-red-600 dark:hover:text-white dark:focus:ring-red-500"
                         aria-label={`Read "${next.title}"`}
                       >

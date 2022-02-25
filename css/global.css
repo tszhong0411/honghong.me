@@ -43,6 +43,7 @@ html.dark ::selection {
 
 ::-webkit-scrollbar {
   width: 7px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-thumb {

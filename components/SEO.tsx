@@ -73,31 +73,6 @@ export const PageSEO = ({ title, description }: PageSEOProps) => {
   );
 };
 
-export const TagSEO = ({ title, description }: PageSEOProps) => {
-  const ogImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner;
-  const twImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner;
-  const router = useRouter();
-  return (
-    <>
-      <CommonSEO
-        title={title}
-        description={description}
-        ogType="website"
-        ogImage={ogImageUrl}
-        twImage={twImageUrl}
-      />
-      <Head>
-        <link
-          rel="alternate"
-          type="application/rss+xml"
-          title={`${description} - RSS feed`}
-          href={`${siteMetadata.siteUrl}${router.asPath}/feed.xml`}
-        />
-      </Head>
-    </>
-  );
-};
-
 interface BlogSeoProps extends CoreContent<Blog> {
   authorDetails?: CoreContent<Authors>[];
   url: string;

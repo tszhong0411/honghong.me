@@ -4,7 +4,7 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { useState, useEffect } from "react";
 import { TopTracks } from "@/lib/types";
 
-import fetcher from "lib/fetcher";
+import fetcher from "@/lib/fetcher";
 import Track from "components/Track";
 
 const ContentLoader = () => {
