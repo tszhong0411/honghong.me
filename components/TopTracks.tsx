@@ -1,11 +1,11 @@
-import useSWR from "swr";
-import { useTheme } from "next-themes";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import { useState, useEffect } from "react";
-import { TopTracks } from "@/lib/types";
+import useSWR from 'swr'
+import { useTheme } from 'next-themes'
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import { useState, useEffect } from 'react'
+import { TopTracks } from '@/lib/types'
 
-import fetcher from "lib/fetcher";
-import Track from "components/Track";
+import fetcher from '@/lib/fetcher'
+import Track from 'components/Track'
 
 const ContentLoader = () => {
   return (
@@ -16,24 +16,24 @@ const ContentLoader = () => {
       </div>
       <Skeleton width={210} height={20} className="ml-[calc(20px+0.5rem)]" />
     </>
-  );
-};
+  )
+}
 
 export default function Tracks() {
-  const { theme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const { theme, resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
 
-  const { data } = useSWR<TopTracks>("/api/top-tracks", fetcher);
+  const { data } = useSWR<TopTracks>('/api/top-tracks', fetcher)
 
   // When mounted on client, now we can show the UI
-  useEffect(() => setMounted(true), []);
+  useEffect(() => setMounted(true), [])
 
-  if (!mounted) return null;
+  if (!mounted) return null
   if (!data && mounted) {
     return (
       <SkeletonTheme
-        baseColor={theme === "dark" || resolvedTheme === "dark" ? "#202020" : "#d9d9d9"}
-        highlightColor={theme === "dark" || resolvedTheme === "dark" ? "#444444" : "#ecebeb"}
+        baseColor={theme === 'dark' || resolvedTheme === 'dark' ? '#202020' : '#d9d9d9'}
+        highlightColor={theme === 'dark' || resolvedTheme === 'dark' ? '#444444' : '#ecebeb'}
       >
         <div className="flex flex-col gap-y-4">
           <ContentLoader />
@@ -41,7 +41,7 @@ export default function Tracks() {
           <ContentLoader />
         </div>
       </SkeletonTheme>
-    );
+    )
   }
 
   return (
@@ -50,5 +50,5 @@ export default function Tracks() {
         <Track ranking={index + 1} key={track.songUrl} {...track} />
       ))}
     </>
-  );
+  )
 }

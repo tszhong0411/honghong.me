@@ -3,7 +3,7 @@
   "defaultLocale": "zh-TW",
   "localeDetection": true,
   "pages": {
-    "*": ["common", "SEO", "projects", "404", "newsletter", "footerNavLinks"],
+    "*": ["common", "SEO", "projects", "404", "newsletter", "footer"],
     "/uses": ["uses"],
     "/guestbook": ["guestbook"],
     "/dashboard": ["dashboard"],

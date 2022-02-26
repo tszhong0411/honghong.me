@@ -1,41 +1,42 @@
-import siteMetadata from "@/data/siteMetadata";
-import dynamic from "next/dynamic";
-import { PostFrontMatter } from "@/lib/types";
+import siteMetadata from '@/data/siteMetadata'
+import dynamic from 'next/dynamic'
+import { CoreContent } from '@/lib/utils/contentlayer'
+import type { Blog } from 'contentlayer/generated'
 
 interface Props {
-  frontMatter: PostFrontMatter;
+  frontMatter: CoreContent<Blog>
 }
 
 const GiscusComponent = dynamic(
   () => {
-    return import("@/components/comments/Giscus");
+    return import('@/components/comments/Giscus')
   },
-  { ssr: false },
-);
+  { ssr: false }
+)
 
 const Comments = ({ frontMatter }: Props) => {
-  let term;
+  let term
   switch (
     siteMetadata.comment.giscusConfig.mapping ||
     siteMetadata.comment.utterancesConfig.issueTerm
   ) {
-    case "pathname":
-      term = frontMatter.slug;
-      break;
-    case "url":
-      term = window.location.href;
-      break;
-    case "title":
-      term = frontMatter.title;
-      break;
+    case 'pathname':
+      term = frontMatter.slug
+      break
+    case 'url':
+      term = window.location.href
+      break
+    case 'title':
+      term = frontMatter.title
+      break
   }
   return (
     <div id="comment">
-      {siteMetadata.comment && siteMetadata.comment.provider === "giscus" && (
+      {siteMetadata.comment && siteMetadata.comment.provider === 'giscus' && (
         <GiscusComponent mapping={term} />
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Comments;
+export default Comments

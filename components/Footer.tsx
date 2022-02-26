@@ -1,13 +1,20 @@
-import NowPlaying from "./NowPlaying";
-import Link from "./Link";
-import siteMetadata from "@/data/siteMetadata";
-import footerNavLinks from "@/data/footerNavLinks";
-import useTranslation from "next-translate/useTranslation";
-import { useRouter } from "next/router";
+import NowPlaying from './NowPlaying'
+import Link from './Link'
+import siteMetadata from '@/data/siteMetadata'
+import footerNavLinks from '@/data/footerNavLinks'
+import useTranslation from 'next-translate/useTranslation'
+import { useRouter } from 'next/router'
+import { useState, useEffect } from 'react'
 
 export default function Footer() {
-  const { t } = useTranslation();
-  const { locale, defaultLocale } = useRouter();
+  const { t } = useTranslation()
+  const { locale, defaultLocale } = useRouter()
+  const [mounted, setMounted] = useState(false)
+
+  // When mounted on client, now we can show the UI
+  useEffect(() => setMounted(true), [])
+
+  if (!mounted) return null
 
   return (
     <>
@@ -41,35 +48,36 @@ export default function Footer() {
                       <Link
                         key={index}
                         href={
-                          item.href === "/feed.xml"
-                            ? `/feed${locale === defaultLocale ? "" : `.${locale}`}.xml`
+                          item.href === '/feed.xml'
+                            ? `/feed${locale === defaultLocale ? '' : `.${locale}`}.xml`
                             : item.href
                         }
                         className="hover:text-themeColor-500 hover:underline dark:hover:text-themeColor-350"
                       >
                         {item.title}
                       </Link>
-                    );
+                    )
                   })}
                 </div>
-              );
+              )
             })}
           </div>
           <NowPlaying />
         </div>
         <div className="mx-auto mb-8 flex w-full flex-wrap justify-between px-[20px]">
           <div>
-            {footerNavLinks.bottomLinks.map((item, index) => {
-              return (
-                <Link
-                  key={index}
-                  href={item.href}
-                  className="mr-4 text-base font-medium hover:text-themeColor-500 dark:hover:text-themeColor-350"
-                >
-                  {t(`footerNavLinks:${item.title.toLowerCase()}`)}
-                </Link>
-              );
-            })}
+            {mounted &&
+              footerNavLinks.bottomLinks.map((item, index) => {
+                return (
+                  <Link
+                    key={index}
+                    href={item.href}
+                    className="mr-4 text-base font-medium hover:text-themeColor-500 dark:hover:text-themeColor-350"
+                  >
+                    {t(`footer:${item?.title?.toLowerCase()}`)}
+                  </Link>
+                )
+              })}
           </div>
           <div className="font-semibold">
             © {new Date().getFullYear()} {siteMetadata.author}
@@ -77,5 +85,5 @@ export default function Footer() {
         </div>
       </footer>
     </>
-  );
+  )
 }

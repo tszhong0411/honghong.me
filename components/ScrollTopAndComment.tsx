@@ -1,28 +1,28 @@
-import { useEffect, useState } from "react";
-import smoothscroll from "smoothscroll-polyfill";
+import { useEffect, useState } from 'react'
+import smoothscroll from 'smoothscroll-polyfill'
 
 const ScrollTopAndComment = () => {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false)
 
   useEffect(() => {
-    smoothscroll.polyfill();
+    smoothscroll.polyfill()
     const handleWindowScroll = () => {
-      if (window.scrollY > 50) setShow(true);
-      else setShow(false);
-    };
+      if (window.scrollY > 50) setShow(true)
+      else setShow(false)
+    }
 
-    window.addEventListener("scroll", handleWindowScroll);
-    return () => window.removeEventListener("scroll", handleWindowScroll);
-  }, []);
+    window.addEventListener('scroll', handleWindowScroll)
+    return () => window.removeEventListener('scroll', handleWindowScroll)
+  }, [])
 
   const handleScrollTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
   const handleScrollToComment = () => {
-    window.scroll(0, document.getElementById("comment").offsetTop - 104);
-  };
+    window.scroll(0, document.getElementById('comment').offsetTop - 104)
+  }
   return (
-    <div className={`fixed right-4 bottom-16 flex-col gap-3 ${show ? "flex" : "hidden"} z-[900]`}>
+    <div className={`fixed right-4 bottom-16 flex-col gap-3 ${show ? 'flex' : 'hidden'} z-[900]`}>
       <button
         aria-label="Scroll To Comment"
         type="button"
@@ -52,7 +52,7 @@ const ScrollTopAndComment = () => {
         </svg>
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default ScrollTopAndComment;
+export default ScrollTopAndComment

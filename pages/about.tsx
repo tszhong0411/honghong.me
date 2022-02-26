@@ -1,32 +1,14 @@
-import { MDXLayoutRenderer } from "@/components/MDXComponents";
-import { getFileBySlug } from "@/lib/mdx";
-import { GetStaticProps, InferGetStaticPropsType } from "next";
-import { AuthorFrontMatter } from "@/lib/types";
+import { MDXLayoutRenderer } from '@/components/MDXComponents'
+import { InferGetStaticPropsType } from 'next'
+import { allAuthors } from 'contentlayer/generated'
 
-const DEFAULT_LAYOUT = "AuthorLayout";
+const DEFAULT_LAYOUT = 'AuthorLayout'
 
-// @ts-ignore
-export const getStaticProps: GetStaticProps<{
-  authorDetails: { mdxSource: string; frontMatter: AuthorFrontMatter };
-  availableLocales: string[];
-}> = async ({ locale, defaultLocale, locales }) => {
-  const otherLocale = locale !== defaultLocale ? locale : "";
-  const authorDetails = await getFileBySlug("authors", [`default`], otherLocale);
-  return { props: { authorDetails, availableLocales: locales } };
-};
+export const getStaticProps = async ({ locale }) => {
+  const author = allAuthors.find((p) => p.slug === `default.${locale}`)
+  return { props: { author } }
+}
 
-export default function About({
-  authorDetails,
-  availableLocales,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
-  const { mdxSource, frontMatter } = authorDetails;
-
-  return (
-    <MDXLayoutRenderer
-      layout={frontMatter.layout || DEFAULT_LAYOUT}
-      mdxSource={mdxSource}
-      frontMatter={frontMatter}
-      availableLocales={availableLocales}
-    />
-  );
+export default function About({ author }: InferGetStaticPropsType<typeof getStaticProps>) {
+  return <MDXLayoutRenderer layout={author.layout || DEFAULT_LAYOUT} content={author} />
 }

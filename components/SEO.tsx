@@ -1,43 +1,21 @@
-import Head from "next/head";
-import { useRouter } from "next/router";
-import siteMetadata from "@/data/siteMetadata";
-import { PostFrontMatter, AuthorFrontMatter } from "@/lib/types";
-
+import Head from 'next/head'
+import { useRouter } from 'next/router'
+import siteMetadata from '@/data/siteMetadata'
+import { CoreContent } from '@/lib/utils/contentlayer'
+import type { Blog, Authors } from 'contentlayer/generated'
 interface CommonSEOProps {
-  title: string;
-  description: string;
-  ogType: string;
+  title: string
+  description: string
+  ogType: string
   ogImage:
     | string
     | {
-        "@type": string;
-        url: string;
-      }[];
-  twImage: string;
-  canonicalUrl?: string;
-  availableLocales: string[];
+        '@type': string
+        url: string
+      }[]
+  twImage: string
+  canonicalUrl?: string
 }
-
-const generateLinks = (router: any, availableLocales: string[]) =>
-  availableLocales.map((locale) => (
-    <link
-      key={locale}
-      rel={
-        // Here we do as follow: Default langage is canonical
-        // if default langage is not present, we get the first element of the langage array by default
-        // Because the functions should be deterministic, it keep the same(s) link as canonical or alternante
-        locale === router.defaultLocale
-          ? "canonical"
-          : !availableLocales.includes(router.defaultLocale) && locale === availableLocales[0]
-          ? "canonical"
-          : "alternate"
-      }
-      hrefLang={locale}
-      href={`${siteMetadata.siteUrl}${locale === router.defaultLocale ? "" : `/${locale}`}${
-        router.asPath
-      }`}
-    />
-  ));
 
 const CommonSEO = ({
   title,
@@ -45,9 +23,9 @@ const CommonSEO = ({
   ogType,
   ogImage,
   twImage,
-  availableLocales,
+  canonicalUrl,
 }: CommonSEOProps) => {
-  const router = useRouter();
+  const router = useRouter()
   return (
     <Head>
       <title>{title}</title>
@@ -63,30 +41,27 @@ const CommonSEO = ({
       ) : (
         <meta property="og:image" content={ogImage} key={ogImage} />
       )}
-      <meta property="og:locale" content={router.locale} />
-      {availableLocales &&
-        availableLocales
-          .filter((locale) => locale !== router.locale)
-          .map((locale) => <meta key={locale} property="og:locale:alternate" content={locale} />)}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content={siteMetadata.twitter} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={twImage} />
-      {availableLocales && generateLinks(router, availableLocales)}
+      <link
+        rel="canonical"
+        href={canonicalUrl ? canonicalUrl : `${siteMetadata.siteUrl}${router.asPath}`}
+      />
     </Head>
-  );
-};
-
-interface PageSEOProps {
-  title: string;
-  description: string;
-  availableLocales: string[];
+  )
 }
 
-export const PageSEO = ({ title, description, availableLocales }: PageSEOProps) => {
-  const ogImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner;
-  const twImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner;
+interface PageSEOProps {
+  title: string
+  description: string
+}
+
+export const PageSEO = ({ title, description }: PageSEOProps) => {
+  const ogImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner
+  const twImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner
   return (
     <CommonSEO
       title={title}
@@ -94,43 +69,13 @@ export const PageSEO = ({ title, description, availableLocales }: PageSEOProps) 
       ogType="website"
       ogImage={ogImageUrl}
       twImage={twImageUrl}
-      availableLocales={availableLocales}
     />
-  );
-};
+  )
+}
 
-export const TagSEO = ({ title, description, availableLocales }: PageSEOProps) => {
-  const ogImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner;
-  const twImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner;
-  const router = useRouter();
-  return (
-    <>
-      <CommonSEO
-        title={title}
-        description={description}
-        ogType="website"
-        ogImage={ogImageUrl}
-        twImage={twImageUrl}
-        availableLocales={availableLocales}
-      />
-      <Head>
-        <link
-          rel="alternate"
-          type="application/rss+xml"
-          title={`${description} - RSS feed`}
-          href={`${siteMetadata.siteUrl}${router.asPath}/feed${
-            router.locale === router.defaultLocale ? "" : `.${router.locale}`
-          }.xml`}
-        />
-      </Head>
-    </>
-  );
-};
-
-interface BlogSeoProps extends PostFrontMatter {
-  authorDetails?: AuthorFrontMatter[];
-  url: string;
-  availableLocales: string[];
+interface BlogSeoProps extends CoreContent<Blog> {
+  authorDetails?: CoreContent<Authors>[]
+  url: string
 }
 
 export const BlogSEO = ({
@@ -140,47 +85,46 @@ export const BlogSEO = ({
   date,
   lastmod,
   url,
-  availableLocales,
-  images,
+  images = [],
+  canonicalUrl,
 }: BlogSeoProps) => {
-  const router = useRouter();
-  const publishedAt = new Date(date).toISOString();
-  const modifiedAt = new Date(lastmod || date).toISOString();
-  let imagesArr =
+  const publishedAt = new Date(date).toISOString()
+  const modifiedAt = new Date(lastmod || date).toISOString()
+  const imagesArr =
     images.length === 0
       ? [siteMetadata.socialBanner]
-      : typeof images === "string"
+      : typeof images === 'string'
       ? [images]
-      : images;
+      : images
 
   const featuredImages = imagesArr.map((img) => {
     return {
-      "@type": "ImageObject",
+      '@type': 'ImageObject',
       url: `${siteMetadata.siteUrl}${img}`,
-    };
-  });
+    }
+  })
 
-  let authorList;
+  let authorList
   if (authorDetails) {
     authorList = authorDetails.map((author) => {
       return {
-        "@type": "Person",
+        '@type': 'Person',
         name: author.name,
-      };
-    });
+      }
+    })
   } else {
     authorList = {
-      "@type": "Person",
+      '@type': 'Person',
       name: siteMetadata.author,
-    };
+    }
   }
 
   const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Article",
+    '@context': 'https://schema.org',
+    '@type': 'Article',
     mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": url,
+      '@type': 'WebPage',
+      '@id': url,
     },
     headline: title,
     image: featuredImages,
@@ -188,17 +132,17 @@ export const BlogSEO = ({
     dateModified: modifiedAt,
     author: authorList,
     publisher: {
-      "@type": "Organization",
+      '@type': 'Organization',
       name: siteMetadata.author,
       logo: {
-        "@type": "ImageObject",
+        '@type': 'ImageObject',
         url: `${siteMetadata.siteUrl}${siteMetadata.siteLogo}`,
       },
     },
     description: summary,
-  };
+  }
 
-  const twImageUrl = featuredImages[0].url;
+  const twImageUrl = featuredImages[0].url
 
   return (
     <>
@@ -208,12 +152,11 @@ export const BlogSEO = ({
         ogType="article"
         ogImage={featuredImages}
         twImage={twImageUrl}
-        availableLocales={availableLocales}
+        canonicalUrl={canonicalUrl}
       />
       <Head>
         {date && <meta property="article:published_time" content={publishedAt} />}
         {lastmod && <meta property="article:modified_time" content={modifiedAt} />}
-        {availableLocales && generateLinks(router, availableLocales)}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -222,5 +165,5 @@ export const BlogSEO = ({
         />
       </Head>
     </>
-  );
-};
+  )
+}

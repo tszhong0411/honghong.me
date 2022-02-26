@@ -1,5 +1,5 @@
 interface Props {
-  id: string;
+  id: string
 }
 
 const CustomIframe = ({ id }: Props) => {
@@ -15,7 +15,7 @@ const CustomIframe = ({ id }: Props) => {
         allowFullScreen
       ></iframe>
     </div>
-  );
-};
+  )
+}
 
-export default CustomIframe;
+export default CustomIframe

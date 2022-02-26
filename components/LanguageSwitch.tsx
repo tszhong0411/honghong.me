@@ -1,19 +1,19 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from 'framer-motion'
+import { useRouter } from 'next/router'
+import { useState, useEffect } from 'react'
 
 export default function LanguageSwitch({ open, setOpen }) {
-  const router = useRouter();
+  const router = useRouter()
 
   const changeLanguage = (locale: string) => {
-    router.push(router.asPath, router.asPath, { locale });
-  };
+    router.push(router.asPath, router.asPath, { locale })
+  }
 
   // https://github.com/framer/motion/issues/578
-  const [isLoaded, setLoaded] = useState(false);
+  const [isLoaded, setLoaded] = useState(false)
   useEffect(() => {
-    setLoaded(true);
-  }, []);
+    setLoaded(true)
+  }, [])
 
   return (
     <>
@@ -24,7 +24,7 @@ export default function LanguageSwitch({ open, setOpen }) {
           transition: { duration: 0.2 },
         }}
         onClick={() => {
-          !open ? setOpen(true) : setOpen(false);
+          !open ? setOpen(true) : setOpen(false)
         }}
       >
         <i className="fa-solid fa-globe"></i>
@@ -41,18 +41,20 @@ export default function LanguageSwitch({ open, setOpen }) {
               <div
                 className="cursor-pointer rounded-md px-4 py-2 duration-300 hover:bg-gray-300 dark:hover:bg-gray-700"
                 onClick={() => {
-                  setOpen(false);
-                  changeLanguage("zh-TW");
+                  setOpen(false)
+                  changeLanguage('zh-TW')
                 }}
+                aria-hidden="true"
               >
                 繁體中文
               </div>
               <div
                 className="cursor-pointer rounded-md px-4 py-2 duration-300 hover:bg-gray-300 dark:hover:bg-gray-700"
                 onClick={() => {
-                  setOpen(false);
-                  changeLanguage("en");
+                  setOpen(false)
+                  changeLanguage('en')
                 }}
+                aria-hidden="true"
               >
                 English
               </div>
@@ -61,5 +63,5 @@ export default function LanguageSwitch({ open, setOpen }) {
         </AnimatePresence>
       )}
     </>
-  );
+  )
 }
