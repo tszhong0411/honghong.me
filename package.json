@@ -80,7 +80,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.3.1",
     "file-loader": "^6.0.0",
-    "globby": "11.0.3",
+    "globby": "11.1.0",
     "husky": "^6.0.0",
     "inquirer": "^8.1.1",
     "lint-staged": "^11.0.0",
