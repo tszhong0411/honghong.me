@@ -1,10 +1,19 @@
-import Umami from "./Umami";
-import siteMetadata from "@/data/siteMetadata";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import Umami from './Umami'
+import siteMetadata from '@/data/siteMetadata'
 
-const isProduction = process.env.NODE_ENV === "production";
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void
+    plausible?: (...args: any[]) => void
+    sa_event?: (...args: any[]) => void
+  }
+}
+
+const isProduction = process.env.NODE_ENV === 'production'
 
 const Analytics = () => {
-  return <>{isProduction && siteMetadata.analytics.umamiWebsiteId && <Umami />}</>;
-};
+  return <>{isProduction && siteMetadata.analytics.umamiWebsiteId && <Umami />}</>
+}
 
-export default Analytics;
+export default Analytics

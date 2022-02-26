@@ -1,4 +1,4 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
+import Document, { Html, Head, Main, NextScript } from 'next/document'
 class MyDocument extends Document {
   render() {
     return (
@@ -30,15 +30,14 @@ class MyDocument extends Document {
           <meta name="theme-color" content="#ffffff" />
 
           <link rel="manifest" href="/static/manifest.json" />
-          <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
         </Head>
         <body className="bg-[#f9fafb] text-black antialiased dark:bg-gray-900 dark:text-white">
           <Main />
           <NextScript />
         </body>
       </Html>
-    );
+    )
   }
 }
 
-export default MyDocument;
+export default MyDocument

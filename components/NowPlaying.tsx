@@ -1,10 +1,10 @@
-import useSWR from "swr";
-import Link from "./Link";
-import fetcher from "@/lib/fetcher";
-import { NowPlayingSong } from "@/lib/types";
+import useSWR from 'swr'
+import Link from './Link'
+import fetcher from '@/lib/fetcher'
+import { NowPlayingSong } from '@/lib/types'
 
 export default function NowPlaying() {
-  const { data } = useSWR<NowPlayingSong>("/api/now-playing", fetcher);
+  const { data } = useSWR<NowPlayingSong>('/api/now-playing', fetcher)
   return (
     <>
       <div className="mb-8 flex w-full flex-row items-center space-x-2">
@@ -16,14 +16,14 @@ export default function NowPlaying() {
         </svg>
         <div className="inline-flex w-full max-w-full flex-row truncate">
           <p className="text-sm text-gray-500 dark:text-gray-400">
-            {data?.isPlaying ? <Link href={data.songUrl}>{data.title}</Link> : "Not Listening"}
+            {data?.isPlaying ? <Link href={data.songUrl}>{data.title}</Link> : 'Not Listening'}
           </p>
           <span className="mx-2 text-sm text-gray-500 dark:text-gray-400 sm:block"> – </span>
           <p className="max-w-max truncate text-sm text-gray-500 dark:text-gray-400">
-            {data?.isPlaying ? data.artist : "Spotify"}
+            {data?.isPlaying ? data.artist : 'Spotify'}
           </p>
         </div>
       </div>
     </>
-  );
+  )
 }

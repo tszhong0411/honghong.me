@@ -18,7 +18,7 @@ public/sitemap.xml
 /build
 *.xml
 # rss feed
-/public/feed.xml 
+/public/feed.xml
 
 # misc
 .DS_Store
@@ -39,5 +39,10 @@ yarn-error.log*
 /public/sw.*
 /public/workbox-*.*
 
+<<<<<<< HEAD
 #contentlayer
 .contentlayer
+=======
+# Contentlayer
+.contentlayer
+>>>>>>> 4dcdf008f122560411bfbe4b9fb214d9286c5945

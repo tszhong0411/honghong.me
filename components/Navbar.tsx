@@ -1,15 +1,15 @@
-import siteMetadata from "@/data/siteMetadata";
-import headerNavLinks from "@/data/headerNavLinks";
-import Link from "./Link";
-import ThemeSwitch from "./ThemeSwitch";
-import LanguageSwitch from "./LanguageSwitch";
-import MobileNav from "@/components/MobileNav";
-import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
+import siteMetadata from '@/data/siteMetadata'
+import headerNavLinks from '@/data/headerNavLinks'
+import Link from './Link'
+import ThemeSwitch from './ThemeSwitch'
+import LanguageSwitch from './LanguageSwitch'
+import MobileNav from '@/components/MobileNav'
+import { useRouter } from 'next/router'
+import { useState, useEffect } from 'react'
 
 function NavItem({ href, text }) {
-  const router = useRouter();
-  const isActive = router.asPath === href;
+  const router = useRouter()
+  const isActive = router.asPath === href
 
   return (
     <Link
@@ -17,35 +17,35 @@ function NavItem({ href, text }) {
       href={href}
       className={`hover:text-themeColor-500 dark:hover:text-themeColor-350 ${
         isActive
-          ? "text-themeColor-500 dark:text-themeColor-350"
-          : "text-slate-700 dark:text-slate-200"
+          ? 'text-themeColor-500 dark:text-themeColor-350'
+          : 'text-slate-700 dark:text-slate-200'
       } hidden rounded-lg py-1 px-2 font-semibold transition-all  sm:inline-block sm:py-3 md:px-4`}
     >
       <span>{text}</span>
     </Link>
-  );
+  )
 }
 
 function useIsScrollTop() {
-  const [isTop, setIsTop] = useState(true);
+  const [isTop, setIsTop] = useState(true)
   useEffect(() => {
     function onScroll() {
-      setIsTop(window.scrollY <= 0);
+      setIsTop(window.scrollY <= 0)
     }
-    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener('scroll', onScroll, { passive: true })
 
     return () => {
-      window.removeEventListener("scroll", onScroll);
-    };
-  }, []);
+      window.removeEventListener('scroll', onScroll)
+    }
+  }, [])
 
-  return isTop;
+  return isTop
 }
 
 export default function Navbar() {
-  const isTop = useIsScrollTop();
-  const [navShow, setNavShow] = useState(false);
-  const [open, setOpen] = useState(false);
+  const isTop = useIsScrollTop()
+  const [navShow, setNavShow] = useState(false)
+  const [open, setOpen] = useState(false)
 
   return (
     <>
@@ -53,18 +53,19 @@ export default function Navbar() {
         <div
           className="fixed inset-0 z-40 h-full w-full"
           onClick={() => {
-            setOpen(false);
+            setOpen(false)
           }}
+          aria-hidden="true"
         ></div>
       )}
       <header
         className={`duration-0 sticky top-0 z-40 w-full flex-none transition-colors lg:z-50 ${
           isTop
-            ? "supports-backdrop-blur:bg-white/60 dark:bg-transparent"
+            ? 'supports-backdrop-blur:bg-white/60 dark:bg-transparent'
             : `supports-backdrop-blur:bg-white/95 ${
                 navShow
-                  ? "bg-white dark:bg-gray-900"
-                  : "bg-white/75 backdrop-blur dark:bg-gray-900/75"
+                  ? 'bg-white dark:bg-gray-900'
+                  : 'bg-white/75 backdrop-blur dark:bg-gray-900/75'
               }`
         }`}
       >
@@ -106,5 +107,5 @@ export default function Navbar() {
         </div>
       </header>
     </>
-  );
+  )
 }

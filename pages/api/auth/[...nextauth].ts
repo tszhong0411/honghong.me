@@ -1,5 +1,5 @@
-import NextAuth from "next-auth";
-import GithubProvider from "next-auth/providers/github";
+import NextAuth from 'next-auth'
+import GithubProvider from 'next-auth/providers/github'
 
 export default NextAuth({
   secret: process.env.NEXT_AUTH_SECRET,
@@ -9,4 +9,4 @@ export default NextAuth({
       clientSecret: process.env.OAUTH_CLIENT_SECRET,
     }),
   ],
-});
+})

@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client'
 
 // PrismaClient is attached to the `global` object in development to prevent
 // exhausting your database connection limit.
@@ -6,18 +6,18 @@ import { PrismaClient } from "@prisma/client";
 // Learn more:
 // https://pris.ly/d/help/next-js-best-practices
 
-let prisma: PrismaClient;
+let prisma: PrismaClient
 
-if (typeof window === "undefined") {
-  if (process.env.NODE_ENV === "production") {
-    prisma = new PrismaClient();
+if (typeof window === 'undefined') {
+  if (process.env.NODE_ENV === 'production') {
+    prisma = new PrismaClient()
   } else {
     if (!global.prisma) {
-      global.prisma = new PrismaClient();
+      global.prisma = new PrismaClient()
     }
 
-    prisma = global.prisma;
+    prisma = global.prisma
   }
 }
 
-export default prisma;
+export default prisma

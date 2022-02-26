@@ -16,5 +16,5 @@ export default function Track(track) {
         </p>
       </div>
     </div>
-  );
+  )
 }

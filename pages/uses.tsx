@@ -1,29 +1,25 @@
-import { PageSEO } from "@/components/SEO";
-import siteMetadata from "@/data/siteMetadata";
-import Image from "@/components/PostImage";
-import Link from "@/components/Link";
-import useTranslation from "next-translate/useTranslation";
-import { GetStaticProps } from "next";
+import { PageSEO } from '@/components/SEO'
+import siteMetadata from '@/data/siteMetadata'
+import Image from '@/components/PostImage'
+import Link from '@/components/Link'
+import useTranslation from 'next-translate/useTranslation'
+import { useRouter } from 'next/router'
 
-export const getStaticProps: GetStaticProps = async ({ locale, locales }) => {
-  return { props: { locale, availableLocales: locales } };
-};
-
-export default function Uses({ locale, availableLocales }) {
-  const { t } = useTranslation();
+export default function Uses() {
+  const { t } = useTranslation()
+  const { locale } = useRouter()
 
   return (
     <>
       <PageSEO
         title={`Uses - ${siteMetadata.author}`}
         description={siteMetadata.description[locale]}
-        availableLocales={availableLocales}
       />
       <div className="mx-auto flex flex-col justify-center">
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
           My Gear
         </h1>
-        <p className="mb-12 text-gray-600 dark:text-gray-400">{t("uses:description")}</p>
+        <p className="mb-12 text-gray-600 dark:text-gray-400">{t('uses:description')}</p>
         <div className="prose dark:prose-dark">
           <Image
             src="/static/images/desk.webp"
@@ -46,7 +42,7 @@ export default function Uses({ locale, availableLocales }) {
           <ul>
             <li>Editor: Visual Studio Code</li>
             <li>
-              Theme:{" "}
+              Theme:{' '}
               <Link href="https://marketplace.visualstudio.com/items?itemName=enkia.tokyo-night">
                 Tokyo Night - Tokyo Night Storm
               </Link>
@@ -68,5 +64,5 @@ export default function Uses({ locale, availableLocales }) {
         </div>
       </div>
     </>
-  );
+  )
 }
