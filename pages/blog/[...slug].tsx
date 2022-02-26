@@ -10,26 +10,31 @@ import { useRouter } from 'next/router'
 
 const DEFAULT_LAYOUT = 'PostLayout'
 
-export const getStaticPaths = async () => {
+export async function getStaticPaths() {
   return {
-    paths: allBlogs.map((p) => ({ params: { slug: p.slug.split('/') } })),
-    fallback: true,
+    paths: allBlogs.map((p) => ({
+      params: { slug: [p.slug.split('.')[0]] },
+      locale: p.slug.split('.')[p.slug.split('.').length - 1],
+    })),
+    fallback: false,
   }
 }
 
 export const getStaticProps = async ({ params, locale }) => {
-  const slug = (params.slug as string[]).join('/')
-  const sortedPosts = sortedBlogPost(allBlogs.filter((p) => p.slug.split('/')[0] === locale))
-  const postIndex = sortedPosts.findIndex((p) => p.slug === `${locale}/${slug}`)
+  const slug = (params.slug as string[]).join('.')
+  const sortedPosts = sortedBlogPost(
+    allBlogs.filter((p) => p.slug.split('.')[p.slug.split('.').length - 1] === locale)
+  )
+  const postIndex = sortedPosts.findIndex((p) => p.slug === `${slug}.${locale}`)
   // TODO: Refactor this extraction of coreContent
   const prevContent = sortedPosts[postIndex + 1] || null
   const prev = prevContent ? coreContent(prevContent) : null
   const nextContent = sortedPosts[postIndex - 1] || null
   const next = nextContent ? coreContent(nextContent) : null
-  const post = sortedPosts.find((p) => p.slug === `${locale}/${slug}`)
-  const authorList = post.authors || ['default']
+  const post = sortedPosts.find((p) => p.slug === `${slug}.${locale}`)
+  const authorList = post?.authors || ['default']
   const authorDetails = authorList.map((author) => {
-    const authorResults = allAuthors.find((p) => p.slug === `${locale}/${author}`)
+    const authorResults = allAuthors.find((p) => p.slug === `${author}.${locale}`)
     return coreContent(authorResults)
   })
 
@@ -97,24 +102,28 @@ export default function Blog({
 
   return (
     <>
-      {'draft' in post && post.draft !== true ? (
-        <MDXLayoutRenderer
-          layout={post.layout || DEFAULT_LAYOUT}
-          toc={post.toc}
-          content={post}
-          authorDetails={authorDetails}
-          prev={prev}
-          next={next}
-        />
-      ) : (
-        <div className="my-24 text-center">
-          <PageTitle>
-            製作中{' '}
-            <span role="img" aria-label="roadwork sign">
-              🚧
-            </span>
-          </PageTitle>
-        </div>
+      {post && (
+        <>
+          {post.draft !== true ? (
+            <MDXLayoutRenderer
+              layout={post.layout || DEFAULT_LAYOUT}
+              toc={post.toc}
+              content={post}
+              authorDetails={authorDetails}
+              prev={prev}
+              next={next}
+            />
+          ) : (
+            <div className="my-24 text-center">
+              <PageTitle>
+                製作中{' '}
+                <span role="img" aria-label="roadwork sign">
+                  🚧
+                </span>
+              </PageTitle>
+            </div>
+          )}
+        </>
       )}
     </>
   )

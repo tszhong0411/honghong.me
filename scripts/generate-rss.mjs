@@ -4,12 +4,12 @@ import siteMetadata from '../data/siteMetadata.js'
 import { allBlogs } from '../.contentlayer/generated/index.mjs'
 import i18n from '../i18n.json'
 
-const generateRssItem = (post) => {
+const generateRssItem = (post, lang) => {
   return `
   <item>
-    <guid>${siteMetadata.siteUrl}/blog/${post.slug}</guid>
+    <guid>${siteMetadata.siteUrl}/blog/${post.slug.replace(`.${lang}`, '')}</guid>
     <title>${escape(post.title)}</title>
-    <link>${siteMetadata.siteUrl}/blog/${post.slug}</link>
+    <link>${siteMetadata.siteUrl}/blog/${post.slug.replace(`.${lang}`, '')}</link>
     ${post.summary && `<description>${escape(post.summary)}</description>`}
     <pubDate>${new Date(post.date).toUTCString()}</pubDate>
     <author>${siteMetadata.email} (${siteMetadata.author})</author>
@@ -29,7 +29,7 @@ const generateRss = (posts, page = 'feed.xml', lang) => {
       <webMaster>${siteMetadata.email} (${siteMetadata.author})</webMaster>
       <lastBuildDate>${new Date(posts[0].date).toUTCString()}</lastBuildDate>
       <atom:link href="${siteMetadata.siteUrl}/${page}" rel="self" type="application/rss+xml"/>
-      ${posts.map(generateRssItem).join('')}
+      ${posts.map((p) => generateRssItem(p, lang)).join('')}
     </channel>
   </rss>
 `
@@ -41,7 +41,7 @@ async function generate() {
     // for each lang
     i18n.locales.forEach((lang) => {
       var rss = generateRss(
-        allBlogs.filter((post) => post.slug.split('/')[0] === lang),
+        allBlogs.filter((post) => post.slug.split('.')[post.slug.split('.').length - 1] === lang),
         `feed${lang !== i18n.defaultLocale ? `.${lang}` : ''}.xml`,
         lang
       )

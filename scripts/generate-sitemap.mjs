@@ -8,7 +8,7 @@ import i18n from '../i18n.json'
 async function generate() {
   const prettierConfig = await prettier.resolveConfig('./.prettierrc.js')
   const contentPages = allBlogs
-    .filter((p) => p.slug.split('/')[0] === i18n.defaultLocale)
+    .filter((p) => p.slug.split('.')[p.slug.split('.').length - 1] === i18n.defaultLocale)
     .map((x) => `/${x._raw.flattenedPath}`)
     .filter((x) => !x.draft && !x.canonicalUrl)
   const pages = await globby([
@@ -30,7 +30,7 @@ async function generate() {
                   .replace('.mdx', '')
                   .replace('.md', '')
                   .replace('/feed.xml', '')
-                  .replace(`${i18n.defaultLocale}/`, '')
+                  .replace(`.${i18n.defaultLocale}`, '')
 
                 const route = path === '/index' ? '' : path
                 return `

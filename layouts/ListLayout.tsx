@@ -58,7 +58,7 @@ export default function ListLayout({ posts, title }: Props) {
         {!filteredBlogPosts?.length && <p className="p-4">{t('common:noPostsFound')}</p>}
         {displayPosts?.map((post) => {
           const { slug, date, title, summary, images } = post
-          const formattedSlug = slug.split('/')[slug.split('/').length - 1]
+          const formattedSlug = slug.replace(`.${locale}`, '')
           return (
             <li key={formattedSlug} className="py-12">
               <article>

@@ -12,7 +12,9 @@ export const POSTS_PER_PAGE = 10
 export const getStaticProps = async (locale) => {
   const sortedPosts = sortedBlogPost(allBlogs)
   const posts = allCoreContent(sortedPosts)
-  const filteredPosts = posts.filter((slug) => slug.slug.split('/')[0] === locale.locale)
+  const filteredPosts = posts.filter(
+    (slug) => slug.slug.split('.')[slug.slug.split('.').length - 1] === locale.locale
+  )
 
   return {
     props: {

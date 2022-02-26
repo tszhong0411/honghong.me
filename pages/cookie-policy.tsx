@@ -5,7 +5,7 @@ import { allOtherPages } from 'contentlayer/generated'
 const DEFAULT_LAYOUT = 'PageLayout'
 
 export const getStaticProps = async (locale) => {
-  const policy = allOtherPages.find((p) => p.slug === `${locale.locale}/cookie-policy`)
+  const policy = allOtherPages.find((p) => p.slug === `cookie-policy.${locale.locale}`)
   return { props: { policy } }
 }
 

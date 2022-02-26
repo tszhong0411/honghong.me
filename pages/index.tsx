@@ -16,7 +16,9 @@ export const getStaticProps = async (locale) => {
   // TODO: move computation to get only the essential frontmatter to contentlayer.config
   const sortedPosts = sortedBlogPost(allBlogs)
   const posts = allCoreContent(sortedPosts)
-  const filteredPosts = posts.filter((slug) => slug.slug.split('/')[0] === locale.locale)
+  const filteredPosts = posts.filter(
+    (slug) => slug.slug.split('.')[slug.slug.split('.').length - 1] === locale.locale
+  )
 
   return { props: { filteredPosts } }
 }
@@ -41,7 +43,7 @@ export default function Home({ filteredPosts }: InferGetStaticPropsType<typeof g
           )}
           {filteredPosts.slice(0, MAX_DISPLAY).map((post) => {
             const { slug, date, title, summary, images } = post
-            const formattedSlug = slug.split('/')[slug.split('/').length - 1]
+            const formattedSlug = slug.replace(`.${locale}`, '')
             return (
               <li key={formattedSlug} className="py-12">
                 <article>

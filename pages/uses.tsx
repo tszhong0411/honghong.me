@@ -3,14 +3,11 @@ import siteMetadata from '@/data/siteMetadata'
 import Image from '@/components/PostImage'
 import Link from '@/components/Link'
 import useTranslation from 'next-translate/useTranslation'
-import { GetStaticProps } from 'next'
+import { useRouter } from 'next/router'
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  return { props: { locale } }
-}
-
-export default function Uses({ locale }) {
+export default function Uses() {
   const { t } = useTranslation()
+  const { locale } = useRouter()
 
   return (
     <>

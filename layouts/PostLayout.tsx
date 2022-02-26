@@ -202,7 +202,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                   </span>
                   <div className="font-medium">
                     <Link
-                      href={`/blog/${prev.slug.replace(`${locale}/`, '')}`}
+                      href={`/blog/${prev.slug.replace(`.${locale}`, '')}`}
                       className="border-b-2 border-transparent text-xl font-medium tracking-tight duration-300 hover:border-themeColor-500 hover:text-themeColor-500 dark:hover:border-themeColor-350 dark:hover:text-themeColor-350"
                     >
                       {prev.title}
@@ -212,7 +212,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                     </div>
                     <div>
                       <Link
-                        href={`/blog/${prev.slug.replace(`${locale}/`, '')}`}
+                        href={`/blog/${prev.slug.replace(`.${locale}`, '')}`}
                         className="group inline-flex h-9 items-center whitespace-nowrap rounded-full bg-red-100 px-3 text-sm font-medium text-red-700 duration-300 hover:bg-red-200 hover:text-red-900 focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-red-700 dark:text-red-100 dark:hover:bg-red-600 dark:hover:text-white dark:focus:ring-red-500"
                         aria-label={`Read "${prev.title}"`}
                       >
@@ -229,7 +229,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                   </span>
                   <div className="font-medium">
                     <Link
-                      href={`/blog/${next.slug.replace(`${locale}/`, '')}`}
+                      href={`/blog/${next.slug.replace(`.${locale}`, '')}`}
                       className="border-b-2 border-transparent text-xl font-medium tracking-tight duration-300 hover:border-themeColor-500 hover:text-themeColor-500 dark:hover:border-themeColor-350 dark:hover:text-themeColor-350"
                     >
                       {next.title}
@@ -239,7 +239,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                     </div>
                     <div>
                       <Link
-                        href={`/blog/${next.slug.replace(`${locale}/`, '')}`}
+                        href={`/blog/${next.slug.replace(`.${locale}`, '')}`}
                         className="group inline-flex h-9 items-center whitespace-nowrap rounded-full bg-red-100 px-3 text-sm font-medium text-red-700 duration-300 hover:bg-red-200 hover:text-red-900 focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-red-700 dark:text-red-100 dark:hover:bg-red-600 dark:hover:text-white dark:focus:ring-red-500"
                         aria-label={`Read "${next.title}"`}
                       >
