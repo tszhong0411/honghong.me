@@ -78,7 +78,7 @@
     "eslint": "^7.29.0",
     "eslint-config-next": "12.1.0",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-prettier": "3.4.1",
     "file-loader": "^6.0.0",
     "globby": "11.0.3",
     "husky": "^6.0.0",
