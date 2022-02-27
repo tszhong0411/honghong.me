@@ -1,5 +1,5 @@
 import useSWR from 'swr'
-import Link from '../Link/Link'
+import Link from '../Link'
 import fetcher from '@/lib/fetcher'
 import { NowPlayingSong } from '@/lib/types'
 

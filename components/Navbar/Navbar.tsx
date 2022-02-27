@@ -1,9 +1,9 @@
 import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
-import Link from '../Link/Link'
-import ThemeSwitch from '../ThemeSwitch/ThemeSwitch'
-import LanguageSwitch from '../LanguageSwitch/LanguageSwitch'
-import MobileNav from '@/components/MobileNav/MobileNav'
+import Link from '../Link'
+import ThemeSwitch from '../ThemeSwitch'
+import LanguageSwitch from '../LanguageSwitch'
+import MobileNav from '../MobileNav'
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 

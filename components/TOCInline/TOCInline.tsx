@@ -51,7 +51,9 @@ const TOCInline = ({ toc, fromHeading = 1, toHeading = 6, exclude = '' }: TOCInl
   return (
     <>
       <details className="mt-5 mb-14 rounded-xl dark:bg-[#191919] xl:hidden">
-        <summary className="ml-2 pt-2 pb-2 text-xl font-bold sm:ml-6">{t('common:toc')}</summary>
+        <summary className="ml-2 cursor-pointer pt-2 pb-2 text-xl font-bold sm:ml-6">
+          {t('common:toc')}
+        </summary>
         <div className="ml-2 sm:ml-6">{tocList}</div>
       </details>
     </>

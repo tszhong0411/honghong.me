@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import Link from '../Link/Link'
+import Link from '../Link'
 import headerNavLinks from '@/data/headerNavLinks'
 import { useState, useEffect } from 'react'
 import { Dispatch, SetStateAction } from 'react'

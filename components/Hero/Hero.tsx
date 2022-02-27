@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import Link from '@/components/Link/Link'
+import Link from '@/components/Link'
 import { motion } from 'framer-motion'
 
 export default function Hero() {

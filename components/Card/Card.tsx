@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import Link from '@/components/Link/Link'
+import Link from '@/components/Link'
 import { useSpring, animated, config } from '@react-spring/web'
 import { useRef, useState } from 'react'
 import useTranslation from 'next-translate/useTranslation'

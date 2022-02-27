@@ -1,5 +1,5 @@
-import NowPlaying from '../NowPlaying/NowPlaying'
-import Link from '../Link/Link'
+import NowPlaying from '../NowPlaying'
+import Link from '../Link'
 import siteMetadata from '@/data/siteMetadata'
 import footerNavLinks from '@/data/footerNavLinks'
 import { useRouter } from 'next/router'

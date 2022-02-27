@@ -1,5 +1,5 @@
-import Footer from '../Footer/Footer'
-import Navbar from '../Navbar/Navbar'
+import Footer from '../Footer'
+import Navbar from '../Navbar'
 import { useEffect, ReactNode } from 'react'
 import { ToastContainer } from 'react-toastify'
 interface Props {

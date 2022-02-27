@@ -1,7 +1,7 @@
 import useSWR from 'swr'
 
 import fetcher from '@/lib/fetcher'
-import MetricCard from 'components/metrics/Card'
+import MetricCard from './Card'
 import { Views } from '@/lib/types'
 
 export default function BlogTotalViews() {
