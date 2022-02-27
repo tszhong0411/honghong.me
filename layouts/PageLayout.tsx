@@ -10,7 +10,7 @@ type Props = {
   children: ReactNode
 }
 
-export default function PolicyLayout({ content, children }: Props) {
+export default function PageLayout({ content, children }: Props) {
   const { title } = content
   const { locale } = useRouter()
 

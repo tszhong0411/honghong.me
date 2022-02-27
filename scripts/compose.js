@@ -34,7 +34,7 @@ const genFrontMatter = (answers) => {
   date: '${date}'
   draft: ${answers.draft === 'yes' ? true : false}
   summary: ${answers.summary ? answers.summary : ' '}
-  images: []
+  images: ${answers.images ? answers.images : ' '}
   layout: ${answers.layout}
   `
 
@@ -69,6 +69,11 @@ inquirer
     {
       name: 'summary',
       message: 'Enter post summary:',
+      type: 'input',
+    },
+    {
+      name: 'images',
+      message: 'Enter post cover:',
       type: 'input',
     },
     {

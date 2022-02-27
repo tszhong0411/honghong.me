@@ -59,7 +59,7 @@ export default function Home({ filteredPosts }: InferGetStaticPropsType<typeof g
                         <Link href={`/blog/${formattedSlug}`}>
                           <div className="custom-image-container overflow-hidden rounded-[12px] px-8 sm:px-0">
                             <Image
-                              src={images[0]}
+                              src={images}
                               alt="Cover"
                               layout="fill"
                               className="custom-image duration-500 hover:scale-[1.1]"

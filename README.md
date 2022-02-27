@@ -47,10 +47,14 @@
 ## 🌍 honghong.me
 
 - **Framework**: [Next.js](https://nextjs.org/)
+- **Database**: [Planetscale](https://planetscale.com/)
+- **ORM**: [Prisma](https://prisma.io/)
+- **Authentication**: [NextAuth.js](https://next-auth.js.org/)
 - **Deployment**: [Vercel](https://vercel.com)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **Comment**: [Giscus](https://giscus.app/)
 - **favicon**: [realfavicongenerator](https://realfavicongenerator.net/)
+- **Content**: [MDX](https://github.com/kentcdodds/mdx-bundler)
 
 ## 🚀 Demo
 
@@ -58,11 +62,12 @@
 <img src="https://img.shields.io/website?url=https%3A%2F%2Fhonghong.me&logo=github&style=flat-square" />
 </a>
 
-## 🧐 Features
+## 🤩 Features
 
 - Blog
 - Projects
 - About
+- Guestbook
 - i18n
 
 ## 🍰 Contributing

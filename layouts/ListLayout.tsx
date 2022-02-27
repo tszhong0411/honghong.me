@@ -74,7 +74,7 @@ export default function ListLayout({ posts, title }: Props) {
                       <Link href={`/blog/${formattedSlug}`}>
                         <div className="custom-image-container overflow-hidden rounded-[12px]">
                           <Image
-                            src={images[0]}
+                            src={images}
                             alt="Cover"
                             layout="fill"
                             className="custom-image duration-500 hover:scale-[1.1]"

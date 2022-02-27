@@ -61,9 +61,5 @@ const footerNavLinks = {
       ],
     },
   ],
-  bottomLinks: [
-    { href: '/privacy-policy', title: 'privacy' },
-    { href: '/cookie-policy', title: 'cookie' },
-  ],
 }
 export default footerNavLinks
