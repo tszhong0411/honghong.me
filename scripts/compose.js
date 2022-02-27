@@ -73,7 +73,7 @@ inquirer
     },
     {
       name: 'images',
-      message: 'Enter post cover:',
+      message: 'Enter post image:',
       type: 'input',
     },
     {
