@@ -28,7 +28,7 @@ const Card = ({ title, description, imgSrc, href }) => {
   const { t } = useTranslation()
 
   return (
-    <div className="rounded-md bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-[2px] md:w-1/2">
+    <div className="w-full rounded-md bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-[2px] md:w-1/2">
       <animated.div
         ref={ref}
         onMouseLeave={() => set([0, 0, 1])}
