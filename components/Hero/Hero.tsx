@@ -48,13 +48,13 @@ export default function Hero() {
           <motion.div
             whileHover={{ rotate: 360 }}
             transition={{ duration: 0.6 }}
-            style={{ height: '130px', width: '130px' }}
+            style={{ height: '130px', width: '130px', position: 'relative' }}
           >
             <Image
               src="/static/images/avatar.png"
               alt="Avatar"
-              height="130px"
-              width="130px"
+              layout="fill"
+              objectFit="contain"
               className="transform select-none rounded-full duration-700 ease-in-out hover:rotate-[360deg]"
             />
           </motion.div>

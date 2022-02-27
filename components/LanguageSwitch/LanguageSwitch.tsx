@@ -19,6 +19,7 @@ export default function LanguageSwitch({ open, setOpen }) {
     <>
       <motion.button
         className="ml-1 h-11 w-11 p-1 px-2 text-[18px] sm:ml-4"
+        aria-label="Switch language"
         whileHover={{
           scale: 1.2,
           transition: { duration: 0.2 },
