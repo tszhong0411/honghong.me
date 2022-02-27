@@ -112,7 +112,7 @@ export default function TOC({
   return (
     <>
       <motion.div
-        className="fixed left-3 top-1/4 hidden max-w-[200px] xl:block 2xl:left-8"
+        className="fixed left-3 top-[25vh] hidden max-w-[200px] overflow-y-auto xl:block 2xl:left-8"
         id="toc-container"
         initial={{ x: -100 }}
         animate={{ x: 0 }}

@@ -7,7 +7,7 @@ export default function NowPlaying() {
   const { data } = useSWR<NowPlayingSong>('/api/now-playing', fetcher)
   return (
     <>
-      <div className="mb-8 flex w-full flex-row items-center space-x-2">
+      <div className="flex w-full flex-row items-center space-x-2">
         <svg className="h-5 w-5 flex-none" viewBox="0 0 168 168">
           <path
             fill="#1ED760"
