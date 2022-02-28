@@ -5,29 +5,11 @@
 </p>
 
 <h1 align="center">
- 小康's personal website & blog
+ 小康 blog
 </h1>
 
 <p align="center">
-<a href="https://github.com/tszhong0411/honghong.me/blob/main/LICENSE" target="blank">
-<img src="https://img.shields.io/github/license/tszhong0411/honghong.me?style=flat-square" alt="honghong.me license" />
-</a>
-<a href="https://github.com/tszhong0411/honghong.me/fork" target="blank">
-<img src="https://img.shields.io/github/forks/tszhong0411/honghong.me?style=flat-square" alt="honghong.me forks"/>
-</a>
-<a href="https://github.com/tszhong0411/honghong.me/stargazers" target="blank">
-<img src="https://img.shields.io/github/stars/tszhong0411/honghong.me?style=flat-square" alt="honghong.me stars"/>
-</a>
-<a href="https://github.com/tszhong0411/honghong.me/issues" target="blank">
-<img src="https://img.shields.io/github/issues/tszhong0411/honghong.me?style=flat-square" alt="honghong.me issues"/>
-</a>
-<a href="https://github.com/tszhong0411/honghong.me/pulls" target="blank">
-<img src="https://img.shields.io/github/issues-pr/tszhong0411/honghong.me?style=flat-square" alt="honghong.me pull-requests"/>
-</a>
-</p>
-
-<p align="center">
-  <img src="https://socialify.git.ci/tszhong0411/honghong.me/image?description=1&font=KoHo&logo=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Ftszhong0411%2Fimage%2Ffavicon.png&name=1&owner=1&pattern=Circuit%20Board&stargazers=1&theme=Dark"  alt="Banner">
+  <img src="https://socialify.git.ci/tszhong0411/honghong.me/image?description=1&font=KoHo&forks=1&issues=1&logo=https%3A%2F%2Fhonghong.me%2Fstatic%2Fimages%2Flogo%2Flogo-black.png&name=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark"  alt="Banner">
 </p>
 
 <p align="center">
