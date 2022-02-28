@@ -108,7 +108,6 @@ export default function TOC({
       }
     }
   }, [activeSection])
-  // TODO: exit animation
   return (
     <>
       <motion.div

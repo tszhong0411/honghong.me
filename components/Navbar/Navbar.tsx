@@ -6,6 +6,7 @@ import LanguageSwitch from '../LanguageSwitch'
 import MobileNav from '../MobileNav'
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
+import { motion, AnimateSharedLayout } from 'framer-motion'
 
 function NavItem({ href, text }) {
   const router = useRouter()
@@ -19,9 +20,17 @@ function NavItem({ href, text }) {
         isActive
           ? 'text-themeColor-500 dark:text-themeColor-350'
           : 'text-slate-700 dark:text-slate-200'
-      } hidden rounded-lg py-1 px-2 font-semibold transition-all  sm:inline-block sm:py-3 md:px-4`}
+      } hidden rounded-lg py-1 px-2 font-semibold  transition-all sm:inline-block sm:py-3 md:px-4`}
     >
-      <span>{text}</span>
+      <span className="relative">
+        {text}
+        {isActive && (
+          <motion.div
+            className="absolute top-full mt-2 h-1 w-full rounded-2xl bg-themeColor-500 opacity-[0.85] dark:bg-themeColor-350"
+            layoutId="underline"
+          />
+        )}
+      </span>
     </Link>
   )
 }
@@ -92,9 +101,11 @@ export default function Navbar() {
                   </Link>
                 </div>
                 <div className="hidden sm:block">
-                  {headerNavLinks.map((link, index) => (
-                    <NavItem key={index} href={link.href} text={link.title} />
-                  ))}
+                  <AnimateSharedLayout>
+                    {headerNavLinks.map((link, index) => (
+                      <NavItem key={index} href={link.href} text={link.title} />
+                    ))}
+                  </AnimateSharedLayout>
                 </div>
               </div>
               <div className="flex items-center border-l border-gray-200 dark:border-gray-700">

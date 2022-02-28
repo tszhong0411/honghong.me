@@ -1,16 +1,18 @@
 import { writeFileSync } from 'fs'
+import chalk from 'chalk'
 import globby from 'globby'
 import prettier from 'prettier'
 import siteMetadata from '../data/siteMetadata.js'
 import { allBlogs } from '../.contentlayer/generated/index.mjs'
 import i18n from '../i18n.json'
-
-async function generate() {
-  const prettierConfig = await prettier.resolveConfig('./.prettierrc.js')
+;(async () => {
+  console.info(chalk.cyan('info'), ` - Generating sitemap`)
+  const prettierConfig = await prettier.resolveConfig('./.prettierrc')
   const contentPages = allBlogs
     .filter((p) => p.slug.split('.')[p.slug.split('.').length - 1] === i18n.defaultLocale)
     .map((x) => `/${x._raw.flattenedPath}`)
     .filter((x) => !x.draft && !x.canonicalUrl)
+
   const pages = await globby([
     'pages/*.{js|tsx}',
     '!pages/_*.{js|tsx}',
@@ -36,6 +38,8 @@ async function generate() {
                 return `
                         <url>
                             <loc>${siteMetadata.siteUrl}${route}</loc>
+                            <changefreq>daily</changefreq>
+                            <priority>0.7</priority>
                         </url>
                     `
               })
@@ -49,6 +53,4 @@ async function generate() {
   })
 
   writeFileSync('public/sitemap.xml', formatted)
-}
-
-generate()
+})()
