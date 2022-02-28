@@ -1,6 +1,6 @@
 import { PageSEO } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
-import Image from '@/components/PostImage'
+import Image from '@/components/Image'
 import Link from '@/components/Link'
 import useTranslation from 'next-translate/useTranslation'
 import { useRouter } from 'next/router'
