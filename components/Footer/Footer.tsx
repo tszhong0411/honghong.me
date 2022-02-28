@@ -61,7 +61,7 @@ export default function Footer() {
             })}
           </div>
         </div>
-        <div className="mx-auto mb-8 flex w-full flex-wrap justify-between px-[20px]">
+        <div className="mx-auto mb-8 flex w-full flex-wrap items-center justify-between px-[20px]">
           <div>
             <NowPlaying />
           </div>

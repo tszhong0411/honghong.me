@@ -1,6 +1,5 @@
 {
-  "name": "tszhong-blog",
-  "version": "1.0.7",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "start": "next dev",

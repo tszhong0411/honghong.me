@@ -22,13 +22,13 @@ export default function App({ Component, pageProps: { session, ...pageProps } }:
   const { locale, defaultLocale } = useRouter()
 
   useEffect(() => {
-    CdnList.css.map((item) => {
+    CdnList.css?.map((item: string) => {
       const style = document.createElement('link')
       style.setAttribute('rel', 'stylesheet')
       style.setAttribute('href', item)
       document.querySelector('head').appendChild(style)
     })
-    CdnList.javascript.map((item) => {
+    CdnList.javascript?.map((item: string) => {
       const script = document.createElement('script')
       script.src = item
       document.querySelector('head').appendChild(script)
