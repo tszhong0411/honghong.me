@@ -14,7 +14,7 @@ import RSS from 'rss'
       description: siteMetadata.description[lang],
       site_url: siteMetadata.siteUrl,
       feed_url: `${siteMetadata.siteUrl}/feed${lang !== i18n.defaultLocale ? `.${lang}` : ''}.xml`,
-      image_url: `${siteMetadata.siteUrl}/static/images/og.png`,
+      image_url: `${siteMetadata.siteUrl}/static/images/og/og.png`,
       language: lang,
     })
 

@@ -18,6 +18,8 @@ import { CoreContent } from '@/lib/utils/contentlayer'
 import type { Blog, Authors } from 'contentlayer/generated'
 import useScrollSpy from '@/hooks/useScrollspy'
 import { motion } from 'framer-motion'
+import getOgImage from '@/lib/generate-og-images'
+import { allBlogs } from 'contentlayer/generated'
 
 const editUrl = (slug) => `${siteMetadata.siteRepo}/blob/main/data/blog/${slug}.mdx`
 
@@ -37,9 +39,18 @@ type Props = {
   prev?: { slug: string; title: string; summary: string }
   children: ReactNode
   toc: Toc
+  ogImage: string
 }
 
-export default function PostLayout({ content, authorDetails, next, prev, children, toc }: Props) {
+export default function PostLayout({
+  content,
+  authorDetails,
+  next,
+  prev,
+  children,
+  toc,
+  ogImage,
+}: Props) {
   const { slug, date, title } = content
   const { t } = useTranslation()
   const { locale } = useRouter()
@@ -50,6 +61,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
       <BlogSEO
         url={`${siteMetadata.siteUrl}/blog/${slug}`}
         authorDetails={authorDetails}
+        ogImage={ogImage}
         {...content}
       />
       <ScrollTopAndComment />

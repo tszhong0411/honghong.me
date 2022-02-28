@@ -14,6 +14,7 @@ const siteMetadata = {
   siteLogo: '/static/images/logo/logo-white.png',
   image: '/static/images/avatar.png',
   socialBanner: '/static/images/twitter-card.png',
+  twitter_username: '@TszhongLai0411',
   email: 'info@honghong.me',
   github: 'https://github.com/tszhong0411',
   twitter: 'https://twitter.com/TszhongLai0411',

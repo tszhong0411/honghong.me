@@ -7,6 +7,7 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
 import { useRouter } from 'next/router'
+import getOgImage from '@/lib/generate-og-images'
 
 const DEFAULT_LAYOUT = 'PostLayout'
 
@@ -38,12 +39,19 @@ export const getStaticProps = async ({ params, locale }) => {
     return coreContent(authorResults)
   })
 
+  const ogImage = await getOgImage({
+    slug: `${slug}.${locale}`,
+    background: post.colorFeatured,
+    color: post.fontFeatured,
+  })
+
   return {
     props: {
       post,
       authorDetails,
       prev,
       next,
+      ogImage,
     },
   }
 }
@@ -53,6 +61,7 @@ export default function Blog({
   authorDetails,
   prev,
   next,
+  ogImage,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [mounted, setMounted] = useState(false)
   const { theme, resolvedTheme } = useTheme()
@@ -111,6 +120,7 @@ export default function Blog({
               content={post}
               authorDetails={authorDetails}
               prev={prev}
+              ogImage={ogImage}
               next={next}
             />
           ) : (

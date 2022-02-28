@@ -38,6 +38,8 @@ export const Blog = defineDocumentType(() => ({
     date: { type: 'date', required: true },
     lastmod: { type: 'date' },
     draft: { type: 'boolean' },
+    colorFeatured: { type: 'string' },
+    fontFeatured: { type: 'string' },
     summary: { type: 'string', required: true },
     images: { type: 'string', required: true },
     authors: { type: 'list', of: { type: 'string' } },

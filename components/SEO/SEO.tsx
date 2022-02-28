@@ -26,6 +26,7 @@ const CommonSEO = ({
   canonicalUrl,
 }: CommonSEOProps) => {
   const router = useRouter()
+  const { locale } = useRouter()
   return (
     <Head>
       <title>{title}</title>
@@ -41,11 +42,17 @@ const CommonSEO = ({
       ) : (
         <meta property="og:image" content={ogImage} key={ogImage} />
       )}
+      <meta property="og:image:alt" content={description} />
+      <meta property="og:image:type" content="image/png" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:locale" content={locale.replace('-', '_').toLowerCase()}></meta>
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content={siteMetadata.twitter} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={twImage} />
+      <meta name="twitter:creator" content={siteMetadata.twitter_username} />
       <link
         rel="canonical"
         href={canonicalUrl ? canonicalUrl : `${siteMetadata.siteUrl}${router.asPath}`}
@@ -76,6 +83,7 @@ export const PageSEO = ({ title, description }: PageSEOProps) => {
 interface BlogSeoProps extends CoreContent<Blog> {
   authorDetails?: CoreContent<Authors>[]
   url: string
+  ogImage: string
 }
 
 export const BlogSEO = ({
@@ -85,17 +93,17 @@ export const BlogSEO = ({
   date,
   lastmod,
   url,
-  images,
+  ogImage,
   canonicalUrl,
 }: BlogSeoProps) => {
   const publishedAt = new Date(date).toISOString()
   const modifiedAt = new Date(lastmod || date).toISOString()
   const imagesArr =
-    images.length === 0
+    ogImage?.length === 0
       ? [siteMetadata.socialBanner]
-      : typeof images === 'string'
-      ? [images]
-      : images
+      : typeof ogImage === 'string'
+      ? [ogImage]
+      : ogImage
 
   const featuredImages = imagesArr.map((img) => {
     return {
