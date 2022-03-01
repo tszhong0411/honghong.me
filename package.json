@@ -76,7 +76,7 @@
     "@svgr/webpack": "6.2.1",
     "@types/react": "17.0.39",
     "@types/tailwindcss": "3.0.9",
-    "@typescript-eslint/eslint-plugin": "5.12.1",
+    "@typescript-eslint/eslint-plugin": "5.13.0",
     "@typescript-eslint/parser": "5.12.1",
     "cross-env": "^7.0.3",
     "cypress": "^9.5.0",
