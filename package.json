@@ -8,7 +8,7 @@
     "postbuild": "npm run sitemap && npm run rss && npm run og",
     "sitemap": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-sitemap.mjs",
     "rss": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-rss.mjs",
-    "og": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-og-image.mjs",
+    "og": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-og-images.mjs",
     "serve": "next start",
     "analyze": "cross-env ANALYZE=true next build",
     "lint": "next lint --fix --dir pages --dir components --dir lib --dir layouts --dir scripts",
@@ -16,7 +16,8 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "export": "next export",
-    "format": "prettier --write \"./**/*.{js,jsx,ts,tsx}\""
+    "format": "prettier --write \"./**/*.{js,jsx,ts,tsx}\"",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@agentofuser/rehype-section": "^1.0.5",
@@ -24,7 +25,7 @@
     "@fontsource/jetbrains-mono": "^4.5.3",
     "@fontsource/noto-sans-tc": "^4.5.4",
     "@prisma/client": "^3.10.0",
-    "@react-spring/web": "^9.4.3",
+    "@react-spring/web": "^10.0.0-alpha.1",
     "@tailwindcss/forms": "^0.4.0",
     "@tailwindcss/typography": "0.5.2",
     "autoprefixer": "10.4.2",
@@ -95,7 +96,7 @@
     "prettier": "^2.5.1",
     "prettier-plugin-tailwindcss": "0.1.8",
     "prisma": "^3.10.0",
-    "typescript": "^4.6.1-rc"
+    "typescript": "^4.7.0-dev.20220227"
   },
   "lint-staged": {
     "*.+(js|jsx|ts|tsx)": [

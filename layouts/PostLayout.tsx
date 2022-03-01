@@ -18,8 +18,6 @@ import { CoreContent } from '@/lib/utils/contentlayer'
 import type { Blog, Authors } from 'contentlayer/generated'
 import useScrollSpy from '@/hooks/useScrollspy'
 import { motion } from 'framer-motion'
-import getOgImage from '@/lib/generate-og-images'
-import { allBlogs } from 'contentlayer/generated'
 
 const editUrl = (slug) => `${siteMetadata.siteRepo}/blob/main/data/blog/${slug}.mdx`
 
