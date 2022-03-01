@@ -1,5 +1,5 @@
 import { allBlogs } from '../.contentlayer/generated/index.mjs'
-import playwright from 'playwright-aws-lambda'
+import puppeteer from 'puppeteer'
 import chalk from 'chalk'
 import { createHash } from 'crypto'
 import fs from 'fs'
@@ -46,10 +46,14 @@ const ogImageDir = `./public/static/images/og`
       console.info(chalk.yellowBright(`Generating Opengraph image for ${post.title}`))
 
       try {
-        const browser = await playwright.launchChromium({ headless: true })
+        const browser = await puppeteer.launch({
+          defaultViewport: {
+            width: 1200,
+            height: 630,
+          },
+        })
         const page = await browser.newPage()
-        await page.setViewportSize({ width: 1200, height: 630 })
-        await page.goto(url, { waitUntil: 'networkidle' })
+        await page.goto(url, { waitUntil: 'networkidle2' })
 
         const buffer = await page.screenshot({ type: 'png' })
         await browser.close()
