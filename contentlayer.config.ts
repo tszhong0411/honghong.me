@@ -9,7 +9,6 @@ import remarkExtractFrontmatter from './lib/remark-extract-frontmatter'
 import remarkCodeTitles from './lib/remark-code-title'
 import { extractTocHeadings } from './lib/remark-toc-headings'
 import remarkImgToJsx from './lib/remark-img-to-jsx'
-import remarkSection from '@agentofuser/rehype-section'
 // Rehype packages
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
@@ -94,7 +93,6 @@ export default makeSource({
       remarkImgToJsx,
     ],
     rehypePlugins: [
-      remarkSection,
       rehypeSlug,
       [
         rehypeAutolinkHeadings,
