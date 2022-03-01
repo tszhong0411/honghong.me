@@ -1,44 +1,13 @@
 import Image from 'next/image'
 import Link from '@/components/Link'
-import { useSpring, animated, config } from '@react-spring/web'
-import { useRef, useState } from 'react'
 import useTranslation from 'next-translate/useTranslation'
 
-const calc = (
-  x: number,
-  y: number,
-  rect: {
-    top: number
-    height: number
-    left: number
-    width: number
-  }
-) => [-(y - rect.top - rect.height / 2) / 20, (x - rect.left - rect.width / 2) / 20, 1.01]
-
-const trans = (x: number, y: number, s: number) =>
-  `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`
-
 const Card = ({ title, description, imgSrc, href }) => {
-  const ref = useRef(null)
-  const [xys, set] = useState([0, 0, 1])
-  const props = useSpring({
-    xys,
-    config: config.molasses,
-  })
   const { t } = useTranslation()
 
   return (
     <div className="w-full rounded-md bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-[2px] md:w-1/2">
-      <animated.div
-        ref={ref}
-        onMouseLeave={() => set([0, 0, 1])}
-        onMouseMove={(e) => {
-          const rect = ref.current.getBoundingClientRect()
-          set(calc(e.clientX, e.clientY, rect))
-        }}
-        style={{ transform: props.xys.to(trans) }}
-        className="rounded-md bg-white dark:bg-gray-900"
-      >
+      <div className="rounded-md bg-white dark:bg-gray-900">
         <div
           className={`${
             imgSrc ? 'h-full' : ''
@@ -88,7 +57,7 @@ const Card = ({ title, description, imgSrc, href }) => {
             )}
           </div>
         </div>
-      </animated.div>
+      </div>
     </div>
   )
 }

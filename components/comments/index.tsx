@@ -16,6 +16,8 @@ const GiscusComponent = dynamic(
 
 const Comments = ({ frontMatter }: Props) => {
   let term
+  const comment = siteMetadata?.comment
+  if (!comment || Object.keys(comment).length === 0) return <></>
   switch (
     siteMetadata.comment.giscusConfig.mapping ||
     siteMetadata.comment.utterancesConfig.issueTerm
