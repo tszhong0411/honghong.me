@@ -58,12 +58,18 @@ export const NavItemLink = styled(Link, {
     px: '16px',
   },
   '&:hover': {
-    color: '$honghong-colors-brand',
+    color: 'hsla($palette-red-65, 100%)',
+    [`.${darkTheme} &`]: {
+      color: '$honghong-colors-brand',
+    },
   },
   variants: {
     isActive: {
       true: {
-        color: '$honghong-colors-brand',
+        color: 'hsla($palette-red-65, 100%)',
+        [`.${darkTheme} &`]: {
+          color: '$honghong-colors-brand',
+        },
       },
       false: {
         color: '$honghong-colors-typeface-primary',

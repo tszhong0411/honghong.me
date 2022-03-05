@@ -31,10 +31,6 @@ class MyDocument extends Document {
           <meta name="msapplication-config" content="/static/favicons/browserconfig.xml" />
           <meta name="theme-color" content="#ffffff" />
           <link rel="manifest" href="/static/manifest.json" />
-          <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css"
-          />
         </Head>
         <body>
           <Main />

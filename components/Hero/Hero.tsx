@@ -68,15 +68,12 @@ export default function Hero() {
               inlineFlex
             >
               <Link href="https://instagram.com/tszhong0411/" underline variant={'red'}>
-                <i className="fa-brands fa-instagram "></i>
                 Instagram
               </Link>
               <Link href="https://github.com/tszhong0411" underline variant={'red'}>
-                <i className="fa-brands fa-github"></i>
                 Github
               </Link>
               <Link href="https://honghong.me/youtube" underline variant={'red'}>
-                <i className="fa-brands fa-youtube"></i>
                 Youtube
               </Link>
             </Flex>
