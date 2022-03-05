@@ -39,6 +39,7 @@ export default function Hero() {
           </Text>
           <div>
             <List
+              as="ul"
               css={{
                 display: 'flex',
                 gapX: '$2',

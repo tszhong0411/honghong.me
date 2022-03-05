@@ -124,7 +124,7 @@ export default function Blog({ filteredPosts }: InferGetStaticPropsType<typeof g
             const { slug, date, title, summary, image } = post
             const formattedSlug = slug.replace(`.${router.locale}`, '')
             return (
-              <List key={formattedSlug} css={{ py: '$8' }}>
+              <List key={formattedSlug} css={{ py: '$8' }} as="li">
                 <article>
                   <Box
                     css={{

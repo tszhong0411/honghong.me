@@ -46,7 +46,7 @@ export default function Home({ filteredPosts }: InferGetStaticPropsType<typeof g
             {t('common:latestPosts')}
           </Text>
         </Box>
-        <List css={{ divideY: '1px' }}>
+        <List as="ul" css={{ divideY: '1px' }}>
           {!filteredPosts && !filteredPosts.length && (
             <Text size={7} as="p">
               {t('common:noPostsFound')}
@@ -56,7 +56,7 @@ export default function Home({ filteredPosts }: InferGetStaticPropsType<typeof g
             const { slug, date, title, summary, image } = post
             const formattedSlug = slug.replace(`.${locale}`, '')
             return (
-              <List key={formattedSlug} css={{ py: '$8' }}>
+              <List key={formattedSlug} css={{ py: '$8' }} as="li">
                 <article>
                   <Box
                     css={{
