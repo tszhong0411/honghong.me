@@ -42,10 +42,12 @@ export const MobileNav = ({ navShow, setNavShow }: Props) => {
           width: '$11',
           p: 0,
           fontSize: '$lg',
+          display: 'block',
           backgroundColor: 'transparent',
           color: '$honghong-colors-typeface-primary',
           '@sm': {
             ml: '$4',
+            display: 'none',
           },
         }}
         whileHover={{
@@ -54,6 +56,7 @@ export const MobileNav = ({ navShow, setNavShow }: Props) => {
         }}
         whileTap={{
           scale: 0.7,
+          rotate: 360,
           transition: { duration: 0.2 },
         }}
         aria-label="Toggle Navbar"
