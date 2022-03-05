@@ -5,7 +5,7 @@ export const StyledFooter = styled('footer', {
   mt: '2rem',
   width: '100%',
   maxWidth: '$max-w-3xl',
-  px: '$8',
+  px: '$6',
   '@xl': {
     px: 0,
   },
