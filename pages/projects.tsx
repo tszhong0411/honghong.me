@@ -1,37 +1,50 @@
-import siteMetadata from '@/data/siteMetadata'
-import projectsData from '@/data/projectsData'
-import Card from '@/components/Card'
-import { PageSEO } from '@/components/SEO'
-import useTranslation from 'next-translate/useTranslation'
 import { useRouter } from 'next/router'
 
+import Card from '@/components/Card'
+import Container from '@/components/Container'
+import PageContainer from '@/components/PageContainer'
+import { Flex } from '@/components/Flex'
+
 export default function Projects() {
-  const { t } = useTranslation()
   const { locale } = useRouter()
+  const router = useRouter()
+
+  const title = {
+    'zh-TW': '項目',
+    en: 'Projects',
+  }
+
+  const description = {
+    'zh-TW': '這是我在網頁開發上的項目',
+    en: 'Projects on web development',
+  }
+
+  const projectsData = {
+    'zh-TW': [
+      {
+        title: 'Blog',
+        description: `分享我的知識與經驗`,
+        href: 'https://honghong.me',
+      },
+    ],
+    en: [
+      {
+        title: 'Blog',
+        description: `Share my knowledge and experience`,
+        href: 'https://honghong.me',
+      },
+    ],
+  }
 
   return (
-    <>
-      <PageSEO
-        title={`Projects - ${siteMetadata.author}`}
-        description={siteMetadata.description[locale]}
-      />
-      <div className="mx-auto flex flex-col justify-center">
-        <h1 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
-          {t('projects:title')}
-        </h1>
-        <p className="mb-12 text-gray-600 dark:text-gray-400">{t('projects:description')}</p>
-        <div className="flex flex-wrap">
+    <Container title="Projects - 小康">
+      <PageContainer title={title[router.locale]} description={description}>
+        <Flex wrap={'wrap'}>
           {projectsData[locale]?.map((d) => (
-            <Card
-              key={d.title}
-              title={d.title}
-              description={d.description}
-              href={d.href}
-              imgSrc={d.imgSrc}
-            />
+            <Card key={d.title} title={d.title} description={d.description} href={d.href} />
           ))}
-        </div>
-      </div>
-    </>
+        </Flex>
+      </PageContainer>
+    </Container>
   )
 }

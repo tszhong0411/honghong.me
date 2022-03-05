@@ -1,29 +1,47 @@
 import prisma from '@/lib/prisma'
-import { PageSEO } from '@/components/SEO'
-import siteMetadata from '@/data/siteMetadata'
 import Guestbook from '@/components/Guestbook'
 import { GetStaticProps } from 'next'
 import useTranslation from 'next-translate/useTranslation'
-import { useRouter } from 'next/router'
+import Container from '@/components/Container'
+import { Flex } from '@/components/Flex'
+import { Text } from '@/components/Text'
 
 export default function GuestbookPage({ fallbackData }) {
   const { t } = useTranslation()
-  const { locale } = useRouter()
+
+  const description = {
+    'zh-TW': '簽到我的訪客留言簿和分享你的想法。',
+    en: 'Sign my guestbook and share your idea.',
+  }
 
   return (
-    <>
-      <PageSEO
-        title={`Guestbook - ${siteMetadata.author}`}
-        description={siteMetadata.description[locale]}
-      />
-      <div className="mx-auto flex flex-col justify-center">
-        <h1 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
+    <Container title="Guestbook - 小康" description={description}>
+      <Flex
+        direction={'column'}
+        justifyContent={'center'}
+        css={{
+          mx: 'auto',
+        }}
+      >
+        <Text
+          size={7}
+          as="h1"
+          css={{
+            fontWeight: 700,
+            mb: '$6',
+            '@md': {
+              fontSize: '$5xl',
+            },
+          }}
+        >
           Guestbook
-        </h1>
-        <p className="mb-12 text-gray-600 dark:text-gray-400">{t('guestbook:description')}</p>
+        </Text>
+        <Text size={3} as="p" css={{ mb: '$8', color: '$honghong-colors-typeface-secondary' }}>
+          {t('guestbook:description')}
+        </Text>
         <Guestbook fallbackData={fallbackData} />
-      </div>
-    </>
+      </Flex>
+    </Container>
   )
 }
 

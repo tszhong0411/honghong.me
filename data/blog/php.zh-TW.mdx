@@ -3,8 +3,7 @@ title: PHP 學習筆記
 date: '2021-02-18'
 draft: false
 summary: 關於 PHP 的基礎，例如註解、Echo、變量、算術運算子
-images: '/static/images/blog/php/php-cover.webp'
-layout: PostLayout
+image: '/static/images/blog/php/php-cover.webp'
 ---
 
 ## 簡介 PHP
@@ -17,7 +16,7 @@ PHP 的副檔名是 `.php` ，如 `index.php`。上面說到 `PHP` 能夠直接�
 
 當瀏覽器由上至下讀到 `<?php` 時，並會執行 `PHP`，而結尾是 `?>`。如:
 
-```php:Hello-word.php
+```php
 <!DOCTYPE html>
 <html>
     <head>
@@ -35,7 +34,7 @@ PHP 的副檔名是 `.php` ，如 `index.php`。上面說到 `PHP` 能夠直接�
 
 在 `PHP` 中，`PHP` 指令完成後沒有其他 `HTML` 建議不要使用 `?>` 結束。如果關閉了會產生麻煩。
 
-```php:Hello-word.php
+```php
 <?php
     echo "PHP 結束後沒有 HTML";
 
@@ -45,7 +44,7 @@ PHP 的副檔名是 `.php` ，如 `index.php`。上面說到 `PHP` 能夠直接�
 
 幾乎大部分的網頁程式語言都有註解的功能，而 `PHP` 的註解 **單行** 方式是 `//` 和 **多行** 方式是 `/* Some code here */`。
 
-```php:Hello-word.php
+```php
 <?php
     echo = "這是單行註解"; //我是單行註解
     echo = "這是多行註解";
@@ -60,7 +59,7 @@ PHP 的副檔名是 `.php` ，如 `index.php`。上面說到 `PHP` 能夠直接�
 
 `PHP` 裏最簡單的指令就是 `Echo`，`Echo` 的內容必須是用 雙引號 `""` 或 單引號 `''`。每段指令必須使用分號結束 `;`。
 
-```php:Hello-word.php
+```php
 <?php
     echo "這是使用雙引號的效果。";
     echo '這是使用單引號的效果。';
@@ -69,7 +68,7 @@ PHP 的副檔名是 `.php` ，如 `index.php`。上面說到 `PHP` 能夠直接�
 
 `Echo` 中的內容也可以使用 `HTML` 語法。例如我這裡使用了 `<br/>`，這樣便可以斷行。
 
-```php:Hello-word.php
+```php
 <?php
     echo "這是第一句<br/>";
     echo "這是第二句";
@@ -81,7 +80,7 @@ PHP 的副檔名是 `.php` ，如 `index.php`。上面說到 `PHP` 能夠直接�
 
 我們可以給一個變數賦予一段指令，方便我們編寫 `PHP`，跟 `Javascript` 差不多。我們會使用 Dollar sign `$`
 
-```php:Hello-word.php
+```php
 <?php
     $value = "我是指令";
 ?>
@@ -102,7 +101,7 @@ PHP 的副檔名是 `.php` ，如 `index.php`。上面說到 `PHP` 能夠直接�
 
 當變數名和函數名稱是由二個或多個單字連結在一起，而構成的唯一識別字時，利用「駝峰式大小寫」來表示，可以增加變數和函數的可讀性。因為我們不能在變數中有 `空格`。
 
-```php:Hello-word.php
+```php
 <?php
     $onePlusOneAnswer = 1 + 1;
     echo $onePlusOneAnswer;
@@ -113,7 +112,7 @@ PHP 的副檔名是 `.php` ，如 `index.php`。上面說到 `PHP` 能夠直接�
 
 Snake case（如 snake_case）是指一種寫作風格，其中每個空格都用下劃線（ \_ ）字符替換，並且每個單詞的首字母都用小寫字母書寫。
 
-```php:Hello-word.php
+```php
 <?php
     $one_plus_one_answer = 1 + 1;
     echo $one_plus_one_answer;
@@ -124,7 +123,7 @@ Snake case（如 snake_case）是指一種寫作風格，其中每個空格都�
 
 有兩個字符串（string）運算符。第一個是連接運算符（"."），它返回其左右參數連接後的字符串。第二個是連接賦值運算符（".="），它將右邊參數附加到左邊的參數之後。
 
-```php:Hello-word.php
+```php
 <?php
     echo "This" . " " . "is" . " " . "String" . " " . "operators" . ".";
 ?>
@@ -132,7 +131,7 @@ Snake case（如 snake_case）是指一種寫作風格，其中每個空格都�
 
 ## 算術運算子
 
-```php:Hello-word.php
+```php
 <?php
     $value0 = 1.5 // 浮點數
     $value1 = 1 + 1 // 加法

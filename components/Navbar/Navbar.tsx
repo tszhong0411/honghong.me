@@ -1,37 +1,25 @@
-import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
 import Link from '../Link'
 import ThemeSwitch from '../ThemeSwitch'
 import LanguageSwitch from '../LanguageSwitch'
-import MobileNav from '../MobileNav'
+import { MobileNav } from './MobileNav'
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
-import { motion, AnimateSharedLayout } from 'framer-motion'
+import { HeaderLogo, HeaderWrapper, NavItemLink, NavItemUnderline } from './Styles'
+import { Flex } from '../Flex'
+import { Box } from '../Box'
 
 function NavItem({ href, text }) {
   const router = useRouter()
   const isActive = router.asPath === href
 
   return (
-    <Link
-      data-cy="nav-item"
-      href={href}
-      className={`hover:text-themeColor-500 dark:hover:text-themeColor-350 ${
-        isActive
-          ? 'text-themeColor-500 dark:text-themeColor-350'
-          : 'text-slate-700 dark:text-slate-200'
-      } hidden rounded-lg py-1 px-2 font-semibold  transition-all sm:inline-block sm:py-3 md:px-4`}
-    >
-      <span className="relative">
+    <NavItemLink data-cy="nav-item" href={href} isActive={isActive}>
+      <Box as="span" css={{ position: 'relative' }}>
         {text}
-        {isActive && (
-          <motion.div
-            className="absolute top-full mt-2 h-1 w-full rounded-2xl bg-themeColor-500 opacity-[0.85] dark:bg-themeColor-350"
-            layoutId="underline"
-          />
-        )}
-      </span>
-    </Link>
+        {isActive && <NavItemUnderline />}
+      </Box>
+    </NavItemLink>
   )
 }
 
@@ -51,7 +39,7 @@ function useIsScrollTop() {
   return isTop
 }
 
-export default function Navbar() {
+export const Navbar = () => {
   const isTop = useIsScrollTop()
   const [navShow, setNavShow] = useState(false)
   const [open, setOpen] = useState(false)
@@ -59,43 +47,54 @@ export default function Navbar() {
   return (
     <>
       {open && (
-        <div
-          className="fixed inset-0 z-40 h-full w-full"
+        <Box
           onClick={() => {
             setOpen(false)
           }}
           aria-hidden="true"
-        ></div>
+          css={{
+            position: 'fixed',
+            inset: 0,
+            zIndex: 40,
+            height: '100%',
+            width: '100%',
+          }}
+        ></Box>
       )}
-      <header
-        className={`duration-0 sticky top-0 z-40 w-full flex-none transition-colors lg:z-50 ${
-          isTop
-            ? 'supports-backdrop-blur:bg-white/60 dark:bg-transparent'
-            : `supports-backdrop-blur:bg-white/95 ${
-                navShow
-                  ? 'bg-white dark:bg-gray-900'
-                  : 'bg-white/75 backdrop-blur dark:bg-gray-900/75'
-              }`
-        }`}
-      >
-        <div className="mx-auto max-w-3xl">
-          <div className="py-2 px-4 xl:px-0">
-            <div className="relative flex items-center justify-between">
-              <div className="flex items-center text-sm font-semibold leading-6 text-slate-700 dark:text-slate-200">
-                <div className="sm:hidden">
-                  <Link href="/" aria-label={siteMetadata.headerTitle}>
-                    <svg
-                      version="1.0"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="30"
-                      height="30"
-                      className="ml-4 fill-themeColor-500 dark:fill-themeColor-350"
-                      viewBox="0 0 661.000000 1111.000000"
-                      preserveAspectRatio="xMidYMid meet"
-                    >
-                      <g transform="translate(0.000000,1111.000000) scale(0.100000,-0.100000)">
-                        <path
-                          d="M1760 10979 c-147 -108 -301 -202 -967 -591 l-792 -463 -1 -2923 0
+      <HeaderWrapper isTop={isTop} navShow={navShow}>
+        <Box
+          css={{
+            mx: 'auto',
+            maxWidth: '$max-w-3xl',
+            py: '8px',
+            px: '16px',
+            position: 'relative',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            divideX: '1px',
+            '@xl': {
+              px: '0',
+            },
+          }}
+        >
+          <Flex
+            alignItems={'center'}
+            css={{ fontSize: '$sm', fontWeight: 600, lineHeight: '24px' }}
+          >
+            <Box css={{ '@sm': { display: 'none' } }}>
+              <Link href="/" aria-label={'小康'}>
+                <HeaderLogo
+                  version="1.0"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="30"
+                  viewBox="0 0 661.000000 1111.000000"
+                  preserveAspectRatio="xMidYMid meet"
+                >
+                  <g transform="translate(0.000000,1111.000000) scale(0.100000,-0.100000)">
+                    <path
+                      d="M1760 10979 c-147 -108 -301 -202 -967 -591 l-792 -463 -1 -2923 0
 -2922 48 27 c27 16 207 120 400 233 l351 205 1 2485 0 2485 390 198 390 198
 -2 -2897 -3 -2897 -787 -461 -788 -461 1 -240 0 -240 1187 -695 1187 -696 5
 1163 5 1163 920 528 920 528 5 -2255 5 -2254 213 -99 213 -98 184 133 c152
@@ -110,28 +109,24 @@ c-505 -290 -920 -528 -922 -528 -2 0 -4 1014 -4 2253 l0 2253 -210 97 c-115
 -530 -17 -9 -18 14 -18 428 l0 438 918 527 c504 290 920 527 925 527 4 1 6
 -195 5 -435z m-2650 -3237 l-3 -113 -203 110 c-170 92 -200 111 -185 120 10 6
 101 56 203 111 l185 100 3 -107 c1 -59 1 -158 0 -221z"
-                        />
-                      </g>
-                    </svg>
-                  </Link>
-                </div>
-                <div className="hidden sm:block">
-                  <AnimateSharedLayout>
-                    {headerNavLinks.map((link, index) => (
-                      <NavItem key={index} href={link.href} text={link.title} />
-                    ))}
-                  </AnimateSharedLayout>
-                </div>
-              </div>
-              <div className="flex items-center border-l border-gray-200 dark:border-gray-700">
-                <ThemeSwitch />
-                <LanguageSwitch open={open} setOpen={setOpen} />
-                <MobileNav navShow={navShow} setNavShow={setNavShow} />
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
+                    />
+                  </g>
+                </HeaderLogo>
+              </Link>
+            </Box>
+            <Box css={{ display: 'none', '@sm': { display: 'block' } }}>
+              {headerNavLinks.map((link, index) => (
+                <NavItem key={index} href={link.href} text={link.title} />
+              ))}
+            </Box>
+          </Flex>
+          <Flex alignItems={'center'}>
+            <ThemeSwitch />
+            <LanguageSwitch open={open} setOpen={setOpen} />
+            <MobileNav navShow={navShow} setNavShow={setNavShow} />
+          </Flex>
+        </Box>
+      </HeaderWrapper>
     </>
   )
 }

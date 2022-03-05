@@ -1,12 +1,23 @@
 import { ReactNode } from 'react'
+import { Text } from '../Text'
 interface Props {
   children: ReactNode
 }
 
 export default function PageTitle({ children }: Props) {
   return (
-    <h1 className="mb-[16px] text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
+    <Text
+      size={7}
+      as="h1"
+      css={{
+        mb: '$6',
+        fontWeight: 700,
+        '@md': {
+          fontSize: '$5xl',
+        },
+      }}
+    >
       {children}
-    </h1>
+    </Text>
   )
 }

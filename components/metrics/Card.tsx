@@ -1,5 +1,8 @@
 import MetricsContentLoader from '@/components/metrics/MetricsContentLoader'
 import { useState, useEffect } from 'react'
+import { Box } from '@/components/Box'
+import Link from '@/components/Link'
+import { Text } from './../Text/Text'
 
 export default function MetricCard({ header, link, metric, isCurrency }) {
   const [mounted, setMounted] = useState(false)
@@ -10,30 +13,29 @@ export default function MetricCard({ header, link, metric, isCurrency }) {
   if (!mounted) return null
 
   return (
-    <div className="metric-card w-full rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-gray-900">
-      <a aria-label={header} target="_blank" rel="noopener noreferrer" href={link}>
-        <div className="flex items-center text-gray-900 dark:text-gray-100">
-          {header}
-          <svg
-            className="ml-1 h-4 w-4"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-            />
-          </svg>
-        </div>
-      </a>
-      <p className="spacing-sm mt-2 text-3xl font-bold text-black dark:text-white">
+    <Box
+      css={{
+        width: '100%',
+        p: '$4',
+        borderRadius: '$3',
+        borderWidth: '2px',
+        borderColor: '$honghong-colors-border-primary',
+      }}
+    >
+      <Link aria-label={header} href={link}>
+        {header}
+      </Link>
+      <Text
+        size={7}
+        as="p"
+        css={{
+          mt: '$2',
+          fontWeight: 700,
+        }}
+      >
         {metric > 0 && isCurrency && '$'}
         {metric > 0 ? metric.toLocaleString() : <MetricsContentLoader />}
-      </p>
-    </div>
+      </Text>
+    </Box>
   )
 }

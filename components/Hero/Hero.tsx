@@ -1,53 +1,90 @@
 import Image from 'next/image'
 import Link from '@/components/Link'
 import { motion } from 'framer-motion'
+import { Flex } from '../Flex'
+import { Text } from '../Text'
+import List from '../List'
+import { Box } from '../Box'
+import { Logo } from './Styles'
 
 export default function Hero() {
   return (
     <>
-      <div className="mx-auto mt-12 mb-24 flex max-w-3xl items-center justify-between">
+      <Flex
+        justifyContent={'between'}
+        alignItems={'center'}
+        css={{
+          maxWidth: '$max-w-3xl',
+          mx: 'auto',
+          mt: '$8',
+          mb: '$12',
+        }}
+      >
         <div>
-          <h1 className="pb-6 text-3xl font-semibold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
+          <Text
+            size={'10'}
+            css={{
+              fontWeight: 700,
+              pb: '$5',
+              fontSize: '$3xl',
+              '@sm': {
+                fontSize: '$6xl',
+              },
+            }}
+          >
             小康
-          </h1>
-          <p className="text-gray-700 dark:text-gray-300">A teenager who loves web development</p>
+          </Text>
+          <Text size={'3'} as="p">
+            A teenager who loves web development
+          </Text>
           <div>
-            <ul className="flex gap-x-2 text-sm text-gray-500 dark:text-gray-400">
+            <List
+              css={{
+                display: 'flex',
+                gapX: '$2',
+                fontSize: '$sm',
+                color: '$honghong-colors-typeface-secondary',
+              }}
+            >
               <li>#react</li>
               <li>#next.js</li>
               <li>#tailwind</li>
-            </ul>
+            </List>
           </div>
-          <div className="mt-8">
-            <div className="inline-flex flex-col gap-x-4 gap-y-3 sm:flex-row">
-              <Link
-                href="https://instagram.com/tszhong0411/"
-                className="border-b-2 border-transparent duration-300  hover:border-themeColor-500 dark:hover:border-themeColor-350"
-              >
-                <i className="fa-brands fa-instagram mr-1"></i>
+          <Box css={{ mt: '$6' }}>
+            <Flex
+              css={{
+                gapX: '$4',
+                gapY: '$3',
+                '@sm': {
+                  flexDirection: 'row',
+                },
+                '& i': {
+                  mr: '$1',
+                },
+              }}
+              direction={'column'}
+              inlineFlex
+            >
+              <Link href="https://instagram.com/tszhong0411/" underline variant={'red'}>
+                <i className="fa-brands fa-instagram "></i>
                 Instagram
               </Link>
-              <Link
-                href="https://github.com/tszhong0411"
-                className="border-b-2 border-transparent duration-300  hover:border-themeColor-500 dark:hover:border-themeColor-350"
-              >
-                <i className="fa-brands fa-github mr-1"></i>
+              <Link href="https://github.com/tszhong0411" underline variant={'red'}>
+                <i className="fa-brands fa-github"></i>
                 Github
               </Link>
-              <Link
-                href="https://honghong.me/youtube"
-                className="border-b-2 border-transparent duration-300  hover:border-themeColor-500 dark:hover:border-themeColor-350"
-              >
-                <i className="fa-brands fa-youtube mr-1"></i>
+              <Link href="https://honghong.me/youtube" underline variant={'red'}>
+                <i className="fa-brands fa-youtube"></i>
                 Youtube
               </Link>
-            </div>
-          </div>
+            </Flex>
+          </Box>
         </div>
-        <div className="hidden sm:block">
+        <Box css={{ display: 'none', '@sm': { display: 'block' } }}>
           <motion.div
             whileHover={{ rotate: 360 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.7 }}
             style={{ height: '130px', width: '130px', position: 'relative' }}
           >
             <Image
@@ -55,11 +92,11 @@ export default function Hero() {
               alt="Avatar"
               layout="fill"
               objectFit="contain"
-              className="transform select-none rounded-full duration-700 ease-in-out hover:rotate-[360deg]"
+              className={Logo()}
             />
           </motion.div>
-        </div>
-      </div>
+        </Box>
+      </Flex>
     </>
   )
 }

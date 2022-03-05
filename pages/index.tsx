@@ -1,118 +1,183 @@
 import Hero from '@/components/Hero'
 import Link from '@/components/Link'
-import { PageSEO } from '@/components/SEO'
-import siteMetadata from '@/data/siteMetadata'
+
+import Container from '@/components/Container'
 import formatDate from '@/lib/utils/formatDate'
 import Image from 'next/image'
 import useTranslation from 'next-translate/useTranslation'
 import { InferGetStaticPropsType } from 'next'
-import { sortedBlogPost, allCoreContent } from '@/lib/utils/contentlayer'
+import { sortedBlogPost } from '@/lib/utils/contentlayer'
 import { allBlogs } from 'contentlayer/generated'
 import { useRouter } from 'next/router'
+import { Box } from '@/components/Box'
+import List from '@/components/List'
+import { Text } from '@/components/Text'
+import { Flex } from '@/components/Flex'
+import { css } from '@/lib/stitches.config'
 
 const MAX_DISPLAY = 3
 
-export const getStaticProps = async (locale) => {
-  // TODO: move computation to get only the essential frontmatter to contentlayer.config
+export const getStaticProps = async (locale: { locale: string }) => {
   const sortedPosts = sortedBlogPost(allBlogs)
-  const posts = allCoreContent(sortedPosts)
-  const filteredPosts = posts.filter(
+  const filteredPosts = sortedPosts.filter(
     (slug) => slug.slug.split('.')[slug.slug.split('.').length - 1] === locale.locale
   )
 
   return { props: { filteredPosts } }
 }
 
+const PostCover = css({
+  transition: '0.5s',
+  '&:hover': {
+    transform: 'scale(1.1)',
+  },
+})
+
 export default function Home({ filteredPosts }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t } = useTranslation()
   const { locale } = useRouter()
 
   return (
-    <>
-      <PageSEO title={siteMetadata.title} description={siteMetadata.description[locale]} />
-      <div className="divide-y divide-gray-200 dark:divide-gray-700">
-        <div className="space-y-2 pt-6 pb-8 md:space-y-5">
+    <Container>
+      <Box css={{ divideY: '1px' }}>
+        <Box css={{ pt: '$5', pb: '$6', spaceY: '$2', '@md': { spaceY: 'calc($5 - 4px)' } }}>
           <Hero />
-          <h1 className="text-3xl font-semibold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:leading-14">
+          <Text size={7} as="h2">
             {t('common:latestPosts')}
-          </h1>
-        </div>
-        <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+          </Text>
+        </Box>
+        <List css={{ divideY: '1px' }}>
           {!filteredPosts && !filteredPosts.length && (
-            <span className="my-8 block text-xl">{t('common:noPostsFound')}</span>
+            <Text size={7} as="p">
+              {t('common:noPostsFound')}
+            </Text>
           )}
-          {filteredPosts.slice(0, MAX_DISPLAY).map((post) => {
-            const { slug, date, title, summary, images } = post
+          {filteredPosts.slice(0, 3).map((post) => {
+            const { slug, date, title, summary, image } = post
             const formattedSlug = slug.replace(`.${locale}`, '')
             return (
-              <li key={formattedSlug} className="py-12">
+              <List key={formattedSlug} css={{ py: '$8' }}>
                 <article>
-                  <div className="space-y-2 xl:grid xl:grid-cols-3 xl:space-y-0">
+                  <Box
+                    css={{
+                      spaceY: '$4',
+                      '@xl': {
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(3, 1fr)',
+                      },
+                    }}
+                  >
                     <dl>
-                      <dt className="sr-only">Published on</dt>
-                      <dd className="mb-4 text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+                      <dt className="sr-only">{t('common:publishedOn')}</dt>
+                      <dd>
                         <time dateTime={date}>{formatDate(date, locale)}</time>
                       </dd>
                     </dl>
-                    <div className="flex flex-col items-center sm:flex-row xl:col-span-3">
-                      <div className="mx-2 my-8 w-full sm:my-0 sm:w-1/3">
+                    <Flex
+                      direction={'column'}
+                      alignItems={'center'}
+                      css={{
+                        '@sm': {
+                          flexDirection: 'row',
+                        },
+                        '@xl': {
+                          gridColumn: 'span 3 / span 3',
+                        },
+                      }}
+                    >
+                      <Box
+                        css={{
+                          mx: '$2',
+                          my: '$6',
+                          width: '100%',
+                          '@sm': {
+                            my: 0,
+                            width: 'calc(100% / 3)',
+                          },
+                        }}
+                      >
                         <Link href={`/blog/${formattedSlug}`}>
-                          <div className="custom-image-container overflow-hidden rounded-[12px] px-8 sm:px-0">
+                          <Box
+                            className="custom-image-container"
+                            css={{
+                              overflow: 'hidden',
+                              borderRadius: '$4',
+                              px: '$6',
+                              '@sm': {
+                                px: 0,
+                              },
+                            }}
+                          >
                             <Image
-                              src={images}
+                              src={image}
                               alt="Cover"
                               layout="fill"
-                              className="custom-image duration-500 hover:scale-[1.1]"
+                              className={`custom-image ${PostCover()}`}
                             />
-                          </div>
+                          </Box>
                         </Link>
-                      </div>
-                      <div className="mx-2 w-full sm:w-2/3">
-                        <div className="space-y-6">
+                      </Box>
+                      <Box
+                        css={{
+                          mx: '$2',
+                          width: '100%',
+                          '@sm': {
+                            width: 'calc(100% * (2/3))',
+                          },
+                        }}
+                      >
+                        <Box css={{ spaceY: '$5' }}>
                           <div>
-                            <h2 className="text-2xl font-bold leading-8 tracking-tight">
+                            <Text
+                              size={6}
+                              as="h2"
+                              css={{
+                                fontWeight: 700,
+                              }}
+                            >
                               <Link
                                 href={`/blog/${formattedSlug}`}
-                                className="text-gray-900 duration-300 hover:text-themeColor-500 dark:text-gray-50 dark:hover:text-themeColor-350"
                                 data-cy="post-title"
+                                variant={'red'}
+                                underline
                               >
                                 {title}
                               </Link>
-                            </h2>
+                            </Text>
                           </div>
-                          <div className="prose max-w-none text-gray-500 dark:text-gray-400">
+                          <Box
+                            css={{
+                              color: '$honghong-colors-typeface-secondary',
+                              mb: '$6',
+                            }}
+                          >
                             {summary}
-                          </div>
-                          <div className="text-base font-medium leading-6">
-                            <Link
-                              href={`/blog/${formattedSlug}`}
-                              className="group inline-flex h-9 items-center whitespace-nowrap rounded-full bg-red-100 px-3 text-sm font-medium text-red-700 duration-300 hover:bg-red-200 hover:text-red-900 focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-red-700 dark:text-red-100 dark:hover:bg-red-600 dark:hover:text-white dark:focus:ring-red-500"
-                              aria-label={`Read "${title}"`}
-                            >
-                              {t('common:readMore')} &rarr;
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                          </Box>
+                          <Link
+                            href={`/blog/${formattedSlug}`}
+                            aria-label={`Read "${title}"`}
+                            underline
+                            variant="red"
+                          >
+                            {t('common:readMore')} &rarr;
+                          </Link>
+                        </Box>
+                      </Box>
+                    </Flex>
+                  </Box>
                 </article>
-              </li>
+              </List>
             )
           })}
-        </ul>
-      </div>
+        </List>
+      </Box>
       {filteredPosts.length > MAX_DISPLAY && (
-        <div className="flex justify-end text-base font-medium leading-6">
-          <Link
-            href="/blog"
-            className="border-b-2 border-transparent font-medium text-themeColor-500 duration-300 hover:border-themeColor-500 dark:text-themeColor-350 dark:hover:border-themeColor-350"
-            aria-label="all posts"
-          >
+        <Flex justifyContent={'end'}>
+          <Link href="/blog" variant="red" underline aria-label="all posts">
             {t('common:allPosts')} &rarr;
           </Link>
-        </div>
+        </Flex>
       )}
-    </>
+    </Container>
   )
 }

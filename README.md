@@ -33,7 +33,7 @@
 - **ORM**: [Prisma](https://prisma.io/)
 - **Authentication**: [NextAuth.js](https://next-auth.js.org/)
 - **Deployment**: [Vercel](https://vercel.com)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Styling**: [Stitches](https://stitches.dev/)
 - **Comment**: [Giscus](https://giscus.app/)
 - **favicon**: [realfavicongenerator](https://realfavicongenerator.net/)
 - **Content**: [MDX](https://github.com/kentcdodds/mdx-bundler)

@@ -1,64 +1,67 @@
-import Image from 'next/image'
 import Link from '@/components/Link'
 import useTranslation from 'next-translate/useTranslation'
+import { Box } from '@/components/Box'
+import { Text } from '@/components/Text'
 
-const Card = ({ title, description, imgSrc, href }) => {
+const Card = ({ title, description, href }) => {
   const { t } = useTranslation()
 
   return (
-    <div className="w-full rounded-md bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-[2px] md:w-1/2">
-      <div className="rounded-md bg-white dark:bg-gray-900">
-        <div
-          className={`${
-            imgSrc ? 'h-full' : ''
-          } overflow-hidden rounded-md border-2 border-gray-200 border-opacity-60 dark:border-gray-700`}
+    <Box
+      css={{
+        width: '100%',
+        borderRadius: '$2',
+        linearGradient: 'to right, #6366f1, #a855f7, #ec4899',
+        p: '2px',
+        '@md': {
+          width: '50%',
+        },
+      }}
+    >
+      <Box css={{ borderRadius: '$2', backgroundColor: '$honghong-colors-body-secondary' }}>
+        <Box
+          css={{
+            overflow: 'hidden',
+            borderRadius: '$2',
+            borderWidth: '$2',
+            borderColor: '$honghong-colors-border-primary',
+          }}
         >
-          {imgSrc &&
-            (href ? (
-              <Link href={href} aria-label={`Link to ${title}`}>
-                <Image
-                  alt={title}
-                  src={imgSrc}
-                  className="object-cover object-center md:h-36 lg:h-48"
-                  width={544}
-                  height={306}
-                />
-              </Link>
-            ) : (
-              <Image
-                alt={title}
-                src={imgSrc}
-                className="object-cover object-center md:h-36 lg:h-48"
-                width={544}
-                height={306}
-              />
-            ))}
-          <div className="p-6">
-            <h2 className="mb-3 text-2xl font-bold leading-8 tracking-tight">
-              {href ? (
-                <Link href={href} aria-label={`Link to ${title}`}>
-                  {title}
-                </Link>
-              ) : (
-                title
-              )}
-            </h2>
-            <p className="prose mb-3 max-w-none text-gray-500 dark:text-gray-400">{description}</p>
+          <Box
+            css={{
+              p: '$5',
+            }}
+          >
+            <Text
+              size={6}
+              as="h2"
+              css={{
+                mb: '$3',
+                fontWeight: 700,
+              }}
+            >
+              {title}
+            </Text>
+            <Text
+              size={3}
+              as="p"
+              css={{
+                mb: '$3',
+                maxWidth: 'none',
+                color: '$honghong-colors-typeface-secondary',
+              }}
+            >
+              {description}
+            </Text>
             {href && (
-              <a
-                rel="noopener noreferrer"
-                target="_blank"
-                href={href}
-                className="text-base font-medium leading-6 text-[#cb3728] hover:text-[#dc2626] dark:hover:text-primary-400"
-                aria-label={`Link to ${title}`}
-              >
-                {t('projects:learn')} &rarr;
-              </a>
+              <Link href={href} underline variant="red" aria-label={`Link to ${title}`}>
+                {t('common:learnMore')}
+              </Link>
             )}
-          </div>
-        </div>
-      </div>
-    </div>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
   )
 }
 

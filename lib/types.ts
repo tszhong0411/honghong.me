@@ -1,9 +1,3 @@
-export type Toc = {
-  value: string
-  depth: number
-  url: string
-}[]
-
 export type Github = {
   stars: number
   followers: number

@@ -1,7 +1,7 @@
-import siteMetadata from '@/data/siteMetadata'
 import dynamic from 'next/dynamic'
 import { CoreContent } from '@/lib/utils/contentlayer'
 import type { Blog } from 'contentlayer/generated'
+import { giscusConfig } from './Giscus'
 
 interface Props {
   frontMatter: CoreContent<Blog>
@@ -16,12 +16,7 @@ const GiscusComponent = dynamic(
 
 const Comments = ({ frontMatter }: Props) => {
   let term
-  const comment = siteMetadata?.comment
-  if (!comment || Object.keys(comment).length === 0) return <></>
-  switch (
-    siteMetadata.comment.giscusConfig.mapping ||
-    siteMetadata.comment.utterancesConfig.issueTerm
-  ) {
+  switch (giscusConfig.mapping) {
     case 'pathname':
       term = frontMatter.slug
       break
@@ -34,9 +29,7 @@ const Comments = ({ frontMatter }: Props) => {
   }
   return (
     <div id="comment">
-      {siteMetadata.comment && siteMetadata.comment.provider === 'giscus' && (
-        <GiscusComponent mapping={term} />
-      )}
+      <GiscusComponent mapping={term} />
     </div>
   )
 }

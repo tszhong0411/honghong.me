@@ -2,7 +2,6 @@ import { writeFileSync } from 'fs'
 import chalk from 'chalk'
 import globby from 'globby'
 import prettier from 'prettier'
-import siteMetadata from '../data/siteMetadata.js'
 import { allBlogs } from '../.contentlayer/generated/index.mjs'
 import i18n from '../i18n.json'
 ;(async () => {
@@ -37,7 +36,7 @@ import i18n from '../i18n.json'
                 const route = path === '/index' ? '' : path
                 return `
                         <url>
-                            <loc>${siteMetadata.siteUrl}${route}</loc>
+                            <loc>https://honghong.me${route}</loc>
                             <changefreq>daily</changefreq>
                             <priority>0.7</priority>
                         </url>

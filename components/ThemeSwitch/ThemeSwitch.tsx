@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
-import { motion } from 'framer-motion'
+import { MotionButton } from '../Button/Button'
 
 const ThemeSwitch = () => {
   const [mounted, setMounted] = useState(false)
@@ -10,7 +10,19 @@ const ThemeSwitch = () => {
   useEffect(() => setMounted(true), [])
 
   return (
-    <motion.button
+    <MotionButton
+      css={{
+        ml: '$1',
+        height: '$11',
+        width: '$11',
+        p: 0,
+        fontSize: '$lg',
+        backgroundColor: 'transparent',
+        color: '$honghong-colors-typeface-primary',
+        '@sm': {
+          ml: '$4',
+        },
+      }}
       whileHover={{
         scale: 1.2,
         transition: { duration: 0.2 },
@@ -22,7 +34,6 @@ const ThemeSwitch = () => {
       }}
       aria-label="Toggle Dark Mode"
       type="button"
-      className="ml-1 h-11 w-11 p-1 px-2 text-[18px] sm:ml-4"
       onClick={() => setTheme(theme === 'dark' || resolvedTheme === 'dark' ? 'light' : 'dark')}
     >
       {mounted && (theme === 'dark' || resolvedTheme === 'dark') ? (
@@ -30,7 +41,7 @@ const ThemeSwitch = () => {
       ) : (
         <i className="fa-solid fa-moon"></i>
       )}
-    </motion.button>
+    </MotionButton>
   )
 }
 

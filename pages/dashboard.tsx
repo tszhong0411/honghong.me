@@ -1,37 +1,68 @@
-import siteMetadata from '@/data/siteMetadata'
+import useTranslation from 'next-translate/useTranslation'
+
 import Youtube from '@/components/metrics/Youtube'
 import Github from '@/components/metrics/Github'
 import BlogTotalViews from '@/components/metrics/BlogTotalViews'
 import TopTracks from '@/components/TopTracks'
-import { PageSEO } from '@/components/SEO'
-import useTranslation from 'next-translate/useTranslation'
+import Container from '@/components/Container'
+import { Flex } from '@/components/Flex'
+import { Text } from '@/components/Text'
 import { useRouter } from 'next/router'
 
 export default function Dashboard() {
   const { t } = useTranslation()
-  const { locale } = useRouter()
+  const router = useRouter()
+
+  const description = {
+    'zh-TW':
+      '這是我的個人儀表板，使用 Next.js API routes 部署為 serverless functions。我用這個儀表板以跟踪跨平台的各種指標，例如 YouTube、GitHub 等。',
+    en: 'This is my personal dashboard, built with Next.js API routes deployed as serverless functions. I use this dashboard to track various metrics across platforms like YouTube, GitHub, and more.',
+  }
 
   return (
-    <>
-      <PageSEO
-        title={`Dashboard - ${siteMetadata.author}`}
-        description={siteMetadata.description[locale]}
-      />
-      <div className="mx-auto flex flex-col justify-center">
-        <h1 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
+    <Container title="Dashboard - 小康" description={description}>
+      <Flex justifyContent={'center'} direction={'column'} css={{ mx: 'auto' }}>
+        <Text
+          size={7}
+          as="h1"
+          css={{
+            mb: '$8',
+            fontWeight: 700,
+            '@md': {
+              fontSize: '$5xl',
+            },
+          }}
+        >
           Dashboard
-        </h1>
-        <p className="mb-12 text-gray-600 dark:text-gray-400">{t('dashboard:description')}</p>
-        <div className="flex w-full flex-col">
+        </Text>
+        <Text
+          size={3}
+          as="p"
+          css={{
+            mb: '$8',
+            color: '$honghong-colors-typeface-secondary',
+          }}
+        >
+          {description[router.locale]}
+        </Text>
+        <Flex direction={'column'} css={{ width: '100%' }}>
           <Youtube />
           <Github />
           <BlogTotalViews />
-        </div>
-        <h2 className="mb-4 mt-16 text-3xl font-bold tracking-tight text-black dark:text-white">
+        </Flex>
+        <Text
+          size={7}
+          as="h2"
+          css={{
+            mb: '$4',
+            mt: '$8',
+            fontWeight: 700,
+          }}
+        >
           {t('dashboard:spotifyTitle')}
-        </h2>
+        </Text>
         <TopTracks />
-      </div>
-    </>
+      </Flex>
+    </Container>
   )
 }

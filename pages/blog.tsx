@@ -1,15 +1,24 @@
-import siteMetadata from '@/data/siteMetadata'
-import ListLayout from '@/layouts/ListLayout'
-import { PageSEO } from '@/components/SEO'
 import useTranslation from 'next-translate/useTranslation'
 import { InferGetStaticPropsType } from 'next'
-import { sortedBlogPost, allCoreContent } from '@/lib/utils/contentlayer'
-import { allBlogs } from 'contentlayer/generated'
+import { useState } from 'react'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
+
+import Link from '@/components/Link'
+import formatDate from '@/lib/utils/formatDate'
+import { allBlogs } from 'contentlayer/generated'
+import { sortedBlogPost, allCoreContent } from '@/lib/utils/contentlayer'
+import Container from '@/components/Container'
+import { Flex } from '@/components/Flex'
+import { Text } from '@/components/Text'
+import { Box } from '@/components/Box'
+import { Input } from './../components/Input/Input'
+import List from '@/components/List'
+import { css } from '@/lib/stitches.config'
 
 export const POSTS_PER_PAGE = 10
 
-export const getStaticProps = async (locale) => {
+export const getStaticProps = async (locale: { locale: string }) => {
   const sortedPosts = sortedBlogPost(allBlogs)
   const posts = allCoreContent(sortedPosts)
   const filteredPosts = posts.filter(
@@ -23,25 +32,210 @@ export const getStaticProps = async (locale) => {
   }
 }
 
+const PostCover = css({
+  transition: '0.5s',
+  '&:hover': {
+    transform: 'scale(1.1)',
+  },
+})
+
 export default function Blog({ filteredPosts }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t } = useTranslation()
-  const { locale } = useRouter()
+  const [searchValue, setSearchValue] = useState('')
+  const filteredBlogPosts = filteredPosts?.filter((post) => {
+    const searchContent = post.title + post.summary
+    return searchContent.toLowerCase().includes(searchValue.toLowerCase())
+  })
+
+  const router = useRouter()
+  const displayPosts = filteredBlogPosts
 
   return (
-    <>
-      <PageSEO
-        title={`Blog - ${siteMetadata.author}`}
-        description={siteMetadata.description[locale]}
-      />
-      <div className="mx-auto flex flex-col justify-center">
-        <h1 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
+    <Container title="Blog - 小康">
+      <Flex direction={'column'} justifyContent={'center'} css={{ mx: 'auto' }}>
+        <Text
+          size={7}
+          as="h1"
+          css={{
+            mb: '$6',
+            fontWeight: 700,
+            '@md': {
+              fontSize: '$5xl',
+            },
+          }}
+        >
           Blog
-        </h1>
-        <p className="mb-4 text-gray-600 dark:text-gray-400">
+        </Text>
+        <Text size={3} as="p" css={{ mb: '$4', color: '$honghong-colors-typeface-tertiary' }}>
           {t('common:blogDesc', { count: filteredPosts?.length })}
-        </p>
-        <ListLayout posts={filteredPosts} title={''} />
-      </div>
-    </>
+        </Text>
+        <Box
+          css={{
+            spaceY: '$2',
+            '@md': {
+              spaceY: 'calc($5 - 2px)',
+            },
+          }}
+        >
+          <Box css={{ position: 'relative' }}>
+            <Input
+              aria-label={t('common:search')}
+              type="text"
+              onChange={(e) => setSearchValue(e.target.value)}
+              placeholder={t('common:search')}
+            />
+            <Box
+              as="svg"
+              css={{
+                position: 'absolute',
+                right: '$3',
+                top: '$3',
+                height: 'calc($5 - 2px)',
+                width: 'calc($5 - 2px)',
+                color: '$honghong-colors-typeface-secondary',
+              }}
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </Box>
+          </Box>
+        </Box>
+        <ul>
+          {!filteredBlogPosts?.length && (
+            <Text
+              size={3}
+              as="p"
+              css={{
+                p: '$4',
+              }}
+            >
+              {t('common:noPostsFound')}
+            </Text>
+          )}
+          {displayPosts?.map((post) => {
+            const { slug, date, title, summary, image } = post
+            const formattedSlug = slug.replace(`.${router.locale}`, '')
+            return (
+              <List key={formattedSlug} css={{ py: '$8' }}>
+                <article>
+                  <Box
+                    css={{
+                      spaceX: '$2',
+                      '@xl': { display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', spaceY: 0 },
+                    }}
+                  >
+                    <dl>
+                      <dt className="sr-only">{t('common:publishedOn')}</dt>
+                      <dd>
+                        <time dateTime={date}>{formatDate(date, router.locale)}</time>
+                      </dd>
+                    </dl>
+                    <Flex
+                      direction={'column'}
+                      alignItems={'center'}
+                      css={{
+                        '@sm': {
+                          flexDirection: 'row',
+                        },
+                        '@xl': {
+                          gridColumn: 'span 3 / span 3',
+                        },
+                      }}
+                    >
+                      <Box
+                        css={{
+                          mx: '$2',
+                          my: '$6',
+                          width: '100%',
+                          '@sm': {
+                            my: 0,
+                            width: 'calc(100% / 3)',
+                          },
+                        }}
+                      >
+                        <Link href={`/blog/${formattedSlug}`}>
+                          <Box
+                            className="custom-image-container"
+                            css={{
+                              overflow: 'hidden',
+                              borderRadius: '$4',
+                              px: '$6',
+                              '@sm': {
+                                px: 0,
+                              },
+                            }}
+                          >
+                            <Image
+                              src={image}
+                              alt="Cover"
+                              layout="fill"
+                              className={`custom-image ${PostCover()}`}
+                            />
+                          </Box>
+                        </Link>
+                      </Box>
+                      <Box
+                        css={{
+                          mx: '$2',
+                          width: '100%',
+                          '@sm': {
+                            width: 'calc(100% * (2/3))',
+                          },
+                        }}
+                      >
+                        <Box css={{ spaceY: '$5' }}>
+                          <div>
+                            <Text
+                              size={6}
+                              as="h2"
+                              css={{
+                                fontWeight: 700,
+                              }}
+                            >
+                              <Link
+                                href={`/blog/${formattedSlug}`}
+                                data-cy="post-title"
+                                variant={'red'}
+                                underline
+                              >
+                                {title}
+                              </Link>
+                            </Text>
+                          </div>
+                          <Box
+                            css={{
+                              color: '$honghong-colors-typeface-secondary',
+                              mb: '$6',
+                            }}
+                          >
+                            {summary}
+                          </Box>
+                          <Link
+                            href={`/blog/${formattedSlug}`}
+                            aria-label={`Read "${title}"`}
+                            underline
+                            variant="red"
+                          >
+                            {t('common:readMore')} &rarr;
+                          </Link>
+                        </Box>
+                      </Box>
+                    </Flex>
+                  </Box>
+                </article>
+              </List>
+            )
+          })}
+        </ul>
+      </Flex>
+    </Container>
   )
 }

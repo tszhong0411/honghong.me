@@ -1,10 +1,19 @@
+import { Box } from '@/components/Box'
 interface Props {
   id: string
 }
 
 const CustomIframe = ({ id }: Props) => {
   return (
-    <div className="iframe-container">
+    <Box
+      css={{
+        position: 'relative',
+        height: 0,
+        width: '100%',
+        pb: '56.25%',
+        '& iframe': { position: 'absolute', top: 0, left: 0, height: '100%', width: '100%' },
+      }}
+    >
       <iframe
         width="560"
         height="315"
@@ -14,7 +23,7 @@ const CustomIframe = ({ id }: Props) => {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
       ></iframe>
-    </div>
+    </Box>
   )
 }
 

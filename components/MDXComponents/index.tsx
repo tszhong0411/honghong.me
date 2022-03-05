@@ -1,1 +1,1 @@
-export { MDXLayoutRenderer, MDXComponents } from './MDXComponents'
+export { default } from './MDXComponents'

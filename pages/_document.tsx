@@ -34,7 +34,7 @@ class MyDocument extends Document {
             href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css"
           />
         </Head>
-        <body className="bg-[#f9fafb] text-black antialiased dark:bg-gray-900 dark:text-white">
+        <body>
           <Main />
           <NextScript />
         </body>

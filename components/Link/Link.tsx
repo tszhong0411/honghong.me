@@ -1,36 +1,53 @@
-/* eslint-disable jsx-a11y/anchor-has-content */
 import Link from 'next/link'
-import { AnchorHTMLAttributes, DetailedHTMLProps } from 'react'
+import React from 'react'
+import { Box } from '../Box'
+import { StyledLink } from './Styles'
 
-const CustomLink = ({
-  href,
-  children,
-  ...rest
-}: DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>) => {
+const CustomLink = (props) => {
+  const { children, href, variant, ...rest } = props
   const isInternalLink = href && href.startsWith('/')
   const isAnchorLink = href && href.startsWith('#')
 
   if (isInternalLink) {
     return (
-      <Link href={href}>
-        <a {...rest}>{children}</a>
+      <Link href={href} passHref>
+        <StyledLink variant={variant} as={'a'} {...rest}>
+          {children}
+        </StyledLink>
       </Link>
     )
   }
 
   if (isAnchorLink) {
     return (
-      <a href={href} {...rest}>
+      <StyledLink variant={variant} as={'a'} href={href} {...rest}>
         {children}
-      </a>
+      </StyledLink>
     )
   }
+
   return (
-    <a target="_blank" rel="noopener noreferrer" href={href} {...rest}>
+    <StyledLink
+      variant={variant}
+      as={'a'}
+      target="_blank"
+      rel="noopener noreferrer"
+      href={href}
+      {...rest}
+    >
       {children}
       <span>
-        <svg
-          className="relative top-[-1px] ml-1 inline-block h-4 w-4 align-middle"
+        <Box
+          as="svg"
+          css={{
+            position: 'relative',
+            top: '-1px',
+            ml: '$1',
+            display: 'inline-block',
+            height: '$4',
+            width: '$4',
+            verticalAlign: 'middle',
+          }}
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -42,9 +59,9 @@ const CustomLink = ({
             strokeWidth={2}
             d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
           />
-        </svg>
+        </Box>
       </span>
-    </a>
+    </StyledLink>
   )
 }
 

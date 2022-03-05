@@ -3,10 +3,8 @@
   "defaultLocale": "zh-TW",
   "localeDetection": true,
   "pages": {
-    "*": ["common", "SEO", "projects", "404", "newsletter"],
-    "/uses": ["uses"],
+    "*": ["common", "SEO", "404"],
     "/guestbook": ["guestbook"],
-    "/dashboard": ["dashboard"],
-    "/pc-specs": ["pcSpecs"]
+    "/dashboard": ["dashboard"]
   }
 }

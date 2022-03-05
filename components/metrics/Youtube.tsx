@@ -3,6 +3,7 @@ import useSWR from 'swr'
 import fetcher from '@/lib/fetcher'
 import { YouTube } from '@/lib/types'
 import MetricCard from './Card'
+import { Grid } from '../Grid'
 
 export default function YouTubeCard() {
   const { data } = useSWR<YouTube>('/api/youtube', fetcher)
@@ -11,7 +12,11 @@ export default function YouTubeCard() {
   const viewCount = new Number(data?.viewCount)
   const link = 'https://www.youtube.com/channel/UC2hMWOaOlk9vrkvFVaGmn0Q'
   return (
-    <div className="my-2 grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
+    <Grid
+      columns={1}
+      gap={4}
+      css={{ my: '$2', width: '100%', '@sm': { gridTemplateColumns: 'repeat(2, 1fr)' } }}
+    >
       <MetricCard
         header="YouTube Subscribers"
         link={link}
@@ -19,6 +24,6 @@ export default function YouTubeCard() {
         isCurrency={false}
       />
       <MetricCard header="YouTube Views" link={link} metric={viewCount} isCurrency={false} />
-    </div>
+    </Grid>
   )
 }

@@ -1,6 +1,9 @@
-import { motion, AnimatePresence } from 'framer-motion'
+import { darkTheme } from '@/lib/stitches.config'
+import { AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
+import { Box, MotionDiv } from '../Box'
+import { MotionButton } from '../Button'
 
 export default function LanguageSwitch({ open, setOpen }) {
   const router = useRouter()
@@ -17,30 +20,78 @@ export default function LanguageSwitch({ open, setOpen }) {
 
   return (
     <>
-      <motion.button
-        className="ml-1 h-11 w-11 p-1 px-2 text-[18px] sm:ml-4"
+      <MotionButton
         aria-label="Switch language"
         whileHover={{
           scale: 1.2,
           transition: { duration: 0.2 },
         }}
+        whileTap={{
+          scale: 0.7,
+          transition: { duration: 0.2 },
+        }}
         onClick={() => {
           !open ? setOpen(true) : setOpen(false)
         }}
+        css={{
+          ml: '$1',
+          height: '$11',
+          width: '$11',
+          p: 0,
+          fontSize: '$lg',
+          backgroundColor: 'transparent',
+          color: '$honghong-colors-typeface-primary',
+          '@sm': {
+            ml: '$4',
+          },
+        }}
       >
         <i className="fa-solid fa-globe"></i>
-      </motion.button>
+      </MotionButton>
       {isLoaded && (
         <AnimatePresence>
           {open && (
-            <motion.div
-              className="fixed top-[60px] right-0 z-50 flex flex-row gap-x-4 rounded-md border-2 border-slate-900/10 bg-white py-2 px-4 dark:border-slate-300/10 dark:bg-gray-900 sm:top-[64px] md:absolute md:top-[56px]"
+            <MotionDiv
               animate={{ y: 0 }}
               initial={{ y: -200 }}
               exit={{ y: -200, opacity: 0 }}
+              css={{
+                position: 'fixed',
+                top: 'calc($10 - 4px)',
+                right: 0,
+                zIndex: 50,
+                display: 'flex',
+                flexDirection: 'row',
+                gapX: '$4',
+                borderRadius: '$2',
+                borderColor: '$honghong-colors-border-primary',
+                backgroundColor: '$honghong-colors-body-secondary',
+                borderWidth: '$2',
+                py: '$2',
+                px: '$4',
+                '@sm': {
+                  top: '$10',
+                },
+                '@md': {
+                  position: 'absolute',
+                  top: '$10',
+                },
+              }}
             >
-              <div
-                className="cursor-pointer rounded-md px-4 py-2 duration-300 hover:bg-gray-300 dark:hover:bg-gray-700"
+              <Box
+                css={{
+                  cursor: 'pointer',
+                  borderRadius: '$2',
+                  px: '$4',
+                  py: '$2',
+                  transition: '0.3s',
+                  '&:hover': {
+                    backgroundColor: 'hsla($palette-gray-10, 100%)',
+                    [`.${darkTheme} &`]: {
+                      backgroundColor: 'hsla($palette-gray-90, 100%)',
+                    },
+                  },
+                }}
                 onClick={() => {
                   setOpen(false)
                   changeLanguage('zh-TW')
@@ -48,9 +99,21 @@ export default function LanguageSwitch({ open, setOpen }) {
                 aria-hidden="true"
               >
                 繁體中文
-              </div>
-              <div
-                className="cursor-pointer rounded-md px-4 py-2 duration-300 hover:bg-gray-300 dark:hover:bg-gray-700"
+              </Box>
+              <Box
+                css={{
+                  cursor: 'pointer',
+                  borderRadius: '$2',
+                  px: '$4',
+                  py: '$2',
+                  transition: '0.3s',
+                  '&:hover': {
+                    backgroundColor: 'hsla($palette-gray-10, 100%)',
+                    [`.${darkTheme} &`]: {
+                      backgroundColor: 'hsla($palette-gray-90, 100%)',
+                    },
+                  },
+                }}
                 onClick={() => {
                   setOpen(false)
                   changeLanguage('en')
@@ -58,8 +121,8 @@ export default function LanguageSwitch({ open, setOpen }) {
                 aria-hidden="true"
               >
                 English
-              </div>
-            </motion.div>
+              </Box>
+            </MotionDiv>
           )}
         </AnimatePresence>
       )}

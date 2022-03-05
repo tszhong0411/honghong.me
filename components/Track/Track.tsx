@@ -1,20 +1,42 @@
+import { Flex } from '../Flex'
+import { Text } from '@/components/Text'
+import Link from '@/components/Link'
+
 export default function Track(track) {
   return (
-    <div className="mt-8 flex w-full max-w-3xl flex-row items-baseline border-b border-gray-200 dark:border-gray-800">
-      <p className="text-sm font-bold text-gray-400 dark:text-gray-600">{track.ranking}</p>
-      <div className="flex flex-col pl-3">
-        <a
-          className="w-60 truncate font-medium text-gray-900 dark:text-gray-100 sm:w-96 md:w-full"
-          href={track.songUrl}
-          target="_blank"
-          rel="noopener noreferrer"
+    <Flex
+      direction={'row'}
+      alignItems={'baseline'}
+      css={{
+        mt: '$3',
+        width: '100%',
+        maxWidth: '$max-w-3xl',
+      }}
+    >
+      <Text size={2} as="p" css={{ fontWeight: 700, color: '$honghong-colors-typeface-secondary' }}>
+        {track.ranking}
+      </Text>
+      <Flex direction={'column'} css={{ pl: '$3', pt: '$3' }}>
+        <Link href={track.songUrl}>{track.title}</Link>
+        <Text
+          size={3}
+          as="p"
+          css={{
+            mb: '$4',
+            fontSize: '$sm',
+            color: '$honghong-colors-typeface-secondary',
+            width: 'calc($14 - 16px)',
+            '@sm': {
+              width: 'calc($14 + 128px)',
+            },
+            '@md': {
+              width: '100%',
+            },
+          }}
         >
-          {track.title}
-        </a>
-        <p className="mb-4 w-60 truncate text-gray-500 sm:w-96 md:w-full" color="gray.500">
           {track.artist}
-        </p>
-      </div>
-    </div>
+        </Text>
+      </Flex>
+    </Flex>
   )
 }
