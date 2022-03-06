@@ -80,7 +80,7 @@
     "lint-staged": "12.3.4",
     "prettier": "^2.5.1",
     "prisma": "^3.10.0",
-    "typescript": "^4.7.0-dev.20220228"
+    "typescript": "^4.7.0-dev.20220306"
   },
   "lint-staged": {
     "*.+(js|jsx|ts|tsx)": [
