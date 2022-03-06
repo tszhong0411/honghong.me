@@ -26,7 +26,7 @@
     "@prisma/client": "^3.10.0",
     "@stitches/react": "^1.2.7",
     "chalk": "^5.0.0",
-    "contentlayer": "0.1.1",
+    "contentlayer": "0.1.2",
     "crypto": "^1.0.1",
     "esbuild": "0.14.23",
     "eslint-plugin-cypress": "^2.12.1",
