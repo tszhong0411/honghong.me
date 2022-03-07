@@ -28,7 +28,7 @@
     "chalk": "^5.0.0",
     "contentlayer": "0.1.1",
     "crypto": "^1.0.1",
-    "esbuild": "0.14.23",
+    "esbuild": "0.14.25",
     "eslint-plugin-cypress": "^2.12.1",
     "framer-motion": "^6.2.8",
     "googleapis": "^95.0.0",
