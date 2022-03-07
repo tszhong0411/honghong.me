@@ -75,7 +75,7 @@ export default function Home({ filteredPosts }: InferGetStaticPropsType<typeof g
                     </dl>
                     <Flex
                       direction={'column'}
-                      alignItems={'center'}
+                      alignItems={'flex-start'}
                       css={{
                         '@sm': {
                           flexDirection: 'row',

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
-import { MotionButton } from '../Button/Button'
+import { MotionButton } from '@/components/Button'
 import { Box } from '@/components/Box'
 
 const ThemeSwitch = () => {

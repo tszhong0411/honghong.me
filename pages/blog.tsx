@@ -128,8 +128,8 @@ export default function Blog({ filteredPosts }: InferGetStaticPropsType<typeof g
                 <article>
                   <Box
                     css={{
-                      spaceX: '$2',
-                      '@xl': { display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', spaceY: 0 },
+                      spaceY: '$4',
+                      '@xl': { display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)' },
                     }}
                   >
                     <dl>
@@ -140,7 +140,7 @@ export default function Blog({ filteredPosts }: InferGetStaticPropsType<typeof g
                     </dl>
                     <Flex
                       direction={'column'}
-                      alignItems={'center'}
+                      alignItems={'flex-start'}
                       css={{
                         '@sm': {
                           flexDirection: 'row',
