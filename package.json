@@ -38,7 +38,7 @@
     "next-auth": "^4.2.1",
     "next-contentlayer": "0.1.1",
     "next-themes": "^0.1.1",
-    "next-translate": "^1.3.4",
+    "next-translate": "^1.3.5",
     "preact": "10.6.6",
     "prism-react-renderer": "^1.3.1",
     "puppeteer": "^13.4.0",
@@ -80,7 +80,7 @@
     "lint-staged": "12.3.4",
     "prettier": "^2.5.1",
     "prisma": "^3.10.0",
-    "typescript": "^4.7.0-dev.20220228"
+    "typescript": "^4.7.0-dev.20220306"
   },
   "lint-staged": {
     "*.+(js|jsx|ts|tsx)": [
