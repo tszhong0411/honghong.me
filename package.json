@@ -28,7 +28,7 @@
     "chalk": "^5.0.0",
     "contentlayer": "0.1.1",
     "crypto": "^1.0.1",
-    "esbuild": "0.14.23",
+    "esbuild": "0.14.25",
     "eslint-plugin-cypress": "^2.12.1",
     "framer-motion": "^6.2.8",
     "googleapis": "^95.0.0",
@@ -80,7 +80,7 @@
     "lint-staged": "12.3.4",
     "prettier": "^2.5.1",
     "prisma": "^3.10.0",
-    "typescript": "^4.7.0-dev.20220228"
+    "typescript": "^4.7.0-dev.20220306"
   },
   "lint-staged": {
     "*.+(js|jsx|ts|tsx)": [
