@@ -55,7 +55,7 @@
     "remark": "^14.0.2",
     "remark-gfm": "^3.0.1",
     "rss": "^1.2.2",
-    "sharp": "0.30.1",
+    "sharp": "0.30.2",
     "smoothscroll-polyfill": "^0.4.4",
     "swr": "^1.2.2",
     "unist-util-visit": "^4.0.0"
@@ -80,7 +80,7 @@
     "lint-staged": "12.3.4",
     "prettier": "^2.5.1",
     "prisma": "^3.10.0",
-    "typescript": "^4.7.0-dev.20220228"
+    "typescript": "^4.7.0-dev.20220306"
   },
   "lint-staged": {
     "*.+(js|jsx|ts|tsx)": [
