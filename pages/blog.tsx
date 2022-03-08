@@ -34,6 +34,7 @@ export const getStaticProps = async (locale: { locale: string }) => {
 
 const PostCover = css({
   transition: '0.5s',
+  borderRadius: '$4',
   '&:hover': {
     transform: 'scale(1.1)',
   },
@@ -163,10 +164,8 @@ export default function Blog({ filteredPosts }: InferGetStaticPropsType<typeof g
                       >
                         <Link href={`/blog/${formattedSlug}`}>
                           <Box
-                            className="custom-image-container"
                             css={{
                               overflow: 'hidden',
-                              borderRadius: '$4',
                               px: '$6',
                               '@sm': {
                                 px: 0,
@@ -176,8 +175,9 @@ export default function Blog({ filteredPosts }: InferGetStaticPropsType<typeof g
                             <Image
                               src={image}
                               alt="Cover"
-                              layout="fill"
-                              className={`custom-image ${PostCover()}`}
+                              height={720}
+                              width={1280}
+                              className={PostCover()}
                             />
                           </Box>
                         </Link>

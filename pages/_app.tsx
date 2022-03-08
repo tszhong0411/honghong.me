@@ -1,4 +1,3 @@
-import '@/css/global.css'
 import '@/css/prism.css'
 import 'react-toastify/dist/ReactToastify.css'
 import '@fontsource/noto-sans-tc'
