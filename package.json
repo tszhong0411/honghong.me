@@ -25,7 +25,7 @@
     "@fontsource/noto-sans-tc": "^4.5.4",
     "@prisma/client": "^3.10.0",
     "@stitches/react": "^1.2.7",
-    "chalk": "^5.0.0",
+    "chalk": "^5.0.1",
     "contentlayer": "0.1.1",
     "crypto": "^1.0.1",
     "esbuild": "0.14.25",
