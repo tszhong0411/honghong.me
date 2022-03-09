@@ -2,8 +2,8 @@ import useSWR from 'swr'
 import { useTheme } from 'next-themes'
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import { useState, useEffect } from 'react'
-import { TopTracks } from '@/lib/types'
 
+import { TopTracks } from '@/lib/types'
 import fetcher from '@/lib/fetcher'
 import Track from '@/components/Track'
 

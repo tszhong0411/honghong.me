@@ -6,10 +6,11 @@ import { toast } from 'react-toastify'
 import Image from 'next/image'
 import { signOut } from 'next-auth/react'
 import useTranslation from 'next-translate/useTranslation'
-import fetcher from '@/lib/fetcher'
 import { useTheme } from 'next-themes'
 import { motion } from 'framer-motion'
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+
+import fetcher from '@/lib/fetcher'
 import Link from '@/components/Link'
 
 function GuestbookEntry({ entry, user }) {

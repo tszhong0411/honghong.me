@@ -1,5 +1,6 @@
-import Link from '@/components/Link'
 import useTranslation from 'next-translate/useTranslation'
+
+import Link from '@/components/Link'
 
 const Card = ({ title, description, href }) => {
   const { t } = useTranslation()

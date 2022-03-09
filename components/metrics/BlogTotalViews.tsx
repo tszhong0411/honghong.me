@@ -1,8 +1,8 @@
 import useSWR from 'swr'
 
 import fetcher from '@/lib/fetcher'
-import MetricCard from './Card'
 import { Views } from '@/lib/types'
+import MetricCard from './Card'
 
 export default function BlogTotalViews() {
   const { data } = useSWR<Views>('/api/views', fetcher)

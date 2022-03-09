@@ -100,7 +100,11 @@ export default function BlogLayout({ content, next, prev, children, ogImage }: P
                   <Link href={editUrl(slug)}>{t('common:editOnGithub')}</Link>
                 </div>
                 <div className="flex flex-col gap-x-2 xs:flex-row">
-                  <a href={facebookShare(slug)} target="_blank" rel="noopener noreferrer">
+                  <a
+                    href={facebookShare(slug.replace(`.${locale}`, ''))}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <svg
                       className="w-20"
                       xmlns="http://www.w3.org/2000/svg"
@@ -124,7 +128,11 @@ export default function BlogLayout({ content, next, prev, children, ogImage }: P
                       ></path>
                     </svg>
                   </a>
-                  <a href={twitterShare(slug)} target="_blank" rel="noopener noreferrer">
+                  <a
+                    href={twitterShare(slug.replace(`.${locale}`, ''))}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <svg
                       className="w-20"
                       xmlns="http://www.w3.org/2000/svg"

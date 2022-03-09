@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { useTheme } from 'next-themes'
 import { useRouter } from 'next/router'
-
 import useTranslation from 'next-translate/useTranslation'
 
 export const giscusConfig = {

@@ -1,8 +1,8 @@
-import Link from '../Link'
-import headerNavLinks from '@/data/headerNavLinks'
-import { useState, useEffect } from 'react'
-import { Dispatch, SetStateAction } from 'react'
+import { useState, useEffect, Dispatch, SetStateAction } from 'react'
 import { motion } from 'framer-motion'
+
+import Link from '@/components/Link'
+import headerNavLinks from '@/data/headerNavLinks'
 
 interface Props {
   navShow: boolean

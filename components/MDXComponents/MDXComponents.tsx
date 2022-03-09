@@ -1,7 +1,7 @@
-import Image from '../Image'
-import CustomLink from '../Link'
-import CustomIframe from '../Iframe'
-import Pre from '../Pre'
+import Image from '@/components/Image'
+import CustomLink from '@/components/Link'
+import CustomIframe from '@/components/Iframe'
+import Pre from '@/components/Pre'
 
 export const MDXComponents = {
   Image,

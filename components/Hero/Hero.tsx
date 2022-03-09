@@ -1,6 +1,7 @@
 import Image from 'next/image'
-import Link from '@/components/Link'
 import { motion } from 'framer-motion'
+
+import Link from '@/components/Link'
 
 export default function Hero() {
   return (

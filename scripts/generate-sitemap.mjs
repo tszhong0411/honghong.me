@@ -2,8 +2,9 @@ import { writeFileSync } from 'fs'
 import chalk from 'chalk'
 import globby from 'globby'
 import prettier from 'prettier'
-import { allBlogs } from '../.contentlayer/generated/index.mjs'
+
 import i18n from '../i18n.json'
+import { allBlogs } from '../.contentlayer/generated/index.mjs'
 ;(async () => {
   console.info(chalk.cyan('info'), ` - Generating sitemap`)
   const prettierConfig = await prettier.resolveConfig('./.prettierrc')

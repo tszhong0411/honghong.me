@@ -1,9 +1,10 @@
-import { allBlogs } from '../.contentlayer/generated/index.mjs'
 import puppeteer from 'puppeteer'
 import chalk from 'chalk'
 import { createHash } from 'crypto'
 import fs from 'fs'
 import qs from 'qs'
+
+import { allBlogs } from '../.contentlayer/generated/index.mjs'
 
 const ogImageDir = `./public/static/images/og`
 

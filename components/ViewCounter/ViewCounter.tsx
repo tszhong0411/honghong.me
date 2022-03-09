@@ -2,10 +2,10 @@ import useSWR from 'swr'
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 
 import fetcher from '@/lib/fetcher'
 import { Views } from '@/lib/types'
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 
 export default function ViewCounter({ slug }) {
   const { locale } = useRouter()

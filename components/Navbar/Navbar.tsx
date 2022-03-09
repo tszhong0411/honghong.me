@@ -1,11 +1,12 @@
-import headerNavLinks from '@/data/headerNavLinks'
-import Link from '../Link'
-import ThemeSwitch from '../ThemeSwitch'
-import LanguageSwitch from '../LanguageSwitch'
 import { MobileNav } from './MobileNav'
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 import cn from 'classnames'
+
+import headerNavLinks from '@/data/headerNavLinks'
+import Link from '@/components/Link'
+import ThemeSwitch from '@/components/ThemeSwitch'
+import LanguageSwitch from '@/components/LanguageSwitch'
 
 function NavItem({ href, text }) {
   const router = useRouter()
