@@ -1,8 +1,10 @@
-import NowPlaying from '@/components/NowPlaying'
-import Link from '@/components/Link'
-import footerNavLinks from '@/data/footerNavLinks'
 import { useRouter } from 'next/router'
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
+
+import footerNavLinks from '@/data/footerNavLinks'
+
+import Link from '@/components/Link'
+import NowPlaying from '@/components/NowPlaying'
 
 export default function Footer() {
   const { locale, defaultLocale } = useRouter()

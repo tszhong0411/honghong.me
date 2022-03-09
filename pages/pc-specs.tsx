@@ -1,8 +1,9 @@
 import { useRouter } from 'next/router'
 
+import { pcSpecsList } from '@/data/pcSpecsList'
+
 import Container from '@/components/Container'
 import PageContainer from '@/components/PageContainer'
-import { pcSpecsList } from '@/data/pcSpecsList'
 
 export default function PcSpecs() {
   const router = useRouter()

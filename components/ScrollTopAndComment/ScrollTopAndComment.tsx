@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
-import smoothscroll from 'smoothscroll-polyfill'
 import cn from 'classnames'
 import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import smoothscroll from 'smoothscroll-polyfill'
 
 export default function ScrollTopAndComment() {
   const [show, setShow] = useState(false)

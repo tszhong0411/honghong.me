@@ -1,8 +1,8 @@
-import useSWR from 'swr'
 import { useRouter } from 'next/router'
-import { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
+import { useEffect, useState } from 'react'
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import useSWR from 'swr'
 
 import fetcher from '@/lib/fetcher'
 import { Views } from '@/lib/types'

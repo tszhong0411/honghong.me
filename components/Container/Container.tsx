@@ -1,6 +1,6 @@
-import { ToastContainer } from 'react-toastify'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { ToastContainer } from 'react-toastify'
 
 import Footer from '@/components/Footer'
 import { Navbar } from '@/components/Navbar'

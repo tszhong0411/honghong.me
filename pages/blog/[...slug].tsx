@@ -1,13 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import components from 'components/MDXComponents'
+import { allBlogs } from 'contentlayer/generated'
 import { InferGetStaticPropsType } from 'next'
+import { useMDXComponent } from 'next-contentlayer/hooks'
+
+import getOgImage from '@/lib/generate-og-images'
+import { coreContent, sortedBlogPost } from '@/lib/utils/contentlayer'
 
 import PageTitle from '@/components/PageTitle'
-import { sortedBlogPost, coreContent } from '@/lib/utils/contentlayer'
-import { allBlogs } from 'contentlayer/generated'
-import getOgImage from '@/lib/generate-og-images'
-import { useMDXComponent } from 'next-contentlayer/hooks'
+
 import BlogLayout from '@/layouts/blog'
-import components from 'components/MDXComponents'
 
 export async function getStaticPaths() {
   return {

@@ -1,14 +1,15 @@
-import Hero from '@/components/Hero'
-import Link from '@/components/Link'
+import { allBlogs } from 'contentlayer/generated'
+import { InferGetStaticPropsType } from 'next'
+import Image from 'next/image'
+import { useRouter } from 'next/router'
+import useTranslation from 'next-translate/useTranslation'
+
+import { sortedBlogPost } from '@/lib/utils/contentlayer'
+import formatDate from '@/lib/utils/formatDate'
 
 import Container from '@/components/Container'
-import formatDate from '@/lib/utils/formatDate'
-import Image from 'next/image'
-import useTranslation from 'next-translate/useTranslation'
-import { InferGetStaticPropsType } from 'next'
-import { sortedBlogPost } from '@/lib/utils/contentlayer'
-import { allBlogs } from 'contentlayer/generated'
-import { useRouter } from 'next/router'
+import Hero from '@/components/Hero'
+import Link from '@/components/Link'
 
 const MAX_DISPLAY = 3
 

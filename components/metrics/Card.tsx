@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
-import MetricsContentLoader from '@/components/metrics/MetricsContentLoader'
 import Link from '@/components/Link'
+import MetricsContentLoader from '@/components/metrics/MetricsContentLoader'
 
 export default function MetricCard({ header, link, metric, isCurrency }) {
   const [mounted, setMounted] = useState(false)

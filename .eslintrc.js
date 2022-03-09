@@ -7,7 +7,7 @@ module.exports = {
     node: true,
     es6: true,
   },
-  plugins: ['@typescript-eslint'],
+  plugins: ['@typescript-eslint', 'simple-import-sort', 'unused-imports'],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/eslint-recommended',
@@ -35,5 +35,53 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/ban-ts-comment': 'off',
+    'unused-imports/no-unused-imports': 'warn',
+    'unused-imports/no-unused-vars': [
+      'warn',
+      {
+        vars: 'all',
+        varsIgnorePattern: '^_',
+        args: 'after-used',
+        argsIgnorePattern: '^_',
+      },
+    ],
+    //#region  //*=========== Import Sort ===========
+    'simple-import-sort/exports': 'warn',
+    'simple-import-sort/imports': [
+      'warn',
+      {
+        groups: [
+          // ext library & side effect imports
+          ['^@?\\w', '^\\u0000'],
+          // {s}css files
+          ['^.+\\.s?css$'],
+          // Lib and hooks
+          ['^@/lib', '^@/hooks'],
+          // static data
+          ['^@/data'],
+          // components
+          ['^@/components', '^@/container'],
+          // zustand store
+          ['^@/store'],
+          // Other imports
+          ['^@/'],
+          // relative paths up until 3 level
+          [
+            '^\\./?$',
+            '^\\.(?!/?$)',
+            '^\\.\\./?$',
+            '^\\.\\.(?!/?$)',
+            '^\\.\\./\\.\\./?$',
+            '^\\.\\./\\.\\.(?!/?$)',
+            '^\\.\\./\\.\\./\\.\\./?$',
+            '^\\.\\./\\.\\./\\.\\.(?!/?$)',
+          ],
+          ['^@/types'],
+          // other that didnt fit in
+          ['^'],
+        ],
+      },
+    ],
+    //#endregion  //*======== Import Sort ===========
   },
 }

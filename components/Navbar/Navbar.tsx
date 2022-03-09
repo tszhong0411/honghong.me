@@ -1,12 +1,14 @@
-import { MobileNav } from './MobileNav'
-import { useRouter } from 'next/router'
-import { useState, useEffect } from 'react'
 import cn from 'classnames'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 
 import headerNavLinks from '@/data/headerNavLinks'
+
+import LanguageSwitch from '@/components/LanguageSwitch'
 import Link from '@/components/Link'
 import ThemeSwitch from '@/components/ThemeSwitch'
-import LanguageSwitch from '@/components/LanguageSwitch'
+
+import { MobileNav } from './MobileNav'
 
 function NavItem({ href, text }) {
   const router = useRouter()

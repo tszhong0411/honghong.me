@@ -1,8 +1,10 @@
-import prisma from '@/lib/prisma'
-import Guestbook from '@/components/Guestbook'
 import { GetStaticProps } from 'next'
 import useTranslation from 'next-translate/useTranslation'
+
+import prisma from '@/lib/prisma'
+
 import Container from '@/components/Container'
+import Guestbook from '@/components/Guestbook'
 
 export default function GuestbookPage({ fallbackData }) {
   const { t } = useTranslation()

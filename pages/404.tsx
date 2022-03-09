@@ -1,6 +1,7 @@
+import useTranslation from 'next-translate/useTranslation'
+
 import Container from '@/components/Container'
 import Link from '@/components/Link'
-import useTranslation from 'next-translate/useTranslation'
 
 export default function FourZeroFour() {
   const { t } = useTranslation()

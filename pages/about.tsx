@@ -1,6 +1,6 @@
 import Container from '@/components/Container'
-import PageContainer from '@/components/PageContainer'
 import Link from '@/components/Link'
+import PageContainer from '@/components/PageContainer'
 
 export default function About() {
   return (

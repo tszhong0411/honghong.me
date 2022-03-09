@@ -1,5 +1,5 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
 import { google } from 'googleapis'
+import type { NextApiRequest, NextApiResponse } from 'next'
 
 import googleAuth from '@/lib/google'
 

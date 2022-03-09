@@ -2,6 +2,7 @@ import useSWR from 'swr'
 
 import fetcher from '@/lib/fetcher'
 import { YouTube } from '@/lib/types'
+
 import MetricCard from './Card'
 
 export default function YouTubeCard() {

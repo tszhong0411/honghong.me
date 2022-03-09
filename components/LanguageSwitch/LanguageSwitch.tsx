@@ -1,6 +1,6 @@
-import { motion, AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { useRouter } from 'next/router'
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function LanguageSwitch({ open, setOpen }) {
   const router = useRouter()

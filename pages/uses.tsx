@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import type { OtherPage } from 'contentlayer/generated'
+import { allOtherPages } from 'contentlayer/generated'
+import UsesLayout from 'layouts/uses'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 
 import components from '@/components/MDXComponents'
-import UsesLayout from 'layouts/uses'
-import { allOtherPages } from 'contentlayer/generated'
-import type { OtherPage } from 'contentlayer/generated'
 
 export default function Uses({ body: { code } }: OtherPage) {
   const Component = useMDXComponent(code)

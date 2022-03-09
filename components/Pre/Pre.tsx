@@ -1,6 +1,6 @@
-import { useState, useRef, ReactNode } from 'react'
 import cn from 'classnames'
 import { motion } from 'framer-motion'
+import { ReactNode, useRef, useState } from 'react'
 interface Props {
   children: ReactNode
 }

@@ -1,7 +1,8 @@
-import dynamic from 'next/dynamic'
 import type { Blog } from 'contentlayer/generated'
+import dynamic from 'next/dynamic'
 
 import { CoreContent } from '@/lib/utils/contentlayer'
+
 import { giscusConfig } from './Giscus'
 interface Props {
   frontMatter: CoreContent<Blog>

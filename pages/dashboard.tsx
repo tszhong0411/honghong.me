@@ -1,11 +1,11 @@
+import { useRouter } from 'next/router'
 import useTranslation from 'next-translate/useTranslation'
 
-import Youtube from '@/components/metrics/Youtube'
-import Github from '@/components/metrics/Github'
-import BlogTotalViews from '@/components/metrics/BlogTotalViews'
-import TopTracks from '@/components/TopTracks'
 import Container from '@/components/Container'
-import { useRouter } from 'next/router'
+import BlogTotalViews from '@/components/metrics/BlogTotalViews'
+import Github from '@/components/metrics/Github'
+import Youtube from '@/components/metrics/Youtube'
+import TopTracks from '@/components/TopTracks'
 
 export default function Dashboard() {
   const { t } = useTranslation()

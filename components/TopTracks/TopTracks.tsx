@@ -1,10 +1,11 @@
-import useSWR from 'swr'
 import { useTheme } from 'next-themes'
+import { useEffect, useState } from 'react'
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
-import { useState, useEffect } from 'react'
+import useSWR from 'swr'
 
-import { TopTracks } from '@/lib/types'
 import fetcher from '@/lib/fetcher'
+import { TopTracks } from '@/lib/types'
+
 import Track from '@/components/Track'
 
 const ContentLoader = () => {

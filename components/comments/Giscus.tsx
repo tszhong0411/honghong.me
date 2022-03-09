@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useCallback } from 'react'
-import { useTheme } from 'next-themes'
 import { useRouter } from 'next/router'
+import { useTheme } from 'next-themes'
 import useTranslation from 'next-translate/useTranslation'
+import React, { useCallback, useEffect, useState } from 'react'
 
 export const giscusConfig = {
   // Visit the link below, and follow the steps in the 'configuration' section
