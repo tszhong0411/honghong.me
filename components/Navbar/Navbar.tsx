@@ -77,7 +77,7 @@ export const Navbar = () => {
             : 'bg-body/75  backdrop-blur dark:bg-[rgba(22,24,29,0.75)] '
         )}
       >
-        <div className="relative mx-auto flex max-w-3xl items-center justify-between divide-x divide-border-primary py-2 px-4 dark:divide-border-primary-dark xl:px-0">
+        <div className="relative mx-auto flex max-w-5xl items-center justify-between divide-x divide-border-primary py-2 px-4 dark:divide-border-primary-dark xl:px-0">
           <div className="flex items-center text-sm font-medium">
             <div className="sm:hidden">
               <Link href="/" aria-label={'小康'}>

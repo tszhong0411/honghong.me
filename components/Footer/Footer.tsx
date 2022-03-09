@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
 
 import footerNavLinks from '@/data/footerNavLinks'
 
@@ -8,16 +7,10 @@ import NowPlaying from '@/components/NowPlaying'
 
 export default function Footer() {
   const { locale, defaultLocale } = useRouter()
-  const [mounted, setMounted] = useState(false)
-
-  // When mounted on client, now we can show the UI
-  useEffect(() => setMounted(true), [])
-
-  if (!mounted) return null
 
   return (
     <>
-      <footer className="mx-auto mt-8 w-full max-w-3xl px-8 xl:px-0">
+      <footer className="mx-auto mt-8 w-full max-w-5xl px-8 xl:px-0">
         <div className="mx-auto mt-6 flex flex-row flex-wrap gap-1 border-t border-border-primary pt-12 dark:border-border-primary-dark">
           <NowPlaying />
           <div className="grid w-full grid-cols-2 gap-4 pb-16 sm:grid-cols-3">

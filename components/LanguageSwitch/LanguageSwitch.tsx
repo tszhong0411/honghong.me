@@ -49,10 +49,10 @@ export default function LanguageSwitch({ open, setOpen }) {
               animate={{ y: 0 }}
               initial={{ y: -200 }}
               exit={{ y: -200, opacity: 0 }}
-              className="fixed top-[60px] right-0 z-50 flex flex-row gap-x-4 rounded-md border-2 border-slate-900/10 bg-white py-2 px-4 dark:border-slate-300/10 dark:bg-gray-900 sm:top-[64px] md:absolute md:top-[56px]"
+              className="fixed top-[60px] right-0 z-50 flex flex-row gap-x-4 rounded-md border-2 border-slate-300 bg-body-secondary py-2 px-4 dark:border-slate-700 dark:bg-body-secondary-dark md:absolute"
             >
               <div
-                className="cursor-pointer rounded-md px-4 py-2 duration-300 hover:bg-gray-300 dark:hover:bg-gray-700"
+                className="cursor-pointer rounded-md px-4 py-2 duration-300 hover:bg-body dark:hover:bg-body-dark"
                 onClick={() => {
                   setOpen(false)
                   changeLanguage('zh-TW')
@@ -62,7 +62,7 @@ export default function LanguageSwitch({ open, setOpen }) {
                 繁體中文
               </div>
               <div
-                className="cursor-pointer rounded-md px-4 py-2 duration-300 hover:bg-gray-300 dark:hover:bg-gray-700"
+                className="cursor-pointer rounded-md px-4 py-2 duration-300 hover:bg-body dark:hover:bg-body-dark"
                 onClick={() => {
                   setOpen(false)
                   changeLanguage('en')

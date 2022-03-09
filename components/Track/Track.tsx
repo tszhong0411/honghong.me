@@ -2,7 +2,7 @@ import Link from '@/components/Link'
 
 export default function Track(track) {
   return (
-    <div className="mt-3 flex w-full max-w-3xl flex-row items-baseline">
+    <div className="mt-3 flex w-full max-w-5xl flex-row items-baseline">
       <p className="text-sm font-bold text-typeface-secondary dark:text-typeface-secondary-dark">
         {track.ranking}
       </p>

@@ -6,7 +6,7 @@ import Link from '@/components/Link'
 export default function Hero() {
   return (
     <>
-      <div className="mx-auto mt-12 mb-24 flex max-w-3xl items-center justify-between">
+      <div className="mx-auto mt-12 mb-24 flex max-w-5xl items-center justify-between">
         <div>
           <h1 className="pb-6 text-3xl font-bold sm:text-6xl">小康</h1>
           <p>A teenager who loves web development</p>

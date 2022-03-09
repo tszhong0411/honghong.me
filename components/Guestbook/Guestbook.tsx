@@ -138,7 +138,7 @@ export default function Guestbook({ fallbackData }) {
         {!session && (
           <Link
             href="/api/auth/signin/github"
-            className="rouneded my-4 flex h-10 w-24 items-center justify-center bg-brand font-bold text-white"
+            className="my-4 flex h-10 w-24 items-center justify-center rounded bg-brand font-bold text-white"
             onClick={(e) => {
               e.preventDefault()
               signIn('github')
@@ -161,7 +161,7 @@ export default function Guestbook({ fallbackData }) {
               className="block w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-900 dark:bg-gray-800 dark:text-gray-100 s:mr-2"
             />
             <button
-              className="h-10 w-full rounded bg-brand px-0 text-white s:w-14 s:px-4"
+              className="h-10 w-full rounded bg-brand px-0 text-white s:w-1/3 s:px-4"
               type="submit"
             >
               {loading ? (
@@ -196,7 +196,7 @@ export default function Guestbook({ fallbackData }) {
               <span>{session.user.name}</span>
             </div>
             <button
-              className="s:w-13 h-10 w-1/2 rounded bg-brand px-0 text-white s:px-4"
+              className="s:w-13 h-10 w-1/2 rounded bg-brand px-0 text-white s:w-1/3 s:px-4"
               onClick={(e) => {
                 e.preventDefault()
                 signOut()
