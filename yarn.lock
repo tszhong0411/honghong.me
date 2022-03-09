@@ -7321,6 +7321,11 @@ react-is@^16.13.1:
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
+react-lite-youtube-embed@^2.2.1-a:
+  version "2.2.1-a"
+  resolved "https://registry.yarnpkg.com/react-lite-youtube-embed/-/react-lite-youtube-embed-2.2.1-a.tgz#ec56269349ced080a9bb7e70ef3cc6c9cb8b8a5a"
+  integrity sha512-Gi/MKquU8e6J1oMnF1/RzrNEymjdgZLfcCGq4OM3cNKAB3G4YmAvc0moFMc0yhKU6hn43aRowAyn4K2wgjrbIg==
+
 react-loading-skeleton@^3.0.3:
   version "3.0.3"
   resolved "https://registry.npmjs.org/react-loading-skeleton/-/react-loading-skeleton-3.0.3.tgz"

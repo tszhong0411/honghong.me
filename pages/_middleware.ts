@@ -11,7 +11,7 @@ export function middleware(req: NextRequest, ev: NextFetchEvent) {
     media-src cdn.jsdelivr.net;
     connect-src *;
     font-src 'self' cdn.jsdelivr.net;
-    frame-src giscus.app *.youtube.com;
+    frame-src giscus.app *.youtube.com www.youtube-nocookie.com;
   `
 
   const response = NextResponse.next()

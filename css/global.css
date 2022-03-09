@@ -68,3 +68,8 @@ html.dark ::selection {
 .prose *:hover > .anchor {
   @apply visible no-underline;
 }
+
+/* for blog post youtube embed */
+.yt-lite::before {
+  content: none !important;
+}
