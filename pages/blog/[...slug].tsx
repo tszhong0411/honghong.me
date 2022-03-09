@@ -1,9 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { InferGetStaticPropsType } from 'next'
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
-import { useState, useEffect } from 'react'
-import { useTheme } from 'next-themes'
-import { useRouter } from 'next/router'
 
 import PageTitle from '@/components/PageTitle'
 import { sortedBlogPost, coreContent } from '@/lib/utils/contentlayer'
@@ -58,52 +54,7 @@ export default function Blog({
   next,
   ogImage,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const [mounted, setMounted] = useState(false)
-  const { theme, resolvedTheme } = useTheme()
-  const router = useRouter()
   const Component = useMDXComponent(post.body.code)
-
-  // When mounted on client, now we can show the UI
-  useEffect(() => setMounted(true), [])
-
-  if (!mounted) return null
-
-  if (router.isFallback) {
-    return (
-      <div className="mt-8 mb-12">
-        <SkeletonTheme
-          baseColor={theme === 'dark' || resolvedTheme === 'dark' ? '#202020' : '#d9d9d9'}
-          highlightColor={theme === 'dark' || resolvedTheme === 'dark' ? '#444444' : '#ecebeb'}
-        >
-          <div>
-            <div className="mb-12 h-11 md:h-24">
-              <Skeleton width={'100%'} height={'100%'} />
-            </div>
-            <div className="flex flex-row items-center">
-              <div className="mr-3 h-11 w-11 md:h-12 md:w-12">
-                <Skeleton width={'100%'} height={'100%'} circle />
-              </div>
-              <div className="flex flex-col">
-                <Skeleton width={'130px'} height={'20px'} />
-                <Skeleton width={'130px'} height={'20px'} />
-              </div>
-            </div>
-            <div className="mt-12 mb-6">
-              <Skeleton width={'150px'} height={'32px'} />
-            </div>
-            <div className="mt-4">
-              <Skeleton
-                width={'100%'}
-                containerClassName="flex flex-col gap-y"
-                count={8}
-                height={'28px'}
-              />
-            </div>
-          </div>
-        </SkeletonTheme>
-      </div>
-    )
-  }
 
   return (
     <>

@@ -18,7 +18,6 @@ export default function Container(props) {
     type: 'website',
     ...customMeta,
   }
-  console.log(customMeta)
   return (
     <div className="flex flex-col justify-between">
       <Head>
