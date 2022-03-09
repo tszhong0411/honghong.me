@@ -40,7 +40,7 @@ export default function BlogLayout({ content, next, prev, children, ogImage }: P
   return (
     <Container
       title={`${title}`}
-      description={summary}
+      summary={summary}
       image={ogImage}
       data={new Date(date).toISOString()}
       type="article"

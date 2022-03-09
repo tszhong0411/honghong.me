@@ -18,7 +18,7 @@ export default function Container(props) {
     type: 'website',
     ...customMeta,
   }
-
+  console.log(customMeta)
   return (
     <div className="flex flex-col justify-between">
       <Head>
@@ -57,8 +57,11 @@ export default function Container(props) {
         <meta name="twitter:image" content={`https://honghong.me${meta.image}`} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@TszhongLai0411" />
-        <meta name="twitter:title" content={meta.title} />
-        <meta name="twitter:description" content={meta.description[router.locale]} />
+        <meta name="twitter:title" content={`${meta.title} | honghong.me`} />
+        <meta
+          name="twitter:description"
+          content={meta.summary ? meta.summary : meta.description[router.locale]}
+        />
         <meta name="twitter:image" content={`https://honghong.me${meta.image}`} />
         <meta name="twitter:creator" content="@TszhongLai0411" />
         {meta.type === 'article' && (
