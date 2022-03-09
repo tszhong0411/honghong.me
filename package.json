@@ -17,7 +17,8 @@
     "cy:run": "cypress run",
     "export": "next export",
     "format": "prettier --write \"./**/*.{js,jsx,ts,tsx}\"",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "commit": "cz"
   },
   "dependencies": {
     "@fontsource/inter": "4.5.4",
@@ -68,13 +69,17 @@
     "unist-util-visit": "^4.0.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^16.2.1",
+    "@commitlint/config-conventional": "^16.2.1",
     "@next/bundle-analyzer": "12.1.0",
     "@svgr/webpack": "6.2.1",
     "@types/react": "17.0.39",
     "@typescript-eslint/eslint-plugin": "5.13.0",
     "@typescript-eslint/parser": "5.13.0",
+    "commitizen": "^4.2.4",
     "cross-env": "^7.0.3",
     "cypress": "^9.5.1",
+    "cz-conventional-changelog": "3.3.0",
     "dedent": "^0.7.0",
     "eslint": "^8.10.0",
     "eslint-config-next": "12.1.0",
@@ -96,5 +101,10 @@
     "*.+(js|jsx|ts|tsx|json|css|md|mdx)": [
       "prettier --write"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
