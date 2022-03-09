@@ -75,10 +75,10 @@ export default function Blog({ filteredPosts }: InferGetStaticPropsType<typeof g
             return (
               <li key={formattedSlug} className="py-12">
                 <article>
-                  <div className="space-y-2 xl:grid xl:grid-cols-3 xl:space-y-0">
+                  <div className="items-start space-y-2 xl:grid xl:grid-cols-3 xl:space-y-0">
                     <dl>
                       <dt className="sr-only">{t('common:publishedOn')}</dt>
-                      <dd>
+                      <dd className="mb-4">
                         <time dateTime={date}>{formatDate(date, router.locale)}</time>
                       </dd>
                     </dl>

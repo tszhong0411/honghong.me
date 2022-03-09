@@ -20,12 +20,6 @@
     <a href="https://github.com/tszhong0411/honghong.me/issues/new/choose">Request Feature</a>
 </p>
 
-## ⭐ Lighthouse
-
-<p align="center">
-  <a href="https://googlechrome.github.io/lighthouse/viewer/?gist=50f0c8da918422944d8ee2e815eeecc1"><img src="./public/static/images/screenshot/honghong.me-lighthouse-202202092158.png"  alt="lighthouse"></a>
-</p>
-
 ## 🌍 honghong.me
 
 - **Framework**: [Next.js](https://nextjs.org/)
@@ -52,9 +46,66 @@
 - Guestbook
 - i18n
 
+## 👋 Getting Started
+
+### Installation
+
+1. Clone this repo
+
+```sh
+git clone https://github.com/tszhong0411/honghong.me.git
+```
+
+2. Change directories
+
+```sh
+cd honghong.me
+```
+
+3. Install yarn Packages
+
+```sh
+yarn
+```
+
+4. Create a .env.local and following the .env.example input some environment variables so that can run normally.
+
+```txt
+NEXT_PUBLIC_GISCUS_REPO=<Your env>
+NEXT_PUBLIC_GISCUS_REPOSITORY_ID=<Your env>
+NEXT_PUBLIC_GISCUS_CATEGORY=<Your env>
+NEXT_PUBLIC_GISCUS_CATEGORY_ID=<Your env>
+
+SPOTIFY_CLIENT_ID=<Your env>
+SPOTIFY_CLIENT_SECRET=<Your env>
+SPOTIFY_REFRESH_TOKEN=<Your env>
+
+// ...
+```
+
+## 🛳️ Roadmap
+
+- [x] Multi-language Support
+  - [x] Chinese
+  - [x] English
+
 ## 🍰 Contributing
 
-Please contribute by [open a pull request](https://github.com/tszhong0411/honghong.me/compare).
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Commit your Changes (`git commit -m 'Add some Feature'`)
+3. Push to the Branch (`git push origin main`)
+4. Open a Pull Request
+
+## ⭐ Lighthouse
+
+<p align="center">
+  <a href="https://googlechrome.github.io/lighthouse/viewer/?gist=50f0c8da918422944d8ee2e815eeecc1"><img src="./public/static/images/screenshot/honghong.me-lighthouse-202202092158.png"  alt="lighthouse"></a>
+</p>
 
 ## ❤️ Credits
 

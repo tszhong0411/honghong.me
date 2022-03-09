@@ -163,13 +163,19 @@ export default function BlogLayout({ content, next, prev, children, ogImage }: P
                     {t('common:prev')}
                   </span>
                   <div className="font-medium">
-                    <Link href={`/blog/${prev.slug.replace(`.${locale}`, '')}`}>{prev.title}</Link>
+                    <Link
+                      href={`/blog/${prev.slug.replace(`.${locale}`, '')}`}
+                      className="border-b-2 border-transparent duration-300 hover:border-brand"
+                    >
+                      {prev.title}
+                    </Link>
                     <div className="mb-6 mt-4 text-typeface-secondary dark:text-typeface-secondary-dark">
                       <p>{prev.summary}</p>
                     </div>
                     <Link
                       href={`/blog/${prev.slug.replace(`.${locale}`, '')}`}
                       aria-label={`Read "${prev.title}"`}
+                      className="border-b-2 border-transparent duration-300 hover:border-brand"
                     >
                       {t('common:readMore')} &rarr;
                     </Link>
@@ -182,13 +188,19 @@ export default function BlogLayout({ content, next, prev, children, ogImage }: P
                     {t('common:next')}
                   </span>
                   <div className="font-medium">
-                    <Link href={`/blog/${next.slug.replace(`.${locale}`, '')}`}>{next.title}</Link>
+                    <Link
+                      href={`/blog/${next.slug.replace(`.${locale}`, '')}`}
+                      className="border-b-2 border-transparent duration-300 hover:border-brand"
+                    >
+                      {next.title}
+                    </Link>
                     <div className="mb-6 mt-4 text-typeface-secondary dark:text-typeface-secondary-dark">
                       <p>{next.summary}</p>
                     </div>
                     <Link
                       href={`/blog/${next.slug.replace(`.${locale}`, '')}`}
                       aria-label={`Read "${next.title}"`}
+                      className="border-b-2 border-transparent duration-300 hover:border-brand"
                     >
                       {t('common:readMore')} &rarr;
                     </Link>
