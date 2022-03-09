@@ -30,7 +30,7 @@
 - **Styling**: [Tailwindcss](https://tailwindcss.com/)
 - **Comment**: [Giscus](https://giscus.app/)
 - **favicon**: [realfavicongenerator](https://realfavicongenerator.net/)
-- **Content**: [MDX](https://github.com/kentcdodds/mdx-bundler)
+- **Content**: [MDX](https://mdxjs.com/)
 
 ## 🚀 Demo
 
