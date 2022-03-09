@@ -162,7 +162,7 @@ module.exports = {
           css: {
             color: theme('colors.typeface-secondary-dark'),
             a: {
-              color: theme('colors.themeColor.350'),
+              color: theme('colors.typeface-primary-dark'),
               textDecoration: 'none',
               borderBottom: `2px solid transparent`,
               transition: 'border-color 0.3s ease, color 0.3s ease',

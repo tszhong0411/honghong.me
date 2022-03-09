@@ -50,7 +50,7 @@ export default function Home({ filteredPosts }: InferGetStaticPropsType<typeof g
                         <time dateTime={date}>{formatDate(date, locale)}</time>
                       </dd>
                     </dl>
-                    <div className="flex flex-col items-start sm:flex-row xl:col-span-3">
+                    <div className="flex flex-col items-center sm:flex-row xl:col-span-3">
                       <div className="mx-2 my-8 w-full sm:my-0 sm:w-1/3">
                         <Link href={`/blog/${formattedSlug}`}>
                           <div className="overflow-hidden px-8 sm:px-0">
