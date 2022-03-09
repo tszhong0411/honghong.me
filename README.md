@@ -34,9 +34,17 @@
 
 ## 🚀 Demo
 
-<a href="https://honghong.me" target="blank">
-<img src="https://img.shields.io/website?url=https%3A%2F%2Fhonghong.me&logo=github&style=flat-square" />
+<a href="https://honghong.me" target="_blank">
+  <img src="https://img.shields.io/badge/website-honghong.me-blue?style=flat-square&color=black" />
 </a>
+
+<img src="https://img.shields.io/github/repo-size/tszhong0411/honghong.me?style=flat-square&color=green" />
+
+<img src="https://img.shields.io/github/languages/top/tszhong0411/honghong.me?style=flat-square" />
+
+<img src="https://img.shields.io/github/commit-activity/m/tszhong0411/honghong.me?color=orange&style=flat-square" />
+
+<img src="https://img.shields.io/github/deployments/tszhong0411/honghong.me/Production?style=flat-square" />
 
 ## 🤩 Features
 
