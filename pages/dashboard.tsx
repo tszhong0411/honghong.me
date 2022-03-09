@@ -5,8 +5,6 @@ import Github from '@/components/metrics/Github'
 import BlogTotalViews from '@/components/metrics/BlogTotalViews'
 import TopTracks from '@/components/TopTracks'
 import Container from '@/components/Container'
-import { Flex } from '@/components/Flex'
-import { Text } from '@/components/Text'
 import { useRouter } from 'next/router'
 
 export default function Dashboard() {
@@ -21,48 +19,17 @@ export default function Dashboard() {
 
   return (
     <Container title="Dashboard - 小康" description={description}>
-      <Flex justifyContent={'center'} direction={'column'} css={{ mx: 'auto' }}>
-        <Text
-          size={7}
-          as="h1"
-          css={{
-            mb: '$8',
-            fontWeight: 700,
-            '@md': {
-              fontSize: '$5xl',
-            },
-          }}
-        >
-          Dashboard
-        </Text>
-        <Text
-          size={3}
-          as="p"
-          css={{
-            mb: '$8',
-            color: '$honghong-colors-typeface-secondary',
-          }}
-        >
-          {description[router.locale]}
-        </Text>
-        <Flex direction={'column'} css={{ width: '100%' }}>
+      <div className="mx-auto flex flex-col justify-center">
+        <h1 className="mb-6 text-3xl font-bold md:text-5xl">Dashboard</h1>
+        <p className="mb-12">{description[router.locale]}</p>
+        <div className="flex w-full flex-col">
           <Youtube />
           <Github />
           <BlogTotalViews />
-        </Flex>
-        <Text
-          size={7}
-          as="h2"
-          css={{
-            mb: '$4',
-            mt: '$8',
-            fontWeight: 700,
-          }}
-        >
-          {t('dashboard:spotifyTitle')}
-        </Text>
+        </div>
+        <h2 className="mb-4 mt-16 text-3xl font-bold">{t('dashboard:spotifyTitle')}</h2>
         <TopTracks />
-      </Flex>
+      </div>
     </Container>
   )
 }

@@ -1,42 +1,17 @@
-import { Flex } from '../Flex'
-import { Text } from '@/components/Text'
 import Link from '@/components/Link'
 
 export default function Track(track) {
   return (
-    <Flex
-      direction={'row'}
-      alignItems={'baseline'}
-      css={{
-        mt: '$3',
-        width: '100%',
-        maxWidth: '$max-w-3xl',
-      }}
-    >
-      <Text size={2} as="p" css={{ fontWeight: 700, color: '$honghong-colors-typeface-secondary' }}>
+    <div className="mt-3 flex w-full max-w-3xl flex-row items-baseline">
+      <p className="text-sm font-bold text-typeface-secondary dark:text-typeface-secondary-dark">
         {track.ranking}
-      </Text>
-      <Flex direction={'column'} css={{ pl: '$3', pt: '$3' }}>
+      </p>
+      <div className="flex flex-col pl-3 pt-3">
         <Link href={track.songUrl}>{track.title}</Link>
-        <Text
-          size={3}
-          as="p"
-          css={{
-            mb: '$4',
-            fontSize: '$sm',
-            color: '$honghong-colors-typeface-secondary',
-            width: 'calc($14 - 16px)',
-            '@sm': {
-              width: 'calc($14 + 128px)',
-            },
-            '@md': {
-              width: '100%',
-            },
-          }}
-        >
+        <p className="mb-4 w-60 text-sm text-typeface-secondary dark:text-typeface-primary-dark sm:w-96 md:w-full">
           {track.artist}
-        </Text>
-      </Flex>
-    </Flex>
+        </p>
+      </div>
+    </div>
   )
 }

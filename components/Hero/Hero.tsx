@@ -1,85 +1,45 @@
 import Image from 'next/image'
 import Link from '@/components/Link'
 import { motion } from 'framer-motion'
-import { Flex } from '../Flex'
-import { Text } from '../Text'
-import List from '../List'
-import { Box } from '../Box'
-import { Logo } from './Styles'
 
 export default function Hero() {
   return (
     <>
-      <Flex
-        justifyContent={'between'}
-        alignItems={'center'}
-        css={{
-          maxWidth: '$max-w-3xl',
-          mx: 'auto',
-          mt: '$8',
-          mb: '$12',
-        }}
-      >
+      <div className="mx-auto mt-12 mb-24 flex max-w-3xl items-center justify-between">
         <div>
-          <Text
-            size={'10'}
-            css={{
-              fontWeight: 700,
-              pb: '$5',
-              fontSize: '$3xl',
-              '@sm': {
-                fontSize: '$6xl',
-              },
-            }}
-          >
-            小康
-          </Text>
-          <Text size={'3'} as="p">
-            A teenager who loves web development
-          </Text>
+          <h1 className="pb-6 text-3xl font-bold sm:text-6xl">小康</h1>
+          <p>A teenager who loves web development</p>
           <div>
-            <List
-              as="ul"
-              css={{
-                display: 'flex',
-                gapX: '$2',
-                fontSize: '$sm',
-                color: '$honghong-colors-typeface-secondary',
-              }}
-            >
+            <ul className="flex gap-x-2 text-sm text-typeface-secondary dark:text-typeface-secondary-dark">
               <li>#react</li>
               <li>#next.js</li>
               <li>#tailwind</li>
-            </List>
+            </ul>
           </div>
-          <Box css={{ mt: '$6' }}>
-            <Flex
-              css={{
-                gapX: '$4',
-                gapY: '$3',
-                '@sm': {
-                  flexDirection: 'row',
-                },
-                '& i': {
-                  mr: '$1',
-                },
-              }}
-              direction={'column'}
-              inlineFlex
-            >
-              <Link href="https://instagram.com/tszhong0411/" underline variant={'red'}>
+          <div className="mt-8">
+            <div className="inline-flex flex-col items-start gap-x-4 gap-y-3 sm:flex-row">
+              <Link
+                href="https://instagram.com/tszhong0411/"
+                className="border-b-2 border-transparent duration-300 hover:border-brand"
+              >
                 Instagram
               </Link>
-              <Link href="https://github.com/tszhong0411" underline variant={'red'}>
+              <Link
+                href="https://github.com/tszhong0411"
+                className="border-b-2 border-transparent duration-300 hover:border-brand"
+              >
                 Github
               </Link>
-              <Link href="https://honghong.me/youtube" underline variant={'red'}>
+              <Link
+                href="https://honghong.me/youtube"
+                className="border-b-2 border-transparent duration-300 hover:border-brand"
+              >
                 Youtube
               </Link>
-            </Flex>
-          </Box>
+            </div>
+          </div>
         </div>
-        <Box css={{ display: 'none', '@sm': { display: 'block' } }}>
+        <div className="hidden sm:block">
           <motion.div
             whileHover={{ rotate: 360 }}
             transition={{ duration: 0.7 }}
@@ -90,11 +50,11 @@ export default function Hero() {
               alt="Avatar"
               layout="fill"
               objectFit="contain"
-              className={Logo()}
+              className="select-none rounded-full"
             />
           </motion.div>
-        </Box>
-      </Flex>
+        </div>
+      </div>
     </>
   )
 }

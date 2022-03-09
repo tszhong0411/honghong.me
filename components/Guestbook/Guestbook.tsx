@@ -10,13 +10,7 @@ import fetcher from '@/lib/fetcher'
 import { useTheme } from 'next-themes'
 import { motion } from 'framer-motion'
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
-import { Box } from '@/components/Box'
-import { Text } from '@/components/Text'
 import Link from '@/components/Link'
-import { Flex } from '@/components/Flex'
-import { Button } from '../Button'
-import Input from '../Input'
-import { Avatar } from './Styles'
 
 function GuestbookEntry({ entry, user }) {
   const { mutate } = useSWRConfig()
@@ -33,47 +27,29 @@ function GuestbookEntry({ entry, user }) {
   const { t } = useTranslation()
 
   return (
-    <Flex
-      direction={'column'}
-      css={{
-        spaceY: '$2',
-      }}
-    >
-      <Box>{entry.body}</Box>
-      <Flex direction={'row'} alignItems={'center'} css={{ spaceX: '$3' }}>
-        <Text size={2} as="p" css={{ color: '$honghong-colors-typeface-secondary' }}>
+    <div className="flex flex-col space-y-2">
+      <div>{entry.body}</div>
+      <div className="flex flex-row items-center space-x-3">
+        <p className="text-sm text-typeface-secondary dark:text-typeface-secondary-dark">
           {entry.created_by}
-        </Text>
-        <Text as="span" size={1}>
-          /
-        </Text>
-        <Text size={2} as="p" css={{ color: '$honghong-colors-typeface-secondary' }}>
+        </p>
+        <span className="text-xs">/</span>
+        <p className="text-sm text-typeface-secondary dark:text-typeface-secondary-dark">
           {format(new Date(entry.updated_at), "d MMM yyyy 'at' h:mm bb")}
-        </Text>
+        </p>
         {user && entry.created_by === user.name && (
           <>
-            <Text as="span" size={1}>
-              /
-            </Text>
-            <Button
-              variant="red"
-              css={{
-                fontSize: '$sm',
-                width: '$8',
-                height: '$6',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                cursor: 'pointer',
-              }}
+            <span className="text-xs">/</span>
+            <button
+              className="flex h-6 w-8 cursor-pointer items-center justify-center text-sm text-themeColor-600 dark:text-brand"
               onClick={deleteEntry}
             >
               {t('guestbook:delete')}
-            </Button>
+            </button>
           </>
         )}
-      </Flex>
-    </Flex>
+      </div>
+    </div>
   )
 }
 
@@ -153,43 +129,14 @@ export default function Guestbook({ fallbackData }) {
 
   return (
     <>
-      <Box
-        css={{
-          my: '$4',
-          width: '100%',
-          maxWidth: '$max-w-2xl',
-          borderRadius: '$1',
-          backgroundColor: '$honghong-colors-body-secondary',
-          p: '$5',
-        }}
-      >
-        <Text
-          size={4}
-          as="h5"
-          css={{
-            fontWeight: 700,
-            '@md': {
-              fontSize: '$xl',
-            },
-          }}
-        >
+      <div className="my-4 w-full max-w-2xl rounded bg-body-secondary p-5 dark:bg-body-secondary-dark">
+        <h5 className="text-lg font-bold md:text-xl">
           {session?.user ? t('guestbook:guestbook') : t('guestbook:signInGuestbook')}
-        </Text>
+        </h5>
         {!session && (
           <Link
             href="/api/auth/signin/github"
-            css={{
-              my: '$4',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              borderRadius: '$1',
-              backgroundColor: '$honghong-colors-brand',
-              fontWeight: 700,
-              color: '$honghong-colors-white-in-white',
-              height: '$10',
-              width: '$17',
-            }}
+            className="rouneded my-4 flex h-10 w-24 items-center justify-center bg-brand font-bold text-white"
             onClick={(e) => {
               e.preventDefault()
               signIn('github')
@@ -199,43 +146,20 @@ export default function Guestbook({ fallbackData }) {
           </Link>
         )}
         {session?.user && (
-          <Box
-            as="form"
-            css={{
-              my: '$4',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              gapY: '$2',
-              '@s': {
-                flexDirection: 'row',
-                gap: 0,
-              },
-            }}
+          <form
+            className="my-4 flex flex-col items-center gap-y-2 s:flex-row s:gap-0"
             onSubmit={leaveEntry}
           >
-            <Input
+            <input
               ref={inputEl}
               aria-label={t('guestbook:yourComment')}
               placeholder={t('guestbook:placeholder')}
               required
-              css={{
-                '@s': {
-                  mr: '$2',
-                },
-              }}
+              type="text"
+              className="block w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-900 dark:bg-gray-800 dark:text-gray-100 s:mr-2"
             />
-            <Button
-              css={{
-                width: '100%',
-                height: '$10',
-                borderRadius: '$1',
-                px: 0,
-                '@s': {
-                  width: '$13',
-                  px: '$4',
-                },
-              }}
+            <button
+              className="h-10 w-full rounded bg-brand px-0 text-white s:w-14 s:px-4"
               type="submit"
             >
               {loading ? (
@@ -249,81 +173,58 @@ export default function Guestbook({ fallbackData }) {
               ) : (
                 t('guestbook:sign')
               )}
-            </Button>
-          </Box>
+            </button>
+          </form>
         )}
 
-        <Text size={2} as="p" css={{ color: '$honghong-colors-typeface-secondary' }}>
+        <p className="text-sm text-typeface-secondary dark:text-typeface-secondary-dark">
           {t('guestbook:tip')}
-        </Text>
+        </p>
 
         {session?.user && (
-          <Flex
-            alignItems={'center'}
-            css={{
-              my: '$4',
-            }}
-          >
-            <Flex
-              alignItems={'center'}
-              css={{
-                gapX: '$2',
-                mr: '$3',
-                width: '100%',
-              }}
-            >
+          <div className="my-4 flex items-center">
+            <div className="mr-3 flex w-full items-center gap-x-2">
               <Image
                 src={session.user.image}
                 width={48}
                 height={48}
                 alt="User avatar"
-                className={Avatar()}
+                className="rounded-full"
               />
               <span>{session.user.name}</span>
-            </Flex>
-            <Button
-              css={{
-                width: '50%',
-                height: '$10',
-                borderRadius: '$1',
-                px: 0,
-                '@s': {
-                  width: '$13',
-                  px: '$4',
-                },
-              }}
+            </div>
+            <button
+              className="s:w-13 h-10 w-1/2 rounded bg-brand px-0 text-white s:px-4"
               onClick={(e) => {
                 e.preventDefault()
                 signOut()
               }}
             >
               {t('guestbook:signOut')}
-            </Button>
-          </Flex>
+            </button>
+          </div>
         )}
-      </Box>
-      <Box css={{ spaceY: '$6', mt: '$4' }}>
+      </div>
+      <div className="mt-4 space-y-6">
         {loading && (
           <SkeletonTheme
             baseColor={theme === 'dark' || resolvedTheme === 'dark' ? '#202020' : '#d9d9d9'}
             highlightColor={theme === 'dark' || resolvedTheme === 'dark' ? '#444444' : '#ecebeb'}
           >
-            <Flex direction={'column'} css={{ gapY: '$2' }}>
+            <div className="flex flex-col gap-y-2">
               <Skeleton width={150} height={20} />
-              <Flex css={{ gapX: '$2' }}>
+              <div className="gap-x-2">
                 <Skeleton width={80} height={20} />
-                <Text as="span" size={3}>
-                  /
-                </Text>
+                <span className="text-base">/</span>
                 <Skeleton width={140} height={20} />
-              </Flex>
-            </Flex>
+              </div>
+            </div>
           </SkeletonTheme>
         )}
         {entries?.map((entry) => (
           <GuestbookEntry key={entry.id} entry={entry} user={session?.user} />
         ))}
-      </Box>
+      </div>
     </>
   )
 }

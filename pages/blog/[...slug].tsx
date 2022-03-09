@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { InferGetStaticPropsType } from 'next'
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import { useState, useEffect } from 'react'
@@ -11,9 +12,6 @@ import getOgImage from '@/lib/generate-og-images'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 import BlogLayout from '@/layouts/blog'
 import components from 'components/MDXComponents'
-import { Box } from '@/components/Box'
-import { Flex } from '@/components/Flex'
-import { css } from '@/lib/stitches.config'
 
 export async function getStaticPaths() {
   return {
@@ -54,12 +52,6 @@ export const getStaticProps = async ({ params, locale }) => {
   }
 }
 
-const style = css({
-  display: 'flex',
-  flexDirection: 'column',
-  gapY: '$1',
-})
-
 export default function Blog({
   post,
   prev,
@@ -78,40 +70,38 @@ export default function Blog({
 
   if (router.isFallback) {
     return (
-      <Box css={{ mt: '$6', mb: '$8' }}>
+      <div className="mt-8 mb-12">
         <SkeletonTheme
           baseColor={theme === 'dark' || resolvedTheme === 'dark' ? '#202020' : '#d9d9d9'}
           highlightColor={theme === 'dark' || resolvedTheme === 'dark' ? '#444444' : '#ecebeb'}
         >
           <div>
-            <Box css={{ mb: '$8', height: 'calc($11 + 1px)', '@md': { height: '$12' } }}>
+            <div className="mb-12 h-11 md:h-24">
               <Skeleton width={'100%'} height={'100%'} />
-            </Box>
-            <Flex direction={'row'} alignItems={'center'}>
-              <Box
-                css={{
-                  mr: '$3',
-                  height: 'calc($11 + 1px)',
-                  width: 'calc($11 + 1px)',
-                  '@md': { height: '$12', width: '$12' },
-                }}
-              >
+            </div>
+            <div className="flex flex-row items-center">
+              <div className="mr-3 h-11 w-11 md:h-12 md:w-12">
                 <Skeleton width={'100%'} height={'100%'} circle />
-              </Box>
-              <Flex direction={'column'}>
+              </div>
+              <div className="flex flex-col">
                 <Skeleton width={'130px'} height={'20px'} />
                 <Skeleton width={'130px'} height={'20px'} />
-              </Flex>
-            </Flex>
-            <Box css={{ mt: '$8', mb: '$5' }}>
+              </div>
+            </div>
+            <div className="mt-12 mb-6">
               <Skeleton width={'150px'} height={'32px'} />
-            </Box>
-            <Box css={{ mt: '$4' }}>
-              <Skeleton width={'100%'} containerClassName={style()} count={8} height={'28px'} />
-            </Box>
+            </div>
+            <div className="mt-4">
+              <Skeleton
+                width={'100%'}
+                containerClassName="flex flex-col gap-y"
+                count={8}
+                height={'28px'}
+              />
+            </div>
           </div>
         </SkeletonTheme>
-      </Box>
+      </div>
     )
   }
 
@@ -130,14 +120,14 @@ export default function Blog({
               />
             </BlogLayout>
           ) : (
-            <Box css={{ my: '$12', ta: 'center' }}>
+            <div className="my-24 text-center">
               <PageTitle>
                 製作中{' '}
                 <span role="img" aria-label="roadwork sign">
                   🚧
                 </span>
               </PageTitle>
-            </Box>
+            </div>
           )}
         </>
       )}

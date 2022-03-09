@@ -1,67 +1,27 @@
 import Link from '@/components/Link'
 import useTranslation from 'next-translate/useTranslation'
-import { Box } from '@/components/Box'
-import { Text } from '@/components/Text'
 
 const Card = ({ title, description, href }) => {
   const { t } = useTranslation()
 
   return (
-    <Box
-      css={{
-        width: '100%',
-        borderRadius: '$2',
-        linearGradient: 'to right, #6366f1, #a855f7, #ec4899',
-        p: '2px',
-        '@md': {
-          width: '50%',
-        },
-      }}
-    >
-      <Box css={{ borderRadius: '$2', backgroundColor: '$honghong-colors-body-secondary' }}>
-        <Box
-          css={{
-            overflow: 'hidden',
-            borderRadius: '$2',
-            borderWidth: '$2',
-            borderColor: '$honghong-colors-border-primary',
-          }}
-        >
-          <Box
-            css={{
-              p: '$5',
-            }}
-          >
-            <Text
-              size={6}
-              as="h2"
-              css={{
-                mb: '$3',
-                fontWeight: 700,
-              }}
-            >
-              {title}
-            </Text>
-            <Text
-              size={3}
-              as="p"
-              css={{
-                mb: '$3',
-                maxWidth: 'none',
-                color: '$honghong-colors-typeface-secondary',
-              }}
-            >
+    <div className="w-full rounded-md bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-2 md:w-1/2">
+      <div className="rounded-md bg-body-secondary/75 dark:bg-body-secondary-dark/75">
+        <div className="overflow-hidden rounded-md">
+          <div className="p-6">
+            <h2 className="mb-3 text-2xl font-bold">{title}</h2>
+            <p className="mb-3 max-w-none text-base text-typeface-secondary dark:text-typeface-secondary-dark">
               {description}
-            </Text>
+            </p>
             {href && (
-              <Link href={href} underline variant="red" aria-label={`Link to ${title}`}>
+              <Link href={href} aria-label={`Link to ${title}`}>
                 {t('common:learnMore')}
               </Link>
             )}
-          </Box>
-        </Box>
-      </Box>
-    </Box>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 

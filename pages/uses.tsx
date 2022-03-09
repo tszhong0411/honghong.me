@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useMDXComponent } from 'next-contentlayer/hooks'
 
 import components from '@/components/MDXComponents'

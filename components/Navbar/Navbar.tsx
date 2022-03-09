@@ -5,21 +5,30 @@ import LanguageSwitch from '../LanguageSwitch'
 import { MobileNav } from './MobileNav'
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
-import { HeaderLogo, HeaderWrapper, NavItemLink, NavItemUnderline } from './Styles'
-import { Flex } from '../Flex'
-import { Box } from '../Box'
+import cn from 'classnames'
 
 function NavItem({ href, text }) {
   const router = useRouter()
   const isActive = router.asPath === href
 
   return (
-    <NavItemLink data-cy="nav-item" href={href} isActive={isActive}>
-      <Box as="span" css={{ position: 'relative' }}>
+    <Link
+      className={cn(
+        'hidden rounded-lg py-1 px-2 font-medium transition-all hover:text-themeColor-500 dark:hover:text-themeColor-350 sm:inline-block sm:py-3 md:px-4',
+        isActive
+          ? 'text-themeColor-500 dark:text-themeColor-350'
+          : 'text-typeface-primary dark:text-typeface-primary-dark'
+      )}
+      data-cy="nav-item"
+      href={href}
+    >
+      <span className="relative">
         {text}
-        {isActive && <NavItemUnderline />}
-      </Box>
-    </NavItemLink>
+        {isActive && (
+          <div className="absolute top-full mt-2 h-1 w-full rounded-2xl bg-themeColor-500 opacity-80 dark:bg-themeColor-350" />
+        )}
+      </span>
+    </Link>
   )
 }
 
@@ -47,44 +56,30 @@ export const Navbar = () => {
   return (
     <>
       {open && (
-        <Box
+        <div
           onClick={() => {
             setOpen(false)
           }}
           aria-hidden="true"
-          css={{
-            position: 'fixed',
-            inset: 0,
-            zIndex: 40,
-            height: '100%',
-            width: '100%',
-          }}
-        ></Box>
+          className="fixed inset-0 z-40 h-full w-full"
+        ></div>
       )}
-      <HeaderWrapper isTop={isTop} navShow={navShow}>
-        <Box
-          css={{
-            mx: 'auto',
-            maxWidth: '$max-w-3xl',
-            py: '8px',
-            px: '16px',
-            position: 'relative',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            divideX: '1px',
-            '@xl': {
-              px: '0',
-            },
-          }}
-        >
-          <Flex
-            alignItems={'center'}
-            css={{ fontSize: '$sm', fontWeight: 600, lineHeight: '24px' }}
-          >
-            <Box css={{ '@sm': { display: 'none' } }}>
+      <header
+        className={cn(
+          'sticky top-0 z-40 w-full flex-none lg:z-50',
+          isTop
+            ? 'dark:bg-transparent'
+            : navShow
+            ? 'bg-body dark:bg-body-dark'
+            : 'bg-body/75  backdrop-blur dark:bg-[rgba(22,24,29,0.75)] '
+        )}
+      >
+        <div className="relative mx-auto flex max-w-3xl items-center justify-between divide-x divide-border-primary py-2 px-4 dark:divide-border-primary-dark xl:px-0">
+          <div className="flex items-center text-sm font-medium">
+            <div className="sm:hidden">
               <Link href="/" aria-label={'小康'}>
-                <HeaderLogo
+                <svg
+                  className="ml-4 fill-brand"
                   version="1.0"
                   xmlns="http://www.w3.org/2000/svg"
                   width="30"
@@ -111,22 +106,22 @@ c-505 -290 -920 -528 -922 -528 -2 0 -4 1014 -4 2253 l0 2253 -210 97 c-115
 101 56 203 111 l185 100 3 -107 c1 -59 1 -158 0 -221z"
                     />
                   </g>
-                </HeaderLogo>
+                </svg>
               </Link>
-            </Box>
-            <Box css={{ display: 'none', '@sm': { display: 'block' } }}>
+            </div>
+            <div className="hidden sm:block">
               {headerNavLinks.map((link, index) => (
                 <NavItem key={index} href={link.href} text={link.title} />
               ))}
-            </Box>
-          </Flex>
-          <Flex alignItems={'center'}>
+            </div>
+          </div>
+          <div className="flex items-center">
             <ThemeSwitch />
             <LanguageSwitch open={open} setOpen={setOpen} />
             <MobileNav navShow={navShow} setNavShow={setNavShow} />
-          </Flex>
-        </Box>
-      </HeaderWrapper>
+          </div>
+        </div>
+      </header>
     </>
   )
 }

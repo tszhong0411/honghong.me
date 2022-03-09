@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Blog, DocumentTypes } from 'contentlayer/generated'
 
 export function dateSortDesc(a: string, b: string) {

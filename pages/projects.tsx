@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 import Card from '@/components/Card'
 import Container from '@/components/Container'
 import PageContainer from '@/components/PageContainer'
-import { Flex } from '@/components/Flex'
 
 export default function Projects() {
   const { locale } = useRouter()
@@ -39,11 +38,11 @@ export default function Projects() {
   return (
     <Container title="Projects - 小康">
       <PageContainer title={title[router.locale]} description={description}>
-        <Flex wrap={'wrap'}>
+        <div className="flex flex-wrap">
           {projectsData[locale]?.map((d) => (
             <Card key={d.title} title={d.title} description={d.description} href={d.href} />
           ))}
-        </Flex>
+        </div>
       </PageContainer>
     </Container>
   )

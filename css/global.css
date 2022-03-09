@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* https://stackoverflow.com/questions/61083813/how-to-avoid-internal-autofill-selected-style-to-be-applied */
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 600000s 0s, color 600000s 0s;
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+::selection {
+  background: rgb(249, 6, 6, 0.05);
+  color: #f90606;
+}
+
+html.dark ::selection {
+  background: rgb(251, 81, 81, 0.1);
+  color: #fb5151;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: theme('colors.brand');
+  transition: 0.25s;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-track {
+  background: 0 0;
+}
+
+/* heading anchor */
+.prose .anchor {
+  @apply invisible absolute;
+
+  margin-left: -1em;
+  padding-right: 0.5em;
+  width: 80%;
+  max-width: calc(768px + 1em);
+  cursor: pointer;
+  border: 0 !important;
+}
+
+.anchor:hover {
+  @apply visible no-underline;
+}
+
+.prose a.anchor {
+  @apply transition-all;
+}
+
+.prose .anchor:after {
+  @apply text-gray-300 dark:text-gray-700;
+  content: '#';
+}
+
+.prose *:hover > .anchor {
+  @apply visible no-underline;
+}

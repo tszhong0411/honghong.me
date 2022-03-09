@@ -11,12 +11,7 @@ import { ReactNode } from 'react'
 import { CoreContent } from '@/lib/utils/contentlayer'
 import type { Blog } from 'contentlayer/generated'
 import Container from '@/components/Container'
-import { Box, MotionDiv } from '@/components/Box'
-import { Flex } from '@/components/Flex'
-import { css } from '@/lib/stitches.config'
-import { PostCSS } from '@/components/Typography'
-import { Grid } from '@/components/Grid'
-import { Text } from '@/components/Text'
+import { motion } from 'framer-motion'
 
 const editUrl = (slug) =>
   `https://github.com/tszhong0411/honghong.me/blob/main/data/blog/${slug}.mdx`
@@ -37,15 +32,6 @@ type Props = {
   ogImage: string
 }
 
-const Logo = css({ borderRadius: '$pill' })
-const AuthorLink = css({
-  color: '$honghong-colors-brand',
-  transition: '0.3s',
-  '@sm': {
-    fontSize: '$sm',
-  },
-})
-
 export default function BlogLayout({ content, next, prev, children, ogImage }: Props) {
   const { slug, date, title, summary } = content
   const { t } = useTranslation()
@@ -62,24 +48,17 @@ export default function BlogLayout({ content, next, prev, children, ogImage }: P
       <ScrollTopAndComment />
       <article>
         <div>
-          <Box css={{ mb: '$8' }}>
+          <div className="mb-12">
             <div>
               <PageTitle>{title}</PageTitle>
             </div>
-          </Box>
-          <Box css={{ my: '$5' }}>
-            <Flex alignItems={'center'}>
-              <Box css={{ mr: '$3' }}>
+          </div>
+          <div className="my-6">
+            <div className="flex items-center">
+              <div className="mr-3">
                 <div>
-                  <MotionDiv
-                    css={{
-                      height: 'calc($11) + 1px',
-                      width: 'calc($11) + 1px',
-                      '@sm': {
-                        height: 'calc($15 - 2px)',
-                        width: 'calc($15 - 2px)',
-                      },
-                    }}
+                  <motion.div
+                    className="h-11 w-11 sm:h-16 sm:w-16"
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   >
@@ -88,91 +67,42 @@ export default function BlogLayout({ content, next, prev, children, ogImage }: P
                       width="70px"
                       height="70px"
                       alt="avatar"
-                      className={Logo()}
+                      className="rounded-full"
                     />
-                  </MotionDiv>
+                  </motion.div>
                 </div>
-              </Box>
-              <Flex
-                justifyContent={'between'}
-                css={{
-                  flex: '1 1 0%',
-                  borderBottomWidth: '1px',
-                  borderColor: '$honghong-colors-border-primary',
-                  pb: '$2',
-                }}
-              >
-                <Flex direction={'column'}>
+              </div>
+              <div className="flex flex-1 justify-between border-b border-border-primary pb-2 dark:border-border-primary-dark">
+                <div className="flex flex-col">
                   <div>小康</div>
                   <div>
                     <a
                       href={'https://instagram.com/tszhong0411'}
                       rel="noopener noreferrer"
-                      className={AuthorLink()}
+                      className="text-brand duration-300 sm:text-sm"
                     >
                       @tszhong0411
                     </a>
                   </div>
-                </Flex>
-                <Flex
-                  direction={'column'}
-                  css={{
-                    ta: 'right',
-                    color: '$honghong-colors-typeface-secondary',
-                  }}
-                >
+                </div>
+                <div className="flex flex-col text-right text-typeface-secondary dark:text-typeface-secondary-dark">
                   <time dateTime={date}>{formatDate(new Date(date), locale)}</time>
                   <ViewCounter slug={slug} />
-                </Flex>
-              </Flex>
-            </Flex>
-          </Box>
-          <Flex
-            direction={'column'}
-            css={{
-              mx: 'auto',
-              divideY: '1px',
-              pb: '$2',
-              '@xl': {
-                divideY: 0,
-              },
-              borderBottomWidth: '1px',
-              borderColor: '$honghong-colors-border-primary',
-            }}
-          >
-            <Box
-              css={{
-                divideY: '1px',
-                '@xl': {
-                  pb: 0,
-                },
-              }}
-            >
-              <Box
-                css={{
-                  maxWidth: 'none',
-                  pt: '$4',
-                  pb: '$6',
-                }}
-                className={PostCSS()}
-              >
-                {children}
-              </Box>
-              <Flex
-                justifyContent={'between'}
-                css={{
-                  py: '$5',
-                  fontSize: '$sm',
-                }}
-              >
-                <Flex alignItems={'center'}>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="mx-auto flex flex-col divide-y border-b border-border-primary pb-2 dark:border-border-primary-dark xl:divide-y-0">
+            <div className="divide-y divide-border-primary dark:divide-border-primary-dark xl:pb-0">
+              <div className="prose max-w-none pt-4 pb-8 dark:prose-dark">{children}</div>
+              <div className="flex justify-between py-6 text-sm">
+                <div className="flex items-center">
                   <Link href={editUrl(slug)}>{t('common:editOnGithub')}</Link>
-                </Flex>
-                <Flex direction={'column'} css={{ gapX: '$2', '@xs': { flexDirection: 'row' } }}>
+                </div>
+                <div className="flex flex-col gap-x-2 xs:flex-row">
                   <a href={facebookShare(slug)} target="_blank" rel="noopener noreferrer">
-                    <Box
-                      as="svg"
-                      css={{ width: '$16' }}
+                    <svg
+                      className="w-20"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 122.88 38.48"
                     >
@@ -192,12 +122,11 @@ export default function BlogLayout({ content, next, prev, children, ogImage }: P
                         d="M31.43 18.75a12.18 12.18 0 10-14.07 12v-8.49h-3.11v-3.51h3.11v-2.68c0-3.05 1.81-4.74 4.59-4.74a17.55 17.55 0 012.71.25v3h-1.53a1.78 1.78 0 00-2 1.91v2.28h3.39L24 22.25h-2.87v8.51a12.14 12.14 0 0010.3-12z"
                         fill="#fff"
                       ></path>
-                    </Box>
+                    </svg>
                   </a>
                   <a href={twitterShare(slug)} target="_blank" rel="noopener noreferrer">
-                    <Box
-                      as="svg"
-                      css={{ width: '$16' }}
+                    <svg
+                      className="w-20"
                       xmlns="http://www.w3.org/2000/svg"
                       version="1.1"
                       viewBox="0 0 122.88 38.48"
@@ -215,122 +144,58 @@ export default function BlogLayout({ content, next, prev, children, ogImage }: P
                         d="M40.66 0L40.66 38.48 38.27 38.48 38.27 0 40.66 0z"
                         fill="#1A91DA"
                       ></path>
-                    </Box>
+                    </svg>
                   </a>
-                </Flex>
-              </Flex>
-            </Box>
-          </Flex>
+                </div>
+              </div>
+            </div>
+          </div>
           <Comments frontMatter={content} />
         </div>
       </article>
       <div>
         <div>
           {(next || prev) && (
-            <Grid
-              css={{
-                py: '$5',
-                '@sm': {
-                  gridTemplateColumns: 'repeat(2, 1fr)',
-                  gapX: '$8',
-                },
-              }}
-            >
+            <div className="grid py-6 sm:grid-cols-2 sm:gap-x-12">
               {prev && (
                 <div>
-                  <Text
-                    size={5}
-                    as="span"
-                    css={{
-                      mb: '$7',
-                      display: 'block',
-                      fontWeight: 500,
-                      color: '$honghong-colors-typeface-primary',
-                    }}
-                  >
+                  <span className="mb-10 block text-xl font-medium text-typeface-primary dark:text-typeface-primary-dark">
                     {t('common:prev')}
-                  </Text>
-                  <Box css={{ fontWeight: 500 }}>
-                    <Link
-                      href={`/blog/${prev.slug.replace(`.${locale}`, '')}`}
-                      underline
-                      variant="red"
-                    >
-                      {prev.title}
-                    </Link>
-                    <Box
-                      css={{
-                        mb: '$5',
-                        mt: '$4',
-                        color: '$honghong-colors-typeface-secondary',
-                      }}
-                    >
+                  </span>
+                  <div className="font-medium">
+                    <Link href={`/blog/${prev.slug.replace(`.${locale}`, '')}`}>{prev.title}</Link>
+                    <div className="mb-6 mt-4 text-typeface-secondary dark:text-typeface-secondary-dark">
                       <p>{prev.summary}</p>
-                    </Box>
+                    </div>
                     <Link
                       href={`/blog/${prev.slug.replace(`.${locale}`, '')}`}
-                      underline
                       aria-label={`Read "${prev.title}"`}
                     >
                       {t('common:readMore')} &rarr;
                     </Link>
-                  </Box>
+                  </div>
                 </div>
               )}
               {next && (
-                <Box
-                  css={{
-                    mt: '$8',
-                    borderTopWidth: '1px',
-                    borderColor: '$honghong-colors-border-primary',
-                    pt: '$8',
-                    '@sm': {
-                      my: 0,
-                      border: 0,
-                      py: 0,
-                    },
-                  }}
-                >
-                  <Text
-                    size={5}
-                    as="span"
-                    css={{
-                      mb: '$7',
-                      display: 'block',
-                      fontWeight: 500,
-                      color: '$honghong-colors-typeface-primary',
-                    }}
-                  >
+                <div className="mt-12 border-t border-border-primary pt-12 dark:border-border-primary-dark sm:mt-0 sm:border-0 sm:p-0">
+                  <span className="mb-10 block text-xl font-medium text-typeface-primary dark:text-typeface-primary-dark">
                     {t('common:next')}
-                  </Text>
-                  <Box css={{ fontWeight: 500 }}>
-                    <Link
-                      href={`/blog/${next.slug.replace(`.${locale}`, '')}`}
-                      underline
-                      variant="red"
-                    >
-                      {next.title}
-                    </Link>
-                    <Box
-                      css={{
-                        mb: '$5',
-                        mt: '$4',
-                        color: '$honghong-colors-typeface-secondary',
-                      }}
-                    >
+                  </span>
+                  <div className="font-medium">
+                    <Link href={`/blog/${next.slug.replace(`.${locale}`, '')}`}>{next.title}</Link>
+                    <div className="mb-6 mt-4 text-typeface-secondary dark:text-typeface-secondary-dark">
                       <p>{next.summary}</p>
-                    </Box>
+                    </div>
                     <Link
                       href={`/blog/${next.slug.replace(`.${locale}`, '')}`}
-                      underline
                       aria-label={`Read "${next.title}"`}
                     >
                       {t('common:readMore')} &rarr;
                     </Link>
-                  </Box>
-                </Box>
+                  </div>
+                </div>
               )}
-            </Grid>
+            </div>
           )}
         </div>
       </div>

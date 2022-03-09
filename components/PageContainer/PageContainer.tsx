@@ -1,53 +1,16 @@
 import { useRouter } from 'next/router'
-import { Box } from '../Box'
-import { Flex } from '../Flex'
-import { Text } from '../Text'
 
 export default function PageContainer(props) {
   const { title, description, children } = props
   const router = useRouter()
 
   return (
-    <Flex
-      direction={'column'}
-      justifyContent={'center'}
-      css={{
-        mx: 'auto',
-      }}
-    >
-      <Text
-        size={7}
-        as="h1"
-        css={{
-          mb: '$6',
-          fontWeight: 700,
-          '@md': {
-            fontSize: '$5xl',
-          },
-        }}
-      >
-        {title}
-      </Text>
-      {description && (
-        <Text
-          size={3}
-          as="p"
-          css={{
-            mb: '$8',
-            color: '$honghong-colors-typeface-secondary',
-          }}
-        >
-          {description[router.locale]}
-        </Text>
-      )}
-      <Box
-        css={{
-          pb: '$8',
-          maxWidth: '100%',
-        }}
-      >
+    <div className="mx-auto flex flex-col justify-center">
+      <h1 className="mb-6 text-3xl font-bold md:text-5xl">{title}</h1>
+      {description && <p className="mb-12">{description[router.locale]}</p>}
+      <div className="max-w-full pb-12">
         <div>{children}</div>
-      </Box>
-    </Flex>
+      </div>
+    </div>
   )
 }

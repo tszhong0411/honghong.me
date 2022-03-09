@@ -3,8 +3,6 @@ import { useRouter } from 'next/router'
 import Container from '@/components/Container'
 import PageContainer from '@/components/PageContainer'
 import { pcSpecsList } from '@/data/pcSpecsList'
-import { Flex } from '@/components/Flex'
-import { Box } from '@/components/Box'
 
 export default function PcSpecs() {
   const router = useRouter()
@@ -22,70 +20,26 @@ export default function PcSpecs() {
   return (
     <Container title="PC Specs - 小康">
       <PageContainer title={title[router.locale]} description={description}>
-        <Flex wrap={'wrap'}>
-          <Box as="table" css={{ m: 'auto', width: '100%', tableLayout: 'fixed' }}>
+        <div className="flex flex-wrap">
+          <table className="m-auto w-full table-fixed">
             <thead>
               <tr>
-                <Box
-                  as="th"
-                  css={{
-                    width: 'calc(100% * (1/4))',
-                    border: '1px',
-                    py: '$4',
-                    borderColor: '$honghong-colors-border-primary',
-                    backgroundColor: '$honghong-colors-body-secondary',
-                  }}
-                >
-                  Hardware
-                </Box>
-                <Box
-                  as="th"
-                  css={{
-                    width: 'calc(100% * (1/4))',
-                    border: '1px',
-                    py: '$4',
-                    borderColor: '$honghong-colors-border-primary',
-                    backgroundColor: '$honghong-colors-body-secondary',
-                  }}
-                >
-                  Model
-                </Box>
+                <th className="w-1/4 border border-gray-500 py-4">Hardware</th>
+                <th className="w-1/4 border border-gray-500 py-4">Model</th>
               </tr>
             </thead>
             <tbody>
               {pcSpecsList.map((item, index) => {
                 return (
                   <tr key={index}>
-                    <Box
-                      as="td"
-                      css={{
-                        borderWidth: '1px',
-                        borderColor: '$honghong-colors-border-primary',
-                        p: '$4',
-                        fontWeight: 500,
-                        backgroundColor: '$honghong-colors-body-secondary',
-                      }}
-                    >
-                      {item.name}
-                    </Box>
-                    <Box
-                      as="td"
-                      css={{
-                        borderWidth: '1px',
-                        borderColor: '$honghong-colors-border-primary',
-                        p: '$4',
-                        fontWeight: 500,
-                        backgroundColor: '$honghong-colors-body-secondary',
-                      }}
-                    >
-                      {item.content}
-                    </Box>
+                    <td className="border border-gray-500 p-4 font-medium">{item.name}</td>
+                    <td className="border border-gray-500 p-4 font-medium ">{item.content}</td>
                   </tr>
                 )
               })}
             </tbody>
-          </Box>
-        </Flex>
+          </table>
+        </div>
       </PageContainer>
     </Container>
   )

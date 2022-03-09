@@ -1,19 +1,10 @@
-import { Box } from '@/components/Box'
 interface Props {
   id: string
 }
 
 const CustomIframe = ({ id }: Props) => {
   return (
-    <Box
-      css={{
-        position: 'relative',
-        height: 0,
-        width: '100%',
-        pb: '56.25%',
-        '& iframe': { position: 'absolute', top: 0, left: 0, height: '100%', width: '100%' },
-      }}
-    >
+    <div className="relative h-0 w-full pb-[56.25%]">
       <iframe
         width="560"
         height="315"
@@ -21,9 +12,10 @@ const CustomIframe = ({ id }: Props) => {
         title="YouTube video player"
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        className="absolute top-0 left-0 h-full w-full"
         allowFullScreen
       ></iframe>
-    </Box>
+    </div>
   )
 }
 

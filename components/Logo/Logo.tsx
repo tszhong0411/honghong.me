@@ -1,19 +1,15 @@
-import { styled } from '@/lib/stitches.config'
 import { Props } from './types'
-
-const Svg = styled('svg', {
-  fill: '$honghong-colors-typeface-primary',
-})
 
 const Logo = ({ alt, size, color }: Props) => {
   return (
-    <Svg
+    <svg
       version="1.0"
       xmlns="http://www.w3.org/2000/svg"
       width={size || 40}
       aria-label={alt}
       viewBox="0 0 661.000000 1111.000000"
       preserveAspectRatio="xMidYMid meet"
+      className={!color && 'text-typeface-primary dark:text-typeface-primary-dark'}
       fill={color || ''}
     >
       <g transform="translate(0.000000,1111.000000) scale(0.100000,-0.100000)">
@@ -35,7 +31,7 @@ c-505 -290 -920 -528 -922 -528 -2 0 -4 1014 -4 2253 l0 2253 -210 97 c-115
 101 56 203 111 l185 100 3 -107 c1 -59 1 -158 0 -221z"
         />
       </g>
-    </Svg>
+    </svg>
   )
 }
 

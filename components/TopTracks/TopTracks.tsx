@@ -6,16 +6,14 @@ import { TopTracks } from '@/lib/types'
 
 import fetcher from '@/lib/fetcher'
 import Track from '@/components/Track'
-import { Flex } from '../Flex'
-import { Box } from '@/components/Box'
 
 const ContentLoader = () => {
   return (
     <>
-      <Flex css={{ gapX: '$2' }}>
+      <div className="flex gap-x-2">
         <Skeleton width={20} height={20} />
         <Skeleton width={122} height={20} />
-      </Flex>
+      </div>
       <Skeleton width={210} height={20} style={{ marginLeft: 'calc(20px+0.5rem)' }} />
     </>
   )
@@ -37,25 +35,20 @@ export default function Tracks() {
         baseColor={theme === 'dark' || resolvedTheme === 'dark' ? '#202020' : '#d9d9d9'}
         highlightColor={theme === 'dark' || resolvedTheme === 'dark' ? '#444444' : '#ecebeb'}
       >
-        <Flex
-          direction={'column'}
-          css={{
-            gapY: '$4',
-          }}
-        >
+        <div className="flex flex-col gap-y-4">
           <ContentLoader />
           <ContentLoader />
           <ContentLoader />
-        </Flex>
+        </div>
       </SkeletonTheme>
     )
   }
 
   return (
-    <Box css={{ divideY: '1px' }}>
+    <div className="divide-y divide-border-primary dark:divide-border-primary-dark">
       {data.tracks.map((track, index) => (
         <Track ranking={index + 1} key={track.songUrl} {...track} />
       ))}
-    </Box>
+    </div>
   )
 }

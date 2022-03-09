@@ -1,11 +1,9 @@
-import { getCssText } from '@/lib/stitches.config'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 class MyDocument extends Document {
   render() {
     return (
       <Html lang="zh-TW" className="scroll-smooth">
         <Head>
-          <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
           <link
             rel="apple-touch-icon"
             sizes="180x180"
@@ -32,7 +30,7 @@ class MyDocument extends Document {
           <meta name="theme-color" content="#ffffff" />
           <link rel="manifest" href="/static/manifest.json" />
         </Head>
-        <body>
+        <body className="bg-body text-typeface-primary dark:bg-body-dark dark:text-typeface-primary-dark">
           <Main />
           <NextScript />
         </body>

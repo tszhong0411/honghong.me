@@ -3,7 +3,6 @@ import { useTheme } from 'next-themes'
 import { useRouter } from 'next/router'
 
 import useTranslation from 'next-translate/useTranslation'
-import { Box } from '../Box'
 
 export const giscusConfig = {
   // Visit the link below, and follow the steps in the 'configuration' section
@@ -85,10 +84,10 @@ const Giscus = ({ mapping }) => {
   }, [LoadComments, enableLoadComments])
 
   return (
-    <Box css={{ py: '$5', ta: 'center' }}>
+    <div className="py-6 text-center">
       {enableLoadComments && <button onClick={LoadComments}>{t('common:loadComments')}</button>}
       <div className="giscus" id={COMMENTS_ID} />
-    </Box>
+    </div>
   )
 }
 

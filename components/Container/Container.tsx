@@ -1,11 +1,9 @@
 import { ToastContainer } from 'react-toastify'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { styled } from '@/lib/stitches.config'
 
 import Footer from '@/components/Footer'
 import { Navbar } from '@/components/Navbar'
-import { Flex } from '../Flex'
 
 export default function Container(props) {
   const { children, ...customMeta } = props
@@ -22,7 +20,7 @@ export default function Container(props) {
   }
 
   return (
-    <Flex direction={'column'} justifyContent={'between'}>
+    <div className="flex flex-col justify-between">
       <Head>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <title>{meta.title}</title>
@@ -104,7 +102,7 @@ export default function Container(props) {
         )}
       </Head>
       <Navbar />
-      <Main>{children}</Main>
+      <main className="mx-auto w-full max-w-3xl px-8 py-12 sm:px-6 xl:px-0">{children}</main>
       <Footer />
       <ToastContainer
         position="bottom-right"
@@ -115,20 +113,6 @@ export default function Container(props) {
         draggable
         theme="dark"
       />
-    </Flex>
+    </div>
   )
 }
-
-const Main = styled('main', {
-  mx: 'auto',
-  width: '100%',
-  maxWidth: '$max-w-3xl',
-  px: '32px',
-  py: '48px',
-  '@sm': {
-    px: '24px',
-  },
-  '@xl': {
-    px: '0',
-  },
-})

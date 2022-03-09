@@ -3,8 +3,6 @@ import Guestbook from '@/components/Guestbook'
 import { GetStaticProps } from 'next'
 import useTranslation from 'next-translate/useTranslation'
 import Container from '@/components/Container'
-import { Flex } from '@/components/Flex'
-import { Text } from '@/components/Text'
 
 export default function GuestbookPage({ fallbackData }) {
   const { t } = useTranslation()
@@ -16,31 +14,11 @@ export default function GuestbookPage({ fallbackData }) {
 
   return (
     <Container title="Guestbook - 小康" description={description}>
-      <Flex
-        direction={'column'}
-        justifyContent={'center'}
-        css={{
-          mx: 'auto',
-        }}
-      >
-        <Text
-          size={7}
-          as="h1"
-          css={{
-            fontWeight: 700,
-            mb: '$6',
-            '@md': {
-              fontSize: '$5xl',
-            },
-          }}
-        >
-          Guestbook
-        </Text>
-        <Text size={3} as="p" css={{ mb: '$8', color: '$honghong-colors-typeface-secondary' }}>
-          {t('guestbook:description')}
-        </Text>
+      <div className="mx-auto flex flex-col justify-center">
+        <h1 className="mb-6 text-3xl font-bold md:text-5xl">Guestbook</h1>
+        <p className="mb-12">{t('guestbook:description')}</p>
         <Guestbook fallbackData={fallbackData} />
-      </Flex>
+      </div>
     </Container>
   )
 }
