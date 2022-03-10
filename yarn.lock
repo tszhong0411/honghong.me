@@ -8504,10 +8504,10 @@ type-fest@^1.2.1:
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-1.4.0.tgz"
   integrity sha512-yGSza74xk0UG8k+pLh5oeoYirvIiWo5t0/o3zHHAO2tRDiZcxWP7fywNlXhqb6/r6sWvwi+RsyQMWhVLe4BVuA==
 
-typescript@4.7.0-dev.20220308:
-  version "4.7.0-dev.20220308"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.0-dev.20220308.tgz#5a2281dfe38793657e7a6f8d9893ad643be9f384"
-  integrity sha512-dWx2ETRQadrYmrtU4XDnjQsxPNzX1u3+/TWJZ8kU0gOwdyZQ8NrO5BSzhIwp5eqAGe8xdBg+xPDT9tI4mxLfjw==
+typescript@4.7.0-dev.20220309:
+  version "4.7.0-dev.20220309"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.0-dev.20220309.tgz#14a20e681d2099d5150457fc41008bc213405026"
+  integrity sha512-7pi0DCM5fVfheQpx9gYH5anRA7gBZesmxTiLYsI8v7CG5HlLA385/bkixoM8j3g6+3u+AWRNEXzx1j/ll6OtOQ==
 
 typescript@^4.4.3:
   version "4.6.2"
