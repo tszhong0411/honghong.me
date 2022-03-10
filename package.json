@@ -34,7 +34,7 @@
     "esbuild": "0.14.25",
     "eslint-plugin-cypress": "^2.12.1",
     "framer-motion": "^6.2.8",
-    "googleapis": "^95.0.0",
+    "googleapis": "^96.0.0",
     "gray-matter": "^4.0.2",
     "image-size": "1.0.1",
     "next": "12.1.0",
