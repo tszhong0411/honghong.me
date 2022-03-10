@@ -109,8 +109,8 @@ export default function Guestbook({ fallbackData }) {
     display: 'block',
     width: '1rem',
     height: '1rem',
-    border: '3px solid #e9e9e9',
-    borderTop: '3px solid #f90606',
+    border: '3px solid #ababab',
+    borderTop: '3px solid #fff',
     borderRadius: '50%',
     position: 'absolute',
     boxSizing: 'border-box',
@@ -215,7 +215,7 @@ export default function Guestbook({ fallbackData }) {
           >
             <div className="flex flex-col gap-y-2">
               <Skeleton width={150} height={20} />
-              <div className="gap-x-2">
+              <div className="flex flex-row gap-x-2">
                 <Skeleton width={80} height={20} />
                 <span className="text-base">/</span>
                 <Skeleton width={140} height={20} />
