@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 import Link from 'next/link'
 import { AnchorHTMLAttributes, DetailedHTMLProps } from 'react'
+import { HiExternalLink } from 'react-icons/hi'
 
 const CustomLink = ({
   href,
@@ -29,20 +30,7 @@ const CustomLink = ({
     <a target="_blank" rel="noopener noreferrer" href={href} {...rest}>
       {children}
       <span>
-        <svg
-          className="relative top-[-1px] ml-1 inline-block h-4 w-4 align-middle"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-          />
-        </svg>
+        <HiExternalLink className="relative top-[-1px] ml-1 inline-block h-4 w-4 align-middle" />
       </span>
     </a>
   )

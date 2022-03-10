@@ -5,6 +5,8 @@ import footerNavLinks from '@/data/footerNavLinks'
 import Link from '@/components/Link'
 import NowPlaying from '@/components/NowPlaying'
 
+import { spotifyFlag } from '@/constants/env'
+
 export default function Footer() {
   const { locale, defaultLocale } = useRouter()
 
@@ -12,7 +14,7 @@ export default function Footer() {
     <>
       <footer className="mx-auto mt-8 w-full max-w-5xl px-8 xl:px-0">
         <div className="mx-auto mt-6 flex flex-row flex-wrap gap-1 border-t border-border-primary pt-12 dark:border-border-primary-dark">
-          <NowPlaying />
+          {spotifyFlag && <NowPlaying />}
           <div className="grid w-full grid-cols-2 gap-4 pb-16 sm:grid-cols-3">
             {footerNavLinks.middleLinks.map((item, index) => {
               return (

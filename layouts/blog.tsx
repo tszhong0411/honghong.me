@@ -15,6 +15,8 @@ import PageTitle from '@/components/PageTitle'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 import ViewCounter from '@/components/ViewCounter'
 
+import { commentFlag, incrementFlag } from '@/constants/env'
+
 const editUrl = (slug) =>
   `https://github.com/tszhong0411/honghong.me/blob/main/data/blog/${slug}.mdx`
 
@@ -89,7 +91,7 @@ export default function BlogLayout({ content, next, prev, children, ogImage }: P
                 </div>
                 <div className="flex flex-col text-right text-typeface-secondary dark:text-typeface-secondary-dark">
                   <time dateTime={date}>{formatDate(new Date(date), locale)}</time>
-                  <ViewCounter slug={slug} />
+                  {incrementFlag && <ViewCounter slug={slug} />}
                 </div>
               </div>
             </div>
@@ -160,7 +162,7 @@ export default function BlogLayout({ content, next, prev, children, ogImage }: P
               </div>
             </div>
           </div>
-          <Comments frontMatter={content} />
+          {commentFlag && <Comments frontMatter={content} />}
         </div>
       </article>
       <div>

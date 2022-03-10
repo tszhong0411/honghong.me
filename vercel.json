@@ -1,0 +1,10 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/youtube",
+      "destination": "https://www.youtube.com/channel/UC2hMWOaOlk9vrkvFVaGmn0Q"
+    }
+  ]
+}

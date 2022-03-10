@@ -1,16 +1,16 @@
 import { Props } from './types'
 
-const Logo = ({ alt, size, color }: Props) => {
+const Logo = ({ alt, size, className }: Props) => {
   return (
     <svg
       version="1.0"
       xmlns="http://www.w3.org/2000/svg"
       width={size || 40}
+      height={size || 40}
       aria-label={alt}
       viewBox="0 0 661.000000 1111.000000"
       preserveAspectRatio="xMidYMid meet"
-      className={!color && 'text-typeface-primary dark:text-typeface-primary-dark'}
-      fill={color || ''}
+      className={className}
     >
       <g transform="translate(0.000000,1111.000000) scale(0.100000,-0.100000)">
         <path
