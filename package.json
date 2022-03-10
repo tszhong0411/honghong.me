@@ -18,7 +18,8 @@
     "export": "next export",
     "format": "prettier --write \"./**/*.{js,jsx,ts,tsx}\"",
     "type-check": "tsc --noEmit",
-    "commit": "cz"
+    "commit": "cz",
+    "prisma:studio": "dotenv -e .env.local -- npx prisma studio"
   },
   "dependencies": {
     "@prisma/client": "^3.10.0",
@@ -30,7 +31,6 @@
     "chalk": "5.0.1",
     "classnames": "^2.3.1",
     "contentlayer": "0.1.1",
-    "crypto": "^1.0.1",
     "esbuild": "0.14.25",
     "eslint-plugin-cypress": "^2.12.1",
     "framer-motion": "^6.2.8",
