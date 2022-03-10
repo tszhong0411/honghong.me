@@ -33,7 +33,7 @@ module.exports = {
       },
       fontFamily: {
         // @ts-ignore
-        sans: ['Noto Sans TC', 'InterVariable', ...defaultTheme.fontFamily.sans],
+        sans: ['Noto Sans TC', 'Inter', ...defaultTheme.fontFamily.sans],
       },
       colors: {
         'black-75': 'rgba(0,0,0,0.75)',

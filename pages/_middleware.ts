@@ -6,11 +6,11 @@ export function middleware(req: NextRequest, ev: NextFetchEvent) {
   const ContentSecurityPolicy = `
     default-src 'self';
     script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app cdn.jsdelivr.net *.honghong.me data:;
-    style-src 'self' 'unsafe-inline' cdn.jsdelivr.net;
+    style-src 'self' 'unsafe-inline' cdn.jsdelivr.net fonts.googleapis.com;
     img-src * blob: data:;
     media-src cdn.jsdelivr.net;
     connect-src *;
-    font-src 'self' cdn.jsdelivr.net;
+    font-src 'self' cdn.jsdelivr.net fonts.gstatic.com;
     frame-src giscus.app *.youtube.com www.youtube-nocookie.com;
   `
 
