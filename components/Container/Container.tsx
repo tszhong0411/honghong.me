@@ -2,14 +2,8 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { ToastContainer } from 'react-toastify'
 
-import EnvStatus from '@/lib/console'
-
 import Footer from '@/components/Footer'
 import { Navbar } from '@/components/Navbar'
-
-import { consoleFlag } from '@/constants/env'
-
-let envStatus = false
 
 export default function Container(props) {
   const { children, ...customMeta } = props
@@ -23,11 +17,6 @@ export default function Container(props) {
     image: 'https://honghong.me/static/images/banner.png',
     type: 'website',
     ...customMeta,
-  }
-
-  if (!envStatus && !consoleFlag) {
-    EnvStatus()
-    envStatus = true
   }
 
   return (
