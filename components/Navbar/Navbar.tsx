@@ -1,4 +1,4 @@
-import cn from 'classnames'
+import clsx from 'clsx'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
@@ -17,7 +17,7 @@ function NavItem({ href, text }) {
 
   return (
     <Link
-      className={cn(
+      className={clsx(
         'hidden rounded-lg py-1 px-2 font-medium transition-all hover:text-themeColor-500 dark:hover:text-themeColor-350 sm:inline-block sm:py-3 md:px-4',
         isActive
           ? 'text-themeColor-500 dark:text-themeColor-350'
@@ -69,7 +69,7 @@ export const Navbar = () => {
         ></div>
       )}
       <header
-        className={cn(
+        className={clsx(
           'sticky top-0 z-40 w-full flex-none lg:z-50',
           isTop
             ? 'dark:bg-transparent'

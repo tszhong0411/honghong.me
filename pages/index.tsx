@@ -1,6 +1,5 @@
 import { allBlogs } from 'contentlayer/generated'
 import { InferGetStaticPropsType } from 'next'
-import Image from 'next/image'
 import { useRouter } from 'next/router'
 import useTranslation from 'next-translate/useTranslation'
 
@@ -9,6 +8,7 @@ import formatDate from '@/lib/utils/formatDate'
 
 import Container from '@/components/Container'
 import Hero from '@/components/Hero'
+import { CloudinaryImg } from '@/components/Image'
 import Link from '@/components/Link'
 
 const MAX_DISPLAY = 3
@@ -54,12 +54,14 @@ export default function Home({ filteredPosts }: InferGetStaticPropsType<typeof g
                       <div className="mx-2 my-8 w-full sm:my-0 sm:w-1/3">
                         <Link href={`/blog/${formattedSlug}`}>
                           <div className="overflow-hidden px-8 sm:px-0">
-                            <Image
-                              src={image}
-                              alt="Cover"
-                              height={720}
-                              width={1280}
+                            <CloudinaryImg
+                              noStyle
                               className="rounded duration-500 hover:scale-110"
+                              publicId={image}
+                              alt={`${title} Cover`}
+                              width={1280}
+                              height={720}
+                              preview={false}
                             />
                           </div>
                         </Link>

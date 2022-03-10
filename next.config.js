@@ -15,7 +15,7 @@ module.exports = withContentlayer()(
       swcMinify: true,
       reactStrictMode: true,
       images: {
-        domains: ['cdn.jsdelivr.net', 'avatars.githubusercontent.com'],
+        domains: ['cdn.jsdelivr.net', 'avatars.githubusercontent.com', 'res.cloudinary.com'],
       },
       pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
       eslint: {
