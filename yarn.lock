@@ -8567,10 +8567,10 @@ type-fest@^1.2.1:
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-1.4.0.tgz"
   integrity sha512-yGSza74xk0UG8k+pLh5oeoYirvIiWo5t0/o3zHHAO2tRDiZcxWP7fywNlXhqb6/r6sWvwi+RsyQMWhVLe4BVuA==
 
-typescript@4.7.0-dev.20220309:
-  version "4.7.0-dev.20220309"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.0-dev.20220309.tgz#14a20e681d2099d5150457fc41008bc213405026"
-  integrity sha512-7pi0DCM5fVfheQpx9gYH5anRA7gBZesmxTiLYsI8v7CG5HlLA385/bkixoM8j3g6+3u+AWRNEXzx1j/ll6OtOQ==
+typescript@4.7.0-dev.20220310:
+  version "4.7.0-dev.20220310"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.0-dev.20220310.tgz#0f13f3690e9e168948c0528da9ef817dcd89e02b"
+  integrity sha512-JjuOqCNo7RoZmelTJAB71/+pGu/5wjPHduQibPSMbfLBHXBv45wb9YZ7UIMqJ5PPrG7jqKsU6sOHLF6uJDbQBQ==
 
 typescript@^4.4.3:
   version "4.6.2"
