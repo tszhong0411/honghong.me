@@ -45,7 +45,7 @@ export default function Container(props) {
         <meta property="og:title" content={meta.title} />
         {meta.date && <meta property="article:published_time" content={meta.date} />}
         {meta.lastmod && <meta property="article:modified_time" content={meta.lastmod} />}
-        <meta property="og:image" content={`https://honghong.me${meta.image}`} />
+        <meta property="og:image" content={`${meta.image}`} />
         <meta
           property="og:image:alt"
           content={meta.summary ? meta.summary : meta.description[router.locale]}
@@ -54,7 +54,7 @@ export default function Container(props) {
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:locale" content={router.locale.replace('-', '_').toLowerCase()}></meta>
-        <meta name="twitter:image" content={`https://honghong.me${meta.image}`} />
+        <meta name="twitter:image" content={`${meta.image}`} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@TszhongLai0411" />
         <meta name="twitter:title" content={`${meta.title} | honghong.me`} />
