@@ -105,7 +105,7 @@ export default function Container(props) {
         )}
       </Head>
       <Navbar />
-      <main className="mx-auto w-full max-w-5xl px-10 py-12 xl:px-0">{children}</main>
+      <main className="mx-auto w-full max-w-5xl px-8 py-12 lg:px-10 xl:px-4">{children}</main>
       <Footer />
       <ToastContainer
         position="bottom-right"
