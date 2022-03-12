@@ -52,7 +52,7 @@ export default function Home({ filteredPosts }: InferGetStaticPropsType<typeof g
                       <dd className="mb-4 flex flex-row items-center gap-x-3">
                         <time dateTime={date}>{formatDate(date, locale)}</time>
                         {' - '}
-                        {!incrementFlag && <ViewCounter slug={slug} text={false} type={'GET'} />}
+                        {incrementFlag && <ViewCounter slug={slug} text={false} type={'GET'} />}
                       </dd>
                     </dl>
                     <div className="flex flex-col items-center sm:flex-row xl:col-span-3">
