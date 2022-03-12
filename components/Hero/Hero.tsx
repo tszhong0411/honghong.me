@@ -1,9 +1,12 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { useTheme } from 'next-themes'
 
 import Link from '@/components/Link'
 
 export default function Hero() {
+  const { theme, resolvedTheme } = useTheme()
+
   return (
     <>
       <div className="mx-auto mt-12 mb-24 flex max-w-5xl items-center justify-between">
@@ -47,7 +50,11 @@ export default function Hero() {
             style={{ height: '130px', width: '130px', position: 'relative' }}
           >
             <Image
-              src="/static/images/avatar.png"
+              src={
+                theme === 'dark' || resolvedTheme === 'dark'
+                  ? '/static/images/logo/logo-white.png'
+                  : '/static/images/avatar.png'
+              }
               alt="Avatar"
               layout="fill"
               objectFit="contain"
