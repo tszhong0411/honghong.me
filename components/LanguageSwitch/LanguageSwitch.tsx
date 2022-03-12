@@ -1,10 +1,14 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useRouter } from 'next/router'
+import useTranslation from 'next-translate/useTranslation'
 import { useEffect, useState } from 'react'
 import { FaGlobe } from 'react-icons/fa'
 
+import { Tooltip } from '@/components/Tooltip'
+
 export default function LanguageSwitch({ open, setOpen }) {
   const router = useRouter()
+  const { t } = useTranslation()
 
   const changeLanguage = (locale: string) => {
     router.push(router.asPath, router.asPath, { locale })
@@ -18,23 +22,25 @@ export default function LanguageSwitch({ open, setOpen }) {
 
   return (
     <>
-      <motion.button
-        aria-label="Switch language"
-        whileHover={{
-          scale: 1.2,
-          transition: { duration: 0.2 },
-        }}
-        whileTap={{
-          scale: 0.7,
-          transition: { duration: 0.2 },
-        }}
-        onClick={() => {
-          !open ? setOpen(true) : setOpen(false)
-        }}
-        className="ml-1 flex h-11 w-11 items-center justify-center bg-transparent p-0 text-lg sm:ml-4"
-      >
-        <FaGlobe size={20} />
-      </motion.button>
+      <Tooltip content={t('common:switchLanguage')}>
+        <motion.button
+          aria-label={t('common:switchLanguage')}
+          whileHover={{
+            scale: 1.2,
+            transition: { duration: 0.2 },
+          }}
+          whileTap={{
+            scale: 0.7,
+            transition: { duration: 0.2 },
+          }}
+          onClick={() => {
+            !open ? setOpen(true) : setOpen(false)
+          }}
+          className="ml-1 flex h-11 w-11 items-center justify-center bg-transparent p-0 text-lg sm:ml-4"
+        >
+          <FaGlobe size={20} />
+        </motion.button>
+      </Tooltip>
       {isLoaded && (
         <AnimatePresence>
           {open && (

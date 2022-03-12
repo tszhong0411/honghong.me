@@ -1,6 +1,9 @@
 import clsx from 'clsx'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import useTranslation from 'next-translate/useTranslation'
+import { useState } from 'react'
+
+import useIsScrollTop from '@/hooks/useIsScrollTop'
 
 import headerNavLinks from '@/data/headerNavLinks'
 
@@ -8,6 +11,7 @@ import LanguageSwitch from '@/components/LanguageSwitch'
 import Link from '@/components/Link'
 import Logo from '@/components/Logo'
 import ThemeSwitch from '@/components/ThemeSwitch'
+import { Tooltip } from '@/components/Tooltip'
 
 import { MobileNav } from './MobileNav'
 
@@ -36,26 +40,11 @@ function NavItem({ href, text }) {
   )
 }
 
-function useIsScrollTop() {
-  const [isTop, setIsTop] = useState(true)
-  useEffect(() => {
-    function onScroll() {
-      setIsTop(window.scrollY <= 0)
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-    }
-  }, [])
-
-  return isTop
-}
-
 export const Navbar = () => {
   const isTop = useIsScrollTop()
   const [navShow, setNavShow] = useState(false)
   const [open, setOpen] = useState(false)
+  const { t } = useTranslation()
 
   return (
     <>
@@ -81,9 +70,13 @@ export const Navbar = () => {
         <div className="relative mx-auto flex max-w-5xl items-center justify-between divide-x divide-border-primary py-2 px-4 dark:divide-border-primary-dark xl:px-0">
           <div className="flex items-center text-sm font-medium">
             <div className="sm:hidden">
-              <Link href="/" aria-label={'小康'}>
-                <Logo className={'ml-4 fill-brand'} size={30} />
-              </Link>
+              <Tooltip content={t('common:home')}>
+                <div>
+                  <Link href="/" aria-label={'小康'}>
+                    <Logo className={'mx-4 fill-brand'} size={30} />
+                  </Link>
+                </div>
+              </Tooltip>
             </div>
             <div className="hidden sm:block">
               {headerNavLinks.map((link, index) => (

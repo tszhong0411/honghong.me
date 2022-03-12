@@ -1,4 +1,4 @@
-// ?Source: https://github.com/theodorusclarence/theodorusclarence.com/blob/main/src/components/content/TableOfContents.tsx
+// * Source: https://github.com/theodorusclarence/theodorusclarence.com/blob/main/src/components/content/TableOfContents.tsx
 
 import useTranslation from 'next-translate/useTranslation'
 import { useEffect, useRef } from 'react'

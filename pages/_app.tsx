@@ -6,6 +6,7 @@ import '@/css/global.css'
 import '@/css/prism.css'
 import 'react-toastify/dist/ReactToastify.css'
 import 'react-loading-skeleton/dist/skeleton.css'
+import 'tippy.js/dist/tippy.css'
 
 import Analytics from '@/components/analytics'
 

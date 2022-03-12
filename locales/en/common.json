@@ -12,5 +12,9 @@
   "next": "Next article",
   "editOnGithub": "Edit on Github",
   "loadComments": "Load Comments",
-  "allPosts": "All Posts"
+  "allPosts": "All Posts",
+  "switch2Dark": "Switch To Dark Mode",
+  "switch2Light": "Switch To Light Mode",
+  "switchLanguage": "Switch Language",
+  "home": "Home"
 }

@@ -11,6 +11,9 @@ import formatDate from '@/lib/utils/formatDate'
 import Container from '@/components/Container'
 import { CloudinaryImg } from '@/components/Image'
 import Link from '@/components/Link'
+import ViewCounter from '@/components/ViewCounter'
+
+import { incrementFlag } from '@/constants/env'
 
 export const POSTS_PER_PAGE = 10
 
@@ -70,14 +73,16 @@ export default function Blog({ filteredPosts }: InferGetStaticPropsType<typeof g
                   <div className="items-start space-y-2 xl:grid xl:grid-cols-3 xl:space-y-0">
                     <dl>
                       <dt className="sr-only">{t('common:publishedOn')}</dt>
-                      <dd className="mb-4">
+                      <dd className="mb-4 flex flex-row items-center gap-x-3">
                         <time dateTime={date}>{formatDate(date, router.locale)}</time>
+                        {' - '}
+                        {!incrementFlag && <ViewCounter slug={slug} text={false} type={'GET'} />}
                       </dd>
                     </dl>
                     <div className="flex flex-col items-center sm:flex-row xl:col-span-3">
                       <div className="mx-2 my-8 w-full sm:my-0 sm:w-1/3">
                         <Link href={`/blog/${formattedSlug}`}>
-                          <div className="overflow-hidden px-8 sm:px-0">
+                          <div className="overflow-hidden rounded-xl sm:px-0">
                             <CloudinaryImg
                               noStyle
                               className="rounded duration-500 hover:scale-110"
