@@ -33,7 +33,7 @@
     "chalk": "5.0.1",
     "cloudinary-build-url": "^0.2.4",
     "contentlayer": "0.1.1",
-    "esbuild": "0.14.25",
+    "esbuild": "0.14.27",
     "eslint-plugin-cypress": "^2.12.1",
     "framer-motion": "^6.2.8",
     "googleapis": "^96.0.0",
