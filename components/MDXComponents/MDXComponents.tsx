@@ -1,4 +1,4 @@
-import { Alert } from '../Alert'
+import Alert from '../Alert'
 import { CloudinaryImg } from '../Image'
 import CustomLink from '../Link'
 import Pre from '../Pre'

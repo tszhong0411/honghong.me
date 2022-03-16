@@ -4,7 +4,7 @@ import { BiErrorCircle } from 'react-icons/bi'
 
 import { AlertBgColor, AlertIconType, AlertType } from './types'
 
-export const Alert = (props: AlertType) => {
+export default function Alert(props: AlertType) {
   // const { variant, severity } = props
   const { severity, children } = props
 
