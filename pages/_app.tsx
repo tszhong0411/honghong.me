@@ -1,7 +1,6 @@
 import type { AppProps } from 'next/app'
 import { SessionProvider } from 'next-auth/react'
 import { ThemeProvider } from 'next-themes'
-
 import '@/css/global.css'
 import '@/css/prism.css'
 import 'react-toastify/dist/ReactToastify.css'

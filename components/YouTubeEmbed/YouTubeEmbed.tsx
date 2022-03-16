@@ -1,5 +1,4 @@
 import LiteYouTubeEmbed from 'react-lite-youtube-embed'
-
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 
 type imgResolution = 'default' | 'mqdefault' | 'hqdefault' | 'sddefault' | 'maxresdefault'

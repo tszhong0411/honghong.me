@@ -7,7 +7,6 @@ import clsx from 'clsx'
 import Image from 'next/image'
 import * as React from 'react'
 import Lightbox from 'react-image-lightbox'
-
 import 'react-image-lightbox/style.css'
 
 import { CloudinaryImgType } from './types'
