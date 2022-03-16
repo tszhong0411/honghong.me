@@ -1,5 +1,5 @@
-import { writeFileSync } from 'fs'
 import chalk from 'chalk'
+import { writeFileSync } from 'fs'
 import RSS from 'rss'
 
 import { escape } from './htmlEscaper.mjs'

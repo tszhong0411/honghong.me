@@ -1,7 +1,7 @@
-import puppeteer from 'puppeteer'
 import chalk from 'chalk'
 import { createHash } from 'crypto'
 import fs from 'fs'
+import puppeteer from 'puppeteer'
 import qs from 'qs'
 
 import { allBlogs } from '../.contentlayer/generated/index.mjs'
