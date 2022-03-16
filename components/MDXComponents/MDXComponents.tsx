@@ -1,8 +1,7 @@
-import { Alert } from '@/components/Alert'
-import { CloudinaryImg } from '@/components/Image'
-import CustomLink from '@/components/Link'
-import Pre from '@/components/Pre'
-
+import { Alert } from '../Alert'
+import { CloudinaryImg } from '../Image'
+import CustomLink from '../Link'
+import Pre from '../Pre'
 import { YouTubeEmbed } from '../YouTubeEmbed'
 
 export const MDXComponents = {
