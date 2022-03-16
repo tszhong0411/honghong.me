@@ -53,16 +53,12 @@ module.exports = {
         groups: [
           // ext library & side effect imports
           ['^@?\\w', '^\\u0000'],
-          // {s}css files
-          ['^.+\\.s?css$'],
           // Lib and hooks
           ['^@/lib', '^@/hooks'],
           // static data
           ['^@/data'],
           // components
-          ['^@/components', '^@/container'],
-          // zustand store
-          ['^@/store'],
+          ['^@/components'],
           // Other imports
           ['^@/'],
           // relative paths up until 3 level
