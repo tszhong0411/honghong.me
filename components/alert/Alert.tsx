@@ -1,4 +1,4 @@
-import clsx from 'clsx'
+import cn from 'classnames'
 import { AiOutlineCheckCircle, AiOutlineInfoCircle, AiOutlineWarning } from 'react-icons/ai'
 import { BiErrorCircle } from 'react-icons/bi'
 
@@ -24,7 +24,7 @@ export const Alert = (props: AlertType) => {
 
   return (
     <div
-      className={clsx(
+      className={cn(
         'flex items-center rounded-md px-4 py-2 text-sm font-medium leading-5 text-white',
         bgColor[severity]
       )}

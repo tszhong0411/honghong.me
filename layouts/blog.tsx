@@ -1,3 +1,4 @@
+import cn from 'classnames'
 import type { Blog } from 'contentlayer/generated'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
@@ -126,7 +127,6 @@ export default function BlogLayout({ content, next, prev, children, ogImage }: P
                 <div className="prose max-w-none pt-4 pb-8 dark:prose-dark">{children}</div>
               </div>
             </div>
-            {commentFlag && <Comments frontMatter={content} />}
           </div>
         </article>
         <aside className="hidden py-4 2lg:block">
@@ -189,10 +189,11 @@ export default function BlogLayout({ content, next, prev, children, ogImage }: P
           </a>
         </div>
       </div>
-      <div>
+      {commentFlag && <Comments frontMatter={content} />}
+      <div className="border-t border-border-primary pt-8 dark:border-border-primary-dark">
         <div>
           {(next || prev) && (
-            <div className="grid py-6 sm:grid-cols-2 sm:gap-x-12">
+            <div className={cn('py-6', { 'grid sm:grid-cols-2 sm:gap-x-12': next })}>
               {prev && (
                 <div>
                   <span className="mb-10 block text-xl font-medium text-typeface-primary dark:text-typeface-primary-dark">

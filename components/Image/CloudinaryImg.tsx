@@ -2,8 +2,8 @@
  ? https://theodorusclarence.com/library/cloudinary-blur-loader
  */
 
+import cn from 'classnames'
 import { buildUrl } from 'cloudinary-build-url'
-import clsx from 'clsx'
 import Image from 'next/image'
 import * as React from 'react'
 import Lightbox from 'react-image-lightbox'
@@ -55,7 +55,7 @@ export const CloudinaryImg = ({
   const aspectRatio = aspect ? aspect.height / aspect.width : undefined
   return (
     <figure
-      className={clsx(className, {
+      className={cn(className, {
         'overflow-hidden rounded-xl shadow-sm dark:shadow-none': !noStyle,
         'mx-auto w-full': mdx && width <= 800,
       })}

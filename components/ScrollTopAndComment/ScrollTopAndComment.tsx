@@ -1,4 +1,4 @@
-import clsx from 'clsx'
+import cn from 'classnames'
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { FaArrowUp, FaRegCommentDots } from 'react-icons/fa'
@@ -32,7 +32,7 @@ export default function ScrollTopAndComment() {
 
   return (
     <motion.div
-      className={clsx('fixed right-4 bottom-16 z-50 flex-col gap-3')}
+      className={cn('fixed right-4 bottom-16 z-50 flex-col gap-3')}
       animate={show ? 'show' : 'notShow'}
       variants={variants}
     >
