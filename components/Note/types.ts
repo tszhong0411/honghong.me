@@ -1,19 +1,19 @@
 import { ReactNode } from 'react'
 
-export type AlertType = {
+export type NoteType = {
   // variant: 'filled'
   severity: 'error' | 'warning' | 'info' | 'success'
   children: ReactNode
 }
 
-export type AlertBgColor = {
+export type NoteBgColor = {
   error: string
   warning: string
   info: string
   success: string
 }
 
-export type AlertIconType = {
+export type NoteIconType = {
   error: JSX.Element
   warning: JSX.Element
   info: JSX.Element

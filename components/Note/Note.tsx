@@ -2,20 +2,20 @@ import cn from 'classnames'
 import { AiOutlineCheckCircle, AiOutlineInfoCircle, AiOutlineWarning } from 'react-icons/ai'
 import { BiErrorCircle } from 'react-icons/bi'
 
-import { AlertBgColor, AlertIconType, AlertType } from './types'
+import { NoteBgColor, NoteIconType, NoteType } from './types'
 
-export const Alert = (props: AlertType) => {
+export const Note = (props: NoteType) => {
   // const { variant, severity } = props
   const { severity, children } = props
 
-  const bgColor: AlertBgColor = {
+  const bgColor: NoteBgColor = {
     error: 'bg-red-500',
     warning: 'bg-orange-500',
     info: 'bg-blue-500',
     success: 'bg-green-500',
   }
 
-  const icon: AlertIconType = {
+  const icon: NoteIconType = {
     error: <BiErrorCircle />,
     warning: <AiOutlineWarning />,
     info: <AiOutlineInfoCircle />,
