@@ -8543,10 +8543,10 @@ type-fest@^1.2.1:
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-1.4.0.tgz"
   integrity sha512-yGSza74xk0UG8k+pLh5oeoYirvIiWo5t0/o3zHHAO2tRDiZcxWP7fywNlXhqb6/r6sWvwi+RsyQMWhVLe4BVuA==
 
-typescript@4.7.0-dev.20220317:
-  version "4.7.0-dev.20220317"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.0-dev.20220317.tgz#1d33e1c68bb90be48798c71eaaac58c4a7332b27"
-  integrity sha512-BSWI2k1HSHl/NfXlTgth+3J/2BqqhbqrZB0gtgNvDsHSpiVzt1WEkGV3yab/U8We9r6X8YLebW3AFWXm/b5DGQ==
+typescript@4.7.0-dev.20220320:
+  version "4.7.0-dev.20220320"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.0-dev.20220320.tgz#1fbef5bfc6e0be87241062a4fab48b50d764403e"
+  integrity sha512-BIkevbhxQtYhAi2jBB3bSNYnU02DyY/l+Ikh6o9oahxIiSu4DVJhu3yAZ2Gp9syaEulycfHMOik3eKNDozSmBQ==
 
 typescript@^4.4.3:
   version "4.6.2"
