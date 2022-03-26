@@ -154,6 +154,13 @@ module.exports = {
             img: {
               borderRadius: '12px',
             },
+            kbd: {
+              border: `1px solid ${theme('colors.border-primary')}`,
+              background: theme('colors.gray.100'),
+              padding: '3px',
+              borderRadius: '0.25rem',
+              color: theme('colors.typeface-primary'),
+            },
           },
         },
         dark: {
@@ -204,6 +211,13 @@ module.exports = {
             blockquote: {
               color: theme('colors.gray.100'),
               borderLeftColor: theme('colors.gray.700'),
+            },
+            kbd: {
+              border: `1px solid ${theme('colors.border-primary-dark')}`,
+              background: theme('colors.gray.700'),
+              padding: '3px',
+              borderRadius: '0.25rem',
+              color: theme('colors.typeface-primary-dark'),
             },
           },
         },
