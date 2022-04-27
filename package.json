@@ -51,7 +51,7 @@
     "puppeteer": "13.5.1",
     "qs": "^6.10.3",
     "react": "17.0.2",
-    "react-copy-to-clipboard": "^5.0.4",
+    "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "17.0.2",
     "react-icons": "^4.3.1",
     "react-image-lightbox": "^5.1.4",
