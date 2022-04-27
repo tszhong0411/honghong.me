@@ -38,7 +38,6 @@ export default function Blog({ filteredPosts }: InferGetStaticPropsType<typeof g
     const searchContent = post.title + post.summary
     return searchContent.toLowerCase().includes(searchValue.toLowerCase())
   })
-
   const router = useRouter()
   const displayPosts = filteredBlogPosts
 
