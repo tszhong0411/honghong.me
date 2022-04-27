@@ -97,7 +97,7 @@
     "inquirer": "8.2.2",
     "lint-staged": "12.3.7",
     "prettier": "^2.6.0",
-    "prettier-plugin-tailwindcss": "^0.1.8",
+    "prettier-plugin-tailwindcss": "^0.1.10",
     "prisma": "^3.11.1",
     "typescript": "4.7.0-dev.20220323"
   },
