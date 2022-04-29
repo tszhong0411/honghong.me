@@ -98,7 +98,7 @@
     "lint-staged": "12.3.7",
     "prettier": "^2.6.2",
     "prettier-plugin-tailwindcss": "^0.1.8",
-    "prisma": "^3.11.1",
+    "prisma": "^3.13.0",
     "typescript": "4.7.0-dev.20220323"
   },
   "lint-staged": {
