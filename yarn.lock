@@ -4743,10 +4743,10 @@ googleapis-common@^5.0.2:
     url-template "^2.0.8"
     uuid "^8.0.0"
 
-googleapis@^98.0.0:
-  version "98.0.0"
-  resolved "https://registry.yarnpkg.com/googleapis/-/googleapis-98.0.0.tgz#f523a677c11acb155625dac6194fa729ab4480a3"
-  integrity sha512-gJS+JF03FXouOpHN7dqxg5wrNCBef3ExBtYdCJoX4wlURuy6pixg7SC8sNAjFIXphMZWQ1Bbcu9aKxNv2xCbuQ==
+googleapis@^100.0.0:
+  version "100.0.0"
+  resolved "https://registry.yarnpkg.com/googleapis/-/googleapis-100.0.0.tgz#baeeba7877ee7dd3250643b3803c4a9c24bcf8dd"
+  integrity sha512-RToFQGY54B756IDbjdyjb1vWFmn03bYpXHB2lIf0eq2UBYsIbYOLZ0kqSomfJnpclEukwEmMF7Jn6Wsev871ew==
   dependencies:
     google-auth-library "^7.0.2"
     googleapis-common "^5.0.2"
@@ -8608,10 +8608,10 @@ type-fest@^1.2.1:
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-1.4.0.tgz"
   integrity sha512-yGSza74xk0UG8k+pLh5oeoYirvIiWo5t0/o3zHHAO2tRDiZcxWP7fywNlXhqb6/r6sWvwi+RsyQMWhVLe4BVuA==
 
-typescript@4.7.0-dev.20220323:
-  version "4.7.0-dev.20220323"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.0-dev.20220323.tgz#eb9dd18f77a7fd58bbd53ce8d7dc86bdcda87e40"
-  integrity sha512-fJQwwIgPcAJV9qn45kgIaiiklW6eY+SuTVAM2WgNAJS7pGN6mfuUB7sk0G+HGTsWWI/gMlGVgNdPY3jK4M7Hfg==
+typescript@4.7.0-dev.20220429:
+  version "4.7.0-dev.20220429"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.0-dev.20220429.tgz#f31e3edc406b6bd9f137f8f8b6befcd2563a929f"
+  integrity sha512-RpltV2YSqWFVLLsBLW6gAPnYBLC4KQpxtPcuwTx0PmYVFpwzYRtsR8iemeEFr3yBALG21cxbm2a0xF3GRrihsg==
 
 typescript@^4.4.3:
   version "4.6.2"
