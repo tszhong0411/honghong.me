@@ -7458,10 +7458,10 @@ react-modal@^3.11.1:
     react-lifecycles-compat "^3.0.0"
     warning "^4.0.3"
 
-react-toastify@^9.0.0:
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/react-toastify/-/react-toastify-9.0.0.tgz#bd31a38567ccc7fd801acb00a11fb4983ee365f0"
-  integrity sha512-gmxAFTKV0VVN7s5UEcZdC+bBR1EQtsqXgHJWQgB0G5J8m3Mdxz1Pacm7BJ1nTHkMMNfupruKCu7wUwAq46Z1jg==
+react-toastify@^9.0.1:
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/react-toastify/-/react-toastify-9.0.1.tgz#2f3abd26a75efd55a82cb9c0a897c865218ea420"
+  integrity sha512-c2zeZHkCX+WXuItS/JRqQ/8CH8Qm/je+M0rt09xe9fnu5YPJigtNOdD8zX4fwLA093V2am3abkGfOowwpkrwOQ==
   dependencies:
     clsx "^1.1.1"
 
