@@ -53,7 +53,7 @@ export default function Hero() {
               src={
                 theme === 'dark' || resolvedTheme === 'dark'
                   ? '/static/images/logo/logo-white.png'
-                  : '/static/images/avatar.png'
+                  : '/static/images/logo/logo-black.png'
               }
               alt="Avatar"
               layout="fill"
