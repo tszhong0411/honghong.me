@@ -61,7 +61,7 @@
     "reading-time": "1.5.0",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-code-titles": "^1.0.3",
-    "rehype-prism-plus": "1.3.2",
+    "rehype-prism-plus": "1.4.0",
     "rehype-slug": "5.0.1",
     "remark": "^14.0.2",
     "remark-gfm": "^3.0.1",
