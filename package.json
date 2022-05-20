@@ -25,7 +25,7 @@
   "dependencies": {
     "@prisma/client": "^3.13.0",
     "@tailwindcss/aspect-ratio": "^0.4.0",
-    "@tailwindcss/forms": "^0.5.1",
+    "@tailwindcss/forms": "^0.5.2",
     "@tailwindcss/typography": "^0.5.2",
     "@tippyjs/react": "^4.2.6",
     "@types/tailwindcss": "^3.0.10",
