@@ -1,15 +1,9 @@
-<p align="center">
-  <a href="https://honghong.me">
-    <img src="./public/static/images/logo/logo-white.png" width="45" />
-  </a>
-</p>
-
 <h1 align="center">
  小康 blog
 </h1>
 
 <p align="center">
-  <img src="https://socialify.git.ci/tszhong0411/honghong.me/image?description=1&font=KoHo&forks=1&issues=1&logo=https%3A%2F%2Fhonghong.me%2Fstatic%2Fimages%2Flogo%2Flogo-white.png&name=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark"  alt="Banner">
+  <img src="https://socialify.git.ci/tszhong0411/honghong.me/image?description=1&font=KoHo&forks=1&issues=1&logo=https%3A%2F%2Fhonghong.me%2Fstatic%2Fimages%2Flogo%2Flogo-black.png&name=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark"  alt="Banner">
 </p>
 
 <p align="center">
