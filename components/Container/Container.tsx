@@ -92,7 +92,7 @@ export default function Container(props) {
                     name: '小康',
                     logo: {
                       '@type': 'ImageObject',
-                      url: `https://honghong.me/static/images/logo/logo-white.png`,
+                      url: `https://honghong.me/static/images/logo/logo-black.png`,
                     },
                   },
                   description: meta.summary,
