@@ -73,7 +73,7 @@
     "unist-util-visit": "^4.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.0.0",
+    "@commitlint/cli": "^17.0.1",
     "@commitlint/config-conventional": "^17.0.0",
     "@next/bundle-analyzer": "12.1.6",
     "@svgr/webpack": "6.2.1",
