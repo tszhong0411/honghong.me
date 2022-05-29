@@ -48,7 +48,7 @@ export default function LanguageSwitch({ open, setOpen }) {
               animate={{ y: 0 }}
               initial={{ y: -200 }}
               exit={{ y: -200, opacity: 0 }}
-              className="fixed top-[60px] right-0 z-50 flex flex-row gap-x-4 rounded-md border-2 border-slate-300 bg-body-secondary py-2 px-4 dark:border-slate-700 dark:bg-body-secondary-dark md:absolute"
+              className="fixed top-[60px] right-0 z-50 flex flex-row gap-x-4 rounded-md border-2 border-slate-300 bg-body-secondary py-2 px-4 dark:border-border-primary-dark dark:bg-body-secondary-dark md:absolute"
             >
               <div
                 className="cursor-pointer rounded-md px-4 py-2 duration-300 hover:bg-body dark:hover:bg-body-dark"

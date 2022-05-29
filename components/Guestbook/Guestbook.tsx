@@ -132,13 +132,13 @@ export default function Guestbook({ fallbackData }) {
   return (
     <>
       <div className="my-4 w-full max-w-2xl rounded bg-body-secondary p-5 dark:bg-body-secondary-dark">
-        <h5 className="text-lg font-bold md:text-xl">
+        <h5 className="text-lg font-medium md:text-xl">
           {session?.user ? t('guestbook:guestbook') : t('guestbook:signInGuestbook')}
         </h5>
         {!session && (
           <Link
             href="/api/auth/signin/github"
-            className="my-4 flex h-10 w-24 items-center justify-center rounded bg-brand font-bold text-white"
+            className="my-4 flex h-10 w-24 items-center justify-center rounded bg-brand font-medium text-white"
             onClick={(e) => {
               e.preventDefault()
               signIn('github')
