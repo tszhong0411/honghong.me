@@ -9,9 +9,9 @@ const nextTranslate = require('next-translate')
 /**
  * @type {import('next/dist/next-server/server/config').NextConfig}
  **/
-module.exports = withContentlayer()(
-  nextTranslate(
-    withBundleAnalyzer({
+module.exports = nextTranslate(
+  withBundleAnalyzer(
+    withContentlayer({
       swcMinify: true,
       reactStrictMode: true,
       images: {

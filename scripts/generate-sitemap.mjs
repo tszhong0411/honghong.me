@@ -1,6 +1,6 @@
 import chalk from 'chalk'
 import { writeFileSync } from 'fs'
-import globby from 'globby'
+import { globby } from 'globby'
 import prettier from 'prettier'
 
 import { allBlogs } from '../.contentlayer/generated/index.mjs'
