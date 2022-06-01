@@ -76,7 +76,7 @@
     "@commitlint/config-conventional": "^17.0.0",
     "@next/bundle-analyzer": "12.1.6",
     "@svgr/webpack": "6.2.1",
-    "@types/react": "18.0.9",
+    "@types/react": "18.0.10",
     "@typescript-eslint/eslint-plugin": "5.27.0",
     "@typescript-eslint/parser": "5.27.0",
     "commitizen": "^4.2.4",
