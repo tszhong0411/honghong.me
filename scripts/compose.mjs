@@ -15,7 +15,7 @@ const genFrontMatter = (answers) => {
   date: '${date}'
   draft: ${answers.draft === 'yes' ? true : false}
   summary: ${answers.summary ? answers.summary : ' '}
-  image: ${answers.image ? answers.image : ' '}
+  image: '${answers.image ? answers.image : ' '}'
   `
 
   frontMatter = frontMatter + '\n---'
