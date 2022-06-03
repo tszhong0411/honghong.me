@@ -81,7 +81,7 @@
     "@typescript-eslint/parser": "5.27.0",
     "commitizen": "^4.2.4",
     "cross-env": "^7.0.3",
-    "cypress": "^9.7.0",
+    "cypress": "^10.0.2",
     "cz-conventional-changelog": "3.3.0",
     "dedent": "^0.7.0",
     "eslint": "^8.16.0",
