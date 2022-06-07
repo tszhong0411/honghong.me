@@ -64,7 +64,7 @@ export const Navbar = () => {
             ? 'dark:bg-transparent'
             : navShow
             ? 'bg-body dark:bg-body-dark'
-            : 'bg-body/75  backdrop-blur dark:bg-[rgba(22,24,29,0.75)] '
+            : 'bg-body/75  backdrop-blur dark:bg-body-dark-75 '
         )}
       >
         <div className="relative mx-auto flex max-w-5xl items-center justify-between divide-x divide-border-primary py-2 px-4 dark:divide-border-primary-dark xl:px-0">
