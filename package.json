@@ -36,7 +36,7 @@
     "contentlayer": "0.2.5",
     "esbuild": "0.14.42",
     "eslint-plugin-cypress": "^2.12.1",
-    "framer-motion": "^6.3.6",
+    "framer-motion": "^6.3.10",
     "googleapis": "^100.0.0",
     "gray-matter": "^4.0.2",
     "image-size": "1.0.1",
