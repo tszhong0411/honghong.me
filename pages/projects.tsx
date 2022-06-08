@@ -30,6 +30,11 @@ export default function Projects() {
         description: '在好友測驗上取得滿分',
         href: 'https://friendquiz.honghong.me',
       },
+      {
+        title: '小康的社交媒體',
+        description: '展示更多小康的社交媒體',
+        href: 'https://link.honghong.me',
+      },
     ],
     en: [
       {
@@ -42,13 +47,18 @@ export default function Projects() {
         description: 'Get full score in friend quiz',
         href: 'https://friendquiz.honghong.me',
       },
+      {
+        title: "小康's social media",
+        description: "Display more 小康's social media",
+        href: 'https://link.honghong.me',
+      },
     ],
   }
 
   return (
     <Container title="Projects - 小康">
       <PageContainer title={title[router.locale]} description={description}>
-        <div className="grid gap-x-3 gap-y-3 sm:grid-cols-2 sm:gap-y-0">
+        <div className="grid gap-x-3 gap-y-3 sm:grid-cols-2">
           {projectsData[locale]?.map((d) => (
             <Card key={d.title} title={d.title} description={d.description} href={d.href} />
           ))}
