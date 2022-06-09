@@ -31,7 +31,7 @@ export default function About() {
                 <Link href="https://vercel.com/">Vercel</Link> 部署我的網站。
               </p>
               <p>
-                <div className="inline-flex items-center text-themeColor-500">❤️</div>{' '}
+                <div className="inline-flex items-center text-brand">❤️</div>{' '}
                 我喜歡玩電子遊戲、編寫網頁、學習程式設計。
               </p>
               <p>
@@ -55,8 +55,8 @@ export default function About() {
                 <Link href="https://vercel.com/">Vercel</Link> to deploy my website.
               </p>
               <p>
-                <div className="inline-flex items-center text-themeColor-500">❤️</div> I love
-                playing video games, develop website, and learning programming.
+                <div className="inline-flex items-center text-brand">❤️</div> I love playing video
+                games, develop website, and learning programming.
               </p>
               <p>
                 Look at my computer specification: <Link href="/pc-specs">💻 PC</Link>

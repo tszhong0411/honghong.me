@@ -12,7 +12,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'JetBrains Mono', 'Noto Sans TC';
 }
 
 ::selection {

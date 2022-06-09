@@ -22,10 +22,8 @@ function NavItem({ href, text }) {
   return (
     <Link
       className={cn(
-        'hidden rounded-lg py-1 px-2 font-medium transition-all hover:text-themeColor-500 dark:hover:text-themeColor-350 sm:inline-block sm:py-3 md:px-4',
-        isActive
-          ? 'text-themeColor-500 dark:text-themeColor-350'
-          : 'text-typeface-primary dark:text-typeface-primary-dark'
+        'hidden rounded-lg py-1 px-2 font-medium transition-all sm:inline-block sm:py-3 md:px-4',
+        isActive ? 'text-brand' : 'text-typeface-primary dark:text-typeface-primary-dark'
       )}
       data-cy="nav-item"
       href={href}
@@ -33,7 +31,7 @@ function NavItem({ href, text }) {
       <span className="relative">
         {text}
         {isActive && (
-          <div className="absolute top-full mt-2 h-1 w-full rounded-2xl bg-themeColor-500 opacity-80 dark:bg-themeColor-350" />
+          <div className="absolute top-full mt-2 h-1 w-full rounded-2xl bg-brand opacity-80" />
         )}
       </span>
     </Link>

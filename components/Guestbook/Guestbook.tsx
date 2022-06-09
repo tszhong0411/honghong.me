@@ -43,7 +43,7 @@ function GuestbookEntry({ entry, user }) {
           <>
             <span className="text-xs">/</span>
             <button
-              className="flex h-6 w-8 cursor-pointer items-center justify-center text-sm text-themeColor-600 dark:text-brand"
+              className="flex h-6 w-8 cursor-pointer items-center justify-center text-sm text-brand"
               onClick={deleteEntry}
             >
               {t('guestbook:delete')}
@@ -131,8 +131,8 @@ export default function Guestbook({ fallbackData }) {
 
   return (
     <>
-      <div className="my-4 w-full max-w-2xl rounded bg-body-secondary p-5 dark:bg-body-secondary-dark">
-        <h5 className="text-lg font-medium md:text-xl">
+      <div className="my-4 w-full max-w-2xl rounded bg-body-dark p-5 dark:bg-body">
+        <h5 className="text-lg font-bold text-card-primary dark:text-card-primary-dark md:text-xl">
           {session?.user ? t('guestbook:guestbook') : t('guestbook:signInGuestbook')}
         </h5>
         {!session && (
@@ -179,7 +179,7 @@ export default function Guestbook({ fallbackData }) {
           </form>
         )}
 
-        <p className="text-sm text-typeface-secondary dark:text-typeface-secondary-dark">
+        <p className="text-sm text-card-secondary dark:text-card-secondary-dark">
           {t('guestbook:tip')}
         </p>
 
@@ -193,7 +193,9 @@ export default function Guestbook({ fallbackData }) {
                 alt="User avatar"
                 className="rounded-full"
               />
-              <span>{session.user.name}</span>
+              <span className="text-card-primary dark:text-card-primary-dark">
+                {session.user.name}
+              </span>
             </div>
             <button
               className="s:w-13 h-10 w-1/2 rounded bg-brand px-0 text-white s:w-1/3 s:px-4"
