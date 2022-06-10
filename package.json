@@ -94,7 +94,7 @@
     "globby": "13.1.1",
     "husky": "8.0.1",
     "inquirer": "8.2.4",
-    "lint-staged": "13.0.0",
+    "lint-staged": "13.0.1",
     "prettier": "^2.6.2",
     "prettier-plugin-tailwindcss": "^0.1.11",
     "prisma": "^3.15.0",
