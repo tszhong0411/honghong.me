@@ -23,7 +23,7 @@
     "prisma:studio": "dotenv -e .env.local -- npx prisma studio"
   },
   "dependencies": {
-    "@prisma/client": "^3.15.0",
+    "@prisma/client": "^3.15.1",
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "@tailwindcss/forms": "^0.5.2",
     "@tailwindcss/typography": "^0.5.2",
@@ -34,9 +34,9 @@
     "classnames": "^2.3.1",
     "cloudinary-build-url": "^0.2.4",
     "contentlayer": "0.2.5",
-    "esbuild": "0.14.42",
+    "esbuild": "0.14.43",
     "eslint-plugin-cypress": "^2.12.1",
-    "framer-motion": "^6.3.10",
+    "framer-motion": "^6.3.11",
     "googleapis": "^101.0.0",
     "gray-matter": "^4.0.2",
     "image-size": "1.0.1",
@@ -68,7 +68,7 @@
     "sharp": "0.30.6",
     "smoothscroll-polyfill": "^0.4.4",
     "swr": "^1.3.0",
-    "tailwindcss": "^3.0.24",
+    "tailwindcss": "^3.1.1",
     "unist-util-visit": "^4.0.0"
   },
   "devDependencies": {
@@ -94,10 +94,10 @@
     "globby": "13.1.1",
     "husky": "8.0.1",
     "inquirer": "8.2.4",
-    "lint-staged": "13.0.0",
+    "lint-staged": "13.0.1",
     "prettier": "^2.6.2",
     "prettier-plugin-tailwindcss": "^0.1.11",
-    "prisma": "^3.15.0",
+    "prisma": "^3.15.1",
     "typescript": "4.7.3"
   },
   "lint-staged": {
