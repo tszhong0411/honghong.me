@@ -14,6 +14,7 @@ import ThemeSwitch from '@/components/ThemeSwitch'
 import { Tooltip } from '@/components/Tooltip'
 
 import { MobileNav } from './MobileNav'
+import ReadingProgressBar from '../ReadingProgressBar'
 
 function NavItem({ href, text }) {
   const router = useRouter()
@@ -43,6 +44,7 @@ export const Navbar = () => {
   const [navShow, setNavShow] = useState(false)
   const [open, setOpen] = useState(false)
   const { t } = useTranslation()
+  const isBlog = useRouter().asPath.includes('/blog/')
 
   return (
     <>
@@ -89,6 +91,7 @@ export const Navbar = () => {
           </div>
         </div>
       </header>
+      {isBlog && <ReadingProgressBar />}
     </>
   )
 }
