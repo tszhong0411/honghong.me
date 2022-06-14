@@ -41,7 +41,7 @@
     "gray-matter": "^4.0.2",
     "image-size": "1.0.1",
     "next": "12.1.6",
-    "next-auth": "^4.3.3",
+    "next-auth": "^4.5.0",
     "next-contentlayer": "0.2.5",
     "next-themes": "^0.2.0",
     "next-translate": "^1.4.0",
