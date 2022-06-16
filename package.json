@@ -49,7 +49,7 @@
     "prism-react-renderer": "^1.3.3",
     "puppeteer": "14.4.0",
     "qs": "^6.10.5",
-    "react": "18.1.0",
+    "react": "18.2.0",
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "18.1.0",
     "react-icons": "^4.4.0",
