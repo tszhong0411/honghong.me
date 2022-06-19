@@ -34,7 +34,7 @@
     "classnames": "^2.3.1",
     "cloudinary-build-url": "^0.2.4",
     "contentlayer": "0.2.5",
-    "esbuild": "0.14.44",
+    "esbuild": "0.14.45",
     "eslint-plugin-cypress": "^2.12.1",
     "framer-motion": "^6.3.11",
     "googleapis": "^103.0.0",
