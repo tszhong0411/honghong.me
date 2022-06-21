@@ -5,10 +5,9 @@
     "start": "next dev",
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "yarn sitemap && yarn rss && yarn og",
+    "postbuild": "yarn sitemap && yarn rss",
     "sitemap": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-sitemap.mjs",
     "rss": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-rss.mjs",
-    "og": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-og-images.mjs",
     "new:post": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/compose.mjs",
     "serve": "next start",
     "analyze": "cross-env ANALYZE=true next build",
@@ -19,7 +18,7 @@
     "export": "next export",
     "format": "prettier --write \"./**/*.{js,jsx,ts,tsx}\"",
     "type-check": "tsc",
-    "commit": "cz",
+    "commit": "gitmoji -c",
     "prisma:studio": "dotenv -e .env.local -- npx prisma studio"
   },
   "dependencies": {
@@ -37,6 +36,7 @@
     "esbuild": "0.14.43",
     "eslint-plugin-cypress": "^2.12.1",
     "framer-motion": "^6.3.11",
+    "gitmoji-cli": "^5.0.1",
     "googleapis": "^102.0.0",
     "gray-matter": "^4.0.2",
     "image-size": "1.0.1",
@@ -72,14 +72,11 @@
     "unist-util-visit": "^4.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.0.2",
-    "@commitlint/config-conventional": "^17.0.2",
     "@next/bundle-analyzer": "12.1.6",
     "@svgr/webpack": "6.2.1",
     "@types/react": "18.0.12",
     "@typescript-eslint/eslint-plugin": "5.28.0",
     "@typescript-eslint/parser": "5.27.1",
-    "commitizen": "^4.2.4",
     "cross-env": "^7.0.3",
     "cypress": "^10.1.0",
     "cz-conventional-changelog": "3.3.0",
