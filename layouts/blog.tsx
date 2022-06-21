@@ -37,10 +37,9 @@ type Props = {
   next?: { slug: string; title: string; summary: string }
   prev?: { slug: string; title: string; summary: string }
   children: ReactNode
-  ogImage: string
 }
 
-export default function BlogLayout({ content, next, prev, children, ogImage }: Props) {
+export default function BlogLayout({ content, next, prev, children }: Props) {
   const { slug, date, title, summary } = content
   const { t } = useTranslation()
   const { locale } = useRouter()
@@ -70,7 +69,7 @@ export default function BlogLayout({ content, next, prev, children, ogImage }: P
     <Container
       title={`${title}`}
       summary={summary}
-      image={ogImage}
+      image={`https://og.honghong.me/api/blog?theme=dark&title=${title}&description=${summary}`}
       data={new Date(date).toISOString()}
       type="article"
     >

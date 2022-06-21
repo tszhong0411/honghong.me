@@ -4,7 +4,6 @@ import { allBlogs } from 'contentlayer/generated'
 import { InferGetStaticPropsType } from 'next'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 
-import getOgImage from '@/lib/generate-og-images'
 import { coreContent, sortedBlogPost } from '@/lib/utils/contentlayer'
 
 import PageTitle from '@/components/PageTitle'
@@ -34,28 +33,16 @@ export const getStaticProps = async ({ params, locale }) => {
   const next = nextContent ? coreContent(nextContent) : null
   const post = sortedPosts.find((p) => p.slug === `${slug}.${locale}`)
 
-  const ogImage = await getOgImage({
-    slug: `${slug}.${locale}`,
-    background: post.colorFeatured,
-    color: post.fontFeatured,
-  })
-
   return {
     props: {
       post,
       prev,
       next,
-      ogImage,
     },
   }
 }
 
-export default function Blog({
-  post,
-  prev,
-  next,
-  ogImage,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Blog({ post, prev, next }: InferGetStaticPropsType<typeof getStaticProps>) {
   const Component = useMDXComponent(post.body.code)
 
   return (
@@ -63,7 +50,7 @@ export default function Blog({
       {post && (
         <>
           {post.draft !== true ? (
-            <BlogLayout content={post} prev={prev} next={next} ogImage={ogImage}>
+            <BlogLayout content={post} prev={prev} next={next}>
               <Component
                 components={
                   {
