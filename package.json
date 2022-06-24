@@ -35,7 +35,7 @@
     "contentlayer": "0.2.5",
     "esbuild": "0.14.47",
     "eslint-plugin-cypress": "^2.12.1",
-    "framer-motion": "^6.3.11",
+    "framer-motion": "^6.3.13",
     "gitmoji-cli": "^5.0.1",
     "googleapis": "^104.0.0",
     "gray-matter": "^4.0.2",
