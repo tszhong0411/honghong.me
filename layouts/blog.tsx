@@ -70,7 +70,7 @@ export default function BlogLayout({ content, next, prev, children }: Props) {
       title={`${title}`}
       summary={summary}
       image={`https://og.honghong.me/api/blog?theme=dark&title=${title}&description=${summary}`}
-      data={new Date(date).toISOString()}
+      date={new Date(date).toISOString()}
       type="article"
     >
       <ScrollTopAndComment />
