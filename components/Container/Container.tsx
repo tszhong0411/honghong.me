@@ -62,7 +62,6 @@ export default function Container(props) {
           name="twitter:description"
           content={meta.summary ? meta.summary : meta.description[router.locale]}
         />
-        <meta name="twitter:image" content={`${meta.image}`} />
         <meta name="twitter:creator" content="@TszhongLai0411" />
         {meta.type === 'article' && (
           <script
