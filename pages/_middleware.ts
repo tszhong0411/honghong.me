@@ -2,7 +2,7 @@ import type { NextFetchEvent, NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function middleware(req: NextRequest, ev: NextFetchEvent) {
+export function middleware(_req: NextRequest, _ev: NextFetchEvent) {
   const ContentSecurityPolicy = `
     default-src 'self';
     script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app cdn.jsdelivr.net *.honghong.me data:;
