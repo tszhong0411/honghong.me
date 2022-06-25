@@ -54,6 +54,7 @@
     "react-lite-youtube-embed": "^2.2.2",
     "react-loading-skeleton": "^3.0.3",
     "react-toastify": "^9.0.5",
+    "react-use": "^17.4.0",
     "reading-time": "1.5.0",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-code-titles": "^1.1.0",
