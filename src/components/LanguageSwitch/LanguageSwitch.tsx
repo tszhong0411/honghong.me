@@ -22,7 +22,7 @@ export default function LanguageSwitch({ open, setOpen }) {
           i18n.locales.some((current) => current === config)
         ),
       });
-    } else if (typeof locale === 'string') {
+    } else if (typeof locale === 'string' && locale !== router.locale) {
       locale !== i18n.defaultLocale &&
         router.push(router.asPath, router.asPath, { locale });
     }
