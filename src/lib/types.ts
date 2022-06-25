@@ -34,3 +34,10 @@ export type TopTracks = {
 export type ChildrenType = {
   children: React.ReactNode;
 };
+
+export type Favicons = {
+  rel: string;
+  href: string;
+  sizes?: string;
+  type?: string;
+};
