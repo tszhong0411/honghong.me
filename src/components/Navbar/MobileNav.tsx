@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { CgClose } from 'react-icons/cg';
 import { FaGithub, FaInstagram } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
@@ -9,7 +8,7 @@ import { NavLinks } from '@/components/Navbar/NavLinks';
 
 interface Props {
   navShow: boolean;
-  setNavShow: Dispatch<SetStateAction<boolean>>;
+  setNavShow: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const MobileNav = ({ navShow, setNavShow }: Props) => {
@@ -24,12 +23,6 @@ export const MobileNav = ({ navShow, setNavShow }: Props) => {
       return !status;
     });
   };
-
-  // https://github.com/framer/motion/issues/578
-  const [isLoaded, setLoaded] = useState(false);
-  useEffect(() => {
-    setLoaded(true);
-  }, []);
 
   return (
     <>
@@ -50,7 +43,7 @@ export const MobileNav = ({ navShow, setNavShow }: Props) => {
       >
         {navShow ? <CgClose size={20} /> : <GiHamburgerMenu size={20} />}
       </motion.button>
-      {isLoaded && navShow && (
+      {navShow && (
         <motion.nav
           className='visible fixed left-0 right-0 top-[60px] bottom-0 z-50 block h-full w-full max-w-[100vw] overflow-hidden overflow-y-scroll bg-body px-6 pb-6 dark:bg-body-dark sm:hidden'
           animate={{ x: 0 }}
