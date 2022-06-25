@@ -1,12 +1,16 @@
-import { defineDocumentType, ComputedFields, makeSource } from 'contentlayer/source-files'
+import {
+  ComputedFields,
+  defineDocumentType,
+  makeSource,
+} from 'contentlayer/source-files';
+import readingTime from 'reading-time';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeCodeTitles from 'rehype-code-titles';
+import rehypePrism from 'rehype-prism-plus';
+import rehypeSlug from 'rehype-slug';
+import remarkGfm from 'remark-gfm';
 
-import readingTime from 'reading-time'
-import remarkGfm from 'remark-gfm'
-import remarkImgToJsx from './lib/remark-img-to-jsx'
-import rehypeSlug from 'rehype-slug'
-import rehypeCodeTitles from 'rehype-code-titles'
-import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import rehypePrism from 'rehype-prism-plus'
+import remarkImgToJsx from './src/lib/remark-img-to-jsx';
 
 const computedFields: ComputedFields = {
   readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
@@ -18,7 +22,7 @@ const computedFields: ComputedFields = {
     type: 'string',
     resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ''),
   },
-}
+};
 
 export const Blog = defineDocumentType(() => ({
   name: 'Blog',
@@ -37,7 +41,7 @@ export const Blog = defineDocumentType(() => ({
     canonicalUrl: { type: 'string' },
   },
   computedFields,
-}))
+}));
 
 export const OtherPage = defineDocumentType(() => ({
   name: 'OtherPage',
@@ -47,10 +51,10 @@ export const OtherPage = defineDocumentType(() => ({
     title: { type: 'string', required: true },
   },
   computedFields,
-}))
+}));
 
 const contentLayerConfig = makeSource({
-  contentDirPath: 'data',
+  contentDirPath: './src/data',
   documentTypes: [Blog, OtherPage],
   mdx: {
     remarkPlugins: [remarkGfm, remarkImgToJsx],
@@ -73,6 +77,6 @@ const contentLayerConfig = makeSource({
       ],
     ],
   },
-})
+});
 
-export default contentLayerConfig
+export default contentLayerConfig;

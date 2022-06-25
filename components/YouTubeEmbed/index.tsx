@@ -1,1 +1,0 @@
-export { YouTubeEmbed } from './YouTubeEmbed'

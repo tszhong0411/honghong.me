@@ -1,10 +1,11 @@
-const { withContentlayer } = require('next-contentlayer')
+/* eslint-disable @typescript-eslint/no-var-requires */
+const { withContentlayer } = require('next-contentlayer');
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
-})
+});
 
-const nextTranslate = require('next-translate')
+const nextTranslate = require('next-translate');
 
 /**
  * @type {import('next/dist/next-server/server/config').NextConfig}
@@ -12,15 +13,37 @@ const nextTranslate = require('next-translate')
 module.exports = nextTranslate(
   withBundleAnalyzer(
     withContentlayer({
-      swcMinify: true,
-      reactStrictMode: true,
-      images: {
-        domains: ['cdn.jsdelivr.net', 'avatars.githubusercontent.com', 'res.cloudinary.com'],
-      },
-      pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
       eslint: {
-        dirs: ['pages', 'components', 'lib', 'layouts', 'scripts'],
+        dirs: ['src'],
+      },
+
+      reactStrictMode: true,
+
+      images: {
+        domains: [
+          'cdn.jsdelivr.net',
+          'avatars.githubusercontent.com',
+          'res.cloudinary.com',
+        ],
+      },
+      // SVGR
+      webpack(config) {
+        config.module.rules.push({
+          test: /\.svg$/i,
+          issuer: /\.[jt]sx?$/,
+          use: [
+            {
+              loader: '@svgr/webpack',
+              options: {
+                typescript: true,
+                icon: true,
+              },
+            },
+          ],
+        });
+
+        return config;
       },
     })
   )
-)
+);

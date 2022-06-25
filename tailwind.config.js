@@ -1,25 +1,11 @@
-// @ts-check
-
-const defaultTheme = require('tailwindcss/defaultTheme')
-const colors = require('tailwindcss/colors')
+/* eslint-disable @typescript-eslint/no-var-requires */
+const defaultTheme = require('tailwindcss/defaultTheme');
+const colors = require('tailwindcss/colors');
 
 /** @type {import("tailwindcss/tailwind-config").TailwindConfig } */
 module.exports = {
-  experimental: {
-    optimizeUniversalDefaults: true,
-  },
-  content: [
-    './pages/**/*.js',
-    './components/**/*.js',
-    './layouts/**/*.js',
-    './lib/**/*.js',
-    './data/**/*.mdx',
-    './pages/**/*.tsx',
-    './components/**/*.tsx',
-    './layouts/**/*.tsx',
-    './lib/**/*.ts',
-  ],
   darkMode: 'class',
+  content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
       lineHeight: {
@@ -29,8 +15,12 @@ module.exports = {
         14: '3.5rem',
       },
       fontFamily: {
-        // @ts-ignore
-        sans: ['Sora', 'Noto Sans TC', 'Inter', ...defaultTheme.fontFamily.sans],
+        sans: [
+          'Sora',
+          'Noto Sans TC',
+          'Inter',
+          ...defaultTheme.fontFamily.sans,
+        ],
       },
       colors: {
         body: 'rgb(255, 255, 254)',
@@ -212,4 +202,4 @@ module.exports = {
     require('@tailwindcss/typography'),
     require('@tailwindcss/aspect-ratio'),
   ],
-}
+};

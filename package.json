@@ -1,22 +1,21 @@
 {
-  "license": "MIT",
   "private": true,
+  "license": "MIT",
   "scripts": {
-    "start": "next dev",
     "dev": "next dev",
     "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:fix": "eslint src --fix && yarn format",
+    "lint:strict": "eslint --max-warnings=0 src",
     "postbuild": "yarn sitemap && yarn rss",
-    "sitemap": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-sitemap.mjs",
-    "rss": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-rss.mjs",
-    "new:post": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/compose.mjs",
-    "serve": "next start",
+    "format": "prettier -w .",
+    "format:check": "prettier -c .",
+    "sitemap": "node --experimental-json-modules ./src/scripts/generate-sitemap.mjs",
+    "rss": "node --experimental-json-modules ./src/scripts/generate-rss.mjs",
+    "new-post": "node --experimental-json-modules ./src/scripts/compose.mjs",
     "analyze": "cross-env ANALYZE=true next build",
-    "lint": "next lint --fix --dir pages --dir components --dir lib --dir layouts --dir scripts",
     "prepare": "husky install",
-    "cy:open": "cypress open",
-    "cy:run": "cypress run",
-    "export": "next export",
-    "format": "prettier --write \"./**/*.{js,jsx,ts,tsx}\"",
     "type-check": "tsc",
     "commit": "gitmoji -c",
     "prisma:studio": "dotenv -e .env.local -- npx prisma studio"
@@ -34,7 +33,6 @@
     "cloudinary-build-url": "^0.2.4",
     "contentlayer": "0.2.5",
     "esbuild": "0.14.47",
-    "eslint-plugin-cypress": "^2.12.1",
     "framer-motion": "^6.3.13",
     "gitmoji-cli": "^5.0.1",
     "googleapis": "^104.0.0",
@@ -47,8 +45,6 @@
     "next-translate": "^1.4.0",
     "postcss": "^8.4.14",
     "prism-react-renderer": "^1.3.3",
-    "puppeteer": "14.4.1",
-    "qs": "^6.10.5",
     "react": "18.2.0",
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "18.2.0",
@@ -73,14 +69,11 @@
   },
   "devDependencies": {
     "@next/bundle-analyzer": "12.1.6",
-    "@svgr/webpack": "6.2.1",
+    "@svgr/webpack": "^6.2.1",
     "@types/react": "18.0.14",
     "@typescript-eslint/eslint-plugin": "5.28.0",
     "@typescript-eslint/parser": "5.29.0",
-    "commitizen": "^4.2.4",
     "cross-env": "^7.0.3",
-    "cypress": "^10.2.0",
-    "cz-conventional-changelog": "3.3.0",
     "dedent": "^0.7.0",
     "eslint": "^8.18.0",
     "eslint-config-next": "12.1.6",
@@ -99,16 +92,12 @@
     "typescript": "4.7.4"
   },
   "lint-staged": {
-    "*.+(js|jsx|ts|tsx)": [
-      "eslint --fix"
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "eslint --max-warnings=0",
+      "prettier -w"
     ],
-    "*.+(js|jsx|ts|tsx|json|css|md|mdx)": [
-      "prettier --write"
+    "src/**/*.{json,css,scss,md}": [
+      "prettier -w"
     ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   }
 }
