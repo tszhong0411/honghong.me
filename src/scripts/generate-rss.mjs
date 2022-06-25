@@ -3,8 +3,8 @@ import { writeFileSync } from 'fs';
 import RSS from 'rss';
 
 import { escape } from './htmlEscaper.mjs';
-import { allBlogs } from '../.contentlayer/generated/index.mjs';
-import i18n from '../i18n.json' assert { type: 'json' };
+import { allBlogs } from '../../.contentlayer/generated/index.mjs';
+import i18n from '../../i18n.json' assert { type: 'json' };
 
 (async () => {
   console.info(chalk.cyan('info'), ` - Generating RSS feed`);
