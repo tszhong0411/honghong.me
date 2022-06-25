@@ -1,3 +1,10 @@
 {
-  "author": "About"
+  "author": "About",
+  "defaultDesc": "Front-end developer, YouTuber.",
+  "pcSpecsDesc": "Specification of PC bought by 小康 in April 2021",
+  "aboutDesc": "About 小康",
+  "usesDesc": "This is the equipment I currently use for gaming, programming, making videos, and every day.",
+  "dashboardDesc": "This is my personal dashboard, built with Next.js API routes deployed as serverless functions. I use this dashboard to track various metrics across platforms like YouTube, GitHub, and more.",
+  "projectsDesc": "Projects on web development",
+  "guestbookDesc": "Sign my guestbook and share your idea."
 }

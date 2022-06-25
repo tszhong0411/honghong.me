@@ -1,3 +1,10 @@
 {
-  "author": "關於"
+  "author": "關於",
+  "defaultDesc": "前端工程師, YouTuber",
+  "pcSpecsDesc": "小康在 2021 年 4 月購買的電腦的配置",
+  "aboutDesc": "關於小康",
+  "usesDesc": "這是我目前用於遊戲、編程、製作影片和日常的設備。",
+  "dashboardDesc": "這是我的個人儀表板，使用 Next.js API routes 部署為 serverless functions。我用這個儀表板以跟踪跨平台的各種指標，例如 YouTube、GitHub 等。",
+  "projectsDesc": "這是我在網頁開發上的項目",
+  "guestbookDesc": "簽到我的訪客留言簿和分享你的想法。"
 }
