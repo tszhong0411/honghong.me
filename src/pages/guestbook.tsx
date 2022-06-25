@@ -9,13 +9,8 @@ import Guestbook from '@/components/Guestbook';
 export default function GuestbookPage({ fallbackData }) {
   const { t } = useTranslation();
 
-  const description = {
-    'zh-TW': '簽到我的訪客留言簿和分享你的想法。',
-    en: 'Sign my guestbook and share your idea.',
-  };
-
   return (
-    <Container title='Guestbook - 小康' description={description}>
+    <Container templateTitle='Guestbook' description={t('SEO:guestbookDesc')}>
       <div className='mx-auto flex flex-col justify-center'>
         <h1 className='mb-6 text-3xl font-bold md:text-5xl'>Guestbook</h1>
         <p className='mb-12'>{t('guestbook:description')}</p>

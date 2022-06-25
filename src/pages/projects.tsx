@@ -1,24 +1,16 @@
 import { useRouter } from 'next/router';
+import useTranslation from 'next-translate/useTranslation';
+
+import { projectData } from '@/lib/types';
 
 import Card from '@/components/Card';
 import Container from '@/components/Container';
-import PageContainer from '@/components/PageContainer';
 
 export default function Projects() {
   const { locale } = useRouter();
-  const router = useRouter();
+  const { t } = useTranslation();
 
-  const title = {
-    'zh-TW': '項目',
-    en: 'Projects',
-  };
-
-  const description = {
-    'zh-TW': '這是我在網頁開發上的項目',
-    en: 'Projects on web development',
-  };
-
-  const projectsData = {
+  const projectsData: projectData = {
     'zh-TW': [
       {
         title: 'Blog',
@@ -56,8 +48,10 @@ export default function Projects() {
   };
 
   return (
-    <Container title='Projects - 小康'>
-      <PageContainer title={title[router.locale]} description={description}>
+    <Container templateTitle='Projects' description={t('SEO:projectsDesc')}>
+      <div className='mx-auto flex flex-col justify-center'>
+        <h1 className='mb-6 text-3xl font-bold md:text-5xl'>Projects</h1>
+        <p className='mb-12'>{t('SEO:projectsDesc')}</p>
         <div className='grid gap-x-3 gap-y-3 sm:grid-cols-2'>
           {projectsData[locale]?.map((d) => (
             <Card
@@ -68,7 +62,7 @@ export default function Projects() {
             />
           ))}
         </div>
-      </PageContainer>
+      </div>
     </Container>
   );
 }

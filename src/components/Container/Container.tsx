@@ -1,25 +1,35 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import useTranslation from 'next-translate/useTranslation';
 import { ToastContainer } from 'react-toastify';
 
-import { Favicons } from '@/lib/types';
+import { Favicons, SeoProps } from '@/lib/types';
 
 import Footer from '@/components/Footer';
 import { Navbar } from '@/components/Navbar';
 
-export default function Container(props) {
-  const { children, ...customMeta } = props;
+export const defaultMeta = {
+  title: '小康 – Developer, YouTuber',
+  siteName: '小康 Blog',
+  image: 'https://honghong.me/static/images/banner.png',
+  type: 'website',
+};
+
+export default function Container(props: SeoProps) {
+  const { t } = useTranslation();
   const router = useRouter();
   const meta = {
-    title: '小康 – Developer, YouTuber',
-    description: {
-      'zh-TW': '前端工程師, YouTuber',
-      en: 'Front-end developer, YouTuber.',
-    },
-    image: 'https://honghong.me/static/images/banner.png',
-    type: 'website',
-    ...customMeta,
+    ...defaultMeta,
+    ...props,
   };
+
+  meta['title'] = props.templateTitle
+    ? `${props.templateTitle}丨${meta.siteName}`
+    : meta.title;
+
+  meta['description'] = props.description
+    ? props.description
+    : t('SEO:defaultDesc');
 
   return (
     <div className='flex flex-col justify-between'>
@@ -29,9 +39,7 @@ export default function Container(props) {
         <meta name='robots' content='follow, index' />
         <meta
           name='description'
-          content={
-            meta.summary ? meta.summary : meta.description[router.locale]
-          }
+          content={meta.summary ? meta.summary : meta.description}
         />
         <link
           rel='alternate'
@@ -49,9 +57,7 @@ export default function Container(props) {
         <meta property='og:site_name' content='小康' />
         <meta
           property='og:description'
-          content={
-            meta.summary ? meta.summary : meta.description[router.locale]
-          }
+          content={meta.summary ? meta.summary : meta.description}
         />
         <meta property='og:title' content={meta.title} />
         {meta.date && (
@@ -63,9 +69,7 @@ export default function Container(props) {
         <meta property='og:image' content={`${meta.image}`} />
         <meta
           property='og:image:alt'
-          content={
-            meta.summary ? meta.summary : meta.description[router.locale]
-          }
+          content={meta.summary ? meta.summary : meta.description}
         />
         <meta property='og:image:type' content='image/png' />
         <meta property='og:image:width' content='1200' />
@@ -77,12 +81,10 @@ export default function Container(props) {
         <meta name='twitter:image' content={`${meta.image}`} />
         <meta name='twitter:card' content='summary_large_image' />
         <meta name='twitter:site' content='@TszhongLai0411' />
-        <meta name='twitter:title' content={`${meta.title} | honghong.me`} />
+        <meta name='twitter:title' content={meta.title} />
         <meta
           name='twitter:description'
-          content={
-            meta.summary ? meta.summary : meta.description[router.locale]
-          }
+          content={meta.summary ? meta.summary : meta.description}
         />
         <meta name='twitter:creator' content='@TszhongLai0411' />
         {meta.type === 'article' && (
@@ -136,7 +138,7 @@ export default function Container(props) {
       </Head>
       <Navbar />
       <main className='mx-auto w-full max-w-5xl px-8 py-12 lg:px-10 xl:px-4'>
-        {children}
+        {props.children}
       </main>
       <Footer />
       <ToastContainer

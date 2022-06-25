@@ -1,23 +1,14 @@
-import { useRouter } from 'next/router';
+import useTranslation from 'next-translate/useTranslation';
+
+import { pcSpecsType } from '@/lib/types';
 
 import Container from '@/components/Container';
-import PageContainer from '@/components/PageContainer';
 
 export default function PcSpecs() {
-  const router = useRouter();
-
-  const description = {
-    'zh-TW': '小康在 2021 年 4 月購買的電腦的配置',
-    en: 'Specification of PC bought by 小康 in April 2021',
-  };
-
-  const title = {
-    'zh-TW': '電腦配置',
-    en: 'PC Specs',
-  };
+  const { t } = useTranslation();
 
   //#region  //*=========== PC Specs list ===========
-  const pcSpecsList = [
+  const pcSpecsList: pcSpecsType[] = [
     {
       name: 'CPU',
       content: 'i5 10400F',
@@ -54,8 +45,10 @@ export default function PcSpecs() {
   //#endregion  //*======== PC Specs list ===========
 
   return (
-    <Container title='PC Specs - 小康'>
-      <PageContainer title={title[router.locale]} description={description}>
+    <Container templateTitle='PC Specs' description={t('SEO:pcSpecsDesc')}>
+      <div className='mx-auto flex flex-col justify-center'>
+        <h1 className='mb-6 text-3xl font-bold md:text-5xl'>PC Specs</h1>
+        <p className='mb-12'>{t('SEO:pcSpecsDesc')}</p>
         <div className='flex flex-wrap'>
           <table className='m-auto w-full table-fixed'>
             <thead>
@@ -80,7 +73,7 @@ export default function PcSpecs() {
             </tbody>
           </table>
         </div>
-      </PageContainer>
+      </div>
     </Container>
   );
 }

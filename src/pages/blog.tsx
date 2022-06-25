@@ -44,7 +44,7 @@ export default function Blog({
   const displayPosts = filteredBlogPosts;
 
   return (
-    <Container title='Blog - 小康'>
+    <Container templateTitle='Blog'>
       <div className='mx-auto flex flex-col justify-center'>
         <h1 className='mb-6 text-3xl font-bold md:text-5xl'>Blog</h1>
         <p className='mb-12'>

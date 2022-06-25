@@ -1,3 +1,5 @@
+import { defaultMeta } from '@/components/Container/Container';
+
 export type Github = {
   stars: number;
   followers: number;
@@ -40,4 +42,28 @@ export type Favicons = {
   href: string;
   sizes?: string;
   type?: string;
+};
+
+export type SeoProps = {
+  description?: string;
+  templateTitle?: string;
+  summary?: string;
+  date?: string;
+  lastmod?: string;
+  children: React.ReactNode;
+} & Partial<typeof defaultMeta>;
+
+export type projectDetail = {
+  title: string;
+  description: string;
+  href: string;
+};
+
+export type projectData = {
+  [key: string]: projectDetail[];
+};
+
+export type pcSpecsType = {
+  name: string;
+  content: string;
 };
