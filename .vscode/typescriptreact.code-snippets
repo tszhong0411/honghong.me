@@ -82,21 +82,16 @@
   "Next Pages": {
     "prefix": "np",
     "body": [
-      "import * as React from 'react';\n",
-      "import Layout from '@/components/layout/Layout';",
-      "import Seo from '@/components/Seo';\n",
+      "import React from 'react';\n",
+      "import Container from '@/components/Container';",
       "export default function ${1:${TM_FILENAME_BASE/(^[a-zA-Z])(.*)/${1:/upcase}${2}/}}Page() {",
       "  return (",
-      "    <Layout>",
-      "      <Seo templateTitle='${1:${TM_FILENAME_BASE/(^[a-zA-Z])(.*)/${1:/upcase}${2}/}}' />\n",
-      "      <main>\n",
-      "        <section className=''>",
-      "          <div className='layout py-20 min-h-screen'>",
-      "            $0",
-      "          </div>",
-      "        </section>",
-      "      </main>",
-      "    </Layout>",
+      "    <Container templateTitle='${1:${TM_FILENAME_BASE/(^[a-zA-Z])(.*)/${1:/upcase}${2}/}}' description=''>",
+      "      <div className='mx-auto flex flex-col justify-center'>",
+      "        <h1 className='mb-6 text-3xl font-bold md:text-5xl'>${3}</h1>",
+      "        <p className='mb-12'>${4}</p>",
+      "      </div>",
+      "    </Container>",
       "  )",
       "}"
     ]
@@ -156,15 +151,15 @@
     "body": "InferGetServerSidePropsType<typeof getServerSideProps>"
   },
   "Import useRouter": {
-    "prefix": "imust",
+    "prefix": "imrouter",
     "body": ["import { useRouter } from 'next/router';"]
   },
   "Import Next Image": {
-    "prefix": "imimg",
+    "prefix": "imimage",
     "body": ["import Image from 'next/image';"]
   },
   "Import Next Link": {
-    "prefix": "iml",
+    "prefix": "imlink",
     "body": ["import Link from 'next/link';"]
   },
   //#endregion  //*======== Nextjs ===========
