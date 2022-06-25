@@ -2,7 +2,7 @@ import { allBlogs } from 'contentlayer/generated';
 import { InferGetStaticPropsType } from 'next';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
-import { useState } from 'react';
+import React from 'react';
 import { GoSearch } from 'react-icons/go';
 
 import { isProd } from '@/lib/isProduction';
@@ -35,7 +35,7 @@ export default function Blog({
   filteredPosts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t } = useTranslation();
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = React.useState('');
   const filteredBlogPosts = filteredPosts?.filter((post) => {
     const searchContent = post.title + post.summary;
     return searchContent.toLowerCase().includes(searchValue.toLowerCase());

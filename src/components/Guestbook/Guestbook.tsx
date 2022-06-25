@@ -5,7 +5,7 @@ import { signIn, useSession } from 'next-auth/react';
 import { signOut } from 'next-auth/react';
 import { useTheme } from 'next-themes';
 import useTranslation from 'next-translate/useTranslation';
-import { CSSProperties, useEffect, useRef, useState } from 'react';
+import React from 'react';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { toast } from 'react-toastify';
 import useSWR, { useSWRConfig } from 'swr';
@@ -56,12 +56,12 @@ function GuestbookEntry({ entry, user }) {
 }
 
 export default function Guestbook({ fallbackData }) {
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+  const inputEl = React.useRef(null);
   const { theme, resolvedTheme } = useTheme();
-  const [loading, setLoading] = useState(false);
   const { data: session } = useSession();
   const { mutate } = useSWRConfig();
-  const inputEl = useRef(null);
   const { data: entries } = useSWR('/api/guestbook', fetcher, {
     fallbackData,
   });
@@ -97,7 +97,7 @@ export default function Guestbook({ fallbackData }) {
     }
   };
 
-  const containerStyle: CSSProperties = {
+  const containerStyle: React.CSSProperties = {
     position: 'relative',
     width: '1rem',
     height: '1rem',
@@ -105,7 +105,7 @@ export default function Guestbook({ fallbackData }) {
     margin: '0 auto',
   };
 
-  const circleStyle: CSSProperties = {
+  const circleStyle: React.CSSProperties = {
     display: 'block',
     width: '1rem',
     height: '1rem',
@@ -125,7 +125,7 @@ export default function Guestbook({ fallbackData }) {
   };
 
   // When mounted on client, now we can show the UI
-  useEffect(() => setMounted(true), []);
+  React.useEffect(() => setMounted(true), []);
 
   if (!mounted) return null;
 

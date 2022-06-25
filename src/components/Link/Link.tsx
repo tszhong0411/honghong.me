@@ -1,14 +1,14 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 import Link from 'next/link';
-import { AnchorHTMLAttributes, DetailedHTMLProps } from 'react';
+import React from 'react';
 import { HiExternalLink } from 'react-icons/hi';
 
 const CustomLink = ({
   href,
   children,
   ...rest
-}: DetailedHTMLProps<
-  AnchorHTMLAttributes<HTMLAnchorElement>,
+}: React.DetailedHTMLProps<
+  React.AnchorHTMLAttributes<HTMLAnchorElement>,
   HTMLAnchorElement
 >) => {
   const isInternalLink = href && href.startsWith('/');

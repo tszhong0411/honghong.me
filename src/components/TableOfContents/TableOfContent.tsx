@@ -1,7 +1,7 @@
 // * Source: https://github.com/theodorusclarence/theodorusclarence.com/blob/main/src/components/content/TableOfContents.tsx
 
 import useTranslation from 'next-translate/useTranslation';
-import { useEffect, useRef } from 'react';
+import React from 'react';
 
 import { TableOfContentsProps } from './types';
 import { TOCLink } from '../Link';
@@ -12,10 +12,11 @@ export default function TableOfContents({
   minLevel,
 }: TableOfContentsProps) {
   const { t } = useTranslation();
-  //#region  //*=========== Scroll into view ===========
-  const lastPosition = useRef<number>(0);
 
-  useEffect(() => {
+  //#region  //*=========== Scroll into view ===========
+  const lastPosition = React.useRef<number>(0);
+
+  React.useEffect(() => {
     const container = document.getElementById('toc-container');
     const activeLink = document.getElementById(`link-${activeSection}`);
 

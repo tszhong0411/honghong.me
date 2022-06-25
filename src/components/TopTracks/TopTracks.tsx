@@ -1,5 +1,5 @@
 import { useTheme } from 'next-themes';
-import { useEffect, useState } from 'react';
+import React from 'react';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import useSWR from 'swr';
 
@@ -26,12 +26,12 @@ const ContentLoader = () => {
 
 export default function Tracks() {
   const { theme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = React.useState(false);
 
   const { data } = useSWR<TopTracks>('/api/top-tracks', fetcher);
 
   // When mounted on client, now we can show the UI
-  useEffect(() => setMounted(true), []);
+  React.useEffect(() => setMounted(true), []);
 
   if (!mounted) return null;
   if (!data && mounted) {

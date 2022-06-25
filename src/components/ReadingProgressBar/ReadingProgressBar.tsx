@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import React from 'react';
 
 export default function ReadingProgressBar() {
-  const [width, setWidth] = useState(0);
+  const [width, setWidth] = React.useState(0);
 
   const scrollHeight = () => {
     const el = document.documentElement,
@@ -12,7 +12,7 @@ export default function ReadingProgressBar() {
     setWidth(percent);
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     window.addEventListener('scroll', scrollHeight);
     return () => window.removeEventListener('scroll', scrollHeight);
   });

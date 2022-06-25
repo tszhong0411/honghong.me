@@ -1,5 +1,5 @@
 import throttle from 'lodash/throttle';
-import * as React from 'react';
+import React from 'react';
 
 /*
  * originally based on

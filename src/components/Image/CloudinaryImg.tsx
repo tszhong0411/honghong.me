@@ -5,7 +5,7 @@
 import cn from 'classnames';
 import { buildUrl } from 'cloudinary-build-url';
 import Image from 'next/image';
-import * as React from 'react';
+import React from 'react';
 import Lightbox from 'react-image-lightbox';
 
 import 'react-image-lightbox/style.css';

@@ -1,8 +1,7 @@
-import { ReactNode } from 'react';
-interface Props {
-  children: ReactNode;
-}
+import React from 'react';
 
-export default function PageTitle({ children }: Props) {
+import { ChildrenType } from '@/lib/types';
+
+export default function PageTitle({ children }: ChildrenType) {
   return <h1 className='mb-6 text-3xl font-bold md:text-5xl'>{children}</h1>;
 }

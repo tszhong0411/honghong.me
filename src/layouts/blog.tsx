@@ -3,7 +3,7 @@ import type { Blog } from 'contentlayer/generated';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
-import { ReactNode, useEffect, useState } from 'react';
+import React from 'react';
 
 import { isProd } from '@/lib/isProduction';
 import { CoreContent } from '@/lib/utils/contentlayer';
@@ -37,7 +37,7 @@ type Props = {
   content: CoreContent<Blog>;
   next?: { slug: string; title: string; summary: string };
   prev?: { slug: string; title: string; summary: string };
-  children: ReactNode;
+  children: React.ReactNode;
 };
 
 export default function BlogLayout({ content, next, prev, children }: Props) {
@@ -47,11 +47,11 @@ export default function BlogLayout({ content, next, prev, children }: Props) {
 
   //#region  //*=========== Scrollspy ===========
   const activeSection = useScrollSpy();
-  const [toc, setToc] = useState<HeadingScrollSpy>();
+  const [toc, setToc] = React.useState<HeadingScrollSpy>();
   const minLevel =
     toc?.reduce((min, item) => (item.level < min ? item.level : min), 10) ?? 0;
 
-  useEffect(() => {
+  React.useEffect(() => {
     const headings = document.querySelectorAll(
       '#blog-content h2, #blog-content h3'
     );

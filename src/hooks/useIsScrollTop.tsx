@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import React from 'react';
 
 export default function useIsScrollTop() {
-  const [isTop, setIsTop] = useState(true);
-  useEffect(() => {
+  const [isTop, setIsTop] = React.useState(true);
+  React.useEffect(() => {
     function onScroll() {
       setIsTop(window.scrollY <= 0);
     }

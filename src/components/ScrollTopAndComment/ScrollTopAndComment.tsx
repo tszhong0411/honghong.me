@@ -1,13 +1,13 @@
 import cn from 'classnames';
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import React from 'react';
 import { FaArrowUp, FaRegCommentDots } from 'react-icons/fa';
 import smoothscroll from 'smoothscroll-polyfill';
 
 export default function ScrollTopAndComment() {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = React.useState(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     smoothscroll.polyfill();
     const handleWindowScroll = () => {
       if (window.scrollY > 50) setShow(true);

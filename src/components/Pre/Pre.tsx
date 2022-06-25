@@ -1,14 +1,12 @@
-import { ReactNode, useRef, useState } from 'react';
+import React from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { HiCheckCircle, HiClipboard } from 'react-icons/hi';
 
-interface Props {
-  children: ReactNode;
-}
+import { ChildrenType } from '@/lib/types';
 
-const Pre = ({ children }: Props) => {
-  const textInput = useRef(null);
-  const [isCopied, setIsCopied] = useState<boolean>(false);
+const Pre = ({ children }: ChildrenType) => {
+  const textInput = React.useRef(null);
+  const [isCopied, setIsCopied] = React.useState<boolean>(false);
 
   return (
     <div className='relative' ref={textInput}>

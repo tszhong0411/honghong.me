@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import React from 'react';
 
 import Container from '@/components/Container';
 import Link from '@/components/Link';
@@ -7,9 +7,9 @@ import PageContainer from '@/components/PageContainer';
 
 export default function About() {
   const router = useRouter();
-  const [language, setLanguage] = useState('zh-TW');
+  const [language, setLanguage] = React.useState('zh-TW');
 
-  useEffect(() => {
+  React.useEffect(() => {
     setLanguage(router.locale);
   }, [router.locale]);
 

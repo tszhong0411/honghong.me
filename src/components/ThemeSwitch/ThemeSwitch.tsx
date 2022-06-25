@@ -1,18 +1,18 @@
 import { motion } from 'framer-motion';
 import { useTheme } from 'next-themes';
 import useTranslation from 'next-translate/useTranslation';
-import { useEffect, useState } from 'react';
+import React from 'react';
 import { FaMoon, FaSun } from 'react-icons/fa';
 
 import { Tooltip } from '@/components/Tooltip';
 
 const ThemeSwitch = () => {
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = React.useState(false);
   const { theme, setTheme, resolvedTheme } = useTheme();
   const { t } = useTranslation();
 
   // When mounted on client, now we can show the UI
-  useEffect(() => setMounted(true), []);
+  React.useEffect(() => setMounted(true), []);
 
   return (
     <Tooltip

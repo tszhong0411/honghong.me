@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
-import { useState } from 'react';
+import React from 'react';
 
 import useIsScrollTop from '@/hooks/useIsScrollTop';
 
@@ -42,8 +42,8 @@ function NavItem({ href, text }) {
 
 export const Navbar = () => {
   const isTop = useIsScrollTop();
-  const [navShow, setNavShow] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [navShow, setNavShow] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
   const { t } = useTranslation();
   const isBlog = useRouter().asPath.includes('/blog/');
 

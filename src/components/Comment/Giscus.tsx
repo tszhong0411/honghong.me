@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useTheme } from 'next-themes';
 import useTranslation from 'next-translate/useTranslation';
-import React, { useCallback, useEffect, useState } from 'react';
+import React from 'react';
 
 export const giscusConfig = {
   // Visit the link below, and follow the steps in the 'configuration' section
@@ -32,7 +32,7 @@ export const giscusConfig = {
 const Giscus = ({ mapping }) => {
   const { locale } = useRouter();
   const { t } = useTranslation();
-  const [enableLoadComments, setEnabledLoadComments] = useState(false);
+  const [enableLoadComments, setEnabledLoadComments] = React.useState(false);
   const { theme, resolvedTheme } = useTheme();
 
   const commentsTheme =
@@ -44,7 +44,7 @@ const Giscus = ({ mapping }) => {
 
   const COMMENTS_ID = 'comments-container';
 
-  const LoadComments = useCallback(() => {
+  const LoadComments = React.useCallback(() => {
     setEnabledLoadComments(false);
 
     const {
@@ -83,7 +83,7 @@ const Giscus = ({ mapping }) => {
   }, [commentsTheme, locale, mapping]);
 
   // Reload on theme change
-  useEffect(() => {
+  React.useEffect(() => {
     !enableLoadComments && LoadComments();
     const iframe = document.querySelector('iframe.giscus-frame');
     if (!iframe) return;

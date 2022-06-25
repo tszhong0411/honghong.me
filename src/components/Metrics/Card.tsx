@@ -1,13 +1,13 @@
-import { useEffect, useState } from 'react';
+import React from 'react';
 
 import Link from '@/components/Link';
 import MetricsContentLoader from '@/components/Metrics/MetricsContentLoader';
 
 export default function MetricCard({ header, link, metric, isCurrency }) {
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = React.useState(false);
 
   // When mounted on client, now we can show the UI
-  useEffect(() => setMounted(true), []);
+  React.useEffect(() => setMounted(true), []);
 
   if (!mounted) return null;
 

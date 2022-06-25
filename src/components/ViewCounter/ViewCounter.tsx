@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { useTheme } from 'next-themes';
-import { useEffect, useState } from 'react';
+import React from 'react';
 import { BsFillEyeFill } from 'react-icons/bs';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import useSWR from 'swr';
@@ -22,9 +22,9 @@ export default function ViewCounter({
   );
   const views = new Number(data?.total);
   const { theme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = React.useState(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     setMounted(true);
     const registerView = () =>
       fetch(`/api/views/${slug.replace(`.${locale}`, '')}`, {

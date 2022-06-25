@@ -13,7 +13,7 @@ import { CloudinaryImg } from '@/components/Image';
 import Link from '@/components/Link';
 import ViewCounter from '@/components/ViewCounter';
 
-const MAX_DISPLAY = 5;
+export const MAX_DISPLAY = 5;
 
 export const getStaticProps = async (locale: { locale: string }) => {
   const sortedPosts = sortedBlogPost(allBlogs);
@@ -40,11 +40,14 @@ export default function Home({
             {t('common:latestPosts')}
           </h2>
         </div>
-        <ul className='divide-y divide-border-primary dark:divide-border-primary-dark'>
+        <ul
+          className='divide-y divide-border-primary dark:divide-border-primary-dark'
+          data-test='posts_list'
+        >
           {!filteredPosts && !filteredPosts.length && (
             <p className='text-3xl'>{t('common:noPostsFound')}</p>
           )}
-          {filteredPosts.slice(0, 3).map((post) => {
+          {filteredPosts.slice(0, MAX_DISPLAY).map((post) => {
             const { slug, date, title, summary, image } = post;
             const formattedSlug = slug.replace(`.${locale}`, '');
             return (

@@ -30,3 +30,7 @@ export type Song = {
 export type TopTracks = {
   tracks: Song[];
 };
+
+export type ChildrenType = {
+  children: React.ReactNode;
+};
