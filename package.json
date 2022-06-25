@@ -34,7 +34,7 @@
     "cloudinary-build-url": "^0.2.4",
     "contentlayer": "0.2.5",
     "esbuild": "0.14.47",
-    "framer-motion": "^6.3.13",
+    "framer-motion": "^6.3.15",
     "gitmoji-cli": "^5.0.1",
     "googleapis": "^104.0.0",
     "gray-matter": "^4.0.2",
