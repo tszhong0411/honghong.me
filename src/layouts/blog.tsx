@@ -11,8 +11,8 @@ import formatDate from '@/lib/utils/formatDate';
 import useScrollSpy from '@/hooks/useScrollspy';
 
 import Comments from '@/components/Comment';
-import Container from '@/components/Container';
 import Image from '@/components/Image';
+import Layout from '@/components/Layout';
 import Link from '@/components/Link';
 import PageTitle from '@/components/PageTitle';
 import ScrollTopAndComment from '@/components/ScrollTopAndComment';
@@ -70,7 +70,7 @@ export default function BlogLayout({ content, next, prev, children }: Props) {
   //#endregion //*=========== Srcollspy ===========
 
   return (
-    <Container
+    <Layout
       title={`${title}`}
       summary={summary}
       image={`https://og.honghong.me/api/blog?theme=dark&title=${title}&description=${summary}`}
@@ -268,6 +268,6 @@ export default function BlogLayout({ content, next, prev, children }: Props) {
           )}
         </div>
       </div>
-    </Container>
+    </Layout>
   );
 }

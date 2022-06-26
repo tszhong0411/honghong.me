@@ -1,4 +1,4 @@
-import { defaultMeta } from '@/components/Container/Container';
+import { defaultMeta } from '@/components/Layout';
 
 export type Github = {
   stars: number;

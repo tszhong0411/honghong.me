@@ -1,13 +1,13 @@
 import useTranslation from 'next-translate/useTranslation';
 
-import Container from '@/components/Container';
+import Layout from '@/components/Layout';
 import Link from '@/components/Link';
 
 export default function FourZeroFour() {
   const { t } = useTranslation();
 
   return (
-    <Container templateTitle='404 - 小康'>
+    <Layout templateTitle='404 - 小康'>
       <div className='my-24 flex flex-col items-start justify-start md:flex-row md:items-center md:justify-center md:space-x-6'>
         <div className='space-x-2 pt-6 pb-8 md:space-y-5'>
           <h1 className='text-6xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 md:border-r-2 md:px-6 md:text-8xl md:leading-14'>
@@ -26,6 +26,6 @@ export default function FourZeroFour() {
           </Link>
         </div>
       </div>
-    </Container>
+    </Layout>
   );
 }

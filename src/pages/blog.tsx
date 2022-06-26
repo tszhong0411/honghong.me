@@ -9,8 +9,8 @@ import { isProd } from '@/lib/isProduction';
 import { allCoreContent, sortedBlogPost } from '@/lib/utils/contentlayer';
 import formatDate from '@/lib/utils/formatDate';
 
-import Container from '@/components/Container';
 import { CloudinaryImg } from '@/components/Image';
+import Layout from '@/components/Layout';
 import Link from '@/components/Link';
 import ViewCounter from '@/components/ViewCounter';
 
@@ -44,7 +44,7 @@ export default function Blog({
   const displayPosts = filteredBlogPosts;
 
   return (
-    <Container templateTitle='Blog'>
+    <Layout templateTitle='Blog'>
       <div className='mx-auto flex flex-col justify-center'>
         <h1 className='mb-6 text-3xl font-bold md:text-5xl'>Blog</h1>
         <p className='mb-12'>
@@ -110,7 +110,6 @@ export default function Blog({
                             <h2 className='text-2xl font-bold'>
                               <Link
                                 href={`/blog/${formattedSlug}`}
-                                data-cy='post-title'
                                 className='border-b-2 border-transparent duration-300 hover:border-brand'
                               >
                                 {title}
@@ -137,6 +136,6 @@ export default function Blog({
           })}
         </ul>
       </div>
-    </Container>
+    </Layout>
   );
 }

@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'react-loading-skeleton/dist/skeleton.css';
 import 'tippy.js/dist/tippy.css';
 
-import Analytics from '@/components/analytics';
+import Analytics from '@/components/Analytics';
 
 export default function App({
   Component,

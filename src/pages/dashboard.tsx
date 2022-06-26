@@ -1,6 +1,6 @@
 import useTranslation from 'next-translate/useTranslation';
 
-import Container from '@/components/Container';
+import Layout from '@/components/Layout';
 import BlogTotalViews from '@/components/Metrics/BlogTotalViews';
 import Github from '@/components/Metrics/Github';
 import Youtube from '@/components/Metrics/Youtube';
@@ -10,7 +10,7 @@ export default function Dashboard() {
   const { t } = useTranslation();
 
   return (
-    <Container templateTitle='Dashboard' description={t('SEO:dashboardDesc')}>
+    <Layout templateTitle='Dashboard' description={t('SEO:dashboardDesc')}>
       <div className='mx-auto flex flex-col justify-center'>
         <h1 className='mb-6 text-3xl font-bold md:text-5xl'>Dashboard</h1>
         <p className='mb-12'>{t('SEO:dashboardDesc')}</p>
@@ -24,6 +24,6 @@ export default function Dashboard() {
         </h2>
         <TopTracks />
       </div>
-    </Container>
+    </Layout>
   );
 }

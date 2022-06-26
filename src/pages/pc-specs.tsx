@@ -2,7 +2,7 @@ import useTranslation from 'next-translate/useTranslation';
 
 import { pcSpecsType } from '@/lib/types';
 
-import Container from '@/components/Container';
+import Layout from '@/components/Layout';
 
 export default function PcSpecs() {
   const { t } = useTranslation();
@@ -45,7 +45,7 @@ export default function PcSpecs() {
   //#endregion  //*======== PC Specs list ===========
 
   return (
-    <Container templateTitle='PC Specs' description={t('SEO:pcSpecsDesc')}>
+    <Layout templateTitle='PC Specs' description={t('SEO:pcSpecsDesc')}>
       <div className='mx-auto flex flex-col justify-center'>
         <h1 className='mb-6 text-3xl font-bold md:text-5xl'>PC Specs</h1>
         <p className='mb-12'>{t('SEO:pcSpecsDesc')}</p>
@@ -74,6 +74,6 @@ export default function PcSpecs() {
           </table>
         </div>
       </div>
-    </Container>
+    </Layout>
   );
 }

@@ -7,9 +7,9 @@ import { isProd } from '@/lib/isProduction';
 import { sortedBlogPost } from '@/lib/utils/contentlayer';
 import formatDate from '@/lib/utils/formatDate';
 
-import Container from '@/components/Container';
 import Hero from '@/components/Hero';
 import { CloudinaryImg } from '@/components/Image';
+import Layout from '@/components/Layout';
 import Link from '@/components/Link';
 import ViewCounter from '@/components/ViewCounter';
 
@@ -32,7 +32,7 @@ export default function Home({
   const { locale } = useRouter();
 
   return (
-    <Container>
+    <Layout>
       <div className='divide-y divide-border-primary dark:divide-border-primary-dark'>
         <div className='space-y-2 pt-6 pb-8 md:space-y-5'>
           <Hero />
@@ -86,7 +86,6 @@ export default function Home({
                             <h2 className='text-2xl font-bold'>
                               <Link
                                 href={`/blog/${formattedSlug}`}
-                                data-cy='post-title'
                                 className='border-b-2 border-transparent duration-300 hover:border-brand dark:text-gray-50'
                               >
                                 {title}
@@ -124,6 +123,6 @@ export default function Home({
           </Link>
         </div>
       )}
-    </Container>
+    </Layout>
   );
 }

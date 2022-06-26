@@ -3,7 +3,7 @@ import { allOtherPages } from 'contentlayer/generated';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import useTranslation from 'next-translate/useTranslation';
 
-import Container from '@/components/Container';
+import Layout from '@/components/Layout';
 import components from '@/components/MDXComponents';
 
 export default function Uses({ body: { code } }: OtherPage) {
@@ -11,7 +11,7 @@ export default function Uses({ body: { code } }: OtherPage) {
   const { t } = useTranslation();
 
   return (
-    <Container templateTitle='Uses' description={t('SEO:usesDesc')}>
+    <Layout templateTitle='Uses' description={t('SEO:usesDesc')}>
       <div className='mx-auto flex flex-col justify-center'>
         <h1 className='mb-6 text-3xl font-bold md:text-5xl'>My Gear</h1>
         <p className='mb-12'>{t('SEO:usesDesc')}</p>
@@ -19,7 +19,7 @@ export default function Uses({ body: { code } }: OtherPage) {
           <Component components={components} />
         </div>
       </div>
-    </Container>
+    </Layout>
   );
 }
 

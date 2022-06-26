@@ -4,7 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { projectData } from '@/lib/types';
 
 import Card from '@/components/Card';
-import Container from '@/components/Container';
+import Layout from '@/components/Layout';
 
 export default function Projects() {
   const { locale } = useRouter();
@@ -48,7 +48,7 @@ export default function Projects() {
   };
 
   return (
-    <Container templateTitle='Projects' description={t('SEO:projectsDesc')}>
+    <Layout templateTitle='Projects' description={t('SEO:projectsDesc')}>
       <div className='mx-auto flex flex-col justify-center'>
         <h1 className='mb-6 text-3xl font-bold md:text-5xl'>Projects</h1>
         <p className='mb-12'>{t('SEO:projectsDesc')}</p>
@@ -63,6 +63,6 @@ export default function Projects() {
           ))}
         </div>
       </div>
-    </Container>
+    </Layout>
   );
 }

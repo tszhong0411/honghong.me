@@ -27,7 +27,6 @@ function NavItem({ href, text }) {
           ? 'text-brand'
           : 'text-typeface-primary dark:text-typeface-primary-dark'
       )}
-      data-cy='nav-item'
       href={href}
     >
       <span className='relative'>

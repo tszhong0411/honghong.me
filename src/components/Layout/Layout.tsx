@@ -15,7 +15,7 @@ export const defaultMeta = {
   type: 'website',
 };
 
-export default function Container(props: SeoProps) {
+export default function Layout(props: SeoProps) {
   const { t } = useTranslation();
   const router = useRouter();
   const meta = {

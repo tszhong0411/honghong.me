@@ -5,7 +5,7 @@ import { useMDXComponent } from 'next-contentlayer/hooks';
 import useTranslation from 'next-translate/useTranslation';
 import React from 'react';
 
-import Container from '@/components/Container';
+import Layout from '@/components/Layout';
 import components from '@/components/MDXComponents';
 
 export default function About({ body: { code } }: OtherPage) {
@@ -13,7 +13,7 @@ export default function About({ body: { code } }: OtherPage) {
   const { t } = useTranslation();
 
   return (
-    <Container templateTitle='About' description={t('SEO:aboutDesc')}>
+    <Layout templateTitle='About' description={t('SEO:aboutDesc')}>
       <div className='mx-auto flex flex-col justify-center'>
         <h1 className='mb-6 text-3xl font-bold md:text-5xl'>About</h1>
         <p className='mb-12'>{t('SEO:aboutDesc')}</p>
@@ -21,7 +21,7 @@ export default function About({ body: { code } }: OtherPage) {
           <Component components={components as any} />
         </div>
       </div>
-    </Container>
+    </Layout>
   );
 }
 
