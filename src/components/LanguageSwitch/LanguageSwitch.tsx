@@ -16,13 +16,7 @@ export default function LanguageSwitch({ open, setOpen }) {
 
   // Redirect router when locale not set in 'localstorage'
   React.useEffect(() => {
-    if (locale === undefined) {
-      router.push(router.asPath, router.asPath, {
-        locale: navigator.languages.find((config) =>
-          i18n.locales.some((current) => current === config)
-        ),
-      });
-    } else if (typeof locale === 'string' && locale !== router.locale) {
+    if (typeof locale === 'string' && locale !== router.locale) {
       locale !== i18n.defaultLocale &&
         router.push(router.asPath, router.asPath, { locale });
     }
