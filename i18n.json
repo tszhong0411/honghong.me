@@ -4,8 +4,6 @@
   "localeDetection": false,
   "logBuild": false,
   "pages": {
-    "*": ["common", "SEO", "404"],
-    "/guestbook": ["guestbook"],
-    "/dashboard": ["dashboard"]
+    "*": ["common"]
   }
 }
