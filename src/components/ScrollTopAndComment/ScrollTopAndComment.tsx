@@ -43,7 +43,7 @@ export default function ScrollTopAndComment() {
       variants={variants}
     >
       <button
-        className='rounded-md p-2 hover:bg-gray-300 dark:hover:bg-gray-600'
+        className='btn btn-square btn-sm rounded-md p-2'
         aria-label='Scroll To Comment'
         type='button'
         onClick={handleScrollToComment}
@@ -54,7 +54,7 @@ export default function ScrollTopAndComment() {
         aria-label='Scroll To Top'
         type='button'
         onClick={handleScrollTop}
-        className='rounded-md p-2 hover:bg-gray-300 dark:hover:bg-gray-600'
+        className='btn btn-square btn-sm rounded-md p-2'
       >
         <FaArrowUp size={15} />
       </button>
