@@ -15,7 +15,7 @@ import i18n from '../../i18n.json' assert { type: 'json' };
         p.slug.split('.')[p.slug.split('.').length - 1] === i18n.defaultLocale
     )
     .map((x) => `/${x._raw.flattenedPath}`)
-    .filter((x) => !x.draft && !x.canonicalUrl);
+    .filter((x) => !x.canonicalUrl);
 
   const pages = await globby([
     'pages/*.{js|tsx}',
