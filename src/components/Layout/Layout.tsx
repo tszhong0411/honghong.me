@@ -3,10 +3,9 @@ import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 import { ToastContainer } from 'react-toastify';
 
-import { Favicons, SeoProps } from '@/lib/types';
-
-import Footer from '@/components/Footer';
-import { Navbar } from '@/components/Navbar';
+import Drawer from '@/components/Drawer';
+import { Favicons } from '@/components/Layout/Favicons';
+import { SeoProps } from '@/components/Layout/types';
 
 export const defaultMeta = {
   title: '小康 – Developer, YouTuber',
@@ -29,10 +28,10 @@ export default function Layout(props: SeoProps) {
 
   meta['description'] = props.description
     ? props.description
-    : t('SEO:defaultDesc');
+    : t('common:SEO_defaultDesc');
 
   return (
-    <div className='flex flex-col justify-between'>
+    <>
       <Head>
         <meta content='width=device-width, initial-scale=1' name='viewport' />
         <title>{meta.title}</title>
@@ -126,7 +125,7 @@ export default function Layout(props: SeoProps) {
             }}
           />
         )}
-        {favicons.map((linkProps) => (
+        {Favicons.map((linkProps) => (
           <link key={linkProps.href} {...linkProps} />
         ))}
         <meta name='msapplication-TileColor' content='#ffffff' />
@@ -136,11 +135,7 @@ export default function Layout(props: SeoProps) {
         />
         <meta name='theme-color' content='#ffffff' />
       </Head>
-      <Navbar />
-      <main className='mx-auto w-full max-w-5xl px-8 py-12 lg:px-10 xl:px-4'>
-        {props.children}
-      </main>
-      <Footer />
+      <Drawer>{props.children}</Drawer>
       <ToastContainer
         position='bottom-right'
         autoClose={5000}
@@ -150,82 +145,6 @@ export default function Layout(props: SeoProps) {
         draggable
         theme='dark'
       />
-    </div>
+    </>
   );
 }
-
-const favicons: Array<Favicons> = [
-  {
-    rel: 'apple-touch-icon',
-    sizes: '57x57',
-    href: '/static/favicon/apple-icon-57x57.png',
-  },
-  {
-    rel: 'apple-touch-icon',
-    sizes: '60x60',
-    href: '/static/favicon/apple-icon-60x60.png',
-  },
-  {
-    rel: 'apple-touch-icon',
-    sizes: '72x72',
-    href: '/static/favicon/apple-icon-72x72.png',
-  },
-  {
-    rel: 'apple-touch-icon',
-    sizes: '76x76',
-    href: '/static/favicon/apple-icon-76x76.png',
-  },
-  {
-    rel: 'apple-touch-icon',
-    sizes: '114x114',
-    href: '/static/favicon/apple-icon-114x114.png',
-  },
-  {
-    rel: 'apple-touch-icon',
-    sizes: '120x120',
-    href: '/static/favicon/apple-icon-120x120.png',
-  },
-  {
-    rel: 'apple-touch-icon',
-    sizes: '144x144',
-    href: '/static/favicon/apple-icon-144x144.png',
-  },
-  {
-    rel: 'apple-touch-icon',
-    sizes: '152x152',
-    href: '/static/favicon/apple-icon-152x152.png',
-  },
-  {
-    rel: 'apple-touch-icon',
-    sizes: '180x180',
-    href: '/static/favicon/apple-icon-180x180.png',
-  },
-  {
-    rel: 'icon',
-    type: 'image/png',
-    sizes: '192x192',
-    href: '/static/favicon/android-icon-192x192.png',
-  },
-  {
-    rel: 'icon',
-    type: 'image/png',
-    sizes: '32x32',
-    href: '/static/favicon/favicon-32x32.png',
-  },
-  {
-    rel: 'icon',
-    type: 'image/png',
-    sizes: '96x96',
-    href: '/static/favicon/favicon-96x96.png',
-  },
-  {
-    rel: 'icon',
-    type: 'image/png',
-    sizes: '16x16',
-    href: '/static/favicon/favicon-16x16.png',
-  },
-  {
-    rel: 'manifest',
-    href: '/static/favicon/manifest.json',
-  },
-];

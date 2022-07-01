@@ -1,7 +1,9 @@
 // * Source: https://github.com/theodorusclarence/theodorusclarence.com/blob/main/src/components/content/TableOfContents.tsx
 
-import useTranslation from 'next-translate/useTranslation';
+import { motion } from 'framer-motion';
 import React from 'react';
+
+import ReadingProgressBar from '@/components/ReadingProgressBar';
 
 import { TableOfContentsProps } from './types';
 import { TOCLink } from '../Link';
@@ -11,8 +13,6 @@ export default function TableOfContents({
   activeSection,
   minLevel,
 }: TableOfContentsProps) {
-  const { t } = useTranslation();
-
   //#region  //*=========== Scroll into view ===========
   const lastPosition = React.useRef<number>(0);
 
@@ -49,16 +49,22 @@ export default function TableOfContents({
   //#endregion  //*======== Scroll into view ===========
 
   return (
-    <div
-      id='toc-container'
-      className='hidden max-h-[calc(100vh-9rem-113px)] overflow-auto pb-4 lg:block'
+    <motion.div
+      className='fixed top-[266px] left-[30px] flex'
+      initial={{ x: '-200', opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      transition={{
+        duration: 0.8,
+      }}
     >
-      <h3 className='text-gray-900 dark:text-gray-100 md:text-xl'>
-        {t('common:toc')}
-      </h3>
-      <div className='mt-4 flex flex-col space-y-2 text-sm'>
-        {toc
-          ? toc.map(({ id, level, text }) => (
+      <ReadingProgressBar />
+      <div
+        id='toc-container'
+        className='mb-[1.45rem] ml-[1.45rem] hidden max-w-[200px] flex-col 2xl:flex'
+      >
+        <div className='mt-4 flex flex-col space-y-2 text-sm'>
+          {toc &&
+            toc.map(({ id, level, text }) => (
               <TOCLink
                 id={id}
                 key={id}
@@ -67,9 +73,9 @@ export default function TableOfContents({
                 minLevel={minLevel}
                 text={text}
               />
-            ))
-          : null}
+            ))}
+        </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

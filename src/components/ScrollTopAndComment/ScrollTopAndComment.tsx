@@ -8,21 +8,27 @@ export default function ScrollTopAndComment() {
   const [show, setShow] = React.useState(false);
 
   React.useEffect(() => {
+    const el = document.querySelector('.drawer-content');
+
     smoothscroll.polyfill();
-    const handleWindowScroll = () => {
-      if (window.scrollY > 50) setShow(true);
+    const handlePageScroll = () => {
+      if (el.scrollTop > 50) setShow(true);
       else setShow(false);
     };
 
-    window.addEventListener('scroll', handleWindowScroll);
-    return () => window.removeEventListener('scroll', handleWindowScroll);
+    el.addEventListener('scroll', handlePageScroll);
+    return () => el.removeEventListener('scroll', handlePageScroll);
   }, []);
 
   const handleScrollTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document
+      .querySelector('.drawer-content')
+      .scrollTo({ top: 0, behavior: 'smooth' });
   };
   const handleScrollToComment = () => {
-    window.scroll(0, document.getElementById('comment').offsetTop - 104);
+    document
+      .querySelector('.drawer-content')
+      .scroll(0, document.getElementById('comment').offsetTop - (322 + 64)); // iframe height + navbar height
   };
 
   const variants = {
@@ -37,7 +43,7 @@ export default function ScrollTopAndComment() {
       variants={variants}
     >
       <button
-        className='rounded-md bg-body-secondary p-2 text-typeface-primary hover:bg-gray-300 dark:bg-body-secondary-dark dark:text-typeface-primary-dark dark:hover:bg-gray-600'
+        className='rounded-md p-2 hover:bg-gray-300 dark:hover:bg-gray-600'
         aria-label='Scroll To Comment'
         type='button'
         onClick={handleScrollToComment}
@@ -48,7 +54,7 @@ export default function ScrollTopAndComment() {
         aria-label='Scroll To Top'
         type='button'
         onClick={handleScrollTop}
-        className='rounded-md bg-body-secondary p-2 text-typeface-primary hover:bg-gray-300 dark:bg-body-secondary-dark dark:text-typeface-primary-dark dark:hover:bg-gray-600'
+        className='rounded-md p-2 hover:bg-gray-300 dark:hover:bg-gray-600'
       >
         <FaArrowUp size={15} />
       </button>

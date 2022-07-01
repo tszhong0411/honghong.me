@@ -11,10 +11,12 @@ export default function Uses({ body: { code } }: OtherPage) {
   const { t } = useTranslation();
 
   return (
-    <Layout templateTitle='Uses' description={t('SEO:usesDesc')}>
+    <Layout templateTitle='Uses' description={t('common:SEO_usesDesc')}>
       <div className='mx-auto flex flex-col justify-center'>
-        <h1 className='mb-6 text-3xl font-bold md:text-5xl'>My Gear</h1>
-        <p className='mb-12'>{t('SEO:usesDesc')}</p>
+        <h1 className='mb-6 text-3xl font-bold dark:text-primary-content md:text-5xl'>
+          My Gear
+        </h1>
+        <p className='mb-12'>{t('common:SEO_usesDesc')}</p>
         <div className='prose w-full dark:prose-dark'>
           <Component components={components} />
         </div>

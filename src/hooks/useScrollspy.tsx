@@ -47,12 +47,14 @@ export default function useScrollSpy() {
   }, throttleMs);
 
   React.useEffect(() => {
-    window.addEventListener('scroll', actionSectionScrollSpy);
+    const el = document.querySelector('.drawer-content');
+
+    el.addEventListener('scroll', actionSectionScrollSpy);
 
     actionSectionScrollSpy();
 
     return () => {
-      window.removeEventListener('scroll', actionSectionScrollSpy);
+      el.removeEventListener('scroll', actionSectionScrollSpy);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

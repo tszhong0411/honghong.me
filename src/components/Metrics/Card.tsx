@@ -12,14 +12,16 @@ export default function MetricCard({ header, link, metric, isCurrency }) {
   if (!mounted) return null;
 
   return (
-    <div className='w-full rounded-lg border-2 border-border-primary p-4 dark:border-border-primary-dark'>
-      <Link aria-label={header} href={link}>
-        {header}
-      </Link>
-      <p className='mt-2 text-3xl font-bold'>
-        {metric > 0 && isCurrency && '$'}
-        {metric > 0 ? metric.toLocaleString() : <MetricsContentLoader />}
-      </p>
+    <div className='stats shadow'>
+      <div className='stat gap-2 dark:text-primary-content'>
+        <Link aria-label={header} href={link} className='stat-title'>
+          {header}
+        </Link>
+        <div className='stat-value'>
+          {metric > 0 && isCurrency && '$'}
+          {metric > 0 ? metric.toLocaleString() : <MetricsContentLoader />}
+        </div>
+      </div>
     </div>
   );
 }

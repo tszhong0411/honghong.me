@@ -1,7 +1,8 @@
 import useSWR from 'swr';
 
 import fetcher from '@/lib/fetcher';
-import { YouTube } from '@/lib/types';
+
+import { YouTube } from '@/components/Metrics/types';
 
 import MetricCard from './Card';
 

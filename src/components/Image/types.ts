@@ -6,6 +6,7 @@ export type CloudinaryImgType = {
   title?: string;
   className?: string;
   preview?: boolean;
+  onlyImage?: boolean;
   noStyle?: boolean;
   aspect?: {
     width: number;

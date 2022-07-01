@@ -16,12 +16,12 @@ export default function FourZeroFour() {
         </div>
         <div className='max-w-md'>
           <p className='mb-4 text-xl font-bold leading-normal md:text-2xl'>
-            {t('404:bigText')}
+            {t('common:404_bigText')}
           </p>
-          <p className='mb-8'>{t('404:littleText')}</p>
+          <p className='mb-8'>{t('common:404_littleText')}</p>
           <Link href='/'>
             <button className='focus:shadow-outline-blue inline rounded-lg border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium leading-5 text-white shadow transition-colors duration-150 hover:bg-blue-700 focus:outline-none dark:hover:bg-blue-500'>
-              {t('404:backButton')}
+              {t('common:404_backButton')}
             </button>
           </Link>
         </div>

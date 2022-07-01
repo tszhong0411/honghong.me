@@ -16,7 +16,11 @@ export default function App({
 }: AppProps) {
   return (
     <SessionProvider session={session}>
-      <ThemeProvider attribute='class' defaultTheme='system'>
+      <ThemeProvider
+        attribute='data-theme'
+        defaultTheme='system'
+        disableTransitionOnChange
+      >
         <Analytics />
         <Component {...pageProps} />
       </ThemeProvider>

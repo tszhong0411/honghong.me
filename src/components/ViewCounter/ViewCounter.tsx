@@ -1,12 +1,14 @@
 import { useRouter } from 'next/router';
 import { useTheme } from 'next-themes';
+import useTranslation from 'next-translate/useTranslation';
 import React from 'react';
 import { BsFillEyeFill } from 'react-icons/bs';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import useSWR from 'swr';
 
 import fetcher from '@/lib/fetcher';
-import { Views } from '@/lib/types';
+
+import { Views } from '@/components/Metrics/types';
 
 import { ViewCounterTypes } from './types';
 
@@ -23,6 +25,7 @@ export default function ViewCounter({
   const views = new Number(data?.total);
   const { theme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
+  const { t } = useTranslation();
 
   React.useEffect(() => {
     setMounted(true);
@@ -40,7 +43,7 @@ export default function ViewCounter({
     <span>
       {views > 0 ? (
         text ? (
-          `${views.toLocaleString()} views`
+          `${views.toLocaleString()} ${t('common:views')}`
         ) : (
           <span className='flex items-center gap-x-1'>
             <BsFillEyeFill size={20} />

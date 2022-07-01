@@ -3,7 +3,8 @@ import { FaSpotify } from 'react-icons/fa';
 import useSWR from 'swr';
 
 import fetcher from '@/lib/fetcher';
-import { NowPlayingSong } from '@/lib/types';
+
+import { NowPlayingSong } from '@/components/NowPlaying/types';
 
 export default function NowPlaying() {
   const { data } = useSWR<NowPlayingSong>('/api/now-playing', fetcher);
@@ -23,12 +24,8 @@ export default function NowPlaying() {
               'Not Listening'
             )}
           </p>
-          <span className='mx-2 hidden text-xs text-typeface-teriary dark:text-typeface-teriary-dark sm:block'>
-            {' - '}
-          </span>
-          <p className='text-xs text-typeface-teriary dark:text-typeface-teriary-dark'>
-            {data?.isPlaying ? data.artist : 'Spotify'}
-          </p>
+          <span className='mx-2 hidden text-xs sm:block'>{' - '}</span>
+          <p className='text-xs'>{data?.isPlaying ? data.artist : 'Spotify'}</p>
         </div>
       </div>
     </>

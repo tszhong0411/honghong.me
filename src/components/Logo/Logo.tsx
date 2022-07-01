@@ -1,6 +1,6 @@
 import { Props } from './types';
 
-const Logo = ({ alt, size, className }: Props) => {
+const Logo = ({ alt = 'logo', size, className }: Props) => {
   return (
     <svg
       version='1.0'

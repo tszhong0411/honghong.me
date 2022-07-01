@@ -5,14 +5,10 @@ import useTranslation from 'next-translate/useTranslation';
 import React from 'react';
 import { GoSearch } from 'react-icons/go';
 
-import { isProd } from '@/lib/isProduction';
 import { allCoreContent, sortedBlogPost } from '@/lib/utils/contentlayer';
-import formatDate from '@/lib/utils/formatDate';
 
-import { CloudinaryImg } from '@/components/Image';
 import Layout from '@/components/Layout';
-import Link from '@/components/Link';
-import ViewCounter from '@/components/ViewCounter';
+import PostsList from '@/components/PostsList';
 
 export const POSTS_PER_PAGE = 10;
 
@@ -46,7 +42,9 @@ export default function Blog({
   return (
     <Layout templateTitle='Blog'>
       <div className='mx-auto flex flex-col justify-center'>
-        <h1 className='mb-6 text-3xl font-bold md:text-5xl'>Blog</h1>
+        <h1 className='mb-6 text-3xl font-bold dark:text-primary-content md:text-5xl'>
+          Blog
+        </h1>
         <p className='mb-12'>
           {t('common:blogDesc', { count: filteredPosts?.length })}
         </p>
@@ -69,69 +67,15 @@ export default function Blog({
           {!filteredBlogPosts?.length && (
             <p className='p-4'>{t('common:noPostsFound')}</p>
           )}
-          {displayPosts?.map((post) => {
-            const { slug, date, title, summary, image } = post;
+          {displayPosts?.map((post, index) => {
+            const { slug } = post;
             const formattedSlug = slug.replace(`.${router.locale}`, '');
             return (
-              <li key={formattedSlug} className='py-12'>
-                <article>
-                  <div className='items-start space-y-2 xl:grid xl:grid-cols-3 xl:space-y-0'>
-                    <dl>
-                      <dt className='sr-only'>{t('common:publishedOn')}</dt>
-                      <dd className='mb-4 flex flex-row items-center gap-x-3'>
-                        <time dateTime={date}>
-                          {formatDate(date, router.locale)}
-                        </time>
-                        {' - '}
-                        {isProd && (
-                          <ViewCounter slug={slug} text={false} type='GET' />
-                        )}
-                      </dd>
-                    </dl>
-                    <div className='flex flex-col items-center sm:flex-row xl:col-span-3'>
-                      <div className='mx-2 my-8 w-full sm:my-0 sm:w-1/3'>
-                        <Link href={`/blog/${formattedSlug}`}>
-                          <div className='overflow-hidden rounded-xl sm:px-0'>
-                            <CloudinaryImg
-                              noStyle
-                              className='rounded duration-500 hover:scale-110'
-                              publicId={image}
-                              alt={`${title} Cover`}
-                              width={1280}
-                              height={720}
-                              preview={false}
-                            />
-                          </div>
-                        </Link>
-                      </div>
-                      <div className='mx-2 w-full sm:w-2/3'>
-                        <div>
-                          <div>
-                            <h2 className='text-2xl font-bold'>
-                              <Link
-                                href={`/blog/${formattedSlug}`}
-                                className='border-b-2 border-transparent duration-300 hover:border-brand'
-                              >
-                                {title}
-                              </Link>
-                            </h2>
-                          </div>
-                          <div className='mb-8 mt-6 text-typeface-secondary dark:text-typeface-secondary-dark'>
-                            {summary}
-                          </div>
-                          <Link
-                            href={`/blog/${formattedSlug}`}
-                            aria-label={`Read "${title}"`}
-                            className='border-b-2 border-transparent duration-300 hover:border-brand'
-                          >
-                            {t('common:readMore')} &rarr;
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-              </li>
+              <PostsList
+                key={formattedSlug}
+                post={post}
+                divider={index !== displayPosts.length - 1}
+              />
             );
           })}
         </ul>

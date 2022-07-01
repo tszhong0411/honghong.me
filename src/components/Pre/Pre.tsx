@@ -1,34 +1,32 @@
+import useTranslation from 'next-translate/useTranslation';
 import React from 'react';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { HiCheckCircle, HiClipboard } from 'react-icons/hi';
+import { FiClipboard } from 'react-icons/fi';
+import { toast } from 'react-toastify';
 
 import { ChildrenType } from '@/lib/types';
 
 const Pre = ({ children }: ChildrenType) => {
   const textInput = React.useRef(null);
-  const [isCopied, setIsCopied] = React.useState<boolean>(false);
+  const { t } = useTranslation();
 
   return (
-    <div className='relative' ref={textInput}>
-      <CopyToClipboard
-        text={textInput?.current?.textContent ?? ''}
-        onCopy={() => {
-          setIsCopied(true);
-          setTimeout(() => setIsCopied(false), 1500);
+    <div className='relative'>
+      <pre
+        className='m-0 overflow-auto rounded-2xl p-0 py-2 text-left leading-6'
+        ref={textInput}
+      >
+        {children}
+      </pre>
+      <button
+        className='btn btn-outline btn-square btn-sm no-animation absolute top-2 right-2'
+        aria-label='Copy Code'
+        onClick={() => {
+          navigator.clipboard.writeText(textInput.current.textContent);
+          toast.success(t('common:copied'));
         }}
       >
-        <button
-          className='absolute top-2 right-4 rounded border-2 border-gray-400 p-2 text-lg text-white transition-colors hover:bg-gray-700'
-          aria-label='Copy Code'
-        >
-          {isCopied ? (
-            <HiCheckCircle className='text-green-400' />
-          ) : (
-            <HiClipboard />
-          )}
-        </button>
-      </CopyToClipboard>
-      <pre>{children}</pre>
+        <FiClipboard size={15} />
+      </button>
     </div>
   );
 };

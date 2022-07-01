@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 
-import { projectData } from '@/lib/types';
+import { ProjectData } from '@/lib/types';
 
 import Card from '@/components/Card';
 import Layout from '@/components/Layout';
@@ -10,7 +10,7 @@ export default function Projects() {
   const { locale } = useRouter();
   const { t } = useTranslation();
 
-  const projectsData: projectData = {
+  const projectsData: ProjectData = {
     'zh-TW': [
       {
         title: 'Blog',
@@ -48,11 +48,13 @@ export default function Projects() {
   };
 
   return (
-    <Layout templateTitle='Projects' description={t('SEO:projectsDesc')}>
+    <Layout templateTitle='Projects' description={t('common:SEO_projectsDesc')}>
       <div className='mx-auto flex flex-col justify-center'>
-        <h1 className='mb-6 text-3xl font-bold md:text-5xl'>Projects</h1>
-        <p className='mb-12'>{t('SEO:projectsDesc')}</p>
-        <div className='grid gap-x-3 gap-y-3 sm:grid-cols-2'>
+        <h1 className='mb-6 text-3xl font-bold dark:text-primary-content md:text-5xl'>
+          Projects
+        </h1>
+        <p className='mb-12'>{t('common:SEO_projectsDesc')}</p>
+        <div className='grid gap-4 sm:grid-cols-2'>
           {projectsData[locale]?.map((d) => (
             <Card
               key={d.title}

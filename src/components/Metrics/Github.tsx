@@ -1,7 +1,8 @@
 import useSWR from 'swr';
 
 import fetcher from '@/lib/fetcher';
-import { Github } from '@/lib/types';
+
+import { Github } from '@/components/Metrics/types';
 
 import MetricCard from './Card';
 

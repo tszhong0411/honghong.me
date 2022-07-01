@@ -6,7 +6,6 @@ import { useMDXComponent } from 'next-contentlayer/hooks';
 import { coreContent, sortedBlogPost } from '@/lib/utils/contentlayer';
 
 import components from '@/components/MDXComponents';
-import PageTitle from '@/components/PageTitle';
 
 import BlogLayout from '@/layouts/blog';
 
@@ -56,28 +55,9 @@ export default function Blog({
   return (
     <>
       {post && (
-        <>
-          {post.draft !== true ? (
-            <BlogLayout content={post} prev={prev} next={next}>
-              <Component
-                components={
-                  {
-                    ...components,
-                  } as any
-                }
-              />
-            </BlogLayout>
-          ) : (
-            <div className='my-24 text-center'>
-              <PageTitle>
-                製作中{' '}
-                <span role='img' aria-label='roadwork sign'>
-                  🚧
-                </span>
-              </PageTitle>
-            </div>
-          )}
-        </>
+        <BlogLayout content={post} prev={prev} next={next}>
+          <Component components={components} />
+        </BlogLayout>
       )}
     </>
   );

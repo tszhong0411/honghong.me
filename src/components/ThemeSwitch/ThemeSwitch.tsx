@@ -1,53 +1,54 @@
-import { motion } from 'framer-motion';
 import { useTheme } from 'next-themes';
 import useTranslation from 'next-translate/useTranslation';
 import React from 'react';
-import { FaMoon, FaSun } from 'react-icons/fa';
+import { FaAngleDown, FaTags } from 'react-icons/fa';
 
-import { Tooltip } from '@/components/Tooltip';
+import ThemesList from '@/components/ThemeSwitch/ThemesList';
 
 const ThemeSwitch = () => {
-  const [mounted, setMounted] = React.useState(false);
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { setTheme } = useTheme();
   const { t } = useTranslation();
 
-  // When mounted on client, now we can show the UI
-  React.useEffect(() => setMounted(true), []);
+  const themeHandler = (item: string) => {
+    setTheme(item);
+  };
 
   return (
-    <Tooltip
-      content={t(
-        theme === 'dark' || resolvedTheme === 'dark'
-          ? 'common:switch2Light'
-          : 'common:switch2Dark'
-      )}
-    >
-      <motion.button
-        className='ml-1 flex h-11 w-11 items-center justify-center bg-transparent p-0 text-lg sm:ml-4'
-        whileHover={{
-          scale: 1.2,
-          transition: { duration: 0.2 },
-        }}
-        whileTap={{
-          scale: 0.7,
-          rotate: 360,
-          transition: { duration: 0.2 },
-        }}
-        aria-label='Toggle Dark Mode'
-        type='button'
-        onClick={() =>
-          setTheme(
-            theme === 'dark' || resolvedTheme === 'dark' ? 'light' : 'dark'
-          )
-        }
-      >
-        {mounted && (theme === 'dark' || resolvedTheme === 'dark') ? (
-          <FaSun size={20} />
-        ) : (
-          <FaMoon size={20} />
-        )}
-      </motion.button>
-    </Tooltip>
+    <div className='dropdown-end dropdown'>
+      <div tabIndex={0} className='btn btn-ghost m-1 gap-2'>
+        <FaTags />
+        {t('common:theme')}
+        <FaAngleDown />
+      </div>
+      <div className='dropdown-content rounded-t-box rounded-b-box top-px mt-16 max-h-96 w-52 overflow-y-auto bg-base-200 text-base-content shadow-2xl'>
+        <div className='grid grid-cols-1 gap-3 p-3' tabIndex={0}>
+          {ThemesList.map((item, index) => (
+            <div
+              className='overflow-hidden rounded-lg'
+              key={index}
+              onClick={() => themeHandler(item)}
+            >
+              <div
+                data-theme={item}
+                className='w-full cursor-pointer bg-base-100 font-sans text-base-content'
+              >
+                <div className='grid grid-cols-5 grid-rows-3'>
+                  <div className='col-span-5 row-span-3 row-start-1 flex gap-1 py-3 px-4'>
+                    <div className='flex-grow text-sm font-bold'>{item}</div>
+                    <div className='flex flex-shrink-0 flex-wrap gap-1'>
+                      <div className='bg-primary w-2 rounded' />
+                      <div className='w-2 rounded bg-secondary' />
+                      <div className='w-2 rounded bg-accent' />
+                      <div className='w-2 rounded bg-neutral' />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 };
 

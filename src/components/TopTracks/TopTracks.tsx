@@ -4,8 +4,8 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import useSWR from 'swr';
 
 import fetcher from '@/lib/fetcher';
-import { TopTracks } from '@/lib/types';
 
+import { TopTracks } from '@/components/TopTracks/types';
 import Track from '@/components/Track';
 
 const ContentLoader = () => {
@@ -54,9 +54,14 @@ export default function Tracks() {
   }
 
   return (
-    <div className='divide-y divide-border-primary dark:divide-border-primary-dark'>
+    <div className='py-4'>
       {data.tracks.map((track, index) => (
-        <Track ranking={index + 1} key={track.songUrl} {...track} />
+        <React.Fragment key={index}>
+          <Track ranking={index + 1} {...track} />
+          {index !== data.tracks.length - 1 && (
+            <div className='divider m-0'></div>
+          )}
+        </React.Fragment>
       ))}
     </div>
   );

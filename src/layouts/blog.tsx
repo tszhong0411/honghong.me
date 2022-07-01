@@ -1,6 +1,6 @@
-import cn from 'classnames';
 import type { Blog } from 'contentlayer/generated';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 import React from 'react';
@@ -10,25 +10,25 @@ import { CoreContent } from '@/lib/utils/contentlayer';
 import formatDate from '@/lib/utils/formatDate';
 import useScrollSpy from '@/hooks/useScrollspy';
 
-import Comments from '@/components/Comment';
-import Image from '@/components/Image';
+import Comment from '@/components/Comment';
 import Layout from '@/components/Layout';
 import Link from '@/components/Link';
+import NextPrevPost from '@/components/NextPrevPost';
 import PageTitle from '@/components/PageTitle';
 import ScrollTopAndComment from '@/components/ScrollTopAndComment';
 import TableOfContents from '@/components/TableOfContents';
 import { HeadingScrollSpy } from '@/components/TableOfContents/types';
 import ViewCounter from '@/components/ViewCounter';
 
-const editUrl = (slug) =>
-  `https://github.com/tszhong0411/honghong.me/blob/main/data/blog/${slug}.mdx`;
+const editUrl = (slug: string) =>
+  `https://github.com/tszhong0411/honghong.me/blob/main/src/data/blog/${slug}.mdx`;
 
-const twitterShare = (slug) =>
+const twitterShare = (slug: string) =>
   `https://twitter.com/intent/tweet?url=${encodeURIComponent(
     `https://honghong.me/blog/${slug}`
   )}`;
 
-const facebookShare = (slug) =>
+const facebookShare = (slug: string) =>
   `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
     `https://honghong.me/blog/${slug}`
   )}`;
@@ -44,6 +44,7 @@ export default function BlogLayout({ content, next, prev, children }: Props) {
   const { slug, date, title, summary } = content;
   const { t } = useTranslation();
   const { locale } = useRouter();
+  const [totalCommentCount, setTotalCommentCount] = React.useState<number>(0);
 
   //#region  //*=========== Scrollspy ===========
   const activeSection = useScrollSpy();
@@ -69,6 +70,22 @@ export default function BlogLayout({ content, next, prev, children }: Props) {
   }, [slug]);
   //#endregion //*=========== Srcollspy ===========
 
+  React.useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      if (event.origin !== 'https://giscus.app') return;
+      if (!(typeof event.data === 'object' && event.data.giscus)) return;
+
+      const giscusData = event.data.giscus.discussion;
+
+      giscusData &&
+        setTotalCommentCount(
+          giscusData.totalCommentCount + giscusData.totalReplyCount
+        );
+    };
+
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
+  }, []);
   return (
     <Layout
       title={`${title}`}
@@ -83,77 +100,59 @@ export default function BlogLayout({ content, next, prev, children }: Props) {
           <PageTitle>{title}</PageTitle>
         </div>
       </div>
-      <div className='my-6'>
-        <div className='flex items-center'>
-          <div className='mr-3'>
-            <div>
-              <motion.div
-                className='h-11 w-11 sm:h-16 sm:w-16'
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.6 }}
-              >
-                <Image
-                  src='/static/images/logo/logo-black.png'
-                  width='70px'
-                  height='70px'
-                  alt='avatar'
-                  className='rounded-full'
-                />
-              </motion.div>
-            </div>
+      <div className='flex flex-row justify-center gap-4'>
+        <div className='avatar'>
+          <div className='w-12 rounded-full ring ring-gray-600 ring-offset-2 ring-offset-base-100 dark:ring-white'>
+            <motion.div
+              className='h-12 w-12'
+              whileHover={{ rotate: 360 }}
+              transition={{ duration: 0.6 }}
+            >
+              <Image
+                src='/static/images/logo/logo-black.png'
+                width={48}
+                height={48}
+                alt='avatar'
+                className='rounded-full'
+              />
+            </motion.div>
           </div>
-          <div className='flex flex-1 justify-between border-b border-border-primary pb-2 dark:border-border-primary-dark'>
-            <div className='flex flex-col'>
-              <div>小康</div>
-              <div>
-                <a
-                  href='https://instagram.com/tszhong0411'
-                  rel='noopener noreferrer'
-                  className='text-brand duration-300 sm:text-sm'
-                >
-                  @tszhong0411
-                </a>
-              </div>
-            </div>
-            <div className='flex flex-col text-right text-typeface-secondary dark:text-typeface-secondary-dark'>
-              <time dateTime={date}>{formatDate(new Date(date), locale)}</time>
-              {isProd && <ViewCounter slug={slug} />}
-            </div>
+        </div>
+        <div>
+          小康
+          <div>
+            <Link
+              href='https://instagram.com/tszhong0411'
+              className='sm:text-sm'
+              noIcon
+            >
+              @tszhong0411
+            </Link>
           </div>
         </div>
       </div>
-      <div className='2lg:grid 2lg:grid-cols-[auto,250px] 2lg:gap-8'>
-        <article id='blog-content' className='min-w-0'>
-          <div>
-            <div className='mx-auto flex flex-col divide-y  pb-2 xl:divide-y-0'>
-              <div className='divide-y divide-border-primary dark:divide-border-primary-dark xl:pb-0'>
-                <div className='prose max-w-none pt-4 pb-8 dark:prose-dark'>
-                  {children}
-                </div>
-              </div>
-            </div>
+      <div className='my-6 flex flex-row justify-center gap-2 text-sm sm:text-base'>
+        {isProd && <ViewCounter slug={slug} />}•
+        <time dateTime={date}>{formatDate(new Date(date), locale)}</time>•
+        <span>
+          {totalCommentCount} {t('common:comments')}
+        </span>
+      </div>
+      <div className='divider mx-auto max-w-[65ch]'></div>
+      <div className='mt-8'>
+        <article id='blog-content'>
+          <div className='prose mx-auto dark:prose-dark lg:prose-xl'>
+            {children}
           </div>
         </article>
-        <aside className='hidden py-4 2lg:block'>
-          <div className='sticky top-20'>
-            <TableOfContents
-              toc={toc}
-              minLevel={minLevel}
-              activeSection={activeSection}
-            />
-          </div>
-        </aside>
       </div>
-      <div className='mb-4 flex justify-between border-y border-border-primary py-6 text-sm dark:border-border-primary-dark'>
+      <div className='divider'></div>
+      <div className='mb-4 flex justify-between text-sm'>
         <div className='flex items-center'>
           <Link href={editUrl(slug)}>{t('common:editOnGithub')}</Link>
         </div>
-        <div className='flex flex-col gap-x-2 xs:flex-row'>
-          <a
-            href={facebookShare(slug.replace(`.${locale}`, ''))}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
+        <div className='flex flex-col gap-2 s:flex-row'>
+          <Link href={facebookShare(slug.replace(`.${locale}`, ''))} noIcon>
             <svg
               className='w-20'
               xmlns='http://www.w3.org/2000/svg'
@@ -176,12 +175,8 @@ export default function BlogLayout({ content, next, prev, children }: Props) {
                 fill='#fff'
               ></path>
             </svg>
-          </a>
-          <a
-            href={twitterShare(slug.replace(`.${locale}`, ''))}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
+          </Link>
+          <Link href={twitterShare(slug.replace(`.${locale}`, ''))} noIcon>
             <svg
               className='w-20'
               xmlns='http://www.w3.org/2000/svg'
@@ -202,72 +197,47 @@ export default function BlogLayout({ content, next, prev, children }: Props) {
                 fill='#1A91DA'
               ></path>
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
-      {isProd && <Comments frontMatter={content} />}
-      <div className='border-t border-border-primary pt-8 dark:border-border-primary-dark'>
-        <div>
+      <div className='divider'></div>
+      <Comment />
+      <div className='divider'></div>
+      <div className='pt-8'>
+        <div className='flex flex-col sm:flex-row'>
           {(next || prev) && (
-            <div
-              className={cn('py-6', {
-                'grid sm:grid-cols-2 sm:gap-x-12': next,
-              })}
-            >
+            <>
               {prev && (
-                <div>
-                  <span className='mb-10 block text-xl font-medium text-typeface-primary dark:text-typeface-primary-dark'>
-                    {t('common:prev')}
-                  </span>
-                  <div className='font-medium'>
-                    <Link
-                      href={`/blog/${prev.slug.replace(`.${locale}`, '')}`}
-                      className='border-b-2 border-transparent duration-300 hover:border-brand'
-                    >
-                      {prev.title}
-                    </Link>
-                    <div className='mb-6 mt-4 text-typeface-secondary dark:text-typeface-secondary-dark'>
-                      <p>{prev.summary}</p>
-                    </div>
-                    <Link
-                      href={`/blog/${prev.slug.replace(`.${locale}`, '')}`}
-                      aria-label={`Read "${prev.title}"`}
-                      className='border-b-2 border-transparent duration-300 hover:border-brand'
-                    >
-                      {t('common:readMore')} &rarr;
-                    </Link>
-                  </div>
-                </div>
+                <NextPrevPost
+                  heading={t('common:prev')}
+                  title={prev.title}
+                  summary={prev.summary}
+                  slug={prev.slug.replace(`.${locale}`, '')}
+                />
               )}
               {next && (
-                <div className='mt-12 border-t border-border-primary pt-12 dark:border-border-primary-dark sm:mt-0 sm:border-0 sm:p-0'>
-                  <span className='mb-10 block text-xl font-medium text-typeface-primary dark:text-typeface-primary-dark'>
-                    {t('common:next')}
-                  </span>
-                  <div className='font-medium'>
-                    <Link
-                      href={`/blog/${next.slug.replace(`.${locale}`, '')}`}
-                      className='border-b-2 border-transparent duration-300 hover:border-brand'
-                    >
-                      {next.title}
-                    </Link>
-                    <div className='mb-6 mt-4 text-typeface-secondary dark:text-typeface-secondary-dark'>
-                      <p>{next.summary}</p>
-                    </div>
-                    <Link
-                      href={`/blog/${next.slug.replace(`.${locale}`, '')}`}
-                      aria-label={`Read "${next.title}"`}
-                      className='border-b-2 border-transparent duration-300 hover:border-brand'
-                    >
-                      {t('common:readMore')} &rarr;
-                    </Link>
-                  </div>
-                </div>
+                <div className='divider my-12 sm:divider-horizontal sm:mx-8'></div>
               )}
-            </div>
+              {next && (
+                <NextPrevPost
+                  heading={t('common:next')}
+                  title={next.title}
+                  summary={next.summary}
+                  slug={next.slug.replace(`.${locale}`, '')}
+                />
+              )}
+            </>
           )}
         </div>
       </div>
+      <AnimatePresence>
+        <ScrollTopAndComment />
+      </AnimatePresence>
+      <TableOfContents
+        toc={toc}
+        minLevel={minLevel}
+        activeSection={activeSection}
+      />
     </Layout>
   );
 }

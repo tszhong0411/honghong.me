@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { OtherPage } from 'contentlayer/generated';
 import { allOtherPages } from 'contentlayer/generated';
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -13,12 +12,14 @@ export default function About({ body: { code } }: OtherPage) {
   const { t } = useTranslation();
 
   return (
-    <Layout templateTitle='About' description={t('SEO:aboutDesc')}>
+    <Layout templateTitle='About' description={t('common:SEO_aboutDesc')}>
       <div className='mx-auto flex flex-col justify-center'>
-        <h1 className='mb-6 text-3xl font-bold md:text-5xl'>About</h1>
-        <p className='mb-12'>{t('SEO:aboutDesc')}</p>
+        <h1 className='mb-6 text-3xl font-bold dark:text-primary-content md:text-5xl'>
+          About
+        </h1>
+        <p className='mb-12'>{t('common:SEO_aboutDesc')}</p>
         <div className='prose w-full dark:prose-dark'>
-          <Component components={components as any} />
+          <Component components={components} />
         </div>
       </div>
     </Layout>

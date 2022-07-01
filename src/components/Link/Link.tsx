@@ -6,11 +6,12 @@ import { HiExternalLink } from 'react-icons/hi';
 const CustomLink = ({
   href,
   children,
+  noIcon = false,
   ...rest
 }: React.DetailedHTMLProps<
   React.AnchorHTMLAttributes<HTMLAnchorElement>,
   HTMLAnchorElement
->) => {
+> & { noIcon?: boolean }) => {
   const isInternalLink = href && href.startsWith('/');
   const isAnchorLink = href && href.startsWith('#');
 
@@ -32,9 +33,11 @@ const CustomLink = ({
   return (
     <a target='_blank' rel='noopener noreferrer' href={href} {...rest}>
       {children}
-      <span>
-        <HiExternalLink className='relative top-[-1px] ml-1 inline-block h-4 w-4 align-middle' />
-      </span>
+      {!noIcon && (
+        <span>
+          <HiExternalLink className='relative top-[-1px] ml-1 inline-block h-4 w-4 align-middle' />
+        </span>
+      )}
     </a>
   );
 };

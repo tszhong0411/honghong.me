@@ -1,6 +1,7 @@
-import { format } from 'date-fns';
+import cn from 'classnames';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { signIn, useSession } from 'next-auth/react';
 import { signOut } from 'next-auth/react';
 import { useTheme } from 'next-themes';
@@ -11,12 +12,18 @@ import { toast } from 'react-toastify';
 import useSWR, { useSWRConfig } from 'swr';
 
 import fetcher from '@/lib/fetcher';
+import { useModal } from '@/lib/store';
+import formatDate from '@/lib/utils/formatDate';
 
 import Link from '@/components/Link';
 
 function GuestbookEntry({ entry, user }) {
   const { mutate } = useSWRConfig();
-  const deleteEntry = async (e) => {
+  const { setValue } = useModal();
+  const { t } = useTranslation();
+  const { locale } = useRouter();
+
+  const deleteEntry = async (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
 
     await fetch(`/api/guestbook/${entry.id}`, {
@@ -24,29 +31,65 @@ function GuestbookEntry({ entry, user }) {
     });
 
     mutate('/api/guestbook');
+
+    setValue({ status: false });
+
+    toast.success(t('common:delete_successful'));
   };
 
-  const { t } = useTranslation();
+  const Cancel = () => (
+    <button
+      className='btn btn-outline uppercase'
+      onClick={() => setValue({ status: false })}
+    >
+      {t('common:cancel')}
+    </button>
+  );
+
+  const Delete = () => (
+    <button className='btn btn-error uppercase' onClick={deleteEntry}>
+      {t('common:delete')}
+    </button>
+  );
+
+  const Message = () => (
+    <div className='flex flex-col gap-4'>
+      <p>{t('common:Guestbook_deleteModal_message')}</p>
+      <p className='rounded-md bg-error px-2 py-4 text-error-content'>{`> ${entry.body}`}</p>
+    </div>
+  );
+
+  const deleteHandler = () => {
+    setValue({
+      status: true,
+      title: t('common:Guestbook_deleteModal_title'),
+      message: <Message />,
+      children: (
+        <>
+          <Cancel />
+          <Delete />
+        </>
+      ),
+    });
+  };
 
   return (
     <div className='flex flex-col space-y-2'>
       <div>{entry.body}</div>
-      <div className='flex flex-row items-center space-x-3'>
-        <p className='text-sm text-typeface-secondary dark:text-typeface-secondary-dark'>
-          {entry.created_by}
-        </p>
-        <span className='text-xs'>/</span>
-        <p className='text-sm text-typeface-secondary dark:text-typeface-secondary-dark'>
-          {format(new Date(entry.updated_at), "d MMM yyyy 'at' h:mm bb")}
+      <div className='flex flex-row space-x-3 sm:items-center'>
+        <p className='badge badge-primary text-sm'>{entry.created_by}</p>
+        <span className='hidden text-xs sm:inline-block'>/</span>
+        <p className='badge text-sm'>
+          {formatDate(new Date(entry.updated_at), locale)}
         </p>
         {user && entry.created_by === user.name && (
           <>
-            <span className='text-xs'>/</span>
+            <span className='hidden text-xs sm:inline-block'>/</span>
             <button
-              className='flex h-6 w-8 cursor-pointer items-center justify-center text-sm text-brand'
-              onClick={deleteEntry}
+              className='cursor-pointer text-sm text-primary-500'
+              onClick={deleteHandler}
             >
-              {t('guestbook:delete')}
+              {t('common:delete')}
             </button>
           </>
         )}
@@ -67,7 +110,7 @@ export default function Guestbook({ fallbackData }) {
   });
   const { t } = useTranslation();
 
-  const leaveEntry = async (e) => {
+  const leaveEntry = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (inputEl.current.value !== '') {
@@ -90,38 +133,11 @@ export default function Guestbook({ fallbackData }) {
 
       inputEl.current.value = '';
       mutate('/api/guestbook');
-      toast.success(t('guestbook:success'));
+      toast.success(t('common:Guestbook_success'));
       setLoading(false);
     } else {
-      toast.error(t('guestbook:error'));
+      toast.error(t('common:Guestbook_error'));
     }
-  };
-
-  const containerStyle: React.CSSProperties = {
-    position: 'relative',
-    width: '1rem',
-    height: '1rem',
-    boxSizing: 'border-box',
-    margin: '0 auto',
-  };
-
-  const circleStyle: React.CSSProperties = {
-    display: 'block',
-    width: '1rem',
-    height: '1rem',
-    border: '3px solid #ababab',
-    borderTop: '3px solid #fff',
-    borderRadius: '50%',
-    position: 'absolute',
-    boxSizing: 'border-box',
-    top: 0,
-    left: 0,
-  };
-
-  const spinTransition = {
-    repeat: Infinity,
-    ease: 'linear',
-    duration: 1,
   };
 
   // When mounted on client, now we can show the UI
@@ -131,86 +147,77 @@ export default function Guestbook({ fallbackData }) {
 
   return (
     <>
-      <div className='my-4 w-full max-w-2xl rounded bg-body-dark p-5 dark:bg-body'>
-        <h5 className='text-lg font-bold text-card-primary dark:text-card-primary-dark md:text-xl'>
+      <motion.div
+        className='my-4 w-full max-w-2xl rounded bg-base-200 p-5'
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{
+          duration: 0.5,
+        }}
+      >
+        <h5 className='text-lg font-bold md:text-xl'>
           {session?.user
-            ? t('guestbook:guestbook')
-            : t('guestbook:signInGuestbook')}
+            ? t('common:Guestbook_guestbook')
+            : t('common:Guestbook_signInGuestbook')}
         </h5>
         {!session && (
           <Link
             href='/api/auth/signin/github'
-            className='my-4 flex h-10 w-24 items-center justify-center rounded bg-brand font-medium text-white'
+            className='btn btn-primary my-4 min-w-[6rem] font-medium'
             onClick={(e) => {
               e.preventDefault();
-              signIn('github');
+              signIn();
             }}
           >
-            {t('guestbook:signIn')}
+            {t('common:Guestbook_signIn')}
           </Link>
         )}
         {session?.user && (
-          <form
-            className='my-4 flex flex-col items-center gap-y-2 s:flex-row s:gap-0'
-            onSubmit={leaveEntry}
-          >
+          <form className='my-4 flex flex-col gap-2' onSubmit={leaveEntry}>
             <input
               ref={inputEl}
-              aria-label={t('guestbook:yourComment')}
-              placeholder={t('guestbook:placeholder')}
+              aria-label={t('common:Guestbook_yourComment')}
+              placeholder={t('common:Guestbook_placeholder')}
               required
-              type='text'
-              className='block w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-900 dark:bg-gray-800 dark:text-gray-100 s:mr-2'
+              className='input input-bordered input-primary w-full'
             />
             <button
-              className='h-10 w-full rounded bg-brand px-0 text-white s:w-1/3 s:px-4'
+              className={cn('btn btn-primary', { loading: loading })}
               type='submit'
             >
-              {loading ? (
-                <div style={containerStyle}>
-                  <motion.span
-                    style={circleStyle}
-                    animate={{ rotate: 360 }}
-                    transition={spinTransition}
-                  />
-                </div>
-              ) : (
-                t('guestbook:sign')
-              )}
+              {t('common:Guestbook_sign')}
             </button>
           </form>
         )}
-
-        <p className='text-sm text-card-secondary dark:text-card-secondary-dark'>
-          {t('guestbook:tip')}
-        </p>
+        <p className='text-sm'>{t('common:Guestbook_tip')}</p>
 
         {session?.user && (
-          <div className='my-4 flex items-center'>
-            <div className='mr-3 flex w-full items-center gap-x-2'>
-              <Image
-                src={session.user.image}
-                width={48}
-                height={48}
-                alt='User avatar'
-                className='rounded-full'
-              />
-              <span className='text-card-primary dark:text-card-primary-dark'>
-                {session.user.name}
-              </span>
+          <>
+            <div className='divider'></div>
+            <div className='my-4 flex items-center'>
+              <div className='mr-3 flex w-full items-center gap-4'>
+                <Image
+                  src={session.user.image}
+                  width={48}
+                  height={48}
+                  alt='User avatar'
+                  className='rounded-full'
+                />
+                <span>{session.user.name}</span>
+              </div>
+              <button
+                className='btn btn-primary min-w-[8rem] text-white'
+                onClick={(e) => {
+                  e.preventDefault();
+                  signOut();
+                }}
+              >
+                {t('common:Guestbook_signOut')}
+              </button>
             </div>
-            <button
-              className='s:w-13 h-10 w-1/2 rounded bg-brand px-0 text-white s:w-1/3 s:px-4'
-              onClick={(e) => {
-                e.preventDefault();
-                signOut();
-              }}
-            >
-              {t('guestbook:signOut')}
-            </button>
-          </div>
+          </>
         )}
-      </div>
+      </motion.div>
       <div className='mt-4 space-y-6'>
         {loading && (
           <SkeletonTheme

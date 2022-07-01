@@ -45,10 +45,12 @@ export default function PcSpecs() {
   //#endregion  //*======== PC Specs list ===========
 
   return (
-    <Layout templateTitle='PC Specs' description={t('SEO:pcSpecsDesc')}>
+    <Layout templateTitle='PC Specs' description={t('common:SEO_pcSpecsDesc')}>
       <div className='mx-auto flex flex-col justify-center'>
-        <h1 className='mb-6 text-3xl font-bold md:text-5xl'>PC Specs</h1>
-        <p className='mb-12'>{t('SEO:pcSpecsDesc')}</p>
+        <h1 className='mb-6 text-3xl font-bold dark:text-primary-content md:text-5xl'>
+          PC Specs
+        </h1>
+        <p className='mb-12'>{t('common:SEO_pcSpecsDesc')}</p>
         <div className='flex flex-wrap'>
           <table className='m-auto w-full table-fixed'>
             <thead>

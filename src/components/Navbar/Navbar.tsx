@@ -1,97 +1,42 @@
-import cn from 'classnames';
-import { useRouter } from 'next/router';
-import useTranslation from 'next-translate/useTranslation';
 import React from 'react';
-
-import useIsScrollTop from '@/hooks/useIsScrollTop';
+import { MdMenu } from 'react-icons/md';
 
 import LanguageSwitch from '@/components/LanguageSwitch';
 import Link from '@/components/Link';
 import Logo from '@/components/Logo';
+import { NavLinks } from '@/components/Navbar/NavLinks';
 import ThemeSwitch from '@/components/ThemeSwitch';
-import { Tooltip } from '@/components/Tooltip';
 
-import { MobileNav } from './MobileNav';
-import { NavLinks } from './NavLinks';
-import ReadingProgressBar from '../ReadingProgressBar';
-
-function NavItem({ href, text }) {
-  const router = useRouter();
-  const isActive = router.asPath === href;
-
-  return (
-    <Link
-      className={cn(
-        'hidden rounded-lg py-1 px-2 font-medium transition-all sm:inline-block sm:py-3 md:px-4',
-        isActive
-          ? 'text-brand'
-          : 'text-typeface-primary dark:text-typeface-primary-dark'
-      )}
-      href={href}
-    >
-      <span className='relative'>
-        {text}
-        {isActive && (
-          <div className='absolute top-full mt-2 h-1 w-full rounded-2xl bg-brand opacity-80' />
-        )}
-      </span>
-    </Link>
-  );
-}
+export const NavItem = ({ href, text }) => (
+  <li>
+    <Link href={href}>{text}</Link>
+  </li>
+);
 
 export const Navbar = () => {
-  const isTop = useIsScrollTop();
-  const [navShow, setNavShow] = React.useState(false);
-  const [open, setOpen] = React.useState(false);
-  const { t } = useTranslation();
-  const isBlog = useRouter().asPath.includes('/blog/');
-
   return (
     <>
-      {open && (
-        <div
-          onClick={() => {
-            setOpen(false);
-          }}
-          aria-hidden='true'
-          className='fixed inset-0 z-40 h-full w-full'
-        ></div>
-      )}
-      <header
-        className={cn(
-          'sticky top-0 z-40 w-full flex-none lg:z-50',
-          isTop
-            ? 'dark:bg-transparent'
-            : navShow
-            ? 'bg-body dark:bg-body-dark'
-            : 'bg-body/75  backdrop-blur dark:bg-body-dark-75 '
-        )}
-      >
-        <div className='relative mx-auto flex max-w-5xl items-center justify-between divide-x divide-border-primary py-2 px-4 dark:divide-border-primary-dark xl:px-0'>
-          <div className='flex items-center text-sm font-medium'>
-            <div className='sm:hidden'>
-              <Tooltip content={t('common:home')}>
-                <div>
-                  <Link href='/' aria-label='小康'>
-                    <Logo className='mx-4 fill-brand' size={30} />
-                  </Link>
-                </div>
-              </Tooltip>
-            </div>
-            <div className='hidden sm:block'>
-              {NavLinks.map((link, index) => (
-                <NavItem key={index} href={link.href} text={link.title} />
-              ))}
-            </div>
+      <div className='navbar sticky top-0 z-50 mx-auto max-w-5xl bg-base-100'>
+        <div className='flex-1'>
+          <div className='flex-none lg:hidden'>
+            <label htmlFor='drawer' className='btn btn-ghost btn-square'>
+              <MdMenu size={30} />
+            </label>
           </div>
-          <div className='flex items-center'>
-            <ThemeSwitch />
-            <LanguageSwitch open={open} setOpen={setOpen} />
-            <MobileNav navShow={navShow} setNavShow={setNavShow} />
-          </div>
+          <Link href='/' className='btn btn-ghost hidden sm:flex'>
+            <Logo className='mx-4 fill-primary-600' size={30} />
+          </Link>
         </div>
-      </header>
-      {isBlog && <ReadingProgressBar />}
+        <div className='flex-none'>
+          <ul className='menu menu-horizontal hidden gap-2 p-0 lg:flex'>
+            {NavLinks.map((item, index) => (
+              <NavItem key={index} href={item.href} text={item.text} />
+            ))}
+          </ul>
+          <ThemeSwitch />
+          <LanguageSwitch />
+        </div>
+      </div>
     </>
   );
 };
