@@ -2,10 +2,11 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
 
-/** @type {import("tailwindcss/tailwind-config").TailwindConfig } */
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: 'class',
+  darkMode: ['class', '[data-theme="dark"]'],
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  //#region  //*=========== Theme config ===========
   theme: {
     extend: {
       lineHeight: {
@@ -23,24 +24,6 @@ module.exports = {
         ],
       },
       colors: {
-        body: 'rgb(255, 255, 254)',
-        brand: 'rgb(242, 95, 76)',
-        'body-secondary': 'rgb(240, 241, 244)',
-        'body-secondary-dark': 'rgb(32, 32, 32)',
-        'body-dark': 'rgb(15, 14, 23)',
-        'body-dark-75': 'rgba(15, 14, 23, 0.75)',
-        'typeface-primary': 'rgb(15, 14, 23)',
-        'typeface-secondary': 'rgb(46, 47, 62)',
-        'typeface-teriary': 'rgb(87, 95, 117)',
-        'typeface-primary-dark': 'rgb(255, 255, 254)',
-        'typeface-secondary-dark': 'rgb(167, 169, 190)',
-        'typeface-teriary-dark': 'rgb(196, 201, 212)',
-        'border-primary': 'rgb(240, 241, 244)',
-        'border-primary-dark': 'rgb(40, 40, 40)',
-        'card-primary': 'rgb(255, 255, 254)',
-        'card-secondary': 'rgb(167, 169, 190)',
-        'card-primary-dark': 'rgb(15, 14, 23)',
-        'card-secondary-dark': 'rgb(46, 47, 62)',
         primary: colors.red,
         gray: colors.neutral,
         dark: '#000',
@@ -66,140 +49,144 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            color: theme('colors.typeface-secondary'),
+            color: '#333333',
+            'h2, h3, h4': {
+              color: theme('colors.black'),
+            },
             a: {
-              color: theme('colors.typeface-primary'),
-              textDecoration: 'none',
-              borderBottom: `2px solid transparent`,
-              transition: 'border-color 0.3s ease, color 0.3s ease',
-              '&:hover': {
-                borderBottom: `2px solid ${theme('colors.themeColor.500')}`,
-              },
-              code: { color: theme('colors.primary.400') },
-            },
-            'h1,h2,h3,h4,h5,h6': {
-              color: theme('colors.typeface-primary'),
-            },
-            'h2,h3,h4': {
-              'scroll-margin-top': defaultTheme.spacing[32],
-            },
-            pre: {
-              backgroundColor: '#24283b',
-              marginLeft: '0.5rem',
-              marginRight: '0.5rem',
+              cursor: 'pointer',
+              'text-decoration-line': 'underline',
+              color: theme('colors.primary.500'),
             },
             code: {
-              color: '#cb3728',
-              backgroundColor: '#f3f3f3',
-              paddingLeft: '4px',
-              paddingRight: '4px',
-              paddingTop: '2px',
-              paddingBottom: '2px',
-              borderRadius: '0.25rem',
+              fontFamily: "'Fira Code', 'Noto Sans TC', 'Inter'",
+              borderRadius: '8px',
+              backgroundColor: 'rgba(239, 68, 68, 0.1)',
+              padding: '2px 8px',
+              border: '1px solid #eee',
+              color: '#e3371e',
             },
-            'code::before': {
-              content: 'none',
+            pre: {
+              backgroundColor: '#f8f9fb',
+              '& code': {
+                backgroundColor: '#f8f9fb',
+                border: 'none',
+              },
+              color: 'hsl(230, 8%, 24%)',
             },
-            'code::after': {
-              content: 'none',
-            },
-            details: {
-              backgroundColor: theme('colors.gray.100'),
-              paddingLeft: '4px',
-              paddingRight: '4px',
-              paddingTop: '2px',
-              paddingBottom: '2px',
-              borderRadius: '0.25rem',
-            },
-            hr: { borderColor: theme('colors.gray.200') },
-            'ol li::marker': {
-              fontWeight: '600',
-              color: theme('colors.gray.500'),
-            },
-            'ul li::marker': {
-              backgroundColor: theme('colors.gray.500'),
-            },
-            strong: { color: theme('colors.gray.600') },
-            blockquote: {
-              color: theme('colors.gray.900'),
-              borderLeftColor: theme('colors.gray.200'),
-            },
-            img: {
-              borderRadius: '12px',
-            },
-            kbd: {
-              border: `1px solid ${theme('colors.border-primary')}`,
-              background: theme('colors.gray.100'),
-              padding: '3px',
-              borderRadius: '0.25rem',
-              color: theme('colors.typeface-primary'),
+            p: {
+              color: '#2e2f3e',
             },
           },
         },
         dark: {
           css: {
-            color: theme('colors.typeface-secondary-dark'),
+            color: '#eaeaea',
+            'h2, h3, h4': {
+              color: theme('colors.white'),
+            },
             a: {
-              color: theme('colors.typeface-primary-dark'),
-              textDecoration: 'none',
-              borderBottom: `2px solid transparent`,
-              transition: 'border-color 0.3s ease, color 0.3s ease',
-              '&:hover': {
-                borderBottom: `2px solid ${theme('colors.themeColor.350')}`,
-              },
-              code: { color: theme('colors.primary.400') },
-            },
-            'h1,h2,h3,h4,h5,h6': {
-              color: theme('colors.typeface-primary-dark'),
-            },
-            pre: {
-              backgroundColor: '#171717',
+              color: theme('colors.primary.700'),
             },
             code: {
-              color: '#ff4532',
-              backgroundColor: '#171717',
+              backgroundColor: '#2a0000',
+              border: '1px solid #5f0000',
             },
-            details: {
-              backgroundColor: theme('colors.gray.800'),
-            },
-            hr: { borderColor: theme('colors.gray.700') },
-            'ol li::marker': {
-              fontWeight: '600',
-              color: theme('colors.gray.400'),
-            },
-            'ul li::marker': {
-              backgroundColor: theme('colors.gray.400'),
-            },
-            strong: { color: theme('colors.gray.100') },
-            thead: {
-              th: {
-                color: theme('colors.gray.100'),
+            pre: {
+              backgroundColor: '#0f0f0f',
+              '& code': {
+                backgroundColor: '#0f0f0f',
+                border: 'none',
               },
+              color: 'hsl(0, 8%, 100%)',
             },
-            tbody: {
-              tr: {
-                borderBottomColor: theme('colors.gray.700'),
-              },
+            p: {
+              color: '#a7a9be',
             },
-            blockquote: {
-              color: theme('colors.gray.100'),
-              borderLeftColor: theme('colors.gray.700'),
+            strong: {
+              color: 'white',
             },
-            kbd: {
-              border: `1px solid ${theme('colors.border-primary-dark')}`,
-              background: theme('colors.gray.700'),
-              padding: '3px',
-              borderRadius: '0.25rem',
-              color: theme('colors.typeface-primary-dark'),
+          },
+        },
+        xl: {
+          css: {
+            pre: {
+              margin: 0,
+              padding: '0.5rem 0',
+              borderRadius: '1rem',
+              lineHeight: '1.5rem',
             },
           },
         },
       }),
     },
   },
+  //#endregion  //*======== Theme config ===========
+  //#region  //*=========== Daisyui config ===========
+  daisyui: {
+    themes: [
+      {
+        light: {
+          ...require('daisyui/src/colors/themes')['[data-theme=light]'],
+          primary: '#e3371e',
+          secondary: '#f77f00',
+          accent: '#ea5234',
+          neutral: '#3d4451',
+          'base-100': '#f9fafb',
+          'base-200': '#f7f7f7',
+          info: '#3abff8',
+          success: '#36d399',
+          warning: '#fbbd23',
+          error: '#f87272',
+        },
+        dark: {
+          ...require('daisyui/src/colors/themes')['[data-theme=dark]'],
+          primary: '#d62828',
+          secondary: '#6d3a9c',
+          accent: '#51a800',
+          neutral: '#1b1d1d',
+          'base-100': '#090b0b',
+          'base-200': '#121416',
+          info: '#2563eb',
+          success: '#16a34a',
+          warning: '#d97706',
+          error: '#dc2626',
+        },
+      },
+      // 'cupcake',
+      // 'bumblebee',
+      // 'emerald',
+      // 'corporate',
+      // 'synthwave',
+      // 'retro',
+      // 'cyberpunk',
+      // 'valentine',
+      // 'halloween',
+      // 'garden',
+      // 'forest',
+      // 'aqua',
+      // 'lofi',
+      // 'pastel',
+      // 'fantasy',
+      // 'wireframe',
+      // 'black',
+      // 'luxury',
+      // 'dracula',
+      // 'cmyk',
+      // 'autumn',
+      // 'business',
+      // 'acid',
+      // 'lemonade',
+      // 'night',
+      // 'coffee',
+      // 'winter',
+    ],
+  },
+  //#endregion  //*======== Daisyui config ===========
   plugins: [
     require('@tailwindcss/forms'),
     require('@tailwindcss/typography'),
     require('@tailwindcss/aspect-ratio'),
+    require('daisyui'),
   ],
 };
