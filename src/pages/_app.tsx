@@ -6,9 +6,10 @@ import '@/style/global.css';
 import '@/style/prism.css';
 import 'react-toastify/dist/ReactToastify.css';
 import 'react-loading-skeleton/dist/skeleton.css';
-import 'tippy.js/dist/tippy.css';
 
-import Analytics from '@/components/Analytics';
+import { isProd } from '@/lib/isProduction';
+
+import Umami from '@/components/Umami';
 
 export default function App({
   Component,
@@ -21,7 +22,7 @@ export default function App({
         defaultTheme='system'
         disableTransitionOnChange
       >
-        <Analytics />
+        {isProd && <Umami />}
         <Component {...pageProps} />
       </ThemeProvider>
     </SessionProvider>
