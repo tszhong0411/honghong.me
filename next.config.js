@@ -24,6 +24,7 @@ module.exports = nextTranslate(
           'cdn.jsdelivr.net',
           'avatars.githubusercontent.com',
           'res.cloudinary.com',
+          'cdnjs.cloudflare.com',
         ],
       },
       // SVGR
