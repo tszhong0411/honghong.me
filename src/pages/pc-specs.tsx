@@ -1,6 +1,6 @@
 import useTranslation from 'next-translate/useTranslation';
 
-import { pcSpecsType } from '@/lib/types';
+import { PcSpecsType } from '@/lib/types';
 
 import Layout from '@/components/Layout';
 
@@ -8,7 +8,7 @@ export default function PcSpecs() {
   const { t } = useTranslation();
 
   //#region  //*=========== PC Specs list ===========
-  const pcSpecsList: pcSpecsType[] = [
+  const pcSpecsList: PcSpecsType[] = [
     {
       name: 'CPU',
       content: 'i5 10400F',
