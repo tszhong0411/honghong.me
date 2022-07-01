@@ -2,86 +2,21 @@ import { useRouter } from 'next/router';
 
 import { isProd } from '@/lib/isProduction';
 
+import { FooterLinks } from '@/components/Footer/FooterLinks';
 import Link from '@/components/Link';
 import NowPlaying from '@/components/NowPlaying';
 
 export default function Footer() {
   const { locale, defaultLocale } = useRouter();
 
-  //#region  //*=========== Footer links ===========
-  const footerLinks = {
-    middleLinks: [
-      {
-        list: [
-          {
-            href: '/',
-            title: 'Home',
-          },
-          {
-            href: '/blog',
-            title: 'Blog',
-          },
-          {
-            href: '/about',
-            title: 'About',
-          },
-          {
-            href: '/feed.xml',
-            title: 'RSS',
-          },
-        ],
-      },
-      {
-        list: [
-          {
-            href: '/guestbook',
-            title: 'Guestbook',
-          },
-          {
-            href: '/uses',
-            title: 'Uses',
-          },
-          {
-            href: '/projects',
-            title: 'Projects',
-          },
-          {
-            href: 'https://umami.honghong.me/share/KTWjRi4f/blog',
-            title: 'Analytics',
-          },
-        ],
-      },
-      {
-        list: [
-          {
-            href: 'https://www.facebook.com/tszhonglai.0411/',
-            title: 'Facebook',
-          },
-          {
-            href: 'https://www.instagram.com/tszhong0411/',
-            title: 'Instagram',
-          },
-          {
-            href: 'https://github.com/tszHong0411',
-            title: 'GitHub',
-          },
-          {
-            href: 'https://www.youtube.com/channel/UC2hMWOaOlk9vrkvFVaGmn0Q',
-            title: 'YouTube',
-          },
-        ],
-      },
-    ],
-  };
-  //#endregion  //*======== Footer links ===========
-
   return (
     <>
-      <footer className='mx-auto mt-8 w-full max-w-5xl px-8 xl:px-0'>
-        <div className='mx-auto mt-6 flex flex-row flex-wrap gap-1 border-t border-border-primary pt-12 dark:border-border-primary-dark'>
+      <footer className='mx-auto mt-8 w-full max-w-5xl px-8'>
+        <div className='divider'></div>
+        <div className='mx-auto mt-6 flex flex-row flex-wrap gap-1 pt-12'>
           {isProd && <NowPlaying />}
           <div className='grid w-full grid-cols-2 gap-4 pb-16 sm:grid-cols-3'>
-            {footerLinks.middleLinks.map((item, index) => {
+            {FooterLinks.middleLinks.map((item, index) => {
               return (
                 <div
                   key={index}
@@ -91,7 +26,7 @@ export default function Footer() {
                     return (
                       <Link
                         key={index}
-                        className='border-b-2 border-transparent duration-300 hover:border-brand'
+                        className='link link-hover'
                         href={
                           item.href === '/feed.xml'
                             ? `/feed${
