@@ -1,224 +1,258 @@
-/**
- * CSS Styles for code highlighting.
- * Feel free to customize token styles 
- * by copying from a prismjs compatible theme:
- * https://github.com/PrismJS/prism-themes
- */
-
 /* Code Title */
 .rehype-code-title {
-  color: #fff;
-  margin: 0 0.5rem -1.8rem 0.5rem;
-  background-color: #24283b;
-  border-radius: 0.375rem 0.375rem 0 0;
-  padding: 12px 24px;
+  background: #1d1d1d;
+  @apply mt-6 w-full rounded-t-2xl px-6 py-3 text-base font-semibold text-white;
 }
-.rehype-code-title + pre {
-  border-radius: 0 0 0.375rem 0.375rem;
+
+.rehype-code-title + div > pre {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 /* Code block styles */
 .code-highlight {
-  float: left;
-  min-width: 100%;
+  @apply float-left min-w-full;
 }
 
-.code-highlight .code-line:hover {
-  background-color: rgba(64, 64, 64, 0.5);
+.code-highlight .code-line:not(.inserted, .deleted):hover {
+  background-color: rgba(239, 68, 68, 0.1);
 }
 
 .code-line {
-  margin: 0 -12px;
-  display: block;
   border-left: 12px;
-  border-color: transparent;
-  padding: 0 12px;
+  @apply block border-transparent px-3;
 }
 
 .code-line.inserted {
-  background-color: rgba(34, 197, 94, 0.2);
+  background-color: rgba(34, 197, 94, 0.3);
 }
 
 .code-line.deleted {
-  background-color: rgba(239, 68, 68, 0.2);
+  background-color: rgba(239, 68, 68, 0.3);
 }
 
 .highlight-line {
-  margin: 0 -12px;
-  border-left-width: 16px;
-  border-color: rgb(239 68 68);
-  background-color: rgba(55, 65, 81, 0.5);
+  border-left: 6px solid rgb(239 68 68);
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+.highlight-line.line-number::before {
+  margin-left: -6px;
 }
 
 .line-number::before {
-  margin-right: 16px;
-  margin-left: -8px;
-  display: inline-block;
-  width: 16px;
-  text-align: right;
+  width: 45px;
   color: rgb(156 163 175);
   content: attr(line);
+  @apply px-3;
 }
 
-/* Token styles */
-/**
- * MIT License
- * Copyright (c) 2018 Sarah Drasner
- * Sarah Drasner's[@sdras] Night Owl
- * Ported by Sara vieria [@SaraVieira]
- * Added by Souvik Mandal [@SimpleIndian]
- */
-.token.atrule {
+/* #region  /**=========== Token styles =========== */
+html[data-theme='dark'] .token.atrule {
   color: #c792ea;
 }
 
-.token.attr-name {
+html[data-theme='dark'] .token.attr-name {
   color: #ffcb6b;
 }
 
-.token.attr-value {
+html[data-theme='dark'] .token.attr-value {
   color: #c3e88d;
 }
 
-.token.attribute {
+html[data-theme='dark'] .token.attribute {
   color: #c3e88d;
 }
 
-.token.boolean {
+html[data-theme='dark'] .token.boolean {
   color: #c792ea;
 }
 
-.token.builtin {
+html[data-theme='dark'] .token.builtin {
   color: #ffcb6b;
 }
 
-.token.cdata {
+html[data-theme='dark'] .token.cdata {
   color: #80cbc4;
 }
 
-.token.char {
+html[data-theme='dark'] .token.char {
   color: #80cbc4;
 }
 
-.token.class {
+html[data-theme='dark'] .token.class {
   color: #ffcb6b;
 }
 
-.token.class-name {
+html[data-theme='dark'] .token.class-name {
   color: #f2ff00;
 }
 
-.token.color {
+html[data-theme='dark'] .token.color {
   color: #f2ff00;
 }
 
-.token.comment {
+html[data-theme='dark'] .token.comment {
   color: #b9b9b9;
 }
 
-.token.constant {
+html[data-theme='dark'] .token.constant {
   color: #c792ea;
 }
 
-.token.deleted {
+html[data-theme='dark'] .token.deleted {
   color: #f07178;
 }
 
-.token.doctype {
+html[data-theme='dark'] .token.doctype {
   color: #546e7a;
 }
 
-.token.entity {
+html[data-theme='dark'] .token.entity {
   color: #f07178;
 }
 
-.token.function {
+html[data-theme='dark'] .token.function {
   color: #c792ea;
 }
 
-.token.hexcode {
+html[data-theme='dark'] .token.hexcode {
   color: #f2ff00;
 }
 
-.token.id {
+html[data-theme='dark'] .token.id {
   color: #c792ea;
   font-weight: bold;
 }
 
-.token.important {
+html[data-theme='dark'] .token.important {
   color: #c792ea;
   font-weight: bold;
 }
 
-.token.inserted {
+html[data-theme='dark'] .token.inserted {
   color: #80cbc4;
+}
+
+html[data-theme='dark'] .token.keyword {
+  color: #c792ea;
+}
+
+html[data-theme='dark'] .token.number {
+  color: #fd9170;
+}
+
+html[data-theme='dark'] .token.operator {
+  color: #89ddff;
+}
+
+html[data-theme='dark'] .token.prolog {
+  color: #546e7a;
+}
+
+html[data-theme='dark'] .token.property {
+  color: #80cbc4;
+}
+
+html[data-theme='dark'] .token.pseudo-class {
+  color: #c3e88d;
+}
+
+html[data-theme='dark'] .token.pseudo-element {
+  color: #c3e88d;
+}
+
+html[data-theme='dark'] .token.punctuation {
+  color: #89ddff;
+}
+
+html[data-theme='dark'] .token.regex {
+  color: #f2ff00;
+}
+
+html[data-theme='dark'] .token.selector {
+  color: #f07178;
+}
+
+html[data-theme='dark'] .token.string {
+  color: #c3e88d;
+}
+
+html[data-theme='dark'] .token.symbol {
+  color: #c792ea;
+}
+
+html[data-theme='dark'] .token.tag {
+  color: #f07178;
+}
+
+html[data-theme='dark'] .token.unit {
+  color: #f07178;
+}
+
+html[data-theme='dark'] .token.url {
+  color: #fd9170;
+}
+
+html[data-theme='dark'] .token.variable {
+  color: #f07178;
+}
+
+html[data-theme='dark'] .token.table {
+  display: inline;
+}
+
+.token.comment,
+.token.prolog,
+.token.cdata {
+  color: #a0a1a7;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.entity {
+  color: #383a42;
+}
+
+.token.attr-name,
+.token.class-name,
+.token.boolean,
+.token.constant,
+.token.number,
+.token.atrule {
+  color: #b76b01;
 }
 
 .token.keyword {
-  color: #c792ea;
-  font-style: italic;
+  color: #a626a4;
 }
 
-.token.number {
-  color: #fd9170;
+.token.property,
+.token.tag,
+.token.symbol,
+.token.deleted,
+.token.important {
+  color: #e45649;
 }
 
-.token.operator {
-  color: #89ddff;
+.token.selector,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted,
+.token.regex,
+.token.attr-value,
+.token.attr-value > .token.punctuation {
+  color: #50a14f;
 }
 
-.token.prolog {
-  color: #546e7a;
-}
-
-.token.property {
-  color: #80cbc4;
-}
-
-.token.pseudo-class {
-  color: #c3e88d;
-}
-
-.token.pseudo-element {
-  color: #c3e88d;
-}
-
-.token.punctuation {
-  color: #89ddff;
-}
-
-.token.regex {
-  color: #f2ff00;
-}
-
-.token.selector {
-  color: #f07178;
-}
-
-.token.string {
-  color: #c3e88d;
-}
-
-.token.symbol {
-  color: #c792ea;
-}
-
-.token.tag {
-  color: #f07178;
-}
-
-.token.unit {
-  color: #f07178;
+.token.variable,
+.token.operator,
+.token.function {
+  color: #4078f2;
 }
 
 .token.url {
-  color: #fd9170;
+  color: #0184bc;
 }
-
-.token.variable {
-  color: #f07178;
-}
-
-.token.table {
-  display: inline;
-}
+/* #endregion  /**======== Token style =========== */

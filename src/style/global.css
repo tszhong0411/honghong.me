@@ -12,7 +12,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family: 'JetBrains Mono', 'Noto Sans TC';
+  font-family: 'Fira Code', 'Noto Sans TC';
 }
 
 ::selection {
@@ -31,7 +31,7 @@ html.dark ::selection {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: theme('colors.brand');
+  background: theme('colors.primary.500');
   transition: 0.25s;
   border-radius: 2px;
 }
@@ -42,21 +42,20 @@ html.dark ::selection {
 
 /* heading anchor */
 .prose .anchor {
-  @apply invisible absolute;
+  @apply invisible absolute no-underline;
 
   margin-left: -1em;
   padding-right: 0.5em;
   width: 80%;
-  max-width: calc(768px + 1em);
+  max-width: 700px;
   cursor: pointer;
-  border: 0 !important;
 }
 
 .anchor:hover {
-  @apply visible no-underline;
+  @apply visible;
 }
 
-.prose a.anchor {
+.prose a {
   @apply transition-all;
 }
 
@@ -66,10 +65,16 @@ html.dark ::selection {
 }
 
 .prose *:hover > .anchor {
-  @apply visible no-underline;
+  @apply visible;
 }
 
 /* for blog post youtube embed */
 .yt-lite::before {
   content: none !important;
+}
+
+/* ? 暫時 */
+.prose :is(h1, h2, h3) {
+  position: relative;
+  scroll-margin-top: 8rem;
 }
