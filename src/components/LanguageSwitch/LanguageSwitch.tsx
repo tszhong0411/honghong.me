@@ -3,8 +3,8 @@ import { default as emojiUnicode } from 'emoji-unicode';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import React from 'react';
-import { FaAngleDown } from 'react-icons/fa';
-import { IoLanguageOutline } from 'react-icons/Io5';
+// import { FaAngleDown } from 'react-icons/fa';
+// import { IoLanguageOutline } from 'react-icons/Io5';
 import { useLocalStorage } from 'react-use';
 
 import i18nConfig from '@/lib/i18n';
@@ -30,8 +30,8 @@ export default function LanguageSwitch() {
   return (
     <div className='dropdown-end dropdown'>
       <div tabIndex={0} className='btn btn-ghost gap-1 normal-case'>
-        <IoLanguageOutline />
-        <FaAngleDown />
+        {/* <IoLanguageOutline /> */}
+        {/* <FaAngleDown /> */}
       </div>
       <div className='dropdown-content rounded-t-box rounded-b-box top-px mt-16 w-56 overflow-y-auto bg-base-200 text-base-content shadow-2xl'>
         <ul className='menu menu-compact gap-1 p-3' tabIndex={0}>
