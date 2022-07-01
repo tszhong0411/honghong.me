@@ -6,7 +6,6 @@ import '@/style/global.css';
 import '@/style/prism.css';
 import 'react-toastify/dist/ReactToastify.css';
 import 'react-loading-skeleton/dist/skeleton.css';
-import 'tippy.js/dist/tippy.css';
 
 import { isProd } from '@/lib/isProduction';
 
