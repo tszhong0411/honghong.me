@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { FaAngleDown } from 'react-icons/fa';
-import { IoLanguage } from 'react-icons/Io5';
+import { IoLanguageOutline } from 'react-icons/Io5';
 import { useLocalStorage } from 'react-use';
 
 import i18nConfig from '@/lib/i18n';
@@ -28,9 +28,9 @@ export default function LanguageSwitch() {
   };
 
   return (
-    <div className='dropdown dropdown-end'>
+    <div className='dropdown-end dropdown'>
       <div tabIndex={0} className='btn btn-ghost gap-1 normal-case'>
-        <IoLanguage />
+        <IoLanguageOutline />
         <FaAngleDown />
       </div>
       <div className='dropdown-content rounded-t-box rounded-b-box top-px mt-16 w-56 overflow-y-auto bg-base-200 text-base-content shadow-2xl'>
