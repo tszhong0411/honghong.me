@@ -39,22 +39,6 @@
       "}"
     ]
   },
-  "React Functional Component with Props": {
-    "prefix": "rcp",
-    "body": [
-      "import * as React from 'react';\n",
-      "import clsxm from '@/lib/clsxm';\n",
-      "type ${1:${TM_FILENAME_BASE}}Props= {\n",
-      "} & React.ComponentPropsWithoutRef<'div'>\n",
-      "export default function ${1:${TM_FILENAME_BASE}}({className, ...rest}: ${1:${TM_FILENAME_BASE}}Props) {",
-      "  return (",
-      "    <div className={clsxm('', className)} {...rest}>",
-      "      $0",
-      "    </div>",
-      "  )",
-      "}"
-    ]
-  },
   //#endregion  //*======== React ===========
 
   //#region  //*=========== Commons ===========
