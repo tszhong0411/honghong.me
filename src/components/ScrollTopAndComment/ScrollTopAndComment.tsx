@@ -1,34 +1,28 @@
 import cn from 'classnames';
 import { motion } from 'framer-motion';
 import React from 'react';
-import { FaArrowUp, FaRegCommentDots } from 'react-icons/fa';
 import smoothscroll from 'smoothscroll-polyfill';
+import { ArrowUp, BrandHipchat } from 'tabler-icons-react';
 
 export default function ScrollTopAndComment() {
   const [show, setShow] = React.useState(false);
 
   React.useEffect(() => {
-    const el = document.querySelector('.drawer-content');
-
     smoothscroll.polyfill();
     const handlePageScroll = () => {
-      if (el.scrollTop > 50) setShow(true);
+      if (window.scrollY > 50) setShow(true);
       else setShow(false);
     };
 
-    el.addEventListener('scroll', handlePageScroll);
-    return () => el.removeEventListener('scroll', handlePageScroll);
+    window.addEventListener('scroll', handlePageScroll);
+    return () => window.removeEventListener('scroll', handlePageScroll);
   }, []);
 
   const handleScrollTop = () => {
-    document
-      .querySelector('.drawer-content')
-      .scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
   const handleScrollToComment = () => {
-    document
-      .querySelector('.drawer-content')
-      .scroll(0, document.getElementById('comment').offsetTop - (322 + 64)); // iframe height + navbar height
+    window.scroll(0, document.getElementById('comment').offsetTop - (322 + 64)); // iframe height + navbar height
   };
 
   const variants = {
@@ -48,7 +42,7 @@ export default function ScrollTopAndComment() {
         type='button'
         onClick={handleScrollToComment}
       >
-        <FaRegCommentDots size={15} />
+        <BrandHipchat size={15} />
       </button>
       <button
         aria-label='Scroll To Top'
@@ -56,7 +50,7 @@ export default function ScrollTopAndComment() {
         onClick={handleScrollTop}
         className='btn btn-square btn-sm rounded-md p-2'
       >
-        <FaArrowUp size={15} />
+        <ArrowUp size={15} />
       </button>
     </motion.div>
   );

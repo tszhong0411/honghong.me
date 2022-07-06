@@ -3,7 +3,7 @@ import React from 'react';
 import { useModal } from '@/lib/store';
 import { ChildrenType } from '@/lib/types';
 
-import Footer from '@/components/Footer';
+import Footer from '@/components/Layout/Footer';
 import Modal from '@/components/Modal';
 import { Navbar } from '@/components/Navbar';
 

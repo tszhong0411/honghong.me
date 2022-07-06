@@ -1,7 +1,7 @@
 import useTranslation from 'next-translate/useTranslation';
 import React from 'react';
-import { FiClipboard } from 'react-icons/fi';
 import { toast } from 'react-toastify';
+import { Clipboard } from 'tabler-icons-react';
 
 import { ChildrenType } from '@/lib/types';
 
@@ -25,7 +25,7 @@ const Pre = ({ children }: ChildrenType) => {
           toast.success(t('common:copied'));
         }}
       >
-        <FiClipboard size={15} />
+        <Clipboard size={15} />
       </button>
     </div>
   );

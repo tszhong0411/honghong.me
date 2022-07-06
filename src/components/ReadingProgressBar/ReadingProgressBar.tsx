@@ -4,19 +4,17 @@ export default function ReadingProgressBar() {
   const [width, setWidth] = React.useState(0);
 
   const scrollHeight = () => {
-    const el = document.querySelector('.drawer-content'),
+    const el = document.documentElement,
       ScrollTop = el.scrollTop || document.body.scrollTop,
       ScrollHeight = el.scrollHeight || document.body.scrollHeight;
-    const percent = ScrollTop / (ScrollHeight - el.clientHeight);
+    const percent = (ScrollTop / (ScrollHeight - el.clientHeight)) * 100;
     setWidth(percent);
   };
 
   React.useEffect(() => {
-    const el = document.querySelector('.drawer-content');
+    window.addEventListener('scroll', scrollHeight);
 
-    el.addEventListener('scroll', scrollHeight);
-
-    return () => el.removeEventListener('scroll', scrollHeight);
+    return () => window.removeEventListener('scroll', scrollHeight);
   });
 
   return (

@@ -1,11 +1,12 @@
 import Giscus from '@giscus/react';
+import { useMantineColorScheme } from '@mantine/core';
 import { useRouter } from 'next/router';
-import { useTheme } from 'next-themes';
 import React from 'react';
 
 const Comment = () => {
   const { locale } = useRouter();
-  const { theme, resolvedTheme } = useTheme();
+  const { colorScheme } = useMantineColorScheme();
+  const dark = colorScheme === 'dark';
 
   return (
     <div className='my-8'>
@@ -19,7 +20,7 @@ const Comment = () => {
         reactionsEnabled='1'
         emitMetadata='1'
         inputPosition='bottom'
-        theme={theme === 'dark' || resolvedTheme === 'dark' ? 'dark' : 'light'}
+        theme={dark ? 'dark' : 'light'}
         lang={locale}
         loading='eager'
       />

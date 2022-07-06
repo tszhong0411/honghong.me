@@ -1,4 +1,4 @@
-import { useTheme } from 'next-themes';
+import { useMantineColorScheme } from '@mantine/core';
 import React from 'react';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import useSWR from 'swr';
@@ -25,24 +25,15 @@ const ContentLoader = () => {
 };
 
 export default function Tracks() {
-  const { theme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = React.useState(false);
-
   const { data } = useSWR<TopTracks>('/api/top-tracks', fetcher);
+  const { colorScheme } = useMantineColorScheme();
+  const dark = colorScheme === 'dark';
 
-  // When mounted on client, now we can show the UI
-  React.useEffect(() => setMounted(true), []);
-
-  if (!mounted) return null;
-  if (!data && mounted) {
+  if (!data) {
     return (
       <SkeletonTheme
-        baseColor={
-          theme === 'dark' || resolvedTheme === 'dark' ? '#202020' : '#d9d9d9'
-        }
-        highlightColor={
-          theme === 'dark' || resolvedTheme === 'dark' ? '#444444' : '#ecebeb'
-        }
+        baseColor={dark ? '#202020' : '#d9d9d9'}
+        highlightColor={dark ? '#444444' : '#ecebeb'}
       >
         <div className='flex flex-col gap-y-4'>
           <ContentLoader />

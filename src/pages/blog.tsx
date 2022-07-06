@@ -3,7 +3,7 @@ import { InferGetStaticPropsType } from 'next';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 import React from 'react';
-import { GoSearch } from 'react-icons/go';
+import { Search } from 'tabler-icons-react';
 
 import { allCoreContent, sortedBlogPost } from '@/lib/utils/contentlayer';
 
@@ -57,7 +57,7 @@ export default function Blog({
               placeholder={t('common:search')}
               className='block w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-900 dark:bg-gray-800 dark:text-gray-100'
             />
-            <GoSearch
+            <Search
               className='absolute right-3 top-3 h-5 w-5 text-gray-400 dark:text-gray-300'
               size={20}
             />
@@ -70,13 +70,7 @@ export default function Blog({
           {displayPosts?.map((post, index) => {
             const { slug } = post;
             const formattedSlug = slug.replace(`.${router.locale}`, '');
-            return (
-              <PostsList
-                key={formattedSlug}
-                post={post}
-                divider={index !== displayPosts.length - 1}
-              />
-            );
+            return <PostsList key={formattedSlug} post={post} />;
           })}
         </ul>
       </div>

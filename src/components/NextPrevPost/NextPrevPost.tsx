@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import useTranslation from 'next-translate/useTranslation';
 import React from 'react';
-import { CgArrowRight } from 'react-icons/cg';
+import { ArrowRight } from 'tabler-icons-react';
 
 import Link from '@/components/Link';
 
@@ -37,7 +37,7 @@ export default function NextPrevPost({ heading, title, summary, slug }: Props) {
         >
           {t('common:readMore')}
           <motion.div animate={{ x: hover ? 5 : 0 }}>
-            <CgArrowRight size={20} />
+            <ArrowRight size={20} />
           </motion.div>
         </Link>
       </div>

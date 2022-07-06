@@ -1,3 +1,4 @@
+import { Divider, Title } from '@mantine/core';
 import { allBlogs } from 'contentlayer/generated';
 import { InferGetStaticPropsType } from 'next';
 import { useRouter } from 'next/router';
@@ -14,10 +15,17 @@ export const MAX_DISPLAY = 5;
 
 export const getStaticProps = async (locale: { locale: string }) => {
   const sortedPosts = sortedBlogPost(allBlogs);
-  const filteredPosts = sortedPosts.filter(
-    (slug) =>
-      slug.slug.split('.')[slug.slug.split('.').length - 1] === locale.locale
-  );
+  const filteredPosts = sortedPosts
+    .filter(
+      (slug) =>
+        slug.slug.split('.')[slug.slug.split('.').length - 1] === locale.locale
+    )
+    .slice(0, MAX_DISPLAY)
+    .map((post) => {
+      delete post._raw;
+
+      return post;
+    });
 
   return { props: { filteredPosts } };
 };
@@ -31,25 +39,17 @@ export default function Home({
   return (
     <Layout>
       <div>
-        <div className='pt-6 pb-8'>
+        <div>
           <Hero />
-          <h2 className='text-3xl font-medium dark:text-primary-content sm:text-4xl'>
-            {t('common:latestPosts')}
-          </h2>
+          <Title order={2}>{t('common:latestPosts')}</Title>
         </div>
-        <div className='divider'></div>
+        <Divider my='xl' />
         <ul>
-          {filteredPosts.slice(0, MAX_DISPLAY).map((post, index) => {
+          {filteredPosts.slice(0, MAX_DISPLAY).map((post) => {
             const { slug } = post;
             const formattedSlug = slug.replace(`.${locale}`, '');
 
-            return (
-              <PostsList
-                key={formattedSlug}
-                post={post}
-                divider={index !== MAX_DISPLAY - 1}
-              />
-            );
+            return <PostsList key={formattedSlug} post={post} />;
           })}
         </ul>
       </div>

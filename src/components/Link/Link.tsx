@@ -1,44 +1,40 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
+import { Anchor } from '@mantine/core';
 import Link from 'next/link';
 import React from 'react';
-import { HiExternalLink } from 'react-icons/hi';
+import { ExternalLink } from 'tabler-icons-react';
 
-const CustomLink = ({
-  href,
-  children,
-  noIcon = false,
-  ...rest
-}: React.DetailedHTMLProps<
-  React.AnchorHTMLAttributes<HTMLAnchorElement>,
-  HTMLAnchorElement
-> & { noIcon?: boolean }) => {
+import useStyles from './Link.styles';
+
+const CustomLink = ({ href, children, noIcon = false, ...rest }) => {
   const isInternalLink = href && href.startsWith('/');
   const isAnchorLink = href && href.startsWith('#');
+  const { classes } = useStyles();
 
   if (isInternalLink) {
     return (
-      <Link href={href}>
-        <a {...rest}>{children}</a>
+      <Link href={href} passHref>
+        <Anchor {...rest}>{children}</Anchor>
       </Link>
     );
   }
 
   if (isAnchorLink) {
     return (
-      <a href={href} {...rest}>
+      <Anchor href={href} {...rest}>
         {children}
-      </a>
+      </Anchor>
     );
   }
   return (
-    <a target='_blank' rel='noopener noreferrer' href={href} {...rest}>
+    <Anchor target='_blank' rel='noopener noreferrer' href={href} {...rest}>
       {children}
       {!noIcon && (
         <span>
-          <HiExternalLink className='relative top-[-1px] ml-1 inline-block h-4 w-4 align-middle' />
+          <ExternalLink size={18} className={classes.ExternalLink} />
         </span>
       )}
-    </a>
+    </Anchor>
   );
 };
 

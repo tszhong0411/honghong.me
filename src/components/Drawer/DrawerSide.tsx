@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaGithub, FaInstagram } from 'react-icons/fa';
+import { BrandGithub, BrandInstagram } from 'tabler-icons-react';
 
 import Link from '@/components/Link';
 import Logo from '@/components/Logo';
@@ -14,7 +14,7 @@ export default function DrawerSide() {
         <div className='flex flex-row items-center justify-between px-4 py-4'>
           <div>
             <Link className='btn btn-ghost gap-2' href='/'>
-              <Logo className='fill-primary-500' size={30} />
+              <Logo className='fill-primary-500' />
               <span className='block text-2xl'>小康</span>
             </Link>
           </div>
@@ -24,14 +24,14 @@ export default function DrawerSide() {
               className='btn btn-ghost'
               noIcon={true}
             >
-              <FaGithub size={20} />
+              <BrandGithub size={20} />
             </Link>
             <Link
               href='https://www.instagram.com/tszhong0411/'
               className='btn btn-ghost'
               noIcon={true}
             >
-              <FaInstagram size={20} />
+              <BrandInstagram size={20} />
             </Link>
           </div>
         </div>

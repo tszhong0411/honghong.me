@@ -1,10 +1,10 @@
+import { useMantineColorScheme } from '@mantine/core';
 import cn from 'classnames';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { signIn, useSession } from 'next-auth/react';
+import { signIn } from 'next-auth/react';
 import { signOut } from 'next-auth/react';
-import { useTheme } from 'next-themes';
 import useTranslation from 'next-translate/useTranslation';
 import React from 'react';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
@@ -98,17 +98,16 @@ function GuestbookEntry({ entry, user }) {
   );
 }
 
-export default function Guestbook({ fallbackData }) {
-  const [mounted, setMounted] = React.useState(false);
+export default function Guestbook({ fallbackData, session }) {
   const [loading, setLoading] = React.useState(false);
   const inputEl = React.useRef(null);
-  const { theme, resolvedTheme } = useTheme();
-  const { data: session } = useSession();
   const { mutate } = useSWRConfig();
   const { data: entries } = useSWR('/api/guestbook', fetcher, {
     fallbackData,
   });
   const { t } = useTranslation();
+  const { colorScheme } = useMantineColorScheme();
+  const dark = colorScheme === 'dark';
 
   const leaveEntry = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -139,11 +138,6 @@ export default function Guestbook({ fallbackData }) {
       toast.error(t('common:Guestbook_error'));
     }
   };
-
-  // When mounted on client, now we can show the UI
-  React.useEffect(() => setMounted(true), []);
-
-  if (!mounted) return null;
 
   return (
     <>
@@ -221,16 +215,8 @@ export default function Guestbook({ fallbackData }) {
       <div className='mt-4 space-y-6'>
         {loading && (
           <SkeletonTheme
-            baseColor={
-              theme === 'dark' || resolvedTheme === 'dark'
-                ? '#202020'
-                : '#d9d9d9'
-            }
-            highlightColor={
-              theme === 'dark' || resolvedTheme === 'dark'
-                ? '#444444'
-                : '#ecebeb'
-            }
+            baseColor={dark ? '#202020' : '#d9d9d9'}
+            highlightColor={dark ? '#444444' : '#ecebeb'}
           >
             <div className='flex flex-col gap-y-2'>
               <Skeleton width={150} height={20} />
