@@ -1,12 +1,10 @@
-import { unstable_getServerSession } from 'next-auth';
+import { getSession } from 'next-auth/react';
 import useTranslation from 'next-translate/useTranslation';
 
 import prisma from '@/lib/prisma';
 
 import Guestbook from '@/components/Guestbook';
 import Layout from '@/components/Layout';
-
-import { authOptions } from '@/pages/api/auth/[...nextauth]';
 
 export default function GuestbookPage({ fallbackData, session }) {
   const { t } = useTranslation();
@@ -28,11 +26,7 @@ export default function GuestbookPage({ fallbackData, session }) {
 }
 
 export async function getServerSideProps(context) {
-  const session = await unstable_getServerSession(
-    context.req,
-    context.res,
-    authOptions
-  );
+  const session = await getSession(context);
 
   const entries = await prisma.guestbook.findMany({
     orderBy: {

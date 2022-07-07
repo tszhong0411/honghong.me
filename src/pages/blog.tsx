@@ -1,5 +1,4 @@
 import { allBlogs } from 'contentlayer/generated';
-import { InferGetStaticPropsType } from 'next';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 import React from 'react';
@@ -12,7 +11,7 @@ import PostsList from '@/components/PostsList';
 
 export const POSTS_PER_PAGE = 10;
 
-export const getStaticProps = async (locale: { locale: string }) => {
+export const getServerSideProps = async (locale: { locale: string }) => {
   const sortedPosts = sortedBlogPost(allBlogs);
   const posts = allCoreContent(sortedPosts);
   const filteredPosts = posts.filter(
@@ -27,9 +26,7 @@ export const getStaticProps = async (locale: { locale: string }) => {
   };
 };
 
-export default function Blog({
-  filteredPosts,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Blog({ filteredPosts }) {
   const { t } = useTranslation();
   const [searchValue, setSearchValue] = React.useState('');
   const filteredBlogPosts = filteredPosts?.filter((post) => {

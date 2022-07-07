@@ -5,7 +5,7 @@ import {
   MantineProvider,
 } from '@mantine/core';
 import { useHotkeys } from '@mantine/hooks';
-import { getCookie, setCookie } from 'cookies-next';
+import { getCookie, setCookies } from 'cookies-next';
 import { GetServerSidePropsContext } from 'next';
 import type { AppProps } from 'next/app';
 import React from 'react';
@@ -29,8 +29,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
     const nextColorScheme =
       value || (colorScheme === 'dark' ? 'light' : 'dark');
     setColorScheme(nextColorScheme);
-    // when color scheme is updated save it to cookie
-    setCookie('mantine-color-scheme', nextColorScheme, {
+    setCookies('mantine-color-scheme', nextColorScheme, {
       maxAge: 60 * 60 * 24 * 30,
     });
   };
@@ -52,13 +51,10 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
           primaryColor: 'red',
           breakpoints: {
             xs: 375,
-            s: 475,
             sm: 640,
             md: 768,
             lg: 1024,
-            '2lg': 1190,
             xl: 1280,
-            '2xl': 1536,
           },
         }}
       >
@@ -78,6 +74,6 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   );
 }
 
-App.getInitialProps = ({ ctx }: { ctx: GetServerSidePropsContext }) => ({
+App.getInitialProps = async ({ ctx }: { ctx: GetServerSidePropsContext }) => ({
   colorScheme: getCookie('mantine-color-scheme', ctx) || 'light',
 });

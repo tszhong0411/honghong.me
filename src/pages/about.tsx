@@ -26,7 +26,7 @@ export default function About({ body: { code } }: OtherPage) {
   );
 }
 
-export async function getStaticProps(locale: { locale: string }) {
+export async function getServerSideProps(locale: { locale: string }) {
   const uses = allOtherPages.find(
     (page) => page.slug === `about.${locale.locale}`
   );

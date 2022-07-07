@@ -1,6 +1,5 @@
 import { Divider, Title } from '@mantine/core';
 import { allBlogs } from 'contentlayer/generated';
-import { InferGetStaticPropsType } from 'next';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 
@@ -13,26 +12,7 @@ import PostsList from '@/components/PostsList/PostsList';
 
 export const MAX_DISPLAY = 5;
 
-export const getStaticProps = async (locale: { locale: string }) => {
-  const sortedPosts = sortedBlogPost(allBlogs);
-  const filteredPosts = sortedPosts
-    .filter(
-      (slug) =>
-        slug.slug.split('.')[slug.slug.split('.').length - 1] === locale.locale
-    )
-    .slice(0, MAX_DISPLAY)
-    .map((post) => {
-      delete post._raw;
-
-      return post;
-    });
-
-  return { props: { filteredPosts } };
-};
-
-export default function Home({
-  filteredPosts,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Home({ filteredPosts }) {
   const { t } = useTranslation();
   const { locale } = useRouter();
 
@@ -67,3 +47,20 @@ export default function Home({
     </Layout>
   );
 }
+
+export const getServerSideProps = async (locale: { locale: string }) => {
+  const sortedPosts = sortedBlogPost(allBlogs);
+  const filteredPosts = sortedPosts
+    .filter(
+      (slug) =>
+        slug.slug.split('.')[slug.slug.split('.').length - 1] === locale.locale
+    )
+    .slice(0, MAX_DISPLAY)
+    .map((post) => {
+      delete post._raw;
+
+      return post;
+    });
+
+  return { props: { filteredPosts } };
+};
