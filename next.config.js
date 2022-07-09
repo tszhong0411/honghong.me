@@ -61,8 +61,9 @@ module.exports = nextTranslate(
         return [
           {
             source: '/youtube',
-            detination:
+            destination:
               'https://www.youtube.com/channel/UC2hMWOaOlk9vrkvFVaGmn0Q',
+            permanent: false,
           },
         ];
       },
