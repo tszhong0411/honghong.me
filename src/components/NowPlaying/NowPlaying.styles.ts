@@ -10,7 +10,7 @@ export default createStyles((theme) => ({
     alignItems: 'center',
     gap: 4,
 
-    [`@media (min-width: ${theme.breakpoints.sm}px)`]: {
+    [theme.fn.largerThan('sm')]: {
       flexDirection: 'row',
       gap: 8,
     },
@@ -32,13 +32,13 @@ export default createStyles((theme) => ({
     gap: 4,
     fontSize: 12,
 
-    [`@media (min-width: ${theme.breakpoints.sm}px)`]: {
+    [theme.fn.largerThan('sm')]: {
       flexDirection: 'row',
     },
     '& > span': {
       margin: '0 8px',
       display: 'none',
-      [`@media (min-width: ${theme.breakpoints.sm}px)`]: {
+      [theme.fn.largerThan('sm')]: {
         display: 'block',
       },
     },

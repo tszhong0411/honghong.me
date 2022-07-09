@@ -1,7 +1,8 @@
-import cn from 'classnames';
+import { Box } from '@mantine/core';
 
 import Link from '@/components/Link';
 
+import useStyles from './TOCLink.styles';
 import { TOCLinkProps } from './types';
 
 export const TOCLink = ({
@@ -11,20 +12,20 @@ export const TOCLink = ({
   text,
   activeSection,
 }: TOCLinkProps) => {
+  const { classes, cx } = useStyles();
+
   return (
-    <Link
+    <Box
+      component={Link}
       href={`#${id}`}
-      id={`link-${id}`}
-      className={cn(
-        'text-sm font-medium leading-[1.5] tracking-[0.3px] hover:text-gray-700 focus:outline-none dark:hover:text-gray-200',
-        'focus-visible:text-gray-700 dark:focus-visible:text-gray-200',
-        activeSection === id
-          ? 'text-gray-900 dark:text-gray-100'
-          : 'text-gray-400 dark:text-gray-500'
-      )}
-      style={{ marginLeft: (level - minLevel) * 16 }}
+      className={cx(classes.link, {
+        [classes.linkActive]: activeSection === id,
+      })}
+      sx={(theme) => ({
+        paddingLeft: (level - minLevel + 1) * theme.spacing.md,
+      })}
     >
       {text}
-    </Link>
+    </Box>
   );
 };

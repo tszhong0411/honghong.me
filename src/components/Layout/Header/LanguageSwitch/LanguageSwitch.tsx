@@ -1,16 +1,16 @@
 import { ActionIcon, Image, Menu } from '@mantine/core';
+import { useLocalStorage } from '@mantine/hooks';
 import { default as emojiUnicode } from 'emoji-unicode';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 import React from 'react';
-import { useLocalStorage } from 'react-use';
 import { ChevronDown, Language } from 'tabler-icons-react';
 
 import i18nConfig from '@/lib/i18n';
 
 export default function LanguageSwitch() {
   const router = useRouter();
-  const [locale, setLocale] = useLocalStorage('locale');
+  const [locale, setLocale] = useLocalStorage({ key: 'locale' });
   const { locales, languages, defaultLocale } = i18nConfig;
   const { t } = useTranslation();
 

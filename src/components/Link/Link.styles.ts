@@ -1,7 +1,7 @@
 import { createStyles } from '@mantine/core';
 
 export default createStyles(() => ({
-  ExternalLink: {
+  externalLink: {
     position: 'relative',
     top: -1,
     marginLeft: 2,

@@ -1,4 +1,4 @@
-import { Divider, Title } from '@mantine/core';
+import { Box, Divider, Title, useMantineTheme } from '@mantine/core';
 import { allBlogs } from 'contentlayer/generated';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
@@ -15,6 +15,8 @@ export const MAX_DISPLAY = 5;
 export default function Home({ filteredPosts }) {
   const { t } = useTranslation();
   const { locale } = useRouter();
+  const { colorScheme } = useMantineTheme();
+  const dark = colorScheme === 'dark';
 
   return (
     <Layout>
@@ -24,7 +26,7 @@ export default function Home({ filteredPosts }) {
           <Title order={2}>{t('common:latestPosts')}</Title>
         </div>
         <Divider my='xl' />
-        <ul>
+        <ul style={{ listStyle: 'none' }}>
           {filteredPosts.slice(0, MAX_DISPLAY).map((post) => {
             const { slug } = post;
             const formattedSlug = slug.replace(`.${locale}`, '');
@@ -33,17 +35,17 @@ export default function Home({ filteredPosts }) {
           })}
         </ul>
       </div>
-      {filteredPosts.length > MAX_DISPLAY && (
-        <div className='flex justify-end'>
-          <Link
-            href='/blog'
-            aria-label='all posts'
-            className='link link-hover dark:text-primary-content'
-          >
-            {t('common:allPosts')} &rarr;
-          </Link>
-        </div>
-      )}
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <Link
+          href='/blog'
+          aria-label='all posts'
+          sx={{
+            color: dark ? 'white' : 'black',
+          }}
+        >
+          {t('common:allPosts')} &rarr;
+        </Link>
+      </Box>
     </Layout>
   );
 }

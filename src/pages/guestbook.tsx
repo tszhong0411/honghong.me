@@ -5,6 +5,7 @@ import prisma from '@/lib/prisma';
 
 import Guestbook from '@/components/Guestbook';
 import Layout from '@/components/Layout';
+import PageLayout from '@/components/Layout/PageLayout';
 
 export default function GuestbookPage({ fallbackData, session }) {
   const { t } = useTranslation();
@@ -14,13 +15,12 @@ export default function GuestbookPage({ fallbackData, session }) {
       templateTitle='Guestbook'
       description={t('common:SEO_guestbookDesc')}
     >
-      <div className='mx-auto flex flex-col justify-center'>
-        <h1 className='mb-6 text-3xl font-bold dark:text-primary-content md:text-5xl'>
-          Guestbook
-        </h1>
-        <p className='mb-12'>{t('common:Guestbook_description')}</p>
+      <PageLayout
+        title='Guestbook'
+        description={t('common:Guestbook_description')}
+      >
         <Guestbook fallbackData={fallbackData} session={session} />
-      </div>
+      </PageLayout>
     </Layout>
   );
 }

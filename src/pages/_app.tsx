@@ -5,6 +5,8 @@ import {
   MantineProvider,
 } from '@mantine/core';
 import { useHotkeys } from '@mantine/hooks';
+import { ModalsProvider } from '@mantine/modals';
+import { NotificationsProvider } from '@mantine/notifications';
 import { getCookie, setCookies } from 'cookies-next';
 import { GetServerSidePropsContext } from 'next';
 import type { AppProps } from 'next/app';
@@ -12,8 +14,6 @@ import React from 'react';
 
 import '@/style/global.css';
 import '@/style/prism.css';
-import 'react-toastify/dist/ReactToastify.css';
-import 'react-loading-skeleton/dist/skeleton.css';
 
 import { isProd } from '@/lib/isProduction';
 
@@ -58,17 +58,44 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
           },
         }}
       >
-        <Global
-          styles={() => ({
-            'ol, ul, menu': {
-              listStyle: 'none',
-              margin: 0,
-              padding: 0,
-            },
-          })}
-        />
-        {isProd && <Umami />}
-        <Component {...pageProps} />
+        <ModalsProvider>
+          <NotificationsProvider>
+            <Global
+              styles={() => ({
+                html: {
+                  scrollBehavior: 'smooth',
+                },
+                'ol, ul, menu': {
+                  listStyle: 'none',
+                  margin: 0,
+                  padding: 0,
+                },
+                '::selection': {
+                  background: 'rgb(249, 6, 6, 0.05)',
+                  color: '#f90606',
+                },
+                '::-webkit-scrollbar': {
+                  width: 7,
+                  height: 5,
+                },
+                '::-webkit-scrollbar-thumb': {
+                  background: '#ef4444',
+                  transition: '0.25s',
+                  borderRadius: 2,
+                },
+                '::-webkit-scrollbar-track': {
+                  background: '0 0',
+                },
+                // https://stackoverflow.com/questions/61083813/how-to-avoid-internal-autofill-selected-style-to-be-applied
+                'input:-webkit-autofill, input:-webkit-autofill:focus': {
+                  transition: 'background-color 600000s 0s, color 600000s 0s',
+                },
+              })}
+            />
+            {isProd && <Umami />}
+            <Component {...pageProps} />
+          </NotificationsProvider>
+        </ModalsProvider>
       </MantineProvider>
     </ColorSchemeProvider>
   );

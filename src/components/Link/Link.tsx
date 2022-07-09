@@ -31,7 +31,7 @@ const CustomLink = ({ href, children, noIcon = false, ...rest }) => {
       {children}
       {!noIcon && (
         <span>
-          <ExternalLink size={18} className={classes.ExternalLink} />
+          <ExternalLink size={18} className={classes.externalLink} />
         </span>
       )}
     </Anchor>

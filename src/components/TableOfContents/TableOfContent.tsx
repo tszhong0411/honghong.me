@@ -1,10 +1,12 @@
-// * Source: https://github.com/theodorusclarence/theodorusclarence.com/blob/main/src/components/content/TableOfContents.tsx
-
+import { Group, Text } from '@mantine/core';
 import { motion } from 'framer-motion';
+import useTranslation from 'next-translate/useTranslation';
 import React from 'react';
+import { ListSearch } from 'tabler-icons-react';
 
 import ReadingProgressBar from '@/components/ReadingProgressBar';
 
+import useStyles from './TableOfContent.styles';
 import { TableOfContentsProps } from './types';
 import { TOCLink } from '../Link';
 
@@ -15,6 +17,8 @@ export default function TableOfContents({
 }: TableOfContentsProps) {
   //#region  //*=========== Scroll into view ===========
   const lastPosition = React.useRef<number>(0);
+  const { classes } = useStyles();
+  const { t } = useTranslation();
 
   React.useEffect(() => {
     const container = document.getElementById('toc-container');
@@ -50,19 +54,20 @@ export default function TableOfContents({
 
   return (
     <motion.div
-      className='fixed top-[266px] left-[30px] flex'
-      initial={{ x: '-200', opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
+      className={classes.wrapper}
+      initial={{ x: '-200', opacity: 0, translateY: '-50%' }}
+      animate={{ x: 0, opacity: 1, translateY: '-50%' }}
       transition={{
         duration: 0.8,
       }}
     >
       <ReadingProgressBar />
-      <div
-        id='toc-container'
-        className='mb-[1.45rem] ml-[1.45rem] hidden max-w-[200px] flex-col 2xl:flex'
-      >
-        <div className='mt-4 flex flex-col space-y-2 text-sm'>
+      <div id='toc-container' className={classes.toc}>
+        <Group mb='md'>
+          <ListSearch size={18} />
+          <Text>{t('common:toc')}</Text>
+        </Group>
+        <div>
           {toc &&
             toc.map(({ id, level, text }) => (
               <TOCLink

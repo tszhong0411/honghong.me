@@ -1,13 +1,23 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { allBlogs } from 'contentlayer/generated';
-import { useMDXComponent } from 'next-contentlayer/hooks';
 
 import { coreContent, sortedBlogPost } from '@/lib/utils/contentlayer';
 
-import components from '@/components/MDXComponents';
+import { MDXComponent } from '@/components/MDXComponents/MDXComponents';
 
 import BlogLayout from '@/layouts/blog';
 
+export default function Blog({ post, prev, next }) {
+  return (
+    <>
+      {post && (
+        <BlogLayout content={post} prev={prev} next={next}>
+          <MDXComponent code={post.body.code} />
+        </BlogLayout>
+      )}
+    </>
+  );
+}
 export const getServerSideProps = async ({ params, locale }) => {
   const slug = (params.slug as string[]).join('.');
   const sortedPosts = sortedBlogPost(
@@ -27,23 +37,9 @@ export const getServerSideProps = async ({ params, locale }) => {
 
   return {
     props: {
-      post,
+      post: post || null,
       prev,
       next,
     },
   };
 };
-
-export default function Blog({ post, prev, next }) {
-  const Component = useMDXComponent(post.body.code);
-
-  return (
-    <>
-      {post && (
-        <BlogLayout content={post} prev={prev} next={next}>
-          <Component components={components} />
-        </BlogLayout>
-      )}
-    </>
-  );
-}

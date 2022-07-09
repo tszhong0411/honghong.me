@@ -57,7 +57,7 @@ export default function PostsList({ post }: PostsListProps) {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              [`@media (min-width: ${theme.breakpoints.md}px)`]: {
+              [theme.fn.largerThan('md')]: {
                 flexDirection: 'row',
               },
             })}
@@ -66,7 +66,7 @@ export default function PostsList({ post }: PostsListProps) {
               my={32}
               sx={(theme) => ({
                 width: '100%',
-                [`@media (min-width: ${theme.breakpoints.sm}px)`]: {
+                [theme.fn.largerThan('sm')]: {
                   margin: 0,
                   maxWidth: 384,
                 },
@@ -91,10 +91,10 @@ export default function PostsList({ post }: PostsListProps) {
                 flex: '1 1 auto',
                 flexDirection: 'column',
                 gap: 8,
-                [`@media (min-width: ${theme.breakpoints.sm}px)`]: {
+                [theme.fn.largerThan('sm')]: {
                   maxWidth: 384,
                 },
-                [`@media (min-width: ${theme.breakpoints.md}px)`]: {
+                [theme.fn.largerThan('md')]: {
                   maxWidth: 'none',
                   padding: 32,
                 },

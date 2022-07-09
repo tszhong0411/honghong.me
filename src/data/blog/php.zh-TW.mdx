@@ -15,8 +15,8 @@ PHP 的副檔名是 `.php` ，如 `index.php`。上面說到 `PHP` 能夠直接�
 
 當瀏覽器由上至下讀到 `<?php` 時，並會執行 `PHP`，而結尾是 `?>`。如:
 
-```php
-<!DOCTYPE html>
+<Pre language='php'>
+  {`<!DOCTYPE html>
 <html>
     <head>
         <title>PHP</title>
@@ -27,70 +27,71 @@ PHP 的副檔名是 `.php` ，如 `index.php`。上面說到 `PHP` 能夠直接�
         ?>
     </body>
 </html>
-```
+`}
+</Pre>
 
 ## 注意事項
 
 在 `PHP` 中，`PHP` 指令完成後沒有其他 `HTML` 建議不要使用 `?>` 結束。如果關閉了會產生麻煩。
 
-```php
-<?php
+<Pre language='php'>
+  {`<?php
     echo "PHP 結束後沒有 HTML";
-
-```
+`}
+</Pre>
 
 ## 註解的方式
 
 幾乎大部分的網頁程式語言都有註解的功能，而 `PHP` 的註解 **單行** 方式是 `//` 和 **多行** 方式是 `/* Some code here */`。
 
-```php
-<?php
+<Pre language='php'>
+  {`<?php
     echo = "這是單行註解"; //我是單行註解
     echo = "這是多行註解";
     /*
         這是多行註解
         第二行
     */
-?>
-```
+?>`}
+</Pre>
 
 ## Echo
 
 `PHP` 裏最簡單的指令就是 `Echo`，`Echo` 的內容必須是用 雙引號 `""` 或 單引號 `''`。每段指令必須使用分號結束 `;`。
 
-```php
-<?php
+<Pre language='php'>
+  {`<?php
     echo "這是使用雙引號的效果。";
     echo '這是使用單引號的效果。';
-?>
-```
+?>`}
+</Pre>
 
 `Echo` 中的內容也可以使用 `HTML` 語法。例如我這裡使用了 `<br/>`，這樣便可以斷行。
 
-```php
-<?php
+<Pre language='php'>
+  {`<?php
     echo "這是第一句<br/>";
     echo "這是第二句";
-    echo "<a href=\"https://example.com\">這是一個鏈接</a>";
-?>
-```
+    echo "<a href=\\"https://example.com\\">這是一個鏈接</a>";
+?>`}
+</Pre>
 
 ## 變數
 
 我們可以給一個變數賦予一段指令，方便我們編寫 `PHP`，跟 `Javascript` 差不多。我們會使用 Dollar sign `$`
 
-```php
-<?php
+<Pre language='php'>
+  {`<?php
     $value = "我是指令";
-?>
-```
+?>`}
+</Pre>
 
 我們命名變數時，有一些規則要遵守。
 
-|   示例   | 描述     | 規則 |
-| :------: | -------- | ---- |
-|  $value  | 英文小寫 | ✅   |
-|  $Value  | 英文大寫 | ✅   |
+| 示例     | 描述     | 規則 |
+| -------- | -------- | ---- |
+| $value   | 英文小寫 | ✅   |
+| $Value   | 英文大寫 | ✅   |
 | $\_value | 下劃線   | ✅   |
 | $1value  | 數字開頭 | ❌   |
 
@@ -102,38 +103,38 @@ PHP 的副檔名是 `.php` ，如 `index.php`。上面說到 `PHP` 能夠直接�
 
 當變數名和函數名稱是由二個或多個單字連結在一起，而構成的唯一識別字時，利用「駝峰式大小寫」來表示，可以增加變數和函數的可讀性。因為我們不能在變數中有 `空格`。
 
-```php
-<?php
+<Pre language='php'>
+  {`<?php
     $onePlusOneAnswer = 1 + 1;
     echo $onePlusOneAnswer;
-?>
-```
+?>`}
+</Pre>
 
 ### 蛇形命名法
 
 Snake case（如 snake_case）是指一種寫作風格，其中每個空格都用下劃線（ \_ ）字符替換，並且每個單詞的首字母都用小寫字母書寫。
 
-```php
-<?php
+<Pre language='php'>
+  {`<?php
     $one_plus_one_answer = 1 + 1;
     echo $one_plus_one_answer;
-?>
-```
+?>`}
+</Pre>
 
 ## 字符串運算符
 
 有兩個字符串（string）運算符。第一個是連接運算符（"."），它返回其左右參數連接後的字符串。第二個是連接賦值運算符（".="），它將右邊參數附加到左邊的參數之後。
 
-```php
-<?php
+<Pre language='php'>
+  {`<?php
     echo "This" . " " . "is" . " " . "String" . " " . "operators" . ".";
-?>
-```
+?>`}
+</Pre>
 
 ## 算術運算子
 
-```php
-<?php
+<Pre language='php'>
+  {`<?php
     $value0 = 1.5 // 浮點數
     $value1 = 1 + 1 // 加法
     $value2 = 1 - 1 // 減數
@@ -141,8 +142,8 @@ Snake case（如 snake_case）是指一種寫作風格，其中每個空格都�
     $value4 = 1 / 1 // 除數
     $value5 = 12 / 5 // 除數 | 除不盡會變成 float，這跟其他程式語言不太一樣，php 會把餘數算進去
     $value6 = 3 % 5 // 取餘數
-?>
-```
+?>`}
+</Pre>
 
 ## 參考資料
 

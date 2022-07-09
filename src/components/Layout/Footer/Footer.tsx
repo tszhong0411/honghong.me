@@ -27,7 +27,7 @@ export default function Footer() {
             gap: 16,
             width: '100%',
             gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
-            [`@media (min-width: ${theme.breakpoints.sm}px)`]: {
+            [theme.fn.largerThan('sm')]: {
               gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
             },
           })}

@@ -3,7 +3,6 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 import React from 'react';
-import { ToastContainer } from 'react-toastify';
 
 import { Favicons } from '@/components/Layout/Favicons';
 import Footer from '@/components/Layout/Footer';
@@ -148,17 +147,17 @@ export default function Layout(props: SeoProps) {
         navbarOpened={navbarOpened}
         toggleNavbar={() => setNavbarState((p) => !p)}
       />
-      <Container sx={{ padding: '48px 32px' }}>{props.children}</Container>
+      <Container
+        sx={(theme) => ({
+          padding: '24px 16px',
+          [theme.fn.largerThan('sm')]: {
+            padding: '48px 32px',
+          },
+        })}
+      >
+        {props.children}
+      </Container>
       <Footer />
-      <ToastContainer
-        position='bottom-right'
-        autoClose={5000}
-        hideProgressBar={false}
-        closeOnClick
-        pauseOnHover
-        draggable
-        theme='dark'
-      />
     </>
   );
 }

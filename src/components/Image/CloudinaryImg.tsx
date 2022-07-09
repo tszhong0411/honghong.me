@@ -32,7 +32,7 @@ export const CloudinaryImg = ({
   });
 
   return (
-    <>
+    <figure>
       <Image
         width={width}
         height={height}
@@ -55,6 +55,6 @@ export const CloudinaryImg = ({
       {isOpen && (
         <Lightbox mainSrc={url} onCloseRequest={() => setIsOpen(false)} />
       )}
-    </>
+    </figure>
   );
 };

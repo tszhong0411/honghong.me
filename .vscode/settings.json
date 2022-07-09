@@ -5,6 +5,5 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": true
   },
-  "headwind.runOnSave": false,
   "typescript.preferences.importModuleSpecifier": "non-relative"
 }

@@ -12,7 +12,7 @@ export default createStyles((theme) => ({
   logoWrapper: {
     display: 'none',
 
-    [`@media (min-width: ${theme.breakpoints.sm}px)`]: {
+    [theme.fn.largerThan('sm')]: {
       display: 'block',
     },
   },

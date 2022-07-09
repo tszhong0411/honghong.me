@@ -1,11 +1,24 @@
+import { Title, useMantineTheme } from '@mantine/core';
 import React from 'react';
 
 import { ChildrenType } from '@/lib/types';
 
 export default function PageTitle({ children }: ChildrenType) {
+  const { colorScheme } = useMantineTheme();
+  const dark = colorScheme === 'dark';
+
   return (
-    <h1 className='mb-6 text-center text-4xl font-bold dark:text-primary-content'>
+    <Title
+      order={1}
+      mb={24}
+      sx={{
+        textAlign: 'center',
+        fontSize: 36,
+        fontWeight: 700,
+        color: dark ? 'white' : 'black',
+      }}
+    >
       {children}
-    </h1>
+    </Title>
   );
 }

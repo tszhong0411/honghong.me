@@ -27,6 +27,17 @@ module.exports = nextTranslate(
           'cdnjs.cloudflare.com',
         ],
       },
+
+      experimental: {
+        images: {
+          remotePatterns: [
+            {
+              protocol: 'https',
+              hostname: '**.googleusercontent.com',
+            },
+          ],
+        },
+      },
       // SVGR
       webpack(config) {
         config.module.rules.push({
@@ -44,6 +55,16 @@ module.exports = nextTranslate(
         });
 
         return config;
+      },
+
+      async redirects() {
+        return [
+          {
+            source: '/youtube',
+            detination:
+              'https://www.youtube.com/channel/UC2hMWOaOlk9vrkvFVaGmn0Q',
+          },
+        ];
       },
     })
   )

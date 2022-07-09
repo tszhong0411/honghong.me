@@ -1,5 +1,5 @@
 import Giscus from '@giscus/react';
-import { useMantineColorScheme } from '@mantine/core';
+import { Box, useMantineColorScheme } from '@mantine/core';
 import { useRouter } from 'next/router';
 import React from 'react';
 
@@ -9,9 +9,8 @@ const Comment = () => {
   const dark = colorScheme === 'dark';
 
   return (
-    <div className='my-8'>
+    <Box my={32} id='comment'>
       <Giscus
-        id='comment'
         repo='tszhong0411/honghong.me'
         repoId='R_kgDOGxHFnA'
         category='Blog Comments'
@@ -24,7 +23,7 @@ const Comment = () => {
         lang={locale}
         loading='eager'
       />
-    </div>
+    </Box>
   );
 };
 

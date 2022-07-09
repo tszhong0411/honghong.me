@@ -1,7 +1,8 @@
+import { Kbd } from '@mantine/core';
 import React from 'react';
 
 import { ChildrenType } from '@/lib/types';
 
-export default function Kbd({ children }: ChildrenType) {
-  return <kbd className='kbd kbd-md'>{children}</kbd>;
+export default function CustomKbd({ children }: ChildrenType) {
+  return <Kbd>{children}</Kbd>;
 }

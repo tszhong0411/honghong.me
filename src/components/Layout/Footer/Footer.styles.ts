@@ -1,11 +1,14 @@
 import { createStyles } from '@mantine/core';
 
-export default createStyles(() => ({
+export default createStyles((theme) => ({
   footer: {
     margin: '32px auto 0 auto',
     width: '100%',
     maxWidth: 960,
-    padding: '0 32px',
+    padding: '0 16px',
+    [theme.fn.largerThan('sm')]: {
+      padding: '0 32px',
+    },
   },
 
   footerInner: {
