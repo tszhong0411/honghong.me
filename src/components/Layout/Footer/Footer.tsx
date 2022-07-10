@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 
 import { isProd } from '@/lib/isProduction';
 
-import { FooterLinks } from '@/components/Layout/Footer/FooterLinks';
+import { links } from '@/components/Layout/Footer/links';
 import Link from '@/components/Link';
 import NowPlaying from '@/components/NowPlaying';
 
@@ -32,7 +32,7 @@ export default function Footer() {
             },
           })}
         >
-          {FooterLinks.middleLinks.map((item, index) => {
+          {links.middleLinks.map((item, index) => {
             return (
               <Box
                 key={index}
