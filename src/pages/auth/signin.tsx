@@ -1,13 +1,7 @@
-import {
-  Button,
-  ButtonProps,
-  Divider,
-  Group,
-  Paper,
-  Text,
-} from '@mantine/core';
+import { Button, ButtonProps, Group, Paper, Text } from '@mantine/core';
 import { useRouter } from 'next/router';
 import { signIn } from 'next-auth/react';
+import useTranslation from 'next-translate/useTranslation';
 import { BrandGithub, BrandGoogle } from 'tabler-icons-react';
 
 import Layout from '@/components/Layout';
@@ -43,10 +37,15 @@ const GoogleButton = (props: ButtonProps<'button'>) => {
 
 export default function Signin() {
   const router = useRouter();
+  const { t } = useTranslation();
 
   const signInHandler = (oauth: string) => {
     const callbackUrl = router.query.callbackUrl;
 
+    /*
+       檢查 query.callbackUrl 是否為 array，最後返回 string
+       (類型 'string | string[]' 不可指派給類型 'string')
+    */
     if (Array.isArray(callbackUrl)) {
       return signIn(oauth, { callbackUrl: callbackUrl[0] });
     }
@@ -62,11 +61,11 @@ export default function Signin() {
         withBorder
         sx={{
           maxWidth: 420,
-          margin: '0 auto',
+          margin: '120px auto',
         }}
       >
         <Text size='lg' weight={500}>
-          Welcome to honghong.me, login with
+          {t('common:Signin_title')}
         </Text>
 
         <Group grow mb='md' mt='md'>
@@ -78,7 +77,8 @@ export default function Signin() {
           </GoogleButton>
         </Group>
 
-        <Divider
+        {/* TODO: add more login method  */}
+        {/* <Divider
           label='Or continue with email'
           labelPosition='center'
           my='lg'
@@ -92,7 +92,7 @@ export default function Signin() {
           <Group position='apart' mt='xl'>
             <Button type='submit'>Login</Button>
           </Group>
-        </form>
+        </form> */}
       </Paper>
     </Layout>
   );
