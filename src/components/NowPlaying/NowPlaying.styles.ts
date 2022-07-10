@@ -5,7 +5,6 @@ export default createStyles((theme) => ({
     marginBottom: 32,
     display: 'flex',
     width: '100%',
-    flexDirection: 'row-reverse',
     flexWrap: 'nowrap',
     alignItems: 'center',
     gap: 4,
@@ -31,6 +30,9 @@ export default createStyles((theme) => ({
     maxWidth: '100%',
     gap: 4,
     fontSize: 12,
+    '& p': {
+      margin: 0,
+    },
 
     [theme.fn.largerThan('sm')]: {
       flexDirection: 'row',
