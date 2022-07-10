@@ -16,10 +16,9 @@ export const defaultMeta = {
   type: 'website',
 };
 
-export default function Layout(props: SeoProps) {
+const Layout = (props: SeoProps) => {
   const { t } = useTranslation();
   const router = useRouter();
-  const [navbarOpened, setNavbarState] = React.useState(false);
   const meta = {
     ...defaultMeta,
     ...props,
@@ -143,10 +142,7 @@ export default function Layout(props: SeoProps) {
         />
         <meta name='theme-color' content='#ffffff' />
       </Head>
-      <Header
-        navbarOpened={navbarOpened}
-        toggleNavbar={() => setNavbarState((p) => !p)}
-      />
+      <Header />
       <Container
         sx={(theme) => ({
           padding: '24px 16px',
@@ -160,4 +156,6 @@ export default function Layout(props: SeoProps) {
       <Footer />
     </>
   );
-}
+};
+
+export default Layout;
