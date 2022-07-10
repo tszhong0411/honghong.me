@@ -37,7 +37,7 @@
   "Guestbook_placeholder": "你的留言 ...",
   "Guestbook_message": "你的留言",
   "Guestbook_sign": "簽到",
-  "Guestbook_tip": "您的資料僅用於顯示您的姓名和通過電子郵件回覆",
+  "Guestbook_tip": "你的資料僅用於顯示你的姓名和頭像",
   "Guestbook_signOut": "登出",
   "Guestbook_deleteModal_title": "刪除 1 條評論",
   "Guestbook_deleteModal_message": "這個評論將會被刪除。",
@@ -47,5 +47,6 @@
   "404_button": "帶我回到主頁",
   "500_title": "剛剛發生了不好的事情...",
   "500_description": "我們的服務器無法處理您的請求。別擔心，我們的開發團隊已經收到通知。嘗試刷新頁面。",
-  "500_button": "刷新頁面"
+  "500_button": "刷新頁面",
+  "Signin_title": "歡迎來到 honghong.me, 登入"
 }

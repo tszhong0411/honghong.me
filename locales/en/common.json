@@ -37,7 +37,7 @@
   "Guestbook_placeholder": "Your message here...",
   "Guestbook_message": "Your message",
   "Guestbook_sign": "Sign",
-  "Guestbook_tip": "Your information is only used to display your name and reply by email",
+  "Guestbook_tip": "Your information is only used to display your name and avatar",
   "Guestbook_signOut": "Sign out",
   "Guestbook_deleteModal_title": "Delete a comment",
   "Guestbook_deleteModal_message": "This comment will be deleted.",
@@ -47,5 +47,6 @@
   "404_button": "Take me back to home page",
   "500_title": "Something bad just happened...",
   "500_description": "Our servers could not handle your request. Don&apos;t worry, our development team was already notified. Try refreshing the page.",
-  "500_button": "Refresh the page"
+  "500_button": "Refresh the page",
+  "Signin_title": "Welcome to honghong.me, login with"
 }
