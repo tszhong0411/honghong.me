@@ -1,25 +1,24 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { allBlogs } from 'contentlayer/generated';
-import { InferGetStaticPropsType } from 'next';
-import { useMDXComponent } from 'next-contentlayer/hooks';
 
 import { coreContent, sortedBlogPost } from '@/lib/utils/contentlayer';
 
-import components from '@/components/MDXComponents';
+import { MDXComponent } from '@/components/MDXComponents/MDXComponents';
 
 import BlogLayout from '@/layouts/blog';
 
-export async function getStaticPaths() {
-  return {
-    paths: allBlogs.map((p) => ({
-      params: { slug: [p.slug.split('.')[0]] },
-      locale: p.slug.split('.')[p.slug.split('.').length - 1],
-    })),
-    fallback: false,
-  };
+export default function Blog({ post, prev, next }) {
+  return (
+    <>
+      {post && (
+        <BlogLayout content={post} prev={prev} next={next}>
+          <MDXComponent code={post.body.code} />
+        </BlogLayout>
+      )}
+    </>
+  );
 }
-
-export const getStaticProps = async ({ params, locale }) => {
+export const getServerSideProps = async ({ params, locale }) => {
   const slug = (params.slug as string[]).join('.');
   const sortedPosts = sortedBlogPost(
     allBlogs.filter(
@@ -38,27 +37,9 @@ export const getStaticProps = async ({ params, locale }) => {
 
   return {
     props: {
-      post,
+      post: post || null,
       prev,
       next,
     },
   };
 };
-
-export default function Blog({
-  post,
-  prev,
-  next,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
-  const Component = useMDXComponent(post.body.code);
-
-  return (
-    <>
-      {post && (
-        <BlogLayout content={post} prev={prev} next={next}>
-          <Component components={components} />
-        </BlogLayout>
-      )}
-    </>
-  );
-}

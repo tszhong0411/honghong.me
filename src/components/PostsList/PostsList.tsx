@@ -1,8 +1,9 @@
+import { Box, Button, Title, useMantineTheme } from '@mantine/core';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 import React from 'react';
-import { CgArrowRight } from 'react-icons/cg';
+import { ArrowRight } from 'tabler-icons-react';
 
 import { isProd } from '@/lib/isProduction';
 import { PostsListProps } from '@/lib/types';
@@ -12,12 +13,18 @@ import { CloudinaryImg } from '@/components/Image';
 import Link from '@/components/Link';
 import ViewCounter from '@/components/ViewCounter';
 
-export default function PostsList({ post, divider }: PostsListProps) {
+import useStyles from './PostsList.styles';
+
+export default function PostsList({ post }: PostsListProps) {
   const { t } = useTranslation();
   const { locale } = useRouter();
   const { slug, date, title, summary, image } = post;
   const formattedSlug = slug.replace(`.${locale}`, '');
   const [hover, setHover] = React.useState<boolean>(false);
+  const { classes } = useStyles();
+
+  const { colorScheme } = useMantineTheme();
+  const dark = colorScheme === 'dark';
 
   return (
     <motion.li
@@ -29,61 +36,111 @@ export default function PostsList({ post, divider }: PostsListProps) {
       }}
     >
       <article>
-        <div className='py-12 xl:grid xl:grid-cols-3'>
+        <Box py={48}>
           <div>
-            <div className='mb-4 flex flex-row items-center gap-x-3'>
+            <Box
+              mb={16}
+              sx={{
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: 12,
+              }}
+            >
               <time dateTime={date}>{formatDate(date, locale)}</time>
               {' - '}
               {isProd && <ViewCounter slug={slug} text={false} type='GET' />}
-            </div>
+            </Box>
           </div>
-          <div className='flex flex-col items-center md:flex-row xl:col-span-3'>
-            <div className='my-8 w-full sm:my-0 sm:max-w-sm'>
+          <Box
+            sx={(theme) => ({
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              [theme.fn.largerThan('md')]: {
+                flexDirection: 'row',
+              },
+            })}
+          >
+            <Box
+              my={32}
+              sx={(theme) => ({
+                width: '100%',
+                [theme.fn.largerThan('sm')]: {
+                  margin: 0,
+                  maxWidth: 384,
+                },
+              })}
+            >
               <Link href={`/blog/${formattedSlug}`}>
-                <div className='overflow-hidden rounded-xl sm:px-0'>
-                  <CloudinaryImg
-                    noStyle
-                    className='duration-500 hover:scale-110'
-                    publicId={image}
-                    alt={`${title} Cover`}
-                    width={1280}
-                    height={720}
-                    preview={false}
-                  />
-                </div>
+                <CloudinaryImg
+                  publicId={image}
+                  alt={`${title} Cover`}
+                  width={1280}
+                  height={720}
+                  className={classes.image}
+                />
               </Link>
-            </div>
-            <div className='flex w-full flex-auto flex-col gap-2 py-8 sm:max-w-sm md:max-w-none md:p-8'>
+            </Box>
+            <Box
+              py={32}
+              sx={(theme) => ({
+                display: 'flex',
+                width: '100%',
+                flex: '1 1 auto',
+                flexDirection: 'column',
+                gap: 8,
+                [theme.fn.largerThan('sm')]: {
+                  maxWidth: 384,
+                },
+                [theme.fn.largerThan('md')]: {
+                  maxWidth: 'none',
+                  padding: 32,
+                },
+              })}
+            >
               <div>
                 <div>
-                  <h2 className='text-2xl font-bold'>
+                  <Title order={2}>
                     <Link
                       href={`/blog/${formattedSlug}`}
-                      className='link link-hover dark:text-primary-content'
+                      sx={{
+                        fontWeight: 700,
+                        fontSize: 24,
+                        color: dark ? 'white' : 'black',
+                      }}
                     >
                       {title}
                     </Link>
-                  </h2>
+                  </Title>
                 </div>
-                <div className='mb-8 mt-6'>{summary}</div>
-                <Link
+                <Box mb={32} mt={24}>
+                  {summary}
+                </Box>
+                <Button
+                  component={Link}
                   href={`/blog/${formattedSlug}`}
                   aria-label={`Read "${title}"`}
-                  className='btn btn-primary gap-2 font-medium'
+                  rightIcon={
+                    <motion.div animate={{ x: hover ? 5 : 0 }}>
+                      <ArrowRight size={20} />
+                    </motion.div>
+                  }
+                  sx={{
+                    '&:hover': {
+                      textDecoration: 'none',
+                    },
+                  }}
                   onMouseEnter={() => setHover(true)}
                   onMouseLeave={() => setHover(false)}
                 >
                   {t('common:readMore')}
-                  <motion.div animate={{ x: hover ? 5 : 0 }}>
-                    <CgArrowRight size={20} />
-                  </motion.div>
-                </Link>
+                </Button>
               </div>
-            </div>
-          </div>
-        </div>
+            </Box>
+          </Box>
+        </Box>
       </article>
-      {divider && <div className='divider'></div>}
     </motion.li>
   );
 }

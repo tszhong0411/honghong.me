@@ -1,6 +1,10 @@
+import { Box, Title } from '@mantine/core';
 import useTranslation from 'next-translate/useTranslation';
 
+import { isProd } from '@/lib/isProduction';
+
 import Layout from '@/components/Layout';
+import PageLayout from '@/components/Layout/PageLayout';
 import BlogTotalViews from '@/components/Metrics/BlogTotalViews';
 import Github from '@/components/Metrics/Github';
 import Youtube from '@/components/Metrics/Youtube';
@@ -14,21 +18,35 @@ export default function Dashboard() {
       templateTitle='Dashboard'
       description={t('common:SEO_dashboardDesc')}
     >
-      <div className='mx-auto flex flex-col justify-center'>
-        <h1 className='mb-6 text-3xl font-bold dark:text-primary-content md:text-5xl'>
-          Dashboard
-        </h1>
-        <p className='mb-12'>{t('common:SEO_dashboardDesc')}</p>
-        <div className='flex w-full flex-col'>
-          <Youtube />
-          <Github />
-          <BlogTotalViews />
-        </div>
-        <h2 className='mb-4 mt-16 text-3xl font-bold'>
+      <PageLayout title='Dashboard' description={t('common:SEO_dashboardDesc')}>
+        <Box
+          sx={{
+            display: 'flex',
+            width: '100%',
+            flexDirection: 'column',
+          }}
+        >
+          {isProd && (
+            <>
+              <Youtube />
+              <Github />
+              <BlogTotalViews />
+            </>
+          )}
+        </Box>
+        <Title
+          order={2}
+          mb={16}
+          mt={64}
+          sx={{
+            fontSize: 30,
+            fontWeight: 700,
+          }}
+        >
           {t('common:Dashboard_spotifyTitle')}
-        </h2>
+        </Title>
         <TopTracks />
-      </div>
+      </PageLayout>
     </Layout>
   );
 }

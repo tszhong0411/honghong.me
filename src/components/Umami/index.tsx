@@ -1,1 +1,1 @@
-export { default } from './Umami'
+export { default } from './Umami';

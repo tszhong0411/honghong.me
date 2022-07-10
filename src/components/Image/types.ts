@@ -4,13 +4,10 @@ export type CloudinaryImgType = {
   width: string | number;
   alt: string;
   title?: string;
-  className?: string;
-  preview?: boolean;
-  onlyImage?: boolean;
-  noStyle?: boolean;
   aspect?: {
     width: number;
     height: number;
   };
-  mdx?: boolean;
-} & React.ComponentPropsWithoutRef<'figure'>;
+  className?: string;
+  rounded?: boolean;
+};

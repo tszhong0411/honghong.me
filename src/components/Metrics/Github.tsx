@@ -5,15 +5,17 @@ import fetcher from '@/lib/fetcher';
 import { Github } from '@/components/Metrics/types';
 
 import MetricCard from './Card';
+import useStyles from './Metrics.styles';
 
 export default function GitHubCard() {
   const { data } = useSWR<Github>('/api/github', fetcher);
   const stars = new Number(data?.stars);
   const followers = new Number(data?.followers);
   const link = 'https://github.com/tszhong0411';
+  const { classes } = useStyles();
 
   return (
-    <div className='my-2 grid w-full grid-cols-1 gap-4 sm:grid-cols-2'>
+    <div className={classes.group}>
       <MetricCard
         header='GitHub followers'
         link={link}

@@ -1,8 +1,10 @@
+import { Table } from '@mantine/core';
 import useTranslation from 'next-translate/useTranslation';
 
 import { PcSpecsType } from '@/lib/types';
 
 import Layout from '@/components/Layout';
+import PageLayout from '@/components/Layout/PageLayout';
 
 export default function PcSpecs() {
   const { t } = useTranslation();
@@ -44,38 +46,29 @@ export default function PcSpecs() {
   ];
   //#endregion  //*======== PC Specs list ===========
 
+  const rows = pcSpecsList.map((item, index) => (
+    <tr key={index}>
+      <td>{item.name}</td>
+      <td>{item.content}</td>
+    </tr>
+  ));
+
   return (
     <Layout templateTitle='PC Specs' description={t('common:SEO_pcSpecsDesc')}>
-      <div className='mx-auto flex flex-col justify-center'>
-        <h1 className='mb-6 text-3xl font-bold dark:text-primary-content md:text-5xl'>
-          PC Specs
-        </h1>
-        <p className='mb-12'>{t('common:SEO_pcSpecsDesc')}</p>
-        <div className='flex flex-wrap'>
-          <table className='m-auto w-full table-fixed'>
-            <thead>
-              <tr>
-                <th className='w-1/4 border border-gray-500 py-4'>Hardware</th>
-                <th className='w-1/4 border border-gray-500 py-4'>Model</th>
-              </tr>
-            </thead>
-            <tbody>
-              {pcSpecsList.map((item, index) => {
-                return (
-                  <tr key={index}>
-                    <td className='border border-gray-500 p-4 font-medium'>
-                      {item.name}
-                    </td>
-                    <td className='border border-gray-500 p-4 font-medium '>
-                      {item.content}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <PageLayout
+        title='PC Specification'
+        description={t('common:SEO_pcSpecsDesc')}
+      >
+        <Table verticalSpacing='sm' fontSize='md' striped highlightOnHover>
+          <thead>
+            <tr>
+              <th>Hardware</th>
+              <th>Model</th>
+            </tr>
+          </thead>
+          <tbody>{rows}</tbody>
+        </Table>
+      </PageLayout>
     </Layout>
   );
 }

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import dedent from 'dedent';
 import fs from 'fs';
 import inquirer from 'inquirer';

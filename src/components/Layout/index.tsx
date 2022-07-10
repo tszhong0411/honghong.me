@@ -1,1 +1,1 @@
-export { default, defaultMeta } from './Layout';
+export { default } from './Layout';

@@ -1,57 +1,68 @@
+// eslint-disable-next-line simple-import-sort/imports
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 import Link from '@/components/Link';
+import useStyles from './Hero.styles';
+import { Badge, Group, Text, Title, useMantineTheme } from '@mantine/core';
 
 export default function Hero() {
+  const { classes } = useStyles();
+  const { colorScheme } = useMantineTheme();
+  const dark = colorScheme === 'dark';
+
   return (
     <>
-      <div className='mx-auto mt-12 mb-24 flex max-w-5xl items-center justify-between text-base-content dark:text-primary-content'>
+      <div className={classes.hero}>
         <div>
-          <h1 className='pb-6 text-3xl font-medium sm:text-6xl'>小康</h1>
-          <p>A teenager who loves web development</p>
-          <div className='my-2'>
-            <ul className='flex gap-x-2 text-sm'>
-              <li className='badge'>#react</li>
-              <li className='badge'>#next.js</li>
-              <li className='badge'>#tailwind</li>
-            </ul>
-          </div>
-          <div className='mt-8'>
-            <div className='inline-flex flex-col items-start gap-x-4 gap-y-3 sm:flex-row'>
-              <Link
-                href='https://instagram.com/tszhong0411/'
-                className='link link-hover'
-              >
-                Instagram
-              </Link>
-              <Link
-                href='https://github.com/tszhong0411'
-                className='link link-hover'
-              >
-                Github
-              </Link>
-              <Link
-                href='https://honghong.me/youtube'
-                className='link link-hover'
-              >
-                Youtube
-              </Link>
-            </div>
+          <Title order={1} sx={{ margin: '0 0 24px 0' }}>
+            小康
+          </Title>
+          <Text>A teenager who loves web development</Text>
+          <Group spacing='sm' sx={{ margin: '8px 0' }}>
+            <Badge variant='gradient' gradient={{ from: 'orange', to: 'red' }}>
+              # react
+            </Badge>
+            <Badge
+              variant='gradient'
+              gradient={{ from: 'teal', to: 'lime', deg: 105 }}
+            >
+              # Next.js
+            </Badge>
+            <Badge variant='gradient' gradient={{ from: 'indigo', to: 'cyan' }}>
+              # tailwind
+            </Badge>
+          </Group>
+          <div>
+            <Group
+              align='flex-start'
+              spacing='sm'
+              mt={36}
+              sx={() => ({
+                flexDirection: 'column',
+                '& > a': {
+                  color: dark ? 'white' : 'black',
+                },
+              })}
+            >
+              <Link href='https://instagram.com/tszhong0411/'>Instagram</Link>
+              <Link href='https://github.com/tszhong0411'>Github</Link>
+              <Link href='https://honghong.me/youtube'>Youtube</Link>
+            </Group>
           </div>
         </div>
-        <div className='avatar hidden sm:block'>
+        <div className={classes.logoWrapper}>
           <motion.div
             whileHover={{ rotate: 360 }}
             transition={{ duration: 0.7 }}
-            style={{ height: '130px', width: '130px', position: 'relative' }}
+            style={{ height: 130, width: 130, position: 'relative' }}
           >
             <Image
               src='/static/images/logo/logo-black.png'
-              alt='Avatar'
+              alt='Logo'
               layout='fill'
               objectFit='contain'
-              className='select-none rounded-full'
+              className={classes.logo}
             />
           </motion.div>
         </div>

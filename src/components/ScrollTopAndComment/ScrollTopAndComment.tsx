@@ -1,34 +1,28 @@
-import cn from 'classnames';
+import { Affix, Button, Group } from '@mantine/core';
 import { motion } from 'framer-motion';
 import React from 'react';
-import { FaArrowUp, FaRegCommentDots } from 'react-icons/fa';
 import smoothscroll from 'smoothscroll-polyfill';
+import { ArrowUp, BrandHipchat } from 'tabler-icons-react';
 
 export default function ScrollTopAndComment() {
   const [show, setShow] = React.useState(false);
 
   React.useEffect(() => {
-    const el = document.querySelector('.drawer-content');
-
     smoothscroll.polyfill();
     const handlePageScroll = () => {
-      if (el.scrollTop > 50) setShow(true);
+      if (window.scrollY > 50) setShow(true);
       else setShow(false);
     };
 
-    el.addEventListener('scroll', handlePageScroll);
-    return () => el.removeEventListener('scroll', handlePageScroll);
+    window.addEventListener('scroll', handlePageScroll);
+    return () => window.removeEventListener('scroll', handlePageScroll);
   }, []);
 
   const handleScrollTop = () => {
-    document
-      .querySelector('.drawer-content')
-      .scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
   const handleScrollToComment = () => {
-    document
-      .querySelector('.drawer-content')
-      .scroll(0, document.getElementById('comment').offsetTop - (322 + 64)); // iframe height + navbar height
+    window.scroll(0, document.getElementById('comment').offsetTop - 60); // minus navbar height
   };
 
   const variants = {
@@ -37,27 +31,27 @@ export default function ScrollTopAndComment() {
   };
 
   return (
-    <motion.div
-      className={cn('fixed right-4 bottom-16 z-50 flex-col gap-3')}
-      animate={show ? 'show' : 'notShow'}
-      variants={variants}
-    >
-      <button
-        className='btn btn-square btn-sm rounded-md p-2'
-        aria-label='Scroll To Comment'
-        type='button'
-        onClick={handleScrollToComment}
-      >
-        <FaRegCommentDots size={15} />
-      </button>
-      <button
-        aria-label='Scroll To Top'
-        type='button'
-        onClick={handleScrollTop}
-        className='btn btn-square btn-sm rounded-md p-2'
-      >
-        <FaArrowUp size={15} />
-      </button>
-    </motion.div>
+    <Affix position={{ bottom: 20, right: 20 }}>
+      <motion.div animate={show ? 'show' : 'notShow'} variants={variants}>
+        <Group direction='column' spacing='xs'>
+          <Button
+            onClick={handleScrollToComment}
+            sx={{ width: 40, height: 40 }}
+            p={0}
+            radius='md'
+          >
+            <BrandHipchat size={25} />
+          </Button>
+          <Button
+            onClick={handleScrollTop}
+            sx={{ width: 40, height: 40 }}
+            p={0}
+            radius='md'
+          >
+            <ArrowUp size={25} />
+          </Button>
+        </Group>
+      </motion.div>
+    </Affix>
   );
 }

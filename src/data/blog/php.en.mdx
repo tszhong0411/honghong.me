@@ -15,8 +15,8 @@ The PHP file extension is `.php`, E.g `index.php`. As mentioned above, `PHP` can
 
 When the browser reads `<?php` from top to bottom, it executes `PHP` and ends with `?>`. Such as:
 
-```php
-<!DOCTYPE html>
+<Pre language='php'>
+  {`<!DOCTYPE html>
 <html>
     <head>
         <title>PHP</title>
@@ -26,73 +26,73 @@ When the browser reads `<?php` from top to bottom, it executes `PHP` and ends wi
             echo "This is a sentence."
         ?>
     </body>
-</html>
-```
+</html>`}
+</Pre>
 
 ## Precautions
 
 In `PHP`, there is no other `HTML` after the `PHP` directive is completed. It is recommended not to end with `?>`. It will cause trouble if it is closed.
 
-```php
-<?php
+<Pre language='php'>
+  {`<?php
     echo "No HTML after PHP ends";
-
-```
+`}
+</Pre>
 
 ## PHP comments
 
 Almost most web programming languages can comments, and the **single-line** way of `PHP` is `//` and the **multi-line** way is `/* Some text here */`.
 
-```php
-<?php
+<Pre language='php'>
+  {`<?php
     echo = "This is a single line comment"; // I am a single line comment
     echo = "This is a multi-line comment";
     /*
         I am a multi-line comment
         Second line
     */
-?>
-```
+?>`}
+</Pre>
 
 ## Echo
 
 The simplest syntax in `PHP` is `Echo`. The content of `Echo` must be enclosed in double quotes `""` or single quotes `''`. Each syntax must end with a semicolon `;`.
 
-```php
-<?php
+<Pre language='php'>
+  {`<?php
     echo "This is the example of using double quotes.";
     echo 'This is the example of using single quotes.';
-?>
-```
+?>`}
+</Pre>
 
 Content in `Echo` can also use `HTML` syntax. For example, I used `<br/>` here, so that the line can be break.
 
-```php
-<?php
+<Pre language='php'>
+  {`<?php
     echo "This is the first sentence<br/>";
     echo "This is the second sentences";
     echo "<a href=\"https://example.com\">here is a link</a>";
-?>
-```
+?>`}
+</Pre>
 
 ## Variable
 
 We can assign a value to a variable to make it easier for us to write `PHP`, similar to `Javascript`. We will use Dollar sign `$`
 
-```php
-<?php
+<Pre language='php'>
+  {`<?php
     $value = "I am a value";
-?>
-```
+?>`}
+</Pre>
 
 There are some rules to follow when we name variables.
 
-|   示例   | 描述              | 規則 |
-| :------: | ----------------- | ---- |
-|  $value  | Lowercase         | ✅   |
-|  $Value  | Uppercase         | ✅   |
-| $\_value | Underscore        | ✅   |
-| $1value  | Start from number | ❌   |
+| Example  | Description       | Rules |
+| -------- | ----------------- | ----- |
+| $value   | Lowercase         | ✅    |
+| $Value   | Uppercase         | ✅    |
+| $\_value | Underscore        | ✅    |
+| $1value  | Start from number | ❌    |
 
 There is a difference between `uppercase` and `lowercase` in variable names. Uppercase variables are not equal to lowercase variables.
 
@@ -102,38 +102,38 @@ There is a difference between `uppercase` and `lowercase` in variable names. Upp
 
 When a variable name and a function name are linked together by two or more words to form a unique identification word, the use of "camel case" to represent, can increase the readability of variables and functions. Because we can't have `spaces` in variables.
 
-```php
-<?php
+<Pre language='php'>
+  {`<?php
     $onePlusOneAnswer = 1 + 1;
     echo $onePlusOneAnswer;
-?>
-```
+?>`}
+</Pre>
 
 ### Snake case
 
 Snake case (like snake_case) refers to a writing style in which every space is replaced with an underscore ( \_ ) character and the first letter of every word is written in lowercase.
 
-```php
-<?php
+<Pre language='php'>
+  {`<?php
     $one_plus_one_answer = 1 + 1;
     echo $one_plus_one_answer;
-?>
-```
+?>`}
+</Pre>
 
 ## string operator
 
 There are two string operators. The first is the concatenation operator ("."), which returns the concatenated string of its left and right arguments. The second is the concatenation assignment operator (".="), which appends the right-hand argument to the left-hand argument.
 
-```php
-<?php
+<Pre language='php'>
+  {`<?php
     echo "This" . " " . "is" . " " . "String" . " " . "operators" . ".";
-?>
-```
+?>`}
+</Pre>
 
 ## Arithmetic operator
 
-```php
-<?php
+<Pre language='php'>
+  {`<?php
     $value0 = 1.5 // Float
     $value1 = 1 + 1 // Plus
     $value2 = 1 - 1 // Minus
@@ -141,8 +141,8 @@ There are two string operators. The first is the concatenation operator ("."), w
     $value4 = 1 / 1 // Divide
     $value5 = 12 / 5 // Divide | Incomplete division will become float, which is different from other programming languages, php will calculate the remainder
     $value6 = 3 % 5 // take the remainder
-?>
-```
+?>`}
+</Pre>
 
 ## References
 

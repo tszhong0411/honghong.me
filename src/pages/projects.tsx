@@ -1,10 +1,12 @@
+import { Box } from '@mantine/core';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 
 import { ProjectData } from '@/lib/types';
 
-import Card from '@/components/Card';
 import Layout from '@/components/Layout';
+import PageLayout from '@/components/Layout/PageLayout';
+import ProjectsCard from '@/components/ProjectsCard';
 
 export default function Projects() {
   const { locale } = useRouter();
@@ -49,22 +51,27 @@ export default function Projects() {
 
   return (
     <Layout templateTitle='Projects' description={t('common:SEO_projectsDesc')}>
-      <div className='mx-auto flex flex-col justify-center'>
-        <h1 className='mb-6 text-3xl font-bold dark:text-primary-content md:text-5xl'>
-          Projects
-        </h1>
-        <p className='mb-12'>{t('common:SEO_projectsDesc')}</p>
-        <div className='grid gap-4 sm:grid-cols-2'>
-          {projectsData[locale]?.map((d) => (
-            <Card
-              key={d.title}
-              title={d.title}
-              description={d.description}
-              href={d.href}
+      <PageLayout title='Projects' description={t('common:SEO_projectsDesc')}>
+        <Box
+          sx={(theme) => ({
+            display: 'grid',
+            gap: 16,
+
+            [theme.fn.largerThan('sm')]: {
+              gridTemplateColumns: 'repeat(2,minmax(0,1fr))',
+            },
+          })}
+        >
+          {projectsData[locale]?.map((data) => (
+            <ProjectsCard
+              key={data.title}
+              title={data.title}
+              description={data.description}
+              href={data.href}
             />
           ))}
-        </div>
-      </div>
+        </Box>
+      </PageLayout>
     </Layout>
   );
 }

@@ -1,10 +1,12 @@
+import { Container } from '@mantine/core';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
-import { ToastContainer } from 'react-toastify';
+import React from 'react';
 
-import Drawer from '@/components/Drawer';
 import { Favicons } from '@/components/Layout/Favicons';
+import Footer from '@/components/Layout/Footer';
+import Header from '@/components/Layout/Header';
 import { SeoProps } from '@/components/Layout/types';
 
 export const defaultMeta = {
@@ -14,7 +16,7 @@ export const defaultMeta = {
   type: 'website',
 };
 
-export default function Layout(props: SeoProps) {
+const Layout = (props: SeoProps) => {
   const { t } = useTranslation();
   const router = useRouter();
   const meta = {
@@ -125,6 +127,11 @@ export default function Layout(props: SeoProps) {
             }}
           />
         )}
+        <link
+          rel='icon'
+          type='image/x-icon'
+          href='/static/favicon/favicon.ico'
+        />
         {Favicons.map((linkProps) => (
           <link key={linkProps.href} {...linkProps} />
         ))}
@@ -135,16 +142,20 @@ export default function Layout(props: SeoProps) {
         />
         <meta name='theme-color' content='#ffffff' />
       </Head>
-      <Drawer>{props.children}</Drawer>
-      <ToastContainer
-        position='bottom-right'
-        autoClose={5000}
-        hideProgressBar={false}
-        closeOnClick
-        pauseOnHover
-        draggable
-        theme='dark'
-      />
+      <Header />
+      <Container
+        sx={(theme) => ({
+          padding: '24px 16px',
+          [theme.fn.largerThan('sm')]: {
+            padding: '48px 32px',
+          },
+        })}
+      >
+        {props.children}
+      </Container>
+      <Footer />
     </>
   );
-}
+};
+
+export default Layout;

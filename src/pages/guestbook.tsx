@@ -1,12 +1,13 @@
-import { GetStaticProps } from 'next';
+import { getSession } from 'next-auth/react';
 import useTranslation from 'next-translate/useTranslation';
 
 import prisma from '@/lib/prisma';
 
 import Guestbook from '@/components/Guestbook';
 import Layout from '@/components/Layout';
+import PageLayout from '@/components/Layout/PageLayout';
 
-export default function GuestbookPage({ fallbackData }) {
+export default function GuestbookPage({ fallbackData, session }) {
   const { t } = useTranslation();
 
   return (
@@ -14,18 +15,19 @@ export default function GuestbookPage({ fallbackData }) {
       templateTitle='Guestbook'
       description={t('common:SEO_guestbookDesc')}
     >
-      <div className='mx-auto flex flex-col justify-center'>
-        <h1 className='mb-6 text-3xl font-bold dark:text-primary-content md:text-5xl'>
-          Guestbook
-        </h1>
-        <p className='mb-12'>{t('common:Guestbook_description')}</p>
-        <Guestbook fallbackData={fallbackData} />
-      </div>
+      <PageLayout
+        title='Guestbook'
+        description={t('common:Guestbook_description')}
+      >
+        <Guestbook fallbackData={fallbackData} session={session} />
+      </PageLayout>
     </Layout>
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+
   const entries = await prisma.guestbook.findMany({
     orderBy: {
       updated_at: 'desc',
@@ -41,8 +43,8 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
+      session,
       fallbackData,
     },
-    revalidate: 60,
   };
-};
+}

@@ -53,8 +53,6 @@ module.exports = {
           ['^@/data'],
           // components
           ['^@/components', '^@/container'],
-          // zustand store
-          ['^@/store'],
           // Other imports
           ['^@/'],
           // relative paths up until 3 level

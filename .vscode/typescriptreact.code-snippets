@@ -71,9 +71,8 @@
       "export default function ${1:${TM_FILENAME_BASE/(^[a-zA-Z])(.*)/${1:/upcase}${2}/}}Page() {",
       "  return (",
       "    <Layout templateTitle='${1:${TM_FILENAME_BASE/(^[a-zA-Z])(.*)/${1:/upcase}${2}/}}' description=''>",
-      "      <div className='mx-auto flex flex-col justify-center'>",
-      "        <h1 className='mb-6 text-3xl font-bold md:text-5xl dark:text-primary-content'>${3}</h1>",
-      "        <p className='mb-12'>${4}</p>",
+      "      <PageLayout title='Guestbook' description={t('common:Guestbook_description')}>",
+      "      </PageLayout>",
       "      </div>",
       "    </Layout>",
       "  )",
@@ -147,12 +146,6 @@
     "body": ["import Link from 'next/link';"]
   },
   //#endregion  //*======== Nextjs ===========
-
-  "Import classnames": {
-    "prefix": "imcn",
-    "body": ["import cn from 'classnames'"]
-  },
-
   //#region  //*=========== Snippet Wrap ===========
   "Wrap with Fragment": {
     "prefix": "ff",
@@ -161,6 +154,24 @@
   "Wrap with cn": {
     "prefix": "cn",
     "body": ["{cn(${TM_SELECTED_TEXT}$0)}"]
-  }
+  },
   //#endregion  //*======== Snippet Wrap ===========
+  //#region  //*=========== Mantine ===========
+  "Styles ts": {
+    "prefix": "mantinestyles",
+    "body": [
+      "import { createStyles } from '@mantine/core';\n",
+      "export default createStyles((theme) => ({\n",
+      "}));"
+    ]
+  },
+  "Import useStyles": {
+    "prefix": "imusestyles",
+    "body": "import useStyles from './${TM_FILENAME_BASE}.styles'"
+  },
+  "Use useStyles": {
+    "prefix": "usestyles",
+    "body": "const { classes } = useStyles();"
+  }
+  //#endregion  //*======== Mantine ===========
 }

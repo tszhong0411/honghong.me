@@ -1,120 +1,119 @@
-import cn from 'classnames';
-import { motion } from 'framer-motion';
+import {
+  Badge,
+  Button,
+  Divider,
+  Group,
+  Paper,
+  Skeleton,
+  Text,
+  TextInput,
+} from '@mantine/core';
+import { useModals } from '@mantine/modals';
+import { showNotification } from '@mantine/notifications';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { signIn, useSession } from 'next-auth/react';
 import { signOut } from 'next-auth/react';
-import { useTheme } from 'next-themes';
 import useTranslation from 'next-translate/useTranslation';
 import React from 'react';
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
-import { toast } from 'react-toastify';
 import useSWR, { useSWRConfig } from 'swr';
+import { AlertCircle, CircleCheck } from 'tabler-icons-react';
 
 import fetcher from '@/lib/fetcher';
-import { useModal } from '@/lib/store';
 import formatDate from '@/lib/utils/formatDate';
 
-import Link from '@/components/Link';
+import { entryProps } from '@/components/Guestbook/types';
+
+import useStyles from './Guestbook.styles';
 
 function GuestbookEntry({ entry, user }) {
   const { mutate } = useSWRConfig();
-  const { setValue } = useModal();
   const { t } = useTranslation();
   const { locale } = useRouter();
+  const modals = useModals();
 
-  const deleteEntry = async (e: React.MouseEvent<HTMLElement>) => {
-    e.preventDefault();
-
+  const deleteEntry = async () => {
     await fetch(`/api/guestbook/${entry.id}`, {
       method: 'DELETE',
     });
 
     mutate('/api/guestbook');
 
-    setValue({ status: false });
-
-    toast.success(t('common:delete_successful'));
+    showNotification({
+      message: t('common:delete_successful'),
+      icon: <CircleCheck />,
+      color: 'green',
+    });
   };
 
-  const Cancel = () => (
-    <button
-      className='btn btn-outline uppercase'
-      onClick={() => setValue({ status: false })}
-    >
-      {t('common:cancel')}
-    </button>
-  );
-
-  const Delete = () => (
-    <button className='btn btn-error uppercase' onClick={deleteEntry}>
-      {t('common:delete')}
-    </button>
-  );
-
-  const Message = () => (
-    <div className='flex flex-col gap-4'>
-      <p>{t('common:Guestbook_deleteModal_message')}</p>
-      <p className='rounded-md bg-error px-2 py-4 text-error-content'>{`> ${entry.body}`}</p>
-    </div>
-  );
-
   const deleteHandler = () => {
-    setValue({
-      status: true,
+    modals.openConfirmModal({
       title: t('common:Guestbook_deleteModal_title'),
-      message: <Message />,
-      children: (
-        <>
-          <Cancel />
-          <Delete />
-        </>
-      ),
+      centered: true,
+      labels: { confirm: t('common:delete'), cancel: t('common:cancel') },
+      sx: {
+        '& button': {
+          fontWeight: 500,
+        },
+      },
+      confirmProps: { color: 'red' },
+      onConfirm: () => deleteEntry(),
     });
   };
 
   return (
-    <div className='flex flex-col space-y-2'>
-      <div>{entry.body}</div>
-      <div className='flex flex-row space-x-3 sm:items-center'>
-        <p className='badge badge-primary text-sm'>{entry.created_by}</p>
-        <span className='hidden text-xs sm:inline-block'>/</span>
-        <p className='badge text-sm'>
+    <Group direction='column' spacing='xs' my={24}>
+      <Text sx={{ wordBreak: 'break-all' }}>{entry.body}</Text>
+      <Group>
+        <Badge
+          variant='gradient'
+          gradient={{ from: 'orange', to: 'red' }}
+          size='lg'
+          sx={{
+            fontWeight: 500,
+          }}
+        >
+          {entry.created_by}
+          {' / '}
           {formatDate(new Date(entry.updated_at), locale)}
-        </p>
+        </Badge>
         {user && entry.created_by === user.name && (
-          <>
-            <span className='hidden text-xs sm:inline-block'>/</span>
-            <button
-              className='cursor-pointer text-sm text-primary-500'
-              onClick={deleteHandler}
-            >
-              {t('common:delete')}
-            </button>
-          </>
+          <Badge
+            component='button'
+            variant='light'
+            onClick={deleteHandler}
+            sx={{
+              fontWeight: 500,
+              height: 26,
+              cursor: 'pointer',
+            }}
+          >
+            {t('common:delete')}
+          </Badge>
         )}
-      </div>
-    </div>
+      </Group>
+    </Group>
   );
 }
 
-export default function Guestbook({ fallbackData }) {
-  const [mounted, setMounted] = React.useState(false);
-  const [loading, setLoading] = React.useState(false);
+export default function Guestbook({ fallbackData, session }) {
+  const [focused, setFocused] = React.useState<boolean>(false);
+  const [value, setValue] = React.useState<string>('');
+  const [loading, setLoading] = React.useState<boolean>(false);
   const inputEl = React.useRef(null);
-  const { theme, resolvedTheme } = useTheme();
-  const { data: session } = useSession();
   const { mutate } = useSWRConfig();
   const { data: entries } = useSWR('/api/guestbook', fetcher, {
     fallbackData,
   });
   const { t } = useTranslation();
+  const { classes } = useStyles({
+    floating: value.trim().length !== 0 || focused,
+  });
+  const router = useRouter();
 
   const leaveEntry = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (inputEl.current.value !== '') {
-      setLoading(true);
       const res = await fetch('/api/guestbook', {
         body: JSON.stringify({
           body: inputEl.current.value,
@@ -126,123 +125,131 @@ export default function Guestbook({ fallbackData }) {
       });
 
       const { error } = await res.json();
+
       if (error) {
-        toast.error(error);
+        showNotification({
+          message: error,
+          icon: <AlertCircle />,
+        });
         return;
       }
 
-      inputEl.current.value = '';
       mutate('/api/guestbook');
-      toast.success(t('common:Guestbook_success'));
+
+      showNotification({
+        message: t('common:Guestbook_success'),
+        icon: <CircleCheck />,
+        color: 'green',
+      });
+
       setLoading(false);
     } else {
-      toast.error(t('common:Guestbook_error'));
+      showNotification({
+        message: t('common:Guestbook_error'),
+        icon: <AlertCircle />,
+      });
     }
   };
 
-  // When mounted on client, now we can show the UI
-  React.useEffect(() => setMounted(true), []);
-
-  if (!mounted) return null;
-
   return (
     <>
-      <motion.div
-        className='my-4 w-full max-w-2xl rounded bg-base-200 p-5'
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{
-          duration: 0.5,
+      <Paper
+        withBorder
+        shadow='md'
+        p={30}
+        mt={30}
+        radius='md'
+        sx={{
+          maxWidth: 560,
         }}
       >
-        <h5 className='text-lg font-bold md:text-xl'>
+        <Text
+          sx={{
+            fontSize: 24,
+            fontWeight: 700,
+            marginBottom: 36,
+          }}
+        >
           {session?.user
             ? t('common:Guestbook_guestbook')
             : t('common:Guestbook_signInGuestbook')}
-        </h5>
-        {!session && (
-          <Link
-            href='/api/auth/signin/github'
-            className='btn btn-primary my-4 min-w-[6rem] font-medium'
-            onClick={(e) => {
-              e.preventDefault();
-              signIn();
-            }}
-          >
-            {t('common:Guestbook_signIn')}
-          </Link>
-        )}
+        </Text>
         {session?.user && (
-          <form className='my-4 flex flex-col gap-2' onSubmit={leaveEntry}>
-            <input
-              ref={inputEl}
-              aria-label={t('common:Guestbook_yourComment')}
-              placeholder={t('common:Guestbook_placeholder')}
-              required
-              className='input input-bordered input-primary w-full'
-            />
-            <button
-              className={cn('btn btn-primary', { loading: loading })}
-              type='submit'
-            >
-              {t('common:Guestbook_sign')}
-            </button>
+          <form onSubmit={leaveEntry}>
+            <Group grow className={classes.formWrapper} position='apart'>
+              <TextInput
+                label={t('common:Guestbook_message')}
+                placeholder={t('common:Guestbook_placeholder')}
+                required
+                classNames={classes}
+                value={value}
+                ref={inputEl}
+                onChange={(event) => setValue(event.currentTarget.value)}
+                onFocus={() => setFocused(true)}
+                onBlur={() => setFocused(false)}
+                mt='md'
+                sx={(theme) => ({
+                  maxWidth: '100%',
+                  width: '100%',
+                  [theme.fn.largerThan('sm')]: {
+                    maxWidth: '70%',
+                  },
+                })}
+                autoComplete='nope'
+              />
+              <Button mt={16} type='submit' className={classes.btn}>
+                {t('common:Guestbook_sign')}
+              </Button>
+            </Group>
           </form>
         )}
-        <p className='text-sm'>{t('common:Guestbook_tip')}</p>
-
+        {!session && (
+          <Button
+            fullWidth
+            mt='xl'
+            onClick={() =>
+              router.push(
+                `/auth/signin?callbackUrl=${encodeURIComponent(
+                  window.location.href
+                )}`
+              )
+            }
+          >
+            {t('common:Guestbook_signIn')}
+          </Button>
+        )}
+        <Text size='sm' my={16}>
+          {t('common:Guestbook_tip')}
+        </Text>
         {session?.user && (
           <>
-            <div className='divider'></div>
-            <div className='my-4 flex items-center'>
-              <div className='mr-3 flex w-full items-center gap-4'>
+            <Divider />
+            <Group my={36} position='apart'>
+              <Group>
                 <Image
                   src={session.user.image}
                   width={48}
                   height={48}
                   alt='User avatar'
-                  className='rounded-full'
+                  className={classes.avatar}
                 />
                 <span>{session.user.name}</span>
-              </div>
-              <button
-                className='btn btn-primary min-w-[8rem] text-white'
-                onClick={(e) => {
-                  e.preventDefault();
-                  signOut();
-                }}
-              >
+              </Group>
+              <Button onClick={() => signOut()} className={classes.btn}>
                 {t('common:Guestbook_signOut')}
-              </button>
-            </div>
+              </Button>
+            </Group>
           </>
         )}
-      </motion.div>
-      <div className='mt-4 space-y-6'>
+      </Paper>
+      <div>
         {loading && (
-          <SkeletonTheme
-            baseColor={
-              theme === 'dark' || resolvedTheme === 'dark'
-                ? '#202020'
-                : '#d9d9d9'
-            }
-            highlightColor={
-              theme === 'dark' || resolvedTheme === 'dark'
-                ? '#444444'
-                : '#ecebeb'
-            }
-          >
-            <div className='flex flex-col gap-y-2'>
-              <Skeleton width={150} height={20} />
-              <div className='flex flex-row gap-x-2'>
-                <Skeleton width={80} height={20} />
-                <span className='text-base'>/</span>
-                <Skeleton width={140} height={20} />
-              </div>
-            </div>
-          </SkeletonTheme>
+          <Group spacing='md' my={30} direction='column'>
+            <Skeleton height={15} width='25%' radius='xl' />
+            <Skeleton height={15} width='30%' radius='xl' />
+          </Group>
         )}
-        {entries?.map((entry) => (
+        {entries?.map((entry: entryProps) => (
           <GuestbookEntry key={entry.id} entry={entry} user={session?.user} />
         ))}
       </div>

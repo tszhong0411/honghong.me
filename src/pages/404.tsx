@@ -1,31 +1,89 @@
+import {
+  Button,
+  Container,
+  createStyles,
+  Group,
+  Text,
+  Title,
+} from '@mantine/core';
 import useTranslation from 'next-translate/useTranslation';
+import React from 'react';
 
 import Layout from '@/components/Layout';
 import Link from '@/components/Link';
 
+const useStyles = createStyles((theme) => ({
+  root: {
+    padding: '120px 0',
+  },
+
+  label: {
+    textAlign: 'center',
+    fontWeight: 900,
+    fontSize: 120,
+    lineHeight: 1,
+    marginBottom: theme.spacing.xl * 1.5,
+    color:
+      theme.colorScheme === 'dark'
+        ? theme.colors.dark[4]
+        : theme.colors.gray[2],
+
+    [theme.fn.largerThan('sm')]: {
+      fontSize: 220,
+    },
+  },
+
+  title: {
+    textAlign: 'center',
+    fontWeight: 900,
+    fontSize: 32,
+
+    [theme.fn.largerThan('sm')]: {
+      fontSize: 38,
+    },
+  },
+
+  description: {
+    maxWidth: 500,
+    margin: 'auto',
+    marginTop: theme.spacing.xl,
+    marginBottom: theme.spacing.xl * 1.5,
+  },
+}));
+
 export default function FourZeroFour() {
+  const { classes } = useStyles();
   const { t } = useTranslation();
 
   return (
-    <Layout templateTitle='404 - 小康'>
-      <div className='my-24 flex flex-col items-start justify-start md:flex-row md:items-center md:justify-center md:space-x-6'>
-        <div className='space-x-2 pt-6 pb-8 md:space-y-5'>
-          <h1 className='text-6xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 md:border-r-2 md:px-6 md:text-8xl md:leading-14'>
-            404
-          </h1>
-        </div>
-        <div className='max-w-md'>
-          <p className='mb-4 text-xl font-bold leading-normal md:text-2xl'>
-            {t('common:404_bigText')}
-          </p>
-          <p className='mb-8'>{t('common:404_littleText')}</p>
-          <Link href='/'>
-            <button className='focus:shadow-outline-blue inline rounded-lg border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium leading-5 text-white shadow transition-colors duration-150 hover:bg-blue-700 focus:outline-none dark:hover:bg-blue-500'>
-              {t('common:404_backButton')}
-            </button>
-          </Link>
-        </div>
-      </div>
+    <Layout>
+      <Container className={classes.root}>
+        <div className={classes.label}>404</div>
+        <Title className={classes.title}>{t('common:404_title')}</Title>
+        <Text
+          color='dimmed'
+          size='lg'
+          align='center'
+          className={classes.description}
+        >
+          {t('common:404_description')}
+        </Text>
+        <Group position='center'>
+          <Button
+            variant='subtle'
+            size='md'
+            component={Link}
+            href='/'
+            sx={{
+              '&:hover': {
+                textDecoration: 'none',
+              },
+            }}
+          >
+            {t('common:404_button')}
+          </Button>
+        </Group>
+      </Container>
     </Layout>
   );
 }

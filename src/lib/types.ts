@@ -33,5 +33,4 @@ export type I18nConfigType = {
 
 export type PostsListProps = {
   post: Blog | Omit<Blog, 'body' | '_raw' | '_id'>;
-  divider: boolean;
 };
