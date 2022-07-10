@@ -78,7 +78,6 @@ export default function PostsList({ post }: PostsListProps) {
                   alt={`${title} Cover`}
                   width={1280}
                   height={720}
-                  preview={false}
                   className={classes.image}
                 />
               </Link>

@@ -4,7 +4,6 @@ export type CloudinaryImgType = {
   width: string | number;
   alt: string;
   title?: string;
-  preview?: boolean;
   aspect?: {
     width: number;
     height: number;

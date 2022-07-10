@@ -47,9 +47,6 @@ export const MDXComponent = ({ code }) => {
           fontSize: 'unset',
           lineHeight: 'unset',
         },
-        '& img': {
-          cursor: 'zoom-in',
-        },
         '& p': {
           color: dark ? '#98a0b3' : '#626b84',
           fontSize: 16,
