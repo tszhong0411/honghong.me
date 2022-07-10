@@ -1,4 +1,4 @@
-export type HeaderProps = {
-  navbarOpened: boolean;
-  toggleNavbar(): void;
+export type linksType = {
+  href: string;
+  text: string;
 };
