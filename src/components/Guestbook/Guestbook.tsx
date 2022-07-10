@@ -12,7 +12,7 @@ import { useModals } from '@mantine/modals';
 import { showNotification } from '@mantine/notifications';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { signIn, signOut } from 'next-auth/react';
+import { signOut } from 'next-auth/react';
 import useTranslation from 'next-translate/useTranslation';
 import React from 'react';
 import useSWR, { useSWRConfig } from 'swr';
@@ -62,7 +62,7 @@ function GuestbookEntry({ entry, user }) {
 
   return (
     <Group direction='column' spacing='xs' my={24}>
-      <Text>{entry.body}</Text>
+      <Text sx={{ wordBreak: 'break-all' }}>{entry.body}</Text>
       <Group>
         <Badge
           variant='gradient'
@@ -108,6 +108,7 @@ export default function Guestbook({ fallbackData, session }) {
   const { classes } = useStyles({
     floating: value.trim().length !== 0 || focused,
   });
+  const router = useRouter();
 
   const leaveEntry = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -203,7 +204,17 @@ export default function Guestbook({ fallbackData, session }) {
           </form>
         )}
         {!session && (
-          <Button fullWidth mt='xl' onClick={() => signIn()}>
+          <Button
+            fullWidth
+            mt='xl'
+            onClick={() =>
+              router.push(
+                `/auth/signin?callbackUrl=${encodeURIComponent(
+                  window.location.href
+                )}`
+              )
+            }
+          >
             {t('common:Guestbook_signIn')}
           </Button>
         )}
