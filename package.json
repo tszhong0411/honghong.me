@@ -39,7 +39,7 @@
     "autoprefixer": "^10.4.7",
     "chalk": "5.0.1",
     "cloudinary-build-url": "^0.2.4",
-    "contentlayer": "0.2.5",
+    "contentlayer": "0.2.6",
     "cookies-next": "^2.1.1",
     "dayjs": "^1.11.3",
     "emoji-unicode": "^2.0.1",
