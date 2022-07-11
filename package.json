@@ -47,7 +47,7 @@
     "framer-motion": "^6.3.16",
     "gitmoji-cli": "^5.0.1",
     "googleapis": "^104.0.0",
-    "next": "^12.2.0",
+    "next": "^12.2.2",
     "next-auth": "^4.8.0",
     "next-contentlayer": "0.2.5",
     "next-translate": "^1.4.0",
