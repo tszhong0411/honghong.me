@@ -45,7 +45,7 @@
     "emoji-unicode": "^2.0.1",
     "esbuild": "0.14.48",
     "framer-motion": "^6.3.16",
-    "gitmoji-cli": "^5.0.1",
+    "gitmoji-cli": "^5.0.2",
     "googleapis": "^104.0.0",
     "next": "^12.2.0",
     "next-auth": "^4.8.0",
