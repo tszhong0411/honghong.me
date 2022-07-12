@@ -15,4 +15,4 @@ updates:
     rebase-strategy: 'disabled'
     reviewers:
       - 'TszHong0411'
-    open-pull-requests-limit: 100
+    open-pull-requests-limit: 5
