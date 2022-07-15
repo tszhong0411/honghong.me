@@ -12,8 +12,8 @@ import { GetServerSidePropsContext } from 'next';
 import type { AppProps } from 'next/app';
 import React from 'react';
 
-import '@/style/global.css';
-import '@/style/prism.css';
+import '@/styles/global.css';
+import '@/styles/prism.css';
 
 import { isProd } from '@/lib/isProduction';
 
