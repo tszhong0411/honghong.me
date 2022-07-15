@@ -1,4 +1,4 @@
-import Script from 'next/script';
+import Script from 'next/script'
 
 const UmamiScript = () => {
   return (
@@ -10,7 +10,7 @@ const UmamiScript = () => {
         src='https://umami.honghong.me/umami.js' // Replace with your umami instance
       />
     </>
-  );
-};
+  )
+}
 
-export default UmamiScript;
+export default UmamiScript

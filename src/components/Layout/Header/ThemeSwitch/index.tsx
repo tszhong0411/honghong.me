@@ -1,1 +1,1 @@
-export { default } from './ThemeSwitch';
+export { default } from './ThemeSwitch'

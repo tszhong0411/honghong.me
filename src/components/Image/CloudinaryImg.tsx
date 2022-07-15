@@ -1,8 +1,8 @@
-import { buildUrl } from 'cloudinary-build-url';
-import Image from 'next/image';
-import React from 'react';
+import { buildUrl } from 'cloudinary-build-url'
+import Image from 'next/image'
+import React from 'react'
 
-import { CloudinaryImgType } from './types';
+import { CloudinaryImgType } from './types'
 
 export const CloudinaryImg = ({
   publicId,
@@ -23,7 +23,7 @@ export const CloudinaryImg = ({
         ? `c_fill,ar_${aspect.width}:${aspect.height},w_${width}`
         : undefined,
     },
-  });
+  })
 
   return (
     <figure>
@@ -44,5 +44,5 @@ export const CloudinaryImg = ({
         }}
       />
     </figure>
-  );
-};
+  )
+}

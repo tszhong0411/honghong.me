@@ -5,12 +5,12 @@ import {
   Group,
   Text,
   Title,
-} from '@mantine/core';
-import { useRouter } from 'next/router';
-import useTranslation from 'next-translate/useTranslation';
-import React from 'react';
+} from '@mantine/core'
+import { useRouter } from 'next/router'
+import useTranslation from 'next-translate/useTranslation'
+import React from 'react'
 
-import Layout from '@/components/Layout';
+import Layout from '@/components/Layout'
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -49,12 +49,12 @@ const useStyles = createStyles((theme) => ({
     marginTop: theme.spacing.xl,
     marginBottom: theme.spacing.xl * 1.5,
   },
-}));
+}))
 
 export default function FiveZeroZero() {
-  const { classes } = useStyles();
-  const { t } = useTranslation();
-  const router = useRouter();
+  const { classes } = useStyles()
+  const { t } = useTranslation()
+  const router = useRouter()
 
   return (
     <Layout>
@@ -73,5 +73,5 @@ export default function FiveZeroZero() {
         </Container>
       </div>
     </Layout>
-  );
+  )
 }

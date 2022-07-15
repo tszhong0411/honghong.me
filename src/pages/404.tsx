@@ -5,12 +5,12 @@ import {
   Group,
   Text,
   Title,
-} from '@mantine/core';
-import useTranslation from 'next-translate/useTranslation';
-import React from 'react';
+} from '@mantine/core'
+import useTranslation from 'next-translate/useTranslation'
+import React from 'react'
 
-import Layout from '@/components/Layout';
-import Link from '@/components/Link';
+import Layout from '@/components/Layout'
+import Link from '@/components/Link'
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -49,11 +49,11 @@ const useStyles = createStyles((theme) => ({
     marginTop: theme.spacing.xl,
     marginBottom: theme.spacing.xl * 1.5,
   },
-}));
+}))
 
 export default function FourZeroFour() {
-  const { classes } = useStyles();
-  const { t } = useTranslation();
+  const { classes } = useStyles()
+  const { t } = useTranslation()
 
   return (
     <Layout>
@@ -85,5 +85,5 @@ export default function FourZeroFour() {
         </Group>
       </Container>
     </Layout>
-  );
+  )
 }

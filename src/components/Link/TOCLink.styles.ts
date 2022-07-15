@@ -1,4 +1,4 @@
-import { createStyles } from '@mantine/core';
+import { createStyles } from '@mantine/core'
 
 export default createStyles((theme) => ({
   link: {
@@ -38,4 +38,4 @@ export default createStyles((theme) => ({
           : theme.colors[theme.primaryColor][0],
     },
   },
-}));
+}))

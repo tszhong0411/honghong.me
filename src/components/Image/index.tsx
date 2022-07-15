@@ -1,2 +1,2 @@
-export { CloudinaryImg } from './CloudinaryImg';
-export { default } from './Image';
+export { CloudinaryImg } from './CloudinaryImg'
+export { default } from './Image'

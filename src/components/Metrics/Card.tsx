@@ -1,11 +1,11 @@
-import { Card, Skeleton, Text, useMantineTheme } from '@mantine/core';
-import React from 'react';
+import { Card, Skeleton, Text, useMantineTheme } from '@mantine/core'
+import React from 'react'
 
-import Link from '@/components/Link';
+import Link from '@/components/Link'
 
 export default function MetricCard({ header, link, metric, isCurrency }) {
-  const theme = useMantineTheme();
-  const dark = theme.colorScheme === 'dark';
+  const theme = useMantineTheme()
+  const dark = theme.colorScheme === 'dark'
 
   return (
     <Card
@@ -43,5 +43,5 @@ export default function MetricCard({ header, link, metric, isCurrency }) {
         )}
       </Text>
     </Card>
-  );
+  )
 }

@@ -1,12 +1,12 @@
-import { Box, useMantineTheme } from '@mantine/core';
-import { useMDXComponent } from 'next-contentlayer/hooks';
+import { Box, useMantineTheme } from '@mantine/core'
+import { useMDXComponent } from 'next-contentlayer/hooks'
 
-import { CloudinaryImg } from '@/components/Image';
-import Kbd from '@/components/Kbd';
-import CustomLink from '@/components/Link';
-import Pre from '@/components/Pre';
-import Table from '@/components/Table';
-import { YouTubeEmbed } from '@/components/YouTubeEmbed';
+import { CloudinaryImg } from '@/components/Image'
+import Kbd from '@/components/Kbd'
+import CustomLink from '@/components/Link'
+import Pre from '@/components/Pre'
+import Table from '@/components/Table'
+import { YouTubeEmbed } from '@/components/YouTubeEmbed'
 
 const MDXComponents = {
   CloudinaryImg,
@@ -15,14 +15,14 @@ const MDXComponents = {
   Pre,
   a: CustomLink,
   table: Table,
-};
+}
 
-export default MDXComponents;
+export default MDXComponents
 
 export const MDXComponent = ({ code }) => {
-  const Component = useMDXComponent(code);
-  const { colorScheme } = useMantineTheme();
-  const dark = colorScheme === 'dark';
+  const Component = useMDXComponent(code)
+  const { colorScheme } = useMantineTheme()
+  const dark = colorScheme === 'dark'
 
   return (
     <Box
@@ -134,5 +134,5 @@ export const MDXComponent = ({ code }) => {
     >
       <Component components={MDXComponents} />
     </Box>
-  );
-};
+  )
+}

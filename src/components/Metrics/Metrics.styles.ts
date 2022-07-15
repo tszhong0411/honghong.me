@@ -1,4 +1,4 @@
-import { createStyles } from '@mantine/core';
+import { createStyles } from '@mantine/core'
 
 export default createStyles((theme) => ({
   group: {
@@ -12,4 +12,4 @@ export default createStyles((theme) => ({
       gridTemplateColumns: 'repeat(2,minmax(0,1fr))',
     },
   },
-}));
+}))

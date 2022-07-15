@@ -1,1 +1,1 @@
-export { default } from './NextPrevPost';
+export { default } from './NextPrevPost'

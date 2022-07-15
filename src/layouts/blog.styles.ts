@@ -1,4 +1,4 @@
-import { createStyles } from '@mantine/core';
+import { createStyles } from '@mantine/core'
 
 export default createStyles((theme) => ({
   author: {
@@ -48,4 +48,4 @@ export default createStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
   },
-}));
+}))

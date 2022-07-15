@@ -1,1 +1,1 @@
-export { default } from './ScrollTopAndComment';
+export { default } from './ScrollTopAndComment'

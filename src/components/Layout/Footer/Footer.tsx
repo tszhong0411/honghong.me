@@ -1,19 +1,19 @@
-import { Box, Divider, useMantineTheme } from '@mantine/core';
-import { useRouter } from 'next/router';
+import { Box, Divider, useMantineTheme } from '@mantine/core'
+import { useRouter } from 'next/router'
 
-import { isProd } from '@/lib/isProduction';
+import { isProd } from '@/lib/isProduction'
 
-import { links } from '@/components/Layout/Footer/links';
-import Link from '@/components/Link';
-import NowPlaying from '@/components/NowPlaying';
+import { links } from '@/components/Layout/Footer/links'
+import Link from '@/components/Link'
+import NowPlaying from '@/components/NowPlaying'
 
-import useStyles from './Footer.styles';
+import useStyles from './Footer.styles'
 
 export default function Footer() {
-  const { locale, defaultLocale } = useRouter();
-  const { classes } = useStyles();
-  const { colorScheme } = useMantineTheme();
-  const dark = colorScheme === 'dark';
+  const { locale, defaultLocale } = useRouter()
+  const { classes } = useStyles()
+  const { colorScheme } = useMantineTheme()
+  const dark = colorScheme === 'dark'
 
   return (
     <footer className={classes.footer}>
@@ -67,10 +67,10 @@ export default function Footer() {
                     >
                       {item.title}
                     </Link>
-                  );
+                  )
                 })}
               </Box>
-            );
+            )
           })}
         </Box>
       </div>
@@ -79,5 +79,5 @@ export default function Footer() {
         {' 小康'}
       </div>
     </footer>
-  );
+  )
 }

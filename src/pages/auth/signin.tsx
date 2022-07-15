@@ -1,10 +1,10 @@
-import { Button, ButtonProps, Group, Paper, Text } from '@mantine/core';
-import { useRouter } from 'next/router';
-import { signIn } from 'next-auth/react';
-import useTranslation from 'next-translate/useTranslation';
-import { BrandGithub, BrandGoogle } from 'tabler-icons-react';
+import { Button, ButtonProps, Group, Paper, Text } from '@mantine/core'
+import { useRouter } from 'next/router'
+import { signIn } from 'next-auth/react'
+import useTranslation from 'next-translate/useTranslation'
+import { BrandGithub, BrandGoogle } from 'tabler-icons-react'
 
-import Layout from '@/components/Layout';
+import Layout from '@/components/Layout'
 
 const GithubButton = (props: ButtonProps<'button'>) => {
   return (
@@ -21,8 +21,8 @@ const GithubButton = (props: ButtonProps<'button'>) => {
         },
       })}
     />
-  );
-};
+  )
+}
 
 const GoogleButton = (props: ButtonProps<'button'>) => {
   return (
@@ -32,26 +32,26 @@ const GoogleButton = (props: ButtonProps<'button'>) => {
       color='gray'
       {...props}
     />
-  );
-};
+  )
+}
 
 export default function Signin() {
-  const router = useRouter();
-  const { t } = useTranslation();
+  const router = useRouter()
+  const { t } = useTranslation()
 
   const signInHandler = (oauth: string) => {
-    const callbackUrl = router.query.callbackUrl;
+    const callbackUrl = router.query.callbackUrl
 
     /*
        檢查 query.callbackUrl 是否為 array，最後返回 string
        (類型 'string | string[]' 不可指派給類型 'string')
     */
     if (Array.isArray(callbackUrl)) {
-      return signIn(oauth, { callbackUrl: callbackUrl[0] });
+      return signIn(oauth, { callbackUrl: callbackUrl[0] })
     }
 
-    return signIn(oauth, { callbackUrl: callbackUrl });
-  };
+    return signIn(oauth, { callbackUrl: callbackUrl })
+  }
 
   return (
     <Layout templateTitle='Sign in' description='A sign in page'>
@@ -95,5 +95,5 @@ export default function Signin() {
         </form> */}
       </Paper>
     </Layout>
-  );
+  )
 }

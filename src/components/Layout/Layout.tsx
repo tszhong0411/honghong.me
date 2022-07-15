@@ -1,36 +1,36 @@
-import { Container } from '@mantine/core';
-import Head from 'next/head';
-import { useRouter } from 'next/router';
-import useTranslation from 'next-translate/useTranslation';
-import React from 'react';
+import { Container } from '@mantine/core'
+import Head from 'next/head'
+import { useRouter } from 'next/router'
+import useTranslation from 'next-translate/useTranslation'
+import React from 'react'
 
-import { Favicons } from '@/components/Layout/Favicons';
-import Footer from '@/components/Layout/Footer';
-import Header from '@/components/Layout/Header';
-import { SeoProps } from '@/components/Layout/types';
+import { Favicons } from '@/components/Layout/Favicons'
+import Footer from '@/components/Layout/Footer'
+import Header from '@/components/Layout/Header'
+import { SeoProps } from '@/components/Layout/types'
 
 export const defaultMeta = {
   title: '小康 – Developer, YouTuber',
   siteName: '小康 Blog',
   image: 'https://honghong.me/static/images/banner.png',
   type: 'website',
-};
+}
 
 const Layout = (props: SeoProps) => {
-  const { t } = useTranslation();
-  const router = useRouter();
+  const { t } = useTranslation()
+  const router = useRouter()
   const meta = {
     ...defaultMeta,
     ...props,
-  };
+  }
 
   meta['title'] = props.templateTitle
     ? `${props.templateTitle}丨${meta.siteName}`
-    : meta.title;
+    : meta.title
 
   meta['description'] = props.description
     ? props.description
-    : t('common:SEO_defaultDesc');
+    : t('common:SEO_defaultDesc')
 
   return (
     <>
@@ -155,7 +155,7 @@ const Layout = (props: SeoProps) => {
       </Container>
       <Footer />
     </>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout

@@ -1,16 +1,16 @@
-import { Box } from '@mantine/core';
-import { useRouter } from 'next/router';
-import useTranslation from 'next-translate/useTranslation';
+import { Box } from '@mantine/core'
+import { useRouter } from 'next/router'
+import useTranslation from 'next-translate/useTranslation'
 
-import { ProjectData } from '@/lib/types';
+import { ProjectData } from '@/lib/types'
 
-import Layout from '@/components/Layout';
-import PageLayout from '@/components/Layout/PageLayout';
-import ProjectsCard from '@/components/ProjectsCard';
+import Layout from '@/components/Layout'
+import PageLayout from '@/components/Layout/PageLayout'
+import ProjectsCard from '@/components/ProjectsCard'
 
 export default function Projects() {
-  const { locale } = useRouter();
-  const { t } = useTranslation();
+  const { locale } = useRouter()
+  const { t } = useTranslation()
 
   const projectsData: ProjectData = {
     'zh-TW': [
@@ -47,7 +47,7 @@ export default function Projects() {
         href: 'https://link.honghong.me',
       },
     ],
-  };
+  }
 
   return (
     <Layout templateTitle='Projects' description={t('common:SEO_projectsDesc')}>
@@ -73,5 +73,5 @@ export default function Projects() {
         </Box>
       </PageLayout>
     </Layout>
-  );
+  )
 }

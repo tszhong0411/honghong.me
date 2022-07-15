@@ -1,15 +1,15 @@
-import { Title } from '@mantine/core';
+import { Title } from '@mantine/core'
 
-import { PageLayoutProps } from '@/components/Layout/PageLayout/types';
+import { PageLayoutProps } from '@/components/Layout/PageLayout/types'
 
-import useStyles from './PageLayout.styles';
+import useStyles from './PageLayout.styles'
 
 export default function PageLayout({
   children,
   title,
   description,
 }: PageLayoutProps) {
-  const { classes } = useStyles();
+  const { classes } = useStyles()
 
   return (
     <div className={classes.layout}>
@@ -19,5 +19,5 @@ export default function PageLayout({
       <p className={classes.description}>{description}</p>
       {children}
     </div>
-  );
+  )
 }

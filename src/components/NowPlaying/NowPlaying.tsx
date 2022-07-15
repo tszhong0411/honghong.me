@@ -1,18 +1,18 @@
-import { useMantineTheme } from '@mantine/core';
-import useSWR from 'swr';
+import { useMantineTheme } from '@mantine/core'
+import useSWR from 'swr'
 
-import fetcher from '@/lib/fetcher';
+import fetcher from '@/lib/fetcher'
 
-import Link from '@/components/Link';
-import { NowPlayingSong } from '@/components/NowPlaying/types';
+import Link from '@/components/Link'
+import { NowPlayingSong } from '@/components/NowPlaying/types'
 
-import useStyles from './NowPlaying.styles';
+import useStyles from './NowPlaying.styles'
 
 export default function NowPlaying() {
-  const { classes } = useStyles();
-  const { data } = useSWR<NowPlayingSong>('/api/now-playing', fetcher);
-  const { colorScheme } = useMantineTheme();
-  const dark = colorScheme === 'dark';
+  const { classes } = useStyles()
+  const { data } = useSWR<NowPlayingSong>('/api/now-playing', fetcher)
+  const { colorScheme } = useMantineTheme()
+  const dark = colorScheme === 'dark'
 
   return (
     <div className={classes.wrapper}>
@@ -50,5 +50,5 @@ export default function NowPlaying() {
         <p>{data?.isPlaying ? data.artist : 'Spotify'}</p>
       </div>
     </div>
-  );
+  )
 }

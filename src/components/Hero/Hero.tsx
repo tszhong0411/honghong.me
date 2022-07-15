@@ -1,15 +1,15 @@
 // eslint-disable-next-line simple-import-sort/imports
-import { motion } from 'framer-motion';
-import Image from 'next/image';
+import { motion } from 'framer-motion'
+import Image from 'next/image'
 
-import Link from '@/components/Link';
-import useStyles from './Hero.styles';
-import { Badge, Group, Text, Title, useMantineTheme } from '@mantine/core';
+import Link from '@/components/Link'
+import useStyles from './Hero.styles'
+import { Badge, Group, Text, Title, useMantineTheme } from '@mantine/core'
 
 export default function Hero() {
-  const { classes } = useStyles();
-  const { colorScheme } = useMantineTheme();
-  const dark = colorScheme === 'dark';
+  const { classes } = useStyles()
+  const { colorScheme } = useMantineTheme()
+  const dark = colorScheme === 'dark'
 
   return (
     <>
@@ -68,5 +68,5 @@ export default function Hero() {
         </div>
       </div>
     </>
-  );
+  )
 }

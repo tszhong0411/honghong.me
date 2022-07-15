@@ -1,4 +1,4 @@
-import { I18nConfigType } from '@/lib/types';
+import { I18nConfigType } from '@/lib/types'
 
 const i18nConfig: I18nConfigType = {
   locales: ['zh-TW', 'en'],
@@ -13,6 +13,6 @@ const i18nConfig: I18nConfigType = {
       flag: '🇬🇧',
     },
   },
-};
+}
 
-export default i18nConfig;
+export default i18nConfig

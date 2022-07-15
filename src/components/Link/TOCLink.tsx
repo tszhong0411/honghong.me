@@ -1,9 +1,9 @@
-import { Box } from '@mantine/core';
+import { Box } from '@mantine/core'
 
-import Link from '@/components/Link';
+import Link from '@/components/Link'
 
-import useStyles from './TOCLink.styles';
-import { TOCLinkProps } from './types';
+import useStyles from './TOCLink.styles'
+import { TOCLinkProps } from './types'
 
 export const TOCLink = ({
   id,
@@ -12,7 +12,7 @@ export const TOCLink = ({
   text,
   activeSection,
 }: TOCLinkProps) => {
-  const { classes, cx } = useStyles();
+  const { classes, cx } = useStyles()
 
   return (
     <Box
@@ -27,5 +27,5 @@ export const TOCLink = ({
     >
       {text}
     </Box>
-  );
-};
+  )
+}

@@ -1,14 +1,14 @@
-import { Group, Text } from '@mantine/core';
-import { motion } from 'framer-motion';
-import useTranslation from 'next-translate/useTranslation';
-import React from 'react';
-import { ListSearch } from 'tabler-icons-react';
+import { Group, Text } from '@mantine/core'
+import { motion } from 'framer-motion'
+import useTranslation from 'next-translate/useTranslation'
+import React from 'react'
+import { ListSearch } from 'tabler-icons-react'
 
-import ReadingProgressBar from '@/components/ReadingProgressBar';
+import ReadingProgressBar from '@/components/ReadingProgressBar'
 
-import useStyles from './TableOfContent.styles';
-import { TableOfContentsProps } from './types';
-import { TOCLink } from '../Link';
+import useStyles from './TableOfContent.styles'
+import { TableOfContentsProps } from './types'
+import { TOCLink } from '../Link'
 
 export default function TableOfContents({
   toc,
@@ -16,40 +16,40 @@ export default function TableOfContents({
   minLevel,
 }: TableOfContentsProps) {
   //#region  //*=========== Scroll into view ===========
-  const lastPosition = React.useRef<number>(0);
-  const { classes } = useStyles();
-  const { t } = useTranslation();
+  const lastPosition = React.useRef<number>(0)
+  const { classes } = useStyles()
+  const { t } = useTranslation()
 
   React.useEffect(() => {
-    const container = document.getElementById('toc-container');
-    const activeLink = document.getElementById(`link-${activeSection}`);
+    const container = document.getElementById('toc-container')
+    const activeLink = document.getElementById(`link-${activeSection}`)
 
     if (container && activeLink) {
       // Get container properties
-      const cTop = container.scrollTop;
-      const cBottom = cTop + container.clientHeight;
+      const cTop = container.scrollTop
+      const cBottom = cTop + container.clientHeight
 
       // Get activeLink properties
-      const lTop = activeLink.offsetTop - container.offsetTop;
-      const lBottom = lTop + activeLink.clientHeight;
+      const lTop = activeLink.offsetTop - container.offsetTop
+      const lBottom = lTop + activeLink.clientHeight
 
       // Check if in view
-      const isTotal = lTop >= cTop && lBottom <= cBottom;
+      const isTotal = lTop >= cTop && lBottom <= cBottom
 
-      const isScrollingUp = lastPosition.current > window.scrollY;
-      lastPosition.current = window.scrollY;
+      const isScrollingUp = lastPosition.current > window.scrollY
+      lastPosition.current = window.scrollY
 
       if (!isTotal) {
         // Scroll by the whole clientHeight
-        const offset = 25;
+        const offset = 25
         const top = isScrollingUp
           ? lTop - container.clientHeight + offset
-          : lTop - offset;
+          : lTop - offset
 
-        container.scrollTo({ top, behavior: 'smooth' });
+        container.scrollTo({ top, behavior: 'smooth' })
       }
     }
-  }, [activeSection]);
+  }, [activeSection])
   //#endregion  //*======== Scroll into view ===========
 
   return (
@@ -82,5 +82,5 @@ export default function TableOfContents({
         </div>
       </div>
     </motion.div>
-  );
+  )
 }

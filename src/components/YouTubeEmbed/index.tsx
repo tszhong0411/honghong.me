@@ -1,1 +1,1 @@
-export { YouTubeEmbed } from './YouTubeEmbed';
+export { YouTubeEmbed } from './YouTubeEmbed'

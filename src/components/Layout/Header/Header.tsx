@@ -1,20 +1,20 @@
-import { Burger, Group, Paper, Transition } from '@mantine/core';
-import { useBooleanToggle } from '@mantine/hooks';
-import { useRouter } from 'next/router';
-import React from 'react';
+import { Burger, Group, Paper, Transition } from '@mantine/core'
+import { useBooleanToggle } from '@mantine/hooks'
+import { useRouter } from 'next/router'
+import React from 'react'
 
-import HeaderLogo from '@/components/Layout/Header/HeaderLogo';
-import LanguageSwitch from '@/components/Layout/Header/LanguageSwitch';
-import { links } from '@/components/Layout/Header/links';
-import ThemeSwitch from '@/components/Layout/Header/ThemeSwitch';
-import Link from '@/components/Link';
+import HeaderLogo from '@/components/Layout/Header/HeaderLogo'
+import LanguageSwitch from '@/components/Layout/Header/LanguageSwitch'
+import { links } from '@/components/Layout/Header/links'
+import ThemeSwitch from '@/components/Layout/Header/ThemeSwitch'
+import Link from '@/components/Link'
 
-import useStyles from './Header.styles';
+import useStyles from './Header.styles'
 
 export default function Header() {
-  const { classes, cx } = useStyles();
-  const [opened, toggleOpened] = useBooleanToggle(false);
-  const { locale, defaultLocale, asPath } = useRouter();
+  const { classes, cx } = useStyles()
+  const [opened, toggleOpened] = useBooleanToggle(false)
+  const { locale, defaultLocale, asPath } = useRouter()
 
   const items = links.map((link) => (
     <Link
@@ -28,12 +28,12 @@ export default function Header() {
         [classes.linkActive]: asPath === link.href,
       })}
       onClick={() => {
-        toggleOpened(false);
+        toggleOpened(false)
       }}
     >
       {link.text}
     </Link>
-  ));
+  ))
 
   return (
     <div className={classes.header}>
@@ -62,5 +62,5 @@ export default function Header() {
         <ThemeSwitch />
       </div>
     </div>
-  );
+  )
 }

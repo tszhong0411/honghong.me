@@ -1,4 +1,4 @@
-import { createStyles } from '@mantine/core';
+import { createStyles } from '@mantine/core'
 
 export default createStyles((theme) => ({
   logo: {
@@ -24,4 +24,4 @@ export default createStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
   },
-}));
+}))

@@ -1,18 +1,18 @@
-import useSWR from 'swr';
+import useSWR from 'swr'
 
-import fetcher from '@/lib/fetcher';
+import fetcher from '@/lib/fetcher'
 
-import { Github } from '@/components/Metrics/types';
+import { Github } from '@/components/Metrics/types'
 
-import MetricCard from './Card';
-import useStyles from './Metrics.styles';
+import MetricCard from './Card'
+import useStyles from './Metrics.styles'
 
 export default function GitHubCard() {
-  const { data } = useSWR<Github>('/api/github', fetcher);
-  const stars = new Number(data?.stars);
-  const followers = new Number(data?.followers);
-  const link = 'https://github.com/tszhong0411';
-  const { classes } = useStyles();
+  const { data } = useSWR<Github>('/api/github', fetcher)
+  const stars = new Number(data?.stars)
+  const followers = new Number(data?.followers)
+  const link = 'https://github.com/tszhong0411'
+  const { classes } = useStyles()
 
   return (
     <div className={classes.group}>
@@ -29,5 +29,5 @@ export default function GitHubCard() {
         isCurrency={false}
       />
     </div>
-  );
+  )
 }

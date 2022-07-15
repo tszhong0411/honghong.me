@@ -1,4 +1,4 @@
-import { createStyles } from '@mantine/core';
+import { createStyles } from '@mantine/core'
 
 export default createStyles((theme) => ({
   wrapper: {
@@ -45,4 +45,4 @@ export default createStyles((theme) => ({
       },
     },
   },
-}));
+}))

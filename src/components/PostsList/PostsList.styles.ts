@@ -1,4 +1,4 @@
-import { createStyles } from '@mantine/core';
+import { createStyles } from '@mantine/core'
 
 export default createStyles(() => ({
   image: {
@@ -8,4 +8,4 @@ export default createStyles(() => ({
       transform: 'scale(1.1)',
     },
   },
-}));
+}))

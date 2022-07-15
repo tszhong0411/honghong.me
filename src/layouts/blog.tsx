@@ -1,98 +1,98 @@
-import { Box, Button, Divider, useMantineTheme } from '@mantine/core';
-import type { Blog } from 'contentlayer/generated';
-import { AnimatePresence, motion } from 'framer-motion';
-import Image from 'next/image';
-import { useRouter } from 'next/router';
-import useTranslation from 'next-translate/useTranslation';
-import React from 'react';
-import { BrandFacebook, BrandTwitter } from 'tabler-icons-react';
+import { Box, Button, Divider, useMantineTheme } from '@mantine/core'
+import type { Blog } from 'contentlayer/generated'
+import { AnimatePresence, motion } from 'framer-motion'
+import Image from 'next/image'
+import { useRouter } from 'next/router'
+import useTranslation from 'next-translate/useTranslation'
+import React from 'react'
+import { BrandFacebook, BrandTwitter } from 'tabler-icons-react'
 
-import { isProd } from '@/lib/isProduction';
-import { CoreContent } from '@/lib/utils/contentlayer';
-import formatDate from '@/lib/utils/formatDate';
-import useScrollSpy from '@/hooks/useScrollspy';
+import { isProd } from '@/lib/isProduction'
+import { CoreContent } from '@/lib/utils/contentlayer'
+import formatDate from '@/lib/utils/formatDate'
+import useScrollSpy from '@/hooks/useScrollspy'
 
-import Comment from '@/components/Comment';
-import Layout from '@/components/Layout';
-import Link from '@/components/Link';
-import NextPrevPost from '@/components/NextPrevPost';
-import PageTitle from '@/components/PageTitle';
-import ScrollTopAndComment from '@/components/ScrollTopAndComment';
-import TableOfContents from '@/components/TableOfContents';
-import { HeadingScrollSpy } from '@/components/TableOfContents/types';
-import ViewCounter from '@/components/ViewCounter';
+import Comment from '@/components/Comment'
+import Layout from '@/components/Layout'
+import Link from '@/components/Link'
+import NextPrevPost from '@/components/NextPrevPost'
+import PageTitle from '@/components/PageTitle'
+import ScrollTopAndComment from '@/components/ScrollTopAndComment'
+import TableOfContents from '@/components/TableOfContents'
+import { HeadingScrollSpy } from '@/components/TableOfContents/types'
+import ViewCounter from '@/components/ViewCounter'
 
-import useStyles from './blog.styles';
+import useStyles from './blog.styles'
 
 const editUrl = (slug: string) =>
-  `https://github.com/tszhong0411/honghong.me/blob/main/src/data/blog/${slug}.mdx`;
+  `https://github.com/tszhong0411/honghong.me/blob/main/src/data/blog/${slug}.mdx`
 
 const twitterShare = (slug: string) =>
   `https://twitter.com/intent/tweet?url=${encodeURIComponent(
     `https://honghong.me/blog/${slug.split('.')[0]}`
-  )}`;
+  )}`
 
 const facebookShare = (slug: string) =>
   `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
     `https://honghong.me/blog/${slug.split('.')[0]}`
-  )}`;
+  )}`
 
 type Props = {
-  content: CoreContent<Blog>;
-  next?: { slug: string; title: string; summary: string };
-  prev?: { slug: string; title: string; summary: string };
-  children: React.ReactNode;
-};
+  content: CoreContent<Blog>
+  next?: { slug: string; title: string; summary: string }
+  prev?: { slug: string; title: string; summary: string }
+  children: React.ReactNode
+}
 
 export default function BlogLayout({ content, next, prev, children }: Props) {
-  const { slug, date, title, summary } = content;
-  const { t } = useTranslation();
-  const { locale } = useRouter();
-  const [totalCommentCount, setTotalCommentCount] = React.useState<number>(0);
-  const { classes } = useStyles();
-  const { colorScheme } = useMantineTheme();
-  const dark = colorScheme === 'dark';
+  const { slug, date, title, summary } = content
+  const { t } = useTranslation()
+  const { locale } = useRouter()
+  const [totalCommentCount, setTotalCommentCount] = React.useState<number>(0)
+  const { classes } = useStyles()
+  const { colorScheme } = useMantineTheme()
+  const dark = colorScheme === 'dark'
 
   //#region  //*=========== Scrollspy ===========
-  const activeSection = useScrollSpy();
-  const [toc, setToc] = React.useState<HeadingScrollSpy>();
+  const activeSection = useScrollSpy()
+  const [toc, setToc] = React.useState<HeadingScrollSpy>()
   const minLevel =
-    toc?.reduce((min, item) => (item.level < min ? item.level : min), 10) ?? 0;
+    toc?.reduce((min, item) => (item.level < min ? item.level : min), 10) ?? 0
 
   React.useEffect(() => {
     const headings = document.querySelectorAll(
       '#blog-content h2, #blog-content h3'
-    );
+    )
 
-    const headingArr: HeadingScrollSpy = [];
+    const headingArr: HeadingScrollSpy = []
     headings.forEach((heading) => {
-      const id = heading.id;
-      const level = +heading.tagName.replace('H', '');
-      const text = heading.textContent + '';
+      const id = heading.id
+      const level = +heading.tagName.replace('H', '')
+      const text = heading.textContent + ''
 
-      headingArr.push({ id, level, text });
-    });
+      headingArr.push({ id, level, text })
+    })
 
-    setToc(headingArr);
-  }, [slug]);
+    setToc(headingArr)
+  }, [slug])
   //#endregion //*=========== Srcollspy ===========
 
   React.useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
-      if (event.origin !== 'https://giscus.app') return;
-      if (!(typeof event.data === 'object' && event.data.giscus)) return;
+      if (event.origin !== 'https://giscus.app') return
+      if (!(typeof event.data === 'object' && event.data.giscus)) return
 
-      const giscusData = event.data.giscus.discussion;
+      const giscusData = event.data.giscus.discussion
 
       giscusData &&
         setTotalCommentCount(
           giscusData.totalCommentCount + giscusData.totalReplyCount
-        );
-    };
+        )
+    }
 
-    window.addEventListener('message', handleMessage);
-    return () => window.removeEventListener('message', handleMessage);
-  }, []);
+    window.addEventListener('message', handleMessage)
+    return () => window.removeEventListener('message', handleMessage)
+  }, [])
   return (
     <Layout
       title={`${title}`}
@@ -267,5 +267,5 @@ export default function BlogLayout({ content, next, prev, children }: Props) {
         activeSection={activeSection}
       />
     </Layout>
-  );
+  )
 }

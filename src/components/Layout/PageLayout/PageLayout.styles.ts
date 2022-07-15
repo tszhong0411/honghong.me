@@ -1,4 +1,4 @@
-import { createStyles } from '@mantine/core';
+import { createStyles } from '@mantine/core'
 
 export default createStyles((theme) => ({
   layout: {
@@ -21,4 +21,4 @@ export default createStyles((theme) => ({
   description: {
     marginBottom: 48,
   },
-}));
+}))

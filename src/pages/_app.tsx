@@ -3,38 +3,37 @@ import {
   ColorSchemeProvider,
   Global,
   MantineProvider,
-} from '@mantine/core';
-import { useHotkeys } from '@mantine/hooks';
-import { ModalsProvider } from '@mantine/modals';
-import { NotificationsProvider } from '@mantine/notifications';
-import { getCookie, setCookies } from 'cookies-next';
-import { GetServerSidePropsContext } from 'next';
-import type { AppProps } from 'next/app';
-import React from 'react';
+} from '@mantine/core'
+import { useHotkeys } from '@mantine/hooks'
+import { ModalsProvider } from '@mantine/modals'
+import { NotificationsProvider } from '@mantine/notifications'
+import { getCookie, setCookies } from 'cookies-next'
+import { GetServerSidePropsContext } from 'next'
+import type { AppProps } from 'next/app'
+import React from 'react'
 
-import '@/styles/global.css';
-import '@/styles/prism.css';
+import '@/styles/global.css'
+import '@/styles/prism.css'
 
-import { isProd } from '@/lib/isProduction';
+import { isProd } from '@/lib/isProduction'
 
-import Umami from '@/components/Umami';
+import Umami from '@/components/Umami'
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
-  const { Component, pageProps } = props;
+  const { Component, pageProps } = props
   const [colorScheme, setColorScheme] = React.useState<ColorScheme>(
     props.colorScheme
-  );
+  )
 
   const toggleColorScheme = (value?: ColorScheme) => {
-    const nextColorScheme =
-      value || (colorScheme === 'dark' ? 'light' : 'dark');
-    setColorScheme(nextColorScheme);
+    const nextColorScheme = value || (colorScheme === 'dark' ? 'light' : 'dark')
+    setColorScheme(nextColorScheme)
     setCookies('mantine-color-scheme', nextColorScheme, {
       maxAge: 60 * 60 * 24 * 30,
-    });
-  };
+    })
+  }
 
-  useHotkeys([['mod+J', () => toggleColorScheme()]]);
+  useHotkeys([['mod+J', () => toggleColorScheme()]])
 
   return (
     <ColorSchemeProvider
@@ -98,9 +97,9 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
         </ModalsProvider>
       </MantineProvider>
     </ColorSchemeProvider>
-  );
+  )
 }
 
 App.getInitialProps = async ({ ctx }: { ctx: GetServerSidePropsContext }) => ({
   colorScheme: getCookie('mantine-color-scheme', ctx) || 'light',
-});
+})

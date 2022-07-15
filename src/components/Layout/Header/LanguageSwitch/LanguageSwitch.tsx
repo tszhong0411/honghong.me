@@ -1,31 +1,31 @@
-import { ActionIcon, Image, Menu } from '@mantine/core';
-import { useLocalStorage } from '@mantine/hooks';
-import { default as emojiUnicode } from 'emoji-unicode';
-import { useRouter } from 'next/router';
-import useTranslation from 'next-translate/useTranslation';
-import React from 'react';
-import { ChevronDown, Language } from 'tabler-icons-react';
+import { ActionIcon, Image, Menu } from '@mantine/core'
+import { useLocalStorage } from '@mantine/hooks'
+import { default as emojiUnicode } from 'emoji-unicode'
+import { useRouter } from 'next/router'
+import useTranslation from 'next-translate/useTranslation'
+import React from 'react'
+import { ChevronDown, Language } from 'tabler-icons-react'
 
-import i18nConfig from '@/lib/i18n';
+import i18nConfig from '@/lib/i18n'
 
 export default function LanguageSwitch() {
-  const router = useRouter();
-  const [locale, setLocale] = useLocalStorage({ key: 'locale' });
-  const { locales, languages, defaultLocale } = i18nConfig;
-  const { t } = useTranslation();
+  const router = useRouter()
+  const [locale, setLocale] = useLocalStorage({ key: 'locale' })
+  const { locales, languages, defaultLocale } = i18nConfig
+  const { t } = useTranslation()
 
   // Redirect router when locale not set in 'localstorage'
   React.useEffect(() => {
     if (typeof locale === 'string' && locale !== router.locale) {
       locale !== defaultLocale &&
-        router.push(router.asPath, router.asPath, { locale });
+        router.push(router.asPath, router.asPath, { locale })
     }
-  }, [defaultLocale, locale, locales, router]);
+  }, [defaultLocale, locale, locales, router])
 
   const changeLanguage = (locale: string) => {
-    setLocale(locale);
-    router.push(router.asPath, router.asPath, { locale });
-  };
+    setLocale(locale)
+    router.push(router.asPath, router.asPath, { locale })
+  }
 
   return (
     <Menu
@@ -49,7 +49,7 @@ export default function LanguageSwitch() {
       <Menu.Label>{t('common:language')}</Menu.Label>
       {locales.map((item: string, index: number) => {
         const name = languages[item].name,
-          flag = languages[item].flag;
+          flag = languages[item].flag
 
         return (
           <Menu.Item
@@ -67,8 +67,8 @@ export default function LanguageSwitch() {
           >
             {name}
           </Menu.Item>
-        );
+        )
       })}
     </Menu>
-  );
+  )
 }

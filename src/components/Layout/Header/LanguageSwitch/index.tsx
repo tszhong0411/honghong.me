@@ -1,1 +1,1 @@
-export { default } from './LanguageSwitch';
+export { default } from './LanguageSwitch'

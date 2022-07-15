@@ -1,7 +1,7 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
-import { getSession } from 'next-auth/react';
+import type { NextApiRequest, NextApiResponse } from 'next'
+import { getSession } from 'next-auth/react'
 
-import prisma from '@/lib/prisma';
+import prisma from '@/lib/prisma'
 
 export default async function handler(
   req: NextApiRequest,
@@ -12,7 +12,7 @@ export default async function handler(
       orderBy: {
         updated_at: 'desc',
       },
-    });
+    })
 
     return res.json(
       entries.map((entry) => ({
@@ -21,14 +21,14 @@ export default async function handler(
         created_by: entry.created_by,
         updated_at: entry.updated_at,
       }))
-    );
+    )
   }
 
-  const session = await getSession({ req });
-  const { email, name } = session.user;
+  const session = await getSession({ req })
+  const { email, name } = session.user
 
   if (!session) {
-    return res.status(403).send('Unauthorized');
+    return res.status(403).send('Unauthorized')
   }
 
   if (req.method === 'POST') {
@@ -38,15 +38,15 @@ export default async function handler(
         body: (req.body.body || '').slice(0, 500),
         created_by: name,
       },
-    });
+    })
 
     return res.status(200).json({
       id: newEntry.id.toString(),
       body: newEntry.body,
       created_by: newEntry.created_by,
       updated_at: newEntry.updated_at,
-    });
+    })
   }
 
-  return res.send('Method not allowed.');
+  return res.send('Method not allowed.')
 }

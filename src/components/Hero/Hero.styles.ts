@@ -1,4 +1,4 @@
-import { createStyles } from '@mantine/core';
+import { createStyles } from '@mantine/core'
 
 export default createStyles((theme) => ({
   hero: {
@@ -21,4 +21,4 @@ export default createStyles((theme) => ({
     userSelect: 'none',
     borderRadius: '50%',
   },
-}));
+}))

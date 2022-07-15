@@ -1,7 +1,7 @@
-import { createStyles } from '@mantine/core';
+import { createStyles } from '@mantine/core'
 
-export const HEADER_HEIGHT = 60;
-export const HEADER_BREAKPOINT = 860;
+export const HEADER_HEIGHT = 60
+export const HEADER_BREAKPOINT = 860
 
 export default createStyles((theme) => ({
   header: {
@@ -109,4 +109,4 @@ export default createStyles((theme) => ({
         theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 3 : 7],
     },
   },
-}));
+}))

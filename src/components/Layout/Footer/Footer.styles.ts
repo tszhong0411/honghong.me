@@ -1,4 +1,4 @@
-import { createStyles } from '@mantine/core';
+import { createStyles } from '@mantine/core'
 
 export default createStyles((theme) => ({
   footer: {
@@ -24,4 +24,4 @@ export default createStyles((theme) => ({
     width: '100%',
     fontWeight: 500,
   },
-}));
+}))

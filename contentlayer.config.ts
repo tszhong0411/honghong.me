@@ -2,17 +2,17 @@ import {
   ComputedFields,
   defineDocumentType,
   makeSource,
-} from 'contentlayer/source-files';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import rehypeSlug from 'rehype-slug';
-import remarkGfm from 'remark-gfm';
+} from 'contentlayer/source-files'
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import rehypeSlug from 'rehype-slug'
+import remarkGfm from 'remark-gfm'
 
 const computedFields: ComputedFields = {
   slug: {
     type: 'string',
     resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ''),
   },
-};
+}
 
 export const Blog = defineDocumentType(() => ({
   name: 'Blog',
@@ -27,7 +27,7 @@ export const Blog = defineDocumentType(() => ({
     canonicalUrl: { type: 'string' },
   },
   computedFields,
-}));
+}))
 
 export const OtherPage = defineDocumentType(() => ({
   name: 'OtherPage',
@@ -37,7 +37,7 @@ export const OtherPage = defineDocumentType(() => ({
     title: { type: 'string', required: true },
   },
   computedFields,
-}));
+}))
 
 const contentLayerConfig = makeSource({
   contentDirPath: './src/data',
@@ -56,6 +56,6 @@ const contentLayerConfig = makeSource({
       ],
     ],
   },
-});
+})
 
-export default contentLayerConfig;
+export default contentLayerConfig

@@ -1,4 +1,4 @@
-import { createStyles } from '@mantine/core';
+import { createStyles } from '@mantine/core'
 
 export default createStyles((theme, { floating }: { floating: boolean }) => ({
   root: {
@@ -56,4 +56,4 @@ export default createStyles((theme, { floating }: { floating: boolean }) => ({
   avatar: {
     borderRadius: '50%',
   },
-}));
+}))

@@ -1,12 +1,12 @@
-import { Box, Button, Card, Title } from '@mantine/core';
-import { useHover } from '@mantine/hooks';
-import { motion } from 'framer-motion';
-import useTranslation from 'next-translate/useTranslation';
-import { ArrowRight } from 'tabler-icons-react';
+import { Box, Button, Card, Title } from '@mantine/core'
+import { useHover } from '@mantine/hooks'
+import { motion } from 'framer-motion'
+import useTranslation from 'next-translate/useTranslation'
+import { ArrowRight } from 'tabler-icons-react'
 
 const ProjectsCard = ({ title, description, href }) => {
-  const { t } = useTranslation();
-  const { hovered, ref } = useHover();
+  const { t } = useTranslation()
+  const { hovered, ref } = useHover()
 
   return (
     <Card shadow='sm' radius='lg' p={32}>
@@ -35,7 +35,7 @@ const ProjectsCard = ({ title, description, href }) => {
         </Button>
       </Box>
     </Card>
-  );
-};
+  )
+}
 
-export default ProjectsCard;
+export default ProjectsCard

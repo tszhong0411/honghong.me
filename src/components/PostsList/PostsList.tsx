@@ -1,30 +1,30 @@
-import { Box, Button, Title, useMantineTheme } from '@mantine/core';
-import { motion } from 'framer-motion';
-import { useRouter } from 'next/router';
-import useTranslation from 'next-translate/useTranslation';
-import React from 'react';
-import { ArrowRight } from 'tabler-icons-react';
+import { Box, Button, Title, useMantineTheme } from '@mantine/core'
+import { motion } from 'framer-motion'
+import { useRouter } from 'next/router'
+import useTranslation from 'next-translate/useTranslation'
+import React from 'react'
+import { ArrowRight } from 'tabler-icons-react'
 
-import { isProd } from '@/lib/isProduction';
-import { PostsListProps } from '@/lib/types';
-import formatDate from '@/lib/utils/formatDate';
+import { isProd } from '@/lib/isProduction'
+import { PostsListProps } from '@/lib/types'
+import formatDate from '@/lib/utils/formatDate'
 
-import { CloudinaryImg } from '@/components/Image';
-import Link from '@/components/Link';
-import ViewCounter from '@/components/ViewCounter';
+import { CloudinaryImg } from '@/components/Image'
+import Link from '@/components/Link'
+import ViewCounter from '@/components/ViewCounter'
 
-import useStyles from './PostsList.styles';
+import useStyles from './PostsList.styles'
 
 export default function PostsList({ post }: PostsListProps) {
-  const { t } = useTranslation();
-  const { locale } = useRouter();
-  const { slug, date, title, summary, image } = post;
-  const formattedSlug = slug.replace(`.${locale}`, '');
-  const [hover, setHover] = React.useState<boolean>(false);
-  const { classes } = useStyles();
+  const { t } = useTranslation()
+  const { locale } = useRouter()
+  const { slug, date, title, summary, image } = post
+  const formattedSlug = slug.replace(`.${locale}`, '')
+  const [hover, setHover] = React.useState<boolean>(false)
+  const { classes } = useStyles()
 
-  const { colorScheme } = useMantineTheme();
-  const dark = colorScheme === 'dark';
+  const { colorScheme } = useMantineTheme()
+  const dark = colorScheme === 'dark'
 
   return (
     <motion.li
@@ -142,5 +142,5 @@ export default function PostsList({ post }: PostsListProps) {
         </Box>
       </article>
     </motion.li>
-  );
+  )
 }

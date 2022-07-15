@@ -1,4 +1,4 @@
-import { createStyles } from '@mantine/core';
+import { createStyles } from '@mantine/core'
 
 export default createStyles((theme) => ({
   wrapper: {
@@ -20,4 +20,4 @@ export default createStyles((theme) => ({
     transformOrigin: 'top',
     backgroundColor: theme.colorScheme === 'dark' ? '#94a3b8' : '#334155',
   },
-}));
+}))

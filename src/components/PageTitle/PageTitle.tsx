@@ -1,11 +1,11 @@
-import { Title, useMantineTheme } from '@mantine/core';
-import React from 'react';
+import { Title, useMantineTheme } from '@mantine/core'
+import React from 'react'
 
-import { ChildrenType } from '@/lib/types';
+import { ChildrenType } from '@/lib/types'
 
 export default function PageTitle({ children }: ChildrenType) {
-  const { colorScheme } = useMantineTheme();
-  const dark = colorScheme === 'dark';
+  const { colorScheme } = useMantineTheme()
+  const dark = colorScheme === 'dark'
 
   return (
     <Title
@@ -20,5 +20,5 @@ export default function PageTitle({ children }: ChildrenType) {
     >
       {children}
     </Title>
-  );
+  )
 }

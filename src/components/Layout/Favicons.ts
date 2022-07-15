@@ -1,4 +1,4 @@
-import { Favicons as FaviconType } from '@/components/Layout/types';
+import { Favicons as FaviconType } from '@/components/Layout/types'
 
 export const Favicons: Array<FaviconType> = [
   {
@@ -74,4 +74,4 @@ export const Favicons: Array<FaviconType> = [
     rel: 'manifest',
     href: '/static/favicon/manifest.json',
   },
-];
+]

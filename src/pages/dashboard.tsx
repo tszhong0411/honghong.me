@@ -1,17 +1,17 @@
-import { Box, Title } from '@mantine/core';
-import useTranslation from 'next-translate/useTranslation';
+import { Box, Title } from '@mantine/core'
+import useTranslation from 'next-translate/useTranslation'
 
-import { isProd } from '@/lib/isProduction';
+import { isProd } from '@/lib/isProduction'
 
-import Layout from '@/components/Layout';
-import PageLayout from '@/components/Layout/PageLayout';
-import BlogTotalViews from '@/components/Metrics/BlogTotalViews';
-import Github from '@/components/Metrics/Github';
-import Youtube from '@/components/Metrics/Youtube';
-import TopTracks from '@/components/TopTracks';
+import Layout from '@/components/Layout'
+import PageLayout from '@/components/Layout/PageLayout'
+import BlogTotalViews from '@/components/Metrics/BlogTotalViews'
+import Github from '@/components/Metrics/Github'
+import Youtube from '@/components/Metrics/Youtube'
+import TopTracks from '@/components/TopTracks'
 
 export default function Dashboard() {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   return (
     <Layout
@@ -48,5 +48,5 @@ export default function Dashboard() {
         <TopTracks />
       </PageLayout>
     </Layout>
-  );
+  )
 }

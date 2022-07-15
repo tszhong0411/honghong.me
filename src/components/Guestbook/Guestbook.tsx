@@ -7,43 +7,43 @@ import {
   Skeleton,
   Text,
   TextInput,
-} from '@mantine/core';
-import { useModals } from '@mantine/modals';
-import { showNotification } from '@mantine/notifications';
-import Image from 'next/image';
-import { useRouter } from 'next/router';
-import { signOut } from 'next-auth/react';
-import useTranslation from 'next-translate/useTranslation';
-import React from 'react';
-import useSWR, { useSWRConfig } from 'swr';
-import { AlertCircle, CircleCheck } from 'tabler-icons-react';
+} from '@mantine/core'
+import { useModals } from '@mantine/modals'
+import { showNotification } from '@mantine/notifications'
+import Image from 'next/image'
+import { useRouter } from 'next/router'
+import { signOut } from 'next-auth/react'
+import useTranslation from 'next-translate/useTranslation'
+import React from 'react'
+import useSWR, { useSWRConfig } from 'swr'
+import { AlertCircle, CircleCheck } from 'tabler-icons-react'
 
-import fetcher from '@/lib/fetcher';
-import formatDate from '@/lib/utils/formatDate';
+import fetcher from '@/lib/fetcher'
+import formatDate from '@/lib/utils/formatDate'
 
-import { entryProps } from '@/components/Guestbook/types';
+import { entryProps } from '@/components/Guestbook/types'
 
-import useStyles from './Guestbook.styles';
+import useStyles from './Guestbook.styles'
 
 function GuestbookEntry({ entry, user }) {
-  const { mutate } = useSWRConfig();
-  const { t } = useTranslation();
-  const { locale } = useRouter();
-  const modals = useModals();
+  const { mutate } = useSWRConfig()
+  const { t } = useTranslation()
+  const { locale } = useRouter()
+  const modals = useModals()
 
   const deleteEntry = async () => {
     await fetch(`/api/guestbook/${entry.id}`, {
       method: 'DELETE',
-    });
+    })
 
-    mutate('/api/guestbook');
+    mutate('/api/guestbook')
 
     showNotification({
       message: t('common:delete_successful'),
       icon: <CircleCheck />,
       color: 'green',
-    });
-  };
+    })
+  }
 
   const deleteHandler = () => {
     modals.openConfirmModal({
@@ -57,8 +57,8 @@ function GuestbookEntry({ entry, user }) {
       },
       confirmProps: { color: 'red' },
       onConfirm: () => deleteEntry(),
-    });
-  };
+    })
+  }
 
   return (
     <Group direction='column' spacing='xs' my={24}>
@@ -92,26 +92,26 @@ function GuestbookEntry({ entry, user }) {
         )}
       </Group>
     </Group>
-  );
+  )
 }
 
 export default function Guestbook({ fallbackData, session }) {
-  const [focused, setFocused] = React.useState<boolean>(false);
-  const [value, setValue] = React.useState<string>('');
-  const [loading, setLoading] = React.useState<boolean>(false);
-  const inputEl = React.useRef(null);
-  const { mutate } = useSWRConfig();
+  const [focused, setFocused] = React.useState<boolean>(false)
+  const [value, setValue] = React.useState<string>('')
+  const [loading, setLoading] = React.useState<boolean>(false)
+  const inputEl = React.useRef(null)
+  const { mutate } = useSWRConfig()
   const { data: entries } = useSWR('/api/guestbook', fetcher, {
     fallbackData,
-  });
-  const { t } = useTranslation();
+  })
+  const { t } = useTranslation()
   const { classes } = useStyles({
     floating: value.trim().length !== 0 || focused,
-  });
-  const router = useRouter();
+  })
+  const router = useRouter()
 
   const leaveEntry = async (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
 
     if (inputEl.current.value !== '') {
       const res = await fetch('/api/guestbook', {
@@ -122,34 +122,34 @@ export default function Guestbook({ fallbackData, session }) {
           'Content-Type': 'application/json',
         },
         method: 'POST',
-      });
+      })
 
-      const { error } = await res.json();
+      const { error } = await res.json()
 
       if (error) {
         showNotification({
           message: error,
           icon: <AlertCircle />,
-        });
-        return;
+        })
+        return
       }
 
-      mutate('/api/guestbook');
+      mutate('/api/guestbook')
 
       showNotification({
         message: t('common:Guestbook_success'),
         icon: <CircleCheck />,
         color: 'green',
-      });
+      })
 
-      setLoading(false);
+      setLoading(false)
     } else {
       showNotification({
         message: t('common:Guestbook_error'),
         icon: <AlertCircle />,
-      });
+      })
     }
-  };
+  }
 
   return (
     <>
@@ -254,5 +254,5 @@ export default function Guestbook({ fallbackData, session }) {
         ))}
       </div>
     </>
-  );
+  )
 }

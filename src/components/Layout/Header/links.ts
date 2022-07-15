@@ -1,4 +1,4 @@
-import { linksType } from '@/components/Layout/Header/types';
+import { linksType } from '@/components/Layout/Header/types'
 
 export const links: linksType[] = [
   { href: '/blog', text: 'Blog' },
@@ -8,4 +8,4 @@ export const links: linksType[] = [
   { href: '/about', text: 'About' },
   { href: '/uses', text: 'Uses' },
   { href: '/feed.xml', text: 'RSS' },
-];
+]

@@ -1,24 +1,24 @@
-import { Button } from '@mantine/core';
-import { motion } from 'framer-motion';
-import useTranslation from 'next-translate/useTranslation';
-import React from 'react';
-import { ArrowRight } from 'tabler-icons-react';
+import { Button } from '@mantine/core'
+import { motion } from 'framer-motion'
+import useTranslation from 'next-translate/useTranslation'
+import React from 'react'
+import { ArrowRight } from 'tabler-icons-react'
 
-import Link from '@/components/Link';
+import Link from '@/components/Link'
 
-import useStyles from './NextPrevPost.styles';
+import useStyles from './NextPrevPost.styles'
 
 interface Props {
-  heading: string;
-  title: string;
-  summary: string;
-  slug: string;
+  heading: string
+  title: string
+  summary: string
+  slug: string
 }
 
 export default function NextPrevPost({ heading, title, summary, slug }: Props) {
-  const { t } = useTranslation();
-  const [hover, setHover] = React.useState<boolean>(false);
-  const { classes } = useStyles();
+  const { t } = useTranslation()
+  const [hover, setHover] = React.useState<boolean>(false)
+  const { classes } = useStyles()
 
   return (
     <div className={classes.wrapper}>
@@ -50,5 +50,5 @@ export default function NextPrevPost({ heading, title, summary, slug }: Props) {
         {t('common:readMore')}
       </Button>
     </div>
-  );
+  )
 }

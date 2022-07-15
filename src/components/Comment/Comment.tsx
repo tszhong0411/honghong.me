@@ -1,12 +1,12 @@
-import Giscus from '@giscus/react';
-import { Box, useMantineColorScheme } from '@mantine/core';
-import { useRouter } from 'next/router';
-import React from 'react';
+import Giscus from '@giscus/react'
+import { Box, useMantineColorScheme } from '@mantine/core'
+import { useRouter } from 'next/router'
+import React from 'react'
 
 const Comment = () => {
-  const { locale } = useRouter();
-  const { colorScheme } = useMantineColorScheme();
-  const dark = colorScheme === 'dark';
+  const { locale } = useRouter()
+  const { colorScheme } = useMantineColorScheme()
+  const dark = colorScheme === 'dark'
 
   return (
     <Box my={32} id='comment'>
@@ -24,7 +24,7 @@ const Comment = () => {
         loading='eager'
       />
     </Box>
-  );
-};
+  )
+}
 
-export default Comment;
+export default Comment

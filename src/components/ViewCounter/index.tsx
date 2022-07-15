@@ -1,1 +1,1 @@
-export { default } from './ViewCounter';
+export { default } from './ViewCounter'

@@ -1,13 +1,13 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiRequest, NextApiResponse } from 'next'
 
-import prisma from '@/lib/prisma';
+import prisma from '@/lib/prisma'
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   try {
-    const slug = req.query.slug.toString();
+    const slug = req.query.slug.toString()
 
     if (req.method === 'POST') {
       const newOrUpdatedViews = await prisma.views.upsert({
@@ -20,11 +20,11 @@ export default async function handler(
             increment: 1,
           },
         },
-      });
+      })
 
       return res.status(200).json({
         total: newOrUpdatedViews.count.toString(),
-      });
+      })
     }
 
     if (req.method === 'GET') {
@@ -32,11 +32,11 @@ export default async function handler(
         where: {
           slug,
         },
-      });
+      })
 
-      return res.status(200).json({ total: views.count.toString() });
+      return res.status(200).json({ total: views.count.toString() })
     }
   } catch (e) {
-    return res.status(500).json({ message: e.message });
+    return res.status(500).json({ message: e.message })
   }
 }

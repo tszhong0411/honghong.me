@@ -1,1 +1,1 @@
-export { default } from './Kbd';
+export { default } from './Kbd'

@@ -1,1 +1,1 @@
-export { default } from './ReadingProgressBar';
+export { default } from './ReadingProgressBar'

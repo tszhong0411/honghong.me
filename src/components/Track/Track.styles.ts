@@ -1,4 +1,4 @@
-import { createStyles } from '@mantine/core';
+import { createStyles } from '@mantine/core'
 
 export default createStyles(() => ({
   track: {
@@ -14,4 +14,4 @@ export default createStyles(() => ({
     flexDirection: 'column',
     padding: '12px 0 0 12px',
   },
-}));
+}))

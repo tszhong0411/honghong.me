@@ -1,11 +1,11 @@
-import Link from 'next/link';
+import Link from 'next/link'
 
-import HeaderLogoImage from '@/components/Layout/Header/HeaderLogo/HeaderLogoImage';
+import HeaderLogoImage from '@/components/Layout/Header/HeaderLogo/HeaderLogoImage'
 
-import useStyles from './HeaderLogo.styles';
+import useStyles from './HeaderLogo.styles'
 
 export default function HeaderLogo() {
-  const { classes } = useStyles();
+  const { classes } = useStyles()
 
   return (
     <Link href='/'>
@@ -13,5 +13,5 @@ export default function HeaderLogo() {
         <HeaderLogoImage className={classes.logo} />
       </a>
     </Link>
-  );
+  )
 }

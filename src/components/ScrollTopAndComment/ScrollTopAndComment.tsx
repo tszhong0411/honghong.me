@@ -1,34 +1,34 @@
-import { Affix, Button, Group } from '@mantine/core';
-import { motion } from 'framer-motion';
-import React from 'react';
-import smoothscroll from 'smoothscroll-polyfill';
-import { ArrowUp, BrandHipchat } from 'tabler-icons-react';
+import { Affix, Button, Group } from '@mantine/core'
+import { motion } from 'framer-motion'
+import React from 'react'
+import smoothscroll from 'smoothscroll-polyfill'
+import { ArrowUp, BrandHipchat } from 'tabler-icons-react'
 
 export default function ScrollTopAndComment() {
-  const [show, setShow] = React.useState(false);
+  const [show, setShow] = React.useState(false)
 
   React.useEffect(() => {
-    smoothscroll.polyfill();
+    smoothscroll.polyfill()
     const handlePageScroll = () => {
-      if (window.scrollY > 50) setShow(true);
-      else setShow(false);
-    };
+      if (window.scrollY > 50) setShow(true)
+      else setShow(false)
+    }
 
-    window.addEventListener('scroll', handlePageScroll);
-    return () => window.removeEventListener('scroll', handlePageScroll);
-  }, []);
+    window.addEventListener('scroll', handlePageScroll)
+    return () => window.removeEventListener('scroll', handlePageScroll)
+  }, [])
 
   const handleScrollTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
   const handleScrollToComment = () => {
-    window.scroll(0, document.getElementById('comment').offsetTop - 60); // minus navbar height
-  };
+    window.scroll(0, document.getElementById('comment').offsetTop - 60) // minus navbar height
+  }
 
   const variants = {
     show: { opacity: 1, display: 'flex' },
     notShow: { opacity: 0, display: 'none' },
-  };
+  }
 
   return (
     <Affix position={{ bottom: 20, right: 20 }}>
@@ -53,5 +53,5 @@ export default function ScrollTopAndComment() {
         </Group>
       </motion.div>
     </Affix>
-  );
+  )
 }

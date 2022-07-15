@@ -1,13 +1,13 @@
-import { Table } from '@mantine/core';
-import useTranslation from 'next-translate/useTranslation';
+import { Table } from '@mantine/core'
+import useTranslation from 'next-translate/useTranslation'
 
-import { PcSpecsType } from '@/lib/types';
+import { PcSpecsType } from '@/lib/types'
 
-import Layout from '@/components/Layout';
-import PageLayout from '@/components/Layout/PageLayout';
+import Layout from '@/components/Layout'
+import PageLayout from '@/components/Layout/PageLayout'
 
 export default function PcSpecs() {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   //#region  //*=========== PC Specs list ===========
   const pcSpecsList: PcSpecsType[] = [
@@ -43,7 +43,7 @@ export default function PcSpecs() {
       name: 'PSU',
       content: 'FSP Hydro 700 80Plus Bronze',
     },
-  ];
+  ]
   //#endregion  //*======== PC Specs list ===========
 
   const rows = pcSpecsList.map((item, index) => (
@@ -51,7 +51,7 @@ export default function PcSpecs() {
       <td>{item.name}</td>
       <td>{item.content}</td>
     </tr>
-  ));
+  ))
 
   return (
     <Layout templateTitle='PC Specs' description={t('common:SEO_pcSpecsDesc')}>
@@ -70,5 +70,5 @@ export default function PcSpecs() {
         </Table>
       </PageLayout>
     </Layout>
-  );
+  )
 }

@@ -1,13 +1,13 @@
-import { Text, useMantineTheme } from '@mantine/core';
+import { Text, useMantineTheme } from '@mantine/core'
 
-import Link from '@/components/Link';
+import Link from '@/components/Link'
 
-import useStyles from './Track.styles';
+import useStyles from './Track.styles'
 
 export default function Track(track) {
-  const { classes } = useStyles();
-  const { colorScheme } = useMantineTheme();
-  const dark = colorScheme === 'dark';
+  const { classes } = useStyles()
+  const { colorScheme } = useMantineTheme()
+  const dark = colorScheme === 'dark'
 
   return (
     <div className={classes.track}>
@@ -30,5 +30,5 @@ export default function Track(track) {
         <Text mb={16}>{track.artist}</Text>
       </div>
     </div>
-  );
+  )
 }

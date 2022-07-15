@@ -1,22 +1,22 @@
-import { Box, Divider, Title, useMantineTheme } from '@mantine/core';
-import { allBlogs } from 'contentlayer/generated';
-import { useRouter } from 'next/router';
-import useTranslation from 'next-translate/useTranslation';
+import { Box, Divider, Title, useMantineTheme } from '@mantine/core'
+import { allBlogs } from 'contentlayer/generated'
+import { useRouter } from 'next/router'
+import useTranslation from 'next-translate/useTranslation'
 
-import { sortedBlogPost } from '@/lib/utils/contentlayer';
+import { sortedBlogPost } from '@/lib/utils/contentlayer'
 
-import Hero from '@/components/Hero';
-import Layout from '@/components/Layout';
-import Link from '@/components/Link';
-import PostsList from '@/components/PostsList/PostsList';
+import Hero from '@/components/Hero'
+import Layout from '@/components/Layout'
+import Link from '@/components/Link'
+import PostsList from '@/components/PostsList/PostsList'
 
-export const MAX_DISPLAY = 5;
+export const MAX_DISPLAY = 5
 
 export default function Home({ filteredPosts }) {
-  const { t } = useTranslation();
-  const { locale } = useRouter();
-  const { colorScheme } = useMantineTheme();
-  const dark = colorScheme === 'dark';
+  const { t } = useTranslation()
+  const { locale } = useRouter()
+  const { colorScheme } = useMantineTheme()
+  const dark = colorScheme === 'dark'
 
   return (
     <Layout>
@@ -28,10 +28,10 @@ export default function Home({ filteredPosts }) {
         <Divider my='xl' />
         <ul style={{ listStyle: 'none' }}>
           {filteredPosts.slice(0, MAX_DISPLAY).map((post) => {
-            const { slug } = post;
-            const formattedSlug = slug.replace(`.${locale}`, '');
+            const { slug } = post
+            const formattedSlug = slug.replace(`.${locale}`, '')
 
-            return <PostsList key={formattedSlug} post={post} />;
+            return <PostsList key={formattedSlug} post={post} />
           })}
         </ul>
       </div>
@@ -47,11 +47,11 @@ export default function Home({ filteredPosts }) {
         </Link>
       </Box>
     </Layout>
-  );
+  )
 }
 
 export const getServerSideProps = async (locale: { locale: string }) => {
-  const sortedPosts = sortedBlogPost(allBlogs);
+  const sortedPosts = sortedBlogPost(allBlogs)
   const filteredPosts = sortedPosts
     .filter(
       (slug) =>
@@ -59,10 +59,10 @@ export const getServerSideProps = async (locale: { locale: string }) => {
     )
     .slice(0, MAX_DISPLAY)
     .map((post) => {
-      delete post._raw;
+      delete post._raw
 
-      return post;
-    });
+      return post
+    })
 
-  return { props: { filteredPosts } };
-};
+  return { props: { filteredPosts } }
+}

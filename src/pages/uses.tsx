@@ -1,13 +1,13 @@
-import type { OtherPage } from 'contentlayer/generated';
-import { allOtherPages } from 'contentlayer/generated';
-import useTranslation from 'next-translate/useTranslation';
+import type { OtherPage } from 'contentlayer/generated'
+import { allOtherPages } from 'contentlayer/generated'
+import useTranslation from 'next-translate/useTranslation'
 
-import Layout from '@/components/Layout';
-import PageLayout from '@/components/Layout/PageLayout';
-import { MDXComponent } from '@/components/MDXComponents/MDXComponents';
+import Layout from '@/components/Layout'
+import PageLayout from '@/components/Layout/PageLayout'
+import { MDXComponent } from '@/components/MDXComponents/MDXComponents'
 
 export default function Uses({ body: { code } }: OtherPage) {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   return (
     <Layout templateTitle='Uses' description={t('common:SEO_usesDesc')}>
@@ -15,13 +15,13 @@ export default function Uses({ body: { code } }: OtherPage) {
         <MDXComponent code={code} />
       </PageLayout>
     </Layout>
-  );
+  )
 }
 
 export async function getServerSideProps(locale: { locale: string }) {
   const uses = allOtherPages.find(
     (page) => page.slug === `uses.${locale.locale}`
-  );
+  )
 
-  return { props: uses };
+  return { props: uses }
 }

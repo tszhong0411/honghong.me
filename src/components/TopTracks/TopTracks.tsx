@@ -1,14 +1,14 @@
-import { Box, Divider, Skeleton } from '@mantine/core';
-import React from 'react';
-import useSWR from 'swr';
+import { Box, Divider, Skeleton } from '@mantine/core'
+import React from 'react'
+import useSWR from 'swr'
 
-import fetcher from '@/lib/fetcher';
+import fetcher from '@/lib/fetcher'
 
-import { TopTracks } from '@/components/TopTracks/types';
-import Track from '@/components/Track';
+import { TopTracks } from '@/components/TopTracks/types'
+import Track from '@/components/Track'
 
 export default function Tracks() {
-  const { data } = useSWR<TopTracks>('/api/top-tracks', fetcher);
+  const { data } = useSWR<TopTracks>('/api/top-tracks', fetcher)
 
   if (!data) {
     return (
@@ -22,7 +22,7 @@ export default function Tracks() {
         <Skeleton height={16} radius='xl' />
         <Skeleton height={16} radius='xl' width='70%' />
       </Box>
-    );
+    )
   }
 
   return (
@@ -34,5 +34,5 @@ export default function Tracks() {
         </React.Fragment>
       ))}
     </Box>
-  );
+  )
 }

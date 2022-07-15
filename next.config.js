@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const { withContentlayer } = require('next-contentlayer');
+const { withContentlayer } = require('next-contentlayer')
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
-});
+})
 
-const nextTranslate = require('next-translate');
+const nextTranslate = require('next-translate')
 
 /**
  * @type {import('next/dist/next-server/server/config').NextConfig}
@@ -52,9 +52,9 @@ module.exports = nextTranslate(
               },
             },
           ],
-        });
+        })
 
-        return config;
+        return config
       },
 
       async redirects() {
@@ -65,8 +65,8 @@ module.exports = nextTranslate(
               'https://www.youtube.com/channel/UC2hMWOaOlk9vrkvFVaGmn0Q',
             permanent: false,
           },
-        ];
+        ]
       },
     })
   )
-);
+)

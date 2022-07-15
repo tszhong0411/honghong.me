@@ -1,4 +1,4 @@
-import { createStyles } from '@mantine/core';
+import { createStyles } from '@mantine/core'
 
 export default createStyles(() => ({
   externalLink: {
@@ -10,4 +10,4 @@ export default createStyles(() => ({
     height: 16,
     verticalAlign: 'middle',
   },
-}));
+}))
