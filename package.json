@@ -44,7 +44,7 @@
     "dayjs": "^1.11.3",
     "emoji-unicode": "^2.0.1",
     "esbuild": "0.14.48",
-    "framer-motion": "^6.3.16",
+    "framer-motion": "^6.5.1",
     "gitmoji-cli": "^5.0.1",
     "googleapis": "^104.0.0",
     "next": "^12.2.0",
