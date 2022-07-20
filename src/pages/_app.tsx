@@ -1,6 +1,7 @@
 import {
   ColorScheme,
   ColorSchemeProvider,
+  Container,
   Global,
   MantineProvider,
 } from '@mantine/core'
@@ -17,6 +18,8 @@ import '@/styles/prism.css'
 
 import { isProd } from '@/lib/isProduction'
 
+import Footer from '@/components/Layout/Footer'
+import Header from '@/components/Layout/Header'
 import Umami from '@/components/Umami'
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
@@ -92,7 +95,18 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
               })}
             />
             {isProd && <Umami />}
-            <Component {...pageProps} />
+            <Header />
+            <Container
+              sx={(theme) => ({
+                padding: '24px 16px',
+                [theme.fn.largerThan('sm')]: {
+                  padding: '48px 32px',
+                },
+              })}
+            >
+              <Component {...pageProps} />
+            </Container>
+            <Footer />
           </NotificationsProvider>
         </ModalsProvider>
       </MantineProvider>
