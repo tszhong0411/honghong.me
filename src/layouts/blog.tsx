@@ -233,17 +233,7 @@ export default function BlogLayout({ content, next, prev, children }: Props) {
                     })}
                     orientation='vertical'
                   />
-                  <Divider
-                    sx={(theme) => ({
-                      height: 'auto',
-                      margin: 0,
-                      [theme.fn.largerThan('sm')]: {
-                        margin: '0 32px',
-                        display: 'none',
-                      },
-                    })}
-                    orientation='horizontal'
-                  />
+                  <Divider my={64} orientation='horizontal' />
                 </>
               )}
               {next && (
