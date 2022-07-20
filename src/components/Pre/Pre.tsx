@@ -1,4 +1,3 @@
-// import useTranslation from 'next-translate/useTranslation';
 import { Prism } from '@mantine/prism'
 import PrismRenderer from 'prism-react-renderer/prism'
 
