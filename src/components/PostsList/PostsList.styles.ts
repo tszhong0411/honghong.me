@@ -1,6 +1,6 @@
 import { createStyles } from '@mantine/core'
 
-export default createStyles(() => ({
+export const useStyles = createStyles(() => ({
   image: {
     transition: 'all 0.5s',
 

@@ -6,7 +6,7 @@ import { ArrowRight } from 'tabler-icons-react'
 
 import Link from '@/components/Link'
 
-import useStyles from './NextPrevPost.styles'
+import { useStyles } from './NextPrevPost.styles'
 
 interface Props {
   heading: string

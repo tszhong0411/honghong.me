@@ -6,10 +6,11 @@ import React from 'react'
 import HeaderLogo from '@/components/Layout/Header/HeaderLogo'
 import LanguageSwitch from '@/components/Layout/Header/LanguageSwitch'
 import { links } from '@/components/Layout/Header/links'
+import Search from '@/components/Layout/Header/Search'
 import ThemeSwitch from '@/components/Layout/Header/ThemeSwitch'
 import Link from '@/components/Link'
 
-import useStyles from './Header.styles'
+import { useStyles } from './Header.styles'
 
 export default function Header() {
   const { classes, cx } = useStyles()
@@ -58,8 +59,9 @@ export default function Header() {
         <Group spacing={5} className={classes.links}>
           {items.slice(0, 4)}
         </Group>
-        <LanguageSwitch />
+        <Search />
         <ThemeSwitch />
+        <LanguageSwitch />
       </div>
     </div>
   )

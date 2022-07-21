@@ -1,6 +1,6 @@
 import React from 'react'
 
-import useStyles from './ReadingProgressBar.styles'
+import { useStyles } from './ReadingProgressBar.styles'
 
 export default function ReadingProgressBar() {
   const [width, setWidth] = React.useState(0)

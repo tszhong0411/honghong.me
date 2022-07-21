@@ -23,7 +23,7 @@ import TableOfContents from '@/components/TableOfContents'
 import { HeadingScrollSpy } from '@/components/TableOfContents/types'
 import ViewCounter from '@/components/ViewCounter'
 
-import useStyles from './blog.styles'
+import { useStyles } from './blog.styles'
 
 const editUrl = (slug: string) =>
   `https://github.com/tszhong0411/honghong.me/blob/main/src/data/blog/${slug}.mdx`

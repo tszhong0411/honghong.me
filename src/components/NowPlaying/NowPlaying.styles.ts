@@ -1,6 +1,6 @@
 import { createStyles } from '@mantine/core'
 
-export default createStyles((theme) => ({
+export const useStyles = createStyles((theme) => ({
   wrapper: {
     marginBottom: 32,
     display: 'flex',

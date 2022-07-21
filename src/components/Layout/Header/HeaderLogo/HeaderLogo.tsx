@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import HeaderLogoImage from '@/components/Layout/Header/HeaderLogo/HeaderLogoImage'
 
-import useStyles from './HeaderLogo.styles'
+import { useStyles } from './HeaderLogo.styles'
 
 export default function HeaderLogo() {
   const { classes } = useStyles()

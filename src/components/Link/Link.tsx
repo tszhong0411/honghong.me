@@ -4,7 +4,7 @@ import Link from 'next/link'
 import React from 'react'
 import { ExternalLink } from 'tabler-icons-react'
 
-import useStyles from './Link.styles'
+import { useStyles } from './Link.styles'
 
 const CustomLink = ({ href, children, noIcon = false, ...rest }) => {
   const isInternalLink = href && href.startsWith('/')

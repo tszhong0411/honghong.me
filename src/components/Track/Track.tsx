@@ -2,7 +2,7 @@ import { Text, useMantineTheme } from '@mantine/core'
 
 import Link from '@/components/Link'
 
-import useStyles from './Track.styles'
+import { useStyles } from './Track.styles'
 
 export default function Track(track) {
   const { classes } = useStyles()

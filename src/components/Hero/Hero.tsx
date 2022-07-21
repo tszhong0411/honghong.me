@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 
 import Link from '@/components/Link'
-import useStyles from './Hero.styles'
+import { useStyles } from './Hero.styles'
 import { Badge, Group, Text, Title, useMantineTheme } from '@mantine/core'
 
 export default function Hero() {

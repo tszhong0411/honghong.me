@@ -1,4 +1,4 @@
-import { ActionIcon, Image, Menu } from '@mantine/core'
+import { Button, Image, Menu, Tooltip } from '@mantine/core'
 import { useLocalStorage } from '@mantine/hooks'
 import { default as emojiUnicode } from 'emoji-unicode'
 import { useRouter } from 'next/router'
@@ -8,11 +8,14 @@ import { ChevronDown, Language } from 'tabler-icons-react'
 
 import i18nConfig from '@/lib/i18n'
 
+import { useStyles } from '@/components/Layout/Header/Header.styles'
+
 export default function LanguageSwitch() {
   const router = useRouter()
   const [locale, setLocale] = useLocalStorage({ key: 'locale' })
   const { locales, languages, defaultLocale } = i18nConfig
   const { t } = useTranslation()
+  const { classes } = useStyles()
 
   // Redirect router when locale not set in 'localstorage'
   React.useEffect(() => {
@@ -30,20 +33,22 @@ export default function LanguageSwitch() {
   return (
     <Menu
       control={
-        <ActionIcon
-          size='lg'
-          radius='md'
-          title='Switch language'
-          sx={{
-            width: 66,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <Language size={20} />
-          <ChevronDown size={15} />
-        </ActionIcon>
+        <Tooltip label='Switch language' openDelay={500}>
+          <Button
+            variant='filled'
+            color='gray'
+            className={classes.button}
+            sx={{
+              width: 66,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <Language size={20} />
+            <ChevronDown size={15} />
+          </Button>
+        </Tooltip>
       }
     >
       <Menu.Label>{t('common:language')}</Menu.Label>

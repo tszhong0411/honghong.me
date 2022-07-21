@@ -23,7 +23,7 @@ import formatDate from '@/lib/utils/formatDate'
 
 import { entryProps } from '@/components/Guestbook/types'
 
-import useStyles from './Guestbook.styles'
+import { useStyles } from './Guestbook.styles'
 
 function GuestbookEntry({ entry, user }) {
   const { mutate } = useSWRConfig()

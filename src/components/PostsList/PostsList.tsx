@@ -13,7 +13,7 @@ import { CloudinaryImg } from '@/components/Image'
 import Link from '@/components/Link'
 import ViewCounter from '@/components/ViewCounter'
 
-import useStyles from './PostsList.styles'
+import { useStyles } from './PostsList.styles'
 
 export default function PostsList({ post }: PostsListProps) {
   const { t } = useTranslation()

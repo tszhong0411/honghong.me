@@ -1,6 +1,6 @@
 import { createStyles } from '@mantine/core'
 
-export default createStyles((theme) => ({
+export const useStyles = createStyles((theme) => ({
   hero: {
     margin: '48px auto 96px auto',
     display: 'flex',

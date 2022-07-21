@@ -5,7 +5,7 @@ import fetcher from '@/lib/fetcher'
 import { Github } from '@/components/Metrics/types'
 
 import MetricCard from './Card'
-import useStyles from './Metrics.styles'
+import { useStyles } from './Metrics.styles'
 
 export default function GitHubCard() {
   const { data } = useSWR<Github>('/api/github', fetcher)

@@ -1,6 +1,6 @@
 import { createStyles } from '@mantine/core'
 
-export default createStyles(() => ({
+export const useStyles = createStyles(() => ({
   track: {
     display: 'flex',
     width: '100%',

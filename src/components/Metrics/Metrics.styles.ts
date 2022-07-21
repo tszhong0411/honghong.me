@@ -1,6 +1,6 @@
 import { createStyles } from '@mantine/core'
 
-export default createStyles((theme) => ({
+export const useStyles = createStyles((theme) => ({
   group: {
     gap: 16,
     gridTemplateColumns: 'repeat(1, minmax(0,1fr))',

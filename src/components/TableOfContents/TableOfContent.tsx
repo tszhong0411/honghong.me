@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation'
 import React from 'react'
 import { ListSearch } from 'tabler-icons-react'
 
-import useStyles from './TableOfContent.styles'
+import { useStyles } from './TableOfContent.styles'
 import { TableOfContentsProps } from './types'
 import { TOCLink } from '../Link'
 

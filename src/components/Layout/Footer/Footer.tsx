@@ -7,7 +7,7 @@ import { links } from '@/components/Layout/Footer/links'
 import Link from '@/components/Link'
 import NowPlaying from '@/components/NowPlaying'
 
-import useStyles from './Footer.styles'
+import { useStyles } from './Footer.styles'
 
 export default function Footer() {
   const { locale, defaultLocale } = useRouter()
