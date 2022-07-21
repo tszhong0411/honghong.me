@@ -1,19 +1,18 @@
 import { createStyles } from '@mantine/core'
 
-export default createStyles(() => ({
+export default createStyles((theme) => ({
   wrapper: {
-    position: 'fixed',
-    top: '50%',
-    left: 30,
-    display: 'flex',
-  },
-
-  toc: {
+    minWidth: 200,
+    marginLeft: 50,
     display: 'none',
-    width: 280,
-    [`@media (min-width: 1536px)`]: {
-      flexDirection: 'column',
-      display: 'flex',
+
+    '& > #toc-container': {
+      position: 'sticky',
+      top: '6rem',
+    },
+
+    [theme.fn.largerThan('lg')]: {
+      display: 'block',
     },
   },
 }))

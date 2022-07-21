@@ -1,10 +1,7 @@
 import { Group, Text } from '@mantine/core'
-import { motion } from 'framer-motion'
 import useTranslation from 'next-translate/useTranslation'
 import React from 'react'
 import { ListSearch } from 'tabler-icons-react'
-
-import ReadingProgressBar from '@/components/ReadingProgressBar'
 
 import useStyles from './TableOfContent.styles'
 import { TableOfContentsProps } from './types'
@@ -53,16 +50,8 @@ export default function TableOfContents({
   //#endregion  //*======== Scroll into view ===========
 
   return (
-    <motion.div
-      className={classes.wrapper}
-      initial={{ x: '-200', opacity: 0, translateY: '-50%' }}
-      animate={{ x: 0, opacity: 1, translateY: '-50%' }}
-      transition={{
-        duration: 0.8,
-      }}
-    >
-      <ReadingProgressBar />
-      <div id='toc-container' className={classes.toc}>
+    <div className={classes.wrapper}>
+      <div id='toc-container'>
         <Group mb='md'>
           <ListSearch size={18} />
           <Text>{t('common:toc')}</Text>
@@ -81,6 +70,6 @@ export default function TableOfContents({
             ))}
         </div>
       </div>
-    </motion.div>
+    </div>
   )
 }
