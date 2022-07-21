@@ -30,7 +30,6 @@ export default function Home({ filteredPosts }) {
           {filteredPosts.slice(0, MAX_DISPLAY).map((post) => {
             const { slug } = post
             const formattedSlug = slug.replace(`.${locale}`, '')
-
             return <PostsList key={formattedSlug} post={post} />
           })}
         </ul>
