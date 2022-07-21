@@ -29,6 +29,11 @@ export default function Projects() {
         description: '展示更多小康的社交媒體',
         href: 'https://link.honghong.me',
       },
+      {
+        title: '小康 Tools',
+        description: 'Web 開發人員的一些工具',
+        href: 'https://tools.honghong.me',
+      },
     ],
     en: [
       {
@@ -45,6 +50,11 @@ export default function Projects() {
         title: "小康's social media",
         description: "Display more 小康's social media",
         href: 'https://link.honghong.me',
+      },
+      {
+        title: '小康 Tools',
+        description: 'Some tools for web developer',
+        href: 'https://tools.honghong.me',
       },
     ],
   }
