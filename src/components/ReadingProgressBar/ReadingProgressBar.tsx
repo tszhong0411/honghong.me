@@ -21,13 +21,6 @@ export default function ReadingProgressBar() {
   })
 
   return (
-    <div className={classes.wrapper}>
-      <div
-        className={classes.inner}
-        style={{
-          transform: `scaleY(${width})`,
-        }}
-      ></div>
-    </div>
+    <div className={classes.wrapper} style={{ width: `${width * 100}%` }}></div>
   )
 }
