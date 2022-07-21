@@ -1,57 +1,39 @@
-import { Affix, Button, Group } from '@mantine/core'
-import { motion } from 'framer-motion'
+import { Affix, Button, Group, Transition } from '@mantine/core'
+import { useWindowScroll } from '@mantine/hooks'
 import React from 'react'
-import smoothscroll from 'smoothscroll-polyfill'
 import { ArrowUp, BrandHipchat } from 'tabler-icons-react'
 
 export default function ScrollTopAndComment() {
-  const [show, setShow] = React.useState(false)
-
-  React.useEffect(() => {
-    smoothscroll.polyfill()
-    const handlePageScroll = () => {
-      if (window.scrollY > 50) setShow(true)
-      else setShow(false)
-    }
-
-    window.addEventListener('scroll', handlePageScroll)
-    return () => window.removeEventListener('scroll', handlePageScroll)
-  }, [])
-
-  const handleScrollTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-  const handleScrollToComment = () => {
-    window.scroll(0, document.getElementById('comment').offsetTop - 60) // minus navbar height
-  }
-
-  const variants = {
-    show: { opacity: 1, display: 'flex' },
-    notShow: { opacity: 0, display: 'none' },
-  }
+  const [scroll, scrollTo] = useWindowScroll()
 
   return (
     <Affix position={{ bottom: 20, right: 20 }}>
-      <motion.div animate={show ? 'show' : 'notShow'} variants={variants}>
-        <Group direction='column' spacing='xs'>
-          <Button
-            onClick={handleScrollToComment}
-            sx={{ width: 40, height: 40 }}
-            p={0}
-            radius='md'
-          >
-            <BrandHipchat size={25} />
-          </Button>
-          <Button
-            onClick={handleScrollTop}
-            sx={{ width: 40, height: 40 }}
-            p={0}
-            radius='md'
-          >
-            <ArrowUp size={25} />
-          </Button>
-        </Group>
-      </motion.div>
+      <Transition transition='slide-up' mounted={scroll.y > 0}>
+        {(transitionStyles) => (
+          <Group direction='column' spacing='xs' style={transitionStyles}>
+            <Button
+              onClick={() =>
+                scrollTo({
+                  y: document.getElementById('comment').offsetTop - 60,
+                })
+              }
+              sx={{ width: 40, height: 40 }}
+              p={0}
+              radius='md'
+            >
+              <BrandHipchat size={25} />
+            </Button>
+            <Button
+              onClick={() => scrollTo({ y: 0 })}
+              sx={{ width: 40, height: 40 }}
+              p={0}
+              radius='md'
+            >
+              <ArrowUp size={25} />
+            </Button>
+          </Group>
+        )}
+      </Transition>
     </Affix>
   )
 }
