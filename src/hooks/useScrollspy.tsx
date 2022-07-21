@@ -1,21 +1,12 @@
 import throttle from 'lodash/throttle'
 import React from 'react'
 
-/*
- * originally based on
- * https://github.com/NotionX/react-notion-x/blob/master/packages/react-notion-x/src/block.tsx#L128-L161
- */
-
-/*
- * Source: https://github.com/theodorusclarence/theodorusclarence.com/blob/main/src/hooks/useScrollspy.tsx
- */
-
 export default function useScrollSpy() {
   const [activeSection, setActiveSection] = React.useState<string | null>(null)
   const throttleMs = 100
 
   const actionSectionScrollSpy = throttle(() => {
-    const sections = document.getElementsByClassName('anchor')
+    const sections = document.getElementsByClassName('activeSection')
 
     let prevBBox = null
     let currentSectionId = activeSection
