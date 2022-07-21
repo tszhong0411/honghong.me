@@ -92,6 +92,10 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
                 'input:-webkit-autofill, input:-webkit-autofill:focus': {
                   transition: 'background-color 600000s 0s, color 600000s 0s',
                 },
+                // Blog youtube embed
+                '.yt-lite': {
+                  margin: '32px 0',
+                },
               })}
             />
             {isProd && <Umami />}
