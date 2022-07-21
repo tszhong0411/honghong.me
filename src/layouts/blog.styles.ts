@@ -48,4 +48,16 @@ export default createStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
   },
+
+  contentWrapper: {
+    display: 'flex',
+
+    '& > #blog-content': {
+      width: '100%',
+
+      [theme.fn.largerThan('lg')]: {
+        width: '40em',
+      },
+    },
+  },
 }))

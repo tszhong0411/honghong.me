@@ -1,6 +1,6 @@
 import { Box, Button, Divider, useMantineTheme } from '@mantine/core'
 import type { Blog } from 'contentlayer/generated'
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import useTranslation from 'next-translate/useTranslation'
@@ -17,6 +17,7 @@ import Layout from '@/components/Layout'
 import Link from '@/components/Link'
 import NextPrevPost from '@/components/NextPrevPost'
 import PageTitle from '@/components/PageTitle'
+import ReadingProgressBar from '@/components/ReadingProgressBar'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 import TableOfContents from '@/components/TableOfContents'
 import { HeadingScrollSpy } from '@/components/TableOfContents/types'
@@ -144,8 +145,13 @@ export default function BlogLayout({ content, next, prev, children }: Props) {
         </span>
       </div>
       <Divider />
-      <Box mt={32}>
+      <Box mt={32} className={classes.contentWrapper}>
         <article id='blog-content'>{children}</article>
+        <TableOfContents
+          toc={toc}
+          minLevel={minLevel}
+          activeSection={activeSection}
+        />
       </Box>
       <Divider mt={32} />
       <div className={classes.postBottom}>
@@ -248,14 +254,8 @@ export default function BlogLayout({ content, next, prev, children }: Props) {
           )}
         </Box>
       </Box>
-      <AnimatePresence>
-        <ScrollTopAndComment />
-      </AnimatePresence>
-      <TableOfContents
-        toc={toc}
-        minLevel={minLevel}
-        activeSection={activeSection}
-      />
+      <ReadingProgressBar />
+      <ScrollTopAndComment />
     </Layout>
   )
 }
