@@ -33,7 +33,7 @@ export default function LanguageSwitch() {
   return (
     <Menu
       control={
-        <Tooltip label='Switch language' openDelay={500}>
+        <Tooltip label={t('common:Tooltip_switchLanguage')} openDelay={500}>
           <Button
             variant='filled'
             color='gray'
