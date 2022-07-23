@@ -17,11 +17,10 @@ export default function LanguageSwitch() {
   const { t } = useTranslation()
   const { classes } = useStyles()
 
-  // Redirect router when locale not set in 'localstorage'
+  // * Redirect when current language not same with language in localstorage
   React.useEffect(() => {
     if (typeof locale === 'string' && locale !== router.locale) {
-      locale !== defaultLocale &&
-        router.push(router.asPath, router.asPath, { locale })
+      router.push(router.asPath, router.asPath, { locale })
     }
   }, [defaultLocale, locale, locales, router])
 
