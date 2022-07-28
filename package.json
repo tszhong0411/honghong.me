@@ -42,7 +42,6 @@
     "@mantine/spotlight": "^5.0.0",
     "@prisma/client": "^4.1.0",
     "chalk": "5.0.1",
-    "cloudinary-build-url": "^0.2.4",
     "contentlayer": "0.2.6",
     "cookies-next": "^2.1.1",
     "dayjs": "^1.11.4",
