@@ -215,42 +215,38 @@ export default function BlogLayout({ content, next, prev, children }: Props) {
             },
           })}
         >
-          {(next || prev) && (
+          {prev && (
+            <NextPrevPost
+              heading={t('common:prev')}
+              title={prev.title}
+              summary={prev.summary}
+              slug={prev.slug.replace(`.${locale}`, '')}
+            />
+          )}
+          {next && prev && (
             <>
-              {prev && (
-                <NextPrevPost
-                  heading={t('common:prev')}
-                  title={prev.title}
-                  summary={prev.summary}
-                  slug={prev.slug.replace(`.${locale}`, '')}
-                />
-              )}
-              {next && (
-                <>
-                  <Divider
-                    sx={(theme) => ({
-                      height: 'auto',
-                      margin: 0,
-                      display: 'none',
-                      [theme.fn.largerThan('sm')]: {
-                        margin: '0 32px',
-                        display: 'block',
-                      },
-                    })}
-                    orientation='vertical'
-                  />
-                  <Divider my={64} orientation='horizontal' />
-                </>
-              )}
-              {next && (
-                <NextPrevPost
-                  heading={t('common:next')}
-                  title={next.title}
-                  summary={next.summary}
-                  slug={next.slug.replace(`.${locale}`, '')}
-                />
-              )}
+              <Divider
+                sx={(theme) => ({
+                  height: 'auto',
+                  margin: 0,
+                  display: 'none',
+                  [theme.fn.largerThan('sm')]: {
+                    margin: '0 32px',
+                    display: 'block',
+                  },
+                })}
+                orientation='vertical'
+              />
+              <Divider my={64} orientation='horizontal' />
             </>
+          )}
+          {next && (
+            <NextPrevPost
+              heading={t('common:next')}
+              title={next.title}
+              summary={next.summary}
+              slug={next.slug.replace(`.${locale}`, '')}
+            />
           )}
         </Box>
       </Box>
