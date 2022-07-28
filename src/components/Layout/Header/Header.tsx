@@ -1,5 +1,5 @@
 import { Burger, Group, Paper, Transition } from '@mantine/core'
-import { useBooleanToggle } from '@mantine/hooks'
+import { useDisclosure } from '@mantine/hooks'
 import { useRouter } from 'next/router'
 import React from 'react'
 
@@ -14,7 +14,7 @@ import { useStyles } from './Header.styles'
 
 export default function Header() {
   const { classes, cx } = useStyles()
-  const [opened, toggleOpened] = useBooleanToggle(false)
+  const [opened, toggleOpened] = useDisclosure(false)
   const { locale, defaultLocale, asPath } = useRouter()
 
   const items = links.map((link) => (
@@ -29,7 +29,7 @@ export default function Header() {
         [classes.linkActive]: asPath === link.href,
       })}
       onClick={() => {
-        toggleOpened(false)
+        toggleOpened.close()
       }}
     >
       {link.text}
@@ -43,7 +43,7 @@ export default function Header() {
           opened={opened}
           className={classes.burger}
           size='sm'
-          onClick={() => toggleOpened()}
+          onClick={() => toggleOpened.toggle()}
           aria-label='Toggle navbar'
         />
         <HeaderLogo />

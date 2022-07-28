@@ -61,7 +61,7 @@ export const useStyles = createStyles((theme) => ({
     alignItems: 'center',
     overflow: 'hidden',
 
-    [theme.fn.largerThan('sm')]: {
+    [`@media (min-width: ${HEADER_BREAKPOINT}px)`]: {
       display: 'none',
     },
   },
@@ -69,8 +69,9 @@ export const useStyles = createStyles((theme) => ({
   link: {
     display: 'block',
     lineHeight: 1,
-    padding: theme.spacing.md,
-    borderRadius: theme.radius.sm,
+    padding: '12px 16px',
+    margin: '4px 0',
+    borderRadius: theme.radius.md,
     textDecoration: 'none',
     color:
       theme.colorScheme === 'dark'
@@ -87,14 +88,17 @@ export const useStyles = createStyles((theme) => ({
       textDecoration: 'none',
     },
 
-    [theme.fn.largerThan('sm')]: {
+    [`@media (min-width: ${HEADER_BREAKPOINT}px)`]: {
       padding: '8px 12px',
+      borderRadius: theme.radius.sm,
+      margin: 0,
     },
   },
 
   links: {
     display: 'none',
-    [theme.fn.largerThan('md')]: {
+
+    [`@media (min-width: ${HEADER_BREAKPOINT}px)`]: {
       display: 'flex',
     },
   },
