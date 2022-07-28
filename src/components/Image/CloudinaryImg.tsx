@@ -1,4 +1,3 @@
-import { buildUrl } from 'cloudinary-build-url'
 import Image from 'next/image'
 import React from 'react'
 
@@ -10,30 +9,20 @@ export const CloudinaryImg = ({
   width,
   alt,
   title,
-  aspect,
   className,
   rounded = true,
 }: CloudinaryImgType) => {
-  const url = buildUrl(publicId, {
-    cloud: {
-      cloudName: 'tszhong',
-    },
-    transformations: {
-      rawTransformation: aspect
-        ? `c_fill,ar_${aspect.width}:${aspect.height},w_${width}`
-        : undefined,
-    },
-  })
-
   return (
     <figure>
       <Image
         width={width}
         height={height}
-        src={url}
+        src={publicId}
         alt={alt}
         loading='lazy'
         title={title || alt}
+        placeholder='blur'
+        blurDataURL={`https://res.cloudinary.com/tszhong/image/upload/q_1,f_auto,e_blur:1000/${publicId}`}
         tabIndex={0}
         role='button'
         className={className}

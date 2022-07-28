@@ -4,10 +4,6 @@ export type CloudinaryImgType = {
   width: string | number
   alt: string
   title?: string
-  aspect?: {
-    width: number
-    height: number
-  }
   className?: string
   rounded?: boolean
 }
