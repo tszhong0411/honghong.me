@@ -5,6 +5,7 @@ import {
   Group,
   Paper,
   Skeleton,
+  Stack,
   Text,
   TextInput,
 } from '@mantine/core'
@@ -61,7 +62,7 @@ function GuestbookEntry({ entry, user }) {
   }
 
   return (
-    <Group direction='column' spacing='xs' my={24}>
+    <Stack spacing='xs' my={24}>
       <Text sx={{ wordBreak: 'break-all' }}>{entry.body}</Text>
       <Group>
         <Badge
@@ -91,7 +92,7 @@ function GuestbookEntry({ entry, user }) {
           </Badge>
         )}
       </Group>
-    </Group>
+    </Stack>
   )
 }
 
@@ -244,10 +245,10 @@ export default function Guestbook({ fallbackData, session }) {
       </Paper>
       <div>
         {loading && (
-          <Group spacing='md' my={30} direction='column'>
+          <Stack spacing='md' my={30}>
             <Skeleton height={15} width='25%' radius='xl' />
             <Skeleton height={15} width='30%' radius='xl' />
-          </Group>
+          </Stack>
         )}
         {entries?.map((entry: entryProps) => (
           <GuestbookEntry key={entry.id} entry={entry} user={session?.user} />
