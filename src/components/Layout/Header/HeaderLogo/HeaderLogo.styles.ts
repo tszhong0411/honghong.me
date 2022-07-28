@@ -1,27 +1,19 @@
 import { createStyles } from '@mantine/core'
 
 export const useStyles = createStyles((theme) => ({
-  logo: {
-    fill: theme.colors.red[9],
-    height: 34,
-    '& > path:last-child': {
-      fill: theme.colorScheme === 'dark' ? '#fff' : '#000',
-    },
-    cursor: 'pointer',
-    padding: '6px 8px',
-    borderRadius: 8,
-
-    '&:hover': {
-      backgroundColor:
-        theme.colorScheme === 'dark'
-          ? theme.colors.dark[8]
-          : theme.colors.gray[0],
-    },
-  },
-
-  logoWrapper: {
+  link: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    gap: 4,
+
+    '&:hover': {
+      textDecoration: 'none',
+    },
+  },
+  text: {
+    color: theme.colorScheme === 'dark' ? 'white' : 'black',
+    lineHeight: '28px',
+    fontWeight: 300,
   },
 }))
