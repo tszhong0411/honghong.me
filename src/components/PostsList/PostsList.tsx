@@ -1,4 +1,5 @@
 import { Box, Button, Title, useMantineTheme } from '@mantine/core'
+import { useHover } from '@mantine/hooks'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import useTranslation from 'next-translate/useTranslation'
@@ -20,7 +21,7 @@ export default function PostsList({ post }: PostsListProps) {
   const { locale } = useRouter()
   const { slug, date, title, summary, image } = post
   const formattedSlug = slug.replace(`.${locale}`, '')
-  const [hover, setHover] = React.useState<boolean>(false)
+  const { hovered, ref } = useHover<HTMLAnchorElement>()
   const { classes } = useStyles()
 
   const { colorScheme } = useMantineTheme()
@@ -122,17 +123,16 @@ export default function PostsList({ post }: PostsListProps) {
                   href={`/blog/${formattedSlug}`}
                   aria-label={`Read "${title}"`}
                   rightIcon={
-                    <motion.div animate={{ x: hover ? 5 : 0 }}>
+                    <motion.div animate={{ x: hovered ? 5 : 0 }}>
                       <ArrowRight size={20} />
                     </motion.div>
                   }
+                  ref={ref}
                   sx={{
                     '&:hover': {
                       textDecoration: 'none',
                     },
                   }}
-                  onMouseEnter={() => setHover(true)}
-                  onMouseLeave={() => setHover(false)}
                 >
                   {t('common:readMore')}
                 </Button>
