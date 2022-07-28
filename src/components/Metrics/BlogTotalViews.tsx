@@ -1,3 +1,4 @@
+import { Box } from '@mantine/core'
 import useSWR from 'swr'
 
 import fetcher from '@/lib/fetcher'
@@ -13,11 +14,13 @@ export default function BlogTotalViews() {
   const link = 'https://honghong.me'
 
   return (
-    <MetricCard
-      header='Blog Total Views'
-      link={link}
-      metric={pageViews}
-      isCurrency={false}
-    />
+    <Box my={8}>
+      <MetricCard
+        header='Blog Total Views'
+        link={link}
+        metric={pageViews}
+        isCurrency={false}
+      />
+    </Box>
   )
 }
