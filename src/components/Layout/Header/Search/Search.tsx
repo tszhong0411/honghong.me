@@ -16,6 +16,7 @@ export default function Search() {
         color='gray'
         className={classes.button}
         onClick={openSpotlight}
+        aria-label={t('common:Tooltip_search')}
       >
         <SearchIcon size={18} />
       </Button>

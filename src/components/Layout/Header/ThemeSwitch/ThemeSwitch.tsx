@@ -23,6 +23,9 @@ const ThemeSwitch = () => {
         color='gray'
         className={classes.button}
         onClick={() => toggleColorScheme()}
+        aria-label={
+          dark ? t('common:Tooltip_lightmode') : t('common:Tooltip_darkmode')
+        }
       >
         {dark ? <Sun size={20} /> : <MoonStars size={20} />}
       </Button>

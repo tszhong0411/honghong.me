@@ -44,6 +44,7 @@ export default function LanguageSwitch() {
                 alignItems: 'center',
                 justifyContent: 'center',
               }}
+              aria-label={t('common:Tooltip_switchLanguage')}
             >
               <Language size={20} />
               <ChevronDown size={15} />
