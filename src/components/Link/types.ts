@@ -5,3 +5,7 @@ export type TOCLinkProps = {
   text: string
   activeSection: string | null
 }
+
+export type CustomLinkProps = {
+  noIcon?: boolean
+}

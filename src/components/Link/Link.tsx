@@ -1,12 +1,18 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
-import { Anchor } from '@mantine/core'
+import { Anchor, AnchorProps } from '@mantine/core'
 import Link from 'next/link'
 import React from 'react'
 import { ExternalLink } from 'tabler-icons-react'
 
+import { CustomLinkProps } from '@/components/Link/types'
+
 import { useStyles } from './Link.styles'
 
-const CustomLink = ({ href, children, noIcon = false, ...rest }) => {
+const CustomLink = React.forwardRef<
+  HTMLAnchorElement,
+  AnchorProps & CustomLinkProps & React.ComponentPropsWithRef<'a'>
+>((props, ref) => {
+  const { href, children, noIcon = false, ...rest } = props
   const isInternalLink = href && href.startsWith('/')
   const isAnchorLink = href && href.startsWith('#')
   const { classes } = useStyles()
@@ -14,20 +20,28 @@ const CustomLink = ({ href, children, noIcon = false, ...rest }) => {
   if (isInternalLink) {
     return (
       <Link href={href} passHref>
-        <Anchor {...rest}>{children}</Anchor>
+        <Anchor ref={ref} {...rest}>
+          {children}
+        </Anchor>
       </Link>
     )
   }
 
   if (isAnchorLink) {
     return (
-      <Anchor href={href} {...rest}>
+      <Anchor href={href} ref={ref} {...rest}>
         {children}
       </Anchor>
     )
   }
   return (
-    <Anchor target='_blank' rel='noopener noreferrer' href={href} {...rest}>
+    <Anchor
+      target='_blank'
+      rel='noopener noreferrer'
+      href={href}
+      ref={ref}
+      {...rest}
+    >
       {children}
       {!noIcon && (
         <span>
@@ -36,6 +50,6 @@ const CustomLink = ({ href, children, noIcon = false, ...rest }) => {
       )}
     </Anchor>
   )
-}
+})
 
 export default CustomLink
