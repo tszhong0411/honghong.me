@@ -2,7 +2,6 @@
   "locales": ["zh-TW", "en"],
   "defaultLocale": "zh-TW",
   "localeDetection": false,
-  "logBuild": false,
   "pages": {
     "*": ["common"]
   }
