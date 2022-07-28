@@ -128,6 +128,8 @@ export default function PostsList({ post }: PostsListProps) {
                     </motion.div>
                   }
                   ref={ref}
+                  variant='gradient'
+                  gradient={{ from: 'orange', to: 'red' }}
                   sx={{
                     '&:hover': {
                       textDecoration: 'none',
