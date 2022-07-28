@@ -1,4 +1,4 @@
-import { Affix, Button, Group, Transition } from '@mantine/core'
+import { Affix, Button, Stack, Transition } from '@mantine/core'
 import { useWindowScroll } from '@mantine/hooks'
 import React from 'react'
 import { ArrowUp, BrandHipchat } from 'tabler-icons-react'
@@ -10,7 +10,7 @@ export default function ScrollTopAndComment() {
     <Affix position={{ bottom: 20, right: 20 }}>
       <Transition transition='slide-up' mounted={scroll.y > 0}>
         {(transitionStyles) => (
-          <Group direction='column' spacing='xs' style={transitionStyles}>
+          <Stack spacing='xs' style={transitionStyles}>
             <Button
               onClick={() =>
                 scrollTo({
@@ -31,7 +31,7 @@ export default function ScrollTopAndComment() {
             >
               <ArrowUp size={25} />
             </Button>
-          </Group>
+          </Stack>
         )}
       </Transition>
     </Affix>
