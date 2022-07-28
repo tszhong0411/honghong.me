@@ -2,11 +2,14 @@ import { Button, ButtonProps, Group, Paper, Text } from '@mantine/core'
 import { useRouter } from 'next/router'
 import { signIn } from 'next-auth/react'
 import useTranslation from 'next-translate/useTranslation'
+import React from 'react'
 import { BrandGithub, BrandGoogle } from 'tabler-icons-react'
 
 import Layout from '@/components/Layout'
 
-const GithubButton = (props: ButtonProps<'button'>) => {
+const GithubButton = (
+  props: ButtonProps & React.ComponentPropsWithRef<'button'>
+) => {
   return (
     <Button
       {...props}
@@ -24,7 +27,9 @@ const GithubButton = (props: ButtonProps<'button'>) => {
   )
 }
 
-const GoogleButton = (props: ButtonProps<'button'>) => {
+const GoogleButton = (
+  props: ButtonProps & React.ComponentPropsWithRef<'button'>
+) => {
   return (
     <Button
       leftIcon={<BrandGoogle />}
@@ -53,6 +58,8 @@ export default function Signin() {
     return signIn(oauth, { callbackUrl: callbackUrl })
   }
 
+  // TODO: add more login method
+
   return (
     <Layout templateTitle='Sign in' description='A sign in page'>
       <Paper
@@ -76,23 +83,6 @@ export default function Signin() {
             Google
           </GoogleButton>
         </Group>
-
-        {/* TODO: add more login method  */}
-        {/* <Divider
-          label='Or continue with email'
-          labelPosition='center'
-          my='lg'
-        />
-
-        <form>
-          <Group direction='column' grow>
-            email
-          </Group>
-
-          <Group position='apart' mt='xl'>
-            <Button type='submit'>Login</Button>
-          </Group>
-        </form> */}
       </Paper>
     </Layout>
   )
