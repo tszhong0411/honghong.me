@@ -88,6 +88,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
               shortcut={['mod + k', 'mod + p']}
               nothingFoundMessage='Nothing found'
               actions={Actions()}
+              radius='md'
               highlightQuery
             >
               <Global
