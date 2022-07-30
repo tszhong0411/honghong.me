@@ -113,7 +113,7 @@ export default function BlogLayout({ content, next, prev, children }: Props) {
           className={classes.avatar}
         >
           <Image
-            src='/static/images/logo/logo-black.png'
+            src='tszhong/logo/h-logo-black.png'
             width={48}
             height={48}
             alt='avatar'
