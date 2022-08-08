@@ -24,6 +24,7 @@ import { isProd } from '@/lib/isProduction'
 import Footer from '@/components/Layout/Footer'
 import Header from '@/components/Layout/Header'
 import { links } from '@/components/Layout/Header/links'
+import RouterTransition from '@/components/RouterTransition'
 import Umami from '@/components/Umami'
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
@@ -91,6 +92,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
               radius='md'
               highlightQuery
             >
+              <RouterTransition />
               <Global
                 styles={() => ({
                   html: {
