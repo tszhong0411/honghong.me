@@ -87,7 +87,7 @@ SPOTIFY_REFRESH_TOKEN=<Your env>
 ## 🛳️ Roadmap
 
 - [x] Multi-language Support
-  - [x] Chinese
+  - [x] Traditional Chinese
   - [x] English
 
 ## 🍰 Contributing
