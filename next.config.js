@@ -26,8 +26,6 @@ module.exports = nextTranslate(
           'res.cloudinary.com',
           'cdnjs.cloudflare.com',
         ],
-        loader: 'cloudinary',
-        path: 'https://res.cloudinary.com/tszhong/',
       },
 
       experimental: {

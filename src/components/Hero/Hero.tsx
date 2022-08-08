@@ -58,7 +58,7 @@ export default function Hero() {
             style={{ height: 130, width: 130, position: 'relative' }}
           >
             <Image
-              src='tszhong/logo/h-logo-black.png'
+              src='/static/images/logo/logo-black.png'
               alt='Logo'
               layout='fill'
               objectFit='contain'

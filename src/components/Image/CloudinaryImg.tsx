@@ -17,7 +17,7 @@ export const CloudinaryImg = ({
       <Image
         width={width}
         height={height}
-        src={publicId}
+        src={`https://res.cloudinary.com/tszhong/f_auto,c_limit,w_1920,q_auto/${publicId}`}
         alt={alt}
         loading='lazy'
         title={title || alt}
