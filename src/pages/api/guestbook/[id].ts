@@ -11,6 +11,7 @@ export default async function handler(
 
   const { id } = req.query
   const { email } = session.user
+
   const entry = await prisma.guestbook.findUnique({
     where: {
       id: Number(id),
