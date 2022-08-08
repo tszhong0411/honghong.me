@@ -108,6 +108,8 @@ Don't forget to give the project a star! Thanks again!
   <a href="https://googlechrome.github.io/lighthouse/viewer/?gist=50f0c8da918422944d8ee2e815eeecc1"><img src="./public/static/images/screenshot/honghong.me-lighthouse-202202092158.png"  alt="lighthouse"></a>
 </p>
 
+Last updated: 2022-02-09 21:58
+
 ## ❤️ Credits
 
 - [Tailwind nextjs starter blog template](https://github.com/timlrx/tailwind-nextjs-starter-blog) © [Timothy](https://www.timlrx.com/)
