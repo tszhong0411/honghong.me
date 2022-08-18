@@ -69,15 +69,12 @@ export const getContentBySlug = async (
   slug: string,
   locale: string
 ) => {
-  console.log({ type, slug, locale })
   const postFilePath = path.join(
     FILE_PATH,
     type,
     locale,
     `${formatSlug(slug)}.mdx`
   )
-
-  console.log({ postFilePath })
 
   const source = fs.readFileSync(postFilePath)
 

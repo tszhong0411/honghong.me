@@ -29,23 +29,25 @@ export default function Blog({ post, ogImage }: BlogPostProps) {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
-  try {
-    const post = await getContentBySlug('blog', params.slug as string, locale)
+  // try {
+  const post = await getContentBySlug('blog', params.slug as string, locale)
 
-    const frontMatter = post.frontMatter as PostFrontMatter
+  const frontMatter = post.frontMatter as PostFrontMatter
 
-    const ogImage = await getOgImage(
-      `/blog?title=${frontMatter.title}&description=${frontMatter.summary}`
-    )
+  const ogImage = await getOgImage(
+    `/blog?title=${frontMatter.title}&description=${frontMatter.summary}`
+  )
 
-    return {
-      props: { post, ogImage },
-    }
-  } catch (error) {
-    return {
-      notFound: true,
-    }
+  console.log(post)
+
+  return {
+    props: { post, ogImage },
   }
+  // } catch (error) {
+  //   return {
+  //     notFound: true,
+  //   }
+  // }
 }
 
 export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
