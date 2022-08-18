@@ -6,8 +6,8 @@ import {
   Text,
   Title,
 } from '@mantine/core'
-import { useRouter } from 'next/router'
 import useTranslation from 'next-translate/useTranslation'
+import { useRouter } from 'next/router'
 import React from 'react'
 
 import Layout from '@/components/Layout'
@@ -53,7 +53,7 @@ const useStyles = createStyles((theme) => ({
 
 export default function FiveZeroZero() {
   const { classes } = useStyles()
-  const { t } = useTranslation()
+  const { t } = useTranslation('common')
   const router = useRouter()
 
   return (
@@ -61,13 +61,13 @@ export default function FiveZeroZero() {
       <div className={classes.root}>
         <Container>
           <div className={classes.label}>500</div>
-          <Title className={classes.title}>{t('common:500_title')}</Title>
+          <Title className={classes.title}>{t('500.title')}</Title>
           <Text size='lg' align='center' className={classes.description}>
-            {t('common:500_description')}
+            {t('500.description')}
           </Text>
           <Group position='center'>
             <Button variant='subtle' size='md' onClick={() => router.reload()}>
-              {t('common:500_button')}
+              {t('500.button')}
             </Button>
           </Group>
         </Container>

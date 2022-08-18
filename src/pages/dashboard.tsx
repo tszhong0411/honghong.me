@@ -11,14 +11,11 @@ import Youtube from '@/components/Metrics/Youtube'
 import TopTracks from '@/components/TopTracks'
 
 export default function Dashboard() {
-  const { t } = useTranslation()
+  const { t } = useTranslation('common')
 
   return (
-    <Layout
-      templateTitle='Dashboard'
-      description={t('common:SEO_dashboardDesc')}
-    >
-      <PageLayout title='Dashboard' description={t('common:SEO_dashboardDesc')}>
+    <Layout title='Dashboard' description={t('Seo.dashboardDesc')}>
+      <PageLayout title='Dashboard' description={t('Seo.dashboardDesc')}>
         <Box
           sx={{
             display: 'flex',
@@ -43,7 +40,7 @@ export default function Dashboard() {
             fontWeight: 700,
           }}
         >
-          {t('common:Dashboard_spotifyTitle')}
+          {t('Dashboard_spotifyTitle')}
         </Title>
         <TopTracks />
       </PageLayout>

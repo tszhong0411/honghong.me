@@ -53,20 +53,20 @@ const useStyles = createStyles((theme) => ({
 
 export default function FourZeroFour() {
   const { classes } = useStyles()
-  const { t } = useTranslation()
+  const { t } = useTranslation('common')
 
   return (
     <Layout>
       <Container className={classes.root}>
         <div className={classes.label}>404</div>
-        <Title className={classes.title}>{t('common:404_title')}</Title>
+        <Title className={classes.title}>{t('404.title')}</Title>
         <Text
           color='dimmed'
           size='lg'
           align='center'
           className={classes.description}
         >
-          {t('common:404_description')}
+          {t('404.description')}
         </Text>
         <Group position='center'>
           <Button
@@ -80,7 +80,7 @@ export default function FourZeroFour() {
               },
             }}
           >
-            {t('common:404_button')}
+            {t('404.button')}
           </Button>
         </Group>
       </Container>
