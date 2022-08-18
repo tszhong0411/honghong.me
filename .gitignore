@@ -36,8 +36,5 @@ yarn-error.log*
 /public/sw.*
 /public/workbox-*.*
 
-# contentlayer
-.contentlayer
-
 # vercel
 .vercel

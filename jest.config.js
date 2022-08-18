@@ -22,7 +22,6 @@ const customJestConfig = {
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
     '^~/(.*)$': '<rootDir>/public/$1',
-    'contentlayer/generated': '<rootDir>/.contentlayer/generated',
   },
 }
 
