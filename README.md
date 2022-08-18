@@ -24,6 +24,9 @@
 - **Comment**: [Giscus](https://giscus.app/)
 - **favicon**: [realfavicongenerator](https://realfavicongenerator.net/)
 - **Content**: [MDX](https://mdxjs.com/)
+- **Analytics**: [Umami](https://umami.is/)
+- **UI**: [Mantine](https://mantine.dev)
+- **Code syntax**: [Prism.js](https://prismjs.com/)
 
 ## 🚀 Demo
 
@@ -47,9 +50,7 @@
 - Guestbook
 - i18n
 
-## 👋 Getting Started
-
-### Installation
+## 👋 Running locally
 
 1. Clone this repo
 
@@ -57,7 +58,7 @@
 git clone https://github.com/tszhong0411/honghong.me.git
 ```
 
-2. Change directories
+2. Change directory
 
 ```sh
 cd honghong.me
@@ -89,6 +90,7 @@ SPOTIFY_REFRESH_TOKEN=<Your env>
 - [x] Multi-language Support
   - [x] Traditional Chinese
   - [x] English
+- [x] CMS
 
 ## 🍰 Contributing
 
