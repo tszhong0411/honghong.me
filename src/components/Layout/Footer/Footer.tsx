@@ -1,13 +1,12 @@
-import { Box, Divider, useMantineTheme } from '@mantine/core'
+import { Anchor, Box, Divider, useMantineTheme } from '@mantine/core'
 import { useRouter } from 'next/router'
 
 import { isProd } from '@/lib/isProduction'
 
+import { useStyles } from '@/components/Layout/Footer/Footer.styles'
 import { links } from '@/components/Layout/Footer/links'
 import Link from '@/components/Link'
 import NowPlaying from '@/components/NowPlaying'
-
-import { useStyles } from './Footer.styles'
 
 export default function Footer() {
   const { locale, defaultLocale } = useRouter()
@@ -46,16 +45,31 @@ export default function Footer() {
                 }}
               >
                 {item.list.map((item, index) => {
+                  if (item.href === '/feed.xml') {
+                    return (
+                      <Anchor
+                        key={index}
+                        href={`/feed${
+                          locale === defaultLocale ? '' : `.${locale}`
+                        }.xml`}
+                        sx={{
+                          color: dark ? '#C1C2C5' : '#1f2937',
+                          ...(dark && {
+                            '&:hover': {
+                              color: 'white',
+                            },
+                          }),
+                        }}
+                      >
+                        {item.title}
+                      </Anchor>
+                    )
+                  }
+
                   return (
                     <Link
                       key={index}
-                      href={
-                        item.href === '/feed.xml'
-                          ? `/feed${
-                              locale === defaultLocale ? '' : `.${locale}`
-                            }.xml`
-                          : item.href
-                      }
+                      href={item.href}
                       sx={{
                         color: dark ? '#C1C2C5' : '#1f2937',
                         ...(dark && {
