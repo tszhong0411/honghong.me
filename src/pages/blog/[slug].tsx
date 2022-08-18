@@ -42,8 +42,6 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
       props: { post, ogImage },
     }
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log(error)
     return {
       notFound: true,
     }
@@ -68,6 +66,6 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   }
 }
