@@ -90,7 +90,6 @@ SPOTIFY_REFRESH_TOKEN=<Your env>
 - [x] Multi-language Support
   - [x] Traditional Chinese
   - [x] English
-- [x] CMS
 
 ## 🍰 Contributing
 
@@ -101,7 +100,7 @@ Don't forget to give the project a star! Thanks again!
 
 1. Fork the Project
 2. Commit your Changes (`git commit -m 'Add some Feature'`)
-3. Push to the Branch (`git push origin main`)
+3. Push to the Branch (`git push`)
 4. Open a Pull Request
 
 ## ⭐ Lighthouse
