@@ -1,9 +1,10 @@
 import { Button, ButtonProps, Group, Paper, Text } from '@mantine/core'
-import { useRouter } from 'next/router'
-import { signIn } from 'next-auth/react'
+import { IconBrandGithub, IconBrandGoogle } from '@tabler/icons'
+import { GetServerSideProps } from 'next'
+import { getSession, signIn } from 'next-auth/react'
 import useTranslation from 'next-translate/useTranslation'
+import { useRouter } from 'next/router'
 import React from 'react'
-import { BrandGithub, BrandGoogle } from 'tabler-icons-react'
 
 import Layout from '@/components/Layout'
 
@@ -13,7 +14,7 @@ const GithubButton = (
   return (
     <Button
       {...props}
-      leftIcon={<BrandGithub />}
+      leftIcon={<IconBrandGithub />}
       sx={(theme) => ({
         backgroundColor:
           theme.colors.dark[theme.colorScheme === 'dark' ? 9 : 6],
@@ -32,7 +33,7 @@ const GoogleButton = (
 ) => {
   return (
     <Button
-      leftIcon={<BrandGoogle />}
+      leftIcon={<IconBrandGoogle />}
       variant='default'
       color='gray'
       {...props}
@@ -42,26 +43,16 @@ const GoogleButton = (
 
 export default function Signin() {
   const router = useRouter()
-  const { t } = useTranslation()
+  const { t } = useTranslation('common')
 
   const signInHandler = (oauth: string) => {
-    const callbackUrl = router.query.callbackUrl
-
-    /*
-       檢查 query.callbackUrl 是否為 array，最後返回 string
-       (類型 'string | string[]' 不可指派給類型 'string')
-    */
-    if (Array.isArray(callbackUrl)) {
-      return signIn(oauth, { callbackUrl: callbackUrl[0] })
-    }
+    const callbackUrl = router.query.callbackUrl as string
 
     return signIn(oauth, { callbackUrl: callbackUrl })
   }
 
-  // TODO: add more login method
-
   return (
-    <Layout templateTitle='Sign in' description='A sign in page'>
+    <Layout title='Sign in' description='A sign in page'>
       <Paper
         radius='md'
         p='xl'
@@ -72,7 +63,7 @@ export default function Signin() {
         }}
       >
         <Text size='lg' weight={500}>
-          {t('common:Signin_title')}
+          {t('SignIn.title')}
         </Text>
 
         <Group grow mb='md' mt='md'>
@@ -86,4 +77,21 @@ export default function Signin() {
       </Paper>
     </Layout>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  const session = await getSession({ req })
+
+  if (session) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: '/',
+      },
+    }
+  }
+
+  return {
+    props: {},
+  }
 }
