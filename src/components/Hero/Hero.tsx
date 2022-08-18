@@ -1,10 +1,9 @@
-// eslint-disable-next-line simple-import-sort/imports
+import { Badge, Group, Text, Title, useMantineTheme } from '@mantine/core'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 
+import { useStyles } from '@/components/Hero/Hero.styles'
 import Link from '@/components/Link'
-import { useStyles } from './Hero.styles'
-import { Badge, Group, Text, Title, useMantineTheme } from '@mantine/core'
 
 export default function Hero() {
   const { classes } = useStyles()
