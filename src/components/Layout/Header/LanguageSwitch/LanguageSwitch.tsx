@@ -1,37 +1,51 @@
 import { Button, Image, Menu, Tooltip } from '@mantine/core'
 import { useLocalStorage } from '@mantine/hooks'
+import { IconChevronDown, IconLanguage } from '@tabler/icons'
 import { default as emojiUnicode } from 'emoji-unicode'
-import { useRouter } from 'next/router'
+import setLanguage from 'next-translate/setLanguage'
 import useTranslation from 'next-translate/useTranslation'
+import { useRouter } from 'next/router'
 import React from 'react'
-import { ChevronDown, Language } from 'tabler-icons-react'
-
-import i18nConfig from '@/lib/i18n'
 
 import { useStyles } from '@/components/Layout/Header/Header.styles'
 
 export default function LanguageSwitch() {
   const router = useRouter()
   const [locale, setLocale] = useLocalStorage({ key: 'locale' })
-  const { locales, languages, defaultLocale } = i18nConfig
-  const { t } = useTranslation()
+  const { t } = useTranslation('common')
   const { classes } = useStyles()
 
-  // * Redirect when current language not same with language in localstorage
   React.useEffect(() => {
-    if (typeof locale === 'string' && locale !== router.locale) {
-      router.push(router.asPath, router.asPath, { locale })
+    const redirect = async () => {
+      await setLanguage(locale)
     }
-  }, [defaultLocale, locale, locales, router])
 
-  const changeLanguage = (locale: string) => {
+    if (locale) {
+      if (locale !== router.locale) {
+        redirect()
+      }
+    }
+  }, [locale, router])
+
+  const changeLanguage = async (locale: string) => {
     setLocale(locale)
-    router.push(router.asPath, router.asPath, { locale })
+    await setLanguage(locale)
+  }
+
+  const languages = {
+    'zh-TW': {
+      name: '繁體中文',
+      flag: '🇹🇼',
+    },
+    en: {
+      name: 'English',
+      flag: '🇬🇧',
+    },
   }
 
   return (
     <Menu width={200} position='bottom-end'>
-      <Tooltip label={t('common:Tooltip_switchLanguage')} openDelay={500}>
+      <Tooltip label={t('Tooltip.switchLanguage')} openDelay={500}>
         <span>
           <Menu.Target>
             <Button
@@ -44,18 +58,18 @@ export default function LanguageSwitch() {
                 alignItems: 'center',
                 justifyContent: 'center',
               }}
-              aria-label={t('common:Tooltip_switchLanguage')}
+              aria-label={t('Tooltip.switchLanguage')}
             >
-              <Language size={20} />
-              <ChevronDown size={15} />
+              <IconLanguage size={20} />
+              <IconChevronDown size={15} />
             </Button>
           </Menu.Target>
         </span>
       </Tooltip>
 
       <Menu.Dropdown>
-        <Menu.Label>{t('common:language')}</Menu.Label>
-        {locales.map((item: string, index: number) => {
+        <Menu.Label>{t('language')}</Menu.Label>
+        {router.locales.map((item: string, index: number) => {
           const name = languages[item].name,
             flag = languages[item].flag
 
