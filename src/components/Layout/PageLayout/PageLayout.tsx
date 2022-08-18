@@ -1,8 +1,7 @@
 import { Title } from '@mantine/core'
 
+import { useStyles } from '@/components/Layout/PageLayout/PageLayout.styles'
 import { PageLayoutProps } from '@/components/Layout/PageLayout/types'
-
-import { useStyles } from './PageLayout.styles'
 
 export default function PageLayout({
   children,

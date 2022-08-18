@@ -1,7 +1,7 @@
 import { Affix, Button, Stack, Transition } from '@mantine/core'
 import { useWindowScroll } from '@mantine/hooks'
+import { IconArrowUp, IconBrandHipchat } from '@tabler/icons'
 import React from 'react'
-import { ArrowUp, BrandHipchat } from 'tabler-icons-react'
 
 export default function ScrollTopAndComment() {
   const [scroll, scrollTo] = useWindowScroll()
@@ -21,7 +21,7 @@ export default function ScrollTopAndComment() {
               p={0}
               radius='md'
             >
-              <BrandHipchat size={25} />
+              <IconBrandHipchat size={25} />
             </Button>
             <Button
               onClick={() => scrollTo({ y: 0 })}
@@ -29,7 +29,7 @@ export default function ScrollTopAndComment() {
               p={0}
               radius='md'
             >
-              <ArrowUp size={25} />
+              <IconArrowUp size={25} />
             </Button>
           </Stack>
         )}

@@ -1,43 +1,37 @@
 import { Box, Skeleton } from '@mantine/core'
-import { useRouter } from 'next/router'
+import { IconEye } from '@tabler/icons'
 import useTranslation from 'next-translate/useTranslation'
 import React from 'react'
 import useSWR from 'swr'
-import { Eye } from 'tabler-icons-react'
 
 import fetcher from '@/lib/fetcher'
 
 import { Views } from '@/components/Metrics/types'
-
-import { ViewCounterTypes } from './types'
+import { ViewCounterTypes } from '@/components/ViewCounter/types'
 
 export default function ViewCounter({
   slug,
   text = true,
   type = 'POST',
 }: ViewCounterTypes) {
-  const { locale } = useRouter()
-  const { data } = useSWR<Views>(
-    `/api/views/${slug.replace(`.${locale}`, '')}`,
-    fetcher
-  )
+  const { data } = useSWR<Views>(`/api/views/${slug}`, fetcher)
   const views = new Number(data?.total)
-  const { t } = useTranslation()
+  const { t } = useTranslation('common')
 
   React.useEffect(() => {
     const registerView = () =>
-      fetch(`/api/views/${slug.replace(`.${locale}`, '')}`, {
+      fetch(`/api/views/${slug}`, {
         method: type,
       })
 
     registerView()
-  }, [locale, slug, type])
+  }, [slug, type])
 
   return (
     <>
       {views > 0 ? (
         text ? (
-          <span>{`${views.toLocaleString()} ${t('common:views')}`}</span>
+          <span>{`${views.toLocaleString()} ${t('views')}`}</span>
         ) : (
           <Box
             component='span'
@@ -47,7 +41,7 @@ export default function ViewCounter({
               gap: 4,
             }}
           >
-            <Eye size={20} />
+            <IconEye size={20} />
             {views.toLocaleString()}
           </Box>
         )

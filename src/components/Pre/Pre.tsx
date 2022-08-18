@@ -1,13 +1,12 @@
-import { Prism } from '@mantine/prism'
+import { Prism, PrismProps } from '@mantine/prism'
 import PrismRenderer from 'prism-react-renderer/prism'
 
-import { PreProps } from '@/components/Pre/types'
 ;(typeof global !== 'undefined' ? global : window).Prism = PrismRenderer
 
 require('prismjs/components/prism-php')
 require('prismjs/components/prism-bash')
 
-const Pre = ({ children, language, sx, ...props }: PreProps) => {
+const Pre = ({ children, language, sx, ...props }: PrismProps) => {
   return (
     <Prism
       withLineNumbers

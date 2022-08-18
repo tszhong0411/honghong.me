@@ -1,10 +1,10 @@
 import { Text, useMantineTheme } from '@mantine/core'
 
 import Link from '@/components/Link'
+import { Song } from '@/components/TopTracks/types'
+import { useStyles } from '@/components/Track/Track.styles'
 
-import { useStyles } from './Track.styles'
-
-export default function Track(track) {
+export default function Track(track: Song & { ranking: number }) {
   const { classes } = useStyles()
   const { colorScheme } = useMantineTheme()
   const dark = colorScheme === 'dark'

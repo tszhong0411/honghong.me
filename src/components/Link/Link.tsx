@@ -1,25 +1,48 @@
-/* eslint-disable jsx-a11y/anchor-has-content */
 import { Anchor, AnchorProps } from '@mantine/core'
-import Link from 'next/link'
+import { IconExternalLink } from '@tabler/icons'
+import Link, { LinkProps } from 'next/link'
 import React from 'react'
-import { ExternalLink } from 'tabler-icons-react'
 
+import { useStyles } from '@/components/Link/Link.styles'
 import { CustomLinkProps } from '@/components/Link/types'
-
-import { useStyles } from './Link.styles'
 
 const CustomLink = React.forwardRef<
   HTMLAnchorElement,
-  AnchorProps & CustomLinkProps & React.ComponentPropsWithRef<'a'>
+  AnchorProps & CustomLinkProps & React.ComponentPropsWithRef<'a'> & LinkProps
 >((props, ref) => {
-  const { href, children, noIcon = false, ...rest } = props
+  const {
+    href,
+    children,
+    noIcon = false,
+    as,
+    replace,
+    scroll,
+    shallow,
+    passHref = true,
+    soft,
+    prefetch,
+    locale,
+    legacyBehavior,
+    ...rest
+  } = props
   const isInternalLink = href && href.startsWith('/')
   const isAnchorLink = href && href.startsWith('#')
   const { classes } = useStyles()
 
   if (isInternalLink) {
     return (
-      <Link href={href} passHref>
+      <Link
+        href={href}
+        as={as}
+        replace={replace}
+        scroll={scroll}
+        shallow={shallow}
+        passHref={passHref}
+        soft={soft}
+        prefetch={prefetch}
+        locale={locale}
+        legacyBehavior={legacyBehavior}
+      >
         <Anchor ref={ref} {...rest}>
           {children}
         </Anchor>
@@ -45,7 +68,7 @@ const CustomLink = React.forwardRef<
       {children}
       {!noIcon && (
         <span>
-          <ExternalLink size={18} className={classes.externalLink} />
+          <IconExternalLink size={18} className={classes.externalLink} />
         </span>
       )}
     </Anchor>

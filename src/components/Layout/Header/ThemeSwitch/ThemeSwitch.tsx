@@ -1,7 +1,7 @@
 import { Button, Tooltip, useMantineColorScheme } from '@mantine/core'
+import { IconMoonStars, IconSun } from '@tabler/icons'
 import useTranslation from 'next-translate/useTranslation'
 import React from 'react'
-import { MoonStars, Sun } from 'tabler-icons-react'
 
 import { useStyles } from '@/components/Layout/Header/Header.styles'
 
@@ -9,13 +9,11 @@ const ThemeSwitch = () => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme()
   const dark = colorScheme === 'dark'
   const { classes } = useStyles()
-  const { t } = useTranslation()
+  const { t } = useTranslation('common')
 
   return (
     <Tooltip
-      label={
-        dark ? t('common:Tooltip_lightmode') : t('common:Tooltip_darkmode')
-      }
+      label={dark ? t('Tooltip.lightmode') : t('Tooltip.darkmode')}
       openDelay={500}
     >
       <Button
@@ -23,11 +21,9 @@ const ThemeSwitch = () => {
         color='gray'
         className={classes.button}
         onClick={() => toggleColorScheme()}
-        aria-label={
-          dark ? t('common:Tooltip_lightmode') : t('common:Tooltip_darkmode')
-        }
+        aria-label={dark ? t('Tooltip.lightmode') : t('Tooltip.darkmode')}
       >
-        {dark ? <Sun size={20} /> : <MoonStars size={20} />}
+        {dark ? <IconSun size={20} /> : <IconMoonStars size={20} />}
       </Button>
     </Tooltip>
   )

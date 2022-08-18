@@ -1,26 +1,24 @@
-import { Box, Button, Title, useMantineTheme } from '@mantine/core'
+import { Box, Button, List, Title, useMantineTheme } from '@mantine/core'
 import { useHover } from '@mantine/hooks'
+import { IconArrowRight } from '@tabler/icons'
 import { motion } from 'framer-motion'
-import { useRouter } from 'next/router'
 import useTranslation from 'next-translate/useTranslation'
+import Image from 'next/image'
+import { useRouter } from 'next/router'
 import React from 'react'
-import { ArrowRight } from 'tabler-icons-react'
 
+import formatDate from '@/lib/formatDate'
 import { isProd } from '@/lib/isProduction'
-import { PostsListProps } from '@/lib/types'
-import formatDate from '@/lib/utils/formatDate'
+import { PostFrontMatter } from '@/lib/types'
 
-import { CloudinaryImg } from '@/components/Image'
 import Link from '@/components/Link'
+import { useStyles } from '@/components/PostsList/PostsList.styles'
 import ViewCounter from '@/components/ViewCounter'
 
-import { useStyles } from './PostsList.styles'
-
-export default function PostsList({ post }: PostsListProps) {
-  const { t } = useTranslation()
+export default function PostsList({ post }: { post: PostFrontMatter }) {
+  const { t } = useTranslation('common')
   const { locale } = useRouter()
   const { slug, date, title, summary, image } = post
-  const formattedSlug = slug.replace(`.${locale}`, '')
   const { hovered, ref } = useHover<HTMLAnchorElement>()
   const { classes } = useStyles()
 
@@ -28,14 +26,7 @@ export default function PostsList({ post }: PostsListProps) {
   const dark = colorScheme === 'dark'
 
   return (
-    <motion.li
-      key={formattedSlug}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{
-        duration: 0.8,
-      }}
-    >
+    <List.Item>
       <article>
         <Box py={48}>
           <div>
@@ -64,7 +55,7 @@ export default function PostsList({ post }: PostsListProps) {
             })}
           >
             <Box
-              my={32}
+              mt={32}
               sx={(theme) => ({
                 width: '100%',
                 [theme.fn.largerThan('sm')]: {
@@ -73,13 +64,17 @@ export default function PostsList({ post }: PostsListProps) {
                 },
               })}
             >
-              <Link href={`/blog/${formattedSlug}`}>
-                <CloudinaryImg
-                  publicId={image}
+              <Link href={`/blog/${slug}`}>
+                <Image
                   alt={`${title} Cover`}
+                  className={classes.image}
+                  src={'/static/images/blog/' + image}
+                  blurDataURL={`/_next/image?url=${
+                    '/static/images/blog/' + image
+                  }&w=16&q=1`}
+                  placeholder='blur'
                   width={1280}
                   height={720}
-                  className={classes.image}
                 />
               </Link>
             </Box>
@@ -104,7 +99,7 @@ export default function PostsList({ post }: PostsListProps) {
                 <div>
                   <Title order={2}>
                     <Link
-                      href={`/blog/${formattedSlug}`}
+                      href={`/blog/${slug}`}
                       sx={{
                         fontWeight: 700,
                         fontSize: 24,
@@ -120,11 +115,11 @@ export default function PostsList({ post }: PostsListProps) {
                 </Box>
                 <Button
                   component={Link}
-                  href={`/blog/${formattedSlug}`}
+                  href={`/blog/${slug}`}
                   aria-label={`Read "${title}"`}
                   rightIcon={
                     <motion.div animate={{ x: hovered ? 5 : 0 }}>
-                      <ArrowRight size={20} />
+                      <IconArrowRight size={20} />
                     </motion.div>
                   }
                   ref={ref}
@@ -136,13 +131,13 @@ export default function PostsList({ post }: PostsListProps) {
                     },
                   }}
                 >
-                  {t('common:readMore')}
+                  {t('readMore')}
                 </Button>
               </div>
             </Box>
           </Box>
         </Box>
       </article>
-    </motion.li>
+    </List.Item>
   )
 }
