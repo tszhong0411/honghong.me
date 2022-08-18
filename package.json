@@ -16,84 +16,83 @@
     "format:check": "prettier -c .",
     "type-check": "tsc",
     "prepare": "husky install",
-    "sitemap": "node ./src/scripts/generate-sitemap.mjs",
-    "rss": "node ./src/scripts/generate-rss.mjs",
-    "new-post": "node ./src/scripts/compose.mjs",
     "analyze": "cross-env ANALYZE=true next build",
     "prisma:studio": "dotenv -e .env.local -- prisma studio",
+    "prisma:push": "dotenv -e .env.local -- prisma db push",
     "test:watch": "jest --watch",
-    "postbuild": "yarn sitemap && yarn rss",
     "test": "jest"
   },
   "dependencies": {
     "@emotion/react": "^11.10.0",
     "@emotion/server": "^11.10.0",
     "@giscus/react": "^2.2.0",
-    "@mantine/core": "^5.1.0",
-    "@mantine/dates": "^5.1.0",
-    "@mantine/dropzone": "^5.1.0",
-    "@mantine/form": "^5.1.0",
-    "@mantine/hooks": "^5.1.0",
-    "@mantine/modals": "^5.1.0",
-    "@mantine/next": "^5.1.0",
-    "@mantine/notifications": "^5.1.0",
-    "@mantine/nprogress": "^5.1.0",
-    "@mantine/prism": "^5.1.0",
-    "@mantine/rte": "^5.1.0",
-    "@mantine/spotlight": "^5.1.0",
-    "@prisma/client": "^4.1.1",
-    "chalk": "5.0.1",
-    "contentlayer": "0.2.7",
-    "cookies-next": "^2.1.1",
-    "dayjs": "^1.11.4",
+    "@mantine/core": "^5.1.6",
+    "@mantine/dates": "^5.1.6",
+    "@mantine/dropzone": "^5.1.6",
+    "@mantine/form": "^5.1.6",
+    "@mantine/hooks": "^5.1.6",
+    "@mantine/modals": "^5.1.6",
+    "@mantine/next": "^5.1.6",
+    "@mantine/notifications": "^5.1.6",
+    "@mantine/nprogress": "^5.1.6",
+    "@mantine/prism": "^5.1.6",
+    "@mantine/rte": "^5.1.6",
+    "@mantine/spotlight": "^5.1.6",
+    "@mdx-js/react": "^2.1.3",
+    "@prisma/client": "^4.2.1",
+    "@tabler/icons": "^1.83.1",
+    "dayjs": "^1.11.5",
     "emoji-unicode": "^2.0.1",
-    "esbuild": "0.14.49",
-    "framer-motion": "^7.0.0",
-    "gitmoji-cli": "^5.0.3",
+    "esbuild": "0.15.5",
+    "framer-motion": "^7.2.0",
+    "gitmoji-cli": "^5.3.0",
     "googleapis": "^105.0.0",
+    "gray-matter": "^4.0.3",
     "hastscript": "^7.0.2",
-    "next": "^12.2.4",
+    "image-size": "^1.0.2",
+    "lodash": "^4.17.21",
+    "next": "^12.2.5",
     "next-auth": "^4.10.3",
-    "next-contentlayer": "0.2.7",
+    "next-mdx-remote": "^4.1.0",
+    "next-seo": "^5.5.0",
     "next-translate": "^1.5.0",
     "prism-react-renderer": "^1.3.5",
     "prismjs": "^1.28.0",
+    "puppeteer": "^16.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-lite-youtube-embed": "^2.3.1",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-slug": "5.0.1",
     "remark": "^14.0.2",
     "remark-gfm": "^3.0.1",
     "rss": "^1.2.2",
-    "swr": "^1.3.0",
-    "tabler-icons-react": "^1.54.0"
+    "sharp": "^0.30.7",
+    "swr": "^1.3.0"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "12.2.4",
+    "@next/bundle-analyzer": "12.2.5",
     "@svgr/webpack": "^6.3.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
+    "@trivago/prettier-plugin-sort-imports": "^3.3.0",
+    "@types/lodash": "^4.14.183",
     "@types/react": "18.0.17",
-    "@typescript-eslint/eslint-plugin": "5.32.0",
-    "@typescript-eslint/parser": "5.32.0",
+    "@types/rss": "^0.0.29",
+    "@typescript-eslint/eslint-plugin": "5.33.1",
+    "@typescript-eslint/parser": "5.33.1",
     "cross-env": "^7.0.3",
     "dedent": "^0.7.0",
-    "eslint": "^8.21.0",
-    "eslint-config-next": "^12.2.4",
+    "eslint": "^8.22.0",
+    "eslint-config-next": "^12.2.5",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-prettier": "4.2.1",
-    "eslint-plugin-simple-import-sort": "^7.0.0",
     "eslint-plugin-unused-imports": "^2.0.0",
-    "file-loader": "^6.2.0",
-    "globby": "13.1.2",
     "husky": "8.0.1",
-    "inquirer": "9.1.0",
     "jest": "^28.1.3",
     "jest-environment-jsdom": "^28.1.3",
     "lint-staged": "13.0.3",
     "prettier": "^2.7.1",
-    "prisma": "^4.1.1",
+    "prisma": "^4.2.1",
     "typescript": "4.7.4"
   },
   "lint-staged": {
@@ -101,7 +100,7 @@
       "eslint --max-warnings=0",
       "prettier -w"
     ],
-    "src/**/*.{json,css,scss,md}": [
+    "src/**/*.{json,css,scss,md,mdx}": [
       "prettier -w"
     ]
   },
@@ -110,7 +109,19 @@
     "singleQuote": true,
     "jsxSingleQuote": true,
     "tabWidth": 2,
-    "semi": false
+    "semi": false,
+    "importOrder": [
+      "^@?\\w",
+      "^.+\\.s?css$",
+      "^@/data",
+      "^@/lib",
+      "^@/hooks",
+      "^@/components",
+      "^@/"
+    ],
+    "importOrderSeparation": true,
+    "importOrderSortSpecifiers": true,
+    "importOrderCaseInsensitive": true
   },
   "eslintConfig": {
     "env": {
@@ -120,7 +131,6 @@
     },
     "plugins": [
       "@typescript-eslint",
-      "simple-import-sort",
       "unused-imports"
     ],
     "extends": [
@@ -151,51 +161,6 @@
           "varsIgnorePattern": "^_",
           "args": "after-used",
           "argsIgnorePattern": "^_"
-        }
-      ],
-      "simple-import-sort/exports": "warn",
-      "simple-import-sort/imports": [
-        "warn",
-        {
-          "groups": [
-            [
-              "^@?\\w",
-              "^\\u0000"
-            ],
-            [
-              "^.+\\.s?css$"
-            ],
-            [
-              "^@/lib",
-              "^@/hooks"
-            ],
-            [
-              "^@/data"
-            ],
-            [
-              "^@/components",
-              "^@/container"
-            ],
-            [
-              "^@/"
-            ],
-            [
-              "^\\./?$",
-              "^\\.(?!/?$)",
-              "^\\.\\./?$",
-              "^\\.\\.(?!/?$)",
-              "^\\.\\./\\.\\./?$",
-              "^\\.\\./\\.\\.(?!/?$)",
-              "^\\.\\./\\.\\./\\.\\./?$",
-              "^\\.\\./\\.\\./\\.\\.(?!/?$)"
-            ],
-            [
-              "^@/types"
-            ],
-            [
-              "^"
-            ]
-          ]
         }
       ]
     },
