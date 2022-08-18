@@ -17,9 +17,13 @@ export const useStyles = createStyles((theme) => ({
       theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[2]
     }`,
     height: HEADER_HEIGHT,
-    padding: '0 16px',
+    padding: '0 30px',
     maxWidth: 960,
     margin: '0 auto',
+
+    [theme.fn.largerThan('sm')]: {
+      padding: '0 32px',
+    },
   },
 
   burger: {
