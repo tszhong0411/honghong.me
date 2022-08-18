@@ -25,7 +25,13 @@ const PostImage = (props: ImageProps) => (
     }}
   >
     <Center>
-      <Image alt={props.alt} {...props} />
+      <Image
+        alt={props.alt}
+        src={props.src}
+        blurDataURL={`/_next/image?url=${props.src}&w=16&q=1`}
+        placeholder='blur'
+        {...props}
+      />
     </Center>
     <Text
       component='figcaption'
