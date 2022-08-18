@@ -4,9 +4,8 @@ import useSWR from 'swr'
 import fetcher from '@/lib/fetcher'
 
 import Link from '@/components/Link'
+import { useStyles } from '@/components/NowPlaying/NowPlaying.styles'
 import { NowPlayingSong } from '@/components/NowPlaying/types'
-
-import { useStyles } from './NowPlaying.styles'
 
 export default function NowPlaying() {
   const { classes } = useStyles()
