@@ -1,6 +1,11 @@
 import { Favicons as FaviconType } from '@/components/Layout/types'
 
-export const Favicons: Array<FaviconType> = [
+export const Favicons: FaviconType[] = [
+  {
+    rel: 'icon',
+    type: 'image/x-icon',
+    href: '/static/favicon/favicon.ico',
+  },
   {
     rel: 'apple-touch-icon',
     sizes: '57x57',
