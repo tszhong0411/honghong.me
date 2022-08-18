@@ -84,7 +84,7 @@ export default function Typography({ children }: PropsWithChildren) {
           },
         },
         '& li::marker': {
-          color: '#d1d5db',
+          color: dark ? '#fb5151' : '#f90606',
         },
         '& code': {
           lineHeight: '1.45rem',
