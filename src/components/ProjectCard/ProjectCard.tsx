@@ -1,11 +1,13 @@
 import { Box, Button, Card, Title } from '@mantine/core'
 import { useHover } from '@mantine/hooks'
+import { IconArrowRight } from '@tabler/icons'
 import { motion } from 'framer-motion'
 import useTranslation from 'next-translate/useTranslation'
-import { ArrowRight } from 'tabler-icons-react'
 
-const ProjectsCard = ({ title, description, href }) => {
-  const { t } = useTranslation()
+import { ProjectCardProps } from '@/components/ProjectCard/types'
+
+const ProjectsCard = ({ title, description, href }: ProjectCardProps) => {
+  const { t } = useTranslation('common')
   const { hovered, ref } = useHover()
 
   return (
@@ -22,7 +24,7 @@ const ProjectsCard = ({ title, description, href }) => {
           href={href}
           rightIcon={
             <motion.div animate={{ x: hovered ? 5 : 0 }}>
-              <ArrowRight size={20} />
+              <IconArrowRight size={20} />
             </motion.div>
           }
           sx={{
@@ -31,7 +33,7 @@ const ProjectsCard = ({ title, description, href }) => {
             },
           }}
         >
-          {t('common:visit')}
+          {t('visit')}
         </Button>
       </Box>
     </Card>
