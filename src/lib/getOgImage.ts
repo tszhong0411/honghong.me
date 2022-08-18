@@ -17,6 +17,7 @@ export const getOgImage = async (
       width: 1200,
       height: 630,
     },
+    args: ['--no-sandbox'],
   })
   const page = await browser.newPage()
   await page.goto(url, { waitUntil: 'networkidle0' })
