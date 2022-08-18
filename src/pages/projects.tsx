@@ -1,16 +1,16 @@
 import { Box } from '@mantine/core'
-import { useRouter } from 'next/router'
 import useTranslation from 'next-translate/useTranslation'
+import { useRouter } from 'next/router'
 
 import { ProjectData } from '@/lib/types'
 
 import Layout from '@/components/Layout'
 import PageLayout from '@/components/Layout/PageLayout'
-import ProjectsCard from '@/components/ProjectsCard'
+import ProjectsCard from '@/components/ProjectCard'
 
 export default function Projects() {
   const { locale } = useRouter()
-  const { t } = useTranslation()
+  const { t } = useTranslation('common')
 
   const projectsData: ProjectData = {
     'zh-TW': [
@@ -60,8 +60,8 @@ export default function Projects() {
   }
 
   return (
-    <Layout templateTitle='Projects' description={t('common:SEO_projectsDesc')}>
-      <PageLayout title='Projects' description={t('common:SEO_projectsDesc')}>
+    <Layout title='Projects' description={t('Seo.projectsDesc')}>
+      <PageLayout title='Projects' description={t('Seo.projectsDesc')}>
         <Box
           sx={(theme) => ({
             display: 'grid',

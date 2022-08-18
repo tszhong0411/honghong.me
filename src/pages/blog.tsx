@@ -1,70 +1,57 @@
-import { Input, Text } from '@mantine/core'
-import { allBlogs } from 'contentlayer/generated'
-import { useRouter } from 'next/router'
+import { Input, List, Text } from '@mantine/core'
+import { IconSearch } from '@tabler/icons'
+import { GetStaticProps } from 'next'
 import useTranslation from 'next-translate/useTranslation'
 import React from 'react'
-import { Search } from 'tabler-icons-react'
 
-import { allCoreContent, sortedBlogPost } from '@/lib/utils/contentlayer'
+import { getAllPosts } from '@/lib/mdx'
+import { PostFrontMatter } from '@/lib/types'
 
 import Layout from '@/components/Layout'
 import PageLayout from '@/components/Layout/PageLayout'
 import PostsList from '@/components/PostsList'
 
-export const POSTS_PER_PAGE = 10
+export default function Blog({ posts }: { posts: PostFrontMatter[] }) {
+  const { t } = useTranslation('common')
+  const [searchValue, setSearchValue] = React.useState('')
 
-export const getServerSideProps = async (locale: { locale: string }) => {
-  const sortedPosts = sortedBlogPost(allBlogs)
-  const posts = allCoreContent(sortedPosts)
-  const filteredPosts = posts.filter(
-    (slug) =>
-      slug.slug.split('.')[slug.slug.split('.').length - 1] === locale.locale
+  const filteredPosts = posts.filter((post) =>
+    post.title.toLowerCase().includes(searchValue.toLowerCase())
   )
 
-  return {
-    props: {
-      filteredPosts,
-    },
-  }
-}
-
-export default function Blog({ filteredPosts }) {
-  const { t } = useTranslation()
-  const [searchValue, setSearchValue] = React.useState('')
-  const filteredBlogPosts = filteredPosts?.filter((post) => {
-    const searchContent = post.title + post.summary
-    return searchContent.toLowerCase().includes(searchValue.toLowerCase())
-  })
-  const router = useRouter()
-  const displayPosts = filteredBlogPosts
-
   return (
-    <Layout templateTitle='Blog'>
+    <Layout title='Blog'>
       <PageLayout
         title='Blog'
-        description={t('common:blogDesc', { count: filteredPosts?.length })}
+        description={t('blogDesc', { count: posts.length })}
       >
         <Input
-          icon={<Search size={15} />}
-          placeholder={t('common:search')}
+          icon={<IconSearch size={15} />}
+          placeholder={t('search')}
           type='text'
           radius='md'
-          aria-label={t('common:search')}
+          aria-label={t('search')}
           onChange={(e) => setSearchValue(e.target.value)}
         />
-        <ul>
-          {!filteredBlogPosts?.length && (
+        <List listStyleType='none'>
+          {!filteredPosts.length && (
             <Text sx={{ textAlign: 'center' }} py={48}>
-              {t('common:noPostsFound')}
+              {t('noPostsFound')}
             </Text>
           )}
-          {displayPosts?.map((post) => {
-            const { slug } = post
-            const formattedSlug = slug.replace(`.${router.locale}`, '')
-            return <PostsList key={formattedSlug} post={post} />
-          })}
-        </ul>
+          {filteredPosts.map((post) => (
+            <PostsList key={post.slug} post={post} />
+          ))}
+        </List>
       </PageLayout>
     </Layout>
   )
+}
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const posts = getAllPosts(locale)
+
+  return {
+    props: { posts },
+  }
 }

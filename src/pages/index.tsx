@@ -1,20 +1,19 @@
-import { Box, Divider, Title, useMantineTheme } from '@mantine/core'
-import { allBlogs } from 'contentlayer/generated'
-import { useRouter } from 'next/router'
+import { Box, Divider, List, Title, useMantineTheme } from '@mantine/core'
+import { GetStaticProps } from 'next'
 import useTranslation from 'next-translate/useTranslation'
 
-import { sortedBlogPost } from '@/lib/utils/contentlayer'
+import { getAllPosts } from '@/lib/mdx'
+import { PostFrontMatter } from '@/lib/types'
 
 import Hero from '@/components/Hero'
 import Layout from '@/components/Layout'
 import Link from '@/components/Link'
-import PostsList from '@/components/PostsList/PostsList'
+import PostsList from '@/components/PostsList'
 
 export const MAX_DISPLAY = 5
 
-export default function Home({ filteredPosts }) {
-  const { t } = useTranslation()
-  const { locale } = useRouter()
+export default function Home({ posts }: { posts: PostFrontMatter[] }) {
+  const { t } = useTranslation('common')
   const { colorScheme } = useMantineTheme()
   const dark = colorScheme === 'dark'
 
@@ -23,16 +22,14 @@ export default function Home({ filteredPosts }) {
       <div>
         <div>
           <Hero />
-          <Title order={2}>{t('common:latestPosts')}</Title>
+          <Title order={2}>{t('latestPosts')}</Title>
         </div>
         <Divider my='xl' />
-        <ul style={{ listStyle: 'none' }}>
-          {filteredPosts.slice(0, MAX_DISPLAY).map((post) => {
-            const { slug } = post
-            const formattedSlug = slug.replace(`.${locale}`, '')
-            return <PostsList key={formattedSlug} post={post} />
-          })}
-        </ul>
+        <List listStyleType='none'>
+          {posts.map((post) => (
+            <PostsList key={post.slug} post={post} />
+          ))}
+        </List>
       </div>
       <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
         <Link
@@ -42,26 +39,17 @@ export default function Home({ filteredPosts }) {
             color: dark ? 'white' : 'black',
           }}
         >
-          {t('common:allPosts')} &rarr;
+          {t('allPosts')} &rarr;
         </Link>
       </Box>
     </Layout>
   )
 }
 
-export const getServerSideProps = async (locale: { locale: string }) => {
-  const sortedPosts = sortedBlogPost(allBlogs)
-  const filteredPosts = sortedPosts
-    .filter(
-      (slug) =>
-        slug.slug.split('.')[slug.slug.split('.').length - 1] === locale.locale
-    )
-    .slice(0, MAX_DISPLAY)
-    .map((post) => {
-      delete post._raw
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const posts = getAllPosts(locale)
 
-      return post
-    })
-
-  return { props: { filteredPosts } }
+  return {
+    props: { posts },
+  }
 }

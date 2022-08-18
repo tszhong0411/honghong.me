@@ -1,28 +1,40 @@
-import type { OtherPage } from 'contentlayer/generated'
-import { allOtherPages } from 'contentlayer/generated'
-import useTranslation from 'next-translate/useTranslation'
-import React from 'react'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { GetStaticProps } from 'next'
+import { MDXRemote } from 'next-mdx-remote'
+
+import { getContentBySlug } from '@/lib/mdx'
+import { PageFrontMatter } from '@/lib/types'
 
 import Layout from '@/components/Layout'
 import PageLayout from '@/components/Layout/PageLayout'
-import { MDXComponent } from '@/components/MDXComponents/MDXComponents'
+import MDXComponents from '@/components/MDXComponents'
+import Typography from '@/components/Typography'
 
-export default function About({ body: { code } }: OtherPage) {
-  const { t } = useTranslation()
+export default function About({ page }) {
+  const { title, description } = page.frontMatter as PageFrontMatter
 
   return (
-    <Layout templateTitle='About' description={t('common:SEO_aboutDesc')}>
-      <PageLayout title='About' description={t('common:SEO_aboutDesc')}>
-        <MDXComponent code={code} />
+    <Layout title={title} description={description}>
+      <PageLayout title={title} description={description}>
+        <Typography>
+          <MDXRemote
+            {...page.source}
+            components={
+              {
+                ...MDXComponents,
+              } as any
+            }
+          />
+        </Typography>
       </PageLayout>
     </Layout>
   )
 }
 
-export async function getServerSideProps(locale: { locale: string }) {
-  const uses = allOtherPages.find(
-    (page) => page.slug === `about.${locale.locale}`
-  )
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const page = await getContentBySlug('page', 'about' as string, locale)
 
-  return { props: uses }
+  return {
+    props: { page },
+  }
 }
