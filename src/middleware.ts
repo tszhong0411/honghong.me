@@ -1,7 +1,7 @@
 import type { NextFetchEvent, NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
-export function middleware(_req: NextRequest, _ev: NextFetchEvent) {
+export async function middleware(_req: NextRequest, _ev: NextFetchEvent) {
   const ContentSecurityPolicy = `
     default-src 'self';
     script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app cdn.jsdelivr.net *.honghong.me data:;
@@ -10,7 +10,7 @@ export function middleware(_req: NextRequest, _ev: NextFetchEvent) {
     media-src cdn.jsdelivr.net;
     connect-src *;
     font-src 'self' cdn.jsdelivr.net fonts.gstatic.com;
-    frame-src giscus.app *.youtube.com www.youtube-nocookie.com;
+    frame-src giscus.app *.youtube.com;
   `
 
   const response = NextResponse.next()
