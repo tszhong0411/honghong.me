@@ -42,6 +42,7 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
       props: { post, ogImage },
     }
   } catch (error) {
+    console.log(error)
     return {
       notFound: true,
     }
