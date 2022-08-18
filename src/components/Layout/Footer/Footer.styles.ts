@@ -5,7 +5,8 @@ export const useStyles = createStyles((theme) => ({
     margin: '32px auto 0 auto',
     width: '100%',
     maxWidth: 960,
-    padding: '0 16px',
+    padding: '0 30px',
+
     [theme.fn.largerThan('sm')]: {
       padding: '0 32px',
     },
