@@ -19,10 +19,10 @@ export default function useScrollSpy() {
       }
 
       const bbox = section.getBoundingClientRect()
+
       const prevHeight = prevBBox ? bbox.top - prevBBox.bottom : 0
       const offset = Math.max(200, prevHeight / 4)
 
-      // GetBoundingClientRect returns values relative to viewport
       if (bbox.top - offset < 0) {
         currentSectionId = section.getAttribute('href')?.split('#')[1] ?? null
 
@@ -30,7 +30,6 @@ export default function useScrollSpy() {
         continue
       }
 
-      // No need to continue loop, if last element has been detected
       break
     }
 
