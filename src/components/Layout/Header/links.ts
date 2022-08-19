@@ -7,5 +7,4 @@ export const links: linksType[] = [
   { href: '/projects', text: 'Projects' },
   { href: '/about', text: 'About' },
   { href: '/uses', text: 'Uses' },
-  { href: '/feed.xml', text: 'RSS' },
 ]
