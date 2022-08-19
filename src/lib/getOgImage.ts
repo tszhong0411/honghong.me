@@ -2,6 +2,8 @@ import { createHash } from 'crypto'
 import fs from 'fs'
 import puppeteer from 'puppeteer'
 
+import { isProd } from '@/lib/isProduction'
+
 export const getOgImage = async (
   path: string,
   baseUrl = 'https://og-image.honghong.me'
@@ -12,21 +14,23 @@ export const getOgImage = async (
   const imagePath = `${ogImageDir}/${hash}.png`
   const publicPath = `https://honghong.me/static/images/og/${hash}.png`
 
-  const browser = await puppeteer.launch({
-    defaultViewport: {
-      width: 1200,
-      height: 630,
-    },
-    args: ['--no-sandbox'],
-  })
-  const page = await browser.newPage()
-  await page.goto(url, { waitUntil: 'networkidle0' })
+  if (isProd) {
+    const browser = await puppeteer.launch({
+      defaultViewport: {
+        width: 1200,
+        height: 630,
+      },
+      args: ['--no-sandbox'],
+    })
+    const page = await browser.newPage()
+    await page.goto(url, { waitUntil: 'networkidle0' })
 
-  const buffer = await page.screenshot({ type: 'png' })
-  await browser.close()
+    const buffer = await page.screenshot({ type: 'png' })
+    await browser.close()
 
-  fs.mkdirSync(ogImageDir, { recursive: true })
-  fs.writeFileSync(imagePath, buffer)
+    fs.mkdirSync(ogImageDir, { recursive: true })
+    fs.writeFileSync(imagePath, buffer)
+  }
 
   return publicPath
 }
