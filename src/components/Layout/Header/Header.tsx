@@ -1,5 +1,7 @@
 import { Burger, Group, Paper, Transition } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
+import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
 
@@ -9,31 +11,35 @@ import LanguageSwitch from '@/components/Layout/Header/LanguageSwitch'
 import { links } from '@/components/Layout/Header/links'
 import Search from '@/components/Layout/Header/Search'
 import ThemeSwitch from '@/components/Layout/Header/ThemeSwitch'
-import Link from '@/components/Link'
 
 export default function Header() {
   const { classes, cx } = useStyles()
   const [opened, toggleOpened] = useDisclosure(false)
-  const { locale, defaultLocale, asPath } = useRouter()
+  const { asPath } = useRouter()
 
-  const items = links.map((link) => (
-    <Link
-      key={link.text}
-      href={
-        link.href === '/feed.xml'
-          ? `/feed${locale === defaultLocale ? '' : `.${locale}`}.xml`
-          : link.href
-      }
-      className={cx(classes.link, {
-        [classes.linkActive]: asPath === link.href,
-      })}
-      onClick={() => {
-        toggleOpened.close()
-      }}
-    >
-      {link.text}
-    </Link>
-  ))
+  const items = ({ animation }) =>
+    links.map((link, index) => (
+      <Link key={index} href={link.href}>
+        <motion.a
+          className={cx(classes.link, {
+            [classes.linkActive]: asPath === link.href,
+          })}
+          onClick={() => {
+            toggleOpened.close()
+          }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          initial={{
+            x: animation ? '-100vw' : 0,
+          }}
+          animate={{
+            x: 0,
+          }}
+        >
+          {link.text}
+        </motion.a>
+      </Link>
+    ))
 
   return (
     <div className={classes.header}>
@@ -49,14 +55,14 @@ export default function Header() {
         <Transition transition='slide-right' duration={200} mounted={opened}>
           {(styles) => (
             <Paper className={classes.dropdown} withBorder style={styles}>
-              {items}
+              {items({ animation: true })}
             </Paper>
           )}
         </Transition>
       </div>
       <div className={classes.headerRight}>
         <Group spacing={5} className={classes.links}>
-          {items.slice(0, 4)}
+          {items({ animation: false }).slice(0, 4)}
         </Group>
         <Search />
         <ThemeSwitch />

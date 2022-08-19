@@ -83,6 +83,7 @@ export const useStyles = createStyles((theme) => ({
         : theme.colors.gray[7],
     fontSize: theme.fontSizes.sm,
     fontWeight: 500,
+    cursor: 'pointer',
 
     '&:hover': {
       backgroundColor:
