@@ -1,5 +1,4 @@
-import { Badge, Group, Text, Title, useMantineTheme } from '@mantine/core'
-import { motion } from 'framer-motion'
+import { Box, Card, Grid, Text, Title, useMantineTheme } from '@mantine/core'
 import Image from 'next/image'
 
 import { useStyles } from '@/components/Hero/Hero.styles'
@@ -8,64 +7,86 @@ import Link from '@/components/Link'
 export default function Hero() {
   const { classes } = useStyles()
   const { colorScheme } = useMantineTheme()
+  const theme = useMantineTheme()
   const dark = colorScheme === 'dark'
 
   return (
-    <>
-      <div className={classes.hero}>
-        <div>
-          <Title order={1} sx={{ margin: '0 0 24px 0' }}>
-            小康
-          </Title>
-          <Text>A teenager who loves web development</Text>
-          <Group spacing='sm' sx={{ margin: '8px 0' }}>
-            <Badge variant='gradient' gradient={{ from: 'orange', to: 'red' }}>
-              # react
-            </Badge>
-            <Badge
-              variant='gradient'
-              gradient={{ from: 'teal', to: 'lime', deg: 105 }}
-            >
-              # Next.js
-            </Badge>
-            <Badge variant='gradient' gradient={{ from: 'indigo', to: 'cyan' }}>
-              # tailwind
-            </Badge>
-          </Group>
-          <div>
-            <Group
-              align='flex-start'
-              spacing='sm'
-              mt={36}
-              sx={() => ({
-                flexDirection: 'column',
-                '& > a': {
-                  color: dark ? 'white' : 'black',
-                },
-              })}
-            >
-              <Link href='https://instagram.com/tszhong0411/'>Instagram</Link>
-              <Link href='https://github.com/tszhong0411'>Github</Link>
-              <Link href='https://honghong.me/youtube'>Youtube</Link>
-            </Group>
-          </div>
-        </div>
-        <div className={classes.logoWrapper}>
-          <motion.div
-            whileHover={{ rotate: 360 }}
-            transition={{ duration: 0.7 }}
-            style={{ height: 130, width: 130, position: 'relative' }}
-          >
+    <Grid mb={96}>
+      <Grid.Col span={12}>
+        <Card p={32} className={classes.about} radius='lg' withBorder>
+          <Box sx={{ height: 90, width: 90 }}>
             <Image
               src='/static/images/logo/logo-black.png'
               alt='Logo'
-              layout='fill'
-              objectFit='contain'
+              width={3850}
+              height={3850}
               className={classes.logo}
             />
-          </motion.div>
-        </div>
-      </div>
-    </>
+          </Box>
+          <Title order={1} sx={{ fontSize: 32, fontWeight: 700 }}>
+            Hey, I&apos;m 小康 👋
+          </Title>
+          <Text
+            size={20}
+            weight={500}
+            color={dark ? theme.colors.gray[6] : theme.colors.gray[8]}
+          >
+            A student who loves web development
+          </Text>
+        </Card>
+      </Grid.Col>
+      <Grid.Col span={12} md={4}>
+        <Card
+          component={Link}
+          href='/projects'
+          className={classes.square}
+          sx={{
+            backgroundImage: 'url(/static/images/train.png)',
+          }}
+          radius='lg'
+          withBorder
+          underline={false}
+        >
+          <Text size={28} weight={500}>
+            Projects
+          </Text>
+        </Card>
+      </Grid.Col>
+      <Grid.Col span={12} md={4}>
+        <Card
+          component={Link}
+          href='/blog'
+          className={classes.square}
+          sx={{
+            backgroundImage: 'url(/static/images/blog.png)',
+          }}
+          radius='lg'
+          withBorder
+          underline={false}
+        >
+          <Text size={28} weight={500}>
+            Blog
+          </Text>
+        </Card>
+      </Grid.Col>
+      <Grid.Col span={12} md={4}>
+        <Card
+          component={Link}
+          href='https://link.honghong.me'
+          className={classes.square}
+          sx={{
+            backgroundImage: 'url(/static/images/social.png)',
+          }}
+          radius='lg'
+          withBorder
+          noIcon
+          underline={false}
+        >
+          <Text size={28} weight={500}>
+            Social media
+          </Text>
+        </Card>
+      </Grid.Col>
+    </Grid>
   )
 }

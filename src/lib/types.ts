@@ -27,6 +27,7 @@ export type PostFrontMatter = {
   summary: string
   image: string
   slug: string
+  views?: string
 }
 
 export type PageFrontMatter = {
