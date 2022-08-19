@@ -1,4 +1,4 @@
-import { Box, Skeleton } from '@mantine/core'
+import { Group, Skeleton, Text } from '@mantine/core'
 import { IconEye } from '@tabler/icons'
 import useTranslation from 'next-translate/useTranslation'
 import React from 'react'
@@ -31,19 +31,12 @@ export default function ViewCounter({
     <>
       {views > 0 ? (
         text ? (
-          <span>{`${views.toLocaleString()} ${t('views')}`}</span>
+          <Text>{`${views.toLocaleString()} ${t('views')}`}</Text>
         ) : (
-          <Box
-            component='span'
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 4,
-            }}
-          >
+          <Group spacing={4}>
             <IconEye size={20} />
-            {views.toLocaleString()}
-          </Box>
+            <Text sx={{ lineHeight: '20px' }}>{views.toLocaleString()}</Text>
+          </Group>
         )
       ) : (
         <Skeleton
