@@ -1,0 +1,307 @@
+---
+title: 如何使用 Next.js 和 MDX 建立部落格
+date: '2022-08-22T03:57:00Z'
+modifiedTime: '2022-08-22T03:57:00Z'
+summary: 用 Next.js 製作 Blog 非常簡單！
+image: 'how-to-build-a-blog-with-nextjs-and-mdx/cover.png'
+---
+
+## 前言
+
+要用到的 packages 有：
+
+- [next](https://github.com/vercel/next.js) Next.js 框架
+- [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote) 處理和加載 mdx 內容
+- [gray-matter](https://github.com/jonschlinkert/gray-matter) 分析 markdown 中的 front matter
+
+本次教學的 repository:
+
+https://github.com/tszhong0411/nextjs-mdx-blog
+
+## 樣品
+
+[線上](https://hong-nextjs-mdx-blog.vercel.app)
+
+![Demo](/static/images/blog/how-to-build-a-blog-with-nextjs-and-mdx/demo.gif)
+
+## 如何建立 blog
+
+首先，我們用以下指令建立 Next.js 項目:
+
+```
+yarn create next-app nextjs-mdx-blog
+```
+
+接著，再建立以下檔案:
+
+- `components\Layout.js` - 把 components 都包起來，作為 container 的用途 (可選，只是樣式而已)
+- `date\blog\*.mdx` - 部落格文章
+- `lib\formatDate.js` - 把日期格式化為 `YYYY年MM月DD日`
+- `[slug].js` - 文章頁面，使用 [dynamic routes](https://nextjs.org/docs/routing/dynamic-routes)
+
+```
+|-- components
+|   |-- Layout.js
+|-- data
+|   |-- blog
+|     |-- markdown.mdx
+|     |-- nextjs.mdx
+|     |-- react.mdx
+|-- lib
+|   |-- formatDate.js
+|   |-- mdx.js
+|-- pages
+|   |-- blog
+|     |-- [slug].js
+```
+
+### 如何處理 Markdown 檔案
+
+<Alert icon='💡' title='提示' color='yellow' radius='md'>
+  以下內容寫在 `lib\mdx.js` 裡
+</Alert>
+
+先 `const root` 為根目錄，`process.cwd()` 方法返回 Node.js 進程的當前工作目錄。
+
+```js
+const root = process.cwd()
+```
+
+再寫一個變量 `POSTS_PATH` 為 文章檔案存放的路徑。
+
+```js
+import path from 'path'
+
+const POSTS_PATH = path.join(root, 'data', 'blog')
+// 輸出: A:\nextjs-mdx-blog\data\blog
+```
+
+再用 fs 閱讀讀取該目錄的內容，也即是 `data\blog` 下的所有檔案名稱。
+
+```js
+import fs from 'fs'
+
+export const allSlugs = fs.readdirSync(POSTS_PATH)
+// 輸出: ['markdown.mdx', 'nextjs.mdx', 'react.mdx']
+```
+
+然後寫一個可以把副檔案移除的功能，等一下會用到。
+
+```js
+export const formatSlug = (slug) => slug.replace(/\.mdx$/, '')
+/**
+ * 例如 formatSlug('markdown.mdx')
+ * 輸出: 'markdown'
+ */
+```
+
+接著是用 slug 取得文章內容。
+
+```js
+export const getPostBySlug = async (slug) => {
+  const postFilePath = path.join(POSTS_PATH, `${slug}.mdx`)
+  // 輸出: A:\nextjs-mdx-blog\data\blog\slug.mdx
+  const source = fs.readFileSync(postFilePath)
+  // 返回檔案內容
+
+  const { content, data } = matter(source)
+  /*
+   * 例如:
+   *  ---
+   *  title: Hello
+   *  slug: home
+   *  ---
+   *  <h1>Hello world!</h1>
+   *
+   * 返回:
+   *  {
+   *    content: '<h1>Hello world!</h1>',
+   *    data: {
+   *      title: 'Hello',
+   *      slug: 'home'
+   *    }
+   *  }
+   */
+
+  const mdxSource = await serialize(content)
+  // 把 content 丟到 serialize (next-mdx-remote) 處理
+
+  const frontMatter = {
+    ...data,
+    slug,
+  }
+  // 把 slug 也放到 front matter 中，之後會用到
+
+  return {
+    source: mdxSource,
+    frontMatter,
+  }
+}
+```
+
+然後是取得所有文章，在首頁中顯示。
+
+```js
+export const getAllPosts = () => {
+  const frontMatter = []
+
+  allSlugs.forEach((slug) => {
+    const source = fs.readFileSync(path.join(POSTS_PATH, slug), 'utf-8')
+
+    const { data } = matter(source)
+
+    frontMatter.push({
+      ...data,
+      slug: formatSlug(slug),
+      date: new Date(data.date).toISOString(),
+    })
+  })
+
+  return frontMatter.sort((a, b) => dateSortDesc(a.date, b.date))
+}
+
+// 根據日期由大至小排序
+const dateSortDesc = (a, b) => {
+  if (a > b) return -1
+  if (a < b) return 1
+
+  return 0
+}
+```
+
+### 格式化日期
+
+<Alert icon='💡' title='提示' color='yellow' radius='md'>
+  以下內容寫在 `lib\formatDate.js` 裡
+</Alert>
+
+```js
+export const formatDate = (date) =>
+  new Date(date).toLocaleDateString('zh-TW', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
+/*
+ * formatDate('2022-08-21T00:00:00Z')
+ * 輸出: '2022年8月21日'
+ */
+```
+
+### 首頁
+
+<Alert icon='💡' title='提示' color='yellow' radius='md'>
+  以下內容寫在 `pages\index.js` 裡
+</Alert>
+
+```jsx
+import { formatDate } from '../lib/formatDate'
+import { getAllPosts } from '../lib/mdx'
+
+import Link from 'next/link'
+
+export default function Home({ posts }) {
+  return (
+    <>
+      <h1 className='text-6xl font-bold mb-8'>Blog</h1>
+      <hr className='my-8' />
+      <ul className='flex flex-col gap-3'>
+        {posts.map(({ slug, title, summary, date }) => (
+          <li key={slug}>
+            <Link href={`/blog/${slug}`}>
+              <a className='border border-solid border-gray-300 rounded-lg shadow-md p-6 block'>
+                <div className='flex justify-between'>
+                  <h2>{title}</h2>
+                  <time dateTime={date}>{formatDate(date)}</time>
+                </div>
+                <p className='mt-4'>{summary}</p>
+              </a>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </>
+  )
+}
+
+// 使用 getStaticProps 取得所有文章
+export const getStaticProps = async () => {
+  const posts = getAllPosts()
+
+  return {
+    props: {
+      posts,
+    },
+  }
+}
+```
+
+### 文章頁面
+
+<Alert icon='💡' title='提示' color='yellow' radius='md'>
+  以下內容寫在 `pages\[slug].js` 裡
+</Alert>
+
+```jsx
+import { formatDate } from '../../lib/formatDate'
+import { allSlugs, formatSlug, getPostBySlug } from '../../lib/mdx'
+
+import { MDXRemote } from 'next-mdx-remote'
+
+export default function Blog({ post }) {
+  const { title, date } = post.frontMatter
+
+  return (
+    <div>
+      <h1 className='font-bold text-6xl mb-2'>{title}</h1>
+      <time dateTime={date} className='text-lg font-medium'>
+        {formatDate(date)}
+      </time>
+      <hr className='my-8' />
+      <article className='prose'>
+        <MDXRemote {...post.source} />
+      </article>
+    </div>
+  )
+}
+
+export const getStaticProps = async ({ params }) => {
+  const post = await getPostBySlug(params.slug)
+
+  return {
+    props: {
+      post,
+    },
+  }
+}
+
+export const getStaticPaths = async () => {
+  const paths = allSlugs.map((slug) => ({
+    params: {
+      slug: formatSlug(slug),
+    },
+  }))
+  /*
+   * paths 輸出:
+   *   [
+   *     { params: { slug: 'markdown' } },
+   *     { params: { slug: 'nextjs' } },
+   *     { params: { slug: 'react' } }
+   *   ]
+   */
+
+  return {
+    paths,
+    fallback: false,
+  }
+}
+```
+
+這樣簡易的 Blog 就大功告成了。
+
+## 實用連結
+
+- [getStaticPaths](https://nextjs.org/docs/basic-features/data-fetching/get-static-paths)
+- [getStaticProps](https://nextjs.org/docs/basic-features/data-fetching/get-static-props)
+- [Dynamic Routes](https://nextjs.org/docs/routing/dynamic-routes)
+- [mdx](https://mdxjs.com/)
