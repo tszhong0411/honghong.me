@@ -60,9 +60,28 @@ const Alert = (props: AlertProps) => (
   </MantineAlert>
 )
 
+const PostPre = (props: any) => {
+  const matches = (props.children.props.className || '').match(
+    /language-(?<lang>.*)/
+  )
+
+  return (
+    <Pre
+      language={
+        matches && matches.groups && matches.groups.lang
+          ? matches.groups.lang
+          : ''
+      }
+      withLineNumbers={props.children.props.className ? true : false}
+    >
+      {props.children.props.children}
+    </Pre>
+  )
+}
+
 const MDXComponents = {
   Kbd,
-  Pre,
+  pre: PostPre,
   Blockquote,
   Alert,
   a: CustomLink,
