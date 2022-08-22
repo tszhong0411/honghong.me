@@ -1,7 +1,7 @@
 ---
 title: 如何使用 Next.js 和 MDX 建立部落格
 date: '2022-08-22T03:57:00Z'
-modifiedTime: '2022-08-22T03:57:00Z'
+modifiedTime: '2022-08-22T08:22:00Z'
 summary: 用 Next.js 製作 Blog 非常簡單！
 image: 'how-to-build-a-blog-with-nextjs-and-mdx/cover.png'
 ---
@@ -85,7 +85,7 @@ export const allSlugs = fs.readdirSync(POSTS_PATH)
 // 輸出: ['markdown.mdx', 'nextjs.mdx', 'react.mdx']
 ```
 
-然後寫一個可以把副檔案移除的功能，等一下會用到。
+然後寫一個可以把副檔名移除的功能，等一下會用到。
 
 ```js
 export const formatSlug = (slug) => slug.replace(/\.mdx$/, '')
