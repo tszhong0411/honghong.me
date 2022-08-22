@@ -1,4 +1,4 @@
-import { Box } from '@mantine/core'
+import { Grid } from '@mantine/core'
 import useTranslation from 'next-translate/useTranslation'
 import { useRouter } from 'next/router'
 
@@ -62,25 +62,17 @@ export default function Projects() {
   return (
     <Layout title='Projects' description={t('Seo.projectsDesc')}>
       <PageLayout title='Projects' description={t('Seo.projectsDesc')}>
-        <Box
-          sx={(theme) => ({
-            display: 'grid',
-            gap: 16,
-
-            [theme.fn.largerThan('sm')]: {
-              gridTemplateColumns: 'repeat(2,minmax(0,1fr))',
-            },
-          })}
-        >
+        <Grid>
           {projectsData[locale]?.map((data) => (
-            <ProjectsCard
-              key={data.title}
-              title={data.title}
-              description={data.description}
-              href={data.href}
-            />
+            <Grid.Col key={data.title} span={12} md={6}>
+              <ProjectsCard
+                title={data.title}
+                description={data.description}
+                href={data.href}
+              />
+            </Grid.Col>
           ))}
-        </Box>
+        </Grid>
       </PageLayout>
     </Layout>
   )
