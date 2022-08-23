@@ -4,12 +4,12 @@ import { NextResponse } from 'next/server'
 export async function middleware(_req: NextRequest, _ev: NextFetchEvent) {
   const ContentSecurityPolicy = `
     default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app cdn.jsdelivr.net *.honghong.me data:;
-    style-src 'self' 'unsafe-inline' cdn.jsdelivr.net fonts.googleapis.com;
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app *.honghong.me data:;
+    style-src 'self' 'unsafe-inline' fonts.googleapis.com;
     img-src * blob: data:;
-    media-src cdn.jsdelivr.net;
+    media-src;
     connect-src *;
-    font-src 'self' cdn.jsdelivr.net fonts.gstatic.com;
+    font-src 'self' fonts.gstatic.com;
     frame-src giscus.app *.youtube.com;
   `
 
