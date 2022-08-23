@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
+  Alert as MantineAlert,
   AlertProps,
   Blockquote,
   Box,
   Center,
   Kbd,
-  Alert as MantineAlert,
   Table,
   TableProps,
   Text,

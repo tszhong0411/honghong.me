@@ -1,9 +1,9 @@
-import Link from '../Link'
-
 import { Button, Card, Title } from '@mantine/core'
 import useTranslation from 'next-translate/useTranslation'
 
 import { ProjectCardProps } from '@/components/ProjectCard/types'
+
+import Link from '../Link'
 
 const ProjectsCard = ({ title, description, href }: ProjectCardProps) => {
   const { t } = useTranslation('common')

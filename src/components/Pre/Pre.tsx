@@ -1,6 +1,5 @@
 import { Prism, PrismProps } from '@mantine/prism'
 import PrismRenderer from 'prism-react-renderer/prism'
-
 ;(typeof global !== 'undefined' ? global : window).Prism = PrismRenderer
 
 require('prismjs/components/prism-php')

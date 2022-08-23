@@ -1,6 +1,6 @@
 import { Grid } from '@mantine/core'
-import useTranslation from 'next-translate/useTranslation'
 import { useRouter } from 'next/router'
+import useTranslation from 'next-translate/useTranslation'
 
 import { ProjectData } from '@/lib/types'
 

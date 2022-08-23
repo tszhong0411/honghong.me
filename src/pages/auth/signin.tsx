@@ -1,9 +1,9 @@
 import { Button, ButtonProps, Group, Paper, Text } from '@mantine/core'
 import { IconBrandGithub, IconBrandGoogle } from '@tabler/icons'
 import { GetServerSideProps } from 'next'
+import { useRouter } from 'next/router'
 import { getSession, signIn } from 'next-auth/react'
 import useTranslation from 'next-translate/useTranslation'
-import { useRouter } from 'next/router'
 import React from 'react'
 
 import Layout from '@/components/Layout'

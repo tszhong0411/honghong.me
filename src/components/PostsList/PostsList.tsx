@@ -1,5 +1,3 @@
-import ViewCounter from '../ViewCounter'
-
 import { Group, List, Text, Title } from '@mantine/core'
 import { useHover, useMediaQuery } from '@mantine/hooks'
 import { motion, Variants } from 'framer-motion'
@@ -12,6 +10,8 @@ import formatDate from '@/lib/formatDate'
 import { PostFrontMatter } from '@/lib/types'
 
 import { useStyles } from '@/components/PostsList/PostsList.styles'
+
+import ViewCounter from '../ViewCounter'
 
 export default function PostsList({ post }: { post: PostFrontMatter }) {
   const { locale } = useRouter()

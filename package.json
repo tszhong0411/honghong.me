@@ -73,7 +73,6 @@
     "@svgr/webpack": "^6.3.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
-    "@trivago/prettier-plugin-sort-imports": "^3.3.0",
     "@types/lodash": "^4.14.183",
     "@types/react": "18.0.17",
     "@types/rss": "^0.0.29",
@@ -85,6 +84,7 @@
     "eslint-config-next": "^12.2.5",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-prettier": "4.2.1",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
     "eslint-plugin-unused-imports": "^2.0.0",
     "husky": "8.0.1",
     "jest": "^28.1.3",
@@ -108,19 +108,7 @@
     "singleQuote": true,
     "jsxSingleQuote": true,
     "tabWidth": 2,
-    "semi": false,
-    "importOrder": [
-      "^@?\\w",
-      "^.+\\.s?css$",
-      "^@/data",
-      "^@/lib",
-      "^@/hooks",
-      "^@/components",
-      "^@/"
-    ],
-    "importOrderSeparation": true,
-    "importOrderSortSpecifiers": true,
-    "importOrderCaseInsensitive": true
+    "semi": false
   },
   "eslintConfig": {
     "env": {
@@ -130,6 +118,7 @@
     },
     "plugins": [
       "@typescript-eslint",
+      "simple-import-sort",
       "unused-imports"
     ],
     "extends": [
@@ -160,6 +149,54 @@
           "varsIgnorePattern": "^_",
           "args": "after-used",
           "argsIgnorePattern": "^_"
+        }
+      ],
+      "simple-import-sort/exports": "warn",
+      "simple-import-sort/imports": [
+        "warn",
+        {
+          "groups": [
+            [
+              "^@?\\w",
+              "^\\u0000"
+            ],
+            [
+              "^.+\\.s?css$"
+            ],
+            [
+              "^@/lib",
+              "^@/hooks"
+            ],
+            [
+              "^@/data"
+            ],
+            [
+              "^@/components",
+              "^@/container"
+            ],
+            [
+              "^@/store"
+            ],
+            [
+              "^@/"
+            ],
+            [
+              "^\\./?$",
+              "^\\.(?!/?$)",
+              "^\\.\\./?$",
+              "^\\.\\.(?!/?$)",
+              "^\\.\\./\\.\\./?$",
+              "^\\.\\./\\.\\.(?!/?$)",
+              "^\\.\\./\\.\\./\\.\\./?$",
+              "^\\.\\./\\.\\./\\.\\.(?!/?$)"
+            ],
+            [
+              "^@/types"
+            ],
+            [
+              "^"
+            ]
+          ]
         }
       ]
     },

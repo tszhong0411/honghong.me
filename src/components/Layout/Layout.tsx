@@ -1,7 +1,7 @@
 import { Container } from '@mantine/core'
+import { useRouter } from 'next/router'
 import { NextSeo, NextSeoProps } from 'next-seo'
 import useTranslation from 'next-translate/useTranslation'
-import { useRouter } from 'next/router'
 import React, { PropsWithChildren } from 'react'
 
 import { Favicons } from '@/components/Layout/Favicons'

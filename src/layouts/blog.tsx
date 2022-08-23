@@ -11,15 +11,14 @@ import {
   IconBrandReddit,
   IconBrandTwitter,
 } from '@tabler/icons'
+import { useRouter } from 'next/router'
 import { ArticleJsonLd } from 'next-seo'
 import useTranslation from 'next-translate/useTranslation'
-import { useRouter } from 'next/router'
 import React, { PropsWithChildren } from 'react'
 
 import formatDate from '@/lib/formatDate'
 import { isProd } from '@/lib/isProduction'
 import { BlogPostProps } from '@/lib/types'
-
 import useScrollSpy from '@/hooks/useScrollspy'
 
 import Comment from '@/components/Comment'

@@ -6,8 +6,8 @@ import {
   Text,
   Title,
 } from '@mantine/core'
-import useTranslation from 'next-translate/useTranslation'
 import { useRouter } from 'next/router'
+import useTranslation from 'next-translate/useTranslation'
 import React from 'react'
 
 import Layout from '@/components/Layout'
