@@ -43,7 +43,6 @@
     "@tabler/icons": "^1.83.1",
     "dayjs": "^1.11.5",
     "emoji-unicode": "^2.0.1",
-    "esbuild": "0.15.5",
     "framer-motion": "^7.2.0",
     "gitmoji-cli": "^5.3.0",
     "googleapis": "^105.0.0",
