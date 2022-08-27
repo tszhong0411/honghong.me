@@ -1,7 +1,6 @@
-import { Button, Image, Menu, Tooltip } from '@mantine/core'
+import { Button, Menu, Tooltip } from '@mantine/core'
 import { useLocalStorage } from '@mantine/hooks'
 import { IconChevronDown, IconLanguage } from '@tabler/icons'
-import { default as emojiUnicode } from 'emoji-unicode'
 import { useRouter } from 'next/router'
 import setLanguage from 'next-translate/setLanguage'
 import useTranslation from 'next-translate/useTranslation'
@@ -35,11 +34,9 @@ export default function LanguageSwitch() {
   const languages = {
     'zh-TW': {
       name: '繁體中文',
-      flag: '🇹🇼',
     },
     en: {
       name: 'English',
-      flag: '🇬🇧',
     },
   }
 
@@ -70,23 +67,10 @@ export default function LanguageSwitch() {
       <Menu.Dropdown>
         <Menu.Label>{t('language')}</Menu.Label>
         {router.locales.map((item: string, index: number) => {
-          const name = languages[item].name,
-            flag = languages[item].flag
+          const name = languages[item].name
 
           return (
-            <Menu.Item
-              key={index}
-              icon={
-                <Image
-                  src={`https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/${emojiUnicode(
-                    flag
-                  ).replace(/\s/g, '-')}.svg`}
-                  alt={`${name} Flag`}
-                  width={20}
-                />
-              }
-              onClick={() => changeLanguage(item)}
-            >
+            <Menu.Item key={index} onClick={() => changeLanguage(item)}>
               {name}
             </Menu.Item>
           )
