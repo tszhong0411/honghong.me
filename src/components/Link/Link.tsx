@@ -19,7 +19,6 @@ const CustomLink = React.forwardRef<
     scroll,
     shallow,
     passHref = true,
-    soft,
     prefetch,
     locale,
     legacyBehavior,
@@ -38,7 +37,6 @@ const CustomLink = React.forwardRef<
         scroll={scroll}
         shallow={shallow}
         passHref={passHref}
-        soft={soft}
         prefetch={prefetch}
         locale={locale}
         legacyBehavior={legacyBehavior}

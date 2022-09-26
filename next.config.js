@@ -20,17 +20,12 @@ module.exports = nextTranslate(
         'res.cloudinary.com',
         'cdnjs.cloudflare.com',
       ],
-    },
-
-    experimental: {
-      images: {
-        remotePatterns: [
-          {
-            protocol: 'https',
-            hostname: '**.googleusercontent.com',
-          },
-        ],
-      },
+      remotePatterns: [
+        {
+          protocol: 'https',
+          hostname: '**.googleusercontent.com',
+        },
+      ],
     },
 
     // SVGR
