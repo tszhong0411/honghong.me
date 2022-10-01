@@ -19,7 +19,7 @@ export default function Header() {
 
   const items = ({ animation }) =>
     links.map((link, index) => (
-      <Link key={index} href={link.href}>
+      <Link key={index} href={link.href} passHref>
         <motion.a
           className={cx(classes.link, {
             [classes.linkActive]: asPath === link.href,
