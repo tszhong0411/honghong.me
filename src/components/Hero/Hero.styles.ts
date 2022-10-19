@@ -16,19 +16,4 @@ export const useStyles = createStyles(() => ({
       boxShadow: 'rgba(0, 0, 0, 0.1) 0 10px 20px 0',
     },
   },
-
-  square: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 16,
-    height: 200,
-    backgroundSize: 175,
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-    transition: 'box-shadow 0.3s ease',
-
-    '&:hover': {
-      boxShadow: 'rgba(0, 0, 0, 0.1) 0 10px 20px 0',
-    },
-  },
 }))

@@ -46,7 +46,8 @@ const Layout = (props: PropsWithChildren<NextSeoProps>) => {
       <Header />
       <Container
         sx={(theme) => ({
-          padding: '24px 30px',
+          padding: '24px',
+
           [theme.fn.largerThan('sm')]: {
             padding: '48px 32px',
           },
