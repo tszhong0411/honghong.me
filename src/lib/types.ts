@@ -2,11 +2,11 @@ import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { Literal, Parent } from 'unist'
 
 export type ProjectData = {
-  [key: string]: {
+  [key: string]: Array<{
     title: string
     description: string
     href: string
-  }[]
+  }>
 }
 
 export type ImageNode = Parent & {

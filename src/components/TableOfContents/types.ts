@@ -1,8 +1,8 @@
-export type HeadingScrollSpy = {
+export type HeadingScrollSpy = Array<{
   id: string
   level: number
   text: string
-}[]
+}>
 
 export type TableOfContentsProps = {
   toc?: HeadingScrollSpy

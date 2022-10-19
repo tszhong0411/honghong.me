@@ -11,7 +11,7 @@ import Layout from '@/components/Layout'
 import PageLayout from '@/components/Layout/PageLayout'
 import PostsList from '@/components/PostsList'
 
-export default function Blog({ posts }: { posts: PostFrontMatter[] }) {
+export default function Blog({ posts }: { posts: Array<PostFrontMatter> }) {
   const { t } = useTranslation('common')
   const [searchValue, setSearchValue] = React.useState('')
 

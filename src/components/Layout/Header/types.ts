@@ -1,4 +1,4 @@
-export type linksType = {
+export type Link = {
   href: string
   text: string
 }

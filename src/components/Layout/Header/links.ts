@@ -1,6 +1,6 @@
-import { linksType } from '@/components/Layout/Header/types'
+import { Link } from '@/components/Layout/Header/types'
 
-export const links: linksType[] = [
+export const links: Array<Link> = [
   { href: '/blog', text: 'Blog' },
   { href: '/guestbook', text: 'Guestbook' },
   { href: '/dashboard', text: 'Dashboard' },

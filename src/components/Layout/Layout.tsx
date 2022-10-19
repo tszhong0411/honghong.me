@@ -8,8 +8,6 @@ import { Favicons } from '@/components/Layout/Favicons'
 import Footer from '@/components/Layout/Footer'
 import Header from '@/components/Layout/Header'
 
-// import { Favicons } from '@/components/Layout/Favicons'
-
 const Layout = (props: PropsWithChildren<NextSeoProps>) => {
   const { t } = useTranslation('common')
   const router = useRouter()

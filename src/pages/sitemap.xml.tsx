@@ -1,7 +1,7 @@
 import { formatSlug, getFileSlugs } from '@/lib/mdx'
 
 const createSitemap = (
-  slugs: string[]
+  slugs: Array<string>
 ) => `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
         ${slugs
