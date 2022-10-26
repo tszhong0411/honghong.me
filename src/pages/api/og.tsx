@@ -7,12 +7,12 @@ export const config = {
   runtime: 'experimental-edge',
 }
 
-const font = fetch(
-  new URL('../../assets/fonts/noto-sans-tc.otf', import.meta.url)
-).then((res) => res.arrayBuffer())
+// const font = fetch(
+//   new URL('../../assets/fonts/noto-sans-tc.otf', import.meta.url)
+// ).then((res) => res.arrayBuffer())
 
 export default async function handler(req: NextRequest) {
-  const fontData = await font
+  // const fontData = await font
   const { searchParams } = req.nextUrl
   const title = searchParams.get('title')
   const description = searchParams.get('description')
@@ -130,13 +130,13 @@ export default async function handler(req: NextRequest) {
     {
       width: 1200,
       height: 630,
-      fonts: [
-        {
-          name: 'Noto Sans TC',
-          data: fontData,
-          style: 'normal',
-        },
-      ],
+      // fonts: [
+      //   {
+      //     name: 'Noto Sans TC',
+      //     data: fontData,
+      //     style: 'normal',
+      //   },
+      // ],
     }
   )
 }
