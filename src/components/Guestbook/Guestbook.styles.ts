@@ -16,9 +16,11 @@ export const useStyles = createStyles((theme) => ({
   formWrapper: {
     flexDirection: 'column',
     gap: 0,
+
     [theme.fn.largerThan('sm')]: {
       flexDirection: 'row',
       gap: 16,
+      alignItems: 'flex-end',
     },
   },
 

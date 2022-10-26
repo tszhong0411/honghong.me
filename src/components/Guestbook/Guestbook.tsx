@@ -1,5 +1,6 @@
 import {
-  Badge,
+  Avatar,
+  Box,
   Button,
   Divider,
   Group,
@@ -62,38 +63,81 @@ function GuestbookEntry({ entry, user }) {
   }
 
   return (
-    <Stack spacing='xs' my={24}>
-      <Text sx={{ wordBreak: 'break-all' }}>{entry.body}</Text>
-      <Group>
-        <Badge
-          variant='gradient'
-          gradient={{ from: 'orange', to: 'red' }}
-          size='lg'
-          sx={{
-            fontWeight: 500,
-          }}
-        >
-          {entry.created_by +
-            ' / ' +
-            formatDate(new Date(entry.updated_at), locale)}
-        </Badge>
+    <Paper
+      withBorder
+      radius='md'
+      sx={(theme) => ({
+        padding: `${theme.spacing.lg}px ${theme.spacing.xl}px`,
+      })}
+    >
+      <Group position='apart'>
+        <Group>
+          <Avatar src={entry.image} alt={entry.created_by} radius='xl' />
+          <div>
+            <Text size='sm'>{entry.created_by}</Text>
+            <Text size='xs' color='dimmed'>
+              {formatDate(new Date(entry.updated_at), locale)}
+            </Text>
+          </div>
+        </Group>
         {user && entry.created_by === user.name && (
-          <Badge
-            component='button'
-            variant='light'
+          <Button
+            variant='outline'
             onClick={deleteHandler}
             sx={{
-              fontWeight: 500,
               height: 26,
               cursor: 'pointer',
             }}
           >
             {t('delete')}
-          </Badge>
+          </Button>
         )}
       </Group>
-    </Stack>
+      <Box
+        sx={(theme) => ({
+          paddingLeft: 54,
+          paddingTop: theme.spacing.sm,
+          fontSize: theme.fontSizes.sm,
+        })}
+      >
+        {entry.body}
+      </Box>
+    </Paper>
   )
+
+  // return (
+  //   <Stack spacing='xs' my={24}>
+  //     <Text sx={{ wordBreak: 'break-all' }}>{entry.body}</Text>
+  //     <Group>
+  //       <Badge
+  //         variant='gradient'
+  //         gradient={{ from: 'orange', to: 'red' }}
+  //         size='lg'
+  //         sx={{
+  //           fontWeight: 500,
+  //         }}
+  //       >
+  //         {entry.created_by +
+  //           ' / ' +
+  //           formatDate(new Date(entry.updated_at), locale)}
+  //       </Badge>
+  //       {user && entry.created_by === user.name && (
+  //         <Badge
+  //           component='button'
+  //           variant='light'
+  //           onClick={deleteHandler}
+  //           sx={{
+  //             fontWeight: 500,
+  //             height: 26,
+  //             cursor: 'pointer',
+  //           }}
+  //         >
+  //           {t('delete')}
+  //         </Badge>
+  //       )}
+  //     </Group>
+  //   </Stack>
+  // )
 }
 
 export default function Guestbook({ fallbackData, session }) {
@@ -154,16 +198,7 @@ export default function Guestbook({ fallbackData, session }) {
 
   return (
     <>
-      <Paper
-        withBorder
-        shadow='md'
-        p={30}
-        mt={30}
-        radius='md'
-        sx={{
-          maxWidth: 560,
-        }}
-      >
+      <Paper withBorder shadow='md' p={30} radius='md'>
         <Text
           sx={{
             fontSize: 24,
@@ -177,7 +212,7 @@ export default function Guestbook({ fallbackData, session }) {
         </Text>
         {session?.user && (
           <form onSubmit={form.onSubmit(leaveEntry)}>
-            <Group grow className={classes.formWrapper} position='apart'>
+            <Group className={classes.formWrapper} position='apart'>
               <TextInput
                 label={t('Guestbook.message')}
                 placeholder={t('Guestbook.placeholder')}
@@ -245,9 +280,11 @@ export default function Guestbook({ fallbackData, session }) {
             <Skeleton height={15} width='30%' radius='xl' />
           </Stack>
         )}
-        {entries?.map((entry: entryProps) => (
-          <GuestbookEntry key={entry.id} entry={entry} user={session?.user} />
-        ))}
+        <Stack my={40}>
+          {entries?.map((entry: entryProps) => (
+            <GuestbookEntry key={entry.id} entry={entry} user={session?.user} />
+          ))}
+        </Stack>
       </div>
     </>
   )
