@@ -52,7 +52,6 @@ const redditShare = (slug: string, title: string) =>
 
 export default function BlogLayout({
   post,
-  ogImage,
   children,
 }: PropsWithChildren<BlogPostProps>) {
   const { date, title, summary, slug, modifiedTime } = post.frontMatter
@@ -115,7 +114,7 @@ export default function BlogLayout({
         },
         images: [
           {
-            url: ogImage,
+            url: `https://honghong.me/api/og?title=${title}&description=${summary}`,
             alt: title,
             width: 1200,
             height: 630,
@@ -137,7 +136,9 @@ export default function BlogLayout({
         publisherLogo='https://honghong.me/static/images/logo/logo-black.png'
         publisherName='小康'
         type='Article'
-        images={[ogImage]}
+        images={[
+          `https://honghong.me/api/og?title=${title}&description=${summary}`,
+        ]}
       />
       <ScrollTopAndComment />
       <time dateTime={ISOPublishedTime}>

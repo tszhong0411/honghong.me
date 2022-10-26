@@ -2,18 +2,17 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { MDXRemote } from 'next-mdx-remote'
 
-import { getOgImage } from '@/lib/getOgImage'
 import { formatSlug, getContentBySlug, getFileSlugs } from '@/lib/mdx'
-import { BlogPostProps, PostFrontMatter } from '@/lib/types'
+import { BlogPostProps } from '@/lib/types'
 
 import MDXComponents from '@/components/MDXComponents'
 import Typography from '@/components/Typography'
 
 import BlogLayout from '@/layouts/blog'
 
-export default function Blog({ post, ogImage }: BlogPostProps) {
+export default function Blog({ post }: BlogPostProps) {
   return (
-    <BlogLayout post={post} ogImage={ogImage}>
+    <BlogLayout post={post}>
       <Typography>
         <MDXRemote
           {...post.source}
@@ -32,18 +31,10 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   try {
     const post = await getContentBySlug('blog', params.slug as string, locale)
 
-    const frontMatter = post.frontMatter as PostFrontMatter
-
-    const ogImage = await getOgImage(
-      `/blog?title=${frontMatter.title}&description=${frontMatter.summary}`
-    )
-
     return {
-      props: { post, ogImage },
+      props: { post },
     }
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log(error)
     return {
       notFound: true,
     }

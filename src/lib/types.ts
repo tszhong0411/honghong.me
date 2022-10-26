@@ -43,7 +43,6 @@ export type PostProps = {
 
 export type BlogPostProps = {
   post: PostProps
-  ogImage: string
 }
 
 export type FileType = 'blog' | 'page'
