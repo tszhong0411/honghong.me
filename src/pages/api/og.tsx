@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-/* eslint-disable import/no-anonymous-default-export */
 import { ImageResponse } from '@vercel/og'
 import { NextRequest } from 'next/server'
 
@@ -7,12 +6,7 @@ export const config = {
   runtime: 'experimental-edge',
 }
 
-// const font = fetch(
-//   new URL('../../assets/fonts/noto-sans-tc.otf', import.meta.url)
-// ).then((res) => res.arrayBuffer())
-
 export default async function handler(req: NextRequest) {
-  // const fontData = await font
   const { searchParams } = req.nextUrl
   const title = searchParams.get('title')
   const description = searchParams.get('description')
@@ -38,7 +32,6 @@ export default async function handler(req: NextRequest) {
           textAlign: 'center',
           padding: '64px 48px',
           backgroundImage: 'url(https://honghong.me/static/images/og/bg.svg)',
-          fontFamily: '"Noto Sans TC"',
         }}
       >
         <div
@@ -130,13 +123,6 @@ export default async function handler(req: NextRequest) {
     {
       width: 1200,
       height: 630,
-      // fonts: [
-      //   {
-      //     name: 'Noto Sans TC',
-      //     data: fontData,
-      //     style: 'normal',
-      //   },
-      // ],
     }
   )
 }
