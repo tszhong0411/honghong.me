@@ -11,6 +11,6 @@ export type TOCLinkProps = {
 
 export type CustomLinkProps = {
   noIcon?: boolean
+  nextLinkProps?: Omit<LinkProps, 'href'>
 } & React.ComponentPropsWithRef<'a'> &
-  LinkProps &
   AnchorProps

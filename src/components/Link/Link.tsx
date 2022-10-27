@@ -8,14 +8,14 @@ import { CustomLinkProps } from '@/components/Link/types'
 
 const CustomLink = React.forwardRef<HTMLAnchorElement, CustomLinkProps>(
   (props, ref) => {
-    const { href, children, noIcon, ...rest } = props
+    const { href, children, noIcon, nextLinkProps, ...rest } = props
     const isInternalLink = href && href.startsWith('/')
     const isAnchorLink = href && href.startsWith('#')
     const { classes } = useStyles()
 
     if (isInternalLink) {
       return (
-        <Link href={href} passHref>
+        <Link href={href} passHref {...nextLinkProps}>
           <Anchor ref={ref} {...rest}>
             {children}
           </Anchor>
