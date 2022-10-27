@@ -2,7 +2,8 @@ import { GetServerSideProps } from 'next'
 import RSS from 'rss'
 
 import { getAllPosts } from '@/lib/mdx'
-import { PostFrontMatter } from '@/lib/types'
+
+import { PostFrontMatter } from './blog'
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const feed = new RSS({

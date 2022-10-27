@@ -5,7 +5,15 @@ import fetcher from '@/lib/fetcher'
 
 import Link from '@/components/Link'
 import { useStyles } from '@/components/NowPlaying/NowPlaying.styles'
-import { NowPlayingSong } from '@/components/NowPlaying/types'
+
+type NowPlayingSong = {
+  album: string
+  albumImageUrl: string
+  artist: string
+  isPlaying: boolean
+  songUrl: string
+  title: string
+}
 
 export default function NowPlaying() {
   const { classes } = useStyles()

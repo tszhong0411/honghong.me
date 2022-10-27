@@ -1,4 +1,7 @@
-import { Link } from '@/components/Layout/Header/types'
+type Link = {
+  href: string
+  text: string
+}
 
 export const links: Array<Link> = [
   { href: '/blog', text: 'Blog' },

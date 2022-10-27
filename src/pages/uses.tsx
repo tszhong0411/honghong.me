@@ -3,12 +3,13 @@ import { GetStaticProps } from 'next'
 import { MDXRemote } from 'next-mdx-remote'
 
 import { getContentBySlug } from '@/lib/mdx'
-import { PageFrontMatter } from '@/lib/types'
 
 import Layout from '@/components/Layout'
 import PageLayout from '@/components/Layout/PageLayout'
 import MDXComponents from '@/components/MDXComponents'
 import Typography from '@/components/Typography'
+
+import { PageFrontMatter } from './about'
 
 export default function About({ page }) {
   const { title, description } = page.frontMatter as PageFrontMatter

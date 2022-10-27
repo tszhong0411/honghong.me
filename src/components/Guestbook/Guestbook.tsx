@@ -25,7 +25,13 @@ import fetcher from '@/lib/fetcher'
 import formatDate from '@/lib/formatDate'
 
 import { useStyles } from '@/components/Guestbook/Guestbook.styles'
-import { entryProps } from '@/components/Guestbook/types'
+
+type entryProps = {
+  body: string
+  created_by: string
+  id: number
+  updated_at: string
+}
 
 function GuestbookEntry({ entry, user }) {
   const { mutate } = useSWRConfig()

@@ -7,16 +7,17 @@ import useTranslation from 'next-translate/useTranslation'
 import React from 'react'
 
 import { getAllPosts } from '@/lib/mdx'
-import { PostFrontMatter } from '@/lib/types'
 
 import Hero from '@/components/Hero'
 import Layout from '@/components/Layout'
 import Link from '@/components/Link'
 import PostsList from '@/components/PostsList'
 
+import { PostFrontMatter } from './blog'
+
 export const MAX_DISPLAY = 3
 
-export default function Home({ posts }: { posts: PostFrontMatter[] }) {
+export default function Home({ posts }: { posts: Array<PostFrontMatter> }) {
   const { t } = useTranslation('common')
   const { hovered, ref } = useHover<HTMLAnchorElement>()
 

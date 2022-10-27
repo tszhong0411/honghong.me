@@ -4,7 +4,11 @@ import fetcher from '@/lib/fetcher'
 
 import MetricCard from '@/components/Metrics/Card'
 import { useStyles } from '@/components/Metrics/Metrics.styles'
-import { YouTube } from '@/components/Metrics/types'
+
+type YouTube = {
+  subscriberCount: number
+  viewCount: number
+}
 
 export default function YouTubeCard() {
   const { data } = useSWR<YouTube>('/api/youtube', fetcher)

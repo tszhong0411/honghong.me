@@ -1,7 +1,7 @@
 import { Box, useMantineTheme } from '@mantine/core'
-import React, { PropsWithChildren } from 'react'
+import React from 'react'
 
-export default function Typography({ children }: PropsWithChildren) {
+export default function Typography({ children }: React.PropsWithChildren) {
   const { colorScheme } = useMantineTheme()
   const dark = colorScheme === 'dark'
 

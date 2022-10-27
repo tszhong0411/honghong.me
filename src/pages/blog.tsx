@@ -5,11 +5,20 @@ import useTranslation from 'next-translate/useTranslation'
 import React from 'react'
 
 import { getAllPosts } from '@/lib/mdx'
-import { PostFrontMatter } from '@/lib/types'
 
 import Layout from '@/components/Layout'
 import PageLayout from '@/components/Layout/PageLayout'
 import PostsList from '@/components/PostsList'
+
+export type PostFrontMatter = {
+  title: string
+  date: string
+  modifiedTime: string
+  summary: string
+  image: string
+  slug: string
+  views?: string
+}
 
 export default function Blog({ posts }: { posts: Array<PostFrontMatter> }) {
   const { t } = useTranslation('common')

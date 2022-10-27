@@ -7,9 +7,10 @@ import { useRouter } from 'next/router'
 import React from 'react'
 
 import formatDate from '@/lib/formatDate'
-import { PostFrontMatter } from '@/lib/types'
 
 import { useStyles } from '@/components/PostsList/PostsList.styles'
+
+import { PostFrontMatter } from '@/pages/blog'
 
 import ViewCounter from '../ViewCounter'
 

@@ -6,8 +6,13 @@ import useSWR from 'swr'
 
 import fetcher from '@/lib/fetcher'
 
-import { Views } from '@/components/Metrics/types'
-import { ViewCounterTypes } from '@/components/ViewCounter/types'
+import { Views } from '../Metrics/BlogTotalViews'
+
+type ViewCounterTypes = {
+  slug: string
+  text?: boolean
+  type?: 'GET' | 'POST'
+}
 
 export default function ViewCounter({
   slug,

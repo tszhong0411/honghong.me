@@ -2,13 +2,13 @@ import { Container } from '@mantine/core'
 import { useRouter } from 'next/router'
 import { NextSeo, NextSeoProps } from 'next-seo'
 import useTranslation from 'next-translate/useTranslation'
-import React, { PropsWithChildren } from 'react'
+import React from 'react'
 
 import { Favicons } from '@/components/Layout/Favicons'
 import Footer from '@/components/Layout/Footer'
 import Header from '@/components/Layout/Header'
 
-const Layout = (props: PropsWithChildren<NextSeoProps>) => {
+const Layout = (props: React.PropsWithChildren<NextSeoProps>) => {
   const { t } = useTranslation('common')
   const router = useRouter()
 

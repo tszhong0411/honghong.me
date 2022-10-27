@@ -1,9 +1,14 @@
 import fs from 'fs'
 import sizeOf from 'image-size'
-import { Node, Parent } from 'unist'
+import { Literal, Node, Parent } from 'unist'
 import { visit } from 'unist-util-visit'
 
-import { ImageNode } from '@/lib/types'
+type ImageNode = {
+  url: string
+  alt: string
+  name: string
+  attributes: (Literal & { name: string })[]
+} & Parent
 
 export default function remarkImgToJsx() {
   return (tree: Node) => {

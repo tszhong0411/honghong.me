@@ -1,10 +1,15 @@
-import { Anchor } from '@mantine/core'
+import { Anchor, AnchorProps } from '@mantine/core'
 import { IconExternalLink } from '@tabler/icons'
-import Link from 'next/link'
+import Link, { LinkProps } from 'next/link'
 import React from 'react'
 
 import { useStyles } from '@/components/Link/Link.styles'
-import { CustomLinkProps } from '@/components/Link/types'
+
+type CustomLinkProps = {
+  noIcon?: boolean
+  nextLinkProps?: Omit<LinkProps, 'href'>
+} & React.ComponentPropsWithRef<'a'> &
+  AnchorProps
 
 const CustomLink = React.forwardRef<HTMLAnchorElement, CustomLinkProps>(
   (props, ref) => {

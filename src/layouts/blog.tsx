@@ -12,13 +12,13 @@ import {
   IconBrandTwitter,
 } from '@tabler/icons'
 import { useRouter } from 'next/router'
+import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { ArticleJsonLd } from 'next-seo'
 import useTranslation from 'next-translate/useTranslation'
-import React, { PropsWithChildren } from 'react'
+import React from 'react'
 
 import formatDate from '@/lib/formatDate'
 import { isProd } from '@/lib/isProduction'
-import { BlogPostProps } from '@/lib/types'
 import useScrollSpy from '@/hooks/useScrollspy'
 
 import Comment from '@/components/Comment'
@@ -27,10 +27,20 @@ import Link from '@/components/Link'
 import ReadingProgressBar from '@/components/ReadingProgressBar'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 import TableOfContents from '@/components/TableOfContents'
-import { HeadingScrollSpy } from '@/components/TableOfContents/types'
+import { HeadingScrollSpy } from '@/components/TableOfContents/TableOfContent'
 import ViewCounter from '@/components/ViewCounter'
 
 import { useStyles } from '@/layouts/blog.styles'
+import { PostFrontMatter } from '@/pages/blog'
+
+type PostProps = {
+  source: MDXRemoteSerializeResult
+  frontMatter: PostFrontMatter
+}
+
+type BlogPostProps = {
+  post: PostProps
+}
 
 const editUrl = (slug: string, locale: string) =>
   `https://github.com/tszhong0411/honghong.me/blob/main/src/data/blog/${locale}/${slug}.mdx`
@@ -53,7 +63,7 @@ const redditShare = (slug: string, title: string) =>
 export default function BlogLayout({
   post,
   children,
-}: PropsWithChildren<BlogPostProps>) {
+}: React.PropsWithChildren<BlogPostProps>) {
   const { date, title, summary, slug, modifiedTime } = post.frontMatter
   const { t } = useTranslation('common')
   const { locale } = useRouter()

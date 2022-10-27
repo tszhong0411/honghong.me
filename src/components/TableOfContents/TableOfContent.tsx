@@ -5,7 +5,18 @@ import React from 'react'
 
 import { TOCLink } from '@/components/Link'
 import { useStyles } from '@/components/TableOfContents/TableOfContent.styles'
-import { TableOfContentsProps } from '@/components/TableOfContents/types'
+
+export type HeadingScrollSpy = Array<{
+  id: string
+  level: number
+  text: string
+}>
+
+type TableOfContentsProps = {
+  toc?: HeadingScrollSpy
+  activeSection: string | null
+  minLevel: number
+}
 
 export default function TableOfContents({
   toc,

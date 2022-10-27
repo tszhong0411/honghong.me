@@ -1,13 +1,18 @@
 import { Title } from '@mantine/core'
+import React from 'react'
 
 import { useStyles } from '@/components/Layout/PageLayout/PageLayout.styles'
-import { PageLayoutProps } from '@/components/Layout/PageLayout/types'
+
+type PageLayoutProps = {
+  title: string
+  description: string
+}
 
 export default function PageLayout({
   children,
   title,
   description,
-}: PageLayoutProps) {
+}: React.PropsWithChildren<PageLayoutProps>) {
   const { classes } = useStyles()
 
   return (

@@ -2,11 +2,17 @@ import { Grid } from '@mantine/core'
 import { useRouter } from 'next/router'
 import useTranslation from 'next-translate/useTranslation'
 
-import { ProjectData } from '@/lib/types'
-
 import Layout from '@/components/Layout'
 import PageLayout from '@/components/Layout/PageLayout'
 import ProjectsCard from '@/components/ProjectCard'
+
+type ProjectData = {
+  [key: string]: Array<{
+    title: string
+    description: string
+    href: string
+  }>
+}
 
 export default function Projects() {
   const { locale } = useRouter()

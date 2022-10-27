@@ -8,7 +8,12 @@ import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
 
 import remarkImgToJsx from '@/lib/remark-img-to-jsx'
-import { FileType, PostItems } from '@/lib/types'
+
+type FileType = 'blog' | 'page'
+
+type PostItems = {
+  [key: string]: string
+}
 
 const root = process.cwd()
 

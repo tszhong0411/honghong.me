@@ -4,7 +4,10 @@ import useSWR from 'swr'
 import fetcher from '@/lib/fetcher'
 
 import MetricCard from '@/components/Metrics/Card'
-import { Views } from '@/components/Metrics/types'
+
+export type Views = {
+  total: number
+}
 
 export default function BlogTotalViews() {
   const { data } = useSWR<Views>('/api/views', fetcher)

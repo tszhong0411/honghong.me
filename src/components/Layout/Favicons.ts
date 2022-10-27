@@ -1,4 +1,9 @@
-import { Favicon } from '@/components/Layout/types'
+type Favicon = {
+  rel: string
+  href: string
+  sizes?: string
+  type?: string
+}
 
 export const Favicons: Array<Favicon> = [
   {
