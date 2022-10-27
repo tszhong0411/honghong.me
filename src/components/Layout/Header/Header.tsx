@@ -17,7 +17,7 @@ export default function Header() {
   const [opened, toggleOpened] = useDisclosure(false)
   const { asPath } = useRouter()
 
-  const items = ({ animation }) =>
+  const items = ({ animation }: { animation: boolean }) =>
     links.map((link, index) => (
       <Link key={index} href={link.href} passHref>
         <motion.a
