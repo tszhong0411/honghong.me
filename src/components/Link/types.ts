@@ -1,3 +1,6 @@
+import { AnchorProps } from '@mantine/core/lib/Anchor'
+import { LinkProps } from 'next/link'
+
 export type TOCLinkProps = {
   id: string
   level: number
@@ -8,4 +11,6 @@ export type TOCLinkProps = {
 
 export type CustomLinkProps = {
   noIcon?: boolean
-}
+} & React.ComponentPropsWithRef<'a'> &
+  LinkProps &
+  AnchorProps
