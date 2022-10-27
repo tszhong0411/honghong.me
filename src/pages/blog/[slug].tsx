@@ -3,12 +3,11 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { MDXRemote } from 'next-mdx-remote'
 
 import { formatSlug, getContentBySlug, getFileSlugs } from '@/lib/mdx'
-import { BlogPostProps } from '@/lib/types'
 
 import MDXComponents from '@/components/MDXComponents'
 import Typography from '@/components/Typography'
 
-import BlogLayout from '@/layouts/blog'
+import BlogLayout, { BlogPostProps } from '@/layouts/blog'
 
 export default function Blog({ post }: BlogPostProps) {
   return (

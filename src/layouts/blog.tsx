@@ -38,7 +38,7 @@ type PostProps = {
   frontMatter: PostFrontMatter
 }
 
-type BlogPostProps = {
+export type BlogPostProps = {
   post: PostProps
 }
 
