@@ -3,7 +3,7 @@ import { IconMoonStars, IconSun } from '@tabler/icons'
 import useTranslation from 'next-translate/useTranslation'
 import React from 'react'
 
-import { useStyles } from '@/components/Layout/Header/Header.styles'
+import { useStyles } from '../Header.styles'
 
 const ThemeSwitch = () => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme()

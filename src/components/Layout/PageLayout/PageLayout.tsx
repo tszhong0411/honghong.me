@@ -1,7 +1,7 @@
 import { Title } from '@mantine/core'
 import React from 'react'
 
-import { useStyles } from '@/components/Layout/PageLayout/PageLayout.styles'
+import { useStyles } from './PageLayout.styles'
 
 type PageLayoutProps = {
   title: string

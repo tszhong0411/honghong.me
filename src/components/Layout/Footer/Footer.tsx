@@ -3,10 +3,11 @@ import { useRouter } from 'next/router'
 
 import { isProd } from '@/lib/isProduction'
 
-import { useStyles } from '@/components/Layout/Footer/Footer.styles'
 import { links } from '@/components/Layout/Footer/links'
 import Link from '@/components/Link'
 import NowPlaying from '@/components/NowPlaying'
+
+import { useStyles } from './Footer.styles'
 
 export default function Footer() {
   const { locale, defaultLocale } = useRouter()

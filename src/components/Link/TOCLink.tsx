@@ -1,7 +1,8 @@
 import { Box } from '@mantine/core'
 
 import Link from '@/components/Link'
-import { useStyles } from '@/components/Link/TOCLink.styles'
+
+import { useStyles } from './TOCLink.styles'
 
 type TOCLinkProps = {
   id: string

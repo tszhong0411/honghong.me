@@ -3,7 +3,7 @@ import { openSpotlight } from '@mantine/spotlight'
 import { IconSearch } from '@tabler/icons'
 import useTranslation from 'next-translate/useTranslation'
 
-import { useStyles } from '@/components/Layout/Header/Header.styles'
+import { useStyles } from '../Header.styles'
 
 export default function Search() {
   const { classes } = useStyles()

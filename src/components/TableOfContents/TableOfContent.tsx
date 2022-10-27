@@ -4,7 +4,8 @@ import useTranslation from 'next-translate/useTranslation'
 import React from 'react'
 
 import { TOCLink } from '@/components/Link'
-import { useStyles } from '@/components/TableOfContents/TableOfContent.styles'
+
+import { useStyles } from './TableOfContent.styles'
 
 export type HeadingScrollSpy = Array<{
   id: string

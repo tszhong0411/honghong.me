@@ -1,8 +1,9 @@
 import React from 'react'
 
-import { useStyles } from '@/components/Layout/Header/HeaderLogo/HeaderLogo.styles'
 import Link from '@/components/Link'
 import Logo from '@/components/Logo'
+
+import { useStyles } from './HeaderLogo.styles'
 
 export default function HeaderLogo() {
   const { classes } = useStyles()

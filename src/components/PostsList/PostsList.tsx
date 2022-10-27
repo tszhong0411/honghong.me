@@ -8,10 +8,9 @@ import React from 'react'
 
 import formatDate from '@/lib/formatDate'
 
-import { useStyles } from '@/components/PostsList/PostsList.styles'
-
 import { PostFrontMatter } from '@/pages/blog'
 
+import { useStyles } from './PostsList.styles'
 import ViewCounter from '../ViewCounter'
 
 export default function PostsList({ post }: { post: PostFrontMatter }) {

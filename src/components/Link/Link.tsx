@@ -3,7 +3,7 @@ import { IconExternalLink } from '@tabler/icons'
 import Link, { LinkProps } from 'next/link'
 import React from 'react'
 
-import { useStyles } from '@/components/Link/Link.styles'
+import { useStyles } from './Link.styles'
 
 type CustomLinkProps = {
   noIcon?: boolean

@@ -24,7 +24,7 @@ import useSWR, { useSWRConfig } from 'swr'
 import fetcher from '@/lib/fetcher'
 import formatDate from '@/lib/formatDate'
 
-import { useStyles } from '@/components/Guestbook/Guestbook.styles'
+import { useStyles } from './Guestbook.styles'
 
 type entryProps = {
   body: string

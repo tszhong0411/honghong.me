@@ -4,7 +4,8 @@ import useSWR from 'swr'
 import fetcher from '@/lib/fetcher'
 
 import Link from '@/components/Link'
-import { useStyles } from '@/components/NowPlaying/NowPlaying.styles'
+
+import { useStyles } from './NowPlaying.styles'
 
 type NowPlayingSong = {
   album: string

@@ -5,12 +5,13 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
 
-import { useStyles } from '@/components/Layout/Header/Header.styles'
 import HeaderLogo from '@/components/Layout/Header/HeaderLogo'
 import LanguageSwitch from '@/components/Layout/Header/LanguageSwitch'
 import { links } from '@/components/Layout/Header/links'
 import Search from '@/components/Layout/Header/Search'
 import ThemeSwitch from '@/components/Layout/Header/ThemeSwitch'
+
+import { useStyles } from './Header.styles'
 
 export default function Header() {
   const { classes, cx } = useStyles()

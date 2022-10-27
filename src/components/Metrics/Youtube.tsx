@@ -3,7 +3,8 @@ import useSWR from 'swr'
 import fetcher from '@/lib/fetcher'
 
 import MetricCard from '@/components/Metrics/Card'
-import { useStyles } from '@/components/Metrics/Metrics.styles'
+
+import { useStyles } from './Metrics.styles'
 
 type YouTube = {
   subscriberCount: number

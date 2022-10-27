@@ -1,7 +1,7 @@
 import { Box, Card, Text, Title, useMantineTheme } from '@mantine/core'
 import Image from 'next/image'
 
-import { useStyles } from '@/components/Hero/Hero.styles'
+import { useStyles } from './Hero.styles'
 
 export default function Hero() {
   const { classes } = useStyles()
