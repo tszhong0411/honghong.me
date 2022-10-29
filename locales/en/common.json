@@ -15,9 +15,9 @@
   "language": "Language",
   "toc": "Table of contents",
   "delete_successful": "Delete successful",
-  "SignIn": {
-    "title": "Welcome to honghong.me, login with"
-  },
+  "signIn": "Sign in",
+  "signOut": "Sign out",
+  "signInWith": "Sign in with {{provider}}",
   "Tooltip": {
     "darkmode": "Dark mode",
     "lightmode": "Light mode",
@@ -35,14 +35,13 @@
     "success": "Oh yeah! Thanks for signing!",
     "error": "Message cannot be empty",
     "guestbook": "Guestbook",
-    "signInGuestbook": "Sign in Guestbook",
-    "signIn": "Sign in",
+    "signTheGuestbook": "Sign the Guestbook",
     "placeholder": "Your message here...",
     "message": "Your message",
     "sign": "Sign",
     "tip": "Your information is only used to display your name and avatar",
-    "signOut": "Sign out",
-    "deleteModalTitle": "Delete a comment"
+    "deleteModalTitle": "Delete a comment",
+    "continue": "Continue to Sign the Guestbook"
   },
   "404": {
     "title": "You have found a secret place",

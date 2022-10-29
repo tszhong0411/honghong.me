@@ -5,7 +5,7 @@ export const useStyles = createStyles((theme) => ({
     position: 'relative',
   },
 
-  btn: {
+  button: {
     width: '100%',
     maxWidth: '100%',
     [theme.fn.largerThan('sm')]: {

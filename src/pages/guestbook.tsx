@@ -1,5 +1,4 @@
-import { GetServerSideProps } from 'next'
-import { getSession } from 'next-auth/react'
+import { GetStaticProps } from 'next'
 import useTranslation from 'next-translate/useTranslation'
 
 import prisma from '@/lib/prisma'
@@ -8,38 +7,36 @@ import Guestbook from '@/components/Guestbook'
 import Layout from '@/components/Layout'
 import PageLayout from '@/components/Layout/PageLayout'
 
-export default function GuestbookPage({ fallbackData, session }) {
+export default function GuestbookPage({ fallbackData }) {
   const { t } = useTranslation('common')
 
   return (
     <Layout title='Guestbook' description={t('Seo.guestbookDesc')}>
       <PageLayout title='Guestbook' description={t('Guestbook.description')}>
-        <Guestbook fallbackData={fallbackData} session={session} />
+        <Guestbook fallbackData={fallbackData} />
       </PageLayout>
     </Layout>
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const session = await getSession({ req })
-
+export const getStaticProps: GetStaticProps = async () => {
   const entries = await prisma.guestbook.findMany({
     orderBy: {
       updated_at: 'desc',
     },
   })
 
-  const fallbackData = entries.map((entry) => ({
-    id: entry.id.toString(),
-    body: entry.body,
-    created_by: entry.created_by.toString(),
-    updated_at: entry.updated_at.toString(),
+  const fallbackData = entries.map(({ id, body, created_by, updated_at }) => ({
+    id: id.toString(),
+    body: body,
+    created_by: created_by.toString(),
+    updated_at: updated_at.toString(),
   }))
 
   return {
     props: {
-      session,
       fallbackData,
     },
+    revalidate: 60,
   }
 }

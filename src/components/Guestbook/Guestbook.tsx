@@ -16,7 +16,7 @@ import { showNotification } from '@mantine/notifications'
 import { IconAlertCircle, IconCircleCheck } from '@tabler/icons'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { signOut } from 'next-auth/react'
+import { signOut, useSession } from 'next-auth/react'
 import useTranslation from 'next-translate/useTranslation'
 import React from 'react'
 import useSWR, { useSWRConfig } from 'swr'
@@ -25,6 +25,7 @@ import fetcher from '@/lib/fetcher'
 import formatDate from '@/lib/formatDate'
 
 import { useStyles } from './Guestbook.styles'
+import SignInModal from '../SignInModal'
 
 type entryProps = {
   body: string
@@ -65,6 +66,7 @@ function GuestbookEntry({ entry, user }) {
       },
       confirmProps: { color: 'red' },
       onConfirm: () => deleteEntry(),
+      overlayBlur: 3,
     })
   }
 
@@ -110,51 +112,18 @@ function GuestbookEntry({ entry, user }) {
       </Box>
     </Paper>
   )
-
-  // return (
-  //   <Stack spacing='xs' my={24}>
-  //     <Text sx={{ wordBreak: 'break-all' }}>{entry.body}</Text>
-  //     <Group>
-  //       <Badge
-  //         variant='gradient'
-  //         gradient={{ from: 'orange', to: 'red' }}
-  //         size='lg'
-  //         sx={{
-  //           fontWeight: 500,
-  //         }}
-  //       >
-  //         {entry.created_by +
-  //           ' / ' +
-  //           formatDate(new Date(entry.updated_at), locale)}
-  //       </Badge>
-  //       {user && entry.created_by === user.name && (
-  //         <Badge
-  //           component='button'
-  //           variant='light'
-  //           onClick={deleteHandler}
-  //           sx={{
-  //             fontWeight: 500,
-  //             height: 26,
-  //             cursor: 'pointer',
-  //           }}
-  //         >
-  //           {t('delete')}
-  //         </Badge>
-  //       )}
-  //     </Group>
-  //   </Stack>
-  // )
 }
 
-export default function Guestbook({ fallbackData, session }) {
-  const [loading, setLoading] = React.useState<boolean>(false)
+export default function Guestbook({ fallbackData }) {
+  const [loading, setLoading] = React.useState(false)
+  const [opened, setOpened] = React.useState(false)
+  const { data: session } = useSession()
   const { mutate } = useSWRConfig()
   const { data: entries } = useSWR('/api/guestbook', fetcher, {
     fallbackData,
   })
   const { t } = useTranslation('common')
   const { classes } = useStyles()
-  const router = useRouter()
 
   const form = useForm({
     initialValues: {
@@ -214,7 +183,7 @@ export default function Guestbook({ fallbackData, session }) {
         >
           {session?.user
             ? t('Guestbook.guestbook')
-            : t('Guestbook.signInGuestbook')}
+            : t('Guestbook.signTheGuestbook')}
         </Text>
         {session?.user && (
           <form onSubmit={form.onSubmit(leaveEntry)}>
@@ -234,33 +203,20 @@ export default function Guestbook({ fallbackData, session }) {
                 })}
                 {...form.getInputProps('content')}
               />
-              <Button mt={16} type='submit' className={classes.btn}>
+              <Button mt={16} type='submit' className={classes.button}>
                 {t('Guestbook.sign')}
               </Button>
             </Group>
           </form>
         )}
         {!session && (
-          <Button
-            fullWidth
-            mt='xl'
-            onClick={() =>
-              router.push(
-                `/auth/signin?callbackUrl=${encodeURIComponent(
-                  window.location.href
-                )}`
-              )
-            }
-          >
-            {t('Guestbook.signIn')}
+          <Button fullWidth mt='xl' onClick={() => setOpened(true)}>
+            {t('signIn')}
           </Button>
         )}
-        <Text size='sm' my={16}>
-          {t('Guestbook.tip')}
-        </Text>
         {session?.user && (
           <>
-            <Divider />
+            <Divider mt={36} />
             <Group my={36} position='apart'>
               <Group>
                 <Image
@@ -272,8 +228,8 @@ export default function Guestbook({ fallbackData, session }) {
                 />
                 <span>{session.user.name}</span>
               </Group>
-              <Button onClick={() => signOut()} className={classes.btn}>
-                {t('Guestbook.signOut')}
+              <Button onClick={() => signOut()} className={classes.button}>
+                {t('signOut')}
               </Button>
             </Group>
           </>
@@ -292,6 +248,11 @@ export default function Guestbook({ fallbackData, session }) {
           ))}
         </Stack>
       </div>
+      <SignInModal
+        opened={opened}
+        onClose={() => setOpened(false)}
+        title={t('Guestbook.continue')}
+      />
     </>
   )
 }

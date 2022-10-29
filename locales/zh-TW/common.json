@@ -15,9 +15,9 @@
   "language": "語言",
   "toc": "目錄",
   "delete_successful": "刪除成功",
-  "SignIn": {
-    "title": "歡迎來到 honghong.me, 登入"
-  },
+  "signIn": "登入",
+  "signOut": "登出",
+  "signInWith": "以 {{provider}} 繼續",
   "Tooltip": {
     "darkmode": "黑暗模式",
     "lightmode": "明亮模式",
@@ -35,14 +35,13 @@
     "success": "哦耶！感謝簽到！",
     "error": "留言不能為空",
     "guestbook": "留言簿",
-    "signInGuestbook": "登入留言簿",
-    "signIn": "登入",
+    "signTheGuestbook": "簽到留言簿",
     "placeholder": "你的留言 ...",
     "message": "你的留言",
     "sign": "簽到",
     "tip": "你的資料僅用於顯示你的姓名和頭像",
-    "signOut": "登出",
-    "deleteModalTitle": "刪除 1 條評論"
+    "deleteModalTitle": "刪除 1 條評論",
+    "continue": "繼續在留言簿上簽到"
   },
   "404": {
     "title": "你找到了一個秘密的地方",
