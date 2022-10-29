@@ -17,12 +17,12 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 
   const allPosts = getAllPosts('en')
 
-  allPosts.map((post: PostFrontMatter) => {
+  allPosts.map(({ title, slug, date, summary }: PostFrontMatter) => {
     feed.item({
-      title: post.title,
-      url: `https://honghong.me/en/blog/${post.slug}`,
-      date: post.date,
-      description: post.summary,
+      title: title,
+      url: `https://honghong.me/en/blog/${slug}`,
+      date: date,
+      description: summary,
       author: '小康',
     })
   })

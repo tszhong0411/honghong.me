@@ -15,12 +15,12 @@ export default async function handler(
     })
 
     return res.json(
-      entries.map((entry) => ({
-        id: entry.id.toString(),
-        body: entry.body,
-        image: entry.image,
-        created_by: entry.created_by,
-        updated_at: entry.updated_at,
+      entries.map(({ id, body, image, created_by, updated_at }) => ({
+        id: id.toString(),
+        body: body,
+        image: image,
+        created_by: created_by,
+        updated_at: updated_at,
       }))
     )
   }

@@ -69,12 +69,12 @@ export default function Projects() {
     <Layout title='Projects' description={t('Seo.projectsDesc')}>
       <PageLayout title='Projects' description={t('Seo.projectsDesc')}>
         <Grid>
-          {projectsData[locale]?.map((data) => (
-            <Grid.Col key={data.title} span={12} md={6}>
+          {projectsData[locale]?.map(({ title, description, href }) => (
+            <Grid.Col key={title} span={12} md={6}>
               <ProjectsCard
-                title={data.title}
-                description={data.description}
-                href={data.href}
+                title={title}
+                description={description}
+                href={href}
               />
             </Grid.Col>
           ))}

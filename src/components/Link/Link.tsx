@@ -6,6 +6,7 @@ import React from 'react'
 import { useStyles } from './Link.styles'
 
 type CustomLinkProps = {
+  href: string
   noIcon?: boolean
   nextLinkProps?: Omit<LinkProps, 'href'>
 } & React.ComponentPropsWithRef<'a'> &

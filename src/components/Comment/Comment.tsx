@@ -3,7 +3,7 @@ import { Box, useMantineColorScheme } from '@mantine/core'
 import { useRouter } from 'next/router'
 import React from 'react'
 
-const Comment = () => {
+export default function Comment() {
   const { locale } = useRouter()
   const { colorScheme } = useMantineColorScheme()
   const dark = colorScheme === 'dark'
@@ -26,5 +26,3 @@ const Comment = () => {
     </Box>
   )
 }
-
-export default Comment

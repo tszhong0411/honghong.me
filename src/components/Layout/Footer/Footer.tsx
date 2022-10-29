@@ -32,7 +32,7 @@ export default function Footer() {
             },
           })}
         >
-          {links.middleLinks.map((item, index) => {
+          {links.middleLinks.map(({ list }, index) => {
             return (
               <Box
                 key={index}
@@ -45,8 +45,8 @@ export default function Footer() {
                   paddingRight: 16,
                 }}
               >
-                {item.list.map((item, index) => {
-                  if (item.href === '/feed.xml') {
+                {list.map(({ href, title }, index) => {
+                  if (href === '/feed.xml') {
                     return (
                       <Anchor
                         key={index}
@@ -62,7 +62,7 @@ export default function Footer() {
                           }),
                         }}
                       >
-                        {item.title}
+                        {title}
                       </Anchor>
                     )
                   }
@@ -70,7 +70,7 @@ export default function Footer() {
                   return (
                     <Link
                       key={index}
-                      href={item.href}
+                      href={href}
                       sx={{
                         color: dark ? '#C1C2C5' : '#1f2937',
                         ...(dark && {
@@ -80,7 +80,7 @@ export default function Footer() {
                         }),
                       }}
                     >
-                      {item.title}
+                      {title}
                     </Link>
                   )
                 })}

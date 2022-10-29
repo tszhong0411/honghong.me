@@ -19,11 +19,11 @@ export default function Header() {
   const { asPath } = useRouter()
 
   const items = ({ animation }: { animation: boolean }) =>
-    links.map((link, index) => (
-      <Link key={index} href={link.href} passHref>
+    links.map(({ href, text }, index) => (
+      <Link key={index} href={href} passHref>
         <motion.a
           className={cx(classes.link, {
-            [classes.linkActive]: asPath === link.href,
+            [classes.linkActive]: asPath === href,
           })}
           onClick={() => {
             toggleOpened.close()
@@ -37,7 +37,7 @@ export default function Header() {
             x: 0,
           }}
         >
-          {link.text}
+          {text}
         </motion.a>
       </Link>
     ))
