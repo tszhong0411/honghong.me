@@ -39,21 +39,36 @@ Next, create the following file:
 - `lib\formatDate.js` - Format the date as `MM DD, YYYY`
 - `[slug].js` - article page, using [dynamic routes](https://nextjs.org/docs/routing/dynamic-routes)
 
-```txt title="Directory structure"
-|-- components
-|   |-- Layout.js
-|-- data
-|   |-- blog
-|     |-- markdown.mdx
-|     |-- nextjs.mdx
-|     |-- react.mdx
-|-- lib
-|   |-- formatDate.js
-|   |-- mdx.js
-|-- pages
-|   |-- blog
-|     |-- [slug].js
-```
+<Files
+  title='Directory structure'
+  data={[
+    {
+      name: 'components',
+      children: [{ name: 'Layout.js' }],
+    },
+    {
+      name: 'data',
+      children: [
+        {
+          name: 'blog',
+          children: [
+            { name: 'markdown.mdx' },
+            { name: 'nextjs.mdx' },
+            { name: 'react.mdx' },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'lib',
+      children: [{ name: 'formatDate.js' }, { name: 'mdx.js' }],
+    },
+    {
+      name: 'pages',
+      children: [{ name: 'blog', children: [{ name: '[slug].js' }] }],
+    },
+  ]}
+/>
 
 ### How to handle Markdown files
 
@@ -65,7 +80,7 @@ const root = process.cwd()
 
 Another variable `POSTS_PATH` for the path where the article files are stored.
 
-```js showLineNumbers title="lib/mdx.js"
+```js showLineNumbers title="lib/mdx.js" {3}
 import path from 'path'
 
 const POSTS_PATH = path.join(root, 'data', 'blog')

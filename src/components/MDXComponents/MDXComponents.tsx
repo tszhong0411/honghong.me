@@ -13,6 +13,7 @@ import {
 import Image, { ImageProps } from 'next/image'
 import React from 'react'
 
+import Files from '@/components/Files'
 import CustomLink from '@/components/Link'
 
 const PostImage = ({ alt, src, ...rest }: ImageProps) => (
@@ -64,6 +65,7 @@ const MDXComponents = {
   Kbd,
   Blockquote,
   Alert,
+  Files,
   a: CustomLink,
   table: PostTable,
   Image: PostImage,

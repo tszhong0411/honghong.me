@@ -39,21 +39,36 @@ yarn create next-app nextjs-mdx-blog
 - `lib\formatDate.js` - 把日期格式化為 `YYYY年MM月DD日`
 - `[slug].js` - 文章頁面，使用 [dynamic routes](https://nextjs.org/docs/routing/dynamic-routes)
 
-```txt title="目錄結構"
-|-- components
-|   |-- Layout.js
-|-- data
-|   |-- blog
-|     |-- markdown.mdx
-|     |-- nextjs.mdx
-|     |-- react.mdx
-|-- lib
-|   |-- formatDate.js
-|   |-- mdx.js
-|-- pages
-|   |-- blog
-|     |-- [slug].js
-```
+<Files
+  title='Directory structure'
+  data={[
+    {
+      name: 'components',
+      children: [{ name: 'Layout.js' }],
+    },
+    {
+      name: 'data',
+      children: [
+        {
+          name: 'blog',
+          children: [
+            { name: 'markdown.mdx' },
+            { name: 'nextjs.mdx' },
+            { name: 'react.mdx' },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'lib',
+      children: [{ name: 'formatDate.js' }, { name: 'mdx.js' }],
+    },
+    {
+      name: 'pages',
+      children: [{ name: 'blog', children: [{ name: '[slug].js' }] }],
+    },
+  ]}
+/>
 
 ### 如何處理 Markdown 檔案
 

@@ -34,14 +34,12 @@ export const GlobalStyles: (theme: MantineThemeBase) => CSSObject = (
   // Syntax highlighting
   'div[data-rehype-pretty-code-fragment]': {
     overflow: 'hidden',
-    backgroundColor: 'rgb(255 255 255 / 0.1)',
     borderRadius: '0.5rem',
   },
 
   'div[data-rehype-pretty-code-fragment] pre': {
     overflowX: 'auto',
-    paddingTop: '0.5rem',
-    paddingBottom: '0.5rem',
+    padding: '0.5rem 0',
     fontSize: '0.875rem',
     lineHeight: '1.5rem',
     margin: 0,
@@ -61,10 +59,7 @@ export const GlobalStyles: (theme: MantineThemeBase) => CSSObject = (
   },
 
   'div[data-rehype-pretty-code-title]': {
-    paddingLeft: '0.75rem',
-    paddingRight: '0.75rem',
-    paddingTop: '0.25rem',
-    paddingBottom: '0.25rem',
+    padding: '0.25rem 0.75rem',
     fontSize: '0.75rem',
     lineHeight: '1rem',
     display: 'none',
@@ -116,6 +111,13 @@ export const GlobalStyles: (theme: MantineThemeBase) => CSSObject = (
     textAlign: 'right',
     marginRight: '0.75rem',
     width: '1rem',
+  },
+
+  "code[data-line-numbers][data-theme='light'] .line::before": {
+    color: 'rgb(0 0 0 / 0.5)',
+  },
+
+  "code[data-line-numbers][data-theme='dark'] .line::before": {
     color: 'rgb(255 255 255 / 0.2)',
   },
 

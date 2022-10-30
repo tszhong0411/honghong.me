@@ -7,6 +7,11 @@ export default {
   component: SignInModal,
 } as ComponentMeta<typeof SignInModal>
 
-export const Body: ComponentStory<typeof SignInModal> = () => (
-  <SignInModal opened={true} onClose={() => null} />
+export const Base: ComponentStory<typeof SignInModal> = (args) => (
+  <SignInModal onClose={() => null} {...args} />
 )
+
+Base.args = {
+  title: 'Sign In',
+  opened: true,
+}
