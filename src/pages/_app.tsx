@@ -1,7 +1,6 @@
 import {
   ColorScheme,
   ColorSchemeProvider,
-  Global,
   MantineProvider,
 } from '@mantine/core'
 import { useHotkeys, useLocalStorage } from '@mantine/hooks'
@@ -14,10 +13,10 @@ import { useRouter } from 'next/router'
 import { SessionProvider } from 'next-auth/react'
 import React from 'react'
 
-import { isProd } from '@/lib/isProduction'
-
 import { links } from '@/components/Layout/Header/links'
 import Umami from '@/components/Umami'
+
+import { GlobalStyles } from '@/GlobalStyles'
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props
@@ -69,6 +68,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
               lg: 1024,
               xl: 1280,
             },
+            globalStyles: GlobalStyles,
           }}
         >
           <ModalsProvider>
@@ -82,34 +82,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
                 radius='md'
                 highlightQuery
               >
-                <Global
-                  styles={() => ({
-                    html: {
-                      scrollBehavior: 'smooth',
-                    },
-                    '::selection': {
-                      background: 'rgb(249, 6, 6, 0.05)',
-                      color: '#f90606',
-                    },
-                    '::-webkit-scrollbar': {
-                      width: 7,
-                      height: 5,
-                    },
-                    '::-webkit-scrollbar-thumb': {
-                      background: '#ef4444',
-                      transition: '0.25s',
-                      borderRadius: 2,
-                    },
-                    '::-webkit-scrollbar-track': {
-                      background: '0 0',
-                    },
-                    'input:-webkit-autofill, input:-webkit-autofill:focus': {
-                      transition:
-                        'background-color 600000s 0s, color 600000s 0s',
-                    },
-                  })}
-                />
-                {isProd && <Umami />}
+                <Umami />
                 <Component {...pageProps} />
               </SpotlightProvider>
             </NotificationsProvider>
