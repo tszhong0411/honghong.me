@@ -4,9 +4,11 @@ import { s } from 'hastscript'
 import { serialize } from 'next-mdx-remote/serialize'
 import path from 'path'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
 
+import { rehypePrettyCodeOptions } from '@/lib/rehypePrettyCode'
 import remarkImgToJsx from '@/lib/remark-img-to-jsx'
 
 type FileType = 'blog' | 'page'
@@ -56,6 +58,7 @@ export async function mdxToHtml(source: string, data: PostItems) {
             ],
           },
         ],
+        [rehypePrettyCode, rehypePrettyCodeOptions],
       ],
       format: 'mdx',
     },

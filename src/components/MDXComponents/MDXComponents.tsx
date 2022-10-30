@@ -14,9 +14,8 @@ import Image, { ImageProps } from 'next/image'
 import React from 'react'
 
 import CustomLink from '@/components/Link'
-import Pre from '@/components/Pre'
 
-const PostImage = (props: ImageProps) => (
+const PostImage = ({ alt, src, ...rest }: ImageProps) => (
   <Box
     component='figure'
     sx={{
@@ -27,11 +26,11 @@ const PostImage = (props: ImageProps) => (
   >
     <Center>
       <Image
-        alt={props.alt}
-        src={props.src}
-        blurDataURL={`/_next/image?url=${props.src}&w=16&q=1`}
+        alt={alt}
+        src={src}
+        blurDataURL={`/_next/image?url=${src}&w=16&q=1`}
         placeholder='blur'
-        {...props}
+        {...rest}
       />
     </Center>
     <Text
@@ -46,7 +45,7 @@ const PostImage = (props: ImageProps) => (
         marginTop: theme.spacing.xs,
       })}
     >
-      {props.alt}
+      {alt}
     </Text>
   </Box>
 )
@@ -55,34 +54,14 @@ const PostTable = (props: TableProps) => (
   <Table highlightOnHover>{props.children}</Table>
 )
 
-const Alert = (props: AlertProps) => (
-  <MantineAlert my={16} {...props}>
-    {props.children}
+const Alert = ({ children, ...rest }: AlertProps) => (
+  <MantineAlert my={16} {...rest} variant='outline'>
+    {children}
   </MantineAlert>
 )
 
-const PostPre = (props: any) => {
-  const matches = (props.children.props.className || '').match(
-    /language-(?<lang>.*)/
-  )
-
-  return (
-    <Pre
-      language={
-        matches && matches.groups && matches.groups.lang
-          ? matches.groups.lang
-          : ''
-      }
-      withLineNumbers={props.children.props.className ? true : false}
-    >
-      {props.children.props.children}
-    </Pre>
-  )
-}
-
 const MDXComponents = {
   Kbd,
-  pre: PostPre,
   Blockquote,
   Alert,
   a: CustomLink,

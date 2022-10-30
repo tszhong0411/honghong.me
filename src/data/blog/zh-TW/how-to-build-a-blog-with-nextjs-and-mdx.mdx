@@ -28,7 +28,7 @@ https://github.com/tszhong0411/nextjs-mdx-blog
 
 首先，我們用以下指令建立 Next.js 項目:
 
-```
+```sh title="Terminal"
 yarn create next-app nextjs-mdx-blog
 ```
 
@@ -39,7 +39,7 @@ yarn create next-app nextjs-mdx-blog
 - `lib\formatDate.js` - 把日期格式化為 `YYYY年MM月DD日`
 - `[slug].js` - 文章頁面，使用 [dynamic routes](https://nextjs.org/docs/routing/dynamic-routes)
 
-```
+```txt title="目錄結構"
 |-- components
 |   |-- Layout.js
 |-- data
@@ -57,19 +57,15 @@ yarn create next-app nextjs-mdx-blog
 
 ### 如何處理 Markdown 檔案
 
-<Alert icon='💡' title='提示' color='yellow' radius='md'>
-  以下內容寫在 `lib\mdx.js` 裡
-</Alert>
+先 `const root{:js}` 為根目錄，`process.cwd(){:js}` 方法返回 Node.js 進程的當前工作目錄。
 
-先 `const root` 為根目錄，`process.cwd()` 方法返回 Node.js 進程的當前工作目錄。
-
-```js
+```js showLineNumbers title="lib/mdx.js"
 const root = process.cwd()
 ```
 
 再寫一個變量 `POSTS_PATH` 為 文章檔案存放的路徑。
 
-```js
+```js showLineNumbers title="lib/mdx.js"
 import path from 'path'
 
 const POSTS_PATH = path.join(root, 'data', 'blog')
@@ -78,7 +74,7 @@ const POSTS_PATH = path.join(root, 'data', 'blog')
 
 再用 fs 閱讀讀取該目錄的內容，也即是 `data\blog` 下的所有檔案名稱。
 
-```js
+```js showLineNumbers title="lib/mdx.js"
 import fs from 'fs'
 
 export const allSlugs = fs.readdirSync(POSTS_PATH)
@@ -87,7 +83,7 @@ export const allSlugs = fs.readdirSync(POSTS_PATH)
 
 然後寫一個可以把副檔名移除的功能，等一下會用到。
 
-```js
+```js showLineNumbers title="lib/mdx.js"
 export const formatSlug = (slug) => slug.replace(/\.mdx$/, '')
 /**
  * 例如 formatSlug('markdown.mdx')
@@ -97,7 +93,7 @@ export const formatSlug = (slug) => slug.replace(/\.mdx$/, '')
 
 接著是用 slug 取得文章內容。
 
-```js
+```js showLineNumbers title="lib/mdx.js"
 export const getPostBySlug = async (slug) => {
   const postFilePath = path.join(POSTS_PATH, `${slug}.mdx`)
   // 輸出: A:\nextjs-mdx-blog\data\blog\slug.mdx
@@ -141,7 +137,7 @@ export const getPostBySlug = async (slug) => {
 
 然後是取得所有文章，在首頁中顯示。
 
-```js
+```js showLineNumbers title="lib/mdx.js"
 export const getAllPosts = () => {
   const frontMatter = []
 
@@ -171,11 +167,7 @@ const dateSortDesc = (a, b) => {
 
 ### 格式化日期
 
-<Alert icon='💡' title='提示' color='yellow' radius='md'>
-  以下內容寫在 `lib\formatDate.js` 裡
-</Alert>
-
-```js
+```js showLineNumbers title="lib/formatDate.js"
 export const formatDate = (date) =>
   new Date(date).toLocaleDateString('zh-TW', {
     year: 'numeric',
@@ -190,11 +182,7 @@ export const formatDate = (date) =>
 
 ### 首頁
 
-<Alert icon='💡' title='提示' color='yellow' radius='md'>
-  以下內容寫在 `pages\index.js` 裡
-</Alert>
-
-```jsx
+```jsx showLineNumbers title="pages/index.js"
 import { formatDate } from '../lib/formatDate'
 import { getAllPosts } from '../lib/mdx'
 
@@ -238,11 +226,7 @@ export const getStaticProps = async () => {
 
 ### 文章頁面
 
-<Alert icon='💡' title='提示' color='yellow' radius='md'>
-  以下內容寫在 `pages\[slug].js` 裡
-</Alert>
-
-```jsx
+```jsx showLineNumbers title="pages/[slug].js"
 import { formatDate } from '../../lib/formatDate'
 import { allSlugs, formatSlug, getPostBySlug } from '../../lib/mdx'
 

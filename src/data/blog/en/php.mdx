@@ -16,7 +16,7 @@ The PHP file extension is `.php`, E.g `index.php`. As mentioned above, `PHP` can
 
 When the browser reads `<?php` from top to bottom, it executes `PHP` and ends with `?>`. Such as:
 
-```php
+```php showLineNumbers
 <!DOCTYPE html>
 <html>
     <head>
@@ -34,7 +34,7 @@ When the browser reads `<?php` from top to bottom, it executes `PHP` and ends wi
 
 In `PHP`, there is no other `HTML` after the `PHP` directive is completed. It is recommended not to end with `?>`. It will cause trouble if it is closed.
 
-```php
+```php showLineNumbers
 <?php
     echo "No HTML after PHP ends";
 ```
@@ -43,7 +43,7 @@ In `PHP`, there is no other `HTML` after the `PHP` directive is completed. It is
 
 Almost most web programming languages can comment, and the **single-line** way of `PHP` is `//` and the **multi-line** way is `/* Some text here */`.
 
-```php
+```php showLineNumbers
 <?php
     echo = "This is a single line comment"; // I am a single line comment
     echo = "This is a multi-line comment";
@@ -58,7 +58,7 @@ Almost most web programming languages can comment, and the **single-line** way o
 
 The simplest syntax in `PHP` is `Echo`. The content of `Echo` must be enclosed in double quotes `""` or single quotes `''`. Each syntax must end with a semicolon `;`.
 
-```php
+```php showLineNumbers
 <?php
     echo "This is the example of using double quotes.";
     echo 'This is the example of using single quotes.';
@@ -67,7 +67,7 @@ The simplest syntax in `PHP` is `Echo`. The content of `Echo` must be enclosed i
 
 Content in `Echo` can also use `HTML` syntax. For example, I used `<br/>` here, so that the line can be broken.
 
-```php
+```php showLineNumbers
 <?php
     echo "This is the first sentence<br/>";
     echo "This is the second sentence";
@@ -79,7 +79,7 @@ Content in `Echo` can also use `HTML` syntax. For example, I used `<br/>` here, 
 
 We can assign a value to a variable to make it easier for us to write `PHP`, similar to `Javascript`. We will use the Dollar sign `$`.
 
-```php
+```php showLineNumbers
 <?php
     $value = "I am a value";
 ?>
@@ -102,7 +102,7 @@ There is a difference between `uppercase` and `lowercase` in variable names. Upp
 
 When a variable name and a function name are linked together by two or more words to form a unique identification word, the use of "camel case" to represent, can increase the readability of variables and functions. Because we can't have `spaces` in variables.
 
-```php
+```php showLineNumbers
 <?php
     $onePlusOneAnswer = 1 + 1;
     echo $onePlusOneAnswer;
@@ -113,7 +113,7 @@ When a variable name and a function name are linked together by two or more word
 
 Snake case (like snake_case) refers to a writing style in which every space is replaced with an underscore ( \_ ) character and the first letter of every word is written in lowercase.
 
-```php
+```php showLineNumbers
 <?php
     $one_plus_one_answer = 1 + 1;
     echo $one_plus_one_answer;
@@ -124,7 +124,7 @@ Snake case (like snake_case) refers to a writing style in which every space is r
 
 There are two string operators. The first is the concatenation operator ("."), which returns the concatenated string of its left and right arguments. The second is the concatenation assignment operator (".="), which appends the right-hand argument to the left-hand argument.
 
-```php
+```php showLineNumbers
 <?php
     echo "This" . " " . "is" . " " . "String" . " " . "operators" . ".";
 ?>
@@ -132,7 +132,7 @@ There are two string operators. The first is the concatenation operator ("."), w
 
 ## Arithmetic operator
 
-```php
+```php showLineNumbers
 <?php
     $value0 = 1.5 // Float
     $value1 = 1 + 1 // Plus

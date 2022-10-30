@@ -28,7 +28,7 @@ https://github.com/tszhong0411/nextjs-mdx-blog
 
 First, we create the Next.js project with the following command:
 
-```
+```sh title="Terminal"
 yarn create next-app nextjs-mdx-blog
 ```
 
@@ -39,7 +39,7 @@ Next, create the following file:
 - `lib\formatDate.js` - Format the date as `MM DD, YYYY`
 - `[slug].js` - article page, using [dynamic routes](https://nextjs.org/docs/routing/dynamic-routes)
 
-```
+```txt title="Directory structure"
 |-- components
 |   |-- Layout.js
 |-- data
@@ -57,19 +57,15 @@ Next, create the following file:
 
 ### How to handle Markdown files
 
-<Alert icon='💡' title='Tips' color='yellow' radius='md'>
-  The following is written in `lib\mdx.js`
-</Alert>
+First `const root{:js}` - the root directory, and the `process.cwd(){:js}` method returns the current working directory of the Node.js process.
 
-First `const root` - the root directory, and the `process.cwd()` method returns the current working directory of the Node.js process.
-
-```js
+```js showLineNumbers title="lib/mdx.js"
 const root = process.cwd()
 ```
 
 Another variable `POSTS_PATH` for the path where the article files are stored.
 
-```js
+```js showLineNumbers title="lib/mdx.js"
 import path from 'path'
 
 const POSTS_PATH = path.join(root, 'data', 'blog')
@@ -78,7 +74,7 @@ const POSTS_PATH = path.join(root, 'data', 'blog')
 
 Then use fs to read the contents of that directory, that is, all the file names under `data\blog`.
 
-```js
+```js showLineNumbers title="lib/mdx.js"
 import fs from 'fs'
 
 export const allSlugs = fs.readdirSync(POSTS_PATH)
@@ -87,7 +83,7 @@ export const allSlugs = fs.readdirSync(POSTS_PATH)
 
 Then write a function to remove the file extension, which will be used later.
 
-```js
+```js showLineNumbers title="lib/mdx.js"
 export const formatSlug = (slug) => slug.replace(/\.mdx$/, '')
 /**
  * Example: formatSlug('markdown.mdx')
@@ -97,7 +93,7 @@ export const formatSlug = (slug) => slug.replace(/\.mdx$/, '')
 
 The next step is to get the article content by slug.
 
-```js
+```js showLineNumbers title="lib/mdx.js"
 export const getPostBySlug = async (slug) => {
   const postFilePath = path.join(POSTS_PATH, `${slug}.mdx`)
   // Output: A:\nextjs-mdx-blog\data\blog\slug.mdx
@@ -141,7 +137,7 @@ export const getPostBySlug = async (slug) => {
 
 Then you can get all the articles to be displayed in the home page.
 
-```js
+```js showLineNumbers title="lib/mdx.js"
 export const getAllPosts = () => {
   const frontMatter = []
 
@@ -171,11 +167,7 @@ const dateSortDesc = (a, b) => {
 
 ### Formatting Date
 
-<Alert icon='💡' title='Tips' color='yellow' radius='md'>
-  The following is written in `lib\formatDate.js`
-</Alert>
-
-```js
+```js showLineNumbers title="lib/formatDate.js"
 export const formatDate = (date) =>
   new Date(date).toLocaleDateString('en', {
     year: 'numeric',
@@ -190,11 +182,7 @@ export const formatDate = (date) =>
 
 ### Home page
 
-<Alert icon='💡' title='Tips' color='yellow' radius='md'>
-  The following is written in `pages\index.js`
-</Alert>
-
-```jsx
+```jsx showLineNumbers title="pages/index.js"
 import { formatDate } from '../lib/formatDate'
 import { getAllPosts } from '../lib/mdx'
 
@@ -238,11 +226,7 @@ export const getStaticProps = async () => {
 
 ### Article Page
 
-<Alert icon='💡' title='Tips' color='yellow' radius='md'>
-  The following is written in `pages\[slug].js`
-</Alert>
-
-```jsx
+```jsx showLineNumbers title="pages/[slug].js"
 import { formatDate } from '../../lib/formatDate'
 import { allSlugs, formatSlug, getPostBySlug } from '../../lib/mdx'
 

@@ -8,6 +8,13 @@ export default function Typography({ children }: React.PropsWithChildren) {
   return (
     <Box
       sx={(theme) => ({
+        '& pre': {
+          backgroundColor:
+            theme.colorScheme === 'dark'
+              ? 'rgba(43, 48, 59, 0.6)'
+              : 'rgba(240, 241, 244, 0.6)',
+          borderRadius: 8,
+        },
         '& > h2:nth-of-type(1)': {
           marginTop: 0,
         },
@@ -50,8 +57,23 @@ export default function Typography({ children }: React.PropsWithChildren) {
             borderBottomColor: '#fa3838',
           },
         },
-        '& pre': {
-          fontFamily: 'Fira Code, Noto Sans TC, Inter',
+        '& span[data-rehype-pretty-code-fragment] code, code:not([data-theme])':
+          {
+            lineHeight: '1.45rem',
+            fontFamily: 'Fira Code, Noto Sans TC, Inter',
+            borderRadius: 8,
+            backgroundColor: dark
+              ? 'rgba(43, 48, 59, 0.6)'
+              : 'rgba(240, 241, 244, 0.6)',
+            padding: '2px 8px',
+            fontSize: 14,
+            border: `1px solid ${dark ? '#2b303b' : 'rgba(249, 6, 6, 0.05)'}`,
+            boxShadow: `0.5px 1px 1px ${
+              dark ? 'rgba(2, 2, 3, 0.33)' : 'rgba(201, 203, 207, 0.33)'
+            }`,
+          },
+        '& code:not([data-theme])': {
+          color: dark ? '#fb6a6a' : '#f90606',
         },
         '& > p': {
           color: dark ? '#a1a1aa' : '#374151',
@@ -85,21 +107,6 @@ export default function Typography({ children }: React.PropsWithChildren) {
         },
         '& li::marker': {
           color: dark ? '#fb5151' : '#f90606',
-        },
-        '& code': {
-          lineHeight: '1.45rem',
-          fontFamily: 'Fira Code, Noto Sans TC, Inter',
-          borderRadius: 8,
-          color: dark ? '#fb6a6a' : '#f90606',
-          backgroundColor: dark
-            ? 'rgba(43, 48, 59, 0.6)'
-            : 'rgba(240, 241, 244, 0.6)',
-          padding: '2px 8px',
-          fontSize: 14,
-          border: `1px solid ${dark ? '#2b303b' : 'rgba(249, 6, 6, 0.05)'}`,
-          boxShadow: `0.5px 1px 1px ${
-            dark ? 'rgba(2, 2, 3, 0.33)' : 'rgba(201, 203, 207, 0.33)'
-          }`,
         },
         '& :is(h2, h3)': {
           position: 'relative',

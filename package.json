@@ -57,16 +57,16 @@
     "next-mdx-remote": "^4.1.0",
     "next-seo": "^5.6.0",
     "next-translate": "^1.6.0",
-    "prism-react-renderer": "^1.3.5",
-    "prismjs": "^1.29.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "rehype-autolink-headings": "^6.1.1",
+    "rehype-pretty-code": "^0.4.0",
     "rehype-slug": "5.0.1",
     "remark": "^14.0.2",
     "remark-gfm": "^3.0.1",
     "rss": "^1.2.2",
     "sharp": "^0.31.1",
+    "shiki": "^0.11.1",
     "swr": "^1.3.0"
   },
   "devDependencies": {
