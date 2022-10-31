@@ -1,12 +1,12 @@
 import { ColorSchemeProvider, Global, MantineProvider } from '@mantine/core'
 import React from 'react'
 import { useDarkMode } from 'storybook-dark-mode'
-import * as NextImage from 'next/image'
-import { ImageProps } from 'next/image'
 import I18nProvider from 'next-translate/I18nProvider'
 import i18nConfig from '../i18n.json'
 
-export const parameters = { layout: 'fullscreen' }
+export const parameters = {
+  layout: 'fullscreen',
+}
 
 const namespaces = [...new Set(Object.values(i18nConfig.pages).flat())]
 
@@ -109,10 +109,3 @@ export const decorators = [
     </ThemeWrapper>
   ),
 ]
-
-const OriginalNextImage = NextImage.default
-
-Object.defineProperty(NextImage, 'default', {
-  configurable: true,
-  value: (props: ImageProps) => <OriginalNextImage {...props} unoptimized />,
-})
