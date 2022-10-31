@@ -1,9 +1,9 @@
 import Script from 'next/script'
 
-import { isProd } from '@/lib/isProduction'
+import { isProduction } from '@/lib/constants'
 
 const Umami = () => {
-  if (isProd) {
+  if (isProduction) {
     return (
       <>
         <Script

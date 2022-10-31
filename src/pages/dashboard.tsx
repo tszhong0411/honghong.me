@@ -1,7 +1,7 @@
 import { Box } from '@mantine/core'
 import useTranslation from 'next-translate/useTranslation'
 
-import { isProd } from '@/lib/isProduction'
+import { isProduction } from '@/lib/constants'
 
 import Layout from '@/components/Layout'
 import PageLayout from '@/components/Layout/PageLayout'
@@ -22,7 +22,7 @@ export default function Dashboard() {
             flexDirection: 'column',
           }}
         >
-          {isProd && (
+          {isProduction && (
             <>
               <Youtube />
               <Github />
