@@ -2,11 +2,8 @@ import { Group, Skeleton, Text } from '@mantine/core'
 import { IconEye } from '@tabler/icons'
 import useTranslation from 'next-translate/useTranslation'
 import React from 'react'
-import useSWR from 'swr'
 
-import fetcher from '@/lib/fetcher'
-
-import { Views } from '../Metrics/BlogTotalViews'
+import { usePostViews } from '@/hooks/usePostViews'
 
 type ViewCounterTypes = {
   slug: string
@@ -19,28 +16,25 @@ export default function ViewCounter({
   text = true,
   type = 'POST',
 }: ViewCounterTypes) {
-  const { data } = useSWR<Views>(`/api/views/${slug}`, fetcher)
-  const views = new Number(data?.total)
+  const { views: postViews, isLoading, isError, increment } = usePostViews(slug)
+
   const { t } = useTranslation('common')
+  const views = postViews?.total
 
   React.useEffect(() => {
-    const registerView = () =>
-      fetch(`/api/views/${slug}`, {
-        method: type,
-      })
-
-    registerView()
-  }, [slug, type])
+    if (type === 'POST') increment()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <>
-      {views > 0 ? (
+      {!isLoading && !isError ? (
         text ? (
-          <Text>{`${views.toLocaleString()} ${t('views')}`}</Text>
+          <Text>{`${views} ${t('views')}`}</Text>
         ) : (
           <Group spacing={4}>
             <IconEye size={20} />
-            <Text sx={{ lineHeight: '20px' }}>{views.toLocaleString()}</Text>
+            <Text sx={{ lineHeight: '20px' }}>{views}</Text>
           </Group>
         )
       ) : (

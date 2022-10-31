@@ -19,7 +19,16 @@ model guestbook {
   updated_at DateTime @default(now()) @db.DateTime(6)
 }
 
-model views {
-  slug  String @id @db.VarChar(128)
-  count BigInt @default(1)
+model Post {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  slug      String   @unique
+  likes     Int      @default(0)
+  views     Int      @default(0)
+}
+
+model Session {
+  id        String   @id
+  createdAt DateTime @default(now())
+  likes     Int      @default(0)
 }

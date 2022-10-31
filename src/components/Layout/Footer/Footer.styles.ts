@@ -1,10 +1,12 @@
 import { createStyles } from '@mantine/core'
 
+import { MAX_WIDTH } from '@/lib/constants'
+
 export const useStyles = createStyles((theme) => ({
   footer: {
     margin: '32px auto 0 auto',
     width: '100%',
-    maxWidth: 960,
+    maxWidth: MAX_WIDTH,
     padding: '0 30px',
 
     [theme.fn.largerThan('sm')]: {

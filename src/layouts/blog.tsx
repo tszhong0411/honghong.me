@@ -17,12 +17,13 @@ import { ArticleJsonLd } from 'next-seo'
 import useTranslation from 'next-translate/useTranslation'
 import React from 'react'
 
+import { isProduction } from '@/lib/constants'
 import formatDate from '@/lib/formatDate'
-import { isProd } from '@/lib/isProduction'
 import useScrollSpy from '@/hooks/useScrollspy'
 
 import Comment from '@/components/Comment'
 import Layout from '@/components/Layout'
+import LikeButton from '@/components/LikeButton'
 import Link from '@/components/Link'
 import ReadingProgressBar from '@/components/ReadingProgressBar'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
@@ -158,7 +159,7 @@ export default function BlogLayout({
         {title}
       </Title>
       <div className={classes.analytics}>
-        {isProd && <ViewCounter slug={slug} />} /
+        {isProduction && <ViewCounter slug={slug} />} /
         <span>
           {totalCommentCount} {t('comments')}
         </span>
@@ -166,11 +167,16 @@ export default function BlogLayout({
       <Divider />
       <Box mt={32} className={classes.contentWrapper}>
         <article id='blog-content'>{children}</article>
-        <TableOfContents
-          toc={toc}
-          minLevel={minLevel}
-          activeSection={activeSection}
-        />
+        <aside className={classes.aside}>
+          <div className={classes.asideContainer}>
+            <TableOfContents
+              toc={toc}
+              minLevel={minLevel}
+              activeSection={activeSection}
+            />
+            <LikeButton slug={slug} />
+          </div>
+        </aside>
       </Box>
       <Divider mt={32} />
       <div className={classes.postBottom}>

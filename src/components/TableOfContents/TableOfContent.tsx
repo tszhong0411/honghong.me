@@ -5,8 +5,6 @@ import React from 'react'
 
 import { TOCLink } from '@/components/Link'
 
-import { useStyles } from './TableOfContent.styles'
-
 export type HeadingScrollSpy = Array<{
   id: string
   level: number
@@ -25,7 +23,6 @@ export default function TableOfContents({
   minLevel,
 }: TableOfContentsProps) {
   const lastPosition = React.useRef<number>(0)
-  const { classes } = useStyles()
   const { t } = useTranslation('common')
 
   React.useEffect(() => {
@@ -56,25 +53,23 @@ export default function TableOfContents({
   }, [activeSection])
 
   return (
-    <div className={classes.wrapper}>
-      <div id='toc-container'>
-        <Group mb='md'>
-          <IconListSearch size={18} />
-          <Text>{t('toc')}</Text>
-        </Group>
-        <div>
-          {toc &&
-            toc.map(({ id, level, text }) => (
-              <TOCLink
-                id={id}
-                key={id}
-                activeSection={activeSection}
-                level={level}
-                minLevel={minLevel}
-                text={text}
-              />
-            ))}
-        </div>
+    <div id='toc-container'>
+      <Group mb='md'>
+        <IconListSearch size={18} />
+        <Text>{t('toc')}</Text>
+      </Group>
+      <div>
+        {toc &&
+          toc.map(({ id, level, text }) => (
+            <TOCLink
+              id={id}
+              key={id}
+              activeSection={activeSection}
+              level={level}
+              minLevel={minLevel}
+              text={text}
+            />
+          ))}
       </div>
     </div>
   )

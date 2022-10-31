@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { z } from 'zod'
 
 import prisma from '@/lib/prisma'
 
@@ -7,34 +8,34 @@ export default async function handler(
   res: NextApiResponse
 ) {
   try {
-    const slug = req.query.slug.toString()
+    const slug = z.string().parse(req.query.slug)
 
     if (req.method === 'POST') {
-      const newOrUpdatedViews = await prisma.views.upsert({
+      const post = await prisma.post.upsert({
         where: { slug },
         create: {
           slug,
         },
         update: {
-          count: {
+          views: {
             increment: 1,
           },
         },
       })
 
       return res.status(200).json({
-        total: newOrUpdatedViews.count.toString(),
+        total: post.views,
       })
     }
 
     if (req.method === 'GET') {
-      const views = await prisma.views.findUnique({
+      const post = await prisma.post.findUnique({
         where: {
           slug,
         },
       })
 
-      return res.status(200).json({ total: views.count.toString() })
+      return res.status(200).json({ total: post.views })
     }
   } catch (e) {
     return res.status(500).json({ message: e.message })

@@ -1,7 +1,7 @@
 import { Anchor, Box, Divider, useMantineTheme } from '@mantine/core'
 import { useRouter } from 'next/router'
 
-import { isProd } from '@/lib/isProduction'
+import { isProduction } from '@/lib/constants'
 
 import { links } from '@/components/Layout/Footer/links'
 import Link from '@/components/Link'
@@ -19,7 +19,7 @@ export default function Footer() {
     <footer className={classes.footer}>
       <Divider my='xl' />
       <div className={classes.footerInner}>
-        {isProd && <NowPlaying />}
+        {isProduction && <NowPlaying />}
         <Box
           pb={64}
           sx={(theme) => ({

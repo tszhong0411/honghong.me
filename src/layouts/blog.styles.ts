@@ -34,12 +34,37 @@ export const useStyles = createStyles((theme) => ({
 
   contentWrapper: {
     display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
 
     '& > #blog-content': {
       width: '100%',
 
       [theme.fn.largerThan('lg')]: {
         width: '40em',
+      },
+    },
+
+    [theme.fn.largerThan('lg')]: {
+      flexDirection: 'row',
+    },
+  },
+
+  aside: {
+    [theme.fn.largerThan('lg')]: {
+      minWidth: 270,
+    },
+  },
+
+  asideContainer: {
+    position: 'sticky',
+    top: '6rem',
+
+    '& > #toc-container': {
+      display: 'none',
+
+      [theme.fn.largerThan('lg')]: {
+        display: 'block',
       },
     },
   },

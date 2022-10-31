@@ -4,6 +4,8 @@ import { NextSeo, NextSeoProps } from 'next-seo'
 import useTranslation from 'next-translate/useTranslation'
 import React from 'react'
 
+import { MAX_WIDTH } from '@/lib/constants'
+
 import { Favicons } from '@/components/Layout/Favicons'
 import Footer from '@/components/Layout/Footer'
 import Header from '@/components/Layout/Header'
@@ -50,6 +52,7 @@ const Layout = (props: React.PropsWithChildren<NextSeoProps>) => {
             padding: '48px 32px',
           },
         })}
+        size={MAX_WIDTH}
       >
         {props.children}
       </Container>

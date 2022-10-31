@@ -1,5 +1,7 @@
 import { createStyles } from '@mantine/core'
 
+import { MAX_WIDTH } from '@/lib/constants'
+
 export const HEADER_HEIGHT = 60
 export const HEADER_BREAKPOINT = 860
 
@@ -18,7 +20,7 @@ export const useStyles = createStyles((theme) => ({
     }`,
     height: HEADER_HEIGHT,
     padding: '0 30px',
-    maxWidth: 960,
+    maxWidth: MAX_WIDTH,
     margin: '0 auto',
 
     [theme.fn.largerThan('sm')]: {
