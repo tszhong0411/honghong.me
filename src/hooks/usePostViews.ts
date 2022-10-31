@@ -31,6 +31,7 @@ export const usePostViews = (slug: string, config?: SWRConfiguration) => {
   const increment = () => {
     mutate(
       updatePostViews(slug).catch((e) => {
+        // eslint-disable-next-line no-console
         console.log(e)
 
         return { total: 0 }
