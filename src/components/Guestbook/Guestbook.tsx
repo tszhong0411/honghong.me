@@ -237,10 +237,24 @@ export default function Guestbook({ fallbackData }) {
       </Paper>
       <div>
         {loading && (
-          <Stack spacing='md' my={30}>
-            <Skeleton height={15} width='25%' radius='xl' />
-            <Skeleton height={15} width='30%' radius='xl' />
-          </Stack>
+          <Paper
+            withBorder
+            radius='md'
+            sx={(theme) => ({
+              padding: `${theme.spacing.lg}px ${theme.spacing.xl}px`,
+            })}
+            mt={20}
+            mb={-20}
+          >
+            <Group>
+              <Skeleton width={38} height={38} radius='xl' />
+              <Stack spacing={4}>
+                <Skeleton width={100} height={14} />
+                <Skeleton width={105} height={14} />
+              </Stack>
+            </Group>
+            <Skeleton width={200} height={18} ml={54} mt={15} />
+          </Paper>
         )}
         <Stack my={40}>
           {entries?.map((entry: entryProps) => (

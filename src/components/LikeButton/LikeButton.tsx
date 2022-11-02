@@ -85,7 +85,7 @@ export default function LikeButton({ slug }: LikeButtonProps) {
             {likes}
           </Text>
         ) : (
-          <Skeleton width={50} />
+          <Skeleton width={50} height={25} />
         )}
       </Group>
     </Center>
