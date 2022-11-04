@@ -26,7 +26,7 @@
 - **Content**: [MDX](https://mdxjs.com/)
 - **Analytics**: [Umami](https://umami.is/)
 - **UI**: [Mantine](https://mantine.dev)
-- **Code syntax**: [Prism.js](https://prismjs.com/)
+- **Code syntax**: [Shiki](https://github.com/shikijs/shiki)
 
 ## 🚀 Demo
 
@@ -41,14 +41,6 @@
 <img src="https://img.shields.io/github/commit-activity/m/tszhong0411/honghong.me?color=orange&style=flat-square" />
 
 <img src="https://img.shields.io/github/deployments/tszhong0411/honghong.me/Production?style=flat-square" />
-
-## 🤩 Features
-
-- Blog
-- Projects
-- About
-- Guestbook
-- i18n
 
 ## 👋 Running locally
 
