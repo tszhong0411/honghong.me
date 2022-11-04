@@ -19,8 +19,8 @@
   "signOut": "Sign out",
   "signInWith": "Sign in with {{provider}}",
   "Tooltip": {
-    "darkmode": "Dark mode",
-    "lightmode": "Light mode",
+    "darkMode": "Dark mode",
+    "lightMode": "Light mode",
     "search": "Search",
     "switchLanguage": "Switch language"
   },

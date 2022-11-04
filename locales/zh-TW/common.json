@@ -19,8 +19,8 @@
   "signOut": "登出",
   "signInWith": "以 {{provider}} 繼續",
   "Tooltip": {
-    "darkmode": "黑暗模式",
-    "lightmode": "明亮模式",
+    "darkMode": "黑暗模式",
+    "lightMode": "明亮模式",
     "search": "搜尋",
     "switchLanguage": "切換語言"
   },
