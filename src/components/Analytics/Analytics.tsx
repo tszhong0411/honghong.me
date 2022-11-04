@@ -2,7 +2,7 @@ import Script from 'next/script'
 
 import { isProduction } from '@/lib/constants'
 
-const Umami = () => {
+const Analytics = () => {
   if (isProduction) {
     return (
       <>
@@ -19,4 +19,4 @@ const Umami = () => {
   return null
 }
 
-export default Umami
+export default Analytics
