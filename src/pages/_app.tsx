@@ -5,17 +5,27 @@ import {
 } from '@mantine/core'
 import { useHotkeys, useLocalStorage } from '@mantine/hooks'
 import { ModalsProvider } from '@mantine/modals'
-import { NotificationsProvider } from '@mantine/notifications'
+import { NotificationsProvider, showNotification } from '@mantine/notifications'
 import { SpotlightProvider } from '@mantine/spotlight'
 import { SpotlightAction } from '@mantine/spotlight'
-import { IconSearch } from '@tabler/icons'
+import {
+  IconBulb,
+  IconCircleCheck,
+  IconCode,
+  IconHome,
+  IconLink,
+  IconMoonStars,
+  IconPencil,
+  IconSearch,
+  IconSun,
+  IconUser,
+} from '@tabler/icons'
 import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import { SessionProvider } from 'next-auth/react'
 import React from 'react'
 
-import { links } from '@/components/Layout/Header/links'
-import Umami from '@/components/Umami'
+import Analytics from '@/components/Analytics/Analytics'
 
 import { GlobalStyles } from '@/GlobalStyles'
 
@@ -33,18 +43,59 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
 
   useHotkeys([['mod+J', () => toggleColorScheme()]])
 
-  const Actions = () => {
-    const arr: Array<SpotlightAction> = []
-
-    links.forEach((item) => {
-      arr.push({
-        title: item.text,
-        onTrigger: () => router.push(item.href),
-      })
-    })
-
-    return arr
-  }
+  const actions: Array<SpotlightAction> = [
+    {
+      title: 'Copy URL',
+      group: 'GENERAL',
+      onTrigger: () => {
+        navigator.clipboard.writeText(window.location.href)
+        showNotification({
+          title: 'Copied :)',
+          message: 'You can now share it with anyone!',
+          icon: <IconCircleCheck />,
+          color: 'green',
+        })
+      },
+      icon: <IconLink />,
+    },
+    {
+      title: 'View Source',
+      group: 'GENERAL',
+      onTrigger: () =>
+        window.open('https://github.com/tszhong0411/honghong.me', '_blank'),
+      icon: <IconCode />,
+    },
+    {
+      title: 'Home',
+      group: 'GO TO',
+      onTrigger: () => router.push('/'),
+      icon: <IconHome />,
+    },
+    {
+      title: 'Blog',
+      group: 'GO TO',
+      onTrigger: () => router.push('/blog'),
+      icon: <IconPencil />,
+    },
+    {
+      title: 'Projects',
+      group: 'GO TO',
+      onTrigger: () => router.push('/projects'),
+      icon: <IconBulb />,
+    },
+    {
+      title: 'About',
+      group: 'GO TO',
+      onTrigger: () => router.push('/about'),
+      icon: <IconUser />,
+    },
+    {
+      title: 'Toggle theme',
+      group: 'SETTINGS',
+      onTrigger: () => toggleColorScheme(),
+      icon: colorScheme === 'dark' ? <IconSun /> : <IconMoonStars />,
+    },
+  ]
 
   return (
     <SessionProvider>
@@ -77,11 +128,11 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
                 searchPlaceholder='Search'
                 shortcut={['mod + k', 'mod + p']}
                 nothingFoundMessage='Nothing found'
-                actions={Actions()}
+                actions={actions}
                 radius='md'
                 highlightQuery
               >
-                <Umami />
+                <Analytics />
                 <Component {...pageProps} />
               </SpotlightProvider>
             </NotificationsProvider>
