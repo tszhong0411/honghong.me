@@ -7,6 +7,7 @@ import { useHotkeys, useLocalStorage } from '@mantine/hooks'
 import { ModalsProvider } from '@mantine/modals'
 import { NotificationsProvider } from '@mantine/notifications'
 import { SpotlightProvider } from '@mantine/spotlight'
+import { SpotlightAction } from '@mantine/spotlight'
 import { IconSearch } from '@tabler/icons'
 import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
@@ -33,15 +34,13 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   useHotkeys([['mod+J', () => toggleColorScheme()]])
 
   const Actions = () => {
-    const arr = []
+    const arr: Array<SpotlightAction> = []
 
     links.forEach((item) => {
-      const obj = {}
-
-      obj['title'] = item.text
-      obj['onTrigger'] = () => router.push(item.href)
-
-      arr.push(obj)
+      arr.push({
+        title: item.text,
+        onTrigger: () => router.push(item.href),
+      })
     })
 
     return arr

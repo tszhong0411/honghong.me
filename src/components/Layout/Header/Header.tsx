@@ -5,10 +5,10 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
 
+import Command from '@/components/Layout/Header/Command'
 import HeaderLogo from '@/components/Layout/Header/HeaderLogo'
 import LanguageSwitch from '@/components/Layout/Header/LanguageSwitch'
 import { links } from '@/components/Layout/Header/links'
-import Search from '@/components/Layout/Header/Search'
 import ThemeSwitch from '@/components/Layout/Header/ThemeSwitch'
 
 import { useStyles } from './Header.styles'
@@ -65,7 +65,7 @@ export default function Header() {
         <Group spacing={5} className={classes.links}>
           {items({ animation: false }).slice(0, 4)}
         </Group>
-        <Search />
+        <Command />
         <ThemeSwitch />
         <LanguageSwitch />
       </div>
