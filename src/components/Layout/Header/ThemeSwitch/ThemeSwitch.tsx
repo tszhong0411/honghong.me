@@ -13,7 +13,7 @@ const ThemeSwitch = () => {
 
   return (
     <Tooltip
-      label={dark ? t('Tooltip.lightmode') : t('Tooltip.darkmode')}
+      label={dark ? t('Tooltip.lightMode') : t('Tooltip.darkMode')}
       openDelay={500}
     >
       <Button
@@ -21,7 +21,7 @@ const ThemeSwitch = () => {
         color='gray'
         className={classes.button}
         onClick={() => toggleColorScheme()}
-        aria-label={dark ? t('Tooltip.lightmode') : t('Tooltip.darkmode')}
+        aria-label={dark ? t('Tooltip.lightMode') : t('Tooltip.darkMode')}
       >
         {dark ? <IconSun size={20} /> : <IconMoonStars size={20} />}
       </Button>
