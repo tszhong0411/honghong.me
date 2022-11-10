@@ -9,7 +9,7 @@ export type Views = {
   total: number
 }
 
-export default function BlogTotalViews() {
+const BlogTotalViews = () => {
   const { data } = useSWR<Views>('/api/views', fetcher)
 
   const pageViews = new Number(data?.total)
@@ -26,3 +26,5 @@ export default function BlogTotalViews() {
     </Box>
   )
 }
+
+export default BlogTotalViews

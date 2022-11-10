@@ -5,11 +5,11 @@ import React from 'react'
 
 import { TOCLink } from '@/components/Link'
 
-export type HeadingScrollSpy = Array<{
+export type HeadingScrollSpy = {
   id: string
   level: number
   text: string
-}>
+}[]
 
 type TableOfContentsProps = {
   toc?: HeadingScrollSpy
@@ -17,11 +17,8 @@ type TableOfContentsProps = {
   minLevel: number
 }
 
-export default function TableOfContents({
-  toc,
-  activeSection,
-  minLevel,
-}: TableOfContentsProps) {
+const TableOfContents = (props: TableOfContentsProps) => {
+  const { toc, activeSection, minLevel } = props
   const lastPosition = React.useRef<number>(0)
   const { t } = useTranslation('common')
 
@@ -74,3 +71,5 @@ export default function TableOfContents({
     </div>
   )
 }
+
+export default TableOfContents

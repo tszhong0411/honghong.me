@@ -3,7 +3,7 @@ import { useWindowScroll } from '@mantine/hooks'
 import { IconArrowUp, IconBrandHipchat } from '@tabler/icons'
 import React from 'react'
 
-export default function ScrollTopAndComment() {
+const ScrollTopAndComment = () => {
   const [scroll, scrollTo] = useWindowScroll()
 
   return (
@@ -37,3 +37,5 @@ export default function ScrollTopAndComment() {
     </Affix>
   )
 }
+
+export default ScrollTopAndComment

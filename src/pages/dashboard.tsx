@@ -9,7 +9,7 @@ import BlogTotalViews from '@/components/Metrics/BlogTotalViews'
 import Github from '@/components/Metrics/Github'
 import Youtube from '@/components/Metrics/Youtube'
 
-export default function Dashboard() {
+const Dashboard = () => {
   const { t } = useTranslation('common')
 
   return (
@@ -34,3 +34,5 @@ export default function Dashboard() {
     </Layout>
   )
 }
+
+export default Dashboard

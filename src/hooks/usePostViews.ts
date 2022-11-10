@@ -2,7 +2,7 @@ import useSWR, { SWRConfiguration } from 'swr'
 
 const API_URL = `/api/views`
 
-async function getPostViews(slug: string): Promise<{ total: number }> {
+const getPostViews = async (slug: string): Promise<{ total: number }> => {
   const res = await fetch(API_URL + `/${slug}`)
   if (!res.ok) {
     throw new Error('An error occurred while fetching the data.')
@@ -10,7 +10,7 @@ async function getPostViews(slug: string): Promise<{ total: number }> {
   return res.json()
 }
 
-async function updatePostViews(slug: string): Promise<{ total: number }> {
+const updatePostViews = async (slug: string): Promise<{ total: number }> => {
   const res = await fetch(API_URL + `/${slug}`, { method: 'POST' })
   if (!res.ok) {
     throw new Error('An error occurred while posting the data.')

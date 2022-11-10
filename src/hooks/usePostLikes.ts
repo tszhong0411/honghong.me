@@ -9,7 +9,7 @@ type MetricsPayload = {
   currentUserLikes: number
 }
 
-async function getPostLikes(slug: string): Promise<MetricsPayload> {
+const getPostLikes = async (slug: string): Promise<MetricsPayload> => {
   const res = await fetch(API_URL + `/${slug}`)
   if (!res.ok) {
     throw new Error('An error occurred while fetching the data.')
@@ -17,10 +17,10 @@ async function getPostLikes(slug: string): Promise<MetricsPayload> {
   return res.json()
 }
 
-async function updatePostLikes(
+const updatePostLikes = async (
   slug: string,
   count: number
-): Promise<MetricsPayload> {
+): Promise<MetricsPayload> => {
   const res = await fetch(API_URL + `/${slug}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

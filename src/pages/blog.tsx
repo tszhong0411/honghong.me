@@ -20,7 +20,7 @@ export type PostFrontMatter = {
   views?: string
 }
 
-export default function Blog({ posts }: { posts: Array<PostFrontMatter> }) {
+const Blog = ({ posts }: { posts: PostFrontMatter[] }) => {
   const { t } = useTranslation('common')
   const [searchValue, setSearchValue] = React.useState('')
 
@@ -64,3 +64,5 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     props: { posts },
   }
 }
+
+export default Blog

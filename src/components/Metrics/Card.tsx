@@ -3,7 +3,8 @@ import React from 'react'
 
 import Link from '@/components/Link'
 
-export default function MetricCard({ header, link, metric, isCurrency }) {
+const MetricCard = (props) => {
+  const { header, link, metric, isCurrency } = props
   const theme = useMantineTheme()
   const dark = theme.colorScheme === 'dark'
 
@@ -28,13 +29,7 @@ export default function MetricCard({ header, link, metric, isCurrency }) {
       >
         {header}
       </Link>
-      <Text
-        sx={{
-          fontSize: 36,
-          fontWeight: 800,
-          lineHeight: '40px',
-        }}
-      >
+      <Text lh='40px' fz={36} fw={800}>
         {metric > 0 && isCurrency && '$'}
         {metric > 0 ? (
           metric.toLocaleString()
@@ -45,3 +40,5 @@ export default function MetricCard({ header, link, metric, isCurrency }) {
     </Card>
   )
 }
+
+export default MetricCard

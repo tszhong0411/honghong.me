@@ -5,10 +5,7 @@ import { z } from 'zod'
 
 import prisma from '@/lib/prisma'
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const ipAddress =
       req.headers['x-forwarded-for'] ||
@@ -102,3 +99,5 @@ export default async function handler(
     })
   }
 }
+
+export default handler

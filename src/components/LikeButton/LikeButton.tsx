@@ -11,7 +11,8 @@ type LikeButtonProps = {
 
 const emojis = ['❤️', '😘', '🥰']
 
-export default function LikeButton({ slug }: LikeButtonProps) {
+const LikeButton = (props: LikeButtonProps) => {
+  const { slug } = props
   const { currentUserLikes, likes, isLoading, increment } = usePostLikes(slug)
   const { classes } = useStyles()
 
@@ -91,3 +92,5 @@ export default function LikeButton({ slug }: LikeButtonProps) {
     </Center>
   )
 }
+
+export default LikeButton

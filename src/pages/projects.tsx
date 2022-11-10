@@ -7,14 +7,14 @@ import PageLayout from '@/components/Layout/PageLayout'
 import ProjectsCard from '@/components/ProjectCard'
 
 type ProjectData = {
-  [key: string]: Array<{
+  [key: string]: {
     title: string
     description: string
     href: string
-  }>
+  }[]
 }
 
-export default function Projects() {
+const Projects = () => {
   const { locale } = useRouter()
   const { t } = useTranslation('common')
 
@@ -83,3 +83,5 @@ export default function Projects() {
     </Layout>
   )
 }
+
+export default Projects

@@ -10,9 +10,14 @@ import { Favicons } from '@/components/Layout/Favicons'
 import Footer from '@/components/Layout/Footer'
 import Header from '@/components/Layout/Header'
 
-const Layout = (props: React.PropsWithChildren<NextSeoProps>) => {
+type LayoutProps = {
+  children: React.ReactNode
+} & Omit<NextSeoProps, 'children'>
+
+const Layout = (props: LayoutProps) => {
+  const { children, ...rest } = props
   const { t } = useTranslation('common')
-  const router = useRouter()
+  const { pathname } = useRouter()
 
   return (
     <>
@@ -20,14 +25,14 @@ const Layout = (props: React.PropsWithChildren<NextSeoProps>) => {
         titleTemplate='%s | 小康 Blog'
         defaultTitle='小康 – Developer, YouTuber'
         description={t('Seo.defaultDesc')}
-        canonical={`https://honghong.me${router.pathname}`}
+        canonical={`https://honghong.me${pathname}`}
         twitter={{
           cardType: 'summary_large_image',
           site: '@TszhongLai0411',
           handle: '@TszhongLai0411',
         }}
         openGraph={{
-          url: `https://honghong.me${router.pathname}`,
+          url: `https://honghong.me${pathname}`,
           type: 'website',
           title: '小康 – Developer, YouTuber',
           description: t('Seo.defaultDesc'),
@@ -41,7 +46,7 @@ const Layout = (props: React.PropsWithChildren<NextSeoProps>) => {
           ],
         }}
         additionalLinkTags={[...Favicons]}
-        {...props}
+        {...rest}
       />
       <Header />
       <Container
@@ -54,7 +59,7 @@ const Layout = (props: React.PropsWithChildren<NextSeoProps>) => {
         })}
         size={MAX_WIDTH}
       >
-        {props.children}
+        {children}
       </Container>
       <Footer />
     </>

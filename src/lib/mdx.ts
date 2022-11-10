@@ -29,7 +29,7 @@ export const dateSortDesc = (a: string, b: string) => {
 
 export const formatSlug = (slug: string) => slug.replace(/\.mdx$/, '')
 
-export async function mdxToHtml(source: string, data: PostItems) {
+const mdxToHtml = async (source: string, data: PostItems) => {
   const mdxSource = await serialize(source, {
     mdxOptions: {
       remarkPlugins: [remarkGfm, remarkImgToJsx],

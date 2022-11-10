@@ -9,7 +9,8 @@ type ProjectCardProps = {
   href: string
 }
 
-const ProjectsCard = ({ title, description, href }: ProjectCardProps) => {
+const ProjectsCard = (props: ProjectCardProps) => {
+  const { title, description, href } = props
   const { t } = useTranslation('common')
 
   return (
@@ -25,7 +26,7 @@ const ProjectsCard = ({ title, description, href }: ProjectCardProps) => {
         fullWidth
         mt='md'
         radius='md'
-        noIcon
+        icon={false}
         underline={false}
       >
         {t('visit')}

@@ -1,7 +1,7 @@
 import { NavigationProgress, setNavigationProgress } from '@mantine/nprogress'
 import React from 'react'
 
-export default function ReadingProgressBar() {
+const ReadingProgressBar = () => {
   const scrollHeight = () => {
     const el = document.documentElement,
       ScrollTop = el.scrollTop || document.body.scrollTop,
@@ -18,3 +18,5 @@ export default function ReadingProgressBar() {
 
   return <NavigationProgress autoReset={false} transitionDuration={0} />
 }
+
+export default ReadingProgressBar

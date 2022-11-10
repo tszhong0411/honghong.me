@@ -13,33 +13,35 @@ import ThemeSwitch from '@/components/Layout/Header/ThemeSwitch'
 
 import { useStyles } from './Header.styles'
 
-export default function Header() {
+const MotionNextLink = motion(Link)
+
+const Header = () => {
   const { classes, cx } = useStyles()
   const [opened, toggleOpened] = useDisclosure(false)
   const { pathname } = useRouter()
 
   const items = ({ animation }: { animation: boolean }) =>
     links.map(({ href, text }, index) => (
-      <Link key={index} href={href} passHref>
-        <motion.a
-          className={cx(classes.link, {
-            [classes.linkActive]: pathname === href,
-          })}
-          onClick={() => {
-            toggleOpened.close()
-          }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          initial={{
-            x: animation ? '-100vw' : 0,
-          }}
-          animate={{
-            x: 0,
-          }}
-        >
-          {text}
-        </motion.a>
-      </Link>
+      <MotionNextLink
+        key={index}
+        href={href}
+        className={cx(classes.link, {
+          [classes.linkActive]: pathname === href,
+        })}
+        onClick={() => {
+          toggleOpened.close()
+        }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+        initial={{
+          x: animation ? '-100vw' : 0,
+        }}
+        animate={{
+          x: 0,
+        }}
+      >
+        {text}
+      </MotionNextLink>
     ))
 
   return (
@@ -72,3 +74,5 @@ export default function Header() {
     </div>
   )
 }
+
+export default Header

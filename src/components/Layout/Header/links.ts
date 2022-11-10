@@ -3,7 +3,7 @@ type Link = {
   text: string
 }
 
-export const links: Array<Link> = [
+export const links: Link[] = [
   { href: '/blog', text: 'Blog' },
   { href: '/guestbook', text: 'Guestbook' },
   { href: '/dashboard', text: 'Dashboard' },

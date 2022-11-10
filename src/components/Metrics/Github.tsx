@@ -11,7 +11,7 @@ type Github = {
   followers: number
 }
 
-export default function GitHubCard() {
+const GithubCard = () => {
   const { data } = useSWR<Github>('/api/github', fetcher)
   const stars = new Number(data?.stars)
   const followers = new Number(data?.followers)
@@ -35,3 +35,5 @@ export default function GitHubCard() {
     </div>
   )
 }
+
+export default GithubCard

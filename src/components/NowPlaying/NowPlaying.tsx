@@ -16,7 +16,7 @@ type NowPlayingSong = {
   title: string
 }
 
-export default function NowPlaying() {
+const NowPlaying = () => {
   const { classes } = useStyles()
   const { data } = useSWR<NowPlayingSong>('/api/now-playing', fetcher)
   const { colorScheme } = useMantineTheme()
@@ -46,7 +46,6 @@ export default function NowPlaying() {
                 fontSize: 12,
                 color: dark ? 'white' : 'black',
               }}
-              noIcon
             >
               {data.title}
             </Link>
@@ -60,3 +59,5 @@ export default function NowPlaying() {
     </div>
   )
 }
+
+export default NowPlaying

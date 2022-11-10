@@ -22,6 +22,7 @@ export const useStyles = createStyles((theme) => ({
   },
 
   imageContainer: {
+    position: 'relative',
     borderRadius: 8,
     display: 'flex',
     justifyContent: 'center',

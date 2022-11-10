@@ -7,25 +7,29 @@ import { useStyles } from './Link.styles'
 
 type CustomLinkProps = {
   href: string
-  noIcon?: boolean
+  icon?: boolean
   nextLinkProps?: Omit<LinkProps, 'href'>
 } & React.ComponentPropsWithRef<'a'> &
   AnchorProps
 
 const CustomLink = React.forwardRef<HTMLAnchorElement, CustomLinkProps>(
   (props, ref) => {
-    const { href, children, noIcon, nextLinkProps, ...rest } = props
+    const { href, children, icon = true, nextLinkProps, ...rest } = props
     const isInternalLink = href && href.startsWith('/')
     const isAnchorLink = href && href.startsWith('#')
     const { classes } = useStyles()
 
     if (isInternalLink) {
       return (
-        <Link href={href} passHref {...nextLinkProps}>
-          <Anchor ref={ref} {...rest}>
-            {children}
-          </Anchor>
-        </Link>
+        <Anchor
+          component={Link}
+          href={href}
+          ref={ref}
+          {...nextLinkProps}
+          {...rest}
+        >
+          {children}
+        </Anchor>
       )
     }
 
@@ -36,6 +40,7 @@ const CustomLink = React.forwardRef<HTMLAnchorElement, CustomLinkProps>(
         </Anchor>
       )
     }
+
     return (
       <Anchor
         target='_blank'
@@ -45,7 +50,7 @@ const CustomLink = React.forwardRef<HTMLAnchorElement, CustomLinkProps>(
         {...rest}
       >
         {children}
-        {!noIcon && (
+        {icon && (
           <span>
             <IconExternalLink size={18} className={classes.externalLink} />
           </span>

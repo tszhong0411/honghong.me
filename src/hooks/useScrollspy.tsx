@@ -1,7 +1,7 @@
 import throttle from 'lodash/throttle'
 import React from 'react'
 
-export default function useScrollSpy() {
+export const useScrollSpy = () => {
   const [activeSection, setActiveSection] = React.useState<string | null>(null)
   const throttleMs = 100
 

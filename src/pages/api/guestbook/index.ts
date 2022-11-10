@@ -3,10 +3,7 @@ import { getSession } from 'next-auth/react'
 
 import prisma from '@/lib/prisma'
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'GET') {
     const entries = await prisma.guestbook.findMany({
       orderBy: {
@@ -53,3 +50,5 @@ export default async function handler(
 
   return res.send('Method not allowed.')
 }
+
+export default handler

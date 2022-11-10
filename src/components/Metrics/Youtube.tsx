@@ -11,7 +11,7 @@ type YouTube = {
   viewCount: number
 }
 
-export default function YouTubeCard() {
+const YoutubeCard = () => {
   const { data } = useSWR<YouTube>('/api/youtube', fetcher)
 
   const subscriberCount = new Number(data?.subscriberCount)
@@ -36,3 +36,5 @@ export default function YouTubeCard() {
     </div>
   )
 }
+
+export default YoutubeCard

@@ -9,13 +9,13 @@ import PageLayout from '@/components/Layout/PageLayout'
 import MDXComponents from '@/components/MDXComponents'
 import Typography from '@/components/Typography'
 
-export type PageFrontMatter = {
+type PageFrontMatter = {
   title: string
   description: string
   slug: string
 }
 
-export default function About({ page }) {
+const About = ({ page }) => {
   const { title, description } = page.frontMatter as PageFrontMatter
 
   return (
@@ -43,3 +43,5 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     props: { page },
   }
 }
+
+export default About

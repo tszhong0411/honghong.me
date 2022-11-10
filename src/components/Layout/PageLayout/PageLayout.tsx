@@ -4,15 +4,13 @@ import React from 'react'
 import { useStyles } from './PageLayout.styles'
 
 type PageLayoutProps = {
+  children: React.ReactNode
   title: string
   description: string
 }
 
-export default function PageLayout({
-  children,
-  title,
-  description,
-}: React.PropsWithChildren<PageLayoutProps>) {
+const PageLayout = (props: PageLayoutProps) => {
+  const { children, title, description } = props
   const { classes } = useStyles()
 
   return (
@@ -25,3 +23,5 @@ export default function PageLayout({
     </div>
   )
 }
+
+export default PageLayout

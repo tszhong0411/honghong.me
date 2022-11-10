@@ -12,13 +12,8 @@ type TOCLinkProps = {
   activeSection: string | null
 }
 
-export const TOCLink = ({
-  id,
-  level,
-  minLevel,
-  text,
-  activeSection,
-}: TOCLinkProps) => {
+export const TOCLink = (props: TOCLinkProps) => {
+  const { id, level, minLevel, text, activeSection } = props
   const { classes, cx } = useStyles()
 
   return (

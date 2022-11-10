@@ -51,10 +51,10 @@ const useStyles = createStyles((theme) => ({
   },
 }))
 
-export default function FiveZeroZero() {
+const FiveZeroZero = () => {
   const { classes } = useStyles()
   const { t } = useTranslation('common')
-  const router = useRouter()
+  const { reload } = useRouter()
 
   return (
     <Layout>
@@ -66,7 +66,7 @@ export default function FiveZeroZero() {
             {t('500.description')}
           </Text>
           <Group position='center'>
-            <Button variant='subtle' size='md' onClick={() => router.reload()}>
+            <Button variant='subtle' size='md' onClick={() => reload()}>
               {t('500.button')}
             </Button>
           </Group>
@@ -75,3 +75,5 @@ export default function FiveZeroZero() {
     </Layout>
   )
 }
+
+export default FiveZeroZero

@@ -10,7 +10,7 @@ type ImageNode = {
   attributes: (Literal & { name: string })[]
 } & Parent
 
-export default function remarkImgToJsx() {
+const remarkImgToJsx = () => {
   return (tree: Node) => {
     visit(
       tree,
@@ -53,3 +53,5 @@ export default function remarkImgToJsx() {
     )
   }
 }
+
+export default remarkImgToJsx

@@ -6,7 +6,7 @@ export const config = {
   runtime: 'experimental-edge',
 }
 
-export default async function handler(req: NextRequest) {
+const handler = async (req: NextRequest) => {
   const { searchParams } = req.nextUrl
   const title = searchParams.get('title')
   const description = searchParams.get('description')
@@ -126,3 +126,5 @@ export default async function handler(req: NextRequest) {
     }
   )
 }
+
+export default handler

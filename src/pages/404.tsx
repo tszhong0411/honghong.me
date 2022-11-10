@@ -51,7 +51,7 @@ const useStyles = createStyles((theme) => ({
   },
 }))
 
-export default function FourZeroFour() {
+const FourZeroFour = () => {
   const { classes } = useStyles()
   const { t } = useTranslation('common')
 
@@ -87,3 +87,5 @@ export default function FourZeroFour() {
     </Layout>
   )
 }
+
+export default FourZeroFour

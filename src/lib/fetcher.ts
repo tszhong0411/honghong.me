@@ -1,8 +1,10 @@
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default async function fetcher<JSON = any>(
+const fetcher = async <JSON = any>(
   input: RequestInfo,
   init?: RequestInit
-): Promise<JSON> {
+): Promise<JSON> => {
   const res = await fetch(input, init)
   return res.json()
 }
+
+export default fetcher

@@ -40,6 +40,8 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   }
 }
 
-export default function RSSFeed() {
+const RSSFeed = () => {
   return null
 }
+
+export default RSSFeed

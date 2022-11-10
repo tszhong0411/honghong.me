@@ -29,21 +29,21 @@ import Analytics from '@/components/Analytics/Analytics'
 
 import { GlobalStyles } from '@/GlobalStyles'
 
-export default function App(props: AppProps & { colorScheme: ColorScheme }) {
+const App = (props: AppProps & { colorScheme: ColorScheme }) => {
   const { Component, pageProps } = props
   const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
     key: 'mantine-color-scheme',
     defaultValue: 'light',
     getInitialValueInEffect: true,
   })
-  const router = useRouter()
+  const { push } = useRouter()
 
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'))
 
   useHotkeys([['mod+J', () => toggleColorScheme()]])
 
-  const actions: Array<SpotlightAction> = [
+  const actions: SpotlightAction[] = [
     {
       title: 'Copy URL',
       group: 'GENERAL',
@@ -68,25 +68,25 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
     {
       title: 'Home',
       group: 'GO TO',
-      onTrigger: () => router.push('/'),
+      onTrigger: () => push('/'),
       icon: <IconHome />,
     },
     {
       title: 'Blog',
       group: 'GO TO',
-      onTrigger: () => router.push('/blog'),
+      onTrigger: () => push('/blog'),
       icon: <IconPencil />,
     },
     {
       title: 'Projects',
       group: 'GO TO',
-      onTrigger: () => router.push('/projects'),
+      onTrigger: () => push('/projects'),
       icon: <IconBulb />,
     },
     {
       title: 'About',
       group: 'GO TO',
-      onTrigger: () => router.push('/about'),
+      onTrigger: () => push('/about'),
       icon: <IconUser />,
     },
     {
@@ -142,3 +142,5 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
     </SessionProvider>
   )
 }
+
+export default App

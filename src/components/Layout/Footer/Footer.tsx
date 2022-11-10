@@ -9,7 +9,7 @@ import NowPlaying from '@/components/NowPlaying'
 
 import { useStyles } from './Footer.styles'
 
-export default function Footer() {
+const Footer = () => {
   const { locale, defaultLocale } = useRouter()
   const { classes } = useStyles()
   const { colorScheme } = useMantineTheme()
@@ -96,3 +96,5 @@ export default function Footer() {
     </footer>
   )
 }
+
+export default Footer

@@ -7,7 +7,7 @@ import Guestbook from '@/components/Guestbook'
 import Layout from '@/components/Layout'
 import PageLayout from '@/components/Layout/PageLayout'
 
-export default function GuestbookPage({ fallbackData }) {
+const GuestbookPage = ({ fallbackData }) => {
   const { t } = useTranslation('common')
 
   return (
@@ -40,3 +40,5 @@ export const getStaticProps: GetStaticProps = async () => {
     revalidate: 60,
   }
 }
+
+export default GuestbookPage

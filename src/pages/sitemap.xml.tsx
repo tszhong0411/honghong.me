@@ -1,7 +1,9 @@
+import { GetServerSideProps } from 'next'
+
 import { formatSlug, getFileSlugs } from '@/lib/mdx'
 
 const createSitemap = (
-  slugs: Array<string>
+  slugs: string[]
 ) => `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
         ${slugs
@@ -16,7 +18,7 @@ const createSitemap = (
     </urlset>
 `
 
-export async function getServerSideProps({ res }) {
+export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const slugs = getFileSlugs('blog', 'zh-TW')
   const allPages = [
     ...slugs.map((slug) => `blog/${slug}`),
@@ -44,6 +46,8 @@ export async function getServerSideProps({ res }) {
   }
 }
 
-export default function Sitemap() {
+const Sitemap = () => {
   return null
 }
+
+export default Sitemap

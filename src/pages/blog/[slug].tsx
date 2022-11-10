@@ -9,7 +9,7 @@ import Typography from '@/components/Typography'
 
 import BlogLayout, { BlogPostProps } from '@/layouts/blog'
 
-export default function Blog({ post }: BlogPostProps) {
+const Blog = ({ post }: BlogPostProps) => {
   return (
     <BlogLayout post={post}>
       <Typography>
@@ -61,3 +61,5 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
     fallback: false,
   }
 }
+
+export default Blog

@@ -13,7 +13,14 @@ import { PostFrontMatter } from '@/pages/blog'
 import { useStyles } from './PostsList.styles'
 import ViewCounter from '../ViewCounter'
 
-export default function PostsList({ post }: { post: PostFrontMatter }) {
+const MotionNextLink = motion(Link)
+
+type PostsListProps = {
+  post: PostFrontMatter
+}
+
+const PostsList = (props: PostsListProps) => {
+  const { post } = props
   const { locale } = useRouter()
   const { slug, date, title, summary, image } = post
   const { classes } = useStyles()
@@ -56,51 +63,52 @@ export default function PostsList({ post }: { post: PostFrontMatter }) {
 
   return (
     <List.Item my={80}>
-      <Link href={`/blog/${slug}`}>
-        <motion.a
-          ref={ref}
-          className={classes.article}
-          initial='offscreen'
-          whileInView='onscreen'
-          viewport={{ once: true, amount: 0.8 }}
-          variants={listVariants}
+      <MotionNextLink
+        ref={ref}
+        href={`/blog/${slug}`}
+        className={classes.article}
+        initial='offscreen'
+        whileInView='onscreen'
+        viewport={{ once: true, amount: 0.8 }}
+        variants={listVariants}
+      >
+        <motion.div
+          className={classes.imageContainer}
+          animate={hovered && matches ? 'hovered' : 'initial'}
+          variants={imageVariants}
+          transition={{
+            duration: 0.3,
+          }}
         >
-          <motion.div
-            className={classes.imageContainer}
-            animate={hovered && matches ? 'hovered' : 'initial'}
-            variants={imageVariants}
-            transition={{
-              duration: 0.3,
-            }}
-          >
-            <Image
-              src={`/static/images/blog/${image}`}
-              width={1280}
-              height={720}
-              placeholder='blur'
-              blurDataURL={`/_next/image?url=/static/images/blog/${image}&w=16&q=1`}
-              alt={`${title} cover`}
-              className={classes.image}
-            />
-          </motion.div>
-          <motion.div
-            className={classes.content}
-            animate={hovered && matches ? 'hovered' : 'initial'}
-            variants={articleVariants}
-            transition={{
-              duration: 0.3,
-            }}
-          >
-            <Group spacing={8} className={classes.info}>
-              <Text>{formatDate(date, locale)}</Text>
-              {' - '}
-              <ViewCounter slug={slug} text={false} type='GET' />
-            </Group>
-            <Title order={2}>{title}</Title>
-            <Text>{summary}</Text>
-          </motion.div>
-        </motion.a>
-      </Link>
+          <Image
+            src={`/static/images/blog/${image}`}
+            width={1280}
+            height={720}
+            placeholder='blur'
+            blurDataURL={`/_next/image?url=/static/images/blog/${image}&w=16&q=1`}
+            alt={`${title} cover`}
+            className={classes.image}
+          />
+        </motion.div>
+        <motion.div
+          className={classes.content}
+          animate={hovered && matches ? 'hovered' : 'initial'}
+          variants={articleVariants}
+          transition={{
+            duration: 0.3,
+          }}
+        >
+          <Group spacing={8} className={classes.info}>
+            <Text>{formatDate(date, locale)}</Text>
+            {' - '}
+            <ViewCounter slug={slug} text={false} type='GET' />
+          </Group>
+          <Title order={2}>{title}</Title>
+          <Text>{summary}</Text>
+        </motion.div>
+      </MotionNextLink>
     </List.Item>
   )
 }
+
+export default PostsList

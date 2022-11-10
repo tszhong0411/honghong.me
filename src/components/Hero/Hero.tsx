@@ -3,11 +3,10 @@ import Image from 'next/image'
 
 import { useStyles } from './Hero.styles'
 
-export default function Hero() {
+const Hero = () => {
   const { classes } = useStyles()
-  const { colorScheme } = useMantineTheme()
   const theme = useMantineTheme()
-  const dark = colorScheme === 'dark'
+  const dark = theme.colorScheme === 'dark'
 
   return (
     <Card mb={96} p={32} className={classes.about} radius='lg' withBorder>
@@ -15,8 +14,8 @@ export default function Hero() {
         <Image
           src='/static/images/logo/logo-black.png'
           alt='Logo'
-          width={3850}
-          height={3850}
+          width={90}
+          height={90}
           className={classes.logo}
         />
       </Box>
@@ -33,3 +32,5 @@ export default function Hero() {
     </Card>
   )
 }
+
+export default Hero

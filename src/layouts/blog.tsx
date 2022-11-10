@@ -19,7 +19,7 @@ import React from 'react'
 
 import { isProduction } from '@/lib/constants'
 import formatDate from '@/lib/formatDate'
-import useScrollSpy from '@/hooks/useScrollspy'
+import { useScrollSpy } from '@/hooks/useScrollspy'
 
 import Comment from '@/components/Comment'
 import Layout from '@/components/Layout'
@@ -43,6 +43,10 @@ export type BlogPostProps = {
   post: PostProps
 }
 
+type BlogProps = {
+  children: React.ReactNode
+} & BlogPostProps
+
 const editUrl = (slug: string, locale: string) =>
   `https://github.com/tszhong0411/honghong.me/blob/main/src/data/blog/${locale}/${slug}.mdx`
 
@@ -61,10 +65,8 @@ const redditShare = (slug: string, title: string) =>
     `https://honghong.me/blog/${slug}`
   )}`
 
-export default function BlogLayout({
-  post,
-  children,
-}: React.PropsWithChildren<BlogPostProps>) {
+const BlogLayout = (props: BlogProps) => {
+  const { post, children } = props
   const { date, title, summary, slug, modifiedTime } = post.frontMatter
   const { t } = useTranslation('common')
   const { locale } = useRouter()
@@ -74,7 +76,7 @@ export default function BlogLayout({
   const [toc, setToc] = React.useState<HeadingScrollSpy>()
   const minLevel =
     toc?.reduce((min, item) => (item.level < min ? item.level : min), 10) ?? 0
-  const router = useRouter()
+  const { pathname } = useRouter()
   const { colorScheme } = useMantineColorScheme()
   const dark = colorScheme === 'dark'
 
@@ -135,7 +137,7 @@ export default function BlogLayout({
       }}
     >
       <ArticleJsonLd
-        url={`https://honghong.me${router.pathname}`}
+        url={`https://honghong.me${pathname}`}
         title={title}
         datePublished={date}
         modifiedTime={ISOModifiedTime}
@@ -235,3 +237,5 @@ export default function BlogLayout({
     </Layout>
   )
 }
+
+export default BlogLayout

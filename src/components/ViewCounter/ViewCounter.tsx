@@ -11,11 +11,8 @@ type ViewCounterTypes = {
   type?: 'GET' | 'POST'
 }
 
-export default function ViewCounter({
-  slug,
-  text = true,
-  type = 'POST',
-}: ViewCounterTypes) {
+const ViewCounter = (props: ViewCounterTypes) => {
+  const { slug, text = true, type = 'POST' } = props
   const { views: postViews, isLoading, isError, increment } = usePostViews(slug)
 
   const { t } = useTranslation('common')
@@ -34,7 +31,7 @@ export default function ViewCounter({
         ) : (
           <Group spacing={4}>
             <IconEye size={20} />
-            <Text sx={{ lineHeight: '20px' }}>{views}</Text>
+            <Text lh='20px'>{views}</Text>
           </Group>
         )
       ) : (
@@ -48,3 +45,5 @@ export default function ViewCounter({
     </>
   )
 }
+
+export default ViewCounter

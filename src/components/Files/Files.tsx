@@ -7,20 +7,21 @@ import { useStyles } from './Files.styles'
 type Node = {
   name: string
   isHighlighted?: boolean
-  children?: Array<Node>
+  children?: Node[]
 }
 
 type FilesProps = {
-  data: Array<Node>
+  data: Node[]
   title?: string
 }
 
 type InnerProps = {
-  data: Array<Node>
+  data: Node[]
   lvl: number
 }
 
-export default function Files({ data, title }: FilesProps) {
+const Files = (props: FilesProps) => {
+  const { data, title } = props
   const { classes, cx } = useStyles()
 
   return (
@@ -33,7 +34,8 @@ export default function Files({ data, title }: FilesProps) {
   )
 }
 
-const Inner = ({ data, lvl }: InnerProps) => {
+const Inner = (props: InnerProps) => {
+  const { data, lvl } = props
   const { classes, cx } = useStyles()
 
   return (
@@ -67,3 +69,5 @@ const Inner = ({ data, lvl }: InnerProps) => {
     </>
   )
 }
+
+export default Files

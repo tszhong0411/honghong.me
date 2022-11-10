@@ -8,8 +8,8 @@ import React from 'react'
 
 import { useStyles } from '../Header.styles'
 
-export default function LanguageSwitch() {
-  const router = useRouter()
+const LanguageSwitch = () => {
+  const { locale: routerLocale, locales } = useRouter()
   const [locale, setLocale] = useLocalStorage({ key: 'locale' })
   const { t } = useTranslation('common')
   const { classes } = useStyles()
@@ -20,11 +20,11 @@ export default function LanguageSwitch() {
     }
 
     if (locale) {
-      if (locale !== router.locale) {
+      if (locale !== routerLocale) {
         redirect()
       }
     }
-  }, [locale, router])
+  }, [locale, routerLocale])
 
   const changeLanguage = async (locale: string) => {
     setLocale(locale)
@@ -66,7 +66,7 @@ export default function LanguageSwitch() {
 
       <Menu.Dropdown>
         <Menu.Label>{t('language')}</Menu.Label>
-        {router.locales.map((item: string, index: number) => {
+        {locales.map((item: string, index: number) => {
           const name = languages[item].name
 
           return (
@@ -79,3 +79,5 @@ export default function LanguageSwitch() {
     </Menu>
   )
 }
+
+export default LanguageSwitch

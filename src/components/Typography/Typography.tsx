@@ -1,7 +1,12 @@
 import { Box, useMantineTheme } from '@mantine/core'
 import React from 'react'
 
-export default function Typography({ children }: React.PropsWithChildren) {
+type TypographyProps = {
+  children: React.ReactNode
+}
+
+const Typography = (props: TypographyProps) => {
+  const { children } = props
   const { colorScheme } = useMantineTheme()
   const dark = colorScheme === 'dark'
 
@@ -144,3 +149,5 @@ export default function Typography({ children }: React.PropsWithChildren) {
     </Box>
   )
 }
+
+export default Typography

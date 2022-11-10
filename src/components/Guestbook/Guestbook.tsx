@@ -25,7 +25,7 @@ import fetcher from '@/lib/fetcher'
 import formatDate from '@/lib/formatDate'
 
 import { useStyles } from './Guestbook.styles'
-import SignInModal from '../SignInModal'
+import Modal from './Modal'
 
 type entryProps = {
   body: string
@@ -34,7 +34,7 @@ type entryProps = {
   updated_at: string
 }
 
-function GuestbookEntry({ entry, user }) {
+const GuestbookEntry = ({ entry, user }) => {
   const { mutate } = useSWRConfig()
   const { t } = useTranslation('common')
   const { locale } = useRouter()
@@ -114,7 +114,7 @@ function GuestbookEntry({ entry, user }) {
   )
 }
 
-export default function Guestbook({ fallbackData }) {
+const Guestbook = ({ fallbackData }) => {
   const [loading, setLoading] = React.useState(false)
   const [opened, setOpened] = React.useState(false)
   const { data: session } = useSession()
@@ -262,7 +262,7 @@ export default function Guestbook({ fallbackData }) {
           ))}
         </Stack>
       </div>
-      <SignInModal
+      <Modal
         opened={opened}
         onClose={() => setOpened(false)}
         title={t('Guestbook.continue')}
@@ -270,3 +270,5 @@ export default function Guestbook({ fallbackData }) {
     </>
   )
 }
+
+export default Guestbook

@@ -17,7 +17,7 @@ import { PostFrontMatter } from './blog'
 
 export const MAX_DISPLAY = 3
 
-export default function Home({ posts }: { posts: Array<PostFrontMatter> }) {
+const Home = ({ posts }: { posts: PostFrontMatter[] }) => {
   const { t } = useTranslation('common')
   const { hovered, ref } = useHover<HTMLAnchorElement>()
 
@@ -45,7 +45,6 @@ export default function Home({ posts }: { posts: Array<PostFrontMatter> }) {
               <IconArrowRight size={20} />
             </motion.div>
           }
-          noIcon
           underline={false}
         >
           {t('allPosts')}
@@ -62,3 +61,5 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     props: { posts },
   }
 }
+
+export default Home

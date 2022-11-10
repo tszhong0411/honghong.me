@@ -1,9 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const userResponse = await fetch('https://api.github.com/users/tszhong0411')
   const userReposResponse = await fetch(
     'https://api.github.com/users/tszhong0411/repos?per_page=100'
@@ -27,3 +24,5 @@ export default async function handler(
     stars,
   })
 }
+
+export default handler

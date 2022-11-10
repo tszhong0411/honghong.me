@@ -5,7 +5,7 @@ import Logo from '@/components/Logo'
 
 import { useStyles } from './HeaderLogo.styles'
 
-export default function HeaderLogo() {
+const HeaderLogo = () => {
   const { classes } = useStyles()
 
   return (
@@ -15,3 +15,5 @@ export default function HeaderLogo() {
     </Link>
   )
 }
+
+export default HeaderLogo

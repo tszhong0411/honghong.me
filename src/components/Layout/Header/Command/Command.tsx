@@ -5,7 +5,7 @@ import useTranslation from 'next-translate/useTranslation'
 
 import { useStyles } from '../Header.styles'
 
-export default function Command() {
+const Command = () => {
   const { classes } = useStyles()
   const { t } = useTranslation('common')
   const { openSpotlight } = useSpotlight()
@@ -24,3 +24,5 @@ export default function Command() {
     </Tooltip>
   )
 }
+
+export default Command
