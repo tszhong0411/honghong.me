@@ -7,6 +7,11 @@ export const GlobalStyles: (theme: MantineThemeBase) => CSSObject = (
     scrollBehavior: 'smooth',
   },
 
+  'img, video': {
+    maxWidth: '100%',
+    height: 'auto',
+  },
+
   '::selection': {
     background: 'rgb(249, 6, 6, 0.05)',
     color: '#f90606',
