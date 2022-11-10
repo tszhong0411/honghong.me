@@ -135,7 +135,7 @@ export default function BlogLayout({
       }}
     >
       <ArticleJsonLd
-        url={`https://honghong.me${router.asPath}`}
+        url={`https://honghong.me${router.pathname}`}
         title={title}
         datePublished={date}
         modifiedTime={ISOModifiedTime}

@@ -20,14 +20,14 @@ const Layout = (props: React.PropsWithChildren<NextSeoProps>) => {
         titleTemplate='%s | 小康 Blog'
         defaultTitle='小康 – Developer, YouTuber'
         description={t('Seo.defaultDesc')}
-        canonical={`https://honghong.me${router.asPath}`}
+        canonical={`https://honghong.me${router.pathname}`}
         twitter={{
           cardType: 'summary_large_image',
           site: '@TszhongLai0411',
           handle: '@TszhongLai0411',
         }}
         openGraph={{
-          url: `https://honghong.me${router.asPath}`,
+          url: `https://honghong.me${router.pathname}`,
           type: 'website',
           title: '小康 – Developer, YouTuber',
           description: t('Seo.defaultDesc'),

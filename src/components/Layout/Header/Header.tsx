@@ -16,14 +16,14 @@ import { useStyles } from './Header.styles'
 export default function Header() {
   const { classes, cx } = useStyles()
   const [opened, toggleOpened] = useDisclosure(false)
-  const { asPath } = useRouter()
+  const { pathname } = useRouter()
 
   const items = ({ animation }: { animation: boolean }) =>
     links.map(({ href, text }, index) => (
       <Link key={index} href={href} passHref>
         <motion.a
           className={cx(classes.link, {
-            [classes.linkActive]: asPath === href,
+            [classes.linkActive]: pathname === href,
           })}
           onClick={() => {
             toggleOpened.close()
