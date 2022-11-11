@@ -129,7 +129,7 @@ const BlogLayout = (props: BlogProps) => {
         },
         images: [
           {
-            url: `https://honghong.me/api/og?title=${title}&publishDate=${date}`,
+            url: `https://honghong.me/api/og?title=${title}&date=${date}`,
             alt: title,
             width: 1200,
             height: 630,
@@ -151,9 +151,7 @@ const BlogLayout = (props: BlogProps) => {
         publisherLogo='https://honghong.me/static/images/logo/logo-black.png'
         publisherName='小康'
         type='Article'
-        images={[
-          `https://honghong.me/api/og?title=${title}&publishDate=${date}`,
-        ]}
+        images={[`https://honghong.me/api/og?title=${title}&date=${date}`]}
       />
       <ScrollTopAndComment />
       <time dateTime={ISOPublishedTime}>{formattedDate}</time>

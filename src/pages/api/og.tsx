@@ -39,7 +39,7 @@ const handler = async (req: NextRequest) => {
             alignItems: 'center',
           }}
         >
-          <img
+          {/* <img
             src={image}
             style={{
               borderRadius: '50%',
@@ -47,7 +47,7 @@ const handler = async (req: NextRequest) => {
               height: '85px',
             }}
             alt='logo'
-          />
+          /> */}
           <div
             style={{
               fontSize: '32px',
@@ -58,7 +58,7 @@ const handler = async (req: NextRequest) => {
             {author}
           </div>
         </div>
-        {/* <div
+        <div
           style={{
             display: 'flex',
             flexDirection: 'column',
@@ -82,7 +82,7 @@ const handler = async (req: NextRequest) => {
           >
             {url} · {date}
           </p>
-        </div> */}
+        </div>
       </div>
     ),
     {
