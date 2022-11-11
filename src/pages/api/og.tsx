@@ -12,9 +12,6 @@ const handler = async (req: NextRequest) => {
   const title = searchParams.get('title')
   const url = searchParams.get('url') ?? 'honghong.me'
   const author = searchParams.get('author') ?? '小康'
-  const image =
-    searchParams.get('image') ??
-    'https://honghong.me/static/images/logo/logo-black.png'
   const date = dayjs(searchParams.get('date')).format('DD MMMM YYYY')
 
   return new ImageResponse(
@@ -40,12 +37,12 @@ const handler = async (req: NextRequest) => {
           }}
         >
           <img
-            src={image}
-            // style={{
-            //   borderRadius: '50%',
-            //   width: '85px',
-            //   height: '85px',
-            // }}
+            src='https://honghong.me/static/images/logo/logo-black.png'
+            style={{
+              borderRadius: '50%',
+              width: '85px',
+              height: '85px',
+            }}
             alt='logo'
           />
           <div
