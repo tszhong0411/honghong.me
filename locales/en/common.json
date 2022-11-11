@@ -50,7 +50,7 @@
   },
   "500": {
     "title": "Something bad just happened...",
-    "description": "Our servers could not handle your request. Don&apos;t worry, our development team was already notified. Try refreshing the page.",
+    "description": "Our servers could not handle your request. Don't worry, our development team was already notified. Try refreshing the page.",
     "button": "Refresh the page"
   }
 }

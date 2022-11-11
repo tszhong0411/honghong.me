@@ -1,4 +1,4 @@
-import { Affix, Button, Stack, Transition } from '@mantine/core'
+import { Affix, Button, Flex, Transition } from '@mantine/core'
 import { useWindowScroll } from '@mantine/hooks'
 import { IconArrowUp, IconBrandHipchat } from '@tabler/icons'
 import React from 'react'
@@ -10,7 +10,7 @@ const ScrollTopAndComment = () => {
     <Affix position={{ bottom: 20, right: 20 }}>
       <Transition transition='slide-up' mounted={scroll.y > 0}>
         {(transitionStyles) => (
-          <Stack spacing='xs' style={transitionStyles}>
+          <Flex direction='column' gap='xs' style={transitionStyles}>
             <Button
               onClick={() =>
                 scrollTo({
@@ -31,7 +31,7 @@ const ScrollTopAndComment = () => {
             >
               <IconArrowUp size={25} />
             </Button>
-          </Stack>
+          </Flex>
         )}
       </Transition>
     </Affix>

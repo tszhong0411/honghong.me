@@ -1,4 +1,4 @@
-import { ActionIcon, Center, Group, Skeleton, Text } from '@mantine/core'
+import { ActionIcon, Center, Flex, Skeleton, Text } from '@mantine/core'
 import { motion } from 'framer-motion'
 
 import { usePostLikes } from '@/hooks/usePostLikes'
@@ -18,7 +18,7 @@ const LikeButton = (props: LikeButtonProps) => {
 
   return (
     <Center mt={40}>
-      <Group noWrap>
+      <Flex align='center' wrap='nowrap' gap={16}>
         <ActionIcon
           size='xl'
           variant='transparent'
@@ -88,7 +88,7 @@ const LikeButton = (props: LikeButtonProps) => {
         ) : (
           <Skeleton width={50} height={25} />
         )}
-      </Group>
+      </Flex>
     </Center>
   )
 }

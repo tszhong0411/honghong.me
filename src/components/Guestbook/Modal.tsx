@@ -1,9 +1,9 @@
 import {
   Button,
+  Flex,
   LoadingOverlay,
   Modal as MantineModal,
   ModalProps as MantineModalProps,
-  Stack,
   Text,
 } from '@mantine/core'
 import { IconBrandGithub, IconBrandGoogle, TablerIcon } from '@tabler/icons'
@@ -53,7 +53,7 @@ const Modal = (props: ModalProps) => {
       size='lg'
       centered
     >
-      <Stack my={40}>
+      <Flex direction='column' gap={16} my={40}>
         <LoadingOverlay visible={visible} overlayBlur={3} />
         {Providers.map(({ name, provider, icon: Icon }) => (
           <Button
@@ -73,7 +73,7 @@ const Modal = (props: ModalProps) => {
             {t('signInWith', { provider: name })}
           </Button>
         ))}
-      </Stack>
+      </Flex>
       <Text size='sm' my={16} align='center'>
         {t('Guestbook.tip')}
       </Text>

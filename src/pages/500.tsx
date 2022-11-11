@@ -2,7 +2,7 @@ import {
   Button,
   Container,
   createStyles,
-  Group,
+  Flex,
   Text,
   Title,
 } from '@mantine/core'
@@ -65,11 +65,11 @@ const FiveZeroZero = () => {
           <Text size='lg' align='center' className={classes.description}>
             {t('500.description')}
           </Text>
-          <Group position='center'>
-            <Button variant='subtle' size='md' onClick={() => reload()}>
+          <Flex justify='center'>
+            <Button variant='light' size='md' onClick={() => reload()}>
               {t('500.button')}
             </Button>
-          </Group>
+          </Flex>
         </Container>
       </div>
     </Layout>
