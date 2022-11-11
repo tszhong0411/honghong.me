@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { ImageResponse } from '@vercel/og'
+import dayjs from 'dayjs'
 import { NextRequest } from 'next/server'
 
 export const config = {
@@ -9,13 +10,12 @@ export const config = {
 const handler = async (req: NextRequest) => {
   const { searchParams } = req.nextUrl
   const title = searchParams.get('title')
-  const description = searchParams.get('description')
   const url = searchParams.get('url') ?? 'honghong.me'
-  const username = searchParams.get('username') ?? '@tszhong0411'
+  const author = searchParams.get('author') ?? '小康'
   const image =
     searchParams.get('image') ??
     'https://honghong.me/static/images/logo/logo-black.png'
-  const author = searchParams.get('author') ?? '小康'
+  const date = dayjs(searchParams.get('date')).format('DD MMMM YYYY')
 
   return new ImageResponse(
     (
@@ -26,96 +26,61 @@ const handler = async (req: NextRequest) => {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          alignItems: 'center',
-          backgroundColor: '#151515',
           color: '#fff',
-          textAlign: 'center',
           padding: '64px 48px',
-          backgroundImage: 'url(https://honghong.me/static/images/og/bg.svg)',
+          backgroundImage:
+            'url(https://honghong.me/static/images/og/gradient_bg.png)',
         }}
       >
         <div
           style={{
-            width: '100%',
             display: 'flex',
+            justifyContent: 'center',
             alignItems: 'center',
           }}
         >
           <img
             src={image}
+            alt='logo'
+            width='85'
+            height='85'
             style={{
               borderRadius: '50%',
-              width: '96px',
-              height: '96px',
-              marginRight: '24px',
             }}
-            alt='Logo'
           />
-          <span
+          <div
             style={{
-              fontWeight: 700,
-              fontSize: '30px',
-              lineHeight: '36px',
+              fontSize: '32px',
+              marginLeft: '16px',
+              fontWeight: '900',
             }}
           >
             {author}
-          </span>
+          </div>
         </div>
         <div
           style={{
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
           }}
         >
-          <h1
+          <p
             style={{
-              backgroundClip: 'text',
-              fontWeight: 700,
-              fontSize: '56px',
-              backgroundImage: 'linear-gradient(#ff416c)',
-              color: 'transparent',
+              fontSize: '44px',
+              fontWeight: '900',
+              color: 'rgb(236, 237, 238)',
             }}
           >
             {title}
-          </h1>
-          <p
-            style={{
-              fontWeight: 700,
-              color: '#f3f4f6',
-              fontSize: '32px',
-              margin: '0',
-            }}
-          >
-            {description}
-          </p>
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            width: '100%',
-          }}
-        >
-          <p
-            style={{
-              fontSize: '30px',
-              lineHeight: '36px',
-              color: '#f3f4f6',
-            }}
-          >
-            {url}
           </p>
           <p
             style={{
-              fontSize: '30px',
-              lineHeight: '36px',
-              color: '#f3f4f6',
+              fontSize: '36px',
+              fontWeight: '700',
+              color: 'rgba(236, 237, 238, 0.7)',
             }}
           >
-            {username}
+            {url} · {date}
           </p>
         </div>
       </div>
