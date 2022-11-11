@@ -32,7 +32,7 @@ const handler = async (req: NextRequest) => {
             'url(https://honghong.me/static/images/og/gradient_bg.png)',
         }}
       >
-        <div
+        {/* <div
           style={{
             display: 'flex',
             justifyContent: 'center',
@@ -82,7 +82,7 @@ const handler = async (req: NextRequest) => {
           >
             {url} · {date}
           </p>
-        </div>
+        </div> */}
       </div>
     ),
     {
