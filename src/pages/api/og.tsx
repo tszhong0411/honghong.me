@@ -29,23 +29,23 @@ const handler = async (req: NextRequest) => {
             'url(https://honghong.me/static/images/og/gradient_bg.png)',
         }}
       >
-        <div
+        {/* <div
           style={{
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
           }}
-        >
-          <img
-            src='https://honghong.me/static/images/logo/logo-black.png'
-            style={{
-              borderRadius: '50%',
-              width: '85px',
-              height: '85px',
-            }}
-            alt='logo'
-          />
-          <div
+        > */}
+        <img
+          width={85}
+          height={85}
+          src='https://honghong.me/static/images/logo/logo-black.png'
+          style={{
+            borderRadius: '50%',
+          }}
+          alt='logo'
+        />
+        {/* <div
             style={{
               fontSize: '32px',
               marginLeft: '16px',
@@ -79,7 +79,7 @@ const handler = async (req: NextRequest) => {
           >
             {url} · {date}
           </p>
-        </div>
+        </div> */}
       </div>
     ),
     {
