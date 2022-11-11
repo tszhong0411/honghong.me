@@ -18,7 +18,7 @@ import useTranslation from 'next-translate/useTranslation'
 import React from 'react'
 
 import { isProduction } from '@/lib/constants'
-import formatDate from '@/lib/formatDate'
+import useFormattedDate from '@/hooks/useFormattedDate'
 import { useScrollSpy } from '@/hooks/useScrollspy'
 
 import Comment from '@/components/Comment'
@@ -83,6 +83,8 @@ const BlogLayout = (props: BlogProps) => {
   const ISOPublishedTime = new Date(date).toISOString()
   const ISOModifiedTime = new Date(modifiedTime).toISOString()
 
+  const formattedDate = useFormattedDate(new Date(ISOPublishedTime), locale)
+
   React.useEffect(() => {
     const headings = document.querySelectorAll(
       '#blog-content h2, #blog-content h3'
@@ -127,7 +129,7 @@ const BlogLayout = (props: BlogProps) => {
         },
         images: [
           {
-            url: `https://honghong.me/api/og?title=${title}&description=${summary}`,
+            url: `https://honghong.me/api/og?title=${title}&date=${date}`,
             alt: title,
             width: 1200,
             height: 630,
@@ -149,14 +151,10 @@ const BlogLayout = (props: BlogProps) => {
         publisherLogo='https://honghong.me/static/images/logo/logo-black.png'
         publisherName='小康'
         type='Article'
-        images={[
-          `https://honghong.me/api/og?title=${title}&description=${summary}`,
-        ]}
+        images={[`https://honghong.me/api/og?title=${title}&date=${date}`]}
       />
       <ScrollTopAndComment />
-      <time dateTime={ISOPublishedTime}>
-        {formatDate(new Date(ISOPublishedTime), locale)}
-      </time>
+      <time dateTime={ISOPublishedTime}>{formattedDate}</time>
       <Title order={1} mb={16}>
         {title}
       </Title>
