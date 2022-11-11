@@ -15,7 +15,7 @@ const handler = async (req: NextRequest) => {
   const image =
     searchParams.get('image') ??
     'https://honghong.me/static/images/logo/logo-black.png'
-  const date = dayjs(searchParams.get('date')).format('DD MMMM YYYY')
+  const date = dayjs(searchParams.get('publishDate')).format('DD MMMM YYYY')
 
   return new ImageResponse(
     (
