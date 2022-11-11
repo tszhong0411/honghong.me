@@ -39,7 +39,7 @@ const handler = async (req: NextRequest) => {
             alignItems: 'center',
           }}
         >
-          <img
+          {/* <img
             src={image}
             alt='logo'
             width='85'
@@ -47,7 +47,7 @@ const handler = async (req: NextRequest) => {
             style={{
               borderRadius: '50%',
             }}
-          />
+          /> */}
           <div
             style={{
               fontSize: '32px',
