@@ -22,7 +22,7 @@
 - **Authentication**: [NextAuth.js](https://next-auth.js.org/)
 - **Deployment**: [Vercel](https://vercel.com)
 - **Comment**: [Giscus](https://giscus.app/)
-- **favicon**: [realfavicongenerator](https://realfavicongenerator.net/)
+- **Favicon**: [realfavicongenerator](https://realfavicongenerator.net/)
 - **Content**: [MDX](https://mdxjs.com/)
 - **Analytics**: [Umami](https://umami.is/)
 - **UI**: [Mantine](https://mantine.dev)
