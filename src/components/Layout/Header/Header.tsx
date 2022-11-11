@@ -1,4 +1,4 @@
-import { Burger, Group, Paper, Transition } from '@mantine/core'
+import { Burger, Paper, Transition } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
@@ -64,9 +64,9 @@ const Header = () => {
         </Transition>
       </div>
       <div className={classes.headerRight}>
-        <Group spacing={5} className={classes.links}>
+        <div className={classes.links}>
           {items({ animation: false }).slice(0, 4)}
-        </Group>
+        </div>
         <Command />
         <ThemeSwitch />
         <LanguageSwitch />

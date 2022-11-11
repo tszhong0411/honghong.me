@@ -1,4 +1,4 @@
-import { Group, List, Text, Title } from '@mantine/core'
+import { Flex, List, Text, Title } from '@mantine/core'
 import { useHover, useMediaQuery } from '@mantine/hooks'
 import { motion, Variants } from 'framer-motion'
 import Image from 'next/image'
@@ -98,11 +98,11 @@ const PostsList = (props: PostsListProps) => {
             duration: 0.3,
           }}
         >
-          <Group spacing={8} className={classes.info}>
+          <Flex gap={8} align='center' className={classes.info}>
             <Text>{formatDate(date, locale)}</Text>
             {' - '}
             <ViewCounter slug={slug} text={false} type='GET' />
-          </Group>
+          </Flex>
           <Title order={2}>{title}</Title>
           <Text>{summary}</Text>
         </motion.div>

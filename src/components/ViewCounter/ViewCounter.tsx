@@ -1,4 +1,4 @@
-import { Group, Skeleton, Text } from '@mantine/core'
+import { Flex, Skeleton, Text } from '@mantine/core'
 import { IconEye } from '@tabler/icons'
 import useTranslation from 'next-translate/useTranslation'
 import React from 'react'
@@ -29,10 +29,10 @@ const ViewCounter = (props: ViewCounterTypes) => {
         text ? (
           <Text>{`${views} ${t('views')}`}</Text>
         ) : (
-          <Group spacing={4}>
+          <Flex gap={4}>
             <IconEye size={20} />
             <Text lh='20px'>{views}</Text>
-          </Group>
+          </Flex>
         )
       ) : (
         <Skeleton

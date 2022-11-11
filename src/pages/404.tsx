@@ -2,7 +2,7 @@ import {
   Button,
   Container,
   createStyles,
-  Group,
+  Flex,
   Text,
   Title,
 } from '@mantine/core'
@@ -68,9 +68,9 @@ const FourZeroFour = () => {
         >
           {t('404.description')}
         </Text>
-        <Group position='center'>
+        <Flex justify='center'>
           <Button
-            variant='subtle'
+            variant='light'
             size='md'
             component={Link}
             href='/'
@@ -82,7 +82,7 @@ const FourZeroFour = () => {
           >
             {t('404.button')}
           </Button>
-        </Group>
+        </Flex>
       </Container>
     </Layout>
   )

@@ -3,10 +3,9 @@ import {
   Box,
   Button,
   Divider,
-  Group,
+  Flex,
   Paper,
   Skeleton,
-  Stack,
   Text,
   TextInput,
 } from '@mantine/core'
@@ -78,8 +77,8 @@ const GuestbookEntry = ({ entry, user }) => {
         padding: `${theme.spacing.lg}px ${theme.spacing.xl}px`,
       })}
     >
-      <Group position='apart'>
-        <Group>
+      <Flex justify='space-between'>
+        <Flex gap={16} align='center'>
           <Avatar src={entry.image} alt={entry.created_by} radius='xl' />
           <div>
             <Text size='sm'>{entry.created_by}</Text>
@@ -87,7 +86,7 @@ const GuestbookEntry = ({ entry, user }) => {
               {formatDate(new Date(entry.updated_at), locale)}
             </Text>
           </div>
-        </Group>
+        </Flex>
         {user && entry.created_by === user.name && (
           <Button
             variant='outline'
@@ -100,7 +99,7 @@ const GuestbookEntry = ({ entry, user }) => {
             {t('delete')}
           </Button>
         )}
-      </Group>
+      </Flex>
       <Box
         sx={(theme) => ({
           paddingLeft: 54,
@@ -187,7 +186,7 @@ const Guestbook = ({ fallbackData }) => {
         </Text>
         {session?.user && (
           <form onSubmit={form.onSubmit(leaveEntry)}>
-            <Group className={classes.formWrapper} position='apart'>
+            <Flex className={classes.formWrapper} justify='space-between'>
               <TextInput
                 label={t('Guestbook.message')}
                 placeholder={t('Guestbook.placeholder')}
@@ -206,7 +205,7 @@ const Guestbook = ({ fallbackData }) => {
               <Button mt={16} type='submit' className={classes.button}>
                 {t('Guestbook.sign')}
               </Button>
-            </Group>
+            </Flex>
           </form>
         )}
         {!session && (
@@ -217,8 +216,8 @@ const Guestbook = ({ fallbackData }) => {
         {session?.user && (
           <>
             <Divider mt={36} />
-            <Group my={36} position='apart'>
-              <Group>
+            <Flex justify='space-between' align='center' my={36}>
+              <Flex align='center' gap={16}>
                 <Image
                   src={session.user.image}
                   width={48}
@@ -227,11 +226,11 @@ const Guestbook = ({ fallbackData }) => {
                   className={classes.avatar}
                 />
                 <span>{session.user.name}</span>
-              </Group>
+              </Flex>
               <Button onClick={() => signOut()} className={classes.button}>
                 {t('signOut')}
               </Button>
-            </Group>
+            </Flex>
           </>
         )}
       </Paper>
@@ -246,21 +245,21 @@ const Guestbook = ({ fallbackData }) => {
             mt={20}
             mb={-20}
           >
-            <Group>
+            <Flex gap={16} align='center'>
               <Skeleton width={38} height={38} radius='xl' />
-              <Stack spacing={4}>
+              <Flex direction='column' gap={4}>
                 <Skeleton width={100} height={14} />
                 <Skeleton width={105} height={14} />
-              </Stack>
-            </Group>
+              </Flex>
+            </Flex>
             <Skeleton width={200} height={18} ml={54} mt={15} />
           </Paper>
         )}
-        <Stack my={40}>
+        <Flex direction='column' gap={16} my={40}>
           {entries?.map((entry: entryProps) => (
             <GuestbookEntry key={entry.id} entry={entry} user={session?.user} />
           ))}
-        </Stack>
+        </Flex>
       </div>
       <Modal
         opened={opened}

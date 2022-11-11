@@ -1,4 +1,4 @@
-import { Group, Text } from '@mantine/core'
+import { Flex, Text } from '@mantine/core'
 import { IconListSearch } from '@tabler/icons'
 import useTranslation from 'next-translate/useTranslation'
 import React from 'react'
@@ -51,10 +51,10 @@ const TableOfContents = (props: TableOfContentsProps) => {
 
   return (
     <div id='toc-container'>
-      <Group mb='md'>
+      <Flex mb='md' align='center' gap={16}>
         <IconListSearch size={18} />
         <Text>{t('toc')}</Text>
-      </Group>
+      </Flex>
       <div>
         {toc &&
           toc.map(({ id, level, text }) => (

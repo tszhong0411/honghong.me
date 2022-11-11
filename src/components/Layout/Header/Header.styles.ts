@@ -104,6 +104,7 @@ export const useStyles = createStyles((theme) => ({
 
   links: {
     display: 'none',
+    gap: 5,
 
     [`@media (min-width: ${HEADER_BREAKPOINT}px)`]: {
       display: 'flex',
