@@ -21,7 +21,7 @@ import React from 'react'
 import useSWR, { useSWRConfig } from 'swr'
 
 import fetcher from '@/lib/fetcher'
-import formatDate from '@/lib/formatDate'
+import useFormattedDate from '@/hooks/useFormattedDate'
 
 import { useStyles } from './Guestbook.styles'
 import Modal from './Modal'
@@ -38,6 +38,7 @@ const GuestbookEntry = ({ entry, user }) => {
   const { t } = useTranslation('common')
   const { locale } = useRouter()
   const modals = useModals()
+  const date = useFormattedDate(new Date(entry.updated_at), locale)
 
   const deleteEntry = async () => {
     await fetch(`/api/guestbook/${entry.id}`, {
@@ -83,7 +84,7 @@ const GuestbookEntry = ({ entry, user }) => {
           <div>
             <Text size='sm'>{entry.created_by}</Text>
             <Text size='xs' color='dimmed'>
-              {formatDate(new Date(entry.updated_at), locale)}
+              {date}
             </Text>
           </div>
         </Flex>
@@ -227,7 +228,11 @@ const Guestbook = ({ fallbackData }) => {
                 />
                 <span>{session.user.name}</span>
               </Flex>
-              <Button onClick={() => signOut()} className={classes.button}>
+              <Button
+                onClick={() => signOut()}
+                className={classes.button}
+                maw={100}
+              >
                 {t('signOut')}
               </Button>
             </Flex>

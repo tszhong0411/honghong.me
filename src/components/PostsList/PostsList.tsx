@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
 
-import formatDate from '@/lib/formatDate'
+import useFormattedDate from '@/hooks/useFormattedDate'
 
 import { PostFrontMatter } from '@/pages/blog'
 
@@ -26,6 +26,7 @@ const PostsList = (props: PostsListProps) => {
   const { classes } = useStyles()
   const matches = useMediaQuery('(min-width: 940px)')
   const { hovered, ref } = useHover<HTMLAnchorElement>()
+  const formattedDate = useFormattedDate(date, locale)
 
   const imageVariants: Variants = {
     initial: {
@@ -99,7 +100,7 @@ const PostsList = (props: PostsListProps) => {
           }}
         >
           <Flex gap={8} align='center' className={classes.info}>
-            <Text>{formatDate(date, locale)}</Text>
+            <Text>{formattedDate}</Text>
             {' - '}
             <ViewCounter slug={slug} text={false} type='GET' />
           </Flex>
