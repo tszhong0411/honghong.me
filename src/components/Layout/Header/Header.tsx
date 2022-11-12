@@ -46,30 +46,32 @@ const Header = () => {
 
   return (
     <div className={classes.header}>
-      <div className={classes.headerLeft}>
-        <Burger
-          opened={opened}
-          className={classes.burger}
-          size='sm'
-          onClick={() => toggleOpened.toggle()}
-          aria-label='Toggle navbar'
-        />
-        <HeaderLogo />
-        <Transition transition='slide-right' duration={200} mounted={opened}>
-          {(styles) => (
-            <Paper className={classes.dropdown} withBorder style={styles}>
-              {items({ animation: true })}
-            </Paper>
-          )}
-        </Transition>
-      </div>
-      <div className={classes.headerRight}>
-        <div className={classes.links}>
-          {items({ animation: false }).slice(0, 4)}
+      <div className={classes.headerInner}>
+        <div className={classes.headerLeft}>
+          <Burger
+            opened={opened}
+            className={classes.burger}
+            size='sm'
+            onClick={() => toggleOpened.toggle()}
+            aria-label='Toggle navbar'
+          />
+          <HeaderLogo />
+          <Transition transition='slide-right' duration={200} mounted={opened}>
+            {(styles) => (
+              <Paper className={classes.dropdown} withBorder style={styles}>
+                {items({ animation: true })}
+              </Paper>
+            )}
+          </Transition>
         </div>
-        <Command />
-        <ThemeSwitch />
-        <LanguageSwitch />
+        <div className={classes.headerRight}>
+          <div className={classes.links}>
+            {items({ animation: false }).slice(0, 4)}
+          </div>
+          <Command />
+          <ThemeSwitch />
+          <LanguageSwitch />
+        </div>
       </div>
     </div>
   )
