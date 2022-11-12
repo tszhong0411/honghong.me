@@ -1,4 +1,4 @@
-import { Box, Button, Divider, List, Title } from '@mantine/core'
+import { Box, Button, List } from '@mantine/core'
 import { useHover } from '@mantine/hooks'
 import { IconArrowRight } from '@tabler/icons'
 import { motion } from 'framer-motion'
@@ -6,6 +6,7 @@ import { GetStaticProps } from 'next'
 import useTranslation from 'next-translate/useTranslation'
 import React from 'react'
 
+import { MAX_WIDTH } from '@/lib/constants'
 import { getAllPosts } from '@/lib/mdx'
 
 import Hero from '@/components/Hero'
@@ -23,32 +24,35 @@ const Home = ({ posts }: { posts: PostFrontMatter[] }) => {
 
   return (
     <Layout>
-      <div>
-        <div>
-          <Hero />
-          <Title order={2}>{t('latestPosts')}</Title>
-        </div>
-        <Divider my='xl' />
+      <Box
+        maw={MAX_WIDTH}
+        p={{
+          base: '24px',
+          sm: '48px 32px',
+        }}
+        mx='auto'
+      >
+        <Hero />
         <List listStyleType='none'>
           {posts.map((post) => (
             <PostsList key={post.slug} post={post} />
           ))}
         </List>
-      </div>
-      <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <Button
-          component={Link}
-          ref={ref}
-          href='/blog'
-          rightIcon={
-            <motion.div animate={{ x: hovered ? 5 : 0 }}>
-              <IconArrowRight size={20} />
-            </motion.div>
-          }
-          underline={false}
-        >
-          {t('allPosts')}
-        </Button>
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <Button
+            component={Link}
+            ref={ref}
+            href='/blog'
+            rightIcon={
+              <motion.div animate={{ x: hovered ? 5 : 0 }}>
+                <IconArrowRight size={20} />
+              </motion.div>
+            }
+            underline={false}
+          >
+            {t('allPosts')}
+          </Button>
+        </Box>
       </Box>
     </Layout>
   )

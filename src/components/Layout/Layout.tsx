@@ -1,10 +1,7 @@
-import { Container } from '@mantine/core'
 import { useRouter } from 'next/router'
 import { NextSeo, NextSeoProps } from 'next-seo'
 import useTranslation from 'next-translate/useTranslation'
 import React from 'react'
-
-import { MAX_WIDTH } from '@/lib/constants'
 
 import { Favicons } from '@/components/Layout/Favicons'
 import Footer from '@/components/Layout/Footer'
@@ -49,7 +46,7 @@ const Layout = (props: LayoutProps) => {
         {...rest}
       />
       <Header />
-      <Container
+      {/* <Container
         sx={(theme) => ({
           padding: '24px',
 
@@ -58,9 +55,9 @@ const Layout = (props: LayoutProps) => {
           },
         })}
         size={MAX_WIDTH}
-      >
-        {children}
-      </Container>
+      > */}
+      {children}
+      {/* </Container> */}
       <Footer />
     </>
   )

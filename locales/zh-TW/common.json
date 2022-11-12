@@ -1,5 +1,4 @@
 {
-  "latestPosts": "最新文章",
   "search": "搜尋文章",
   "noPostsFound": "沒有找到文章",
   "blogDesc": "我在 2020 年 12 月開始寫 Blog，主要是軟體分享與技術分享。我總共在我的 Blog 上寫了 {{count}} 篇文章。你可以在下方搜尋欄以標題搜索。",
