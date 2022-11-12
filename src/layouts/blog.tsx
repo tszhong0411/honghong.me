@@ -1,10 +1,4 @@
-import {
-  Box,
-  Button,
-  Divider,
-  Title,
-  useMantineColorScheme,
-} from '@mantine/core'
+import { Box, Button, Space, Title, useMantineColorScheme } from '@mantine/core'
 import { useWindowEvent } from '@mantine/hooks'
 import {
   IconBrandFacebook,
@@ -164,7 +158,6 @@ const BlogLayout = (props: BlogProps) => {
           {totalCommentCount} {t('comments')}
         </span>
       </div>
-      <Divider />
       <Box mt={32} className={classes.contentWrapper}>
         <article id='blog-content'>{children}</article>
         <aside className={classes.aside}>
@@ -178,7 +171,7 @@ const BlogLayout = (props: BlogProps) => {
           </div>
         </aside>
       </Box>
-      <Divider mt={32} />
+      <Space h={32} />
       <div className={classes.postBottom}>
         <div>
           <Link
@@ -228,7 +221,7 @@ const BlogLayout = (props: BlogProps) => {
           </Button>
         </div>
       </div>
-      <Divider mb={32} />
+      <Space h={32} />
       <Comment />
       <ReadingProgressBar />
       <ScrollTopAndComment />

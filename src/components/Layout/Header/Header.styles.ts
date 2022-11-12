@@ -9,19 +9,20 @@ export const useStyles = createStyles((theme) => ({
   header: {
     position: 'sticky',
     top: 0,
+    zIndex: 50,
+    backdropFilter: 'blur(5px)',
+    backgroundColor:
+      theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
+  },
+
+  headerInner: {
+    padding: '0 30px',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    zIndex: 50,
-    backgroundColor:
-      theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
-    borderBottom: `1px solid ${
-      theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[2]
-    }`,
-    height: HEADER_HEIGHT,
-    padding: '0 30px',
     maxWidth: MAX_WIDTH,
-    margin: '0 auto',
+    margin: 'auto',
+    height: HEADER_HEIGHT,
 
     [theme.fn.largerThan('sm')]: {
       padding: '0 32px',

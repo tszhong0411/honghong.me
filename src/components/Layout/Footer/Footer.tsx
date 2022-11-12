@@ -1,4 +1,4 @@
-import { Anchor, Box, Divider, useMantineTheme } from '@mantine/core'
+import { Anchor, Box, useMantineTheme } from '@mantine/core'
 import { useRouter } from 'next/router'
 
 import { isProduction } from '@/lib/constants'
@@ -17,7 +17,6 @@ const Footer = () => {
 
   return (
     <footer className={classes.footer}>
-      <Divider my='xl' />
       <div className={classes.footerInner}>
         {isProduction && <NowPlaying />}
         <Box

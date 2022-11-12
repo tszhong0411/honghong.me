@@ -2,7 +2,6 @@ import {
   Avatar,
   Box,
   Button,
-  Divider,
   Flex,
   Paper,
   Skeleton,
@@ -216,7 +215,6 @@ const Guestbook = ({ fallbackData }) => {
         )}
         {session?.user && (
           <>
-            <Divider mt={36} />
             <Flex justify='space-between' align='center' my={36}>
               <Flex align='center' gap={16}>
                 <Image

@@ -1,6 +1,15 @@
 import { createStyles } from '@mantine/core'
 
 export const useStyles = createStyles((theme) => ({
+  item: {
+    display: 'flex',
+    justifyContent: 'center',
+
+    ['@media (min-width: 940px)']: {
+      justifyContent: 'start',
+    },
+  },
+
   article: {
     display: 'flex',
     flexDirection: 'column',

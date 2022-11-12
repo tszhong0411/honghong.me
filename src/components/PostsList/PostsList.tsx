@@ -63,7 +63,7 @@ const PostsList = (props: PostsListProps) => {
   }
 
   return (
-    <List.Item my={80}>
+    <List.Item my={80} className={classes.item}>
       <MotionNextLink
         ref={ref}
         href={`/blog/${slug}`}
