@@ -50,13 +50,10 @@ const Layout = (props: LayoutProps) => {
       />
       <Header />
       <Container
-        sx={(theme) => ({
-          padding: '24px',
-
-          [theme.fn.largerThan('sm')]: {
-            padding: '48px 32px',
-          },
-        })}
+        p={{
+          base: '24px',
+          sm: '48px 32px',
+        }}
         size={MAX_WIDTH}
       >
         {children}

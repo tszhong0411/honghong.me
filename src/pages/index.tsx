@@ -1,4 +1,4 @@
-import { Box, Button, Divider, List, Title } from '@mantine/core'
+import { Box, Button, List } from '@mantine/core'
 import { useHover } from '@mantine/hooks'
 import { IconArrowRight } from '@tabler/icons'
 import { motion } from 'framer-motion'
@@ -23,18 +23,12 @@ const Home = ({ posts }: { posts: PostFrontMatter[] }) => {
 
   return (
     <Layout>
-      <div>
-        <div>
-          <Hero />
-          <Title order={2}>{t('latestPosts')}</Title>
-        </div>
-        <Divider my='xl' />
-        <List listStyleType='none'>
-          {posts.map((post) => (
-            <PostsList key={post.slug} post={post} />
-          ))}
-        </List>
-      </div>
+      <Hero />
+      <List listStyleType='none'>
+        {posts.map((post) => (
+          <PostsList key={post.slug} post={post} />
+        ))}
+      </List>
       <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
         <Button
           component={Link}
