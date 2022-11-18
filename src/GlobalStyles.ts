@@ -1,8 +1,7 @@
-import { CSSObject, MantineThemeBase } from '@mantine/core'
+import { CSSObject, MantineTheme } from '@mantine/core'
 
-export const GlobalStyles: (theme: MantineThemeBase) => CSSObject = (
-  theme
-) => ({
+// TODO: Commit
+export const GlobalStyles: (theme: MantineTheme) => CSSObject = (theme) => ({
   html: {
     scrollBehavior: 'smooth',
   },
