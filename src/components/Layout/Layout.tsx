@@ -17,7 +17,7 @@ type LayoutProps = {
 const Layout = (props: LayoutProps) => {
   const { children, ...rest } = props
   const { t } = useTranslation('common')
-  const { pathname } = useRouter()
+  const { asPath } = useRouter()
 
   return (
     <>
@@ -25,14 +25,14 @@ const Layout = (props: LayoutProps) => {
         titleTemplate='%s | 小康 Blog'
         defaultTitle='小康 – Developer, YouTuber'
         description={t('Seo.defaultDesc')}
-        canonical={`https://honghong.me${pathname}`}
+        canonical={`https://honghong.me${asPath}`}
         twitter={{
           cardType: 'summary_large_image',
           site: '@TszhongLai0411',
           handle: '@TszhongLai0411',
         }}
         openGraph={{
-          url: `https://honghong.me${pathname}`,
+          url: `https://honghong.me${asPath}`,
           type: 'website',
           title: '小康 – Developer, YouTuber',
           description: t('Seo.defaultDesc'),
