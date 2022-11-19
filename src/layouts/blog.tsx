@@ -70,7 +70,7 @@ const BlogLayout = (props: BlogProps) => {
   const [toc, setToc] = React.useState<HeadingScrollSpy>()
   const minLevel =
     toc?.reduce((min, item) => (item.level < min ? item.level : min), 10) ?? 0
-  const { pathname } = useRouter()
+  const { asPath } = useRouter()
   const { colorScheme } = useMantineColorScheme()
   const dark = colorScheme === 'dark'
 
@@ -133,7 +133,7 @@ const BlogLayout = (props: BlogProps) => {
       }}
     >
       <ArticleJsonLd
-        url={`https://honghong.me${pathname}`}
+        url={`https://honghong.me${asPath}`}
         title={title}
         datePublished={date}
         modifiedTime={ISOModifiedTime}
