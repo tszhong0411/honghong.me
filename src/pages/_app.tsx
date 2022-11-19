@@ -30,7 +30,7 @@ import Analytics from '@/components/Analytics/Analytics'
 import { GlobalStyles } from '@/GlobalStyles'
 
 const App = (props: AppProps & { colorScheme: ColorScheme }) => {
-  const { Component, pageProps } = props
+  const { Component, pageProps: {session, ...pageProps} } = props
   const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
     key: 'mantine-color-scheme',
     defaultValue: 'light',
@@ -98,7 +98,7 @@ const App = (props: AppProps & { colorScheme: ColorScheme }) => {
   ]
 
   return (
-    <SessionProvider>
+    <SessionProvider session={session}>
       <ColorSchemeProvider
         colorScheme={colorScheme}
         toggleColorScheme={toggleColorScheme}
