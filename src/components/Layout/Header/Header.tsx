@@ -18,7 +18,7 @@ const MotionNextLink = motion(Link)
 const Header = () => {
   const { classes, cx } = useStyles()
   const [opened, toggleOpened] = useDisclosure(false)
-  const { pathname } = useRouter()
+  const { asPath } = useRouter()
 
   const items = ({ animation }: { animation: boolean }) =>
     links.map(({ href, text }, index) => (
@@ -26,7 +26,7 @@ const Header = () => {
         key={index}
         href={href}
         className={cx(classes.link, {
-          [classes.linkActive]: pathname === href,
+          [classes.linkActive]: asPath === href,
         })}
         onClick={() => {
           toggleOpened.close()

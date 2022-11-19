@@ -65,6 +65,12 @@ export const Favicons: Favicon[] = [
   {
     rel: 'icon',
     type: 'image/png',
+    sizes: '16x16',
+    href: '/static/favicon/favicon-16x16.png',
+  },
+  {
+    rel: 'icon',
+    type: 'image/png',
     sizes: '32x32',
     href: '/static/favicon/favicon-32x32.png',
   },
@@ -73,12 +79,6 @@ export const Favicons: Favicon[] = [
     type: 'image/png',
     sizes: '96x96',
     href: '/static/favicon/favicon-96x96.png',
-  },
-  {
-    rel: 'icon',
-    type: 'image/png',
-    sizes: '16x16',
-    href: '/static/favicon/favicon-16x16.png',
   },
   {
     rel: 'manifest',

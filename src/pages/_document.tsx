@@ -20,6 +20,10 @@ export default class _Document extends Document {
             href='https://fonts.googleapis.com/css2?family=Inter:wght@500;700&family=Noto+Sans+TC:wght@500;700&family=Fira+Code:wght@300;400;500;600;700&family=Sora:wght@100;200;300;400;500;600;700;800&display=swap'
             rel='stylesheet'
           />
+          <meta
+            name='msapplication-config'
+            content='/static/favicon/browserconfig.xml'
+          />
         </Head>
         <body>
           <Main />
