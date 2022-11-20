@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react'
 
-import Link from '.'
+import Link from '@/components/Link'
 
 describe('@/components/Link', () => {
   it('Should have rel, target and icon if it is an external link', () => {
