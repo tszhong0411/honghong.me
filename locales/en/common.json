@@ -2,11 +2,8 @@
   "search": "Search articles",
   "noPostsFound": "No posts found.",
   "blogDesc": "I started writing articles in December 2020, mainly for software sharing and skills sharing. In total, I have written {{count}} articles on my blog. You can search by title in the search bar below.",
-  "prev": "Previous article",
-  "next": "Next article",
   "editOnGithub": "Edit on Github",
   "allPosts": "All Posts",
-  "visit": "Visit",
   "comments": "Comments",
   "views": "Views",
   "delete": "Delete",
@@ -41,6 +38,28 @@
     "tip": "Your information is only used to display your name and avatar",
     "deleteModalTitle": "Delete a comment",
     "continue": "Continue to Sign the Guestbook"
+  },
+  "Projects": {
+    "blog": {
+      "title": "Blog",
+      "description": "Share my knowledge and experience"
+    },
+    "friendQuiz": {
+      "title": "Friend quiz cheat tool",
+      "description": "Get full score in friend quiz"
+    },
+    "link": {
+      "title": "小康's social media",
+      "description": "Display more 小康's social media"
+    },
+    "tools": {
+      "title": "小康 Tools",
+      "description": "Some tools for web developer"
+    },
+    "oneBlog": {
+      "title": "One Blog",
+      "description": "A simple blog made by 小康"
+    }
   },
   "404": {
     "title": "You have found a secret place",

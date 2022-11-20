@@ -2,11 +2,8 @@
   "search": "搜尋文章",
   "noPostsFound": "沒有找到文章",
   "blogDesc": "我在 2020 年 12 月開始寫 Blog，主要是軟體分享與技術分享。我總共在我的 Blog 上寫了 {{count}} 篇文章。你可以在下方搜尋欄以標題搜索。",
-  "prev": "上一篇文章",
-  "next": "下一篇文章",
   "editOnGithub": "在 GitHub 上編輯",
   "allPosts": "全部文章",
-  "visit": "前往",
   "comments": "條留言",
   "views": "次瀏覽",
   "delete": "刪除",
@@ -41,6 +38,28 @@
     "tip": "你的資料僅用於顯示你的姓名和頭像",
     "deleteModalTitle": "刪除 1 條評論",
     "continue": "繼續在留言簿上簽到"
+  },
+  "Projects": {
+    "blog": {
+      "title": "Blog",
+      "description": "分享我的知識與經驗"
+    },
+    "friendQuiz": {
+      "title": "好友測驗作弊器",
+      "description": "在好友測驗上取得滿分"
+    },
+    "link": {
+      "title": "小康的社交媒體",
+      "description": "展示更多小康的社交媒體"
+    },
+    "tools": {
+      "title": "小康 Tools",
+      "description": "Web 開發人員的一些工具"
+    },
+    "oneBlog": {
+      "title": "One Blog",
+      "description": "由小康製作的簡單 Blog"
+    }
   },
   "404": {
     "title": "你找到了一個秘密的地方",
