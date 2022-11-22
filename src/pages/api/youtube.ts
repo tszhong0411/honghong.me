@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 
 import googleAuth from '@/lib/google'
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (_: NextApiRequest, res: NextApiResponse) => {
   const auth = await googleAuth.getClient()
   const youtube = google.youtube({
     auth,
