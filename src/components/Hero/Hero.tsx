@@ -19,13 +19,14 @@ const Hero = () => {
           className={classes.logo}
         />
       </Box>
-      <Title order={1} sx={{ fontSize: 30, fontWeight: 700 }}>
+      <Title order={1} fz={{ base: 22, sm: 28 }} weight={700}>
         Hey, I&apos;m 小康 👋
       </Title>
       <Text
         size={18}
         weight={500}
         color={dark ? theme.colors.gray[6] : theme.colors.gray[8]}
+        fz={{ base: 14, sm: 16 }}
       >
         A student who loves web development
       </Text>
