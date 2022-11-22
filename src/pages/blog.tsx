@@ -1,4 +1,4 @@
-import { Input, List, Text } from '@mantine/core'
+import { List, Text, TextInput } from '@mantine/core'
 import { IconSearch } from '@tabler/icons'
 import { GetStaticProps } from 'next'
 import useTranslation from 'next-translate/useTranslation'
@@ -34,7 +34,7 @@ const Blog = ({ posts }: { posts: PostFrontMatter[] }) => {
         title='Blog'
         description={t('blogDesc', { count: posts.length })}
       >
-        <Input
+        <TextInput
           icon={<IconSearch size={15} />}
           placeholder={t('search')}
           type='text'
