@@ -24,13 +24,20 @@ import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import { SessionProvider } from 'next-auth/react'
 import React from 'react'
+import '@fontsource/fira-code'
+import '@fontsource/inter'
+import '@fontsource/noto-sans-tc'
+import '@fontsource/sora'
 
 import Analytics from '@/components/Analytics/Analytics'
 
 import { GlobalStyles } from '@/GlobalStyles'
 
 const App = (props: AppProps & { colorScheme: ColorScheme }) => {
-  const { Component, pageProps: {session, ...pageProps} } = props
+  const {
+    Component,
+    pageProps: { session, ...pageProps },
+  } = props
   const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
     key: 'mantine-color-scheme',
     defaultValue: 'light',
@@ -110,6 +117,7 @@ const App = (props: AppProps & { colorScheme: ColorScheme }) => {
             colorScheme,
             fontFamily:
               'Sora,Noto Sans TC,Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji',
+            fontFamilyMonospace: 'Fira Code,Noto Sans TC,Inter',
             primaryColor: 'red',
             breakpoints: {
               xs: 375,
@@ -117,6 +125,10 @@ const App = (props: AppProps & { colorScheme: ColorScheme }) => {
               md: 768,
               lg: 1024,
               xl: 1280,
+            },
+            headings: {
+              fontFamily:
+                'Sora,Noto Sans TC,Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji',
             },
             globalStyles: GlobalStyles,
           }}
