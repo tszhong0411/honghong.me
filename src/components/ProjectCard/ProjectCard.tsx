@@ -1,5 +1,9 @@
-import { Badge, Card, Flex, Text } from '@mantine/core'
+import { Badge, Card, Flex, Skeleton, Text } from '@mantine/core'
+import { IconStar } from '@tabler/icons'
 import Image from 'next/image'
+import useSWR from 'swr'
+
+import fetcher from '@/lib/fetcher'
 
 import { useStyles } from './ProjectCard.styles'
 import Link from '../Link'
@@ -15,11 +19,16 @@ export type ProjectCardProps = {
   href: string
   image: string
   badges: Badge[]
+  repoName?: string
 }
 
 const ProjectsCard = (props: ProjectCardProps) => {
-  const { title, description, href, image, badges } = props
+  const { title, description, href, image, badges, repoName } = props
   const { classes } = useStyles()
+  const { data } = useSWR<{ stars: number }>(
+    repoName ? `/api/github/stars/${repoName}` : null,
+    fetcher
+  )
 
   const features = badges.map((badge, i) => (
     <div key={i} className={classes.tech}>
@@ -52,6 +61,18 @@ const ProjectsCard = (props: ProjectCardProps) => {
               (max-width: 1200px) 50vw,
               33vw'
           />
+          {repoName && (
+            <div className={classes.stars}>
+              {data ? (
+                <Flex align='center' gap={4}>
+                  <IconStar size={16} />
+                  <Text lh='16px'>{data.stars}</Text>
+                </Flex>
+              ) : (
+                <Skeleton height={16} w={40} />
+              )}
+            </div>
+          )}
         </Card.Section>
 
         <Card.Section className={classes.section} mt='md'>

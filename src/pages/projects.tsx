@@ -20,7 +20,7 @@ const Projects = () => {
     {
       title: t('Projects.blog.title'),
       description: t('Projects.blog.description'),
-      href: 'https://honghong.me',
+      href: 'https://github.com/tszhong0411/honghong.me',
       image: '/static/images/projects/blog.png',
       badges: [
         {
@@ -44,11 +44,12 @@ const Projects = () => {
           label: 'MDX',
         },
       ],
+      repoName: 'honghong.me',
     },
     {
       title: t('Projects.friendQuiz.title'),
       description: t('Projects.friendQuiz.description'),
-      href: 'https://friendquiz.honghong.me',
+      href: 'https://github.com/tszhong0411/friend-quiz',
       image: '/static/images/projects/friend-quiz.png',
       badges: [
         {
@@ -60,11 +61,12 @@ const Projects = () => {
           label: 'Next.js',
         },
       ],
+      repoName: 'friend-quiz',
     },
     {
       title: t('Projects.link.title'),
       description: t('Projects.link.description'),
-      href: 'https://link.honghong.me',
+      href: 'https://github.com/tszhong0411/link',
       image: '/static/images/projects/link.png',
       badges: [
         {
@@ -76,11 +78,12 @@ const Projects = () => {
           label: 'Next.js',
         },
       ],
+      repoName: 'link',
     },
     {
       title: t('Projects.tools.title'),
       description: t('Projects.tools.description'),
-      href: 'https://tools.honghong.me',
+      href: 'https://github.com/tszhong0411/tools.honghong.me',
       image: '/static/images/projects/tools.png',
       badges: [
         {
@@ -92,11 +95,12 @@ const Projects = () => {
           label: 'Next.js',
         },
       ],
+      repoName: 'tools.honghong.me',
     },
     {
       title: t('Projects.oneBlog.title'),
       description: t('Projects.oneBlog.description'),
-      href: 'https://one-blog.honghong.me',
+      href: 'https://github.com/tszhong0411/one-blog',
       image: '/static/images/projects/one-blog.png',
       badges: [
         {
@@ -112,6 +116,7 @@ const Projects = () => {
           label: 'Prisma',
         },
       ],
+      repoName: 'one-blog',
     },
   ]
 

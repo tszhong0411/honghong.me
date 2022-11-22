@@ -27,6 +27,22 @@ export const useStyles = createStyles((theme) => ({
     },
   },
 
+  stars: {
+    zIndex: 10,
+    position: 'absolute',
+    right: 0,
+    borderLeft: `1px solid ${
+      theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]
+    }`,
+    borderBottom: `1px solid ${
+      theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]
+    }`,
+    padding: 8,
+    borderBottomLeftRadius: 8,
+    backgroundColor:
+      theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
+  },
+
   image: {
     objectFit: 'cover',
     transition: 'scale 0.3s ease',
