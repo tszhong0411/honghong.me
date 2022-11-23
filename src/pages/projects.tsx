@@ -6,6 +6,7 @@ import {
   IconNextJS,
   IconPlanetScale,
   IconPrisma,
+  IconSupabase,
   IconTypescript,
 } from '@/components/Icon'
 import Layout from '@/components/Layout'
@@ -114,6 +115,10 @@ const Projects = () => {
         {
           icon: <IconPrisma strokeWidth={1.5} size={16} />,
           label: 'Prisma',
+        },
+        {
+          icon: <IconSupabase strokeWidth={1.5} size={16} />,
+          label: 'Supabase',
         },
       ],
       repoName: 'one-blog',
