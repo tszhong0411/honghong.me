@@ -16,6 +16,8 @@ import React from 'react'
 import Files from '@/components/Files'
 import CustomLink from '@/components/Link'
 
+import ItemGrid from '../ItemGrid'
+
 const PostImage = ({ alt, src, ...rest }: ImageProps) => (
   <Box
     component='figure'
@@ -69,6 +71,7 @@ const MDXComponents = {
   a: CustomLink,
   table: PostTable,
   Image: PostImage,
+  ItemGrid,
 }
 
 export default MDXComponents
