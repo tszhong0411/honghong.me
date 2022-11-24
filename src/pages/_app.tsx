@@ -50,6 +50,14 @@ const App = (props: AppProps & { colorScheme: ColorScheme }) => {
 
   useHotkeys([['mod+J', () => toggleColorScheme()]])
 
+  React.useEffect(() => {
+    // eslint-disable-next-line no-console
+    console.log(
+      '%chonghong.me',
+      'font-size: 26px;font-weight: 800;padding: 14px 0 1px;line-height: 1.5'
+    )
+  }, [])
+
   const actions: SpotlightAction[] = [
     {
       title: 'Copy URL',
