@@ -7,16 +7,12 @@ import MetricCard from '@/components/Metrics/Card'
 import { useStyles } from './Metrics.styles'
 
 const GithubCard = () => {
-  const { data: dataStars } = useSWR<{ stars: number }>(
-    '/api/github/stars',
+  const { data } = useSWR<{ followers: number; stars: number }>(
+    '/api/github',
     fetcher
   )
-  const { data: dataFollowers } = useSWR<{ followers: number }>(
-    '/api/github/stars',
-    fetcher
-  )
-  const stars = Number(dataStars?.stars)
-  const followers = Number(dataFollowers?.followers)
+  const stars = Number(data?.stars)
+  const followers = Number(data?.followers)
   const link = 'https://github.com/tszhong0411'
   const { classes } = useStyles()
 
