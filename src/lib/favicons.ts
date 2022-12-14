@@ -5,7 +5,7 @@ type Favicon = {
   type?: string
 }
 
-export const Favicons: Favicon[] = [
+export const favicons: Favicon[] = [
   {
     rel: 'icon',
     type: 'image/x-icon',
