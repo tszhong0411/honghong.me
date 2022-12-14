@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-  <img src="https://socialify.git.ci/tszhong0411/honghong.me/image?font=KoHo&forks=1&issues=1&logo=https%3A%2F%2Fhonghong.me%2Fstatic%2Fimages%2Flogo%2Flogo-black.png&name=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark"  alt="Banner">
+  <img src="https://socialify.git.ci/tszhong0411/honghong.me/image?font=KoHo&forks=1&issues=1&logo=https%3A%2F%2Fhonghong.me%2Fstatic%2Fimages%2favatar.png&name=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark"  alt="Banner">
 </p>
 
 <p align="center">
@@ -16,17 +16,17 @@
 
 ## 🌍 honghong.me
 
-- **Framework**: [Next.js](https://nextjs.org/)
-- **Database**: [Planetscale](https://planetscale.com/)
-- **ORM**: [Prisma](https://prisma.io/)
-- **Authentication**: [NextAuth.js](https://next-auth.js.org/)
-- **Deployment**: [Vercel](https://vercel.com)
-- **Comment**: [Giscus](https://giscus.app/)
-- **Favicon**: [realfavicongenerator](https://realfavicongenerator.net/)
-- **Content**: [MDX](https://mdxjs.com/)
-- **Analytics**: [Umami](https://umami.is/)
-- **UI**: [Mantine](https://mantine.dev)
-- **Code syntax**: [Shiki](https://github.com/shikijs/shiki)
+- Framework: [Next.js](https://nextjs.org/)
+- Database: [Planetscale](https://planetscale.com/)
+- ORM: [Prisma](https://prisma.io/)
+- Authentication: [NextAuth.js](https://next-auth.js.org/)
+- Deployment: [Vercel](https://vercel.com)
+- Comment: [Giscus](https://giscus.app/)
+- Favicon: [realfavicongenerator](https://realfavicongenerator.net/)
+- Content: [MDX](https://mdxjs.com/) + [Contentlayer](https://www.contentlayer.dev/)
+- Analytics: [Umami](https://umami.is/)
+- Styling: [Tailwindcss](https://tailwindcss.com)
+- Code syntax highlighting: [Shiki](https://github.com/shikijs/shiki)
 
 ## 🚀 Demo
 
