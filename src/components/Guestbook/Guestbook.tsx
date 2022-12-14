@@ -1,275 +1,201 @@
-import {
-  Avatar,
-  Box,
-  Button,
-  Flex,
-  Paper,
-  Skeleton,
-  Text,
-  TextInput,
-} from '@mantine/core'
-import { useForm } from '@mantine/form'
-import { useModals } from '@mantine/modals'
-import { showNotification } from '@mantine/notifications'
-import { IconAlertCircle, IconCircleCheck } from '@tabler/icons'
-import Image from 'next/image'
-import { useRouter } from 'next/router'
-import { signOut, useSession } from 'next-auth/react'
-import useTranslation from 'next-translate/useTranslation'
+'use client'
+
+import dayjs from 'dayjs'
+import { useRouter } from 'next/navigation'
+import { User } from 'next-auth'
+import { signIn, signOut } from 'next-auth/react'
 import React from 'react'
-import useSWR, { useSWRConfig } from 'swr'
+import toast from 'react-hot-toast'
+import TextareaAutosize from 'react-textarea-autosize'
 
-import fetcher from '@/lib/fetcher'
-import useFormattedDate from '@/hooks/useFormattedDate'
+import Loader from './Loader'
+import Image from '../MDXComponents/Image'
+import Modal from '../Modal'
 
-import { useStyles } from './Guestbook.styles'
-import Modal from './Modal'
-
-type entryProps = {
-  body: string
-  created_by: string
-  id: number
-  updated_at: string
+type GuestbookProps = {
+  user: Omit<User, 'id'>
+  messages: {
+    id: string
+    body: string
+    image: string
+    created_by: string
+    updated_at: string
+  }[]
 }
 
-const GuestbookEntry = ({ entry, user }) => {
-  const { mutate } = useSWRConfig()
-  const { t } = useTranslation('common')
-  const { locale } = useRouter()
-  const modals = useModals()
-  const date = useFormattedDate(new Date(entry.updated_at), locale)
+const submitMessage = async (
+  content: string,
+  refresh: () => void,
+  onSuccess?: () => void,
+  onDone?: () => void
+) => {
+  const loading = toast.loading('Signing')
 
-  const deleteEntry = async () => {
-    await fetch(`/api/guestbook/${entry.id}`, {
-      method: 'DELETE',
-    })
+  const res = await fetch('/api/guestbook', {
+    body: JSON.stringify({
+      body: content,
+    }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+  })
 
-    mutate('/api/guestbook')
+  if (!res.ok) {
+    toast.dismiss(loading)
+    toast.error(await res.text())
+    typeof onDone === 'function' && onDone()
 
-    showNotification({
-      message: t('delete_successful'),
-      icon: <IconCircleCheck />,
-      color: 'green',
-    })
+    return
   }
 
-  const deleteHandler = () => {
-    modals.openConfirmModal({
-      title: t('Guestbook.deleteModalTitle'),
-      centered: true,
-      labels: { confirm: t('delete'), cancel: t('cancel') },
-      sx: {
-        '& button': {
-          fontWeight: 500,
-        },
-      },
-      confirmProps: { color: 'red' },
-      onConfirm: () => deleteEntry(),
-      overlayBlur: 3,
-    })
-  }
+  refresh()
+  typeof onSuccess === 'function' && onSuccess()
+  typeof onDone === 'function' && onDone()
 
-  return (
-    <Paper
-      withBorder
-      radius='md'
-      sx={(theme) => ({
-        padding: `${theme.spacing.lg}px ${theme.spacing.xl}px`,
-      })}
-    >
-      <Flex justify='space-between'>
-        <Flex gap={16} align='center'>
-          <Avatar src={entry.image} alt={entry.created_by} radius='xl' />
-          <div>
-            <Text size='sm'>{entry.created_by}</Text>
-            <Text size='xs' color='dimmed'>
-              {date}
-            </Text>
-          </div>
-        </Flex>
-        {user && entry.created_by === user.name && (
-          <Button
-            variant='outline'
-            onClick={deleteHandler}
-            sx={{
-              height: 26,
-              cursor: 'pointer',
-            }}
-          >
-            {t('delete')}
-          </Button>
-        )}
-      </Flex>
-      <Box
-        sx={(theme) => ({
-          paddingLeft: 54,
-          paddingTop: theme.spacing.sm,
-          fontSize: theme.fontSizes.sm,
-        })}
-      >
-        {entry.body}
-      </Box>
-    </Paper>
-  )
+  toast.dismiss(loading)
+  toast.success('Added successfully')
 }
 
-const Guestbook = ({ fallbackData }) => {
+const deleteMessage = async (id: string, refresh: () => void) => {
+  const loading = toast.loading('Deleting')
+
+  const res = await fetch(`/api/guestbook/${id}`, {
+    method: 'DELETE',
+  })
+
+  if (!res.ok) {
+    toast.dismiss(loading)
+    toast.error(await res.text())
+
+    return
+  }
+
+  refresh()
+
+  toast.dismiss(loading)
+  toast.success('Deleted successfully')
+}
+
+const Guestbook = (props: GuestbookProps) => {
+  const { user, messages } = props
+  const [value, setValue] = React.useState('')
   const [loading, setLoading] = React.useState(false)
-  const [opened, setOpened] = React.useState(false)
-  const { data: session } = useSession()
-  const { mutate } = useSWRConfig()
-  const { data: entries } = useSWR('/api/guestbook', fetcher, {
-    fallbackData,
-  })
-  const { t } = useTranslation('common')
-  const { classes } = useStyles()
-
-  const form = useForm({
-    initialValues: {
-      content: '',
-    },
-
-    validate: {
-      content: (value) => (value ? null : t('Guestbook.error')),
-    },
-  })
-
-  type FormValues = typeof form.values
-
-  const leaveEntry = async (values: FormValues) => {
-    setLoading(true)
-
-    const res = await fetch('/api/guestbook', {
-      body: JSON.stringify({
-        body: values.content,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      method: 'POST',
-    })
-
-    const { error } = await res.json()
-
-    if (error) {
-      showNotification({
-        message: error,
-        icon: <IconAlertCircle />,
-      })
-      return
-    }
-
-    mutate('/api/guestbook')
-
-    showNotification({
-      message: t('Guestbook.success'),
-      icon: <IconCircleCheck />,
-      color: 'green',
-    })
-
-    setLoading(false)
-  }
+  const { refresh } = useRouter()
 
   return (
-    <>
-      <Paper withBorder shadow='md' p={30} radius='md'>
-        <Text
-          sx={{
-            fontSize: 24,
-            fontWeight: 700,
-            marginBottom: 36,
-          }}
-        >
-          {session?.user
-            ? t('Guestbook.guestbook')
-            : t('Guestbook.signTheGuestbook')}
-        </Text>
-        {session?.user && (
-          <form onSubmit={form.onSubmit(leaveEntry)}>
-            <Flex className={classes.formWrapper} justify='space-between'>
-              <TextInput
-                label={t('Guestbook.message')}
-                placeholder={t('Guestbook.placeholder')}
-                required
-                classNames={classes}
-                mt='md'
-                sx={(theme) => ({
-                  maxWidth: '100%',
-                  width: '100%',
-                  [theme.fn.largerThan('sm')]: {
-                    maxWidth: '70%',
-                  },
-                })}
-                {...form.getInputProps('content')}
-              />
-              <Button mt={16} type='submit' className={classes.button}>
-                {t('Guestbook.sign')}
-              </Button>
-            </Flex>
-          </form>
-        )}
-        {!session && (
-          <Button fullWidth mt='xl' onClick={() => setOpened(true)}>
-            {t('signIn')}
-          </Button>
-        )}
-        {session?.user && (
-          <>
-            <Flex justify='space-between' align='center' my={36}>
-              <Flex align='center' gap={16}>
-                <Image
-                  src={session.user.image}
-                  width={48}
-                  height={48}
-                  alt='User avatar'
-                  className={classes.avatar}
-                />
-                <span>{session.user.name}</span>
-              </Flex>
-              <Button
-                onClick={() => signOut()}
-                className={classes.button}
-                maw={100}
-              >
-                {t('signOut')}
-              </Button>
-            </Flex>
-          </>
-        )}
-      </Paper>
-      <div>
-        {loading && (
-          <Paper
-            withBorder
-            radius='md'
-            sx={(theme) => ({
-              padding: `${theme.spacing.lg}px ${theme.spacing.xl}px`,
-            })}
-            mt={20}
-            mb={-20}
+    <div className='mx-auto max-w-lg'>
+      {!user && (
+        <>
+          <button
+            className='rounded-lg bg-theme-9 px-4 py-2 text-white transition-colors duration-300 hover:bg-theme-10'
+            onClick={() => signIn()}
           >
-            <Flex gap={16} align='center'>
-              <Skeleton width={38} height={38} radius='xl' />
-              <Flex direction='column' gap={4}>
-                <Skeleton width={100} height={14} />
-                <Skeleton width={105} height={14} />
-              </Flex>
-            </Flex>
-            <Skeleton width={200} height={18} ml={54} mt={15} />
-          </Paper>
-        )}
-        <Flex direction='column' gap={16} my={40}>
-          {entries?.map((entry: entryProps) => (
-            <GuestbookEntry key={entry.id} entry={entry} user={session?.user} />
-          ))}
-        </Flex>
+            Login
+          </button>
+          <span className='ml-2'>to continue leaving a message</span>
+        </>
+      )}
+      {user && (
+        <>
+          <div className='mb-2 flex'>
+            <Image
+              src={user?.image}
+              width={40}
+              height={40}
+              alt={user?.name}
+              className='h-10 w-10'
+              rounded='rounded-full'
+            />
+            <TextareaAutosize
+              className='ml-3 flex-1 rounded-md border border-accent-2 bg-hong-bg py-2 px-3 transition-colors duration-200 ease-linear focus:border-accent-5 focus:outline-none'
+              placeholder='Your message ...'
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+            />
+          </div>
+          <div className='flex justify-end gap-2'>
+            <button
+              className='rounded-lg border border-theme-7 bg-theme-1 px-4 py-2 text-theme-11 transition-colors duration-300 hover:border-theme-8'
+              onClick={() => signOut()}
+            >
+              Logout
+            </button>
+            <button
+              className='rounded-lg bg-theme-9 px-4 py-2 text-white transition-colors duration-300 hover:bg-theme-10'
+              onClick={() => {
+                setLoading(true)
+                submitMessage(
+                  value,
+                  refresh,
+                  () => setValue(''),
+                  () => setLoading(false)
+                )
+              }}
+              disabled={loading}
+            >
+              Sign
+            </button>
+          </div>
+        </>
+      )}
+      <div className='mt-10 flex flex-col gap-4'>
+        {loading && <Loader />}
+        {messages.map((message) => (
+          <div
+            key={message.id}
+            className='rounded-lg border border-accent-2 p-4'
+          >
+            <div className='mb-3 flex gap-3'>
+              <Image
+                src={message.image}
+                width={40}
+                height={40}
+                alt={message.created_by}
+                className='h-10 w-10'
+                rounded='rounded-full'
+              />
+              <div className='flex flex-col justify-center gap-px text-sm'>
+                <div>{message.created_by}</div>
+                <div className='text-xs text-accent-5'>
+                  {dayjs(message.updated_at).format('MMMM DD, YYYY')}
+                </div>
+              </div>
+            </div>
+            <div className='break-words pl-[52px]'>{message.body}</div>
+            {user && message.created_by === user.name && (
+              <div className='mt-4 flex justify-end'>
+                <Modal>
+                  <Modal.Trigger>
+                    <button className='rounded-lg bg-theme-9 px-4 py-2 text-white transition-colors duration-300 hover:bg-theme-10'>
+                      Delete
+                    </button>
+                  </Modal.Trigger>
+                  <Modal.Content>
+                    <div className='mb-2'>Delete a comment</div>
+                    <div className='flex justify-end gap-2'>
+                      <Modal.Close>
+                        <button className='rounded-lg border border-theme-7 bg-theme-1 px-4 py-2 text-theme-11 transition-colors duration-300 hover:border-theme-8'>
+                          Cancel
+                        </button>
+                      </Modal.Close>
+                      <Modal.Close>
+                        <button
+                          className='rounded-lg bg-theme-9 px-4 py-2 text-white transition-colors duration-300 hover:bg-theme-10'
+                          onClick={() => deleteMessage(message.id, refresh)}
+                        >
+                          Delete
+                        </button>
+                      </Modal.Close>
+                    </div>
+                  </Modal.Content>
+                </Modal>
+              </div>
+            )}
+          </div>
+        ))}
       </div>
-      <Modal
-        opened={opened}
-        onClose={() => setOpened(false)}
-        title={t('Guestbook.continue')}
-      />
-    </>
+    </div>
   )
 }
 
