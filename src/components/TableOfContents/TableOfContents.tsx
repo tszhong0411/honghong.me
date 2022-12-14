@@ -4,13 +4,13 @@ import { IconList } from '@tabler/icons'
 import React from 'react'
 
 import clsxm from '@/lib/clsxm'
-import { useHeadings, useScrollSpy } from '@/hooks'
+import { useHeadings, useScrollspy } from '@/hooks'
 
 import Link from '../Link'
 
 const TableOfContents = () => {
   const headings = useHeadings()
-  const activeId = useScrollSpy(
+  const activeId = useScrollspy(
     headings.map((heading) => heading.id),
     { rootMargin: '0% 0% -55% 0%' }
   )
