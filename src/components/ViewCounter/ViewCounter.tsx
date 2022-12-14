@@ -1,46 +1,39 @@
-import { Flex, Skeleton, Text } from '@mantine/core'
-import { IconEye } from '@tabler/icons'
-import useTranslation from 'next-translate/useTranslation'
+'use client'
+
 import React from 'react'
 
-import { usePostViews } from '@/hooks/usePostViews'
+import { usePostViews } from '@/hooks'
 
-type ViewCounterTypes = {
+import Skeleton from '../Skeleton'
+
+type ViewCounterProps = {
   slug: string
-  text?: boolean
   type?: 'GET' | 'POST'
 }
 
-const ViewCounter = (props: ViewCounterTypes) => {
-  const { slug, text = true, type = 'POST' } = props
-  const { views: postViews, isLoading, isError, increment } = usePostViews(slug)
+const ViewCounter = (props: ViewCounterProps) => {
+  const { slug, type = 'GET' } = props
 
-  const { t } = useTranslation('common')
-  const views = postViews?.total
+  const {
+    views,
+    isLoading,
+    isError,
+    increment: incrementViews,
+  } = usePostViews(slug)
 
   React.useEffect(() => {
-    if (type === 'POST') increment()
+    if (slug && type === 'POST') {
+      incrementViews()
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [slug, incrementViews])
 
   return (
     <>
-      {!isLoading && !isError ? (
-        text ? (
-          <Text>{`${views} ${t('views')}`}</Text>
-        ) : (
-          <Flex gap={4}>
-            <IconEye size={20} />
-            <Text lh='20px'>{views}</Text>
-          </Flex>
-        )
+      {isLoading || isError ? (
+        <Skeleton className='h-5 max-w-[70px]' />
       ) : (
-        <Skeleton
-          height={20}
-          sx={{
-            maxWidth: 70,
-          }}
-        />
+        <div>{`${views} views`}</div>
       )}
     </>
   )

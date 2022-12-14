@@ -1,17 +1,16 @@
-import React from 'react'
+import Link from 'next/link'
 
-import Link from '@/components/Link'
 import Logo from '@/components/Logo'
 
-import { useStyles } from './HeaderLogo.styles'
-
 const HeaderLogo = () => {
-  const { classes } = useStyles()
-
   return (
-    <Link href='/' className={classes.link}>
-      <Logo width={28} height={28} fill='#c92a2a' />
-      <span className={classes.text}>小康</span>
+    <Link href='/' className='flex items-center justify-center gap-1'>
+      <Logo
+        width={28}
+        height={28}
+        className='fill-[#8b1d1d] dark:fill-[#c92a2a]'
+      />
+      <span className='leading-7'>小康</span>
     </Link>
   )
 }
