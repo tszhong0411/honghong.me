@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.1](https://github.com/TszHong0411/honghong.me/compare/v2.1.0...v2.1.1) (2022-12-14)
+
+
+### Bug Fixes
+
+* duplicate object key ([1e0a00c](https://github.com/TszHong0411/honghong.me/commit/1e0a00c43a3fcd5042eaa8e82e77e618caeb1a46))
+
 ## [2.1.0](https://github.com/tszhong0411/honghong.me/compare/v2.0.0...v2.1.0) (2022-12-14)
 
 
