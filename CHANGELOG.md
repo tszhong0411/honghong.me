@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/tszhong0411/honghong.me/compare/v2.0.0...v2.1.0) (2022-12-14)
+
+
+### Features
+
+* add useScrollspy ([420baac](https://github.com/tszhong0411/honghong.me/commit/420baacf7d0319a79c2a01586fb0f9711e872a09))
+* remove useScrollspy ([903640a](https://github.com/tszhong0411/honghong.me/commit/903640a64c63efad3ee8d879dec56a12655b48a6))
+
 ## 2.0.0 (2022-12-14)
 
 
