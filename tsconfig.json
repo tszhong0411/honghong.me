@@ -17,10 +17,21 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "~/*": ["./public/*"]
-    }
+      "~/*": ["./public/*"],
+      "contentlayer/generated": ["./.contentlayer/generated"]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"],
-  "moduleResolution": ["node_modules", ".next", "node"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".contentlayer/generated"
+  ],
+  "exclude": ["node_modules"]
 }
