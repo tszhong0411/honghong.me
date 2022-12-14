@@ -1,51 +1,29 @@
-import throttle from 'lodash/throttle'
 import React from 'react'
 
-export const useScrollSpy = () => {
-  const [activeSection, setActiveSection] = React.useState<string | null>(null)
-  const throttleMs = 100
-
-  const actionSectionScrollSpy = throttle(() => {
-    const sections = document.getElementsByClassName('activeSection')
-
-    let prevBBox = null
-    let currentSectionId = activeSection
-
-    for (let i = 0; i < sections.length; ++i) {
-      const section = sections[i]
-
-      if (!currentSectionId) {
-        currentSectionId = section.getAttribute('href')?.split('#')[1] ?? null
-      }
-
-      const bbox = section.getBoundingClientRect()
-
-      const prevHeight = prevBBox ? bbox.top - prevBBox.bottom : 0
-      const offset = Math.max(200, prevHeight / 4)
-
-      if (bbox.top - offset < 0) {
-        currentSectionId = section.getAttribute('href')?.split('#')[1] ?? null
-
-        prevBBox = bbox
-        continue
-      }
-
-      break
-    }
-
-    setActiveSection(currentSectionId)
-  }, throttleMs)
+export const useScrollSpy = (
+  ids: string[],
+  options: IntersectionObserverInit
+) => {
+  const [activeId, setActiveId] = React.useState<string>()
+  const observer = React.useRef(null)
 
   React.useEffect(() => {
-    window.addEventListener('scroll', actionSectionScrollSpy)
+    const elements = ids.map((id) => document.getElementById(id))
+    observer.current?.disconnect()
+    observer.current = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry?.isIntersecting) {
+          setActiveId(entry.target.id)
+        }
+      })
+    }, options)
+    elements.forEach((el) => {
+      if (el) {
+        observer.current?.observe(el)
+      }
+    })
+    return () => observer.current?.disconnect()
+  }, [ids, options])
 
-    actionSectionScrollSpy()
-
-    return () => {
-      window.removeEventListener('scroll', actionSectionScrollSpy)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  return activeSection
+  return activeId
 }
