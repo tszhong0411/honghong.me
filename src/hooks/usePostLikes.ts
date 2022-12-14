@@ -2,12 +2,12 @@ import React from 'react'
 import { useDebounce } from 'react-use'
 import useSWR, { SWRConfiguration } from 'swr'
 
-type MetricsPayload = {
+type LikesPayload = {
   likes: number
   currentUserLikes: number
 }
 
-const getPostLikes = async (slug: string): Promise<MetricsPayload> => {
+const getPostLikes = async (slug: string): Promise<LikesPayload> => {
   const res = await fetch(`/api/likes/${slug}`)
 
   return res.json()
@@ -16,7 +16,7 @@ const getPostLikes = async (slug: string): Promise<MetricsPayload> => {
 const updatePostLikes = async (
   slug: string,
   count: number
-): Promise<MetricsPayload> => {
+): Promise<LikesPayload> => {
   const res = await fetch(`/api/likes/${slug}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

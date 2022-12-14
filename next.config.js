@@ -1,17 +1,17 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const nextTranslate = require('next-translate')
+const { withContentlayer } = require('next-contentlayer')
 
 /** @type {import('next').NextConfig} */
-module.exports = nextTranslate({
-  reactStrictMode: true,
+const nextConfig = {
+  experimental: {
+    appDir: true,
+    fontLoaders: [
+      { loader: '@next/font/google', options: { subsets: ['latin'] } },
+    ],
+  },
 
   images: {
-    domains: [
-      'cdn.jsdelivr.net',
-      'avatars.githubusercontent.com',
-      'res.cloudinary.com',
-      'cdnjs.cloudflare.com',
-    ],
+    domains: ['avatars.githubusercontent.com'],
     remotePatterns: [
       {
         protocol: 'https',
@@ -24,9 +24,11 @@ module.exports = nextTranslate({
     return [
       {
         source: '/youtube',
-        destination: 'https://www.youtube.com/channel/UC2hMWOaOlk9vrkvFVaGmn0Q',
+        destination: 'https://youtube.com/@tszhong0411',
         permanent: false,
       },
     ]
   },
-})
+}
+
+module.exports = withContentlayer(nextConfig)

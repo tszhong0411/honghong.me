@@ -10,7 +10,7 @@ const handler = async (_: NextApiRequest, res: NextApiResponse) => {
       },
     })
 
-    return res.status(200).json({ total: totalViews._sum.views })
+    return res.status(200).json({ views: totalViews._sum.views })
   } catch (e) {
     return res.status(500).json({ message: e.message })
   }

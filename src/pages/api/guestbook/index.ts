@@ -29,12 +29,17 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   const { email, name, image } = session.user
+  const { body: content } = req.body
 
   if (req.method === 'POST') {
+    if (!content) {
+      return res.status(400).send("The message can't be empty.")
+    }
+
     const newEntry = await prisma.guestbook.create({
       data: {
         email,
-        body: (req.body.body || '').slice(0, 500),
+        body: content.slice(0, 500),
         image,
         created_by: name,
       },

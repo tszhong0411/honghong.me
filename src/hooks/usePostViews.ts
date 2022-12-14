@@ -1,47 +1,47 @@
-import useSWR, { SWRConfiguration } from 'swr'
+import React from 'react'
+import useSWR, { mutate } from 'swr'
 
-const API_URL = `/api/views`
+const API_URL = `/api/views/`
 
-const getPostViews = async (slug: string): Promise<{ total: number }> => {
-  const res = await fetch(API_URL + `/${slug}`)
-  if (!res.ok) {
-    throw new Error('An error occurred while fetching the data.')
-  }
+type ViewsPayload = {
+  views: number | undefined
+}
+
+const getPostViews = async (slug: string): Promise<ViewsPayload> => {
+  const res = await fetch(API_URL + slug)
+
   return res.json()
 }
 
-const updatePostViews = async (slug: string): Promise<{ total: number }> => {
-  const res = await fetch(API_URL + `/${slug}`, { method: 'POST' })
-  if (!res.ok) {
-    throw new Error('An error occurred while posting the data.')
-  }
-  return res.json()
-}
-
-export const usePostViews = (slug: string, config?: SWRConfiguration) => {
-  const {
-    data: views,
-    error,
-    mutate,
-  } = useSWR<{ total: number }>([API_URL, slug], () => getPostViews(slug), {
-    dedupingInterval: 60000,
-    ...config,
+const updatePostViews = async (slug: string): Promise<ViewsPayload> => {
+  const res = await fetch(API_URL + slug, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
   })
 
-  const increment = () => {
-    mutate(
-      updatePostViews(slug).catch((e) => {
-        // eslint-disable-next-line no-console
-        console.log(e)
-
-        return { total: 0 }
-      })
-    )
-  }
+  const data = await res.json()
 
   return {
-    views,
-    isLoading: !error && !views,
+    views: data.views,
+  }
+}
+
+export const usePostViews = (slug: string) => {
+  const { data, error } = useSWR(
+    slug ? `${slug}/views` : null,
+    () => getPostViews(slug),
+    {
+      revalidateOnFocus: false,
+    }
+  )
+
+  const increment = React.useCallback(() => {
+    mutate(`${slug}/views`, updatePostViews(slug))
+  }, [slug])
+
+  return {
+    views: data?.views,
+    isLoading: !error && !data,
     isError: !!error,
     increment,
   }

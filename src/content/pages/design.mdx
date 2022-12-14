@@ -1,0 +1,113 @@
+## Color
+
+<Colors />
+
+## Callout
+
+<Callout type='default'>Sphinx of black quartz, judge my vow.</Callout>
+
+### Info
+
+<Callout type='info'>Sphinx of black quartz, judge my vow.</Callout>
+
+### Warning
+
+<Callout type='warning'>Sphinx of black quartz, judge my vow.</Callout>
+
+### Error
+
+<Callout type='error'>Sphinx of black quartz, judge my vow.</Callout>
+
+### Custom icon
+
+<Callout icon='🤪'>Sphinx of black quartz, judge my vow.</Callout>
+
+## Inline code
+
+`const fn = () => console.log('Hello world!'){:js}`
+
+## Code block
+
+### Basic
+
+```js
+const MyComponent = () => {
+  const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => setMounted(true), [])
+
+  if (!mounted) return 'Loading ...'
+
+  return <div> ... </div>
+}
+
+export default MyComponent
+```
+
+### With line numbers, line and word highlighting
+
+```js showLineNumbers {4} /useState/
+const MyComponent = () => {
+  const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => setMounted(true), [])
+
+  if (!mounted) return 'Loading ...'
+
+  return <div> ... </div>
+}
+
+export default MyComponent
+```
+
+### With title
+
+```js title="app/components/MyComponent.tsx"
+const MyComponent = () => {
+  const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => setMounted(true), [])
+
+  if (!mounted) return 'Loading ...'
+
+  return <div> ... </div>
+}
+
+export default MyComponent
+```
+
+## Tree
+
+<Tree
+  data={[
+    {
+      name: 'app',
+      children: [
+        { name: 'head.tsx' },
+        { name: 'layout.tsx' },
+        { name: 'not-found.tsx' },
+        { name: 'page.tsx' },
+      ],
+    },
+    {
+      name: 'config',
+      children: [
+        { name: 'colors.ts' },
+        { name: 'giscus.ts' },
+        { name: 'link.ts' },
+        { name: 'uses.ts' },
+      ],
+    },
+    {
+      name: 'hooks',
+      children: [
+        { name: 'useFormattedDate.ts' },
+        { name: 'useHeadings.ts' },
+        { name: 'useNowPlaying.ts' },
+        { name: 'usePostLikes.ts' },
+        { name: 'usePostViews.ts' },
+        { name: 'useScrollspy.ts' },
+      ],
+    },
+  ]}
+/>
