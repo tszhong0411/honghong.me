@@ -12,8 +12,7 @@ const handler = async (req: NextRequest) => {
   const title = searchParams.get('title')
   const url = searchParams.get('url') ?? 'honghong.me'
   const image =
-    searchParams.get('image') ??
-    'https://honghong.me/static/images/logo/logo-black.png'
+    searchParams.get('image') ?? 'https://honghong.me/static/images/avatar.png'
   const author = searchParams.get('author') ?? '小康'
   const date = dayjs(searchParams.get('date')).format('DD MMMM YYYY')
 

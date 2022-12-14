@@ -24,8 +24,8 @@ const handler = async (_: NextApiRequest, res: NextApiResponse) => {
   )
 
   return res.status(200).json({
-    subscriberCount,
-    viewCount,
+    subscribers: Number(subscriberCount),
+    views: Number(viewCount),
   })
 }
 
