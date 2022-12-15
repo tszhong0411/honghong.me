@@ -77,12 +77,6 @@ SPOTIFY_REFRESH_TOKEN=<Your env>
 // ...
 ```
 
-## 🛳️ Roadmap
-
-- [x] Multi-language Support
-  - [x] Traditional Chinese
-  - [x] English
-
 ## 🍰 Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
