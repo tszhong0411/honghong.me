@@ -24,7 +24,7 @@
 - Comment: [Giscus](https://giscus.app/)
 - Favicon: [realfavicongenerator](https://realfavicongenerator.net/)
 - Content: [MDX](https://mdxjs.com/) + [Contentlayer](https://www.contentlayer.dev/)
-- Analytics: [Umami](https://umami.is/)
+- Analytics: [Vercel](https://vercel.com/)
 - Styling: [Tailwindcss](https://tailwindcss.com)
 - Code syntax highlighting: [Shiki](https://github.com/shikijs/shiki)
 
