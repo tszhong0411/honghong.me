@@ -2020,6 +2020,11 @@
   resolved "https://registry.yarnpkg.com/@types/resolve/-/resolve-1.20.2.tgz#97d26e00cd4a0423b4af620abecf3e6f442b7975"
   integrity sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==
 
+"@types/rss@^0.0.29":
+  version "0.0.29"
+  resolved "https://registry.yarnpkg.com/@types/rss/-/rss-0.0.29.tgz#1f2b37a863021c56398bf913fd02efad484123c8"
+  integrity sha512-9hAYKyOcoxWqkJMue6bi0fcNXxjJiRutVvqyImy732LmTCxRz9BYPmSmujG7uddK0ZEP/35K3QVZ0sfAVyPnQw==
+
 "@types/scheduler@*":
   version "0.16.2"
   resolved "https://registry.yarnpkg.com/@types/scheduler/-/scheduler-0.16.2.tgz#1a62f89525723dde24ba1b01b092bf5df8ad4d39"
@@ -9079,10 +9084,10 @@ typescript@^4.6.4:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.4.tgz#a2a3d2756c079abda241d75f149df9d561091e78"
   integrity sha512-Uz+dTXYzxXXbsFpM86Wh3dKCxrQqUcVMxwU54orwlJjOpO3ao8L7j5lH+dWfTwgCwIuM9GQ2kvVotzYJMXTBZg==
 
-typescript@^5.0.0-dev.20221208:
-  version "5.0.0-dev.20221208"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.0.0-dev.20221208.tgz#c950a8ebe5b819e9e2d5b431bac88af6df1a73f2"
-  integrity sha512-X9uK69qwF9KNf5i+SDMKAtS66MmUL+tbwbrtpyEplnWWdfErtw6ZRegxdgaTOAC7pFMALQuR/PCvkL6O78VbKg==
+typescript@^5.0.0-dev.20221217:
+  version "5.0.0-dev.20221217"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.0.0-dev.20221217.tgz#f3f42df4697dabe87a1da1ff02714e44c514bb78"
+  integrity sha512-HydEtykZ5AXPb9uo+a92AFa3c6dU2+d2E7lIdMwc2otYLW0CbxPCYAoJBW7pWxxOOu7pv0Ll54wQg7/J+rf2mQ==
 
 unbox-primitive@^1.0.2:
   version "1.0.2"
