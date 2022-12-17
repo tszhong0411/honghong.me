@@ -1,9 +1,9 @@
-import { GetServerSideProps } from 'next'
+import type { NextApiRequest, NextApiResponse } from 'next'
 import RSS from 'rss'
 
 import { getAllPosts } from '@/lib/mdx'
 
-export const getServerSideProps: GetServerSideProps = async ({ res }) => {
+const handler = async (_: NextApiRequest, res: NextApiResponse) => {
   const feed = new RSS({
     title: '小康 Blog',
     description: "Hong's personal website and blog",
@@ -32,16 +32,8 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     'Cache-Control',
     'public, s-maxage=1200, stale-while-revalidate=600'
   )
-  res.write(feed.xml({ indent: true }))
-  res.end()
 
-  return {
-    props: {},
-  }
+  return res.status(200).send(feed.xml({ indent: true }))
 }
 
-const RSSFeed = () => {
-  return null
-}
-
-export default RSSFeed
+export default handler

@@ -27,6 +27,11 @@ const nextConfig = {
         destination: 'https://youtube.com/@tszhong0411',
         permanent: false,
       },
+      {
+        source: '/feed.xml',
+        destination: '/api/rss',
+        permanent: false,
+      },
     ]
   },
 }
