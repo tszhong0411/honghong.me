@@ -27,7 +27,7 @@ const handler = async (_: NextApiRequest, res: NextApiResponse) => {
     })
   })
 
-  res.setHeader('Content-Type', 'application/rss+xml')
+  res.setHeader('Content-Type', 'text/xml')
   res.setHeader(
     'Cache-Control',
     'public, s-maxage=1200, stale-while-revalidate=600'
