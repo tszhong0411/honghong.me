@@ -52,7 +52,10 @@ const Header = () => {
           </button>
           <Dropdown>
             <Dropdown.Trigger>
-              <button className='flex h-9 w-9 items-center justify-center rounded-md duration-300 hover:bg-accent-2'>
+              <button
+                className='flex h-9 w-9 items-center justify-center rounded-md duration-300 hover:bg-accent-2'
+                aria-label='Toggle menu'
+              >
                 <IconMenu size={20} />
               </button>
             </Dropdown.Trigger>
