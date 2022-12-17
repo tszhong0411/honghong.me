@@ -91,7 +91,7 @@
     "prettier-plugin-tailwindcss": "^0.2.1",
     "prisma": "^4.7.1",
     "tailwindcss": "^3.2.4",
-    "typescript": "^5.0.0-dev.20221217"
+    "typescript": "^5.0.0-dev.20221208"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
