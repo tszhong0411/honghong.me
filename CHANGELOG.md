@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.2](https://github.com/TszHong0411/honghong.me/compare/v2.1.1...v2.1.2) (2022-12-18)
+
+
+### Features
+
+* add aria label to toggle menu button ([69023b6](https://github.com/TszHong0411/honghong.me/commit/69023b649949c6b76013ef383924ec60ed2dbc57))
+* add logo ([872a2a8](https://github.com/TszHong0411/honghong.me/commit/872a2a8bf2881bde6772d7536c985a9dba964c44))
+* remove unnecessary favicon ([6bbbef8](https://github.com/TszHong0411/honghong.me/commit/6bbbef8e7b87bc55612db699bb9042b968e23b87))
+* update logo ([4c1d88c](https://github.com/TszHong0411/honghong.me/commit/4c1d88cee02a4be72b95786295a553092e525d2d))
+
+
+### Bug Fixes
+
+* fix build error ([7ef4c70](https://github.com/TszHong0411/honghong.me/commit/7ef4c70aa43a602691e6481dbb58c1dec76ffbf8))
+* fix typo ([f7a2821](https://github.com/TszHong0411/honghong.me/commit/f7a2821b5b88d8accf55657a4351054e2799038d))
+* fix wrong content-type of rss ([9c8ae99](https://github.com/TszHong0411/honghong.me/commit/9c8ae99aa15971176d9c764a600d88bf56a31dcf))
+* fix wrong initial width and height of item image ([597032f](https://github.com/TszHong0411/honghong.me/commit/597032fc366881d4ef4a118ad77bd5d2685978d2))
+* one blog image ([9fecdf5](https://github.com/TszHong0411/honghong.me/commit/9fecdf5f4dd784532d9c64ae3d4bdb4498493a51))
+* typo ([3a7a412](https://github.com/TszHong0411/honghong.me/commit/3a7a412d4dbb61deec307d2558c444ff09fc91a6))
+* use text/xml ([d265b70](https://github.com/TszHong0411/honghong.me/commit/d265b70f6e70670e53ec7fbc2872a6496eb43c7f))
+
 ### [2.1.1](https://github.com/TszHong0411/honghong.me/compare/v2.1.0...v2.1.1) (2022-12-14)
 
 
