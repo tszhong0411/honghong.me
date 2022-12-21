@@ -30,9 +30,7 @@
 
 ## 🚀 Demo
 
-<a href="https://honghong.me" target="_blank">
-  <img src="https://img.shields.io/badge/website-honghong.me-blue?style=flat-square&color=black" />
-</a>
+<img src="https://img.shields.io/badge/website-honghong.me-blue?style=flat-square&color=black" />
 
 <img src="https://img.shields.io/github/repo-size/tszhong0411/honghong.me?style=flat-square&color=green" />
 
