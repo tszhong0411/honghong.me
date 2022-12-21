@@ -1,8 +1,7 @@
 {
   "name": "honghong.me",
   "private": true,
-  "description": "Personal website and blog made using TypeScript, Next.js, Tailwind",
-  "author": "小康 <info@honghong.me>",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
@@ -10,13 +9,9 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "eslint src --fix && yarn format",
-    "lint:strict": "eslint --max-warnings=0 src",
     "format": "prettier -w .",
-    "format:check": "prettier -c .",
     "type-check": "tsc --noEmit",
     "prepare": "husky install",
-    "prisma:studio": "dotenv -e .env.local -- prisma studio",
-    "prisma:push": "dotenv -e .env.local -- prisma db push",
     "test:watch": "jest --watch",
     "test": "jest"
   },
@@ -208,6 +203,5 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "version": "2.1.2"
+  }
 }
