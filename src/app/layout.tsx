@@ -17,13 +17,22 @@ import { WithChildren } from '@/types'
 
 type RootLayoutProps = WithChildren
 
-const inter = Inter({ variable: '--font-inter', subsets: ['latin'] })
+const inter = Inter({
+  variable: '--font-inter',
+  subsets: ['latin'],
+  display: 'swap',
+})
 const notoSansTC = Noto_Sans_TC({
   variable: '--font-noto-sans-tc',
   weight: ['400', '500', '700', '900'],
   subsets: ['latin'],
+  display: 'swap',
 })
-const firaCode = Fira_Code({ variable: '--font-fira-code', subsets: ['latin'] })
+const firaCode = Fira_Code({
+  variable: '--font-fira-code',
+  subsets: ['latin'],
+  display: 'swap',
+})
 
 const RootLayout = (props: RootLayoutProps) => {
   const { children } = props
@@ -38,7 +47,6 @@ const RootLayout = (props: RootLayoutProps) => {
         'scroll-smooth'
       )}
     >
-      <head />
       <body className='overflow-x-hidden bg-hong-bg font-default'>
         <ThemeProvider attribute='class'>
           <KBar>
