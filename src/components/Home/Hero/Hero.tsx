@@ -32,7 +32,7 @@ const Hero = () => {
       </div>
       <div className='flex gap-6'>
         {HERO_LINKS.map((link, i) => (
-          <Link key={i} href={link.href} icon={false}>
+          <Link key={i} href={link.href} icon={false} animation={false}>
             {link.icon}
           </Link>
         ))}
