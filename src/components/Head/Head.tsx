@@ -11,7 +11,7 @@ const Head = (props: HeadProps) => {
   const pathname = usePathname()
   const {
     title,
-    description = '小康 - 16 yrs • Student • Fullstack Web developer (student)',
+    description = '小康 – 16 yrs • Student • Full-stack Web Development Student',
     ...rest
   } = props
 
@@ -20,10 +20,10 @@ const Head = (props: HeadProps) => {
       <meta charSet='utf-8' />
       <meta name='viewport' content='width=device-width' />
       <NextSeo
-        useAppDir={true}
-        titleTemplate='%s | 小康 Blog'
+        useAppDir
+        titleTemplate='%s - 小康'
         title={title}
-        defaultTitle='小康 – Developer, YouTuber'
+        defaultTitle='小康'
         description={description}
         canonical={`https://honghong.me${pathname}`}
         twitter={{
@@ -34,14 +34,14 @@ const Head = (props: HeadProps) => {
         openGraph={{
           url: `https://honghong.me${pathname}`,
           type: 'website',
-          title: title ?? '小康 – Developer, YouTuber',
+          title: title ?? '小康',
           description,
           images: [
             {
               url: 'https://honghong.me/static/images/og/og.png',
               width: 1200,
               height: 630,
-              alt: description,
+              alt: '小康 – 16 yrs • Student • Full-stack Web Development Student',
             },
           ],
         }}
