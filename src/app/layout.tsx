@@ -1,6 +1,5 @@
 import { Fira_Code, Inter, Noto_Sans_TC } from '@next/font/google'
 import clsx from 'clsx'
-import React from 'react'
 
 import '@/styles/globals.css'
 
