@@ -3,7 +3,7 @@ title: How to Install Windows 11 on VMware
 date: '2022-08-15T00:00:00Z'
 modifiedTime: '2022-08-18T00:00:00Z'
 summary: Install Windows on VMware, and do something crazy!
-image: 'how-to-install-win11-on-vmware/cover.en.png'
+image: 'how-to-install-win11-on-vmware/cover.png'
 ---
 
 ## Install VMware
@@ -22,86 +22,86 @@ image: 'how-to-install-win11-on-vmware/cover.en.png'
 3. Select your language
 4. Click Confirm
 
-![](</static/images/blog/how-to-install-win11-on-vmware/step-1(1-4).en.png>)
+![](</static/images/blog/how-to-install-win11-on-vmware/step-1(1-4).png>)
 
 5. Click 64-bit Download
 
-![](</static/images/blog/how-to-install-win11-on-vmware/step-1(5).en.png>)
+![](</static/images/blog/how-to-install-win11-on-vmware/step-1(5).png>)
 
 ## Step 2 - Create Windows 11 Virtual Machine
 
 1. Click Create a New Virtual Machine
 
-![](</static/images/blog/how-to-install-win11-on-vmware/step-2(1).en.png>)
+![](</static/images/blog/how-to-install-win11-on-vmware/step-2(1).png>)
 
 2. Select Typical
 3. Next
 
-![](</static/images/blog/how-to-install-win11-on-vmware/step-2(2-3).en.png>)
+![](</static/images/blog/how-to-install-win11-on-vmware/step-2(2-3).png>)
 
 4. Select Installer disc image file (iso)
 5. Click Browse to select the ISO that your download before
 6. Next
 
-![](</static/images/blog/how-to-install-win11-on-vmware/step-2(4-6).en.png>)
+![](</static/images/blog/how-to-install-win11-on-vmware/step-2(4-6).png>)
 
 7. Select Microsoft Windows
 8. Select Windows 10 x64 或 Windows 10 and later x64 (If it has this option)
 9. Next
 
-![](</static/images/blog/how-to-install-win11-on-vmware/step-2(7-9).en.png>)
+![](</static/images/blog/how-to-install-win11-on-vmware/step-2(7-9).png>)
 
 10. Type the Virtual machine name, here I named it Windows 11
 11. Click Browse to select the virtual machine install location, here I select E drive
 12. Next
 
-![](</static/images/blog/how-to-install-win11-on-vmware/step-2(10-12).en.png>)
+![](</static/images/blog/how-to-install-win11-on-vmware/step-2(10-12).png>)
 
 13. Type the Maximum disk size, recommended 60GB or more
 14. Select Store virtual disk as a single file
 15. Next
 
-![](</static/images/blog/how-to-install-win11-on-vmware/step-2(13-15).en.png>)
+![](</static/images/blog/how-to-install-win11-on-vmware/step-2(13-15).png>)
 
 16. Finish
 
-![](</static/images/blog/how-to-install-win11-on-vmware/step-2(16).en.png>)
+![](</static/images/blog/how-to-install-win11-on-vmware/step-2(16).png>)
 
 ## Step 3 - Customize the virtual machine
 
 1. Click Edit virtual machine settings
 
-![](</static/images/blog/how-to-install-win11-on-vmware/step-3(1).en.png>)
+![](</static/images/blog/how-to-install-win11-on-vmware/step-3(1).png>)
 
 2. Select Memory
 3. Select 4 GB or more
 4. OK
 
-![](</static/images/blog/how-to-install-win11-on-vmware/step-3(2-4).en.png>)
+![](</static/images/blog/how-to-install-win11-on-vmware/step-3(2-4).png>)
 
 5. Click Power on this virtual machine
 
-![](</static/images/blog/how-to-install-win11-on-vmware/step-3(5).en.png>)
+![](</static/images/blog/how-to-install-win11-on-vmware/step-3(5).png>)
 
 ## Step 4 - Install Windows 11
 
 1. Select your preferred language
 2. Next
 
-![](</static/images/blog/how-to-install-win11-on-vmware/step-4(1-2).en.png>)
+![](</static/images/blog/how-to-install-win11-on-vmware/step-4(1-2).png>)
 
 3. Click Install now
 
-![](</static/images/blog/how-to-install-win11-on-vmware/step-4(3).en.png>)
+![](</static/images/blog/how-to-install-win11-on-vmware/step-4(3).png>)
 
 4. Select I don’t have a product key or you may type your key
 
-![](</static/images/blog/how-to-install-win11-on-vmware/step-4(4).en.png>)
+![](</static/images/blog/how-to-install-win11-on-vmware/step-4(4).png>)
 
 5. Select the version that you want to install
 6. Next
 
-![](</static/images/blog/how-to-install-win11-on-vmware/step-4(5-6).en.png>)
+![](</static/images/blog/how-to-install-win11-on-vmware/step-4(5-6).png>)
 
 <Callout>
   If the below situation does not appear, please skip to step 19.
@@ -110,55 +110,55 @@ Press <Kbd>Shift</Kbd> + <Kbd>F10</Kbd> to open CMD
 
 </Callout>
 
-![](/static/images/blog/how-to-install-win11-on-vmware/cant-install.en.png)
+![](/static/images/blog/how-to-install-win11-on-vmware/cant-install.png)
 
 1. Type `regedit`
 
-![](</static/images/blog/how-to-install-win11-on-vmware/step-4(7).en.png>)
+![](</static/images/blog/how-to-install-win11-on-vmware/step-4(7).png>)
 
 8. Go to `Computer\HKEY_LOCAL_MACHINE\SYSTEM\Setup`
 9. Right click Setup
 10. New > Key, and name it `LabConfig`
 
-![](</static/images/blog/how-to-install-win11-on-vmware/step-4(8-10).en.png>)
+![](</static/images/blog/how-to-install-win11-on-vmware/step-4(8-10).png>)
 
 11. New > DWORD (32-bit) Value
 
-![](</static/images/blog/how-to-install-win11-on-vmware/step-4(11).en.png>)
+![](</static/images/blog/how-to-install-win11-on-vmware/step-4(11).png>)
 
 12. Name it `BypassTPMCheck`
 13. Value is 1
 14. OK
 15. Close the regedit (Registry Editor)
 
-![](</static/images/blog/how-to-install-win11-on-vmware/step-4(12-15).en.png>)
+![](</static/images/blog/how-to-install-win11-on-vmware/step-4(12-15).png>)
 
 16. Close the Windows Setup
 17. Yes
 
-![](</static/images/blog/how-to-install-win11-on-vmware/step-4(16-17).en.png>)
+![](</static/images/blog/how-to-install-win11-on-vmware/step-4(16-17).png>)
 
 18. Install now
 
-![](</static/images/blog/how-to-install-win11-on-vmware/step-4(18).en.png>)
+![](</static/images/blog/how-to-install-win11-on-vmware/step-4(18).png>)
 
 19. Accept the Terms
 20. Next
 
-![](</static/images/blog/how-to-install-win11-on-vmware/step-4(19-20).en.png>)
+![](</static/images/blog/how-to-install-win11-on-vmware/step-4(19-20).png>)
 
 21. Select Custom: Install Windows only (advanced)
 
-![](</static/images/blog/how-to-install-win11-on-vmware/step-4(21).en.png>)
+![](</static/images/blog/how-to-install-win11-on-vmware/step-4(21).png>)
 
 22. Select Drive 0
 23. Next
 
-![](</static/images/blog/how-to-install-win11-on-vmware/step-4(22-23).en.png>)
+![](</static/images/blog/how-to-install-win11-on-vmware/step-4(22-23).png>)
 
 <Callout>Installing, please wait</Callout>
 
-![](/static/images/blog/how-to-install-win11-on-vmware/installing.en.png)
+![](/static/images/blog/how-to-install-win11-on-vmware/installing.png)
 
 <Callout icon='✍️'>
   Since initializing Windows 11 is easy, steps are skipped here
@@ -169,31 +169,31 @@ Press <Kbd>Shift</Kbd> + <Kbd>F10</Kbd> to open CMD
 1. Click VM
 2. Click Install VMware Tools
 
-![](</static/images/blog/how-to-install-win11-on-vmware/step-5(1-2).en.png>)
+![](</static/images/blog/how-to-install-win11-on-vmware/step-5(1-2).png>)
 
 3. Open the file explorer
 4. Select DVD Drive
 5. Click setup.exe
 
-![](</static/images/blog/how-to-install-win11-on-vmware/step-5(3-5).en.png>)
+![](</static/images/blog/how-to-install-win11-on-vmware/step-5(3-5).png>)
 
 6. Yes
 
-![](</static/images/blog/how-to-install-win11-on-vmware/step-5(6).en.png>)
+![](</static/images/blog/how-to-install-win11-on-vmware/step-5(6).png>)
 
 7. Next
 
-![](</static/images/blog/how-to-install-win11-on-vmware/step-5(7).en.png>)
+![](</static/images/blog/how-to-install-win11-on-vmware/step-5(7).png>)
 
 8. Select Typical
 9. Next
 
-![](</static/images/blog/how-to-install-win11-on-vmware/step-5(8-9).en.png>)
+![](</static/images/blog/how-to-install-win11-on-vmware/step-5(8-9).png>)
 
 10. Install
 
-![](</static/images/blog/how-to-install-win11-on-vmware/step-5(10).en.png>)
+![](</static/images/blog/how-to-install-win11-on-vmware/step-5(10).png>)
 
 After installing, you'll be able to use Windows 11 on full screen
 
-![](/static/images/blog/how-to-install-win11-on-vmware/fullscreen.en.png)
+![](/static/images/blog/how-to-install-win11-on-vmware/fullscreen.png)
