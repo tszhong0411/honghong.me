@@ -31,7 +31,6 @@
     "contentlayer": "^0.2.9",
     "dayjs": "^1.11.7",
     "framer-motion": "^7.10.0",
-    "github-slugger": "^2.0.0",
     "googleapis": "^109.0.1",
     "hastscript": "^7.1.0",
     "image-size": "^1.0.2",
