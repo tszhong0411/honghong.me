@@ -27,7 +27,7 @@ const Footer = () => {
         ))}
       </div>
       <div className='mt-20 text-sm'>
-        All rights reserved &copy; 小康 {new Date().getFullYear()}
+        &copy; 小康 {new Date().getFullYear()}
       </div>
     </footer>
   )
