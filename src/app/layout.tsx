@@ -21,12 +21,14 @@ const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
 })
+
 const notoSansTC = Noto_Sans_TC({
   variable: '--font-noto-sans-tc',
   weight: ['400', '500', '700', '900'],
   subsets: ['latin'],
   display: 'swap',
 })
+
 const firaCode = Fira_Code({
   variable: '--font-fira-code',
   subsets: ['latin'],
