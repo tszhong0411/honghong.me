@@ -1,7 +1,7 @@
 import { getNowPlaying } from '@/lib/spotify'
 
 export const config = {
-  runtime: 'experimental-edge',
+  runtime: 'edge',
 }
 
 const handler = async () => {
