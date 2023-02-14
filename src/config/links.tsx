@@ -10,7 +10,7 @@ import {
   IconMessageCircle,
   IconPencil,
   IconUserCircle,
-} from '@tabler/icons'
+} from '@tabler/icons-react'
 
 import { DropdownItemType } from '@/components/Dropdown'
 import { HeroLinks } from '@/components/Home/Hero'

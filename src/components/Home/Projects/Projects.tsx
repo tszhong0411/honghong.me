@@ -1,5 +1,5 @@
-import { IconArrowRight } from '@tabler/icons'
-import * as TablerIcon from '@tabler/icons'
+import { IconArrowRight } from '@tabler/icons-react'
+import * as TablerIcon from '@tabler/icons-react'
 import { allProjects } from 'contentlayer/generated'
 import Link from 'next/link'
 

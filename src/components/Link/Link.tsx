@@ -1,4 +1,4 @@
-import { IconArrowUpRight } from '@tabler/icons'
+import { IconArrowUpRight } from '@tabler/icons-react'
 import NextLink, { LinkProps as NextLinkProps } from 'next/link'
 
 import clsxm from '@/lib/clsxm'

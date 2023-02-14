@@ -1,6 +1,6 @@
 'use client'
 
-import { IconCommand, IconMenu } from '@tabler/icons'
+import { IconCommand, IconMenu } from '@tabler/icons-react'
 import clsx from 'clsx'
 import { useKBar } from 'kbar'
 import Link from 'next/link'

@@ -4,7 +4,7 @@ import {
   IconBrandFacebook,
   IconBrandReddit,
   IconBrandTwitter,
-} from '@tabler/icons'
+} from '@tabler/icons-react'
 import { allBlogPosts } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import { usePathname } from 'next/navigation'

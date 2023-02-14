@@ -1,4 +1,8 @@
-import { IconBrandGithub, IconBrandYoutube, IconPencil } from '@tabler/icons'
+import {
+  IconBrandGithub,
+  IconBrandYoutube,
+  IconPencil,
+} from '@tabler/icons-react'
 
 import { BASE_URL, isProduction } from '@/lib/constants'
 

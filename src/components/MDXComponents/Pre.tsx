@@ -1,6 +1,6 @@
 'use client'
 
-import { IconCheck, IconCopy } from '@tabler/icons'
+import { IconCheck, IconCopy } from '@tabler/icons-react'
 import React from 'react'
 import { toast } from 'react-hot-toast'
 

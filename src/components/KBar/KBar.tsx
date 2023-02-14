@@ -9,7 +9,7 @@ import {
   IconLink,
   IconMoon,
   IconSun,
-} from '@tabler/icons'
+} from '@tabler/icons-react'
 import {
   Action,
   KBarAnimator,

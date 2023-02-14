@@ -1,4 +1,4 @@
-import { IconArrowRight } from '@tabler/icons'
+import { IconArrowRight } from '@tabler/icons-react'
 import Link from 'next/link'
 
 import PostCard from '@/components/PostCard'

@@ -1,4 +1,4 @@
-import { IconFile, IconFolder } from '@tabler/icons'
+import { IconFile, IconFolder } from '@tabler/icons-react'
 import React from 'react'
 
 type Node = {

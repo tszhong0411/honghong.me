@@ -1,6 +1,6 @@
 'use client'
 
-import { IconSearch } from '@tabler/icons'
+import { IconSearch } from '@tabler/icons-react'
 import React from 'react'
 
 import { getAllPosts } from '@/lib/mdx'

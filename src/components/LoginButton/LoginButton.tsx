@@ -1,6 +1,6 @@
 'use client'
 
-import { IconBrandGithub, IconBrandGoogle } from '@tabler/icons'
+import { IconBrandGithub, IconBrandGoogle } from '@tabler/icons-react'
 import clsx from 'clsx'
 import { ClientSafeProvider, signIn } from 'next-auth/react'
 
