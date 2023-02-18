@@ -86,7 +86,7 @@
 
 pre,
 code {
-  @apply font-code;
+  @apply !font-code;
 }
 
 [data-rehype-pretty-code-fragment] {

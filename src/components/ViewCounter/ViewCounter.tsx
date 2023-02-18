@@ -33,7 +33,7 @@ const ViewCounter = (props: ViewCounterProps) => {
       {isLoading || isError ? (
         <Skeleton className='h-5 max-w-[70px]' />
       ) : (
-        <div>{`${views} views`}</div>
+        <div>{`${views} 次瀏覽`}</div>
       )}
     </>
   )

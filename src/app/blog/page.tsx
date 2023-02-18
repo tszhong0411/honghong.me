@@ -20,17 +20,16 @@ const BlogPage = () => {
       <div className='mb-8 space-y-8'>
         <h2 className='my-4 text-4xl font-bold'>Blog</h2>
         <p className='text-accent-5'>
-          I started writing articles in December 2020, mainly for software
-          sharing and skills sharing. In total, I have written {posts.length}{' '}
-          articles on my blog. You can search by title in the search bar below.
+          我在 2020 年 12 月開始寫文章，主要是軟件和分享知識。我總共寫了{' '}
+          {posts.length} 篇文章在我的 blog。你可以用標題搜尋文章在下面的搜尋框。
         </p>
         <div className='relative'>
           <input
             type='text'
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
-            placeholder='Search articles'
-            aria-label='Search articles'
+            placeholder='搜尋文章'
+            aria-label='搜尋文章'
             className='w-full rounded-md border border-accent-2 bg-hong-bg py-2 px-3 pl-12 transition-colors duration-200 ease-linear focus:border-accent-5 focus:outline-none'
             id='search'
           />
@@ -43,7 +42,7 @@ const BlogPage = () => {
         </div>
       </div>
       {!filteredPosts.length && (
-        <div className='text-center text-xl'>No posts found</div>
+        <div className='text-center text-xl'>沒有找到文章</div>
       )}
       <div className='grid gap-4 sm:grid-cols-2'>
         {filteredPosts.map((post) => (

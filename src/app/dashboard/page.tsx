@@ -51,28 +51,27 @@ const DashboardPage = async () => {
     <>
       <h2 className='my-4 text-4xl font-bold'>Dashboard</h2>
       <p className='mb-8 text-accent-5'>
-        This is my personal dashboard, built with Next.js API routes deployed as
-        serverless functions. I use this dashboard to track various metrics
-        across platforms like YouTube, GitHub, and more.
+        這是我的個人儀錶板，使用部署為 serverless functions 的 Next.js API
+        路由構建。我使用此儀錶板跟蹤跨平台，如 YouTube、GitHub 等的各種指標。
       </p>
       {isProduction && (
         <>
           <div className='mb-4 grid gap-4 sm:grid-cols-2'>
             <Card
               icon={<IconBrandYoutube />}
-              title='YouTube subscribers'
+              title='YouTube 訂閱者'
               href='https://youtube.com/@tszhong0411'
               data={youtube.subscribers}
             />
             <Card
               icon={<IconBrandYoutube />}
-              title='YouTube views'
+              title='YouTube 觀看次數'
               href='https://youtube.com/@tszhong0411'
               data={youtube.views}
             />
             <Card
               icon={<IconBrandGithub />}
-              title='GitHub followers'
+              title='GitHub 追隨者'
               href='https://github.com/tszhong0411'
               data={github.followers}
             />
@@ -85,7 +84,7 @@ const DashboardPage = async () => {
           </div>
           <Card
             icon={<IconPencil />}
-            title='Blog total views'
+            title='Blog 總瀏覽次數'
             href='https://honghong.me'
             data={blog.views}
           />

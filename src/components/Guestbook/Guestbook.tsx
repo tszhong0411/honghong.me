@@ -29,7 +29,7 @@ const submitMessage = async (
   onSuccess?: () => void,
   onDone?: () => void
 ) => {
-  const loading = toast.loading('Signing')
+  const loading = toast.loading('留言中')
 
   const res = await fetch('/api/guestbook', {
     body: JSON.stringify({
@@ -54,11 +54,11 @@ const submitMessage = async (
   typeof onDone === 'function' && onDone()
 
   toast.dismiss(loading)
-  toast.success('Added successfully')
+  toast.success('成功新增留言')
 }
 
 const deleteMessage = async (id: string, refresh: () => void) => {
-  const loading = toast.loading('Deleting')
+  const loading = toast.loading('刪除中')
 
   const res = await fetch(`/api/guestbook/${id}`, {
     method: 'DELETE',
@@ -74,7 +74,7 @@ const deleteMessage = async (id: string, refresh: () => void) => {
   refresh()
 
   toast.dismiss(loading)
-  toast.success('Deleted successfully')
+  toast.success('成功刪除')
 }
 
 const Guestbook = (props: GuestbookProps) => {
@@ -91,9 +91,9 @@ const Guestbook = (props: GuestbookProps) => {
             className='rounded-lg bg-theme-9 px-4 py-2 text-white transition-colors duration-300 hover:bg-theme-10'
             onClick={() => signIn()}
           >
-            Login
+            登入
           </button>
-          <span className='ml-2'>to continue leaving a message</span>
+          <span className='ml-2'>以繼續留言</span>
         </>
       )}
       {user && (
@@ -109,7 +109,7 @@ const Guestbook = (props: GuestbookProps) => {
             />
             <TextareaAutosize
               className='ml-3 flex-1 rounded-md border border-accent-2 bg-hong-bg py-2 px-3 transition-colors duration-200 ease-linear focus:border-accent-5 focus:outline-none'
-              placeholder='Your message ...'
+              placeholder='你的留言 ...'
               value={value}
               onChange={(e) => setValue(e.target.value)}
             />
@@ -119,7 +119,7 @@ const Guestbook = (props: GuestbookProps) => {
               className='rounded-lg border border-theme-7 bg-theme-1 px-4 py-2 text-theme-11 transition-colors duration-300 hover:border-theme-8'
               onClick={() => signOut()}
             >
-              Logout
+              登出
             </button>
             <button
               className='rounded-lg bg-theme-9 px-4 py-2 text-white transition-colors duration-300 hover:bg-theme-10'
@@ -134,7 +134,7 @@ const Guestbook = (props: GuestbookProps) => {
               }}
               disabled={loading}
             >
-              Sign
+              留言
             </button>
           </div>
         </>
@@ -158,7 +158,7 @@ const Guestbook = (props: GuestbookProps) => {
               <div className='flex flex-col justify-center gap-px text-sm'>
                 <div>{message.created_by}</div>
                 <div className='text-xs text-accent-5'>
-                  {dayjs(message.updated_at).format('MMMM DD, YYYY')}
+                  {dayjs(message.updated_at).format('YYYY年MM月DD日')}
                 </div>
               </div>
             </div>
@@ -168,15 +168,15 @@ const Guestbook = (props: GuestbookProps) => {
                 <Modal>
                   <Modal.Trigger>
                     <button className='rounded-lg bg-theme-9 px-4 py-2 text-white transition-colors duration-300 hover:bg-theme-10'>
-                      Delete
+                      刪除
                     </button>
                   </Modal.Trigger>
                   <Modal.Content>
-                    <div className='mb-2'>Delete a comment</div>
+                    <div className='mb-2'>刪除一個留言</div>
                     <div className='flex justify-end gap-2'>
                       <Modal.Close>
                         <button className='rounded-lg border border-theme-7 bg-theme-1 px-4 py-2 text-theme-11 transition-colors duration-300 hover:border-theme-8'>
-                          Cancel
+                          取消
                         </button>
                       </Modal.Close>
                       <Modal.Close>
@@ -184,7 +184,7 @@ const Guestbook = (props: GuestbookProps) => {
                           className='rounded-lg bg-theme-9 px-4 py-2 text-white transition-colors duration-300 hover:bg-theme-10'
                           onClick={() => deleteMessage(message.id, refresh)}
                         >
-                          Delete
+                          刪除
                         </button>
                       </Modal.Close>
                     </div>

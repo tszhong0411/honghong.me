@@ -1,9 +1,7 @@
 import Head from '@/components/Head'
 
 const AboutHead = () => {
-  return (
-    <Head title='About' description='A student who loves web development.' />
-  )
+  return <Head title='關於' description='一名熱愛網絡開發的學生' />
 }
 
 export default AboutHead

@@ -33,7 +33,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (req.method === 'POST') {
     if (!content) {
-      return res.status(400).send("The message can't be empty.")
+      return res.status(400).send('留言不能為空')
     }
 
     const newEntry = await prisma.guestbook.create({

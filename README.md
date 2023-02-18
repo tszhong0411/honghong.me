@@ -7,28 +7,28 @@
 </p>
 
 <p align="center">
-    <a href="https://honghong.me" target="blank">View Demo</a>
+    <a href="https://honghong.me" target="blank">線上查看</a>
     ·
-    <a href="https://github.com/tszhong0411/honghong.me/issues/new/choose">Report Bug</a>
+    <a href="https://github.com/tszhong0411/honghong.me/issues/new/choose">回報錯誤</a>
     ·
-    <a href="https://github.com/tszhong0411/honghong.me/issues/new/choose">Request Feature</a>
+    <a href="https://github.com/tszhong0411/honghong.me/issues/new/choose">要求新功能</a>
 </p>
 
 ## 🌍 honghong.me
 
-- Framework: [Next.js](https://nextjs.org/)
-- Database: [Planetscale](https://planetscale.com/)
-- ORM: [Prisma](https://prisma.io/)
-- Authentication: [NextAuth.js](https://next-auth.js.org/)
-- Deployment: [Vercel](https://vercel.com)
-- Comment: [Giscus](https://giscus.app/)
-- Favicon: [realfavicongenerator](https://realfavicongenerator.net/)
-- Content: [MDX](https://mdxjs.com/) + [Contentlayer](https://www.contentlayer.dev/)
-- Analytics: [Vercel](https://vercel.com/)
-- Styling: [Tailwindcss](https://tailwindcss.com)
-- Code syntax highlighting: [Shiki](https://github.com/shikijs/shiki)
+- 框架：[Next.js](https://nextjs.org/)
+- 數據庫：[Planetscale](https://planetscale.com/)
+- ORM：[Prisma](https://prisma.io/)
+- 身份驗證：[NextAuth.js](https://next-auth.js.org/)
+- 部署：[Vercel](https://vercel.com)
+- 評論：[Giscus](https://giscus.app/)
+- 網站圖標：[realfavicongenerator](https://realfavicongenerator.net/)
+- 內容：[MDX](https://mdxjs.com/) + [Contentlayer](https://www.contentlayer.dev/)
+- 分析：[Vercel](https://vercel.com/)
+- 樣式：[Tailwindcss](https://tailwindcss.com)
+- 代碼語法高亮：[Shiki](https://github.com/shikijs/shiki)
 
-## 🚀 Demo
+## 🚀 演示
 
 <img src="https://img.shields.io/badge/website-honghong.me-blue?style=flat-square&color=black" />
 
@@ -40,27 +40,27 @@
 
 <img src="https://img.shields.io/github/deployments/tszhong0411/honghong.me/Production?style=flat-square" />
 
-## 👋 Running locally
+## 👋 在本地運行
 
-1. Clone this repo
+1. 複製這個倉庫
 
 ```sh
 git clone https://github.com/tszhong0411/honghong.me.git
 ```
 
-2. Change directory
+2. 更改目錄
 
 ```sh
 cd honghong.me
 ```
 
-3. Install yarn Packages
+3. 安裝 yarn 包
 
 ```sh
 yarn
 ```
 
-4. Create a .env.local and following the .env.example input some environment variables so that can run normally.
+4. 創建一個 `.env.local`，根據 `.env.example` 輸入一些環境變量，這樣就可以正常運行了。
 
 ```txt
 NEXT_PUBLIC_GISCUS_REPO=<Your env>
@@ -75,17 +75,16 @@ SPOTIFY_REFRESH_TOKEN=<Your env>
 // ...
 ```
 
-## 🍰 Contributing
+## 🍰 貢獻
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+貢獻使開源社區成為學習、啟發和創造的絕佳場所。 非常感謝您所做的任何貢獻。
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+如果您有更好的建議，請 fork 和建立 pull request。您也可以簡單地打開帶有 "enhancement" 標籤的 issue。 別忘了給這個項目一個 Star！再次感謝！
 
-1. Fork the Project
-2. Commit your Changes (`git commit -m 'Add some Feature'`)
-3. Push to the Branch (`git push`)
-4. Open a Pull Request
+1. Fork 這個項目
+2. 提交你的更改 (`git commit -m 'Add some Feature'`)
+3. 推到分支上 (`git push`)
+4. 打開一個 Pull Request
 
 ## ⭐ Lighthouse
 
@@ -93,7 +92,7 @@ Don't forget to give the project a star! Thanks again!
   <a href="https://googlechrome.github.io/lighthouse/viewer/?gist=50f0c8da918422944d8ee2e815eeecc1"><img src="./public/static/images/screenshot/honghong.me-lighthouse-202202092158.png"  alt="lighthouse"></a>
 </p>
 
-Last updated: 2022-02-09 21:58
+最後更新: 2022-02-09 21:58
 
 ## ❤️ Credits
 
@@ -101,5 +100,5 @@ Last updated: 2022-02-09 21:58
 
 <hr>
 <p align="center">
-Made with ❤️ in Hong Kong
+用 ❤️ 製作在 Hong Kong
 </p>

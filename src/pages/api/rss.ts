@@ -6,7 +6,7 @@ import { getAllPosts } from '@/lib/mdx'
 const handler = async (_: NextApiRequest, res: NextApiResponse) => {
   const feed = new RSS({
     title: '小康 Blog',
-    description: "Hong's personal website and blog",
+    description: '小康的個人網站和部落格',
     site_url: 'https://honghong.me',
     feed_url: 'https://honghong.me/feed.xml',
     language: 'en',

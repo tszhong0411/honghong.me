@@ -20,32 +20,32 @@ export const HEADER_LINKS: DropdownItemType[] = [
   {
     icon: <IconPencil />,
     href: '/blog',
-    text: 'Blog',
+    text: '部落格',
   },
   {
     icon: <IconMessageCircle />,
     href: '/guestbook',
-    text: 'Guestbook',
+    text: '留言簿',
   },
   {
     icon: <IconChartBar />,
     href: '/dashboard',
-    text: 'Dashboard',
+    text: '儀錶板',
   },
   {
     icon: <IconFlame />,
     href: '/projects',
-    text: 'Projects',
+    text: '項目',
   },
   {
     icon: <IconUserCircle />,
     href: '/about',
-    text: 'About',
+    text: '關於',
   },
   {
     icon: <IconDeviceDesktop />,
     href: '/uses',
-    text: 'Uses',
+    text: '設備',
   },
 ]
 
@@ -54,15 +54,15 @@ export const FOOTER_LINKS: FooterLinks = [
     links: [
       {
         href: '/',
-        title: 'Home',
+        title: '首頁',
       },
       {
         href: '/blog',
-        title: 'Blog',
+        title: '部落格',
       },
       {
         href: '/about',
-        title: 'About',
+        title: '關於',
       },
       {
         href: '/feed.xml',
@@ -74,19 +74,19 @@ export const FOOTER_LINKS: FooterLinks = [
     links: [
       {
         href: '/guestbook',
-        title: 'Guestbook',
+        title: '留言簿',
       },
       {
         href: '/uses',
-        title: 'Uses',
+        title: '設備',
       },
       {
         href: '/projects',
-        title: 'Projects',
+        title: '項目',
       },
       {
         href: '/design',
-        title: 'Design',
+        title: '設計',
       },
     ],
   },

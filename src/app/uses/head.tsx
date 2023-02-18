@@ -4,7 +4,7 @@ const UsesHead = () => {
   return (
     <Head
       title='Uses'
-      description='This is the equipment I currently use for gaming, programming, making videos, and every day.'
+      description='這是我目前用來玩遊戲、編程、製作影片以及每天使用的設備。'
     />
   )
 }

@@ -26,7 +26,7 @@ const GuestbookPage = async () => {
   return (
     <>
       <h2 className='my-4 text-4xl font-bold'>Guestbook</h2>
-      <p className='mb-8 text-accent-5'>You can tell me anything here!</p>
+      <p className='mb-8 text-accent-5'>你可以在這裡告訴我任何事情！</p>
       <Guestbook user={user} messages={messages} />
     </>
   )

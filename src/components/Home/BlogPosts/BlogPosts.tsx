@@ -14,7 +14,7 @@ const BlogPosts = (props: BlogPostsProps) => {
 
   return (
     <>
-      <h2 className='mb-8 text-3xl font-bold'>Blog posts</h2>
+      <h2 className='mb-8 text-3xl font-bold'>文章</h2>
       <div className='grid gap-4 sm:grid-cols-2'>
         {posts.map((post) => (
           <PostCard key={post._id} {...post} />
@@ -25,7 +25,7 @@ const BlogPosts = (props: BlogPostsProps) => {
           href='/blog'
           className='group my-8 flex items-center gap-4 text-lg font-medium'
         >
-          <span>View All Posts</span>
+          <span>查看所有文章</span>
           <IconArrowRight className='h-4 w-4 transition duration-200 group-hover:translate-x-1' />
         </Link>
       </div>

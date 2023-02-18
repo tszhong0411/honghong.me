@@ -17,8 +17,7 @@ const UsesPage = () => {
     <>
       <h2 className='my-4 text-4xl font-bold'>Uses</h2>
       <p className='mb-8 text-accent-5'>
-        This is the equipment I currently use for gaming, programming, making
-        videos, and every day
+        這是我目前用來玩遊戲、編程、製作影片以及每天使用的設備。
       </p>
       <div className='prose prose-zinc w-full max-w-none dark:prose-invert'>
         <MDXComponent components={MDXComponents} />

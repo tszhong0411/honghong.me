@@ -2,10 +2,7 @@ import Head from '@/components/Head'
 
 const GuestbookHead = () => {
   return (
-    <Head
-      title='Guestbook'
-      description='Sign my guestbook and share your idea.'
-    />
+    <Head title='Guestbook' description='在我的留言簿上簽名並分享您的想法。' />
   )
 }
 

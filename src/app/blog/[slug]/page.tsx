@@ -66,7 +66,7 @@ const BlogPostPage = (props: BlogPostPageProps) => {
   const pathname = usePathname()
 
   const { title, summary, date, modifiedTime } = post
-  const formattedDate = useFormattedDate(date)
+  const formattedDate = useFormattedDate(date, 'YYYY年MM月DD日')
   const ISOModifiedTime = new Date(modifiedTime).toISOString()
 
   return (
@@ -113,7 +113,7 @@ const BlogPostPage = (props: BlogPostPageProps) => {
       </div>
       <div className='my-8  flex w-full items-center justify-between border-t border-b border-accent-2 py-4'>
         <Link href={editURL(slug)} className='text-sm'>
-          Edit on GitHub
+          在 GitHub 上編輯
         </Link>
         <div className='flex items-center justify-center gap-2'>
           <Link

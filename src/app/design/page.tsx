@@ -15,8 +15,8 @@ const DesignPage = () => {
 
   return (
     <>
-      <h2 className='my-4 text-4xl font-bold'>Design</h2>
-      <p className='mb-8 text-accent-5'>This the design of my website.</p>
+      <h2 className='my-4 text-4xl font-bold'>設計</h2>
+      <p className='mb-8 text-accent-5'>這是我網站的設計。</p>
       <div className='prose prose-zinc w-full max-w-none dark:prose-invert'>
         <MDXComponent components={MDXComponents} />
       </div>
