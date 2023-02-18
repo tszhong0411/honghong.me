@@ -40,7 +40,7 @@ const ProjectsPage = () => {
                   {badges.map((badge, i) => {
                     const { icon, label } = badge
                     const Icon: React.FC<
-                      TablerIcon.TablerIconProps | LocalIcon.IconProps
+                      TablerIcon.TablerIconsProps | LocalIcon.IconProps
                     > = TablerIcon[icon] || LocalIcon[icon]
 
                     return (
