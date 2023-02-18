@@ -33,7 +33,7 @@ const ProjectPage = (props: ProjectPageProps) => {
   const { name, description, iconName, homepage, githubLink, repoName, image } =
     project
 
-  const Icon: React.FC<TablerIcon.TablerIconProps> = TablerIcon[iconName]
+  const Icon: React.FC<TablerIcon.TablerIconsProps> = TablerIcon[iconName]
 
   return (
     <>

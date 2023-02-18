@@ -10,7 +10,7 @@ const Projects = () => {
       <div className='flex flex-col gap-8'>
         {allProjects.slice(0, 3).map((project) => {
           const { _id, iconName, name, description, slug } = project
-          const Icon: React.FC<TablerIcon.TablerIconProps> =
+          const Icon: React.FC<TablerIcon.TablerIconsProps> =
             TablerIcon[iconName]
 
           return (
