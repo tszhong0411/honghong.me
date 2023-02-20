@@ -26,7 +26,7 @@
 - 內容：[MDX](https://mdxjs.com/) + [Contentlayer](https://www.contentlayer.dev/)
 - 分析：[Vercel](https://vercel.com/)
 - 樣式：[Tailwindcss](https://tailwindcss.com)
-- 代碼語法高亮：[Shiki](https://github.com/shikijs/shiki)
+- 程式碼語法高亮：[Shiki](https://github.com/shikijs/shiki)
 
 ## 🚀 演示
 
