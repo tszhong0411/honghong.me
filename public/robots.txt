@@ -1,4 +1,12 @@
+# *
 User-agent: *
 Allow: /
+Disallow: /404
+Disallow: /500
+Disallow: /api/*
 
-Sitemap: https://honghong.me/sitemap.xml
+# Host
+Host: http://localhost:3000
+
+# Sitemaps
+Sitemap: http://localhost:3000/sitemap.xml

@@ -1,7 +1,18 @@
 import { allPages } from 'contentlayer/generated'
+import type { Metadata } from 'next'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 
 import MDXComponents from '@/components/MDXComponents'
+
+import { site } from '@/config/site'
+
+export const metadata: Metadata = {
+  title: 'Design',
+  description: '這是我網站的設計。',
+  alternates: {
+    canonical: `${site.url}/design`,
+  },
+}
 
 const getPage = () => {
   const page = allPages.find((page) => page.slug === 'design')

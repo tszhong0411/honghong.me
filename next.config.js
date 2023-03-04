@@ -1,13 +1,10 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const { withContentlayer } = require('next-contentlayer')
+import { withContentlayer } from 'next-contentlayer'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
     appDir: true,
-    fontLoaders: [
-      { loader: '@next/font/google', options: { subsets: ['latin'] } },
-    ],
+    typedRoutes: true,
   },
 
   images: {
@@ -27,13 +24,8 @@ const nextConfig = {
         destination: 'https://youtube.com/@tszhong0411',
         permanent: false,
       },
-      {
-        source: '/feed.xml',
-        destination: '/api/rss',
-        permanent: false,
-      },
     ]
   },
 }
 
-module.exports = withContentlayer(nextConfig)
+export default withContentlayer(nextConfig)

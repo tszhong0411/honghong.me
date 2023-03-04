@@ -3,10 +3,13 @@ import {
   IconBrandYoutube,
   IconPencil,
 } from '@tabler/icons-react'
+import type { Metadata } from 'next'
 
-import { BASE_URL, isProduction } from '@/lib/constants'
+import { isProduction } from '@/lib/constants'
 
 import Card from '@/components/Dashboard/Card'
+
+import { site } from '@/config/site'
 
 type Data = {
   github: {
@@ -22,21 +25,30 @@ type Data = {
   }
 }
 
+export const metadata: Metadata = {
+  title: 'Dashboard',
+  description:
+    '這是我的個人儀錶板，使用部署為 serverless functions 的 Next.js API 路由構建。我使用此儀錶板跟蹤跨平台，如 YouTube、GitHub 等的各種指標。',
+  alternates: {
+    canonical: `${site.url}/dashboard`,
+  },
+}
+
 const getData = async () => {
   const github = await (
-    await fetch(`${BASE_URL}/api/github`, {
+    await fetch(`${site.url}/api/github`, {
       cache: 'no-store',
     })
   ).json()
 
   const youtube = await (
-    await fetch(`${BASE_URL}/api/youtube`, {
+    await fetch(`${site.url}/api/youtube`, {
       cache: 'no-store',
     })
   ).json()
 
   const blog = await (
-    await fetch(`${BASE_URL}/api/views`, {
+    await fetch(`${site.url}/api/views`, {
       cache: 'no-store',
     })
   ).json()

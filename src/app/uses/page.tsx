@@ -1,7 +1,18 @@
 import { allPages } from 'contentlayer/generated'
+import type { Metadata } from 'next'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 
 import MDXComponents from '@/components/MDXComponents'
+
+import { site } from '@/config/site'
+
+export const metadata: Metadata = {
+  title: 'Uses',
+  description: '這是我目前用來玩遊戲、編程、製作影片以及每天使用的設備。',
+  alternates: {
+    canonical: `${site.url}/uses`,
+  },
+}
 
 const getPage = () => {
   const page = allPages.find((page) => page.slug === 'uses')

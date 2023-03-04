@@ -1,7 +1,19 @@
+import type { Metadata } from 'next'
+
 import prisma from '@/lib/prisma'
 import { getCurrentUser } from '@/lib/session'
 
 import Guestbook from '@/components/Guestbook'
+
+import { site } from '@/config/site'
+
+export const metadata: Metadata = {
+  title: 'Guestbook',
+  description: '在我的留言簿上簽名並分享您的想法。',
+  alternates: {
+    canonical: `${site.url}/guestbook`,
+  },
+}
 
 const getMessages = async () => {
   const messages = await prisma.guestbook.findMany({

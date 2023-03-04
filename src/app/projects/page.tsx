@@ -1,9 +1,20 @@
 import * as TablerIcon from '@tabler/icons-react'
 import { allProjects } from 'contentlayer/generated'
+import type { Metadata } from 'next'
 import Link from 'next/link'
 
 import * as LocalIcon from '@/components/Icon'
 import Image from '@/components/MDXComponents/Image'
+
+import { site } from '@/config/site'
+
+export const metadata: Metadata = {
+  title: 'Projects',
+  description: '我的項目列表。',
+  alternates: {
+    canonical: `${site.url}/projects`,
+  },
+}
 
 const ProjectsPage = () => {
   return (

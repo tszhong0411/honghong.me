@@ -1,11 +1,14 @@
 import * as TablerIcon from '@tabler/icons-react'
 import { allProjects } from 'contentlayer/generated'
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 
 import Link from '@/components/Link'
 import MDXComponents from '@/components/MDXComponents'
 import Image from '@/components/MDXComponents/Image'
+
+import { site } from '@/config/site'
 
 type ProjectPageProps = {
   params: {
@@ -17,6 +20,36 @@ export const generateStaticParams = () => {
   return allProjects.map((project) => ({
     slug: project.slug,
   }))
+}
+
+export const generateMetadata = (props: ProjectPageProps): Metadata => {
+  const { params } = props
+
+  const project = allProjects.find((project) => project.slug === params.slug)
+
+  if (!project) {
+    return
+  }
+
+  return {
+    title: project.name,
+    description: project.description,
+    alternates: {
+      canonical: `${site.url}/projects/${params.slug}`,
+    },
+    openGraph: {
+      description: project.description,
+      type: 'website',
+      title: `${project.name} ${site.titleTemplate}`,
+      images: {
+        url: `${site.url}${project.image}`,
+        alt: project.name,
+        width: 1600,
+        height: 960,
+        type: 'image/png',
+      },
+    },
+  }
 }
 
 const ProjectPage = (props: ProjectPageProps) => {
