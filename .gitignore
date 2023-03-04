@@ -40,3 +40,12 @@ next-env.d.ts
 
 # sitemap
 public/*.xml
+
+# Sentry
+.sentryclirc
+
+# Sentry
+next.config.original.js
+
+# Sentry
+next.config.wizardcopy.js
