@@ -23,6 +23,14 @@ const nextConfig = {
     hideSourceMaps: true,
   },
 
+  webpack: (config) => {
+    config.infrastructureLogging = {
+      level: 'error',
+    }
+
+    return config
+  },
+
   async redirects() {
     return [
       {
