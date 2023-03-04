@@ -1,3 +1,4 @@
+import { withSentryConfig } from '@sentry/nextjs'
 import { withContentlayer } from 'next-contentlayer'
 
 /** @type {import('next').NextConfig} */
@@ -17,6 +18,11 @@ const nextConfig = {
     ],
   },
 
+  sentry: {
+    autoInstrumentServerFunctions: true,
+    hideSourceMaps: true,
+  },
+
   async redirects() {
     return [
       {
@@ -28,4 +34,8 @@ const nextConfig = {
   },
 }
 
-export default withContentlayer(nextConfig)
+const sentryOptions = {
+  silent: true,
+}
+
+export default withContentlayer(withSentryConfig(nextConfig, sentryOptions))
