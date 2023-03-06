@@ -34,30 +34,18 @@ export const metadata: Metadata = {
   },
 }
 
-const getData = async () => {
-  const github = await (
-    await fetch(`${site.url}/api/github`, {
-      cache: 'no-store',
-    })
-  ).json()
+const getData = async (): Promise<Data> => {
+  const github = await (await fetch(`${site.url}/api/github`)).json()
 
-  const youtube = await (
-    await fetch(`${site.url}/api/youtube`, {
-      cache: 'no-store',
-    })
-  ).json()
+  const youtube = await (await fetch(`${site.url}/api/youtube`)).json()
 
-  const blog = await (
-    await fetch(`${site.url}/api/views`, {
-      cache: 'no-store',
-    })
-  ).json()
+  const blog = await (await fetch(`${site.url}/api/views`)).json()
 
   return { github, youtube, blog }
 }
 
 const DashboardPage = async () => {
-  const { github, youtube, blog } = (await getData()) as Data
+  const { github, youtube, blog } = await getData()
 
   return (
     <>
