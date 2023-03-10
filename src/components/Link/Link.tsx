@@ -1,14 +1,13 @@
 import { IconArrowUpRight } from '@tabler/icons-react'
-import type { Route } from 'next'
 import NextLink, { LinkProps as NextLinkProps } from 'next/link'
 
 import clsxm from '@/lib/clsxm'
 
 type LinkProps = {
-  href: Route
+  href: string
   icon?: boolean
   animation?: boolean
-  nextLinkProps?: Omit<NextLinkProps<string>, 'href'>
+  nextLinkProps?: Omit<NextLinkProps, 'href'>
 } & React.ComponentPropsWithRef<'a'>
 
 const Link = (props: LinkProps) => {

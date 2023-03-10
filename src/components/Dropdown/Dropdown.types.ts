@@ -1,7 +1,5 @@
-import type { Route } from 'next'
-
 export type DropdownItemType = {
   icon: React.ReactNode
-  href: Route
+  href: string
   text: string
 }
