@@ -1,11 +1,10 @@
-'use client'
+import Link from 'next/link'
 
 import { isProduction } from '@/lib/constants'
 
-import Link from '@/components/Link'
 import NowPlaying from '@/components/NowPlaying'
 
-import { FOOTER_LINKS } from '@/config/links'
+import { FOOTER_LINKS, FOOTER_SOCIAL_MEDIA } from '@/config/links'
 
 const Footer = () => {
   return (
@@ -18,13 +17,26 @@ const Footer = () => {
               <Link
                 key={j}
                 href={link.href}
-                className='text-accent-5 transition-colors duration-300 hover:text-hong-fg'
+                className='animated text-accent-5 transition-colors duration-300 hover:text-hong-fg'
               >
                 {link.title}
               </Link>
             ))}
           </div>
         ))}
+        <div className='mb-10 flex flex-col items-start gap-4 pr-4'>
+          {FOOTER_SOCIAL_MEDIA.map((link, j) => (
+            <a
+              key={j}
+              href={link.href}
+              className='animated text-accent-5 transition-colors duration-300 hover:text-hong-fg'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              {link.title}
+            </a>
+          ))}
+        </div>
       </div>
       <div className='mt-20 text-sm'>
         &copy; 小康 {new Date().getFullYear()}

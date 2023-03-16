@@ -2,7 +2,6 @@
 
 import CountUp from 'react-countup'
 
-import Link from '@/components/Link'
 import Skeleton from '@/components/Skeleton'
 
 type CardProps = {
@@ -16,10 +15,10 @@ const Card = (props: CardProps) => {
   const { icon, title, href, data } = props
 
   return (
-    <Link
+    <a
+      target='_blank'
+      rel='noopener noreferrer'
       href={href}
-      icon={false}
-      animation={false}
       className='flex flex-col gap-2 rounded-lg border border-accent-2 p-4 transition-colors duration-300 hover:bg-accent-1'
     >
       <div className='flex items-center gap-1'>
@@ -33,7 +32,7 @@ const Card = (props: CardProps) => {
       ) : (
         <Skeleton className='h-10 w-1/3' />
       )}
-    </Link>
+    </a>
   )
 }
 

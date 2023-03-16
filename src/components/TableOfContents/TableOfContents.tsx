@@ -6,8 +6,6 @@ import React from 'react'
 import clsxm from '@/lib/clsxm'
 import { useHeadings, useScrollspy } from '@/hooks'
 
-import Link from '../Link'
-
 const TableOfContents = () => {
   const headings = useHeadings()
   const activeId = useScrollspy(
@@ -26,7 +24,7 @@ const TableOfContents = () => {
           const { id, level, title } = heading
 
           return (
-            <Link
+            <a
               key={id}
               href={`#${id}`}
               className={clsxm(
@@ -39,10 +37,9 @@ const TableOfContents = () => {
               style={{
                 paddingLeft: (level - 1) * 16,
               }}
-              animation={false}
             >
               {title}
-            </Link>
+            </a>
           )
         })}
       </div>

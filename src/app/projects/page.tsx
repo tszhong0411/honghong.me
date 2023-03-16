@@ -28,7 +28,6 @@ const ProjectsPage = () => {
           return (
             <Link
               key={_id}
-              scroll
               href={`/projects/${slug}`}
               className='flex flex-col rounded-lg border border-accent-2 p-4 transition-all duration-300 hover:scale-105 hover:bg-accent-1 md:flex-row'
             >

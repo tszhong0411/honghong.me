@@ -1,5 +1,4 @@
 import Image from './Image'
-import Link from '../Link'
 
 export type Items = {
   image: string
@@ -31,14 +30,9 @@ const ItemGrid = (props: ItemGridProps) => {
           />
           <div className='flex flex-col justify-center gap-2'>
             <span>
-              <Link
-                href={item.url}
-                icon={false}
-                color='white'
-                className='font-extrabold'
-              >
+              <a href={item.url} color='white' className='font-extrabold'>
                 {item.name}
-              </Link>
+              </a>
             </span>
             <div>{item.description}</div>
           </div>

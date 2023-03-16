@@ -1,5 +1,7 @@
+import type { Route } from 'next'
+
 type Link = {
-  href: string
+  href: Route | URL
   title: string
 }
 

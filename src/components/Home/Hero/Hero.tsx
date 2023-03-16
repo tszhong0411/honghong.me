@@ -1,4 +1,3 @@
-import Link from '@/components/Link'
 import Image from '@/components/MDXComponents/Image'
 
 import { HERO_LINKS } from '@/config/links'
@@ -32,9 +31,9 @@ const Hero = () => {
       </div>
       <div className='flex gap-6'>
         {HERO_LINKS.map((link, i) => (
-          <Link key={i} href={link.href} icon={false} animation={false}>
+          <a key={i} href={link.href} target='_blank' rel='noopener noreferrer'>
             {link.icon}
-          </Link>
+          </a>
         ))}
       </div>
     </div>

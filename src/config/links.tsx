@@ -16,6 +16,11 @@ import { DropdownItemType } from '@/components/Dropdown'
 import { HeroLinks } from '@/components/Home/Hero'
 import { FooterLinks } from '@/components/Layout/Footer'
 
+type FooterSocialMediaLinks = {
+  href: string
+  title: string
+}[]
+
 export const HEADER_LINKS: DropdownItemType[] = [
   {
     icon: <IconPencil />,
@@ -65,8 +70,8 @@ export const FOOTER_LINKS: FooterLinks = [
         title: '關於',
       },
       {
-        href: '/feed.xml',
-        title: 'RSS',
+        href: '/dashboard',
+        title: '儀錶板',
       },
     ],
   },
@@ -90,25 +95,24 @@ export const FOOTER_LINKS: FooterLinks = [
       },
     ],
   },
+]
+
+export const FOOTER_SOCIAL_MEDIA: FooterSocialMediaLinks = [
   {
-    links: [
-      {
-        href: 'https://www.facebook.com/tszhonglai.0411/',
-        title: 'Facebook',
-      },
-      {
-        href: 'https://www.instagram.com/tszhong0411/',
-        title: 'Instagram',
-      },
-      {
-        href: 'https://github.com/tszHong0411',
-        title: 'GitHub',
-      },
-      {
-        href: 'https://www.youtube.com/@tszhong0411',
-        title: 'YouTube',
-      },
-    ],
+    href: 'https://www.facebook.com/tszhonglai.0411/',
+    title: 'Facebook',
+  },
+  {
+    href: 'https://www.instagram.com/tszhong0411/',
+    title: 'Instagram',
+  },
+  {
+    href: 'https://github.com/tszHong0411',
+    title: 'GitHub',
+  },
+  {
+    href: 'https://www.youtube.com/@tszhong0411',
+    title: 'YouTube',
   },
 ]
 

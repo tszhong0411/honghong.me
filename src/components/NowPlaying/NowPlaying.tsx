@@ -2,7 +2,6 @@
 
 import { useNowPlaying } from '@/hooks'
 
-import Link from '@/components/Link'
 import Skeleton from '@/components/Skeleton'
 
 const NowPlaying = () => {
@@ -27,9 +26,9 @@ const NowPlaying = () => {
         <div className='inline-flex w-full items-center justify-center gap-1 text-sm md:justify-start'>
           <p>
             {data?.isPlaying ? (
-              <Link href={data.songUrl}>
+              <a href={data.songUrl} target='_blank' rel='noopener noreferrer'>
                 {data.title} - {data.artist}
-              </Link>
+              </a>
             ) : (
               'Not Listening - Spotify'
             )}

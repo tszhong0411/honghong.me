@@ -4,7 +4,6 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 
-import Link from '@/components/Link'
 import MDXComponents from '@/components/MDXComponents'
 import Image from '@/components/MDXComponents/Image'
 
@@ -79,17 +78,27 @@ const ProjectPage = (props: ProjectPageProps) => {
           </div>
         </div>
         <div className='flex flex-col items-start gap-2 sm:flex-row sm:gap-4'>
-          <Link href={homepage} className='flex items-center'>
+          <a
+            target='_blank'
+            rel='noopener noreferrer'
+            href={homepage}
+            className='animated flex items-center'
+          >
             <TablerIcon.IconHome size={20} className='mr-2 inline-block' />
             {homepage}
-          </Link>
-          <Link href={githubLink} className='flex items-center'>
+          </a>
+          <a
+            target='_blank'
+            rel='noopener noreferrer'
+            href={githubLink}
+            className='animated flex items-center'
+          >
             <TablerIcon.IconBrandGithub
               size={20}
               className='mr-2 inline-block'
             />
             Tszhong0411/{repoName}
-          </Link>
+          </a>
         </div>
       </div>
       <Image

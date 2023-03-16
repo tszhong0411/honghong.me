@@ -4,8 +4,6 @@ import {
   IconBrandTwitter,
 } from '@tabler/icons-react'
 
-import Link from '@/components/Link'
-
 const editURL = (slug: string) =>
   `https://github.com/tszhong0411/honghong.me/blob/main/src/content/blog/${slug}.mdx`
 
@@ -34,34 +32,39 @@ const Footer = (props: FooterProps) => {
 
   return (
     <div className='my-8  flex w-full items-center justify-between border-t border-b border-accent-2 py-4'>
-      <Link href={editURL(slug)} className='text-sm'>
+      <a
+        target='_blank'
+        rel='noopener noreferrer'
+        href={editURL(slug)}
+        className='animated text-sm'
+      >
         在 GitHub 上編輯
-      </Link>
+      </a>
       <div className='flex items-center justify-center gap-2'>
-        <Link
+        <a
+          target='_blank'
+          rel='noopener noreferrer'
           href={redditShareURL(slug, title)}
-          icon={false}
-          animation={false}
-          className='flex h-8 w-8 items-center justify-center rounded-lg transition-colors duration-300 hover:bg-accent-2'
+          className='animated flex h-8 w-8 items-center justify-center rounded-lg transition-colors duration-300 hover:bg-accent-2'
         >
           <IconBrandReddit size={18} />
-        </Link>
-        <Link
+        </a>
+        <a
+          target='_blank'
+          rel='noopener noreferrer'
           href={twitterShareURL(slug, title)}
-          icon={false}
-          animation={false}
-          className='flex h-8 w-8 items-center justify-center rounded-lg transition-colors duration-300 hover:bg-accent-2'
+          className='animated flex h-8 w-8 items-center justify-center rounded-lg transition-colors duration-300 hover:bg-accent-2'
         >
           <IconBrandTwitter size={18} />
-        </Link>
-        <Link
+        </a>
+        <a
+          target='_blank'
+          rel='noopener noreferrer'
           href={facebookShareURL(slug)}
-          icon={false}
-          animation={false}
-          className='flex h-8 w-8 items-center justify-center rounded-lg transition-colors duration-300 hover:bg-accent-2'
+          className='animated flex h-8 w-8 items-center justify-center rounded-lg transition-colors duration-300 hover:bg-accent-2'
         >
           <IconBrandFacebook size={18} />
-        </Link>
+        </a>
       </div>
     </div>
   )

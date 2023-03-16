@@ -1,9 +1,8 @@
-import Link from '@/components/Link'
-
 import Callout from './Callout'
 import Image from './Image'
 import ItemGrid from './ItemGrid'
 import Kbd from './Kbd'
+import Link from './Link'
 import Pre from './Pre'
 import Tree from './Tree'
 import Colors from '../Design/Colors'
