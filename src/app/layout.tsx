@@ -29,11 +29,6 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  alternates: {
-    types: {
-      'application/rss+xml': `${site.url}/feed.xml`,
-    },
-  },
   manifest: `${site.url}/static/favicon/site.webmanifest`,
   twitter: {
     title: site.name,
