@@ -79,7 +79,6 @@ const notoSansTC = Noto_Sans_TC({
 const firaCode = Fira_Code({
   variable: '--font-fira-code',
   subsets: ['latin'],
-  display: 'swap',
 })
 
 const RootLayout = (props: RootLayoutProps) => {
