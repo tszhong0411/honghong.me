@@ -6,24 +6,20 @@ import {
 import type { Metadata } from 'next'
 
 import { isProduction } from '@/lib/constants'
+import {
+  BlogViews,
+  getBlogViews,
+  getGitHubStats,
+  getYouTubeStats,
+  GitHubStats,
+  YouTubeStats,
+} from '@/lib/metrics'
 
 import Card from '@/components/Dashboard/Card'
 
 import { site } from '@/config/site'
 
-type Data = {
-  github: {
-    followers: number
-    stars: number
-  }
-  youtube: {
-    subscribers: number
-    views: number
-  }
-  blog: {
-    views: number
-  }
-}
+export const revalidate = 60
 
 export const metadata: Metadata = {
   title: 'Dashboard',
@@ -34,18 +30,21 @@ export const metadata: Metadata = {
   },
 }
 
-const getData = async (): Promise<Data> => {
-  const github = await (await fetch(`${site.url}/api/github`)).json()
-
-  const youtube = await (await fetch(`${site.url}/api/youtube`)).json()
-
-  const blog = await (await fetch(`${site.url}/api/views`)).json()
-
-  return { github, youtube, blog }
-}
-
 const DashboardPage = async () => {
-  const { github, youtube, blog } = await getData()
+  let githubStats: GitHubStats
+  let youtubeStats: YouTubeStats
+  let blogView: BlogViews
+
+  try {
+    ;[githubStats, youtubeStats, blogView] = await Promise.all([
+      getGitHubStats(),
+      getYouTubeStats(),
+      getBlogViews(),
+    ])
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error)
+  }
 
   return (
     <>
@@ -61,32 +60,32 @@ const DashboardPage = async () => {
               icon={<IconBrandYoutube />}
               title='YouTube 訂閱者'
               href='https://youtube.com/@tszhong0411'
-              data={youtube.subscribers}
+              data={youtubeStats.subscribers}
             />
             <Card
               icon={<IconBrandYoutube />}
               title='YouTube 觀看次數'
               href='https://youtube.com/@tszhong0411'
-              data={youtube.views}
+              data={youtubeStats.views}
             />
             <Card
               icon={<IconBrandGithub />}
               title='GitHub 追隨者'
               href='https://github.com/tszhong0411'
-              data={github.followers}
+              data={githubStats.followers}
             />
             <Card
               icon={<IconBrandGithub />}
               title='GitHub stars'
               href='https://github.com/tszhong0411'
-              data={github.stars}
+              data={githubStats.stars}
             />
           </div>
           <Card
             icon={<IconPencil />}
             title='Blog 總瀏覽次數'
             href='https://honghong.me'
-            data={blog.views}
+            data={blogView.views}
           />
         </>
       )}

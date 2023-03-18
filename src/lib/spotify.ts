@@ -6,6 +6,15 @@ const basic = btoa(`${client_id}:${client_secret}`)
 const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`
 const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`
 
+export type NowPlaying = {
+  album: string | null
+  albumImageUrl: string | null
+  artist: string | null
+  isPlaying: boolean
+  songUrl: string | null
+  title: string | null
+}
+
 const getAccessToken = async () => {
   const response = await fetch(TOKEN_ENDPOINT, {
     method: 'POST',
@@ -22,12 +31,33 @@ const getAccessToken = async () => {
   return response.json()
 }
 
-export const getNowPlaying = async () => {
+export const getNowPlaying = async (): Promise<NowPlaying> => {
   const { access_token } = await getAccessToken()
 
-  return fetch(NOW_PLAYING_ENDPOINT, {
+  const response = await fetch(NOW_PLAYING_ENDPOINT, {
     headers: {
       Authorization: `Bearer ${access_token}`,
     },
+    next: {
+      revalidate: 60,
+    },
   })
+
+  const song = await response.json()
+
+  const isPlaying = song.is_playing
+  const title = song.item.name
+  const artist = song.item.artists.map(({ name }) => name).join(', ')
+  const album = song.item.album.name
+  const albumImageUrl = song.item.album.images[0].url
+  const songUrl = song.item.external_urls.spotify
+
+  return {
+    album,
+    albumImageUrl,
+    artist,
+    isPlaying,
+    songUrl,
+    title,
+  }
 }

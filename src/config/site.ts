@@ -9,6 +9,7 @@ type Site = {
   name: string
   titleTemplate: string
   description: string
+  githubUsername: string
   favicons: IconDescriptor[]
 }
 
@@ -19,6 +20,7 @@ export const site: Site = {
   name: '小康',
   titleTemplate: '- 小康',
   description: '小康 – 16 yrs • Student • Full-stack Web Development Student',
+  githubUsername: 'tszhong0411',
   favicons: [
     {
       rel: 'icon',
