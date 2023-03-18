@@ -38,9 +38,7 @@ export const getNowPlaying = async (): Promise<NowPlaying> => {
     headers: {
       Authorization: `Bearer ${access_token}`,
     },
-    next: {
-      revalidate: 60,
-    },
+    cache: 'no-cache',
   })
 
   const song = await response.json()
