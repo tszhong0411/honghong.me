@@ -24,8 +24,10 @@ const Pre = (props: PreProps) => {
     }
 
     try {
-      await navigator.clipboard.writeText(textInput.current.textContent)
-      toast.success('Copied')
+      if (textInput.current?.textContent) {
+        await navigator.clipboard.writeText(textInput.current.textContent)
+        toast.success('Copied')
+      }
     } catch {
       toast.error('Failed to copy!')
     }

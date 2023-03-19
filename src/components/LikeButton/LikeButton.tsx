@@ -89,7 +89,7 @@ const LikeButton = (props: LikeButtonProps) => {
               w: 5,
             }}
             onConfettiComplete={() => {
-              setPosition(null)
+              setPosition(undefined)
             }}
           />
         )}

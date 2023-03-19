@@ -12,15 +12,11 @@ import Loader from './Loader'
 import Image from '../MDXComponents/Image'
 import Modal from '../Modal'
 
+import { Messages } from '@/types'
+
 type GuestbookProps = {
-  user: Omit<User, 'id'>
-  messages: {
-    id: string
-    body: string
-    image: string
-    created_by: string
-    updated_at: string
-  }[]
+  user: Omit<User, 'id'> | undefined
+  messages: Messages | undefined
 }
 
 const submitMessage = async (
@@ -100,10 +96,10 @@ const Guestbook = (props: GuestbookProps) => {
         <>
           <div className='mb-2 flex'>
             <Image
-              src={user?.image}
+              src={user?.image as string}
               width={40}
               height={40}
-              alt={user?.name}
+              alt={user?.name as string}
               className='h-10 w-10'
               rounded='rounded-full'
             />
@@ -141,7 +137,7 @@ const Guestbook = (props: GuestbookProps) => {
       )}
       <div className='mt-10 flex flex-col gap-4'>
         {loading && <Loader />}
-        {messages.map((message) => (
+        {messages?.map((message) => (
           <div
             key={message.id}
             className='rounded-lg border border-accent-2 p-4'

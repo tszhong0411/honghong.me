@@ -17,7 +17,7 @@ const Colors = () => {
 
   return (
     <div className='flex flex-col rounded-lg border border-accent-2'>
-      {mounted ? (
+      {mounted && resolvedTheme ? (
         colors.map((color, i) => (
           <div
             key={i}

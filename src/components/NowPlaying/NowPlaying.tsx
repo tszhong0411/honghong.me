@@ -1,7 +1,7 @@
 import { getNowPlaying, NowPlaying } from '@/lib/spotify'
 
 const NowPlaying = async () => {
-  let nowPlaying: NowPlaying
+  let nowPlaying: NowPlaying | undefined
 
   try {
     ;[nowPlaying] = await Promise.all([getNowPlaying()])
@@ -26,7 +26,7 @@ const NowPlaying = async () => {
 
       <div className='inline-flex w-full items-center justify-center gap-1 text-sm md:justify-start'>
         <p>
-          {nowPlaying?.isPlaying ? (
+          {nowPlaying?.isPlaying && nowPlaying.songUrl ? (
             <a
               href={nowPlaying.songUrl}
               target='_blank'

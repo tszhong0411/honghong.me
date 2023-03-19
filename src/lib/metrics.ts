@@ -38,7 +38,7 @@ export const getGitHubStats = async (): Promise<GitHubStats> => {
   const stars = repos
     .filter((repo) => !repo.fork)
     .reduce((acc, repo) => {
-      return acc + repo.stargazers_count
+      return acc + (repo.stargazers_count ?? 0)
     }, 0)
 
   return {
@@ -59,12 +59,20 @@ export const getYouTubeStats = async (): Promise<YouTubeStats> => {
     part: ['statistics'],
   })
 
+  if (!response.data || !response.data.items) {
+    throw new Error('Response data or items are undefined')
+  }
+
   const channel = response.data.items[0]
-  const { subscriberCount, viewCount } = channel.statistics
+  const statistics = channel.statistics
+
+  if (!statistics) {
+    throw new Error('Statistics not found')
+  }
 
   return {
-    subscribers: Number(subscriberCount),
-    views: Number(viewCount),
+    subscribers: Number(statistics.subscriberCount),
+    views: Number(statistics.viewCount),
   }
 }
 
@@ -76,6 +84,6 @@ export const getBlogViews = async (): Promise<BlogViews> => {
   })
 
   return {
-    views: totalViews._sum.views,
+    views: totalViews._sum.views ?? 0,
   }
 }

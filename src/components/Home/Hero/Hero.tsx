@@ -25,6 +25,7 @@ const Hero = () => {
             alt='小康'
             rounded='rounded-full'
             loading='eager'
+            // 等待修復 https://github.com/vercel/next.js/blob/canary/packages/next/src/client/image.tsx#L407
             priority
           />
         </div>

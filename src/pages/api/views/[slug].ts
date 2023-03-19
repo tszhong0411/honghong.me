@@ -32,6 +32,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         },
       })
 
+      if (!post) {
+        return res.status(404).json({ message: 'Post not found' })
+      }
+
       return res.status(200).json({ views: post.views })
     }
   } catch (e) {

@@ -1,5 +1,6 @@
 import { allPages } from 'contentlayer/generated'
 import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 
 import MDXComponents from '@/components/MDXComponents'
@@ -16,6 +17,10 @@ export const metadata: Metadata = {
 
 const getPage = () => {
   const page = allPages.find((page) => page.slug === 'design')
+
+  if (!page) {
+    return notFound()
+  }
 
   return page
 }

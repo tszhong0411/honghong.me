@@ -29,7 +29,7 @@ export const generateMetadata = (props: BlogPostPageProps): Metadata => {
   const post = allBlogPosts.find((post) => post.slug === params.slug)
 
   if (!post) {
-    return
+    return {}
   }
 
   const ISOPublishedTime = new Date(post.date).toISOString()

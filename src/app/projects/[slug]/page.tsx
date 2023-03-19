@@ -27,7 +27,7 @@ export const generateMetadata = (props: ProjectPageProps): Metadata => {
   const project = allProjects.find((project) => project.slug === params.slug)
 
   if (!project) {
-    return
+    return {}
   }
 
   return {

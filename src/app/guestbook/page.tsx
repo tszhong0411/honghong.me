@@ -1,11 +1,14 @@
 import type { Metadata } from 'next'
+import { getServerSession, Session } from 'next-auth'
 
+import { authOptions } from '@/lib/auth'
 import prisma from '@/lib/prisma'
-import { getCurrentUser } from '@/lib/session'
 
 import Guestbook from '@/components/Guestbook'
 
 import { site } from '@/config/site'
+
+import { Messages } from '@/types'
 
 export const metadata: Metadata = {
   title: 'Guestbook',
@@ -15,6 +18,8 @@ export const metadata: Metadata = {
   },
 }
 
+export const dynamic = 'force-dynamic'
+
 const getMessages = async () => {
   const messages = await prisma.guestbook.findMany({
     orderBy: {
@@ -23,23 +28,53 @@ const getMessages = async () => {
   })
 
   return messages.map((message) => ({
-    id: message.id.toString(),
+    id: message.id,
     body: message.body,
     image: message.image,
     created_by: message.created_by,
-    updated_at: message.updated_at.toString(),
+    updated_at: message.updated_at,
   }))
 }
 
 const GuestbookPage = async () => {
-  const user = await getCurrentUser()
-  const messages = await getMessages()
+  let entries: Messages | undefined
+  let session: Session | null | undefined
+
+  try {
+    const [guestbookRes, sessionRes] = await Promise.allSettled([
+      getMessages(),
+      getServerSession(authOptions),
+    ])
+
+    if (guestbookRes.status === 'fulfilled' && guestbookRes.value[0]) {
+      const formattedEntries = guestbookRes.value.map((entry) => ({
+        ...entry,
+        id: entry.id.toString(),
+        updated_at: entry.updated_at.toISOString(),
+      }))
+
+      entries = formattedEntries
+    } else {
+      // eslint-disable-next-line no-console
+      console.error(guestbookRes)
+    }
+
+    if (sessionRes.status === 'fulfilled') {
+      session = sessionRes.value
+    } else {
+      // eslint-disable-next-line no-console
+      console.error(sessionRes)
+    }
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error)
+  }
 
   return (
     <>
       <h2 className='my-4 text-4xl font-bold'>Guestbook</h2>
       <p className='mb-8 text-accent-5'>你可以在這裡告訴我任何事情！</p>
-      <Guestbook user={user} messages={messages} />
+      <Guestbook user={session?.user} messages={entries} />
     </>
   )
 }

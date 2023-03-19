@@ -28,7 +28,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(403).send('Unauthorized')
   }
 
-  const { email, name, image } = session.user
+  const email = session?.user?.email as string
+  const name = session?.user?.name as string
+  const image = session?.user?.image as string
+
   const { body: content } = req.body
 
   if (req.method === 'POST') {

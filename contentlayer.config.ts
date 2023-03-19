@@ -71,6 +71,7 @@ export const Project = defineDocumentType(() => ({
     badges: {
       type: 'list',
       of: Badge,
+      required: true,
     },
   },
   computedFields: {

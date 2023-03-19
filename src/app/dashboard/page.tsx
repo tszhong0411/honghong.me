@@ -31,9 +31,9 @@ export const metadata: Metadata = {
 }
 
 const DashboardPage = async () => {
-  let githubStats: GitHubStats
-  let youtubeStats: YouTubeStats
-  let blogView: BlogViews
+  let githubStats: GitHubStats | undefined
+  let youtubeStats: YouTubeStats | undefined
+  let blogView: BlogViews | undefined
 
   try {
     ;[githubStats, youtubeStats, blogView] = await Promise.all([
@@ -60,32 +60,32 @@ const DashboardPage = async () => {
               icon={<IconBrandYoutube />}
               title='YouTube 訂閱者'
               href='https://youtube.com/@tszhong0411'
-              data={youtubeStats.subscribers}
+              data={youtubeStats?.subscribers ?? 0}
             />
             <Card
               icon={<IconBrandYoutube />}
               title='YouTube 觀看次數'
               href='https://youtube.com/@tszhong0411'
-              data={youtubeStats.views}
+              data={youtubeStats?.views ?? 0}
             />
             <Card
               icon={<IconBrandGithub />}
               title='GitHub 追隨者'
               href='https://github.com/tszhong0411'
-              data={githubStats.followers}
+              data={githubStats?.followers ?? 0}
             />
             <Card
               icon={<IconBrandGithub />}
               title='GitHub stars'
               href='https://github.com/tszhong0411'
-              data={githubStats.stars}
+              data={githubStats?.stars ?? 0}
             />
           </div>
           <Card
             icon={<IconPencil />}
             title='Blog 總瀏覽次數'
             href='https://honghong.me'
-            data={blogView.views}
+            data={blogView?.views ?? 0}
           />
         </>
       )}
