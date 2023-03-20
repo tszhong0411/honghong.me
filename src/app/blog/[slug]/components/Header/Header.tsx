@@ -3,8 +3,9 @@
 import { isProduction } from '@/lib/constants'
 import { useFormattedDate } from '@/hooks'
 
+import ViewCounter from '@/components/ViewCounter'
+
 import CommentCounter from './CommentCounter'
-import ViewCounter from '../../../../../components/ViewCounter/ViewCounter'
 
 type HeaderProps = {
   date: string

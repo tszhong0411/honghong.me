@@ -7,7 +7,7 @@ import { useWindowSize } from 'react-use'
 
 import { usePostLikes } from '@/hooks'
 
-import Skeleton from '../../../../../components/Skeleton'
+import Skeleton from '@/components/Skeleton'
 type LikeButtonProps = {
   slug: string
 }
