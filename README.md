@@ -28,18 +28,6 @@
 - 樣式：[Tailwindcss](https://tailwindcss.com)
 - 程式碼語法高亮：[Shiki](https://github.com/shikijs/shiki)
 
-## 🚀 演示
-
-<img src="https://img.shields.io/badge/website-honghong.me-blue?style=flat-square&color=black" />
-
-<img src="https://img.shields.io/github/repo-size/tszhong0411/honghong.me?style=flat-square&color=green" />
-
-<img src="https://img.shields.io/github/languages/top/tszhong0411/honghong.me?style=flat-square" />
-
-<img src="https://img.shields.io/github/commit-activity/m/tszhong0411/honghong.me?color=orange&style=flat-square" />
-
-<img src="https://img.shields.io/github/deployments/tszhong0411/honghong.me/Production?style=flat-square" />
-
 ## 👋 在本地運行
 
 1. 複製這個倉庫
