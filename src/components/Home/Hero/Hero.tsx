@@ -14,7 +14,7 @@ const Hero = () => {
           <p className='text-lg'>
             我是一名學生，目前正在學習 Web 開發技能，例如 Next.js, Node.js,
             Prisma
-            和數據庫管理。當我的程式碼被認可和讚賞時，我會感到很有成就感。
+            和資料庫管理。當我的程式碼被認可和讚賞時，我會感到很有成就感。
           </p>
         </div>
         <div className='h-20 w-20 md:h-28 md:w-28'>
