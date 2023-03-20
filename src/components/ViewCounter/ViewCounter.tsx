@@ -4,7 +4,7 @@ import React from 'react'
 
 import { usePostViews } from '@/hooks'
 
-import Skeleton from '../Skeleton'
+import Skeleton from '@/components/Skeleton'
 
 type ViewCounterProps = {
   slug: string

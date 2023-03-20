@@ -3,10 +3,9 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Article, WithContext } from 'schema-dts'
 
-import Comment from '@/components/Comment'
-
 import { site } from '@/config/site'
 
+import Comment from './components/Comment'
 import Content from './components/Content'
 import Footer from './components/Footer'
 import Header from './components/Header'

@@ -1,11 +1,11 @@
 import Callout from './Callout'
+import Colors from './Colors'
 import Image from './Image'
 import ItemGrid from './ItemGrid'
 import Kbd from './Kbd'
 import Link from './Link'
 import Pre from './Pre'
 import Tree from './Tree'
-import Colors from '../Design/Colors'
 
 const MDXComponents = {
   a: Link,

@@ -2,9 +2,9 @@ import Link from 'next/link'
 
 import { isProduction } from '@/lib/constants'
 
-import NowPlaying from '@/components/NowPlaying'
-
 import { FOOTER_LINKS, FOOTER_SOCIAL_MEDIA } from '@/config/links'
+
+import NowPlaying from './NowPlaying'
 
 const Footer = () => {
   return (

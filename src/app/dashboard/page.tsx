@@ -15,9 +15,9 @@ import {
   YouTubeStats,
 } from '@/lib/metrics'
 
-import Card from '@/components/Dashboard/Card'
-
 import { site } from '@/config/site'
+
+import Card from './components/Card'
 
 export const revalidate = 60
 

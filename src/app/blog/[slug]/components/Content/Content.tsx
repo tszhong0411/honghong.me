@@ -1,9 +1,10 @@
 import { BlogPost } from 'contentlayer/generated'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 
-import LikeButton from '@/components/LikeButton'
 import MDXComponents from '@/components/MDXComponents'
-import TableOfContents from '@/components/TableOfContents'
+
+import LikeButton from './LikeButton'
+import TableOfContents from './TableOfContents'
 
 type ContentProps = {
   post: BlogPost

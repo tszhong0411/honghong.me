@@ -3,7 +3,7 @@
 import React from 'react'
 import { useEvent } from 'react-use'
 
-import Skeleton from '../Skeleton'
+import Skeleton from '@/components/Skeleton'
 
 const CommentCounter = () => {
   const [counter, setCounter] = React.useState(-1)
