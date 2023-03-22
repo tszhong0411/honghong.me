@@ -1,9 +1,8 @@
 'use client'
 
 import clsx from 'clsx'
+import { useTheme } from 'next-themes'
 import React from 'react'
-
-import { useTheme } from '@/lib/next-themes'
 
 import Skeleton from '@/components/Skeleton'
 

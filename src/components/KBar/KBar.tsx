@@ -18,10 +18,9 @@ import {
   KBarProvider,
   KBarSearch,
 } from 'kbar'
+import { useTheme } from 'next-themes'
 import React from 'react'
 import { toast } from 'react-hot-toast'
-
-import { useTheme } from '@/lib/next-themes'
 
 import Results from './Results'
 

@@ -1,10 +1,9 @@
 import clsx from 'clsx'
 import type { Metadata } from 'next'
 import { Fira_Code, Inter, Noto_Sans_TC } from 'next/font/google'
+import { ThemeProvider } from 'next-themes'
 
 import '@/styles/globals.css'
-
-import { ThemeProvider } from '@/lib/next-themes'
 
 import CustomToaster from '@/components/CustomToaster'
 import KBar from '@/components/KBar'
@@ -95,7 +94,7 @@ const RootLayout = (props: RootLayoutProps) => {
       )}
     >
       <body className='overflow-x-hidden bg-hong-bg font-default'>
-        <ThemeProvider attribute='class'>
+        <ThemeProvider attribute='class' defaultTheme='dark'>
           <KBar>
             <Header />
             <main className='relative mx-auto mb-16 max-w-4xl px-8 py-24'>
