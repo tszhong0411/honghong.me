@@ -2,17 +2,31 @@ const client_id = process.env.SPOTIFY_CLIENT_ID as string
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET as string
 const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN as string
 
-const basic = btoa(`${client_id}:${client_secret}`)
+const basic = Buffer.from(`${client_id}:${client_secret}`).toString('base64')
 const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`
 const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`
 
-export type NowPlaying = {
-  album: string | null
-  albumImageUrl: string | null
-  artist: string | null
-  isPlaying: boolean
-  songUrl: string | null
-  title: string | null
+type Song = {
+  is_playing: boolean
+  item: {
+    name: string
+    artists: {
+      name: string
+    }[]
+    album: {
+      name: string
+      images: {
+        url: string
+      }[]
+    }
+    external_urls: {
+      spotify: string
+    }
+  }
+}
+
+type AccessToken = {
+  access_token: string
 }
 
 const getAccessToken = async () => {
@@ -28,34 +42,37 @@ const getAccessToken = async () => {
     }),
   })
 
-  return response.json()
+  return (await response.json()) as AccessToken
 }
 
-export const getNowPlaying = async (): Promise<NowPlaying> => {
+export const getNowPlaying = async () => {
   const { access_token } = await getAccessToken()
 
   const response = await fetch(NOW_PLAYING_ENDPOINT, {
     headers: {
       Authorization: `Bearer ${access_token}`,
     },
-    cache: 'no-cache',
+    next: {
+      revalidate: 60,
+    },
   })
 
-  const song = await response.json()
+  if (response.status === 204) {
+    return {
+      status: response.status,
+    }
+  }
 
-  const isPlaying = song.is_playing
-  const title = song.item.name
-  const artist = song.item.artists.map(({ name }) => name).join(', ')
-  const album = song.item.album.name
-  const albumImageUrl = song.item.album.images[0].url
-  const songUrl = song.item.external_urls.spotify
+  try {
+    const song = (await response.json()) as Song
 
-  return {
-    album,
-    albumImageUrl,
-    artist,
-    isPlaying,
-    songUrl,
-    title,
+    return {
+      status: response.status,
+      data: song,
+    }
+  } catch {
+    return {
+      status: response.status,
+    }
   }
 }

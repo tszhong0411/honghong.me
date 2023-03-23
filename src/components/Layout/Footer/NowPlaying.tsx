@@ -1,14 +1,17 @@
-import { getNowPlaying, NowPlaying } from '@/lib/spotify'
+'use client'
 
-const NowPlaying = async () => {
-  let nowPlaying: NowPlaying | undefined
+import { useQuery } from '@tanstack/react-query'
 
-  try {
-    ;[nowPlaying] = await Promise.all([getNowPlaying()])
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error(error)
-  }
+import { Song } from '@/types'
+
+const NowPlaying = () => {
+  const { data } = useQuery<Song>({
+    queryKey: ['spotify', 'now-playing'],
+    queryFn: () =>
+      fetch('/spotify/now-playing', { cache: 'no-store' }).then((res) =>
+        res.json()
+      ),
+  })
 
   return (
     <div className='flex items-center gap-4'>
@@ -26,13 +29,9 @@ const NowPlaying = async () => {
 
       <div className='inline-flex w-full items-center justify-center gap-1 text-sm md:justify-start'>
         <p>
-          {nowPlaying?.isPlaying && nowPlaying.songUrl ? (
-            <a
-              href={nowPlaying.songUrl}
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              {nowPlaying.title} - {nowPlaying.artist}
+          {data?.isPlaying && data.songUrl ? (
+            <a href={data.songUrl} target='_blank' rel='noopener noreferrer'>
+              {data.name} - {data.artist}
             </a>
           ) : (
             'Not Listening - Spotify'

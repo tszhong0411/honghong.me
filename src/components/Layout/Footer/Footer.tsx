@@ -9,7 +9,6 @@ import NowPlaying from './NowPlaying'
 const Footer = () => {
   return (
     <footer className='mx-auto flex max-w-4xl flex-col px-8 pb-8'>
-      {/* @ts-expect-error Server component */}
       {isProduction && <NowPlaying />}
       <div className='mt-12 grid grid-cols-2 sm:grid-cols-3'>
         {FOOTER_LINKS.map((list, i) => (

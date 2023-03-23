@@ -1,7 +1,6 @@
 import clsx from 'clsx'
 import type { Metadata } from 'next'
 import { Fira_Code, Inter, Noto_Sans_TC } from 'next/font/google'
-import { ThemeProvider } from 'next-themes'
 
 import '@/styles/globals.css'
 
@@ -12,6 +11,7 @@ import Header from '@/components/Layout/Header'
 
 import { site } from '@/config/site'
 
+import Providers from './providers'
 import Analytics from '../components/Analytics'
 
 import { WithChildren } from '@/types'
@@ -94,7 +94,7 @@ const RootLayout = (props: RootLayoutProps) => {
       )}
     >
       <body className='overflow-x-hidden bg-hong-bg font-default'>
-        <ThemeProvider attribute='class' defaultTheme='dark'>
+        <Providers>
           <KBar>
             <Header />
             <main className='relative mx-auto mb-16 max-w-4xl px-8 py-24'>
@@ -103,7 +103,7 @@ const RootLayout = (props: RootLayoutProps) => {
             <CustomToaster />
             <Footer />
           </KBar>
-        </ThemeProvider>
+        </Providers>
         <Analytics />
       </body>
     </html>
