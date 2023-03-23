@@ -5,7 +5,7 @@ import { withContentlayer } from 'next-contentlayer'
 const nextConfig = {
   experimental: {
     appDir: true,
-    typedRoutes: true
+    typedRoutes: true,
   },
 
   transpilePackages: ['@tabler/icons-react'],
@@ -31,16 +31,6 @@ const nextConfig = {
     }
 
     return config
-  },
-
-  async redirects() {
-    return [
-      {
-        source: '/youtube',
-        destination: 'https://youtube.com/@tszhong0411',
-        permanent: false,
-      },
-    ]
   },
 }
 
