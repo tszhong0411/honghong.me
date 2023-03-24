@@ -33,7 +33,7 @@ const Projects = () => {
           href='/projects'
           className='group my-8 flex items-center gap-4 text-lg font-medium'
         >
-          <span>查看所有項目</span>
+          <span>所有項目</span>
           <IconArrowRight className='h-4 w-4 transition duration-200 group-hover:translate-x-1' />
         </Link>
       </div>
