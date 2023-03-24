@@ -3,7 +3,7 @@ import { getProviders } from 'next-auth/react'
 
 import { getSession } from '@/lib/session'
 
-import LoginButton from './components/LoginButton'
+import LoginButton from './login-button'
 
 type LoginPageProps = {
   searchParams: {

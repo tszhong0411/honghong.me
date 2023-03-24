@@ -4,15 +4,15 @@ import { Fira_Code, Inter, Noto_Sans_TC } from 'next/font/google'
 
 import '@/styles/globals.css'
 
-import CustomToaster from '@/components/CustomToaster'
 import KBar from '@/components/KBar'
 import Footer from '@/components/Layout/Footer'
 import Header from '@/components/Layout/Header'
 
 import { site } from '@/config/site'
 
+import Analytics from './analytics'
+import CustomToaster from './custom-toaster'
 import Providers from './providers'
-import Analytics from '../components/Analytics'
 
 import { WithChildren } from '@/types'
 

@@ -1,11 +1,14 @@
 'use client'
 
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import React from 'react'
+
 import { isProduction } from '@/lib/constants'
 import { useFormattedDate } from '@/hooks'
 
 import ViewCounter from '@/components/ViewCounter'
 
-import CommentCounter from './CommentCounter'
+import CommentCounter from './comment-counter'
 
 type HeaderProps = {
   date: string
@@ -17,6 +20,28 @@ const Header = (props: HeaderProps) => {
   const { date, title, slug } = props
   const formattedDate = useFormattedDate(date, 'YYYY年MM月DD日')
 
+  const queryClient = useQueryClient()
+
+  const { mutate } = useMutation({
+    mutationFn: async () => {
+      await fetch('/api/views', {
+        method: 'POST',
+        body: JSON.stringify({
+          slug,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+
+      queryClient.invalidateQueries({ queryKey: ['views', slug] })
+    },
+  })
+
+  React.useEffect(() => {
+    isProduction && mutate()
+  }, [mutate])
+
   return (
     <>
       <div>{formattedDate}</div>
@@ -24,7 +49,7 @@ const Header = (props: HeaderProps) => {
       <div className='flex items-center gap-2'>
         {isProduction && (
           <>
-            <ViewCounter type='POST' slug={slug} />
+            <ViewCounter slug={slug} />
             <div>/</div>
             <CommentCounter />
           </>

@@ -9,9 +9,10 @@ import { WithChildren } from '@/types'
 
 type ProvidersProps = WithChildren
 
+const queryClient = new QueryClient()
+
 const Providers = (props: ProvidersProps) => {
   const { children } = props
-  const [queryClient] = React.useState(() => new QueryClient())
 
   return (
     <QueryClientProvider client={queryClient}>

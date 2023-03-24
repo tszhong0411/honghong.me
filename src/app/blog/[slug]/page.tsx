@@ -5,10 +5,10 @@ import { Article, WithContext } from 'schema-dts'
 
 import { site } from '@/config/site'
 
-import Comment from './components/Comment'
-import Content from './components/Content'
-import Footer from './components/Footer'
-import Header from './components/Header'
+import Comment from './comment'
+import Content from './content'
+import Footer from './footer'
+import Header from './header'
 
 type BlogPostPageProps = {
   params: {

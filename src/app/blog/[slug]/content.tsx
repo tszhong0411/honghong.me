@@ -3,8 +3,8 @@ import { useMDXComponent } from 'next-contentlayer/hooks'
 
 import MDXComponents from '@/components/MDXComponents'
 
-import LikeButton from './LikeButton'
-import TableOfContents from './TableOfContents'
+import LikeButton from './like-button'
+import TableOfContents from './table-of-contents'
 
 type ContentProps = {
   post: BlogPost
