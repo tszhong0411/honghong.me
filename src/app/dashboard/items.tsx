@@ -60,28 +60,28 @@ const Items = () => {
           icon={<IconBrandYoutube />}
           title='YouTube 訂閱者'
           link='https://youtube.com/@tszhong0411'
-          url='/dashboard/youtube/subscribers'
+          url='/api/dashboardyoutube/subscribers'
           queryKey='youtube-subscribers'
         />
         <Card
           icon={<IconBrandYoutube />}
           title='YouTube 觀看次數'
           link='https://youtube.com/@tszhong0411'
-          url='/dashboard/youtube/views'
+          url='/api/dashboardyoutube/views'
           queryKey='youtube-views'
         />
         <Card
           icon={<IconBrandGithub />}
           title='GitHub 追隨者'
           link='https://github.com/tszhong0411'
-          url='/dashboard/github/followers'
+          url='/api/dashboardgithub/followers'
           queryKey='github-followers'
         />
         <Card
           icon={<IconBrandGithub />}
           title='GitHub stars'
           link='https://github.com/tszhong0411'
-          url='/dashboard/github/stars'
+          url='/api/dashboardgithub/stars'
           queryKey='github-stars'
         />
       </div>
@@ -89,7 +89,7 @@ const Items = () => {
         icon={<IconPencil />}
         title='Blog 總瀏覽次數'
         link='https://honghong.me'
-        url='/views'
+        url='/api/views'
         queryKey='blog-views'
       />
     </>

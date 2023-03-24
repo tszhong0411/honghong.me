@@ -1,10 +1,8 @@
-'use client'
-
-import React from 'react'
-
-import { usePostLikes } from '@/hooks'
+import { useQuery } from '@tanstack/react-query'
 
 import Skeleton from '../Skeleton'
+
+import { Likes } from '@/types'
 
 type LikeCounterProps = {
   slug: string
@@ -13,14 +11,20 @@ type LikeCounterProps = {
 const LikeCounter = (props: LikeCounterProps) => {
   const { slug } = props
 
-  const { likes, isLoading, isError } = usePostLikes(slug)
+  const { data, isLoading, isError } = useQuery<Likes>({
+    queryKey: ['likes', slug],
+    queryFn: () =>
+      fetch(`/api/likes?slug=${slug}`, {
+        cache: 'no-store',
+      }).then((res) => res.json()),
+  })
 
   return (
     <>
       {isLoading || isError ? (
         <Skeleton className='h-5 max-w-[70px]' />
       ) : (
-        <div>{`${likes} 個讚`}</div>
+        <div>{`${data?.likes} 個讚`}</div>
       )}
     </>
   )

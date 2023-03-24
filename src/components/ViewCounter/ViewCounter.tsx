@@ -1,39 +1,30 @@
-'use client'
+import { useQuery } from '@tanstack/react-query'
 
-import React from 'react'
+import Skeleton from '../Skeleton'
 
-import { usePostViews } from '@/hooks'
-
-import Skeleton from '@/components/Skeleton'
+import { Views } from '@/types'
 
 type ViewCounterProps = {
   slug: string
-  type?: 'GET' | 'POST'
 }
 
 const ViewCounter = (props: ViewCounterProps) => {
-  const { slug, type = 'GET' } = props
+  const { slug } = props
 
-  const {
-    views,
-    isLoading,
-    isError,
-    increment: incrementViews,
-  } = usePostViews(slug)
-
-  React.useEffect(() => {
-    if (slug && type === 'POST') {
-      incrementViews()
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [slug, incrementViews])
+  const { data, isLoading, isError } = useQuery<Views>({
+    queryKey: ['views', slug],
+    queryFn: () =>
+      fetch(`/api/views?slug=${slug}`, {
+        cache: 'no-store',
+      }).then((res) => res.json()),
+  })
 
   return (
     <>
       {isLoading || isError ? (
         <Skeleton className='h-5 max-w-[70px]' />
       ) : (
-        <div>{`${views} 次瀏覽`}</div>
+        <div>{`${data?.views} 次瀏覽`}</div>
       )}
     </>
   )
