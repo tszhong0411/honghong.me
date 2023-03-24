@@ -1,4 +1,3 @@
-import { withSentryConfig } from '@sentry/nextjs'
 import { withContentlayer } from 'next-contentlayer'
 
 /** @type {import('next').NextConfig} */
@@ -20,11 +19,6 @@ const nextConfig = {
     ],
   },
 
-  sentry: {
-    autoInstrumentServerFunctions: true,
-    hideSourceMaps: true,
-  },
-
   webpack: (config) => {
     config.infrastructureLogging = {
       level: 'error',
@@ -34,8 +28,4 @@ const nextConfig = {
   },
 }
 
-const sentryOptions = {
-  silent: true,
-}
-
-export default withContentlayer(withSentryConfig(nextConfig, sentryOptions))
+export default withContentlayer(nextConfig)

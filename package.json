@@ -20,7 +20,6 @@
     "@prisma/client": "^4.11.0",
     "@radix-ui/react-dialog": "^1.0.3",
     "@radix-ui/react-dropdown-menu": "^2.0.4",
-    "@sentry/nextjs": "^7.43.0",
     "@tabler/icons-react": "^2.10.0",
     "@tanstack/react-query": "^4.28.0",
     "@tanstack/react-query-devtools": "^4.28.0",
@@ -55,8 +54,7 @@
     "shiki": "^0.14.1",
     "swr": "^2.1.0",
     "tailwind-merge": "^1.10.0",
-    "unist-util-visit": "^4.1.2",
-    "zod": "^3.21.4"
+    "unist-util-visit": "^4.1.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.4.4",
