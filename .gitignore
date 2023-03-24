@@ -37,6 +37,3 @@ next-env.d.ts
 
 # contentlayer
 .contentlayer
-
-# sitemap
-public/*.xml
