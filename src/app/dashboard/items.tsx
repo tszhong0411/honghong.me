@@ -60,28 +60,28 @@ const Items = () => {
           icon={<IconBrandYoutube />}
           title='YouTube 訂閱者'
           link='https://youtube.com/@tszhong0411'
-          url='/api/dashboardyoutube/subscribers'
+          url='/api/youtube/subscribers'
           queryKey='youtube-subscribers'
         />
         <Card
           icon={<IconBrandYoutube />}
           title='YouTube 觀看次數'
           link='https://youtube.com/@tszhong0411'
-          url='/api/dashboardyoutube/views'
+          url='/api/youtube/views'
           queryKey='youtube-views'
         />
         <Card
           icon={<IconBrandGithub />}
           title='GitHub 追隨者'
           link='https://github.com/tszhong0411'
-          url='/api/dashboardgithub/followers'
+          url='/api/github/followers'
           queryKey='github-followers'
         />
         <Card
           icon={<IconBrandGithub />}
           title='GitHub stars'
           link='https://github.com/tszhong0411'
-          url='/api/dashboardgithub/stars'
+          url='/api/github/stars'
           queryKey='github-stars'
         />
       </div>
