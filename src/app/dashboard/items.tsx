@@ -84,14 +84,21 @@ const Items = () => {
           url='/api/github/stars'
           queryKey='github-stars'
         />
+        <Card
+          icon={<IconPencil />}
+          title='Blog 總瀏覽次數'
+          link='https://honghong.me'
+          url='/api/views'
+          queryKey='blog-views'
+        />
+        <Card
+          icon={<IconPencil />}
+          title='Blog 總讚好次數'
+          link='https://honghong.me'
+          url='/api/likes'
+          queryKey='blog-likes'
+        />
       </div>
-      <Card
-        icon={<IconPencil />}
-        title='Blog 總瀏覽次數'
-        link='https://honghong.me'
-        url='/api/views'
-        queryKey='blog-views'
-      />
     </>
   )
 }
