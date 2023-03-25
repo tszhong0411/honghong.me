@@ -16,21 +16,21 @@
 
 ## 🌍 honghong.me
 
-- 框架：[Next.js](https://nextjs.org/)
-- 數據庫：[Planetscale](https://planetscale.com/)
-- ORM：[Prisma](https://prisma.io/)
-- 身份驗證：[NextAuth.js](https://next-auth.js.org/)
-- 部署：[Vercel](https://vercel.com)
-- 評論：[Giscus](https://giscus.app/)
-- 網站圖標：[realfavicongenerator](https://realfavicongenerator.net/)
-- 內容：[MDX](https://mdxjs.com/) + [Contentlayer](https://www.contentlayer.dev/)
-- 分析：[Vercel](https://vercel.com/)
-- 樣式：[Tailwindcss](https://tailwindcss.com)
-- 程式碼語法高亮：[Shiki](https://github.com/shikijs/shiki)
+- 框架: [Next.js](https://nextjs.org/)
+- 數據庫: [Planetscale](https://planetscale.com/)
+- ORM: [Prisma](https://prisma.io/)
+- 身份驗證: [NextAuth.js](https://next-auth.js.org/)
+- 部署: [Vercel](https://vercel.com)
+- 評論: [Giscus](https://giscus.app/)
+- 網站圖標: [realfavicongenerator](https://realfavicongenerator.net/)
+- 內容: [MDX](https://mdxjs.com/) + [Contentlayer](https://www.contentlayer.dev/)
+- 分析: [Vercel](https://vercel.com/)
+- 樣式: [Tailwindcss](https://tailwindcss.com)
+- 程式碼語法高亮: [Shiki](https://github.com/shikijs/shiki)
 
 ## 👋 在本地運行
 
-1. 複製這個倉庫
+1. Clone 這個倉庫
 
 ```sh
 git clone https://github.com/tszhong0411/honghong.me.git
@@ -42,13 +42,13 @@ git clone https://github.com/tszhong0411/honghong.me.git
 cd honghong.me
 ```
 
-3. 安裝 yarn 包
+3. 安裝 packages
 
 ```sh
 yarn
 ```
 
-4. 創建一個 `.env.local`，根據 `.env.example` 輸入一些環境變量，這樣就可以正常運行了。
+4. 新增一個 `.env.local`，根據 `.env.example` 輸入一些環境變量，這樣就可以正常運行了。
 
 ```txt
 NEXT_PUBLIC_GISCUS_REPO=<Your env>
