@@ -67,6 +67,7 @@ const LikeButton = (props: LikeButtonProps) => {
     1000,
     [batchedLikes]
   )
+
   return (
     <div className='mt-12 flex flex-nowrap items-center justify-center gap-4'>
       <button
