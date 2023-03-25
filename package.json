@@ -13,7 +13,8 @@
     "lint:fix": "eslint src --fix && yarn format",
     "format": "prettier -w .",
     "type-check": "tsc --noEmit",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "postinstall": "node node_modules/puppeteer/install.js"
   },
   "dependencies": {
     "@giscus/react": "^2.2.8",
