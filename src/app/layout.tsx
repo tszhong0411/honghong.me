@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react'
 import clsx from 'clsx'
 import type { Metadata } from 'next'
 import { Fira_Code, Inter, Noto_Sans_TC } from 'next/font/google'
@@ -10,7 +11,6 @@ import Header from '@/components/Layout/Header'
 
 import { site } from '@/config/site'
 
-import Analytics from './analytics'
 import CustomToaster from './custom-toaster'
 import Providers from './providers'
 
