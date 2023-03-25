@@ -1,19 +1,24 @@
 import type { Route } from 'next'
 import NextLink from 'next/link'
 
-type LinkProps = {
-  href: string
-} & React.ComponentPropsWithRef<'a'>
+type LinkProps = React.ComponentPropsWithRef<'a'>
 
 const Link = (props: LinkProps) => {
   const { href, children, ...rest } = props
-  const isExternal = typeof href === 'string' && href.startsWith('http')
 
-  if (!isExternal) {
+  if ((href as string).startsWith('/')) {
     return (
       <NextLink href={href as Route} className='animated' {...rest}>
         {children}
       </NextLink>
+    )
+  }
+
+  if ((href as string).startsWith('#')) {
+    return (
+      <a href={href} className='animated' {...rest}>
+        {children}
+      </a>
     )
   }
 
