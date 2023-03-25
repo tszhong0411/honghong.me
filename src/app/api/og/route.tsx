@@ -2,10 +2,6 @@ import { ImageResponse } from '@vercel/og'
 import dayjs from 'dayjs'
 import { NextRequest } from 'next/server'
 
-export const config = {
-  runtime: 'edge',
-}
-
 const font = fetch(
   new URL(
     '../../../assets/fonts/noto-sans-tc-chinese-traditional-500-normal.woff',
