@@ -6,7 +6,7 @@ Disallow: /500
 Disallow: /api/*
 
 # Host
-Host: http://localhost:3000
+Host: https://honghong.me
 
 # Sitemaps
-Sitemap: http://localhost:3000/sitemap.xml
+Sitemap: https://honghong.me/sitemap.xml
