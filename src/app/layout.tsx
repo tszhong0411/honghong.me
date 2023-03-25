@@ -85,7 +85,7 @@ const RootLayout = (props: RootLayoutProps) => {
 
   return (
     <html
-      lang='en'
+      lang='zh-TW'
       className={clsx(
         inter.variable,
         notoSansTC.variable,
