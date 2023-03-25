@@ -7,7 +7,10 @@ export const config = {
 }
 
 const font = fetch(
-  new URL('../../../assets/fonts/noto-sans-tc.ttf', import.meta.url)
+  new URL(
+    '../../../assets/fonts/noto-sans-tc-chinese-traditional-500-normal.woff',
+    import.meta.url
+  )
 ).then((res) => res.arrayBuffer())
 
 export const GET = async (req: NextRequest) => {
