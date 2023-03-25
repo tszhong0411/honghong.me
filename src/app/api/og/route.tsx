@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { ImageResponse } from '@vercel/og'
 import dayjs from 'dayjs'
 import { NextRequest } from 'next/server'
@@ -7,7 +6,12 @@ export const config = {
   runtime: 'edge',
 }
 
-const handler = async (req: NextRequest) => {
+const font = fetch(
+  new URL('../../../assets/fonts/noto-sans-tc.ttf', import.meta.url)
+).then((res) => res.arrayBuffer())
+
+export const GET = async (req: NextRequest) => {
+  const fontData = await font
   const { searchParams } = req.nextUrl
   const title = searchParams.get('title')
   const url = searchParams.get('url') ?? 'honghong.me'
@@ -29,15 +33,17 @@ const handler = async (req: NextRequest) => {
           padding: '64px 48px',
           backgroundImage:
             'url(https://honghong.me/static/images/og/gradient_bg.png)',
+          fontFamily: 'Noto Sans TC',
         }}
       >
         <div
           style={{
             display: 'flex',
-            justifyContent: 'center',
+            justifyContent: 'flex-start',
             alignItems: 'center',
           }}
         >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             width={85}
             height={85}
@@ -87,8 +93,13 @@ const handler = async (req: NextRequest) => {
     {
       width: 1200,
       height: 630,
+      fonts: [
+        {
+          name: 'Noto Sans TC',
+          data: fontData,
+          weight: 500,
+        },
+      ],
     }
   )
 }
-
-export default handler
