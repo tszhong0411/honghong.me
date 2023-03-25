@@ -16,7 +16,7 @@ const Link = (props: LinkProps) => {
 
   if ((href as string).startsWith('#')) {
     return (
-      <a href={href} className='animated' {...rest}>
+      <a href={href} {...rest}>
         {children}
       </a>
     )
