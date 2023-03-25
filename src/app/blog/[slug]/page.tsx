@@ -48,7 +48,7 @@ export const generateMetadata = (props: BlogPostPageProps): Metadata => {
       modifiedTime: ISOModifiedTime,
       authors: site.url,
       images: {
-        url: `${site.url}/api/og?title=${post.title}&date=${post.date}`,
+        url: `${site.url}/static/images/og/posts/${post.slug}.png`,
         alt: post.title,
         width: 1200,
         height: 630,
@@ -77,7 +77,7 @@ const BlogPostPage = (props: BlogPostPageProps) => {
     description: summary,
     datePublished: date,
     dateModified: modifiedTime,
-    image: `${site.url}/api/og?title=${title}&date=${date}`,
+    image: `${site.url}/static/images/og/posts/${slug}.png`,
     author: {
       '@type': 'Person',
       name: site.name,

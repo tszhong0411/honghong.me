@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "contentlayer build && next build",
+    "postbuild": "tsx ./src/scripts/generate-og-image.ts",
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "eslint src --fix && yarn format",
@@ -66,6 +67,7 @@
     "@typescript-eslint/eslint-plugin": "^5.55.0",
     "@typescript-eslint/parser": "^5.55.0",
     "autoprefixer": "^10.4.14",
+    "chalk": "^5.2.0",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.36.0",
     "eslint-config-next": "13.2.4",
@@ -79,7 +81,9 @@
     "prettier": "^2.8.4",
     "prettier-plugin-tailwindcss": "^0.2.5",
     "prisma": "^4.11.0",
+    "puppeteer": "^19.8.0",
     "tailwindcss": "^3.2.7",
+    "tsx": "^3.12.6",
     "typescript": "5.1.0-dev.20230318"
   },
   "lint-staged": {
