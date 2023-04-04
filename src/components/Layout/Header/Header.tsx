@@ -61,7 +61,7 @@ const Header = () => {
             </Dropdown.Trigger>
             <Dropdown.Content>
               {HEADER_LINKS.map((link, i) => (
-                <Dropdown.Item key={i}>
+                <Dropdown.Item key={i} asChild>
                   <Link
                     href={link.href}
                     className='flex
