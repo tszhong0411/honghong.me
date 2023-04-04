@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  manifest: `${site.url}/static/favicon/site.webmanifest`,
+  manifest: '/static/favicon/site.webmanifest',
   twitter: {
     title: site.name,
     card: 'summary_large_image',
