@@ -33,8 +33,8 @@ const ProjectsPage = () => {
             >
               <Image
                 src={image}
-                width={1600}
-                height={960}
+                width={1200}
+                height={630}
                 alt={name}
                 className='md:w-72'
                 rounded='rounded-lg'

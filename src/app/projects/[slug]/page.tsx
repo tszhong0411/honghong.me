@@ -43,8 +43,8 @@ export const generateMetadata = (props: ProjectPageProps): Metadata => {
       images: {
         url: `${site.url}${project.image}`,
         alt: project.name,
-        width: 1600,
-        height: 960,
+        width: 1200,
+        height: 630,
         type: 'image/png',
       },
     },
@@ -103,8 +103,8 @@ const ProjectPage = (props: ProjectPageProps) => {
       </div>
       <Image
         src={image}
-        width={1600}
-        height={960}
+        width={1200}
+        height={630}
         alt={name}
         className='my-12 border border-accent-2'
         rounded='rounded-lg'
