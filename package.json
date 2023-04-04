@@ -54,7 +54,6 @@
     "schema-dts": "^1.1.2",
     "sharp": "^0.31.3",
     "shiki": "^0.14.1",
-    "swr": "^2.1.0",
     "tailwind-merge": "^1.10.0",
     "unist-util-visit": "^4.1.2"
   },
