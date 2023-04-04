@@ -56,11 +56,7 @@ const ProjectsPage = () => {
                         key={i}
                         className='flex items-center justify-center gap-1 rounded-full border border-accent-2 px-3 py-2'
                       >
-                        <Icon
-                          strokeWidth={1.5}
-                          size={16}
-                          className='fill-black dark:fill-white'
-                        />
+                        <Icon strokeWidth={1.5} size={16} />
                         <div className='text-xs leading-4'>{label}</div>
                       </div>
                     )
