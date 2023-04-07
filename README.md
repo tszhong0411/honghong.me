@@ -30,7 +30,7 @@
 
 ## 📝 Todo
 
-- [] Add i18n support
+- [ ] Add i18n support
 
 ## 👋 Running Locally
 
