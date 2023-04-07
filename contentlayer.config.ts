@@ -12,17 +12,12 @@ import remarkGfm from 'remark-gfm'
 import { rehypePrettyCodeOptions } from './src/config/rehype-pretty-code-options'
 import remarkImgToJsx from './src/lib/remark-img-to-jsx'
 
-const Badge = defineNestedType(() => ({
-  name: 'Badge',
+const Techstack = defineNestedType(() => ({
+  name: 'Techstack',
   fields: {
-    icon: {
-      type: 'string',
-      description: 'The name of the icon to use',
-      required: true,
-    },
     label: {
       type: 'string',
-      description: 'The label of the badge',
+      description: 'The label of the techstack',
       required: true,
     },
   },
@@ -48,12 +43,12 @@ const Project = defineDocumentType(() => ({
       description: "The link to the project's homepage",
       required: false,
     },
-    githubLink: {
+    github: {
       type: 'string',
-      description: "The link to the project's github page",
+      description: "The url to the project's github page",
       required: true,
     },
-    iconName: {
+    icon: {
       type: 'string',
       description: 'The name of the icon to use',
       required: true,
@@ -63,14 +58,14 @@ const Project = defineDocumentType(() => ({
       description: 'Image for the project',
       required: true,
     },
-    repoName: {
+    repo: {
       type: 'string',
       description: 'The name of the repo of the project',
       required: true,
     },
-    badges: {
+    techstack: {
       type: 'list',
-      of: Badge,
+      of: Techstack,
       required: true,
     },
   },

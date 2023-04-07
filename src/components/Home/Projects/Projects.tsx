@@ -1,7 +1,8 @@
 import { IconArrowRight } from '@tabler/icons-react'
-import * as TablerIcon from '@tabler/icons-react'
 import { allProjects } from 'contentlayer/generated'
 import Link from 'next/link'
+
+import { getIconByName } from '@/lib/get-icon-by-name'
 
 const Projects = () => {
   return (
@@ -9,10 +10,8 @@ const Projects = () => {
       <h2 className='mb-8 text-3xl font-bold'>項目</h2>
       <div className='flex flex-col gap-8'>
         {allProjects.slice(0, 3).map((project) => {
-          const { _id, iconName, name, description, slug } = project
-          const Icon: TablerIcon.Icon = TablerIcon[
-            iconName as keyof typeof TablerIcon
-          ] as TablerIcon.Icon
+          const { _id, icon, name, description, slug } = project
+          const Icon = getIconByName(icon)
 
           return (
             <Link

@@ -1,8 +1,11 @@
-import * as TablerIcon from '@tabler/icons-react'
+import { IconHome } from '@tabler/icons-react'
+import { IconBrandGithub } from '@tabler/icons-react'
 import { allProjects } from 'contentlayer/generated'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { useMDXComponent } from 'next-contentlayer/hooks'
+
+import { getIconByName } from '@/lib/get-icon-by-name'
 
 import MDXComponents from '@/components/MDXComponents'
 import Image from '@/components/MDXComponents/Image'
@@ -62,13 +65,9 @@ const ProjectPage = (props: ProjectPageProps) => {
 
   const MDXComponent = useMDXComponent(project.body.code)
 
-  const { name, description, iconName, homepage, githubLink, repoName, image } =
-    project
+  const { name, description, icon, homepage, github, repo, image } = project
 
-  // TODO: Improve it 💩
-  const Icon: TablerIcon.Icon = TablerIcon[
-    iconName as keyof typeof TablerIcon
-  ] as TablerIcon.Icon
+  const Icon = getIconByName(icon)
 
   return (
     <>
@@ -87,20 +86,17 @@ const ProjectPage = (props: ProjectPageProps) => {
             href={homepage}
             className='animated flex items-center'
           >
-            <TablerIcon.IconHome size={20} className='mr-2 inline-block' />
+            <IconHome size={20} className='mr-2 inline-block' />
             {homepage}
           </a>
           <a
             target='_blank'
             rel='noopener noreferrer'
-            href={githubLink}
+            href={github}
             className='animated flex items-center'
           >
-            <TablerIcon.IconBrandGithub
-              size={20}
-              className='mr-2 inline-block'
-            />
-            Tszhong0411/{repoName}
+            <IconBrandGithub size={20} className='mr-2 inline-block' />
+            Tszhong0411/{repo}
           </a>
         </div>
       </div>

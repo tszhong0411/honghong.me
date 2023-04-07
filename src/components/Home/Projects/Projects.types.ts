@@ -1,4 +1,4 @@
-type Badge = {
+type Techstack = {
   icon: React.ReactNode
   label: string
 }
@@ -10,8 +10,8 @@ type Project = {
   homepage?: string
   image: string
   icon: React.ReactNode
-  badges: Badge[]
-  repoName: string
+  techstack: Techstack[]
+  repo: string
 }
 
 export type ProjectItems = Project[]

@@ -1,9 +1,9 @@
-import * as TablerIcon from '@tabler/icons-react'
 import { allProjects } from 'contentlayer/generated'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 
-import * as LocalIcon from '@/components/Icon'
+import { getIconByName } from '@/lib/get-icon-by-name'
+
 import Image from '@/components/MDXComponents/Image'
 
 import { site } from '@/config/site'
@@ -23,7 +23,7 @@ const ProjectsPage = () => {
       <p className='mb-8 text-accent-5'>我的項目列表，一切都是用 ❤️ 做的</p>
       <div className='flex flex-col gap-4'>
         {allProjects.map((project) => {
-          const { _id, name, image, description, badges, slug } = project
+          const { _id, name, image, description, techstack, slug } = project
 
           return (
             <Link
@@ -39,21 +39,16 @@ const ProjectsPage = () => {
                 className='md:w-72'
                 rounded='rounded-lg'
               />
-              <div className='flex-1 py-4 px-2 md:py-2 md:px-4'>
+              <div className='flex-1 px-2 py-4 md:px-4 md:py-2'>
                 <div>
                   <h2 className='text-2xl font-bold text-hong-fg'>{name}</h2>
                   <div className='text-accent-5'>{description}</div>
                 </div>
                 <div className='mt-[5px] flex flex-wrap gap-[7px]'>
-                  {badges.map((badge) => {
-                    const { icon, label } = badge
-                    // TODO: Improve it 💩
-                    const Icon: React.FC<
-                      TablerIcon.TablerIconsProps | LocalIcon.IconProps
-                    > = (TablerIcon[icon as keyof typeof TablerIcon] ||
-                      LocalIcon[icon as keyof typeof LocalIcon]) as React.FC<
-                      TablerIcon.TablerIconsProps | LocalIcon.IconProps
-                    >
+                  {techstack.map((techstack) => {
+                    const { label } = techstack
+
+                    const Icon = getIconByName(label)
 
                     return (
                       <div
