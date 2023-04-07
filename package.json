@@ -4,6 +4,12 @@
   "version": "1.0.0",
   "license": "MIT",
   "type": "module",
+  "description": "My personal website and blog built with TypeScript, Next.js, and Tailwind CSS",
+  "author": "Lai Tsz Hong <info@honghong.me> (https://github.com/tszhong0411/)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tszhong0411/honghong.me.git"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "contentlayer build && next build",
