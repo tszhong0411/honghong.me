@@ -7,48 +7,52 @@
 </p>
 
 <p align="center">
-    <a href="https://honghong.me" target="blank">線上查看</a>
+    <a href="https://honghong.me" target="blank">View Online</a>
     ·
-    <a href="https://github.com/tszhong0411/honghong.me/issues/new/choose">回報錯誤</a>
+    <a href="https://github.com/tszhong0411/honghong.me/issues/new/choose">Report Bug</a>
     ·
-    <a href="https://github.com/tszhong0411/honghong.me/issues/new/choose">要求新功能</a>
+    <a href="https://github.com/tszhong0411/honghong.me/issues/new/choose">Request New Feature</a>
 </p>
 
 ## 🌍 honghong.me
 
-- 框架: [Next.js](https://nextjs.org/)
-- 數據庫: [Planetscale](https://planetscale.com/)
+- Framework: [Next.js](https://nextjs.org/)
+- Database: [Planetscale](https://planetscale.com/)
 - ORM: [Prisma](https://prisma.io/)
-- 身份驗證: [NextAuth.js](https://next-auth.js.org/)
-- 部署: [Vercel](https://vercel.com)
-- 評論: [Giscus](https://giscus.app/)
-- 網站圖標: [realfavicongenerator](https://realfavicongenerator.net/)
-- 內容: [MDX](https://mdxjs.com/) + [Contentlayer](https://www.contentlayer.dev/)
-- 分析: [Vercel](https://vercel.com/)
-- 樣式: [Tailwindcss](https://tailwindcss.com)
-- 程式碼語法高亮: [Shiki](https://github.com/shikijs/shiki)
+- Authentication: [NextAuth.js](https://next-auth.js.org/)
+- Deployment: [Vercel](https://vercel.com)
+- Comments: [Giscus](https://giscus.app/)
+- Favicon: [realfavicongenerator](https://realfavicongenerator.net/)
+- Content: [MDX](https://mdxjs.com/) + [Contentlayer](https://www.contentlayer.dev/)
+- Analytics: [Vercel](https://vercel.com/)
+- Styling: [Tailwindcss](https://tailwindcss.com)
+- Code Syntax Highlighting: [Shiki](https://github.com/shikijs/shiki)
 
-## 👋 在本地運行
+## 📝 Todo
 
-1. Clone 這個倉庫
+- [] Add i18n support
+
+## 👋 Running Locally
+
+1. Clone the repository
 
 ```sh
 git clone https://github.com/tszhong0411/honghong.me.git
 ```
 
-2. 更改目錄
+2. Go to the project directory
 
 ```sh
 cd honghong.me
 ```
 
-3. 安裝 packages
+3. Install dependencies
 
 ```sh
 yarn
 ```
 
-4. 新增一個 `.env.local`，根據 `.env.example` 輸入一些環境變量，這樣就可以正常運行了。
+4. Create a `.env.local` file and input environment variables based on the `.env.example` file so that the project can run properly.
 
 ```txt
 NEXT_PUBLIC_GISCUS_REPO=<Your env>
@@ -63,16 +67,16 @@ SPOTIFY_REFRESH_TOKEN=<Your env>
 // ...
 ```
 
-## 🍰 貢獻
+## 🍰 Contributing
 
-貢獻使開源社區成為學習、啟發和創造的絕佳場所。 非常感謝您所做的任何貢獻。
+Contributions make the open source community an excellent place to learn, inspire and create. Thank you very much for any contributions you make.
 
-如果您有更好的建議，請 fork 和建立 pull request。您也可以簡單地打開帶有 "enhancement" 標籤的 issue。 別忘了給這個項目一個 Star！再次感謝！
+If you have better suggestions, fork and create a pull request. You can also simply open an issue with the "enhancement" tag. Don't forget to give this project a star! Thanks again!
 
-1. Fork 這個項目
-2. 提交你的更改 (`git commit -m 'Add some Feature'`)
-3. 推到分支上 (`git push`)
-4. 打開一個 Pull Request
+1. Fork the repository
+2. Commit your changes (`git commit -m 'Add some Feature'`)
+3. Push to the branch (`git push`)
+4. Open a Pull Request
 
 ## ⭐ Lighthouse
 
@@ -80,7 +84,7 @@ SPOTIFY_REFRESH_TOKEN=<Your env>
   <a href="https://googlechrome.github.io/lighthouse/viewer/?gist=50f0c8da918422944d8ee2e815eeecc1"><img src="./public/static/images/screenshot/honghong.me-lighthouse-202202092158.png"  alt="lighthouse"></a>
 </p>
 
-最後更新: 2022-02-09 21:58
+Last Updated: 2022-02-09 21:58
 
 ## ❤️ Credits
 
@@ -88,5 +92,5 @@ SPOTIFY_REFRESH_TOKEN=<Your env>
 
 <hr>
 <p align="center">
-用 ❤️ 製作在 Hong Kong
+Made with ❤️ in Hong Kong
 </p>
