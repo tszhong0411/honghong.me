@@ -20,7 +20,11 @@ const Content = (props: ContentProps) => {
     <div className='mt-8 flex flex-col justify-between lg:flex-row'>
       <article className='w-full lg:w-[540px]'>
         <div className='prose prose-zinc w-full max-w-none dark:prose-invert'>
-          <MDXComponent components={MDXComponents} />
+          <MDXComponent
+            components={{
+              ...MDXComponents,
+            }}
+          />
         </div>
       </article>
       <aside className='lg:min-w-[270px] lg:max-w-[270px]'>

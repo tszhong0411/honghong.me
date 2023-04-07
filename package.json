@@ -9,13 +9,14 @@
     "build": "contentlayer build && next build",
     "postbuild": "tsx ./src/scripts/generate-og-image.ts",
     "start": "next start",
-    "lint": "next lint",
-    "lint:fix": "eslint src --fix && yarn format",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
     "format": "prettier -w .",
     "type-check": "tsc --noEmit",
     "prepare": "husky install",
     "postinstall": "node node_modules/puppeteer/install.js"
   },
+  "prettier": "@tszhong0411/prettier-config",
   "dependencies": {
     "@giscus/react": "^2.2.8",
     "@octokit/rest": "^19.0.7",
@@ -41,7 +42,6 @@
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
     "react-confetti": "^6.1.0",
-    "react-countup": "^6.4.2",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.0",
     "react-textarea-autosize": "^8.4.0",
@@ -54,6 +54,7 @@
     "schema-dts": "^1.1.2",
     "sharp": "^0.31.3",
     "shiki": "^0.14.1",
+    "swr": "^2.1.2",
     "tailwind-merge": "^1.10.0",
     "unist-util-visit": "^4.1.2"
   },
@@ -61,140 +62,43 @@
     "@commitlint/cli": "^17.4.4",
     "@commitlint/config-conventional": "^17.4.4",
     "@tailwindcss/typography": "^0.5.9",
+    "@tszhong0411/eslint-config": "1.0.5",
+    "@tszhong0411/prettier-config": "^1.0.0",
+    "@tszhong0411/tsconfig": "^1.0.0",
     "@types/node": "^18.15.3",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
-    "@typescript-eslint/eslint-plugin": "^5.55.0",
-    "@typescript-eslint/parser": "^5.55.0",
     "autoprefixer": "^10.4.14",
     "chalk": "^5.2.0",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.36.0",
     "eslint-config-next": "^13.2.5-canary.17",
-    "eslint-config-prettier": "^8.7.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-simple-import-sort": "^10.0.0",
-    "eslint-plugin-unused-imports": "^2.0.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.0",
     "postcss": "^8.4.21",
     "prettier": "^2.8.4",
-    "prettier-plugin-tailwindcss": "^0.2.5",
     "prisma": "^4.11.0",
     "puppeteer": "^19.8.0",
     "tailwindcss": "^3.2.7",
     "tsx": "^3.12.6",
-    "typescript": "5.1.0-dev.20230318"
+    "typescript": "^5.0.3"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx}": [
-      "eslint --max-warnings=0",
-      "prettier -w"
+    "*.{js,jsx,ts,tsx}": [
+      "eslint"
     ],
-    "src/**/*.{json,css,scss,md,mdx}": [
-      "prettier -w"
+    "*.{json,css,scss,md,mdx,js,jsx,ts,tsx,cjs,mjs}": [
+      "prettier -c"
     ]
   },
-  "prettier": {
-    "arrowParens": "always",
-    "singleQuote": true,
-    "jsxSingleQuote": true,
-    "tabWidth": 2,
-    "semi": false
-  },
   "eslintConfig": {
-    "env": {
-      "browser": true,
-      "es2021": true,
-      "node": true
-    },
-    "plugins": [
-      "@typescript-eslint",
-      "simple-import-sort",
-      "unused-imports"
-    ],
     "extends": [
-      "eslint:recommended",
-      "next",
       "next/core-web-vitals",
-      "plugin:@typescript-eslint/recommended",
-      "prettier"
+      "@tszhong0411/eslint-config"
     ],
-    "rules": {
-      "no-unused-vars": "off",
-      "no-console": "warn",
-      "@typescript-eslint/explicit-module-boundary-types": "off",
-      "react/display-name": "off",
-      "react/jsx-curly-brace-presence": [
-        "warn",
-        {
-          "props": "never",
-          "children": "never"
-        }
-      ],
-      "@typescript-eslint/no-unused-vars": "off",
-      "unused-imports/no-unused-imports": "warn",
-      "unused-imports/no-unused-vars": [
-        "warn",
-        {
-          "vars": "all",
-          "varsIgnorePattern": "^_",
-          "args": "after-used",
-          "argsIgnorePattern": "^_"
-        }
-      ],
-      "simple-import-sort/exports": "warn",
-      "simple-import-sort/imports": [
-        "warn",
-        {
-          "groups": [
-            [
-              "^@?\\w",
-              "^\\u0000"
-            ],
-            [
-              "^.+\\.s?css$"
-            ],
-            [
-              "^@/lib",
-              "^@/hooks"
-            ],
-            [
-              "^@/data"
-            ],
-            [
-              "^@/components",
-              "^@/container"
-            ],
-            [
-              "^@/store"
-            ],
-            [
-              "^@/"
-            ],
-            [
-              "^\\./?$",
-              "^\\.(?!/?$)",
-              "^\\.\\./?$",
-              "^\\.\\.(?!/?$)",
-              "^\\.\\./\\.\\./?$",
-              "^\\.\\./\\.\\.(?!/?$)",
-              "^\\.\\./\\.\\./\\.\\./?$",
-              "^\\.\\./\\.\\./\\.\\.(?!/?$)"
-            ],
-            [
-              "^@/types"
-            ],
-            [
-              "^"
-            ]
-          ]
-        }
-      ]
-    },
-    "globals": {
-      "React": true,
-      "JSX": true
+    "parserOptions": {
+      "project": "./tsconfig.json",
+      "ecmaVersion": "latest"
     }
   },
   "config": {

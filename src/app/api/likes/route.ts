@@ -14,11 +14,11 @@ export const GET = async (req: NextRequest) => {
     })
 
     return NextResponse.json({
-      count: likes._sum.likes ?? 0,
+      likes: likes._sum.likes ?? 0,
     })
   }
 
-  const ipAddress = req.headers['x-forwarded-for'] || '0.0.0.0'
+  const ipAddress = req.headers.get('x-forwarded-for') || '0.0.0.0'
   const currentUserId = createHash('md5')
     .update(ipAddress + process.env.IP_ADDRESS_SALT, 'utf8')
     .digest('hex')
@@ -54,7 +54,7 @@ export const GET = async (req: NextRequest) => {
 export const POST = async (req: Request) => {
   const { count, slug } = await req.json()
 
-  const ipAddress = req.headers['x-forwarded-for'] || '0.0.0.0'
+  const ipAddress = req.headers.get('x-forwarded-for') || '0.0.0.0'
   const currentUserId = createHash('md5')
     .update(ipAddress + process.env.IP_ADDRESS_SALT, 'utf8')
     .digest('hex')
@@ -105,7 +105,7 @@ export const POST = async (req: Request) => {
   } catch (error) {
     return NextResponse.json(
       {
-        error: error.message,
+        error,
       },
       { status: 500 }
     )

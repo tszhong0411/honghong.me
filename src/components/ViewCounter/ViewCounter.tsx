@@ -1,4 +1,6 @@
-import { useQuery } from '@tanstack/react-query'
+import useSWR from 'swr'
+
+import fetcher from '@/lib/fetcher'
 
 import Skeleton from '../Skeleton'
 
@@ -11,17 +13,11 @@ type ViewCounterProps = {
 const ViewCounter = (props: ViewCounterProps) => {
   const { slug } = props
 
-  const { data, isLoading, isError } = useQuery<Views>({
-    queryKey: ['views', slug],
-    queryFn: () =>
-      fetch(`/api/views?slug=${slug}`, {
-        cache: 'no-store',
-      }).then((res) => res.json()),
-  })
+  const { data, isLoading } = useSWR<Views>(`/api/views?slug=${slug}`, fetcher)
 
   return (
     <>
-      {isLoading || isError ? (
+      {isLoading ? (
         <Skeleton className='h-5 max-w-[70px]' />
       ) : (
         <div>{`${data?.views} 次瀏覽`}</div>

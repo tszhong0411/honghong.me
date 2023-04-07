@@ -7,7 +7,7 @@ const Modal = (props: DialogPrimitives.DialogProps) => (
   <DialogPrimitives.Root {...props} />
 )
 
-Modal.Trigger = (props: DialogPrimitives.DialogTriggerProps) => {
+const Trigger = (props: DialogPrimitives.DialogTriggerProps) => {
   const { children, ...rest } = props
 
   return (
@@ -17,7 +17,7 @@ Modal.Trigger = (props: DialogPrimitives.DialogTriggerProps) => {
   )
 }
 
-Modal.Content = (props: DialogPrimitives.DialogContentProps) => {
+const Content = (props: DialogPrimitives.DialogContentProps) => {
   const { children, ...rest } = props
 
   return (
@@ -33,13 +33,13 @@ Modal.Content = (props: DialogPrimitives.DialogContentProps) => {
   )
 }
 
-Modal.Title = (props: DialogPrimitives.DialogTitleProps) => {
+const Title = (props: DialogPrimitives.DialogTitleProps) => {
   const { children, ...rest } = props
 
   return <DialogPrimitives.Title {...rest}>{children}</DialogPrimitives.Title>
 }
 
-Modal.Description = (props: DialogPrimitives.DialogDescriptionProps) => {
+const Description = (props: DialogPrimitives.DialogDescriptionProps) => {
   const { children, ...rest } = props
 
   return (
@@ -49,7 +49,7 @@ Modal.Description = (props: DialogPrimitives.DialogDescriptionProps) => {
   )
 }
 
-Modal.Close = (props: DialogPrimitives.DialogCloseProps) => {
+const Close = (props: DialogPrimitives.DialogCloseProps) => {
   const { children, ...rest } = props
 
   return (
@@ -58,5 +58,12 @@ Modal.Close = (props: DialogPrimitives.DialogCloseProps) => {
     </DialogPrimitives.Close>
   )
 }
+
+Modal.displayName = 'Modal'
+Modal.Trigger = Trigger
+Modal.Content = Content
+Modal.Title = Title
+Modal.Description = Description
+Modal.Close = Close
 
 export default Modal

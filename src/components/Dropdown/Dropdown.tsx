@@ -6,7 +6,7 @@ const Dropdown = (props: DropdownPrimitives.DropdownMenuProps) => {
   return <DropdownPrimitives.Root {...props} />
 }
 
-Dropdown.Trigger = (props: DropdownPrimitives.DropdownMenuTriggerProps) => {
+const Trigger = (props: DropdownPrimitives.DropdownMenuTriggerProps) => {
   const { children, ...rest } = props
 
   return (
@@ -20,7 +20,7 @@ Dropdown.Trigger = (props: DropdownPrimitives.DropdownMenuTriggerProps) => {
   )
 }
 
-Dropdown.Content = (props: DropdownPrimitives.DropdownMenuContentProps) => {
+const Content = (props: DropdownPrimitives.DropdownMenuContentProps) => {
   const { children, className, ...rest } = props
 
   return (
@@ -38,7 +38,7 @@ Dropdown.Content = (props: DropdownPrimitives.DropdownMenuContentProps) => {
   )
 }
 
-Dropdown.Item = (props: DropdownPrimitives.DropdownMenuItemProps) => {
+const Item = (props: DropdownPrimitives.DropdownMenuItemProps) => {
   const { children, className, ...rest } = props
 
   return (
@@ -53,5 +53,10 @@ Dropdown.Item = (props: DropdownPrimitives.DropdownMenuItemProps) => {
     </DropdownPrimitives.Item>
   )
 }
+
+Dropdown.displayName = 'Dropdown'
+Dropdown.Trigger = Trigger
+Dropdown.Content = Content
+Dropdown.Item = Item
 
 export default Dropdown

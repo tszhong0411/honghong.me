@@ -33,6 +33,7 @@ const LoginButton = (props: LoginButtonProps) => {
   return (
     <button
       onClick={() => signIn(id)}
+      type='button'
       className={clsx(
         'flex h-12 w-full items-center justify-center gap-2 rounded-lg transition-colors duration-300',
         type[id].className

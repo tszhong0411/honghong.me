@@ -1,10 +1,12 @@
 'use client'
 
-import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { motion } from 'framer-motion'
 import React from 'react'
 import Confetti from 'react-confetti'
 import { useDebounce, useWindowSize } from 'react-use'
+import useSWR from 'swr'
+
+import fetcher from '@/lib/fetcher'
 
 import Skeleton from '@/components/Skeleton'
 
@@ -17,20 +19,17 @@ const LikeButton = (props: LikeButtonProps) => {
   const { slug } = props
   const [position, setPosition] = React.useState<{ x: number; y: number }>()
   const { width, height } = useWindowSize()
-  const queryClient = useQueryClient()
-  const { data, isLoading, isFetching } = useQuery<Likes>({
-    queryKey: ['likes', slug],
-    queryFn: () =>
-      fetch(`/api/likes?slug=${slug}`, {
-        cache: 'no-store',
-      }).then((res) => res.json()),
-  })
+
+  const { data, isLoading, mutate } = useSWR<Likes>(
+    `/api/likes?slug=${slug}`,
+    fetcher
+  )
 
   const updatePostLikes = async (
     slug: string,
     count: number
   ): Promise<Likes> => {
-    const res = await fetch(`/api/likes`, {
+    const res = await fetch('/api/likes', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ slug, count }),
@@ -46,21 +45,22 @@ const LikeButton = (props: LikeButtonProps) => {
       return
     }
 
-    queryClient.setQueryData(['likes', slug], (data: Likes) => ({
-      likes: data.likes + 1,
-      currentUserLikes: data.currentUserLikes + 1,
-    }))
+    mutate(
+      {
+        likes: data.likes + 1,
+        currentUserLikes: data.currentUserLikes + 1,
+      },
+      false
+    )
 
     setBatchedLikes(batchedLikes + 1)
   }
 
   useDebounce(
-    async () => {
+    () => {
       if (batchedLikes === 0) return
 
-      const newData = await updatePostLikes(slug, batchedLikes)
-
-      queryClient.setQueryData(['likes', slug], newData)
+      mutate(updatePostLikes(slug, batchedLikes))
 
       setBatchedLikes(0)
     },
@@ -72,6 +72,7 @@ const LikeButton = (props: LikeButtonProps) => {
     <div className='mt-12 flex flex-nowrap items-center justify-center gap-4'>
       <button
         className='outline-none'
+        type='button'
         onClick={(e) => {
           if (isLoading) return
           if (data?.currentUserLikes === 2) {
@@ -81,7 +82,7 @@ const LikeButton = (props: LikeButtonProps) => {
 
           increment()
         }}
-        disabled={isFetching}
+        // disabled={isFetching}
       >
         <svg viewBox='0 0 20 20' className='w-[42px]'>
           <defs>
@@ -97,7 +98,13 @@ const LikeButton = (props: LikeButtonProps) => {
                 stopOpacity={1}
               ></stop>
             </linearGradient>
-            <mask id='mask' mask-type='alpha' maskUnits='userSpaceOnUse'>
+            <mask
+              id='mask'
+              maskUnits='userSpaceOnUse'
+              style={{
+                maskType: 'alpha',
+              }}
+            >
               <path d='M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z'></path>
             </mask>
           </defs>

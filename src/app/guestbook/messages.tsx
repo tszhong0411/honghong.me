@@ -1,9 +1,12 @@
 'use client'
 
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import dayjs from 'dayjs'
 import { DefaultSession } from 'next-auth'
+import React from 'react'
 import { toast } from 'react-hot-toast'
+import useSWR from 'swr'
+
+import fetcher from '@/lib/fetcher'
 
 import Image from '@/components/MDXComponents/Image'
 import Modal from '@/components/Modal'
@@ -18,46 +21,41 @@ type MessagesProps = {
 
 const Messages = (props: MessagesProps) => {
   const { user } = props
-  const queryClient = useQueryClient()
+  const [isDeleting, setIsDeleting] = React.useState(false)
 
-  const { data, isLoading } = useQuery<Messages>({
-    queryKey: ['guestbook', 'messages'],
-    queryFn: () =>
-      fetch('/api/guestbook', {
-        cache: 'no-store',
-      }).then((res) => res.json()),
-  })
+  const { data, isLoading, mutate } = useSWR<Messages>(
+    '/api/guestbook',
+    fetcher
+  )
 
-  const { mutate, isLoading: isDeleting } = useMutation({
-    mutationFn: async (id: string) => {
-      const loading = toast.loading('刪除中...')
+  const deleteHandler = async (id: string) => {
+    setIsDeleting(true)
+    const loading = toast.loading('刪除中...')
 
-      const res = await fetch('/api/guestbook', {
-        method: 'DELETE',
-        body: JSON.stringify({
-          id,
-        }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
+    const res = await fetch('/api/guestbook', {
+      method: 'DELETE',
+      body: JSON.stringify({
+        id,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
 
-      if (!res.ok) {
-        const { error } = await res.json()
-        toast.dismiss(loading)
-        toast.error(error)
-
-        return
-      }
-
+    if (!res.ok) {
+      const { error } = await res.json()
+      setIsDeleting(false)
       toast.dismiss(loading)
-      toast.success('成功刪除')
-      queryClient.invalidateQueries({ queryKey: ['guestbook', 'messages'] })
-    },
-  })
+      toast.error(error)
 
-  const deleteHandler = (id: string) => {
-    mutate(id)
+      return
+    }
+
+    setIsDeleting(false)
+    toast.dismiss(loading)
+    toast.success('成功刪除')
+
+    mutate()
   }
 
   return (
@@ -98,6 +96,7 @@ const Messages = (props: MessagesProps) => {
                     <button
                       className='rounded-lg bg-theme-9 px-4 py-2 text-white transition-colors duration-300 hover:bg-theme-10'
                       disabled={isDeleting}
+                      type='button'
                     >
                       刪除
                     </button>
@@ -106,7 +105,10 @@ const Messages = (props: MessagesProps) => {
                     <div className='mb-2'>刪除一個留言</div>
                     <div className='flex justify-end gap-2'>
                       <Modal.Close>
-                        <button className='rounded-lg border border-theme-7 bg-theme-1 px-4 py-2 text-theme-11 transition-colors duration-300 hover:border-theme-8'>
+                        <button
+                          className='rounded-lg border border-theme-7 bg-theme-1 px-4 py-2 text-theme-11 transition-colors duration-300 hover:border-theme-8'
+                          type='button'
+                        >
                           取消
                         </button>
                       </Modal.Close>
@@ -114,6 +116,7 @@ const Messages = (props: MessagesProps) => {
                         <button
                           className='rounded-lg bg-theme-9 px-4 py-2 text-white transition-colors duration-300 hover:bg-theme-10'
                           onClick={() => deleteHandler(id.toString())}
+                          type='button'
                         >
                           刪除
                         </button>

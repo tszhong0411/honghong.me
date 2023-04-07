@@ -19,7 +19,7 @@ const Colors = () => {
       {mounted && resolvedTheme ? (
         colors.map((color, i) => (
           <div
-            key={i}
+            key={color.className}
             className={clsx(
               'flex w-full justify-between p-6 [&>div]:flex-1',
               color.className,
@@ -33,7 +33,7 @@ const Colors = () => {
             <div className='font-bold'>{color.name}</div>
             <div className='font-code'>{color.variable}</div>
             <div className='flex justify-end uppercase'>
-              {color.hex[resolvedTheme]}
+              {color.hex[resolvedTheme as 'dark' | 'light']}
             </div>
           </div>
         ))

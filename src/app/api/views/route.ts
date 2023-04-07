@@ -13,7 +13,7 @@ export const GET = async (req: NextRequest) => {
     })
 
     return NextResponse.json({
-      count: views._sum.views ?? 0,
+      views: views._sum.views ?? 0,
     })
   }
 

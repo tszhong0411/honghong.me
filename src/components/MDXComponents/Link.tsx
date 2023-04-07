@@ -1,7 +1,8 @@
 import type { Route } from 'next'
 import NextLink from 'next/link'
+import React from 'react'
 
-type LinkProps = React.ComponentPropsWithRef<'a'>
+type LinkProps = JSX.IntrinsicElements['a']
 
 const Link = (props: LinkProps) => {
   const { href, children, ...rest } = props

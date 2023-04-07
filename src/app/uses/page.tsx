@@ -36,7 +36,11 @@ const UsesPage = () => {
         這是我目前用來玩遊戲、編程、製作影片以及每天使用的設備。
       </p>
       <div className='prose prose-zinc w-full max-w-none dark:prose-invert'>
-        <MDXComponent components={MDXComponents} />
+        <MDXComponent
+          components={{
+            ...MDXComponents,
+          }}
+        />
       </div>
     </>
   )

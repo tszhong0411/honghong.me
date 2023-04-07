@@ -1,15 +1,13 @@
 'use client'
 
-import { useQuery } from '@tanstack/react-query'
+import useSWR from 'swr'
+
+import fetcher from '@/lib/fetcher'
 
 import { Song } from '@/types'
 
 const NowPlaying = () => {
-  const { data } = useQuery<Song>({
-    queryKey: ['spotify', 'now-playing'],
-    queryFn: () =>
-      fetch('/api/spotify', { cache: 'no-store' }).then((res) => res.json()),
-  })
+  const { data } = useSWR<Song>('/api/spotify', fetcher)
 
   return (
     <div className='flex items-center gap-4'>

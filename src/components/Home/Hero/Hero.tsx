@@ -31,8 +31,13 @@ const Hero = () => {
         </div>
       </div>
       <div className='flex gap-6'>
-        {HERO_LINKS.map((link, i) => (
-          <a key={i} href={link.href} target='_blank' rel='noopener noreferrer'>
+        {HERO_LINKS.map((link) => (
+          <a
+            key={link.id}
+            href={link.href}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
             {link.icon}
           </a>
         ))}

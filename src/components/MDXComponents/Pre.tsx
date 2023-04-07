@@ -4,15 +4,11 @@ import { IconCheck, IconCopy } from '@tabler/icons-react'
 import React from 'react'
 import { toast } from 'react-hot-toast'
 
-import { WithChildren } from '@/types'
-
-type PreProps = {
-  'data-language': string
-  'data-theme': string
-} & WithChildren
+type PreProps = JSX.IntrinsicElements['pre']
 
 const Pre = (props: PreProps) => {
-  const { children, 'data-theme': theme, 'data-language': language } = props
+  const { children, ...rest } = props
+
   const textInput = React.useRef<HTMLPreElement>(null)
   const [isCopied, setCopied] = React.useState(false)
 
@@ -47,18 +43,13 @@ const Pre = (props: PreProps) => {
 
   return (
     <>
-      <pre
-        className='relative'
-        data-theme={theme}
-        data-language={language}
-        ref={textInput}
-      >
+      <pre className='relative' ref={textInput} {...rest}>
         {children}
       </pre>
       <button
         className='absolute top-4 right-4 opacity-0 transition [div:hover>&]:opacity-100'
         onClick={onCopy}
-        data-theme={theme}
+        type='button'
       >
         {isCopied ? <IconCheck size={20} /> : <IconCopy size={20} />}
       </button>

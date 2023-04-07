@@ -56,6 +56,7 @@ export const HEADER_LINKS: DropdownItemType[] = [
 
 export const FOOTER_LINKS: FooterLinks = [
   {
+    id: 1,
     links: [
       {
         href: '/',
@@ -76,6 +77,7 @@ export const FOOTER_LINKS: FooterLinks = [
     ],
   },
   {
+    id: 2,
     links: [
       {
         href: '/guestbook',
@@ -118,22 +120,27 @@ export const FOOTER_SOCIAL_MEDIA: FooterSocialMediaLinks = [
 
 export const HERO_LINKS: HeroLinks = [
   {
+    id: 'github',
     icon: <IconBrandGithub size={28} />,
     href: 'https://github.com/tszhong0411',
   },
   {
+    id: 'instagram',
     icon: <IconBrandInstagram size={28} />,
     href: 'https://www.instagram.com/tszhong0411/',
   },
   {
+    id: 'youtube',
     icon: <IconBrandYoutube size={28} />,
     href: 'https://www.youtube.com/@tszhong0411',
   },
   {
+    id: 'facebook',
     icon: <IconBrandFacebook size={28} />,
     href: 'https://www.facebook.com/tszhonglai.0411/',
   },
   {
+    id: 'twitter',
     icon: <IconBrandTwitter size={28} />,
     href: 'https://twitter.com/TszhongLai0411',
   },

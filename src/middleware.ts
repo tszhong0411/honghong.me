@@ -1,7 +1,6 @@
-import type { NextFetchEvent, NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
-const middleware = async (_req: NextRequest, _ev: NextFetchEvent) => {
+const middleware = async () => {
   const ContentSecurityPolicy = `
     default-src 'self';
     script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app *.honghong.me data: cdn.vercel-insights.com;

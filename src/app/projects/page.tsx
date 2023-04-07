@@ -45,15 +45,19 @@ const ProjectsPage = () => {
                   <div className='text-accent-5'>{description}</div>
                 </div>
                 <div className='mt-[5px] flex flex-wrap gap-[7px]'>
-                  {badges.map((badge, i) => {
+                  {badges.map((badge) => {
                     const { icon, label } = badge
+                    // TODO: Improve it 💩
                     const Icon: React.FC<
                       TablerIcon.TablerIconsProps | LocalIcon.IconProps
-                    > = TablerIcon[icon] || LocalIcon[icon]
+                    > = (TablerIcon[icon as keyof typeof TablerIcon] ||
+                      LocalIcon[icon as keyof typeof LocalIcon]) as React.FC<
+                      TablerIcon.TablerIconsProps | LocalIcon.IconProps
+                    >
 
                     return (
                       <div
-                        key={i}
+                        key={label}
                         className='flex items-center justify-center gap-1 rounded-full border border-accent-2 px-3 py-2'
                       >
                         <Icon strokeWidth={1.5} size={16} />

@@ -65,7 +65,10 @@ const ProjectPage = (props: ProjectPageProps) => {
   const { name, description, iconName, homepage, githubLink, repoName, image } =
     project
 
-  const Icon: React.FC<TablerIcon.TablerIconsProps> = TablerIcon[iconName]
+  // TODO: Improve it 💩
+  const Icon: TablerIcon.Icon = TablerIcon[
+    iconName as keyof typeof TablerIcon
+  ] as TablerIcon.Icon
 
   return (
     <>
@@ -110,7 +113,11 @@ const ProjectPage = (props: ProjectPageProps) => {
         rounded='rounded-lg'
       />
       <div className='prose prose-zinc w-full max-w-none dark:prose-invert'>
-        <MDXComponent components={MDXComponents} />
+        <MDXComponent
+          components={{
+            ...MDXComponents,
+          }}
+        />
       </div>
     </>
   )

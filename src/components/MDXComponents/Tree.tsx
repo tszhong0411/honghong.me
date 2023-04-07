@@ -32,7 +32,7 @@ const Inner = (props: InnerType) => {
         return (
           <React.Fragment key={node.name}>
             <div className='relative flex items-center gap-2'>
-              {Array.from(Array(level)).map((_, i) => (
+              {Array.from(Array(level).keys()).map((i) => (
                 <div
                   key={i}
                   className='absolute h-full w-px -translate-x-1/2 bg-accent-2'

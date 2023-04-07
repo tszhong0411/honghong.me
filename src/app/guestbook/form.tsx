@@ -1,11 +1,11 @@
 'use client'
 
-import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { DefaultSession } from 'next-auth'
 import { signOut } from 'next-auth/react'
 import React from 'react'
 import { toast } from 'react-hot-toast'
 import TextareaAutosize from 'react-textarea-autosize'
+import { useSWRConfig } from 'swr'
 
 import Image from '@/components/MDXComponents/Image'
 
@@ -16,40 +16,40 @@ type FormProps = {
 const Form = (props: FormProps) => {
   const { user } = props
   const [value, setValue] = React.useState('')
-  const queryClient = useQueryClient()
-
-  const { mutate, isLoading, isError } = useMutation({
-    mutationFn: async (message: string) => {
-      const loading = toast.loading('留言中...')
-
-      const res = await fetch('/api/guestbook', {
-        method: 'POST',
-        body: JSON.stringify({
-          message,
-        }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-
-      if (!res.ok) {
-        const { error } = await res.json()
-        toast.dismiss(loading)
-        toast.error(error)
-
-        return
-      }
-
-      toast.dismiss(loading)
-      toast.success('留言成功')
-      setValue('')
-      queryClient.invalidateQueries({ queryKey: ['guestbook', 'messages'] })
-    },
-  })
+  const [isLoading, setIsLoading] = React.useState(false)
+  const { mutate } = useSWRConfig()
 
   const submitHandler = async () => {
     if (!value) return toast.error('請輸入留言')
-    mutate(value)
+
+    setIsLoading(true)
+    const loading = toast.loading('留言中...')
+
+    const res = await fetch('/api/guestbook', {
+      method: 'POST',
+      body: JSON.stringify({
+        message: value,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+
+    if (!res.ok) {
+      const { error } = await res.json()
+      setIsLoading(false)
+      toast.dismiss(loading)
+      toast.error(error)
+
+      return
+    }
+
+    setIsLoading(false)
+    toast.dismiss(loading)
+    toast.success('留言成功')
+    setValue('')
+
+    return mutate('/api/guestbook')
   }
 
   return (
@@ -74,13 +74,15 @@ const Form = (props: FormProps) => {
         <button
           className='rounded-lg border border-theme-7 bg-theme-1 px-4 py-2 text-theme-11 transition-colors duration-300 hover:border-theme-8'
           onClick={() => signOut()}
+          type='button'
         >
           登出
         </button>
         <button
           className='rounded-lg bg-theme-9 px-4 py-2 text-white transition-colors duration-300 hover:bg-theme-10'
           onClick={submitHandler}
-          disabled={isLoading || isError}
+          type='button'
+          disabled={isLoading}
         >
           留言
         </button>

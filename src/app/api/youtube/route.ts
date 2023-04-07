@@ -27,6 +27,7 @@ export const GET = async () => {
   }
 
   return NextResponse.json({
-    count: Number(statistics.viewCount),
+    subscribers: Number(statistics.subscriberCount),
+    views: Number(statistics.viewCount),
   })
 }

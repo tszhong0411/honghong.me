@@ -6,6 +6,7 @@ type Link = {
 }
 
 type FooterLink = {
+  id: number
   links: Link[]
 }
 

@@ -16,9 +16,9 @@ const ItemGrid = (props: ItemGridProps) => {
 
   return (
     <div className='mb-9 grid grid-cols-1 gap-4 sm:grid-cols-4'>
-      {items.map((item, i) => (
+      {items.map((item) => (
         <div
-          key={i}
+          key={item.name}
           className='flex gap-6 rounded-lg border border-accent-2 p-4 sm:flex-col sm:gap-3'
         >
           <Image

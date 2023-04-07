@@ -94,12 +94,14 @@ code {
 }
 
 div[data-rehype-pretty-code-title][data-theme='light'],
-div[data-rehype-pretty-code-fragment] pre[data-theme='light'] {
+div[data-rehype-pretty-code-fragment] pre[data-theme='light'],
+div[data-rehype-pretty-code-fragment] pre[data-theme='light'] ~ button {
   @apply block dark:hidden;
 }
 
 div[data-rehype-pretty-code-title][data-theme='dark'],
-div[data-rehype-pretty-code-fragment] pre[data-theme='dark'] {
+div[data-rehype-pretty-code-fragment] pre[data-theme='dark'],
+div[data-rehype-pretty-code-fragment] pre[data-theme='dark'] ~ button {
   @apply hidden dark:block;
 }
 

@@ -28,7 +28,7 @@ const Badge = defineNestedType(() => ({
   },
 }))
 
-export const Project = defineDocumentType(() => ({
+const Project = defineDocumentType(() => ({
   name: 'Project',
   filePathPattern: 'projects/**/*.mdx',
   contentType: 'mdx',
@@ -82,7 +82,7 @@ export const Project = defineDocumentType(() => ({
   },
 }))
 
-export const BlogPost = defineDocumentType(() => ({
+const BlogPost = defineDocumentType(() => ({
   name: 'BlogPost',
   filePathPattern: 'blog/**/*.mdx',
   contentType: 'mdx',
@@ -121,7 +121,7 @@ export const BlogPost = defineDocumentType(() => ({
   },
 }))
 
-export const Pages = defineDocumentType(() => ({
+const Pages = defineDocumentType(() => ({
   name: 'Pages',
   filePathPattern: 'pages/**/*.mdx',
   contentType: 'mdx',

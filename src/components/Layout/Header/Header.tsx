@@ -23,8 +23,8 @@ const Header = () => {
         <HeaderLogo />
         <div className='flex items-center gap-2'>
           <ul className='hidden space-x-2 md:flex'>
-            {HEADER_LINKS.map((link, i) => (
-              <li key={i}>
+            {HEADER_LINKS.map((link) => (
+              <li key={link.text}>
                 <Link
                   className={clsx(
                     'rounded py-2 px-3 text-sm font-medium transition-colors duration-300',
@@ -46,6 +46,7 @@ const Header = () => {
           <button
             className='flex h-9 w-9 items-center justify-center rounded-md duration-300 hover:bg-accent-2'
             onClick={() => query.toggle()}
+            type='button'
             aria-label='Command Bar'
           >
             <IconCommand size={20} />
@@ -54,14 +55,15 @@ const Header = () => {
             <Dropdown.Trigger>
               <button
                 className='flex h-9 w-9 items-center justify-center rounded-md duration-300 hover:bg-accent-2 md:hidden'
+                type='button'
                 aria-label='Toggle menu'
               >
                 <IconMenu size={20} />
               </button>
             </Dropdown.Trigger>
             <Dropdown.Content>
-              {HEADER_LINKS.map((link, i) => (
-                <Dropdown.Item key={i} asChild>
+              {HEADER_LINKS.map((link) => (
+                <Dropdown.Item key={link.text} asChild>
                   <Link
                     href={link.href}
                     className='flex
