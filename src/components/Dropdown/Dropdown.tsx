@@ -44,7 +44,7 @@ const Item = (props: DropdownPrimitives.DropdownMenuItemProps) => {
   return (
     <DropdownPrimitives.Item
       className={clsxm(
-        'w-full py-3 px-4 text-sm outline-none duration-300 data-[highlighted]:bg-accent-1',
+        'w-full px-4 py-3 text-sm outline-none duration-300 data-[highlighted]:bg-accent-1',
         className
       )}
       {...rest}

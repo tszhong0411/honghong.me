@@ -18,7 +18,7 @@ const Header = () => {
   const { query } = useKBar()
 
   return (
-    <header className='fixed top-0 left-0 right-0 z-40 bg-white/80 shadow-sm saturate-[1.8] backdrop-blur-[10px] dark:bg-black/50 dark:saturate-100'>
+    <header className='fixed left-0 right-0 top-0 z-40 bg-white/80 shadow-sm saturate-[1.8] backdrop-blur-[10px] dark:bg-black/50 dark:saturate-100'>
       <div className='mx-auto flex h-[60px] max-w-4xl items-center justify-between px-8'>
         <HeaderLogo />
         <div className='flex items-center gap-2'>
@@ -27,7 +27,7 @@ const Header = () => {
               <li key={link.text}>
                 <Link
                   className={clsx(
-                    'rounded py-2 px-3 text-sm font-medium transition-colors duration-300',
+                    'rounded px-3 py-2 text-sm font-medium transition-colors duration-300',
                     {
                       ['text-accent-5 hover:bg-accent-1 hover:text-hong-fg']:
                         link.href !== pathname,

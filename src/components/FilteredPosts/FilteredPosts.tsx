@@ -28,12 +28,12 @@ const FilteredPosts = (props: FilteredPostsProps) => {
           onChange={(e) => setSearchValue(e.target.value)}
           placeholder='搜尋文章'
           aria-label='搜尋文章'
-          className='w-full rounded-md border border-accent-2 bg-hong-bg py-2 px-3 pl-12 transition-colors duration-200 ease-linear focus:border-accent-5 focus:outline-none'
+          className='w-full rounded-md border border-accent-2 bg-hong-bg px-3 py-2 pl-12 transition-colors duration-200 ease-linear focus:border-accent-5 focus:outline-none'
           id='search'
         />
         <label htmlFor='search'>
           <IconSearch
-            className='absolute top-1/2 left-4 -translate-y-1/2'
+            className='absolute left-4 top-1/2 -translate-y-1/2'
             size={20}
           />
         </label>

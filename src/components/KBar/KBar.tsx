@@ -128,7 +128,7 @@ const KBar = (props: KBarProps) => {
           <KBarPositioner className='z-50 bg-black/10 backdrop-blur'>
             <KBarAnimator className='w-full max-w-lg rounded-lg border border-accent-2 bg-accent-1'>
               <KBarSearch
-                className='w-full bg-transparent py-3 px-6 outline-none'
+                className='w-full bg-transparent px-6 py-3 outline-none'
                 defaultPlaceholder='輸入指令或搜尋'
               />
               <Results />

@@ -31,7 +31,7 @@ const Footer = (props: FooterProps) => {
   const { slug, title } = props
 
   return (
-    <div className='my-8  flex w-full items-center justify-between border-t border-b border-accent-2 py-4'>
+    <div className='my-8 flex w-full items-center justify-between border-b border-t border-accent-2 py-4'>
       <a
         target='_blank'
         rel='noopener noreferrer'

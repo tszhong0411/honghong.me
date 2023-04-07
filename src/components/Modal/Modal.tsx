@@ -24,7 +24,7 @@ const Content = (props: DialogPrimitives.DialogContentProps) => {
     <DialogPrimitives.Portal>
       <DialogPrimitives.Overlay className='animate-in fade-in fixed inset-0 z-40 bg-black/50 opacity-100 transition-opacity' />
       <DialogPrimitives.Content
-        className='fixed top-1/2 left-1/2 z-50 w-full max-w-md -translate-x-1/2 -translate-y-1/2 rounded-lg border border-accent-2 bg-accent-1 p-4'
+        className='fixed left-1/2 top-1/2 z-50 w-full max-w-md -translate-x-1/2 -translate-y-1/2 rounded-lg border border-accent-2 bg-accent-1 p-4'
         {...rest}
       >
         {children}

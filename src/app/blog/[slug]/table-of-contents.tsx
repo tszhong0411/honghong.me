@@ -28,7 +28,7 @@ const TableOfContents = () => {
               key={id}
               href={`#${id}`}
               className={clsxm(
-                'block border-l-2 border-l-zinc-300 pt-[10px] pr-[10px] pb-[10px] text-sm leading-[1.2] text-accent-5 transition-all duration-300 hover:text-hong-fg dark:border-l-zinc-700',
+                'block border-l-2 border-l-zinc-300 pb-[10px] pr-[10px] pt-[10px] text-sm leading-[1.2] text-accent-5 transition-all duration-300 hover:text-hong-fg dark:border-l-zinc-700',
                 {
                   ['border-l-red-500 text-hong-fg dark:border-l-red-600']:
                     id === activeId,

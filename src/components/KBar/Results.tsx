@@ -12,7 +12,7 @@ const Results = () => {
       items={results}
       onRender={({ item, active }) =>
         typeof item === 'string' ? (
-          <div className='select-none px-4 pt-4 pb-2 text-[10px] uppercase tracking-[1px]'>
+          <div className='select-none px-4 pb-2 pt-4 text-[10px] uppercase tracking-[1px]'>
             {item}
           </div>
         ) : (
