@@ -15,7 +15,7 @@ import fetcher from '@/lib/fetcher'
 
 import Skeleton from '@/components/Skeleton'
 
-import { BlogData, GithubData, WakatimeData, YouTubeData } from '@/types'
+import { GithubData, Likes, Views, WakatimeData, YouTubeData } from '@/types'
 
 type Card = {
   icon: React.ReactNode
@@ -27,7 +27,8 @@ type Card = {
 const Items = () => {
   const { data: youtubeData } = useSWR<YouTubeData>('/api/youtube', fetcher)
   const { data: githubData } = useSWR<GithubData>('/api/github', fetcher)
-  const { data: blogData } = useSWR<BlogData>('/api/blog', fetcher)
+  const { data: likesData } = useSWR<Likes>('/api/likes', fetcher)
+  const { data: viewsData } = useSWR<Views>('/api/views', fetcher)
   const { data: wakatimeData } = useSWR<WakatimeData>('/api/wakatime', fetcher)
 
   const getAge = () =>
@@ -87,13 +88,13 @@ const Items = () => {
     {
       title: 'Blog 總瀏覽次數',
       link: 'https://honghong.me',
-      value: blogData?.views,
+      value: viewsData?.views,
       icon: <IconPencil />,
     },
     {
       title: 'Blog 總讚好次數',
       link: 'https://honghong.me',
-      value: blogData?.likes,
+      value: likesData?.likes,
       icon: <IconPencil />,
     },
   ]
