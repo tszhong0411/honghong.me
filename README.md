@@ -51,16 +51,53 @@ yarn
 4. Create a `.env.local` file and input environment variables based on the `.env.example` file so that the project can run properly.
 
 ```txt
-NEXT_PUBLIC_GISCUS_REPO=<Your env>
-NEXT_PUBLIC_GISCUS_REPOSITORY_ID=<Your env>
-NEXT_PUBLIC_GISCUS_CATEGORY=<Your env>
-NEXT_PUBLIC_GISCUS_CATEGORY_ID=<Your env>
+# Comment System (Giscus)
+# https://giscus.app/
+NEXT_PUBLIC_GISCUS_REPO=
+NEXT_PUBLIC_GISCUS_REPOSITORY_ID=
+NEXT_PUBLIC_GISCUS_CATEGORY=
+NEXT_PUBLIC_GISCUS_CATEGORY_ID=
 
-SPOTIFY_CLIENT_ID=<Your env>
-SPOTIFY_CLIENT_SECRET=<Your env>
-SPOTIFY_REFRESH_TOKEN=<Your env>
+# Spotify Now Playing
+# https://developer.spotify.com/documentation/web-api/reference/get-the-users-currently-playing-track
+SPOTIFY_CLIENT_ID=
+SPOTIFY_CLIENT_SECRET=
+SPOTIFY_REFRESH_TOKEN=
 
-// ...
+# Google API (YouTube stats)
+# https://developers.google.com/youtube/v3/getting-started
+GOOGLE_PRIVATE_KEY=
+GOOGLE_CLIENT_EMAIL=
+
+# Google OAuth
+# https://support.google.com/cloud/answer/6158849
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+
+# Authentication
+# https://next-auth.js.org/getting-started/example
+NEXTAUTH_SECRET=
+NEXTAUTH_URL=http://localhost:3000
+
+# Github OAuth
+# https://github.com/settings/applications/new
+OAUTH_CLIENT_KEY=
+OAUTH_CLIENT_SECRET=
+
+# Github API (Github stats)
+# https://github.com/settings/tokens/new
+GITHUB_TOKEN=
+
+# Database URL
+DATABASE_URL=<DATABASE>://<HOST>:<PORT>/<DB>
+
+# Just some random string (used for hashing)
+# You can use this https://www.useapassphrase.com/ to generate the string
+IP_ADDRESS_SALT=
+
+# WakaTime API Key (Coding hours)
+# https://wakatime.com/api-key/
+WAKATIME_API_KEY=
 ```
 
 ## 🍰 Contributing
