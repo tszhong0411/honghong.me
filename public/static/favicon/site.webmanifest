@@ -1,5 +1,5 @@
 {
-  "background_color": "#ffffff",
+  "background_color": "#000000",
   "display": "standalone",
   "icons": [
     {
@@ -15,5 +15,5 @@
   ],
   "name": "Hong",
   "short_name": "Hong",
-  "theme_color": "#ffffff"
+  "theme_color": "#000000"
 }
