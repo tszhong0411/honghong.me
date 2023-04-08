@@ -8,8 +8,8 @@ import MDXComponents from '@/components/MDXComponents'
 import { site } from '@/config/site'
 
 export const metadata: Metadata = {
-  title: '關於',
-  description: '一名熱愛網頁開發的學生。',
+  title: 'About',
+  description: 'A student who loves web development.',
   alternates: {
     canonical: `${site.url}/about`,
   },
@@ -31,8 +31,8 @@ const AboutPage = () => {
 
   return (
     <>
-      <h2 className='my-4 text-4xl font-bold'>關於</h2>
-      <p className='mb-8 text-accent-5'>👋 你好! 我是小康。</p>
+      <h2 className='my-4 text-4xl font-bold'>About</h2>
+      <p className='mb-8 text-accent-5'>👋 Hi there! I am 小康.</p>
       <div className='prose prose-zinc w-full max-w-none dark:prose-invert'>
         <MDXComponent
           components={{

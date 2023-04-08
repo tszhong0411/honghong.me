@@ -50,49 +50,49 @@ const Items = () => {
 
   const data: Card[] = [
     {
-      title: '我的年齡',
+      title: 'My Age',
       link: 'https://honghong.me/about',
       value: age,
       icon: <IconUser />,
     },
     {
-      title: 'Coding 時長',
+      title: 'Coding Hours',
       link: 'https://wakatime.com/@tszhong0411',
       value: `${Math.round((wakatimeData?.seconds as number) / 60 / 60)} hrs`,
       icon: <IconClock />,
     },
     {
-      title: 'YouTube 訂閱者',
+      title: 'YouTube Subscribers',
       link: 'https://youtube.com/@tszhong0411',
       value: youtubeData?.subscribers,
       icon: <IconBrandYoutube />,
     },
     {
-      title: 'YouTube 觀看次數',
+      title: 'YouTube Views',
       link: 'https://youtube.com/@tszhong0411',
       value: youtubeData?.views,
       icon: <IconBrandYoutube />,
     },
     {
-      title: 'GitHub 追隨者',
+      title: 'GitHub Followers',
       link: 'https://github.com/tszhong0411',
       value: githubData?.followers,
       icon: <IconBrandGithub />,
     },
     {
-      title: 'GitHub stars',
+      title: 'GitHub Stars',
       link: 'https://github.com/tszhong0411',
       value: githubData?.stars,
       icon: <IconBrandGithub />,
     },
     {
-      title: 'Blog 總瀏覽次數',
+      title: 'Blog Total Views',
       link: 'https://honghong.me',
       value: viewsData?.views,
       icon: <IconPencil />,
     },
     {
-      title: 'Blog 總讚好次數',
+      title: 'Blog Total Likes',
       link: 'https://honghong.me',
       value: likesData?.likes,
       icon: <IconPencil />,

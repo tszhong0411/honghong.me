@@ -14,7 +14,7 @@ type PostCardProps = BlogPostCore
 
 const PostCard = (props: PostCardProps) => {
   const { _id, slug, image, title, summary, date } = props
-  const formattedDate = useFormattedDate(date, 'YYYY年MM月DD日')
+  const formattedDate = useFormattedDate(date, 'YYYY-MM-DD')
 
   return (
     <Link

@@ -17,7 +17,7 @@ const TableOfContents = () => {
     <div className='hidden lg:block'>
       <div className='mb-4 flex items-center gap-4'>
         <IconList size={18} />
-        <div>目錄</div>
+        <div>Table of contents</div>
       </div>
       <div>
         {headings.map((heading) => {

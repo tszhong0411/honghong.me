@@ -9,7 +9,7 @@ import Guestbook from './guestbook'
 
 export const metadata: Metadata = {
   title: 'Guestbook',
-  description: '在我的留言簿上簽名並分享您的想法。',
+  description: 'Sign my guestbook and share your idea.',
   alternates: {
     canonical: `${site.url}/guestbook`,
   },
@@ -23,7 +23,7 @@ const GuestbookPage = async () => {
   return (
     <>
       <h2 className='my-4 text-4xl font-bold'>Guestbook</h2>
-      <p className='mb-8 text-accent-5'>你可以在這裡告訴我任何事情！</p>
+      <p className='mb-8 text-accent-5'>You can tell me anything here!</p>
       <Guestbook user={session?.user} />
     </>
   )

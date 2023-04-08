@@ -10,7 +10,7 @@ import { site } from '@/config/site'
 
 export const metadata: Metadata = {
   title: 'Projects',
-  description: '我的項目列表。',
+  description: 'The list of my projects.',
   alternates: {
     canonical: `${site.url}/projects`,
   },
@@ -20,7 +20,9 @@ const ProjectsPage = () => {
   return (
     <>
       <h2 className='my-4 text-4xl font-bold'>Projects</h2>
-      <p className='mb-8 text-accent-5'>我的項目列表，一切都是用 ❤️ 做的</p>
+      <p className='mb-8 text-accent-5'>
+        The list of my projects. Everything was made with ❤️
+      </p>
       <div className='flex flex-col gap-4'>
         {allProjects.map((project) => {
           const { _id, name, image, description, techstack, slug } = project

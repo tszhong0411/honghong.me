@@ -35,26 +35,26 @@ const KBar = (props: KBarProps) => {
   const actions: Action[] = [
     {
       id: 'copy-link',
-      name: '複製連結',
-      keywords: '連結',
-      section: '主要',
+      name: 'Copy Link',
+      keywords: 'copy link',
+      section: 'General',
       perform: async () => {
         if (!navigator?.clipboard) {
-          toast.error('存取剪貼板被拒絕')
+          toast.error('Access to clipboard rejected!')
         }
 
         try {
           await navigator.clipboard.writeText(window.location.href)
           toast.success(
             <div className='flex flex-col'>
-              <div>已複製</div>
+              <div>Copied</div>
               <div className='text-sm text-accent-5'>
-                你現在可以分享給任何人
+                You can now share it with anyone.
               </div>
             </div>
           )
         } catch {
-          toast.error('複製失敗！')
+          toast.error('Failed to copy!')
         }
       },
       icon: <IconLink />,
@@ -62,26 +62,26 @@ const KBar = (props: KBarProps) => {
 
     {
       id: 'source-code',
-      name: '原始碼',
-      keywords: '原始碼 程式碼 github',
-      section: '主要',
+      name: 'Source code',
+      keywords: 'source code github',
+      section: 'General',
       perform: () =>
         window.open('https://github.com/tszhong0411/honghong.me', '_blank'),
       icon: <IconCode />,
     },
     {
       id: 'light-mode',
-      name: '明亮模式',
-      keywords: '明亮 模式',
-      section: '設置',
+      name: 'Light Mode',
+      keywords: 'light mode',
+      section: 'Settings',
       perform: () => setTheme('light'),
       icon: <IconSun />,
     },
     {
       id: 'dark-mode',
-      name: '黑暗模式',
-      keywords: '黑暗 模式',
-      section: '設置',
+      name: 'Dark Mode',
+      keywords: 'dark mode',
+      section: 'Settings',
       perform: () => setTheme('dark'),
       icon: <IconMoon />,
     },
@@ -89,7 +89,7 @@ const KBar = (props: KBarProps) => {
       id: 'github',
       name: 'GitHub',
       keywords: 'github',
-      section: '社交',
+      section: 'Social',
       perform: () => window.open('https://github.com/tszhong0411', '_blank'),
       icon: <IconBrandGithub />,
     },
@@ -97,7 +97,7 @@ const KBar = (props: KBarProps) => {
       id: 'instagram',
       name: 'Instagram',
       keywords: 'ig instagram',
-      section: '社交',
+      section: 'Social',
       perform: () =>
         window.open('https://instagram.com/tszhong0411/', '_blank'),
       icon: <IconBrandInstagram />,
@@ -106,7 +106,7 @@ const KBar = (props: KBarProps) => {
       id: 'youtube',
       name: 'YouTube',
       keywords: 'yt youtube',
-      section: '社交',
+      section: 'Social',
       perform: () => window.open('https://youtube.com/@tszhong0411', '_blank'),
       icon: <IconBrandYoutube />,
     },
@@ -114,7 +114,7 @@ const KBar = (props: KBarProps) => {
       id: 'facebook',
       name: 'Facebook',
       keywords: 'fb facebook',
-      section: '社交',
+      section: 'Social',
       perform: () =>
         window.open('https://www.facebook.com/tszhonglai.0411/', '_blank'),
       icon: <IconBrandFacebook />,
@@ -129,7 +129,7 @@ const KBar = (props: KBarProps) => {
             <KBarAnimator className='w-full max-w-lg rounded-lg border border-accent-2 bg-accent-1'>
               <KBarSearch
                 className='w-full bg-transparent px-6 py-3 outline-none'
-                defaultPlaceholder='輸入指令或搜尋'
+                defaultPlaceholder='Type command or search'
               />
               <Results />
               <div className='h-4'></div>

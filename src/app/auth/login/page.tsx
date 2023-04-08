@@ -23,7 +23,7 @@ const LoginPage = async (props: LoginPageProps) => {
 
   return (
     <div className='flex min-h-[calc(100vh-16rem)] flex-col items-center justify-center gap-12'>
-      <h1 className='text-[32px] font-bold'>登入到 honghong.me</h1>
+      <h1 className='text-[32px] font-bold'>Login to honghong.me</h1>
       <div className='flex w-full max-w-xs flex-col gap-3'>
         {providers &&
           Object.values(providers).map((provider) => (

@@ -20,7 +20,7 @@ const LikeCounter = (props: LikeCounterProps) => {
       {isLoading ? (
         <Skeleton className='h-5 max-w-[70px]' />
       ) : (
-        <div>{`${data?.likes} 個讚`}</div>
+        <div>{`${data?.likes} likes`}</div>
       )}
     </>
   )

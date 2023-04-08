@@ -12,9 +12,9 @@ const Hero = () => {
             16 yrs • Student • Full-stack Web Development Student
           </h2>
           <p className='text-lg'>
-            我是一名學生，目前正在學習 Web 開發技能，例如 Next.js, Node.js,
-            Prisma
-            和資料庫管理。當我的程式碼被認可和讚賞時，我會感到很有成就感。
+            I am a student, currently learning web development skills such as
+            Next.js, Node.js, Prisma, and database management. I can feel a
+            sense of accomplishment when my code is recognized and appreciated.
           </p>
         </div>
         <div className='h-20 w-20 md:h-28 md:w-28'>
@@ -25,7 +25,6 @@ const Hero = () => {
             alt='小康'
             rounded='rounded-full'
             loading='eager'
-            // 等待修復 https://github.com/vercel/next.js/blob/canary/packages/next/src/client/image.tsx#L407
             priority
           />
         </div>

@@ -38,7 +38,7 @@ const Footer = (props: FooterProps) => {
         href={editURL(slug)}
         className='animated text-sm'
       >
-        在 GitHub 上編輯
+        Edit on GitHub
       </a>
       <div className='flex items-center justify-center gap-2'>
         <a

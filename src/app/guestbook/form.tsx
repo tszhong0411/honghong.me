@@ -20,10 +20,10 @@ const Form = (props: FormProps) => {
   const { mutate } = useSWRConfig()
 
   const submitHandler = async () => {
-    if (!value) return toast.error('請輸入留言')
+    if (!value) return toast.error('Please enter a message')
 
     setIsLoading(true)
-    const loading = toast.loading('留言中...')
+    const loading = toast.loading('Submitting message...')
 
     const res = await fetch('/api/guestbook', {
       method: 'POST',
@@ -46,7 +46,7 @@ const Form = (props: FormProps) => {
 
     setIsLoading(false)
     toast.dismiss(loading)
-    toast.success('留言成功')
+    toast.success('Message submitted successfully')
     setValue('')
 
     return mutate('/api/guestbook')
@@ -65,7 +65,7 @@ const Form = (props: FormProps) => {
         />
         <TextareaAutosize
           className='ml-3 flex-1 rounded-md border border-accent-2 bg-hong-bg px-3 py-2 transition-colors duration-200 ease-linear focus:border-accent-5 focus:outline-none'
-          placeholder='你的留言 ...'
+          placeholder='Your message ...'
           value={value}
           onChange={(e) => setValue(e.target.value)}
         />
@@ -76,7 +76,7 @@ const Form = (props: FormProps) => {
           onClick={() => signOut()}
           type='button'
         >
-          登出
+          Logout
         </button>
         <button
           className='rounded-lg bg-theme-9 px-4 py-2 text-white transition-colors duration-300 hover:bg-theme-10'
@@ -84,7 +84,7 @@ const Form = (props: FormProps) => {
           type='button'
           disabled={isLoading}
         >
-          留言
+          Submit
         </button>
       </div>
     </>

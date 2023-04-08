@@ -1,20 +1,20 @@
 ---
-title: PHP 學習筆記
+title: PHP study notes
 date: '2021-02-18T00:00:00Z'
-modifiedTime: '2021-02-18T00:00:00Z'
-summary: 關於 PHP 的基礎，例如註解、Echo、變量、算術運算子
+modifiedTime: '2023-04-09T00:00:00Z'
+summary: Basics about PHP such as comments, Echo, variables, arithmetic operators
 image: 'php/cover.png'
 ---
 
-## 簡介 PHP
+## Introduction of PHP
 
-PHP（全稱: PHP: _Hypertext Preprocessor_，即「PHP: 超文字預處理器」）是一種開源的通用電腦手稿語言，尤其適用於網絡開發並可嵌入 HTML 中使用。PHP 的語法借鑑吸收 C 語言、Java 和 Perl 等流行電腦語言的特點，易於一般程式設計師學習。PHP 的主要目標是允許網絡開發人員快速編寫動態頁面，但 PHP 也被用於其他很多領域。
+PHP (full name: PHP: _Hypertext Preprocessor_) is an open source general-purpose computer scripting language, especially suitable for web development and embedded in HTML. The syntax of PHP draws on the characteristics of popular computer languages such as C language, Java and Perl, and is easy for general programmers to learn. The main goal of PHP is to allow web developers to quickly write dynamic pages, but PHP is also used in many other areas.
 
-PHP 的副檔名是 `.php` ，如 `index.php`。上面說到 `PHP` 能夠直接嵌入 `HTML`。
+The PHP file extension is `.php`, E.g `index.php`. As mentioned above, `PHP` can directly embed `HTML`.
 
-## 使用方法
+## Usage
 
-當瀏覽器由上至下讀到 `<?php` 時，並會執行 `PHP`，而結尾是 `?>`。如:
+When the browser reads `<?php` from top to bottom, it executes `PHP` and ends with `?>`. Such as:
 
 ```php showLineNumbers
 <!DOCTYPE html>
@@ -30,18 +30,18 @@ PHP 的副檔名是 `.php` ，如 `index.php`。上面說到 `PHP` 能夠直接�
 </html>
 ```
 
-## 注意事項
+## Precautions
 
-在 `PHP` 中，`PHP` 指令完成後沒有其他 `HTML` 建議不要使用 `?>` 結束。如果關閉了會產生麻煩。
+In `PHP`, there is no other `HTML` after the `PHP` directive is completed. It is recommended not to end with `?>`. It will cause trouble if it is closed.
 
 ```php showLineNumbers
 <?php
     echo "No HTML after PHP ends";
 ```
 
-## 註解的方式
+## PHP comments
 
-幾乎大部分的網頁程式語言都有註解的功能，而 `PHP` 的註解 **單行** 方式是 `//` 和 **多行** 方式是 `/* Some code here */`。
+Almost most web programming languages can comment, and the **single-line** way of `PHP` is `//` and the **multi-line** way is `/* Some text here */`.
 
 ```php showLineNumbers
 <?php
@@ -56,7 +56,7 @@ PHP 的副檔名是 `.php` ，如 `index.php`。上面說到 `PHP` 能夠直接�
 
 ## Echo
 
-`PHP` 裏最簡單的指令就是 `Echo`，`Echo` 的內容必須是用 雙引號 `""` 或 單引號 `''`。每段指令必須使用分號結束 `;`。
+The simplest syntax in `PHP` is `Echo`. The content of `Echo` must be enclosed in double quotes `""` or single quotes `''`. Each syntax must end with a semicolon `;`.
 
 ```php showLineNumbers
 <?php
@@ -65,7 +65,7 @@ PHP 的副檔名是 `.php` ，如 `index.php`。上面說到 `PHP` 能夠直接�
 ?>
 ```
 
-`Echo` 中的內容也可以使用 `HTML` 語法。例如我這裡使用了 `<br/>`，這樣便可以斷行。
+Content in `Echo` can also use `HTML` syntax. For example, I used `<br/>` here, so that the line can be broken.
 
 ```php showLineNumbers
 <?php
@@ -75,9 +75,9 @@ PHP 的副檔名是 `.php` ，如 `index.php`。上面說到 `PHP` 能夠直接�
 ?>
 ```
 
-## 變數
+## Variable
 
-我們可以給一個變數賦予一段指令，方便我們編寫 `PHP`，跟 `Javascript` 差不多。我們會使用 Dollar sign `$`
+We can assign a value to a variable to make it easier for us to write `PHP`, similar to `Javascript`. We will use the Dollar sign `$`.
 
 ```php showLineNumbers
 <?php
@@ -85,22 +85,22 @@ PHP 的副檔名是 `.php` ，如 `index.php`。上面說到 `PHP` 能夠直接�
 ?>
 ```
 
-我們命名變數時，有一些規則要遵守。
+There are some rules to follow when we name variables.
 
-| 示例     | 描述     | 規則 |
-| -------- | -------- | ---- |
-| $value   | 英文小寫 | ✅   |
-| $Value   | 英文大寫 | ✅   |
-| $\_value | 下劃線   | ✅   |
-| $1value  | 數字開頭 | ❌   |
+| Example  | Description       | Rules |
+| -------- | ----------------- | ----- |
+| $value   | Lowercase         | ✅    |
+| $Value   | Uppercase         | ✅    |
+| $\_value | Underscore        | ✅    |
+| $1value  | Start from number | ❌    |
 
-在變數名稱裏 `大寫` 跟 `小寫` 是有區別的。大寫變數不等於小寫變數。
+There is a difference between `uppercase` and `lowercase` in variable names. Uppercase variables are not equal to lowercase variables.
 
-## 變數命名技巧
+## Variable Naming Tips
 
-### 駱峰式大小寫
+### Camel case
 
-當變數名和函數名稱是由二個或多個單字連結在一起，而構成的唯一識別字時，利用「駝峰式大小寫」來表示，可以增加變數和函數的可讀性。因為我們不能在變數中有 `空格`。
+When a variable name and a function name are linked together by two or more words to form a unique identification word, the use of "camel case" to represent, can increase the readability of variables and functions. Because we can't have `spaces` in variables.
 
 ```php showLineNumbers
 <?php
@@ -109,9 +109,9 @@ PHP 的副檔名是 `.php` ，如 `index.php`。上面說到 `PHP` 能夠直接�
 ?>
 ```
 
-### 蛇形命名法
+### Snake case
 
-Snake case（如 snake_case）是指一種寫作風格，其中每個空格都用下劃線（ \_ ）字符替換，並且每個單詞的首字母都用小寫字母書寫。
+Snake case (like snake_case) refers to a writing style in which every space is replaced with an underscore ( \_ ) character and the first letter of every word is written in lowercase.
 
 ```php showLineNumbers
 <?php
@@ -120,9 +120,9 @@ Snake case（如 snake_case）是指一種寫作風格，其中每個空格都�
 ?>
 ```
 
-## 字符串運算符
+## String operator
 
-有兩個字符串（string）運算符。第一個是連接運算符（"."），它返回其左右參數連接後的字符串。第二個是連接賦值運算符（".="），它將右邊參數附加到左邊的參數之後。
+There are two string operators. The first is the concatenation operator ("."), which returns the concatenated string of its left and right arguments. The second is the concatenation assignment operator (".="), which appends the right-hand argument to the left-hand argument.
 
 ```php showLineNumbers
 <?php
@@ -130,7 +130,7 @@ Snake case（如 snake_case）是指一種寫作風格，其中每個空格都�
 ?>
 ```
 
-## 算術運算子
+## Arithmetic operator
 
 ```php showLineNumbers
 <?php
@@ -144,9 +144,9 @@ Snake case（如 snake_case）是指一種寫作風格，其中每個空格都�
 ?>
 ```
 
-## 參考資料
+## References
 
-- [PHP - 維基百科，自由的百科全書](https://en.wikipedia.org/wiki/PHP)
-- [Camel case- 維基百科，自由的百科全書](https://en.wikipedia.org/wiki/Camel_case)
-- [Snake case - 維基百科，自由的百科全書](https://en.wikipedia.org/wiki/Snake_case)
+- [PHP - Wikipedia, the free encyclopedia](https://en.wikipedia.org/wiki/PHP)
+- [Camel case - Wikipedia, the free encyclopedia](https://en.wikipedia.org/wiki/Camel_case)
+- [Snake case - Wikipedia, the free encyclopedia](https://en.wikipedia.org/wiki/Snake_case)
 - [String Operators](https://www.php.net/manual/en/language.operators.string.php)

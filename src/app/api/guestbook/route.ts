@@ -47,7 +47,7 @@ export const POST = async (req: Request) => {
   if (!message) {
     return NextResponse.json(
       {
-        error: '留言不能為空',
+        error: 'Message cannot be empty',
       },
       {
         status: 400,
@@ -82,7 +82,7 @@ export const DELETE = async (req: Request) => {
   if (!message) {
     return NextResponse.json(
       {
-        error: '留言不存在',
+        error: 'Message does not exist',
       },
       {
         status: 404,

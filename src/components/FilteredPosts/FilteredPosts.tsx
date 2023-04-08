@@ -26,8 +26,8 @@ const FilteredPosts = (props: FilteredPostsProps) => {
           type='text'
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
-          placeholder='搜尋文章'
-          aria-label='搜尋文章'
+          placeholder='Search articles'
+          aria-label='Search articles'
           className='w-full rounded-md border border-accent-2 bg-hong-bg px-3 py-2 pl-12 transition-colors duration-200 ease-linear focus:border-accent-5 focus:outline-none'
           id='search'
         />
@@ -39,7 +39,7 @@ const FilteredPosts = (props: FilteredPostsProps) => {
         </label>
       </div>
       {!filteredPosts.length && (
-        <div className='text-center text-xl'>沒有找到文章</div>
+        <div className='text-center text-xl'>No posts found</div>
       )}
       <div className='grid gap-4 sm:grid-cols-2'>
         {filteredPosts.map((post) => (

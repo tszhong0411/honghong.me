@@ -10,9 +10,9 @@ const SignIn = () => {
         onClick={() => signIn()}
         type='button'
       >
-        登入
+        Login
       </button>
-      <span className='ml-2'>以繼續留言</span>
+      <span className='ml-2'>to continue leaving a message</span>
     </>
   )
 }

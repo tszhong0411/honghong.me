@@ -31,7 +31,7 @@ const CommentCounter = () => {
       {counter < 0 ? (
         <Skeleton className='h-5 max-w-[70px]' />
       ) : (
-        <div>{`${counter} 個評論`}</div>
+        <div>{`${counter} comments}`}</div>
       )}
     </>
   )

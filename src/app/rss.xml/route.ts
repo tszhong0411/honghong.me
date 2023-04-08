@@ -7,7 +7,7 @@ import { site } from '@/config/site'
 export const GET = async () => {
   const feed = new RSS({
     title: '小康 Blog',
-    description: '小康的個人網站和部落格',
+    description: "小康's personal website and blog",
     site_url: `${site.url}`,
     feed_url: `${site.url}/feed.xml`,
     language: 'en',

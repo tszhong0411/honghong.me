@@ -30,7 +30,7 @@ const Messages = (props: MessagesProps) => {
 
   const deleteHandler = async (id: string) => {
     setIsDeleting(true)
-    const loading = toast.loading('刪除中...')
+    const loading = toast.loading('Deleting...')
 
     const res = await fetch('/api/guestbook', {
       method: 'DELETE',
@@ -53,7 +53,7 @@ const Messages = (props: MessagesProps) => {
 
     setIsDeleting(false)
     toast.dismiss(loading)
-    toast.success('成功刪除')
+    toast.success('Deleted sucessfully')
 
     mutate()
   }
@@ -84,7 +84,7 @@ const Messages = (props: MessagesProps) => {
               <div className='flex flex-col justify-center gap-px text-sm'>
                 <div>{created_by}</div>
                 <div className='text-xs text-accent-5'>
-                  {dayjs(updated_at).format('YYYY年MM月DD日')}
+                  {dayjs(updated_at).format('YYYY-MM-DD')}
                 </div>
               </div>
             </div>
@@ -98,18 +98,18 @@ const Messages = (props: MessagesProps) => {
                       disabled={isDeleting}
                       type='button'
                     >
-                      刪除
+                      Delete
                     </button>
                   </Modal.Trigger>
                   <Modal.Content>
-                    <div className='mb-2'>刪除一個留言</div>
+                    <div className='mb-2'>Delete a message</div>
                     <div className='flex justify-end gap-2'>
                       <Modal.Close>
                         <button
                           className='rounded-lg border border-theme-7 bg-theme-1 px-4 py-2 text-theme-11 transition-colors duration-300 hover:border-theme-8'
                           type='button'
                         >
-                          取消
+                          Cancel
                         </button>
                       </Modal.Close>
                       <Modal.Close>
@@ -118,7 +118,7 @@ const Messages = (props: MessagesProps) => {
                           onClick={() => deleteHandler(id.toString())}
                           type='button'
                         >
-                          刪除
+                          Delete
                         </button>
                       </Modal.Close>
                     </div>

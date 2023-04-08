@@ -40,7 +40,7 @@ const LoginButton = (props: LoginButtonProps) => {
       )}
     >
       {type[id].icon}
-      繼續以 {name}
+      Continue with {name}
     </button>
   )
 }

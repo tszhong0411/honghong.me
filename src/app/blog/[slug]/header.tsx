@@ -17,7 +17,7 @@ type HeaderProps = {
 
 const Header = (props: HeaderProps) => {
   const { date, title, slug } = props
-  const formattedDate = useFormattedDate(date, 'YYYY年MM月DD日')
+  const formattedDate = useFormattedDate(date)
 
   React.useEffect(() => {
     if (isProduction) {

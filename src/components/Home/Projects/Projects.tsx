@@ -7,7 +7,7 @@ import { getIconByName } from '@/lib/get-icon-by-name'
 const Projects = () => {
   return (
     <div className='my-16 flex flex-col'>
-      <h2 className='mb-8 text-3xl font-bold'>項目</h2>
+      <h2 className='mb-8 text-3xl font-bold'>Projects</h2>
       <div className='flex flex-col gap-8'>
         {allProjects.slice(0, 3).map((project) => {
           const { _id, icon, name, description, slug } = project
@@ -33,7 +33,7 @@ const Projects = () => {
           href='/projects'
           className='group my-8 flex items-center gap-4 text-lg font-medium'
         >
-          <span>所有項目</span>
+          <span>All Projects</span>
           <IconArrowRight className='h-4 w-4 transition duration-200 group-hover:translate-x-1' />
         </Link>
       </div>
