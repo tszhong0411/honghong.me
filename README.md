@@ -92,7 +92,7 @@ GITHUB_TOKEN=
 DATABASE_URL=<DATABASE>://<HOST>:<PORT>/<DB>
 
 # Just some random string (used for hashing)
-# You can use this https://www.useapassphrase.com/ to generate the string
+# You can use https://www.useapassphrase.com/ to generate the string
 IP_ADDRESS_SALT=
 
 # WakaTime API Key (Coding hours)
@@ -110,14 +110,6 @@ If you have better suggestions, fork and create a pull request. You can also sim
 2. Commit your changes (`git commit -m 'Add some Feature'`)
 3. Push to the branch (`git push`)
 4. Open a Pull Request
-
-## ⭐ Lighthouse
-
-<p align="center">
-  <a href="https://googlechrome.github.io/lighthouse/viewer/?gist=50f0c8da918422944d8ee2e815eeecc1"><img src="./public/static/images/screenshot/honghong.me-lighthouse-202202092158.png"  alt="lighthouse"></a>
-</p>
-
-Last Updated: 2022-02-09 21:58
 
 ## ❤️ Credits
 
