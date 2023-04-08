@@ -28,10 +28,6 @@
 - Styling: [Tailwindcss](https://tailwindcss.com)
 - Code Syntax Highlighting: [Shiki](https://github.com/shikijs/shiki)
 
-## 📝 Todo
-
-- [ ] Add i18n support
-
 ## 👋 Running Locally
 
 1. Clone the repository
