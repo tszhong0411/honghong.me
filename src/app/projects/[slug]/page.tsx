@@ -40,16 +40,21 @@ export const generateMetadata = (props: ProjectPageProps): Metadata => {
       canonical: `${site.url}/projects/${params.slug}`,
     },
     openGraph: {
-      description: project.description,
+      url: `${site.url}/projects/${params.slug}`,
       type: 'website',
-      title: `${project.name} ${site.titleTemplate}`,
-      images: {
-        url: `${site.url}${project.image}`,
-        alt: project.name,
-        width: 1200,
-        height: 630,
-        type: 'image/png',
-      },
+      title: project.name,
+      siteName: site.name,
+      description: project.description,
+      locale: 'en-US',
+      images: [
+        {
+          url: `${site.url}${project.image}`,
+          width: 1200,
+          height: 630,
+          alt: project.description,
+          type: 'image/png',
+        },
+      ],
     },
   }
 }

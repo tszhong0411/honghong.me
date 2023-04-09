@@ -7,6 +7,7 @@ type Site = {
   logo: string
   title: string
   name: string
+  keywords: string[]
   titleTemplate: string
   description: string
   githubUsername: string
@@ -18,6 +19,7 @@ export const site: Site = {
   logo: 'https://honghong.me/static/images/avatar.png',
   title: '小康',
   name: '小康',
+  keywords: ['tszhong0411', 'Next.js', 'React', 'TypeScript', 'Node.js'],
   titleTemplate: '- 小康',
   description: '小康 – 16 yrs • Student • Full-stack Web Development Student',
   githubUsername: 'tszhong0411',

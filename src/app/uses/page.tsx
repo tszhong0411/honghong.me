@@ -7,12 +7,32 @@ import MDXComponents from '@/components/MDXComponents'
 
 import { site } from '@/config/site'
 
+const title = 'Uses'
+const description =
+  'This is the equipment I currently use for gaming, programming, making videos, and every day.'
+
 export const metadata: Metadata = {
-  title: 'Uses',
-  description:
-    'This is the equipment I currently use for gaming, programming, making videos, and every day.',
+  title,
+  description,
   alternates: {
     canonical: `${site.url}/uses`,
+  },
+  openGraph: {
+    url: `${site.url}/uses`,
+    type: 'website',
+    title,
+    siteName: site.title,
+    description,
+    locale: 'en-US',
+    images: [
+      {
+        url: `${site.url}/static/images/og/og.png`,
+        width: 1200,
+        height: 630,
+        alt: description,
+        type: 'image/png',
+      },
+    ],
   },
 }
 

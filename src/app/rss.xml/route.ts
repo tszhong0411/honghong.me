@@ -10,7 +10,7 @@ export const GET = async () => {
     description: "小康's personal website and blog",
     site_url: `${site.url}`,
     feed_url: `${site.url}/feed.xml`,
-    language: 'en',
+    language: 'en-US',
     image_url: `${site.url}/static/images/og/og.png`,
   })
 

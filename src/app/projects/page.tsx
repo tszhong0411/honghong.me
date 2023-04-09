@@ -8,11 +8,31 @@ import Image from '@/components/MDXComponents/Image'
 
 import { site } from '@/config/site'
 
+const title = 'Projects'
+const description = 'The list of my projects.'
+
 export const metadata: Metadata = {
-  title: 'Projects',
-  description: 'The list of my projects.',
+  title,
+  description,
   alternates: {
     canonical: `${site.url}/projects`,
+  },
+  openGraph: {
+    url: `${site.url}/projects`,
+    type: 'website',
+    title,
+    siteName: site.title,
+    description,
+    locale: 'en-US',
+    images: [
+      {
+        url: `${site.url}/static/images/og/og.png`,
+        width: 1200,
+        height: 630,
+        alt: description,
+        type: 'image/png',
+      },
+    ],
   },
 }
 

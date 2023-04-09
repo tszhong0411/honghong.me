@@ -41,19 +41,24 @@ export const generateMetadata = (props: BlogPostPageProps): Metadata => {
       canonical: `${site.url}/blog/${params.slug}`,
     },
     openGraph: {
-      description: post.summary,
+      url: `${site.url}/blog/${params.slug}`,
       type: 'article',
-      title: `${post.title} ${site.titleTemplate}`,
+      title: post.title,
+      siteName: site.name,
+      description: post.summary,
+      locale: 'en-US',
       publishedTime: ISOPublishedTime,
       modifiedTime: ISOModifiedTime,
       authors: site.url,
-      images: {
-        url: `${site.url}/static/images/og/posts/${post.slug}.png`,
-        alt: post.title,
-        width: 1200,
-        height: 630,
-        type: 'image/png',
-      },
+      images: [
+        {
+          url: `${site.url}/static/images/og/posts/${post.slug}.png`,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+          type: 'image/png',
+        },
+      ],
     },
   }
 }

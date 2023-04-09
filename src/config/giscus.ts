@@ -9,6 +9,6 @@ export const GISCUS_CONFIG: GiscusProps = {
   reactionsEnabled: '1',
   emitMetadata: '1',
   inputPosition: 'bottom',
-  lang: 'zh-TW',
+  lang: 'en',
   loading: 'eager',
 }

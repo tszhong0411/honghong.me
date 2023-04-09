@@ -6,12 +6,32 @@ import FilteredPosts from '@/components/FilteredPosts'
 
 import { site } from '@/config/site'
 
+const title = 'Blog'
+const description =
+  'My personal website and blog where I share my thoughts on various topics including tutorials, notes, and personal experiences. As a full-stack web development student from Hong Kong, I started learning web development as a hobby in December 2020. I use Next.js for building websites, GitHub for code hosting, and Vercel for deployment. Explore my site to learn more about my Journey and discover some of the web development resources that have inspired me.'
+
 export const metadata: Metadata = {
-  title: 'Blog',
-  description:
-    'My personal website and blog where I share my thoughts on various topics including tutorials, notes, and personal experiences. As a full-stack web development student from Hong Kong, I started learning web development as a hobby in December 2020. I use Next.js for building websites, GitHub for code hosting, and Vercel for deployment. Explore my site to learn more about my Journey and discover some of the web development resources that have inspired me.',
+  title,
+  description,
   alternates: {
     canonical: `${site.url}/blog`,
+  },
+  openGraph: {
+    url: `${site.url}/blog`,
+    type: 'website',
+    title,
+    siteName: site.title,
+    description,
+    locale: 'en-US',
+    images: [
+      {
+        url: `${site.url}/static/images/og/og.png`,
+        width: 1200,
+        height: 630,
+        alt: description,
+        type: 'image/png',
+      },
+    ],
   },
 }
 
