@@ -85,15 +85,17 @@ const ProjectPage = (props: ProjectPageProps) => {
           </div>
         </div>
         <div className='flex flex-col items-start gap-2 sm:flex-row sm:gap-4'>
-          <a
-            target='_blank'
-            rel='noopener noreferrer'
-            href={homepage}
-            className='animated flex items-center'
-          >
-            <IconHome size={20} className='mr-2 inline-block' />
-            {homepage}
-          </a>
+          {homepage && (
+            <a
+              target='_blank'
+              rel='noopener noreferrer'
+              href={homepage}
+              className='animated flex items-center'
+            >
+              <IconHome size={20} className='mr-2 inline-block' />
+              {homepage}
+            </a>
+          )}
           <a
             target='_blank'
             rel='noopener noreferrer'
