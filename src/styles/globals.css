@@ -6,19 +6,6 @@
   --hong-bg: #fff;
   --hong-fg: #000;
 
-  --theme-1: #fffcfc;
-  --theme-2: #fff8f7;
-  --theme-3: #fff0ee;
-  --theme-4: #ffe6e2;
-  --theme-5: #fdd8d3;
-  --theme-6: #fac7be;
-  --theme-7: #f3b0a2;
-  --theme-8: #ea9280;
-  --theme-9: #e54d2e;
-  --theme-10: #db4324;
-  --theme-11: #ca3214;
-  --theme-12: #341711;
-
   --accent-1: #fafafa;
   --accent-2: #eaeaea;
   --accent-3: #999;
@@ -32,19 +19,6 @@
 .dark:root {
   --hong-bg: #000;
   --hong-fg: #fff;
-
-  --theme-1: #1d1412;
-  --theme-2: #2a1410;
-  --theme-3: #3b1813;
-  --theme-4: #481a14;
-  --theme-5: #541c15;
-  --theme-6: #652016;
-  --theme-7: #7f2315;
-  --theme-8: #a42a12;
-  --theme-9: #e54d2e;
-  --theme-10: #ec5e41;
-  --theme-11: #f16a50;
-  --theme-12: #feefec;
 
   --accent-1: #111;
   --accent-2: #333;
@@ -62,21 +36,21 @@
 }
 
 ::-webkit-scrollbar-track {
-  border-radius: 10px;
+  border-radius: 8px;
   background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  @apply bg-red-500;
-}
-
-::-webkit-scrollbar-thumb:hover {
+  border-radius: 8px;
   @apply bg-red-600;
 }
 
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-red-700;
+}
+
 ::selection {
-  @apply bg-[rgba(249,6,6,0.05)] text-[#f90606] dark:bg-[rgba(249,6,6,0.2)] dark:text-[#ff4c4c];
+  @apply bg-red-600 text-white;
 }
 
 * {

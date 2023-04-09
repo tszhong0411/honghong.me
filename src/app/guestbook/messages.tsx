@@ -94,7 +94,7 @@ const Messages = (props: MessagesProps) => {
                 <Modal>
                   <Modal.Trigger>
                     <button
-                      className='rounded-lg bg-theme-9 px-4 py-2 text-white transition-colors duration-300 hover:bg-theme-10'
+                      className='rounded-lg border border-black bg-black px-4 py-2 text-white transition-colors duration-300 hover:bg-white hover:text-black dark:border-white dark:bg-white dark:text-black dark:hover:bg-black dark:hover:text-white'
                       disabled={isDeleting}
                       type='button'
                     >
@@ -106,7 +106,7 @@ const Messages = (props: MessagesProps) => {
                     <div className='flex justify-end gap-2'>
                       <Modal.Close>
                         <button
-                          className='rounded-lg border border-theme-7 bg-theme-1 px-4 py-2 text-theme-11 transition-colors duration-300 hover:border-theme-8'
+                          className='rounded-lg border border-black bg-black px-4 py-2 text-white transition-colors duration-300 hover:bg-white hover:text-black dark:border-white dark:bg-white dark:text-black dark:hover:bg-black dark:hover:text-white'
                           type='button'
                         >
                           Cancel
@@ -114,7 +114,7 @@ const Messages = (props: MessagesProps) => {
                       </Modal.Close>
                       <Modal.Close>
                         <button
-                          className='rounded-lg bg-theme-9 px-4 py-2 text-white transition-colors duration-300 hover:bg-theme-10'
+                          className='rounded-lg border border-black bg-black px-4 py-2 text-white transition-colors duration-300 hover:bg-white hover:text-black dark:border-white dark:bg-white dark:text-black dark:hover:bg-black dark:hover:text-white'
                           onClick={() => deleteHandler(id.toString())}
                           type='button'
                         >
