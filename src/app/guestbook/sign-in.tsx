@@ -6,8 +6,8 @@ const SignIn = () => {
   return (
     <>
       <button
-        className='rounded-lg bg-theme-9 px-4 py-2 text-white transition-colors duration-300 hover:bg-theme-10'
-        onClick={() => signIn()}
+        className='rounded-lg border border-black bg-black px-4 py-2 text-white transition-colors duration-300 hover:bg-white hover:text-black dark:border-white dark:bg-white dark:text-black dark:hover:bg-black dark:hover:text-white'
+        onClick={() => signIn('github')}
         type='button'
       >
         Login

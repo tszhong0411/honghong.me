@@ -69,11 +69,6 @@ SPOTIFY_REFRESH_TOKEN=
 GOOGLE_PRIVATE_KEY=
 GOOGLE_CLIENT_EMAIL=
 
-# Google OAuth
-# https://support.google.com/cloud/answer/6158849
-GOOGLE_CLIENT_ID=
-GOOGLE_CLIENT_SECRET=
-
 # Authentication
 # https://next-auth.js.org/getting-started/example
 NEXTAUTH_SECRET=
