@@ -8044,10 +8044,15 @@ typescript@^4.6.4:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.4.tgz#a2a3d2756c079abda241d75f149df9d561091e78"
   integrity sha512-Uz+dTXYzxXXbsFpM86Wh3dKCxrQqUcVMxwU54orwlJjOpO3ao8L7j5lH+dWfTwgCwIuM9GQ2kvVotzYJMXTBZg==
 
-"typescript@^4.6.4 || ^5.0.0", typescript@^5.0.3:
+"typescript@^4.6.4 || ^5.0.0":
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.0.3.tgz#fe976f0c826a88d0a382007681cbb2da44afdedf"
   integrity sha512-xv8mOEDnigb/tN9PSMTwSEqAnUvkoXMQlicOb0IUVDBSQCgBSaAAROUZYy2IcUy5qU6XajK5jjjO7TMWqBTKZA==
+
+typescript@^5.1.0-dev.20230409:
+  version "5.1.0-dev.20230409"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.1.0-dev.20230409.tgz#3f920a861f8a30d4c021ecd12d60e378478f8e01"
+  integrity sha512-97xdCsU+nUtaHW7mFi7x6KfRz4ragV0WGI/Z5uoW0pelxP1l6NYM/0VJ3Gs2X8fer09TDflGF/oL8k4YR9eroQ==
 
 unbox-primitive@^1.0.2:
   version "1.0.2"

@@ -85,7 +85,7 @@
     "puppeteer": "^19.8.5",
     "tailwindcss": "^3.3.1",
     "tsx": "^3.12.6",
-    "typescript": "^5.0.3"
+    "typescript": "^5.1.0-dev.20230409"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
