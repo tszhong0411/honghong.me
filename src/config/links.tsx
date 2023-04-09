@@ -11,10 +11,23 @@ import {
   IconPencil,
   IconUserCircle,
 } from '@tabler/icons-react'
+import type { Route } from 'next'
 
 import { DropdownItemType } from '@/components/Dropdown'
-import { HeroLinks } from '@/components/Home/Hero'
-import { FooterLinks } from '@/components/Layout/Footer'
+
+type HeroLinks = {
+  id: string
+  icon: React.ReactNode
+  href: string
+}[]
+
+type FooterLinks = {
+  id: number
+  links: {
+    href: Route | URL
+    title: string
+  }[]
+}[]
 
 type FooterSocialMediaLinks = {
   href: string

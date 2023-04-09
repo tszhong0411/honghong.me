@@ -1,6 +1,13 @@
 import * as DropdownPrimitives from '@radix-ui/react-dropdown-menu'
+import type { Route } from 'next'
 
 import clsxm from '@/lib/clsxm'
+
+export type DropdownItemType = {
+  icon: React.ReactNode
+  href: Route | URL
+  text: string
+}
 
 const Dropdown = (props: DropdownPrimitives.DropdownMenuProps) => {
   return <DropdownPrimitives.Root {...props} />
