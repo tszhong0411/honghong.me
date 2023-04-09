@@ -95,6 +95,12 @@ IP_ADDRESS_SALT=
 WAKATIME_API_KEY=
 ```
 
+5. Run the development server
+
+```sh
+yarn dev
+```
+
 ## 🍰 Contributing
 
 Contributions make the open source community an excellent place to learn, inspire and create. Thank you very much for any contributions you make.
