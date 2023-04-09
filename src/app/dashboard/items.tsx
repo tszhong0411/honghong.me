@@ -58,7 +58,9 @@ const Items = () => {
     {
       title: 'Coding Hours',
       link: 'https://wakatime.com/@tszhong0411',
-      value: `${Math.round((wakatimeData?.seconds as number) / 60 / 60)} hrs`,
+      value: wakatimeData?.seconds
+        ? `${Math.round(wakatimeData.seconds / 60 / 60)} hrs`
+        : undefined,
       icon: <IconClock />,
     },
     {
