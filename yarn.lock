@@ -1596,10 +1596,10 @@
   resolved "https://registry.yarnpkg.com/@tsconfig/node16/-/node16-1.0.3.tgz#472eaab5f15c1ffdd7f8628bd4c4f753995ec79e"
   integrity sha512-yOlFc+7UtL/89t2ZhjPvvB/DeAr3r+Dq58IgzsFkOAvVC6NMJXmCGjbptdXdR9qsX7pKcTL+s87FtYREi2dEEQ==
 
-"@tszhong0411/eslint-config@1.0.6":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@tszhong0411/eslint-config/-/eslint-config-1.0.6.tgz#9e3f458ca844ded4c65c0f71ce5e6a44e2d83c37"
-  integrity sha512-0bmtBeJ9cHPDL+fbuGRMoPzbx3Jh1OMagsgIwhyrL4H5+QS073AxVGzvup966Y1yY8uiP6fPmVPSuNQfHqvcqw==
+"@tszhong0411/eslint-config@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@tszhong0411/eslint-config/-/eslint-config-1.0.7.tgz#147623f9a444d0808fad7fddb992e2766ffc950b"
+  integrity sha512-uNBjoNhWJxUyKtHvCRbH6OtTfAFu3UYg2/R3gZnRzI/cgan0Am1wQ+Ym4zAwFTUiXREkBZwMQH5Eooj5hSD3aA==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^5.57.1"
     "@typescript-eslint/parser" "^5.57.1"
@@ -1611,19 +1611,19 @@
     eslint-plugin-simple-import-sort "^10.0.0"
     eslint-plugin-unused-imports "^2.0.0"
 
-"@tszhong0411/prettier-config@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@tszhong0411/prettier-config/-/prettier-config-1.0.0.tgz#ff820ae3a1eccb1ece987ccf5513b5988810ac34"
-  integrity sha512-vblwZLnzFesulN3JlRSlkCLW4jBslFKzh5IK/S5lS2YhnhpBFFzrKDcDyDVJaq61weVD5Zn2xV5/CqmrttncLg==
+"@tszhong0411/prettier-config@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@tszhong0411/prettier-config/-/prettier-config-1.0.1.tgz#7d37446ac39b1907c27a5a53d7a3d942165d8695"
+  integrity sha512-JVjgM6MC8OxqsRwAxOxUV5Q/3HhX/h4v680DIjQYWw2IQyuBZf4wnnfkRfc7TYiiWx6FY1uoa2kIKOy+ihkiMw==
   dependencies:
     prettier-plugin-prisma "^4.12.0"
     prettier-plugin-sort-json "^1.0.0"
-    prettier-plugin-tailwindcss "^0.2.6"
+    prettier-plugin-tailwindcss "^0.2.7"
 
-"@tszhong0411/tsconfig@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@tszhong0411/tsconfig/-/tsconfig-1.0.0.tgz#01aca387c853d35e6ae54345dbabbc809f91c5c3"
-  integrity sha512-YzBnq4RwuG1UHgLwkXGVchcxsZxHd7utz40DxgMhwur6ERh+faCLuLxNvxE7p7l0SrY52yZECcHYKbLB+6faXg==
+"@tszhong0411/tsconfig@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@tszhong0411/tsconfig/-/tsconfig-1.0.1.tgz#a8c01c88f4c911ae1aac4a3a6b13ceabad432dc9"
+  integrity sha512-k4PMQkbVvrCwfY5f+15Pe63ekIbQE/nXAMa6apxDnGKg8312D79YpOjeL33dk7P+YmtlOj1dEZv9HqFRnlZrBQ==
 
 "@types/acorn@^4.0.0":
   version "4.0.6"
@@ -6684,7 +6684,7 @@ prettier-plugin-sort-json@^1.0.0:
   dependencies:
     "@types/prettier" "^2.7.2"
 
-prettier-plugin-tailwindcss@^0.2.6:
+prettier-plugin-tailwindcss@^0.2.7:
   version "0.2.7"
   resolved "https://registry.yarnpkg.com/prettier-plugin-tailwindcss/-/prettier-plugin-tailwindcss-0.2.7.tgz#2314d728cce9c9699ced41a01253eb48b4218da5"
   integrity sha512-jQopIOgjLpX+y8HeD56XZw7onupRTC0cw7eKKUimI7vhjkPF5/1ltW5LyqaPtSyc8HvEpvNZsvvsGFa2qpa59w==
