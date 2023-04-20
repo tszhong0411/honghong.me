@@ -5,7 +5,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 
-import { getIconByName } from '@/lib/get-icon-by-name'
+import getIconByName from '@/lib/get-icon-by-name'
 
 import MDXComponents from '@/components/MDXComponents'
 import Image from '@/components/MDXComponents/Image'

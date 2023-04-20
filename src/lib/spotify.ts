@@ -46,7 +46,7 @@ const getAccessToken = async () => {
   return (await response.json()) as AccessToken
 }
 
-export const getNowPlaying = async () => {
+const getNowPlaying = async () => {
   const { access_token } = await getAccessToken()
 
   const response = await fetch(NOW_PLAYING_ENDPOINT, {
@@ -77,3 +77,5 @@ export const getNowPlaying = async () => {
     }
   }
 }
+
+export default getNowPlaying

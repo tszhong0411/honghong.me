@@ -2,7 +2,7 @@ import { IconArrowRight } from '@tabler/icons-react'
 import { allProjects } from 'contentlayer/generated'
 import Link from 'next/link'
 
-import { getIconByName } from '@/lib/get-icon-by-name'
+import getIconByName from '@/lib/get-icon-by-name'
 
 const Projects = () => {
   return (

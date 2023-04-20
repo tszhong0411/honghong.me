@@ -6,7 +6,7 @@ type GetAllPostsProps = {
   sorted?: boolean
 }
 
-export const getAllPosts = (config: GetAllPostsProps = {}) => {
+const getAllPosts = (config: GetAllPostsProps = {}) => {
   const { limit = allBlogPosts.length, sorted = true } = config
 
   const posts = allBlogPosts
@@ -23,3 +23,5 @@ export const getAllPosts = (config: GetAllPostsProps = {}) => {
 
   return posts
 }
+
+export default getAllPosts

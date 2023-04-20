@@ -2,7 +2,6 @@
 
 import React from 'react'
 
-import { isProduction } from '@/lib/constants'
 import { useFormattedDate } from '@/hooks'
 
 import ViewCounter from '@/components/ViewCounter'
@@ -20,7 +19,7 @@ const Header = (props: HeaderProps) => {
   const formattedDate = useFormattedDate(date)
 
   React.useEffect(() => {
-    if (isProduction) {
+    if (process.env.NODE_ENV === 'production') {
       const increment = async () => {
         await fetch('/api/views', {
           method: 'POST',

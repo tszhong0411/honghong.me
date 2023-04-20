@@ -2,7 +2,7 @@ import { allProjects } from 'contentlayer/generated'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 
-import { getIconByName } from '@/lib/get-icon-by-name'
+import getIconByName from '@/lib/get-icon-by-name'
 
 import Image from '@/components/MDXComponents/Image'
 

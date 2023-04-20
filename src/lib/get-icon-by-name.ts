@@ -16,7 +16,7 @@ import {
   IconMarkdown,
 } from '@tabler/icons-react'
 
-export const getIconByName = (name: string) => {
+const getIconByName = (name: string) => {
   switch (name) {
     case 'Typescript': {
       return IconBrandTypescript
@@ -65,3 +65,5 @@ export const getIconByName = (name: string) => {
     }
   }
 }
+
+export default getIconByName

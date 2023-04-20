@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import { getAllPosts } from '@/lib/mdx'
+import getAllPosts from '@/lib/mdx'
 
 import FilteredPosts from '@/components/FilteredPosts'
 
