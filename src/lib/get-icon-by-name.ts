@@ -1,4 +1,4 @@
-import { IconFriends } from '@tabler/icons-react'
+import { IconBrandFirebase, IconFriends } from '@tabler/icons-react'
 import {
   IconBook2,
   IconBrandTailwind,
@@ -56,6 +56,9 @@ export const getIconByName = (name: string) => {
     }
     case 'Friends': {
       return IconFriends
+    }
+    case 'Firebase': {
+      return IconBrandFirebase
     }
     default: {
       throw Error('Icon not found')
