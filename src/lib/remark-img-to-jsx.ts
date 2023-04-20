@@ -22,7 +22,6 @@ const remarkImgToJsx = () => {
           (n) => n.type === 'image'
         ) as ImageNode
 
-        // only local files
         if (fs.existsSync(`${process.cwd()}/public${imageNode.url}`)) {
           const dimensions = sizeOf(`${process.cwd()}/public${imageNode.url}`)
 
@@ -43,7 +42,6 @@ const remarkImgToJsx = () => {
             },
           ]
 
-          // Change node type from p to div to avoid nesting error
           node.type = 'div'
           node.children = [imageNode]
         }

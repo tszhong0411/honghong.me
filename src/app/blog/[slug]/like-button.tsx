@@ -71,7 +71,7 @@ const LikeButton = (props: LikeButtonProps) => {
   return (
     <div className='mt-12 flex flex-nowrap items-center justify-center gap-4'>
       <button
-        className='outline-none'
+        className='outline-none transition-transform duration-150 hover:scale-110'
         type='button'
         onClick={(e) => {
           if (isLoading) return
@@ -82,7 +82,7 @@ const LikeButton = (props: LikeButtonProps) => {
 
           increment()
         }}
-        // disabled={isFetching}
+        title='Like this post'
       >
         <svg viewBox='0 0 20 20' className='w-[42px]'>
           <defs>

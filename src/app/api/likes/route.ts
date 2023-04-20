@@ -25,12 +25,10 @@ export const GET = async (req: NextRequest) => {
   const sessionId = slug + '___' + currentUserId
 
   const [post, user] = await Promise.all([
-    // get the number of likes this post has
     prisma.post.findUnique({
       where: { slug },
     }),
 
-    // get the number of times the current user has liked this post
     prisma.session.findUnique({
       where: { id: sessionId },
     }),
