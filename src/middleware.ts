@@ -3,13 +3,13 @@ import { NextResponse } from 'next/server'
 const middleware = async () => {
   const ContentSecurityPolicy = `
     default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app *.honghong.me data: cdn.vercel-insights.com;
-    style-src 'self' 'unsafe-inline' fonts.googleapis.com;
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app *.honghong.me data: va.vercel-scripts.com;
+    style-src 'self' 'unsafe-inline';
     img-src * blob: data:;
     media-src;
     connect-src *;
-    font-src 'self' fonts.gstatic.com;
-    frame-src giscus.app *.youtube.com;
+    font-src 'self';
+    frame-src giscus.app;
   `
 
   const response = NextResponse.next()
