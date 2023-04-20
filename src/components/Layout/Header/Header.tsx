@@ -47,7 +47,8 @@ const Header = () => {
             className='flex h-9 w-9 items-center justify-center rounded-md duration-300 hover:bg-accent-2'
             onClick={() => query.toggle()}
             type='button'
-            aria-label='Command Bar'
+            aria-label='Open Command Bar'
+            title='Open Command Bar'
           >
             <IconCommand size={20} />
           </button>
@@ -57,6 +58,7 @@ const Header = () => {
                 className='flex h-9 w-9 items-center justify-center rounded-md duration-300 hover:bg-accent-2 md:hidden'
                 type='button'
                 aria-label='Toggle menu'
+                title='Toggle menu'
               >
                 <IconMenu size={20} />
               </button>

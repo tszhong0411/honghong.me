@@ -50,6 +50,8 @@ const Pre = (props: PreProps) => {
         className='absolute right-4 top-4 opacity-0 transition [div:hover>&]:opacity-100'
         onClick={onCopy}
         type='button'
+        aria-label='Copy code to clipboard'
+        title='Copy code to clipboard'
       >
         {isCopied ? <IconCheck size={20} /> : <IconCopy size={20} />}
       </button>
