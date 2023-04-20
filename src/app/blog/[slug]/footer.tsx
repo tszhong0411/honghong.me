@@ -5,7 +5,7 @@ import {
 } from '@tabler/icons-react'
 
 const editURL = (slug: string) =>
-  `https://github.com/tszhong0411/honghong.me/blob/main/src/content/blog/${slug}.mdx`
+  `https://github.com/tszhong0411/honghong.me/blob/main/src/contents/blog/${slug}.mdx?plain=1`
 
 const twitterShareURL = (slug: string, title: string) =>
   `https://twitter.com/intent/tweet?text=${title}&url=${encodeURIComponent(
@@ -45,7 +45,7 @@ const Footer = (props: FooterProps) => {
           target='_blank'
           rel='noopener noreferrer'
           href={redditShareURL(slug, title)}
-          className='animated flex h-8 w-8 items-center justify-center rounded-lg transition-colors duration-300 hover:bg-accent-2'
+          className='flex h-8 w-8 items-center justify-center rounded-lg transition-colors duration-300 hover:bg-accent-2'
         >
           <IconBrandReddit size={18} />
         </a>
@@ -53,7 +53,7 @@ const Footer = (props: FooterProps) => {
           target='_blank'
           rel='noopener noreferrer'
           href={twitterShareURL(slug, title)}
-          className='animated flex h-8 w-8 items-center justify-center rounded-lg transition-colors duration-300 hover:bg-accent-2'
+          className='flex h-8 w-8 items-center justify-center rounded-lg transition-colors duration-300 hover:bg-accent-2'
         >
           <IconBrandTwitter size={18} />
         </a>
@@ -61,7 +61,7 @@ const Footer = (props: FooterProps) => {
           target='_blank'
           rel='noopener noreferrer'
           href={facebookShareURL(slug)}
-          className='animated flex h-8 w-8 items-center justify-center rounded-lg transition-colors duration-300 hover:bg-accent-2'
+          className='flex h-8 w-8 items-center justify-center rounded-lg transition-colors duration-300 hover:bg-accent-2'
         >
           <IconBrandFacebook size={18} />
         </a>
