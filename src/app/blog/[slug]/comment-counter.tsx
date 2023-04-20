@@ -31,7 +31,7 @@ const CommentCounter = () => {
       {counter < 0 ? (
         <Skeleton className='h-5 max-w-[70px]' />
       ) : (
-        <div>{`${counter} comments}`}</div>
+        <div>{`${counter} comments`}</div>
       )}
     </>
   )
