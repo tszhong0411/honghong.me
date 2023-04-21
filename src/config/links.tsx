@@ -13,12 +13,16 @@ import {
 } from '@tabler/icons-react'
 import type { Route } from 'next'
 
-import { DropdownItemType } from '@/components/Dropdown'
-
 type HeroLinks = {
   id: string
   icon: React.ReactNode
   href: string
+}[]
+
+type HeaderLinks = {
+  icon: React.ReactNode
+  href: Route | URL
+  text: string
 }[]
 
 type FooterLinks = {
@@ -34,7 +38,7 @@ type FooterSocialMediaLinks = {
   title: string
 }[]
 
-export const HEADER_LINKS: DropdownItemType[] = [
+export const HEADER_LINKS: HeaderLinks = [
   {
     icon: <IconPencil />,
     href: '/blog',
