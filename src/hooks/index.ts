@@ -1,3 +1,3 @@
-export * from './useFormattedDate'
-export * from './useHeadings'
-export * from './useScrollspy'
+export * from './use-formatted-date'
+export * from './use-headings'
+export * from './use-scrollspy'
