@@ -34,6 +34,7 @@ const Hero = () => {
           <a
             key={link.id}
             href={link.href}
+            aria-label={link.label}
             target='_blank'
             rel='noopener noreferrer'
           >
