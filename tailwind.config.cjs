@@ -24,7 +24,7 @@ module.exports = {
         ],
         emoji: ['Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'],
       },
-      typography: (theme) => ({
+      typography: (/** @type {(theme: any) => any} */ theme) => ({
         DEFAULT: {
           css: {
             a: {
@@ -33,7 +33,6 @@ module.exports = {
             'h2, h3, h4, h5, h6': {
               position: 'relative',
               scrollMarginTop: '128px',
-
               '& a::before': {
                 content: 'none !important',
               },
@@ -42,12 +41,12 @@ module.exports = {
               margin: '24px auto',
             },
             code: {
-              color: theme('colors.red.500'),
+              color: theme('colors.red.400'),
               '&::before': {
-                content: `"" !important`,
+                content: '"" !important',
               },
               '&::after': {
-                content: `"" !important`,
+                content: '"" !important',
               },
               fontWeight: 'normal',
             },
@@ -75,7 +74,6 @@ module.exports = {
               lineHeight: 2,
               borderRadius: '8px',
               border: '1px solid var(--accent-2)',
-
               '[data-line-numbers]': {
                 '.line::before': {
                   content: 'counter(line)',
@@ -90,11 +88,9 @@ module.exports = {
                   color: 'var(--accent-6)',
                 },
               },
-
               '> code': {
                 display: 'grid',
                 counterReset: 'line',
-
                 '.word': {
                   backgroundColor: 'rgba(239, 68, 68, 0.2)',
                   padding: '4px',
@@ -102,11 +98,11 @@ module.exports = {
                 },
                 '> .line': {
                   padding: '0 20px 0 12px',
-                  borderLeft: `2px solid transparent`,
+                  borderLeft: '2px solid transparent',
                 },
                 '> .line.highlighted': {
                   borderLeftColor: 'rgba(239, 68, 68, 0.4)',
-                  backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                  backgroundColor: 'rgba(239, 68, 68, 0.2)',
                 },
               },
             },

@@ -22,7 +22,8 @@
     "next-env.d.ts",
     "**/*.tsx",
     "**/*.ts",
-    "next.config.js",
+    "**/*.js",
+    "**/*.cjs",
     ".next/types/**/*.ts",
     ".contentlayer/generated"
   ]
