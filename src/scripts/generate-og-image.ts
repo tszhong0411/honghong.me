@@ -18,6 +18,7 @@ const OG_IMAGE_WEBSITE = 'https://og-image.honghong.me'
 
     try {
       const browser = await puppeteer.launch({
+        headless: 'new',
         defaultViewport: {
           width: 1200,
           height: 630,
