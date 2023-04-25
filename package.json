@@ -12,7 +12,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "contentlayer build && next build",
+    "build": "next build",
     "postbuild": "tsx ./src/scripts/generate-og-image.ts",
     "start": "next start",
     "lint": "eslint .",
@@ -33,7 +33,7 @@
     "@types/rss": "^0.0.30",
     "@vercel/analytics": "^1.0.0",
     "clsx": "^1.2.1",
-    "contentlayer": "^0.3.1",
+    "contentlayer": "^0.3.2",
     "dayjs": "^1.11.7",
     "framer-motion": "^10.12.4",
     "googleapis": "^118.0.0",
@@ -42,8 +42,7 @@
     "kbar": "^0.1.0-beta.40",
     "next": "^13.3.1",
     "next-auth": "^4.22.1",
-    "next-contentlayer": "^0.3.1",
-    "next-themes": "^0.2.1",
+    "next-contentlayer": "^0.3.2",
     "react": "^18.2.0",
     "react-confetti": "^6.1.0",
     "react-dom": "^18.2.0",
@@ -58,7 +57,7 @@
     "schema-dts": "^1.1.2",
     "sharp": "^0.32.0",
     "shiki": "^0.14.1",
-    "swr": "^2.1.4",
+    "swr": "^2.1.5",
     "tailwind-merge": "^1.12.0",
     "unist-util-visit": "^4.1.2"
   },
@@ -70,8 +69,8 @@
     "@tszhong0411/prettier-config": "^1.0.1",
     "@tszhong0411/tsconfig": "^1.0.1",
     "@types/node": "^18.16.0",
-    "@types/react": "^18.0.38",
-    "@types/react-dom": "^18.0.11",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
     "autoprefixer": "^10.4.14",
     "chalk": "^5.2.0",
     "cz-conventional-changelog": "^3.3.0",
@@ -109,5 +108,8 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "engines": {
+    "node": "18.x"
   }
 }
