@@ -94,7 +94,7 @@ const Messages = (props: MessagesProps) => {
                 <Modal>
                   <Modal.Trigger>
                     <button
-                      className='rounded-lg border border-black bg-black px-4 py-2 text-white transition-colors duration-300 hover:bg-white hover:text-black dark:border-white dark:bg-white dark:text-black dark:hover:bg-black dark:hover:text-white'
+                      className='rounded-lg border border-white bg-white px-4 py-2 text-black transition-colors duration-300 hover:bg-black hover:text-white'
                       disabled={isDeleting}
                       type='button'
                     >
@@ -106,7 +106,7 @@ const Messages = (props: MessagesProps) => {
                     <div className='flex justify-end gap-2'>
                       <Modal.Close>
                         <button
-                          className='rounded-lg border border-black bg-black px-4 py-2 text-white transition-colors duration-300 hover:bg-white hover:text-black dark:border-white dark:bg-white dark:text-black dark:hover:bg-black dark:hover:text-white'
+                          className='rounded-lg border border-white bg-white px-4 py-2 text-black transition-colors duration-300 hover:bg-black hover:text-white'
                           type='button'
                         >
                           Cancel
@@ -114,7 +114,7 @@ const Messages = (props: MessagesProps) => {
                       </Modal.Close>
                       <Modal.Close>
                         <button
-                          className='rounded-lg border border-black bg-black px-4 py-2 text-white transition-colors duration-300 hover:bg-white hover:text-black dark:border-white dark:bg-white dark:text-black dark:hover:bg-black dark:hover:text-white'
+                          className='rounded-lg border border-white bg-white px-4 py-2 text-black transition-colors duration-300 hover:bg-black hover:text-white'
                           onClick={() => deleteHandler(id.toString())}
                           type='button'
                         >

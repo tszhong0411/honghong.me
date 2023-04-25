@@ -1,5 +1,4 @@
 import { DefaultSession } from 'next-auth'
-import React from 'react'
 
 import Form from './form'
 import Messages from './messages'

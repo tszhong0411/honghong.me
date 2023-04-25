@@ -11,7 +11,6 @@ import Header from '@/components/Layout/Header'
 import { site } from '@/config/site'
 
 import CustomToaster from './custom-toaster'
-import Providers from './providers'
 
 import { WithChildren } from '@/types'
 
@@ -104,17 +103,15 @@ const RootLayout = (props: RootLayoutProps) => {
         'scroll-smooth'
       )}
     >
-      <body className='overflow-x-hidden bg-hong-bg font-default'>
-        <Providers>
-          <KBar>
-            <Header />
-            <main className='relative mx-auto mb-16 max-w-4xl px-8 py-24'>
-              {children}
-            </main>
-            <CustomToaster />
-            <Footer />
-          </KBar>
-        </Providers>
+      <body>
+        <KBar>
+          <Header />
+          <main className='relative mx-auto mb-16 max-w-4xl px-8 py-24'>
+            {children}
+          </main>
+          <CustomToaster />
+          <Footer />
+        </KBar>
         <Analytics />
       </body>
     </html>

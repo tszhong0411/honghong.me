@@ -115,7 +115,7 @@ const ProjectPage = (props: ProjectPageProps) => {
         className='my-12 border border-accent-2'
         rounded='rounded-lg'
       />
-      <div className='prose prose-zinc w-full max-w-none dark:prose-invert'>
+      <div className='prose prose-invert w-full max-w-none'>
         <MDXComponent
           components={{
             ...MDXComponents,

@@ -53,7 +53,7 @@ const DesignPage = () => {
     <>
       <h2 className='my-4 text-4xl font-bold'>Design</h2>
       <p className='mb-8 text-accent-5'>This the design of my website.</p>
-      <div className='prose prose-zinc w-full max-w-none dark:prose-invert'>
+      <div className='prose prose-invert w-full max-w-none'>
         <MDXComponent
           components={{
             ...MDXComponents,

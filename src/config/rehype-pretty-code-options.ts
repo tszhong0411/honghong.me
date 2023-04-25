@@ -2,10 +2,7 @@
 import { Options } from 'rehype-pretty-code'
 
 export const rehypePrettyCodeOptions: Partial<Options> = {
-  theme: {
-    light: 'github-light',
-    dark: 'github-dark',
-  },
+  theme: 'github-dark',
   onVisitLine(node: any) {
     // Prevent lines from collapsing in `display: grid` mode, and
     // allow empty lines to be copy/pasted

@@ -2,91 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --hong-bg: #fff;
-  --hong-fg: #000;
+@layer base {
+  :root {
+    --hong-bg: #000;
+    --hong-fg: #fff;
 
-  --accent-1: #fafafa;
-  --accent-2: #eaeaea;
-  --accent-3: #999;
-  --accent-4: #888;
-  --accent-5: #666;
-  --accent-6: #444;
-  --accent-7: #333;
-  --accent-8: #111;
-}
+    --accent-1: #111;
+    --accent-2: #333;
+    --accent-3: #444;
+    --accent-4: #666;
+    --accent-5: #888;
+    --accent-6: #999;
+    --accent-7: #eaeaea;
+    --accent-8: #fafafa;
+  }
 
-.dark:root {
-  --hong-bg: #000;
-  --hong-fg: #fff;
+  body {
+    @apply overflow-x-hidden bg-hong-bg font-default text-hong-fg;
+  }
 
-  --accent-1: #111;
-  --accent-2: #333;
-  --accent-3: #444;
-  --accent-4: #666;
-  --accent-5: #888;
-  --accent-6: #999;
-  --accent-7: #eaeaea;
-  --accent-8: #fafafa;
-}
+  ::-webkit-scrollbar {
+    width: 7px;
+    height: 3px;
+  }
 
-::-webkit-scrollbar {
-  width: 7px;
-  height: 3px;
-}
+  ::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background-color: transparent;
+  }
 
-::-webkit-scrollbar-track {
-  border-radius: 8px;
-  background-color: transparent;
-}
+  ::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    @apply bg-red-600;
+  }
 
-::-webkit-scrollbar-thumb {
-  border-radius: 8px;
-  @apply bg-red-600;
-}
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-red-700;
+  }
 
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-red-700;
-}
+  ::selection {
+    @apply bg-red-600 text-white;
+  }
 
-::selection {
-  @apply bg-red-600 text-white;
-}
+  * {
+    text-rendering: geometricprecision;
+    -webkit-tap-highlight-color: transparent;
+  }
 
-* {
-  text-rendering: geometricprecision;
-  -webkit-tap-highlight-color: transparent;
-}
+  pre,
+  code {
+    @apply !font-code;
+  }
 
-pre,
-code {
-  @apply !font-code;
-}
+  [data-rehype-pretty-code-fragment] {
+    @apply relative;
+  }
 
-[data-rehype-pretty-code-fragment] {
-  @apply relative;
-}
-
-div[data-rehype-pretty-code-title][data-theme='light'],
-div[data-rehype-pretty-code-fragment] pre[data-theme='light'],
-div[data-rehype-pretty-code-fragment] pre[data-theme='light'] ~ button {
-  @apply block dark:hidden;
-}
-
-div[data-rehype-pretty-code-title][data-theme='dark'],
-div[data-rehype-pretty-code-fragment] pre[data-theme='dark'],
-div[data-rehype-pretty-code-fragment] pre[data-theme='dark'] ~ button {
-  @apply hidden dark:block;
-}
-
-span[data-rehype-pretty-code-fragment] code[data-theme='light'] {
-  @apply inline dark:hidden;
-}
-
-span[data-rehype-pretty-code-fragment] code[data-theme='dark'] {
-  @apply hidden dark:inline;
-}
-
-a.animated {
-  @apply relative before:absolute before:-bottom-0.5 before:left-0 before:h-0.5 before:w-full before:origin-right before:scale-x-0 before:rounded before:bg-hong-fg before:transition-transform before:duration-300 before:ease-in-out before:content-[""] hover:before:origin-left hover:before:scale-x-100;
+  a.animated {
+    @apply relative before:absolute before:-bottom-0.5 before:left-0 before:h-0.5 before:w-full before:origin-right before:scale-x-0 before:rounded before:bg-hong-fg before:transition-transform before:duration-300 before:ease-in-out before:content-[""] hover:before:origin-left hover:before:scale-x-100;
+  }
 }

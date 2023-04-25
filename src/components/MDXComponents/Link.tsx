@@ -1,6 +1,5 @@
 import type { Route } from 'next'
 import NextLink from 'next/link'
-import React from 'react'
 
 type LinkProps = JSX.IntrinsicElements['a']
 

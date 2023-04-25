@@ -57,7 +57,7 @@ const UsesPage = () => {
         This is the equipment I currently use for gaming, programming, making
         videos, and every day
       </p>
-      <div className='prose prose-zinc w-full max-w-none dark:prose-invert'>
+      <div className='prose prose-invert w-full max-w-none'>
         <MDXComponent
           components={{
             ...MDXComponents,

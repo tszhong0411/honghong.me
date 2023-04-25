@@ -7,8 +7,6 @@ import {
   IconBrandYoutube,
   IconCode,
   IconLink,
-  IconMoon,
-  IconSun,
 } from '@tabler/icons-react'
 import {
   Action,
@@ -18,8 +16,6 @@ import {
   KBarProvider,
   KBarSearch,
 } from 'kbar'
-import { useTheme } from 'next-themes'
-import React from 'react'
 import { toast } from 'react-hot-toast'
 
 import Results from './Results'
@@ -30,7 +26,6 @@ type KBarProps = WithChildren
 
 const KBar = (props: KBarProps) => {
   const { children } = props
-  const { setTheme } = useTheme()
 
   const actions: Action[] = [
     {
@@ -68,22 +63,6 @@ const KBar = (props: KBarProps) => {
       perform: () =>
         window.open('https://github.com/tszhong0411/honghong.me', '_blank'),
       icon: <IconCode />,
-    },
-    {
-      id: 'light-mode',
-      name: 'Light Mode',
-      keywords: 'light mode',
-      section: 'Settings',
-      perform: () => setTheme('light'),
-      icon: <IconSun />,
-    },
-    {
-      id: 'dark-mode',
-      name: 'Dark Mode',
-      keywords: 'dark mode',
-      section: 'Settings',
-      perform: () => setTheme('dark'),
-      icon: <IconMoon />,
     },
     {
       id: 'github',

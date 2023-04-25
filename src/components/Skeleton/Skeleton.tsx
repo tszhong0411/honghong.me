@@ -10,7 +10,7 @@ const Skeleton = (props: SkeletonProps) => {
   return (
     <div
       className={clsxm(
-        'h-4 w-full animate-pulse rounded-md bg-zinc-200 dark:bg-zinc-800',
+        'h-4 w-full animate-pulse rounded-md bg-zinc-800',
         className
       )}
     />

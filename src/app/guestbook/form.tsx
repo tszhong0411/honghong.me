@@ -72,14 +72,14 @@ const Form = (props: FormProps) => {
       </div>
       <div className='flex justify-end gap-2'>
         <button
-          className='rounded-lg border border-black bg-black px-4 py-2 text-white transition-colors duration-300 hover:bg-white hover:text-black dark:border-white dark:bg-white dark:text-black dark:hover:bg-black dark:hover:text-white'
+          className='rounded-lg border border-white bg-white px-4 py-2 text-black transition-colors duration-300 hover:bg-black hover:text-white'
           onClick={() => signOut()}
           type='button'
         >
           Logout
         </button>
         <button
-          className='rounded-lg border border-black bg-black px-4 py-2 text-white transition-colors duration-300 hover:bg-white hover:text-black dark:border-white dark:bg-white dark:text-black dark:hover:bg-black dark:hover:text-white'
+          className='rounded-lg border border-white bg-white px-4 py-2 text-black transition-colors duration-300 hover:bg-black hover:text-white'
           onClick={submitHandler}
           type='button'
           disabled={isLoading}

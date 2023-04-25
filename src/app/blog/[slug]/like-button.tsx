@@ -109,11 +109,7 @@ const LikeButton = (props: LikeButtonProps) => {
             </mask>
           </defs>
           <g mask='url(#mask)'>
-            <rect
-              width='20'
-              height='20'
-              className='fill-[#c4c1c1] dark:fill-[#4b5563]'
-            ></rect>
+            <rect width='20' height='20' className='fill-[#4b5563]'></rect>
             <motion.rect
               fill='url(#gradient)'
               width='16'

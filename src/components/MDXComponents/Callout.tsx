@@ -1,5 +1,4 @@
 import clsx from 'clsx'
-import React from 'react'
 
 import { WithChildren } from '@/types'
 
@@ -13,18 +12,10 @@ const Icon = {
 type CalloutType = keyof typeof Icon
 
 const classes: Record<CalloutType, string> = {
-  default: clsx(
-    'border-orange-100 bg-orange-50 text-orange-800 dark:border-orange-400/30 dark:bg-orange-400/20 dark:text-orange-300'
-  ),
-  error: clsx(
-    'border-red-200 bg-red-100 text-red-900 dark:border-red-200/30 dark:bg-red-900/30 dark:text-red-200'
-  ),
-  info: clsx(
-    'border-blue-200 bg-blue-100 text-blue-900 dark:border-blue-200/30 dark:bg-blue-900/30 dark:text-blue-200'
-  ),
-  warning: clsx(
-    'border-yellow-100 bg-yellow-50 text-yellow-900 dark:border-yellow-200/30 dark:bg-yellow-700/30 dark:text-yellow-200'
-  ),
+  default: clsx('border-orange-400/30 bg-orange-400/20 text-orange-300'),
+  error: clsx('border-red-200/30 bg-red-900/30 text-red-200'),
+  info: clsx('border-blue-200/30 bg-blue-900/30 text-blue-200'),
+  warning: clsx('border-yellow-200/30 bg-yellow-700/30 text-yellow-200'),
 }
 
 type CalloutProps = {

@@ -1,7 +1,6 @@
 'use client'
 
 import clsx from 'clsx'
-import { useTheme } from 'next-themes'
 import React from 'react'
 
 import Skeleton from '@/components/Skeleton'
@@ -10,13 +9,12 @@ import { colors } from '@/config/colors'
 
 const Colors = () => {
   const [mounted, setMounted] = React.useState(false)
-  const { resolvedTheme } = useTheme()
 
   React.useEffect(() => setMounted(true), [])
 
   return (
     <div className='flex flex-col rounded-lg border border-accent-2'>
-      {mounted && resolvedTheme ? (
+      {mounted ? (
         colors.map((color, i) => (
           <div
             key={color.className}
@@ -32,9 +30,7 @@ const Colors = () => {
           >
             <div className='font-bold'>{color.name}</div>
             <div className='font-code'>{color.variable}</div>
-            <div className='flex justify-end uppercase'>
-              {color.hex[resolvedTheme as 'dark' | 'light']}
-            </div>
+            <div className='flex justify-end uppercase'>{color.hex}</div>
           </div>
         ))
       ) : (
