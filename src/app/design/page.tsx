@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 
 import MDXComponents from '@/components/MDXComponents'
+import PageTitle from '@/components/PageTitle'
 
 import { site } from '@/config/site'
 
@@ -51,8 +52,7 @@ const DesignPage = () => {
 
   return (
     <>
-      <h2 className='my-4 text-4xl font-bold'>Design</h2>
-      <p className='mb-8 text-accent-5'>This the design of my website.</p>
+      <PageTitle title='Design' description='This the design of my website.' />
       <div className='prose prose-invert w-full max-w-none'>
         <MDXComponent
           components={{

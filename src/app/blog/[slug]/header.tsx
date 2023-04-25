@@ -1,5 +1,6 @@
 'use client'
 
+import { motion } from 'framer-motion'
 import React from 'react'
 
 import { useFormattedDate } from '@/hooks'
@@ -12,6 +13,17 @@ type HeaderProps = {
   date: string
   title: string
   slug: string
+}
+
+const animation = {
+  hide: {
+    x: -30,
+    opacity: 0,
+  },
+  show: {
+    x: 0,
+    opacity: 1,
+  },
 }
 
 const Header = (props: HeaderProps) => {
@@ -38,7 +50,7 @@ const Header = (props: HeaderProps) => {
   }, [])
 
   return (
-    <>
+    <motion.div initial={animation.hide} animate={animation.show}>
       <div>{formattedDate}</div>
       <h1 className='mb-4 text-3xl font-bold'>{title}</h1>
       <div className='flex items-center gap-2'>
@@ -46,7 +58,7 @@ const Header = (props: HeaderProps) => {
         <div>/</div>
         <CommentCounter />
       </div>
-    </>
+    </motion.div>
   )
 }
 

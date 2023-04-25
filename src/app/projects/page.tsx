@@ -5,6 +5,7 @@ import Link from 'next/link'
 import getIconByName from '@/lib/get-icon-by-name'
 
 import Image from '@/components/MDXComponents/Image'
+import PageTitle from '@/components/PageTitle'
 
 import { site } from '@/config/site'
 
@@ -39,10 +40,10 @@ export const metadata: Metadata = {
 const ProjectsPage = () => {
   return (
     <>
-      <h2 className='my-4 text-4xl font-bold'>Projects</h2>
-      <p className='mb-8 text-accent-5'>
-        The list of my projects. Everything was made with ❤️
-      </p>
+      <PageTitle
+        title='Projects'
+        description='The list of my projects. Everything was made with ❤️.'
+      />
       <div className='flex flex-col gap-4'>
         {allProjects.map((project) => {
           const { _id, name, image, description, techstack, slug } = project

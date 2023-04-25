@@ -22,10 +22,10 @@ const Image = (props: ImageProps) => {
     >
       <NextImage
         className={clsx(
-          'duration-700 ease-in-out',
-          isLoading
-            ? 'scale-[1.02] blur-xl grayscale'
-            : 'scale-100 blur-0 grayscale-0',
+          'shadow-lg duration-700 ease-in-out',
+          {
+            ['scale-[1.02] blur-xl grayscale']: isLoading,
+          },
           rounded,
           className
         )}

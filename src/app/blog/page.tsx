@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import getAllPosts from '@/lib/mdx'
 
 import FilteredPosts from '@/components/FilteredPosts'
+import PageTitle from '@/components/PageTitle'
 
 import { site } from '@/config/site'
 
@@ -40,15 +41,12 @@ const BlogPage = () => {
 
   return (
     <>
-      <div className='mb-8 space-y-8'>
-        <h2 className='my-4 text-4xl font-bold'>Blog</h2>
-        <p className='text-accent-5'>
-          I started writing articles in December 2020, mainly about software and
-          sharing knowledge. I have written a total of {posts.length} articles
-          on my blog. You can search for articles by title in the search box
-          below.
-        </p>
-      </div>
+      <PageTitle
+        title='Blog'
+        description={`I started writing articles in December 2020, mainly about software and
+        sharing knowledge. I have written a total of ${posts.length} articles on
+        my blog. You can search for articles by title in the search box below.`}
+      />
       <FilteredPosts posts={posts} />
     </>
   )

@@ -3,6 +3,8 @@ import { getServerSession } from 'next-auth'
 
 import { authOptions } from '@/lib/auth'
 
+import PageTitle from '@/components/PageTitle'
+
 import { site } from '@/config/site'
 
 import Guestbook from './guestbook'
@@ -42,8 +44,10 @@ const GuestbookPage = async () => {
 
   return (
     <>
-      <h2 className='my-4 text-4xl font-bold'>Guestbook</h2>
-      <p className='mb-8 text-accent-5'>You can tell me anything here!</p>
+      <PageTitle
+        title='Guestbook'
+        description='You can tell me anything here!'
+      />
       <Guestbook user={session?.user} />
     </>
   )

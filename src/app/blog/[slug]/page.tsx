@@ -102,7 +102,6 @@ const BlogPostPage = (props: BlogPostPageProps) => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Main */}
       <Header date={date} title={title} slug={slug} />
       <Content slug={slug} post={post} />
       <Footer slug={slug} title={title} />

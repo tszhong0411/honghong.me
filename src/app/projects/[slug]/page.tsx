@@ -1,16 +1,14 @@
-import { IconHome } from '@tabler/icons-react'
-import { IconBrandGithub } from '@tabler/icons-react'
 import { allProjects } from 'contentlayer/generated'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 
-import getIconByName from '@/lib/get-icon-by-name'
-
 import MDXComponents from '@/components/MDXComponents'
 import Image from '@/components/MDXComponents/Image'
 
 import { site } from '@/config/site'
+
+import Header from './header'
 
 type ProjectPageProps = {
   params: {
@@ -70,43 +68,11 @@ const ProjectPage = (props: ProjectPageProps) => {
 
   const MDXComponent = useMDXComponent(project.body.code)
 
-  const { name, description, icon, homepage, github, repo, image } = project
-
-  const Icon = getIconByName(icon)
+  const { name, image } = project
 
   return (
     <>
-      <div className='space-y-4'>
-        <div className='flex items-center gap-3'>
-          <Icon size={40} />
-          <div className='flex flex-col'>
-            <div className='text-2xl font-bold'>{name}</div>
-            <div>{description}</div>
-          </div>
-        </div>
-        <div className='flex flex-col items-start gap-2 sm:flex-row sm:gap-4'>
-          {homepage && (
-            <a
-              target='_blank'
-              rel='noopener noreferrer'
-              href={homepage}
-              className='animated flex items-center'
-            >
-              <IconHome size={20} className='mr-2 inline-block' />
-              {homepage}
-            </a>
-          )}
-          <a
-            target='_blank'
-            rel='noopener noreferrer'
-            href={github}
-            className='animated flex items-center'
-          >
-            <IconBrandGithub size={20} className='mr-2 inline-block' />
-            Tszhong0411/{repo}
-          </a>
-        </div>
-      </div>
+      <Header {...project} />
       <Image
         src={image}
         width={1200}
