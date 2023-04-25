@@ -1,3 +1,5 @@
+'use client'
+
 import Giscus from '@giscus/react'
 
 import { GISCUS_CONFIG } from '@/config/giscus'
