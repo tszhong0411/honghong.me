@@ -6,7 +6,7 @@ import { site } from '@/config/site'
 
 import Items from './items'
 
-export const revalidate = 60
+export const dynamic = 'force-dynamic'
 
 const title = 'Dashboard'
 const description =

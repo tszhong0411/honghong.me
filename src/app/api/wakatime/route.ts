@@ -11,9 +11,6 @@ export const GET = async () => {
           process.env.WAKATIME_API_KEY as string
         ).toString('base64')}`,
       },
-      next: {
-        revalidate: 60,
-      },
     }
   )
 
