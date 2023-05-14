@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server'
 
 import { WakatimeRes } from '@/types'
 
+export const dynamic = 'force-dynamic'
+
 export const GET = async () => {
   const res = await fetch(
     'https://wakatime.com/api/v1/users/current/all_time_since_today',
