@@ -37,7 +37,6 @@ const Mdx = (props: MdxProps) => {
 
   return (
     <div className='prose w-full max-w-none dark:prose-invert'>
-      {/* @ts-expect-error TODO: Fix it later https://github.com/contentlayerdev/contentlayer/issues/456 */}
       <Component components={{ ...components }} />
     </div>
   )
