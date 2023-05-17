@@ -35,6 +35,26 @@ export type Song = {
 }
 
 // YouTube
+export type YouTubeRes = {
+  kind: string
+  etag: string
+  pageInfo: {
+    totalResults: number
+    resultsPerPage: number
+  }
+  items: {
+    kind: string
+    etag: string
+    id: string
+    statistics: {
+      viewCount: string
+      subscriberCount: string
+      hiddenSubscriberCount: boolean
+      videoCount: string
+    }
+  }[]
+}
+
 export type YouTubeData = {
   subscribers: number
   views: number
