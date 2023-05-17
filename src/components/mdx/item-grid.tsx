@@ -29,6 +29,7 @@ const ItemGrid = (props: ItemGridProps) => {
             width={256}
             height={256}
             alt={item.name}
+            className='shrink-0'
             imageClassName='m-0 h-24 w-24 sm:h-full sm:w-full'
           />
           <div className='flex flex-col justify-center gap-2'>
