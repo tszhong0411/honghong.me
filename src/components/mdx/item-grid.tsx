@@ -29,11 +29,11 @@ const ItemGrid = (props: ItemGridProps) => {
             width={256}
             height={256}
             alt={item.name}
-            className='m-0 h-24 w-24 sm:h-full sm:w-full'
+            imageClassName='m-0 h-24 w-24 sm:h-full sm:w-full'
           />
           <div className='flex flex-col justify-center gap-2'>
             <div className='text-lg font-extrabold'>{item.name}</div>
-            <div>{item.description}</div>
+            <div className='text-sm text-accent-5'>{item.description}</div>
           </div>
         </a>
       ))}
