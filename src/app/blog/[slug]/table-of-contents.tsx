@@ -1,9 +1,9 @@
 'use client'
 
 import { IconList } from '@tabler/icons-react'
+import { cx } from '@tszhong0411/utils'
 import React from 'react'
 
-import clsxm from '@/lib/clsxm'
 import { useHeadings, useScrollspy } from '@/hooks'
 
 const TableOfContents = () => {
@@ -27,10 +27,10 @@ const TableOfContents = () => {
             <a
               key={id}
               href={`#${id}`}
-              className={clsxm(
-                'block border-l-2 border-l-zinc-700 pb-[10px] pr-[10px] pt-[10px] text-sm leading-[1.2] text-accent-5 transition-all duration-300 hover:text-hong-fg',
+              className={cx(
+                'block border-l-2 border-accent-2 pb-[10px] pr-[10px] pt-[10px] text-sm leading-[1.2] text-accent-5 transition-all duration-300 hover:text-accent-fg',
                 {
-                  ['border-l-red-600 text-hong-fg']: id === activeId,
+                  ['border-accent-fg text-accent-fg']: id === activeId,
                 }
               )}
               style={{

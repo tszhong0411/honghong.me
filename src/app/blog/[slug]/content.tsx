@@ -1,7 +1,6 @@
 import { BlogPost } from 'contentlayer/generated'
-import { useMDXComponent } from 'next-contentlayer/hooks'
 
-import MDXComponents from '@/components/MDXComponents'
+import Mdx from '@/components/mdx'
 
 import LikeButton from './like-button'
 import TableOfContents from './table-of-contents'
@@ -14,18 +13,10 @@ type ContentProps = {
 const Content = (props: ContentProps) => {
   const { post, slug } = props
 
-  const MDXComponent = useMDXComponent(post.body.code)
-
   return (
     <div className='mt-8 flex flex-col justify-between lg:flex-row'>
       <article className='w-full lg:w-[540px]'>
-        <div className='prose prose-invert w-full max-w-none'>
-          <MDXComponent
-            components={{
-              ...MDXComponents,
-            }}
-          />
-        </div>
+        <Mdx code={post.body.code} />
       </article>
       <aside className='lg:min-w-[270px] lg:max-w-[270px]'>
         <div className='sticky top-24'>

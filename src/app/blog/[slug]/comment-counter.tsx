@@ -1,9 +1,8 @@
 'use client'
 
+import { Skeleton } from '@tszhong0411/ui'
 import React from 'react'
 import { useEvent } from 'react-use'
-
-import Skeleton from '@/components/Skeleton'
 
 const CommentCounter = () => {
   const [counter, setCounter] = React.useState(-1)
@@ -29,7 +28,7 @@ const CommentCounter = () => {
   return (
     <>
       {counter < 0 ? (
-        <Skeleton className='h-5 max-w-[70px]' />
+        <Skeleton className='h-5 w-16' />
       ) : (
         <div>{`${counter} comments`}</div>
       )}

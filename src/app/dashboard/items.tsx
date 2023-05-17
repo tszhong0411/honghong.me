@@ -5,15 +5,14 @@ import {
   IconBrandYoutube,
   IconClock,
   IconPencil,
+  IconUser,
 } from '@tabler/icons-react'
-import { IconUser } from '@tabler/icons-react'
+import { Skeleton } from '@tszhong0411/ui'
 import dayjs from 'dayjs'
 import React from 'react'
 import useSWR from 'swr'
 
 import fetcher from '@/lib/fetcher'
-
-import Skeleton from '@/components/Skeleton'
 
 import { GithubData, Likes, Views, WakatimeData, YouTubeData } from '@/types'
 
@@ -114,13 +113,13 @@ const Items = () => {
                 target='_blank'
                 rel='noopener noreferrer'
                 href={link}
-                className='flex flex-col gap-2 rounded-lg border border-accent-2 p-4 transition-colors duration-300 hover:bg-accent-1'
+                className='flex flex-col gap-2 rounded-lg border border-accent-2 p-4 transition-colors duration-150 hover:bg-accent-1'
               >
                 <div className='flex items-center gap-1'>
                   {icon}
                   <div className='text-sm font-bold'>{title}</div>
                 </div>
-                <div className='text-4xl font-black text-hong-fg'>
+                <div className='text-4xl font-black text-accent-fg'>
                   {value ? value : <Skeleton className='h-10' />}
                 </div>
               </a>

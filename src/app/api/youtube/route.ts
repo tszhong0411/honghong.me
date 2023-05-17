@@ -3,6 +3,8 @@ import { NextResponse } from 'next/server'
 
 import googleAuth from '@/lib/google'
 
+export const dynamic = 'force-dynamic'
+
 export const GET = async () => {
   const auth = await googleAuth.getClient()
   const youtube = google.youtube({

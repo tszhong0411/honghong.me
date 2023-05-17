@@ -1,5 +1,6 @@
 'use client'
 
+import { Skeleton } from '@tszhong0411/ui'
 import { motion } from 'framer-motion'
 import React from 'react'
 import Confetti from 'react-confetti'
@@ -7,8 +8,6 @@ import { useDebounce, useWindowSize } from 'react-use'
 import useSWR from 'swr'
 
 import fetcher from '@/lib/fetcher'
-
-import Skeleton from '@/components/Skeleton'
 
 import { Likes } from '@/types'
 type LikeButtonProps = {
@@ -109,7 +108,11 @@ const LikeButton = (props: LikeButtonProps) => {
             </mask>
           </defs>
           <g mask='url(#mask)'>
-            <rect width='20' height='20' className='fill-[#4b5563]'></rect>
+            <rect
+              width='20'
+              height='20'
+              className='fill-[#c4c1c1] dark:fill-[#4b5563]'
+            ></rect>
             <motion.rect
               fill='url(#gradient)'
               width='16'

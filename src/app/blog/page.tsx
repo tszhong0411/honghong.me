@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 
 import getAllPosts from '@/lib/mdx'
 
-import FilteredPosts from '@/components/FilteredPosts'
-import PageTitle from '@/components/PageTitle'
+import FilteredPosts from '@/components/filtered-posts'
+import PageTitle from '@/components/page-title'
 
 import { site } from '@/config/site'
 

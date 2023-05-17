@@ -5,7 +5,7 @@ import React from 'react'
 
 import { useFormattedDate } from '@/hooks'
 
-import ViewCounter from '@/components/ViewCounter'
+import ViewCounter from '@/components/view-counter'
 
 import CommentCounter from './comment-counter'
 

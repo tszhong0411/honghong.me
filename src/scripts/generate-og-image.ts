@@ -8,7 +8,7 @@ import { allBlogPosts } from '../../.contentlayer/generated/index.mjs'
 const OG_IMAGE_PATH = './public/static/images/og/posts'
 const OG_IMAGE_WEBSITE = 'https://og-image.honghong.me'
 
-;(async () => {
+const generateOGImage = async () => {
   for (let i = 0; i < allBlogPosts.length; i++) {
     const post = allBlogPosts[i]
 
@@ -47,4 +47,6 @@ const OG_IMAGE_WEBSITE = 'https://og-image.honghong.me'
       process.exit(1)
     }
   }
-})()
+}
+
+generateOGImage()

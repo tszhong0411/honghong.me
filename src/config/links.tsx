@@ -11,7 +11,6 @@ import {
   IconPencil,
   IconUserCircle,
 } from '@tabler/icons-react'
-import type { Route } from 'next'
 
 type HeroLinks = {
   id: string
@@ -22,14 +21,14 @@ type HeroLinks = {
 
 type HeaderLinks = {
   icon: React.ReactNode
-  href: Route | URL
+  href: string
   text: string
 }[]
 
 type FooterLinks = {
   id: number
   links: {
-    href: Route | URL
+    href: string
     title: string
   }[]
 }[]
@@ -41,32 +40,32 @@ type FooterSocialMediaLinks = {
 
 export const HEADER_LINKS: HeaderLinks = [
   {
-    icon: <IconPencil />,
+    icon: <IconPencil size={14} />,
     href: '/blog',
     text: 'Blog',
   },
   {
-    icon: <IconMessageCircle />,
+    icon: <IconMessageCircle size={14} />,
     href: '/guestbook',
     text: 'Guestbook',
   },
   {
-    icon: <IconChartBar />,
+    icon: <IconChartBar size={14} />,
     href: '/dashboard',
     text: 'Dashboard',
   },
   {
-    icon: <IconFlame />,
+    icon: <IconFlame size={14} />,
     href: '/projects',
     text: 'Projects',
   },
   {
-    icon: <IconUserCircle />,
+    icon: <IconUserCircle size={14} />,
     href: '/about',
     text: 'About',
   },
   {
-    icon: <IconDeviceDesktop />,
+    icon: <IconDeviceDesktop size={14} />,
     href: '/uses',
     text: 'Uses',
   },
@@ -110,7 +109,7 @@ export const FOOTER_LINKS: FooterLinks = [
         title: 'Projects',
       },
       {
-        href: '/design',
+        href: 'https://ui.honghong.me',
         title: 'Design',
       },
     ],

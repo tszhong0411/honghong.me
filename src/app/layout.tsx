@@ -1,20 +1,19 @@
+import { cx } from '@tszhong0411/utils'
 import { Analytics } from '@vercel/analytics/react'
-import clsx from 'clsx'
 import type { Metadata } from 'next'
 import { Fira_Code, Inter, Noto_Sans_TC } from 'next/font/google'
 import '@/styles/globals.css'
 
-import KBar from '@/components/KBar'
-import Footer from '@/components/Layout/Footer'
-import Header from '@/components/Layout/Header'
+import Footer from '@/components/footer'
+import Header from '@/components/header'
+import Providers from '@/components/providers'
+import Toaster from '@/components/toaster'
 
 import { site } from '@/config/site'
 
-import CustomToaster from './custom-toaster'
-
-import { WithChildren } from '@/types'
-
-type RootLayoutProps = WithChildren
+type RootLayoutProps = {
+  children: React.ReactNode
+}
 
 export const metadata: Metadata = {
   title: {
@@ -96,7 +95,7 @@ const RootLayout = (props: RootLayoutProps) => {
   return (
     <html
       lang='en-US'
-      className={clsx(
+      className={cx(
         inter.variable,
         notoSansTC.variable,
         firaCode.variable,
@@ -104,14 +103,14 @@ const RootLayout = (props: RootLayoutProps) => {
       )}
     >
       <body>
-        <KBar>
+        <Providers>
           <Header />
           <main className='relative mx-auto mb-16 max-w-4xl px-8 py-24'>
             {children}
           </main>
-          <CustomToaster />
+          <Toaster />
           <Footer />
-        </KBar>
+        </Providers>
         <Analytics />
       </body>
     </html>

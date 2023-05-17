@@ -4,8 +4,8 @@ import Link from 'next/link'
 
 import getIconByName from '@/lib/get-icon-by-name'
 
-import Image from '@/components/MDXComponents/Image'
-import PageTitle from '@/components/PageTitle'
+import Image from '@/components/mdx/image'
+import PageTitle from '@/components/page-title'
 
 import { site } from '@/config/site'
 
@@ -52,7 +52,7 @@ const ProjectsPage = () => {
             <Link
               key={_id}
               href={`/projects/${slug}`}
-              className='flex flex-col rounded-lg border border-accent-2 p-4 transition-all duration-300 hover:scale-105 hover:bg-accent-1 md:flex-row'
+              className='flex flex-col rounded-lg border border-accent-2 p-4 transition-all duration-150 hover:scale-105 hover:bg-accent-1 md:flex-row'
             >
               <Image
                 src={image}
@@ -64,7 +64,7 @@ const ProjectsPage = () => {
               />
               <div className='flex-1 px-2 py-4 md:px-4 md:py-2'>
                 <div>
-                  <h2 className='text-2xl font-bold text-hong-fg'>{name}</h2>
+                  <h2 className='text-2xl font-bold text-accent-fg'>{name}</h2>
                   <div className='text-accent-5'>{description}</div>
                 </div>
                 <div className='mt-[5px] flex flex-wrap gap-[7px]'>

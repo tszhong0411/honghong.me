@@ -3,6 +3,8 @@ import { NextResponse } from 'next/server'
 
 import { site } from '@/config/site'
 
+export const dynamic = 'force-dynamic'
+
 export const GET = async () => {
   const octokit = new Octokit({
     auth: process.env.GITHUB_TOKEN,

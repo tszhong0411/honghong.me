@@ -1,5 +1,14 @@
 'use client'
 
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogTrigger,
+  Button,
+  buttonVariants,
+} from '@tszhong0411/ui'
 import dayjs from 'dayjs'
 import { DefaultSession } from 'next-auth'
 import React from 'react'
@@ -8,8 +17,7 @@ import useSWR from 'swr'
 
 import fetcher from '@/lib/fetcher'
 
-import Image from '@/components/MDXComponents/Image'
-import Modal from '@/components/Modal'
+import Image from '@/components/mdx/image'
 
 import Loader from './loader'
 
@@ -91,39 +99,29 @@ const Messages = (props: MessagesProps) => {
             <div className='break-words pl-[52px]'>{body}</div>
             {user && created_by === user.name && (
               <div className='mt-4 flex justify-end'>
-                <Modal>
-                  <Modal.Trigger>
-                    <button
-                      className='rounded-lg border border-white bg-white px-4 py-2 text-black transition-colors duration-300 hover:bg-black hover:text-white'
+                <AlertDialog>
+                  <AlertDialogTrigger asChild>
+                    <Button
                       disabled={isDeleting}
+                      variant='danger'
                       type='button'
                     >
                       Delete
-                    </button>
-                  </Modal.Trigger>
-                  <Modal.Content>
+                    </Button>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent>
                     <div className='mb-2'>Delete a message</div>
                     <div className='flex justify-end gap-2'>
-                      <Modal.Close>
-                        <button
-                          className='rounded-lg border border-white bg-white px-4 py-2 text-black transition-colors duration-300 hover:bg-black hover:text-white'
-                          type='button'
-                        >
-                          Cancel
-                        </button>
-                      </Modal.Close>
-                      <Modal.Close>
-                        <button
-                          className='rounded-lg border border-white bg-white px-4 py-2 text-black transition-colors duration-300 hover:bg-black hover:text-white'
-                          onClick={() => deleteHandler(id.toString())}
-                          type='button'
-                        >
-                          Delete
-                        </button>
-                      </Modal.Close>
+                      <AlertDialogCancel>Cancel</AlertDialogCancel>
+                      <AlertDialogAction
+                        onClick={() => deleteHandler(id.toString())}
+                        className={buttonVariants({ variant: 'danger' })}
+                      >
+                        Delete
+                      </AlertDialogAction>
                     </div>
-                  </Modal.Content>
-                </Modal>
+                  </AlertDialogContent>
+                </AlertDialog>
               </div>
             )}
           </div>

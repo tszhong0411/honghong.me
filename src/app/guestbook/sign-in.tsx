@@ -1,17 +1,18 @@
 'use client'
 
+import { Button } from '@tszhong0411/ui'
 import { signIn } from 'next-auth/react'
 
 const SignIn = () => {
   return (
     <>
-      <button
-        className='rounded-lg border border-white bg-white px-4 py-2 text-black transition-colors duration-300 hover:bg-black hover:text-white'
+      <Button
+        className='inline-block'
         onClick={() => signIn('github')}
         type='button'
       >
         Login
-      </button>
+      </Button>
       <span className='ml-2'>to continue leaving a message</span>
     </>
   )

@@ -3,7 +3,7 @@ import { getServerSession } from 'next-auth'
 
 import { authOptions } from '@/lib/auth'
 
-import PageTitle from '@/components/PageTitle'
+import PageTitle from '@/components/page-title'
 
 import { site } from '@/config/site'
 

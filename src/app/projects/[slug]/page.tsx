@@ -1,10 +1,9 @@
 import { allProjects } from 'contentlayer/generated'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { useMDXComponent } from 'next-contentlayer/hooks'
 
-import MDXComponents from '@/components/MDXComponents'
-import Image from '@/components/MDXComponents/Image'
+import Mdx from '@/components/mdx'
+import Image from '@/components/mdx/image'
 
 import { site } from '@/config/site'
 
@@ -66,8 +65,6 @@ const ProjectPage = (props: ProjectPageProps) => {
     notFound()
   }
 
-  const MDXComponent = useMDXComponent(project.body.code)
-
   const { name, image } = project
 
   return (
@@ -81,13 +78,7 @@ const ProjectPage = (props: ProjectPageProps) => {
         className='my-12 border border-accent-2'
         rounded='rounded-lg'
       />
-      <div className='prose prose-invert w-full max-w-none'>
-        <MDXComponent
-          components={{
-            ...MDXComponents,
-          }}
-        />
-      </div>
+      <Mdx code={project.body.code} />
     </>
   )
 }

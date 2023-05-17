@@ -1,6 +1,10 @@
 import React from 'react'
 
-import { Headings } from '@/types'
+type Headings = {
+  id: string
+  title: string
+  level: number
+}[]
 
 export const useHeadings = () => {
   const [headings, setHeadings] = React.useState<Headings>([])

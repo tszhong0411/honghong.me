@@ -1,24 +1,20 @@
 import {
-  IconBrandFirebase,
-  IconBrandRadixUi,
-  IconFriends,
-  IconLayoutCollage,
-} from '@tabler/icons-react'
-import {
   IconBook2,
-  IconBrandTailwind,
-  IconChecks,
-  IconLink,
-  IconPencil,
-  IconPhoto,
-  IconTools,
-} from '@tabler/icons-react'
-import {
+  IconBrandFirebase,
   IconBrandNextjs,
   IconBrandPlanetscale,
   IconBrandPrisma,
+  IconBrandRadixUi,
+  IconBrandTailwind,
   IconBrandTypescript,
+  IconChecks,
+  IconFriends,
+  IconLayoutCollage,
+  IconLink,
   IconMarkdown,
+  IconPencil,
+  IconPhoto,
+  IconTools,
 } from '@tabler/icons-react'
 
 const getIconByName = (name: string) => {

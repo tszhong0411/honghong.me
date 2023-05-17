@@ -1,13 +1,17 @@
 'use client'
 
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+  Button,
+  Textarea,
+} from '@tszhong0411/ui'
 import { DefaultSession } from 'next-auth'
 import { signOut } from 'next-auth/react'
 import React from 'react'
 import { toast } from 'react-hot-toast'
-import TextareaAutosize from 'react-textarea-autosize'
 import { useSWRConfig } from 'swr'
-
-import Image from '@/components/MDXComponents/Image'
 
 type FormProps = {
   user: DefaultSession['user']
@@ -54,38 +58,30 @@ const Form = (props: FormProps) => {
 
   return (
     <>
-      <div className='mb-2 flex'>
-        <Image
-          src={user?.image as string}
-          width={40}
-          height={40}
-          alt={user?.name as string}
-          className='h-10 w-10'
-          rounded='rounded-full'
-        />
-        <TextareaAutosize
-          className='ml-3 flex-1 rounded-md border border-accent-2 bg-hong-bg px-3 py-2 transition-colors duration-200 ease-linear focus:border-accent-5 focus:outline-none'
+      <div className='mb-2 flex gap-3'>
+        <Avatar>
+          <AvatarImage
+            src={user?.image as string}
+            width={40}
+            height={40}
+            alt={user?.name as string}
+            className='h-10 w-10'
+          />
+          <AvatarFallback>TH</AvatarFallback>
+        </Avatar>
+        <Textarea
           placeholder='Your message ...'
           value={value}
           onChange={(e) => setValue(e.target.value)}
         />
       </div>
       <div className='flex justify-end gap-2'>
-        <button
-          className='rounded-lg border border-white bg-white px-4 py-2 text-black transition-colors duration-300 hover:bg-black hover:text-white'
-          onClick={() => signOut()}
-          type='button'
-        >
+        <Button variant='outline' onClick={() => signOut()} type='button'>
           Logout
-        </button>
-        <button
-          className='rounded-lg border border-white bg-white px-4 py-2 text-black transition-colors duration-300 hover:bg-black hover:text-white'
-          onClick={submitHandler}
-          type='button'
-          disabled={isLoading}
-        >
+        </Button>
+        <Button onClick={submitHandler} type='button' disabled={isLoading}>
           Submit
-        </button>
+        </Button>
       </div>
     </>
   )

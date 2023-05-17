@@ -50,7 +50,7 @@ const Header = (props: HeaderProps) => {
             target='_blank'
             rel='noopener noreferrer'
             href={homepage}
-            className='animated flex items-center'
+            className='flex items-center'
           >
             <IconHome size={20} className='mr-2 inline-block' />
             {homepage}
@@ -60,7 +60,7 @@ const Header = (props: HeaderProps) => {
           target='_blank'
           rel='noopener noreferrer'
           href={github}
-          className='animated flex items-center'
+          className='flex items-center'
         >
           <IconBrandGithub size={20} className='mr-2 inline-block' />
           {site.githubUsername}/{repo}

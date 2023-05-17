@@ -1,10 +1,9 @@
 import { allPages } from 'contentlayer/generated'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { useMDXComponent } from 'next-contentlayer/hooks'
 
-import MDXComponents from '@/components/MDXComponents'
-import PageTitle from '@/components/PageTitle'
+import Mdx from '@/components/mdx'
+import PageTitle from '@/components/page-title'
 
 import { site } from '@/config/site'
 
@@ -49,7 +48,6 @@ const getPage = () => {
 
 const UsesPage = () => {
   const page = getPage()
-  const MDXComponent = useMDXComponent(page.body.code)
 
   return (
     <>
@@ -58,13 +56,7 @@ const UsesPage = () => {
         description='This is the equipment I currently use for gaming, programming, making
         videos, and every day.'
       />
-      <div className='prose prose-invert w-full max-w-none'>
-        <MDXComponent
-          components={{
-            ...MDXComponents,
-          }}
-        />
-      </div>
+      <Mdx code={page.body.code} />
     </>
   )
 }

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import PageTitle from '@/components/PageTitle'
+import PageTitle from '@/components/page-title'
 
 import { site } from '@/config/site'
 

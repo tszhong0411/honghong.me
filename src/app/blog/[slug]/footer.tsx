@@ -36,7 +36,7 @@ const Footer = (props: FooterProps) => {
         target='_blank'
         rel='noopener noreferrer'
         href={editURL(slug)}
-        className='animated text-sm'
+        className='text-sm'
       >
         Edit on GitHub
       </a>
@@ -45,7 +45,7 @@ const Footer = (props: FooterProps) => {
           target='_blank'
           rel='noopener noreferrer'
           href={redditShareURL(slug, title)}
-          className='flex h-8 w-8 items-center justify-center rounded-lg transition-colors duration-300 hover:bg-accent-2'
+          className='flex h-8 w-8 items-center justify-center rounded-lg transition-colors duration-150 hover:bg-accent-2'
         >
           <IconBrandReddit size={18} />
         </a>
@@ -53,7 +53,7 @@ const Footer = (props: FooterProps) => {
           target='_blank'
           rel='noopener noreferrer'
           href={twitterShareURL(slug, title)}
-          className='flex h-8 w-8 items-center justify-center rounded-lg transition-colors duration-300 hover:bg-accent-2'
+          className='flex h-8 w-8 items-center justify-center rounded-lg transition-colors duration-150 hover:bg-accent-2'
         >
           <IconBrandTwitter size={18} />
         </a>
@@ -61,7 +61,7 @@ const Footer = (props: FooterProps) => {
           target='_blank'
           rel='noopener noreferrer'
           href={facebookShareURL(slug)}
-          className='flex h-8 w-8 items-center justify-center rounded-lg transition-colors duration-300 hover:bg-accent-2'
+          className='flex h-8 w-8 items-center justify-center rounded-lg transition-colors duration-150 hover:bg-accent-2'
         >
           <IconBrandFacebook size={18} />
         </a>

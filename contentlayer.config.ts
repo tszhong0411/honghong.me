@@ -1,3 +1,4 @@
+import { rehypePrettyCode } from '@tszhong0411/utils'
 import {
   defineDocumentType,
   defineNestedType,
@@ -5,12 +6,8 @@ import {
 } from 'contentlayer/source-files'
 import { s } from 'hastscript'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
-
-import { rehypePrettyCodeOptions } from './src/config/rehype-pretty-code-options'
-import remarkImgToJsx from './src/lib/remark-img-to-jsx'
 
 const Techstack = defineNestedType(() => ({
   name: 'Techstack',
@@ -132,10 +129,10 @@ export default makeSource({
   contentDirPath: 'src/contents',
   documentTypes: [Project, BlogPost, Pages],
   mdx: {
-    remarkPlugins: [remarkGfm, remarkImgToJsx],
+    remarkPlugins: [remarkGfm],
     rehypePlugins: [
       rehypeSlug,
-      [rehypePrettyCode, rehypePrettyCodeOptions],
+      ...rehypePrettyCode,
       [
         rehypeAutolinkHeadings,
         {
