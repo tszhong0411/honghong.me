@@ -34,13 +34,26 @@ export const metadata: Metadata = {
   },
   manifest: '/static/favicon/site.webmanifest',
   twitter: {
-    title: site.name,
     card: 'summary_large_image',
+    title: site.name,
+    description: site.description,
     site: '@TszhongLai0411',
+    siteId: '1152256803746377730',
     creator: '@TszhongLai0411',
+    creatorId: '1152256803746377730',
+    images: [`${site.url}/static/images/og/og.png`],
   },
   keywords: site.keywords,
-  themeColor: '#000',
+  themeColor: [
+    {
+      media: '(prefers-color-scheme: light)',
+      color: '#ffffff',
+    },
+    {
+      media: '(prefers-color-scheme: dark)',
+      color: '#000000',
+    },
+  ],
   creator: 'tszhong0411',
   openGraph: {
     url: `${site.url}`,
