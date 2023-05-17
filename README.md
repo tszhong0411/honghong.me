@@ -66,8 +66,7 @@ SPOTIFY_REFRESH_TOKEN=
 
 # Google API (YouTube stats)
 # https://developers.google.com/youtube/v3/getting-started
-GOOGLE_PRIVATE_KEY=
-GOOGLE_CLIENT_EMAIL=
+GOOGLE_API_KEY=
 
 # Authentication
 # https://next-auth.js.org/getting-started/example
