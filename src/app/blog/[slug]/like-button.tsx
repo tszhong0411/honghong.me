@@ -2,9 +2,9 @@
 
 import { Skeleton } from '@tszhong0411/ui'
 import { motion } from 'framer-motion'
+import party from 'party-js'
 import React from 'react'
-import Confetti from 'react-confetti'
-import { useDebounce, useWindowSize } from 'react-use'
+import { useDebounce } from 'react-use'
 import useSWR from 'swr'
 
 import fetcher from '@/lib/fetcher'
@@ -16,8 +16,6 @@ type LikeButtonProps = {
 
 const LikeButton = (props: LikeButtonProps) => {
   const { slug } = props
-  const [position, setPosition] = React.useState<{ x: number; y: number }>()
-  const { width, height } = useWindowSize()
 
   const { data, isLoading, mutate } = useSWR<Likes>(
     `/api/likes?slug=${slug}`,
@@ -75,7 +73,9 @@ const LikeButton = (props: LikeButtonProps) => {
         onClick={(e) => {
           if (isLoading) return
           if (data?.currentUserLikes === 2) {
-            setPosition({ x: e.clientX, y: e.clientY })
+            party.confetti(e.currentTarget, {
+              count: party.variation.range(20, 30),
+            })
           }
           if (!data || data.currentUserLikes >= 3) return
 
@@ -130,26 +130,6 @@ const LikeButton = (props: LikeButtonProps) => {
             ></motion.rect>
           </g>
         </svg>
-        {!!position && (
-          <Confetti
-            style={{
-              position: 'fixed',
-              inset: 0,
-            }}
-            recycle={false}
-            width={width}
-            height={height}
-            confettiSource={{
-              x: position.x,
-              y: position.y,
-              h: 5,
-              w: 5,
-            }}
-            onConfettiComplete={() => {
-              setPosition(undefined)
-            }}
-          />
-        )}
       </button>
       {!isLoading ? (
         <div className='text-[22px] font-bold'>{data?.likes}</div>
