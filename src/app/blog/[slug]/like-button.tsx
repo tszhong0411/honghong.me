@@ -1,6 +1,7 @@
 'use client'
 
-import { Skeleton } from '@tszhong0411/ui'
+import { IconHeart } from '@tabler/icons-react'
+import { cx } from '@tszhong0411/utils'
 import { motion } from 'framer-motion'
 import party from 'party-js'
 import React from 'react'
@@ -16,6 +17,8 @@ type LikeButtonProps = {
 
 const LikeButton = (props: LikeButtonProps) => {
   const { slug } = props
+  const [isBreathing, setIsBreathing] = React.useState(false)
+  const [scale, setScale] = React.useState(1)
 
   const { data, isLoading, mutate } = useSWR<Likes>(
     `/api/likes?slug=${slug}`,
@@ -65,16 +68,29 @@ const LikeButton = (props: LikeButtonProps) => {
     [batchedLikes]
   )
 
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setIsBreathing(true)
+      setScale(1.2)
+      setTimeout(() => {
+        setIsBreathing(false)
+        setScale(1)
+      }, 1500)
+    }, 3000)
+
+    return () => clearInterval(interval)
+  }, [])
+
   return (
-    <div className='mt-12 flex flex-nowrap items-center justify-center gap-4'>
+    <div className='mt-12 flex justify-center'>
       <button
-        className='outline-none transition-transform duration-150 hover:scale-110'
+        className='relative h-12 w-24 rounded-lg bg-transparent before:absolute before:inset-0 before:rounded-lg before:bg-gradient-to-br before:from-[#7928ca] before:to-[#ff0080] before:content-[""]'
         type='button'
         onClick={(e) => {
           if (isLoading) return
           if (data?.currentUserLikes === 2) {
             party.confetti(e.currentTarget, {
-              count: party.variation.range(20, 30),
+              count: party.variation.range(30, 40),
             })
           }
           if (!data || data.currentUserLikes >= 3) return
@@ -83,59 +99,21 @@ const LikeButton = (props: LikeButtonProps) => {
         }}
         title='Like this post'
       >
-        <svg viewBox='0 0 20 20' className='w-[42px]'>
-          <defs>
-            <linearGradient id='gradient' x1='0%' y1='0%' x2='100%' y2='100%'>
-              <stop
-                offset='20%'
-                stopColor='rgb(250,51,81)'
-                stopOpacity={1}
-              ></stop>
-              <stop
-                offset='80%'
-                stopColor='rgb(255,121,44)'
-                stopOpacity={1}
-              ></stop>
-            </linearGradient>
-            <mask
-              id='mask'
-              maskUnits='userSpaceOnUse'
-              style={{
-                maskType: 'alpha',
-              }}
-            >
-              <path d='M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z'></path>
-            </mask>
-          </defs>
-          <g mask='url(#mask)'>
-            <rect
-              width='20'
-              height='20'
-              className='fill-[#c4c1c1] dark:fill-[#4b5563]'
-            ></rect>
-            <motion.rect
-              fill='url(#gradient)'
-              width='16'
-              height='16'
-              x='2'
-              y='2'
-              animate={String(data?.currentUserLikes)}
-              variants={{
-                '0': { translateY: 17 },
-                '1': { translateY: 12 },
-                '2': { translateY: 8 },
-                '3': { translateY: 1 },
-              }}
-              initial='0'
-            ></motion.rect>
-          </g>
-        </svg>
+        <motion.span
+          className='absolute inset-0 rounded-lg bg-gradient-to-br from-[#7928ca] to-[#ff0080] blur-xl'
+          animate={{ scale: isBreathing ? scale : 1 }}
+          transition={{ duration: 1, ease: 'linear' }}
+        />
+        <span className='absolute inset-px z-10 rounded-lg bg-accent-bg bg-clip-padding transition-colors duration-150 hover:bg-transparent'>
+          <div className='flex h-12 items-center justify-center gap-2 text-lg font-bold'>
+            <IconHeart
+              className={cx(data?.currentUserLikes === 3 && 'fill-accent-fg')}
+              size={20}
+            />
+            {!isLoading ? <div>{data?.likes}</div> : <div> -- </div>}
+          </div>
+        </span>
       </button>
-      {!isLoading ? (
-        <div className='text-[22px] font-bold'>{data?.likes}</div>
-      ) : (
-        <Skeleton className='h-[25px] w-[50px]' />
-      )}
     </div>
   )
 }
