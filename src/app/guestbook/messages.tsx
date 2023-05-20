@@ -61,7 +61,7 @@ const Messages = (props: MessagesProps) => {
 
     setIsDeleting(false)
     toast.dismiss(loading)
-    toast.success('Deleted sucessfully')
+    toast.success('Deleted successfully')
 
     mutate()
   }

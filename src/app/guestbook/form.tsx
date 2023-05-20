@@ -14,7 +14,7 @@ import { toast } from 'react-hot-toast'
 import { useSWRConfig } from 'swr'
 
 type FormProps = {
-  user: DefaultSession['user']
+  user: NonNullable<DefaultSession['user']>
 }
 
 const Form = (props: FormProps) => {
@@ -61,10 +61,10 @@ const Form = (props: FormProps) => {
       <div className='mb-2 flex gap-3'>
         <Avatar>
           <AvatarImage
-            src={user?.image as string}
+            src={user.image as string}
             width={40}
             height={40}
-            alt={user?.name as string}
+            alt={user.name as string}
             className='h-10 w-10'
           />
           <AvatarFallback>TH</AvatarFallback>
