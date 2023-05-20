@@ -84,7 +84,11 @@ const LikeButton = (props: LikeButtonProps) => {
   return (
     <div className='mt-12 flex justify-center'>
       <button
-        className='relative h-12 w-24 rounded-lg bg-transparent before:absolute before:inset-0 before:rounded-lg before:bg-gradient-to-br before:from-[#7928ca] before:to-[#ff0080] before:content-[""]'
+        className={cx([
+          'group relative h-12 w-24 rounded-lg bg-transparent',
+          'before:absolute before:inset-0 before:rounded-lg before:bg-gradient-to-br before:from-[#7928ca] before:to-[#ff0080] before:content-[""]',
+          '[&:hover_svg]:fill-accent-bg dark:[&:hover_svg]:fill-accent-fg',
+        ])}
         type='button'
         onClick={(e) => {
           if (isLoading) return
@@ -104,14 +108,17 @@ const LikeButton = (props: LikeButtonProps) => {
           animate={{ scale: isBreathing ? scale : 1 }}
           transition={{ duration: 1, ease: 'linear' }}
         />
-        <span className='absolute inset-px z-10 rounded-lg bg-accent-bg bg-clip-padding transition-colors duration-150 hover:bg-transparent'>
-          <div className='flex h-12 items-center justify-center gap-2 text-lg font-bold'>
-            <IconHeart
-              className={cx(data?.currentUserLikes === 3 && 'fill-accent-fg')}
-              size={20}
-            />
-            {!isLoading ? <div>{data?.likes}</div> : <div> -- </div>}
-          </div>
+        <span
+          className={cx([
+            'absolute inset-0.5 z-10 flex items-center justify-center gap-2 rounded-[7px] bg-accent-bg text-lg font-bold transition-[background-color] duration-150',
+            'group-hover:bg-transparent group-hover:text-accent-bg dark:group-hover:text-accent-fg',
+          ])}
+        >
+          <IconHeart
+            className={cx(data?.currentUserLikes === 3 && 'fill-accent-fg')}
+            size={20}
+          />
+          {!isLoading ? <div>{data?.likes}</div> : <div> -- </div>}
         </span>
       </button>
     </div>
