@@ -87,7 +87,6 @@ const LikeButton = (props: LikeButtonProps) => {
         className={cx([
           'group relative h-12 w-24 rounded-lg bg-transparent',
           'before:absolute before:inset-0 before:rounded-lg before:bg-gradient-to-br before:from-[#7928ca] before:to-[#ff0080] before:content-[""]',
-          '[&:hover_svg]:fill-accent-bg dark:[&:hover_svg]:fill-accent-fg',
         ])}
         type='button'
         onClick={(e) => {
@@ -115,7 +114,10 @@ const LikeButton = (props: LikeButtonProps) => {
           ])}
         >
           <IconHeart
-            className={cx(data?.currentUserLikes === 3 && 'fill-accent-fg')}
+            className={cx(
+              'group-hover:fill-accent-bg dark:group-hover:fill-accent-fg',
+              data?.currentUserLikes === 3 && 'fill-accent-fg'
+            )}
             size={20}
           />
           {!isLoading ? <div>{data?.likes}</div> : <div> -- </div>}
