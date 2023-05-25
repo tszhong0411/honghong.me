@@ -11,6 +11,7 @@ import useSWR from 'swr'
 import fetcher from '@/lib/fetcher'
 
 import { Likes } from '@/types'
+
 type LikeButtonProps = {
   slug: string
 }
