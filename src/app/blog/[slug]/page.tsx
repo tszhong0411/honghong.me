@@ -66,7 +66,7 @@ export const generateMetadata = (props: BlogPostPageProps): Metadata => {
 const BlogPostPage = (props: BlogPostPageProps) => {
   const { slug } = props.params
 
-  const post = allBlogPosts.find((post) => post.slug === slug)
+  const post = allBlogPosts.find((post) => post.slug === decodeURIComponent(slug))
 
   if (!post) {
     notFound()
