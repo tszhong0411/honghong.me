@@ -6,8 +6,8 @@ import { site } from '@/config/site'
 
 export const GET = async () => {
   const feed = new RSS({
-    title: '小康 Blog',
-    description: "小康's personal website and blog",
+    title: "Hong's Blog",
+    description: 'A personal website and blog by Hong.',
     site_url: `${site.url}`,
     feed_url: `${site.url}/feed.xml`,
     language: 'en-US',
@@ -26,7 +26,7 @@ export const GET = async () => {
       url: `${site.url}/blog/${slug}`,
       date: date,
       description: summary,
-      author: '小康',
+      author: 'Hong',
     })
   })
 

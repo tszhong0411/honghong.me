@@ -18,11 +18,11 @@ export const site: Site = {
       ? 'https://honghong.me'
       : 'http://localhost:3000',
   logo: 'https://honghong.me/static/images/avatar.png',
-  title: '小康',
-  name: '小康',
+  title: 'Hong',
+  name: 'Hong',
   keywords: ['tszhong0411', 'Next.js', 'React', 'TypeScript', 'Node.js'],
-  titleTemplate: '- 小康',
-  description: '小康 – 17 yrs • Student • Full-stack Developer',
+  titleTemplate: '- Hong',
+  description: 'Hong • 17 yrs • Student • Full-stack Developer',
   githubUsername: 'tszhong0411',
   favicons: [
     {

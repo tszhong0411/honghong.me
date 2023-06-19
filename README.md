@@ -1,5 +1,5 @@
 <h1 align="center">
- 小康 blog
+ honghong.me
 </h1>
 
 <p align="center">
