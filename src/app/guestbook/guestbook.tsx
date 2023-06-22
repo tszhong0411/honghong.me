@@ -2,6 +2,7 @@ import { DefaultSession } from 'next-auth'
 
 import Form from './form'
 import Messages from './messages'
+import Pinned from './pinned'
 import SignIn from './sign-in'
 
 type GuestbookProps = {
@@ -13,6 +14,7 @@ const Guestbook = (props: GuestbookProps) => {
 
   return (
     <div className='mx-auto max-w-lg'>
+      <Pinned />
       {!user && <SignIn />}
       {user && <Form user={user} />}
       <Messages user={user} />

@@ -71,7 +71,19 @@ export const POST = async (req: Request) => {
 
 export const DELETE = async (req: Request) => {
   const session = await getServerSession()
-  const { id } = await req.json()
+  const { searchParams } = new URL(req.url)
+  const id = searchParams.get('id')
+
+  if (!id) {
+    return NextResponse.json(
+      {
+        error: 'Message ID is required',
+      },
+      {
+        status: 400,
+      }
+    )
+  }
 
   const message = await prisma.guestbook.findUnique({
     where: {

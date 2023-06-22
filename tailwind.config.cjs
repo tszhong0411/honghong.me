@@ -8,6 +8,14 @@ module.exports = {
     './contentlayer.config.ts',
   ],
   darkMode: 'class',
+  theme: {
+    extend: {
+      backgroundImage: {
+        'rainbow-gradient':
+          'linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%)',
+      },
+    },
+  },
   presets: [tailwindPreset],
   plugins: [require('@tailwindcss/typography')],
 }

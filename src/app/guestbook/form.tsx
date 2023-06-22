@@ -5,6 +5,7 @@ import {
   AvatarFallback,
   AvatarImage,
   Button,
+  Skeleton,
   Textarea,
 } from '@tszhong0411/ui'
 import { DefaultSession } from 'next-auth'
@@ -67,7 +68,9 @@ const Form = (props: FormProps) => {
             alt={user.name as string}
             className='h-10 w-10'
           />
-          <AvatarFallback>TH</AvatarFallback>
+          <AvatarFallback>
+            <Skeleton className='h-10 w-10 rounded-full' />
+          </AvatarFallback>
         </Avatar>
         <Textarea
           placeholder='Your message ...'

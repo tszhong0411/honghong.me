@@ -40,14 +40,8 @@ const Messages = (props: MessagesProps) => {
     setIsDeleting(true)
     const loading = toast.loading('Deleting...')
 
-    const res = await fetch('/api/guestbook', {
+    const res = await fetch(`/api/guestbook?id=${id}`, {
       method: 'DELETE',
-      body: JSON.stringify({
-        id,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
     })
 
     if (!res.ok) {
