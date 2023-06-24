@@ -1,6 +1,6 @@
 'use client'
 
-import { Kbd as _Kbd } from '@tszhong0411/ui'
+import { Kbd as _Kbd } from '@codewithhong/ui'
 
 const Kbd = _Kbd
 

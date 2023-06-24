@@ -118,19 +118,19 @@ export const FOOTER_LINKS: FooterLinks = [
 
 export const FOOTER_SOCIAL_MEDIA: FooterSocialMediaLinks = [
   {
-    href: 'https://www.facebook.com/tszhonglai.0411/',
+    href: 'https://www.facebook.com/codewithhong/',
     title: 'Facebook',
   },
   {
-    href: 'https://www.instagram.com/tszhong0411/',
+    href: 'https://www.instagram.com/codewithhong/',
     title: 'Instagram',
   },
   {
-    href: 'https://github.com/tszHong0411',
+    href: 'https://github.com/codewithhong',
     title: 'GitHub',
   },
   {
-    href: 'https://www.youtube.com/@tszhong0411',
+    href: 'https://www.youtube.com/@codewithhong',
     title: 'YouTube',
   },
 ]
@@ -140,30 +140,30 @@ export const HERO_LINKS: HeroLinks = [
     id: 'github',
     label: 'GitHub',
     icon: <IconBrandGithub size={28} />,
-    href: 'https://github.com/tszhong0411',
+    href: 'https://github.com/codewithhong',
   },
   {
     id: 'instagram',
     label: 'Instagram',
     icon: <IconBrandInstagram size={28} />,
-    href: 'https://www.instagram.com/tszhong0411/',
+    href: 'https://www.instagram.com/codewithhong/',
   },
   {
     id: 'youtube',
     label: 'YouTube',
     icon: <IconBrandYoutube size={28} />,
-    href: 'https://www.youtube.com/@tszhong0411',
+    href: 'https://www.youtube.com/@codewithhong',
   },
   {
     id: 'facebook',
     label: 'Facebook',
     icon: <IconBrandFacebook size={28} />,
-    href: 'https://www.facebook.com/tszhonglai.0411/',
+    href: 'https://www.facebook.com/codewithhong/',
   },
   {
     id: 'twitter',
     label: 'Twitter',
     icon: <IconBrandTwitter size={28} />,
-    href: 'https://twitter.com/TszhongLai0411',
+    href: 'https://twitter.com/codewithhong',
   },
 ]

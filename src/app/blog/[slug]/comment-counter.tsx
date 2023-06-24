@@ -1,6 +1,6 @@
 'use client'
 
-import { Skeleton } from '@tszhong0411/ui'
+import { Skeleton } from '@codewithhong/ui'
 import React from 'react'
 import { useEvent } from 'react-use'
 

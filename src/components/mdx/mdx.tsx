@@ -1,6 +1,6 @@
 'use client'
 
-import { Alert, AlertDescription, AlertTitle, Kbd } from '@tszhong0411/ui'
+import { Alert, AlertDescription, AlertTitle, Kbd } from '@codewithhong/ui'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 
 import Image, { ImageProps } from './image'

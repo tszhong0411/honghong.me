@@ -1,4 +1,4 @@
-import { Logo } from '@tszhong0411/ui'
+import { Logo } from '@codewithhong/ui'
 import Link from 'next/link'
 import React from 'react'
 

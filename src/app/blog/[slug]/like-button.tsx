@@ -1,7 +1,7 @@
 'use client'
 
+import { cx } from '@codewithhong/utils'
 import { IconHeart } from '@tabler/icons-react'
-import { cx } from '@tszhong0411/utils'
 import { motion } from 'framer-motion'
 import party from 'party-js'
 import React from 'react'

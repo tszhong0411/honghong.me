@@ -20,10 +20,10 @@ export const site: Site = {
   logo: 'https://honghong.me/static/images/avatar.png',
   title: 'Hong',
   name: 'Hong',
-  keywords: ['tszhong0411', 'Next.js', 'React', 'TypeScript', 'Node.js'],
+  keywords: ['codewithhong', 'Next.js', 'React', 'TypeScript', 'Node.js'],
   titleTemplate: '- Hong',
   description: 'Hong • 17 yrs • Student • Full-stack Developer',
-  githubUsername: 'tszhong0411',
+  githubUsername: 'codewithhong',
   favicons: [
     {
       rel: 'icon',

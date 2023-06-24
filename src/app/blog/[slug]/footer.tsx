@@ -5,7 +5,7 @@ import {
 } from '@tabler/icons-react'
 
 const editURL = (slug: string) =>
-  `https://github.com/tszhong0411/honghong.me/blob/main/src/contents/blog/${slug}.mdx?plain=1`
+  `https://github.com/codewithhong/honghong.me/blob/main/src/contents/blog/${slug}.mdx?plain=1`
 
 const twitterShareURL = (slug: string, title: string) =>
   `https://twitter.com/intent/tweet?text=${title}&url=${encodeURIComponent(

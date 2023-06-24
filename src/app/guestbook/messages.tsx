@@ -8,7 +8,7 @@ import {
   AlertDialogTrigger,
   Button,
   buttonVariants,
-} from '@tszhong0411/ui'
+} from '@codewithhong/ui'
 import dayjs from 'dayjs'
 import { DefaultSession } from 'next-auth'
 import React from 'react'

@@ -3,15 +3,15 @@
 </h1>
 
 <p align="center">
-  <img src="https://socialify.git.ci/tszhong0411/honghong.me/image?forks=1&issues=1&logo=https://honghong.me/static/images/projects/blog/logo.png&name=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark">
+  <img src="https://socialify.git.ci/codewithhong/honghong.me/image?forks=1&issues=1&logo=https://honghong.me/static/images/projects/blog/logo.png&name=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark">
 </p>
 
 <p align="center">
     <a href="https://honghong.me" target="blank">View Online</a>
     ·
-    <a href="https://github.com/tszhong0411/honghong.me/issues/new/choose">Report Bug</a>
+    <a href="https://github.com/codewithhong/honghong.me/issues/new/choose">Report Bug</a>
     ·
-    <a href="https://github.com/tszhong0411/honghong.me/issues/new/choose">Request New Feature</a>
+    <a href="https://github.com/codewithhong/honghong.me/issues/new/choose">Request New Feature</a>
 </p>
 
 ## 🌍 honghong.me
@@ -33,7 +33,7 @@
 1. Clone the repository
 
 ```sh
-git clone https://github.com/tszhong0411/honghong.me.git
+git clone https://github.com/codewithhong/honghong.me.git
 ```
 
 2. Go to the project directory

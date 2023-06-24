@@ -1,4 +1,4 @@
-import { cx } from '@tszhong0411/utils'
+import { cx } from '@codewithhong/utils'
 import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
 import { Fira_Code, Inter, Noto_Sans_TC } from 'next/font/google'
@@ -38,9 +38,9 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: site.name,
     description: site.description,
-    site: '@TszhongLai0411',
+    site: '@codewithhong',
     siteId: '1152256803746377730',
-    creator: '@TszhongLai0411',
+    creator: '@codewithhong',
     creatorId: '1152256803746377730',
     images: [`${site.url}/static/images/og/og.png`],
   },
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
       color: '#000000',
     },
   ],
-  creator: 'tszhong0411',
+  creator: 'codewithhong',
   openGraph: {
     url: `${site.url}`,
     type: 'website',
