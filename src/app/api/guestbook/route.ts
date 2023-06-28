@@ -71,8 +71,7 @@ export const POST = async (req: Request) => {
 
 export const DELETE = async (req: Request) => {
   const session = await getServerSession()
-  const { searchParams } = new URL(req.url)
-  const id = searchParams.get('id')
+  const { id } = await req.json()
 
   if (!id) {
     return NextResponse.json(
