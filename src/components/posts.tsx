@@ -5,16 +5,16 @@ import PostCard from '@/components/post-card'
 
 import { BlogPostCore } from '@/types'
 
-type BlogPostsProps = {
+type PostsProps = {
   posts: BlogPostCore[]
 }
 
-const BlogPosts = (props: BlogPostsProps) => {
+const Posts = (props: PostsProps) => {
   const { posts } = props
 
   return (
     <>
-      <h2 className='mb-8 text-3xl font-bold'>Blog posts</h2>
+      <h2 className='mb-8 text-3xl font-bold'>Posts</h2>
       <div className='grid gap-4 sm:grid-cols-2'>
         {posts.map((post) => (
           <PostCard key={post._id} {...post} />
@@ -33,4 +33,4 @@ const BlogPosts = (props: BlogPostsProps) => {
   )
 }
 
-export default BlogPosts
+export default Posts

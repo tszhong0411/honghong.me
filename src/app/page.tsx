@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 
 import getAllPosts from '@/lib/mdx'
 
-import BlogPosts from '@/components/blog-posts'
 import Hero from '@/components/hero'
+import Posts from '@/components/posts'
 import Projects from '@/components/projects'
 
 import { site } from '@/config/site'
@@ -23,7 +23,7 @@ const HomePage = () => {
     <>
       <Hero />
       <Projects />
-      <BlogPosts posts={posts} />
+      <Posts posts={posts} />
     </>
   )
 }
