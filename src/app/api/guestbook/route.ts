@@ -58,10 +58,36 @@ export const POST = async (req: Request) => {
   await prisma.guestbook.create({
     data: {
       email,
-      body: message.slice(0, 500),
+      body: message,
       image,
       created_by: name,
     },
+  })
+
+  await fetch(process.env.DISCORD_WEBHOOK_URL as string, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      content: null,
+      embeds: [
+        {
+          title: 'New comment!',
+          description: message,
+          url: 'https://honghong.me/guestbook',
+          color: 122210,
+          author: {
+            name: name,
+            icon_url: image,
+          },
+          timestamp: new Date().toISOString(),
+        },
+      ],
+      username: 'Blog',
+      avatar_url: 'https://honghong.me/static/images/projects/blog/logo.png',
+      attachments: [],
+    }),
   })
 
   return NextResponse.json({
