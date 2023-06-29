@@ -174,14 +174,14 @@ export default makeSource({
           },
           onVisitHighlightedLine(node: Element) {
             if (node.properties) {
-              node.properties.className =
-                '!border-l-[#ff7b81] dark:!border-l-[#ad0008] bg-[#ffd8d8] dark:bg-[#401113] before:!text-accent-6'
+              node.properties.className +=
+                ' !border-l-[#ff7b81] dark:!border-l-[#ad0008] bg-[#ffd8d8] dark:bg-[#401113] before:!text-accent-6'
             }
           },
           onVisitHighlightedWord(node: Element) {
             if (node.properties) {
-              node.properties.className =
-                'bg-[#ffd8d8] dark:bg-[#401113] p-1 rounded-md'
+              node.properties.className +=
+                ' bg-[#ffd8d8] dark:bg-[#401113] p-1 rounded-md'
             }
           },
         },
