@@ -1,16 +1,6 @@
 'use client'
 
 import {
-  Button,
-  CommandDialog,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator,
-} from '@codewithhong/ui'
-import {
   IconBrandFacebook,
   IconBrandGithub,
   IconBrandInstagram,
@@ -21,6 +11,16 @@ import {
   IconMoon,
   IconSun,
 } from '@tabler/icons-react'
+import {
+  Button,
+  CommandDialog,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator,
+} from '@tszhong0411/ui'
 import { useTheme } from 'next-themes'
 import React from 'react'
 import toast from 'react-hot-toast'
@@ -89,7 +89,7 @@ const CommandMenu = () => {
           onSelect: () =>
             runCommand(() =>
               window.open(
-                'https://github.com/codewithhong/honghong.me',
+                'https://github.com/tszhong0411/honghong.me',
                 '_blank'
               )
             ),
@@ -104,7 +104,7 @@ const CommandMenu = () => {
           icon: <IconBrandGithub size={16} className='mr-2' />,
           onSelect: () =>
             runCommand(() =>
-              window.open('https://github.com/codewithhong', '_blank')
+              window.open('https://github.com/tszhong0411', '_blank')
             ),
         },
         {
@@ -112,7 +112,7 @@ const CommandMenu = () => {
           icon: <IconBrandInstagram size={16} className='mr-2' />,
           onSelect: () =>
             runCommand(() =>
-              window.open('https://instagram.com/codewithhong/', '_blank')
+              window.open('https://instagram.com/tszhong0411/', '_blank')
             ),
         },
         {
@@ -120,7 +120,7 @@ const CommandMenu = () => {
           icon: <IconBrandYoutube size={16} className='mr-2' />,
           onSelect: () =>
             runCommand(() =>
-              window.open('https://youtube.com/@codewithhong', '_blank')
+              window.open('https://youtube.com/@tszhong0411', '_blank')
             ),
         },
         {
@@ -128,7 +128,7 @@ const CommandMenu = () => {
           icon: <IconBrandFacebook size={16} className='mr-2' />,
           onSelect: () =>
             runCommand(() =>
-              window.open('https://www.facebook.com/codewithhong/', '_blank')
+              window.open('https://www.facebook.com/tszhong0411/', '_blank')
             ),
         },
       ],

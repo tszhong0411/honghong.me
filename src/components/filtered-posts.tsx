@@ -1,7 +1,7 @@
 'use client'
 
-import { Input, Label } from '@codewithhong/ui'
 import { IconSearch } from '@tabler/icons-react'
+import { Input, Label } from '@tszhong0411/ui'
 import React from 'react'
 
 import PostCard from './post-card'

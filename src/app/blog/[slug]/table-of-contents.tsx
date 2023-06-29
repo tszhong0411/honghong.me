@@ -1,7 +1,7 @@
 'use client'
 
-import { cx } from '@codewithhong/utils'
 import { IconList } from '@tabler/icons-react'
+import { cx } from '@tszhong0411/utils'
 import React from 'react'
 
 import { useHeadings, useScrollspy } from '@/hooks'

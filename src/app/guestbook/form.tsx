@@ -7,7 +7,7 @@ import {
   Button,
   Skeleton,
   Textarea,
-} from '@codewithhong/ui'
+} from '@tszhong0411/ui'
 import { DefaultSession } from 'next-auth'
 import { signOut } from 'next-auth/react'
 import React from 'react'

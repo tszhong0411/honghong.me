@@ -1,6 +1,5 @@
 'use client'
 
-import { Skeleton } from '@codewithhong/ui'
 import {
   IconBrandGithub,
   IconBrandYoutube,
@@ -8,6 +7,7 @@ import {
   IconPencil,
   IconUser,
 } from '@tabler/icons-react'
+import { Skeleton } from '@tszhong0411/ui'
 import dayjs from 'dayjs'
 import React from 'react'
 import useSWR from 'swr'
@@ -56,7 +56,7 @@ const Items = () => {
     },
     {
       title: 'Coding Hours',
-      link: 'https://wakatime.com/@codewithhong',
+      link: 'https://wakatime.com/@tszhong0411',
       value: wakatimeData?.seconds
         ? `${Math.round(wakatimeData.seconds / 60 / 60)} hrs`
         : undefined,
@@ -64,25 +64,25 @@ const Items = () => {
     },
     {
       title: 'YouTube Subscribers',
-      link: 'https://youtube.com/@codewithhong',
+      link: 'https://youtube.com/@tszhong0411',
       value: youtubeData?.subscribers,
       icon: <IconBrandYoutube />,
     },
     {
       title: 'YouTube Views',
-      link: 'https://youtube.com/@codewithhong',
+      link: 'https://youtube.com/@tszhong0411',
       value: youtubeData?.views,
       icon: <IconBrandYoutube />,
     },
     {
       title: 'GitHub Followers',
-      link: 'https://github.com/codewithhong',
+      link: 'https://github.com/tszhong0411',
       value: githubData?.followers,
       icon: <IconBrandGithub />,
     },
     {
       title: 'GitHub Stars',
-      link: 'https://github.com/codewithhong',
+      link: 'https://github.com/tszhong0411',
       value: githubData?.stars,
       icon: <IconBrandGithub />,
     },

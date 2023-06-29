@@ -1,6 +1,6 @@
 'use client'
 
-import { Skeleton } from '@codewithhong/ui'
+import { Skeleton } from '@tszhong0411/ui'
 import { motion, useMotionTemplate, useMotionValue } from 'framer-motion'
 import Link from 'next/link'
 

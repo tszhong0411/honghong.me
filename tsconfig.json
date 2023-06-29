@@ -17,7 +17,7 @@
     "strictNullChecks": true
   },
   "exclude": ["node_modules"],
-  "extends": "@codewithhong/tsconfig",
+  "extends": "@tszhong0411/tsconfig",
   "include": [
     "next-env.d.ts",
     "**/*.tsx",

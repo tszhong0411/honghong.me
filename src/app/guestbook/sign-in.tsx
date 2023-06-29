@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@codewithhong/ui'
+import { Button } from '@tszhong0411/ui'
 import { signIn } from 'next-auth/react'
 
 const SignIn = () => {

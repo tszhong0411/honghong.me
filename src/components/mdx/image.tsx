@@ -1,6 +1,6 @@
 'use client'
 
-import { cx } from '@codewithhong/utils'
+import { cx } from '@tszhong0411/utils'
 import NextImage, { ImageProps as NextImageProps } from 'next/image'
 import React from 'react'
 

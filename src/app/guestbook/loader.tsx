@@ -1,4 +1,4 @@
-import { Skeleton } from '@codewithhong/ui'
+import { Skeleton } from '@tszhong0411/ui'
 
 const Loader = () => {
   return (

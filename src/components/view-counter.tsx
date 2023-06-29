@@ -1,4 +1,4 @@
-import { Skeleton } from '@codewithhong/ui'
+import { Skeleton } from '@tszhong0411/ui'
 import useSWR from 'swr'
 
 import fetcher from '@/lib/fetcher'
