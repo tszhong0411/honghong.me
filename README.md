@@ -100,16 +100,18 @@ WAKATIME_API_KEY=
 yarn dev
 ```
 
-## 🍰 Contributing
+## 🔔 Notice: Please Do Not Use This Source Code as a Template
 
-Contributions make the open source community an excellent place to learn, inspire and create. Thank you very much for any contributions you make.
+Hello there! Thank you for checking out my open-source project. I've created this project to share my work and inspire others to create great things. However, I've noticed that some people are using my source code as a template for their websites, which is not what I intended.
 
-If you have better suggestions, fork and create a pull request. You can also simply open an issue with the "enhancement" tag. Don't forget to give this project a star! Thanks again!
+While I'm happy to share my code with the community, I would like to request that you do not use this source code as a template for your website. Here are a few reasons why:
 
-1. Fork the repository
-2. Commit your changes (`git commit -m 'Add some Feature'`)
-3. Push to the branch (`git push`)
-4. Open a Pull Request
+- **Lack of Originality:** Using someone else's source code as a template can result in a lack of originality in your work. It's important to create something unique and original that reflects your vision.
+- **Lack of Learning:** Using someone else's source code as a template may prevent you from learning new skills and techniques. It's important to challenge yourself and learn new things to grow as a developer.
+
+I hope you understand my request and appreciate the spirit in which this project was created. If you have any questions or feedback, please don't hesitate to reach out to me.
+
+Thank you for your understanding and happy coding!
 
 ## ❤️ Credits
 
