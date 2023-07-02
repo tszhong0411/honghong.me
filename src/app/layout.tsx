@@ -1,5 +1,4 @@
 import { cx } from '@tszhong0411/utils'
-import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
 import { Fira_Code, Inter, Noto_Sans_TC } from 'next/font/google'
 import '@/styles/globals.css'
@@ -125,7 +124,6 @@ const RootLayout = (props: RootLayoutProps) => {
           <Toaster />
           <Footer />
         </Providers>
-        <Analytics />
       </body>
     </html>
   )

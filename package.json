@@ -30,7 +30,6 @@
     "@tabler/icons-react": "^2.22.0",
     "@tszhong0411/ui": "^3.0.0",
     "@tszhong0411/utils": "^3.0.0",
-    "@vercel/analytics": "^1.0.1",
     "contentlayer": "^0.3.3",
     "dayjs": "^1.11.8",
     "framer-motion": "^10.12.16",
