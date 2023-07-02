@@ -1,6 +1,7 @@
 import { cx } from '@tszhong0411/utils'
 import type { Metadata } from 'next'
 import { Fira_Code, Inter, Noto_Sans_TC } from 'next/font/google'
+import Script from 'next/script'
 import '@/styles/globals.css'
 
 import Footer from '@/components/footer'
@@ -124,6 +125,11 @@ const RootLayout = (props: RootLayoutProps) => {
           <Toaster />
           <Footer />
         </Providers>
+        <Script
+          async
+          data-website-id='4a113320-ef57-44cd-bc0e-08389b9ccae3'
+          src='https://umami.honghong.me/script.js'
+        />
       </body>
     </html>
   )
