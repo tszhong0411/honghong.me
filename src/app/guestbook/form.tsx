@@ -12,7 +12,8 @@ import { DefaultSession } from 'next-auth'
 import { signOut } from 'next-auth/react'
 import React from 'react'
 import { toast } from 'react-hot-toast'
-import { useSWRConfig } from 'swr'
+
+import { createMessage } from './actions'
 
 type FormProps = {
   user: NonNullable<DefaultSession['user']>
@@ -20,41 +21,30 @@ type FormProps = {
 
 const Form = (props: FormProps) => {
   const { user } = props
-  const [value, setValue] = React.useState('')
-  const [isLoading, setIsLoading] = React.useState(false)
-  const { mutate } = useSWRConfig()
+  const [message, setMessage] = React.useState('')
+  const [isCreating, setIsCreating] = React.useState(false)
 
-  const submitHandler = async () => {
-    if (!value) return toast.error('Please enter a message')
+  const createMessageHandler = async () => {
+    if (!message) return toast.error('Please enter a message')
 
-    setIsLoading(true)
-    const loading = toast.loading('Submitting message...')
+    setIsCreating(true)
+    const loading = toast.loading('Creating a message...')
 
-    const res = await fetch('/api/guestbook', {
-      method: 'POST',
-      body: JSON.stringify({
-        message: value,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-
-    if (!res.ok) {
-      const { error } = await res.json()
-      setIsLoading(false)
+    try {
+      await createMessage(message)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      setIsCreating(false)
       toast.dismiss(loading)
-      toast.error(error)
-
-      return
+      toast.error(error.message)
     }
 
-    setIsLoading(false)
+    setIsCreating(false)
     toast.dismiss(loading)
-    toast.success('Message submitted successfully')
-    setValue('')
+    toast.success('Message created successfully')
+    setMessage('')
 
-    return mutate('/api/guestbook')
+    return
   }
 
   return (
@@ -68,21 +58,25 @@ const Form = (props: FormProps) => {
             alt={user.name as string}
             className='h-10 w-10'
           />
-          <AvatarFallback>
+          <AvatarFallback className='bg-transparent'>
             <Skeleton className='h-10 w-10 rounded-full' />
           </AvatarFallback>
         </Avatar>
         <Textarea
           placeholder='Your message ...'
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
         />
       </div>
       <div className='flex justify-end gap-2'>
         <Button variant='outline' onClick={() => signOut()} type='button'>
           Logout
         </Button>
-        <Button onClick={submitHandler} type='button' disabled={isLoading}>
+        <Button
+          onClick={createMessageHandler}
+          type='button'
+          disabled={isCreating}
+        >
           Submit
         </Button>
       </div>

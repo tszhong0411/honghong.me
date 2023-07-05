@@ -6,94 +6,90 @@ import {
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogTrigger,
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
   Button,
   buttonVariants,
+  Skeleton,
 } from '@tszhong0411/ui'
 import dayjs from 'dayjs'
 import { DefaultSession } from 'next-auth'
 import React from 'react'
 import { toast } from 'react-hot-toast'
-import useSWR from 'swr'
 
-import fetcher from '@/lib/fetcher'
-
-import Image from '@/components/mdx/image'
-
-import Loader from './loader'
+import { deleteMessage } from './actions'
 
 import { Messages } from '@/types'
 
 type MessagesProps = {
   user: DefaultSession['user']
+  messages: Messages
+}
+
+type DateProps = {
+  date: Date
+}
+
+const Date = (props: DateProps) => {
+  const { date } = props
+  const [formattedDate, setFormattedDate] = React.useState('')
+
+  React.useEffect(() => {
+    setFormattedDate(dayjs(date).format('YYYY-MM-DD HH:mm'))
+  }, [date])
+
+  if (!formattedDate) return <Skeleton className='h-4 w-24 rounded-md' />
+
+  return <div className='text-xs text-accent-5'>{formattedDate}</div>
 }
 
 const Messages = (props: MessagesProps) => {
-  const { user } = props
+  const { user, messages } = props
+
   const [isDeleting, setIsDeleting] = React.useState(false)
 
-  const { data, isLoading, mutate } = useSWR<Messages>(
-    '/api/guestbook',
-    fetcher
-  )
-
-  const deleteHandler = async (id: string) => {
+  const deleteMessageHandler = async (id: number) => {
     setIsDeleting(true)
-    const loading = toast.loading('Deleting...')
+    const loading = toast.loading('Deleting a message ...')
 
-    const res = await fetch('/api/guestbook', {
-      method: 'DELETE',
-      body: JSON.stringify({
-        id,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-
-    if (!res.ok) {
-      const { error } = await res.json()
+    try {
+      await deleteMessage(id)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
       setIsDeleting(false)
       toast.dismiss(loading)
-      toast.error(error)
-
-      return
+      toast.error(error.message)
     }
 
     setIsDeleting(false)
     toast.dismiss(loading)
     toast.success('Deleted successfully')
-
-    mutate()
   }
 
   return (
     <div className='mt-10 flex flex-col gap-4'>
-      {isLoading && (
-        <>
-          {Array.from(Array(10).keys()).map((i) => (
-            <Loader key={i} />
-          ))}
-        </>
-      )}
-      {data?.map((message) => {
+      {messages.map((message) => {
         const { id, image, created_by, updated_at, body } = message
 
         return (
           <div key={id} className='rounded-lg border border-accent-2 p-4'>
             <div className='mb-3 flex gap-3'>
-              <Image
-                src={image}
-                width={40}
-                height={40}
-                alt={created_by}
-                className='h-10 w-10'
-                rounded='rounded-full'
-              />
+              <Avatar>
+                <AvatarImage
+                  src={image}
+                  width={40}
+                  height={40}
+                  className='h-10 w-10 rounded-full'
+                  alt={created_by}
+                />
+                <AvatarFallback className='bg-transparent'>
+                  <Skeleton className='h-10 w-10 rounded-full' />
+                </AvatarFallback>
+              </Avatar>
               <div className='flex flex-col justify-center gap-px text-sm'>
                 <div>{created_by}</div>
-                <div className='text-xs text-accent-5'>
-                  {dayjs(updated_at).format('YYYY-MM-DD')}
-                </div>
+                <Date date={updated_at} />
               </div>
             </div>
             <div className='break-words pl-[52px]'>{body}</div>
@@ -114,7 +110,7 @@ const Messages = (props: MessagesProps) => {
                     <div className='flex justify-end gap-2'>
                       <AlertDialogCancel>Cancel</AlertDialogCancel>
                       <AlertDialogAction
-                        onClick={() => deleteHandler(id.toString())}
+                        onClick={() => deleteMessageHandler(id)}
                         className={buttonVariants({ variant: 'danger' })}
                       >
                         Delete

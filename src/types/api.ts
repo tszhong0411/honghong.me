@@ -16,7 +16,7 @@ export type Messages = {
   body: string
   image: string
   created_by: string
-  updated_at: string
+  updated_at: Date
 }[]
 
 // Dashboard
