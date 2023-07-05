@@ -2,12 +2,12 @@ import type { Metadata } from 'next'
 import { getServerSession } from 'next-auth'
 
 import { authOptions } from '@/lib/auth'
-import prisma from '@/lib/prisma'
 
 import PageTitle from '@/components/page-title'
 
 import { site } from '@/config/site'
 
+import { getMessages } from './actions'
 import Form from './form'
 import Messages from './messages'
 import Pinned from './pinned'
@@ -42,26 +42,6 @@ export const metadata: Metadata = {
 }
 
 export const dynamic = 'force-dynamic'
-
-const getMessages = async () => {
-  const messages = await prisma.guestbook.findMany({
-    orderBy: {
-      updated_at: 'desc',
-    },
-  })
-
-  return messages.map((message) => {
-    const { id, body, image, created_by, updated_at } = message
-
-    return {
-      id: Number(id),
-      body,
-      image,
-      created_by,
-      updated_at,
-    }
-  })
-}
 
 const GuestbookPage = async () => {
   const session = await getServerSession(authOptions)
