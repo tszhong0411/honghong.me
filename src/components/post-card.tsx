@@ -1,10 +1,10 @@
 'use client'
 
 import { Skeleton } from '@tszhong0411/ui'
+import dayjs from 'dayjs'
 import { motion, useMotionTemplate, useMotionValue } from 'framer-motion'
 import Link from 'next/link'
-
-import { useFormattedDate } from '@/hooks'
+import React from 'react'
 
 import LikeCounter from './like-counter'
 import Image from './mdx/image'
@@ -16,10 +16,14 @@ type PostCardProps = BlogPostCore
 
 const PostCard = (props: PostCardProps) => {
   const { _id, slug, image, title, summary, date } = props
-  const formattedDate = useFormattedDate(date, 'YYYY-MM-DD')
+  const [formattedDate, setFormattedDate] = React.useState('')
 
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
+
+  React.useEffect(() => {
+    setFormattedDate(dayjs(date).format('MMMM DD, YYYY'))
+  }, [date])
 
   return (
     <Link

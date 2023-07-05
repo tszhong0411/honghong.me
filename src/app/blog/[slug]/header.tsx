@@ -1,9 +1,9 @@
 'use client'
 
+import { Skeleton } from '@tszhong0411/ui'
+import dayjs from 'dayjs'
 import { motion } from 'framer-motion'
 import React from 'react'
-
-import { useFormattedDate } from '@/hooks'
 
 import ViewCounter from '@/components/view-counter'
 
@@ -28,7 +28,11 @@ const animation = {
 
 const Header = (props: HeaderProps) => {
   const { date, title, slug } = props
-  const formattedDate = useFormattedDate(date)
+  const [formattedDate, setFormattedDate] = React.useState('')
+
+  React.useEffect(() => {
+    setFormattedDate(dayjs(date).format('MMMM DD, YYYY'))
+  }, [date])
 
   React.useEffect(() => {
     if (process.env.NODE_ENV === 'production') {
@@ -51,7 +55,13 @@ const Header = (props: HeaderProps) => {
 
   return (
     <motion.div initial={animation.hide} animate={animation.show}>
-      <div>{formattedDate}</div>
+      <div>
+        {formattedDate ? (
+          formattedDate
+        ) : (
+          <Skeleton className='h-6 w-32 rounded-md' />
+        )}
+      </div>
       <h1 className='mb-4 text-3xl font-bold'>{title}</h1>
       <div className='flex items-center gap-2'>
         <ViewCounter slug={slug} />
