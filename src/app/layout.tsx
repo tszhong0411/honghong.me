@@ -113,7 +113,7 @@ const RootLayout = (props: RootLayoutProps) => {
         inter.variable,
         notoSansTC.variable,
         firaCode.variable,
-        'scroll-smooth, antialiased'
+        'scroll-smooth antialiased'
       )}
     >
       <body>
