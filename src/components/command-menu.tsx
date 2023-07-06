@@ -50,7 +50,7 @@ const CommandMenu = () => {
     return () => document.removeEventListener('keydown', down)
   }, [])
 
-  const runCommand = React.useCallback((command: () => unknown) => {
+  const runCommand = React.useCallback((command: () => void) => {
     setOpen(false)
     command()
   }, [])
