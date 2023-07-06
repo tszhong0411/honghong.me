@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   ],
   creator: 'tszhong0411',
   openGraph: {
-    url: `${site.url}`,
+    url: site.url,
     type: 'website',
     title: site.title,
     siteName: site.title,
@@ -113,7 +113,7 @@ const RootLayout = (props: RootLayoutProps) => {
         inter.variable,
         notoSansTC.variable,
         firaCode.variable,
-        'scroll-smooth'
+        'scroll-smooth, antialiased'
       )}
     >
       <body>
