@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 const middleware = async () => {
   const ContentSecurityPolicy = `
     default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app *.honghong.me data: va.vercel-scripts.com;
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app *.honghong.me data:;
     style-src 'self' 'unsafe-inline';
     img-src * blob: data:;
     media-src;
