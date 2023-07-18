@@ -9,7 +9,7 @@ const Hero = () => {
         <div className='space-y-4 md:max-w-lg'>
           <h1 className='text-4xl font-bold text-accent-fg'>Hong</h1>
           <h2 className='text-lg font-medium text-accent-5'>
-            17 yrs • Student • Full-stack Developer
+            17 y/o • Student • Full-stack Developer
           </h2>
           <p className='text-lg'>
             I am a student, currently learning web development skills such as

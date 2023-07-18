@@ -22,7 +22,7 @@ export const site: Site = {
   name: 'Hong',
   keywords: ['tszhong0411', 'Next.js', 'React', 'TypeScript', 'Node.js'],
   titleTemplate: '- Hong',
-  description: 'Hong • 17 yrs • Student • Full-stack Developer',
+  description: 'Hong • 17 y/o • Student • Full-stack Developer',
   githubUsername: 'tszhong0411',
   favicons: [
     {
