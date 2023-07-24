@@ -1,6 +1,6 @@
-import { allPages } from 'contentlayer/generated'
 import type { Metadata } from 'next'
-import { notFound } from 'next/navigation'
+
+import getPage from '@/lib/get-page'
 
 import Mdx from '@/components/mdx'
 import PageTitle from '@/components/page-title'
@@ -35,18 +35,8 @@ export const metadata: Metadata = {
   },
 }
 
-const getPage = () => {
-  const page = allPages.find((page) => page.slug === 'about')
-
-  if (!page) {
-    return notFound()
-  }
-
-  return page
-}
-
 const AboutPage = () => {
-  const page = getPage()
+  const page = getPage('about')
 
   return (
     <>
