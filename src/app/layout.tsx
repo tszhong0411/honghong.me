@@ -1,6 +1,6 @@
 import { cx } from '@tszhong0411/utils'
 import type { Metadata } from 'next'
-import { Fira_Code, Inter, Noto_Sans_TC } from 'next/font/google'
+import { Fira_Code, Inter } from 'next/font/google'
 import Script from 'next/script'
 import '@/styles/globals.css'
 
@@ -92,12 +92,6 @@ const inter = Inter({
   subsets: ['latin'],
 })
 
-const notoSansTC = Noto_Sans_TC({
-  variable: '--font-noto-sans-tc',
-  weight: ['400', '500', '700', '900'],
-  subsets: ['latin'],
-})
-
 const firaCode = Fira_Code({
   variable: '--font-fira-code',
   subsets: ['latin'],
@@ -111,7 +105,6 @@ const RootLayout = (props: RootLayoutProps) => {
       lang='en-US'
       className={cx(
         inter.variable,
-        notoSansTC.variable,
         firaCode.variable,
         'scroll-smooth antialiased'
       )}
