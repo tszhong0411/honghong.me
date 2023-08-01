@@ -1,3 +1,7 @@
+'use client'
+
+import trackEvent from '@/lib/analytics'
+
 import Image from '@/components/mdx/image'
 
 import { HERO_LINKS } from '@/config/links'
@@ -35,6 +39,11 @@ const Hero = () => {
             key={link.id}
             href={link.href}
             aria-label={link.label}
+            onClick={() =>
+              trackEvent('Hero Link', {
+                id: link.id,
+              })
+            }
             target='_blank'
             rel='noopener noreferrer'
           >

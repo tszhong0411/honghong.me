@@ -2205,6 +2205,11 @@
   resolved "https://registry.yarnpkg.com/@types/trusted-types/-/trusted-types-2.0.3.tgz#a136f83b0758698df454e328759dbd3d44555311"
   integrity sha512-NfQ4gyz38SL8sDNrSixxU2Os1a5xcdFxipAFxYEuLUlvU2uDwS4NUpsImcf1//SlWItCVMMLiylsxbmNMToV/g==
 
+"@types/umami@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@types/umami/-/umami-0.1.2.tgz#b98fc0cd3e86ec94ac723a33f58c5ce71e531949"
+  integrity sha512-SDixKojpy1Ryh9Q6BsqIilezh6yxdIa4fUSY30NqQM8xEgnETrFzfWZSaov37Rv4+yEkfiuObgyfkB7f+jrkmQ==
+
 "@types/unist@*", "@types/unist@^2.0.0":
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/@types/unist/-/unist-2.0.6.tgz#250a7b16c3b91f672a24552ec64678eeb1d3a08d"
