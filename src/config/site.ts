@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import { IconDescriptor } from 'next/dist/lib/metadata/types/metadata-types'
 
 type Site = {
   url: string
@@ -9,7 +9,7 @@ type Site = {
   titleTemplate: string
   description: string
   githubUsername: string
-  favicons: Metadata['icons']
+  favicons: IconDescriptor[]
 }
 
 export const site: Site = {
