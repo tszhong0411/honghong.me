@@ -108,6 +108,7 @@ const RootLayout = (props: RootLayoutProps) => {
         firaCode.variable,
         'scroll-smooth antialiased'
       )}
+      suppressHydrationWarning
     >
       <body>
         <Providers>
