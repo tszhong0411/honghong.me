@@ -1,6 +1,7 @@
 'use client'
 
 import { Alert, AlertDescription, AlertTitle, Kbd } from '@tszhong0411/ui'
+import { MDXComponents } from 'mdx/types'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 
 import Image, { ImageProps } from './image'
@@ -13,7 +14,7 @@ type MdxProps = {
   code: string
 }
 
-const components = {
+const components: MDXComponents = {
   a: Link,
   Image: (props: ImageProps) => {
     const { alt, ...rest } = props
@@ -23,9 +24,9 @@ const components = {
   pre: Pre,
 
   // Custom components
-  Alert,
-  AlertTitle,
-  AlertDescription,
+  Alert: (props) => <Alert {...props} />,
+  AlertTitle: (props) => <AlertTitle {...props} />,
+  AlertDescription: (props) => <AlertDescription {...props} />,
   ItemGrid,
   Tree,
   Kbd,
