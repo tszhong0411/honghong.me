@@ -20,7 +20,7 @@ const CommentCounter = () => {
 
     if (giscus.discussion) {
       setCounter(
-        giscus.discussion.totalCommentCount + giscus.discussion.totalReplyCount
+        giscus.discussion.totalCommentCount + giscus.discussion.totalReplyCount,
       )
     }
   })

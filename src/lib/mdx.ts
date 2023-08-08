@@ -12,12 +12,12 @@ const getAllPosts = (config: GetAllPostsProps = {}) => {
   const posts = allBlogPosts
     .slice(0, limit)
     .map((post) =>
-      pick(post, ['_id', 'slug', 'title', 'summary', 'date', 'image'])
+      pick(post, ['_id', 'slug', 'title', 'summary', 'date', 'image']),
     )
 
   if (sorted) {
     return posts.sort(
-      (a, b) => Number(new Date(b.date)) - Number(new Date(a.date))
+      (a, b) => Number(new Date(b.date)) - Number(new Date(a.date)),
     )
   }
 

@@ -106,7 +106,7 @@ const RootLayout = (props: RootLayoutProps) => {
       className={cx(
         inter.variable,
         firaCode.variable,
-        'scroll-smooth antialiased'
+        'scroll-smooth antialiased',
       )}
       suppressHydrationWarning
     >

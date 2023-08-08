@@ -13,7 +13,7 @@ const generateOGImage = async () => {
     const post = allBlogPosts[i]
 
     console.info(
-      chalk.yellowBright(`Generating Opengraph image for ${post.title}`)
+      chalk.greenBright(`Generating Opengraph image for ${post.title}`),
     )
 
     try {
@@ -30,7 +30,7 @@ const generateOGImage = async () => {
 
       await page.goto(
         `${OG_IMAGE_WEBSITE}/website?title=${post.title}&date=${post.date}`,
-        { waitUntil: 'networkidle0' }
+        { waitUntil: 'networkidle0' },
       )
 
       const buffer = await page.screenshot({ type: 'png' })
@@ -41,7 +41,7 @@ const generateOGImage = async () => {
     } catch (error) {
       console.error(
         chalk.red('error'),
-        ` - An error occurred while generating the Opengraph image for ${post.title}`
+        ` - An error occurred while generating the Opengraph image for ${post.title}`,
       )
       console.error(error)
       process.exit(1)

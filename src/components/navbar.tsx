@@ -22,7 +22,7 @@ const Navbar = () => {
               },
               {
                 ['bg-accent-2']: link.href === pathname,
-              }
+              },
             )}
             href={link.href}
           >

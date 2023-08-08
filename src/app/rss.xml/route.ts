@@ -15,7 +15,7 @@ export const GET = async () => {
   })
 
   const allPosts = allBlogPosts.sort(
-    (a, b) => Number(new Date(b.date)) - Number(new Date(a.date))
+    (a, b) => Number(new Date(b.date)) - Number(new Date(a.date)),
   )
 
   allPosts.map((post) => {

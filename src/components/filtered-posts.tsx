@@ -17,7 +17,7 @@ const FilteredPosts = (props: FilteredPostsProps) => {
   const [searchValue, setSearchValue] = React.useState('')
 
   const filteredPosts = posts.filter((post) =>
-    post.title.toLowerCase().includes(searchValue.toLowerCase())
+    post.title.toLowerCase().includes(searchValue.toLowerCase()),
   )
 
   return (

@@ -76,7 +76,7 @@ const CommandMenu = () => {
                     <div className='text-sm text-accent-5'>
                       You can now share it with anyone.
                     </div>
-                  </div>
+                  </div>,
                 )
               } catch {
                 toast.error('Failed to copy!')
@@ -90,8 +90,8 @@ const CommandMenu = () => {
             runCommand(() =>
               window.open(
                 'https://github.com/tszhong0411/honghong.me',
-                '_blank'
-              )
+                '_blank',
+              ),
             ),
         },
       ],
@@ -104,7 +104,7 @@ const CommandMenu = () => {
           icon: <IconBrandGithub size={16} className='mr-2' />,
           onSelect: () =>
             runCommand(() =>
-              window.open('https://github.com/tszhong0411', '_blank')
+              window.open('https://github.com/tszhong0411', '_blank'),
             ),
         },
         {
@@ -112,7 +112,7 @@ const CommandMenu = () => {
           icon: <IconBrandInstagram size={16} className='mr-2' />,
           onSelect: () =>
             runCommand(() =>
-              window.open('https://instagram.com/tszhong0411/', '_blank')
+              window.open('https://instagram.com/tszhong0411/', '_blank'),
             ),
         },
         {
@@ -120,7 +120,7 @@ const CommandMenu = () => {
           icon: <IconBrandYoutube size={16} className='mr-2' />,
           onSelect: () =>
             runCommand(() =>
-              window.open('https://youtube.com/@tszhong0411', '_blank')
+              window.open('https://youtube.com/@tszhong0411', '_blank'),
             ),
         },
         {
@@ -128,7 +128,7 @@ const CommandMenu = () => {
           icon: <IconBrandFacebook size={16} className='mr-2' />,
           onSelect: () =>
             runCommand(() =>
-              window.open('https://www.facebook.com/tszhong0411/', '_blank')
+              window.open('https://www.facebook.com/tszhong0411/', '_blank'),
             ),
         },
       ],

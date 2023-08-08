@@ -12,8 +12,8 @@ export const useHeadings = () => {
   React.useEffect(() => {
     const elements = Array.from(
       document.querySelectorAll<HTMLHeadingElement>(
-        'article h2, article h3, article h4, article h5, article h6'
-      )
+        'article h2, article h3, article h4, article h5, article h6',
+      ),
     )
       .filter((element) => element.id)
       .map((element) => ({

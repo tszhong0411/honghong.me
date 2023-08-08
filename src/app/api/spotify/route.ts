@@ -45,7 +45,7 @@ export const GET = async () => {
         isPlaying: false,
         message: 'Error getting Now Playing from Spotify',
       },
-      { status: 500 }
+      { status: 500 },
     )
   }
 }

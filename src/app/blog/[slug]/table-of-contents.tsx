@@ -10,7 +10,7 @@ const TableOfContents = () => {
   const headings = useHeadings()
   const activeId = useScrollspy(
     headings.map((heading) => heading.id),
-    { rootMargin: '0% 0% -55% 0%' }
+    { rootMargin: '0% 0% -55% 0%' },
   )
 
   return (
@@ -31,7 +31,7 @@ const TableOfContents = () => {
                 'block border-l-2 border-accent-2 pb-[10px] pr-[10px] pt-[10px] text-sm leading-[1.2] text-accent-5 transition-all duration-300 hover:text-accent-fg',
                 {
                   ['border-accent-fg text-accent-fg']: id === activeId,
-                }
+                },
               )}
               style={{
                 paddingLeft: (level - 1) * 16,

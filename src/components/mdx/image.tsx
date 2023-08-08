@@ -19,7 +19,7 @@ const Image = (props: ImageProps) => {
         'overflow-hidden',
         isLoading && 'animate-pulse',
         rounded,
-        className
+        className,
       )}
     >
       <NextImage
@@ -27,7 +27,7 @@ const Image = (props: ImageProps) => {
           'my-0 transition-[scale,filter] duration-700',
           isLoading && 'scale-[1.02] blur-xl grayscale',
           rounded,
-          imageClassName
+          imageClassName,
         )}
         src={src}
         alt={alt}

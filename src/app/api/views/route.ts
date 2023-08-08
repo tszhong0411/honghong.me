@@ -28,7 +28,7 @@ export const GET = async (req: NextRequest) => {
       {
         error: 'Post not found',
       },
-      { status: 404 }
+      { status: 404 },
     )
   }
 
@@ -45,7 +45,7 @@ export const POST = async (req: Request) => {
       {
         error: 'Slug is required',
       },
-      { status: 400 }
+      { status: 400 },
     )
   }
 

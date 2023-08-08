@@ -9,17 +9,17 @@ const editURL = (slug: string) =>
 
 const twitterShareURL = (slug: string, title: string) =>
   `https://twitter.com/intent/tweet?text=${title}&url=${encodeURIComponent(
-    `https://honghong.me/blog/${slug}`
+    `https://honghong.me/blog/${slug}`,
   )}`
 
 const facebookShareURL = (slug: string) =>
   `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-    `https://honghong.me/blog/${slug}`
+    `https://honghong.me/blog/${slug}`,
   )}`
 
 const redditShareURL = (slug: string, title: string) =>
   `https://www.reddit.com/submit?title=${title}&url=${encodeURIComponent(
-    `https://honghong.me/blog/${slug}`
+    `https://honghong.me/blog/${slug}`,
   )}`
 
 type FooterProps = {

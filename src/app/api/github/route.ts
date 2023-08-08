@@ -22,7 +22,7 @@ export const GET = async () => {
     'GET /users/{username}',
     {
       username: site.githubUsername,
-    }
+    },
   )
 
   const stars = repos

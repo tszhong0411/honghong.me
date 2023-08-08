@@ -23,12 +23,12 @@ const LikeButton = (props: LikeButtonProps) => {
 
   const { data, isLoading, mutate } = useSWR<Likes>(
     `/api/likes?slug=${slug}`,
-    fetcher
+    fetcher,
   )
 
   const updatePostLikes = async (
     slug: string,
-    count: number
+    count: number,
   ): Promise<Likes> => {
     const res = await fetch('/api/likes', {
       method: 'POST',
@@ -51,7 +51,7 @@ const LikeButton = (props: LikeButtonProps) => {
         likes: data.likes + 1,
         currentUserLikes: data.currentUserLikes + 1,
       },
-      false
+      false,
     )
 
     setBatchedLikes(batchedLikes + 1)
@@ -66,7 +66,7 @@ const LikeButton = (props: LikeButtonProps) => {
       setBatchedLikes(0)
     },
     1000,
-    [batchedLikes]
+    [batchedLikes],
   )
 
   React.useEffect(() => {
@@ -117,7 +117,7 @@ const LikeButton = (props: LikeButtonProps) => {
           <IconHeart
             className={cx(
               'group-hover:fill-accent-bg dark:group-hover:fill-accent-fg',
-              data?.currentUserLikes === 3 && 'fill-accent-fg'
+              data?.currentUserLikes === 3 && 'fill-accent-fg',
             )}
             size={20}
           />

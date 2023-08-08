@@ -10,10 +10,10 @@ export const GET = async () => {
     {
       headers: {
         Authorization: `Basic ${Buffer.from(
-          process.env.WAKATIME_API_KEY as string
+          process.env.WAKATIME_API_KEY as string,
         ).toString('base64')}`,
       },
-    }
+    },
   )
 
   const data: WakatimeRes = await res.json()
