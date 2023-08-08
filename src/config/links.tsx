@@ -2,7 +2,7 @@ import {
   IconBrandFacebook,
   IconBrandGithub,
   IconBrandInstagram,
-  IconBrandTwitter,
+  IconBrandX,
   IconBrandYoutube,
   IconChartBar,
   IconDeviceDesktop,
@@ -163,7 +163,7 @@ export const HERO_LINKS: HeroLinks = [
   {
     id: 'twitter',
     label: 'Twitter',
-    icon: <IconBrandTwitter size={28} />,
+    icon: <IconBrandX size={28} />,
     href: 'https://twitter.com/tszhong0411',
   },
 ]
