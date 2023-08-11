@@ -68,7 +68,6 @@
     "@types/umami": "^0.1.2",
     "autoprefixer": "^10.4.14",
     "chalk": "^5.3.0",
-    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.46.0",
     "eslint-config-next": "^13.4.9-canary.2",
     "husky": "^8.0.3",
@@ -98,11 +97,6 @@
     "parserOptions": {
       "project": "./tsconfig.json",
       "ecmaVersion": "latest"
-    }
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
     }
   }
 }
