@@ -2,12 +2,11 @@ import { allProjects } from 'contentlayer/generated'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 
-import getIconByName from '@/lib/get-icon-by-name'
-
 import Image from '@/components/mdx/image'
 import PageTitle from '@/components/page-title'
 
 import { site } from '@/config/site'
+import getIconByName from '@/utils/get-icon-by-name'
 
 const title = 'Projects'
 const description = 'The list of my projects.'

@@ -1,11 +1,10 @@
 import type { Metadata } from 'next'
 
-import getPage from '@/lib/get-page'
-
 import Mdx from '@/components/mdx'
 import PageTitle from '@/components/page-title'
 
 import { site } from '@/config/site'
+import getPage from '@/utils/get-page'
 
 const title = 'Uses'
 const description =

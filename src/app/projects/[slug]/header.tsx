@@ -4,9 +4,8 @@ import { IconBrandGithub, IconHome } from '@tabler/icons-react'
 import { Project } from 'contentlayer/generated'
 import { motion } from 'framer-motion'
 
-import getIconByName from '@/lib/get-icon-by-name'
-
 import { site } from '@/config/site'
+import getIconByName from '@/utils/get-icon-by-name'
 
 const animation = {
   hide: {
