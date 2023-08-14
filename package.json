@@ -44,7 +44,7 @@
     "react-hot-toast": "^2.4.1",
     "react-use": "^17.4.0",
     "rehype-autolink-headings": "^6.1.1",
-    "rehype-pretty-code": "^0.10.0",
+    "rehype-pretty-code": "0.9.11",
     "rehype-slug": "^5.1.0",
     "remark-gfm": "^3.0.1",
     "rss": "^1.2.2",
