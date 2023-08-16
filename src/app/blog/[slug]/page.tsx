@@ -1,5 +1,5 @@
 import { allBlogPosts } from 'contentlayer/generated'
-import type { Metadata } from 'next'
+import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Article, WithContext } from 'schema-dts'
 
@@ -16,13 +16,18 @@ type BlogPostPageProps = {
   }
 }
 
-export const generateStaticParams = () => {
+export const generateStaticParams = async (): Promise<
+  BlogPostPageProps['params'][]
+> => {
   return allBlogPosts.map((post) => ({
     slug: post.slug,
   }))
 }
 
-export const generateMetadata = (props: BlogPostPageProps): Metadata => {
+export const generateMetadata = async (
+  props: BlogPostPageProps,
+  parent?: ResolvingMetadata,
+): Promise<Metadata> => {
   const { params } = props
 
   const post = allBlogPosts.find((post) => post.slug === params.slug)
@@ -33,6 +38,7 @@ export const generateMetadata = (props: BlogPostPageProps): Metadata => {
 
   const ISOPublishedTime = new Date(post.date).toISOString()
   const ISOModifiedTime = new Date(post.modifiedTime).toISOString()
+  const previousTwitter = (await parent)?.twitter || {}
 
   return {
     title: post.title,
@@ -59,6 +65,12 @@ export const generateMetadata = (props: BlogPostPageProps): Metadata => {
           type: 'image/png',
         },
       ],
+    },
+    twitter: {
+      ...previousTwitter,
+      title: post.title,
+      description: post.summary,
+      images: [`${site.url}/static/images/og/posts/${post.slug}.png`],
     },
   }
 }

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, ResolvingMetadata } from 'next'
 
 import PageTitle from '@/components/page-title'
 
@@ -10,29 +10,30 @@ const title = 'Dashboard'
 const description =
   'This is my personal dashboard, built with Next.js API routes deployed as serverless functions. I use this dashboard to track various metrics across platforms like YouTube, GitHub, and more.'
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: {
-    canonical: `${site.url}/dashboard`,
-  },
-  openGraph: {
-    url: `${site.url}/dashboard`,
-    type: 'website',
+type DashboardPageProps = {
+  params: Record<string, never>
+  searchParams: Record<string, never>
+}
+
+export const generateMetadata = async (
+  _: DashboardPageProps,
+  parent?: ResolvingMetadata,
+): Promise<Metadata> => {
+  const previousOpenGraph = (await parent)?.openGraph || {}
+
+  return {
     title,
-    siteName: site.title,
     description,
-    locale: 'en-US',
-    images: [
-      {
-        url: `${site.url}/static/images/og/og.png`,
-        width: 1200,
-        height: 630,
-        alt: description,
-        type: 'image/png',
-      },
-    ],
-  },
+    alternates: {
+      canonical: `${site.url}/dashboard`,
+    },
+    openGraph: {
+      ...previousOpenGraph,
+      url: `${site.url}/dashboard`,
+      title,
+      description,
+    },
+  }
 }
 
 const DashboardPage = () => {

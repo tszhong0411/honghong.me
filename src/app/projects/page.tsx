@@ -1,5 +1,5 @@
 import { allProjects } from 'contentlayer/generated'
-import type { Metadata } from 'next'
+import type { Metadata, ResolvingMetadata } from 'next'
 import Link from 'next/link'
 
 import Image from '@/components/mdx/image'
@@ -11,29 +11,30 @@ import getIconByName from '@/utils/get-icon-by-name'
 const title = 'Projects'
 const description = 'The list of my projects.'
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: {
-    canonical: `${site.url}/projects`,
-  },
-  openGraph: {
-    url: `${site.url}/projects`,
-    type: 'website',
+type ProjectsPageProps = {
+  params: Record<string, never>
+  searchParams: Record<string, never>
+}
+
+export const generateMetadata = async (
+  _: ProjectsPageProps,
+  parent?: ResolvingMetadata,
+): Promise<Metadata> => {
+  const previousOpenGraph = (await parent)?.openGraph || {}
+
+  return {
     title,
-    siteName: site.title,
     description,
-    locale: 'en-US',
-    images: [
-      {
-        url: `${site.url}/static/images/og/og.png`,
-        width: 1200,
-        height: 630,
-        alt: description,
-        type: 'image/png',
-      },
-    ],
-  },
+    alternates: {
+      canonical: `${site.url}/projects`,
+    },
+    openGraph: {
+      ...previousOpenGraph,
+      url: `${site.url}/projects`,
+      title,
+      description,
+    },
+  }
 }
 
 const ProjectsPage = () => {

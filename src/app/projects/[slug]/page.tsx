@@ -1,5 +1,5 @@
 import { allProjects } from 'contentlayer/generated'
-import type { Metadata } from 'next'
+import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import Mdx from '@/components/mdx'
@@ -15,13 +15,18 @@ type ProjectPageProps = {
   }
 }
 
-export const generateStaticParams = () => {
+export const generateStaticParams = async (): Promise<
+  ProjectPageProps['params'][]
+> => {
   return allProjects.map((project) => ({
     slug: project.slug,
   }))
 }
 
-export const generateMetadata = (props: ProjectPageProps): Metadata => {
+export const generateMetadata = async (
+  props: ProjectPageProps,
+  parent?: ResolvingMetadata,
+): Promise<Metadata> => {
   const { params } = props
 
   const project = allProjects.find((project) => project.slug === params.slug)
@@ -29,6 +34,8 @@ export const generateMetadata = (props: ProjectPageProps): Metadata => {
   if (!project) {
     return {}
   }
+
+  const previousTwitter = (await parent)?.twitter || {}
 
   return {
     title: project.name,
@@ -52,6 +59,12 @@ export const generateMetadata = (props: ProjectPageProps): Metadata => {
           type: 'image/png',
         },
       ],
+    },
+    twitter: {
+      ...previousTwitter,
+      title: project.name,
+      description: project.description,
+      images: [`${site.url}${project.image}`],
     },
   }
 }

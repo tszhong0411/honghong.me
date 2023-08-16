@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, ResolvingMetadata } from 'next'
 
 import Mdx from '@/components/mdx'
 import PageTitle from '@/components/page-title'
@@ -10,29 +10,30 @@ const title = 'Uses'
 const description =
   'This is the equipment I currently use for gaming, programming, making videos, and every day.'
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: {
-    canonical: `${site.url}/uses`,
-  },
-  openGraph: {
-    url: `${site.url}/uses`,
-    type: 'website',
+type UsesPageProps = {
+  params: Record<string, never>
+  searchParams: Record<string, never>
+}
+
+export const generateMetadata = async (
+  _: UsesPageProps,
+  parent?: ResolvingMetadata,
+): Promise<Metadata> => {
+  const previousOpenGraph = (await parent)?.openGraph || {}
+
+  return {
     title,
-    siteName: site.title,
     description,
-    locale: 'en-US',
-    images: [
-      {
-        url: `${site.url}/static/images/og/og.png`,
-        width: 1200,
-        height: 630,
-        alt: description,
-        type: 'image/png',
-      },
-    ],
-  },
+    alternates: {
+      canonical: `${site.url}/uses`,
+    },
+    openGraph: {
+      ...previousOpenGraph,
+      url: `${site.url}/uses`,
+      title,
+      description,
+    },
+  }
 }
 
 const UsesPage = () => {
