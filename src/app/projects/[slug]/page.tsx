@@ -25,7 +25,7 @@ export const generateStaticParams = async (): Promise<
 
 export const generateMetadata = async (
   props: ProjectPageProps,
-  parent?: ResolvingMetadata,
+  parent: ResolvingMetadata,
 ): Promise<Metadata> => {
   const { params } = props
 

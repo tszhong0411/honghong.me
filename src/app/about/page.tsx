@@ -16,7 +16,7 @@ type AboutPageProps = {
 
 export const generateMetadata = async (
   _: AboutPageProps,
-  parent?: ResolvingMetadata,
+  parent: ResolvingMetadata,
 ): Promise<Metadata> => {
   const previousOpenGraph = (await parent)?.openGraph || {}
 

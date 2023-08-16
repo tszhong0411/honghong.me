@@ -17,7 +17,7 @@ type DashboardPageProps = {
 
 export const generateMetadata = async (
   _: DashboardPageProps,
-  parent?: ResolvingMetadata,
+  parent: ResolvingMetadata,
 ): Promise<Metadata> => {
   const previousOpenGraph = (await parent)?.openGraph || {}
 
