@@ -32,9 +32,7 @@ export const generateMetadata = async (
 
   const post = allBlogPosts.find((post) => post.slug === params.slug)
 
-  if (!post) {
-    return {}
-  }
+  if (!post) return {}
 
   const ISOPublishedTime = new Date(post.date).toISOString()
   const ISOModifiedTime = new Date(post.modifiedTime).toISOString()
