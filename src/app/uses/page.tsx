@@ -20,6 +20,7 @@ export const generateMetadata = async (
   parent: ResolvingMetadata,
 ): Promise<Metadata> => {
   const previousOpenGraph = (await parent)?.openGraph || {}
+  const previousTwitter = (await parent)?.twitter || {}
 
   return {
     title,
@@ -30,6 +31,11 @@ export const generateMetadata = async (
     openGraph: {
       ...previousOpenGraph,
       url: `${site.url}/uses`,
+      title,
+      description,
+    },
+    twitter: {
+      ...previousTwitter,
       title,
       description,
     },

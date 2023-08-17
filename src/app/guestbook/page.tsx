@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, ResolvingMetadata } from 'next'
 import { getServerSession } from 'next-auth'
 
 import { authOptions } from '@/lib/auth'
@@ -16,29 +16,36 @@ import SignIn from './sign-in'
 const title = 'Guestbook'
 const description = 'Sign my guestbook and share your idea.'
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: {
-    canonical: `${site.url}/guestbook`,
-  },
-  openGraph: {
-    url: `${site.url}/guestbook`,
-    type: 'website',
+type GuestbookPageProps = {
+  params: Record<string, never>
+  searchParams: Record<string, never>
+}
+
+export const generateMetadata = async (
+  _: GuestbookPageProps,
+  parent: ResolvingMetadata,
+): Promise<Metadata> => {
+  const previousOpenGraph = (await parent)?.openGraph || {}
+  const previousTwitter = (await parent)?.twitter || {}
+
+  return {
     title,
-    siteName: site.title,
     description,
-    locale: 'en-US',
-    images: [
-      {
-        url: `${site.url}/static/images/og/og.png`,
-        width: 1200,
-        height: 630,
-        alt: description,
-        type: 'image/png',
-      },
-    ],
-  },
+    alternates: {
+      canonical: `${site.url}/guestbook`,
+    },
+    openGraph: {
+      ...previousOpenGraph,
+      url: `${site.url}/guestbook`,
+      title,
+      description,
+    },
+    twitter: {
+      ...previousTwitter,
+      title,
+      description,
+    },
+  }
 }
 
 export const dynamic = 'force-dynamic'

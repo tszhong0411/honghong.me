@@ -21,6 +21,7 @@ export const generateMetadata = async (
   parent: ResolvingMetadata,
 ): Promise<Metadata> => {
   const previousOpenGraph = (await parent)?.openGraph || {}
+  const previousTwitter = (await parent)?.twitter || {}
 
   return {
     title,
@@ -31,6 +32,11 @@ export const generateMetadata = async (
     openGraph: {
       ...previousOpenGraph,
       url: `${site.url}/projects`,
+      title,
+      description,
+    },
+    twitter: {
+      ...previousTwitter,
       title,
       description,
     },
@@ -59,8 +65,7 @@ const ProjectsPage = () => {
                 width={1200}
                 height={630}
                 alt={name}
-                className='md:w-72'
-                rounded='rounded-lg'
+                className='rounded-lg md:w-72'
               />
               <div className='flex-1 px-2 py-4 md:px-4 md:py-2'>
                 <div>

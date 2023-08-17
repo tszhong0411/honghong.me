@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, ResolvingMetadata } from 'next'
 
 import getAllPosts from '@/lib/mdx'
 
@@ -11,29 +11,36 @@ const title = 'Blog'
 const description =
   'My personal website and blog where I share my thoughts on various topics including tutorials, notes, and personal experiences. As a full-stack developer from Hong Kong, I started learning web development as a hobby in December 2020. I use Next.js for building websites, GitHub for code hosting, and Vercel for deployment. Explore my site to learn more about my Journey and discover some of the web development resources that have inspired me.'
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: {
-    canonical: `${site.url}/blog`,
-  },
-  openGraph: {
-    url: `${site.url}/blog`,
-    type: 'website',
+type BlogPageProps = {
+  params: Record<string, never>
+  searchParams: Record<string, never>
+}
+
+export const generateMetadata = async (
+  _: BlogPageProps,
+  parent: ResolvingMetadata,
+): Promise<Metadata> => {
+  const previousOpenGraph = (await parent)?.openGraph || {}
+  const previousTwitter = (await parent)?.twitter || {}
+
+  return {
     title,
-    siteName: site.title,
     description,
-    locale: 'en-US',
-    images: [
-      {
-        url: `${site.url}/static/images/og/og.png`,
-        width: 1200,
-        height: 630,
-        alt: description,
-        type: 'image/png',
-      },
-    ],
-  },
+    alternates: {
+      canonical: `${site.url}/blog`,
+    },
+    openGraph: {
+      ...previousOpenGraph,
+      url: `${site.url}/blog`,
+      title,
+      description,
+    },
+    twitter: {
+      ...previousTwitter,
+      title,
+      description,
+    },
+  }
 }
 
 const BlogPage = () => {
