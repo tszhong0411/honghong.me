@@ -1,32 +1,25 @@
 'use client'
 
 import { cx } from '@tszhong0411/utils'
-import NextImage, { ImageProps as NextImageProps } from 'next/image'
+import NextImage from 'next/image'
 import React from 'react'
 
 export type ImageProps = {
-  rounded?: string
   imageClassName?: string
-} & NextImageProps
+} & React.ComponentPropsWithoutRef<typeof NextImage>
 
 const Image = (props: ImageProps) => {
-  const { alt, src, className, rounded, imageClassName, ...rest } = props
+  const { alt, src, className, imageClassName, ...rest } = props
   const [isLoading, setLoading] = React.useState(true)
 
   return (
     <div
-      className={cx(
-        'overflow-hidden',
-        isLoading && 'animate-pulse',
-        rounded,
-        className,
-      )}
+      className={cx('overflow-hidden', isLoading && 'animate-pulse', className)}
     >
       <NextImage
         className={cx(
           'my-0 transition-[scale,filter] duration-700',
           isLoading && 'scale-[1.02] blur-xl grayscale',
-          rounded,
           imageClassName,
         )}
         src={src}

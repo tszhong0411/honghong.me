@@ -24,10 +24,10 @@ const Hero = () => {
         <div className='h-20 w-20 md:h-28 md:w-28'>
           <Image
             src='/static/images/avatar.png'
+            className='rounded-full'
             width={112}
             height={112}
             alt='Hong'
-            rounded='rounded-full'
             loading='eager'
             priority
           />

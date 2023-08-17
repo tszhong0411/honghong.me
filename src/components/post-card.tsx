@@ -51,10 +51,10 @@ const PostCard = (props: PostCardProps) => {
       />
       <Image
         src={`/static/images/blog/${image}`}
+        className='rounded-lg'
         width={1280}
         height={720}
         alt={title}
-        rounded='rounded-lg'
       />
       <div className='flex-grow space-y-4'>
         <h2 className='text-xl font-bold'>{title}</h2>
