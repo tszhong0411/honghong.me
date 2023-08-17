@@ -1,10 +1,21 @@
 import { createHash } from 'crypto'
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 
 import prisma from '@/lib/prisma'
 
-export const GET = async (req: NextRequest) => {
-  const slug = req.nextUrl.searchParams.get('slug')
+const getSessionId = (slug: string, req: Request): string => {
+  const ipAddress = req.headers.get('x-forwarded-for') || '0.0.0.0'
+  const currentUserId = createHash('md5')
+    .update(ipAddress + process.env.IP_ADDRESS_SALT, 'utf8')
+    .digest('hex')
+  const sessionId = slug + '___' + currentUserId
+
+  return sessionId
+}
+
+export const GET = async (req: Request) => {
+  const { searchParams } = new URL(req.url)
+  const slug = searchParams.get('slug')
 
   if (!slug) {
     const likes = await prisma.post.aggregate({
@@ -18,19 +29,23 @@ export const GET = async (req: NextRequest) => {
     })
   }
 
-  const ipAddress = req.headers.get('x-forwarded-for') || '0.0.0.0'
-  const currentUserId = createHash('md5')
-    .update(ipAddress + process.env.IP_ADDRESS_SALT, 'utf8')
-    .digest('hex')
-  const sessionId = slug + '___' + currentUserId
-
   const [post, user] = await Promise.all([
     prisma.post.findUnique({
-      where: { slug },
+      where: {
+        slug,
+      },
+      select: {
+        likes: true,
+      },
     }),
 
     prisma.session.findUnique({
-      where: { id: sessionId },
+      where: {
+        id: getSessionId(slug, req),
+      },
+      select: {
+        likes: true,
+      },
     }),
   ])
 
@@ -51,12 +66,6 @@ export const GET = async (req: NextRequest) => {
 
 export const POST = async (req: Request) => {
   const { count, slug } = await req.json()
-
-  const ipAddress = req.headers.get('x-forwarded-for') || '0.0.0.0'
-  const currentUserId = createHash('md5')
-    .update(ipAddress + process.env.IP_ADDRESS_SALT, 'utf8')
-    .digest('hex')
-  const sessionId = slug + '___' + currentUserId
 
   if (!slug || typeof count !== 'number' || count < 0 || count > 3) {
     return NextResponse.json(
@@ -80,18 +89,24 @@ export const POST = async (req: Request) => {
             increment: count,
           },
         },
+        select: {
+          likes: true,
+        },
       }),
 
       prisma.session.upsert({
-        where: { id: sessionId },
+        where: { id: getSessionId(slug, req) },
         create: {
-          id: sessionId,
+          id: getSessionId(slug, req),
           likes: count,
         },
         update: {
           likes: {
             increment: count,
           },
+        },
+        select: {
+          likes: true,
         },
       }),
     ])

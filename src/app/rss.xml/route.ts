@@ -1,6 +1,7 @@
-import { allBlogPosts } from 'contentlayer/generated'
 import { NextResponse } from 'next/server'
 import RSS from 'rss'
+
+import getAllPosts from '@/lib/mdx'
 
 import { site } from '@/config/site'
 
@@ -14,9 +15,7 @@ export const GET = async () => {
     image_url: `${site.url}/static/images/og/og.png`,
   })
 
-  const allPosts = allBlogPosts.sort(
-    (a, b) => Number(new Date(b.date)) - Number(new Date(a.date)),
-  )
+  const allPosts = getAllPosts()
 
   allPosts.map((post) => {
     const { title, summary, date, slug } = post

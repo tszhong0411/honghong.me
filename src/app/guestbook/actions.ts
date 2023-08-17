@@ -14,6 +14,9 @@ export const deleteMessage = async (id: number) => {
     where: {
       id,
     },
+    select: {
+      email: true,
+    },
   })
 
   if (!message) {

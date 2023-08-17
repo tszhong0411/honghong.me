@@ -1,9 +1,10 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 
 import prisma from '@/lib/prisma'
 
-export const GET = async (req: NextRequest) => {
-  const slug = req.nextUrl.searchParams.get('slug')
+export const GET = async (req: Request) => {
+  const { searchParams } = new URL(req.url)
+  const slug = searchParams.get('slug')
 
   if (!slug) {
     const views = await prisma.post.aggregate({
@@ -20,6 +21,9 @@ export const GET = async (req: NextRequest) => {
   const post = await prisma.post.findUnique({
     where: {
       slug,
+    },
+    select: {
+      views: true,
     },
   })
 
