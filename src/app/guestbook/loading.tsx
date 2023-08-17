@@ -1,5 +1,40 @@
-const loading = () => {
-  return <div>Loading ...</div>
+import { Skeleton } from '@tszhong0411/ui'
+
+import PageTitle from '@/components/page-title'
+
+import Pinned from './pinned'
+
+const Placeholder = () => (
+  <div className='rounded-lg border border-accent-2 p-4'>
+    <div className='mb-3 flex gap-3'>
+      <Skeleton className='h-10 w-10 rounded-full' />
+      <div className='flex flex-col justify-center gap-1'>
+        <Skeleton className='h-4 w-40' />
+        <Skeleton className='h-4 w-36' />
+      </div>
+    </div>
+    <Skeleton className='h-6 w-full max-w-xs pl-[52px]' />
+  </div>
+)
+
+const Loading = () => {
+  return (
+    <>
+      <PageTitle
+        title='Guestbook'
+        description='You can tell me anything here!'
+        animate={false}
+      />
+      <div className='mx-auto max-w-lg'>
+        <Pinned />
+        <div className='mt-10 flex flex-col gap-4'>
+          {Array.from(Array(8).keys()).map((i) => (
+            <Placeholder key={i} />
+          ))}
+        </div>
+      </div>
+    </>
+  )
 }
 
-export default loading
+export default Loading
