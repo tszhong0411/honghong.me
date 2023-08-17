@@ -1,8 +1,9 @@
 import { allBlogPosts, allPages, allProjects } from 'contentlayer/generated'
+import { MetadataRoute } from 'next'
 
 import { site } from '@/config/site'
 
-const sitemap = async () => {
+const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
   const blogs = allBlogPosts.map((post) => ({
     url: `${site.url}/blog/${post.slug}`,
     lastModified: post.date.split('T')[0],
