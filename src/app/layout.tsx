@@ -33,7 +33,7 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  manifest: '/static/favicon/site.webmanifest',
+  manifest: '/favicon/site.webmanifest',
   twitter: {
     card: 'summary_large_image',
     title: site.name,
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     siteId: '1152256803746377730',
     creator: '@tszhong0411',
     creatorId: '1152256803746377730',
-    images: [`${site.url}/static/images/og/og.png`],
+    images: [`${site.url}/images/og.png`],
   },
   keywords: site.keywords,
   themeColor: [
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     locale: 'en-US',
     images: [
       {
-        url: `${site.url}/static/images/og/og.png`,
+        url: `${site.url}/images/og.png`,
         width: 1200,
         height: 630,
         alt: site.description,
@@ -74,11 +74,11 @@ export const metadata: Metadata = {
     ],
   },
   icons: {
-    icon: '/static/favicon/favicon.svg',
-    shortcut: '/static/favicon/favicon.svg',
+    icon: '/favicon/favicon.svg',
+    shortcut: '/favicon/favicon.svg',
     apple: [
       {
-        url: '/static/favicon/apple-touch-icon.png',
+        url: '/favicon/apple-touch-icon.png',
         sizes: '180x180',
         type: 'image/png',
       },

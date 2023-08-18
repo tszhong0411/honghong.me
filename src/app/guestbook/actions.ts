@@ -77,7 +77,7 @@ export const createMessage = async (message: string) => {
           },
         ],
         username: 'Blog',
-        avatar_url: 'https://honghong.me/static/images/projects/blog/logo.png',
+        avatar_url: 'https://honghong.me/images/projects/blog/logo.png',
         attachments: [],
       }),
     })

@@ -17,7 +17,7 @@ export const site: Site = {
     process.env.NODE_ENV === 'production'
       ? 'https://honghong.me'
       : 'http://localhost:3000',
-  logo: 'https://honghong.me/static/images/avatar.png',
+  logo: 'https://honghong.me/images/avatar.png',
   title: 'Hong',
   name: 'Hong',
   keywords: ['tszhong0411', 'Next.js', 'React', 'TypeScript', 'Node.js'],
@@ -29,13 +29,13 @@ export const site: Site = {
       rel: 'icon',
       type: 'image/png',
       sizes: '16x16',
-      url: '/static/favicon/favicon-16x16.png',
+      url: '/favicon/favicon-16x16.png',
     },
     {
       rel: 'icon',
       type: 'image/png',
       sizes: '32x32',
-      url: '/static/favicon/favicon-32x32.png',
+      url: '/favicon/favicon-32x32.png',
     },
   ],
 }

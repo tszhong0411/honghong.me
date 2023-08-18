@@ -56,7 +56,9 @@ export const generateMetadata = async (
       authors: site.url,
       images: [
         {
-          url: `${site.url}/static/images/og/posts/${post.slug}.png`,
+          url: `${site.url}/api/og?title=${post.title}&date=${
+            post.date.split('T')[0]
+          }&url=honghong.me/blog`,
           width: 1200,
           height: 630,
           alt: post.title,
@@ -68,7 +70,11 @@ export const generateMetadata = async (
       ...previousTwitter,
       title: post.title,
       description: post.summary,
-      images: [`${site.url}/static/images/og/posts/${post.slug}.png`],
+      images: [
+        `${site.url}/api/og?title=${post.title}&date=${
+          post.date.split('T')[0]
+        }&url=honghong.me/blog`,
+      ],
     },
   }
 }
@@ -92,7 +98,9 @@ const BlogPostPage = (props: BlogPostPageProps) => {
     description: summary,
     datePublished: date,
     dateModified: modifiedTime,
-    image: `${site.url}/static/images/og/posts/${slug}.png`,
+    image: `${site.url}/api/og?title=${title}&date=${
+      date.split('T')[0]
+    }&url=honghong.me/blog`,
     author: {
       '@type': 'Person',
       name: site.name,

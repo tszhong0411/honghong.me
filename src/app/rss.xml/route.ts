@@ -12,7 +12,7 @@ export const GET = async () => {
     site_url: `${site.url}`,
     feed_url: `${site.url}/feed.xml`,
     language: 'en-US',
-    image_url: `${site.url}/static/images/og/og.png`,
+    image_url: `${site.url}/images/og.png`,
   })
 
   const allPosts = getAllPosts()

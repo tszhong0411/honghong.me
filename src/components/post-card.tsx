@@ -50,7 +50,7 @@ const PostCard = (props: PostCardProps) => {
         }}
       />
       <Image
-        src={`/static/images/blog/${image}`}
+        src={`/images/blog/${image}`}
         className='rounded-lg'
         width={1280}
         height={720}
