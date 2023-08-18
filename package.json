@@ -19,7 +19,7 @@
     "format": "prettier -w .",
     "type-check": "tsc --noEmit",
     "prepare": "husky install",
-    "postinstall": "node node_modules/puppeteer/install.js && prisma generate"
+    "postinstall": "prisma generate"
   },
   "prettier": "@tszhong0411/prettier-config",
   "dependencies": {
