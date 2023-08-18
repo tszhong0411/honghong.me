@@ -45,7 +45,7 @@ cd honghong.me
 3. Install dependencies
 
 ```sh
-yarn
+pnpm
 ```
 
 4. Create a `.env.local` file and input environment variables based on the `.env.example` file so that the project can run properly.
@@ -97,7 +97,7 @@ WAKATIME_API_KEY=
 5. Run the development server
 
 ```sh
-yarn dev
+pnpm dev
 ```
 
 ## 🔔 Notice: Please Do Not Use This Source Code as a Template

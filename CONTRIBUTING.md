@@ -37,15 +37,15 @@ To set up the project locally, follow these steps:
    cd honghong.me
    ```
 
-2. Install dependencies using Yarn:
+2. Install dependencies using pnpm:
 
    ```sh
-   yarn install
+   pnpm install
    ```
 
 3. Start the development server:
    ```sh
-   yarn dev
+   pnpm dev
    ```
 
 ## Conventional Commits
@@ -68,12 +68,12 @@ Before submitting a pull request, make sure your code is properly formatted. You
 - Run lint fixes:
 
   ```sh
-  yarn lint:fix
+  pnpm lint:fix
   ```
 
 - Format code:
   ```sh
-  yarn format
+  pnpm format
   ```
 
 Make sure your changes are well-tested and your code follows best practices. Thank you for contributing to honghong.me! 🚀
