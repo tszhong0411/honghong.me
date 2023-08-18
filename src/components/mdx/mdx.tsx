@@ -24,9 +24,15 @@ const components: MDXComponents = {
   pre: Pre,
 
   // Custom components
-  Alert: (props) => <Alert {...props} />,
-  AlertTitle: (props) => <AlertTitle {...props} />,
-  AlertDescription: (props) => <AlertDescription {...props} />,
+  Alert: (props: React.ComponentPropsWithoutRef<typeof Alert>) => (
+    <Alert {...props} />
+  ),
+  AlertTitle: (props: React.ComponentPropsWithoutRef<typeof AlertTitle>) => (
+    <AlertTitle {...props} />
+  ),
+  AlertDescription: (
+    props: React.ComponentPropsWithoutRef<typeof AlertDescription>,
+  ) => <AlertDescription {...props} />,
   ItemGrid,
   Tree,
   Kbd,
