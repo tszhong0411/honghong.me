@@ -8,6 +8,7 @@ import {
   IconBrandTailwind,
   IconBrandTypescript,
   IconChecks,
+  IconDatabase,
   IconFriends,
   IconLayoutCollage,
   IconLink,
@@ -66,6 +67,9 @@ const getIconByName = (name: string) => {
     }
     case 'LayoutCollage': {
       return IconLayoutCollage
+    }
+    case 'Neon': {
+      return IconDatabase
     }
     default: {
       throw Error('Icon not found')
