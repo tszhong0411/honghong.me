@@ -110,7 +110,7 @@ const RootLayout = (props: RootLayoutProps) => {
       )}
       suppressHydrationWarning
     >
-      <body>
+      <body className='bg-accent-bg'>
         <Providers>
           <Header />
           <main className='relative mx-auto mb-16 max-w-4xl px-8 py-24'>

@@ -4,7 +4,7 @@ import {
   defineNestedType,
   makeSource,
 } from 'contentlayer/source-files'
-import { Element, Root } from 'hast'
+import { Root } from 'hast'
 import { s } from 'hastscript'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypePrettyCode from 'rehype-pretty-code'
@@ -167,25 +167,10 @@ export default makeSource({
             light: 'github-light',
             dark: 'github-dark',
           },
-          onVisitLine(node: Element) {
-            if (node.children.length === 0) {
-              node.children = [{ type: 'text', value: ' ' }]
-            }
-          },
-          onVisitHighlightedLine(node: Element) {
-            if (node.properties) {
-              node.properties.className +=
-                ' !border-l-[#ff7b81] dark:!border-l-[#ad0008] bg-[#ffd8d8] dark:bg-[#401113] before:!text-accent-6'
-            }
-          },
-          onVisitHighlightedWord(node: Element) {
-            if (node.properties) {
-              node.properties.className +=
-                ' bg-[#ffd8d8] dark:bg-[#401113] p-1 rounded-md'
-            }
-          },
+          keepBackground: false,
         },
       ],
+      // Remove div tag
       () => (tree: Root) => {
         visit(tree, 'element', (node, index, parent) => {
           if (
@@ -201,6 +186,8 @@ export default makeSource({
           })
         })
       },
+      // If light theme, hide dark theme
+      // If dark theme, hide light theme
       () => (tree: Root) => {
         visit(tree, 'element', (node, _, parent) => {
           if (node.tagName !== 'pre' && node.tagName !== 'code') return
@@ -230,7 +217,6 @@ export default makeSource({
             ),
           })
         })
-
         visit(tree, 'element', (node) => {
           if (node.tagName !== 'div') return
           if (!node.properties) return

@@ -4,7 +4,7 @@ import { IconCheck, IconCopy } from '@tabler/icons-react'
 import React from 'react'
 import { toast } from 'react-hot-toast'
 
-type PreProps = JSX.IntrinsicElements['pre']
+type PreProps = React.ComponentPropsWithoutRef<'pre'>
 
 const Pre = (props: PreProps) => {
   const { children, ...rest } = props
