@@ -3,7 +3,6 @@
 import { IconHeart } from '@tabler/icons-react'
 import { cx } from '@tszhong0411/utils'
 import { motion } from 'framer-motion'
-import party from 'party-js'
 import React from 'react'
 import { useDebounce } from 'react-use'
 import useSWR from 'swr'
@@ -20,6 +19,7 @@ const LikeButton = (props: LikeButtonProps) => {
   const { slug } = props
   const [isBreathing, setIsBreathing] = React.useState(false)
   const [scale, setScale] = React.useState(1)
+  const buttonRef = React.useRef<HTMLButtonElement>(null)
 
   const { data, isLoading, mutate } = useSWR<Likes>(
     `/api/likes?slug=${slug}`,
@@ -82,20 +82,41 @@ const LikeButton = (props: LikeButtonProps) => {
     return () => clearInterval(interval)
   }, [])
 
+  const handleConfetti = async () => {
+    const { clientWidth, clientHeight } = document.documentElement
+    const boundingBox = buttonRef.current?.getBoundingClientRect?.()
+
+    const targetY = boundingBox?.y ?? 0
+    const targetX = boundingBox?.x ?? 0
+    const targetWidth = boundingBox?.width ?? 0
+
+    const targetCenterX = targetX + targetWidth / 2
+    const confetti = (await import('canvas-confetti')).default
+
+    confetti({
+      zIndex: 999,
+      particleCount: 100,
+      spread: 100,
+      origin: {
+        y: targetY / clientHeight,
+        x: targetCenterX / clientWidth,
+      },
+    })
+  }
+
   return (
     <div className='mt-12 flex justify-center'>
       <button
+        ref={buttonRef}
         className={cx([
           'group relative h-12 w-24 rounded-lg bg-transparent',
           'before:absolute before:inset-0 before:rounded-lg before:bg-gradient-to-br before:from-[#7928ca] before:to-[#ff0080] before:content-[""]',
         ])}
         type='button'
-        onClick={(e) => {
+        onClick={() => {
           if (isLoading) return
           if (data?.currentUserLikes === 2) {
-            party.confetti(e.currentTarget, {
-              count: party.variation.range(30, 40),
-            })
+            handleConfetti()
           }
           if (!data || data.currentUserLikes >= 3) return
 
