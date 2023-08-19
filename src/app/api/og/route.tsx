@@ -47,7 +47,7 @@ export const GET = async (req: Request) => {
           tw='w-full h-full flex flex-col px-14 py-12 text-white justify-between'
           style={{
             backgroundImage:
-              'url(https://honghong.me/static/images/og-background.png)',
+              'url(https://honghong.me/images/og-background.png)',
           }}
         >
           <div tw='text-3xl font-semibold' style={{ fontFamily: 'Inter' }}>
