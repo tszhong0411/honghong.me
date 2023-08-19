@@ -6,3 +6,6 @@
 
 # Mdx
 *.mdx
+
+# pnpm
+pnpm-lock.yaml
