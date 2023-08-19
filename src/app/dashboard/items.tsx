@@ -120,7 +120,11 @@ const Items = () => {
                   <div className='text-sm font-bold'>{title}</div>
                 </div>
                 <div className='text-4xl font-black text-accent-fg'>
-                  {value ? value : <Skeleton className='h-10' />}
+                  {typeof value === 'undefined' ? (
+                    <Skeleton className='h-10' />
+                  ) : (
+                    value
+                  )}
                 </div>
               </a>
             )
