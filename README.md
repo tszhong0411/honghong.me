@@ -1,20 +1,8 @@
-<h1 align="center">
- honghong.me
-</h1>
-
 <p align="center">
-  <img src="https://socialify.git.ci/tszhong0411/honghong.me/image?forks=1&issues=1&logo=https://honghong.me/images/projects/blog/logo.png&name=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark">
+  <img src="https://honghong.me/images/projects/blog/cover.png">
 </p>
 
-<p align="center">
-    <a href="https://honghong.me" target="blank">View Online</a>
-    ·
-    <a href="https://github.com/tszhong0411/honghong.me/issues/new/choose">Report Bug</a>
-    ·
-    <a href="https://github.com/tszhong0411/honghong.me/issues/new/choose">Request New Feature</a>
-</p>
-
-## 🌍 honghong.me
+## ⚡️ Tech Stack
 
 - Framework: [Next.js](https://nextjs.org/)
 - Database: [Planetscale](https://planetscale.com/)
