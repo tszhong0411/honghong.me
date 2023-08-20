@@ -163,10 +163,7 @@ export default makeSource({
       [
         rehypePrettyCode,
         {
-          theme: {
-            light: 'github-light',
-            dark: 'github-dark',
-          },
+          theme: 'github-dark',
           keepBackground: false,
         },
       ],
@@ -184,55 +181,6 @@ export default makeSource({
           Object.assign(node.properties, {
             className: cx(node.properties?.className, 'relative'),
           })
-        })
-      },
-      // If light theme, hide dark theme
-      // If dark theme, hide light theme
-      () => (tree: Root) => {
-        visit(tree, 'element', (node, _, parent) => {
-          if (node.tagName !== 'pre' && node.tagName !== 'code') return
-          if (
-            node.tagName === 'code' &&
-            parent !== null &&
-            parent !== undefined &&
-            parent.type === 'element' &&
-            parent.tagName === 'pre'
-          )
-            return
-          if (!node.properties) return
-
-          const theme = node.properties['data-theme']
-
-          if (typeof theme === 'undefined') return
-
-          Object.assign(node.properties, {
-            className: cx(
-              node.properties?.className,
-              theme === 'light'
-                ? 'dark:hidden'
-                : [
-                    'hidden',
-                    node.tagName === 'pre' ? 'dark:block' : 'dark:inline',
-                  ],
-            ),
-          })
-        })
-        visit(tree, 'element', (node) => {
-          if (node.tagName !== 'div') return
-          if (!node.properties) return
-
-          const theme = node.properties['data-theme']
-
-          if (typeof theme === 'undefined') return
-
-          if ('data-rehype-pretty-code-title' in node.properties) {
-            Object.assign(node.properties, {
-              className: cx(
-                node.properties?.className,
-                theme === 'light' ? 'dark:hidden' : ['hidden dark:block'],
-              ),
-            })
-          }
         })
       },
     ],

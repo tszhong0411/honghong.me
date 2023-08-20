@@ -4,24 +4,6 @@
 
 @layer base {
   :root {
-    --accent-bg: #fff;
-    --accent-fg: #000;
-
-    --accent-1: #fafafa;
-    --accent-2: #eaeaea;
-    --accent-3: #999;
-    --accent-4: #888;
-    --accent-5: #666;
-    --accent-6: #444;
-    --accent-7: #333;
-    --accent-8: #111;
-
-    --hover: #f3f2f2;
-
-    --danger: #e00;
-  }
-
-  .dark:root {
     --accent-bg: #000;
     --accent-fg: #fff;
 

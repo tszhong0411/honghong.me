@@ -8,8 +8,6 @@ import {
   IconCode,
   IconCommand,
   IconLink,
-  IconMoon,
-  IconSun,
 } from '@tabler/icons-react'
 import {
   Button,
@@ -21,7 +19,6 @@ import {
   CommandList,
   CommandSeparator,
 } from '@tszhong0411/ui'
-import { useTheme } from 'next-themes'
 import React from 'react'
 import toast from 'react-hot-toast'
 
@@ -36,7 +33,6 @@ type Groups = {
 
 const CommandMenu = () => {
   const [open, setOpen] = React.useState(false)
-  const { setTheme } = useTheme()
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -130,21 +126,6 @@ const CommandMenu = () => {
             runCommand(() =>
               window.open('https://www.facebook.com/tszhong0411/', '_blank'),
             ),
-        },
-      ],
-    },
-    {
-      name: 'Theme',
-      actions: [
-        {
-          title: 'Light',
-          icon: <IconSun size={16} className='mr-2' />,
-          onSelect: () => runCommand(() => setTheme('light')),
-        },
-        {
-          title: 'Dark',
-          icon: <IconMoon size={16} className='mr-2' />,
-          onSelect: () => runCommand(() => setTheme('dark')),
         },
       ],
     },

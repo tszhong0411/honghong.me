@@ -5,7 +5,6 @@ module.exports = {
     './node_modules/@tszhong0411/**/*.{js,jsx,ts,tsx}',
     './contentlayer.config.ts',
   ],
-  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -21,6 +20,9 @@ module.exports = {
         'accent-8': 'var(--accent-8)',
         hover: 'var(--hover)',
         danger: 'var(--danger)',
+      },
+      fontFamily: {
+        inter: ['var(--font-inter)'],
       },
       backgroundImage: {
         'rainbow-gradient':
@@ -44,11 +46,11 @@ module.exports = {
             },
             ':not(pre) > code': {
               padding: '0.12em 0.25em',
-              background: '#f7f7f7',
-              border: '1px solid #ededed',
               borderRadius: '0.375rem',
               display: 'inline-block',
               lineHeight: '1.2',
+              background: '#2a2828',
+              border: '1px solid #3e3c3c',
 
               '&::before, &::after': {
                 content: 'none',
@@ -85,7 +87,7 @@ module.exports = {
                 },
                 '> [data-highlighted-line]': {
                   borderLeftColor: 'var(--accent-fg)',
-                  background: '#e3e3e3',
+                  background: '#3c3c3c',
                 },
               },
             },
@@ -105,21 +107,6 @@ module.exports = {
               borderTopLeftRadius: '0',
               borderTopRightRadius: '0',
               borderTopWidth: '0',
-            },
-          },
-        },
-        invert: {
-          css: {
-            ':not(pre) > code': {
-              background: '#2a2828',
-              border: '1px solid #3e3c3c',
-            },
-            pre: {
-              '> code': {
-                '> [data-highlighted-line]': {
-                  background: '#3c3c3c',
-                },
-              },
             },
           },
         },

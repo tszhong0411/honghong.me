@@ -38,7 +38,7 @@ const PostCard = (props: PostCardProps) => {
       }}
     >
       <motion.div
-        className='pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 [--spotlight:rgba(0,0,0,0.05)] group-hover:opacity-100 dark:[--spotlight:rgba(255,255,255,0.15)]'
+        className='pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 [--spotlight:rgba(255,255,255,0.15)] group-hover:opacity-100'
         style={{
           background: useMotionTemplate`
             radial-gradient(

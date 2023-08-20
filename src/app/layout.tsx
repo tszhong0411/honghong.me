@@ -6,7 +6,6 @@ import '@/styles/globals.css'
 
 import Footer from '@/components/footer'
 import Header from '@/components/header'
-import Providers from '@/components/providers'
 import Toaster from '@/components/toaster'
 
 import { site } from '@/config/site'
@@ -108,17 +107,14 @@ const RootLayout = (props: RootLayoutProps) => {
         firaCode.variable,
         'scroll-smooth antialiased',
       )}
-      suppressHydrationWarning
     >
-      <body className='bg-accent-bg'>
-        <Providers>
-          <Header />
-          <main className='relative mx-auto mb-16 max-w-4xl px-8 py-24'>
-            {children}
-          </main>
-          <Toaster />
-          <Footer />
-        </Providers>
+      <body className='bg-accent-bg font-inter text-accent-fg'>
+        <Header />
+        <main className='relative mx-auto mb-16 max-w-5xl px-8 py-24'>
+          {children}
+        </main>
+        <Toaster />
+        <Footer />
         <Script
           async
           data-website-id='4a113320-ef57-44cd-bc0e-08389b9ccae3'

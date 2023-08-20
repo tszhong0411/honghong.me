@@ -48,7 +48,7 @@ const ProjectsPage = () => {
         title='Projects'
         description='The list of my projects. Everything was made with ❤️.'
       />
-      <div className='flex flex-col gap-4'>
+      <div className='grid gap-4 md:grid-cols-2'>
         {allProjects.map((project) => (
           <ProjectCard key={project._id} {...project} />
         ))}

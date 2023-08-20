@@ -21,7 +21,7 @@ const ProjectCard = (props: ProjectCardProps) => {
     <Link
       key={_id}
       href={`/projects/${slug}`}
-      className='group relative flex flex-col rounded-lg border border-accent-2 p-4 transition-all duration-150 hover:scale-105 md:flex-row'
+      className='group relative flex flex-col rounded-lg border border-accent-2 p-4 transition-all duration-150 hover:scale-105'
       onMouseMove={(e) => {
         const { left, top } = e.currentTarget.getBoundingClientRect()
 
@@ -30,7 +30,7 @@ const ProjectCard = (props: ProjectCardProps) => {
       }}
     >
       <motion.div
-        className='pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 [--spotlight:rgba(0,0,0,0.05)] group-hover:opacity-100 dark:[--spotlight:rgba(255,255,255,0.15)]'
+        className='pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 [--spotlight:rgba(255,255,255,0.15)] group-hover:opacity-100'
         style={{
           background: useMotionTemplate`
             radial-gradient(
@@ -46,9 +46,9 @@ const ProjectCard = (props: ProjectCardProps) => {
         width={1200}
         height={630}
         alt={name}
-        className='rounded-lg md:w-72'
+        className='rounded-lg'
       />
-      <div className='flex-1 px-2 py-4 md:px-4 md:py-2'>
+      <div className='flex-1 px-2 py-4'>
         <div>
           <h2 className='text-2xl font-bold text-accent-fg'>{name}</h2>
           <div className='text-accent-5'>{description}</div>

@@ -11,4 +11,4 @@ export const GISCUS_CONFIG: GiscusProps = {
   inputPosition: 'bottom',
   lang: 'en',
   loading: 'eager',
-}
+} as const

@@ -43,7 +43,7 @@ const Mdx = (props: MdxProps) => {
   const Component = useMDXComponent(code)
 
   return (
-    <div className='prose w-full max-w-none dark:prose-invert'>
+    <div className='prose prose-invert w-full max-w-none'>
       <Component components={{ ...components }} />
     </div>
   )

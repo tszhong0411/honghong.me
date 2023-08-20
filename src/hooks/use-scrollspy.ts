@@ -5,11 +5,15 @@ export const useScrollspy = (
   options: IntersectionObserverInit,
 ) => {
   const [activeId, setActiveId] = React.useState<string>()
-  const observer = React.useRef<IntersectionObserver | null>(null)
+  const observer = React.useRef<IntersectionObserver>()
 
   React.useEffect(() => {
     const elements = ids.map((id) => document.getElementById(id))
-    observer.current?.disconnect()
+
+    if (observer.current) {
+      observer.current?.disconnect()
+    }
+
     observer.current = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry?.isIntersecting) {
@@ -17,11 +21,11 @@ export const useScrollspy = (
         }
       })
     }, options)
+
     elements.forEach((el) => {
-      if (el) {
-        observer.current?.observe(el)
-      }
+      el && observer.current?.observe(el)
     })
+
     return () => observer.current?.disconnect()
   }, [ids, options])
 

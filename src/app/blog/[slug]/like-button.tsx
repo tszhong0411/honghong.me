@@ -132,12 +132,12 @@ const LikeButton = (props: LikeButtonProps) => {
         <span
           className={cx([
             'absolute inset-0.5 z-10 flex items-center justify-center gap-2 rounded-[7px] bg-accent-bg text-lg font-bold transition-[background-color] duration-150',
-            'group-hover:bg-transparent group-hover:text-accent-bg dark:group-hover:text-accent-fg',
+            'group-hover:bg-transparent group-hover:text-accent-fg',
           ])}
         >
           <IconHeart
             className={cx(
-              'group-hover:fill-accent-bg dark:group-hover:fill-accent-fg',
+              'group-hover:fill-accent-fg',
               data?.currentUserLikes === 3 && 'fill-accent-fg',
             )}
             size={20}

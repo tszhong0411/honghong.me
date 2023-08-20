@@ -12,6 +12,8 @@ export type Heading = {
 export const getHeadings = (content: string): Heading[] => {
   const headings: Heading[] = []
 
+  slugger.reset()
+
   const tokens = marked.lexer(content)
 
   tokens.forEach((token) => {

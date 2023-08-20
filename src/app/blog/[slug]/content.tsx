@@ -18,12 +18,14 @@ const Content = (props: ContentProps) => {
 
   return (
     <div className='mt-8 flex flex-col justify-between lg:flex-row'>
-      <article className='w-full lg:w-[540px]'>
+      <article className='w-full lg:w-[670px]'>
         <Mdx code={post.body.code} />
       </article>
       <aside className='lg:min-w-[270px] lg:max-w-[270px]'>
         <div className='sticky top-24'>
-          <TableOfContents headings={headings} />
+          {headings && headings.length > 0 && (
+            <TableOfContents headings={headings} />
+          )}
           <LikeButton slug={slug} />
         </div>
       </aside>
