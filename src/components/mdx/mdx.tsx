@@ -9,6 +9,7 @@ import ItemGrid from './item-grid'
 import Link from './link'
 import Pre from './pre'
 import Tree from './tree'
+import Video from './video'
 
 type MdxProps = {
   code: string
@@ -36,6 +37,7 @@ const components: MDXComponents = {
   ItemGrid,
   Tree,
   Kbd,
+  Video,
 }
 
 const Mdx = (props: MdxProps) => {

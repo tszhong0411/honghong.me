@@ -6,7 +6,7 @@ const middleware = async () => {
     script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app *.honghong.me data: blob:;
     style-src 'self' 'unsafe-inline';
     img-src * blob: data:;
-    media-src;
+    media-src *;
     connect-src *;
     font-src 'self';
     frame-src giscus.app;
