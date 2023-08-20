@@ -261,7 +261,7 @@ export default function Blog({ post }) {
         {formatDate(date)}
       </time>
       <hr className='my-8' />
-      <article className='prose'>
+      <article className='prose max-w-none'>
         <MDXRemote {...post.source} />
       </article>
     </div>
