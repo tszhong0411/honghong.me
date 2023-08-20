@@ -21,7 +21,7 @@ const ProjectCard = (props: ProjectCardProps) => {
     <Link
       key={_id}
       href={`/projects/${slug}`}
-      className='group relative flex flex-col rounded-lg border border-accent-2 p-4 transition-all duration-150 hover:scale-105'
+      className='group relative flex flex-col rounded-lg border border-accent-2 p-4'
       onMouseMove={(e) => {
         const { left, top } = e.currentTarget.getBoundingClientRect()
 
