@@ -49,7 +49,12 @@ const Header = (props: HeaderProps) => {
         <div className='grid grid-cols-2 text-sm max-md:gap-4 md:grid-cols-4'>
           <div className='space-y-1 md:mx-auto'>
             <div className='text-accent-5'>Written by</div>
-            <div className='flex items-center gap-2'>
+            <a
+              href='https://github.com/tszhong0411'
+              rel='noopener noreferrer'
+              target='_blank'
+              className='flex items-center gap-2'
+            >
               <Image
                 src='/images/avatar.png'
                 className='rounded-full'
@@ -57,14 +62,8 @@ const Header = (props: HeaderProps) => {
                 height={24}
                 alt='Hong'
               />
-              <a
-                href='https://github.com/tszhong0411'
-                rel='noopener noreferrer'
-                target='_blank'
-              >
-                Hong
-              </a>
-            </div>
+              Hong
+            </a>
           </div>
           <div className='space-y-1 md:mx-auto'>
             <div className='text-accent-5'>Published on</div>
