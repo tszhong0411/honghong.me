@@ -35,9 +35,15 @@ dependencies:
   framer-motion:
     specifier: ^10.16.0
     version: 10.16.0(react-dom@18.2.0)(react@18.2.0)
+  github-slugger:
+    specifier: ^2.0.0
+    version: 2.0.0
   hastscript:
     specifier: ^8.0.0
     version: 8.0.0
+  marked:
+    specifier: ^7.0.4
+    version: 7.0.4
   next:
     specifier: ^13.4.19
     version: 13.4.19(@opentelemetry/api@1.4.1)(react-dom@18.2.0)(react@18.2.0)
@@ -6638,6 +6644,12 @@ packages:
 
   /markdown-table@3.0.3:
     resolution: {integrity: sha512-Z1NL3Tb1M9wH4XESsCDEksWoKTdlUafKc4pt0GRwjUyXaCFZ+dc3g2erqB6zm3szA2IUSi7VnPI+o/9jnxh9hw==}
+    dev: false
+
+  /marked@7.0.4:
+    resolution: {integrity: sha512-t8eP0dXRJMtMvBojtkcsA7n48BkauktUKzfkPSCq85ZMTJ0v76Rke4DYz01omYpPTUh4p/f7HePgRo3ebG8+QQ==}
+    engines: {node: '>= 16'}
+    hasBin: true
     dev: false
 
   /mdast-util-definitions@5.1.2:

@@ -4,10 +4,16 @@ import { IconList } from '@tabler/icons-react'
 import { cx } from '@tszhong0411/utils'
 import React from 'react'
 
-import { useHeadings, useScrollspy } from '@/hooks'
+import { useScrollspy } from '@/hooks'
 
-const TableOfContents = () => {
-  const headings = useHeadings()
+import { Heading } from '@/utils/get-headings'
+
+type TableOfContentsProps = {
+  headings: Heading[]
+}
+
+const TableOfContents = (props: TableOfContentsProps) => {
+  const { headings } = props
   const activeId = useScrollspy(
     headings.map((heading) => heading.id),
     { rootMargin: '0% 0% -55% 0%' },
