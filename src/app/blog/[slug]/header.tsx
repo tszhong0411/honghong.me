@@ -4,6 +4,7 @@ import { Skeleton } from '@tszhong0411/ui'
 import dayjs from 'dayjs'
 import React from 'react'
 
+import ImageZoom from '@/components/image-zoom'
 import Image from '@/components/mdx/image'
 import ViewCounter from '@/components/view-counter'
 
@@ -85,13 +86,15 @@ const Header = (props: HeaderProps) => {
           </div>
         </div>
       </div>
-      <Image
-        src={`/images/blog/${slug}/cover.png`}
-        className='rounded-lg'
-        width={1200}
-        height={630}
-        alt={title}
-      />
+      <ImageZoom>
+        <Image
+          src={`/images/blog/${slug}/cover.png`}
+          className='rounded-lg'
+          width={1200}
+          height={630}
+          alt={title}
+        />
+      </ImageZoom>
     </div>
   )
 }

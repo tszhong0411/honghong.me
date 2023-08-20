@@ -46,6 +46,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
+    "react-medium-image-zoom": "^4.3.3",
     "react-use": "^17.4.0",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-pretty-code": "0.10.0",

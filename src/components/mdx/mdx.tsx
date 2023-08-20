@@ -10,6 +10,7 @@ import Link from './link'
 import Pre from './pre'
 import Tree from './tree'
 import Video from './video'
+import ImageZoom from '../image-zoom'
 
 type MdxProps = {
   code: string
@@ -20,7 +21,11 @@ const components: MDXComponents = {
   Image: (props: React.ComponentPropsWithoutRef<typeof Image>) => {
     const { alt, ...rest } = props
 
-    return <Image className='my-6 rounded-lg' alt={alt} {...rest} />
+    return (
+      <ImageZoom>
+        <Image className='my-6 rounded-lg' alt={alt} {...rest} />
+      </ImageZoom>
+    )
   },
   pre: Pre,
 
