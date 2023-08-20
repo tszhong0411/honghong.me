@@ -23,6 +23,7 @@ module.exports = {
       },
       fontFamily: {
         inter: ['var(--font-inter)'],
+        'fira-code': ['var(--font-fira-code)'],
       },
       backgroundImage: {
         'rainbow-gradient':
