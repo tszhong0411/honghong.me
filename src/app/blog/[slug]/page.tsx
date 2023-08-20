@@ -122,7 +122,7 @@ const BlogPostPage = (props: BlogPostPageProps) => {
 
       <Header date={date} title={title} slug={slug} />
       <Content slug={slug} post={post} />
-      <Footer slug={slug} title={title} />
+      <Footer slug={slug} modifiedTime={modifiedTime} />
 
       <Comment />
     </>

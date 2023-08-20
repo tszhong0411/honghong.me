@@ -1,71 +1,41 @@
-import {
-  IconBrandFacebook,
-  IconBrandReddit,
-  IconBrandTwitter,
-} from '@tabler/icons-react'
+'use client'
+
+import { Skeleton } from '@tszhong0411/ui'
+import dayjs from 'dayjs'
+import React from 'react'
 
 const editURL = (slug: string) =>
   `https://github.com/tszhong0411/honghong.me/blob/main/src/content/blog/${slug}.mdx?plain=1`
 
-const twitterShareURL = (slug: string, title: string) =>
-  `https://twitter.com/intent/tweet?text=${title}&url=${encodeURIComponent(
-    `https://honghong.me/blog/${slug}`,
-  )}`
-
-const facebookShareURL = (slug: string) =>
-  `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-    `https://honghong.me/blog/${slug}`,
-  )}`
-
-const redditShareURL = (slug: string, title: string) =>
-  `https://www.reddit.com/submit?title=${title}&url=${encodeURIComponent(
-    `https://honghong.me/blog/${slug}`,
-  )}`
-
 type FooterProps = {
   slug: string
-  title: string
+  modifiedTime: string
 }
 
 const Footer = (props: FooterProps) => {
-  const { slug, title } = props
+  const { slug, modifiedTime } = props
+
+  const [formattedDate, setFormattedDate] = React.useState('')
+
+  React.useEffect(() => {
+    setFormattedDate(dayjs(modifiedTime).format('MMMM DD, YYYY'))
+  }, [modifiedTime])
 
   return (
-    <div className='my-8 flex w-full items-center justify-between border-b border-t border-accent-2 py-4'>
+    <div className='my-8 flex w-full items-center justify-between py-4 text-sm'>
       <a
         target='_blank'
         rel='noopener noreferrer'
         href={editURL(slug)}
-        className='text-sm'
+        className='text-accent-5 transition-colors duration-150 hover:text-accent-fg'
       >
         Edit on GitHub
       </a>
-      <div className='flex items-center justify-center gap-2'>
-        <a
-          target='_blank'
-          rel='noopener noreferrer'
-          href={redditShareURL(slug, title)}
-          className='flex h-8 w-8 items-center justify-center rounded-lg transition-colors duration-150 hover:bg-accent-2'
-        >
-          <IconBrandReddit size={18} />
-        </a>
-        <a
-          target='_blank'
-          rel='noopener noreferrer'
-          href={twitterShareURL(slug, title)}
-          className='flex h-8 w-8 items-center justify-center rounded-lg transition-colors duration-150 hover:bg-accent-2'
-        >
-          <IconBrandTwitter size={18} />
-        </a>
-        <a
-          target='_blank'
-          rel='noopener noreferrer'
-          href={facebookShareURL(slug)}
-          className='flex h-8 w-8 items-center justify-center rounded-lg transition-colors duration-150 hover:bg-accent-2'
-        >
-          <IconBrandFacebook size={18} />
-        </a>
-      </div>
+      {formattedDate ? (
+        <div className='text-accent-5'>Last updated: {formattedDate}</div>
+      ) : (
+        <Skeleton className='h-6 w-32 rounded-md' />
+      )}
     </div>
   )
 }
