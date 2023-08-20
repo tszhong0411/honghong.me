@@ -53,7 +53,7 @@ const ProjectCard = (props: ProjectCardProps) => {
           <h2 className='text-2xl font-bold text-accent-fg'>{name}</h2>
           <div className='text-accent-5'>{description}</div>
         </div>
-        <div className='mt-[5px] flex flex-wrap gap-[7px]'>
+        <div className='mt-4 flex flex-wrap gap-2'>
           {techstack.map((techstack) => {
             const { label } = techstack
 
