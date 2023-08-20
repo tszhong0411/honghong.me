@@ -30,12 +30,12 @@ const ProjectCard = (props: ProjectCardProps) => {
       }}
     >
       <motion.div
-        className='pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 [--spotlight:rgba(255,255,255,0.15)] group-hover:opacity-100'
+        className='pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100'
         style={{
           background: useMotionTemplate`
             radial-gradient(
               650px circle at ${mouseX}px ${mouseY}px,
-              var(--spotlight),
+              rgba(255,255,255,0.1),
               transparent 80%
             )
           `,
