@@ -20,7 +20,7 @@ const TableOfContents = (props: TableOfContentsProps) => {
 
   return (
     <div className='hidden lg:block'>
-      <div className='mb-4 pl-4'>Table of contents</div>
+      <div className='mb-4 pl-4'>On this page</div>
       <div>
         {headings.map((heading) => {
           const { id, level, title } = heading
