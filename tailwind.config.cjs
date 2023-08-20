@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { fontFamily } = require('tailwindcss/defaultTheme')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -22,8 +25,9 @@ module.exports = {
         danger: 'var(--danger)',
       },
       fontFamily: {
-        inter: ['var(--font-inter)'],
-        'fira-code': ['var(--font-fira-code)'],
+        inter: ['var(--font-inter)', ...fontFamily.sans],
+        'fira-code': ['var(--font-fira-code)', ...fontFamily.sans],
+        calcom: ['var(--font-calcom)', ...fontFamily.sans],
       },
       backgroundImage: {
         'rainbow-gradient':

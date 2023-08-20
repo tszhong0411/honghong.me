@@ -1,6 +1,7 @@
 import { cx } from '@tszhong0411/utils'
 import type { Metadata } from 'next'
 import { Fira_Code, Inter } from 'next/font/google'
+import localFont from 'next/font/local'
 import Script from 'next/script'
 import '@/styles/globals.css'
 
@@ -96,6 +97,11 @@ const firaCode = Fira_Code({
   subsets: ['latin'],
 })
 
+const calcom = localFont({
+  src: '../../public/fonts/CalSans-SemiBold.woff2',
+  variable: '--font-calcom',
+})
+
 const RootLayout = (props: RootLayoutProps) => {
   const { children } = props
 
@@ -105,6 +111,7 @@ const RootLayout = (props: RootLayoutProps) => {
       className={cx(
         inter.variable,
         firaCode.variable,
+        calcom.variable,
         'scroll-smooth antialiased',
       )}
     >
@@ -115,11 +122,13 @@ const RootLayout = (props: RootLayoutProps) => {
         </main>
         <Toaster />
         <Footer />
-        <Script
-          async
-          data-website-id='4a113320-ef57-44cd-bc0e-08389b9ccae3'
-          src='https://umami.honghong.me/script.js'
-        />
+        {process.env.NODE_ENV === 'production' && (
+          <Script
+            async
+            data-website-id='4a113320-ef57-44cd-bc0e-08389b9ccae3'
+            src='https://umami.honghong.me/script.js'
+          />
+        )}
       </body>
     </html>
   )
