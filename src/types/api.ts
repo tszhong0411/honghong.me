@@ -91,3 +91,8 @@ export type WakatimeRes = {
 export type WakatimeData = {
   seconds: number
 }
+
+// Analytics
+export type AnalyticsData = {
+  visitors: number
+}

@@ -80,6 +80,13 @@ IP_ADDRESS_SALT=
 # WakaTime API Key (Coding hours)
 # https://wakatime.com/api-key/
 WAKATIME_API_KEY=
+
+# Umami (real-time visitor counter)
+UMAMI_USERNAME=
+UMAMI_PASSWORD=
+NEXT_PUBLIC_UMAMI_URL=
+NEXT_PUBLIC_UMAMI_WEBSITE_ID=
+NEXT_PUBLIC_UMAMI_WEBSITE_SHARE_URL=
 ```
 
 5. Run the development server

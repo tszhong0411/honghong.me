@@ -2,6 +2,7 @@ import Link from 'next/link'
 
 import { FOOTER_LINKS, FOOTER_SOCIAL_MEDIA } from '@/config/links'
 
+import CurrentVisitors from './current-visitors'
 import NowPlaying from './now-playing'
 
 const Footer = () => {
@@ -39,8 +40,9 @@ const Footer = () => {
           ))}
         </div>
       </div>
-      <div className='mt-20 text-sm'>
-        &copy; {new Date().getFullYear()} Hong
+      <div className='mt-20 flex items-center justify-between text-sm'>
+        <div>&copy; {new Date().getFullYear()} Hong</div>
+        <CurrentVisitors />
       </div>
     </footer>
   )

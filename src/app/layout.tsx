@@ -2,9 +2,9 @@ import { cx } from '@tszhong0411/utils'
 import type { Metadata } from 'next'
 import { Fira_Code, Inter } from 'next/font/google'
 import localFont from 'next/font/local'
-import Script from 'next/script'
 import '@/styles/globals.css'
 
+import Analytics from '@/components/analytics'
 import Footer from '@/components/footer'
 import Header from '@/components/header'
 import Toaster from '@/components/toaster'
@@ -122,13 +122,7 @@ const RootLayout = (props: RootLayoutProps) => {
         </main>
         <Toaster />
         <Footer />
-        {process.env.NODE_ENV === 'production' && (
-          <Script
-            async
-            data-website-id='4a113320-ef57-44cd-bc0e-08389b9ccae3'
-            src='https://umami.honghong.me/script.js'
-          />
-        )}
+        <Analytics />
       </body>
     </html>
   )
