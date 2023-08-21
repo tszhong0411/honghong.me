@@ -28,7 +28,7 @@ const CurrentVisitors = () => {
           {data.visitors} current visitors
         </>
       ) : (
-        <Skeleton className='h-5 w-32 rounded-lg' />
+        <Skeleton className='h-5 w-32 rounded-md' />
       )}
     </a>
   )
