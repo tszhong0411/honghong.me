@@ -32,19 +32,19 @@ To set up the project locally, follow these steps:
 
 1. Clone the repository:
 
-   ```sh
+   ```bash
    git clone https://github.com/tszhong0411/honghong.me.git
    cd honghong.me
    ```
 
 2. Install dependencies using pnpm:
 
-   ```sh
+   ```bash
    pnpm install
    ```
 
 3. Start the development server:
-   ```sh
+   ```bash
    pnpm dev
    ```
 
@@ -67,12 +67,12 @@ Before submitting a pull request, make sure your code is properly formatted. You
 
 - Run lint fixes:
 
-  ```sh
+  ```bash
   pnpm lint:fix
   ```
 
 - Format code:
-  ```sh
+  ```bash
   pnpm format
   ```
 

@@ -30,19 +30,19 @@ Follow these steps to run the project locally on your machine:
 
 1. Clone the repository
 
-```sh
+```bash
 git clone https://github.com/tszhong0411/honghong.me.git
 ```
 
 2. Navigate to the project directory
 
-```sh
+```bash
 cd honghong.me
 ```
 
 3. Install dependencies
 
-```sh
+```bash
 pnpm
 ```
 
@@ -52,7 +52,7 @@ Create a `.env.local` file based on the provided `.env.example` file and fill in
 
 5. Run the development server
 
-```sh
+```bash
 pnpm dev
 ```
 
