@@ -3,12 +3,15 @@
 import { Skeleton } from '@tszhong0411/ui'
 import dayjs from 'dayjs'
 import React from 'react'
+import { useEvent } from 'react-use'
+import useSWR from 'swr'
+
+import fetcher from '@/lib/fetcher'
 
 import ImageZoom from '@/components/image-zoom'
 import Image from '@/components/mdx/image'
-import ViewCounter from '@/components/view-counter'
 
-import CommentCounter from './comment-counter'
+import { Views } from '@/types'
 
 type HeaderProps = {
   date: string
@@ -19,6 +22,11 @@ type HeaderProps = {
 const Header = (props: HeaderProps) => {
   const { date, title, slug } = props
   const [formattedDate, setFormattedDate] = React.useState('')
+  const { data: viewsData, isLoading: viewsIsLoading } = useSWR<Views>(
+    `/api/views?slug=${slug}`,
+    fetcher,
+  )
+  const [commentCounter, setCommentCounter] = React.useState(-1)
 
   React.useEffect(() => {
     setFormattedDate(dayjs(date).format('MMMM DD, YYYY'))
@@ -42,6 +50,24 @@ const Header = (props: HeaderProps) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  useEvent('message', (e: MessageEvent) => {
+    if (e.origin !== 'https://giscus.app') return
+    if (!(typeof e.data === 'object' && e.data.giscus)) return
+
+    const giscus = e.data.giscus
+
+    if (giscus.error) {
+      setCommentCounter(0)
+      return
+    }
+
+    if (giscus.discussion) {
+      setCommentCounter(
+        giscus.discussion.totalCommentCount + giscus.discussion.totalReplyCount,
+      )
+    }
+  })
 
   return (
     <div className='space-y-12 py-12'>
@@ -78,11 +104,19 @@ const Header = (props: HeaderProps) => {
           </div>
           <div className='space-y-1 md:mx-auto'>
             <div className='text-accent-5'>Views</div>
-            <ViewCounter slug={slug} />
+            {viewsIsLoading ? (
+              <Skeleton className='h-6 w-32 rounded-md' />
+            ) : (
+              <div>{viewsData?.views}</div>
+            )}
           </div>
           <div className='space-y-1 md:mx-auto'>
             <div className='text-accent-5'>Comments</div>
-            <CommentCounter />
+            {commentCounter === -1 ? (
+              <Skeleton className='h-6 w-32 rounded-md' />
+            ) : (
+              <div>{commentCounter}</div>
+            )}
           </div>
         </div>
       </div>

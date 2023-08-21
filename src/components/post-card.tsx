@@ -5,18 +5,27 @@ import dayjs from 'dayjs'
 import { motion, useMotionTemplate, useMotionValue } from 'framer-motion'
 import Link from 'next/link'
 import React from 'react'
+import useSWR from 'swr'
 
-import LikeCounter from './like-counter'
+import fetcher from '@/lib/fetcher'
+
 import Image from './mdx/image'
-import ViewCounter from './view-counter'
 
-import { BlogPostCore } from '@/types'
+import { BlogPostCore, Likes, Views } from '@/types'
 
 type PostCardProps = BlogPostCore
 
 const PostCard = (props: PostCardProps) => {
   const { _id, slug, image, title, summary, date } = props
   const [formattedDate, setFormattedDate] = React.useState('')
+  const { data: viewsData, isLoading: viewsIsLoading } = useSWR<Views>(
+    `/api/views?slug=${slug}`,
+    fetcher,
+  )
+  const { data: likesData, isLoading: likesIsLoading } = useSWR<Likes>(
+    `/api/likes?slug=${slug}`,
+    fetcher,
+  )
 
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
@@ -60,12 +69,20 @@ const PostCard = (props: PostCardProps) => {
         <h2 className='text-xl font-bold'>{title}</h2>
         <div className='text-accent-5'>{summary}</div>
       </div>
-      <div className='flex items-center text-sm'>
+      <div className='flex items-center gap-2 text-sm'>
         {formattedDate ? formattedDate : <Skeleton className='h-5 w-10' />}
-        &nbsp;/&nbsp;
-        <LikeCounter slug={slug} />
-        &nbsp;/&nbsp;
-        <ViewCounter slug={slug} />
+        <div>&middot;</div>
+        {likesIsLoading ? (
+          <Skeleton className='h-5 w-10 rounded-md' />
+        ) : (
+          <div>{likesData?.likes} likes</div>
+        )}
+        <div>&middot;</div>
+        {viewsIsLoading ? (
+          <Skeleton className='h-5 w-10 rounded-md' />
+        ) : (
+          <div>{viewsData?.views} views</div>
+        )}
       </div>
     </Link>
   )
