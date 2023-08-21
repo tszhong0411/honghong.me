@@ -30,22 +30,20 @@ const Items = () => {
   const { data: viewsData } = useSWR<Views>('/api/views', fetcher)
   const { data: wakatimeData } = useSWR<WakatimeData>('/api/wakatime', fetcher)
 
-  const getAge = () =>
-    (
-      dayjs().diff('2006-04-11', 'milliseconds') /
-      (365.25 * 24 * 60 * 60 * 1000)
-    ).toFixed(9)
-
-  const [age, setAge] = React.useState(getAge())
-  const [mounted, setMounted] = React.useState(false)
-
-  setInterval(() => {
-    setAge(getAge())
-  }, 10)
+  const [age, setAge] = React.useState<string>()
 
   React.useEffect(() => {
-    setMounted(true)
-  }, [])
+    const getAge = setInterval(() => {
+      setAge(() =>
+        (
+          dayjs().diff('2006-04-11', 'milliseconds') /
+          (365.25 * 24 * 60 * 60 * 1000)
+        ).toFixed(9),
+      )
+    }, 10)
+
+    return () => clearInterval(getAge)
+  })
 
   const data: Card[] = [
     {
@@ -103,32 +101,31 @@ const Items = () => {
   return (
     <>
       <div className='mb-4 grid gap-4 sm:grid-cols-2'>
-        {mounted &&
-          data.map((item) => {
-            const { icon, link, title, value } = item
+        {data.map((item) => {
+          const { icon, link, title, value } = item
 
-            return (
-              <a
-                key={title}
-                target='_blank'
-                rel='noopener noreferrer'
-                href={link}
-                className='flex flex-col gap-2 rounded-lg border border-accent-2 p-4 transition-colors duration-150 hover:bg-accent-1'
-              >
-                <div className='flex items-center gap-1'>
-                  {icon}
-                  <div className='text-sm font-bold'>{title}</div>
-                </div>
-                <div className='text-4xl font-black text-accent-fg'>
-                  {typeof value === 'undefined' ? (
-                    <Skeleton className='h-10' />
-                  ) : (
-                    value
-                  )}
-                </div>
-              </a>
-            )
-          })}
+          return (
+            <a
+              key={title}
+              target='_blank'
+              rel='noopener noreferrer'
+              href={link}
+              className='flex flex-col gap-2 rounded-lg border border-accent-2 bg-accent-1 p-4 transition-colors duration-150 hover:bg-hover'
+            >
+              <div className='flex items-center gap-1'>
+                {icon}
+                <div className='text-sm font-bold'>{title}</div>
+              </div>
+              <div className='text-4xl font-black text-accent-fg'>
+                {typeof value === 'undefined' ? (
+                  <Skeleton className='h-10 rounded-md' />
+                ) : (
+                  value
+                )}
+              </div>
+            </a>
+          )
+        })}
       </div>
     </>
   )
