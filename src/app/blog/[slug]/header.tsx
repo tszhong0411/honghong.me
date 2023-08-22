@@ -71,7 +71,7 @@ const Header = (props: HeaderProps) => {
 
   return (
     <div className='space-y-12 py-12'>
-      <div className='space-y-12 px-8'>
+      <div className='space-y-12 sm:px-8'>
         <h1 className='text-center font-calcom text-4xl font-bold'>{title}</h1>
         <div className='grid grid-cols-2 text-sm max-md:gap-4 md:grid-cols-4'>
           <div className='space-y-1 md:mx-auto'>

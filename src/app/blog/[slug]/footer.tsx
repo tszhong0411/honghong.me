@@ -22,7 +22,7 @@ const Footer = (props: FooterProps) => {
   }, [modifiedTime])
 
   return (
-    <div className='my-8 flex w-full items-center justify-between py-4 text-sm'>
+    <div className='my-8 flex w-full items-center justify-between py-4 text-sm max-sm:flex-col max-sm:items-start max-sm:gap-4'>
       <a
         target='_blank'
         rel='noopener noreferrer'
