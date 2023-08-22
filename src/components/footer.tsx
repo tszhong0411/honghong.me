@@ -42,7 +42,7 @@ const Footer = () => {
       </div>
       <div className='mt-20 flex items-center justify-between text-sm'>
         <div>&copy; {new Date().getFullYear()} Hong</div>
-        <CurrentVisitors />
+        {process.env.NODE_ENV === 'production' && <CurrentVisitors />}
       </div>
     </footer>
   )
