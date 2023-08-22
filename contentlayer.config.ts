@@ -100,11 +100,6 @@ const BlogPost = defineDocumentType(() => ({
       description: 'The summary of the blog post',
       required: true,
     },
-    image: {
-      type: 'string',
-      description: 'Image for the blog post',
-      required: true,
-    },
   },
   computedFields: {
     slug: {

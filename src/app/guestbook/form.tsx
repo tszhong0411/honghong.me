@@ -13,7 +13,7 @@ import { signOut } from 'next-auth/react'
 import React from 'react'
 import { toast } from 'react-hot-toast'
 
-import { createMessage } from './actions'
+import { createMessage } from '@/actions/guestbook'
 
 type FormProps = {
   user: NonNullable<DefaultSession['user']>

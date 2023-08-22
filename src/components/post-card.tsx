@@ -16,7 +16,7 @@ import { BlogPostCore, Likes, Views } from '@/types'
 type PostCardProps = BlogPostCore
 
 const PostCard = (props: PostCardProps) => {
-  const { _id, slug, image, title, summary, date } = props
+  const { _id, slug, title, summary, date } = props
   const [formattedDate, setFormattedDate] = React.useState('')
   const { data: viewsData, isLoading: viewsIsLoading } = useSWR<Views>(
     `/api/views?slug=${slug}`,
@@ -59,7 +59,7 @@ const PostCard = (props: PostCardProps) => {
         }}
       />
       <Image
-        src={`/images/blog/${image}`}
+        src={`/images/blog/${slug}/cover.png`}
         className='rounded-lg'
         width={1200}
         height={630}

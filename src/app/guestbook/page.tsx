@@ -5,9 +5,9 @@ import { authOptions } from '@/lib/auth'
 
 import PageTitle from '@/components/page-title'
 
+import { getMessages } from '@/actions/guestbook'
 import { site } from '@/config/site'
 
-import { getMessages } from './actions'
 import Form from './form'
 import Messages from './messages'
 import Pinned from './pinned'

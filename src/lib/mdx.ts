@@ -11,9 +11,7 @@ const getAllPosts = (config: GetAllPostsProps = {}) => {
 
   const posts = allBlogPosts
     .slice(0, limit)
-    .map((post) =>
-      pick(post, ['_id', 'slug', 'title', 'summary', 'date', 'image']),
-    )
+    .map((post) => pick(post, ['_id', 'slug', 'title', 'summary', 'date']))
 
   if (sorted) {
     return posts.sort(

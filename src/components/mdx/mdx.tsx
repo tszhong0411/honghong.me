@@ -7,6 +7,7 @@ import { useMDXComponent } from 'next-contentlayer/hooks'
 import Image from './image'
 import ItemGrid from './item-grid'
 import Link from './link'
+import LinkCard from './link-card'
 import Pre from './pre'
 import Tree from './tree'
 import Video from './video'
@@ -22,9 +23,14 @@ const components: MDXComponents = {
     const { alt, ...rest } = props
 
     return (
-      <ImageZoom>
-        <Image className='my-6 rounded-lg' alt={alt} {...rest} />
-      </ImageZoom>
+      <>
+        <ImageZoom>
+          <Image className='my-6 rounded-lg' alt={alt} {...rest} />
+        </ImageZoom>
+        <figcaption className='mt-2 text-center text-sm text-accent-6'>
+          {alt}
+        </figcaption>
+      </>
     )
   },
   pre: Pre,
@@ -43,6 +49,7 @@ const components: MDXComponents = {
   Tree,
   Kbd,
   Video,
+  LinkCard,
 }
 
 const Mdx = (props: MdxProps) => {

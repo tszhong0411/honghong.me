@@ -11,7 +11,7 @@
     "url": "git+https://github.com/tszhong0411/honghong.me.git"
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "concurrently \"contentlayer dev\" \"next dev\"",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
@@ -73,6 +73,7 @@
     "@types/rss": "^0.0.30",
     "@types/umami": "^0.1.2",
     "autoprefixer": "^10.4.15",
+    "concurrently": "^8.2.0",
     "cypress": "^12.17.4",
     "eslint": "^8.47.0",
     "eslint-config-next": "^13.4.19",

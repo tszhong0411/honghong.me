@@ -18,7 +18,7 @@ import { DefaultSession } from 'next-auth'
 import React from 'react'
 import { toast } from 'react-hot-toast'
 
-import { deleteMessage } from './actions'
+import { deleteMessage } from '@/actions/guestbook'
 
 import { Messages } from '@/types'
 
