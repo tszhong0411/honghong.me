@@ -5,7 +5,7 @@
 .contentlayer
 
 # Mdx
-*.mdx
+# *.mdx
 
 # pnpm
 pnpm-lock.yaml
