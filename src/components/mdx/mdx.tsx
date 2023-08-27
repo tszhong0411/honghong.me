@@ -19,6 +19,7 @@ import Image from './image'
 import ItemGrid from './item-grid'
 import Link from './link'
 import LinkCard from './link-card'
+import Logo from './logo'
 import Pre from './pre'
 import Tree from './tree'
 import Video from './video'
@@ -36,7 +37,7 @@ const components: MDXComponents = {
     return (
       <>
         <ImageZoom>
-          <Image className='my-6 rounded-lg' alt={alt} {...rest} />
+          <Image className='rounded-lg' alt={alt} {...rest} />
         </ImageZoom>
         <figcaption className='mt-2 text-center text-sm'>{alt}</figcaption>
       </>
@@ -70,6 +71,7 @@ const components: MDXComponents = {
   Tree,
   Video,
   LinkCard,
+  Logo,
 }
 
 const Mdx = (props: MdxProps) => {
