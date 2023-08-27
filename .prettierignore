@@ -1,11 +1,2 @@
-# Next.js
-.next
-
-# Contentlayer
-.contentlayer
-
-# Mdx
-# *.mdx
-
 # pnpm
 pnpm-lock.yaml

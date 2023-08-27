@@ -3,7 +3,7 @@ import React from 'react'
 
 const Pinned = () => {
   return (
-    <div className='relative mb-12 rounded-lg border border-transparent bg-accent-bg p-4 after:absolute after:-inset-1 after:-z-10 after:rounded-[calc(8px+3px)] after:bg-rainbow-gradient after:content-[""]'>
+    <div className='relative mb-12 rounded-lg border border-transparent bg-background p-4 after:absolute after:-inset-1 after:-z-10 after:rounded-[calc(8px+3px)] after:bg-rainbow-gradient after:content-[""]'>
       <div className='mb-3 flex items-center gap-2'>
         <IconPinnedFilled className='rotate-45' />
         Pinned

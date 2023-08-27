@@ -1,9 +1,10 @@
 'use client'
 
-import { Skeleton } from '@tszhong0411/ui'
 import useSWR from 'swr'
 
 import fetcher from '@/lib/fetcher'
+
+import { Skeleton } from '@/components/ui'
 
 import { AnalyticsData } from '@/types'
 

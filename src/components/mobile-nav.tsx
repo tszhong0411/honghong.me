@@ -1,15 +1,16 @@
 'use client'
 
 import { IconMenu } from '@tabler/icons-react'
+import Link from 'next/link'
+import React from 'react'
+
 import {
   Button,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@tszhong0411/ui'
-import Link from 'next/link'
-import React from 'react'
+} from '@/components/ui'
 
 import { HEADER_LINKS } from '@/config/links'
 
@@ -27,7 +28,7 @@ const MobileNav = () => {
           <IconMenu size={20} />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align='end'>
+      <DropdownMenuContent align='end' className='min-w-[10rem]'>
         {HEADER_LINKS.map((link) => (
           <DropdownMenuItem key={link.text} asChild>
             <Link href={link.href} className='flex items-center gap-4'>

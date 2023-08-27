@@ -11,10 +11,10 @@ const Hero = () => {
     <div className='space-y-6 md:my-16'>
       <div className='flex flex-col-reverse gap-8 md:flex-row md:justify-between'>
         <div className='space-y-4 md:max-w-lg'>
-          <h1 className='text-2xl font-bold text-accent-fg sm:text-4xl'>
+          <h1 className='text-2xl font-bold text-foreground sm:text-4xl'>
             Hong
           </h1>
-          <h2 className='text-md font-medium text-accent-5 sm:text-lg'>
+          <h2 className='text-md font-medium text-muted-foreground sm:text-lg'>
             17 y/o • Student • Full-stack Developer
           </h2>
           <p className='sm:text-lg'>

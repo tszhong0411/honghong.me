@@ -17,7 +17,7 @@ type InnerType = {
 
 const Tree = (props: TreeProps) => {
   return (
-    <div className='rounded-lg border border-accent-2 bg-accent-1 px-6 py-4'>
+    <div className='rounded-lg border bg-zinc-900 px-6 py-4'>
       <Inner {...props} level={0} />
     </div>
   )
@@ -34,7 +34,7 @@ const Inner = (props: InnerType) => {
             {Array.from(Array(level).keys()).map((i) => (
               <div
                 key={i}
-                className='absolute h-full w-px -translate-x-1/2 bg-accent-2'
+                className='absolute h-full w-px -translate-x-1/2 bg-muted'
                 style={{
                   left: `calc(${i * 20}px + 22px / 2)`,
                 }}

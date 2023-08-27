@@ -21,7 +21,7 @@ const ProjectCard = (props: ProjectCardProps) => {
     <Link
       key={_id}
       href={`/projects/${slug}`}
-      className='group relative flex flex-col rounded-lg border border-accent-2 p-4'
+      className='group relative flex flex-col rounded-lg border p-4'
       onMouseMove={(e) => {
         const { left, top } = e.currentTarget.getBoundingClientRect()
 
@@ -50,8 +50,8 @@ const ProjectCard = (props: ProjectCardProps) => {
       />
       <div className='flex-1 px-2 py-4'>
         <div>
-          <h2 className='text-2xl font-bold text-accent-fg'>{name}</h2>
-          <div className='text-accent-5'>{description}</div>
+          <h2 className='text-2xl font-bold text-foreground'>{name}</h2>
+          <div className='text-muted-foreground'>{description}</div>
         </div>
         <div className='mt-4 flex flex-wrap gap-2'>
           {techstack.map((techstack) => {
@@ -62,7 +62,7 @@ const ProjectCard = (props: ProjectCardProps) => {
             return (
               <div
                 key={label}
-                className='flex items-center justify-center gap-1 rounded-full border border-accent-2 px-3 py-2'
+                className='flex items-center justify-center gap-1 rounded-full border px-3 py-2'
               >
                 <Icon strokeWidth={1.5} size={16} />
                 <div className='text-xs leading-4'>{label}</div>

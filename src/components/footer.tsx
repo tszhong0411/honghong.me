@@ -19,7 +19,7 @@ const Footer = () => {
               <Link
                 key={link.title}
                 href={link.href}
-                className='text-accent-5 transition-colors duration-150 hover:text-accent-fg'
+                className='text-muted-foreground transition-colors duration-150 hover:text-foreground'
               >
                 {link.title}
               </Link>
@@ -31,7 +31,7 @@ const Footer = () => {
             <a
               key={link.title}
               href={link.href}
-              className='text-accent-5 transition-colors duration-150 hover:text-accent-fg'
+              className='text-muted-foreground transition-colors duration-150 hover:text-foreground'
               target='_blank'
               rel='noopener noreferrer'
             >

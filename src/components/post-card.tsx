@@ -1,6 +1,5 @@
 'use client'
 
-import { Skeleton } from '@tszhong0411/ui'
 import dayjs from 'dayjs'
 import { motion, useMotionTemplate, useMotionValue } from 'framer-motion'
 import Link from 'next/link'
@@ -8,6 +7,8 @@ import React from 'react'
 import useSWR from 'swr'
 
 import fetcher from '@/lib/fetcher'
+
+import { Skeleton } from '@/components/ui'
 
 import Image from './mdx/image'
 
@@ -38,7 +39,7 @@ const PostCard = (props: PostCardProps) => {
     <Link
       key={_id}
       href={`/blog/${slug}`}
-      className='group relative flex flex-col space-y-3 rounded-2xl border border-accent-2 p-6'
+      className='group relative flex flex-col space-y-3 rounded-2xl border p-6'
       onMouseMove={(e) => {
         const { left, top } = e.currentTarget.getBoundingClientRect()
 
@@ -67,7 +68,7 @@ const PostCard = (props: PostCardProps) => {
       />
       <div className='flex-grow space-y-4'>
         <h2 className='text-xl font-bold'>{title}</h2>
-        <div className='text-accent-5'>{summary}</div>
+        <div className='text-muted-foreground'>{summary}</div>
       </div>
       <div className='flex items-center gap-2 text-sm'>
         {formattedDate ? formattedDate : <Skeleton className='h-5 w-10' />}

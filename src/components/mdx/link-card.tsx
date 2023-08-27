@@ -15,7 +15,7 @@ const LinkCard = (props: LinkCardProps) => {
     <div className='not-prose flex justify-center'>
       <a
         href={href}
-        className='my-8 flex items-center justify-center gap-4 rounded-lg border border-accent-2 p-4'
+        className='my-8 flex items-center justify-center gap-4 rounded-lg border p-4'
         rel='noopener noreferrer'
         target='_blank'
       >
@@ -28,9 +28,9 @@ const LinkCard = (props: LinkCardProps) => {
         />
         <div>
           <div>{title}</div>
-          <div className='text-sm text-accent-5'>{href}</div>
+          <div className='text-sm text-muted-foreground'>{href}</div>
         </div>
-        <IconExternalLink size={22} className='text-accent-6' />
+        <IconExternalLink size={22} />
       </a>
     </div>
   )

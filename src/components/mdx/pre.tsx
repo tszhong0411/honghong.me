@@ -47,7 +47,7 @@ const Pre = (props: PreProps) => {
         {children}
       </pre>
       <button
-        className='absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-md border border-accent-2 bg-accent-bg opacity-0 transition [div:hover>&]:opacity-100'
+        className='absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-md border bg-background opacity-0 transition [div:hover>&]:opacity-100'
         onClick={onCopy}
         type='button'
         aria-label='Copy code to clipboard'

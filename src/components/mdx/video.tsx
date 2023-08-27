@@ -1,5 +1,6 @@
-import { AspectRatio } from '@tszhong0411/ui'
-import { cx } from '@tszhong0411/utils'
+import { AspectRatio } from '@/components/ui'
+
+import { cn } from '@/utils/cn'
 
 type VideoProps = {
   src: string
@@ -15,7 +16,7 @@ const Video = (props: VideoProps) => {
   return (
     <AspectRatio ratio={16 / 9}>
       <video
-        className={cx('object-fit my-4 rounded-lg shadow-lg', className)}
+        className={cn('object-fit my-4 rounded-lg shadow-lg', className)}
         loop
         muted
         src={src}

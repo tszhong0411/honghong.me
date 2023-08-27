@@ -1,10 +1,10 @@
 'use client'
 
-import { cx } from '@tszhong0411/utils'
 import React from 'react'
 
 import { useScrollspy } from '@/hooks'
 
+import { cn } from '@/utils/cn'
 import { Heading } from '@/utils/get-headings'
 
 type TableOfContentsProps = {
@@ -29,10 +29,10 @@ const TableOfContents = (props: TableOfContentsProps) => {
             <a
               key={id}
               href={`#${id}`}
-              className={cx(
-                'block pb-[10px] pr-[10px] pt-[10px] text-sm leading-[1.2] text-accent-5 transition-all duration-300 hover:text-accent-fg',
+              className={cn(
+                'block pb-[10px] pr-[10px] pt-[10px] text-sm leading-[1.2] text-muted-foreground transition-all duration-300 hover:text-foreground',
                 {
-                  ['text-accent-fg']: id === activeId,
+                  ['text-foreground']: id === activeId,
                 },
               )}
               style={{

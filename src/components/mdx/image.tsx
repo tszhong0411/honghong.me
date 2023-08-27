@@ -1,8 +1,9 @@
 'use client'
 
-import { cx } from '@tszhong0411/utils'
 import NextImage from 'next/image'
 import React from 'react'
+
+import { cn } from '@/utils/cn'
 
 export type ImageProps = {
   imageClassName?: string
@@ -14,10 +15,10 @@ const Image = (props: ImageProps) => {
 
   return (
     <div
-      className={cx('overflow-hidden', isLoading && 'animate-pulse', className)}
+      className={cn('overflow-hidden', isLoading && 'animate-pulse', className)}
     >
       <NextImage
-        className={cx(
+        className={cn(
           'my-0 transition-[scale,filter] duration-700',
           isLoading && 'scale-[1.02] blur-xl grayscale',
           imageClassName,

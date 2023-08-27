@@ -1,11 +1,10 @@
-import { Skeleton } from '@tszhong0411/ui'
-
 import PageTitle from '@/components/page-title'
+import { Skeleton } from '@/components/ui'
 
 import Pinned from './pinned'
 
 const Placeholder = () => (
-  <div className='rounded-lg border border-accent-2 p-4'>
+  <div className='rounded-lg border p-4'>
     <div className='mb-3 flex gap-3'>
       <Skeleton className='h-10 w-10 rounded-full' />
       <div className='flex flex-col justify-center gap-1'>

@@ -1,6 +1,5 @@
 'use client'
 
-import { Skeleton } from '@tszhong0411/ui'
 import dayjs from 'dayjs'
 import React from 'react'
 import { useEvent } from 'react-use'
@@ -10,6 +9,7 @@ import fetcher from '@/lib/fetcher'
 
 import ImageZoom from '@/components/image-zoom'
 import Image from '@/components/mdx/image'
+import { Skeleton } from '@/components/ui'
 
 import { Views } from '@/types'
 
@@ -75,7 +75,7 @@ const Header = (props: HeaderProps) => {
         <h1 className='text-center font-calcom text-4xl font-bold'>{title}</h1>
         <div className='grid grid-cols-2 text-sm max-md:gap-4 md:grid-cols-4'>
           <div className='space-y-1 md:mx-auto'>
-            <div className='text-accent-5'>Written by</div>
+            <div className='text-muted-foreground'>Written by</div>
             <a
               href='https://github.com/tszhong0411'
               rel='noopener noreferrer'
@@ -93,7 +93,7 @@ const Header = (props: HeaderProps) => {
             </a>
           </div>
           <div className='space-y-1 md:mx-auto'>
-            <div className='text-accent-5'>Published on</div>
+            <div className='text-muted-foreground'>Published on</div>
             <div>
               {formattedDate ? (
                 formattedDate
@@ -103,7 +103,7 @@ const Header = (props: HeaderProps) => {
             </div>
           </div>
           <div className='space-y-1 md:mx-auto'>
-            <div className='text-accent-5'>Views</div>
+            <div className='text-muted-foreground'>Views</div>
             {viewsIsLoading ? (
               <Skeleton className='h-6 w-32 rounded-md' />
             ) : (
@@ -111,7 +111,7 @@ const Header = (props: HeaderProps) => {
             )}
           </div>
           <div className='space-y-1 md:mx-auto'>
-            <div className='text-accent-5'>Comments</div>
+            <div className='text-muted-foreground'>Comments</div>
             {commentCounter === -1 ? (
               <Skeleton className='h-6 w-32 rounded-md' />
             ) : (

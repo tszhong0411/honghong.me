@@ -1,4 +1,3 @@
-import { cx } from '@tszhong0411/utils'
 import type { Metadata } from 'next'
 import { Fira_Code, Inter } from 'next/font/google'
 import localFont from 'next/font/local'
@@ -10,6 +9,7 @@ import Header from '@/components/header'
 import Toaster from '@/components/toaster'
 
 import { site } from '@/config/site'
+import { cn } from '@/utils/cn'
 
 type RootLayoutProps = {
   children: React.ReactNode
@@ -108,14 +108,14 @@ const RootLayout = (props: RootLayoutProps) => {
   return (
     <html
       lang='en-US'
-      className={cx(
+      className={cn(
         inter.variable,
         firaCode.variable,
         calcom.variable,
-        'scroll-smooth antialiased',
+        'dark scroll-smooth',
       )}
     >
-      <body className='bg-accent-bg font-inter text-accent-fg'>
+      <body className='font-default'>
         <Header />
         <main className='relative mx-auto mb-16 max-w-5xl px-8 py-24'>
           {children}

@@ -1,13 +1,14 @@
 'use client'
 
 import { IconHeart } from '@tabler/icons-react'
-import { cx } from '@tszhong0411/utils'
 import { motion } from 'framer-motion'
 import React from 'react'
 import { useDebounce } from 'react-use'
 import useSWR from 'swr'
 
 import fetcher from '@/lib/fetcher'
+
+import { cn } from '@/utils/cn'
 
 import { Likes } from '@/types'
 
@@ -108,7 +109,7 @@ const LikeButton = (props: LikeButtonProps) => {
     <div className='mt-12 flex justify-center'>
       <button
         ref={buttonRef}
-        className={cx([
+        className={cn([
           'group relative h-12 w-24 rounded-lg bg-transparent',
           'before:absolute before:inset-0 before:rounded-lg before:bg-gradient-to-br before:from-[#7928ca] before:to-[#ff0080] before:content-[""]',
         ])}
@@ -130,15 +131,15 @@ const LikeButton = (props: LikeButtonProps) => {
           transition={{ duration: 1, ease: 'linear' }}
         />
         <span
-          className={cx([
-            'absolute inset-0.5 z-10 flex items-center justify-center gap-2 rounded-[7px] bg-accent-bg text-lg font-bold transition-[background-color] duration-150',
-            'group-hover:bg-transparent group-hover:text-accent-fg',
+          className={cn([
+            'absolute inset-0.5 z-10 flex items-center justify-center gap-2 rounded-[7px] bg-background text-lg font-bold transition-[background-color] duration-150',
+            'group-hover:bg-transparent group-hover:text-foreground',
           ])}
         >
           <IconHeart
-            className={cx(
-              'group-hover:fill-accent-fg',
-              data?.currentUserLikes === 3 && 'fill-accent-fg',
+            className={cn(
+              'group-hover:fill-foreground',
+              data?.currentUserLikes === 3 && 'fill-foreground',
             )}
             size={20}
           />

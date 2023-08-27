@@ -88,7 +88,7 @@ const ProjectPage = (props: ProjectPageProps) => {
         width={1200}
         height={630}
         alt={name}
-        className='my-12 rounded-lg border border-accent-2'
+        className='my-12 rounded-lg border'
       />
       <Mdx code={project.body.code} />
     </>

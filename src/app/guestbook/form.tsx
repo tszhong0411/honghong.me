@@ -1,5 +1,10 @@
 'use client'
 
+import { DefaultSession } from 'next-auth'
+import { signOut } from 'next-auth/react'
+import React from 'react'
+import { toast } from 'react-hot-toast'
+
 import {
   Avatar,
   AvatarFallback,
@@ -7,11 +12,7 @@ import {
   Button,
   Skeleton,
   Textarea,
-} from '@tszhong0411/ui'
-import { DefaultSession } from 'next-auth'
-import { signOut } from 'next-auth/react'
-import React from 'react'
-import { toast } from 'react-hot-toast'
+} from '@/components/ui'
 
 import { createMessage } from '@/actions/guestbook'
 

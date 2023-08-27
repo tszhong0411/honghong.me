@@ -1,10 +1,10 @@
-import { Logo } from '@tszhong0411/ui'
 import Link from 'next/link'
 import React from 'react'
 
 import CommandMenu from '@/components/command-menu'
 import MobileNav from '@/components/mobile-nav'
 import Navbar from '@/components/navbar'
+import { Logo } from '@/components/ui'
 
 const Header = () => {
   return (

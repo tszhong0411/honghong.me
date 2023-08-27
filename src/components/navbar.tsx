@@ -1,10 +1,10 @@
 'use client'
 
-import { cx } from '@tszhong0411/utils'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import { HEADER_LINKS } from '@/config/links'
+import { cn } from '@/utils/cn'
 
 const Navbar = () => {
   const pathname = usePathname()
@@ -14,14 +14,14 @@ const Navbar = () => {
       {HEADER_LINKS.map((link) => (
         <li key={link.text}>
           <Link
-            className={cx(
+            className={cn(
               'rounded px-3 py-2 text-sm font-medium transition-colors duration-150',
               {
-                ['text-accent-5 hover:bg-hover hover:text-accent-fg']:
+                ['text-muted-foreground hover:bg-accent hover:text-foreground']:
                   link.href !== pathname,
               },
               {
-                ['bg-accent-2']: link.href === pathname,
+                ['bg-muted']: link.href === pathname,
               },
             )}
             href={link.href}

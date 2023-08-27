@@ -9,6 +9,9 @@ import {
   IconCommand,
   IconLink,
 } from '@tabler/icons-react'
+import React from 'react'
+import toast from 'react-hot-toast'
+
 import {
   Button,
   CommandDialog,
@@ -18,9 +21,7 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from '@tszhong0411/ui'
-import React from 'react'
-import toast from 'react-hot-toast'
+} from '@/components/ui'
 
 type Groups = {
   name: string
@@ -69,7 +70,7 @@ const CommandMenu = () => {
                 toast.success(
                   <div className='flex flex-col'>
                     <div>Copied</div>
-                    <div className='text-sm text-accent-5'>
+                    <div className='text-sm text-muted-foreground'>
                       You can now share it with anyone.
                     </div>
                   </div>,

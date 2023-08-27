@@ -22,7 +22,7 @@ const ItemGrid = (props: ItemGridProps) => {
           href={item.url}
           target='_blank'
           rel='noopener noreferrer'
-          className='flex gap-6 rounded-lg border border-accent-2 p-4 no-underline transition-colors duration-150 hover:bg-accent-1 sm:flex-col sm:gap-3'
+          className='flex gap-6 rounded-lg border p-4 no-underline transition-colors duration-150 hover:bg-accent sm:flex-col sm:gap-3'
         >
           <Image
             src={item.image}
@@ -34,7 +34,9 @@ const ItemGrid = (props: ItemGridProps) => {
           />
           <div className='flex flex-col justify-center gap-2'>
             <div className='text-lg font-extrabold'>{item.name}</div>
-            <div className='text-sm text-accent-5'>{item.description}</div>
+            <div className='text-sm text-muted-foreground'>
+              {item.description}
+            </div>
           </div>
         </a>
       ))}

@@ -4,13 +4,11 @@ import {
   IconBrandNextjs,
   IconBrandPlanetscale,
   IconBrandPrisma,
-  IconBrandRadixUi,
   IconBrandTailwind,
   IconBrandTypescript,
   IconChecks,
   IconDatabase,
   IconFriends,
-  IconLayoutCollage,
   IconLink,
   IconMarkdown,
   IconPencil,
@@ -61,12 +59,6 @@ const getIconByName = (name: string) => {
     }
     case 'Firebase': {
       return IconBrandFirebase
-    }
-    case 'Radix UI': {
-      return IconBrandRadixUi
-    }
-    case 'LayoutCollage': {
-      return IconLayoutCollage
     }
     case 'Neon': {
       return IconDatabase

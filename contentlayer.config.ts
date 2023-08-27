@@ -1,4 +1,3 @@
-import { cx } from '@tszhong0411/utils'
 import {
   defineDocumentType,
   defineNestedType,
@@ -9,6 +8,8 @@ import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
 import { visit } from 'unist-util-visit'
+
+import { cn } from './src/utils/cn'
 
 const Techstack = defineNestedType(() => ({
   name: 'Techstack',
@@ -145,7 +146,7 @@ export default makeSource({
                 height: 16,
                 fill: 'currentColor',
                 className:
-                  'invisible absolute top-1/2 right-full h-4 w-4 -translate-y-1/2 text-accent-6 group-hover:visible mr-2',
+                  'invisible absolute top-1/2 right-full h-4 w-4 -translate-y-1/2 text-secondary-foreground group-hover:visible mr-2',
                 viewBox: '0 0 24 24',
               },
               children: [
@@ -180,7 +181,7 @@ export default makeSource({
           if (typeof index !== 'number') return
 
           Object.assign(node.properties, {
-            className: cx(node.properties?.className, 'relative'),
+            className: cn(node.properties?.className, 'relative'),
           })
         })
       },

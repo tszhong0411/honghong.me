@@ -1,15 +1,19 @@
 'use client'
 
+import { MDXComponents } from 'mdx/types'
+import { useMDXComponent } from 'next-contentlayer/hooks'
+
 import {
   Alert,
   AlertDescription,
   AlertTitle,
-  Kbd,
-  ScrollArea,
-  Scrollbar,
-} from '@tszhong0411/ui'
-import { MDXComponents } from 'mdx/types'
-import { useMDXComponent } from 'next-contentlayer/hooks'
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui'
 
 import Image from './image'
 import ItemGrid from './item-grid'
@@ -34,48 +38,23 @@ const components: MDXComponents = {
         <ImageZoom>
           <Image className='my-6 rounded-lg' alt={alt} {...rest} />
         </ImageZoom>
-        <figcaption className='mt-2 text-center text-sm text-accent-6'>
-          {alt}
-        </figcaption>
+        <figcaption className='mt-2 text-center text-sm'>{alt}</figcaption>
       </>
     )
   },
   pre: Pre,
-  table: (props: React.ComponentPropsWithoutRef<'table'>) => {
-    const { children, ...rest } = props
-
-    return (
-      <div className='not-prose overflow-hidden rounded-lg border border-accent-2'>
-        <ScrollArea>
-          <table
-            className='w-full border-collapse border-spacing-0 text-left [&>tbody>tr:not(:last-child)>td]:border-b [&>tbody>tr:not(:last-child)>td]:border-accent-2'
-            {...rest}
-          >
-            {children}
-          </table>
-          <Scrollbar orientation='horizontal' />
-        </ScrollArea>
-      </div>
-    )
-  },
-  th: (props: React.ComponentPropsWithoutRef<'th'>) => {
-    const { children, ...rest } = props
-
-    return (
-      <th className='border-b border-accent-2 bg-zinc-900 p-3' {...rest}>
-        {children}
-      </th>
-    )
-  },
-  td: (props: React.ComponentPropsWithoutRef<'td'>) => {
-    const { children, ...rest } = props
-
-    return (
-      <td className='bg-zinc-950 p-3' {...rest}>
-        {children}
-      </td>
-    )
-  },
+  table: (props: React.ComponentPropsWithoutRef<'table'>) => (
+    <Table className='not-prose' {...props} />
+  ),
+  thead: (props: React.ComponentPropsWithoutRef<'thead'>) => (
+    <TableHeader {...props} />
+  ),
+  tbody: (props: React.ComponentPropsWithoutRef<'tbody'>) => (
+    <TableBody {...props} />
+  ),
+  tr: (props: React.ComponentPropsWithoutRef<'tr'>) => <TableRow {...props} />,
+  th: (props: React.ComponentPropsWithoutRef<'th'>) => <TableHead {...props} />,
+  td: (props: React.ComponentPropsWithoutRef<'td'>) => <TableCell {...props} />,
 
   // Custom components
   Alert: (props: React.ComponentPropsWithoutRef<typeof Alert>) => (
@@ -89,7 +68,6 @@ const components: MDXComponents = {
   ) => <AlertDescription {...props} />,
   ItemGrid,
   Tree,
-  Kbd,
   Video,
   LinkCard,
 }

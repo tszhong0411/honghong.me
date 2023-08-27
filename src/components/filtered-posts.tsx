@@ -1,8 +1,9 @@
 'use client'
 
 import { IconSearch } from '@tabler/icons-react'
-import { Input, Label } from '@tszhong0411/ui'
 import React from 'react'
+
+import { Input, Label } from '@/components/ui'
 
 import PostCard from './post-card'
 
@@ -40,7 +41,7 @@ const FilteredPosts = (props: FilteredPostsProps) => {
         </Label>
       </div>
       {!filteredPosts.length && (
-        <div className='text-center text-xl'>No posts found</div>
+        <div className='my-24 text-center text-xl'>No posts found</div>
       )}
       <div className='grid gap-4 sm:grid-cols-2'>
         {filteredPosts.map((post) => (

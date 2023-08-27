@@ -1,5 +1,10 @@
 'use client'
 
+import dayjs from 'dayjs'
+import { DefaultSession } from 'next-auth'
+import React from 'react'
+import { toast } from 'react-hot-toast'
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -12,11 +17,7 @@ import {
   Button,
   buttonVariants,
   Skeleton,
-} from '@tszhong0411/ui'
-import dayjs from 'dayjs'
-import { DefaultSession } from 'next-auth'
-import React from 'react'
-import { toast } from 'react-hot-toast'
+} from '@/components/ui'
 
 import { deleteMessage } from '@/actions/guestbook'
 
@@ -41,7 +42,7 @@ const Date = (props: DateProps) => {
 
   if (!formattedDate) return <Skeleton className='h-4 w-24 rounded-md' />
 
-  return <div className='text-xs text-accent-5'>{formattedDate}</div>
+  return <div className='text-xs text-muted-foreground'>{formattedDate}</div>
 }
 
 const Messages = (props: MessagesProps) => {
@@ -73,7 +74,7 @@ const Messages = (props: MessagesProps) => {
         const { id, image, created_by, updated_at, body } = message
 
         return (
-          <div key={id} className='rounded-lg border border-accent-2 p-4'>
+          <div key={id} className='rounded-lg border p-4'>
             <div className='mb-3 flex gap-3'>
               <Avatar>
                 <AvatarImage
@@ -99,7 +100,7 @@ const Messages = (props: MessagesProps) => {
                   <AlertDialogTrigger asChild>
                     <Button
                       disabled={isDeleting}
-                      variant='danger'
+                      variant='destructive'
                       type='button'
                     >
                       Delete
@@ -111,7 +112,7 @@ const Messages = (props: MessagesProps) => {
                       <AlertDialogCancel>Cancel</AlertDialogCancel>
                       <AlertDialogAction
                         onClick={() => deleteMessageHandler(id)}
-                        className={buttonVariants({ variant: 'danger' })}
+                        className={buttonVariants({ variant: 'destructive' })}
                       >
                         Delete
                       </AlertDialogAction>
