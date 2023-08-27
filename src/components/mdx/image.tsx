@@ -19,7 +19,7 @@ const Image = (props: ImageProps) => {
     >
       <NextImage
         className={cn(
-          'my-0 transition-[scale,filter] duration-700',
+          'transition-[scale,filter] duration-700',
           isLoading && 'scale-[1.02] blur-xl grayscale',
           imageClassName,
         )}
