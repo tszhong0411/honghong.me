@@ -2,7 +2,6 @@ import { IconDescriptor } from 'next/dist/lib/metadata/types/metadata-types'
 
 type Site = {
   url: string
-  logo: string
   title: string
   name: string
   keywords: string[]
@@ -17,7 +16,6 @@ export const site: Site = {
     process.env.NODE_ENV === 'production'
       ? 'https://honghong.me'
       : 'http://localhost:3000',
-  logo: 'https://honghong.me/images/avatar.png',
   title: 'Hong',
   name: 'Hong',
   keywords: ['tszhong0411', 'Next.js', 'React', 'TypeScript', 'Node.js'],
