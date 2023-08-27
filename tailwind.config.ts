@@ -86,7 +86,7 @@ export default {
               },
             },
             img: {
-              margin: '24px auto',
+              margin: '0 auto',
             },
             'code, pre code': {
               fontFamily: 'var(--font-fira-code), var(--font-inter)',
@@ -154,6 +154,9 @@ export default {
               borderTopLeftRadius: '0',
               borderTopRightRadius: '0',
               borderTopWidth: '0',
+            },
+            '[data-rmiz-wrap]': {
+              margin: '24px auto',
             },
           },
         },
