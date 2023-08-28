@@ -1,9 +1,40 @@
-import Link from 'next/link'
+import NextLink from 'next/link'
 
-import { FOOTER_LINKS, FOOTER_SOCIAL_MEDIA } from '@/config/links'
+import { FOOTER_LINKS } from '@/config/links'
+import { Link } from '@/config/links'
+import { cn } from '@/utils/cn'
 
 import CurrentVisitors from './current-visitors'
 import NowPlaying from './now-playing'
+
+const FooterLink = (props: Link) => {
+  const { title, href, comingSoon } = props
+
+  if (href.startsWith('/')) {
+    return (
+      <NextLink
+        href={href}
+        className={cn(
+          'text-muted-foreground transition-colors duration-150 hover:text-foreground',
+          comingSoon && 'pointer-events-none text-zinc-700'
+        )}
+      >
+        {title}
+      </NextLink>
+    )
+  }
+
+  return (
+    <a
+      href={href}
+      className='text-muted-foreground transition-colors duration-150 hover:text-foreground'
+      target='_blank'
+      rel='noopener noreferrer'
+    >
+      {title}
+    </a>
+  )
+}
 
 const Footer = () => {
   return (
@@ -16,29 +47,10 @@ const Footer = () => {
             className='mb-10 flex flex-col items-start gap-4 pr-4'
           >
             {list.links.map((link) => (
-              <Link
-                key={link.title}
-                href={link.href}
-                className='text-muted-foreground transition-colors duration-150 hover:text-foreground'
-              >
-                {link.title}
-              </Link>
+              <FooterLink key={link.title} {...link} />
             ))}
           </div>
         ))}
-        <div className='mb-10 flex flex-col items-start gap-4 pr-4'>
-          {FOOTER_SOCIAL_MEDIA.map((link) => (
-            <a
-              key={link.title}
-              href={link.href}
-              className='text-muted-foreground transition-colors duration-150 hover:text-foreground'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              {link.title}
-            </a>
-          ))}
-        </div>
       </div>
       <div className='mt-20 flex items-center justify-between text-sm'>
         <div>&copy; {new Date().getFullYear()} Hong</div>

@@ -12,6 +12,12 @@ import {
   IconUserCircle
 } from '@tabler/icons-react'
 
+export type Link = {
+  href: string
+  title: string
+  comingSoon?: boolean
+}
+
 type HeroLinks = {
   id: string
   label: string
@@ -27,15 +33,7 @@ type HeaderLinks = {
 
 type FooterLinks = {
   id: number
-  links: {
-    href: string
-    title: string
-  }[]
-}[]
-
-type FooterSocialMediaLinks = {
-  href: string
-  title: string
+  links: Link[]
 }[]
 
 export const HEADER_LINKS: HeaderLinks = [
@@ -109,29 +107,32 @@ export const FOOTER_LINKS: FooterLinks = [
         title: 'Projects'
       },
       {
-        href: 'https://ui.honghong.me',
-        title: 'Design'
+        href: '/stack',
+        title: 'Stack',
+        comingSoon: true
       }
     ]
-  }
-]
-
-export const FOOTER_SOCIAL_MEDIA: FooterSocialMediaLinks = [
-  {
-    href: 'https://www.facebook.com/tszhong0411/',
-    title: 'Facebook'
   },
   {
-    href: 'https://www.instagram.com/tszhong0411/',
-    title: 'Instagram'
-  },
-  {
-    href: 'https://github.com/tszhong0411',
-    title: 'GitHub'
-  },
-  {
-    href: 'https://www.youtube.com/@tszhong0411',
-    title: 'YouTube'
+    id: 3,
+    links: [
+      {
+        href: 'https://www.facebook.com/tszhong0411/',
+        title: 'Facebook'
+      },
+      {
+        href: 'https://www.instagram.com/tszhong0411/',
+        title: 'Instagram'
+      },
+      {
+        href: 'https://github.com/tszhong0411',
+        title: 'GitHub'
+      },
+      {
+        href: 'https://www.youtube.com/@tszhong0411',
+        title: 'YouTube'
+      }
+    ]
   }
 ]
 
