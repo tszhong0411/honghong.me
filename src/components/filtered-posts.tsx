@@ -4,10 +4,9 @@ import { IconSearch } from '@tabler/icons-react'
 import React from 'react'
 
 import { Input, Label } from '@/components/ui'
+import { BlogPostCore } from '@/types'
 
 import PostCard from './post-card'
-
-import { BlogPostCore } from '@/types'
 
 type FilteredPostsProps = {
   posts: BlogPostCore[]
@@ -18,7 +17,7 @@ const FilteredPosts = (props: FilteredPostsProps) => {
   const [searchValue, setSearchValue] = React.useState('')
 
   const filteredPosts = posts.filter((post) =>
-    post.title.toLowerCase().includes(searchValue.toLowerCase()),
+    post.title.toLowerCase().includes(searchValue.toLowerCase())
   )
 
   return (

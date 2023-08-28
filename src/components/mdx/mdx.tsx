@@ -12,9 +12,10 @@ import {
   TableCell,
   TableHead,
   TableHeader,
-  TableRow,
+  TableRow
 } from '@/components/ui'
 
+import ImageZoom from '../image-zoom'
 import Image from './image'
 import ItemGrid from './item-grid'
 import Link from './link'
@@ -23,7 +24,6 @@ import Logo from './logo'
 import Pre from './pre'
 import Tree from './tree'
 import Video from './video'
-import ImageZoom from '../image-zoom'
 
 type MdxProps = {
   code: string
@@ -65,13 +65,13 @@ const components: MDXComponents = {
     <AlertTitle {...props} />
   ),
   AlertDescription: (
-    props: React.ComponentPropsWithoutRef<typeof AlertDescription>,
+    props: React.ComponentPropsWithoutRef<typeof AlertDescription>
   ) => <AlertDescription {...props} />,
   ItemGrid,
   Tree,
   Video,
   LinkCard,
-  Logo,
+  Logo
 }
 
 const Mdx = (props: MdxProps) => {

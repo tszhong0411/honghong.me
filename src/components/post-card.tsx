@@ -6,13 +6,11 @@ import Link from 'next/link'
 import React from 'react'
 import useSWR from 'swr'
 
-import fetcher from '@/lib/fetcher'
-
 import { Skeleton } from '@/components/ui'
+import fetcher from '@/lib/fetcher'
+import { BlogPostCore, Likes, Views } from '@/types'
 
 import Image from './mdx/image'
-
-import { BlogPostCore, Likes, Views } from '@/types'
 
 type PostCardProps = BlogPostCore
 
@@ -21,11 +19,11 @@ const PostCard = (props: PostCardProps) => {
   const [formattedDate, setFormattedDate] = React.useState('')
   const { data: viewsData, isLoading: viewsIsLoading } = useSWR<Views>(
     `/api/views?slug=${slug}`,
-    fetcher,
+    fetcher
   )
   const { data: likesData, isLoading: likesIsLoading } = useSWR<Likes>(
     `/api/likes?slug=${slug}`,
-    fetcher,
+    fetcher
   )
 
   const mouseX = useMotionValue(0)
@@ -56,7 +54,7 @@ const PostCard = (props: PostCardProps) => {
               rgba(255,255,255,0.1),
               transparent 80%
             )
-          `,
+          `
         }}
       />
       <Image
@@ -66,7 +64,7 @@ const PostCard = (props: PostCardProps) => {
         height={630}
         alt={title}
       />
-      <div className='flex-grow space-y-4'>
+      <div className='grow space-y-4'>
         <h2 className='text-xl font-bold'>{title}</h2>
         <div className='text-muted-foreground'>{summary}</div>
       </div>

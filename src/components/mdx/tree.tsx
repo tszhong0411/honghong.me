@@ -36,13 +36,13 @@ const Inner = (props: InnerType) => {
                 key={i}
                 className='absolute h-full w-px -translate-x-1/2 bg-muted'
                 style={{
-                  left: `calc(${i * 20}px + 22px / 2)`,
+                  left: `calc(${i * 20}px + 22px / 2)`
                 }}
               />
             ))}
             <div
               style={{
-                paddingLeft: level * 24,
+                paddingLeft: level * 24
               }}
             >
               {!node.children ? (

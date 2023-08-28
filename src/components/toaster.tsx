@@ -7,7 +7,7 @@ const Toaster = () => {
     <ReactHotToast
       position='bottom-right'
       toastOptions={{
-        className: '!bg-background !text-foreground !border',
+        className: '!bg-background !text-foreground !border'
       }}
     />
   )

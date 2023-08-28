@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-namespace */
 import { mount } from 'cypress/react18'
+
 import './commands'
 
 declare global {

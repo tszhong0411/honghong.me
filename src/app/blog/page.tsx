@@ -1,11 +1,9 @@
 import type { Metadata, ResolvingMetadata } from 'next'
 
-import getAllPosts from '@/lib/mdx'
-
 import FilteredPosts from '@/components/filtered-posts'
 import PageTitle from '@/components/page-title'
-
 import { site } from '@/config/site'
+import getAllPosts from '@/lib/mdx'
 
 const title = 'Blog'
 const description =
@@ -18,7 +16,7 @@ type BlogPageProps = {
 
 export const generateMetadata = async (
   _: BlogPageProps,
-  parent: ResolvingMetadata,
+  parent: ResolvingMetadata
 ): Promise<Metadata> => {
   const previousOpenGraph = (await parent)?.openGraph || {}
   const previousTwitter = (await parent)?.twitter || {}
@@ -27,19 +25,19 @@ export const generateMetadata = async (
     title,
     description,
     alternates: {
-      canonical: `${site.url}/blog`,
+      canonical: `${site.url}/blog`
     },
     openGraph: {
       ...previousOpenGraph,
       url: `${site.url}/blog`,
       title,
-      description,
+      description
     },
     twitter: {
       ...previousTwitter,
       title,
-      description,
-    },
+      description
+    }
   }
 }
 

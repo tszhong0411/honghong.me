@@ -9,9 +9,9 @@ const Pinned = () => {
         Pinned
       </div>
       <div>
-        Hey there! Thanks for visiting my website. If you have a moment, I'd
-        love to hear your thoughts on my work. Please log in with your GitHub
-        account to leave a comment. Thanks!
+        Hey there! Thanks for visiting my website. If you have a moment,
+        I&apos;d love to hear your thoughts on my work. Please log in with your
+        GitHub account to leave a comment. Thanks!
       </div>
     </div>
   )

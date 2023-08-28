@@ -10,13 +10,13 @@ export const GET = async () => {
       {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           username: process.env.UMAMI_USERNAME,
-          password: process.env.UMAMI_PASSWORD,
-        }),
-      },
+          password: process.env.UMAMI_PASSWORD
+        })
+      }
     )
 
     const { token } = await authRes.json()
@@ -25,25 +25,25 @@ export const GET = async () => {
       `${process.env.NEXT_PUBLIC_UMAMI_URL}/api/websites/${process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}/active`,
       {
         headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      },
+          Authorization: `Bearer ${token}`
+        }
+      }
     )
 
     const data = await statsRes.json()
     const { x: visitors } = data[0]
 
     return NextResponse.json({
-      visitors,
+      visitors
     })
   } catch {
     return NextResponse.json(
       {
-        error: 'Error getting analytics stats',
+        error: 'Error getting analytics stats'
       },
       {
-        status: 500,
-      },
+        status: 500
+      }
     )
   }
 }

@@ -1,8 +1,6 @@
 {
   "compilerOptions": {
     "incremental": true,
-    "jsx": "preserve",
-    "lib": ["dom", "dom.iterable", "esnext"],
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
@@ -13,11 +11,10 @@
       {
         "name": "next"
       }
-    ],
-    "strictNullChecks": true
+    ]
   },
   "exclude": ["node_modules"],
-  "extends": "@tszhong0411/tsconfig",
+  "extends": "@tszhong0411/tsconfig/web.json",
   "include": [
     "next-env.d.ts",
     "**/*.tsx",

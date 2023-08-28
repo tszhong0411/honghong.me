@@ -9,35 +9,35 @@ export const GET = async (req: Request) => {
   if (!slug) {
     const views = await prisma.post.aggregate({
       _sum: {
-        views: true,
-      },
+        views: true
+      }
     })
 
     return NextResponse.json({
-      views: views._sum.views ?? 0,
+      views: views._sum.views ?? 0
     })
   }
 
   const post = await prisma.post.findUnique({
     where: {
-      slug,
+      slug
     },
     select: {
-      views: true,
-    },
+      views: true
+    }
   })
 
   if (!post) {
     return NextResponse.json(
       {
-        error: 'Post not found',
+        error: 'Post not found'
       },
-      { status: 404 },
+      { status: 404 }
     )
   }
 
   return NextResponse.json({
-    views: post.views,
+    views: post.views
   })
 }
 
@@ -47,27 +47,27 @@ export const POST = async (req: Request) => {
   if (!slug) {
     return NextResponse.json(
       {
-        error: 'Slug is required',
+        error: 'Slug is required'
       },
-      { status: 400 },
+      { status: 400 }
     )
   }
 
   await prisma.post.upsert({
     where: {
-      slug,
+      slug
     },
     create: {
-      slug,
+      slug
     },
     update: {
       views: {
-        increment: 1,
-      },
-    },
+        increment: 1
+      }
+    }
   })
 
   return NextResponse.json({
-    error: null,
+    error: null
   })
 }

@@ -1,7 +1,13 @@
 import { createHash } from 'crypto'
 import { NextResponse } from 'next/server'
+import { z } from 'zod'
 
 import prisma from '@/lib/prisma'
+
+const schema = z.object({
+  slug: z.string(),
+  count: z.number().int().positive().min(1).max(3)
+})
 
 const getSessionId = (slug: string, req: Request): string => {
   const ipAddress = req.headers.get('x-forwarded-for') || '0.0.0.0'
@@ -20,61 +26,65 @@ export const GET = async (req: Request) => {
   if (!slug) {
     const likes = await prisma.post.aggregate({
       _sum: {
-        likes: true,
-      },
+        likes: true
+      }
     })
 
     return NextResponse.json({
-      likes: likes._sum.likes ?? 0,
+      likes: likes._sum.likes ?? 0
     })
   }
 
   const [post, user] = await Promise.all([
     prisma.post.findUnique({
       where: {
-        slug,
+        slug
       },
       select: {
-        likes: true,
-      },
+        likes: true
+      }
     }),
 
     prisma.session.findUnique({
       where: {
-        id: getSessionId(slug, req),
+        id: getSessionId(slug, req)
       },
       select: {
-        likes: true,
-      },
-    }),
+        likes: true
+      }
+    })
   ])
 
   if (!post) {
     return NextResponse.json(
       {
-        error: 'Post not found',
+        error: 'Post not found'
       },
-      { status: 404 },
+      { status: 404 }
     )
   }
 
   return NextResponse.json({
     likes: post.likes ?? 0,
-    currentUserLikes: user?.likes ?? 0,
+    currentUserLikes: user?.likes ?? 0
   })
 }
 
 export const POST = async (req: Request) => {
-  const { count, slug } = await req.json()
+  const request = schema.safeParse(await req.json())
 
-  if (!slug || typeof count !== 'number' || count < 0 || count > 3) {
+  if (!request.success) {
     return NextResponse.json(
       {
-        error: 'Invalid count or slug is missing',
+        error: `Invalid request: ${request.error.message}`
       },
-      { status: 400 },
+      { status: 400 }
     )
   }
+
+  const {
+    data: { slug, count }
+  } = request
 
   try {
     const [post, user] = await Promise.all([
@@ -82,45 +92,45 @@ export const POST = async (req: Request) => {
         where: { slug },
         create: {
           slug,
-          likes: count,
+          likes: count
         },
         update: {
           likes: {
-            increment: count,
-          },
+            increment: count
+          }
         },
         select: {
-          likes: true,
-        },
+          likes: true
+        }
       }),
 
       prisma.session.upsert({
         where: { id: getSessionId(slug, req) },
         create: {
           id: getSessionId(slug, req),
-          likes: count,
+          likes: count
         },
         update: {
           likes: {
-            increment: count,
-          },
+            increment: count
+          }
         },
         select: {
-          likes: true,
-        },
-      }),
+          likes: true
+        }
+      })
     ])
 
     return NextResponse.json({
       likes: post?.likes || 0,
-      currentUserLikes: user?.likes || 0,
+      currentUserLikes: user?.likes || 0
     })
   } catch (error) {
     return NextResponse.json(
       {
-        error,
+        error
       },
-      { status: 500 },
+      { status: 500 }
     )
   }
 }

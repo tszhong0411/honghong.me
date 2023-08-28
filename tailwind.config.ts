@@ -8,8 +8,8 @@ export default {
       center: true,
       padding: '2rem',
       screens: {
-        '2xl': '1400px',
-      },
+        '2xl': '1400px'
+      }
     },
     extend: {
       colors: {
@@ -20,60 +20,60 @@ export default {
         foreground: 'hsl(var(--foreground))',
         primary: {
           DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))',
+          foreground: 'hsl(var(--primary-foreground))'
         },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))',
+          foreground: 'hsl(var(--secondary-foreground))'
         },
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))',
+          foreground: 'hsl(var(--destructive-foreground))'
         },
         muted: {
           DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))',
+          foreground: 'hsl(var(--muted-foreground))'
         },
         accent: {
           DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))',
+          foreground: 'hsl(var(--accent-foreground))'
         },
         popover: {
           DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))',
+          foreground: 'hsl(var(--popover-foreground))'
         },
         card: {
           DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))',
-        },
+          foreground: 'hsl(var(--card-foreground))'
+        }
       },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
+        sm: 'calc(var(--radius) - 4px)'
       },
       fontFamily: {
         default: ['var(--font-inter)', ...fontFamily.sans],
         'fira-code': ['var(--font-fira-code)', ...fontFamily.sans],
-        calcom: ['var(--font-calcom)', ...fontFamily.sans],
+        calcom: ['var(--font-calcom)', ...fontFamily.sans]
       },
       backgroundImage: {
         'rainbow-gradient':
-          'linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%)',
+          'linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%)'
       },
       keyframes: {
         'accordion-down': {
           from: { height: '0' },
-          to: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: 'var(--radix-accordion-content-height)' }
         },
         'accordion-up': {
           from: { height: 'var(--radix-accordion-content-height)' },
-          to: { height: '0' },
-        },
+          to: { height: '0' }
+        }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out'
       },
       typography: (theme: (value: string) => void) => ({
         DEFAULT: {
@@ -82,14 +82,14 @@ export default {
               position: 'relative',
               scrollMarginTop: '128px',
               '& a::before': {
-                content: 'none !important',
-              },
+                content: 'none !important'
+              }
             },
             img: {
-              margin: '0 auto',
+              margin: '0 auto'
             },
             'code, pre code': {
-              fontFamily: 'var(--font-fira-code), var(--font-inter)',
+              fontFamily: 'var(--font-fira-code), var(--font-inter)'
             },
             ':not(pre) > code': {
               padding: '0.12em 0.25em',
@@ -100,8 +100,8 @@ export default {
               border: '1px solid #3e3c3c',
 
               '&::before, &::after': {
-                content: 'none',
-              },
+                content: 'none'
+              }
             },
             pre: {
               background: theme('colors.zinc.900'),
@@ -116,8 +116,8 @@ export default {
                   width: '16px',
                   marginRight: '16px',
                   textAlign: 'right',
-                  color: 'hsl(var(--muted-foreground) / 0.6)',
-                },
+                  color: 'hsl(var(--muted-foreground) / 0.6)'
+                }
               },
               '> code': {
                 display: 'grid',
@@ -129,17 +129,17 @@ export default {
                   '> [data-highlighted-chars]': {
                     padding: '2px 4px',
                     borderRadius: '0.25rem',
-                    background: '#3c3c3c',
-                  },
+                    background: '#3c3c3c'
+                  }
                 },
                 '> [data-highlighted-line]': {
                   borderLeftColor: 'hsl(var(--foreground))',
-                  background: '#3c3c3c',
-                },
-              },
+                  background: '#3c3c3c'
+                }
+              }
             },
             '[data-rehype-pretty-code-title] ~ pre ~ button': {
-              top: '60px !important',
+              top: '60px !important'
             },
             '[data-rehype-pretty-code-title]': {
               backgroundColor: theme('colors.zinc.900'),
@@ -147,21 +147,21 @@ export default {
               borderTopLeftRadius: '8px',
               borderTopRightRadius: '8px',
               padding: '10px 20px',
-              fontSize: '14px',
+              fontSize: '14px'
             },
             '[data-rehype-pretty-code-title] ~ pre': {
               marginTop: '0',
               borderTopLeftRadius: '0',
               borderTopRightRadius: '0',
-              borderTopWidth: '0',
+              borderTopWidth: '0'
             },
             '[data-rmiz-wrap]': {
-              margin: '24px auto',
-            },
-          },
-        },
-      }),
-    },
+              margin: '24px auto'
+            }
+          }
+        }
+      })
+    }
   },
-  plugins: [require('@tailwindcss/typography'), require('tailwindcss-animate')],
+  plugins: [require('@tailwindcss/typography'), require('tailwindcss-animate')]
 } satisfies Config

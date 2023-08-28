@@ -19,9 +19,9 @@ export const getHeadings = (content: string): Heading[] => {
   tokens.forEach((token) => {
     if (token.type === 'heading') {
       headings.push({
-        id: slugger.slug(token.text),
+        id: slugger.slug(token.text as string),
         level: token.depth,
-        title: token.text,
+        title: token.text
       })
     }
   })

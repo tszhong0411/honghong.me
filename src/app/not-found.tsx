@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { buttonVariants } from '@/components/ui'
 
 export const metadata: Metadata = {
-  title: '404',
+  title: '404'
 }
 
 const NotFound = () => {

@@ -35,12 +35,12 @@ const getAccessToken = async () => {
     method: 'POST',
     headers: {
       Authorization: `Basic ${BASIC}`,
-      'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Type': 'application/x-www-form-urlencoded'
     },
     body: new URLSearchParams({
       grant_type: 'refresh_token',
-      refresh_token: REFRESH_TOKEN,
-    }),
+      refresh_token: REFRESH_TOKEN
+    })
   })
 
   return (await response.json()) as AccessToken
@@ -51,16 +51,16 @@ const getNowPlaying = async () => {
 
   const response = await fetch(NOW_PLAYING_ENDPOINT, {
     headers: {
-      Authorization: `Bearer ${access_token}`,
+      Authorization: `Bearer ${access_token}`
     },
     next: {
-      revalidate: 60,
-    },
+      revalidate: 60
+    }
   })
 
   if (response.status === 204) {
     return {
-      status: response.status,
+      status: response.status
     }
   }
 
@@ -69,11 +69,11 @@ const getNowPlaying = async () => {
 
     return {
       status: response.status,
-      data: song,
+      data: song
     }
   } catch {
     return {
-      status: response.status,
+      status: response.status
     }
   }
 }

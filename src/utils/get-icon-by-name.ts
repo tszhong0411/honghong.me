@@ -13,7 +13,7 @@ import {
   IconMarkdown,
   IconPencil,
   IconPhoto,
-  IconTools,
+  IconTools
 } from '@tabler/icons-react'
 
 const getIconByName = (name: string) => {

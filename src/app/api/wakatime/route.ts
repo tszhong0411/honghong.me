@@ -10,15 +10,15 @@ export const GET = async () => {
     {
       headers: {
         Authorization: `Basic ${Buffer.from(
-          process.env.WAKATIME_API_KEY as string,
-        ).toString('base64')}`,
-      },
-    },
+          process.env.WAKATIME_API_KEY as string
+        ).toString('base64')}`
+      }
+    }
   )
 
   const data: WakatimeRes = await res.json()
 
   return NextResponse.json({
-    seconds: data.data.total_seconds,
+    seconds: data.data.total_seconds
   })
 }

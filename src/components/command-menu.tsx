@@ -7,7 +7,7 @@ import {
   IconBrandYoutube,
   IconCode,
   IconCommand,
-  IconLink,
+  IconLink
 } from '@tabler/icons-react'
 import React from 'react'
 import toast from 'react-hot-toast'
@@ -20,7 +20,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-  CommandSeparator,
+  CommandSeparator
 } from '@/components/ui'
 
 type Groups = {
@@ -73,12 +73,12 @@ const CommandMenu = () => {
                     <div className='text-sm text-muted-foreground'>
                       You can now share it with anyone.
                     </div>
-                  </div>,
+                  </div>
                 )
               } catch {
                 toast.error('Failed to copy!')
               }
-            }),
+            })
         },
         {
           title: 'Source code',
@@ -87,11 +87,11 @@ const CommandMenu = () => {
             runCommand(() =>
               window.open(
                 'https://github.com/tszhong0411/honghong.me',
-                '_blank',
-              ),
-            ),
-        },
-      ],
+                '_blank'
+              )
+            )
+        }
+      ]
     },
     {
       name: 'Social',
@@ -101,35 +101,35 @@ const CommandMenu = () => {
           icon: <IconBrandGithub size={16} className='mr-2' />,
           onSelect: () =>
             runCommand(() =>
-              window.open('https://github.com/tszhong0411', '_blank'),
-            ),
+              window.open('https://github.com/tszhong0411', '_blank')
+            )
         },
         {
           title: 'Instagram',
           icon: <IconBrandInstagram size={16} className='mr-2' />,
           onSelect: () =>
             runCommand(() =>
-              window.open('https://instagram.com/tszhong0411/', '_blank'),
-            ),
+              window.open('https://instagram.com/tszhong0411/', '_blank')
+            )
         },
         {
           title: 'YouTube',
           icon: <IconBrandYoutube size={16} className='mr-2' />,
           onSelect: () =>
             runCommand(() =>
-              window.open('https://youtube.com/@tszhong0411', '_blank'),
-            ),
+              window.open('https://youtube.com/@tszhong0411', '_blank')
+            )
         },
         {
           title: 'Facebook',
           icon: <IconBrandFacebook size={16} className='mr-2' />,
           onSelect: () =>
             runCommand(() =>
-              window.open('https://www.facebook.com/tszhong0411/', '_blank'),
-            ),
-        },
-      ],
-    },
+              window.open('https://www.facebook.com/tszhong0411/', '_blank')
+            )
+        }
+      ]
+    }
   ]
 
   return (

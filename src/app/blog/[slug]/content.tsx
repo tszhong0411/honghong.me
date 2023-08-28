@@ -1,7 +1,6 @@
 import { BlogPost } from 'contentlayer/generated'
 
 import Mdx from '@/components/mdx'
-
 import { getHeadings } from '@/utils/get-headings'
 
 import LikeButton from './like-button'

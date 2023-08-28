@@ -13,11 +13,11 @@ export const GET = async (req: Request) => {
     if (!title) {
       return NextResponse.json(
         {
-          error: 'Missing title',
+          error: 'Missing title'
         },
         {
-          status: 400,
-        },
+          status: 400
+        }
       )
     }
 
@@ -29,16 +29,20 @@ export const GET = async (req: Request) => {
         : 'text-7xl'
 
     const interSemiBold = fetch(
-      new URL('../../../../public/fonts/Inter-SemiBold.ttf', import.meta.url),
-    ).then((res) => res.arrayBuffer())
+      new URL('../../../../public/fonts/Inter-SemiBold.ttf', import.meta.url)
+    ).then((res) => {
+      return res.arrayBuffer()
+    })
 
     const CalSansSemiBold = fetch(
-      new URL('../../../../public/fonts/CalSans-SemiBold.ttf', import.meta.url),
-    ).then((res) => res.arrayBuffer())
+      new URL('../../../../public/fonts/CalSans-SemiBold.ttf', import.meta.url)
+    ).then((res) => {
+      return res.arrayBuffer()
+    })
 
     const [fontInterSemiBold, fontCalSansSemiBold] = await Promise.all([
       interSemiBold,
-      CalSansSemiBold,
+      CalSansSemiBold
     ])
 
     return new ImageResponse(
@@ -46,8 +50,7 @@ export const GET = async (req: Request) => {
         <div
           tw='w-full h-full flex flex-col px-14 py-12 text-white justify-between'
           style={{
-            backgroundImage:
-              'url(https://honghong.me/images/og-background.png)',
+            backgroundImage: 'url(https://honghong.me/images/og-background.png)'
           }}
         >
           <div tw='text-3xl font-semibold' style={{ fontFamily: 'Inter' }}>
@@ -56,7 +59,7 @@ export const GET = async (req: Request) => {
           <div
             tw={`${titleFontSize} mx-auto`}
             style={{
-              fontFamily: 'Cal Sans',
+              fontFamily: 'Cal Sans'
             }}
           >
             {title}
@@ -88,27 +91,27 @@ export const GET = async (req: Request) => {
             name: 'Inter',
             data: fontInterSemiBold,
             weight: 600,
-            style: 'normal',
+            style: 'normal'
           },
           {
             name: 'Cal Sans',
             data: fontCalSansSemiBold,
             weight: 700,
-            style: 'normal',
-          },
-        ],
-      },
+            style: 'normal'
+          }
+        ]
+      }
     )
   } catch (error) {
     console.log(error)
 
     return NextResponse.json(
       {
-        error: 'Failed to generate image',
+        error: 'Failed to generate image'
       },
       {
-        status: 500,
-      },
+        status: 500
+      }
     )
   }
 }

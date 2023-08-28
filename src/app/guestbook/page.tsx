@@ -1,12 +1,10 @@
 import type { Metadata, ResolvingMetadata } from 'next'
 import { getServerSession } from 'next-auth'
 
-import { authOptions } from '@/lib/auth'
-
-import PageTitle from '@/components/page-title'
-
 import { getMessages } from '@/actions/guestbook'
+import PageTitle from '@/components/page-title'
 import { site } from '@/config/site'
+import { authOptions } from '@/lib/auth'
 
 import Form from './form'
 import Messages from './messages'
@@ -23,7 +21,7 @@ type GuestbookPageProps = {
 
 export const generateMetadata = async (
   _: GuestbookPageProps,
-  parent: ResolvingMetadata,
+  parent: ResolvingMetadata
 ): Promise<Metadata> => {
   const previousOpenGraph = (await parent)?.openGraph || {}
   const previousTwitter = (await parent)?.twitter || {}
@@ -32,19 +30,19 @@ export const generateMetadata = async (
     title,
     description,
     alternates: {
-      canonical: `${site.url}/guestbook`,
+      canonical: `${site.url}/guestbook`
     },
     openGraph: {
       ...previousOpenGraph,
       url: `${site.url}/guestbook`,
       title,
-      description,
+      description
     },
     twitter: {
       ...previousTwitter,
       title,
-      description,
-    },
+      description
+    }
   }
 }
 

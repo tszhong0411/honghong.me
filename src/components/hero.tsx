@@ -1,10 +1,8 @@
 'use client'
 
-import trackEvent from '@/lib/analytics'
-
 import Image from '@/components/mdx/image'
-
 import { HERO_LINKS } from '@/config/links'
+import trackEvent from '@/lib/analytics'
 
 const Hero = () => {
   return (
@@ -14,7 +12,7 @@ const Hero = () => {
           <h1 className='text-2xl font-bold text-foreground sm:text-4xl'>
             Hong
           </h1>
-          <h2 className='text-md font-medium text-muted-foreground sm:text-lg'>
+          <h2 className='font-medium text-muted-foreground sm:text-lg'>
             17 y/o • Student • Full-stack Developer
           </h2>
           <p className='sm:text-lg'>
@@ -43,7 +41,7 @@ const Hero = () => {
             aria-label={link.label}
             onClick={() =>
               trackEvent('Hero Link', {
-                id: link.id,
+                id: link.id
               })
             }
             target='_blank'

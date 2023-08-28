@@ -5,12 +5,10 @@ import React from 'react'
 import { useEvent } from 'react-use'
 import useSWR from 'swr'
 
-import fetcher from '@/lib/fetcher'
-
 import ImageZoom from '@/components/image-zoom'
 import Image from '@/components/mdx/image'
 import { Skeleton } from '@/components/ui'
-
+import fetcher from '@/lib/fetcher'
 import { Views } from '@/types'
 
 type HeaderProps = {
@@ -24,7 +22,7 @@ const Header = (props: HeaderProps) => {
   const [formattedDate, setFormattedDate] = React.useState('')
   const { data: viewsData, isLoading: viewsIsLoading } = useSWR<Views>(
     `/api/views?slug=${slug}`,
-    fetcher,
+    fetcher
   )
   const [commentCounter, setCommentCounter] = React.useState(-1)
 
@@ -38,15 +36,15 @@ const Header = (props: HeaderProps) => {
         await fetch('/api/views', {
           method: 'POST',
           body: JSON.stringify({
-            slug,
+            slug
           }),
           headers: {
-            'Content-Type': 'application/json',
-          },
+            'Content-Type': 'application/json'
+          }
         })
       }
 
-      increment()
+      void increment()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -64,7 +62,8 @@ const Header = (props: HeaderProps) => {
 
     if (giscus.discussion) {
       setCommentCounter(
-        giscus.discussion.totalCommentCount + giscus.discussion.totalReplyCount,
+        (giscus.discussion.totalCommentCount as number) +
+          (giscus.discussion.totalReplyCount as number)
       )
     }
   })

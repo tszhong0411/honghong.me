@@ -47,7 +47,7 @@ Next, create the following file:
   data={[
     {
       name: 'components',
-      children: [{ name: 'layout.js' }],
+      children: [{ name: 'layout.js' }]
     },
     {
       name: 'data',
@@ -57,19 +57,19 @@ Next, create the following file:
           children: [
             { name: 'markdown.mdx' },
             { name: 'nextjs.mdx' },
-            { name: 'react.mdx' },
-          ],
-        },
-      ],
+            { name: 'react.mdx' }
+          ]
+        }
+      ]
     },
     {
       name: 'lib',
-      children: [{ name: 'format-date.js' }, { name: 'mdx.js' }],
+      children: [{ name: 'format-date.js' }, { name: 'mdx.js' }]
     },
     {
       name: 'pages',
-      children: [{ name: 'blog', children: [{ name: '[slug].js' }] }],
-    },
+      children: [{ name: 'blog', children: [{ name: '[slug].js' }] }]
+    }
   ]}
 />
 
@@ -142,13 +142,13 @@ export const getPostBySlug = async (slug) => {
 
   const frontMatter = {
     ...data,
-    slug,
+    slug
   }
   // Put the slug in the front matter as well, which will be used later
 
   return {
     source: mdxSource,
-    frontMatter,
+    frontMatter
   }
 }
 ```
@@ -167,7 +167,7 @@ export const getAllPosts = () => {
     frontMatter.push({
       ...data,
       slug: formatSlug(slug),
-      date: new Date(data.date).toISOString(),
+      date: new Date(data.date).toISOString()
     })
   })
 
@@ -190,7 +190,7 @@ export const formatDate = (date) =>
   new Date(date).toLocaleDateString('en', {
     year: 'numeric',
     month: 'long',
-    day: 'numeric',
+    day: 'numeric'
   })
 /*
  * formatDate('2022-08-21T00:00:00Z')
@@ -236,8 +236,8 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      posts,
-    },
+      posts
+    }
   }
 }
 ```
@@ -272,16 +272,16 @@ export const getStaticProps = async ({ params }) => {
 
   return {
     props: {
-      post,
-    },
+      post
+    }
   }
 }
 
 export const getStaticPaths = async () => {
   const paths = allSlugs.map((slug) => ({
     params: {
-      slug: formatSlug(slug),
-    },
+      slug: formatSlug(slug)
+    }
   }))
   /*
    * paths Output:
@@ -294,7 +294,7 @@ export const getStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false,
+    fallback: false
   }
 }
 ```

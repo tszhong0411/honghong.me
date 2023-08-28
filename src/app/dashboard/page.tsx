@@ -1,7 +1,6 @@
 import type { Metadata, ResolvingMetadata } from 'next'
 
 import PageTitle from '@/components/page-title'
-
 import { site } from '@/config/site'
 
 import Items from './items'
@@ -17,7 +16,7 @@ type DashboardPageProps = {
 
 export const generateMetadata = async (
   _: DashboardPageProps,
-  parent: ResolvingMetadata,
+  parent: ResolvingMetadata
 ): Promise<Metadata> => {
   const previousOpenGraph = (await parent)?.openGraph || {}
   const previousTwitter = (await parent)?.twitter || {}
@@ -26,19 +25,19 @@ export const generateMetadata = async (
     title,
     description,
     alternates: {
-      canonical: `${site.url}/dashboard`,
+      canonical: `${site.url}/dashboard`
     },
     openGraph: {
       ...previousOpenGraph,
       url: `${site.url}/dashboard`,
       title,
-      description,
+      description
     },
     twitter: {
       ...previousTwitter,
       title,
-      description,
-    },
+      description
+    }
   }
 }
 

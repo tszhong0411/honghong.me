@@ -11,25 +11,27 @@ const Navbar = () => {
 
   return (
     <ul className='hidden space-x-2 md:flex'>
-      {HEADER_LINKS.map((link) => (
-        <li key={link.text}>
-          <Link
-            className={cn(
-              'rounded px-3 py-2 text-sm font-medium transition-colors duration-150',
-              {
-                ['text-muted-foreground hover:bg-accent hover:text-foreground']:
-                  link.href !== pathname,
-              },
-              {
-                ['bg-muted']: link.href === pathname,
-              },
-            )}
-            href={link.href}
-          >
-            {link.text}
-          </Link>
-        </li>
-      ))}
+      {HEADER_LINKS.map((link) => {
+        return (
+          <li key={link.text}>
+            <Link
+              className={cn(
+                'rounded px-3 py-2 text-sm font-medium transition-colors duration-150',
+                {
+                  ['text-muted-foreground hover:bg-accent hover:text-foreground']:
+                    link.href !== pathname
+                },
+                {
+                  ['bg-muted']: link.href === pathname
+                }
+              )}
+              href={link.href}
+            >
+              {link.text}
+            </Link>
+          </li>
+        )
+      })}
     </ul>
   )
 }

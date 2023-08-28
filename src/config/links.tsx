@@ -9,7 +9,7 @@ import {
   IconFlame,
   IconMessageCircle,
   IconPencil,
-  IconUserCircle,
+  IconUserCircle
 } from '@tabler/icons-react'
 
 type HeroLinks = {
@@ -42,33 +42,33 @@ export const HEADER_LINKS: HeaderLinks = [
   {
     icon: <IconPencil size={14} />,
     href: '/blog',
-    text: 'Blog',
+    text: 'Blog'
   },
   {
     icon: <IconMessageCircle size={14} />,
     href: '/guestbook',
-    text: 'Guestbook',
+    text: 'Guestbook'
   },
   {
     icon: <IconChartBar size={14} />,
     href: '/dashboard',
-    text: 'Dashboard',
+    text: 'Dashboard'
   },
   {
     icon: <IconFlame size={14} />,
     href: '/projects',
-    text: 'Projects',
+    text: 'Projects'
   },
   {
     icon: <IconUserCircle size={14} />,
     href: '/about',
-    text: 'About',
+    text: 'About'
   },
   {
     icon: <IconDeviceDesktop size={14} />,
     href: '/uses',
-    text: 'Uses',
-  },
+    text: 'Uses'
+  }
 ]
 
 export const FOOTER_LINKS: FooterLinks = [
@@ -77,62 +77,62 @@ export const FOOTER_LINKS: FooterLinks = [
     links: [
       {
         href: '/',
-        title: 'Home',
+        title: 'Home'
       },
       {
         href: '/blog',
-        title: 'Blog',
+        title: 'Blog'
       },
       {
         href: '/about',
-        title: 'About',
+        title: 'About'
       },
       {
         href: '/dashboard',
-        title: 'Dashboard',
-      },
-    ],
+        title: 'Dashboard'
+      }
+    ]
   },
   {
     id: 2,
     links: [
       {
         href: '/guestbook',
-        title: 'Guestbook',
+        title: 'Guestbook'
       },
       {
         href: '/uses',
-        title: 'Uses',
+        title: 'Uses'
       },
       {
         href: '/projects',
-        title: 'Projects',
+        title: 'Projects'
       },
       {
         href: 'https://ui.honghong.me',
-        title: 'Design',
-      },
-    ],
-  },
+        title: 'Design'
+      }
+    ]
+  }
 ]
 
 export const FOOTER_SOCIAL_MEDIA: FooterSocialMediaLinks = [
   {
     href: 'https://www.facebook.com/tszhong0411/',
-    title: 'Facebook',
+    title: 'Facebook'
   },
   {
     href: 'https://www.instagram.com/tszhong0411/',
-    title: 'Instagram',
+    title: 'Instagram'
   },
   {
     href: 'https://github.com/tszhong0411',
-    title: 'GitHub',
+    title: 'GitHub'
   },
   {
     href: 'https://www.youtube.com/@tszhong0411',
-    title: 'YouTube',
-  },
+    title: 'YouTube'
+  }
 ]
 
 export const HERO_LINKS: HeroLinks = [
@@ -140,30 +140,30 @@ export const HERO_LINKS: HeroLinks = [
     id: 'github',
     label: 'GitHub',
     icon: <IconBrandGithub size={28} />,
-    href: 'https://github.com/tszhong0411',
+    href: 'https://github.com/tszhong0411'
   },
   {
     id: 'instagram',
     label: 'Instagram',
     icon: <IconBrandInstagram size={28} />,
-    href: 'https://www.instagram.com/tszhong0411/',
+    href: 'https://www.instagram.com/tszhong0411/'
   },
   {
     id: 'youtube',
     label: 'YouTube',
     icon: <IconBrandYoutube size={28} />,
-    href: 'https://www.youtube.com/@tszhong0411',
+    href: 'https://www.youtube.com/@tszhong0411'
   },
   {
     id: 'facebook',
     label: 'Facebook',
     icon: <IconBrandFacebook size={28} />,
-    href: 'https://www.facebook.com/tszhong0411/',
+    href: 'https://www.facebook.com/tszhong0411/'
   },
   {
     id: 'twitter',
     label: 'Twitter',
     icon: <IconBrandX size={28} />,
-    href: 'https://twitter.com/tszhong0411',
-  },
+    href: 'https://twitter.com/tszhong0411'
+  }
 ]

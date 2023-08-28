@@ -4,7 +4,6 @@ import { notFound } from 'next/navigation'
 
 import Mdx from '@/components/mdx'
 import Image from '@/components/mdx/image'
-
 import { site } from '@/config/site'
 
 import Header from './header'
@@ -15,17 +14,15 @@ type ProjectPageProps = {
   }
 }
 
-export const generateStaticParams = async (): Promise<
-  ProjectPageProps['params'][]
-> => {
+export const generateStaticParams = (): ProjectPageProps['params'][] => {
   return allProjects.map((project) => ({
-    slug: project.slug,
+    slug: project.slug
   }))
 }
 
 export const generateMetadata = async (
   props: ProjectPageProps,
-  parent: ResolvingMetadata,
+  parent: ResolvingMetadata
 ): Promise<Metadata> => {
   const { params } = props
 
@@ -41,7 +38,7 @@ export const generateMetadata = async (
     title: project.name,
     description: project.description,
     alternates: {
-      canonical: `${site.url}/projects/${params.slug}`,
+      canonical: `${site.url}/projects/${params.slug}`
     },
     openGraph: {
       url: `${site.url}/projects/${params.slug}`,
@@ -56,16 +53,16 @@ export const generateMetadata = async (
           width: 1200,
           height: 630,
           alt: project.description,
-          type: 'image/png',
-        },
-      ],
+          type: 'image/png'
+        }
+      ]
     },
     twitter: {
       ...previousTwitter,
       title: project.name,
       description: project.description,
-      images: [`${site.url}${project.image}`],
-    },
+      images: [`${site.url}${project.image}`]
+    }
   }
 }
 

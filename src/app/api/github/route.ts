@@ -8,31 +8,33 @@ export const dynamic = 'force-dynamic'
 
 export const GET = async () => {
   const octokit = new Octokit({
-    auth: process.env.GITHUB_TOKEN,
+    auth: process.env.GITHUB_TOKEN
   })
 
   const { data: repos }: Endpoints['GET /users/{username}/repos']['response'] =
     await octokit.request('GET /users/{username}/repos', {
-      username: site.githubUsername,
+      username: site.githubUsername
     })
 
   const {
-    data: { followers },
+    data: { followers }
   }: Endpoints['GET /users/{username}']['response'] = await octokit.request(
     'GET /users/{username}',
     {
-      username: site.githubUsername,
-    },
+      username: site.githubUsername
+    }
   )
 
   const stars = repos
-    .filter((repo) => !repo.fork)
+    .filter((repo) => {
+      return !repo.fork
+    })
     .reduce((acc, repo) => {
       return acc + (repo.stargazers_count ?? 0)
     }, 0)
 
   return NextResponse.json({
     stars,
-    followers,
+    followers
   })
 }

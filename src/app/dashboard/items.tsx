@@ -5,16 +5,14 @@ import {
   IconBrandYoutube,
   IconClock,
   IconPencil,
-  IconUser,
+  IconUser
 } from '@tabler/icons-react'
 import dayjs from 'dayjs'
 import React from 'react'
 import useSWR from 'swr'
 
-import fetcher from '@/lib/fetcher'
-
 import { Skeleton } from '@/components/ui'
-
+import fetcher from '@/lib/fetcher'
 import { GithubData, Likes, Views, WakatimeData, YouTubeData } from '@/types'
 
 type Card = {
@@ -39,7 +37,7 @@ const Items = () => {
         (
           dayjs().diff('2006-04-11', 'milliseconds') /
           (365.25 * 24 * 60 * 60 * 1000)
-        ).toFixed(9),
+        ).toFixed(9)
       )
     }, 10)
 
@@ -51,7 +49,7 @@ const Items = () => {
       title: 'My Age',
       link: 'https://honghong.me/about',
       value: age,
-      icon: <IconUser />,
+      icon: <IconUser />
     },
     {
       title: 'Coding Hours',
@@ -59,44 +57,44 @@ const Items = () => {
       value: wakatimeData?.seconds
         ? `${Math.round(wakatimeData.seconds / 60 / 60)} hrs`
         : undefined,
-      icon: <IconClock />,
+      icon: <IconClock />
     },
     {
       title: 'YouTube Subscribers',
       link: 'https://youtube.com/@tszhong0411',
       value: youtubeData?.subscribers,
-      icon: <IconBrandYoutube />,
+      icon: <IconBrandYoutube />
     },
     {
       title: 'YouTube Views',
       link: 'https://youtube.com/@tszhong0411',
       value: youtubeData?.views,
-      icon: <IconBrandYoutube />,
+      icon: <IconBrandYoutube />
     },
     {
       title: 'GitHub Followers',
       link: 'https://github.com/tszhong0411',
       value: githubData?.followers,
-      icon: <IconBrandGithub />,
+      icon: <IconBrandGithub />
     },
     {
       title: 'GitHub Stars',
       link: 'https://github.com/tszhong0411',
       value: githubData?.stars,
-      icon: <IconBrandGithub />,
+      icon: <IconBrandGithub />
     },
     {
       title: 'Blog Total Views',
       link: 'https://honghong.me',
       value: viewsData?.views,
-      icon: <IconPencil />,
+      icon: <IconPencil />
     },
     {
       title: 'Blog Total Likes',
       link: 'https://honghong.me',
       value: likesData?.likes,
-      icon: <IconPencil />,
-    },
+      icon: <IconPencil />
+    }
   ]
 
   return (

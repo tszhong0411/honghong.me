@@ -38,7 +38,7 @@ const ProjectCard = (props: ProjectCardProps) => {
               rgba(255,255,255,0.1),
               transparent 80%
             )
-          `,
+          `
         }}
       />
       <Image

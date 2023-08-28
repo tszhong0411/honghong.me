@@ -1,7 +1,5 @@
 import '@/styles/globals.css'
-
 import Hero from '@/components/hero'
-
 import { HERO_LINKS } from '@/config/links'
 
 describe('Hero', () => {

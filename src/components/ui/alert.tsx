@@ -4,7 +4,7 @@ import React from 'react'
 import { cn } from '@/utils/cn'
 
 const alertVariants = cva(
-  ['rounded-lg border p-4 flex justify-start gap-4 w-full'],
+  ['flex w-full justify-start gap-4 rounded-lg border p-4'],
   {
     variants: {
       variant: {
@@ -13,13 +13,13 @@ const alertVariants = cva(
           'border-red-200 bg-red-100 text-red-900 dark:border-red-200/30 dark:bg-red-900/30 dark:text-red-200',
         info: 'border-blue-200 bg-blue-100 text-blue-900 dark:border-blue-200/30 dark:bg-blue-900/30 dark:text-blue-200',
         warning:
-          'border-yellow-100 bg-yellow-50 text-yellow-900 dark:border-yellow-200/30 dark:bg-yellow-700/30 dark:text-yellow-200',
-      },
+          'border-yellow-100 bg-yellow-50 text-yellow-900 dark:border-yellow-200/30 dark:bg-yellow-700/30 dark:text-yellow-200'
+      }
     },
     defaultVariants: {
-      variant: 'default',
-    },
-  },
+      variant: 'default'
+    }
+  }
 )
 
 type AlertProps = {

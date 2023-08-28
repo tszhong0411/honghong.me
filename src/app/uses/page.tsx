@@ -2,7 +2,6 @@ import type { Metadata, ResolvingMetadata } from 'next'
 
 import Mdx from '@/components/mdx'
 import PageTitle from '@/components/page-title'
-
 import { site } from '@/config/site'
 import getPage from '@/utils/get-page'
 
@@ -17,7 +16,7 @@ type UsesPageProps = {
 
 export const generateMetadata = async (
   _: UsesPageProps,
-  parent: ResolvingMetadata,
+  parent: ResolvingMetadata
 ): Promise<Metadata> => {
   const previousOpenGraph = (await parent)?.openGraph || {}
   const previousTwitter = (await parent)?.twitter || {}
@@ -26,19 +25,19 @@ export const generateMetadata = async (
     title,
     description,
     alternates: {
-      canonical: `${site.url}/uses`,
+      canonical: `${site.url}/uses`
     },
     openGraph: {
       ...previousOpenGraph,
       url: `${site.url}/uses`,
       title,
-      description,
+      description
     },
     twitter: {
       ...previousTwitter,
       title,
-      description,
-    },
+      description
+    }
   }
 }
 

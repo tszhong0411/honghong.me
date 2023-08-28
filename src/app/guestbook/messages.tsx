@@ -5,6 +5,7 @@ import { DefaultSession } from 'next-auth'
 import React from 'react'
 import { toast } from 'react-hot-toast'
 
+import { deleteMessage } from '@/actions/guestbook'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -16,11 +17,8 @@ import {
   AvatarImage,
   Button,
   buttonVariants,
-  Skeleton,
+  Skeleton
 } from '@/components/ui'
-
-import { deleteMessage } from '@/actions/guestbook'
-
 import { Messages } from '@/types'
 
 type MessagesProps = {
@@ -56,11 +54,10 @@ const Messages = (props: MessagesProps) => {
 
     try {
       await deleteMessage(id)
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
+    } catch (error) {
       setIsDeleting(false)
       toast.dismiss(loading)
-      toast.error(error.message)
+      toast.error((error as Error).message)
     }
 
     setIsDeleting(false)
@@ -111,7 +108,9 @@ const Messages = (props: MessagesProps) => {
                     <div className='flex justify-end gap-2'>
                       <AlertDialogCancel>Cancel</AlertDialogCancel>
                       <AlertDialogAction
-                        onClick={() => deleteMessageHandler(id)}
+                        onClick={() => {
+                          return deleteMessageHandler(id)
+                        }}
                         className={buttonVariants({ variant: 'destructive' })}
                       >
                         Delete

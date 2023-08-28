@@ -1,22 +1,20 @@
 import type { Metadata } from 'next'
 
-import getAllPosts from '@/lib/mdx'
-
 import Hero from '@/components/hero'
 import Posts from '@/components/posts'
 import Projects from '@/components/projects'
-
 import { site } from '@/config/site'
+import getAllPosts from '@/lib/mdx'
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: site.url,
-  },
+    canonical: site.url
+  }
 }
 
 const HomePage = () => {
   const posts = getAllPosts({
-    limit: 4,
+    limit: 4
   })
 
   return (

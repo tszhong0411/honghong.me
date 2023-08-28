@@ -2,7 +2,6 @@ import { IconArrowRight } from '@tabler/icons-react'
 import Link from 'next/link'
 
 import PostCard from '@/components/post-card'
-
 import { BlogPostCore } from '@/types'
 
 type PostsProps = {

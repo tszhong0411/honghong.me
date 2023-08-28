@@ -5,16 +5,15 @@ import { signOut } from 'next-auth/react'
 import React from 'react'
 import { toast } from 'react-hot-toast'
 
+import { createMessage } from '@/actions/guestbook'
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
   Button,
   Skeleton,
-  Textarea,
+  Textarea
 } from '@/components/ui'
-
-import { createMessage } from '@/actions/guestbook'
 
 type FormProps = {
   user: NonNullable<DefaultSession['user']>
@@ -33,11 +32,10 @@ const Form = (props: FormProps) => {
 
     try {
       await createMessage(message)
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
+    } catch (error) {
       setIsCreating(false)
       toast.dismiss(loading)
-      toast.error(error.message)
+      toast.error((error as Error).message)
     }
 
     setIsCreating(false)

@@ -21,7 +21,7 @@ const Image = (props: ImageProps) => {
         className={cn(
           'transition-[scale,filter] duration-700',
           isLoading && 'scale-[1.02] blur-xl grayscale',
-          imageClassName,
+          imageClassName
         )}
         src={src}
         alt={alt}

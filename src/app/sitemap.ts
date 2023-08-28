@@ -3,10 +3,10 @@ import { MetadataRoute } from 'next'
 
 import { site } from '@/config/site'
 
-const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
+const sitemap = (): MetadataRoute.Sitemap => {
   const blogs = allBlogPosts.map((post) => ({
     url: `${site.url}/blog/${post.slug}`,
-    lastModified: post.date.split('T')[0],
+    lastModified: post.date.split('T')[0]
   }))
 
   const routes = [
@@ -16,10 +16,10 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
     '/projects',
     '/dashboard',
     ...allPages.map((page) => `/${page.slug}`),
-    ...allProjects.map((project) => `/projects/${project.slug}`),
+    ...allProjects.map((project) => `/projects/${project.slug}`)
   ].map((route) => ({
     url: `${site.url}${route}`,
-    lastModified: new Date().toISOString().split('T')[0],
+    lastModified: new Date().toISOString().split('T')[0]
   }))
 
   return [...routes, ...blogs]

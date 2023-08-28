@@ -1,13 +1,12 @@
 import type { Metadata } from 'next'
 import { Fira_Code, Inter } from 'next/font/google'
 import localFont from 'next/font/local'
-import '@/styles/globals.css'
 
+import '@/styles/globals.css'
 import Analytics from '@/components/analytics'
 import Footer from '@/components/footer'
 import Header from '@/components/header'
 import Toaster from '@/components/toaster'
-
 import { site } from '@/config/site'
 import { cn } from '@/utils/cn'
 
@@ -19,7 +18,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
     default: site.title,
-    template: `%s ${site.titleTemplate}`,
+    template: `%s ${site.titleTemplate}`
   },
   description: site.description,
   robots: {
@@ -30,8 +29,8 @@ export const metadata: Metadata = {
       follow: true,
       'max-video-preview': -1,
       'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
+      'max-snippet': -1
+    }
   },
   manifest: '/favicon/site.webmanifest',
   twitter: {
@@ -42,18 +41,18 @@ export const metadata: Metadata = {
     siteId: '1152256803746377730',
     creator: '@tszhong0411',
     creatorId: '1152256803746377730',
-    images: [`${site.url}/images/og.png`],
+    images: [`${site.url}/images/og.png`]
   },
   keywords: site.keywords,
   themeColor: [
     {
       media: '(prefers-color-scheme: light)',
-      color: '#ffffff',
+      color: '#ffffff'
     },
     {
       media: '(prefers-color-scheme: dark)',
-      color: '#000000',
-    },
+      color: '#000000'
+    }
   ],
   creator: 'tszhong0411',
   openGraph: {
@@ -69,9 +68,9 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: site.description,
-        type: 'image/png',
-      },
-    ],
+        type: 'image/png'
+      }
+    ]
   },
   icons: {
     icon: '/favicon/favicon.svg',
@@ -80,26 +79,26 @@ export const metadata: Metadata = {
       {
         url: '/favicon/apple-touch-icon.png',
         sizes: '180x180',
-        type: 'image/png',
-      },
+        type: 'image/png'
+      }
     ],
-    other: [...site.favicons],
-  },
+    other: [...site.favicons]
+  }
 }
 
 const inter = Inter({
   variable: '--font-inter',
-  subsets: ['latin'],
+  subsets: ['latin']
 })
 
 const firaCode = Fira_Code({
   variable: '--font-fira-code',
-  subsets: ['latin'],
+  subsets: ['latin']
 })
 
 const calcom = localFont({
   src: '../../public/fonts/CalSans-SemiBold.woff2',
-  variable: '--font-calcom',
+  variable: '--font-calcom'
 })
 
 const RootLayout = (props: RootLayoutProps) => {
@@ -112,7 +111,7 @@ const RootLayout = (props: RootLayoutProps) => {
         inter.variable,
         firaCode.variable,
         calcom.variable,
-        'dark scroll-smooth',
+        'dark scroll-smooth'
       )}
     >
       <body className='font-default'>

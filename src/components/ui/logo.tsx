@@ -18,7 +18,7 @@ const Logo = React.forwardRef<SVGSVGElement, React.SVGAttributes<SVGElement>>(
         />
       </svg>
     )
-  },
+  }
 )
 
 Logo.displayName = 'Logo'

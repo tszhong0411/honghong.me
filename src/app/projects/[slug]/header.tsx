@@ -10,12 +10,12 @@ import getIconByName from '@/utils/get-icon-by-name'
 const animation = {
   hide: {
     x: -30,
-    opacity: 0,
+    opacity: 0
   },
   show: {
     x: 0,
-    opacity: 1,
-  },
+    opacity: 1
+  }
 }
 
 type HeaderProps = Project

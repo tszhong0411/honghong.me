@@ -9,9 +9,8 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from '@/components/ui'
-
 import { HEADER_LINKS } from '@/config/links'
 
 const MobileNav = () => {

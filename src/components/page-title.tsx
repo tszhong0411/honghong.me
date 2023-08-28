@@ -11,12 +11,12 @@ type PageTitleProps = {
 const animation = {
   hide: {
     x: -30,
-    opacity: 0,
+    opacity: 0
   },
   show: {
     x: 0,
-    opacity: 1,
-  },
+    opacity: 1
+  }
 }
 
 const PageTitle = (props: PageTitleProps) => {
@@ -28,7 +28,7 @@ const PageTitle = (props: PageTitleProps) => {
         className='my-4 text-4xl font-bold'
         {...(animate && {
           initial: animation.hide,
-          animate: animation.show,
+          animate: animation.show
         })}
       >
         {title}
@@ -39,8 +39,8 @@ const PageTitle = (props: PageTitleProps) => {
           initial: animation.hide,
           animate: animation.show,
           transition: {
-            delay: 0.1,
-          },
+            delay: 0.1
+          }
         })}
       >
         {description}

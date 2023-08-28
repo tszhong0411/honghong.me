@@ -16,17 +16,15 @@ type BlogPostPageProps = {
   }
 }
 
-export const generateStaticParams = async (): Promise<
-  BlogPostPageProps['params'][]
-> => {
+export const generateStaticParams = (): BlogPostPageProps['params'][] => {
   return allBlogPosts.map((post) => ({
-    slug: post.slug,
+    slug: post.slug
   }))
 }
 
 export const generateMetadata = async (
   props: BlogPostPageProps,
-  parent: ResolvingMetadata,
+  parent: ResolvingMetadata
 ): Promise<Metadata> => {
   const { params } = props
 
@@ -42,7 +40,7 @@ export const generateMetadata = async (
     title: post.title,
     description: post.summary,
     alternates: {
-      canonical: `${site.url}/blog/${params.slug}`,
+      canonical: `${site.url}/blog/${params.slug}`
     },
     openGraph: {
       url: `${site.url}/blog/${params.slug}`,
@@ -62,9 +60,9 @@ export const generateMetadata = async (
           width: 1200,
           height: 630,
           alt: post.title,
-          type: 'image/png',
-        },
-      ],
+          type: 'image/png'
+        }
+      ]
     },
     twitter: {
       ...previousTwitter,
@@ -73,9 +71,9 @@ export const generateMetadata = async (
       images: [
         `${site.url}/api/og?title=${post.title}&date=${
           post.date.split('T')[0]
-        }&url=honghong.me/blog`,
-      ],
-    },
+        }&url=honghong.me/blog`
+      ]
+    }
   }
 }
 
@@ -104,13 +102,13 @@ const BlogPostPage = (props: BlogPostPageProps) => {
     author: {
       '@type': 'Person',
       name: site.name,
-      url: site.url,
+      url: site.url
     },
     publisher: {
       '@type': 'Person',
       name: site.name,
-      url: site.url,
-    },
+      url: site.url
+    }
   }
 
   return (

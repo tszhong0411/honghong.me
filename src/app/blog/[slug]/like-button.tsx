@@ -7,12 +7,10 @@ import { useDebounce } from 'react-use'
 import useSWR from 'swr'
 
 import fetcher from '@/lib/fetcher'
-
+import { Likes } from '@/types'
 import { cn } from '@/utils/cn'
 
-import { Likes } from '@/types'
-
-type LikeButtonProps = {
+export type LikeButtonProps = {
   slug: string
 }
 
@@ -24,17 +22,17 @@ const LikeButton = (props: LikeButtonProps) => {
 
   const { data, isLoading, mutate } = useSWR<Likes>(
     `/api/likes?slug=${slug}`,
-    fetcher,
+    fetcher
   )
 
   const updatePostLikes = async (
     slug: string,
-    count: number,
-  ): Promise<Likes> => {
+    count: number
+  ): Promise<unknown> => {
     const res = await fetch('/api/likes', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ slug, count }),
+      body: JSON.stringify({ slug, count })
     })
 
     return res.json()
@@ -42,32 +40,32 @@ const LikeButton = (props: LikeButtonProps) => {
 
   const [batchedLikes, setBatchedLikes] = React.useState(0)
 
-  const increment = () => {
+  const increment = async () => {
     if (!data || data.currentUserLikes >= 3) {
       return
     }
 
-    mutate(
+    await mutate(
       {
         likes: data.likes + 1,
-        currentUserLikes: data.currentUserLikes + 1,
+        currentUserLikes: data.currentUserLikes + 1
       },
-      false,
+      false
     )
 
     setBatchedLikes(batchedLikes + 1)
   }
 
   useDebounce(
-    () => {
+    async () => {
       if (batchedLikes === 0) return
 
-      mutate(updatePostLikes(slug, batchedLikes))
+      await mutate(updatePostLikes(slug, batchedLikes))
 
       setBatchedLikes(0)
     },
     1000,
-    [batchedLikes],
+    [batchedLikes]
   )
 
   React.useEffect(() => {
@@ -94,14 +92,14 @@ const LikeButton = (props: LikeButtonProps) => {
     const targetCenterX = targetX + targetWidth / 2
     const confetti = (await import('canvas-confetti')).default
 
-    confetti({
+    await confetti({
       zIndex: 999,
       particleCount: 100,
       spread: 100,
       origin: {
         y: targetY / clientHeight,
-        x: targetCenterX / clientWidth,
-      },
+        x: targetCenterX / clientWidth
+      }
     })
   }
 
@@ -111,17 +109,17 @@ const LikeButton = (props: LikeButtonProps) => {
         ref={buttonRef}
         className={cn([
           'group relative h-12 w-24 rounded-lg bg-transparent',
-          'before:absolute before:inset-0 before:rounded-lg before:bg-gradient-to-br before:from-[#7928ca] before:to-[#ff0080] before:content-[""]',
+          'before:absolute before:inset-0 before:rounded-lg before:bg-gradient-to-br before:from-[#7928ca] before:to-[#ff0080] before:content-[""]'
         ])}
         type='button'
-        onClick={() => {
+        onClick={async () => {
           if (isLoading) return
           if (data?.currentUserLikes === 2) {
-            handleConfetti()
+            await handleConfetti()
           }
           if (!data || data.currentUserLikes >= 3) return
 
-          increment()
+          await increment()
         }}
         title='Like this post'
       >
@@ -133,13 +131,13 @@ const LikeButton = (props: LikeButtonProps) => {
         <span
           className={cn([
             'absolute inset-0.5 z-10 flex items-center justify-center gap-2 rounded-[7px] bg-background text-lg font-bold transition-[background-color] duration-150',
-            'group-hover:bg-transparent group-hover:text-foreground',
+            'group-hover:bg-transparent group-hover:text-foreground'
           ])}
         >
           <IconHeart
             className={cn(
               'group-hover:fill-foreground',
-              data?.currentUserLikes === 3 && 'fill-foreground',
+              data?.currentUserLikes === 3 && 'fill-foreground'
             )}
             size={20}
           />

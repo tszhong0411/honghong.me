@@ -10,5 +10,5 @@ export const GISCUS_CONFIG: GiscusProps = {
   emitMetadata: '1',
   inputPosition: 'bottom',
   lang: 'en',
-  loading: 'eager',
+  loading: 'eager'
 } as const

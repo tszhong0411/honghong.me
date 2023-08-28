@@ -1,9 +1,9 @@
 {
-  "typescript.enablePromptUseWorkspaceTsdk": true,
-  "typescript.tsdk": "node_modules/typescript/lib",
   "tailwindCSS.experimental.classRegex": [
     ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
     ["cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
     "className\\: '([^']*)'"
-  ]
+  ],
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

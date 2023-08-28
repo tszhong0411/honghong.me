@@ -15,7 +15,7 @@ const getAllPosts = (config: GetAllPostsProps = {}) => {
 
   if (sorted) {
     return posts.sort(
-      (a, b) => Number(new Date(b.date)) - Number(new Date(a.date)),
+      (a, b) => Number(new Date(b.date)) - Number(new Date(a.date))
     )
   }
 
