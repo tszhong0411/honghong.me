@@ -2,7 +2,6 @@ import NextLink from 'next/link'
 
 import { FOOTER_LINKS } from '@/config/links'
 import { Link } from '@/config/links'
-import { cn } from '@/utils/cn'
 
 import CurrentVisitors from './current-visitors'
 import NowPlaying from './now-playing'
@@ -10,14 +9,19 @@ import NowPlaying from './now-playing'
 const FooterLink = (props: Link) => {
   const { title, href, comingSoon } = props
 
+  if (comingSoon) {
+    return (
+      <div className='cursor-not-allowed text-zinc-600' title='Coming Soon'>
+        {title}
+      </div>
+    )
+  }
+
   if (href.startsWith('/')) {
     return (
       <NextLink
         href={href}
-        className={cn(
-          'text-muted-foreground transition-colors duration-150 hover:text-foreground',
-          comingSoon && 'pointer-events-none text-zinc-700'
-        )}
+        className='text-muted-foreground transition-colors duration-150 hover:text-foreground'
       >
         {title}
       </NextLink>
