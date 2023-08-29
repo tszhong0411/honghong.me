@@ -18,23 +18,23 @@ export type Link = {
   comingSoon?: boolean
 }
 
-type HeroLinks = {
+type HeroLinks = Array<{
   id: string
   label: string
   icon: React.ReactNode
   href: string
-}[]
+}>
 
-type HeaderLinks = {
+type HeaderLinks = Array<{
   icon: React.ReactNode
   href: string
   text: string
-}[]
+}>
 
-type FooterLinks = {
+type FooterLinks = Array<{
   id: number
   links: Link[]
-}[]
+}>
 
 export const HEADER_LINKS: HeaderLinks = [
   {

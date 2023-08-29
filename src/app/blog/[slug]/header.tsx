@@ -94,11 +94,7 @@ const Header = (props: HeaderProps) => {
           <div className='space-y-1 md:mx-auto'>
             <div className='text-muted-foreground'>Published on</div>
             <div>
-              {formattedDate ? (
-                formattedDate
-              ) : (
-                <Skeleton className='h-6 w-32 rounded-md' />
-              )}
+              {formattedDate || <Skeleton className='h-6 w-32 rounded-md' />}
             </div>
           </div>
           <div className='space-y-1 md:mx-auto'>

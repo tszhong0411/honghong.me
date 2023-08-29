@@ -23,14 +23,14 @@ import {
   CommandSeparator
 } from '@/components/ui'
 
-type Groups = {
+type Groups = Array<{
   name: string
-  actions: {
+  actions: Array<{
     title: string
     icon: React.ReactNode
     onSelect: () => void
-  }[]
-}[]
+  }>
+}>
 
 const CommandMenu = () => {
   const [open, setOpen] = React.useState(false)
@@ -39,7 +39,7 @@ const CommandMenu = () => {
     const down = (e: KeyboardEvent) => {
       if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
         e.preventDefault()
-        setOpen((open) => !open)
+        setOpen((value) => !value)
       }
     }
 

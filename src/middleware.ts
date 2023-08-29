@@ -16,7 +16,7 @@ const middleware = () => {
 
   response.headers.set(
     'Content-Security-Policy',
-    ContentSecurityPolicy.replace(/\n/g, '')
+    ContentSecurityPolicy.replaceAll('\n', '')
   )
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
   response.headers.set(

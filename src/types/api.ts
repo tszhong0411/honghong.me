@@ -11,13 +11,13 @@ export type Likes = {
 export type BlogData = Views & Pick<Likes, 'likes'>
 
 // Guestbook
-export type Messages = {
+export type Messages = Array<{
   id: number
   body: string
   image: string
   created_by: string
   updated_at: Date
-}[]
+}>
 
 // Dashboard
 export type APIResponse = {
@@ -42,7 +42,7 @@ export type YouTubeRes = {
     totalResults: number
     resultsPerPage: number
   }
-  items: {
+  items: Array<{
     kind: string
     etag: string
     id: string
@@ -52,7 +52,7 @@ export type YouTubeRes = {
       hiddenSubscriberCount: boolean
       videoCount: string
     }
-  }[]
+  }>
 }
 
 export type YouTubeData = {

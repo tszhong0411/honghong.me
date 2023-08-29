@@ -64,7 +64,7 @@ const getIconByName = (name: string) => {
       return IconDatabase
     }
     default: {
-      throw Error('Icon not found')
+      throw new Error('Icon not found')
     }
   }
 }

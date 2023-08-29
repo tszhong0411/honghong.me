@@ -39,7 +39,7 @@ const FilteredPosts = (props: FilteredPostsProps) => {
           />
         </Label>
       </div>
-      {!filteredPosts.length && (
+      {filteredPosts.length === 0 && (
         <div className='my-24 text-center text-xl'>No posts found</div>
       )}
       <div className='grid gap-4 sm:grid-cols-2'>

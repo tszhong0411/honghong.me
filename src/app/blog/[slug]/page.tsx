@@ -16,7 +16,7 @@ type BlogPostPageProps = {
   }
 }
 
-export const generateStaticParams = (): BlogPostPageProps['params'][] => {
+export const generateStaticParams = (): Array<BlogPostPageProps['params']> => {
   return allBlogPosts.map((post) => ({
     slug: post.slug
   }))
@@ -28,7 +28,7 @@ export const generateMetadata = async (
 ): Promise<Metadata> => {
   const { params } = props
 
-  const post = allBlogPosts.find((post) => post.slug === params.slug)
+  const post = allBlogPosts.find((p) => p.slug === params.slug)
 
   if (!post) return {}
 
@@ -80,7 +80,7 @@ export const generateMetadata = async (
 const BlogPostPage = (props: BlogPostPageProps) => {
   const { slug } = props.params
 
-  const post = allBlogPosts.find((post) => post.slug === slug)
+  const post = allBlogPosts.find((p) => p.slug === slug)
 
   if (!post) {
     notFound()

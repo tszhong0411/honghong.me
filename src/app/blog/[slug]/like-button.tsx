@@ -25,10 +25,7 @@ const LikeButton = (props: LikeButtonProps) => {
     fetcher
   )
 
-  const updatePostLikes = async (
-    slug: string,
-    count: number
-  ): Promise<unknown> => {
+  const updatePostLikes = async (count: number): Promise<unknown> => {
     const res = await fetch('/api/likes', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -60,7 +57,7 @@ const LikeButton = (props: LikeButtonProps) => {
     async () => {
       if (batchedLikes === 0) return
 
-      await mutate(updatePostLikes(slug, batchedLikes))
+      await mutate(updatePostLikes(batchedLikes))
 
       setBatchedLikes(0)
     },
@@ -121,7 +118,7 @@ const LikeButton = (props: LikeButtonProps) => {
 
           await increment()
         }}
-        title='Like this post'
+        aria-label='Like this post'
       >
         <motion.span
           className='absolute inset-0 rounded-lg bg-gradient-to-br from-[#7928ca] to-[#ff0080] blur-xl'
@@ -141,7 +138,7 @@ const LikeButton = (props: LikeButtonProps) => {
             )}
             size={20}
           />
-          {!isLoading ? <div>{data?.likes}</div> : <div> -- </div>}
+          {isLoading ? <div> -- </div> : <div>{data?.likes}</div>}
         </span>
       </button>
     </div>

@@ -16,7 +16,7 @@ export const getHeadings = (content: string): Heading[] => {
 
   const tokens = marked.lexer(content)
 
-  tokens.forEach((token) => {
+  for (const token of tokens) {
     if (token.type === 'heading') {
       headings.push({
         id: slugger.slug(token.text as string),
@@ -24,7 +24,7 @@ export const getHeadings = (content: string): Heading[] => {
         title: token.text
       })
     }
-  })
+  }
 
   return headings
 }

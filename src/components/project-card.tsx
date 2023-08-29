@@ -1,8 +1,7 @@
 'use client'
 
 import { Project } from 'contentlayer/generated'
-import { useMotionTemplate, useMotionValue } from 'framer-motion'
-import { motion } from 'framer-motion'
+import { motion, useMotionTemplate, useMotionValue } from 'framer-motion'
 import Link from 'next/link'
 
 import getIconByName from '@/utils/get-icon-by-name'
@@ -54,8 +53,8 @@ const ProjectCard = (props: ProjectCardProps) => {
           <div className='text-muted-foreground'>{description}</div>
         </div>
         <div className='mt-4 flex flex-wrap gap-2'>
-          {techstack.map((techstack) => {
-            const { label } = techstack
+          {techstack.map((t) => {
+            const { label } = t
 
             const Icon = getIconByName(label)
 

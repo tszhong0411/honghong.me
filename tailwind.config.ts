@@ -1,5 +1,7 @@
+import typography from '@tailwindcss/typography'
 import type { Config } from 'tailwindcss'
 import { fontFamily } from 'tailwindcss/defaultTheme'
+import animate from 'tailwindcss-animate'
 
 export default {
   content: ['./src/**/*.{js,ts,jsx,tsx}', './contentlayer.config.ts'],
@@ -163,5 +165,5 @@ export default {
       })
     }
   },
-  plugins: [require('@tailwindcss/typography'), require('tailwindcss-animate')]
+  plugins: [typography, animate]
 } satisfies Config

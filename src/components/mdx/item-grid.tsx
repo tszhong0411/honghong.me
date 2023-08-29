@@ -1,11 +1,11 @@
 import Image from './image'
 
-export type Items = {
+export type Items = Array<{
   image: string
   name: string
   description: string
   url: string
-}[]
+}>
 
 type ItemGridProps = {
   items: Items

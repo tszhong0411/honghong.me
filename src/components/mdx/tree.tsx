@@ -31,7 +31,7 @@ const Inner = (props: InnerType) => {
       {data.map((node) => (
         <React.Fragment key={node.name}>
           <div className='relative flex items-center gap-2'>
-            {Array.from(Array(level).keys()).map((i) => (
+            {[...Array.from({ length: level }).keys()].map((i) => (
               <div
                 key={i}
                 className='absolute h-full w-px -translate-x-1/2 bg-muted'
@@ -45,10 +45,10 @@ const Inner = (props: InnerType) => {
                 paddingLeft: level * 24
               }}
             >
-              {!node.children ? (
-                <IconFile size={20} />
-              ) : (
+              {node.children ? (
                 <IconFolder size={20} />
+              ) : (
+                <IconFile size={20} />
               )}
             </div>
             <div className='font-fira-code'>{node.name}</div>

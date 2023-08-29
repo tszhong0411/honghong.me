@@ -41,9 +41,8 @@ const Form = (props: FormProps) => {
     setIsCreating(false)
     toast.dismiss(loading)
     toast.success('Message created successfully')
-    setMessage('')
 
-    return
+    return setMessage('')
   }
 
   return (

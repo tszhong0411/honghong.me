@@ -69,7 +69,7 @@ const PostCard = (props: PostCardProps) => {
         <div className='text-muted-foreground'>{summary}</div>
       </div>
       <div className='flex items-center gap-2 text-sm'>
-        {formattedDate ? formattedDate : <Skeleton className='h-5 w-10' />}
+        {formattedDate || <Skeleton className='h-5 w-10' />}
         <div>&middot;</div>
         {likesIsLoading ? (
           <Skeleton className='h-5 w-10 rounded-md' />

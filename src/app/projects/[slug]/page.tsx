@@ -14,7 +14,7 @@ type ProjectPageProps = {
   }
 }
 
-export const generateStaticParams = (): ProjectPageProps['params'][] => {
+export const generateStaticParams = (): Array<ProjectPageProps['params']> => {
   return allProjects.map((project) => ({
     slug: project.slug
   }))
@@ -26,7 +26,7 @@ export const generateMetadata = async (
 ): Promise<Metadata> => {
   const { params } = props
 
-  const project = allProjects.find((project) => project.slug === params.slug)
+  const project = allProjects.find((p) => p.slug === params.slug)
 
   if (!project) {
     return {}
@@ -69,13 +69,13 @@ export const generateMetadata = async (
 const ProjectPage = (props: ProjectPageProps) => {
   const { slug } = props.params
 
-  const project = allProjects.find((project) => project.slug === slug)
+  const project = allProjects.find((p) => p.slug === slug)
 
   if (!project) {
     notFound()
   }
 
-  const { name, image } = project
+  const { name, image, body } = project
 
   return (
     <>
@@ -87,7 +87,7 @@ const ProjectPage = (props: ProjectPageProps) => {
         alt={name}
         className='my-12 rounded-lg border'
       />
-      <Mdx code={project.body.code} />
+      <Mdx code={body.code} />
     </>
   )
 }

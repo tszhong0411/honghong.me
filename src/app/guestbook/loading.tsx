@@ -27,7 +27,7 @@ const Loading = () => {
       <div className='mx-auto max-w-lg'>
         <Pinned />
         <div className='mt-10 flex flex-col gap-4'>
-          {Array.from(Array(8).keys()).map((i) => (
+          {[...Array.from({ length: 8 }).keys()].map((i) => (
             <Placeholder key={i} />
           ))}
         </div>

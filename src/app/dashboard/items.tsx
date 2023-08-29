@@ -116,7 +116,7 @@ const Items = () => {
                 <div className='text-sm font-bold'>{title}</div>
               </div>
               <div className='text-4xl font-black text-foreground'>
-                {typeof value === 'undefined' ? (
+                {value === undefined ? (
                   <Skeleton className='h-10 rounded-md' />
                 ) : (
                   value

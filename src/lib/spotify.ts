@@ -11,14 +11,14 @@ type Song = {
   is_playing: boolean
   item: {
     name: string
-    artists: {
+    artists: Array<{
       name: string
-    }[]
+    }>
     album: {
       name: string
-      images: {
+      images: Array<{
         url: string
-      }[]
+      }>
     }
     external_urls: {
       spotify: string

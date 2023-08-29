@@ -68,9 +68,9 @@ export const createMessage = async (message: string) => {
             title: 'New comment!',
             description: message,
             url: 'https://honghong.me/guestbook',
-            color: 122210,
+            color: '6609519',
             author: {
-              name: name,
+              name,
               icon_url: image
             },
             timestamp: new Date().toISOString()

@@ -8,7 +8,7 @@ import { AnalyticsData } from '@/types'
 
 const CurrentVisitors = () => {
   const { data } = useSWR<AnalyticsData>('/api/analytics', fetcher, {
-    refreshInterval: 30000 // refresh every 30 seconds
+    refreshInterval: 30_000 // refresh every 30 seconds
   })
 
   return (

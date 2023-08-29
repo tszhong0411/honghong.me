@@ -3,6 +3,7 @@ import {
   defineNestedType,
   makeSource
 } from 'contentlayer/source-files'
+import { Root } from 'hast'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
@@ -122,6 +123,23 @@ const Pages = defineDocumentType(() => ({
   }
 }))
 
+const rehypeAddClassesToCodeBlocks = (option: { className: string }) => {
+  const { className } = option
+
+  return (tree: Root) => {
+    visit(tree, 'element', (node, index, parent) => {
+      if (node.properties?.['data-rehype-pretty-code-fragment'] === undefined)
+        return
+      if (parent?.children === undefined) return
+      if (typeof index !== 'number') return
+
+      Object.assign(node.properties, {
+        className: cn(node.properties?.className as string, className)
+      })
+    })
+  }
+}
+
 export default makeSource({
   contentDirPath: 'src/content',
   documentTypes: [Project, BlogPost, Pages],
@@ -169,22 +187,12 @@ export default makeSource({
           keepBackground: false
         }
       ],
-      // Remove div tag
-      () => (tree) => {
-        visit(tree, 'element', (node, index, parent) => {
-          if (
-            typeof node.properties?.['data-rehype-pretty-code-fragment'] ===
-            'undefined'
-          )
-            return
-          if (typeof parent?.children === 'undefined') return
-          if (typeof index !== 'number') return
-
-          Object.assign(node.properties, {
-            className: cn(node.properties?.className as string, 'relative')
-          })
-        })
-      }
+      [
+        rehypeAddClassesToCodeBlocks,
+        {
+          className: 'relative'
+        }
+      ]
     ]
   }
 })

@@ -6,8 +6,8 @@ describe('Hero', () => {
   it('should have 5 social links', () => {
     cy.mount(<Hero />)
 
-    HERO_LINKS.forEach((link) => {
+    for (const link of HERO_LINKS) {
       cy.get(`a[href="${link.href}"]`).should('exist')
-    })
+    }
   })
 })

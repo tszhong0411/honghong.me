@@ -20,9 +20,9 @@ export const GET = () => {
     const { title, summary, date, slug } = post
 
     feed.item({
-      title: title,
+      title,
       url: `${site.url}/blog/${slug}`,
-      date: date,
+      date,
       description: summary,
       author: 'Hong'
     })

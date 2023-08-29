@@ -1,5 +1,5 @@
-import { createHash } from 'crypto'
 import { NextResponse } from 'next/server'
+import { createHash } from 'node:crypto'
 import { z } from 'zod'
 
 import prisma from '@/lib/prisma'
@@ -14,9 +14,8 @@ const getSessionId = (slug: string, req: Request): string => {
   const currentUserId = createHash('md5')
     .update(ipAddress + process.env.IP_ADDRESS_SALT, 'utf8')
     .digest('hex')
-  const sessionId = slug + '___' + currentUserId
 
-  return sessionId
+  return `${slug}___${currentUserId}`
 }
 
 export const GET = async (req: Request) => {

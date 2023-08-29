@@ -8,23 +8,23 @@ export const useScrollspy = (
   const observer = React.useRef<IntersectionObserver>()
 
   React.useEffect(() => {
-    const elements = ids.map((id) => document.getElementById(id))
+    const elements = ids.map((id) => document.querySelector(`#${id}`))
 
     if (observer.current) {
       observer.current?.disconnect()
     }
 
     observer.current = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
+      for (const entry of entries) {
         if (entry?.isIntersecting) {
           setActiveId(entry.target.id)
         }
-      })
+      }
     }, options)
 
-    elements.forEach((el) => {
+    for (const el of elements) {
       el && observer.current?.observe(el)
-    })
+    }
 
     return () => observer.current?.disconnect()
   }, [ids, options])
