@@ -118,7 +118,7 @@
     "*.{js,jsx,ts,tsx}": [
       "eslint"
     ],
-    "*.{json,css,scss,md,mdx,js,jsx,ts,tsx,cjs,mjs}": [
+    "*.{json,css,md,mdx,js,jsx,ts,tsx,cjs,mjs}": [
       "prettier -c"
     ]
   },
