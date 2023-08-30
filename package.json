@@ -74,7 +74,7 @@
     "@commitlint/config-conventional": "^17.7.0",
     "@octokit/types": "^11.1.0",
     "@tailwindcss/typography": "^0.5.9",
-    "@tszhong0411/eslint-config": "^1.0.19",
+    "@tszhong0411/eslint-config": "^1.0.20",
     "@tszhong0411/prettier-config": "^1.0.7",
     "@tszhong0411/tsconfig": "^1.0.3",
     "@types/canvas-confetti": "^1.6.0",
