@@ -69,13 +69,13 @@ export const GET = async (req: Request) => {
   })
 }
 
-export const POST = async (req: Request) => {
+export const PATCH = async (req: Request) => {
   const request = schema.safeParse(await req.json())
 
   if (!request.success) {
     return NextResponse.json(
       {
-        error: `Invalid request: ${request.error.message}`
+        error: `Invalid request: ${request.error.issues[0].message}`
       },
       { status: 400 }
     )
@@ -86,6 +86,17 @@ export const POST = async (req: Request) => {
   } = request
 
   try {
+    const session = await prisma.session.findUnique({
+      where: { id: getSessionId(slug, req) },
+      select: {
+        likes: true
+      }
+    })
+
+    if (session && session.likes + count > 3) {
+      throw new Error('You can only like a post 3 times')
+    }
+
     const [post, user] = await Promise.all([
       prisma.post.upsert({
         where: { slug },
@@ -127,7 +138,7 @@ export const POST = async (req: Request) => {
   } catch (error) {
     return NextResponse.json(
       {
-        error
+        error: (error as Error).message
       },
       { status: 500 }
     )

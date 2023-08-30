@@ -3,8 +3,9 @@
 import { IconHeart } from '@tabler/icons-react'
 import { motion } from 'framer-motion'
 import React from 'react'
-import { useDebounce } from 'react-use'
+import toast from 'react-hot-toast'
 import useSWR from 'swr'
+import { useDebouncedCallback } from 'use-debounce'
 
 import fetcher from '@/lib/fetcher'
 import { Likes } from '@/types'
@@ -18,51 +19,12 @@ const LikeButton = (props: LikeButtonProps) => {
   const { slug } = props
   const [isBreathing, setIsBreathing] = React.useState(false)
   const [scale, setScale] = React.useState(1)
+  const [cacheCount, setCacheCount] = React.useState(0)
   const buttonRef = React.useRef<HTMLButtonElement>(null)
 
   const { data, isLoading, mutate } = useSWR<Likes>(
     `/api/likes?slug=${slug}`,
     fetcher
-  )
-
-  const updatePostLikes = async (count: number): Promise<unknown> => {
-    const res = await fetch('/api/likes', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ slug, count })
-    })
-
-    return res.json()
-  }
-
-  const [batchedLikes, setBatchedLikes] = React.useState(0)
-
-  const increment = async () => {
-    if (!data || data.currentUserLikes >= 3) {
-      return
-    }
-
-    await mutate(
-      {
-        likes: data.likes + 1,
-        currentUserLikes: data.currentUserLikes + 1
-      },
-      false
-    )
-
-    setBatchedLikes(batchedLikes + 1)
-  }
-
-  useDebounce(
-    async () => {
-      if (batchedLikes === 0) return
-
-      await mutate(updatePostLikes(batchedLikes))
-
-      setBatchedLikes(0)
-    },
-    1000,
-    [batchedLikes]
   )
 
   React.useEffect(() => {
@@ -89,7 +51,7 @@ const LikeButton = (props: LikeButtonProps) => {
     const targetCenterX = targetX + targetWidth / 2
     const confetti = (await import('canvas-confetti')).default
 
-    await confetti({
+    void confetti({
       zIndex: 999,
       particleCount: 100,
       spread: 100,
@@ -98,6 +60,39 @@ const LikeButton = (props: LikeButtonProps) => {
         x: targetCenterX / clientWidth
       }
     })
+  }
+
+  const onLikeSaving = useDebouncedCallback(async (value: number) => {
+    try {
+      const res = await fetch('/api/likes', {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ slug, count: value })
+      })
+
+      const newData = await res.json()
+
+      void mutate(newData)
+    } catch {
+      toast.error('Something went wrong')
+    } finally {
+      setCacheCount(0)
+    }
+  }, 1000)
+
+  const handleLike = () => {
+    if (isLoading || !data || data.currentUserLikes + cacheCount >= 3) return
+
+    const value = cacheCount === 3 ? cacheCount : cacheCount + 1
+    setCacheCount(value)
+
+    if (data.currentUserLikes + cacheCount === 2) {
+      void handleConfetti()
+    }
+
+    return onLikeSaving(value)
   }
 
   return (
@@ -109,15 +104,7 @@ const LikeButton = (props: LikeButtonProps) => {
           'before:absolute before:inset-0 before:rounded-lg before:bg-gradient-to-br before:from-[#7928ca] before:to-[#ff0080] before:content-[""]'
         ])}
         type='button'
-        onClick={async () => {
-          if (isLoading) return
-          if (data?.currentUserLikes === 2) {
-            await handleConfetti()
-          }
-          if (!data || data.currentUserLikes >= 3) return
-
-          await increment()
-        }}
+        onClick={handleLike}
         aria-label='Like this post'
       >
         <motion.span
@@ -134,11 +121,17 @@ const LikeButton = (props: LikeButtonProps) => {
           <IconHeart
             className={cn(
               'group-hover:fill-foreground',
-              data?.currentUserLikes === 3 && 'fill-foreground'
+              data &&
+                data.currentUserLikes + cacheCount === 3 &&
+                'fill-foreground'
             )}
-            size={20}
+            size={24}
           />
-          {isLoading ? <div> -- </div> : <div>{data?.likes}</div>}
+          {isLoading || !data ? (
+            <div> -- </div>
+          ) : (
+            <div>{data.likes + cacheCount}</div>
+          )}
         </span>
       </button>
     </div>
