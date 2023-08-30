@@ -11,6 +11,7 @@ import remarkGfm from 'remark-gfm'
 import { visit } from 'unist-util-visit'
 
 import { cn } from './src/utils/cn'
+import getLanguageIconByExtension from './src/utils/get-language-icon-by-extension'
 
 const Techstack = defineNestedType(() => ({
   name: 'Techstack',
@@ -140,6 +141,19 @@ const rehypeAddClassesToCodeBlocks = (option: { className: string }) => {
   }
 }
 
+const rehypeAddLanguageIconToCodeBlocks = () => {
+  return (tree: Root) => {
+    visit(tree, 'element', (node) => {
+      if (node.properties?.['data-rehype-pretty-code-title'] === undefined)
+        return
+
+      node.children.unshift(
+        getLanguageIconByExtension(node.properties['data-language'] as string)
+      )
+    })
+  }
+}
+
 export default makeSource({
   contentDirPath: 'src/content',
   documentTypes: [Project, BlogPost, Pages],
@@ -192,7 +206,8 @@ export default makeSource({
         {
           className: 'relative'
         }
-      ]
+      ],
+      rehypeAddLanguageIconToCodeBlocks
     ]
   }
 })

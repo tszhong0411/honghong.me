@@ -149,7 +149,10 @@ export default {
               borderTopLeftRadius: '8px',
               borderTopRightRadius: '8px',
               padding: '10px 20px',
-              fontSize: '14px'
+              fontSize: '14px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '10px'
             },
             '[data-rehype-pretty-code-title] ~ pre': {
               marginTop: '0',
