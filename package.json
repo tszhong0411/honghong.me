@@ -3,7 +3,7 @@
   "name": "honghong.me",
   "version": "0.0.0",
   "description": "My personal website and blog built with TypeScript, Next.js, and Tailwind CSS",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "author": "Lai Tsz Hong <info@honghong.me> (https://github.com/tszhong0411/)",
   "repository": {
     "type": "git",
@@ -18,7 +18,7 @@
     "e2e": "start-server-and-test dev http://localhost:3000 \"cypress open --e2e\"",
     "e2e:headless": "start-server-and-test dev http://localhost:3000 \"cypress run --e2e\"",
     "format": "prettier -w .",
-    "postinstall": "prisma generate",
+    "postinstall": "prisma generate && contentlayer build",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "prepare": "husky install",
