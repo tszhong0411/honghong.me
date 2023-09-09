@@ -1,6 +1,6 @@
 import { GiscusProps } from '@giscus/react'
 
-export const GISCUS_CONFIG: GiscusProps = {
+const GISCUS_CONFIG: GiscusProps = {
   repo: 'tszhong0411/honghong.me',
   repoId: 'R_kgDOGxHFnA',
   category: 'Blog Comments',
@@ -12,3 +12,5 @@ export const GISCUS_CONFIG: GiscusProps = {
   lang: 'en',
   loading: 'eager'
 } as const
+
+export default GISCUS_CONFIG

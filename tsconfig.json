@@ -4,7 +4,6 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "~/*": ["./public/*"],
       "contentlayer/generated": ["./.contentlayer/generated"]
     },
     "plugins": [

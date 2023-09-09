@@ -7,8 +7,8 @@ import Analytics from '@/components/analytics'
 import Footer from '@/components/footer'
 import Header from '@/components/header'
 import Toaster from '@/components/toaster'
-import { site } from '@/config/site'
-import { cn } from '@/utils/cn'
+import site from '@/config/site'
+import cn from '@/utils/cn'
 
 type RootLayoutProps = {
   children: React.ReactNode

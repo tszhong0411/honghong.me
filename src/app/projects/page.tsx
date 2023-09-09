@@ -3,7 +3,7 @@ import type { Metadata, ResolvingMetadata } from 'next'
 
 import PageTitle from '@/components/page-title'
 import ProjectCard from '@/components/project-card'
-import { site } from '@/config/site'
+import site from '@/config/site'
 
 const title = 'Projects'
 const description = 'The list of my projects.'

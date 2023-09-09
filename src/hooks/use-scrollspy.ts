@@ -1,9 +1,6 @@
 import React from 'react'
 
-export const useScrollspy = (
-  ids: string[],
-  options: IntersectionObserverInit
-) => {
+const useScrollspy = (ids: string[], options: IntersectionObserverInit) => {
   const [activeId, setActiveId] = React.useState<string>()
   const observer = React.useRef<IntersectionObserver>()
 
@@ -31,3 +28,5 @@ export const useScrollspy = (
 
   return activeId
 }
+
+export default useScrollspy

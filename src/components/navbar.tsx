@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import { HEADER_LINKS } from '@/config/links'
-import { cn } from '@/utils/cn'
+import cn from '@/utils/cn'
 
 const Navbar = () => {
   const pathname = usePathname()

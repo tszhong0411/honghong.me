@@ -10,7 +10,7 @@ import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
 import { visit } from 'unist-util-visit'
 
-import { cn } from './src/utils/cn'
+import cn from './src/utils/cn'
 import getLanguageIconByExtension from './src/utils/get-language-icon-by-extension'
 
 const Techstack = defineNestedType(() => ({

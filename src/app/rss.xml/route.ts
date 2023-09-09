@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import RSS from 'rss'
 
-import { site } from '@/config/site'
+import site from '@/config/site'
 import getAllPosts from '@/lib/mdx'
 
 export const GET = () => {

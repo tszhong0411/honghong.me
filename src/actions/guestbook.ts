@@ -3,7 +3,7 @@
 import { revalidatePath } from 'next/cache'
 import { getServerSession } from 'next-auth'
 
-import { authOptions } from '@/lib/auth'
+import authOptions from '@/lib/auth'
 import prisma from '@/lib/prisma'
 
 export const deleteMessage = async (id: number) => {

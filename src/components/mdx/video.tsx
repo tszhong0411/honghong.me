@@ -1,5 +1,5 @@
 import { AspectRatio } from '@/components/ui'
-import { cn } from '@/utils/cn'
+import cn from '@/utils/cn'
 
 type VideoProps = {
   src: string

@@ -3,7 +3,7 @@
 import NextImage from 'next/image'
 import React from 'react'
 
-import { cn } from '@/utils/cn'
+import cn from '@/utils/cn'
 
 export type ImageProps = {
   imageClassName?: string

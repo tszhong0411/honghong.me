@@ -9,7 +9,7 @@ import { useDebouncedCallback } from 'use-debounce'
 
 import fetcher from '@/lib/fetcher'
 import { Likes } from '@/types'
-import { cn } from '@/utils/cn'
+import cn from '@/utils/cn'
 
 export type LikeButtonProps = {
   slug: string

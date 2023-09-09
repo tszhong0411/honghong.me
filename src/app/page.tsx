@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import Hero from '@/components/hero'
 import Posts from '@/components/posts'
 import Projects from '@/components/projects'
-import { site } from '@/config/site'
+import site from '@/config/site'
 import getAllPosts from '@/lib/mdx'
 
 export const metadata: Metadata = {

@@ -3,7 +3,7 @@ import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Article, WithContext } from 'schema-dts'
 
-import { site } from '@/config/site'
+import site from '@/config/site'
 
 import Comment from './comment'
 import Content from './content'

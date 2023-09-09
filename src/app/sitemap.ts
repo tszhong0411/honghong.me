@@ -1,7 +1,7 @@
 import { allBlogPosts, allPages, allProjects } from 'contentlayer/generated'
 import { MetadataRoute } from 'next'
 
-import { site } from '@/config/site'
+import site from '@/config/site'
 
 const sitemap = (): MetadataRoute.Sitemap => {
   const blogs = allBlogPosts.map((post) => ({

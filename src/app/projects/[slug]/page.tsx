@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 
 import Mdx from '@/components/mdx'
 import Image from '@/components/mdx/image'
-import { site } from '@/config/site'
+import site from '@/config/site'
 
 import Header from './header'
 

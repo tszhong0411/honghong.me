@@ -5,7 +5,7 @@ import { IconSearch } from '@tabler/icons-react'
 import { Command as CommandPrimitive } from 'cmdk'
 import React from 'react'
 
-import { cn } from '@/utils/cn'
+import cn from '@/utils/cn'
 
 import { Dialog, DialogContent } from './dialog'
 

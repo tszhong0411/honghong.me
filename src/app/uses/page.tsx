@@ -2,7 +2,7 @@ import type { Metadata, ResolvingMetadata } from 'next'
 
 import Mdx from '@/components/mdx'
 import PageTitle from '@/components/page-title'
-import { site } from '@/config/site'
+import site from '@/config/site'
 import getPage from '@/utils/get-page'
 
 const title = 'Uses'

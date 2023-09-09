@@ -3,7 +3,7 @@
 import Giscus from '@giscus/react'
 import React from 'react'
 
-import { GISCUS_CONFIG } from '@/config/giscus'
+import GISCUS_CONFIG from '@/config/giscus'
 
 const Comment = () => {
   return (

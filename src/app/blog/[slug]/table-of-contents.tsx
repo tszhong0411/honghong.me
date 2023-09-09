@@ -2,8 +2,8 @@
 
 import React from 'react'
 
-import { useScrollspy } from '@/hooks'
-import { cn } from '@/utils/cn'
+import useScrollspy from '@/hooks/use-scrollspy'
+import cn from '@/utils/cn'
 import { Heading } from '@/utils/get-headings'
 
 type TableOfContentsProps = {

@@ -11,7 +11,7 @@ type Site = {
   favicons: IconDescriptor[]
 }
 
-export const site: Site = {
+const site: Site = {
   url:
     process.env.NODE_ENV === 'production'
       ? 'https://honghong.me'
@@ -37,3 +37,5 @@ export const site: Site = {
     }
   ]
 }
+
+export default site

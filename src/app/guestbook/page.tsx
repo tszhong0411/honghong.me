@@ -3,8 +3,8 @@ import { getServerSession } from 'next-auth'
 
 import { getMessages } from '@/actions/guestbook'
 import PageTitle from '@/components/page-title'
-import { site } from '@/config/site'
-import { authOptions } from '@/lib/auth'
+import site from '@/config/site'
+import authOptions from '@/lib/auth'
 
 import Form from './form'
 import Messages from './messages'
