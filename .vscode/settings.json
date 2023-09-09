@@ -1,9 +1,17 @@
 {
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+
+  "files.associations": {
+    ".env*": "properties"
+  },
+
   "tailwindCSS.experimental.classRegex": [
     ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
     ["cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
     "className\\: '([^']*)'"
   ],
+
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "typescript.tsdk": "node_modules/typescript/lib"
 }
