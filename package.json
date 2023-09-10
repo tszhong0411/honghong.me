@@ -18,7 +18,6 @@
     "e2e": "start-server-and-test dev http://localhost:3000 \"cypress open --e2e\"",
     "e2e:headless": "start-server-and-test dev http://localhost:3000 \"cypress run --e2e\"",
     "format": "prettier -w .",
-    "preinstall": "npx only-allow pnpm",
     "postinstall": "prisma generate && contentlayer build",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
@@ -125,6 +124,5 @@
       "prettier -c"
     ]
   },
-  "packageManager": "pnpm@8.7.4",
   "prettier": "@tszhong0411/prettier-config"
 }
