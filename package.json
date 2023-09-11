@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "description": "My personal website and blog built with TypeScript, Next.js, and Tailwind CSS",
   "license": "AGPL-3.0-only",
-  "author": "Lai Tsz Hong <info@honghong.me> (https://github.com/tszhong0411/)",
+  "author": "Lai Tsz Hong <me@honghong.me> (https://github.com/tszhong0411/)",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tszhong0411/honghong.me.git"
