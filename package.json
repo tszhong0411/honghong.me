@@ -12,17 +12,14 @@
   "type": "module",
   "scripts": {
     "build": "next build",
-    "component": "cypress open --component",
-    "component:headless": "cypress run --component",
     "dev": "concurrently \"contentlayer dev\" \"next dev\"",
-    "e2e": "start-server-and-test dev http://localhost:3000 \"cypress open --e2e\"",
-    "e2e:headless": "start-server-and-test dev http://localhost:3000 \"cypress run --e2e\"",
     "format": "prettier -w .",
     "postinstall": "prisma generate && contentlayer build",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "prepare": "husky install",
     "start": "next start",
+    "test": "vitest",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
@@ -76,6 +73,7 @@
     "@commitlint/config-conventional": "^17.7.0",
     "@octokit/types": "^11.1.0",
     "@tailwindcss/typography": "^0.5.9",
+    "@testing-library/react": "^14.0.0",
     "@tszhong0411/eslint-config": "^1.0.20",
     "@tszhong0411/prettier-config": "^1.0.7",
     "@tszhong0411/tsconfig": "^1.0.3",
@@ -86,12 +84,12 @@
     "@types/react-dom": "^18.2.7",
     "@types/rss": "^0.0.30",
     "@types/umami": "^0.1.2",
+    "@vitejs/plugin-react": "^4.0.4",
     "autoprefixer": "^10.4.15",
     "concurrently": "^8.2.1",
-    "cypress": "^12.17.4",
     "eslint": "^8.48.0",
     "eslint-config-next": "^13.4.19",
-    "eslint-plugin-cypress": "^2.14.0",
+    "happy-dom": "^11.0.2",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
     "postcss": "^8.4.28",
@@ -100,16 +98,13 @@
     "schema-dts": "^1.1.2",
     "start-server-and-test": "^2.0.0",
     "tailwindcss": "^3.3.3",
-    "typescript": "5.2.2"
+    "typescript": "5.2.2",
+    "vitest": "^0.34.4"
   },
   "eslintConfig": {
     "extends": [
       "next/core-web-vitals",
-      "@tszhong0411/eslint-config",
-      "plugin:cypress/recommended"
-    ],
-    "plugins": [
-      "cypress"
+      "@tszhong0411/eslint-config"
     ],
     "parserOptions": {
       "project": "./tsconfig.json",
