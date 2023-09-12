@@ -91,7 +91,6 @@
     "eslint-config-next": "^13.4.19",
     "happy-dom": "^11.0.2",
     "husky": "^8.0.3",
-    "lint-staged": "^14.0.1",
     "postcss": "^8.4.28",
     "prettier": "^3.0.2",
     "prisma": "^5.2.0",
@@ -110,14 +109,6 @@
       "project": "./tsconfig.json",
       "ecmaVersion": "latest"
     }
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint"
-    ],
-    "*.{json,css,md,mdx,js,jsx,ts,tsx,cjs,mjs}": [
-      "prettier -c"
-    ]
   },
   "prettier": "@tszhong0411/prettier-config"
 }
