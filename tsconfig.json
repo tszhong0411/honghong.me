@@ -10,9 +10,10 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "types": ["vitest/globals"]
   },
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "coverage"],
   "extends": "@tszhong0411/tsconfig/web.json",
   "include": [
     "next-env.d.ts",
