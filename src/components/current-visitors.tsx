@@ -3,6 +3,7 @@
 import useSWR from 'swr'
 
 import { Skeleton } from '@/components/ui'
+import { env } from '@/env.mjs'
 import fetcher from '@/lib/fetcher'
 import { AnalyticsData } from '@/types'
 
@@ -13,7 +14,7 @@ const CurrentVisitors = () => {
 
   return (
     <a
-      href={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_SHARE_URL}
+      href={env.NEXT_PUBLIC_UMAMI_WEBSITE_SHARE_URL}
       className='flex items-center justify-center gap-2'
       rel='noopener noreferrer'
       target='_blank'

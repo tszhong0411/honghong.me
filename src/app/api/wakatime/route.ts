@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 
+import { env } from '@/env.mjs'
 import { WakatimeRes } from '@/types'
 
 export const dynamic = 'force-dynamic'
@@ -9,9 +10,9 @@ export const GET = async () => {
     'https://wakatime.com/api/v1/users/current/all_time_since_today',
     {
       headers: {
-        Authorization: `Basic ${Buffer.from(
-          process.env.WAKATIME_API_KEY as string
-        ).toString('base64')}`
+        Authorization: `Basic ${Buffer.from(env.WAKATIME_API_KEY).toString(
+          'base64'
+        )}`
       }
     }
   )

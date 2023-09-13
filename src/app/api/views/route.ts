@@ -42,7 +42,7 @@ export const GET = async (req: Request) => {
 }
 
 export const POST = async (req: Request) => {
-  const { slug } = await req.json()
+  const { slug } = (await req.json()) as { slug: string }
 
   if (!slug) {
     return NextResponse.json(

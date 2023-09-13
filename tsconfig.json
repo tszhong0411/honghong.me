@@ -21,6 +21,7 @@
     "**/*.ts",
     "**/*.js",
     "**/*.cjs",
+    "**/*.mjs",
     ".next/types/**/*.ts",
     ".contentlayer/generated"
   ]

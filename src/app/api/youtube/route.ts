@@ -1,12 +1,13 @@
 import { NextResponse } from 'next/server'
 
+import { env } from '@/env.mjs'
 import { YouTubeRes } from '@/types'
 
 export const dynamic = 'force-dynamic'
 
 export const GET = async () => {
   const res = await fetch(
-    `https://www.googleapis.com/youtube/v3/channels?id=UC2hMWOaOlk9vrkvFVaGmn0Q&part=statistics&key=${process.env.GOOGLE_API_KEY}`
+    `https://www.googleapis.com/youtube/v3/channels?id=UC2hMWOaOlk9vrkvFVaGmn0Q&part=statistics&key=${env.GOOGLE_API_KEY}`
   )
   const data: YouTubeRes = await res.json()
 

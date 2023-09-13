@@ -3,6 +3,7 @@
 import { revalidatePath } from 'next/cache'
 import { getServerSession } from 'next-auth'
 
+import { env } from '@/env.mjs'
 import authOptions from '@/lib/auth'
 import prisma from '@/lib/prisma'
 
@@ -56,7 +57,7 @@ export const createMessage = async (message: string) => {
   })
 
   if (process.env.NODE_ENV === 'production') {
-    await fetch(process.env.DISCORD_WEBHOOK_URL as string, {
+    await fetch(env.DISCORD_WEBHOOK_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

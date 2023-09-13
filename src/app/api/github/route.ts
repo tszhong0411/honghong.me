@@ -3,12 +3,13 @@ import { Endpoints } from '@octokit/types'
 import { NextResponse } from 'next/server'
 
 import site from '@/config/site'
+import { env } from '@/env.mjs'
 
 export const dynamic = 'force-dynamic'
 
 export const GET = async () => {
   const octokit = new Octokit({
-    auth: process.env.GITHUB_TOKEN
+    auth: env.GITHUB_TOKEN
   })
 
   const { data: repos }: Endpoints['GET /users/{username}/repos']['response'] =

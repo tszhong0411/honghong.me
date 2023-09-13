@@ -1,28 +1,27 @@
 import { NextResponse } from 'next/server'
 
+import { env } from '@/env.mjs'
+
 export const runtime = 'edge'
 export const dynamic = 'force-dynamic'
 
 export const GET = async () => {
   try {
-    const authRes = await fetch(
-      `${process.env.NEXT_PUBLIC_UMAMI_URL}/api/auth/login`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          username: process.env.UMAMI_USERNAME,
-          password: process.env.UMAMI_PASSWORD
-        })
-      }
-    )
+    const authRes = await fetch(`${env.NEXT_PUBLIC_UMAMI_URL}/api/auth/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username: env.UMAMI_USERNAME,
+        password: env.UMAMI_PASSWORD
+      })
+    })
 
     const { token } = await authRes.json()
 
     const statsRes = await fetch(
-      `${process.env.NEXT_PUBLIC_UMAMI_URL}/api/websites/${process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}/active`,
+      `${env.NEXT_PUBLIC_UMAMI_URL}/api/websites/${env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}/active`,
       {
         headers: {
           Authorization: `Bearer ${token}`

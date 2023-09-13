@@ -1,6 +1,8 @@
-const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID as string
-const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET as string
-const REFRESH_TOKEN = process.env.SPOTIFY_REFRESH_TOKEN as string
+import { env } from '@/env.mjs'
+
+const CLIENT_ID = env.SPOTIFY_CLIENT_ID
+const CLIENT_SECRET = env.SPOTIFY_CLIENT_SECRET
+const REFRESH_TOKEN = env.SPOTIFY_REFRESH_TOKEN
 
 const BASIC = Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')
 const NOW_PLAYING_ENDPOINT =
