@@ -6,11 +6,7 @@ import CurrentVisitors from './current-visitors'
 import NowPlaying from './now-playing'
 
 const FooterLink = (props: Link) => {
-  const { title, href, comingSoon } = props
-
-  if (comingSoon) {
-    return <div className='cursor-not-allowed text-zinc-600'>{title}</div>
-  }
+  const { title, href } = props
 
   if (href.startsWith('/')) {
     return (

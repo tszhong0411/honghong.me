@@ -15,7 +15,6 @@ import {
 export type Link = {
   href: string
   title: string
-  comingSoon?: boolean
 }
 
 type HeroLinks = Array<{
@@ -107,9 +106,8 @@ export const FOOTER_LINKS: FooterLinks = [
         title: 'Projects'
       },
       {
-        href: '/stack',
-        title: 'Stack',
-        comingSoon: true
+        href: 'https://links.honghong.me',
+        title: 'Links'
       }
     ]
   },
