@@ -1,6 +1,5 @@
 import {
   IconBook2,
-  IconBrandFirebase,
   IconBrandNextjs,
   IconBrandPlanetscale,
   IconBrandPrisma,
@@ -56,9 +55,6 @@ const getIconByName = (name: string) => {
     }
     case 'Friends': {
       return IconFriends
-    }
-    case 'Firebase': {
-      return IconBrandFirebase
     }
     case 'Neon': {
       return IconDatabase
