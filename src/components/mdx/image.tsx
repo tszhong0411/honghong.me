@@ -7,10 +7,11 @@ import cn from '@/utils/cn'
 
 export type ImageProps = {
   imageClassName?: string
+  lazy?: boolean
 } & React.ComponentPropsWithoutRef<typeof NextImage>
 
 const Image = (props: ImageProps) => {
-  const { alt, src, className, imageClassName, ...rest } = props
+  const { alt, src, className, imageClassName, lazy = true, ...rest } = props
   const [isLoading, setLoading] = React.useState(true)
 
   return (
@@ -26,7 +27,8 @@ const Image = (props: ImageProps) => {
         )}
         src={src}
         alt={alt}
-        loading='lazy'
+        loading={lazy ? 'lazy' : undefined}
+        priority={!lazy}
         quality={100}
         onLoadingComplete={() => setLoading(false)}
         {...rest}
