@@ -59,7 +59,7 @@
     "react-use": "^17.4.0",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-pretty-code": "0.10.1",
-    "rehype-slug": "^5.1.0",
+    "rehype-slug": "^6.0.0",
     "remark-gfm": "^3.0.1",
     "rss": "^1.2.2",
     "sharp": "^0.32.5",
