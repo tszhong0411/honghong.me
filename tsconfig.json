@@ -11,7 +11,7 @@
         "name": "next"
       }
     ],
-    "types": ["vitest/globals", "umami"]
+    "types": ["vitest/globals"]
   },
   "exclude": ["node_modules", "coverage"],
   "extends": "@tszhong0411/tsconfig/web.json",

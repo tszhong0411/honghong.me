@@ -2,7 +2,6 @@
 
 import Image from '@/components/mdx/image'
 import { HERO_LINKS } from '@/config/links'
-import trackEvent from '@/lib/analytics'
 
 const Hero = () => {
   return (
@@ -39,11 +38,6 @@ const Hero = () => {
             key={link.id}
             href={link.href}
             aria-label={link.label}
-            onClick={() =>
-              trackEvent('Hero Link', {
-                id: link.id
-              })
-            }
             target='_blank'
             rel='noopener noreferrer'
           >
