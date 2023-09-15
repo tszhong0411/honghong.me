@@ -8,6 +8,15 @@ const nextConfig = {
     serverActions: true
   },
 
+  typescript: {
+    // Handled during CI
+    ignoreBuildErrors: true
+  },
+  eslint: {
+    // Handled during CI
+    ignoreDuringBuilds: true
+  },
+
   images: {
     domains: ['avatars.githubusercontent.com']
   },
