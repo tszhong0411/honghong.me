@@ -3,7 +3,7 @@ import React from 'react'
 
 import cn from '@/utils/cn'
 
-const alertVariants = cva(
+export const alertVariants = cva(
   ['flex w-full justify-start gap-4 rounded-lg border p-4'],
   {
     variants: {

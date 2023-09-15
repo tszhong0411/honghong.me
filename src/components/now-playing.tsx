@@ -6,7 +6,7 @@ import fetcher from '@/lib/fetcher'
 import { Song } from '@/types'
 
 const NowPlaying = () => {
-  const { data } = useSWR<Song>('/api/spotify', fetcher)
+  const { data, isLoading } = useSWR<Song>('/api/spotify', fetcher)
 
   return (
     <div className='flex items-center gap-4'>
@@ -26,13 +26,15 @@ const NowPlaying = () => {
 
       <div className='inline-flex w-full items-center justify-center gap-1 text-sm md:justify-start'>
         <p>
-          {data?.isPlaying && data.songUrl ? (
-            <a href={data.songUrl} target='_blank' rel='noopener noreferrer'>
-              {data.name} - {data.artist}
-            </a>
-          ) : (
-            'Not Listening - Spotify'
-          )}
+          {isLoading && 'Loading ...'}
+          {!isLoading &&
+            (data?.isPlaying && data.songUrl ? (
+              <a href={data.songUrl} target='_blank' rel='noopener noreferrer'>
+                {data.name} - {data.artist}
+              </a>
+            ) : (
+              'Not Listening - Spotify'
+            ))}
         </p>
       </div>
     </div>

@@ -25,14 +25,18 @@ export type APIResponse = {
 }
 
 // Spotify
-export type Song = {
-  isPlaying?: boolean
-  name: string
-  artist: string
-  album: string
-  albumImage: string
-  songUrl: string
-}
+export type Song =
+  | {
+      isPlaying: true
+      name: string
+      artist: string
+      album: string
+      albumImage: string
+      songUrl: string
+    }
+  | {
+      isPlaying: false
+    }
 
 // YouTube
 export type YouTubeRes = {

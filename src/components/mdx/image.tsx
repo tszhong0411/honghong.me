@@ -16,6 +16,7 @@ const Image = (props: ImageProps) => {
   return (
     <div
       className={cn('overflow-hidden', isLoading && 'animate-pulse', className)}
+      data-testid='image-container'
     >
       <NextImage
         className={cn(
