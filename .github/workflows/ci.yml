@@ -56,6 +56,9 @@ jobs:
       - name: Install Vercel CLI
         run: bun add -g vercel
 
+      - name: Install dependencies
+        run: bun install
+
       - name: Build Project
         run: bun run build
 
