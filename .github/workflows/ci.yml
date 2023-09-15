@@ -30,6 +30,13 @@ jobs:
             exit 0
           fi
 
+      - name: Check if PR is a merge PR
+        run: |
+          if [ "${{ github.event.pull_request.base.ref }}" != "main" ]; then
+            echo "This merge PR already has a CI run. Skipping CI."
+            exit 0
+          fi
+
       - name: Setup Bun
         uses: oven-sh/setup-bun@v1
 
