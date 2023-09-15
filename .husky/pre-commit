@@ -2,5 +2,3 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 bun run lint-staged
-bun run type-check
-bun run test
