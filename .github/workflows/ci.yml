@@ -24,16 +24,8 @@ jobs:
 
       - name: Check for 'skip ci' in commit messages
         run: |
-          COMMIT_MESSAGES=$(git log --format=%B -n 1 ${{ github.sha }})
-          if [[ "$COMMIT_MESSAGES" == *"[skip ci]"* ]]; then
-            echo "Commit message contains [skip ci]. Skipping CI."
-            exit 0
-          fi
-
-      - name: Check if PR is a merge PR
-        run: |
-          if [ "${{ github.event.pull_request.base.ref }}" != "main" ]; then
-            echo "This merge PR already has a CI run. Skipping CI."
+          if [[ "${{ github.event.head_commit.message }}" == *"[skip-ci]"* && "${{ github.actor }}" == "tszhong0411" ]]; then
+            echo "CI checks are skipped as requested."
             exit 0
           fi
 
