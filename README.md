@@ -2,6 +2,13 @@
   <img src="https://honghong.me/images/projects/blog/cover.png">
 </p>
 
+[![GitHub](https://img.shields.io/github/license/tszhong0411/honghong.me)](https://github.com/tszhong0411/honghong.me/blob/main/LICENSE)
+[![codecov](https://codecov.io/gh/tszhong0411/honghong.me/branch/main/graph/badge.svg)](https://codecov.io/gh/tszhong0411/honghong.me)
+[![CI](https://github.com/tszhong0411/honghong.me/actions/workflows/ci.yml/badge.svg)](https://github.com/tszhong0411/honghong.me/actions/workflows/ci.yml)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/tszhong0411/honghong.me/blob/main/CONTRIBUTING.md)
+![GitHub top language](https://img.shields.io/github/languages/top/tszhong0411/honghong.me)
+![GitHub repo size](https://img.shields.io/github/repo-size/tszhong0411/honghong.me)
+
 # Hong's Personal Blog
 
 Welcome to my personal blog repository! This repository houses the code for my blog, where I share my thoughts, projects, and insights. Feel free to explore and get inspired.
