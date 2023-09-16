@@ -14,7 +14,7 @@ type Site = {
 const site: Site = {
   url:
     process.env.NODE_ENV === 'production'
-      ? process.env.NEXT_PUBLIC_VERCEL_URL || 'https://honghong.me'
+      ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` ?? 'https://honghong.me'
       : 'http://localhost:3000',
   title: 'Hong',
   name: 'Hong',
