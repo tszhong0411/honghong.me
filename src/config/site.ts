@@ -11,11 +11,14 @@ type Site = {
   favicons: IconDescriptor[]
 }
 
+const prodBaseURL = process.env.NEXT_PUBLIC_VERCEL_URL
+  ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+  : 'https://honghong.me'
+
+const devBaseURL = 'http://localhost:3000'
+
 const site: Site = {
-  url:
-    process.env.NODE_ENV === 'production'
-      ? 'https://honghong.me'
-      : 'http://localhost:3000',
+  url: process.env.NODE_ENV === 'production' ? prodBaseURL : devBaseURL,
   title: 'Hong',
   name: 'Hong',
   keywords: ['tszhong0411', 'Next.js', 'React', 'TypeScript', 'Node.js'],
