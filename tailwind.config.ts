@@ -159,9 +159,6 @@ export default {
               borderTopLeftRadius: '0',
               borderTopRightRadius: '0',
               borderTopWidth: '0'
-            },
-            '[data-rmiz-wrap]': {
-              margin: '24px auto'
             }
           }
         }
