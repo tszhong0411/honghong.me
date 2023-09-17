@@ -37,9 +37,9 @@ const components: MDXComponents = {
     return (
       <>
         <ImageZoom>
-          <Image className='rounded-lg' alt={alt} {...rest} />
+          <Image className='rounded-lg border' alt={alt} {...rest} />
         </ImageZoom>
-        <figcaption className='mt-2 text-center text-sm'>{alt}</figcaption>
+        <figcaption className='mt-4 text-center'>{alt}</figcaption>
       </>
     )
   },

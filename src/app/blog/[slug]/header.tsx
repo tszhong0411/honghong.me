@@ -115,12 +115,18 @@ const Header = (props: HeaderProps) => {
           </div>
         </div>
       </div>
-      <ImageZoom>
+      <ImageZoom
+        zoomImg={{
+          src: `/images/blog/${slug}/cover.png`,
+          alt: title
+        }}
+      >
         <Image
           src={`/images/blog/${slug}/cover.png`}
           className='rounded-lg'
           width={1200}
           height={630}
+          lazy={false}
           alt={title}
         />
       </ImageZoom>
