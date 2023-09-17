@@ -96,6 +96,7 @@
     "concurrently": "^8.2.1",
     "eslint": "^8.49.0",
     "eslint-config-next": "^13.4.19",
+    "eslint-plugin-jsdoc": "^46.8.1",
     "eslint-plugin-testing-library": "^6.0.1",
     "husky": "^8.0.3",
     "jsdom": "^22.1.0",
@@ -115,7 +116,8 @@
     "extends": [
       "next/core-web-vitals",
       "@tszhong0411/eslint-config",
-      "plugin:testing-library/react"
+      "plugin:testing-library/react",
+      "plugin:jsdoc/recommended"
     ],
     "plugins": [
       "testing-library"
@@ -123,6 +125,15 @@
     "parserOptions": {
       "project": "./tsconfig.json",
       "ecmaVersion": "latest"
+    },
+    "rules": {
+      "jsdoc/require-param-type": "off",
+      "jsdoc/require-returns-type": "off"
+    },
+    "settings": {
+      "jsdoc": {
+        "mode": "typescript"
+      }
     }
   },
   "lint-staged": {
