@@ -29,7 +29,7 @@ describe('<Input />', () => {
     expect(input).not.toHaveFocus()
   })
 
-  it('shoud be focused when the label is clicked', async () => {
+  it('should be focused when the label is clicked', async () => {
     render(
       <>
         <Label htmlFor='test'>Test</Label>
