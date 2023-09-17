@@ -19,7 +19,7 @@ const Footer = (props: FooterProps) => {
   const [formattedDate, setFormattedDate] = React.useState('')
 
   React.useEffect(() => {
-    setFormattedDate(dayjs(modifiedTime).format('MMMM DD, YYYY'))
+    setFormattedDate(dayjs(modifiedTime).format('DD/MM/YYYY'))
   }, [modifiedTime])
 
   return (
