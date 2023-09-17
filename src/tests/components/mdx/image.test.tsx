@@ -17,7 +17,7 @@ describe('<Image />', () => {
     })
   })
 
-  it('should not have loading = lazy property if lazy = true', () => {
+  it('should not have loading = lazy attribute if lazy = false', () => {
     render(
       <Image
         src='/fake.png'
