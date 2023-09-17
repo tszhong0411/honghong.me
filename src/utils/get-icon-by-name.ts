@@ -1,4 +1,5 @@
 import {
+  type Icon,
   IconBook2,
   IconBrandNextjs,
   IconBrandPlanetscale,
@@ -15,7 +16,7 @@ import {
   IconTools
 } from '@tabler/icons-react'
 
-const getIconByName = (name: string) => {
+const getIconByName = (name: string): Icon => {
   switch (name) {
     case 'Typescript': {
       return IconBrandTypescript
