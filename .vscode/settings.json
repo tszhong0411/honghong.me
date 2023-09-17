@@ -27,7 +27,8 @@
     "commitlint",
     "rehype",
     "techstack",
-    "fira"
+    "fira",
+    "cmdk"
   ],
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
