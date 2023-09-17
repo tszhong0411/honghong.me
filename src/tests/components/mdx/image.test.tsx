@@ -16,4 +16,18 @@ describe('<Image />', () => {
       )
     })
   })
+
+  it('should not have loading = lazy property if lazy = true', () => {
+    render(
+      <Image
+        src='/fake.png'
+        width={20}
+        height={20}
+        alt='Fake image'
+        lazy={false}
+      />
+    )
+
+    expect(screen.getByRole('img')).not.toHaveAttribute('loading')
+  })
 })
