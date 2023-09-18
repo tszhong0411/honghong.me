@@ -1,0 +1,100 @@
+name: Vercel Preview URL Lighthouse Audit
+
+on: [pull_request]
+
+jobs:
+  generate_lighthouse_audit:
+    name: Generate lighthouse audit
+    timeout-minutes: 30
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get Vercel Preview URL
+        id: get_preview_url
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const comment = context.payload.comment
+
+            let previewUrl
+
+            if (comment) {
+              const regex = /https:\/\/[a-z0-9-]+\.vercel\.app/g
+              const matches = comment.body.match(regex)
+              let previewUrl = ""
+
+              if (matches && matches.length) {
+                previewUrl = matches[0]
+                console.log('Preview URL found: ', previewUrl)
+              }
+
+              console.log("No preview URL found.")
+            } else {
+              previewUrl = 'https://www.dfweb.no'
+            }
+
+            core.setOutput('vercel_preview_url', previewUrl)
+
+      - name: Add comment to PR
+        if: ${{ steps.get_preview_url.outputs.vercel_preview_url != '' }}
+        id: loading_comment_to_pr
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          number: ${{ github.event.issue.number }}
+          header: lighthouse
+          message: |
+            Running Lighthouse audit...
+
+      - name: Checkout repo
+        if: ${{ steps.get_preview_url.outputs.vercel_preview_url != '' }}
+        uses: actions/checkout@v4
+
+      - name: Audit preview URL with Lighthouse
+        if: ${{ steps.get_preview_url.outputs.vercel_preview_url != '' }}
+        id: lighthouse_audit
+        uses: treosh/lighthouse-ci-action@v10
+        with:
+          urls: |
+            ${{ steps.get_preview_url.outputs.vercel_preview_url }}
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+      - name: Format lighthouse score
+        if: ${{ steps.get_preview_url.outputs.vercel_preview_url != '' }}
+        id: format_lighthouse_score
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const result = ${{ steps.lighthouse_audit.outputs.manifest }}[0].summary
+            const links = ${{ steps.lighthouse_audit.outputs.links }}
+
+            const formatResult = (res) => Math.round((res * 100))
+            Object.keys(result).forEach(key => result[key] = formatResult(result[key]))
+
+            const score = res => res >= 90 ? '🟢' : res >= 50 ? '🟠' : '🔴'
+
+            const comment = [
+                `⚡️ [Lighthouse report](${Object.values(links)[0]}):`,
+                '| Category | Score |',
+                '| --- | --- |',
+                `| ${score(result.performance)} Performance | ${result.performance} |`,
+                `| ${score(result.accessibility)} Accessibility | ${result.accessibility} |`,
+                `| ${score(result['best-practices'])} Best practices | ${result['best-practices']} |`,
+                `| ${score(result.seo)} SEO | ${result.seo} |`,
+                ' '
+            ].join('\n')
+
+             core.setOutput("comment", comment);
+
+      - name: Add comment to PR
+        if: ${{ steps.get_preview_url.outputs.vercel_preview_url != '' }}
+        id: comment_to_pr
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          number: ${{ github.event.issue.number }}
+          header: lighthouse
+          message: |
+            ${{ steps.format_lighthouse_score.outputs.comment }}
