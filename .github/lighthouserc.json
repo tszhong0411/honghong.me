@@ -1,7 +1,7 @@
 {
   "ci": {
     "collect": {
-      "startServerCommand": "bun run build && bun run start",
+      "startServerCommand": "bun run start",
       "url": ["http://localhost:3000/"],
       "numberOfRuns": 3
     },
