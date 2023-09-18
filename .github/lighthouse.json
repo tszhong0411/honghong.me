@@ -2,8 +2,7 @@
   "ci": {
     "collect": {
       "startServerCommand": "bun run start",
-      "url": ["http://localhost:3000/"],
-      "numberOfRuns": 3
+      "url": ["http://localhost:3000/"]
     },
     "upload": {
       "target": "temporary-public-storage"
