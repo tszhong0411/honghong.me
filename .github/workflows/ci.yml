@@ -44,7 +44,8 @@ jobs:
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
 
-      - run: |
+      - name: Get Vercel preview URL
+        run: |
           COMMIT_HASH=${{ github.sha }}
           VERCEL_API_ENDPOINT=https://api.vercel.com/v6/deployments
 
