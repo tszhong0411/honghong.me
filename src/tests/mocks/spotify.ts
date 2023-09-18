@@ -1,4 +1,4 @@
-import { Song } from '@/types'
+import { type Song } from '@/types'
 
 export const song: Song = {
   isPlaying: true,

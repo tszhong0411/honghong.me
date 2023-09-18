@@ -1,16 +1,18 @@
-import { render, screen, waitFor } from '@testing-library/react'
+import { screen, waitFor } from '@testing-library/react'
 
 import CurrentVisitors from '@/components/current-visitors'
 
+import { renderWithSWRConfig } from '../utils'
+
 describe('<CurrentVisitors />', () => {
   it('should render loading state', () => {
-    render(<CurrentVisitors />)
+    renderWithSWRConfig(<CurrentVisitors />)
 
     expect(screen.getByTestId('skeleton-loader')).toBeInTheDocument()
   })
 
   it('should render current visitors count', async () => {
-    render(<CurrentVisitors />)
+    renderWithSWRConfig(<CurrentVisitors />)
 
     await waitFor(() => {
       expect(screen.getByText('0 current visitors')).toBeInTheDocument()

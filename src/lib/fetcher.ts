@@ -4,7 +4,10 @@ const fetcher = async <JSON>(
   input: string,
   init?: RequestInit
 ): Promise<JSON> => {
-  const res = await fetch(`${site.url}${input}`, init)
+  const fetchURL =
+    process.env.NODE_ENV === 'test' ? `${site.url}${input}` : input
+
+  const res = await fetch(fetchURL, init)
   return res.json() as Promise<JSON>
 }
 
