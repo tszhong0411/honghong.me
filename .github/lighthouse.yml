@@ -1,0 +1,5 @@
+ci:
+  assert:
+    preset: lighthouse:recommended
+    assertions:
+      is-crawlable: off # turn off it since vercel preview url is not crawlable

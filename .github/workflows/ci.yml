@@ -83,6 +83,7 @@ jobs:
             ${{ env.VERCEL_DEPLOYMENT_URL }}
           uploadArtifacts: true
           temporaryPublicStorage: true
+          configPath: '.github/lighthouse.yml'
 
       - name: Format lighthouse score
         id: format_lighthouse_score
