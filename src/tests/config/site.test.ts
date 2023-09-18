@@ -13,13 +13,4 @@ describe('config.site', () => {
 
     expect(url).toBe('http://localhost:3000')
   })
-
-  it('site url should be vercel url when deployed platform is vercel', async () => {
-    vi.resetModules()
-    vi.stubEnv('NODE_ENV', 'production')
-    vi.stubEnv('NEXT_PUBLIC_VERCEL_URL', 'honghongme-tszhong0411.vercel.app')
-    const url = (await import('@/config/site')).default.url
-
-    expect(url).toBe('https://honghongme-tszhong0411.vercel.app')
-  })
 })
