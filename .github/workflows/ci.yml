@@ -8,6 +8,7 @@ on:
 
 env:
   CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+  LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
 
 jobs:
   ci:
@@ -42,3 +43,9 @@ jobs:
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
+
+      - name: Lighthouse mobile audit
+        run: bun run lhci:mobile
+
+      - name: Lighthouse desktop audit
+        run: bun run lhci:desktop
