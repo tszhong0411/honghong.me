@@ -28,7 +28,8 @@
     "rehype",
     "techstack",
     "fira",
-    "cmdk"
+    "cmdk",
+    "favicons"
   ],
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
