@@ -9,7 +9,7 @@ const middleware = () => {
     media-src *;
     connect-src *;
     font-src 'self';
-    frame-src giscus.app;
+    frame-src giscus.app vercel.live;
   `
 
   const response = NextResponse.next()
