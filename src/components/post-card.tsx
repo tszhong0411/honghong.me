@@ -9,7 +9,7 @@ import useSWR from 'swr'
 
 import { Skeleton } from '@/components/ui'
 import fetcher from '@/lib/fetcher'
-import { BlogPostCore, Likes, Views } from '@/types'
+import { type BlogPostCore, type Likes, type Views } from '@/types'
 
 import Image from './mdx/image'
 

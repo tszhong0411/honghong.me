@@ -1,4 +1,4 @@
-import { IconDescriptor } from 'next/dist/lib/metadata/types/metadata-types'
+import { type IconDescriptor } from 'next/dist/lib/metadata/types/metadata-types'
 
 /**
  * Site configuration.
@@ -39,10 +39,7 @@ type Site = {
   favicons: IconDescriptor[]
 }
 
-const prodBaseURL = process.env.NEXT_PUBLIC_VERCEL_URL
-  ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-  : 'https://honghong.me'
-
+const prodBaseURL = 'https://honghong.me'
 const devBaseURL = 'http://localhost:3000'
 
 const site: Site = {

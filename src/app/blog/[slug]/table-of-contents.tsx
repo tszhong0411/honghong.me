@@ -4,7 +4,7 @@ import React from 'react'
 
 import useScrollspy from '@/hooks/use-scrollspy'
 import cn from '@/utils/cn'
-import { Heading } from '@/utils/get-headings'
+import { type Heading } from '@/utils/get-headings'
 
 /**
  * The props of {@link TableOfContents}.

@@ -1,5 +1,5 @@
 import { Octokit } from '@octokit/rest'
-import { Endpoints } from '@octokit/types'
+import { type Endpoints } from '@octokit/types'
 import { NextResponse } from 'next/server'
 
 import site from '@/config/site'

@@ -8,7 +8,7 @@ import useSWR from 'swr'
 import { useDebouncedCallback } from 'use-debounce'
 
 import fetcher from '@/lib/fetcher'
-import { Likes } from '@/types'
+import { type Likes } from '@/types'
 import cn from '@/utils/cn'
 
 /**

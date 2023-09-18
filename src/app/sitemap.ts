@@ -1,5 +1,5 @@
 import { allBlogPosts, allPages, allProjects } from 'contentlayer/generated'
-import { MetadataRoute } from 'next'
+import { type MetadataRoute } from 'next'
 
 import site from '@/config/site'
 

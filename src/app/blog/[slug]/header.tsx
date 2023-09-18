@@ -9,7 +9,7 @@ import ImageZoom from '@/components/image-zoom'
 import Image from '@/components/mdx/image'
 import { Skeleton } from '@/components/ui'
 import fetcher from '@/lib/fetcher'
-import { Views } from '@/types'
+import { type Views } from '@/types'
 
 /**
  * The props of {@link Header}.

@@ -1,4 +1,4 @@
-import { BlogPost } from 'contentlayer/generated'
+import { type BlogPost } from 'contentlayer/generated'
 
 /**
  * A subset of the BlogPost type that includes only the core properties.

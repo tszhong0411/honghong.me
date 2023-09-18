@@ -13,7 +13,13 @@ import useSWR from 'swr'
 
 import { Skeleton } from '@/components/ui'
 import fetcher from '@/lib/fetcher'
-import { Github, Likes, Views, Wakatime, YouTube } from '@/types'
+import {
+  type Github,
+  type Likes,
+  type Views,
+  type Wakatime,
+  type YouTube
+} from '@/types'
 
 /**
  * A metric card with an icon, title, link, and value.

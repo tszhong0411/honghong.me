@@ -1,7 +1,7 @@
 'use client'
 
 import dayjs from 'dayjs'
-import { DefaultSession } from 'next-auth'
+import { type DefaultSession } from 'next-auth'
 import React from 'react'
 import { toast } from 'react-hot-toast'
 

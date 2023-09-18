@@ -3,7 +3,7 @@
 import useSWR from 'swr'
 
 import fetcher from '@/lib/fetcher'
-import { Song } from '@/types'
+import { type Song } from '@/types'
 
 const NowPlaying = () => {
   const { data, isLoading } = useSWR<Song>('/api/spotify', fetcher)

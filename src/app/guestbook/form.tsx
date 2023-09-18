@@ -1,6 +1,6 @@
 'use client'
 
-import { DefaultSession } from 'next-auth'
+import { type DefaultSession } from 'next-auth'
 import { signOut } from 'next-auth/react'
 import React from 'react'
 import { toast } from 'react-hot-toast'

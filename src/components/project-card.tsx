@@ -1,6 +1,6 @@
 'use client'
 
-import { Project } from 'contentlayer/generated'
+import { type Project } from 'contentlayer/generated'
 import { motion, useMotionTemplate, useMotionValue } from 'framer-motion'
 import Link from 'next/link'
 

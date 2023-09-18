@@ -5,7 +5,7 @@ import useSWR from 'swr'
 import { Skeleton } from '@/components/ui'
 import { env } from '@/env.mjs'
 import fetcher from '@/lib/fetcher'
-import { Analytics } from '@/types'
+import { type Analytics } from '@/types'
 
 const CurrentVisitors = () => {
   const { data } = useSWR<Analytics>('/api/analytics', fetcher, {
@@ -18,6 +18,7 @@ const CurrentVisitors = () => {
       className='flex items-center justify-center gap-2'
       rel='noopener noreferrer'
       target='_blank'
+      aria-label='Current visitors'
     >
       {data ? (
         <>

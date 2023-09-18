@@ -1,4 +1,4 @@
-import { GiscusProps } from '@giscus/react'
+import { type GiscusProps } from '@giscus/react'
 
 const GISCUS_CONFIG: GiscusProps = {
   repo: 'tszhong0411/honghong.me',

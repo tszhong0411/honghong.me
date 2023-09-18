@@ -15,6 +15,8 @@
     "dev": "concurrently \"contentlayer dev\" \"cross-env NODE_OPTIONS='--inspect' next dev\"",
     "format": "prettier -w .",
     "postinstall": "prisma generate && contentlayer build",
+    "lhci:desktop": "lhci autorun --collect.settings.preset=desktop",
+    "lhci:mobile": "lhci autorun",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "prepare": "husky install",
@@ -74,13 +76,14 @@
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
+    "@lhci/cli": "^0.12.0",
     "@octokit/types": "^11.1.0",
     "@tailwindcss/typography": "^0.5.10",
     "@testing-library/jest-dom": "^6.1.3",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.5.1",
     "@total-typescript/ts-reset": "^0.5.1",
-    "@tszhong0411/eslint-config": "^1.0.23",
+    "@tszhong0411/eslint-config": "^1.0.25",
     "@tszhong0411/prettier-config": "^1.0.7",
     "@tszhong0411/tsconfig": "^1.0.3",
     "@types/canvas-confetti": "^1.6.1",
@@ -143,7 +146,7 @@
       "require-jsdoc": 0,
       "valid-jsdoc": 0,
       "jsdoc/require-jsdoc": [
-        "warn",
+        2,
         {
           "require": {
             "FunctionDeclaration": true,

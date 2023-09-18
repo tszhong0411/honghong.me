@@ -1,7 +1,7 @@
 'use client'
 
 import { IconBrandGithub, IconHome } from '@tabler/icons-react'
-import { Project } from 'contentlayer/generated'
+import { type Project } from 'contentlayer/generated'
 import { motion } from 'framer-motion'
 
 import site from '@/config/site'

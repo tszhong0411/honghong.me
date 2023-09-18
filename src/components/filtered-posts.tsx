@@ -4,7 +4,7 @@ import { IconSearch } from '@tabler/icons-react'
 import React from 'react'
 
 import { Input, Label } from '@/components/ui'
-import { BlogPostCore } from '@/types'
+import { type BlogPostCore } from '@/types'
 
 import PostCard from './post-card'
 

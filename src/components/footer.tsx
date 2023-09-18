@@ -1,6 +1,6 @@
 import NextLink from 'next/link'
 
-import { FOOTER_LINKS, Link } from '@/config/links'
+import { FOOTER_LINKS, type Link } from '@/config/links'
 
 import CurrentVisitors from './current-visitors'
 import NowPlaying from './now-playing'
