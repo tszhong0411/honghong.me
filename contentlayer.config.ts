@@ -3,7 +3,7 @@ import {
   defineNestedType,
   makeSource
 } from 'contentlayer/source-files'
-import { Root } from 'hast'
+import { type Root } from 'hast'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
