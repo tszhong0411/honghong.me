@@ -2,6 +2,9 @@ import React from 'react'
 
 import cn from '@/utils/cn'
 
+/**
+ * The props of {@link Textarea}.
+ */
 type TextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement>
 
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(

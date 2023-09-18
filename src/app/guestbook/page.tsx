@@ -14,8 +14,17 @@ import SignIn from './sign-in'
 const title = 'Guestbook'
 const description = 'Sign my guestbook and share your idea.'
 
+/**
+ * The props of {@link GuestbookPage}.
+ */
 type GuestbookPageProps = {
+  /**
+   * The params of the URL.
+   */
   params: Record<string, never>
+  /**
+   * The search params of the URL.
+   */
   searchParams: Record<string, never>
 }
 

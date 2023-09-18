@@ -1,17 +1,43 @@
 import { IconFile, IconFolder } from '@tabler/icons-react'
 import React from 'react'
 
+/**
+ * The data to display in the tree.
+ */
 type Node = {
+  /**
+   * The name of the node.
+   */
   name: string
+  /**
+   * The children of the node.
+   */
   children?: Node[]
 }
 
+/**
+ * The props of {@link Tree}.
+ */
 type TreeProps = {
+  /**
+   * The data to display in the tree.
+   * @see {@link Node}
+   */
   data: Node[]
 }
 
+/**
+ * The props of {@link Inner}.
+ */
 type InnerType = {
+  /**
+   * The data to display in the tree.
+   * @see {@link Node}
+   */
   data: Node[]
+  /**
+   * The level of the node.
+   */
   level: number
 }
 

@@ -1,102 +1,134 @@
-// Blog
+/**
+ * Blog.
+ */
 export type Views = {
+  /**
+   * The number of views.
+   */
   views: number
 }
 
+/**
+ * The likes of blog posts.
+ */
 export type Likes = {
+  /**
+   * The likes of blog post.
+   */
   likes: number
+  /**
+   * The current user's like.
+   */
   currentUserLikes: number
 }
 
-export type BlogData = Views & Pick<Likes, 'likes'>
-
-// Guestbook
+/**
+ * Guestbook.
+ */
 export type Messages = Array<{
+  /**
+   * The id of the message.
+   */
   id: number
+  /**
+   * The body of the message.
+   */
   body: string
+  /**
+   * The image of the message.
+   */
   image: string
+  /**
+   * The creator's name of the message.
+   */
   created_by: string
+  /**
+   * The date the message was last updated.
+   */
   updated_at: Date
 }>
 
-// Dashboard
-export type APIResponse = {
-  count: number
-}
-
-// Spotify
+/**
+ * Spotify.
+ */
 export type Song =
   | {
+      /**
+       * The status of the song.
+       */
       isPlaying: true
+      /**
+       * The name of the song.
+       */
       name: string
+      /**
+       * The artist of the song.
+       */
       artist: string
+      /**
+       * The album of the song.
+       */
       album: string
+      /**
+       * The image of the album.
+       */
       albumImage: string
+      /**
+       * The url of the song.
+       */
       songUrl: string
     }
   | {
+      /**
+       * The status of the song.
+       */
       isPlaying: false
     }
 
-// YouTube
-export type YouTubeRes = {
-  kind: string
-  etag: string
-  pageInfo: {
-    totalResults: number
-    resultsPerPage: number
-  }
-  items: Array<{
-    kind: string
-    etag: string
-    id: string
-    statistics: {
-      viewCount: string
-      subscriberCount: string
-      hiddenSubscriberCount: boolean
-      videoCount: string
-    }
-  }>
-}
-
-export type YouTubeData = {
+/**
+ * YouTube.
+ */
+export type YouTube = {
+  /**
+   * The number of subscribers of the channel.
+   */
   subscribers: number
+  /**
+   * The number of views of the channel.
+   */
   views: number
 }
 
-// Github
-export type GithubData = {
+/**
+ * Github.
+ */
+export type Github = {
+  /**
+   * The number of stars of the user.
+   */
   stars: number
+  /**
+   * The number of followers of the user.
+   */
   followers: number
 }
 
-// Wakatime
-export type WakatimeRes = {
-  data: {
-    decimal: string
-    digital: string
-    is_up_to_date: boolean
-    percent_calculated: number
-    range: {
-      end: string
-      end_date: string
-      end_text: string
-      start: string
-      start_date: string
-      start_text: string
-      timezone: string
-    }
-    text: string
-    timeout: number
-    total_seconds: number
-  }
-}
-
-export type WakatimeData = {
+/**
+ * Wakatime.
+ */
+export type Wakatime = {
+  /**
+   * The total coding time of the user.
+   */
   seconds: number
 }
 
-// Analytics
-export type AnalyticsData = {
+/**
+ * Umami Analytics.
+ */
+export type Analytics = {
+  /**
+   * The number of visitors.
+   */
   visitors: number
 }

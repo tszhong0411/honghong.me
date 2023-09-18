@@ -4,6 +4,9 @@ import React from 'react'
 
 import CopyButton from '../copy-button'
 
+/**
+ * The props of {@link Pre}.
+ */
 type PreProps = React.ComponentPropsWithoutRef<'pre'>
 
 const Pre = (props: PreProps) => {

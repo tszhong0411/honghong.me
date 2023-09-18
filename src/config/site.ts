@@ -1,13 +1,41 @@
 import { IconDescriptor } from 'next/dist/lib/metadata/types/metadata-types'
 
+/**
+ * Site configuration.
+ */
 type Site = {
+  /**
+   * The URL of the website.
+   */
   url: string
+  /**
+   * The title of the website.
+   */
   title: string
+  /**
+   * The name of the website.
+   */
   name: string
+  /**
+   * The keywords of the website.
+   */
   keywords: string[]
+  /**
+   * The title template of the website.
+   * @see https://nextjs.org/docs/app/api-reference/functions/generate-metadata#template
+   */
   titleTemplate: string
+  /**
+   * The description of the website.
+   */
   description: string
+  /**
+   * The GitHub username of the website.
+   */
   githubUsername: string
+  /**
+   * The favicons of the website.
+   */
   favicons: IconDescriptor[]
 }
 

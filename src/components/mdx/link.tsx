@@ -1,5 +1,8 @@
 import NextLink from 'next/link'
 
+/**
+ * The props of {@link Link}.
+ */
 type LinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement>
 
 const Link = (props: LinkProps) => {

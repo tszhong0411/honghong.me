@@ -9,8 +9,17 @@ const title = 'Uses'
 const description =
   'This is the equipment I currently use for gaming, programming, making videos, and every day.'
 
+/**
+ * The props of {@link UsesPage}.
+ */
 type UsesPageProps = {
+  /**
+   * The params of the URL.
+   */
   params: Record<string, never>
+  /**
+   * The search params of the URL.
+   */
   searchParams: Record<string, never>
 }
 

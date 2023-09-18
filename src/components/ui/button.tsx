@@ -33,7 +33,13 @@ const buttonVariants = cva(
   }
 )
 
+/**
+ * The props of {@link Button}.
+ */
 export type ButtonProps = {
+  /**
+   * Whether the child renders as a child.
+   */
   asChild?: boolean
 } & React.ButtonHTMLAttributes<HTMLButtonElement> &
   VariantProps<typeof buttonVariants>

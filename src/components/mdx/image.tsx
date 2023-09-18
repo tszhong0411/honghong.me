@@ -5,8 +5,17 @@ import React from 'react'
 
 import cn from '@/utils/cn'
 
+/**
+ * The props of {@link Image}.
+ */
 export type ImageProps = {
+  /**
+   * The image classes to pass to the image.
+   */
   imageClassName?: string
+  /**
+   * Should the image be lazy loaded?
+   */
   lazy?: boolean
 } & React.ComponentPropsWithoutRef<typeof NextImage>
 

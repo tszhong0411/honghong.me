@@ -10,10 +10,23 @@ import Content from './content'
 import Footer from './footer'
 import Header from './header'
 
+/**
+ * The props of {@link BlogPostPage}.
+ */
 type BlogPostPageProps = {
+  /**
+   * The params of the URL.
+   */
   params: {
+    /**
+     * The slug of the URL.
+     */
     slug: string
   }
+  /**
+   * The search params of the URL.
+   */
+  searchParams: Record<string, never>
 }
 
 export const generateStaticParams = (): Array<BlogPostPageProps['params']> => {

@@ -27,6 +27,9 @@ const Command = React.forwardRef<
   )
 })
 
+/**
+ * The props of {@link CommandDialog}.
+ */
 type CommandDialogProps = DialogProps
 
 const CommandDialog = (props: CommandDialogProps) => {

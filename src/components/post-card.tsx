@@ -1,5 +1,6 @@
 'use client'
 
+import { type BlogPost } from 'contentlayer/generated'
 import dayjs from 'dayjs'
 import { motion, useMotionTemplate, useMotionValue } from 'framer-motion'
 import Link from 'next/link'
@@ -12,6 +13,10 @@ import { BlogPostCore, Likes, Views } from '@/types'
 
 import Image from './mdx/image'
 
+/**
+ * The props of {@link PostCard}.
+ * @see {@link BlogPost}
+ */
 type PostCardProps = BlogPostCore
 
 const PostCard = (props: PostCardProps) => {

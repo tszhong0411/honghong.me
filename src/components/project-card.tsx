@@ -8,6 +8,10 @@ import getIconByName from '@/utils/get-icon-by-name'
 
 import Image from './mdx/image'
 
+/**
+ * The props of {@link ProjectCard}.
+ * @see {@link Project}
+ */
 type ProjectCardProps = Project
 
 const ProjectCard = (props: ProjectCardProps) => {

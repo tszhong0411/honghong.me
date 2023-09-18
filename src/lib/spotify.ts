@@ -9,29 +9,6 @@ const NOW_PLAYING_ENDPOINT =
   'https://api.spotify.com/v1/me/player/currently-playing'
 const TOKEN_ENDPOINT = 'https://accounts.spotify.com/api/token'
 
-type Song = {
-  is_playing: boolean
-  item: {
-    name: string
-    artists: Array<{
-      name: string
-    }>
-    album: {
-      name: string
-      images: Array<{
-        url: string
-      }>
-    }
-    external_urls: {
-      spotify: string
-    }
-  }
-}
-
-type AccessToken = {
-  access_token: string
-}
-
 const getAccessToken = async () => {
   const response = await fetch(TOKEN_ENDPOINT, {
     method: 'POST',
@@ -45,15 +22,17 @@ const getAccessToken = async () => {
     })
   })
 
-  return (await response.json()) as AccessToken
+  const data = await response.json()
+
+  return data.access_token as string
 }
 
 const getNowPlaying = async () => {
-  const { access_token } = await getAccessToken()
+  const accessToken = await getAccessToken()
 
   const response = await fetch(NOW_PLAYING_ENDPOINT, {
     headers: {
-      Authorization: `Bearer ${access_token}`
+      Authorization: `Bearer ${accessToken}`
     },
     next: {
       revalidate: 60
@@ -67,7 +46,7 @@ const getNowPlaying = async () => {
   }
 
   try {
-    const song = (await response.json()) as Song
+    const song = await response.json()
 
     return {
       status: response.status,

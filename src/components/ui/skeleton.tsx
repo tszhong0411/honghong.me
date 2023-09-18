@@ -1,5 +1,8 @@
 import cn from '@/utils/cn'
 
+/**
+ * The props of {@link Skeleton}.
+ */
 type SkeletonProps = React.HTMLAttributes<HTMLDivElement>
 
 const Skeleton = (props: SkeletonProps) => {

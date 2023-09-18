@@ -8,10 +8,23 @@ import site from '@/config/site'
 
 import Header from './header'
 
+/**
+ * The props of {@link ProjectPage}.
+ */
 type ProjectPageProps = {
+  /**
+   * The params of the URL.
+   */
   params: {
+    /**
+     * The slug of the URL.
+     */
     slug: string
   }
+  /**
+   * The search params of the URL.
+   */
+  searchParams: Record<string, never>
 }
 
 export const generateStaticParams = (): Array<ProjectPageProps['params']> => {

@@ -9,8 +9,17 @@ const title = 'Dashboard'
 const description =
   'This is my personal dashboard, built with Next.js API routes deployed as serverless functions. I use this dashboard to track various metrics across platforms like YouTube, GitHub, and more.'
 
+/**
+ * The props of {@link DashboardPage}.
+ */
 type DashboardPageProps = {
+  /**
+   * The params of the URL.
+   */
   params: Record<string, never>
+  /**
+   * The search params of the URL.
+   */
   searchParams: Record<string, never>
 }
 

@@ -23,11 +23,29 @@ import {
   CommandSeparator
 } from '@/components/ui'
 
+/**
+ * An array of groups, where each group has a name and an array of actions.
+ */
 type Groups = Array<{
+  /**
+   * The name of the group.
+   */
   name: string
+  /**
+   * An array of actions.
+   */
   actions: Array<{
+    /**
+     * The title of the action.
+     */
     title: string
+    /**
+     * The icon of the action.
+     */
     icon: React.ReactNode
+    /**
+     * The callback to run when the action is selected.
+     */
     onSelect: () => void
   }>
 }>

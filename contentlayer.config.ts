@@ -124,9 +124,13 @@ const Pages = defineDocumentType(() => ({
   }
 }))
 
-const rehypeAddClassesToCodeBlocks = (option: { className: string }) => {
-  const { className } = option
-
+/**
+ * A rehype plugin that adds a class to all code blocks with a specific data attribute.
+ * @function rehypeAddClassesToCodeBlocks
+ * @param className The class name to add to the code blocks.
+ * @returns A rehype transformer function.
+ */
+const rehypeAddClassesToCodeBlocks = (className: string) => {
   return (tree: Root) => {
     visit(tree, 'element', (node, index, parent) => {
       if (node.properties?.['data-rehype-pretty-code-fragment'] === undefined)
@@ -141,6 +145,11 @@ const rehypeAddClassesToCodeBlocks = (option: { className: string }) => {
   }
 }
 
+/**
+ * Adds a language icon to code blocks.
+ * @function rehypeAddLanguageIconToCodeBlocks
+ * @returns A function that adds a language icon to code blocks.
+ */
 const rehypeAddLanguageIconToCodeBlocks = () => {
   return (tree: Root) => {
     visit(tree, 'element', (node) => {
@@ -201,12 +210,7 @@ export default makeSource({
           keepBackground: false
         }
       ],
-      [
-        rehypeAddClassesToCodeBlocks,
-        {
-          className: 'relative'
-        }
-      ],
+      [rehypeAddClassesToCodeBlocks, 'relative'],
       rehypeAddLanguageIconToCodeBlocks
     ]
   }

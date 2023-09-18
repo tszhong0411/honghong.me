@@ -11,9 +11,21 @@ import { Skeleton } from '@/components/ui'
 import fetcher from '@/lib/fetcher'
 import { Views } from '@/types'
 
+/**
+ * The props of {@link Header}.
+ */
 type HeaderProps = {
+  /**
+   * The published date of the blog post.
+   */
   date: string
+  /**
+   * The title of the blog post.
+   */
   title: string
+  /**
+   * The slug of the blog post.
+   */
   slug: string
 }
 

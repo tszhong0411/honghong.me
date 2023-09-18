@@ -3,9 +3,21 @@ import { marked } from 'marked'
 
 const slugger = new Slugger()
 
+/**
+ * A type representing a heading in a document.
+ */
 export type Heading = {
+  /**
+   * The ID of the heading.
+   */
   id: string
+  /**
+   * The level of the heading (1 for h1, 2 for h2, etc.).
+   */
   level: number
+  /**
+   * The text content of the heading.
+   */
   title: string
 }
 

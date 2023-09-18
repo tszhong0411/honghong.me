@@ -1,13 +1,34 @@
 import Image from './image'
 
+/**
+ * The items to map in {@link ItemGrid}.
+ */
 export type Items = Array<{
+  /**
+   * The image of the item.
+   */
   image: string
+  /**
+   * The name of the item.
+   */
   name: string
+  /**
+   * The description of the item.
+   */
   description: string
+  /**
+   * The URL of the item.
+   */
   url: string
 }>
 
+/**
+ * The props of {@link ItemGrid}.
+ */
 type ItemGridProps = {
+  /**
+   * The items to map.
+   */
   items: Items
 }
 

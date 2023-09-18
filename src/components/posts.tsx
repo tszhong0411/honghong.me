@@ -1,10 +1,18 @@
 import { IconArrowRight } from '@tabler/icons-react'
+import { type BlogPost } from 'contentlayer/generated'
 import Link from 'next/link'
 
 import PostCard from '@/components/post-card'
-import { BlogPostCore } from '@/types'
+import { type BlogPostCore } from '@/types'
 
+/**
+ * The props of {@link Posts}.
+ */
 type PostsProps = {
+  /**
+   * The blog posts to display.
+   * @see {@link BlogPost}
+   */
   posts: BlogPostCore[]
 }
 

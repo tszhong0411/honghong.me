@@ -8,7 +8,13 @@ import { BlogPostCore } from '@/types'
 
 import PostCard from './post-card'
 
+/**
+ * The props of {@link FilteredPosts}.
+ */
 type FilteredPostsProps = {
+  /**
+   * The all blog posts to filter.
+   */
   posts: BlogPostCore[]
 }
 

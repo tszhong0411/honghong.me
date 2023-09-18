@@ -10,7 +10,13 @@ import Toaster from '@/components/toaster'
 import site from '@/config/site'
 import cn from '@/utils/cn'
 
+/**
+ * The props of {@link RootLayout}.
+ */
 type RootLayoutProps = {
+  /**
+   * The child elements to render.
+   */
   children: React.ReactNode
 }
 

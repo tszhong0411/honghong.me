@@ -12,7 +12,7 @@
   "type": "module",
   "scripts": {
     "build": "next build",
-    "dev": "concurrently \"contentlayer dev\" \"next dev\"",
+    "dev": "concurrently \"contentlayer dev\" \"cross-env NODE_OPTIONS='--inspect' next dev\"",
     "format": "prettier -w .",
     "postinstall": "prisma generate && contentlayer build",
     "lint": "eslint .",
@@ -94,6 +94,7 @@
     "@vitest/ui": "^0.34.4",
     "autoprefixer": "^10.4.15",
     "concurrently": "^8.2.1",
+    "cross-env": "^7.0.3",
     "eslint": "^8.49.0",
     "eslint-config-next": "^13.4.19",
     "eslint-plugin-jsdoc": "^46.8.1",
@@ -112,6 +113,18 @@
     "unified": "10.1.2",
     "vitest": "^0.34.4"
   },
+  "browserslist": {
+    "production": [
+      ">0.3%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "eslintConfig": {
     "extends": [
       "next/core-web-vitals",
@@ -127,8 +140,33 @@
       "ecmaVersion": "latest"
     },
     "rules": {
-      "jsdoc/require-param-type": "off",
-      "jsdoc/require-returns-type": "off"
+      "require-jsdoc": 0,
+      "valid-jsdoc": 0,
+      "jsdoc/require-jsdoc": [
+        "warn",
+        {
+          "require": {
+            "FunctionDeclaration": true,
+            "MethodDefinition": true,
+            "ClassDeclaration": true
+          },
+          "contexts": [
+            "TSInterfaceDeclaration",
+            "TSTypeAliasDeclaration",
+            "TSEnumDeclaration",
+            "TSPropertySignature"
+          ]
+        }
+      ],
+      "jsdoc/require-param": [
+        0,
+        {
+          "checkRestProperty": false
+        }
+      ],
+      "jsdoc/require-returns": 0,
+      "jsdoc/require-param-type": 0,
+      "jsdoc/require-returns-type": 0
     },
     "settings": {
       "jsdoc": {

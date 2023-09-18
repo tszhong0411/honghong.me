@@ -18,6 +18,10 @@ const animation = {
   }
 }
 
+/**
+ * The props of {@link Header}.
+ * @see {@link Project}
+ */
 type HeaderProps = Project
 
 const Header = (props: HeaderProps) => {

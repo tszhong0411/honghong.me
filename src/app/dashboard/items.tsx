@@ -13,21 +13,36 @@ import useSWR from 'swr'
 
 import { Skeleton } from '@/components/ui'
 import fetcher from '@/lib/fetcher'
-import { GithubData, Likes, Views, WakatimeData, YouTubeData } from '@/types'
+import { Github, Likes, Views, Wakatime, YouTube } from '@/types'
 
+/**
+ * A metric card with an icon, title, link, and value.
+ */
 type Card = {
+  /**
+   * The icon to display on the card.
+   */
   icon: React.ReactNode
+  /**
+   * The title of the card.
+   */
   title: string
+  /**
+   * The link to navigate to when the card is clicked.
+   */
   link: string
+  /**
+   * The value to display on the card.
+   */
   value: number | string | undefined
 }
 
 const Items = () => {
-  const { data: youtubeData } = useSWR<YouTubeData>('/api/youtube', fetcher)
-  const { data: githubData } = useSWR<GithubData>('/api/github', fetcher)
+  const { data: youtubeData } = useSWR<YouTube>('/api/youtube', fetcher)
+  const { data: githubData } = useSWR<Github>('/api/github', fetcher)
   const { data: likesData } = useSWR<Likes>('/api/likes', fetcher)
   const { data: viewsData } = useSWR<Views>('/api/views', fetcher)
-  const { data: wakatimeData } = useSWR<WakatimeData>('/api/wakatime', fetcher)
+  const { data: wakatimeData } = useSWR<Wakatime>('/api/wakatime', fetcher)
 
   const [age, setAge] = React.useState<string>()
 

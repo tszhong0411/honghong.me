@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server'
 
 import { env } from '@/env.mjs'
-import { WakatimeRes } from '@/types'
 
 export const dynamic = 'force-dynamic'
 
@@ -17,9 +16,11 @@ export const GET = async () => {
     }
   )
 
-  const data: WakatimeRes = await res.json()
+  const {
+    data: { total_seconds }
+  } = await res.json()
 
   return NextResponse.json({
-    seconds: data.data.total_seconds
+    seconds: total_seconds
   })
 }

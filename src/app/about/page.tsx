@@ -8,8 +8,17 @@ import getPage from '@/utils/get-page'
 const title = 'About'
 const description = 'A student who loves web development.'
 
+/**
+ * The props of {@link AboutPage}.
+ */
 type AboutPageProps = {
+  /**
+   * The params of the URL.
+   */
   params: Record<string, never>
+  /**
+   * The search params of the URL.
+   */
   searchParams: Record<string, never>
 }
 

@@ -1,11 +1,29 @@
 import { AspectRatio } from '@/components/ui'
 import cn from '@/utils/cn'
 
+/**
+ * The props of {@link Video}.
+ */
 type VideoProps = {
+  /**
+   * The URL of the video.
+   */
   src: string
+  /**
+   * The width of the video.
+   */
   width: number
+  /**
+   * The height of the video.
+   */
   height: number
+  /**
+   * Whether to show the controls of the video.
+   */
   controls?: boolean
+  /**
+   * The classes to pass to the video.
+   */
   className?: string
 }
 

@@ -5,10 +5,10 @@ import useSWR from 'swr'
 import { Skeleton } from '@/components/ui'
 import { env } from '@/env.mjs'
 import fetcher from '@/lib/fetcher'
-import { AnalyticsData } from '@/types'
+import { Analytics } from '@/types'
 
 const CurrentVisitors = () => {
-  const { data } = useSWR<AnalyticsData>('/api/analytics', fetcher, {
+  const { data } = useSWR<Analytics>('/api/analytics', fetcher, {
     refreshInterval: 30_000 // refresh every 30 seconds
   })
 

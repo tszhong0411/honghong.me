@@ -2,9 +2,21 @@
 
 import { motion } from 'framer-motion'
 
+/**
+ * The props of {@link PageTitle}.
+ */
 type PageTitleProps = {
+  /**
+   * The title of the page.
+   */
   title: string
+  /**
+   * The description of the page.
+   */
   description: string
+  /**
+   * Whether to animate the title and description.
+   */
   animate?: boolean
 }
 

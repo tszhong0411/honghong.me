@@ -2,9 +2,21 @@ import { IconExternalLink } from '@tabler/icons-react'
 
 import Image from './image'
 
+/**
+ * The props of {@link LinkCard}.
+ */
 type LinkCardProps = {
+  /**
+   * The URL of the link.
+   */
   href: string
+  /**
+   * The hostname of the link.
+   */
   hostname: string
+  /**
+   * The title of the link.
+   */
   title: string
 }
 
