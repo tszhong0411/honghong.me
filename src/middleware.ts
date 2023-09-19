@@ -8,26 +8,26 @@ const middleware = (request: NextRequest) => {
     base-uri 'self';
     form-action 'self';
     default-src 'self';
-    script-src 'self'${
+    script-src 'self' 'strict-dynamic'${
       isProd ? '' : " 'unsafe-eval' 'unsafe-inline'"
     } giscus.app *.honghong.me vercel.live${isProd ? ` 'nonce-${nonce}'` : ''};
     style-src 'self'${isProd ? '' : " 'unsafe-inline'"}${
       isProd ? ` 'nonce-${nonce}'` : ''
     };
     connect-src 'self';
-    img-src 'self' blob: data:;
+    img-src 'self' data:;
     font-src 'self';
     media-src *;
     frame-src *;
+    frame-ancestors 'none';
+    worker-src 'self';
   `
 
   const requestHeaders = new Headers(request.headers)
+  const csp = ContentSecurityPolicy.replaceAll('\n', '')
 
-  requestHeaders.set(
-    'Content-Security-Policy',
-    ContentSecurityPolicy.replaceAll('\n', '')
-  )
   requestHeaders.set('x-nonce', nonce)
+  requestHeaders.set('Content-Security-Policy', csp)
 
   const response = NextResponse.next({
     request: {
@@ -35,10 +35,7 @@ const middleware = (request: NextRequest) => {
     }
   })
 
-  response.headers.set(
-    'Content-Security-Policy',
-    ContentSecurityPolicy.replaceAll('\n', '')
-  )
+  response.headers.set('Content-Security-Policy', csp)
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
   response.headers.set(
     'Permissions-Policy',
