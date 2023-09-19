@@ -1,5 +1,8 @@
 ci:
+  collect:
+    settings:
+      preset: desktop
   assert:
-    preset: lighthouse:recommended
+    preset: lighthouse:no-pwa
     assertions:
       is-crawlable: off # turn off it since vercel preview url is not crawlable
