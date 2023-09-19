@@ -1,15 +1,16 @@
 import { NextResponse } from 'next/server'
-
 const isProd = process.env.NODE_ENV === 'production'
 
 const middleware = () => {
+  const nonce = crypto.randomUUID()
+
   const ContentSecurityPolicy = `
     base-uri 'self';
     form-action 'self';
     default-src 'self';
     script-src 'self'${
       isProd ? '' : " 'unsafe-eval' 'unsafe-inline'"
-    } giscus.app *.honghong.me vercel.live;
+    } giscus.app *.honghong.me vercel.live nonce-${nonce};
     style-src 'self'${isProd ? '' : " 'unsafe-inline'"};
     connect-src 'self';
     img-src 'self' blob: data:;
@@ -37,6 +38,7 @@ const middleware = () => {
   response.headers.set('X-Content-Type-Options', 'nosniff')
   response.headers.set('X-DNS-Prefetch-Control', 'on')
   response.headers.set('X-XSS-Protection', '1; mode=block')
+  response.headers.set('x-nonce', nonce)
 
   return response
 }
