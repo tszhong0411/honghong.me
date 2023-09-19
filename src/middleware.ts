@@ -1,35 +1,30 @@
 import { NextResponse } from 'next/server'
 
+const isProd = process.env.NODE_ENV === 'production'
+
 const middleware = () => {
-  const ContentSecurityPolicy = `
+  const csp = `
     default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app *.honghong.me vercel.live data: blob:;
+    script-src 'self' 'unsafe-inline' giscus.app *.honghong.me vercel.live${
+      isProd ? '' : " 'unsafe-eval'"
+    };
     style-src 'self' 'unsafe-inline';
     img-src * blob: data:;
-    media-src *;
-    connect-src *;
     font-src 'self';
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+    connect-src *;
+    media-src 'self';
+    frame-ancestors 'none';
     frame-src giscus.app vercel.live;
-  `
+    block-all-mixed-content;
+    upgrade-insecure-requests;
+`
 
   const response = NextResponse.next()
 
-  response.headers.set(
-    'Content-Security-Policy',
-    ContentSecurityPolicy.replaceAll('\n', '')
-  )
-  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
-  response.headers.set(
-    'Permissions-Policy',
-    'camera=(), microphone=(), geolocation=()'
-  )
-  response.headers.set(
-    'Strict-Transport-Security',
-    'max-age=31536000; includeSubDomains; preload'
-  )
-  response.headers.set('X-Frame-Options', 'DENY')
-  response.headers.set('X-Content-Type-Options', 'nosniff')
-  response.headers.set('X-DNS-Prefetch-Control', 'on')
+  response.headers.set('Content-Security-Policy', csp.replaceAll('\n', ''))
 
   return response
 }
