@@ -6,3 +6,4 @@ ci:
     preset: lighthouse:no-pwa
     assertions:
       is-crawlable: off # turn off it since vercel preview url is not crawlable
+      csp-xss: off # https://github.com/tszhong0411/honghong.me#-todo

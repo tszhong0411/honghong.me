@@ -63,6 +63,13 @@ Create a `.env.local` file based on the provided `.env.example` file and fill in
 bun run dev
 ```
 
+## ✈️ TODO
+
+- [ ] Use strict content security policy
+  - `next/image` - https://github.com/vercel/next.js/issues/45184
+  - `next/image` - https://github.com/vercel/next.js/issues/24309
+  - `nonces` - https://github.com/vercel/next.js/discussions/54907
+
 ## 🔔 Important Note
 
 Hello there! While I'm glad to see you're interested in my open-source project, I kindly request that you refrain from using this source code as a template for your website. Instead, I encourage you to use it as a learning resource and an inspiration to create something unique.

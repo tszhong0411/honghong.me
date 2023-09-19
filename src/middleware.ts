@@ -1,54 +1,30 @@
-import { type NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
+
 const isProd = process.env.NODE_ENV === 'production'
 
-const middleware = (request: NextRequest) => {
-  const nonce = crypto.randomUUID()
-
-  const ContentSecurityPolicy = `
+const middleware = () => {
+  const csp = `
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' giscus.app *.honghong.me vercel.live${
+      isProd ? '' : " 'unsafe-eval'"
+    };
+    style-src 'self' 'unsafe-inline';
+    img-src 'self' blob: data:;
+    font-src 'self';
+    object-src 'none';
     base-uri 'self';
     form-action 'self';
-    default-src 'self';
-    script-src 'self' 'strict-dynamic'${
-      isProd ? '' : " 'unsafe-eval' 'unsafe-inline'"
-    } giscus.app *.honghong.me vercel.live${isProd ? ` 'nonce-${nonce}'` : ''};
-    style-src 'self'${isProd ? '' : " 'unsafe-inline'"}${
-      isProd ? ` 'nonce-${nonce}'` : ''
-    };
-    connect-src 'self';
-    img-src 'self' data:;
-    font-src 'self';
-    media-src *;
-    frame-src *;
+    connect-src 'self' *.honghong.me;
+    media-src 'self';
     frame-ancestors 'none';
-    worker-src 'self';
-  `
+    frame-src giscus.app vercel.live;
+    block-all-mixed-content;
+    upgrade-insecure-requests;
+`
 
-  const requestHeaders = new Headers(request.headers)
-  const csp = ContentSecurityPolicy.replaceAll('\n', '')
+  const response = NextResponse.next()
 
-  requestHeaders.set('x-nonce', nonce)
-  requestHeaders.set('Content-Security-Policy', csp)
-
-  const response = NextResponse.next({
-    request: {
-      headers: requestHeaders
-    }
-  })
-
-  response.headers.set('Content-Security-Policy', csp)
-  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
-  response.headers.set(
-    'Permissions-Policy',
-    'camera=(), microphone=(), geolocation=()'
-  )
-  response.headers.set(
-    'Strict-Transport-Security',
-    'max-age=31536000; includeSubDomains; preload'
-  )
-  response.headers.set('X-Frame-Options', 'SAMEORIGIN')
-  response.headers.set('X-Content-Type-Options', 'nosniff')
-  response.headers.set('X-DNS-Prefetch-Control', 'on')
-  response.headers.set('X-XSS-Protection', '1; mode=block')
+  response.headers.set('Content-Security-Policy', csp.replaceAll('\n', ''))
 
   return response
 }

@@ -64,7 +64,7 @@
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^3.0.1",
     "rss": "^1.2.2",
-    "sharp": "^0.32.5",
+    "sharp": "^0.32.6",
     "shiki": "^0.14.4",
     "swr": "^2.2.2",
     "tailwind-merge": "^1.14.0",
