@@ -9,12 +9,12 @@ const middleware = () => {
       isProd ? '' : " 'unsafe-eval'"
     };
     style-src 'self' 'unsafe-inline';
-    img-src 'self' blob: data:;
+    img-src * blob: data:;
     font-src 'self';
     object-src 'none';
     base-uri 'self';
     form-action 'self';
-    connect-src 'self' *.honghong.me;
+    connect-src *;
     media-src 'self';
     frame-ancestors 'none';
     frame-src giscus.app vercel.live;

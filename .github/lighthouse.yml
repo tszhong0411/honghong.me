@@ -7,3 +7,9 @@ ci:
     assertions:
       is-crawlable: off # turn off it since vercel preview url is not crawlable
       csp-xss: off # https://github.com/tszhong0411/honghong.me#-todo
+      bf-cache: off # no needed
+      non-composited-animations: warn
+      unminified-css: warn
+      unused-css-rules: warn
+      unused-javascript: warn
+      uses-responsive-images: warn

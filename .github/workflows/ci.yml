@@ -46,7 +46,6 @@ jobs:
 
       - name: Get Vercel preview URL
         run: |
-          COMMIT_HASH=${{ github.sha }}
           VERCEL_API_ENDPOINT=https://api.vercel.com/v6/deployments
 
           ALL_VERCEL_DEPLOYMENTS=`curl -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}' $VERCEL_API_ENDPOINT`
