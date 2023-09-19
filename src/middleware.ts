@@ -10,9 +10,9 @@ const middleware = (request: NextRequest) => {
     default-src 'self';
     script-src 'self'${
       isProd ? '' : " 'unsafe-eval' 'unsafe-inline'"
-    } giscus.app *.honghong.me vercel.live${isProd ? " 'nonce-${nonce}'" : ''};
+    } giscus.app *.honghong.me vercel.live${isProd ? ` 'nonce-${nonce}'` : ''};
     style-src 'self'${isProd ? '' : " 'unsafe-inline'"}${
-      isProd ? " 'nonce-${nonce}'" : ''
+      isProd ? ` 'nonce-${nonce}'` : ''
     };
     connect-src 'self';
     img-src 'self' blob: data:;
