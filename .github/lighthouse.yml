@@ -2,7 +2,9 @@ ci:
   collect:
     settings:
       preset: desktop
-      startServerCommand: 'bun run start'
+    startServerCommand: 'bun run start'
+    url:
+      - http://localhost:3000
 
   assert:
     preset: lighthouse:no-pwa

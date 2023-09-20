@@ -69,7 +69,6 @@ jobs:
         id: lighthouse_audit
         uses: treosh/lighthouse-ci-action@v10
         with:
-          urls: http://localhost:3000
           uploadArtifacts: true
           temporaryPublicStorage: true
           configPath: '.github/lighthouse.yml'
