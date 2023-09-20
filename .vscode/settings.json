@@ -31,7 +31,11 @@
     "cmdk",
     "favicons",
     "crawlable",
-    "vercel"
+    "vercel",
+    "sameorigin",
+    "lhci",
+    "lighthouserc",
+    "autorun"
   ],
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
