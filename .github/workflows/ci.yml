@@ -8,6 +8,8 @@ on:
 
 env:
   CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
 jobs:
   ci:
@@ -44,25 +46,14 @@ jobs:
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
 
-      - name: Get Vercel preview URL
-        run: |
-          VERCEL_API_ENDPOINT=https://api.vercel.com/v6/deployments
+      - name: Build app
+        run: bun run build
 
-          ALL_VERCEL_DEPLOYMENTS=`curl -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}' $VERCEL_API_ENDPOINT`
-          VERCEL_DEPLOYMENT=`echo $ALL_VERCEL_DEPLOYMENTS | jq '.deployments [0].url' | tr -d \"`
-          VERCEL_DEPLOYMENT_URL="https://$VERCEL_DEPLOYMENT"
+      - name: Install Vercel
+        run: bun a -g vercel
 
-          echo "VERCEL_DEPLOYMENT_URL=$VERCEL_DEPLOYMENT_URL" >> $GITHUB_ENV
-          echo "VERCEL_DEPLOYMENT=$VERCEL_DEPLOYMENT" >> $GITHUB_ENV
-
-      - name: Awaiting Vercel deployment to be ready
-        uses: UnlyEd/github-action-await-vercel@v1.1.1
-        id: await-vercel
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        with:
-          deployment-url: ${{ env.VERCEL_DEPLOYMENT }}
-          timeout: 300
+      - name: Get production environment variables
+        run: vercel env pull .env.local --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Add comment to PR
         id: loading_comment_to_pr
@@ -74,12 +65,11 @@ jobs:
           message: |
             Running Lighthouse audit...
 
-      - name: Audit preview URL with Lighthouse
+      - name: Audit website with Lighthouse
         id: lighthouse_audit
         uses: treosh/lighthouse-ci-action@v10
         with:
-          urls: |
-            ${{ env.VERCEL_DEPLOYMENT_URL }}
+          urls: http://localhost:3000
           uploadArtifacts: true
           temporaryPublicStorage: true
           configPath: '.github/lighthouse.yml'
