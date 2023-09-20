@@ -65,10 +65,10 @@ bun run dev
 
 ## ✈️ TODO
 
-- [ ] Use strict content security policy
+- Use strict content security policy - still not working in 13.5.1
   - `next/image` - https://github.com/vercel/next.js/issues/45184
-  - `next/image` - https://github.com/vercel/next.js/issues/24309
   - `nonces` - https://github.com/vercel/next.js/discussions/54907
+  - `main-app.js` - https://github.com/vercel/next.js/issues/55129
 
 ## 🔔 Important Note
 
