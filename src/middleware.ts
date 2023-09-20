@@ -1,13 +1,9 @@
 import { NextResponse } from 'next/server'
 
-const isProd = process.env.NODE_ENV === 'production'
-
 const middleware = () => {
   const csp = `
     default-src 'self';
-    script-src 'self' 'unsafe-inline' giscus.app *.honghong.me vercel.live${
-      isProd ? '' : " 'unsafe-eval'"
-    };
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' giscus.app *.honghong.me vercel.live;
     style-src 'self' 'unsafe-inline';
     img-src * blob: data:;
     font-src 'self';
