@@ -15,8 +15,6 @@
     "dev": "concurrently \"contentlayer dev\" \"cross-env NODE_OPTIONS='--inspect' next dev\"",
     "format": "prettier -w .",
     "postinstall": "prisma generate && contentlayer build",
-    "lhci:desktop": "lhci autorun --config=.github/lighthouserc.json --collect.settings.preset=desktop",
-    "lhci:mobile": "lhci autorun --config=.github/lighthouserc.json",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "prepare": "husky install",
