@@ -35,7 +35,8 @@
     "sameorigin",
     "lhci",
     "lighthouserc",
-    "autorun"
+    "autorun",
+    "unminified"
   ],
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
