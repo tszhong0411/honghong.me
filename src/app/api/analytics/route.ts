@@ -1,39 +1,33 @@
+import { PrismaClient } from '@prisma/client'
+import dayjs from 'dayjs'
 import { NextResponse } from 'next/server'
 
 import { env } from '@/env.mjs'
 
-export const runtime = 'edge'
 export const dynamic = 'force-dynamic'
+
+const prisma = new PrismaClient({
+  datasourceUrl: env.UMAMI_DATABASE_URL
+})
 
 export const GET = async () => {
   try {
-    const authRes = await fetch(`${env.NEXT_PUBLIC_UMAMI_URL}/api/auth/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        username: env.UMAMI_USERNAME,
-        password: env.UMAMI_PASSWORD
-      })
-    })
-
-    const { token } = await authRes.json()
-
-    const statsRes = await fetch(
-      `${env.NEXT_PUBLIC_UMAMI_URL}/api/websites/${env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}/active`,
+    const result: [
       {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
+        /**
+         * Number of unique visitors in the last 5 minutes
+         */
+        x: bigint
       }
-    )
-
-    const data = await statsRes.json()
-    const { x: visitors } = data[0]
+    ] = await prisma.$queryRaw`
+      select count(distinct session_id) x
+      from website_event
+      where website_id = ${env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+      and created_at >= ${dayjs().subtract(5, 'minutes').toISOString()}
+    `
 
     return NextResponse.json({
-      visitors
+      visitors: Number(result[0].x)
     })
   } catch {
     return NextResponse.json(

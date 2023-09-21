@@ -27,8 +27,7 @@ export const env = createEnv({
 
     DISCORD_WEBHOOK_URL: z.string().url(),
 
-    UMAMI_USERNAME: z.string().min(1),
-    UMAMI_PASSWORD: z.string().min(1)
+    UMAMI_DATABASE_URL: z.string().url()
   },
   client: {
     NEXT_PUBLIC_GISCUS_REPO: z.string().min(1),
@@ -69,8 +68,7 @@ export const env = createEnv({
 
     DISCORD_WEBHOOK_URL: process.env.DISCORD_WEBHOOK_URL,
 
-    UMAMI_USERNAME: process.env.UMAMI_USERNAME,
-    UMAMI_PASSWORD: process.env.UMAMI_PASSWORD,
+    UMAMI_DATABASE_URL: process.env.UMAMI_DATABASE_URL,
     NEXT_PUBLIC_UMAMI_URL: process.env.NEXT_PUBLIC_UMAMI_URL,
     NEXT_PUBLIC_UMAMI_WEBSITE_ID: process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID,
     NEXT_PUBLIC_UMAMI_WEBSITE_SHARE_URL:
