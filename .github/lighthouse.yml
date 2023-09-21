@@ -1,7 +1,9 @@
 ci:
   collect:
+    numberOfRuns: 5
     settings:
       preset: desktop
+      chromeFlags: '--no-sandbox'
     startServerCommand: 'bun run start'
     url:
       - http://localhost:3000
