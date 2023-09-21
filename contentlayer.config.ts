@@ -204,13 +204,6 @@ export default makeSource({
         }
       ],
       [
-        // TODO: Fix this issue
-        // https://github.com/remarkjs/remark-gfm/issues/57
-        // https://github.com/remarkjs/react-markdown/issues/763
-        // https://github.com/unifiedjs/unified/issues/228
-        // https://github.com/unifiedjs/unified/issues/227
-        // Temporary fix: https://github.com/unifiedjs/unified/issues/227#issuecomment-1701011365
-        // @ts-expect-error Unified major version issue
         rehypePrettyCode,
         {
           theme: 'github-dark',
