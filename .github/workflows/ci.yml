@@ -34,6 +34,12 @@ jobs:
       - name: Install dependencies
         run: bun install
 
+      - name: Install Vercel
+        run: bun a -g vercel
+
+      - name: Get production environment variables
+        run: vercel env pull .env --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+
       - name: Typecheck
         run: bun run type-check
 
@@ -48,12 +54,6 @@ jobs:
 
       - name: Build app
         run: bun run build
-
-      - name: Install Vercel
-        run: bun a -g vercel
-
-      - name: Get production environment variables
-        run: vercel env pull .env.local --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Add comment to PR
         id: loading_comment_to_pr
@@ -98,7 +98,7 @@ jobs:
                 ' '
             ].join('\n')
 
-             core.setOutput("comment", comment);
+            core.setOutput("comment", comment);
 
       - name: Add comment to PR
         id: comment_to_pr
