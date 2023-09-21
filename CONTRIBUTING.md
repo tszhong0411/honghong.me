@@ -37,15 +37,15 @@ To set up the project locally, follow these steps:
    cd honghong.me
    ```
 
-2. Install dependencies using bun:
+2. Install dependencies using yarn:
 
    ```bash
-   bun install
+   yarn install
    ```
 
 3. Start the development server:
    ```bash
-   bun run dev
+   yarn run dev
    ```
 
 ## Conventional Commits
@@ -68,12 +68,12 @@ Before submitting a pull request, make sure your code is properly formatted. You
 - Run lint fixes:
 
   ```bash
-  bun run lint:fix
+  yarn lint:fix
   ```
 
 - Format code:
   ```bash
-  bun run format
+  yarn run format
   ```
 
 Make sure your changes are well-tested and your code follows best practices. Thank you for contributing to honghong.me! 🚀
