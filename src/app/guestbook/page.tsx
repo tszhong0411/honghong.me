@@ -1,10 +1,9 @@
 import type { Metadata, ResolvingMetadata } from 'next'
-import { getServerSession } from 'next-auth'
 
 import { getMessages } from '@/actions/guestbook'
 import PageTitle from '@/components/page-title'
 import site from '@/config/site'
-import authOptions from '@/lib/auth'
+import { getCurrentUser } from '@/lib/auth'
 
 import Form from './form'
 import Messages from './messages'
@@ -58,7 +57,7 @@ export const generateMetadata = async (
 export const dynamic = 'force-dynamic'
 
 const GuestbookPage = async () => {
-  const session = await getServerSession(authOptions)
+  const user = await getCurrentUser()
   const messages = await getMessages()
 
   return (
@@ -69,9 +68,9 @@ const GuestbookPage = async () => {
       />
       <div className='mx-auto max-w-lg'>
         <Pinned />
-        {!session?.user && <SignIn />}
-        {session?.user && <Form user={session.user} />}
-        <Messages user={session?.user} messages={messages} />
+        {!user && <SignIn />}
+        {user && <Form user={user} />}
+        <Messages user={user ?? undefined} messages={messages} />
       </div>
     </>
   )

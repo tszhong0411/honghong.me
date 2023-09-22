@@ -3,7 +3,7 @@
 import useSWR from 'swr'
 
 import { Skeleton } from '@/components/ui'
-import { env } from '@/env.mjs'
+import { env } from '@/env'
 import fetcher from '@/lib/fetcher'
 import { type Analytics } from '@/types'
 

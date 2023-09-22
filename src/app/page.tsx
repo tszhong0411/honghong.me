@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   }
 }
 
+export const runtime = 'edge'
+
 const HomePage = () => {
   const posts = getAllPosts({
     limit: 4

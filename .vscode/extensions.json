@@ -5,7 +5,7 @@
     "esbenp.prettier-vscode",
     "prisma.prisma",
     "bradlc.vscode-tailwindcss",
-    "streetsidesoftware.code-spell-checker",
-    "vunguyentuan.vscode-postcss"
+    "vunguyentuan.vscode-postcss",
+    "unifiedjs.vscode-mdx"
   ]
 }

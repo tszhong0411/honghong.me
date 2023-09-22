@@ -21,6 +21,11 @@ export type Heading = {
   title: string
 }
 
+/**
+ * Get headings from a markdown document.
+ * @param content - The content of a markdown document.
+ * @returns Heading list which can be used in table of contents.
+ */
 export const getHeadings = (content: string): Heading[] => {
   const headings: Heading[] = []
 

@@ -1,15 +1,23 @@
 'use server'
 
 import { revalidatePath } from 'next/cache'
-import { getServerSession } from 'next-auth'
 
-import { env } from '@/env.mjs'
-import authOptions from '@/lib/auth'
+import { env } from '@/env'
+import { getCurrentUser } from '@/lib/auth'
 import prisma from '@/lib/prisma'
 
+/**
+ * Deletes a message from the guestbook.
+ * @param id - The id of the message to delete.
+ */
 export const deleteMessage = async (id: number) => {
-  const session = await getServerSession(authOptions)
-  const email = session?.user?.email as string
+  const user = await getCurrentUser()
+
+  if (!user) {
+    throw new Error('Unauthorized')
+  }
+
+  const email = user.email
 
   const message = await prisma.guestbook.findUnique({
     where: {
@@ -37,11 +45,20 @@ export const deleteMessage = async (id: number) => {
   revalidatePath('/guestbook')
 }
 
+/**
+ * Creates a new message in the guestbook.
+ * @param message - The message to create.
+ */
 export const createMessage = async (message: string) => {
-  const session = await getServerSession(authOptions)
-  const email = session?.user?.email as string
-  const name = session?.user?.name as string
-  const image = session?.user?.image as string
+  const user = await getCurrentUser()
+
+  if (!user) {
+    throw new Error('Unauthorized')
+  }
+
+  const email = user.email
+  const name = user.name as string
+  const image = user.picture as string
 
   if (!message) {
     throw new Error('Message cannot be empty')
@@ -87,6 +104,10 @@ export const createMessage = async (message: string) => {
   revalidatePath('/guestbook')
 }
 
+/**
+ * Get all messages in the guestbook.
+ * @returns A list of messages in the guestbook.
+ */
 export const getMessages = async () => {
   const messages = await prisma.guestbook.findMany({
     orderBy: {

@@ -1,4 +1,4 @@
-import { env } from '@/env.mjs'
+import { env } from '@/env'
 
 const CLIENT_ID = env.SPOTIFY_CLIENT_ID
 const CLIENT_SECRET = env.SPOTIFY_CLIENT_SECRET
@@ -9,6 +9,10 @@ const NOW_PLAYING_ENDPOINT =
   'https://api.spotify.com/v1/me/player/currently-playing'
 const TOKEN_ENDPOINT = 'https://accounts.spotify.com/api/token'
 
+/**
+ * Get access token from Spotify API.
+ * @returns Access token.
+ */
 const getAccessToken = async () => {
   const response = await fetch(TOKEN_ENDPOINT, {
     method: 'POST',
@@ -27,6 +31,10 @@ const getAccessToken = async () => {
   return data.access_token as string
 }
 
+/**
+ * Get the current song playing on Spotify.
+ * @returns The current song playing on Spotify.
+ */
 const getNowPlaying = async () => {
   const accessToken = await getAccessToken()
 

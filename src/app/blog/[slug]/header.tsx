@@ -43,21 +43,19 @@ const Header = (props: HeaderProps) => {
   }, [date])
 
   React.useEffect(() => {
-    if (process.env.NODE_ENV === 'production') {
-      const increment = async () => {
-        await fetch('/api/views', {
-          method: 'POST',
-          body: JSON.stringify({
-            slug
-          }),
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        })
-      }
-
-      void increment()
+    const increment = async () => {
+      await fetch('/api/views', {
+        method: 'POST',
+        body: JSON.stringify({
+          slug
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
     }
+
+    void increment()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

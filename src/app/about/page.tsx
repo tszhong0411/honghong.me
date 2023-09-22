@@ -5,6 +5,7 @@ import PageTitle from '@/components/page-title'
 import site from '@/config/site'
 import getPage from '@/utils/get-page'
 
+export const runtime = 'edge'
 const title = 'About'
 const description = 'A student who loves web development.'
 

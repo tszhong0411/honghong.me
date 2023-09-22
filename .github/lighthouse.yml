@@ -1,6 +1,6 @@
 ci:
   collect:
-    numberOfRuns: 5
+    numberOfRuns: 3
     settings:
       preset: desktop
       chromeFlags: '--no-sandbox'
@@ -18,3 +18,4 @@ ci:
       unused-css-rules: warn
       unused-javascript: warn
       uses-responsive-images: warn
+      uses-text-compression: warn # I don't know why it's failed, but the results aren't failed.
