@@ -1,6 +1,6 @@
 'use client'
 
-import { type DefaultSession } from 'next-auth'
+import { type Session } from 'next-auth'
 import { signOut } from 'next-auth/react'
 import React from 'react'
 import { toast } from 'react-hot-toast'
@@ -22,7 +22,7 @@ type FormProps = {
   /**
    * The session of the user.
    */
-  user: NonNullable<DefaultSession['user']>
+  user: Session['user']
 }
 
 const Form = (props: FormProps) => {
@@ -56,7 +56,7 @@ const Form = (props: FormProps) => {
       <div className='mb-2 flex gap-3'>
         <Avatar>
           <AvatarImage
-            src={user.image as string}
+            src={user.picture as string}
             width={40}
             height={40}
             alt={user.name as string}
