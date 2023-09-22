@@ -15,6 +15,11 @@ type GetAllPostsProps = {
   sorted?: boolean
 }
 
+/**
+ * Get all blog posts.
+ * @param config - The configuration of this function.
+ * @returns The posts with the specified configuration.
+ */
 const getAllPosts = (config: GetAllPostsProps = {}) => {
   const { limit = allBlogPosts.length, sorted = true } = config
 

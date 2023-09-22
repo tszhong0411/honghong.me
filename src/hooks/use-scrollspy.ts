@@ -2,9 +2,8 @@ import React from 'react'
 
 /**
  * A hook that tracks which element is currently in view based on scroll position.
- * @function useScrollspy
- * @param ids An array of element IDs to track.
- * @param options Options for the IntersectionObserver.
+ * @param ids - An array of element IDs to track.
+ * @param options - Options for the IntersectionObserver.
  * @returns The ID of the currently active element.
  */
 const useScrollspy = (ids: string[], options: IntersectionObserverInit) => {

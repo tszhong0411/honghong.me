@@ -8,7 +8,6 @@ afterAll(() => server.close())
 
 /**
  * A mock implementation of the ResizeObserver API.
- * @class
  */
 class ResizeObserver {
   /**

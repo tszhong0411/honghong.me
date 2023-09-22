@@ -126,8 +126,7 @@ const Pages = defineDocumentType(() => ({
 
 /**
  * A rehype plugin that adds a class to all code blocks with a specific data attribute.
- * @function rehypeAddClassesToCodeBlocks
- * @param className The class name to add to the code blocks.
+ * @param className - The class name to add to the code blocks.
  * @returns A rehype transformer function.
  */
 const rehypeAddClassesToCodeBlocks = (className: string) => {
@@ -147,7 +146,6 @@ const rehypeAddClassesToCodeBlocks = (className: string) => {
 
 /**
  * Adds a language icon to code blocks.
- * @function rehypeAddLanguageIconToCodeBlocks
  * @returns A function that adds a language icon to code blocks.
  */
 const rehypeAddLanguageIconToCodeBlocks = () => {

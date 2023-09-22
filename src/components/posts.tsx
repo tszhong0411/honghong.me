@@ -1,5 +1,4 @@
 import { IconArrowRight } from '@tabler/icons-react'
-import { type BlogPost } from 'contentlayer/generated'
 import Link from 'next/link'
 
 import PostCard from '@/components/post-card'
@@ -11,7 +10,6 @@ import { type BlogPostCore } from '@/types'
 type PostsProps = {
   /**
    * The blog posts to display.
-   * @see {@link BlogPost}
    */
   posts: BlogPostCore[]
 }
