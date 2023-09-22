@@ -8,6 +8,8 @@ import site from '@/config/site'
 
 import Header from './header'
 
+export const runtime = 'edge'
+
 /**
  * The props of {@link ProjectPage}.
  */

@@ -3,7 +3,7 @@ import { type Endpoints } from '@octokit/types'
 import { NextResponse } from 'next/server'
 
 import site from '@/config/site'
-import { env } from '@/env.mjs'
+import { env } from '@/env'
 
 export const dynamic = 'force-dynamic'
 

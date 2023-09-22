@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import { createHash } from 'node:crypto'
 import { z } from 'zod'
 
-import { env } from '@/env.mjs'
+import { env } from '@/env'
 import prisma from '@/lib/prisma'
 
 const schema = z.object({

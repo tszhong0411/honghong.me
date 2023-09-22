@@ -5,6 +5,7 @@ import PageTitle from '@/components/page-title'
 import ProjectCard from '@/components/project-card'
 import site from '@/config/site'
 
+export const runtime = 'edge'
 const title = 'Projects'
 const description = 'The list of my projects.'
 

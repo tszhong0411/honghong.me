@@ -2,7 +2,7 @@ import { PrismaClient } from '@prisma/client'
 import dayjs from 'dayjs'
 import { NextResponse } from 'next/server'
 
-import { env } from '@/env.mjs'
+import { env } from '@/env'
 
 export const dynamic = 'force-dynamic'
 
@@ -15,7 +15,7 @@ export const GET = async () => {
     const result: [
       {
         /**
-         * Number of unique visitors in the last 5 minutes
+         * Number of unique visitors in the last 5 minutes.
          */
         x: bigint
       }
