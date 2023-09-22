@@ -53,7 +53,7 @@ jobs:
         run: yarn build
 
       - name: Install playwright
-        run: yarn playwright install
+        run: yarn playwright install --with-deps
 
       - name: E2E test
         run: yarn test:e2e
