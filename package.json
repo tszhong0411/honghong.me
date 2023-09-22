@@ -100,7 +100,7 @@
     "autoprefixer": "^10.4.16",
     "concurrently": "^8.2.1",
     "cross-env": "^7.0.3",
-    "eslint": "^8.49.0",
+    "eslint": "^8.50.0",
     "eslint-config-next": "^13.5.2",
     "eslint-plugin-jsdoc": "^46.8.2",
     "eslint-plugin-playwright": "^0.16.0",
