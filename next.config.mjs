@@ -10,11 +10,11 @@ const nextConfig = {
   },
 
   typescript: {
-    ignoreBuildErrors: process.env.CI === 'true'
+    ignoreBuildErrors: !!process.env.CI
   },
 
   eslint: {
-    ignoreDuringBuilds: process.env.CI === 'true'
+    ignoreDuringBuilds: !!process.env.CI
   },
 
   images: {

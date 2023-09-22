@@ -43,14 +43,28 @@ jobs:
       - name: Lint
         run: yarn lint
 
-      - name: Test
-        run: yarn test --coverage
+      - name: Unit test
+        run: yarn test:unit --coverage
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
 
       - name: Build app
         run: yarn build
+
+      - name: Install playwright
+        run: yarn playwright install
+
+      - name: E2E test
+        run: yarn test:e2e
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
 
       - name: Add comment to PR
         id: loading_comment_to_pr
