@@ -9,7 +9,7 @@ export const GET = () => {
     title: "Hong's Blog",
     description: 'A personal website and blog by Hong.',
     site_url: `${site.url}`,
-    feed_url: `${site.url}/feed.xml`,
+    feed_url: `${site.url}/rss.xml`,
     language: 'en-US',
     image_url: `${site.url}/images/og.png`
   })
