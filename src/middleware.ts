@@ -6,7 +6,7 @@ const middleware = () => {
     script-src 'self' 'unsafe-inline' 'unsafe-eval' giscus.app *.honghong.me vercel.live;
     style-src 'self' 'unsafe-inline';
     img-src * blob: data:;
-    font-src 'self';
+    font-src 'self' assets.vercel.com fonts.gstatic.com;
     object-src 'none';
     base-uri 'self';
     form-action 'self';
