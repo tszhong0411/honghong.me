@@ -4,95 +4,73 @@
 
 [![GitHub](https://img.shields.io/github/license/tszhong0411/honghong.me)](https://github.com/tszhong0411/honghong.me/blob/main/LICENSE)
 [![codecov](https://codecov.io/gh/tszhong0411/honghong.me/branch/main/graph/badge.svg)](https://codecov.io/gh/tszhong0411/honghong.me)
+[![CodeFactor](https://www.codefactor.io/repository/github/tszhong0411/honghong.me/badge)](https://www.codefactor.io/repository/github/tszhong0411/honghong.me)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=tszhong0411_honghong.me&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=tszhong0411_honghong.me)
 [![CI](https://github.com/tszhong0411/honghong.me/actions/workflows/ci.yml/badge.svg)](https://github.com/tszhong0411/honghong.me/actions/workflows/ci.yml)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/tszhong0411/honghong.me/blob/main/CONTRIBUTING.md)
 ![GitHub top language](https://img.shields.io/github/languages/top/tszhong0411/honghong.me)
 ![GitHub repo size](https://img.shields.io/github/repo-size/tszhong0411/honghong.me)
 
-# Hong's Personal Blog
-
 Welcome to my personal blog repository! This repository houses the code for my blog, where I share my thoughts, projects, and insights. Feel free to explore and get inspired.
 
-## ⚡️ Tech Stack
+## ✨ Features
 
-Here's a rundown of the technologies and tools I've used to build this blog:
+- ⚡️ Next.js 13.5.2 with App Router
+- 📝 MDX + Contentlayer
+- 🎨 Tailwind CSS - for styling
+- 🌈 Radix UI - accessible UI components
+- 🛡 Strict TypeScript and ESLint configuration
+- 📚 JSDoc comments for all functions
+- 📱 Responsive design
+- 🌗 Dark mode
+- 📈 SEO optimized with meta tags and JSON-LD
+- 📰 RSS feed
+- 🗺 Sitemap
+- 📊 Umami Analytics
+- 📝 Blog with comments, likes, and post views
+- 🔎 Blog post search
+- 📖 Table of contents for blog posts
+- 📷 Image zoom - zoom in on images in blog posts
+- 📝 Code syntax highlighting - for code blocks in blog posts
+- 🎨 Animation - using Framer Motion
+- 🤖 GitHub Actions for CI/CD
+- 🏠 LightHouse score of nearly 100
+- 🧪 Vitest - unit and integration tests
+- 🎭 Playwright - end-to-end tests
+- ☂️ Codecov - code coverage
+- 🔨 Husky & Lint Staged - lint and format code before committing
+- ✅ Conventional commit lint - make sure commit messages follow the conventional commit format
+- 🔒 NextAuth.js - authentication
+- 💄 Prettier - code formatting
+- ◮ Prisma - ORM
+- 👷🏻‍♂️ t3-env - validate environment variables before building
 
-| Name                     | Link                                                                      |
-| ------------------------ | ------------------------------------------------------------------------- |
-| Framework                | [Next.js](https://nextjs.org/)                                            |
-| Database                 | [Planetscale](https://planetscale.com/)                                   |
-| ORM                      | [Prisma](https://prisma.io/)                                              |
-| Authentication           | [NextAuth.js](https://next-auth.js.org/)                                  |
-| Deployment               | [Vercel](https://vercel.com)                                              |
-| Comments                 | [Giscus](https://giscus.app/)                                             |
-| Favicon                  | [realfavicongenerator](https://realfavicongenerator.net/)                 |
-| Content                  | [MDX](https://mdxjs.com/) + [Contentlayer](https://www.contentlayer.dev/) |
-| Analytics                | [Umami](https://github.com/umami-software/umami)                          |
-| Styling                  | [Tailwindcss](https://tailwindcss.com)                                    |
-| Code Syntax Highlighting | [Shiki](https://github.com/shikijs/shiki)                                 |
+## 🔨 Requirements
 
-## 😍 Features
-
-| Name                         | Description                                                                                                                                       |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Strict TypeScript and ESLint | Strict TypeScript and ESLint configuration to ensure code quality.                                                                                |
-| JSDoc                        | JSDoc comments for all functions.                                                                                                                 |
-| Prettier                     | Code formatting using [Prettier](https://prettier.io/).                                                                                           |
-| Radix UI                     | Built with [Radix UI](https://www.radix-ui.com/) components.                                                                                      |
-| NextAuth.js                  | Authentication using [NextAuth.js](https://next-auth.js.org/).                                                                                    |
-| App Directory                | Using app router.                                                                                                                                 |
-| Tailwindcss                  | Using [Tailwindcss](https://tailwindcss.com/) for styling.                                                                                        |
-| Next.js                      | Built with [Next.js](https://nextjs.org/) `13.5.2`.                                                                                               |
-| Prisma                       | Using [Prisma](https://prisma.io/) as the ORM.                                                                                                    |
-| SEO                          | SEO optimized with meta tags and JSON-LD.                                                                                                         |
-| RSS Feed                     | Subscribe to the RSS feed to get notified of new posts.                                                                                           |
-| Sitemap                      | Sitemap for search engines.                                                                                                                       |
-| Analytics                    | Track page views and visitor information.                                                                                                         |
-| Accessibility                | Accessible to all users.                                                                                                                          |
-| Testing                      | Unit tests using [Vitest](https://vitest.dev/) and [React Testing Library](https://testing-library.com/) and [MSW](https://github.com/mswjs/msw). |
-| CI/CD                        | Continuous integration and deployment using GitHub Actions.                                                                                       |
-| MDX                          | Write posts using [MDX](https://mdxjs.com/).                                                                                                      |
-| Like Button                  | Like posts using the like button.                                                                                                                 |
-| Post views                   | Track post views.                                                                                                                                 |
-| Table of Contents            | Generate table of contents for posts.                                                                                                             |
-| Comments                     | Comment on posts using [Giscus](https://giscus.app/).                                                                                             |
-| Search                       | Search for posts using the search bar.                                                                                                            |
-| Code Syntax Highlighting     | Highlight code blocks in posts.                                                                                                                   |
-| Environment Variables        | Validate environment variables with [t3-env](https://github.com/t3-oss/t3-env)                                                                    |
-| Animation                    | Animations using [Framer Motion](https://www.framer.com/motion/).                                                                                 |
-| Image zoom                   | Zoom in on images using [React Medium Image Zoom](https://github.com/rpearce/react-medium-image-zoom)                                             |
+- Node with [Corepack](https://github.com/nodejs/corepack), recommended `18.x`, minimum `16.9.0`
+- Yarn, recommended `3.6.3`, minimum `3.x`
+- MySQL, recommended `8.0`, minimum `5.6`
+- [Visual Studio Code](https://code.visualstudio.com/) with [recommended extensions](.vscode/extensions.json)
+- Optionally [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
 
 ## 👋 Getting Started
 
 Follow these steps to run the project locally on your machine:
 
-1. Clone the repository
-
 ```bash
 git clone https://github.com/tszhong0411/honghong.me.git
-```
-
-2. Navigate to the project directory
-
-```bash
 cd honghong.me
-```
-
-3. Install dependencies
-
-```bash
+corepack enable
 yarn install
 ```
 
-4. Configure environment variables
-
 Create a `.env.local` file based on the provided `.env.example` file and fill in the necessary variables.
-
-5. Run the development server
 
 ```bash
 yarn dev
 ```
+
+The app will become available at `http://localhost:3000`.
 
 ## ✈️ TODO
 
@@ -103,7 +81,7 @@ yarn dev
 
 ## 🔔 Important Note
 
-Hello there! While I'm glad to see you're interested in my open-source project, I kindly request that you refrain from using this source code as a template for your website. Instead, I encourage you to use it as a learning resource and an inspiration to create something unique.
+Hello there! While I'm glad to see you're interested in my open-source project, I kindly request that you refrain from using this source code as a template for your website. Instead, I encourage you to use it as a learning resource and as inspiration to create something unique.
 
 - **Originality**: Building something from scratch allows you to showcase your originality and creativity.
 - **Learning**: Creating your own project helps you learn and improve your skills.
