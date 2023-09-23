@@ -6,6 +6,8 @@
     "prisma.prisma",
     "bradlc.vscode-tailwindcss",
     "vunguyentuan.vscode-postcss",
-    "unifiedjs.vscode-mdx"
+    "unifiedjs.vscode-mdx",
+    "ms-playwright.playwright",
+    "gruntfuggly.todo-tree"
   ]
 }
