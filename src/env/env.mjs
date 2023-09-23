@@ -2,8 +2,9 @@
 import { createEnv } from '@t3-oss/env-nextjs'
 import { z } from 'zod'
 
+/* c8 ignore start */
 export const env = createEnv({
-  skipValidation: !!process.env.CI || process.env.NODE_ENV === 'test',
+  skipValidation: process.env.CI === 'true' || process.env.NODE_ENV === 'test',
   server: {
     SPOTIFY_CLIENT_ID: z.string().min(1),
     SPOTIFY_CLIENT_SECRET: z.string().min(1),
@@ -75,3 +76,4 @@ export const env = createEnv({
       process.env.NEXT_PUBLIC_UMAMI_WEBSITE_SHARE_URL
   }
 })
+/* c8 ignore stop */

@@ -42,3 +42,12 @@ next-env.d.ts
 
 # lighthouse
 .lighthouseci
+
+# yarn
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

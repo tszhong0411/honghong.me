@@ -10,6 +10,8 @@ env:
   CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
 jobs:
   ci:
@@ -29,14 +31,20 @@ jobs:
             exit 0
           fi
 
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Enable corepack
+        run: |
+          corepack enable
+          yarn set version stable
+
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Install Vercel
-        run: yarn global add vercel
-
       - name: Get production environment variables
-        run: vercel env pull .env --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+        run: yarn dlx vercel env pull .env --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Typecheck
         run: yarn type-check
@@ -49,6 +57,9 @@ jobs:
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
 
       - name: Build app
         run: yarn build

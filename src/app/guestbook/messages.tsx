@@ -36,16 +36,16 @@ type MessagesProps = {
 }
 
 /**
- * The props of {@link Date}.
+ * The props of {@link UpdatedDate}.
  */
-type DateProps = {
+type UpdatedDateProps = {
   /**
    * The date of the message to format.
    */
   date: Date
 }
 
-const Date = (props: DateProps) => {
+const UpdatedDate = (props: UpdatedDateProps) => {
   const { date } = props
   const [formattedDate, setFormattedDate] = React.useState('')
 
@@ -102,7 +102,7 @@ const Messages = (props: MessagesProps) => {
               </Avatar>
               <div className='flex flex-col justify-center gap-px text-sm'>
                 <div>{created_by}</div>
-                <Date date={updated_at} />
+                <UpdatedDate date={updated_at} />
               </div>
             </div>
             <div className='break-words pl-[52px]'>{body}</div>
