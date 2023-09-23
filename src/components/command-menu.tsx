@@ -80,12 +80,12 @@ const CommandMenu = () => {
           onSelect: () =>
             runCommand(async () => {
               if (!navigator?.clipboard) {
-                toast.error('Access to clipboard rejected!')
+                return toast.error('Access to clipboard rejected!')
               }
 
               try {
                 await navigator.clipboard.writeText(window.location.href)
-                toast.success(
+                return toast.success(
                   <div className='flex flex-col'>
                     <div>Copied</div>
                     <div className='text-sm text-muted-foreground'>
@@ -94,7 +94,7 @@ const CommandMenu = () => {
                   </div>
                 )
               } catch {
-                toast.error('Failed to copy!')
+                return toast.error('Failed to copy!')
               }
             })
         },
