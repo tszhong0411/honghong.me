@@ -77,26 +77,32 @@ const CommandMenu = () => {
         {
           title: 'Copy Link',
           icon: <IconLink size={16} className='mr-2' />,
-          onSelect: () =>
-            runCommand(async () => {
+          onSelect: () => {
+            runCommand(() => {
               if (!navigator?.clipboard) {
-                return toast.error('Access to clipboard rejected!')
+                toast.error('Access to clipboard rejected!')
+                return
               }
 
-              try {
-                await navigator.clipboard.writeText(window.location.href)
-                return toast.success(
-                  <div className='flex flex-col'>
-                    <div>Copied</div>
-                    <div className='text-sm text-muted-foreground'>
-                      You can now share it with anyone.
+              navigator.clipboard
+                .writeText(window.location.href)
+                // eslint-disable-next-line github/no-then
+                .then(() => {
+                  toast.success(
+                    <div className='flex flex-col'>
+                      <div>Copied</div>
+                      <div className='text-sm text-muted-foreground'>
+                        You can now share it with anyone.
+                      </div>
                     </div>
-                  </div>
-                )
-              } catch {
-                return toast.error('Failed to copy!')
-              }
+                  )
+                })
+                // eslint-disable-next-line github/no-then
+                .catch(() => {
+                  toast.error('Failed to copy!')
+                })
             })
+          }
         },
         {
           title: 'Source code',
