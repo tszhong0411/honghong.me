@@ -85,7 +85,7 @@
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.5.1",
     "@total-typescript/ts-reset": "^0.5.1",
-    "@tszhong0411/eslint-config": "^1.0.27",
+    "@tszhong0411/eslint-config": "^1.0.28",
     "@tszhong0411/prettier-config": "^1.0.7",
     "@tszhong0411/tsconfig": "^1.0.3",
     "@types/canvas-confetti": "^1.6.1",
@@ -118,7 +118,7 @@
     "vitest": "^0.34.5"
   },
   "engines": {
-    "node": ">= 16.8"
+    "node": ">= 16.9.0"
   },
   "browserslist": {
     "production": [
@@ -210,5 +210,6 @@
       "prettier -c"
     ]
   },
+  "packageManager": "yarn@3.6.3",
   "prettier": "@tszhong0411/prettier-config"
 }
