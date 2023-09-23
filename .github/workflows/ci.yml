@@ -31,14 +31,20 @@ jobs:
             exit 0
           fi
 
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Enable corepack
+        run: |
+          corepack enable
+          yarn set version stable
+
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Install Vercel
-        run: yarn global add vercel
-
       - name: Get production environment variables
-        run: vercel env pull .env --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+        run: yarn dlx vercel env pull .env --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Typecheck
         run: yarn type-check
