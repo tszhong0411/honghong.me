@@ -9,7 +9,7 @@ export default defineConfig({
     setupFiles: './src/tests/setup.ts',
     exclude: ['node_modules', './src/tests/e2e'],
     coverage: {
-      reporter: ['lcov']
+      reporter: ['lcov', 'html']
     }
   },
   resolve: {
