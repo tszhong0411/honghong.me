@@ -78,7 +78,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
-    "@octokit/types": "^11.1.0",
+    "@octokit/types": "^12.0.0",
     "@playwright/test": "^1.38.1",
     "@tailwindcss/typography": "^0.5.10",
     "@testing-library/jest-dom": "^6.1.3",
