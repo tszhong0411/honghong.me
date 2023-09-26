@@ -1968,9 +1968,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@radix-ui/react-avatar@npm:^1.0.3":
-  version: 1.0.3
-  resolution: "@radix-ui/react-avatar@npm:1.0.3"
+"@radix-ui/react-avatar@npm:^1.0.4":
+  version: 1.0.4
+  resolution: "@radix-ui/react-avatar@npm:1.0.4"
   dependencies:
     "@babel/runtime": ^7.13.10
     "@radix-ui/react-context": 1.0.1
@@ -1987,7 +1987,7 @@ __metadata:
       optional: true
     "@types/react-dom":
       optional: true
-  checksum: defd6070ca89d64f46017943bc444ac73ca4711f710b8fcb7152f5fb84cb05f39e7944d372695720929fa666cf9bc65ce95725c5a29d81f9e51aba59aed42ca2
+  checksum: 63b9c3d1637dea4bac74cb8f1b7825cb28921778e5e21365fe2e9569a1e4ee434a43b072789ce4a71af878b067c48bdb549d7eb8c193ed5750b8cf17cfbc418e
   languageName: node
   linkType: hard
 
@@ -7286,7 +7286,7 @@ __metadata:
     "@prisma/client": ^5.3.1
     "@radix-ui/react-alert-dialog": ^1.0.4
     "@radix-ui/react-aspect-ratio": ^1.0.3
-    "@radix-ui/react-avatar": ^1.0.3
+    "@radix-ui/react-avatar": ^1.0.4
     "@radix-ui/react-dialog": ^1.0.4
     "@radix-ui/react-dropdown-menu": ^2.0.5
     "@radix-ui/react-label": ^2.0.2
