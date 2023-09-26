@@ -2513,9 +2513,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@radix-ui/react-scroll-area@npm:^1.0.4":
-  version: 1.0.4
-  resolution: "@radix-ui/react-scroll-area@npm:1.0.4"
+"@radix-ui/react-scroll-area@npm:^1.0.5":
+  version: 1.0.5
+  resolution: "@radix-ui/react-scroll-area@npm:1.0.5"
   dependencies:
     "@babel/runtime": ^7.13.10
     "@radix-ui/number": 1.0.1
@@ -2537,7 +2537,7 @@ __metadata:
       optional: true
     "@types/react-dom":
       optional: true
-  checksum: f959006a731806f3046652b318b9a5dda03c8433832a33c3e29102ec0c9ce84c000060d4b5409a159c203276032cecd34ed88e7250ea70764ad8a67447415bf1
+  checksum: 1e0cf7af83ca61ef05ae664d529fa4922f02c148114d642fe1704f0361928b2785519ea091e242e61bda8feeab35bc6908ce754f679654a0d9e33c59046a67fa
   languageName: node
   linkType: hard
 
@@ -7290,7 +7290,7 @@ __metadata:
     "@radix-ui/react-dialog": ^1.0.4
     "@radix-ui/react-dropdown-menu": ^2.0.5
     "@radix-ui/react-label": ^2.0.2
-    "@radix-ui/react-scroll-area": ^1.0.4
+    "@radix-ui/react-scroll-area": ^1.0.5
     "@radix-ui/react-slot": ^1.0.2
     "@t3-oss/env-nextjs": ^0.6.1
     "@tabler/icons-react": ^2.35.0
