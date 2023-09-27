@@ -28,8 +28,8 @@ export const generateMetadata = async (
   _: UsesPageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> => {
-  const previousOpenGraph = (await parent)?.openGraph || {}
-  const previousTwitter = (await parent)?.twitter || {}
+  const previousOpenGraph = (await parent)?.openGraph ?? {}
+  const previousTwitter = (await parent)?.twitter ?? {}
 
   return {
     title,

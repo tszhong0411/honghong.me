@@ -1,3 +1,5 @@
+import React from 'react'
+
 import { AspectRatio } from '@/components/ui'
 import cn from '@/utils/cn'
 
@@ -17,18 +19,10 @@ type VideoProps = {
    * The height of the video.
    */
   height: number
-  /**
-   * Whether to show the controls of the video.
-   */
-  controls?: boolean
-  /**
-   * The classes to pass to the video.
-   */
-  className?: string
-}
+} & React.ComponentPropsWithoutRef<'video'>
 
 const Video = (props: VideoProps) => {
-  const { src, width, height, controls = true, className } = props
+  const { src, width, height, controls = true, className, ...rest } = props
 
   return (
     <AspectRatio ratio={16 / 9}>
@@ -40,6 +34,7 @@ const Video = (props: VideoProps) => {
         controls={controls}
         width={width}
         height={height}
+        {...rest}
       />
     </AspectRatio>
   )

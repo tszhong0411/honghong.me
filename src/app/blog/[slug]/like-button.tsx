@@ -57,7 +57,7 @@ const LikeButton = (props: LikeButtonProps) => {
     const targetCenterX = targetX + targetWidth / 2
     const confetti = (await import('canvas-confetti')).default
 
-    void confetti({
+    await confetti({
       zIndex: 999,
       particleCount: 100,
       spread: 100,
