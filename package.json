@@ -105,6 +105,7 @@
     "eslint-plugin-jsdoc": "^46.8.2",
     "eslint-plugin-playwright": "^0.16.0",
     "eslint-plugin-testing-library": "^6.0.1",
+    "fast-xml-parser": "^4.3.1",
     "husky": "^8.0.3",
     "jsdom": "^22.1.0",
     "lint-staged": "^14.0.1",
