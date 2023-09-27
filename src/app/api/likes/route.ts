@@ -12,7 +12,7 @@ const schema = z.object({
 
 const getSessionId = (slug: string, req: Request): string => {
   const ipAddress = req.headers.get('x-forwarded-for') ?? '0.0.0.0'
-  const currentUserId = createHash('md5')
+  const currentUserId = createHash('sha512')
     .update(ipAddress + env.IP_ADDRESS_SALT, 'utf8')
     .digest('hex')
 

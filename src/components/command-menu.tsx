@@ -46,7 +46,7 @@ type Groups = Array<{
     /**
      * The callback to run when the action is selected.
      */
-    onSelect: () => void
+    onSelect: () => void | Promise<void>
   }>
 }>
 
@@ -65,9 +65,9 @@ const CommandMenu = () => {
     return () => document.removeEventListener('keydown', down)
   }, [])
 
-  const runCommand = React.useCallback((command: () => void) => {
+  const openLink = React.useCallback((url: string) => {
     setOpen(false)
-    command()
+    window.open(url, '_blank', 'noopener')
   }, [])
 
   const groups: Groups = [
@@ -77,37 +77,32 @@ const CommandMenu = () => {
         {
           title: 'Copy Link',
           icon: <IconLink size={16} className='mr-2' />,
-          onSelect: () =>
-            runCommand(async () => {
-              if (!navigator?.clipboard) {
-                toast.error('Access to clipboard rejected!')
-              }
+          onSelect: async () => {
+            setOpen(false)
 
-              try {
-                await navigator.clipboard.writeText(window.location.href)
-                toast.success(
-                  <div className='flex flex-col'>
-                    <div>Copied</div>
-                    <div className='text-sm text-muted-foreground'>
-                      You can now share it with anyone.
-                    </div>
+            if (!navigator?.clipboard) {
+              toast.error('Access to clipboard rejected!')
+            }
+
+            try {
+              await navigator.clipboard.writeText(window.location.href)
+              toast.success(
+                <div className='flex flex-col'>
+                  <div>Copied</div>
+                  <div className='text-sm text-muted-foreground'>
+                    You can now share it with anyone.
                   </div>
-                )
-              } catch {
-                toast.error('Failed to copy!')
-              }
-            })
+                </div>
+              )
+            } catch {
+              toast.error('Failed to copy!')
+            }
+          }
         },
         {
           title: 'Source code',
           icon: <IconCode size={16} className='mr-2' />,
-          onSelect: () =>
-            runCommand(() =>
-              window.open(
-                'https://github.com/tszhong0411/honghong.me',
-                '_blank'
-              )
-            )
+          onSelect: () => openLink('https://github.com/tszhong0411/honghong.me')
         }
       ]
     },
@@ -117,34 +112,22 @@ const CommandMenu = () => {
         {
           title: 'GitHub',
           icon: <IconBrandGithub size={16} className='mr-2' />,
-          onSelect: () =>
-            runCommand(() =>
-              window.open('https://github.com/tszhong0411', '_blank')
-            )
+          onSelect: () => openLink('https://github.com/tszhong0411')
         },
         {
           title: 'Instagram',
           icon: <IconBrandInstagram size={16} className='mr-2' />,
-          onSelect: () =>
-            runCommand(() =>
-              window.open('https://instagram.com/tszhong0411/', '_blank')
-            )
+          onSelect: () => openLink('https://instagram.com/tszhong0411/')
         },
         {
           title: 'YouTube',
           icon: <IconBrandYoutube size={16} className='mr-2' />,
-          onSelect: () =>
-            runCommand(() =>
-              window.open('https://youtube.com/@tszhong0411', '_blank')
-            )
+          onSelect: () => openLink('https://youtube.com/@tszhong0411')
         },
         {
           title: 'Facebook',
           icon: <IconBrandFacebook size={16} className='mr-2' />,
-          onSelect: () =>
-            runCommand(() =>
-              window.open('https://www.facebook.com/tszhong0411/', '_blank')
-            )
+          onSelect: () => openLink('https://www.facebook.com/tszhong0411/')
         }
       ]
     }
@@ -158,7 +141,6 @@ const CommandMenu = () => {
         onClick={() => setOpen(true)}
         type='button'
         aria-label='Open Command Menu'
-        title='Open Command Menu'
       >
         <IconCommand size={20} />
       </Button>

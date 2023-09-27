@@ -21,7 +21,6 @@ const MobileNav = () => {
           className='flex h-9 w-9 items-center justify-center p-0 md:hidden'
           type='button'
           aria-label='Toggle menu'
-          title='Toggle menu'
           variant='ghost'
         >
           <IconMenu size={20} />

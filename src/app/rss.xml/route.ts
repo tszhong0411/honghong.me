@@ -14,9 +14,9 @@ export const GET = () => {
     image_url: `${site.url}/images/og.png`
   })
 
-  const allPosts = getAllPosts()
+  const posts = getAllPosts()
 
-  allPosts.map((post) => {
+  for (const post of posts) {
     const { title, summary, date, slug } = post
 
     feed.item({
@@ -26,7 +26,7 @@ export const GET = () => {
       description: summary,
       author: 'Hong'
     })
-  })
+  }
 
   return new NextResponse(feed.xml({ indent: true }), {
     headers: {
