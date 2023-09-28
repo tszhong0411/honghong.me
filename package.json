@@ -91,7 +91,7 @@
     "@types/canvas-confetti": "^1.6.1",
     "@types/mdx": "^2.0.7",
     "@types/node": "^20.6.5",
-    "@types/react": "^18.2.22",
+    "@types/react": "^18.2.23",
     "@types/react-dom": "^18.2.7",
     "@types/rss": "^0.0.30",
     "@vitejs/plugin-react": "^4.1.0",
