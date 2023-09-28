@@ -19,7 +19,7 @@ import {
   buttonVariants,
   Skeleton
 } from '@/components/ui'
-import { Messages } from '@/types'
+import { type Message } from '@/types'
 
 /**
  * The props of {@link Messages}.
@@ -32,7 +32,7 @@ type MessagesProps = {
   /**
    * The messages to display.
    */
-  messages: Messages
+  messages: Message[]
 }
 
 /**

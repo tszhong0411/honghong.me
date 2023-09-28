@@ -53,7 +53,11 @@ const CopyButton = (props: CopyButtonProps) => {
       type='button'
       aria-label='Copy code to clipboard'
     >
-      {isCopied ? <IconCheck size={16} /> : <IconCopy size={16} />}
+      {isCopied ? (
+        <IconCheck size={16} />
+      ) : (
+        <IconCopy data-testid='copy' size={16} />
+      )}
     </button>
   )
 }

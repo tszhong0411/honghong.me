@@ -31,6 +31,7 @@ const PostCard = (props: PostCardProps) => {
 
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
+  const background = useMotionTemplate`radial-gradient(650px circle at ${mouseX}px ${mouseY}px,rgba(255,255,255,0.1),transparent 80%)`
 
   React.useEffect(() => {
     setFormattedDate(dayjs(date).format('MMMM DD, YYYY'))
@@ -50,15 +51,7 @@ const PostCard = (props: PostCardProps) => {
     >
       <motion.div
         className='pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100'
-        style={{
-          background: useMotionTemplate`
-            radial-gradient(
-              650px circle at ${mouseX}px ${mouseY}px,
-              rgba(255,255,255,0.1),
-              transparent 80%
-            )
-          `
-        }}
+        style={{ background }}
       />
       <Image
         src={`/images/blog/${slug}/cover.png`}

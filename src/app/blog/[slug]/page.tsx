@@ -49,7 +49,7 @@ export const generateMetadata = async (
 
   const ISOPublishedTime = new Date(post.date).toISOString()
   const ISOModifiedTime = new Date(post.modifiedTime).toISOString()
-  const previousTwitter = (await parent)?.twitter || {}
+  const previousTwitter = (await parent)?.twitter ?? {}
 
   return {
     title: post.title,

@@ -10,5 +10,24 @@ export const handlers = [
 
   rest.get('/api/analytics', (_, res, ctx) =>
     res(ctx.status(200), ctx.json(visitors))
+  ),
+
+  rest.get('/api/views', (_, res, ctx) =>
+    res(
+      ctx.status(200),
+      ctx.json({
+        views: 0
+      })
+    )
+  ),
+
+  rest.get('/api/likes', (_, res, ctx) =>
+    res(
+      ctx.status(200),
+      ctx.json({
+        likes: 0,
+        currentUserLikes: 0
+      })
+    )
   )
 ]

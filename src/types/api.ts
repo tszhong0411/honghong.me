@@ -25,7 +25,7 @@ export type Likes = {
 /**
  * Guestbook.
  */
-export type Messages = Array<{
+export type Message = {
   /**
    * The id of the message.
    */
@@ -46,7 +46,7 @@ export type Messages = Array<{
    * The date the message was last updated.
    */
   updated_at: Date
-}>
+}
 
 /**
  * Spotify.

@@ -18,7 +18,7 @@ const Pre = (props: PreProps) => {
 
   React.useEffect(() => {
     if (textInput.current) {
-      setText(textInput.current.textContent || '')
+      setText(textInput.current.textContent ?? '')
     }
   }, [])
 

@@ -47,7 +47,7 @@ export const generateMetadata = async (
     return {}
   }
 
-  const previousTwitter = (await parent)?.twitter || {}
+  const previousTwitter = (await parent)?.twitter ?? {}
 
   return {
     title: project.name,
