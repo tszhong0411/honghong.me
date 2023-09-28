@@ -1,6 +1,5 @@
-import { render, screen, waitFor } from '@testing-library/react'
+import { screen, waitFor } from '@testing-library/react'
 import { rest } from 'msw'
-import { SWRConfig } from 'swr'
 
 import NowPlaying from '@/components/now-playing'
 
@@ -10,11 +9,7 @@ import { renderWithSWRConfig } from '../utils'
 
 describe('<NowPlaying />', () => {
   it('should have a link to the song when playing', async () => {
-    render(
-      <SWRConfig value={{ dedupingInterval: 0 }}>
-        <NowPlaying />
-      </SWRConfig>
-    )
+    renderWithSWRConfig(<NowPlaying />)
 
     await waitFor(() => {
       if (song.isPlaying) {
