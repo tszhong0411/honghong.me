@@ -54,7 +54,7 @@
     "hastscript": "^8.0.0",
     "marked": "^9.0.3",
     "next": "^13.5.3",
-    "next-auth": "0.0.0-manual.ffd05533",
+    "next-auth": "4.21.1",
     "next-contentlayer": "^0.3.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
