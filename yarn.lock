@@ -3261,10 +3261,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.6.5":
-  version: 20.6.5
-  resolution: "@types/node@npm:20.6.5"
-  checksum: b849e849cf7631458a65c5019c81962028e306d8c4455a48422277b240f5a7eb8a1f1dafa60306bd4c773b77263bb8b05c074b1026e868bd137bb2022cf63ea2
+"@types/node@npm:^20.7.1":
+  version: 20.7.1
+  resolution: "@types/node@npm:20.7.1"
+  checksum: 3140bd6c9130f1ed73a78ce7a1765ee43e155c1eea50eea45e18faeb31d11d97a84fffdc5e3a97582101d2f57d2652a50f510ede6c702780267bad74c822d56c
   languageName: node
   linkType: hard
 
@@ -7426,7 +7426,7 @@ __metadata:
     "@types/canvas-confetti": ^1.6.1
     "@types/hast": ^3.0.1
     "@types/mdx": ^2.0.7
-    "@types/node": ^20.6.5
+    "@types/node": ^20.7.1
     "@types/react": ^18.2.23
     "@types/react-dom": ^18.2.7
     "@types/rss": ^0.0.30
