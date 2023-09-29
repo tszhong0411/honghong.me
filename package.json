@@ -43,7 +43,7 @@
     "@t3-oss/env-nextjs": "^0.6.1",
     "@tabler/icons-react": "^2.35.0",
     "@types/hast": "^3.0.1",
-    "canvas-confetti": "^1.6.0",
+    "canvas-confetti": "^1.6.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "cmdk": "^0.2.0",
