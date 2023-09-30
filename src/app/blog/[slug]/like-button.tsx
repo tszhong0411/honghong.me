@@ -78,9 +78,9 @@ const LikeButton = (props: LikeButtonProps) => {
         body: JSON.stringify({ slug, count: value })
       })
 
-      const newData = await res.json()
+      const newData = (await res.json()) as Likes
 
-      void mutate(newData)
+      await mutate(newData)
     } catch {
       toast.error('Something went wrong')
     } finally {
@@ -95,7 +95,8 @@ const LikeButton = (props: LikeButtonProps) => {
     setCacheCount(value)
 
     if (data.currentUserLikes + cacheCount === 2) {
-      void handleConfetti()
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      handleConfetti()
     }
 
     return onLikeSaving(value)
