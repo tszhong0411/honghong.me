@@ -9,14 +9,7 @@ import { buttonVariants } from './button'
 
 const AlertDialog = AlertDialogPrimitive.Root
 const AlertDialogTrigger = AlertDialogPrimitive.Trigger
-
-const AlertDialogPortal = (
-  props: AlertDialogPrimitive.AlertDialogPortalProps
-) => {
-  const { className, ...rest } = props
-
-  return <AlertDialogPrimitive.Portal className={cn(className)} {...rest} />
-}
+const AlertDialogPortal = AlertDialogPrimitive.Portal
 
 const AlertDialogOverlay = React.forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Overlay>,

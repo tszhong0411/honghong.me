@@ -55,7 +55,8 @@ const Header = (props: HeaderProps) => {
       })
     }
 
-    void increment()
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    increment()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
