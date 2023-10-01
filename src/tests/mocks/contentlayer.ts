@@ -35,3 +35,27 @@ export const allBlogPosts = [
     date: '1990-01-05'
   }
 ]
+
+export const allPages = [
+  {
+    _id: 'foo',
+    _raw: 'foo',
+    type: 'pages',
+    body: 'foo',
+    slug: 'foo'
+  },
+  {
+    _id: 'bar',
+    _raw: 'bar',
+    type: 'pages',
+    body: 'bar',
+    slug: 'bar'
+  },
+  {
+    _id: 'baz',
+    _raw: 'baz',
+    type: 'pages',
+    body: 'baz',
+    slug: 'baz'
+  }
+]
