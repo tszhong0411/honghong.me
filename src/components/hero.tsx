@@ -20,7 +20,7 @@ const Hero = () => {
             sense of accomplishment when my code is recognized and appreciated.
           </p>
         </div>
-        <div className='h-20 w-20 md:h-28 md:w-28'>
+        <div className='relative h-20 w-20 md:h-28 md:w-28'>
           <Image
             src='/images/avatar.png'
             className='rounded-full'
@@ -30,6 +30,7 @@ const Hero = () => {
             loading='eager'
             priority
           />
+          <div className='absolute inset-0 -z-10 bg-gradient-to-tl from-purple-700 to-orange-700 opacity-0 blur-2xl md:opacity-50' />
         </div>
       </div>
       <div className='flex gap-6'>
