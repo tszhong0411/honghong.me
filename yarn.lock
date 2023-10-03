@@ -6419,14 +6419,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-xml-parser@npm:^4.3.1":
-  version: 4.3.1
-  resolution: "fast-xml-parser@npm:4.3.1"
+"fast-xml-parser@npm:^4.3.2":
+  version: 4.3.2
+  resolution: "fast-xml-parser@npm:4.3.2"
   dependencies:
     strnum: ^1.0.5
   bin:
     fxparser: src/cli/cli.js
-  checksum: eddd19dc95f907d9a932012e9ee6240d5d58f9f4a7179996cc0c5ef377bba15638cb025cf4e820f0895f3d4e6edd03d5e7efa675dcfbf895bb8e0f3355b98126
+  checksum: d507ce2efa5fd13d0a5ba28bd76dd68f2fc30ad8748357c37b70f360d19417866d79e35a688af067d5bceaaa796033fa985206aef9692f7a421e1326b6e73309
   languageName: node
   linkType: hard
 
@@ -7373,7 +7373,7 @@ __metadata:
     eslint-plugin-jsdoc: ^46.8.2
     eslint-plugin-playwright: ^0.16.0
     eslint-plugin-testing-library: ^6.0.2
-    fast-xml-parser: ^4.3.1
+    fast-xml-parser: ^4.3.2
     framer-motion: ^10.16.4
     github-slugger: ^2.0.0
     hastscript: ^8.0.0
