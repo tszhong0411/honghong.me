@@ -7380,7 +7380,7 @@ __metadata:
     husky: ^8.0.3
     jsdom: ^22.1.0
     lint-staged: ^14.0.1
-    marked: ^9.0.3
+    marked: ^9.1.0
     msw: ^1.3.2
     next: ^13.5.4
     next-auth: 0.0.0-manual.ffd05533
@@ -8877,12 +8877,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"marked@npm:^9.0.3":
-  version: 9.0.3
-  resolution: "marked@npm:9.0.3"
+"marked@npm:^9.1.0":
+  version: 9.1.0
+  resolution: "marked@npm:9.1.0"
   bin:
     marked: bin/marked.js
-  checksum: e10e0d36ed53f50e84727997daf2019b0931d31329cf0504f8b242baf8309255748f8e2cb79eb011862928432a91a941a3ceabca7919d20fbe9db2fd34283dc8
+  checksum: 452a5f564719c93a55136d77e6aa51852df9b24a4359c74d6b2c661bbb09fc8db1bb5ee0b9a8c0eb6d0ba22ec4a3af110bc97ba881e4ffae9f5e83c3ce2676d2
   languageName: node
   linkType: hard
 
