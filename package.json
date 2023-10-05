@@ -73,7 +73,7 @@
     "tailwindcss-animate": "^1.0.7",
     "unist-util-visit": "^5.0.0",
     "use-debounce": "^9.0.4",
-    "zod": "^3.22.3"
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.7.2",
