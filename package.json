@@ -40,7 +40,7 @@
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-scroll-area": "^1.0.5",
     "@radix-ui/react-slot": "^1.0.2",
-    "@t3-oss/env-nextjs": "^0.6.1",
+    "@t3-oss/env-nextjs": "^0.7.0",
     "@tabler/icons-react": "^2.38.0",
     "@types/hast": "^3.0.1",
     "canvas-confetti": "^1.8.0",
