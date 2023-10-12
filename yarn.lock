@@ -1768,24 +1768,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prisma/client@npm:^5.4.1":
-  version: 5.4.1
-  resolution: "@prisma/client@npm:5.4.1"
+"@prisma/client@npm:^5.4.2":
+  version: 5.4.2
+  resolution: "@prisma/client@npm:5.4.2"
   dependencies:
-    "@prisma/engines-version": 5.4.1-1.2f302df92bd8945e20ad4595a73def5b96afa54f
+    "@prisma/engines-version": 5.4.1-2.ac9d7041ed77bcc8a8dbd2ab6616b39013829574
   peerDependencies:
     prisma: "*"
   peerDependenciesMeta:
     prisma:
       optional: true
-  checksum: 4341c1ae488ae77794b319d6f27297aff31c33ef02cad0f6848f37717048169daacd8686c1911c420d1a2b78e239e00eec76abef3e38eb4278ee082431ec20ee
+  checksum: e01aebad95a6168668a214784e036ba4d6c6ac2c7eff35c7c3b1b729d2fc70b7f1addfce8a8550b24ffadf9be45538f2bd8a2257dfac9ec18d1d900437bf6660
   languageName: node
   linkType: hard
 
-"@prisma/engines-version@npm:5.4.1-1.2f302df92bd8945e20ad4595a73def5b96afa54f":
-  version: 5.4.1-1.2f302df92bd8945e20ad4595a73def5b96afa54f
-  resolution: "@prisma/engines-version@npm:5.4.1-1.2f302df92bd8945e20ad4595a73def5b96afa54f"
-  checksum: 9b4454681df60d48a5984a4e6dde08498c8ff1cacbefc5266926cb74a818a3f3a987d1e55b82d84cd1965f625cc09f7f86f5777ff4e942e961a9bdd773ead2d8
+"@prisma/engines-version@npm:5.4.1-2.ac9d7041ed77bcc8a8dbd2ab6616b39013829574":
+  version: 5.4.1-2.ac9d7041ed77bcc8a8dbd2ab6616b39013829574
+  resolution: "@prisma/engines-version@npm:5.4.1-2.ac9d7041ed77bcc8a8dbd2ab6616b39013829574"
+  checksum: 493f84e8856bf214c64177f879f7009740156492a3e1b42cd02e91eec273a5d290bfdde9ca32c361cd8a0616a33d903163582a51e44a79a6b6b318f72130517f
   languageName: node
   linkType: hard
 
@@ -7338,7 +7338,7 @@ __metadata:
     "@octokit/rest": ^20.0.2
     "@octokit/types": ^12.0.0
     "@playwright/test": ^1.38.1
-    "@prisma/client": ^5.4.1
+    "@prisma/client": ^5.4.2
     "@radix-ui/react-alert-dialog": ^1.0.5
     "@radix-ui/react-aspect-ratio": ^1.0.3
     "@radix-ui/react-avatar": ^1.0.4
