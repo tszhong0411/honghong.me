@@ -3,7 +3,7 @@ import {
   defineNestedType,
   makeSource
 } from 'contentlayer/source-files'
-import { type Root } from 'hast'
+import { type Element, type Root } from 'hast'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
@@ -161,6 +161,40 @@ const rehypeAddLanguageIconToCodeBlocks = () => {
   }
 }
 
+/**
+ * Adds a dark theme to code blocks.
+ * @returns A function that adds a dark theme to code blocks.
+ */
+const rehypeCodeBlocksDarkTheme = () => {
+  return (tree: Root) => {
+    visit(tree, 'element', (node, _, parent) => {
+      if (node.tagName !== 'pre' && node.tagName !== 'code') return
+      if (
+        node.tagName === 'code' &&
+        parent !== null &&
+        parent !== undefined &&
+        parent.type === 'element' &&
+        parent.tagName === 'pre'
+      )
+        return
+      if (!node.properties) return
+
+      const theme = node.properties['data-theme']
+
+      if (theme === undefined) return
+
+      Object.assign(node.properties, {
+        className: cn(
+          node.properties?.className,
+          theme === 'light'
+            ? 'dark:hidden'
+            : ['hidden', node.tagName === 'pre' ? 'dark:block' : 'dark:inline']
+        )
+      })
+    })
+  }
+}
+
 export default makeSource({
   contentDirPath: 'src/content',
   documentTypes: [Project, BlogPost, Pages],
@@ -204,12 +238,26 @@ export default makeSource({
       [
         rehypePrettyCode,
         {
-          theme: 'github-dark',
-          keepBackground: false
+          theme: {
+            light: 'github-light',
+            dark: 'github-dark'
+          },
+          keepBackground: false,
+          onVisitTitle: (element: Element) => {
+            const theme = element.properties?.['data-theme']
+
+            Object.assign(element.properties, {
+              className: cn(
+                element.properties?.className,
+                theme === 'light' ? 'dark:hidden' : ['hidden dark:flex']
+              )
+            })
+          }
         }
       ],
       [rehypeAddClassesToCodeBlocks, 'relative'],
-      rehypeAddLanguageIconToCodeBlocks
+      rehypeAddLanguageIconToCodeBlocks,
+      rehypeCodeBlocksDarkTheme
     ]
   }
 })

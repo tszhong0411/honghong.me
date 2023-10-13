@@ -121,13 +121,13 @@ const LikeButton = (props: LikeButtonProps) => {
         />
         <span
           className={cn([
-            'absolute inset-0.5 z-10 flex items-center justify-center gap-2 rounded-[7px] bg-background text-lg font-bold transition-[background-color] duration-150',
-            'group-hover:bg-transparent group-hover:text-foreground'
+            'absolute inset-0.5 z-10 flex items-center justify-center gap-2 rounded-md bg-background text-lg font-bold transition-[background-color] duration-150',
+            'group-hover:bg-transparent group-hover:text-background dark:group-hover:text-foreground'
           ])}
         >
           <IconHeart
             className={cn(
-              'group-hover:fill-foreground',
+              'group-hover:fill-background dark:group-hover:fill-foreground',
               data &&
                 data.currentUserLikes + cacheCount === 3 &&
                 'fill-foreground'

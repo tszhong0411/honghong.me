@@ -16,7 +16,7 @@ const Logo = () => {
       </div>
       <div className='relative flex h-52 w-full items-center justify-center rounded-lg border bg-black'>
         <CopyButton text={getLogoSVG('white')} />
-        <HongLogo width={48} height={48} />
+        <HongLogo className='text-white' width={48} height={48} />
       </div>
     </div>
   )

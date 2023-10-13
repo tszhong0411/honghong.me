@@ -2541,6 +2541,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@radix-ui/react-separator@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "@radix-ui/react-separator@npm:1.0.3"
+  dependencies:
+    "@babel/runtime": ^7.13.10
+    "@radix-ui/react-primitive": 1.0.3
+  peerDependencies:
+    "@types/react": "*"
+    "@types/react-dom": "*"
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    "@types/react-dom":
+      optional: true
+  checksum: 42f8c95e404de2ce9387040d78049808a48d423cd4c3bad8cca92c4b0bcbdcb3566b5b52a920d4e939a74b51188697f20a012221f0e630fc7f56de64096c15d2
+  languageName: node
+  linkType: hard
+
 "@radix-ui/react-slot@npm:1.0.0":
   version: 1.0.0
   resolution: "@radix-ui/react-slot@npm:1.0.0"
@@ -2913,9 +2933,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tszhong0411/eslint-config@npm:^1.0.28":
-  version: 1.0.28
-  resolution: "@tszhong0411/eslint-config@npm:1.0.28"
+"@tszhong0411/eslint-config@npm:1.0.30":
+  version: 1.0.30
+  resolution: "@tszhong0411/eslint-config@npm:1.0.30"
   dependencies:
     "@typescript-eslint/eslint-plugin": ^6.0.0
     "@typescript-eslint/parser": ^6.0.0
@@ -2932,7 +2952,7 @@ __metadata:
     eslint-plugin-unused-imports: ^3.0.0
   peerDependencies:
     eslint: 8.x
-  checksum: 338241da216b11a3cd1d8b10c3b7dcdd404d8e0eaba8261f09e31046c6db8da4ec0405d4cbcaa6ffb77d1b87d956856cca64520c6ff1c806fff9832e2effe96a
+  checksum: 838b2b742e0b79b0e4b7ee168b557c998c41bfa2de68f5ca9a38859f13f584447c9c896745825142bba5d5ed0f43f7d41996488e69ad918bb9706827693fd1f4
   languageName: node
   linkType: hard
 
@@ -7344,6 +7364,7 @@ __metadata:
     "@radix-ui/react-dropdown-menu": ^2.0.6
     "@radix-ui/react-label": ^2.0.2
     "@radix-ui/react-scroll-area": ^1.0.5
+    "@radix-ui/react-separator": ^1.0.3
     "@radix-ui/react-slot": ^1.0.2
     "@t3-oss/env-nextjs": ^0.7.0
     "@tabler/icons-react": ^2.38.0
@@ -7352,7 +7373,7 @@ __metadata:
     "@testing-library/react": ^14.0.0
     "@testing-library/user-event": ^14.5.1
     "@total-typescript/ts-reset": ^0.5.1
-    "@tszhong0411/eslint-config": ^1.0.28
+    "@tszhong0411/eslint-config": 1.0.30
     "@tszhong0411/prettier-config": ^1.0.7
     "@tszhong0411/tsconfig": ^1.0.3
     "@types/canvas-confetti": ^1.6.1
@@ -7391,6 +7412,7 @@ __metadata:
     next: ^13.5.4
     next-auth: 0.0.0-manual.ffd05533
     next-contentlayer: ^0.3.4
+    next-themes: ^0.2.1
     postcss: ^8.4.31
     prettier: ^3.0.3
     prisma: ^5.4.1
@@ -10018,6 +10040,17 @@ __metadata:
     react: "*"
     react-dom: "*"
   checksum: fd741aa5fcefe545dedbe34780e05a18fd2ce7b3620e5d528358dfe3152fa9d795fbc68738ffa6d001db1c7de9e0500f06bc6600dfdd37b4f831158f9c6f0832
+  languageName: node
+  linkType: hard
+
+"next-themes@npm:^0.2.1":
+  version: 0.2.1
+  resolution: "next-themes@npm:0.2.1"
+  peerDependencies:
+    next: "*"
+    react: "*"
+    react-dom: "*"
+  checksum: ebc248b956138e73436c4ed0a0f0a877a0a48a33156db577029b8b8469e48b5c777d61abf2baeb75953378febea74e067a4869ff90b4a3e94fce123289b862ba
   languageName: node
   linkType: hard
 

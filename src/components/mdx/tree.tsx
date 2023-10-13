@@ -43,7 +43,7 @@ type InnerType = {
 
 const Tree = (props: TreeProps) => {
   return (
-    <div className='rounded-lg border bg-zinc-900 px-6 py-4'>
+    <div className='rounded-lg border bg-pre px-6 py-4'>
       <Inner {...props} level={0} />
     </div>
   )

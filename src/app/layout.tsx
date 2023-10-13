@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Fira_Code, Inter } from 'next/font/google'
 import localFont from 'next/font/local'
+import Image from 'next/image'
 
 import '@/styles/globals.css'
 import Analytics from '@/components/analytics'
@@ -9,6 +10,8 @@ import Header from '@/components/header'
 import Toaster from '@/components/toaster'
 import site from '@/config/site'
 import cn from '@/utils/cn'
+
+import Providers from './providers'
 
 /**
  * The props of {@link RootLayout}.
@@ -117,20 +120,36 @@ const RootLayout = (props: RootLayoutProps) => {
         inter.variable,
         firaCode.variable,
         calcom.variable,
-        'dark scroll-smooth'
+        'scroll-smooth'
       )}
+      suppressHydrationWarning
     >
-      <body className='font-default'>
-        <Header />
-        <main
-          id='skip-nav'
-          className='relative mx-auto mb-16 max-w-5xl px-8 py-24'
-        >
-          {children}
-        </main>
-        <Toaster />
-        <Footer />
-        <Analytics />
+      <body className='relative font-default'>
+        <Providers>
+          <Header />
+          <main id='skip-nav' className='mx-auto mb-16 max-w-5xl px-8 py-24'>
+            {children}
+          </main>
+          <Toaster />
+          <Footer />
+          <Analytics />
+          <Image
+            width={1512}
+            height={550}
+            className='absolute left-1/2 top-0 -z-10 -translate-x-1/2'
+            src='/images/gradient-background-top.png'
+            alt='Gradient background'
+            priority
+          />
+          <Image
+            width={1512}
+            height={447}
+            className='absolute bottom-0 left-1/2 -z-10 -translate-x-1/2'
+            src='/images/gradient-background-bottom.png'
+            alt='Gradient background'
+            priority
+          />
+        </Providers>
       </body>
     </html>
   )

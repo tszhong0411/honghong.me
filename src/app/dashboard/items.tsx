@@ -104,11 +104,11 @@ const Items = () => {
       title: 'GitHub Followers',
       link: 'https://github.com/tszhong0411',
       value: githubData?.followers,
-      icon: <IconGitHub />,
+      icon: <IconGitHub className='text-[#fee000]' />,
       linkText: 'GitHub',
       gradient: {
-        startColor: '#ffffff',
-        endColor: '#e2e2e2'
+        startColor: '#fee000',
+        endColor: '#ffce63'
       }
     },
     {
