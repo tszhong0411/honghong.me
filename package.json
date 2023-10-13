@@ -67,7 +67,7 @@
     "remark-gfm": "^3.0.1",
     "rss": "^1.2.2",
     "sharp": "^0.32.6",
-    "shiki": "^0.14.4",
+    "shiki": "^0.14.5",
     "swr": "^2.2.4",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7",
