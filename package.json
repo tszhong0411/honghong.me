@@ -17,7 +17,7 @@
     "format": "prettier -w .",
     "preinstall": "npx only-allow yarn",
     "postinstall": "prisma generate && contentlayer build",
-    "lint": "eslint .",
+    "lint": "next lint",
     "lint:fix": "eslint --fix .",
     "prepare": "husky install",
     "start": "next start",
