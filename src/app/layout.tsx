@@ -127,7 +127,10 @@ const RootLayout = (props: RootLayoutProps) => {
       <body className='relative font-default'>
         <Providers>
           <Header />
-          <main id='skip-nav' className='mx-auto mb-16 max-w-5xl px-8 py-24'>
+          <main
+            id='skip-nav'
+            className='mx-auto mb-16 max-w-5xl px-6 py-24 sm:px-8'
+          >
             {children}
           </main>
           <Toaster />
