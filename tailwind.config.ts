@@ -4,6 +4,7 @@ import { fontFamily } from 'tailwindcss/defaultTheme'
 import animate from 'tailwindcss-animate'
 
 export default {
+  darkMode: 'class',
   content: ['./src/**/*.{js,ts,jsx,tsx}', './contentlayer.config.ts'],
   theme: {
     container: {
@@ -18,6 +19,7 @@ export default {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
+        pre: 'hsl(var(--pre))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         primary: {
@@ -59,10 +61,6 @@ export default {
         'fira-code': ['var(--font-fira-code)', ...fontFamily.sans],
         calcom: ['var(--font-calcom)', ...fontFamily.sans]
       },
-      backgroundImage: {
-        'rainbow-gradient':
-          'linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%)'
-      },
       keyframes: {
         'accordion-down': {
           from: { height: '0' },
@@ -77,7 +75,7 @@ export default {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out'
       },
-      typography: (theme: (value: string) => void) => ({
+      typography: {
         DEFAULT: {
           css: {
             'h2, h3, h4, h5, h6': {
@@ -98,15 +96,15 @@ export default {
               borderRadius: '0.375rem',
               display: 'inline-block',
               lineHeight: '1.2',
-              background: '#2a2828',
-              border: '1px solid #3e3c3c',
+              background: '#f7f7f7',
+              border: '1px solid #ededed',
 
               '&::before, &::after': {
                 content: 'none'
               }
             },
             pre: {
-              background: theme('colors.zinc.900'),
+              background: 'hsl(var(--pre))',
               padding: '12px 0',
               lineHeight: 2,
               border: '1px solid hsl(var(--border))',
@@ -131,12 +129,12 @@ export default {
                   '> [data-highlighted-chars]': {
                     padding: '2px 4px',
                     borderRadius: '0.25rem',
-                    background: '#3c3c3c'
+                    background: '#e3e3e3'
                   }
                 },
                 '> [data-highlighted-line]': {
                   borderLeftColor: 'hsl(var(--foreground))',
-                  background: '#3c3c3c'
+                  background: '#e3e3e3'
                 }
               }
             },
@@ -144,7 +142,7 @@ export default {
               top: '60px !important'
             },
             '[data-rehype-pretty-code-title]': {
-              backgroundColor: theme('colors.zinc.900'),
+              backgroundColor: 'hsl(var(--pre))',
               border: '1px solid hsl(var(--border))',
               borderTopLeftRadius: '8px',
               borderTopRightRadius: '8px',
@@ -161,8 +159,28 @@ export default {
               borderTopWidth: '0'
             }
           }
+        },
+        invert: {
+          css: {
+            ':not(pre) > code': {
+              background: '#2a2828',
+              border: '1px solid #3e3c3c'
+            },
+            pre: {
+              '> code': {
+                '> [data-line]': {
+                  '> [data-highlighted-chars]': {
+                    background: '#3c3c3c'
+                  }
+                },
+                '> [data-highlighted-line]': {
+                  background: '#3c3c3c'
+                }
+              }
+            }
+          }
         }
-      })
+      }
     }
   },
   plugins: [typography, animate]

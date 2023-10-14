@@ -16,6 +16,7 @@ import {
 } from '@/components/ui'
 
 import ImageZoom from '../image-zoom'
+import Signature from '../signature'
 import Image from './image'
 import ItemGrid from './item-grid'
 import Link from './link'
@@ -77,7 +78,8 @@ const components: MDXComponents = {
   Tree,
   Video,
   LinkCard,
-  Logo
+  Logo,
+  Signature
 }
 
 const Mdx = (props: MdxProps) => {
@@ -85,7 +87,7 @@ const Mdx = (props: MdxProps) => {
   const Component = useMDXComponent(code)
 
   return (
-    <div className='prose prose-invert w-full max-w-none'>
+    <div className='prose w-full max-w-none dark:prose-invert'>
       <Component components={{ ...components }} />
     </div>
   )

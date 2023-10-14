@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion'
 
+import { Separator } from './ui/separator'
+
 /**
  * The props of {@link PageTitle}.
  */
@@ -35,9 +37,9 @@ const PageTitle = (props: PageTitleProps) => {
   const { title, description, animate = true } = props
 
   return (
-    <>
+    <div className='mb-24 mt-12'>
       <motion.h2
-        className='my-4 text-4xl font-bold'
+        className='my-4 text-4xl font-bold md:text-5xl'
         {...(animate && {
           initial: animation.hide,
           animate: animation.show
@@ -57,7 +59,8 @@ const PageTitle = (props: PageTitleProps) => {
       >
         {description}
       </motion.p>
-    </>
+      <Separator className='absolute inset-x-0 translate-y-6' />
+    </div>
   )
 }
 
