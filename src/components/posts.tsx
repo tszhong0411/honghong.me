@@ -1,8 +1,9 @@
 import { IconArrowRight } from '@tabler/icons-react'
 import Link from 'next/link'
 
-import PostCard from '@/components/post-card'
 import { type BlogPostCore } from '@/types'
+
+import PostCards from './post-cards'
 
 /**
  * The props of {@link Posts}.
@@ -20,11 +21,7 @@ const Posts = (props: PostsProps) => {
   return (
     <>
       <h2 className='mb-8 text-3xl font-bold'>Posts</h2>
-      <div className='grid gap-4 sm:grid-cols-2'>
-        {posts.map((post) => (
-          <PostCard key={post._id} {...post} />
-        ))}
-      </div>
+      <PostCards posts={posts} />
       <div className='flex'>
         <Link
           href='/blog'

@@ -1,7 +1,5 @@
 'use client'
-
 import dayjs from 'dayjs'
-import { motion, useMotionTemplate, useMotionValue } from 'framer-motion'
 import Link from 'next/link'
 import React from 'react'
 import useSWR from 'swr'
@@ -9,8 +7,46 @@ import useSWR from 'swr'
 import { Skeleton } from '@/components/ui'
 import fetcher from '@/lib/fetcher'
 import { type BlogPostCore, type Likes, type Views } from '@/types'
+import cn from '@/utils/cn'
 
 import Image from './mdx/image'
+
+/**
+ * The props of {@link PostCards}.
+ */
+type PostCardsProps = {
+  /**
+   * The blog posts to display.
+   */
+  posts: BlogPostCore[]
+}
+
+const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  for (const card of document.querySelectorAll('[data-id="post-card"]')) {
+    const target = card as HTMLDivElement
+    const rect = card.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+
+    target.style.setProperty('--mouse-x', `${x}px`)
+    target.style.setProperty('--mouse-y', `${y}px`)
+  }
+}
+
+const PostCards = (props: PostCardsProps) => {
+  const { posts } = props
+
+  return (
+    <div
+      className='group grid gap-4 sm:grid-cols-2'
+      onMouseMove={handleMouseMove}
+    >
+      {posts.map((post) => (
+        <PostCard key={post._id} {...post} />
+      ))}
+    </div>
+  )
+}
 
 /**
  * The props of {@link PostCard}.
@@ -29,10 +65,6 @@ const PostCard = (props: PostCardProps) => {
     fetcher
   )
 
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
-  const background = useMotionTemplate`radial-gradient(650px circle at ${mouseX}px ${mouseY}px,rgba(255,255,255,0.1),transparent 80%)`
-
   React.useEffect(() => {
     setFormattedDate(dayjs(date).format('MMMM DD, YYYY'))
   }, [date])
@@ -41,18 +73,15 @@ const PostCard = (props: PostCardProps) => {
     <Link
       key={_id}
       href={`/blog/${slug}`}
-      className='group relative flex flex-col space-y-3 rounded-2xl border p-6'
-      onMouseMove={(e) => {
-        const { left, top } = e.currentTarget.getBoundingClientRect()
-
-        mouseX.set(e.clientX - left)
-        mouseY.set(e.clientY - top)
-      }}
+      className={cn(
+        'relative flex flex-col space-y-3 rounded-2xl border p-6 group-hover:after:opacity-100',
+        'hover:before:opacity-100',
+        'before:absolute before:inset-0 before:-z-10 before:rounded-[inherit] before:bg-[radial-gradient(800px_circle_at_var(--mouse-x)_var(--mouse-y),_rgba(255,_255,_255,_0.06),transparent_40%)] before:opacity-0 before:transition-opacity before:duration-500',
+        'after:absolute after:inset-0 after:-z-30 after:rounded-[inherit] after:bg-[radial-gradient(600px_circle_at_var(--mouse-x)_var(--mouse-y),_rgba(255,_255,_255,_0.4),transparent_40%)] after:opacity-0 after:transition-opacity after:duration-500'
+      )}
+      data-id='post-card'
     >
-      <motion.div
-        className='pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100'
-        style={{ background }}
-      />
+      <div className='absolute inset-px -z-20 rounded-[inherit] bg-background' />
       <Image
         src={`/images/blog/${slug}/cover.png`}
         className='rounded-lg'
@@ -83,4 +112,4 @@ const PostCard = (props: PostCardProps) => {
   )
 }
 
-export default PostCard
+export default PostCards

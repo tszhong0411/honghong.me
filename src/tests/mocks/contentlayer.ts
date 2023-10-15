@@ -30,7 +30,7 @@ export const allBlogPosts = [
   {
     _id: 'quux',
     slug: 'quux',
-    title: 'quux',
+    title: 'Quux',
     summary: 'quux',
     date: '1990-01-05'
   }
