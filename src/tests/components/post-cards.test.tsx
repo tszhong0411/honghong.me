@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import dayjs from 'dayjs'
 
 import PostCards from '@/components/post-cards'
@@ -23,5 +23,23 @@ describe('<PostCard />', () => {
 
     expect((await screen.findAllByText('0 likes')).length).toBe(posts.length)
     expect((await screen.findAllByText('0 views')).length).toBe(posts.length)
+  })
+
+  it('updates mouseX and mouseY on mouse move', () => {
+    renderWithSWRConfig(<PostCards posts={posts} />)
+
+    const cards = screen.getByTestId('post-cards')
+
+    fireEvent.mouseMove(cards, {
+      clientX: 50,
+      clientY: 50
+    })
+
+    for (const link of screen.getAllByRole('link')) {
+      expect(link).toHaveStyle({
+        '--mouse-x': '50px',
+        '--mouse-y': '50px'
+      })
+    }
   })
 })
