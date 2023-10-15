@@ -16,7 +16,6 @@ import {
 } from '@/components/ui'
 
 import ImageZoom from '../image-zoom'
-import Signature from '../signature'
 import Image from './image'
 import ItemGrid from './item-grid'
 import Link from './link'
@@ -78,8 +77,7 @@ const components: MDXComponents = {
   Tree,
   Video,
   LinkCard,
-  Logo,
-  Signature
+  Logo
 }
 
 const Mdx = (props: MdxProps) => {
