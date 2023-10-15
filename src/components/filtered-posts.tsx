@@ -6,7 +6,7 @@ import React from 'react'
 import { Input, Label } from '@/components/ui'
 import { type BlogPostCore } from '@/types'
 
-import PostCard from './post-card'
+import PostCards from './post-cards'
 
 /**
  * The props of {@link FilteredPosts}.
@@ -48,11 +48,7 @@ const FilteredPosts = (props: FilteredPostsProps) => {
       {filteredPosts.length === 0 && (
         <div className='my-24 text-center text-xl'>No posts found</div>
       )}
-      <div className='grid gap-4 sm:grid-cols-2'>
-        {filteredPosts.map((post) => (
-          <PostCard key={post._id} {...post} />
-        ))}
-      </div>
+      <PostCards posts={filteredPosts} />
     </>
   )
 }

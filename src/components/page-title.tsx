@@ -37,7 +37,7 @@ const PageTitle = (props: PageTitleProps) => {
   const { title, description, animate = true } = props
 
   return (
-    <div className='mb-24 mt-12'>
+    <div className='mb-16 mt-6 sm:mb-24 sm:mt-12'>
       <motion.h2
         className='my-4 text-4xl font-bold md:text-5xl'
         {...(animate && {
@@ -59,7 +59,7 @@ const PageTitle = (props: PageTitleProps) => {
       >
         {description}
       </motion.p>
-      <Separator className='absolute inset-x-0 translate-y-6' />
+      <Separator className='absolute inset-x-0 translate-y-2 sm:translate-y-6' />
     </div>
   )
 }

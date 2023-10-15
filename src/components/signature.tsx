@@ -1,11 +1,13 @@
 import React from 'react'
 
 const Signature = (props: React.SVGAttributes<SVGElement>) => {
+  const { width = 443 } = props
+
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
-      width='443'
-      height='346'
+      width={width}
+      height={(Number(width) / 443) * 346}
       viewBox='0 0 443 346'
       fill='currentColor'
       {...props}
