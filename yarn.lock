@@ -345,12 +345,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/config-conventional@npm:^17.7.0":
-  version: 17.7.0
-  resolution: "@commitlint/config-conventional@npm:17.7.0"
+"@commitlint/config-conventional@npm:^17.8.0":
+  version: 17.8.0
+  resolution: "@commitlint/config-conventional@npm:17.8.0"
   dependencies:
     conventional-changelog-conventionalcommits: ^6.1.0
-  checksum: 932cf35c12855e360c750bc19ffedc0925f8658f316aaacdf5441ce775712934386643a9ac418f18e24e5bb1bf71ed721b8ae452a13d04908b0e55cd3d2d988f
+  checksum: 33a6f7867e0ef6b39a34246a615a75ea4eaab76852d00ffee8c28560fe0786cf56a4f20d747d2f56b28a4bddc3637a5bf7948b465744edcd890b9c2337a2c741
   languageName: node
   linkType: hard
 
@@ -7353,7 +7353,7 @@ __metadata:
   resolution: "honghong.me@workspace:."
   dependencies:
     "@commitlint/cli": ^17.7.2
-    "@commitlint/config-conventional": ^17.7.0
+    "@commitlint/config-conventional": ^17.8.0
     "@giscus/react": ^2.3.0
     "@octokit/rest": ^20.0.2
     "@octokit/types": ^12.0.0
