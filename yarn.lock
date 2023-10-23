@@ -3100,12 +3100,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/hast@npm:^3.0.0, @types/hast@npm:^3.0.1":
+"@types/hast@npm:^3.0.0":
   version: 3.0.1
   resolution: "@types/hast@npm:3.0.1"
   dependencies:
     "@types/unist": "*"
   checksum: b7ae475436575273dcc7e6d724f50e7fae86ba42f11fabf74243ac3db37379974fe017582a92ef2e00028cc6299690c6fdd8e15823ac9e68ee745c6258efa1f0
+  languageName: node
+  linkType: hard
+
+"@types/hast@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "@types/hast@npm:3.0.2"
+  dependencies:
+    "@types/unist": "*"
+  checksum: d9fbe723e9cbb7e0b060822d78614c03210cdbf6d75123256026e2b3461b9c01f025f8c743da25d4dcfa35ac37bb9bbb5bec184a7bd2cb6655ee726fb0f6dfbe
   languageName: node
   linkType: hard
 
@@ -7379,7 +7388,7 @@ __metadata:
     "@tszhong0411/prettier-config": ^1.0.7
     "@tszhong0411/tsconfig": ^1.0.3
     "@types/canvas-confetti": ^1.6.1
-    "@types/hast": ^3.0.1
+    "@types/hast": ^3.0.2
     "@types/mdx": ^2.0.8
     "@types/node": ^20.8.7
     "@types/react": ^18.2.28
