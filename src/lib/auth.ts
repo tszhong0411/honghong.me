@@ -15,10 +15,6 @@ declare module 'next-auth' {
      */
     user: {
       /**
-       * The user's id.
-       */
-      id: string
-      /**
        * The user's email.
        */
       email: string
@@ -29,7 +25,7 @@ declare module 'next-auth' {
       /**
        * The user's picture.
        */
-      picture: string | null
+      image: string | null
     }
   }
 }
