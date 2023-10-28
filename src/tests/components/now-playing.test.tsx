@@ -1,5 +1,5 @@
 import { screen, waitFor } from '@testing-library/react'
-import { rest } from 'msw'
+import { http } from 'msw'
 
 import NowPlaying from '@/components/now-playing'
 
@@ -24,8 +24,10 @@ describe('<NowPlaying />', () => {
 
   it('should have no link when not playing', async () => {
     server.use(
-      rest.get('/api/spotify', (_, res, ctx) =>
-        res(ctx.status(200), ctx.json(songPaused))
+      http.get('/api/spotify', () =>
+        Response.json(songPaused, {
+          status: 200
+        })
       )
     )
 

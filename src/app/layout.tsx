@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Fira_Code, Inter } from 'next/font/google'
 import localFont from 'next/font/local'
 import Image from 'next/image'
@@ -53,16 +53,6 @@ export const metadata: Metadata = {
     images: [`${site.url}/images/og.png`]
   },
   keywords: site.keywords,
-  themeColor: [
-    {
-      media: '(prefers-color-scheme: light)',
-      color: '#ffffff'
-    },
-    {
-      media: '(prefers-color-scheme: dark)',
-      color: '#000000'
-    }
-  ],
   creator: 'tszhong0411',
   openGraph: {
     url: site.url,
@@ -93,6 +83,19 @@ export const metadata: Metadata = {
     ],
     other: [...site.favicons]
   }
+}
+
+export const viewport: Viewport = {
+  themeColor: [
+    {
+      media: '(prefers-color-scheme: light)',
+      color: '#ffffff'
+    },
+    {
+      media: '(prefers-color-scheme: dark)',
+      color: '#000000'
+    }
+  ]
 }
 
 const inter = Inter({

@@ -5,10 +5,6 @@ import './src/env/env.mjs'
 // eslint-disable-next-line jsdoc/check-tag-names
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    serverActions: true
-  },
-
   typescript: {
     ignoreBuildErrors: !!process.env.CI
   },
@@ -18,7 +14,12 @@ const nextConfig = {
   },
 
   images: {
-    domains: ['avatars.githubusercontent.com']
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com'
+      }
+    ]
   },
 
   webpack: (config) => {
