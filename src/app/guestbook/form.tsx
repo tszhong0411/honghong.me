@@ -56,7 +56,7 @@ const Form = (props: FormProps) => {
       <div className='mb-2 flex gap-3'>
         <Avatar>
           <AvatarImage
-            src={user.picture as string}
+            src={user.image as string}
             width={40}
             height={40}
             alt={user.name as string}

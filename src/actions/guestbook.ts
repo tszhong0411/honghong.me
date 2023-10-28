@@ -58,7 +58,7 @@ export const createMessage = async (message: string) => {
 
   const email = user.email
   const name = user.name as string
-  const image = user.picture as string
+  const image = user.image as string
 
   if (!message) {
     throw new Error('Message cannot be empty')
