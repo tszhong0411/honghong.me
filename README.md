@@ -15,7 +15,7 @@ Welcome to my personal blog repository! This repository houses the code for my b
 
 ## ✨ Features
 
-- ⚡️ Next.js 13.5.2 with App Router
+- ⚡️ Next.js 14 with App Router
 - 📝 MDX + Contentlayer
 - 🎨 Tailwind CSS - for styling
 - 🌈 Radix UI - accessible UI components
