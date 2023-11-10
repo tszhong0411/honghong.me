@@ -1214,16 +1214,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mswjs/cookies@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@mswjs/cookies@npm:1.0.0"
-  checksum: c65a90bcacf125e171cbc7ee4c4cf3b59b9274e163eed07a0aa31c8938cdbb78bdc4fe8b3a48caaac635fa7ebb5a654d564fd36a982f08e3a09c04c5ec1dc554
+"@mswjs/cookies@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@mswjs/cookies@npm:1.1.0"
+  checksum: c8442b77f4d4f72c63a29049bbd33e7f9d85517471c09e1a1a71f424e5261feee5311b096d42d4447a51f199017b2227feb2b5dd77da83b733917560ace58940
   languageName: node
   linkType: hard
 
-"@mswjs/interceptors@npm:^0.25.1":
-  version: 0.25.7
-  resolution: "@mswjs/interceptors@npm:0.25.7"
+"@mswjs/interceptors@npm:^0.25.11":
+  version: 0.25.11
+  resolution: "@mswjs/interceptors@npm:0.25.11"
   dependencies:
     "@open-draft/deferred-promise": "npm:^2.2.0"
     "@open-draft/logger": "npm:^0.3.0"
@@ -1231,7 +1231,7 @@ __metadata:
     is-node-process: "npm:^1.2.0"
     outvariant: "npm:^1.2.1"
     strict-event-emitter: "npm:^0.5.1"
-  checksum: 064affe5d3003de351c53cc93b1e7281c1180f236aedaed94b5ddf6ab287a0a240d60eccd6826c75890162bc0b74bbf7f86966d6116fba6ce50a07befaddbd60
+  checksum: 7510c869b6dd58b86ab4cd287c9d4f4bcb5341d51e352495b89964351fe1af40f378e878a1040876d96830faa9074418a0576d4ca6bc4ef3dd9205fd1b4c06e9
   languageName: node
   linkType: hard
 
@@ -6598,16 +6598,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"formdata-node@npm:4.4.1":
-  version: 4.4.1
-  resolution: "formdata-node@npm:4.4.1"
-  dependencies:
-    node-domexception: "npm:1.0.0"
-    web-streams-polyfill: "npm:4.0.0-beta.3"
-  checksum: 74151e7b228ffb33b565cec69182694ad07cc3fdd9126a8240468bb70a8ba66e97e097072b60bcb08729b24c7ce3fd3e0bd7f1f80df6f9f662b9656786e76f6a
-  languageName: node
-  linkType: hard
-
 "formdata-polyfill@npm:^4.0.10":
   version: 4.0.10
   resolution: "formdata-polyfill@npm:4.0.10"
@@ -7441,7 +7431,7 @@ __metadata:
     jsdom: "npm:^22.1.0"
     lint-staged: "npm:^15.0.2"
     marked: "npm:^9.1.4"
-    msw: "npm:^2.0.1"
+    msw: "npm:^2.0.5"
     next: "npm:^14.0.0"
     next-auth: "npm:^5.0.0-beta.3"
     next-contentlayer: "npm:^0.3.4"
@@ -9946,22 +9936,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"msw@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "msw@npm:2.0.1"
+"msw@npm:^2.0.5":
+  version: 2.0.5
+  resolution: "msw@npm:2.0.5"
   dependencies:
     "@bundled-es-modules/cookie": "npm:^2.0.0"
     "@bundled-es-modules/js-levenshtein": "npm:^2.0.1"
     "@bundled-es-modules/statuses": "npm:^1.0.1"
-    "@mswjs/cookies": "npm:^1.0.0"
-    "@mswjs/interceptors": "npm:^0.25.1"
+    "@mswjs/cookies": "npm:^1.1.0"
+    "@mswjs/interceptors": "npm:^0.25.11"
     "@open-draft/until": "npm:^2.1.0"
     "@types/cookie": "npm:^0.4.1"
     "@types/js-levenshtein": "npm:^1.1.1"
     "@types/statuses": "npm:^2.0.1"
     chalk: "npm:^4.1.2"
     chokidar: "npm:^3.4.2"
-    formdata-node: "npm:4.4.1"
     graphql: "npm:^16.8.1"
     headers-polyfill: "npm:^4.0.1"
     inquirer: "npm:^8.2.0"
@@ -9980,7 +9969,7 @@ __metadata:
       optional: true
   bin:
     msw: cli/index.js
-  checksum: d460d66a4aee02a8b07da859ee686be03a0c949ce8f5a853cfc91c2f1412b58bc9eef0ab3f37060410d1139cccd2cce60e281e7f30cb3cf8fca6ac4b4b03cb1b
+  checksum: 480023ec1926c718ca2a3edd947ec7ab48050f2f025e0bd4f99ffd65bca6cf7b623610c18742a4425598791ab1ae2ec31f26259eace908f9498a733978d11e1d
   languageName: node
   linkType: hard
 
@@ -10176,7 +10165,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-domexception@npm:1.0.0, node-domexception@npm:^1.0.0":
+"node-domexception@npm:^1.0.0":
   version: 1.0.0
   resolution: "node-domexception@npm:1.0.0"
   checksum: 5e5d63cda29856402df9472335af4bb13875e1927ad3be861dc5ebde38917aecbf9ae337923777af52a48c426b70148815e890a5d72760f1b4d758cc671b1a2b
@@ -13898,13 +13887,6 @@ __metadata:
   version: 2.0.1
   resolution: "web-namespaces@npm:2.0.1"
   checksum: df245f466ad83bd5cd80bfffc1674c7f64b7b84d1de0e4d2c0934fb0782e0a599164e7197a4bce310ee3342fd61817b8047ff04f076a1ce12dd470584142a4bd
-  languageName: node
-  linkType: hard
-
-"web-streams-polyfill@npm:4.0.0-beta.3":
-  version: 4.0.0-beta.3
-  resolution: "web-streams-polyfill@npm:4.0.0-beta.3"
-  checksum: a9596779db2766990117ed3a158e0b0e9f69b887a6d6ba0779940259e95f99dc3922e534acc3e5a117b5f5905300f527d6fbf8a9f0957faf1d8e585ce3452e8e
   languageName: node
   linkType: hard
 
