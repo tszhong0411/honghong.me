@@ -37,6 +37,7 @@ const PostCards = (props: PostCardsProps) => {
   const { posts } = props
 
   return (
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div
       className='group grid gap-4 sm:grid-cols-2'
       data-testid='post-cards'
