@@ -58,7 +58,7 @@ export default {
       },
       fontFamily: {
         default: ['var(--font-inter)', ...fontFamily.sans],
-        'fira-code': ['var(--font-fira-code)', ...fontFamily.sans],
+        'monaspace-neon': ['var(--font-monaspace-neon)', ...fontFamily.sans],
         calcom: ['var(--font-calcom)', ...fontFamily.sans]
       },
       keyframes: {
@@ -89,7 +89,7 @@ export default {
               margin: '0 auto'
             },
             'code, pre code': {
-              fontFamily: 'var(--font-fira-code), var(--font-inter)'
+              fontFamily: 'var(--font-monaspace-neon), var(--font-inter)'
             },
             ':not(pre) > code': {
               padding: '0.12em 0.25em',

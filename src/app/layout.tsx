@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Fira_Code, Inter } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import localFont from 'next/font/local'
 import Image from 'next/image'
 
@@ -103,14 +103,14 @@ const inter = Inter({
   subsets: ['latin']
 })
 
-const firaCode = Fira_Code({
-  variable: '--font-fira-code',
-  subsets: ['latin']
-})
-
 const calcom = localFont({
   src: '../../public/fonts/CalSans-SemiBold.woff2',
   variable: '--font-calcom'
+})
+
+const monaspaceNeon = localFont({
+  src: '../../public/fonts/MonaspaceNeon-Regular.woff',
+  variable: '--font-monaspace-neon'
 })
 
 const RootLayout = (props: RootLayoutProps) => {
@@ -121,8 +121,8 @@ const RootLayout = (props: RootLayoutProps) => {
       lang='en-US'
       className={cn(
         inter.variable,
-        firaCode.variable,
         calcom.variable,
+        monaspaceNeon.variable,
         'scroll-smooth'
       )}
       suppressHydrationWarning
