@@ -8,7 +8,6 @@
     "vunguyentuan.vscode-postcss",
     "unifiedjs.vscode-mdx",
     "ms-playwright.playwright",
-    "gruntfuggly.todo-tree",
-    "sonarsource.sonarlint-vscode"
+    "gruntfuggly.todo-tree"
   ]
 }
