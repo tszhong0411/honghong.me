@@ -5,7 +5,6 @@
 [![GitHub](https://img.shields.io/github/license/tszhong0411/honghong.me)](https://github.com/tszhong0411/honghong.me/blob/main/LICENSE)
 [![codecov](https://codecov.io/gh/tszhong0411/honghong.me/branch/main/graph/badge.svg)](https://codecov.io/gh/tszhong0411/honghong.me)
 [![CodeFactor](https://www.codefactor.io/repository/github/tszhong0411/honghong.me/badge)](https://www.codefactor.io/repository/github/tszhong0411/honghong.me)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=tszhong0411_honghong.me&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=tszhong0411_honghong.me)
 [![CI](https://github.com/tszhong0411/honghong.me/actions/workflows/ci.yml/badge.svg)](https://github.com/tszhong0411/honghong.me/actions/workflows/ci.yml)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/tszhong0411/honghong.me/blob/main/CONTRIBUTING.md)
 ![GitHub top language](https://img.shields.io/github/languages/top/tszhong0411/honghong.me)
