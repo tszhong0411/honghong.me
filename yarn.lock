@@ -3280,12 +3280,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^18.2.15":
-  version: 18.2.15
-  resolution: "@types/react-dom@npm:18.2.15"
+"@types/react-dom@npm:^18.2.16":
+  version: 18.2.16
+  resolution: "@types/react-dom@npm:18.2.16"
   dependencies:
     "@types/react": "npm:*"
-  checksum: 70e86f15f69f89b8f179139ab2e8a8aa9765e742789f5dd5a46fec40d4300ada8fe3349cceda42b9964a018982d7ccb7d791b47f781966c992bfd37da909fbd3
+  checksum: 6efd8936c103b17d24c33fbba9f90aa390559b9027308a20bc08a4af84c2b915a5f615149d106768b14c3b04796cc70e5759ae01fb2d20b307b75697e38473cd
   languageName: node
   linkType: hard
 
@@ -7465,7 +7465,7 @@ __metadata:
     "@types/mdx": "npm:^2.0.10"
     "@types/node": "npm:^20.9.2"
     "@types/react": "npm:^18.2.37"
-    "@types/react-dom": "npm:^18.2.15"
+    "@types/react-dom": "npm:^18.2.16"
     "@types/rss": "npm:^0.0.32"
     "@vitejs/plugin-react": "npm:^4.2.0"
     "@vitest/coverage-v8": "npm:^0.34.6"
