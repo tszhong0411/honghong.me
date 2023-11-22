@@ -106,7 +106,7 @@
     "eslint-config-next": "^14.0.3",
     "eslint-plugin-jsdoc": "^46.9.0",
     "eslint-plugin-playwright": "^0.18.0",
-    "eslint-plugin-testing-library": "^6.1.2",
+    "eslint-plugin-testing-library": "^6.2.0",
     "fast-xml-parser": "^4.3.2",
     "husky": "^8.0.3",
     "jsdom": "^22.1.0",
