@@ -13,6 +13,7 @@
   "scripts": {
     "build": "next build",
     "check-updates": "npx npm-check-updates --interactive --format group",
+    "clean": "rm -rf .next .contentlayer coverage playwright-report test-results tsconfig.tsbuildinfo",
     "dev": "concurrently \"contentlayer dev\" \"cross-env NODE_OPTIONS='--inspect' next dev\"",
     "format": "prettier -w .",
     "preinstall": "npx only-allow yarn",
