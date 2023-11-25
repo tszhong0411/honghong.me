@@ -43,9 +43,6 @@ export const GET = async (req: Request) => {
 
 export const POST = async (req: Request) => {
   const { slug } = (await req.json()) as {
-    /**
-     * The slug of the post.
-     */
     slug: string
   }
 

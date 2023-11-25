@@ -8,17 +8,8 @@ import { Skeleton } from '@/components/ui'
 const editURL = (slug: string) =>
   `https://github.com/tszhong0411/honghong.me/blob/main/src/content/blog/${slug}.mdx?plain=1`
 
-/**
- * The props of {@link Footer}.
- */
 type FooterProps = {
-  /**
-   * The slug of the blog post.
-   */
   slug: string
-  /**
-   * The last modified time of the blog post.
-   */
   modifiedTime: string
 }
 

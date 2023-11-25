@@ -4,13 +4,7 @@ import { IconCheck, IconCopy } from '@tabler/icons-react'
 import React from 'react'
 import toast from 'react-hot-toast'
 
-/**
- * The props of {@link CopyButton}.
- */
 type CopyButtonProps = {
-  /**
-   * The text to copy.
-   */
   text: string
 }
 

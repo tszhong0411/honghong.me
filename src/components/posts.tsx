@@ -5,13 +5,7 @@ import { type BlogPostCore } from '@/types'
 
 import PostCards from './post-cards'
 
-/**
- * The props of {@link Posts}.
- */
 type PostsProps = {
-  /**
-   * The blog posts to display.
-   */
   posts: BlogPostCore[]
 }
 

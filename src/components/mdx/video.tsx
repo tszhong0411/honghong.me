@@ -3,21 +3,9 @@ import React from 'react'
 import { AspectRatio } from '@/components/ui'
 import cn from '@/utils/cn'
 
-/**
- * The props of {@link Video}.
- */
 type VideoProps = {
-  /**
-   * The URL of the video.
-   */
   src: string
-  /**
-   * The width of the video.
-   */
   width: number
-  /**
-   * The height of the video.
-   */
   height: number
 } & React.ComponentPropsWithoutRef<'video'>
 

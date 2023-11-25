@@ -16,11 +16,6 @@ import {
   IconTools
 } from '@tabler/icons-react'
 
-/**
- * Get an icon component by its name.
- * @param name - The name of the icon.
- * @returns The icon component.
- */
 const getIconByName = (name: string): Icon => {
   switch (name) {
     case 'Typescript': {

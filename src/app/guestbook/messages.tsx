@@ -21,27 +21,12 @@ import {
 } from '@/components/ui'
 import { type Message } from '@/types'
 
-/**
- * The props of {@link Messages}.
- */
 type MessagesProps = {
-  /**
-   * The session of the user.
-   */
   user: DefaultSession['user']
-  /**
-   * The messages to display.
-   */
   messages: Message[]
 }
 
-/**
- * The props of {@link UpdatedDate}.
- */
 type UpdatedDateProps = {
-  /**
-   * The date of the message to format.
-   */
   date: Date
 }
 

@@ -6,27 +6,15 @@ beforeAll(() => server.listen())
 afterEach(() => server.resetHandlers())
 afterAll(() => server.close())
 
-/**
- * A mock implementation of the ResizeObserver API.
- */
 class ResizeObserver {
-  /**
-   * Observe a target element.
-   */
   observe() {
     // do nothing
   }
 
-  /**
-   * Stop observing a target element.
-   */
   unobserve() {
     // do nothing
   }
 
-  /**
-   * Disconnect the ResizeObserver.
-   */
   disconnect() {
     // do nothing
   }
@@ -34,9 +22,6 @@ class ResizeObserver {
 
 window.ResizeObserver = ResizeObserver
 
-/**
- * A mock implementation of the matchMedia API.
- */
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
   value: vi.fn().mockImplementation((query) => ({

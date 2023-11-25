@@ -13,13 +13,7 @@ import cn from '@/utils/cn'
 
 import Providers from './providers'
 
-/**
- * The props of {@link RootLayout}.
- */
 type RootLayoutProps = {
-  /**
-   * The child elements to render.
-   */
   children: React.ReactNode
 }
 

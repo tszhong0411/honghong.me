@@ -9,17 +9,8 @@ export const runtime = 'edge'
 const title = 'Projects'
 const description = 'The list of my projects.'
 
-/**
- * The props of {@link ProjectsPage}.
- */
 type ProjectsPageProps = {
-  /**
-   * The params of the URL.
-   */
   params: Record<string, never>
-  /**
-   * The search params of the URL.
-   */
   searchParams: Record<string, never>
 }
 
