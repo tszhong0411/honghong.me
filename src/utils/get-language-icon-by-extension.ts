@@ -2,13 +2,6 @@ import { s } from 'hastscript'
 
 import cn from './cn'
 
-/**
- * Generate an icon component.
- * @param path - The path of the svg.
- * @param color - The color of the svg.
- * @param className - The class name of the svg.
- * @returns A svg element.
- */
 const generateIcon = (path: string, color?: string, className?: string) =>
   s(
     'svg',
@@ -28,11 +21,6 @@ const generateIcon = (path: string, color?: string, className?: string) =>
     ]
   )
 
-/**
- * Get a language icon component by its extension.
- * @param extension - The extension of the file.
- * @returns A language icon component.
- */
 const getLanguageIconByExtension = (extension: string) => {
   switch (extension) {
     case 'js':

@@ -22,13 +22,7 @@ export const alertVariants = cva(
   }
 )
 
-/**
- * The props of {@link Alert}.
- */
 type AlertProps = {
-  /**
-   * The icon of the alert.
-   */
   icon?: React.ReactNode
 } & React.HTMLAttributes<HTMLDivElement> &
   VariantProps<typeof alertVariants>

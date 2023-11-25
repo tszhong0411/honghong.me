@@ -124,11 +124,6 @@ const Pages = defineDocumentType(() => ({
   }
 }))
 
-/**
- * A rehype plugin that adds a class to all code blocks with a specific data attribute.
- * @param className - The class name to add to the code blocks.
- * @returns A rehype transformer function.
- */
 const rehypeAddClassesToCodeBlocks = (className: string) => {
   return (tree: Root) => {
     visit(tree, 'element', (node, index, parent) => {
@@ -144,10 +139,6 @@ const rehypeAddClassesToCodeBlocks = (className: string) => {
   }
 }
 
-/**
- * Adds a language icon to code blocks.
- * @returns A function that adds a language icon to code blocks.
- */
 const rehypeAddLanguageIconToCodeBlocks = () => {
   return (tree: Root) => {
     visit(tree, 'element', (node) => {
@@ -161,10 +152,6 @@ const rehypeAddLanguageIconToCodeBlocks = () => {
   }
 }
 
-/**
- * Adds a dark theme to code blocks.
- * @returns A function that adds a dark theme to code blocks.
- */
 const rehypeCodeBlocksDarkTheme = () => {
   return (tree: Root) => {
     visit(tree, 'element', (node, _, parent) => {

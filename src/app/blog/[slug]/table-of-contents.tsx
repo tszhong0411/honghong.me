@@ -6,13 +6,7 @@ import useScrollspy from '@/hooks/use-scrollspy'
 import cn from '@/utils/cn'
 import { type Heading } from '@/utils/get-headings'
 
-/**
- * The props of {@link TableOfContents}.
- */
 type TableOfContentsProps = {
-  /**
-   * The headings to display in the table of contents.
-   */
   headings: Heading[]
 }
 

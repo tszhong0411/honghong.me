@@ -20,9 +20,6 @@ const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup
 const DropdownMenuSubTrigger = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.SubTrigger>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.SubTrigger> & {
-    /**
-     * Whether the sub trigger is inset.
-     */
     inset?: boolean
   }
 >((props, ref) => {
@@ -86,9 +83,6 @@ const DropdownMenuContent = React.forwardRef<
 const DropdownMenuItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item> & {
-    /**
-     * Whether the item is inset.
-     */
     inset?: boolean
   }
 >((props, ref) => {
@@ -161,9 +155,6 @@ const DropdownMenuRadioItem = React.forwardRef<
 const DropdownMenuLabel = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Label>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Label> & {
-    /**
-     * Whether the label is inset.
-     */
     inset?: boolean
   }
 >((props, ref) => {

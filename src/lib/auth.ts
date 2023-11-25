@@ -5,26 +5,11 @@ import GithubProvider from 'next-auth/providers/github'
 import { env } from '@/env'
 
 declare module 'next-auth' {
-  /**
-   * The session object.
-   */
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
   interface Session {
-    /**
-     * The user object.
-     */
     user: {
-      /**
-       * The user's email.
-       */
       email: string
-      /**
-       * The user's name.
-       */
       name: string | null
-      /**
-       * The user's picture.
-       */
       image: string | null
     }
   }

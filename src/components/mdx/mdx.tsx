@@ -25,13 +25,7 @@ import Pre from './pre'
 import Tree from './tree'
 import Video from './video'
 
-/**
- * The props of {@link Mdx}.
- */
 type MdxProps = {
-  /**
-   * The code of the MDX file.
-   */
   code: string
 }
 

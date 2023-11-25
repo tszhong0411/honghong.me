@@ -105,7 +105,6 @@
     "cross-env": "^7.0.3",
     "eslint": "^8.54.0",
     "eslint-config-next": "^14.0.3",
-    "eslint-plugin-jsdoc": "^46.9.0",
     "eslint-plugin-playwright": "^0.18.0",
     "eslint-plugin-testing-library": "^6.2.0",
     "fast-xml-parser": "^4.3.2",
@@ -140,8 +139,7 @@
     "root": true,
     "extends": [
       "next/core-web-vitals",
-      "@tszhong0411/eslint-config",
-      "plugin:jsdoc/recommended-typescript-error"
+      "@tszhong0411/eslint-config"
     ],
     "parserOptions": {
       "project": "./tsconfig.json",
@@ -167,44 +165,7 @@
           "plugin:playwright/recommended"
         ]
       }
-    ],
-    "rules": {
-      "require-jsdoc": 0,
-      "valid-jsdoc": 0,
-      "jsdoc/require-jsdoc": [
-        2,
-        {
-          "require": {
-            "FunctionDeclaration": true,
-            "MethodDefinition": true,
-            "ClassDeclaration": true
-          },
-          "contexts": [
-            "TSInterfaceDeclaration",
-            "TSTypeAliasDeclaration",
-            "TSEnumDeclaration",
-            "TSPropertySignature"
-          ]
-        }
-      ],
-      "jsdoc/require-param": [
-        0,
-        {
-          "checkRestProperty": false
-        }
-      ],
-      "jsdoc/require-returns": 0,
-      "jsdoc/require-param-type": 0,
-      "jsdoc/require-returns-type": 0,
-      "jsdoc/require-description-complete-sentence": 2,
-      "jsdoc/require-hyphen-before-param-description": 2,
-      "jsdoc/sort-tags": 2
-    },
-    "settings": {
-      "jsdoc": {
-        "mode": "typescript"
-      }
-    }
+    ]
   },
   "lint-staged": {
     "*.{js,jsx,cjs,mjs,ts,tsx}": [

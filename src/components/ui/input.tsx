@@ -2,9 +2,6 @@ import React from 'react'
 
 import cn from '@/utils/cn'
 
-/**
- * The props of {@link Input}.
- */
 export type InputProps = React.InputHTMLAttributes<HTMLInputElement>
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {

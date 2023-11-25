@@ -6,10 +6,6 @@ import { env } from '@/env'
 import { getCurrentUser } from '@/lib/auth'
 import prisma from '@/lib/prisma'
 
-/**
- * Deletes a message from the guestbook.
- * @param id - The id of the message to delete.
- */
 export const deleteMessage = async (id: number) => {
   const user = await getCurrentUser()
 
@@ -45,10 +41,6 @@ export const deleteMessage = async (id: number) => {
   revalidatePath('/guestbook')
 }
 
-/**
- * Creates a new message in the guestbook.
- * @param message - The message to create.
- */
 export const createMessage = async (message: string) => {
   const user = await getCurrentUser()
 
@@ -104,10 +96,6 @@ export const createMessage = async (message: string) => {
   revalidatePath('/guestbook')
 }
 
-/**
- * Get all messages in the guestbook.
- * @returns A list of messages in the guestbook.
- */
 export const getMessages = async () => {
   const messages = await prisma.guestbook.findMany({
     orderBy: {

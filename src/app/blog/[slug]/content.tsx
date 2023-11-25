@@ -6,17 +6,8 @@ import { getHeadings } from '@/utils/get-headings'
 import LikeButton from './like-button'
 import TableOfContents from './table-of-contents'
 
-/**
- * The props of {@link Content}.
- */
 type ContentProps = {
-  /**
-   * The post data.
-   */
   post: BlogPost
-  /**
-   * The slug of the post.
-   */
   slug: string
 }
 

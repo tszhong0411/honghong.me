@@ -14,9 +14,6 @@ export const GET = async () => {
   try {
     const result: [
       {
-        /**
-         * Number of unique visitors in the last 5 minutes.
-         */
         x: bigint
       }
     ] = await prisma.$queryRaw`

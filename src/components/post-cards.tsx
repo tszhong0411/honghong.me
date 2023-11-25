@@ -11,13 +11,7 @@ import cn from '@/utils/cn'
 
 import Image from './mdx/image'
 
-/**
- * The props of {@link PostCards}.
- */
 type PostCardsProps = {
-  /**
-   * The blog posts to display.
-   */
   posts: BlogPostCore[]
 }
 
@@ -50,9 +44,6 @@ const PostCards = (props: PostCardsProps) => {
   )
 }
 
-/**
- * The props of {@link PostCard}.
- */
 type PostCardProps = BlogPostCore
 
 const PostCard = (props: PostCardProps) => {

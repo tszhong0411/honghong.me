@@ -18,41 +18,14 @@ import {
   type YouTube
 } from '@/types'
 
-/**
- * A metric card with an icon, title, link, and value.
- */
 type Card = {
-  /**
-   * The icon to display on the card.
-   */
   icon: React.ReactNode
-  /**
-   * The title of the card.
-   */
   title: string
-  /**
-   * The link to navigate to when the card is clicked.
-   */
   link: string
-  /**
-   * The value to display on the card.
-   */
   value: number | string | undefined
-  /**
-   * The text to display on the link.
-   */
   linkText: string
-  /**
-   * The gradient of the text.
-   */
   gradient: {
-    /**
-     * The start color of the gradient.
-     */
     startColor: string
-    /**
-     * The end color of the gradient.
-     */
     endColor: string
   }
 }

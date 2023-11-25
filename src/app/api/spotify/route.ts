@@ -27,16 +27,9 @@ export const GET = async () => {
     const isPlaying = song.is_playing
     const name = song.item.name
     const artist = song.item.artists
-      .map(
-        (_artist: {
-          /**
-           * The name of the artist.
-           */
-          name: string
-        }) => {
-          return _artist.name
-        }
-      )
+      .map((_artist: { name: string }) => {
+        return _artist.name
+      })
       .join(', ')
     const album = song.item.album.name
     const albumImage = song.item.album.images[0].url

@@ -11,13 +11,7 @@ import fetcher from '@/lib/fetcher'
 import { type Likes } from '@/types'
 import cn from '@/utils/cn'
 
-/**
- * The props of {@link LikeButton}.
- */
 export type LikeButtonProps = {
-  /**
-   * The slug of the blog post.
-   */
   slug: string
 }
 

@@ -12,71 +12,26 @@ import {
   IconUserCircle
 } from '@tabler/icons-react'
 
-/**
- * The basic type of a link.
- */
 export type Link = {
-  /**
-   * The URL of the link.
-   */
   href: string
-  /**
-   * The title of the link.
-   */
   title: string
 }
 
-/**
- * The links displayed in the hero section.
- */
 type HeroLinks = Array<{
-  /**
-   * The unique ID of the link.
-   */
   id: string
-  /**
-   * The label of the link.
-   */
   label: string
-  /**
-   * The icon of the link.
-   */
   icon: React.ReactNode
-  /**
-   * The URL of the link.
-   */
   href: string
 }>
 
-/**
- * The links displayed in the header.
- */
 type HeaderLinks = Array<{
-  /**
-   * The icon of the link.
-   */
   icon: React.ReactNode
-  /**
-   * The URL of the link.
-   */
   href: string
-  /**
-   * The text of the link.
-   */
   text: string
 }>
 
-/**
- * The links displayed in the footer.
- */
 type FooterLinks = Array<{
-  /**
-   * The unique ID of the link.
-   */
   id: number
-  /**
-   * The links of the link group.
-   */
   links: Link[]
 }>
 

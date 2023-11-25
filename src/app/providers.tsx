@@ -3,13 +3,7 @@
 import { ThemeProvider } from 'next-themes'
 import React from 'react'
 
-/**
- * The props of {@link Providers}.
- */
 type ProvidersProps = {
-  /**
-   * The child elements to render.
-   */
   children: React.ReactNode
 }
 

@@ -15,13 +15,7 @@ import {
   Textarea
 } from '@/components/ui'
 
-/**
- * The props of {@link Form}.
- */
 type FormProps = {
-  /**
-   * The session of the user.
-   */
   user: Session['user']
 }
 

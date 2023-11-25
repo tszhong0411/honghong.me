@@ -12,22 +12,10 @@ import Header from './header'
 
 // export const runtime = 'edge'
 
-/**
- * The props of {@link BlogPostPage}.
- */
 type BlogPostPageProps = {
-  /**
-   * The params of the URL.
-   */
   params: {
-    /**
-     * The slug of the URL.
-     */
     slug: string
   }
-  /**
-   * The search params of the URL.
-   */
   searchParams: Record<string, never>
 }
 
