@@ -4438,10 +4438,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"canvas-confetti@npm:^1.9.1":
-  version: 1.9.1
-  resolution: "canvas-confetti@npm:1.9.1"
-  checksum: 1530ad2a86aa5b80a89f64166f2b39cdfa0483f7b5c65fb0859fc8ddcd442a3db482f00423bfa27d3a0ea2c583f08492b12e425a3f1bd42ce77c9a031878ab9a
+"canvas-confetti@npm:^1.9.2":
+  version: 1.9.2
+  resolution: "canvas-confetti@npm:1.9.2"
+  checksum: 6247eb95bf710522f5822728dc29d74d0747b7ca0a85dfa90fd159f0f405527fbaedbdbb0e6917f6cd1560cf1355286c2c94bd3e89bc2147fb0fcf8e1c64126a
   languageName: node
   linkType: hard
 
@@ -7427,7 +7427,7 @@ __metadata:
     "@vitest/coverage-v8": "npm:^0.34.6"
     "@vitest/ui": "npm:^0.34.6"
     autoprefixer: "npm:^10.4.16"
-    canvas-confetti: "npm:^1.9.1"
+    canvas-confetti: "npm:^1.9.2"
     class-variance-authority: "npm:^0.7.0"
     clsx: "npm:^2.0.0"
     cmdk: "npm:^0.2.0"
