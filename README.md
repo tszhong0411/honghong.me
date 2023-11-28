@@ -47,7 +47,7 @@ Welcome to my personal blog repository! This repository houses the code for my b
 ## 🔨 Requirements
 
 - Node with [Corepack](https://github.com/nodejs/corepack), recommended `18.x`, minimum `16.9.0`
-- Yarn, recommended `3.6.3`, minimum `3.x`
+- Yarn, recommended `4.0.0`, minimum `3.x`
 - MySQL, recommended `8.0`, minimum `5.6`
 - [Visual Studio Code](https://code.visualstudio.com/) with [recommended extensions](.vscode/extensions.json)
 - Optionally [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
