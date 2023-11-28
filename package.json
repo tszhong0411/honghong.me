@@ -79,7 +79,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@commitlint/cli": "^18.4.2",
+    "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.2",
     "@octokit/types": "^12.3.0",
     "@playwright/test": "^1.40.0",
