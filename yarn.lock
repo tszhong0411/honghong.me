@@ -3053,10 +3053,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/canvas-confetti@npm:^1.6.3":
-  version: 1.6.3
-  resolution: "@types/canvas-confetti@npm:1.6.3"
-  checksum: a2f18b7c646a0423c5f69ec4d303197e7dd24df7b05544bdd3fdbff1253c9459833f35753d9117a55517a8405e1babbbd9fdd3c75bbe29f382f01d2a79e63702
+"@types/canvas-confetti@npm:^1.6.4":
+  version: 1.6.4
+  resolution: "@types/canvas-confetti@npm:1.6.4"
+  checksum: 4a821690f0b9cdd81b0d02c0946c5b4e9e80f189e868fd8a159884d5eb9da0bdf0bfc380a61c971cc5d7b9ca2521625d46bcb5e4653988375118f57523ebe5a4
   languageName: node
   linkType: hard
 
@@ -7408,7 +7408,7 @@ __metadata:
     "@tszhong0411/eslint-config": "npm:1.0.35"
     "@tszhong0411/prettier-config": "npm:^1.0.8"
     "@tszhong0411/tsconfig": "npm:^1.0.3"
-    "@types/canvas-confetti": "npm:^1.6.3"
+    "@types/canvas-confetti": "npm:^1.6.4"
     "@types/hast": "npm:^3.0.3"
     "@types/mdx": "npm:^2.0.10"
     "@types/node": "npm:^20.9.2"
