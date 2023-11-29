@@ -7439,7 +7439,7 @@ __metadata:
     jsdom: "npm:^23.0.0"
     lint-staged: "npm:^15.1.0"
     marked: "npm:^10.0.0"
-    msw: "npm:^2.0.8"
+    msw: "npm:^2.0.9"
     next: "npm:^14.0.3"
     next-auth: "npm:^5.0.0-beta.3"
     next-contentlayer: "npm:^0.3.4"
@@ -9964,9 +9964,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"msw@npm:^2.0.8":
-  version: 2.0.8
-  resolution: "msw@npm:2.0.8"
+"msw@npm:^2.0.9":
+  version: 2.0.9
+  resolution: "msw@npm:2.0.9"
   dependencies:
     "@bundled-es-modules/cookie": "npm:^2.0.0"
     "@bundled-es-modules/js-levenshtein": "npm:^2.0.1"
@@ -9996,7 +9996,7 @@ __metadata:
       optional: true
   bin:
     msw: cli/index.js
-  checksum: ea8d41e604567b4ccf5608044111676a815bd03c8abf8c161330aad2b90d01ab1fa04a3f576463d54c0394a637cc48f083065d52547131181b60639b87a27dec
+  checksum: 37f6e99299cd686d981baaf38d399caf92707a72c01bbdda6e163399827b4076dd753c9898322ea3578c9229ef87f35f068fefedbf78bf224d204ce0524bbc4c
   languageName: node
   linkType: hard
 
