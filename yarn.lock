@@ -2834,22 +2834,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tabler/icons-react@npm:^2.41.0":
-  version: 2.41.0
-  resolution: "@tabler/icons-react@npm:2.41.0"
+"@tabler/icons-react@npm:^2.42.0":
+  version: 2.42.0
+  resolution: "@tabler/icons-react@npm:2.42.0"
   dependencies:
-    "@tabler/icons": "npm:2.41.0"
+    "@tabler/icons": "npm:2.42.0"
     prop-types: "npm:^15.7.2"
   peerDependencies:
     react: ^16.5.1 || ^17.0.0 || ^18.0.0
-  checksum: 754434a3ce8b63c594217b821339b0e4e9aa4852bbe0cd97e7c19e16bdb9baf18f722203587f241e6ced25d8d97807269c2f2bbf2b3a1701936a5874d8ad015b
+  checksum: e9255de7152c4f9bac740008da6e9e7238523f85c8d3f57fea042b44087644a95ea8501ca49f798a075d901da2d3f719ee3483ae870783fb15a108b4042198b8
   languageName: node
   linkType: hard
 
-"@tabler/icons@npm:2.41.0":
-  version: 2.41.0
-  resolution: "@tabler/icons@npm:2.41.0"
-  checksum: 5b78ea0ee9a9cd7311af2c2a20d5da54965859538468970a49b85fd36956eb79cd8fce697e4e9fe1ca407df154468f9202bdb470487876f1fe592a629e7e2f82
+"@tabler/icons@npm:2.42.0":
+  version: 2.42.0
+  resolution: "@tabler/icons@npm:2.42.0"
+  checksum: d97c06159109fbec75be39e1a4600cc8755f126682cbeab184eab612ead785dda05fcdbba244272aa834488bd14ce631aa37fd58be1237897b2757d6de0903ce
   languageName: node
   linkType: hard
 
@@ -7399,7 +7399,7 @@ __metadata:
     "@radix-ui/react-separator": "npm:^1.0.3"
     "@radix-ui/react-slot": "npm:^1.0.2"
     "@t3-oss/env-nextjs": "npm:^0.7.1"
-    "@tabler/icons-react": "npm:^2.41.0"
+    "@tabler/icons-react": "npm:^2.42.0"
     "@tailwindcss/typography": "npm:^0.5.10"
     "@testing-library/jest-dom": "npm:^6.1.4"
     "@testing-library/react": "npm:^14.1.2"
