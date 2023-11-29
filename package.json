@@ -82,7 +82,7 @@
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
     "@octokit/types": "^12.3.0",
-    "@playwright/test": "^1.40.0",
+    "@playwright/test": "^1.40.1",
     "@tailwindcss/typography": "^0.5.10",
     "@testing-library/jest-dom": "^6.1.4",
     "@testing-library/react": "^14.1.2",
