@@ -40,7 +40,7 @@ jobs:
           yarn set version stable
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install
 
       - name: Get production environment variables
         run: yarn dlx vercel env pull .env --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
