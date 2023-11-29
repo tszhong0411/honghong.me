@@ -63,7 +63,7 @@
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-medium-image-zoom": "^5.1.8",
-    "react-use": "^17.4.0",
+    "react-use": "^17.4.1",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-pretty-code": "^0.10.2",
     "rehype-slug": "^6.0.0",
