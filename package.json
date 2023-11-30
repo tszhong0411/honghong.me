@@ -175,6 +175,6 @@
       "prettier -c"
     ]
   },
-  "packageManager": "yarn@4.0.0",
+  "packageManager": "yarn@4.0.2",
   "prettier": "@tszhong0411/prettier-config"
 }
