@@ -73,7 +73,7 @@ The app will become available at `http://localhost:3000`.
 
 ## ✈️ TODO
 
-- Use strict content security policy - still not working in `13.5.3`
+- Use strict content security policy - still not working in `14.0.3`
   - `next/image` - https://github.com/vercel/next.js/issues/45184
   - `nonces` - https://github.com/vercel/next.js/discussions/54907
   - `main-app.js` - https://github.com/vercel/next.js/issues/55129
