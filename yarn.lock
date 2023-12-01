@@ -6047,9 +6047,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-playwright@npm:^0.18.0":
-  version: 0.18.0
-  resolution: "eslint-plugin-playwright@npm:0.18.0"
+"eslint-plugin-playwright@npm:^0.19.0":
+  version: 0.19.0
+  resolution: "eslint-plugin-playwright@npm:0.19.0"
   dependencies:
     globals: "npm:^13.23.0"
   peerDependencies:
@@ -6058,7 +6058,7 @@ __metadata:
   peerDependenciesMeta:
     eslint-plugin-jest:
       optional: true
-  checksum: fd838bdfbb5e8599c7a19d1f59c8495150cf5f7785d4545b77c233f4e472c63563102c4661436b0f28778f5a9ce463b33ee35932916e5178701b6edc5c3e85c3
+  checksum: 5d941d18574271548e00dbd3bc554cbbe233dcc3c9709ccd046c5760ecf6d08c239ef33a8b09ecad6d93d23c78615dd0680f695682853cffa205ecef7e9189a2
   languageName: node
   linkType: hard
 
@@ -7546,7 +7546,7 @@ __metadata:
     dayjs: "npm:^1.11.10"
     eslint: "npm:^8.54.0"
     eslint-config-next: "npm:^14.0.3"
-    eslint-plugin-playwright: "npm:^0.18.0"
+    eslint-plugin-playwright: "npm:^0.19.0"
     eslint-plugin-testing-library: "npm:^6.2.0"
     fast-xml-parser: "npm:^4.3.2"
     framer-motion: "npm:^10.16.9"
@@ -13299,11 +13299,11 @@ __metadata:
 
 "typescript@patch:typescript@npm%3A5.3.2#optional!builtin<compat/typescript>":
   version: 5.3.2
-  resolution: "typescript@patch:typescript@npm%3A5.3.2#optional!builtin<compat/typescript>::version=5.3.2&hash=29ae49"
+  resolution: "typescript@patch:typescript@npm%3A5.3.2#optional!builtin<compat/typescript>::version=5.3.2&hash=e012d7"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: c81b9bd20c6dbe90fa43e876c586021447f2b47baede9fa542b1f56715835c043e23b2eaf19c42c067cc6f5ae512bd9a9be28a67b3a1d9807f8c9cfb1269875e
+  checksum: 73c8bad74e732d93211c9d77f28b03307e2f5fc6a0afc73f4b783261ab567686a16d6ae958bdaef383a00be1b0b8c8b6741dd6ca3d13af4963fa7e47456d49c7
   languageName: node
   linkType: hard
 
