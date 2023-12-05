@@ -7577,7 +7577,7 @@ __metadata:
     react-dom: "npm:^18.2.0"
     react-hot-toast: "npm:^2.4.1"
     react-medium-image-zoom: "npm:^5.1.8"
-    react-use: "npm:^17.4.1"
+    react-use: "npm:^17.4.2"
     rehype-autolink-headings: "npm:^7.1.0"
     rehype-pretty-code: "npm:^0.10.2"
     rehype-slug: "npm:^6.0.0"
@@ -11469,9 +11469,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-use@npm:^17.4.1":
-  version: 17.4.1
-  resolution: "react-use@npm:17.4.1"
+"react-use@npm:^17.4.2":
+  version: 17.4.2
+  resolution: "react-use@npm:17.4.2"
   dependencies:
     "@types/js-cookie": "npm:^2.2.6"
     "@xobotyi/scrollbar-width": "npm:^1.9.5"
@@ -11488,9 +11488,9 @@ __metadata:
     ts-easing: "npm:^0.2.0"
     tslib: "npm:^2.1.0"
   peerDependencies:
-    react: ^16.8.0  || ^17.0.0 || ^18.0.0
-    react-dom: ^16.8.0  || ^17.0.0 || ^18.0.0
-  checksum: 5d71ece2140be93ae5f391a3affca40f8618432d22b8beb1380e82cab730f028b8596497e9af653d346ac88be7e21d3a6476b9dbf00a60c6acf119a089a481ce
+    react: "*"
+    react-dom: "*"
+  checksum: 9f75e10af864eb19f8a31e811569472ca3d846b7078e9a7cf3c95a8e5aa8c04b9ef19043edd4c1bddb655204c14e44f1fc0cca3be606c69ec0aba3c2c51fe3b6
   languageName: node
   linkType: hard
 
