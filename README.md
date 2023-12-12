@@ -73,7 +73,7 @@ The app will become available at `http://localhost:3000`.
 
 ## ✈️ TODO
 
-- Use strict content security policy - still not working in `14.0.3`
+- Use strict content security policy - still not working in `14.0.4`
   - `next/image` - https://github.com/vercel/next.js/issues/45184
   - `nonces` - https://github.com/vercel/next.js/discussions/54907
   - `main-app.js` - https://github.com/vercel/next.js/issues/55129
@@ -82,7 +82,7 @@ The app will become available at `http://localhost:3000`.
 
 ## 🔔 Important Note
 
-Hello there! While I'm glad to see you're interested in my open-source project, I kindly request that you refrain from using this source code as a template for your website. Instead, I encourage you to use it as a learning resource and as inspiration to create something unique.
+Hello there! While I'm glad to see you're interested in my open-source project, I kindly request that you refrain from using this source code as a template for your website. Instead, I encourage you to use it as a learning resource and as an inspiration to create something unique.
 
 - **Originality**: Building something from scratch allows you to showcase your originality and creativity.
 - **Learning**: Creating your own project helps you learn and improve your skills.
