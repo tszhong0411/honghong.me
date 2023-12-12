@@ -1,5 +1,6 @@
 'use client'
 
+import { type Guestbook } from '@prisma/client'
 import dayjs from 'dayjs'
 import { type DefaultSession } from 'next-auth'
 import React from 'react'
@@ -19,11 +20,10 @@ import {
   buttonVariants,
   Skeleton
 } from '@/components/ui'
-import { type Message } from '@/types'
 
 type MessagesProps = {
   user: DefaultSession['user']
-  messages: Message[]
+  messages: Guestbook[]
 }
 
 type UpdatedDateProps = {
@@ -68,7 +68,7 @@ const Messages = (props: MessagesProps) => {
   return (
     <div className='mt-10 flex flex-col gap-4'>
       {messages.map((message) => {
-        const { id, image, created_by, updated_at, body } = message
+        const { id, email, image, created_by, updated_at, body } = message
 
         return (
           <div key={id} className='rounded-lg border p-4'>
@@ -91,7 +91,7 @@ const Messages = (props: MessagesProps) => {
               </div>
             </div>
             <div className='break-words pl-[52px]'>{body}</div>
-            {user && created_by === user.name && (
+            {user && email === user.email && (
               <div className='mt-4 flex justify-end'>
                 <AlertDialog>
                   <AlertDialogTrigger asChild>
@@ -109,7 +109,7 @@ const Messages = (props: MessagesProps) => {
                       <AlertDialogCancel>Cancel</AlertDialogCancel>
                       <AlertDialogAction
                         onClick={() => {
-                          return deleteMessageHandler(id)
+                          return deleteMessageHandler(Number(id))
                         }}
                         className={buttonVariants({ variant: 'destructive' })}
                       >

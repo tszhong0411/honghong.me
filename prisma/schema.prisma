@@ -9,7 +9,7 @@ datasource db {
   relationMode = "prisma"
 }
 
-model guestbook {
+model Guestbook {
   id         BigInt   @id @default(autoincrement())
   email      String   @db.VarChar(256)
   image      String   @db.VarChar(256)

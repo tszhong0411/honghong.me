@@ -97,21 +97,9 @@ export const createMessage = async (message: string) => {
 }
 
 export const getMessages = async () => {
-  const messages = await prisma.guestbook.findMany({
+  return await prisma.guestbook.findMany({
     orderBy: {
       updated_at: 'desc'
-    }
-  })
-
-  return messages.map((message) => {
-    const { id, body, image, created_by, updated_at } = message
-
-    return {
-      id: Number(id),
-      body,
-      image,
-      created_by,
-      updated_at
     }
   })
 }
