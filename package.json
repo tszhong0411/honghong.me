@@ -105,7 +105,7 @@
     "cross-env": "^7.0.3",
     "eslint": "^8.55.0",
     "eslint-config-next": "^14.0.4",
-    "eslint-plugin-playwright": "^0.19.0",
+    "eslint-plugin-playwright": "^0.20.0",
     "eslint-plugin-testing-library": "^6.2.0",
     "fast-xml-parser": "^4.3.2",
     "husky": "^8.0.3",
