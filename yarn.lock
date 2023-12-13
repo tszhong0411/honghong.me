@@ -7696,7 +7696,7 @@ __metadata:
     rss: "npm:^1.2.2"
     schema-dts: "npm:^1.1.2"
     sharp: "npm:^0.33.0"
-    shiki: "npm:^0.14.5"
+    shiki: "npm:^0.14.6"
     swr: "npm:^2.2.4"
     tailwind-merge: "npm:^2.1.0"
     tailwindcss: "npm:^3.3.6"
@@ -12375,15 +12375,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"shiki@npm:^0.14.5":
-  version: 0.14.5
-  resolution: "shiki@npm:0.14.5"
+"shiki@npm:^0.14.6":
+  version: 0.14.6
+  resolution: "shiki@npm:0.14.6"
   dependencies:
     ansi-sequence-parser: "npm:^1.1.0"
     jsonc-parser: "npm:^3.2.0"
     vscode-oniguruma: "npm:^1.7.0"
     vscode-textmate: "npm:^8.0.0"
-  checksum: 50d33bd30c5b96a93f5ac07dc55eba4fdf4d2b373cb36f8f6559cceae52acc3290d91bce250753d3e6010bc4093af7b3a9f254ec93731545ce4d27565c24dad3
+  checksum: cd056244c09b46df2ad1c4841358b5d510df44203394f54de8f42b6fb7ce37b7e788b3ec45ffec5acf82784fcf7eeb687e7a3854d8072daa8d53284948126bc1
   languageName: node
   linkType: hard
 

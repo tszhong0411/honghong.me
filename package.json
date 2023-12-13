@@ -70,7 +70,7 @@
     "remark-gfm": "3.0.1",
     "rss": "^1.2.2",
     "sharp": "^0.33.0",
-    "shiki": "^0.14.5",
+    "shiki": "^0.14.6",
     "swr": "^2.2.4",
     "tailwind-merge": "^2.1.0",
     "tailwindcss-animate": "^1.0.7",
