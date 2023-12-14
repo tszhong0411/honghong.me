@@ -6160,9 +6160,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-playwright@npm:^0.19.0":
-  version: 0.19.0
-  resolution: "eslint-plugin-playwright@npm:0.19.0"
+"eslint-plugin-playwright@npm:^0.20.0":
+  version: 0.20.0
+  resolution: "eslint-plugin-playwright@npm:0.20.0"
   dependencies:
     globals: "npm:^13.23.0"
   peerDependencies:
@@ -6171,7 +6171,7 @@ __metadata:
   peerDependenciesMeta:
     eslint-plugin-jest:
       optional: true
-  checksum: 5d941d18574271548e00dbd3bc554cbbe233dcc3c9709ccd046c5760ecf6d08c239ef33a8b09ecad6d93d23c78615dd0680f695682853cffa205ecef7e9189a2
+  checksum: f5c27b2a3e2402d6fa050014c6d6dc08d88146e02923f47a6e7af4e019101686af42ab1934bc2a7da533d170d9893a3aed5a1fb74170e9fc784440f6fa3e5406
   languageName: node
   linkType: hard
 
@@ -7666,7 +7666,7 @@ __metadata:
     dayjs: "npm:^1.11.10"
     eslint: "npm:^8.55.0"
     eslint-config-next: "npm:^14.0.4"
-    eslint-plugin-playwright: "npm:^0.19.0"
+    eslint-plugin-playwright: "npm:^0.20.0"
     eslint-plugin-testing-library: "npm:^6.2.0"
     fast-xml-parser: "npm:^4.3.2"
     framer-motion: "npm:^10.16.16"
