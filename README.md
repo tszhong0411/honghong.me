@@ -19,7 +19,6 @@ Welcome to my personal blog repository! This repository houses the code for my b
 - 🎨 Tailwind CSS - for styling
 - 🌈 Radix UI - accessible UI components
 - 🛡 Strict TypeScript and ESLint configuration
-- 📚 JSDoc comments for all functions
 - 📱 Responsive design
 - 🌗 Dark mode
 - 📈 SEO optimized with meta tags and JSON-LD
