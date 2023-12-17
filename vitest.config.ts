@@ -10,12 +10,13 @@ export default defineConfig({
     exclude: ['node_modules', './src/tests/e2e'],
     coverage: {
       reporter: ['lcov', 'html']
-    }
-  },
-  resolve: {
+    },
     alias: {
-      '@': './src',
-      'contentlayer/generated': './src/tests/mocks/contentlayer.ts'
+      '@': new URL('src', import.meta.url).pathname,
+      'contentlayer/generated': new URL(
+        'src/tests/mocks/contentlayer.ts',
+        import.meta.url
+      ).pathname
     }
   }
 })
