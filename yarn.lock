@@ -3450,13 +3450,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@total-typescript/ts-reset@npm:^0.5.1":
-  version: 0.5.1
-  resolution: "@total-typescript/ts-reset@npm:0.5.1"
-  checksum: 0339e975034ae648e83f08d0d408d9bda926fdb0cbaddf8efebd3105b378847be8bc9c2f1aa1435e2221f5958019bc2cb562211745a52fe076a109645c8a31f0
-  languageName: node
-  linkType: hard
-
 "@tszhong0411/eslint-config@npm:1.0.35":
   version: 1.0.35
   resolution: "@tszhong0411/eslint-config@npm:1.0.35"
@@ -7958,7 +7951,6 @@ __metadata:
     "@testing-library/jest-dom": "npm:^6.1.5"
     "@testing-library/react": "npm:^14.1.2"
     "@testing-library/user-event": "npm:^14.5.1"
-    "@total-typescript/ts-reset": "npm:^0.5.1"
     "@tszhong0411/eslint-config": "npm:1.0.35"
     "@tszhong0411/prettier-config": "npm:^1.0.8"
     "@tszhong0411/tsconfig": "npm:^1.0.3"
