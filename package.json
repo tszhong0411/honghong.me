@@ -30,7 +30,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@giscus/react": "^2.3.0",
+    "@giscus/react": "^2.4.0",
     "@octokit/rest": "^20.0.2",
     "@prisma/client": "^5.7.0",
     "@radix-ui/react-alert-dialog": "^1.0.5",
