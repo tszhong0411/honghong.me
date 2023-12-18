@@ -223,6 +223,7 @@ export default makeSource({
         }
       ],
       [
+        // @ts-expect-error IDK what's wrong
         rehypePrettyCode,
         {
           theme: {
