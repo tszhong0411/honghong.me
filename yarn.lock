@@ -8008,7 +8008,7 @@ __metadata:
     shikiji: "npm:^0.9.9"
     swr: "npm:^2.2.4"
     tailwind-merge: "npm:^2.1.0"
-    tailwindcss: "npm:^3.3.6"
+    tailwindcss: "npm:^3.3.7"
     tailwindcss-animate: "npm:^1.0.7"
     typescript: "npm:5.3.3"
     unist-util-visit: "npm:^5.0.0"
@@ -13399,9 +13399,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:^3.3.6":
-  version: 3.3.6
-  resolution: "tailwindcss@npm:3.3.6"
+"tailwindcss@npm:^3.3.7":
+  version: 3.3.7
+  resolution: "tailwindcss@npm:3.3.7"
   dependencies:
     "@alloc/quick-lru": "npm:^5.2.0"
     arg: "npm:^5.0.2"
@@ -13428,7 +13428,7 @@ __metadata:
   bin:
     tailwind: lib/cli.js
     tailwindcss: lib/cli.js
-  checksum: 69caade773249cb963c33e81f85b7fc423dcb74b416727483f434f4e12874187f633970c9de864fa96736289abaf71189314a53589ada0be6c09ccb0e8b78391
+  checksum: 89c8610ae4c3e358bbc2bef255d6665d2e54527eb6f131e63e6e702003fa97c9ca14cae675f6760870863fcc46eada8f4b54aeb1a1ed5669a81c325b423a3db0
   languageName: node
   linkType: hard
 
