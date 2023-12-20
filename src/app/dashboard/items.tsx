@@ -142,7 +142,7 @@ const Items = () => {
             >
               <div className='flex flex-col items-center justify-center gap-2 transition-transform duration-300 group-hover:-translate-y-24 group-focus:-translate-y-24'>
                 <div className='flex items-center gap-2 text-3xl font-bold text-foreground'>
-                  {value ? (
+                  {value === 0 || value !== undefined ? (
                     <>
                       <span>{icon}</span>
                       <span
