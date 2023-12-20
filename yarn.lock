@@ -4175,11 +4175,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/ui@npm:^1.0.4":
-  version: 1.0.4
-  resolution: "@vitest/ui@npm:1.0.4"
+"@vitest/ui@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@vitest/ui@npm:1.1.0"
   dependencies:
-    "@vitest/utils": "npm:1.0.4"
+    "@vitest/utils": "npm:1.1.0"
     fast-glob: "npm:^3.3.2"
     fflate: "npm:^0.8.1"
     flatted: "npm:^3.2.9"
@@ -4188,7 +4188,7 @@ __metadata:
     sirv: "npm:^2.0.3"
   peerDependencies:
     vitest: ^1.0.0
-  checksum: a1b005966f238ba68882bcc1eab8f13814fbc4828116c44c2a1adbd25c2ba56b8ad402a4030337ac1365442b2322d445435ae6ce506f1d60c9d85193d978a989
+  checksum: 5fccfe21888766a05a167941975d4b2a655b1b0285048709154d2d33da7bede35bb4cd2d93143caf5f7f959b967ddc4b9af7a32c43b76f686387891845e365d2
   languageName: node
   linkType: hard
 
@@ -4200,6 +4200,17 @@ __metadata:
     loupe: "npm:^2.3.7"
     pretty-format: "npm:^29.7.0"
   checksum: 4a87f98b9192f544a6d52232ed1605ac9a6d7418e35de40b4ef36d0d0f6905112a9a21f1393e16f47838e67992399958d524e6b99f6a3583c0a0527fa7557e49
+  languageName: node
+  linkType: hard
+
+"@vitest/utils@npm:1.1.0":
+  version: 1.1.0
+  resolution: "@vitest/utils@npm:1.1.0"
+  dependencies:
+    diff-sequences: "npm:^29.6.3"
+    loupe: "npm:^2.3.7"
+    pretty-format: "npm:^29.7.0"
+  checksum: afadbd53e0659b4be71b1349ef8db61ac8d58368c2686bb570852ad6a056afa0a37ae7458284696a5fca09cab458773c7fa9d0053e9d1d1668ed39b570ce6b07
   languageName: node
   linkType: hard
 
@@ -7963,7 +7974,7 @@ __metadata:
     "@types/rss": "npm:^0.0.32"
     "@vitejs/plugin-react": "npm:^4.2.1"
     "@vitest/coverage-v8": "npm:^1.0.4"
-    "@vitest/ui": "npm:^1.0.4"
+    "@vitest/ui": "npm:^1.1.0"
     autoprefixer: "npm:^10.4.16"
     canvas-confetti: "npm:^1.9.2"
     class-variance-authority: "npm:^0.7.0"
