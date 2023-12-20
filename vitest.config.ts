@@ -9,7 +9,9 @@ export default defineConfig({
     setupFiles: './src/tests/setup.ts',
     exclude: ['node_modules', './src/tests/e2e'],
     coverage: {
-      reporter: ['lcov', 'html']
+      reporter: ['lcov', 'html'],
+      all: false,
+      provider: 'v8'
     },
     alias: {
       '@': new URL('src', import.meta.url).pathname,
