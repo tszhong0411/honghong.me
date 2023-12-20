@@ -65,7 +65,7 @@
     "react-medium-image-zoom": "^5.1.9",
     "react-use": "^17.4.2",
     "rehype-autolink-headings": "^7.1.0",
-    "rehype-pretty-code": "^0.12.1",
+    "rehype-pretty-code": "^0.12.3",
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^3.0.1",
     "rss": "^1.2.2",

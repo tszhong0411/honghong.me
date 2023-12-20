@@ -7999,7 +7999,7 @@ __metadata:
     react-medium-image-zoom: "npm:^5.1.9"
     react-use: "npm:^17.4.2"
     rehype-autolink-headings: "npm:^7.1.0"
-    rehype-pretty-code: "npm:^0.12.1"
+    rehype-pretty-code: "npm:^0.12.3"
     rehype-slug: "npm:^6.0.0"
     remark-gfm: "npm:^3.0.1"
     rss: "npm:^1.2.2"
@@ -12109,9 +12109,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rehype-pretty-code@npm:^0.12.1":
-  version: 0.12.1
-  resolution: "rehype-pretty-code@npm:0.12.1"
+"rehype-pretty-code@npm:^0.12.3":
+  version: 0.12.3
+  resolution: "rehype-pretty-code@npm:0.12.3"
   dependencies:
     "@types/hast": "npm:^3.0.3"
     hast-util-to-string: "npm:^3.0.0"
@@ -12120,8 +12120,8 @@ __metadata:
     unified: "npm:^11.0.4"
     unist-util-visit: "npm:^5.0.0"
   peerDependencies:
-    shikiji: ^0.7.0 || ^0.8.0
-  checksum: aef6aa4158859227ea8ba90a40f58438c13e282d3bd86c33a6fa5fe9f93a661115186a4248d42fe351e49e8d0bab3a475b6715e88d2105e40874dd2d6c2d6acd
+    shikiji: ^0.7.0 || ^0.8.0 || ^0.9.0
+  checksum: 42f7f5eaca200133452fcf20ac16f91509b2866757dbd61b571802d092b8c3c7ee137af59b414f833f1872b122dfe3421be7b1d01201f8b558404a75bf21f551
   languageName: node
   linkType: hard
 
