@@ -144,7 +144,7 @@ const RootLayout = (props: RootLayoutProps) => {
           <Image
             width={1512}
             height={447}
-            className='absolute bottom-0 left-1/2 -z-10 -translate-x-1/2'
+            className='absolute -bottom-6 left-1/2 -z-10 -translate-x-1/2'
             src='/images/gradient-background-bottom.png'
             alt='Gradient background'
             priority

@@ -33,7 +33,7 @@ const FooterLink = (props: Link) => {
 
 const Footer = () => {
   return (
-    <footer className='mx-auto flex max-w-5xl flex-col px-8 pb-8'>
+    <footer className='mx-auto mb-6 flex max-w-5xl flex-col rounded-2xl bg-background/30 p-8 shadow-sm saturate-100 backdrop-blur-[10px] transition-colors duration-500'>
       <NowPlaying />
       <div className='mt-12 grid grid-cols-2 sm:grid-cols-3'>
         {FOOTER_LINKS.map((list) => (

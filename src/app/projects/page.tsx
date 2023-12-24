@@ -2,7 +2,7 @@ import { allProjects } from 'contentlayer/generated'
 import type { Metadata, ResolvingMetadata } from 'next'
 
 import PageTitle from '@/components/page-title'
-import ProjectCard from '@/components/project-card'
+import ProjectCards from '@/components/project-cards'
 import site from '@/config/site'
 
 export const runtime = 'edge'
@@ -48,11 +48,7 @@ const ProjectsPage = () => {
         title='Projects'
         description='The list of my projects. Everything was made with ❤️.'
       />
-      <div className='grid gap-4 md:grid-cols-2'>
-        {allProjects.map((project) => (
-          <ProjectCard key={project._id} {...project} />
-        ))}
-      </div>
+      <ProjectCards projects={allProjects} />
     </>
   )
 }

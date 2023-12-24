@@ -1,16 +1,14 @@
 import { IconArrowRight } from '@tabler/icons-react'
 import Link from 'next/link'
 
-import { type BlogPostCore } from '@/types'
+import getAllPosts from '@/lib/mdx'
 
 import PostCards from './post-cards'
 
-type PostsProps = {
-  posts: BlogPostCore[]
-}
-
-const Posts = (props: PostsProps) => {
-  const { posts } = props
+const Posts = () => {
+  const posts = getAllPosts({
+    limit: 4
+  })
 
   return (
     <>

@@ -12,17 +12,18 @@ const Navbar = () => {
   return (
     <ul className='hidden space-x-2 md:flex'>
       {HEADER_LINKS.map((link) => {
+        const isActive = link.href === pathname
+
         return (
           <li key={link.text}>
             <Link
               className={cn(
-                'rounded px-3 py-2 text-sm font-medium transition-colors duration-150',
+                'relative rounded px-3 py-2 text-sm font-medium transition-colors duration-150',
                 {
-                  ['text-muted-foreground hover:text-foreground']:
-                    link.href !== pathname
+                  ['text-muted-foreground hover:text-foreground']: !isActive
                 },
                 {
-                  ['text-foreground']: link.href === pathname
+                  ['text-foreground']: isActive
                 }
               )}
               href={link.href}
@@ -35,4 +36,5 @@ const Navbar = () => {
     </ul>
   )
 }
+
 export default Navbar

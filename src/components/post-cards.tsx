@@ -14,6 +14,7 @@ import Image from './mdx/image'
 type PostCardsProps = {
   posts: BlogPostCore[]
 }
+type PostCardProps = BlogPostCore
 
 const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
   for (const card of document.querySelectorAll('[data-id="post-card"]')) {
@@ -43,8 +44,6 @@ const PostCards = (props: PostCardsProps) => {
     </div>
   )
 }
-
-type PostCardProps = BlogPostCore
 
 const PostCard = (props: PostCardProps) => {
   const { _id, slug, title, summary, date } = props
