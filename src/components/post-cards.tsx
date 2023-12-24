@@ -6,14 +6,16 @@ import useSWR from 'swr'
 
 import { Skeleton } from '@/components/ui'
 import fetcher from '@/lib/fetcher'
+import getAllPosts from '@/lib/mdx'
 import { type BlogPostCore, type Likes, type Views } from '@/types'
 import cn from '@/utils/cn'
 
 import Image from './mdx/image'
 
 type PostCardsProps = {
-  posts: BlogPostCore[]
+  limit?: number
 }
+type PostCardProps = BlogPostCore
 
 const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
   for (const card of document.querySelectorAll('[data-id="post-card"]')) {
@@ -28,7 +30,11 @@ const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
 }
 
 const PostCards = (props: PostCardsProps) => {
-  const { posts } = props
+  const { limit } = props
+
+  const posts = getAllPosts({
+    limit
+  })
 
   return (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
@@ -43,8 +49,6 @@ const PostCards = (props: PostCardsProps) => {
     </div>
   )
 }
-
-type PostCardProps = BlogPostCore
 
 const PostCard = (props: PostCardProps) => {
   const { _id, slug, title, summary, date } = props

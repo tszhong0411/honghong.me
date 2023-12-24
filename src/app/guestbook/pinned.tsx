@@ -1,23 +1,10 @@
 import { IconPinnedFilled } from '@tabler/icons-react'
-import Image from 'next/image'
 import React from 'react'
-
-import gradientDarkBackground from '@/assets/images/pinned-background-dark.png'
-import gradientLightBackground from '@/assets/images/pinned-background-light.png'
 
 const Pinned = () => {
   return (
     <div className='relative mb-12 overflow-hidden rounded-lg border px-4 py-6'>
-      <Image
-        src={gradientLightBackground}
-        alt='Gradient light background'
-        className='absolute inset-0 -z-10 rounded-lg opacity-20 dark:hidden'
-      />
-      <Image
-        src={gradientDarkBackground}
-        alt='Gradient dark background'
-        className='absolute inset-0 -z-10 hidden rounded-lg opacity-60 dark:block'
-      />
+      <div className='absolute inset-0 -z-10 rounded-[calc(var(--radius)-1px)] bg-[linear-gradient(119deg,_rgba(143,152,242,1)_0%,_rgba(95,167,225,1)_30%,_rgba(206,133,247,1)_47%,_rgba(235,147,186,1)_69%,_rgba(190,188,251,1)_80%)] opacity-80 dark:bg-[linear-gradient(119deg,_rgba(75,87,196,1)_0%,_rgba(31,133,206,1)_30%,_rgba(125,20,166,1)_42%,_rgba(134,15,60,1)_63%,_rgba(18,8,45,1)_73%)]' />
       <div className='mb-3 flex items-center gap-2'>
         <IconPinnedFilled className='rotate-45' />
         Pinned

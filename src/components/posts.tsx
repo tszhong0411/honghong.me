@@ -1,21 +1,13 @@
 import { IconArrowRight } from '@tabler/icons-react'
 import Link from 'next/link'
 
-import { type BlogPostCore } from '@/types'
-
 import PostCards from './post-cards'
 
-type PostsProps = {
-  posts: BlogPostCore[]
-}
-
-const Posts = (props: PostsProps) => {
-  const { posts } = props
-
+const Posts = () => {
   return (
     <>
       <h2 className='mb-8 text-3xl font-bold'>Posts</h2>
-      <PostCards posts={posts} />
+      <PostCards limit={4} />
       <div className='flex'>
         <Link
           href='/blog'
