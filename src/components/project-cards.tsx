@@ -1,6 +1,6 @@
 'use client'
 
-import { allProjects, type Project } from 'contentlayer/generated'
+import { type Project } from 'contentlayer/generated'
 import Link from 'next/link'
 
 import cn from '@/utils/cn'
@@ -9,6 +9,9 @@ import getIconByName from '@/utils/get-icon-by-name'
 import Image from './mdx/image'
 
 type ProjectCardProps = Project
+type ProjectCardsProps = {
+  projects: Project[]
+}
 
 const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
   for (const card of document.querySelectorAll('[data-id="project-card"]')) {
@@ -22,14 +25,16 @@ const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
   }
 }
 
-const ProjectCards = () => {
+const ProjectCards = (props: ProjectCardsProps) => {
+  const { projects } = props
+
   return (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div
       className='group grid gap-4 sm:grid-cols-2'
       onMouseMove={handleMouseMove}
     >
-      {allProjects.map((project) => (
+      {projects.map((project) => (
         <ProjectCard key={project._id} {...project} />
       ))}
     </div>

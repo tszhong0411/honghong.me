@@ -1,13 +1,19 @@
 import { IconArrowRight } from '@tabler/icons-react'
 import Link from 'next/link'
 
+import getAllPosts from '@/lib/mdx'
+
 import PostCards from './post-cards'
 
 const Posts = () => {
+  const posts = getAllPosts({
+    limit: 4
+  })
+
   return (
     <>
       <h2 className='mb-8 text-3xl font-bold'>Posts</h2>
-      <PostCards limit={4} />
+      <PostCards posts={posts} />
       <div className='flex'>
         <Link
           href='/blog'

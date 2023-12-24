@@ -6,14 +6,13 @@ import useSWR from 'swr'
 
 import { Skeleton } from '@/components/ui'
 import fetcher from '@/lib/fetcher'
-import getAllPosts from '@/lib/mdx'
 import { type BlogPostCore, type Likes, type Views } from '@/types'
 import cn from '@/utils/cn'
 
 import Image from './mdx/image'
 
 type PostCardsProps = {
-  limit?: number
+  posts: BlogPostCore[]
 }
 type PostCardProps = BlogPostCore
 
@@ -30,11 +29,7 @@ const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
 }
 
 const PostCards = (props: PostCardsProps) => {
-  const { limit } = props
-
-  const posts = getAllPosts({
-    limit
-  })
+  const { posts } = props
 
   return (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions

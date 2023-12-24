@@ -1,3 +1,4 @@
+import { allProjects } from 'contentlayer/generated'
 import type { Metadata, ResolvingMetadata } from 'next'
 
 import PageTitle from '@/components/page-title'
@@ -47,7 +48,7 @@ const ProjectsPage = () => {
         title='Projects'
         description='The list of my projects. Everything was made with ❤️.'
       />
-      <ProjectCards />
+      <ProjectCards projects={allProjects} />
     </>
   )
 }
