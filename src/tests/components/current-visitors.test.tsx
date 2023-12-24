@@ -15,7 +15,7 @@ describe('<CurrentVisitors />', () => {
     renderWithSWRConfig(<CurrentVisitors />)
 
     await waitFor(() => {
-      expect(screen.getByText('0 current visitors')).toBeInTheDocument()
+      expect(screen.getByText('0 current visitor')).toBeInTheDocument()
     })
   })
 })
