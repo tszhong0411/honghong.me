@@ -8007,7 +8007,7 @@ __metadata:
     sharp: "npm:^0.33.1"
     shikiji: "npm:^0.9.9"
     swr: "npm:^2.2.4"
-    tailwind-merge: "npm:^2.1.0"
+    tailwind-merge: "npm:^2.2.0"
     tailwindcss: "npm:^3.3.6"
     tailwindcss-animate: "npm:^1.0.7"
     typescript: "npm:5.3.3"
@@ -13381,12 +13381,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwind-merge@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "tailwind-merge@npm:2.1.0"
+"tailwind-merge@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "tailwind-merge@npm:2.2.0"
   dependencies:
     "@babel/runtime": "npm:^7.23.5"
-  checksum: 8a8a7fc7fd480e2ecfc6f5f1450d3cb73ef409d90c1be8ced9ea51ed957af9573e13e01e09e3ae0fa8b5eb58c83157b09e25e499a9a60d633e78d85771690f84
+  checksum: 41476d686af101c770401f4db509ffea9ec13bf99fd18185903dd86df2b71b3f512d9373b0f2785cb9e9abf093f39373327a29e9b3dde643b9daf7062f77c4ba
   languageName: node
   linkType: hard
 
