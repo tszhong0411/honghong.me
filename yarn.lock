@@ -8005,7 +8005,7 @@ __metadata:
     rss: "npm:^1.2.2"
     schema-dts: "npm:^1.1.2"
     sharp: "npm:^0.33.1"
-    shikiji: "npm:^0.9.11"
+    shikiji: "npm:^0.9.15"
     swr: "npm:^2.2.4"
     tailwind-merge: "npm:^2.2.0"
     tailwindcss: "npm:^3.4.0"
@@ -12745,19 +12745,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"shikiji-core@npm:0.9.11":
-  version: 0.9.11
-  resolution: "shikiji-core@npm:0.9.11"
-  checksum: 823c7ec74512c09e31ba41382c8b4e4a9d5234bfd90d8e4ffc3ff752b01e6cbc8435b2695a7e8dfcf1efc2e5685dc641aed9ccc4fcbfa5aab118ae67d3de6949
+"shikiji-core@npm:0.9.15":
+  version: 0.9.15
+  resolution: "shikiji-core@npm:0.9.15"
+  checksum: d1c13777f416be4d76392bce5ace5da4f6015ee53fdb85b28302f835ae5e5db18a550220e303f8074154d912e8f4d5b2f585380f3c6973599114836648eb1949
   languageName: node
   linkType: hard
 
-"shikiji@npm:^0.9.11":
-  version: 0.9.11
-  resolution: "shikiji@npm:0.9.11"
+"shikiji@npm:^0.9.15":
+  version: 0.9.15
+  resolution: "shikiji@npm:0.9.15"
   dependencies:
-    shikiji-core: "npm:0.9.11"
-  checksum: b46111eefe44701a82f2f4943b65870d6025287b43c2702f799f1faa432d9b6436dd3abba51a4646560ccab6645c9676244cf507b2595acbdb0c0d7d8d16e749
+    shikiji-core: "npm:0.9.15"
+  checksum: baca338338c8cae5f6f83dbccdc336dd3386635792f7e150dbfe7c6dafdc06d7d83ef2977162000223a5cb880096a60b82281424353b030672d38194ae2a7238
   languageName: node
   linkType: hard
 
