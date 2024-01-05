@@ -10,7 +10,7 @@ export type ImageProps = {
   lazy?: boolean
 } & React.ComponentPropsWithoutRef<typeof NextImage>
 
-const Image = (props: ImageProps) => {
+const Image = React.forwardRef<HTMLDivElement, ImageProps>((props, ref) => {
   const { alt, src, className, imageClassName, lazy = true, ...rest } = props
   const [isLoading, setLoading] = React.useState(true)
 
@@ -18,6 +18,7 @@ const Image = (props: ImageProps) => {
     <div
       className={cn('overflow-hidden', isLoading && 'animate-pulse', className)}
       data-testid='image-container'
+      ref={ref}
     >
       <NextImage
         className={cn(
@@ -35,5 +36,8 @@ const Image = (props: ImageProps) => {
       />
     </div>
   )
-}
+})
+
+Image.displayName = 'Image'
+
 export default Image
