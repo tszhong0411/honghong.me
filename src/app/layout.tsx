@@ -11,8 +11,6 @@ import Toaster from '@/components/toaster'
 import site from '@/config/site'
 import cn from '@/utils/cn'
 
-import Providers from './providers'
-
 type RootLayoutProps = {
   children: React.ReactNode
 }
@@ -80,16 +78,9 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: [
-    {
-      media: '(prefers-color-scheme: light)',
-      color: '#ffffff'
-    },
-    {
-      media: '(prefers-color-scheme: dark)',
-      color: '#000000'
-    }
-  ]
+  themeColor: {
+    color: '#000000'
+  }
 }
 
 const inter = Inter({
@@ -119,37 +110,36 @@ const RootLayout = (props: RootLayoutProps) => {
         monaspaceNeon.variable,
         'scroll-smooth'
       )}
-      suppressHydrationWarning
     >
-      <body className='relative font-default'>
-        <Providers>
-          <Header />
-          <main
-            id='skip-nav'
-            className='mx-auto mb-16 max-w-5xl px-6 py-24 sm:px-8'
-          >
-            {children}
-          </main>
-          <Toaster />
-          <Footer />
-          <Analytics />
-          <Image
-            width={1512}
-            height={550}
-            className='absolute left-1/2 top-0 -z-10 -translate-x-1/2'
-            src='/images/gradient-background-top.png'
-            alt='Gradient background'
-            priority
-          />
-          <Image
-            width={1512}
-            height={447}
-            className='absolute -bottom-6 left-1/2 -z-10 -translate-x-1/2'
-            src='/images/gradient-background-bottom.png'
-            alt='Gradient background'
-            priority
-          />
-        </Providers>
+      <body>
+        <Header />
+        <main
+          id='skip-nav'
+          className='mx-auto mb-16 max-w-5xl px-6 py-24 sm:px-8'
+        >
+          {children}
+        </main>
+        <Toaster />
+        <Footer />
+        <Analytics />
+        <Image
+          width={1512}
+          height={550}
+          className='absolute left-1/2 top-0 -z-10 -translate-x-1/2'
+          src='/images/gradient-background-top.png'
+          alt=''
+          role='presentation'
+          priority
+        />
+        <Image
+          width={1512}
+          height={447}
+          className='absolute -bottom-6 left-1/2 -z-10 -translate-x-1/2'
+          src='/images/gradient-background-bottom.png'
+          alt=''
+          role='presentation'
+          priority
+        />
       </body>
     </html>
   )

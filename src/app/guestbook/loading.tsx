@@ -4,9 +4,9 @@ import { Skeleton } from '@/components/ui'
 import Pinned from './pinned'
 
 const Placeholder = () => (
-  <div className='rounded-lg border p-4'>
+  <div className='rounded-lg border bg-accent p-4'>
     <div className='mb-3 flex gap-3'>
-      <Skeleton className='h-10 w-10 rounded-full' />
+      <Skeleton className='size-10 rounded-full' />
       <div className='flex flex-col justify-center gap-1'>
         <Skeleton className='h-4 w-40 rounded-md' />
         <Skeleton className='h-4 w-36 rounded-md' />

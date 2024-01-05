@@ -8,7 +8,7 @@ const SignIn = () => {
   return (
     <>
       <Button
-        className='inline-block bg-gradient-to-br from-[#fcd34d] via-[#ef4444] to-[#ec4899] font-extrabold text-white'
+        className='inline-block bg-gradient-to-br from-[#fcd34d] via-[#ef4444] to-[#ec4899] font-extrabold text-foreground'
         onClick={() => signIn('github')}
         type='button'
       >

@@ -12,7 +12,7 @@ const FooterLink = (props: Link) => {
     return (
       <NextLink
         href={href}
-        className='text-muted-foreground transition-colors duration-150 hover:text-foreground'
+        className='text-muted-foreground transition-colors duration-200 hover:text-foreground'
       >
         {title}
       </NextLink>
@@ -22,7 +22,7 @@ const FooterLink = (props: Link) => {
   return (
     <a
       href={href}
-      className='text-muted-foreground transition-colors duration-150 hover:text-foreground'
+      className='text-muted-foreground transition-colors duration-200 hover:text-foreground'
       target='_blank'
       rel='noopener noreferrer'
     >
@@ -33,7 +33,7 @@ const FooterLink = (props: Link) => {
 
 const Footer = () => {
   return (
-    <footer className='mx-auto mb-6 flex max-w-5xl flex-col rounded-2xl bg-background/30 p-8 shadow-sm saturate-100 backdrop-blur-[10px] transition-colors duration-500'>
+    <footer className='relative mx-auto mb-6 flex max-w-5xl flex-col rounded-2xl bg-background/30 p-8 shadow-sm saturate-100 backdrop-blur-[10px]'>
       <NowPlaying />
       <div className='mt-12 grid grid-cols-2 sm:grid-cols-3'>
         {FOOTER_LINKS.map((list) => (

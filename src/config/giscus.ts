@@ -9,6 +9,7 @@ const GISCUS_CONFIG: GiscusProps = {
   categoryId: env.NEXT_PUBLIC_GISCUS_CATEGORY_ID,
   mapping: 'pathname',
   reactionsEnabled: '1',
+  theme: 'dark',
   emitMetadata: '1',
   inputPosition: 'bottom',
   lang: 'en',

@@ -1,15 +1,17 @@
 'use client'
 
-import { IconHeart } from '@tabler/icons-react'
+/**
+ * (Styling) Inspired by https://framer.university/resources/like-button-component
+ */
 import { motion } from 'framer-motion'
 import React from 'react'
 import toast from 'react-hot-toast'
 import useSWR from 'swr'
 import { useDebouncedCallback } from 'use-debounce'
 
+import { Separator } from '@/components/ui/separator'
 import fetcher from '@/lib/fetcher'
 import { type Likes } from '@/types'
-import cn from '@/utils/cn'
 
 export type LikeButtonProps = {
   slug: string
@@ -17,8 +19,6 @@ export type LikeButtonProps = {
 
 const LikeButton = (props: LikeButtonProps) => {
   const { slug } = props
-  const [isBreathing, setIsBreathing] = React.useState(false)
-  const [scale, setScale] = React.useState(1)
   const [cacheCount, setCacheCount] = React.useState(0)
   const buttonRef = React.useRef<HTMLButtonElement>(null)
 
@@ -26,19 +26,6 @@ const LikeButton = (props: LikeButtonProps) => {
     `/api/likes?slug=${slug}`,
     fetcher
   )
-
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      setIsBreathing(true)
-      setScale(1.2)
-      setTimeout(() => {
-        setIsBreathing(false)
-        setScale(1)
-      }, 1500)
-    }, 3000)
-
-    return () => clearInterval(interval)
-  }, [])
 
   const handleConfetti = async () => {
     const { clientWidth, clientHeight } = document.documentElement
@@ -58,7 +45,8 @@ const LikeButton = (props: LikeButtonProps) => {
       origin: {
         y: targetY / clientHeight,
         x: targetCenterX / clientWidth
-      }
+      },
+      shapes: [confetti.shapeFromText({ text: '❤️', scalar: 2 })]
     })
   }
 
@@ -76,7 +64,7 @@ const LikeButton = (props: LikeButtonProps) => {
 
       await mutate(newData)
     } catch {
-      toast.error('Something went wrong')
+      toast.error('Unable to like this post. Please try again.')
     } finally {
       setCacheCount(0)
     }
@@ -89,7 +77,6 @@ const LikeButton = (props: LikeButtonProps) => {
     setCacheCount(value)
 
     if (data.currentUserLikes + cacheCount === 2) {
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       handleConfetti()
     }
 
@@ -100,40 +87,52 @@ const LikeButton = (props: LikeButtonProps) => {
     <div className='mt-12 flex justify-center'>
       <button
         ref={buttonRef}
-        className={cn([
-          'group relative h-12 w-24 rounded-lg bg-transparent',
-          'before:absolute before:inset-0 before:rounded-lg before:bg-gradient-to-br before:from-[#7928ca] before:to-[#ff0080] before:content-[""]'
-        ])}
+        className='flex items-center gap-3 rounded-xl bg-gradient-to-b from-[#1c1c1d] to-[#141414] px-4 py-2 text-lg shadow-[rgba(255,255,255,0.02)1px_1px_0px_0px_inset,rgba(255,255,255,0.02)-1px_-1px_0px_0px_inset,rgba(255,255,255,0.02)1px_-1px_0px_0px_inset,rgba(255,255,255,0.02)-1px_1px_0px_0px_inset,rgba(255,255,255,0.05)0px_1px_0px_0px_inset,rgba(0,0,0,0.5)0px_4px_8px_0px,rgba(0,0,0,0.17)0px_2px_4px_0px]'
         type='button'
         onClick={handleLike}
         aria-label='Like this post'
       >
-        <motion.span
-          className='absolute inset-0 rounded-lg bg-gradient-to-br from-[#7928ca] to-[#ff0080] blur-xl'
-          animate={{ scale: isBreathing ? scale : 1 }}
-          transition={{ duration: 1, ease: 'linear' }}
-        />
-        <span
-          className={cn([
-            'absolute inset-0.5 z-10 flex items-center justify-center gap-2 rounded-md bg-background text-lg font-bold transition-[background-color] duration-150',
-            'group-hover:bg-transparent group-hover:text-background dark:group-hover:text-foreground'
-          ])}
+        <svg
+          xmlns='http://www.w3.org/2000/svg'
+          width='28'
+          height='28'
+          viewBox='0 0 24 24'
+          strokeWidth='2'
+          stroke='#ef4444'
+          className='relative overflow-hidden'
+          fill='none'
+          strokeLinecap='round'
+          strokeLinejoin='round'
         >
-          <IconHeart
-            className={cn(
-              'group-hover:fill-background dark:group-hover:fill-foreground',
-              data &&
-                data.currentUserLikes + cacheCount === 3 &&
-                'fill-foreground'
-            )}
-            size={24}
-          />
-          {isLoading || !data ? (
-            <div> -- </div>
-          ) : (
-            <div>{data.likes + cacheCount}</div>
-          )}
-        </span>
+          <defs>
+            <clipPath id='clip-path'>
+              <path d='M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572' />
+            </clipPath>
+          </defs>
+          <path d='M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572' />
+          <g clipPath='url(#clip-path)'>
+            <motion.rect
+              x='0'
+              y='0'
+              width='24'
+              height='24'
+              fill='#ef4444'
+              initial={{
+                y: '100%'
+              }}
+              animate={{
+                y: data ? `${100 - (data.likes + cacheCount) * 33}%` : '100%'
+              }}
+            />
+          </g>
+        </svg>
+        Like{data && data.likes + cacheCount > 1 ? 's' : ''}
+        <Separator orientation='vertical' />
+        {isLoading || !data ? (
+          <div> -- </div>
+        ) : (
+          <div>{data.likes + cacheCount}</div>
+        )}
       </button>
     </div>
   )

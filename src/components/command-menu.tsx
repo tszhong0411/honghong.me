@@ -1,16 +1,14 @@
 'use client'
 
 import {
-  IconBrandFacebook,
-  IconBrandGithub,
-  IconBrandInstagram,
-  IconBrandYoutube,
-  IconCode,
-  IconCommand,
-  IconLink
-} from '@tabler/icons-react'
+  SiFacebook,
+  SiGithub,
+  SiInstagram,
+  SiX,
+  SiYoutube
+} from '@icons-pack/react-simple-icons'
+import { IconCode, IconCommand, IconLink } from '@tabler/icons-react'
 import React from 'react'
-import toast from 'react-hot-toast'
 
 import {
   Button,
@@ -22,6 +20,7 @@ import {
   CommandList,
   CommandSeparator
 } from '@/components/ui'
+import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard'
 
 type Groups = Array<{
   name: string
@@ -34,6 +33,7 @@ type Groups = Array<{
 
 const CommandMenu = () => {
   const [open, setOpen] = React.useState(false)
+  const [copy] = useCopyToClipboard()
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -58,17 +58,13 @@ const CommandMenu = () => {
       actions: [
         {
           title: 'Copy Link',
-          icon: <IconLink size={16} className='mr-2' />,
+          icon: <IconLink />,
           onSelect: async () => {
             setOpen(false)
 
-            if (!navigator?.clipboard) {
-              toast.error('Access to clipboard rejected!')
-            }
-
-            try {
-              await navigator.clipboard.writeText(window.location.href)
-              toast.success(
+            await copy({
+              text: window.location.href,
+              successMessage: (
                 <div className='flex flex-col'>
                   <div>Copied</div>
                   <div className='text-sm text-muted-foreground'>
@@ -76,14 +72,12 @@ const CommandMenu = () => {
                   </div>
                 </div>
               )
-            } catch {
-              toast.error('Failed to copy!')
-            }
+            })
           }
         },
         {
           title: 'Source code',
-          icon: <IconCode size={16} className='mr-2' />,
+          icon: <IconCode />,
           onSelect: () => openLink('https://github.com/tszhong0411/honghong.me')
         }
       ]
@@ -93,23 +87,28 @@ const CommandMenu = () => {
       actions: [
         {
           title: 'GitHub',
-          icon: <IconBrandGithub size={16} className='mr-2' />,
+          icon: <SiGithub />,
           onSelect: () => openLink('https://github.com/tszhong0411')
         },
         {
+          title: 'Facebook',
+          icon: <SiFacebook />,
+          onSelect: () => openLink('https://www.facebook.com/tszhong0411/')
+        },
+        {
           title: 'Instagram',
-          icon: <IconBrandInstagram size={16} className='mr-2' />,
+          icon: <SiInstagram />,
           onSelect: () => openLink('https://instagram.com/tszhong0411/')
         },
         {
-          title: 'YouTube',
-          icon: <IconBrandYoutube size={16} className='mr-2' />,
-          onSelect: () => openLink('https://youtube.com/@tszhong0411')
+          title: 'X',
+          icon: <SiX />,
+          onSelect: () => openLink('https://x.com/tszhong0411')
         },
         {
-          title: 'Facebook',
-          icon: <IconBrandFacebook size={16} className='mr-2' />,
-          onSelect: () => openLink('https://www.facebook.com/tszhong0411/')
+          title: 'YouTube',
+          icon: <SiYoutube />,
+          onSelect: () => openLink('https://youtube.com/@tszhong0411')
         }
       ]
     }
@@ -119,11 +118,12 @@ const CommandMenu = () => {
     <>
       <Button
         variant='ghost'
-        className='flex h-9 w-9 items-center justify-center p-0'
+        className='flex size-9 items-center justify-center p-0'
         onClick={() => setOpen(true)}
         type='button'
-        aria-label='Open Command Menu'
+        aria-label='Open command menu'
       >
+        <span className='sr-only'>Open command menu</span>
         <IconCommand size={20} />
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>

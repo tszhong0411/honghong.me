@@ -3,8 +3,6 @@
 import dayjs from 'dayjs'
 import React from 'react'
 
-import { Skeleton } from '@/components/ui'
-
 const editURL = (slug: string) =>
   `https://github.com/tszhong0411/honghong.me/blob/main/src/content/blog/${slug}.mdx?plain=1`
 
@@ -28,17 +26,13 @@ const Footer = (props: FooterProps) => {
         target='_blank'
         rel='noopener noreferrer'
         href={editURL(slug)}
-        className='text-muted-foreground transition-colors duration-150 hover:text-foreground'
+        className='text-muted-foreground transition-colors duration-200 hover:text-foreground'
       >
         Edit on GitHub
       </a>
-      {formattedDate ? (
-        <div className='text-muted-foreground'>
-          Last updated: {formattedDate}
-        </div>
-      ) : (
-        <Skeleton className='h-6 w-32 rounded-md' />
-      )}
+      <div className='text-muted-foreground'>
+        Last updated: {formattedDate || '--/--/----'}
+      </div>
     </div>
   )
 }
