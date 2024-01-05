@@ -18,11 +18,12 @@ const MobileNav = () => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          className='flex h-9 w-9 items-center justify-center p-0 md:hidden'
+          className='flex size-9 items-center justify-center p-0 md:hidden'
           type='button'
           aria-label='Toggle menu'
           variant='ghost'
         >
+          <span className='sr-only'>Toggle menu</span>
           <IconMenu size={20} />
         </Button>
       </DropdownMenuTrigger>
