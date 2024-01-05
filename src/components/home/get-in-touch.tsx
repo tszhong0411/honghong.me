@@ -70,7 +70,7 @@ const GetInTouch = () => {
 
   return (
     <motion.div
-      className='rounded-xl p-1 shadow-card-border backdrop-blur-lg'
+      className='relative rounded-xl p-1 shadow-card-border backdrop-blur-lg'
       initial='initial'
       animate={isInView ? 'animate' : 'initial'}
       variants={variants}
@@ -79,7 +79,7 @@ const GetInTouch = () => {
         duration: 0.5
       }}
     >
-      <div className='relative flex flex-col gap-6 rounded-[11px] bg-background-lighter/60 p-4 lg:p-6'>
+      <div className='flex flex-col gap-6 rounded-[11px] bg-background-lighter/60 p-4 lg:p-6'>
         {/* Main */}
         <div className='flex gap-12 max-md:flex-col'>
           {/* Animation with some badges */}
