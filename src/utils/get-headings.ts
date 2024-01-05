@@ -1,7 +1,6 @@
-import Slugger from 'github-slugger'
 import { marked } from 'marked'
 
-const slugger = new Slugger()
+import slugify from './slugify'
 
 export type Heading = {
   id: string
@@ -12,14 +11,12 @@ export type Heading = {
 export const getHeadings = (content: string): Heading[] => {
   const headings: Heading[] = []
 
-  slugger.reset()
-
   const tokens = marked.lexer(content)
 
   for (const token of tokens) {
     if (token.type === 'heading') {
       headings.push({
-        id: slugger.slug(token.text as string),
+        id: slugify(token.text as string),
         level: token.depth,
         title: token.text
       })
