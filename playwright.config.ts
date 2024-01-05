@@ -33,7 +33,7 @@ export default defineConfig({
     }
   ],
   webServer: {
-    command: `yarn next ${CI ? 'start' : 'dev'}`,
+    command: `bun next ${CI ? 'start' : 'dev'}`,
     url: baseURL,
     timeout: 1000 * 60 * 5,
     reuseExistingServer: !CI

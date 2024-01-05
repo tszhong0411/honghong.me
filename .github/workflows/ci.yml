@@ -30,41 +30,33 @@ jobs:
             exit 0
           fi
 
-      - uses: actions/setup-node@v3
+      - uses: oven-sh/setup-bun@v1
         with:
-          node-version: 18
-
-      - name: Enable corepack
-        run: |
-          corepack enable
-          yarn set version stable
-
-      - name: Install dependencies
-        run: yarn install --no-immutable
+          bun-version: latest
 
       - name: Get preview environment variables
-        run: yarn dlx vercel env pull .env --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+        run: bunx vercel env pull .env --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Lint
-        run: yarn lint
+        run: bun run lint
 
       - name: Typecheck
-        run: yarn type-check
+        run: bun run type-check
 
       - name: Unit test
-        run: yarn test:unit --coverage
+        run: bun run test:unit --coverage
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
 
       - name: Build app
-        run: yarn build
+        run: bun run build
 
       - name: Install playwright
-        run: yarn playwright install --with-deps
+        run: bun run playwright install --with-deps
 
       - name: E2E test
-        run: yarn test:e2e
+        run: bun run test:e2e
 
       - name: Upload Playwright report
         if: always()
