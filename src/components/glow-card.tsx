@@ -28,6 +28,7 @@ const GlowCard = React.forwardRef<HTMLDivElement, GlowCardProps>(
           '--spread': spread
         }}
         {...rest}
+        data-testid='glow-card'
         data-glow
       >
         <div data-glow />
