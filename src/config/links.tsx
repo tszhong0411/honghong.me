@@ -1,9 +1,12 @@
 import {
-  IconBrandFacebook,
-  IconBrandGithub,
-  IconBrandInstagram,
-  IconBrandX,
-  IconBrandYoutube,
+  type IconType,
+  SiFacebook,
+  SiGithub,
+  SiInstagram,
+  SiX,
+  SiYoutube
+} from '@icons-pack/react-simple-icons'
+import {
   IconChartBar,
   IconDeviceDesktop,
   IconFlame,
@@ -17,13 +20,6 @@ export type Link = {
   title: string
 }
 
-type HeroLinks = Array<{
-  id: string
-  label: string
-  icon: React.ReactNode
-  href: string
-}>
-
 type HeaderLinks = Array<{
   icon: React.ReactNode
   href: string
@@ -33,6 +29,12 @@ type HeaderLinks = Array<{
 type FooterLinks = Array<{
   id: number
   links: Link[]
+}>
+
+type SocialLinks = Array<{
+  href: string
+  title: string
+  icon: IconType
 }>
 
 export const HEADER_LINKS: HeaderLinks = [
@@ -134,35 +136,30 @@ export const FOOTER_LINKS: FooterLinks = [
   }
 ]
 
-export const HERO_LINKS: HeroLinks = [
+export const SOCIAL_LINKS: SocialLinks = [
   {
-    id: 'github',
-    label: 'GitHub',
-    icon: <IconBrandGithub size={28} />,
-    href: 'https://github.com/tszhong0411'
+    href: 'https://github.com/tszhong0411',
+    title: 'GitHub',
+    icon: SiGithub
   },
   {
-    id: 'instagram',
-    label: 'Instagram',
-    icon: <IconBrandInstagram size={28} />,
-    href: 'https://www.instagram.com/tszhong0411/'
+    href: 'https://www.facebook.com/tszhong0411/',
+    title: 'Facebook',
+    icon: SiFacebook
   },
   {
-    id: 'youtube',
-    label: 'YouTube',
-    icon: <IconBrandYoutube size={28} />,
-    href: 'https://www.youtube.com/@tszhong0411'
+    href: 'https://www.instagram.com/tszhong0411/',
+    title: 'Instagram',
+    icon: SiInstagram
   },
   {
-    id: 'facebook',
-    label: 'Facebook',
-    icon: <IconBrandFacebook size={28} />,
-    href: 'https://www.facebook.com/tszhong0411/'
+    href: 'https://x.com/tszhong0411',
+    title: 'X',
+    icon: SiX
   },
   {
-    id: 'twitter',
-    label: 'Twitter',
-    icon: <IconBrandX size={28} />,
-    href: 'https://twitter.com/tszhong0411'
+    href: 'https://www.youtube.com/@tszhong0411',
+    title: 'YouTube',
+    icon: SiYoutube
   }
 ]
