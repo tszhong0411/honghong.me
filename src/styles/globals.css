@@ -101,28 +101,22 @@
   );
 }
 
-[data-glow] [data-glow] {
-  position: absolute;
-  inset: 0;
-  will-change: filter;
-  opacity: 1;
-}
-
 [data-glow] > [data-glow] {
   border-radius: calc(var(--radius) * 1px);
   border-width: calc(var(--border-size) * 20);
   filter: blur(calc(var(--border-size) * 10));
   background: none;
   pointer-events: none;
+  border: none;
+  position: absolute;
+  inset: 0;
+  will-change: filter;
+  opacity: 1;
 }
 
 [data-glow] > [data-glow]::before {
   inset: -10px;
   border-width: 10px;
-}
-
-[data-glow] [data-glow] {
-  border: none;
 }
 
 [data-glow] :is(a, button) {
