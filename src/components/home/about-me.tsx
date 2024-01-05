@@ -90,7 +90,6 @@ const AboutMe = () => {
           Know more about me
         </Link>
       </div>
-      <div className='absolute left-1/2 top-1/4 -z-10 size-52 -translate-x-1/2 rounded-full bg-red-500 blur-[120px]' />
     </motion.div>
   )
 }

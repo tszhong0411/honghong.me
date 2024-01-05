@@ -15,15 +15,6 @@ const variants = {
   }
 }
 
-const gradientVariants = {
-  initial: {
-    opacity: 0
-  },
-  animate: {
-    opacity: 1
-  }
-}
-
 const GetInTouch = () => {
   const [scope, animate] = useAnimate()
   const cardsRef = React.useRef<HTMLDivElement>(null)
@@ -155,17 +146,6 @@ const GetInTouch = () => {
           </div>
         </div>
       </div>
-      {/* Background gradient (red) */}
-      <motion.div
-        className='absolute -bottom-6 left-[calc(50%-80vw/2)] -z-40 h-48 w-[80vw] bg-red-500/80 blur-[160px] md:left-[calc(50%-35vw/2)] md:w-[35vw]'
-        initial='initial'
-        animate={isInView ? 'animate' : 'initial'}
-        variants={gradientVariants}
-        transition={{
-          duration: 1,
-          delay: 0.5
-        }}
-      />
     </motion.div>
   )
 }
