@@ -34,6 +34,9 @@ jobs:
         with:
           bun-version: latest
 
+      - name: Install dependencies
+        run: bun install
+
       - name: Get preview environment variables
         run: bunx vercel env pull .env --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
