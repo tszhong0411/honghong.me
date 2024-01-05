@@ -5,6 +5,9 @@ import PageTitle from '@/components/page-title'
 import site from '@/config/site'
 import getPage from '@/utils/get-page'
 
+/**
+ * Refer to README.md (todo)
+ */
 // export const runtime = 'edge'
 const title = 'Uses'
 const description =
