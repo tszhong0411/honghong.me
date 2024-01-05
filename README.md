@@ -14,7 +14,7 @@ Welcome to my personal blog repository! This repository houses the code for my b
 
 ## ✨ Features
 
-- ⚡️ Next.js 14 with App Router
+- ⚡️ Next.js 14 with App Router (Turbo)
 - 📝 MDX + Contentlayer
 - 🎨 Tailwind CSS - for styling
 - 🌈 Radix UI - accessible UI components
@@ -46,7 +46,7 @@ Welcome to my personal blog repository! This repository houses the code for my b
 ## 🔨 Requirements
 
 - Node with [Corepack](https://github.com/nodejs/corepack), recommended `18.x`, minimum `16.9.0`
-- Yarn, recommended `4.0.2`, minimum `3.x`
+- Bun, recommended `1.0.21`, minimum `1.x`
 - MySQL, recommended `8.0`, minimum `5.6`
 - [Visual Studio Code](https://code.visualstudio.com/) with [recommended extensions](.vscode/extensions.json)
 - Optionally [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
@@ -58,14 +58,13 @@ Follow these steps to run the project locally on your machine:
 ```bash
 git clone https://github.com/tszhong0411/honghong.me.git
 cd honghong.me
-corepack enable
-yarn install
+bun install
 ```
 
 Create a `.env.local` file based on the provided `.env.example` file and fill in the necessary variables.
 
 ```bash
-yarn dev
+bun dev
 ```
 
 The app will become available at `http://localhost:3000`.
