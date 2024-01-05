@@ -1,3 +1,6 @@
+/**
+ * Inspired by https://jahir.dev/uses
+ */
 import Image from './image'
 
 export type Items = Array<{
@@ -22,7 +25,7 @@ const ItemGrid = (props: ItemGridProps) => {
           href={item.url}
           target='_blank'
           rel='noopener noreferrer'
-          className='flex gap-6 rounded-lg border p-4 no-underline transition-colors duration-150 hover:bg-accent sm:flex-col sm:gap-3'
+          className='flex gap-6 rounded-lg border bg-accent p-4 no-underline transition-colors duration-200 hover:border-border-highlight hover:bg-accent-highlight sm:flex-col sm:gap-3'
         >
           <Image
             src={item.image}
@@ -30,7 +33,7 @@ const ItemGrid = (props: ItemGridProps) => {
             height={256}
             alt={item.name}
             className='shrink-0'
-            imageClassName='m-0 h-24 w-24 sm:h-full sm:w-full'
+            imageClassName='m-0 size-24 sm:h-full sm:w-full'
           />
           <div className='flex flex-col justify-center gap-2'>
             <div className='text-lg font-extrabold'>{item.name}</div>

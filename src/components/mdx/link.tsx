@@ -8,7 +8,7 @@ const Link = (props: LinkProps) => {
   if ((href as string).startsWith('/')) {
     return (
       <NextLink
-        className='font-medium underline underline-offset-4'
+        className='font-medium text-[#ff486d] no-underline hover:text-[#f97084] hover:underline'
         href={href as string}
         {...rest}
       >
@@ -20,7 +20,7 @@ const Link = (props: LinkProps) => {
   if ((href as string).startsWith('#')) {
     return (
       <a
-        className='font-medium underline underline-offset-4'
+        className='font-medium text-[#ff486d] no-underline hover:text-[#f97084] hover:underline'
         href={href}
         {...rest}
       >
@@ -31,7 +31,7 @@ const Link = (props: LinkProps) => {
 
   return (
     <a
-      className='font-medium underline underline-offset-4'
+      className='font-medium text-[#ff486d] no-underline hover:text-[#f97084] hover:underline'
       target='_blank'
       rel='noopener noreferrer'
       href={href}

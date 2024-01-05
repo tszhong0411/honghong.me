@@ -1,81 +1,37 @@
 import typography from '@tailwindcss/typography'
 import type { Config } from 'tailwindcss'
 import { fontFamily } from 'tailwindcss/defaultTheme'
+import { type PluginAPI } from 'tailwindcss/types/config'
 import animate from 'tailwindcss-animate'
 
 export default {
-  darkMode: 'class',
   content: ['./src/**/*.{js,ts,jsx,tsx}', './contentlayer.config.ts'],
   theme: {
-    container: {
-      center: true,
-      padding: '2rem',
-      screens: {
-        '2xl': '1400px'
-      }
-    },
     extend: {
       colors: {
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
-        pre: 'hsl(var(--pre))',
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
-        primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))'
-        },
-        secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))'
-        },
-        destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))'
-        },
-        muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))'
-        },
+        background: 'rgb(var(--background))',
+        'background-lighter': 'rgb(var(--background-lighter))',
+        foreground: 'rgb(var(--foreground))',
+        'muted-foreground': 'rgb(var(--muted-foreground))',
         accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))'
+          DEFAULT: 'rgb(var(--accent))',
+          highlight: 'rgb(var(--accent-highlight))'
         },
-        popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))'
+        border: {
+          DEFAULT: 'rgb(var(--border))',
+          highlight: 'rgb(var(--border-highlight))'
         },
-        card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))'
-        }
-      },
-      borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)'
+        ring: 'rgb(var(--ring))'
       },
       fontFamily: {
         default: ['var(--font-inter)', ...fontFamily.sans],
         'monaspace-neon': ['var(--font-monaspace-neon)', ...fontFamily.sans],
         calcom: ['var(--font-calcom)', ...fontFamily.sans]
       },
-      keyframes: {
-        'accordion-down': {
-          from: { height: '0' },
-          to: { height: 'var(--radix-accordion-content-height)' }
-        },
-        'accordion-up': {
-          from: { height: 'var(--radix-accordion-content-height)' },
-          to: { height: '0' }
-        }
+      boxShadow: {
+        'card-border': '0 0 0 1px #ffffff0f, 0 -1px #ffffff1a'
       },
-      animation: {
-        'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out'
-      },
-      typography: {
+      typography: (theme: PluginAPI['theme']) => ({
         DEFAULT: {
           css: {
             'h2, h3, h4, h5, h6': {
@@ -96,18 +52,18 @@ export default {
               borderRadius: '0.375rem',
               display: 'inline-block',
               lineHeight: '1.2',
-              background: '#f7f7f7',
-              border: '1px solid #ededed',
+              background: '#2a2828',
+              border: '1px solid #3e3c3c',
 
               '&::before, &::after': {
                 content: 'none'
               }
             },
             pre: {
-              background: 'hsl(var(--pre))',
+              background: 'rgb(var(--accent))',
               padding: '12px 0',
               lineHeight: 2,
-              border: '1px solid hsl(var(--border))',
+              border: '1px solid rgb(var(--border))',
               '[data-line-numbers]': {
                 '[data-line]::before': {
                   content: 'counter(line)',
@@ -116,7 +72,7 @@ export default {
                   width: '16px',
                   marginRight: '16px',
                   textAlign: 'right',
-                  color: 'hsl(var(--muted-foreground) / 0.6)'
+                  color: theme('colors.zinc.500')
                 }
               },
               '> code': {
@@ -129,12 +85,12 @@ export default {
                   '> [data-highlighted-chars]': {
                     padding: '2px 4px',
                     borderRadius: '0.25rem',
-                    background: '#e3e3e3'
+                    background: '#3c3c3c'
                   }
                 },
                 '> [data-highlighted-line]': {
-                  borderLeftColor: 'hsl(var(--foreground))',
-                  background: '#e3e3e3'
+                  borderLeftColor: '#fff',
+                  background: '#3c3c3c'
                 }
               }
             },
@@ -142,8 +98,8 @@ export default {
               top: '60px !important'
             },
             '[data-rehype-pretty-code-title]': {
-              backgroundColor: 'hsl(var(--pre))',
-              border: '1px solid hsl(var(--border))',
+              backgroundColor: 'rgb(var(--accent))',
+              border: '1px solid rgb(var(--border))',
               borderTopLeftRadius: '8px',
               borderTopRightRadius: '8px',
               padding: '10px 20px',
@@ -157,30 +113,13 @@ export default {
               borderTopLeftRadius: '0',
               borderTopRightRadius: '0',
               borderTopWidth: '0'
-            }
-          }
-        },
-        invert: {
-          css: {
-            ':not(pre) > code': {
-              background: '#2a2828',
-              border: '1px solid #3e3c3c'
             },
-            pre: {
-              '> code': {
-                '> [data-line]': {
-                  '> [data-highlighted-chars]': {
-                    background: '#3c3c3c'
-                  }
-                },
-                '> [data-highlighted-line]': {
-                  background: '#3c3c3c'
-                }
-              }
+            '[data-rehype-pretty-code-figure]': {
+              position: 'relative'
             }
           }
         }
-      }
+      })
     }
   },
   plugins: [typography, animate]

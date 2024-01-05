@@ -1,3 +1,6 @@
+/**
+ * Inspired by https://fig.io
+ */
 'use client'
 
 import {
@@ -8,6 +11,7 @@ import {
 import React from 'react'
 import useSWR from 'swr'
 
+import Counter from '@/components/counter'
 import { IconGitHub, IconWakaTime, IconYouTube } from '@/components/icons'
 import fetcher from '@/lib/fetcher'
 import {
@@ -22,12 +26,13 @@ type Card = {
   icon: React.ReactNode
   title: string
   link: string
-  value: number | string | undefined
+  value: number | undefined
   linkText: string
   gradient: {
     startColor: string
     endColor: string
   }
+  suffix?: string
 }
 
 const Items = () => {
@@ -42,14 +47,15 @@ const Items = () => {
       title: 'Coding Hours',
       link: 'https://wakatime.com/@tszhong0411',
       value: wakatimeData?.seconds
-        ? `${Math.round(wakatimeData.seconds / 60 / 60)} hrs`
+        ? Math.round(wakatimeData.seconds / 60 / 60)
         : undefined,
       icon: <IconWakaTime className='text-[#0061ff]' />,
       linkText: 'WakaTime',
       gradient: {
         startColor: '#0061ff',
         endColor: '#6f7bf7'
-      }
+      },
+      suffix: 'hrs'
     },
     {
       title: 'YouTube Subscribers',
@@ -129,7 +135,8 @@ const Items = () => {
             title,
             value,
             linkText,
-            gradient: { startColor, endColor }
+            gradient: { startColor, endColor },
+            suffix
           } = item
 
           return (
@@ -138,22 +145,23 @@ const Items = () => {
               target='_blank'
               rel='noopener noreferrer'
               href={link}
-              className='group relative overflow-hidden rounded-lg border p-4 transition-colors duration-150 hover:bg-accent'
+              className='group relative overflow-hidden rounded-lg bg-accent p-4 transition-colors duration-200 hover:bg-accent-highlight'
             >
-              <div className='flex flex-col items-center justify-center gap-2 transition-transform duration-300 group-hover:-translate-y-24 group-focus:-translate-y-24'>
-                <div className='flex items-center gap-2 text-3xl font-bold text-foreground'>
+              <div className='flex flex-col items-center justify-center gap-2 transition-transform duration-200 group-hover:-translate-y-24 group-focus:-translate-y-24'>
+                <div className='flex items-center gap-2 text-3xl font-bold'>
                   {value === 0 || value !== undefined ? (
                     <>
                       <span>{icon}</span>
-                      <span
+                      <div
                         style={{
                           background: `linear-gradient(122.25deg, ${startColor} 12.16%, ${endColor} 70.98%)`,
                           WebkitBackgroundClip: 'text',
                           WebkitTextFillColor: 'transparent'
                         }}
                       >
-                        {value}
-                      </span>
+                        <Counter value={Number(value)} />
+                        {suffix && <span>{` ${suffix}`}</span>}
+                      </div>
                     </>
                   ) : (
                     '--'

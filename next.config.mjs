@@ -2,7 +2,6 @@ import { withContentlayer } from 'next-contentlayer'
 
 import './src/env/env.mjs'
 
-// eslint-disable-next-line jsdoc/check-tag-names
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   typescript: {

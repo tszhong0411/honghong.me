@@ -4,67 +4,26 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+    --background: 4 1 2;
+    --background-lighter: 12 9 10;
 
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+    --foreground: 255 255 255;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
+    --muted-foreground: 135 135 136;
 
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
+    --accent: 14 14 16;
+    --accent-highlight: 22 22 22;
 
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
+    --border: 32 32 32;
+    --border-highlight: 40 40 40;
 
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
+    --ring: 75 75 75;
 
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 10% 3.9%;
-    --pre: 0 0% 98%;
-
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 0 0% 7%;
-    --foreground: 0 0% 98%;
-
-    --card: 0 0% 12%;
-    --card-foreground: 0 0% 98%;
-
-    --popover: 0 0% 7%;
-    --popover-foreground: 0 0% 98%;
-
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-    --pre: 240 6% 10%;
+    /* Card glow effect */
+    --backdrop: rgb(var(--accent));
+    --radius: 14;
+    --backup-border: rgb(var(--backdrop));
+    --size: 200;
   }
 }
 
@@ -73,6 +32,103 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply relative bg-background font-default text-foreground antialiased;
   }
+}
+
+/* Source: https://codepen.io/jh3y/pen/MWxgJXY */
+/* Card glow effect */
+[data-glow] {
+  --border-size: 2px;
+  --spotlight-size: calc(var(--size, 150) * 1px);
+  --hue: calc(var(--base) + (var(--xp, 0) * var(--spread, 0)));
+  background-image: radial-gradient(
+    var(--spotlight-size) var(--spotlight-size) at calc(var(--x, 0) * 1px)
+      calc(var(--y, 0) * 1px),
+    hsl(
+      var(--hue, 210) calc(var(--saturation, 100) * 1%)
+        calc(var(--lightness, 70) * 1%) / var(--bg-spot-opacity, 0.1)
+    ),
+    transparent
+  );
+  background-color: var(--backdrop, transparent);
+  background-size: calc(100% + (2 * var(--border-size)))
+    calc(100% + (2 * var(--border-size)));
+  background-position: 50% 50%;
+  background-attachment: fixed;
+  border: var(--border-size) solid var(--backup-border);
+  position: relative;
+  touch-action: none;
+}
+
+[data-glow]::before,
+[data-glow]::after {
+  pointer-events: none;
+  content: '';
+  position: absolute;
+  inset: calc(var(--border-size) * -1);
+  border: var(--border-size) solid transparent;
+  border-radius: calc(var(--radius) * 1px);
+  background-attachment: fixed;
+  background-size: calc(100% + (2 * var(--border-size)))
+    calc(100% + (2 * var(--border-size)));
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  mask: linear-gradient(transparent, transparent), linear-gradient(white, white);
+  mask-clip: padding-box, border-box;
+  mask-composite: intersect;
+}
+
+[data-glow]::before {
+  background-image: radial-gradient(
+    calc(var(--spotlight-size) * 0.75) calc(var(--spotlight-size) * 0.75) at
+      calc(var(--x, 0) * 1px) calc(var(--y, 0) * 1px),
+    hsl(
+      var(--hue, 210) calc(var(--saturation, 100) * 1%)
+        calc(var(--lightness, 50) * 1%) / var(--border-spot-opacity, 1)
+    ),
+    transparent 100%
+  );
+  filter: brightness(2);
+}
+
+[data-glow]::after {
+  background-image: radial-gradient(
+    calc(var(--spotlight-size) * 0.5) calc(var(--spotlight-size) * 0.5) at
+      calc(var(--x, 0) * 1px) calc(var(--y, 0) * 1px),
+    hsl(0 100% 100% / var(--border-light-opacity, 1)),
+    transparent 100%
+  );
+}
+
+[data-glow] > [data-glow] {
+  border-radius: calc(var(--radius) * 1px);
+  border-width: calc(var(--border-size) * 20);
+  filter: blur(calc(var(--border-size) * 10));
+  background: none;
+  pointer-events: none;
+  border: none;
+  position: absolute;
+  inset: 0;
+  will-change: filter;
+  opacity: 1;
+}
+
+[data-glow] > [data-glow]::before {
+  inset: -10px;
+  border-width: 10px;
+}
+
+[data-glow] :is(a, button) {
+  border-radius: calc(var(--radius) * 1px);
+  border: var(--border-size) solid transparent;
+}
+
+[data-glow] :is(a, button) [data-glow] {
+  background: none;
+}
+
+[data-glow] :is(a, button) [data-glow]::before {
+  inset: calc(var(--border-size) * -1);
+  border-width: calc(var(--border-size) * 1);
 }

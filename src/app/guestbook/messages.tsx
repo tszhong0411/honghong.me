@@ -2,7 +2,7 @@
 
 import { type Guestbook } from '@prisma/client'
 import dayjs from 'dayjs'
-import { type DefaultSession } from 'next-auth'
+import { type Session } from 'next-auth/types'
 import React from 'react'
 import { toast } from 'react-hot-toast'
 
@@ -12,6 +12,7 @@ import {
   AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
+  AlertDialogFooter,
   AlertDialogTrigger,
   Avatar,
   AvatarFallback,
@@ -22,7 +23,7 @@ import {
 } from '@/components/ui'
 
 type MessagesProps = {
-  user: DefaultSession['user']
+  user: Session['user'] | undefined
   messages: Guestbook[]
 }
 
@@ -71,18 +72,18 @@ const Messages = (props: MessagesProps) => {
         const { id, email, image, created_by, updated_at, body } = message
 
         return (
-          <div key={id} className='rounded-lg border p-4'>
+          <div key={id} className='rounded-lg border bg-accent p-4'>
             <div className='mb-3 flex gap-3'>
               <Avatar>
                 <AvatarImage
                   src={image}
                   width={40}
                   height={40}
-                  className='h-10 w-10 rounded-full'
+                  className='size-10 rounded-full'
                   alt={created_by}
                 />
                 <AvatarFallback className='bg-transparent'>
-                  <Skeleton className='h-10 w-10 rounded-full' />
+                  <Skeleton className='size-10 rounded-full' />
                 </AvatarFallback>
               </Avatar>
               <div className='flex flex-col justify-center gap-px text-sm'>
@@ -105,7 +106,7 @@ const Messages = (props: MessagesProps) => {
                   </AlertDialogTrigger>
                   <AlertDialogContent>
                     <div className='mb-2'>Delete a message</div>
-                    <div className='flex justify-end gap-2'>
+                    <AlertDialogFooter>
                       <AlertDialogCancel>Cancel</AlertDialogCancel>
                       <AlertDialogAction
                         onClick={() => {
@@ -115,7 +116,7 @@ const Messages = (props: MessagesProps) => {
                       >
                         Delete
                       </AlertDialogAction>
-                    </div>
+                    </AlertDialogFooter>
                   </AlertDialogContent>
                 </AlertDialog>
               </div>

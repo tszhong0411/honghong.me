@@ -1,8 +1,9 @@
 'use client'
 
+import { IconCheck, IconCopy } from '@tabler/icons-react'
 import React from 'react'
 
-import CopyButton from '../copy-button'
+import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard'
 
 type PreProps = React.ComponentPropsWithoutRef<'pre'>
 
@@ -10,8 +11,8 @@ const Pre = (props: PreProps) => {
   const { children, ...rest } = props
 
   const textInput = React.useRef<HTMLPreElement>(null)
-
   const [text, setText] = React.useState<string>('')
+  const [copy, isCopied] = useCopyToClipboard()
 
   React.useEffect(() => {
     if (textInput.current) {
@@ -24,7 +25,14 @@ const Pre = (props: PreProps) => {
       <pre ref={textInput} {...rest}>
         {children}
       </pre>
-      <CopyButton text={text} />
+      <button
+        className='absolute right-2 top-2 flex size-8 items-center justify-center rounded-md border bg-accent opacity-0 transition [[data-rehype-pretty-code-figure]:hover>&]:opacity-100'
+        onClick={() => copy({ text })}
+        type='button'
+        aria-label='Copy code to clipboard'
+      >
+        {isCopied ? <IconCheck size={16} /> : <IconCopy size={16} />}
+      </button>
     </>
   )
 }

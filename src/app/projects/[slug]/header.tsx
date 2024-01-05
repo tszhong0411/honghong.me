@@ -1,11 +1,11 @@
 'use client'
 
-import { IconBrandGithub, IconHome } from '@tabler/icons-react'
+import { IconArrowUpRight } from '@tabler/icons-react'
 import { type Project } from 'contentlayer/generated'
 import { motion } from 'framer-motion'
 
+import { buttonVariants } from '@/components/ui'
 import site from '@/config/site'
-import getIconByName from '@/utils/get-icon-by-name'
 
 const animation = {
   hide: {
@@ -21,19 +21,16 @@ const animation = {
 type HeaderProps = Project
 
 const Header = (props: HeaderProps) => {
-  const { name, description, icon, homepage, github, repo } = props
-
-  const Icon = getIconByName(icon)
+  const { name, description, homepage, github, repo } = props
 
   return (
-    <div className='space-y-4'>
+    <div className='space-y-8 pt-10'>
       <motion.div
         className='flex items-center gap-3'
         initial={animation.hide}
         animate={animation.show}
       >
-        <Icon size={40} />
-        <div className='flex flex-col'>
+        <div className='flex flex-col gap-3'>
           <div className='text-2xl font-bold'>{name}</div>
           <div>{description}</div>
         </div>
@@ -49,20 +46,26 @@ const Header = (props: HeaderProps) => {
             target='_blank'
             rel='noopener noreferrer'
             href={homepage}
-            className='flex items-center'
+            className={buttonVariants({ className: 'group' })}
           >
-            <IconHome size={20} className='mr-2 inline-block' />
-            {homepage}
+            Visit Website
+            <IconArrowUpRight
+              size={20}
+              className='ml-2 transition-transform duration-200 group-hover:-rotate-12'
+            />
           </a>
         )}
         <a
           target='_blank'
           rel='noopener noreferrer'
           href={github}
-          className='flex items-center'
+          className={buttonVariants({ className: 'group' })}
         >
-          <IconBrandGithub size={20} className='mr-2 inline-block' />
           {site.githubUsername}/{repo}
+          <IconArrowUpRight
+            size={20}
+            className='ml-2 transition-transform duration-200 group-hover:-rotate-12'
+          />
         </a>
       </motion.div>
     </div>

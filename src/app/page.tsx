@@ -1,8 +1,11 @@
 import type { Metadata } from 'next'
+import React from 'react'
 
-import Hero from '@/components/hero'
-import Posts from '@/components/posts'
-import Projects from '@/components/projects'
+import AboutMe from '@/components/home/about-me'
+import GetInTouch from '@/components/home/get-in-touch'
+import Hero from '@/components/home/hero'
+import LatestArticles from '@/components/home/latest-articles'
+import Projects from '@/components/home/projects'
 import site from '@/config/site'
 
 export const metadata: Metadata = {
@@ -18,7 +21,9 @@ const HomePage = () => {
     <>
       <Hero />
       <Projects />
-      <Posts />
+      <AboutMe />
+      <LatestArticles />
+      <GetInTouch />
     </>
   )
 }

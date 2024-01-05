@@ -1,6 +1,9 @@
 import React from 'react'
 
-const useScrollspy = (ids: string[], options: IntersectionObserverInit) => {
+const useScrollspy = (
+  ids: string[],
+  options: IntersectionObserverInit
+): string | undefined => {
   const [activeId, setActiveId] = React.useState<string>()
   const observer = React.useRef<IntersectionObserver>()
 

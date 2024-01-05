@@ -7,7 +7,6 @@ import useSWR from 'swr'
 
 import ImageZoom from '@/components/image-zoom'
 import Image from '@/components/mdx/image'
-import { Skeleton } from '@/components/ui'
 import fetcher from '@/lib/fetcher'
 import { type Views } from '@/types'
 
@@ -43,10 +42,8 @@ const Header = (props: HeaderProps) => {
       })
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     increment()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [slug])
 
   useEvent('message', (e: MessageEvent) => {
     if (e.origin !== 'https://giscus.app') return
@@ -70,7 +67,7 @@ const Header = (props: HeaderProps) => {
   return (
     <div className='space-y-16 py-16'>
       <div className='space-y-16 sm:px-8'>
-        <h1 className='text-center font-calcom text-4xl font-bold md:text-5xl'>
+        <h1 className='bg-gradient-to-b from-white via-white/90 to-white/70 to-90% bg-clip-text text-center font-calcom text-4xl font-bold text-transparent md:text-5xl md:leading-[64px]'>
           {title}
         </h1>
         <div className='grid grid-cols-2 text-sm max-md:gap-4 md:grid-cols-4'>
@@ -94,25 +91,15 @@ const Header = (props: HeaderProps) => {
           </div>
           <div className='space-y-1 md:mx-auto'>
             <div className='text-muted-foreground'>Published on</div>
-            <div>
-              {formattedDate || <Skeleton className='h-6 w-32 rounded-md' />}
-            </div>
+            <div>{formattedDate || '--'}</div>
           </div>
           <div className='space-y-1 md:mx-auto'>
             <div className='text-muted-foreground'>Views</div>
-            {viewsIsLoading ? (
-              <Skeleton className='h-6 w-32 rounded-md' />
-            ) : (
-              <div>{viewsData?.views}</div>
-            )}
+            {viewsIsLoading ? '--' : <div>{viewsData?.views}</div>}
           </div>
           <div className='space-y-1 md:mx-auto'>
             <div className='text-muted-foreground'>Comments</div>
-            {commentCounter === -1 ? (
-              <Skeleton className='h-6 w-32 rounded-md' />
-            ) : (
-              <div>{commentCounter}</div>
-            )}
+            {commentCounter === -1 ? '--' : <div>{commentCounter}</div>}
           </div>
         </div>
       </div>

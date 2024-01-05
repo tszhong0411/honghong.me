@@ -29,7 +29,7 @@ const TableOfContents = (props: TableOfContentsProps) => {
               key={id}
               href={`#${id}`}
               className={cn(
-                'block pb-[10px] pr-[10px] pt-[10px] text-sm leading-[1.2] text-muted-foreground transition-all duration-300 hover:text-foreground',
+                'block pb-[10px] pr-[10px] pt-[10px] text-sm leading-[1.2] text-muted-foreground transition-all duration-200 hover:text-foreground',
                 {
                   ['text-foreground']: id === activeId
                 }

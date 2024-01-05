@@ -81,17 +81,17 @@ const ProjectPage = (props: ProjectPageProps) => {
   const { name, image, body } = project
 
   return (
-    <>
+    <div className='mx-auto max-w-3xl'>
       <Header {...project} />
       <Image
         src={image}
         width={1200}
         height={630}
         alt={name}
-        className='my-12 rounded-lg border'
+        className='my-12 rounded-lg'
       />
       <Mdx code={body.code} />
-    </>
+    </div>
   )
 }
 

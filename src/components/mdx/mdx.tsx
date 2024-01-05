@@ -3,17 +3,8 @@
 import { type MDXComponents } from 'mdx/types'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow
-} from '@/components/ui'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui'
+import createHeading from '@/utils/create-heading'
 
 import ImageZoom from '../image-zoom'
 import Image from './image'
@@ -22,6 +13,7 @@ import Link from './link'
 import LinkCard from './link-card'
 import Logo from './logo'
 import Pre from './pre'
+import Table from './table'
 import Tree from './tree'
 import Video from './video'
 
@@ -30,6 +22,12 @@ type MdxProps = {
 }
 
 const components: MDXComponents = {
+  h1: createHeading(1),
+  h2: createHeading(2),
+  h3: createHeading(3),
+  h4: createHeading(4),
+  h5: createHeading(5),
+  h6: createHeading(6),
   a: Link,
   Image: (props: React.ComponentPropsWithoutRef<typeof Image>) => {
     const { alt, ...rest } = props
@@ -44,18 +42,6 @@ const components: MDXComponents = {
     )
   },
   pre: Pre,
-  table: (props: React.ComponentPropsWithoutRef<'table'>) => (
-    <Table className='not-prose' {...props} />
-  ),
-  thead: (props: React.ComponentPropsWithoutRef<'thead'>) => (
-    <TableHeader {...props} />
-  ),
-  tbody: (props: React.ComponentPropsWithoutRef<'tbody'>) => (
-    <TableBody {...props} />
-  ),
-  tr: (props: React.ComponentPropsWithoutRef<'tr'>) => <TableRow {...props} />,
-  th: (props: React.ComponentPropsWithoutRef<'th'>) => <TableHead {...props} />,
-  td: (props: React.ComponentPropsWithoutRef<'td'>) => <TableCell {...props} />,
 
   // Custom components
   Alert: (props: React.ComponentPropsWithoutRef<typeof Alert>) => (
@@ -67,6 +53,7 @@ const components: MDXComponents = {
   AlertDescription: (
     props: React.ComponentPropsWithoutRef<typeof AlertDescription>
   ) => <AlertDescription {...props} />,
+  Table,
   ItemGrid,
   Tree,
   Video,
@@ -79,7 +66,7 @@ const Mdx = (props: MdxProps) => {
   const Component = useMDXComponent(code)
 
   return (
-    <div className='prose w-full max-w-none dark:prose-invert'>
+    <div className='prose prose-invert w-full max-w-none'>
       <Component components={{ ...components }} />
     </div>
   )
