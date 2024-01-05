@@ -1,6 +1,6 @@
 import getAllPosts from '@/lib/mdx'
 
-describe('getAllPosts', () => {
+describe('getAllPosts()', () => {
   it('should return an array of blog posts', () => {
     const posts = getAllPosts()
 
