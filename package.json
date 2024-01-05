@@ -97,7 +97,7 @@
     "@types/react-dom": "^18.2.18",
     "@types/rss": "^0.0.32",
     "@vitejs/plugin-react": "^4.2.1",
-    "@vitest/coverage-v8": "^1.1.0",
+    "@vitest/coverage-v8": "^1.1.2",
     "@vitest/ui": "^1.1.0",
     "autoprefixer": "^10.4.16",
     "concurrently": "^8.2.2",

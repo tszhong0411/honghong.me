@@ -4110,9 +4110,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/coverage-v8@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "@vitest/coverage-v8@npm:1.1.0"
+"@vitest/coverage-v8@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "@vitest/coverage-v8@npm:1.1.2"
   dependencies:
     "@ampproject/remapping": "npm:^2.2.1"
     "@bcoe/v8-coverage": "npm:^0.2.3"
@@ -4129,7 +4129,7 @@ __metadata:
     v8-to-istanbul: "npm:^9.2.0"
   peerDependencies:
     vitest: ^1.0.0
-  checksum: 4be7c5e7c44df3da8bc38990f7a24083cb443317f7c586faecb728d1eb0c6e3cab5ef83d22c7ae59b9afd4cfb378475819f97650eb2f6d529604c8c744df15f9
+  checksum: ae8f42e3b5d89e16aa3ad0ffc6abed32b59480715b3904a0893575146a66c1f057333d52c1dd2fc30e91d21a1e3a5440cfa880eb0a7dbdf9a3f974aedbb1b0b2
   languageName: node
   linkType: hard
 
@@ -7962,7 +7962,7 @@ __metadata:
     "@types/react-dom": "npm:^18.2.18"
     "@types/rss": "npm:^0.0.32"
     "@vitejs/plugin-react": "npm:^4.2.1"
-    "@vitest/coverage-v8": "npm:^1.1.0"
+    "@vitest/coverage-v8": "npm:^1.1.2"
     "@vitest/ui": "npm:^1.1.0"
     autoprefixer: "npm:^10.4.16"
     canvas-confetti: "npm:^1.9.2"
