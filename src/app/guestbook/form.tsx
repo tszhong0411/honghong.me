@@ -25,7 +25,7 @@ const Form = (props: FormProps) => {
   const [isCreating, setIsCreating] = React.useState(false)
 
   const createMessageHandler = async () => {
-    if (!message) return toast.error('Please enter a message')
+    if (!message) return toast.error('Please enter a message.')
 
     setIsCreating(true)
     const loading = toast.loading('Creating a message...')
@@ -54,13 +54,14 @@ const Form = (props: FormProps) => {
             width={40}
             height={40}
             alt={user.name as string}
-            className='h-10 w-10'
+            className='size-10'
           />
           <AvatarFallback className='bg-transparent'>
-            <Skeleton className='h-10 w-10 rounded-full' />
+            <Skeleton className='size-10 rounded-full' />
           </AvatarFallback>
         </Avatar>
         <Textarea
+          aria-label='Your message'
           placeholder='Your message ...'
           value={message}
           onChange={(e) => setMessage(e.target.value)}
