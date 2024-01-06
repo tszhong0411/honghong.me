@@ -49,7 +49,7 @@ const Hero = () => {
     <div className='space-y-6 md:my-16'>
       <div className='flex flex-col-reverse gap-8 md:flex-row md:justify-between'>
         <motion.div
-          className='flex flex-col gap-4 md:max-w-xl'
+          className='flex flex-col gap-4 will-change-[transform,opacity] md:max-w-xl'
           initial={{
             y: 40,
             opacity: 0

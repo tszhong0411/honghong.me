@@ -41,7 +41,7 @@ const Content = (props: ContentProps) => {
         </article>
         <aside className='lg:min-w-[270px] lg:max-w-[270px]'>
           <motion.div
-            className='sticky top-24'
+            className='sticky top-24 will-change-[transform,opacity]'
             initial='initial'
             animate={isInView ? 'animate' : 'initial'}
             variants={variants}

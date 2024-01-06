@@ -41,7 +41,7 @@ const LatestArticles = () => {
       transition={{
         duration: 0.5
       }}
-      className='my-24'
+      className='my-24 will-change-[transform,opacity]'
     >
       <motion.h2
         className='text-center font-calcom text-3xl font-bold sm:text-4xl'

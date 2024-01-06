@@ -61,7 +61,7 @@ const GetInTouch = () => {
 
   return (
     <motion.div
-      className='relative rounded-xl p-1 shadow-card-border backdrop-blur-lg'
+      className='relative rounded-xl p-1 shadow-card-border backdrop-blur-lg will-change-[transform,opacity]'
       initial='initial'
       animate={isInView ? 'animate' : 'initial'}
       variants={variants}

@@ -49,7 +49,7 @@ const InfiniteMovingCards = (props: InfiniteMovingCardsProps) => {
       }}
     >
       <motion.ul
-        className='flex w-max gap-4 py-4'
+        className='flex w-max gap-4 py-4 will-change-transform'
         animate={{
           x:
             direction === 'left'
