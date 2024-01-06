@@ -85,10 +85,11 @@ const ProjectPage = (props: ProjectPageProps) => {
       <Header {...project} />
       <Image
         src={image}
-        width={1200}
-        height={630}
+        width={1280}
+        height={832}
         alt={name}
         className='my-12 rounded-lg'
+        priority
       />
       <Mdx code={body.code} />
     </div>
