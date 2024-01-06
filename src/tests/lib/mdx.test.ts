@@ -14,17 +14,8 @@ describe('getAllPosts()', () => {
     expect(posts.length).toBe(limit)
   })
 
-  it('should return an unsorted array when "sorted" is false', () => {
-    const posts = getAllPosts({ sorted: false })
-    const dates = posts.map((post) => new Date(post.date))
-    for (let i = 0; i < dates.length - 1; i++) {
-      // eslint-disable-next-line security/detect-object-injection
-      expect(dates[i] <= dates[i + 1]).toBe(true)
-    }
-  })
-
-  it('should return a sorted array when "sorted" is true', () => {
-    const posts = getAllPosts({ sorted: true })
+  it('should return a sorted array of posts', () => {
+    const posts = getAllPosts()
     const dates = posts.map((post) => new Date(post.date))
     for (let i = 0; i < dates.length - 1; i++) {
       // eslint-disable-next-line security/detect-object-injection
