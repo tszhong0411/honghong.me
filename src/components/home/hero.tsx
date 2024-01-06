@@ -64,7 +64,7 @@ const Hero = () => {
         >
           <h1 className='bg-gradient-to-b from-white via-white/90 to-white/70 to-90% bg-clip-text font-calcom text-2xl font-bold leading-9 text-transparent sm:text-4xl sm:leading-[3.5rem]'>
             I&apos;m Hong, a Full-stack Web Developer creating{' '}
-            <div className='-mb-2 inline-block h-9 overflow-hidden sm:-mb-3.5 sm:h-[3.5rem]'>
+            <div className='inline-grid h-9 overflow-hidden sm:h-[3.5rem]'>
               <div ref={scope}>
                 {TEXTS.map(({ text, className }, index) => (
                   <div className={className} key={index}>
