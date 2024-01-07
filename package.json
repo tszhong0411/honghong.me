@@ -11,7 +11,7 @@
   },
   "type": "module",
   "scripts": {
-    "build": "next build && prisma generate && contentlayer build",
+    "build": "prisma generate && contentlayer build && next build",
     "check-updates": "bunx npm-check-updates --interactive --format group",
     "clean": "rm -rf .next .contentlayer coverage playwright-report test-results tsconfig.tsbuildinfo",
     "dev": "concurrently \"contentlayer dev\" \"cross-env NODE_OPTIONS='--inspect' next dev --turbo\"",
