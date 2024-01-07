@@ -11,12 +11,11 @@
   },
   "type": "module",
   "scripts": {
-    "build": "next build",
+    "build": "next build && prisma generate && contentlayer build",
     "check-updates": "bunx npm-check-updates --interactive --format group",
     "clean": "rm -rf .next .contentlayer coverage playwright-report test-results tsconfig.tsbuildinfo",
     "dev": "concurrently \"contentlayer dev\" \"cross-env NODE_OPTIONS='--inspect' next dev --turbo\"",
     "format": "prettier -w .",
-    "postinstall": "prisma generate && contentlayer build",
     "lint": "next lint",
     "lint:fix": "eslint --fix .",
     "prepare": "husky install",
