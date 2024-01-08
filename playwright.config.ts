@@ -33,7 +33,7 @@ export default defineConfig({
     }
   ],
   webServer: {
-    command: `bun next ${CI ? 'start' : 'dev'}`,
+    command: `pnpm next ${CI ? 'start' : 'dev'}`,
     url: baseURL,
     timeout: 1000 * 60 * 5,
     reuseExistingServer: !CI

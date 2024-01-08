@@ -37,15 +37,15 @@ To set up the project locally, follow these steps:
    cd honghong.me
    ```
 
-2. Install dependencies using bun:
+2. Install dependencies using pnpm:
 
    ```bash
-   bun install
+   pnpm install
    ```
 
 3. Start the development server:
    ```bash
-   bun dev
+   pnpm dev
    ```
 
 ## Conventional Commits
@@ -68,12 +68,12 @@ Before submitting a pull request, make sure your code is properly formatted. You
 - Run lint fixes:
 
   ```bash
-  bun run lint:fix
+  pnpm lint:fix
   ```
 
 - Format code:
   ```bash
-  bun run run format
+  pnpm format
   ```
 
 Make sure your changes are well-tested and your code follows best practices. Thank you for contributing to honghong.me! 🚀

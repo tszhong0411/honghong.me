@@ -23,10 +23,12 @@ const GlowCard = React.forwardRef<HTMLDivElement, GlowCardProps>(
     return (
       <Component
         ref={ref}
-        style={{
-          '--base': base,
-          '--spread': spread
-        }}
+        style={
+          {
+            '--base': base,
+            '--spread': spread
+          } as React.CSSProperties
+        }
         {...rest}
         data-testid='glow-card'
         data-glow
