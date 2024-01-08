@@ -1,5 +1,5 @@
 [data-rmiz-modal-overlay='visible'] {
-  background-color: rgba(0, 0, 0, 0.8) !important;
+  background-color: rgb(0, 0, 0, 0.8) !important;
 }
 
 [data-rmiz-btn-unzoom] {

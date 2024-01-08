@@ -87,7 +87,7 @@ const LikeButton = (props: LikeButtonProps) => {
     <div className='mt-12 flex justify-center'>
       <button
         ref={buttonRef}
-        className='flex items-center gap-3 rounded-xl bg-gradient-to-b from-[#1c1c1d] to-[#141414] px-4 py-2 text-lg shadow-[rgba(255,255,255,0.02)1px_1px_0px_0px_inset,rgba(255,255,255,0.02)-1px_-1px_0px_0px_inset,rgba(255,255,255,0.02)1px_-1px_0px_0px_inset,rgba(255,255,255,0.02)-1px_1px_0px_0px_inset,rgba(255,255,255,0.05)0px_1px_0px_0px_inset,rgba(0,0,0,0.5)0px_4px_8px_0px,rgba(0,0,0,0.17)0px_2px_4px_0px]'
+        className='flex items-center gap-3 rounded-xl bg-gradient-to-b from-[#1c1c1d] to-[#141414] px-4 py-2 text-lg shadow-[rgb(255,255,255,0.02)1px_1px_0px_0px_inset,rgb(255,255,255,0.02)-1px_-1px_0px_0px_inset,rgb(255,255,255,0.02)1px_-1px_0px_0px_inset,rgb(255,255,255,0.02)-1px_1px_0px_0px_inset,rgb(255,255,255,0.05)0px_1px_0px_0px_inset,rgb(0,0,0,0.5)0px_4px_8px_0px,rgb(0,0,0,0.17)0px_2px_4px_0px]'
         type='button'
         onClick={handleLike}
         aria-label='Like this post'

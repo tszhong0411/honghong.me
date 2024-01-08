@@ -36,7 +36,7 @@ const Navbar = () => {
               </Link>
               {isActive && (
                 <>
-                  <div className='absolute bottom-0 left-1/2 h-px w-12 -translate-x-1/2 bg-[radial-gradient(44.6%_825%_at_50%_50%,rgb(255,72,109)0%,rgba(255,72,109,0)100%)]' />
+                  <div className='absolute bottom-0 left-1/2 h-px w-12 -translate-x-1/2 bg-[radial-gradient(44.6%_825%_at_50%_50%,rgb(255,72,109)0%,rgb(255,72,109,0)100%)]' />
                   <div className='absolute bottom-0 left-1/2 size-2.5 -translate-x-1/2 rounded-[4px] bg-[#df1d48] blur-[8px]' />
                 </>
               )}

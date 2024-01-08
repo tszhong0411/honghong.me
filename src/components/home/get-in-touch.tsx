@@ -143,7 +143,7 @@ const GetInTouch = () => {
             <div className='my-8'>
               <a
                 href='mailto:me@honghong.me'
-                className='rounded-full bg-[linear-gradient(180deg,rgba(210,10,30,1)5%,rgba(239,90,90,1)100%)] px-4 py-2 text-sm'
+                className='rounded-full bg-[linear-gradient(180deg,rgb(210,10,30,1)5%,rgb(239,90,90,1)100%)] px-4 py-2 text-sm'
               >
                 me@honghong.me
               </a>

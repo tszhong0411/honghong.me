@@ -10,7 +10,7 @@ const LocationCard = () => {
   const pointerInteracting = React.useRef<number | null>(null)
   const pointerInteractionMovement = React.useRef(0)
   const fadeMask =
-    'radial-gradient(circle at 50% 50%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 70%)'
+    'radial-gradient(circle at 50% 50%, rgb(0, 0, 0) 60%, rgb(0, 0, 0, 0) 70%)'
 
   const r = useSpring(0, {
     stiffness: 200,
@@ -74,7 +74,7 @@ const LocationCard = () => {
             placeItems: 'center',
             placeContent: 'center',
             overflow: 'visible',
-            background: 'rgba(0, 0, 0, 0)'
+            background: 'rgb(0,0,0)'
           }}
         >
           <div
