@@ -40,6 +40,9 @@ jobs:
         with:
           node-version: 18
 
+      - name: Install dependencies
+        run: pnpm install
+
       - name: Install Vercel
         run: pnpm install -g vercel
 
