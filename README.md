@@ -46,7 +46,7 @@ Welcome to my personal blog repository! This repository houses the code for my b
 ## 🔨 Requirements
 
 - Node with [Corepack](https://github.com/nodejs/corepack), recommended `18.x`, minimum `16.9.0`
-- Bun, recommended `1.0.21`, minimum `1.x`
+- pnpm, recommended `8.14.0`, minimum `8.x`
 - MySQL, recommended `8.0`, minimum `5.6`
 - [Visual Studio Code](https://code.visualstudio.com/) with [recommended extensions](.vscode/extensions.json)
 - Optionally [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
@@ -58,19 +58,20 @@ Follow these steps to run the project locally on your machine:
 ```bash
 git clone https://github.com/tszhong0411/honghong.me.git
 cd honghong.me
-bun install
+pnpm install
 ```
 
 Create a `.env.local` file based on the provided `.env.example` file and fill in the necessary variables.
 
 ```bash
-bun dev
+pnpm dev
 ```
 
 The app will become available at `http://localhost:3000`.
 
 ## ✈️ TODO
 
+- Add comment function to blog posts using database instead of `giscus`
 - Use strict content security policy - still not working in `14.0.4`
   - `next/image` - https://github.com/vercel/next.js/issues/45184
   - `nonces` - https://github.com/vercel/next.js/discussions/54907

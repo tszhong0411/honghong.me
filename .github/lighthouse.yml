@@ -4,7 +4,7 @@ ci:
     settings:
       preset: desktop
       chromeFlags: '--no-sandbox'
-    startServerCommand: 'bun run start'
+    startServerCommand: 'pnpm start'
     url:
       - http://localhost:3000
 
