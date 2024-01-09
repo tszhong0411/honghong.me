@@ -1,5 +1,6 @@
+import { GeistMono } from 'geist/font/mono'
+import { GeistSans } from 'geist/font/sans'
 import type { Metadata, Viewport } from 'next'
-import { Inter } from 'next/font/google'
 import localFont from 'next/font/local'
 import Image from 'next/image'
 
@@ -83,19 +84,9 @@ export const viewport: Viewport = {
   }
 }
 
-const inter = Inter({
-  variable: '--font-inter',
-  subsets: ['latin']
-})
-
 const calcom = localFont({
   src: '../../public/fonts/CalSans-SemiBold.woff2',
-  variable: '--font-calcom'
-})
-
-const monaspaceNeon = localFont({
-  src: '../../public/fonts/MonaspaceNeon-Regular.woff',
-  variable: '--font-monaspace-neon'
+  variable: '--font-title'
 })
 
 const RootLayout = (props: RootLayoutProps) => {
@@ -105,9 +96,9 @@ const RootLayout = (props: RootLayoutProps) => {
     <html
       lang='en-US'
       className={cn(
-        inter.variable,
+        GeistSans.variable,
+        GeistMono.variable,
         calcom.variable,
-        monaspaceNeon.variable,
         'scroll-smooth'
       )}
     >

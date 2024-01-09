@@ -44,7 +44,7 @@ const LatestArticles = () => {
       className='my-24 will-change-[transform,opacity]'
     >
       <motion.h2
-        className='text-center font-calcom text-3xl font-bold sm:text-4xl'
+        className='text-center font-title text-3xl font-bold sm:text-4xl'
         initial={{
           y: 30,
           opacity: 0
@@ -142,7 +142,7 @@ const ArticleCard = (props: ArticleCardProps) => {
         </div>
       </div>
       <div className='flex flex-col px-2 py-4 transition-transform duration-200 ease-out group-hover:translate-x-0.5'>
-        <h3 className='font-calcom text-2xl font-bold'>{title}</h3>
+        <h3 className='font-title text-2xl font-bold'>{title}</h3>
         <p className='mt-2 text-muted-foreground'>{summary}</p>
       </div>
     </Link>

@@ -67,7 +67,7 @@ const Header = (props: HeaderProps) => {
   return (
     <div className='space-y-16 py-16'>
       <div className='space-y-16 sm:px-8'>
-        <h1 className='bg-gradient-to-b from-white via-white/90 to-white/70 to-90% bg-clip-text text-center font-calcom text-4xl font-bold text-transparent md:text-5xl md:leading-[64px]'>
+        <h1 className='bg-gradient-to-b from-white via-white/90 to-white/70 to-90% bg-clip-text text-center font-title text-4xl font-bold text-transparent md:text-5xl md:leading-[64px]'>
           {title}
         </h1>
         <div className='grid grid-cols-2 text-sm max-md:gap-4 md:grid-cols-4'>

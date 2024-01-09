@@ -69,7 +69,7 @@ const PostCard = (props: PostCardProps) => {
           </div>
         </div>
         <div className='flex flex-col px-2 py-4'>
-          <h3 className='font-calcom text-2xl font-bold'>{title}</h3>
+          <h3 className='font-title text-2xl font-bold'>{title}</h3>
           <p className='mt-2 text-muted-foreground'>{summary}</p>
         </div>
       </Link>

@@ -32,7 +32,7 @@
     @apply border-border;
   }
   body {
-    @apply relative bg-background font-default text-foreground antialiased;
+    @apply relative bg-background font-sans text-foreground antialiased;
   }
 }
 
