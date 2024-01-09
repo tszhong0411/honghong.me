@@ -67,7 +67,7 @@
     "rehype-pretty-code": "^0.12.3",
     "rss": "^1.2.2",
     "sharp": "^0.33.1",
-    "shikiji": "^0.9.17",
+    "shikiji": "^0.9.18",
     "swr": "^2.2.4",
     "tailwind-merge": "^2.2.0",
     "tailwindcss-animate": "^1.0.7",
