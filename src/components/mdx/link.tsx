@@ -8,7 +8,7 @@ const Link = (props: LinkProps) => {
   if ((href as string).startsWith('/')) {
     return (
       <NextLink
-        className='font-medium text-[#ff486d] no-underline hover:text-[#f97084] hover:underline'
+        className='bg-[linear-gradient(rgb(0,0,0,0)70%,rgb(173,32,60)0)] no-underline'
         href={href as string}
         {...rest}
       >
@@ -20,7 +20,7 @@ const Link = (props: LinkProps) => {
   if ((href as string).startsWith('#')) {
     return (
       <a
-        className='font-medium text-[#ff486d] no-underline hover:text-[#f97084] hover:underline'
+        className='bg-[linear-gradient(rgb(0,0,0,0)70%,rgb(173,32,60)0)] no-underline'
         href={href}
         {...rest}
       >
@@ -31,7 +31,7 @@ const Link = (props: LinkProps) => {
 
   return (
     <a
-      className='font-medium text-[#ff486d] no-underline hover:text-[#f97084] hover:underline'
+      className='bg-[linear-gradient(rgb(0,0,0,0)70%,rgb(173,32,60)0)] no-underline'
       target='_blank'
       rel='noopener noreferrer'
       href={href}
