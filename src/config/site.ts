@@ -16,11 +16,11 @@ const devBaseURL = 'http://localhost:3000'
 
 const site: Site = {
   url: process.env.NODE_ENV === 'production' ? prodBaseURL : devBaseURL,
-  title: 'Hong - A Full-stack Web Developer',
+  title: 'Hong - A Full Stack Developer',
   name: 'Hong',
   keywords: ['tszhong0411', 'Next.js', 'React', 'TypeScript', 'Node.js'],
-  titleTemplate: '| Hong - A Full-stack Web Developer',
-  description: 'Hong • 17 y/o • Student • Full-stack Web Developer',
+  titleTemplate: '| Hong - A Full Stack Developer',
+  description: 'Hong • 17 y/o • Student • Full Stack Developer',
   githubUsername: 'tszhong0411',
   favicons: [
     {

@@ -1,7 +1,5 @@
 import typography from '@tailwindcss/typography'
 import type { Config } from 'tailwindcss'
-import { fontFamily } from 'tailwindcss/defaultTheme'
-import { type PluginAPI } from 'tailwindcss/types/config'
 import animate from 'tailwindcss-animate'
 
 export default {
@@ -24,14 +22,14 @@ export default {
         ring: 'rgb(var(--ring))'
       },
       fontFamily: {
-        default: ['var(--font-inter)', ...fontFamily.sans],
-        'monaspace-neon': ['var(--font-monaspace-neon)', ...fontFamily.sans],
-        calcom: ['var(--font-calcom)', ...fontFamily.sans]
+        sans: ['var(--font-geist-sans)'],
+        mono: ['var(--font-geist-mono)'],
+        title: ['var(--font-title)']
       },
       boxShadow: {
         'card-border': '0 0 0 1px #ffffff0f, 0 -1px #ffffff1a'
       },
-      typography: (theme: PluginAPI['theme']) => ({
+      typography: {
         DEFAULT: {
           css: {
             'h2, h3, h4, h5, h6': {
@@ -45,7 +43,7 @@ export default {
               margin: '0 auto'
             },
             'code, pre code': {
-              fontFamily: 'var(--font-monaspace-neon), var(--font-inter)'
+              fontFamily: 'var(--font-geist-mono), var(--font-inter)'
             },
             ':not(pre) > code': {
               padding: '0.12em 0.25em',
@@ -64,17 +62,6 @@ export default {
               padding: '12px 0',
               lineHeight: 2,
               border: '1px solid rgb(var(--border))',
-              '[data-line-numbers]': {
-                '[data-line]::before': {
-                  content: 'counter(line)',
-                  counterIncrement: 'line',
-                  display: 'inline-block',
-                  width: '16px',
-                  marginRight: '16px',
-                  textAlign: 'right',
-                  color: theme('colors.zinc.500')
-                }
-              },
               '> code': {
                 display: 'grid',
                 counterReset: 'line',
@@ -119,8 +106,11 @@ export default {
             }
           }
         }
-      })
+      }
     }
+  },
+  future: {
+    hoverOnlyWhenSupported: true
   },
   plugins: [typography, animate]
 } satisfies Config

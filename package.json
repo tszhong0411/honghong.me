@@ -53,6 +53,7 @@
     "contentlayer": "^0.3.4",
     "dayjs": "^1.11.10",
     "framer-motion": "^10.17.9",
+    "geist": "^1.2.0",
     "github-slugger": "^2.0.0",
     "hastscript": "^8.0.0",
     "marked": "^11.1.1",

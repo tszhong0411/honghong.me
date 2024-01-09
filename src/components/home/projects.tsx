@@ -36,7 +36,7 @@ const Projects = () => {
       className='relative my-24 will-change-[transform,opacity]'
     >
       <motion.h2
-        className='text-center font-calcom text-3xl font-bold sm:text-4xl'
+        className='text-center font-title text-3xl font-bold sm:text-4xl'
         initial={{
           y: 30,
           opacity: 0
@@ -91,7 +91,7 @@ const Projects = () => {
                 className='rounded-[11px]'
               />
               <div className='absolute bottom-6 left-7 flex flex-col transition-[left] duration-200 ease-out group-hover:left-[30px]'>
-                <h3 className='font-calcom text-2xl font-bold'>
+                <h3 className='font-title text-2xl font-bold'>
                   {project.name}
                 </h3>
                 <p className='mt-2 text-muted-foreground'>

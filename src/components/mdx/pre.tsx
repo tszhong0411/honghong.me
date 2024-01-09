@@ -26,7 +26,7 @@ const Pre = (props: PreProps) => {
         {children}
       </pre>
       <button
-        className='absolute right-2 top-2 flex size-8 items-center justify-center rounded-md border bg-accent opacity-0 transition [[data-rehype-pretty-code-figure]:hover>&]:opacity-100'
+        className='absolute right-4 top-0 flex size-8 items-center justify-center rounded-md border bg-accent opacity-0 transition [[data-rehype-pretty-code-figure]:hover>&]:opacity-100'
         onClick={() => copy({ text })}
         type='button'
         aria-label='Copy code to clipboard'

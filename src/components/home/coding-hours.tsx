@@ -15,7 +15,7 @@ const CodingHours = () => {
         <IconClock size={18} />
         <h2 className='text-sm font-light'>Coding hours</h2>
       </div>
-      <div className='flex grow items-center justify-center font-calcom text-4xl font-bold text-zinc-200'>
+      <div className='flex grow items-center justify-center font-title text-4xl font-bold text-zinc-200'>
         {wakatimeData ? Math.round(wakatimeData.seconds / 60 / 60) : '--'} hrs
       </div>
     </div>

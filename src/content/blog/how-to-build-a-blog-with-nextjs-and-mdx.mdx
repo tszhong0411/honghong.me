@@ -76,13 +76,13 @@ Next, create the following file:
 
 First `const root{:js}` - the root directory, and the `process.cwd(){:js}` method returns the current working directory of the Node.js process.
 
-```js showLineNumbers title="lib/mdx.js"
+```js title="lib/mdx.js"
 const root = process.cwd()
 ```
 
 Another variable `POSTS_PATH` for the path where the article files are stored.
 
-```js showLineNumbers title="lib/mdx.js" {3}
+```js title="lib/mdx.js" {3}
 import path from 'path'
 
 const POSTS_PATH = path.join(root, 'data', 'blog')
@@ -91,7 +91,7 @@ const POSTS_PATH = path.join(root, 'data', 'blog')
 
 Then use fs to read the contents of that directory, that is, all the file names under `data/blog`.
 
-```js showLineNumbers title="lib/mdx.js"
+```js title="lib/mdx.js"
 import fs from 'fs'
 
 export const allSlugs = fs.readdirSync(POSTS_PATH)
@@ -100,7 +100,7 @@ export const allSlugs = fs.readdirSync(POSTS_PATH)
 
 Then write a function to remove the file extension, which will be used later.
 
-```js showLineNumbers title="lib/mdx.js"
+```js title="lib/mdx.js"
 export const formatSlug = (slug) => slug.replace(/\.mdx$/, '')
 /**
  * Example: formatSlug('markdown.mdx')
@@ -110,7 +110,7 @@ export const formatSlug = (slug) => slug.replace(/\.mdx$/, '')
 
 The next step is to get the article content by slug.
 
-```js showLineNumbers title="lib/mdx.js"
+```js title="lib/mdx.js"
 export const getPostBySlug = async (slug) => {
   const postFilePath = path.join(POSTS_PATH, `${slug}.mdx`)
   // Output: A:/nextjs-mdx-blog/data/blog/slug.mdx
@@ -154,7 +154,7 @@ export const getPostBySlug = async (slug) => {
 
 Then you can get all the articles to be displayed in the home page.
 
-```js showLineNumbers title="lib/mdx.js"
+```js title="lib/mdx.js"
 export const getAllPosts = () => {
   const frontMatter = []
 
@@ -184,7 +184,7 @@ const dateSortDesc = (a, b) => {
 
 ### Formatting Date
 
-```js showLineNumbers title="lib/format-date.js"
+```js title="lib/format-date.js"
 export const formatDate = (date) =>
   new Date(date).toLocaleDateString('en', {
     year: 'numeric',
@@ -199,7 +199,7 @@ export const formatDate = (date) =>
 
 ### Home page
 
-```jsx showLineNumbers title="pages/index.js"
+```jsx title="pages/index.js"
 import { formatDate } from '../lib/format-date'
 import { getAllPosts } from '../lib/mdx'
 
@@ -243,7 +243,7 @@ export const getStaticProps = async () => {
 
 ### Article Page
 
-```jsx showLineNumbers title="pages/[slug].js"
+```jsx title="pages/[slug].js"
 import { formatDate } from '../../lib/format-date'
 import { allSlugs, formatSlug, getPostBySlug } from '../../lib/mdx'
 

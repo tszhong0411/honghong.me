@@ -131,7 +131,7 @@ const GetInTouch = () => {
 
           {/* Right part with an email button */}
           <div className='flex flex-col justify-center px-4'>
-            <p className='mb-2 bg-gradient-to-r from-zinc-100 to-zinc-400 bg-clip-text font-calcom text-3xl font-bold text-transparent'>
+            <p className='mb-2 bg-gradient-to-r from-zinc-100 to-zinc-400 bg-clip-text font-title text-3xl font-bold text-transparent'>
               Any questions about Next.js?
             </p>
             <p className='text-zinc-300'>

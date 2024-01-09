@@ -51,7 +51,7 @@ const Inner = (props: InnerType) => {
                 <IconFile size={20} />
               )}
             </div>
-            <div className='font-monaspace-neon'>{node.name}</div>
+            <div className='font-mono'>{node.name}</div>
           </div>
 
           {node.children ? (
