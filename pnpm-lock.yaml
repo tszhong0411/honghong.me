@@ -224,8 +224,8 @@ devDependencies:
     specifier: ^6.2.0
     version: 6.2.0(eslint@8.56.0)(typescript@5.3.3)
   fast-xml-parser:
-    specifier: ^4.3.2
-    version: 4.3.2
+    specifier: ^4.3.3
+    version: 4.3.3
   husky:
     specifier: ^8.0.3
     version: 8.0.3
@@ -5528,8 +5528,8 @@ packages:
     resolution: {integrity: sha512-HPtaa38cPgWvaCFmRNhlc6NG7pv6NUHqjPgVAkWGoB9mQMwYB27/K0CvOM5Czy+qpT3e8XJ6Q4aPAnzpNpzNaw==}
     dev: false
 
-  /fast-xml-parser@4.3.2:
-    resolution: {integrity: sha512-rmrXUXwbJedoXkStenj1kkljNF7ugn5ZjR9FJcwmCfcCbtOMDghPajbc+Tck6vE6F5XsDmx+Pr2le9fw8+pXBg==}
+  /fast-xml-parser@4.3.3:
+    resolution: {integrity: sha512-coV/D1MhrShMvU6D0I+VAK3umz6hUaxxhL0yp/9RjfiYUfAv14rDhGQL+PLForhMdr0wq3PiV07WtkkNjJjNHg==}
     hasBin: true
     dependencies:
       strnum: 1.0.5
