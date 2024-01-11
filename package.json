@@ -52,7 +52,7 @@
     "cobe": "^0.6.3",
     "contentlayer": "^0.3.4",
     "dayjs": "^1.11.10",
-    "framer-motion": "^10.17.9",
+    "framer-motion": "^10.18.0",
     "geist": "^1.2.0",
     "github-slugger": "^2.0.0",
     "hastscript": "^8.0.0",
