@@ -10,7 +10,7 @@ import Content from './content'
 import Footer from './footer'
 import Header from './header'
 
-// export const runtime = 'edge'
+export const runtime = 'edge'
 
 type BlogPostPageProps = {
   params: {
