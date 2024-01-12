@@ -126,7 +126,7 @@ const LikeButton = (props: LikeButtonProps) => {
             />
           </g>
         </svg>
-        Like{data && data.likes + cacheCount > 1 ? 's' : ''}
+        Like{data && data.likes + cacheCount === 1 ? '' : 's'}
         <Separator orientation='vertical' />
         {isLoading || !data ? (
           <div> -- </div>
