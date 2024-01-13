@@ -20,15 +20,15 @@ model Guestbook {
 }
 
 model Post {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  slug      String   @unique
-  likes     Int      @default(0)
-  views     Int      @default(0)
+  id         String   @id @default(cuid())
+  created_at DateTime @default(now())
+  slug       String   @unique
+  likes      Int      @default(0)
+  views      Int      @default(0)
 }
 
 model Session {
-  id        String   @id
-  createdAt DateTime @default(now())
-  likes     Int      @default(0)
+  id         String   @id
+  created_at DateTime @default(now())
+  likes      Int      @default(0)
 }
