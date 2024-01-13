@@ -45,7 +45,7 @@ export const GET = async (req: Request) => {
       }
     }),
 
-    prisma.session.findUnique({
+    prisma.likesSession.findUnique({
       where: {
         id: getSessionId(slug, req)
       },
@@ -87,7 +87,7 @@ export const PATCH = async (req: Request) => {
   } = request
 
   try {
-    const session = await prisma.session.findUnique({
+    const session = await prisma.likesSession.findUnique({
       where: { id: getSessionId(slug, req) },
       select: {
         likes: true
@@ -115,7 +115,7 @@ export const PATCH = async (req: Request) => {
         }
       }),
 
-      prisma.session.upsert({
+      prisma.likesSession.upsert({
         where: { id: getSessionId(slug, req) },
         create: {
           id: getSessionId(slug, req),

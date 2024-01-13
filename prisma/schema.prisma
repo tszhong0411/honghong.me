@@ -27,8 +27,14 @@ model Post {
   views      Int      @default(0)
 }
 
-model Session {
+model LikesSession {
   id         String   @id
   created_at DateTime @default(now())
   likes      Int      @default(0)
 }
+
+// model Comment {
+//   id   String @id @default(cuid())
+//   body String
+//   user User
+// }
