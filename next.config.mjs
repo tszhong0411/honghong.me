@@ -1,6 +1,12 @@
+import jiti from 'jiti'
 import { withContentlayer } from 'next-contentlayer'
+import { fileURLToPath } from 'node:url'
 
-import './src/env/env.mjs'
+const filename = fileURLToPath(import.meta.url)
+
+const envPath = './src/env'
+
+jiti(filename)(envPath)
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -17,6 +23,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'avatars.githubusercontent.com'
+      },
+      {
+        protocol: 'https',
+        hostname: '**.googleusercontent.com'
       }
     ]
   },
