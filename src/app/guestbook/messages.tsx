@@ -1,8 +1,7 @@
 'use client'
 
 import { type Guestbook } from '@prisma/client'
-import dayjs from 'dayjs'
-import { type Session } from 'next-auth/types'
+import { type User } from 'next-auth/types'
 import React from 'react'
 import { toast } from 'react-hot-toast'
 
@@ -12,7 +11,10 @@ import {
   AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
+  AlertDialogDescription,
   AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
   AlertDialogTrigger,
   Avatar,
   AvatarFallback,
@@ -21,9 +23,10 @@ import {
   buttonVariants,
   Skeleton
 } from '@/components/ui'
+import dayjs from '@/utils/dayjs'
 
 type MessagesProps = {
-  user: Session['user'] | undefined
+  user: User | null
   messages: Guestbook[]
 }
 
@@ -63,7 +66,7 @@ const Messages = (props: MessagesProps) => {
 
     setIsDeleting(false)
     toast.dismiss(loading)
-    toast.success('Deleted successfully')
+    toast.success('Deleted a message.')
   }
 
   return (
@@ -105,7 +108,13 @@ const Messages = (props: MessagesProps) => {
                     </Button>
                   </AlertDialogTrigger>
                   <AlertDialogContent>
-                    <div className='mb-2'>Delete a message</div>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>Delete a comment</AlertDialogTitle>
+                      <AlertDialogDescription>
+                        Are you sure you want to delete this comment? This
+                        action cannot be undone.
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
                     <AlertDialogFooter>
                       <AlertDialogCancel>Cancel</AlertDialogCancel>
                       <AlertDialogAction

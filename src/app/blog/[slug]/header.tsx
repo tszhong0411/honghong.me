@@ -1,6 +1,5 @@
 'use client'
 
-import dayjs from 'dayjs'
 import React from 'react'
 import { useEvent } from 'react-use'
 import useSWR from 'swr'
@@ -9,6 +8,7 @@ import ImageZoom from '@/components/image-zoom'
 import Image from '@/components/mdx/image'
 import fetcher from '@/lib/fetcher'
 import { type Views } from '@/types'
+import dayjs from '@/utils/dayjs'
 
 type HeaderProps = {
   date: string
@@ -26,7 +26,7 @@ const Header = (props: HeaderProps) => {
   const [commentCounter, setCommentCounter] = React.useState(-1)
 
   React.useEffect(() => {
-    setFormattedDate(dayjs(date).format('MMMM DD, YYYY'))
+    setFormattedDate(dayjs(date).format('LL'))
   }, [date])
 
   React.useEffect(() => {

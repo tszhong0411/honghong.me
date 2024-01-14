@@ -1,7 +1,8 @@
 'use client'
 
-import dayjs from 'dayjs'
 import React from 'react'
+
+import dayjs from '@/utils/dayjs'
 
 const editURL = (slug: string) =>
   `https://github.com/tszhong0411/honghong.me/blob/main/src/content/blog/${slug}.mdx?plain=1`
@@ -21,7 +22,7 @@ const Footer = (props: FooterProps) => {
   }, [modifiedTime])
 
   return (
-    <div className='my-8 flex w-full items-center justify-between py-4 text-sm max-sm:flex-col max-sm:items-start max-sm:gap-4'>
+    <div className='my-8 flex w-full items-center justify-between py-4 text-sm'>
       <a
         target='_blank'
         rel='noopener noreferrer'

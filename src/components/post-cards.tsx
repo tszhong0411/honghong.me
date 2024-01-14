@@ -1,6 +1,5 @@
 'use client'
 
-import dayjs from 'dayjs'
 import Link from 'next/link'
 import React from 'react'
 import useSWR from 'swr'
@@ -8,6 +7,7 @@ import useSWR from 'swr'
 import useGlowPointer from '@/hooks/use-glow-pointer'
 import fetcher from '@/lib/fetcher'
 import { type BlogPostCore, type Likes, type Views } from '@/types'
+import dayjs from '@/utils/dayjs'
 
 import GlowCard from './glow-card'
 import Image from './mdx/image'
@@ -43,7 +43,7 @@ const PostCard = (props: PostCardProps) => {
   )
 
   React.useEffect(() => {
-    setFormattedDate(dayjs(date).format('MMMM DD, YYYY'))
+    setFormattedDate(dayjs(date).format('LL'))
   }, [date])
 
   return (

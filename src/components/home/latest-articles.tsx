@@ -1,7 +1,6 @@
 'use client'
 
 import { IconArrowUpRight, IconPencil } from '@tabler/icons-react'
-import dayjs from 'dayjs'
 import { motion, useInView } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -11,6 +10,8 @@ import useSWR from 'swr'
 import fetcher from '@/lib/fetcher'
 import getAllPosts from '@/lib/mdx'
 import { type BlogPostCore, type Likes, type Views } from '@/types'
+import cn from '@/utils/cn'
+import dayjs from '@/utils/dayjs'
 
 import { buttonVariants } from '../ui'
 
@@ -80,10 +81,12 @@ const LatestArticles = () => {
       <div className='my-8 flex items-center justify-center'>
         <Link
           href='/blog'
-          className={buttonVariants({
-            className: 'rounded-xl',
-            variant: 'outline'
-          })}
+          className={cn(
+            buttonVariants({
+              variant: 'outline'
+            }),
+            'rounded-xl'
+          )}
         >
           See all articles
         </Link>
@@ -107,7 +110,7 @@ const ArticleCard = (props: ArticleCardProps) => {
   )
 
   React.useEffect(() => {
-    setFormattedDate(dayjs(date).format('MMMM DD, YYYY'))
+    setFormattedDate(dayjs(date).format('LL'))
   }, [date])
 
   return (
