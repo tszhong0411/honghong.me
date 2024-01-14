@@ -5,7 +5,7 @@ import { motion, useInView, useScroll } from 'framer-motion'
 import React from 'react'
 
 import Mdx from '@/components/mdx'
-import { getHeadings } from '@/utils/get-headings'
+import getHeadings from '@/utils/get-headings'
 
 import LikeButton from './like-button'
 import TableOfContents from './table-of-contents'
