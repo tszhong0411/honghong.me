@@ -1,6 +1,6 @@
 'use client'
 
-import { type Session } from 'next-auth'
+import { type User } from 'next-auth'
 import { signOut } from 'next-auth/react'
 import React from 'react'
 import { toast } from 'react-hot-toast'
@@ -16,7 +16,7 @@ import {
 } from '@/components/ui'
 
 type FormProps = {
-  user: Session['user']
+  user: User
 }
 
 const Form = (props: FormProps) => {
@@ -40,7 +40,7 @@ const Form = (props: FormProps) => {
 
     setIsCreating(false)
     toast.dismiss(loading)
-    toast.success('Message created successfully')
+    toast.success('Created a message.')
 
     return setMessage('')
   }
@@ -74,7 +74,7 @@ const Form = (props: FormProps) => {
         <Button
           onClick={createMessageHandler}
           type='button'
-          disabled={isCreating}
+          disabled={isCreating || message.length === 0}
         >
           Submit
         </Button>

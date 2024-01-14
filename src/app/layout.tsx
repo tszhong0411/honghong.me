@@ -3,11 +3,13 @@ import { GeistSans } from 'geist/font/sans'
 import type { Metadata, Viewport } from 'next'
 import localFont from 'next/font/local'
 import Image from 'next/image'
+import { SessionProvider } from 'next-auth/react'
 
 import '@/styles/globals.css'
 import Analytics from '@/components/analytics'
 import Footer from '@/components/footer'
 import Header from '@/components/header'
+import SignInModal from '@/components/sign-in-modal'
 import Toaster from '@/components/toaster'
 import site from '@/config/site'
 import cn from '@/utils/cn'
@@ -103,34 +105,37 @@ const RootLayout = (props: RootLayoutProps) => {
       )}
     >
       <body>
-        <Header />
-        <main
-          id='skip-nav'
-          className='mx-auto mb-16 max-w-5xl px-6 py-24 sm:px-8'
-        >
-          {children}
-        </main>
-        <Toaster />
-        <Footer />
-        <Analytics />
-        <Image
-          width={1512}
-          height={550}
-          className='absolute left-1/2 top-0 -z-10 -translate-x-1/2'
-          src='/images/gradient-background-top.png'
-          alt=''
-          role='presentation'
-          priority
-        />
-        <Image
-          width={1512}
-          height={447}
-          className='absolute -bottom-6 left-1/2 -z-10 -translate-x-1/2'
-          src='/images/gradient-background-bottom.png'
-          alt=''
-          role='presentation'
-          priority
-        />
+        <SessionProvider>
+          <Header />
+          <main
+            id='skip-nav'
+            className='mx-auto mb-16 max-w-5xl px-6 py-24 sm:px-8'
+          >
+            {children}
+          </main>
+          <Toaster />
+          <Footer />
+          <Analytics />
+          <SignInModal />
+          <Image
+            width={1512}
+            height={550}
+            className='absolute left-1/2 top-0 -z-10 -translate-x-1/2'
+            src='/images/gradient-background-top.png'
+            alt=''
+            role='presentation'
+            priority
+          />
+          <Image
+            width={1512}
+            height={447}
+            className='absolute -bottom-6 left-1/2 -z-10 -translate-x-1/2'
+            src='/images/gradient-background-bottom.png'
+            alt=''
+            role='presentation'
+            priority
+          />
+        </SessionProvider>
       </body>
     </html>
   )

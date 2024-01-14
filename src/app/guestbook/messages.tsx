@@ -1,7 +1,7 @@
 'use client'
 
 import { type Guestbook } from '@prisma/client'
-import { type User } from 'next-auth/types'
+import { type User } from 'next-auth'
 import React from 'react'
 import { toast } from 'react-hot-toast'
 

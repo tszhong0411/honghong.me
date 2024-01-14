@@ -7,7 +7,14 @@ import {
   SiX,
   SiYoutube
 } from '@icons-pack/react-simple-icons'
-import { IconCode, IconCommand, IconLink } from '@tabler/icons-react'
+import {
+  IconCode,
+  IconCommand,
+  IconLink,
+  IconLogin,
+  IconLogout
+} from '@tabler/icons-react'
+import { signOut, useSession } from 'next-auth/react'
 import React from 'react'
 
 import {
@@ -21,6 +28,7 @@ import {
   CommandSeparator
 } from '@/components/ui'
 import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard'
+import { useSignInModal } from '@/store/use-sign-in-modal'
 
 type Groups = Array<{
   name: string
@@ -34,6 +42,8 @@ type Groups = Array<{
 const CommandMenu = () => {
   const [open, setOpen] = React.useState(false)
   const [copy] = useCopyToClipboard()
+  const { status } = useSession()
+  const { setOpen: setSignInModalOpen } = useSignInModal()
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -53,6 +63,29 @@ const CommandMenu = () => {
   }, [])
 
   const groups: Groups = [
+    {
+      name: 'Account',
+      actions: [
+        ...(status === 'authenticated'
+          ? [
+              {
+                title: 'Sign out',
+                icon: <IconLogout />,
+                onSelect: () => signOut()
+              }
+            ]
+          : [
+              {
+                title: 'Sign in',
+                icon: <IconLogin />,
+                onSelect: () => {
+                  setOpen(false)
+                  setSignInModalOpen(true)
+                }
+              }
+            ])
+      ]
+    },
     {
       name: 'General',
       actions: [
@@ -118,7 +151,7 @@ const CommandMenu = () => {
     <>
       <Button
         variant='ghost'
-        className='flex size-9 items-center justify-center p-0'
+        className='size-9 p-0'
         onClick={() => setOpen(true)}
         type='button'
         aria-label='Open command menu'

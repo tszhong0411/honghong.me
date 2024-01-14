@@ -61,7 +61,7 @@ const GuestbookPage = async () => {
         <Pinned />
         {!user && <SignIn />}
         {user && <Form user={user} />}
-        <Messages user={user ?? undefined} messages={messages} />
+        <Messages user={user} messages={messages} />
       </div>
     </>
   )

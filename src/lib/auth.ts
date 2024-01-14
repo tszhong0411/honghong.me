@@ -1,22 +1,9 @@
-import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import type { NextAuthConfig } from 'next-auth'
 import NextAuth from 'next-auth'
 import GithubProvider from 'next-auth/providers/github'
+import GoogleProvider from 'next-auth/providers/google'
 
 import { env } from '@/env'
-
-import prisma from './prisma'
-
-declare module 'next-auth' {
-  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
-  interface Session {
-    user: {
-      email: string
-      name: string | null
-      image: string | null
-    }
-  }
-}
 
 const config: NextAuthConfig = {
   secret: env.NEXTAUTH_SECRET,
@@ -24,14 +11,16 @@ const config: NextAuthConfig = {
     GithubProvider({
       clientId: env.OAUTH_CLIENT_KEY,
       clientSecret: env.OAUTH_CLIENT_SECRET
+    }),
+    GoogleProvider({
+      clientId: env.GOOGLE_CLIENT_ID,
+      clientSecret: env.GOOGLE_CLIENT_SECRET
     })
   ],
 
   session: {
     strategy: 'jwt'
-  },
-
-  adapter: PrismaAdapter(prisma)
+  }
 }
 
 export const {
