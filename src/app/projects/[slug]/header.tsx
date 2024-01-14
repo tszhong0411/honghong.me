@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 
 import { buttonVariants } from '@/components/ui'
 import site from '@/config/site'
+import cn from '@/utils/cn'
 
 const animation = {
   hide: {
@@ -46,7 +47,7 @@ const Header = (props: HeaderProps) => {
             target='_blank'
             rel='noopener noreferrer'
             href={homepage}
-            className={buttonVariants({ className: 'group' })}
+            className={cn(buttonVariants(), 'group')}
           >
             Visit Website
             <IconArrowUpRight
@@ -59,7 +60,7 @@ const Header = (props: HeaderProps) => {
           target='_blank'
           rel='noopener noreferrer'
           href={github}
-          className={buttonVariants({ className: 'group' })}
+          className={cn(buttonVariants(), 'group')}
         >
           {site.githubUsername}/{repo}
           <IconArrowUpRight

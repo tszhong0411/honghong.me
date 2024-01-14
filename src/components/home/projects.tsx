@@ -7,6 +7,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
+import cn from '@/utils/cn'
+
 import { buttonVariants } from '../ui'
 
 const variants = {
@@ -104,10 +106,12 @@ const Projects = () => {
       <div className='my-8 flex items-center justify-center'>
         <Link
           href='/projects'
-          className={buttonVariants({
-            className: 'rounded-xl',
-            variant: 'outline'
-          })}
+          className={cn(
+            buttonVariants({
+              variant: 'outline'
+            }),
+            'rounded-xl'
+          )}
         >
           See all project
         </Link>

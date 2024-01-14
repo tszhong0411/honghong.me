@@ -4,6 +4,8 @@ import { motion, useInView } from 'framer-motion'
 import Link from 'next/link'
 import React from 'react'
 
+import cn from '@/utils/cn'
+
 import { buttonVariants } from '../ui'
 import CodingHours from './coding-hours'
 import Connect from './connect'
@@ -82,10 +84,7 @@ const AboutMe = () => {
       <div className='my-8 flex items-center justify-center'>
         <Link
           href='/about'
-          className={buttonVariants({
-            className: 'rounded-xl',
-            variant: 'outline'
-          })}
+          className={cn(buttonVariants({ variant: 'outline' }), 'rounded-xl')}
         >
           Know more about me
         </Link>
