@@ -48,8 +48,8 @@ dependencies:
     specifier: ^1.0.2
     version: 1.0.2(@types/react@18.2.47)(react@18.2.0)
   '@t3-oss/env-nextjs':
-    specifier: ^0.7.1
-    version: 0.7.1(typescript@5.3.3)(zod@3.22.4)
+    specifier: ^0.7.3
+    version: 0.7.3(typescript@5.3.3)(zod@3.22.4)
   '@tabler/icons-react':
     specifier: ^2.45.0
     version: 2.45.0(react@18.2.0)
@@ -89,6 +89,9 @@ dependencies:
   hastscript:
     specifier: ^8.0.0
     version: 8.0.0
+  jiti:
+    specifier: ^1.21.0
+    version: 1.21.0
   marked:
     specifier: ^11.1.1
     version: 11.1.1
@@ -96,7 +99,7 @@ dependencies:
     specifier: ^14.0.4
     version: 14.0.4(@babel/core@7.23.7)(@opentelemetry/api@1.7.0)(react-dom@18.2.0)(react@18.2.0)
   next-auth:
-    specifier: ^5.0.0-beta.3
+    specifier: 5.0.0-beta.4
     version: 5.0.0-beta.4(next@14.0.4)(react@18.2.0)
   next-contentlayer:
     specifier: ^0.3.4
@@ -143,6 +146,9 @@ dependencies:
   zod:
     specifier: ^3.22.4
     version: 3.22.4
+  zustand:
+    specifier: ^4.4.7
+    version: 4.4.7(@types/react@18.2.47)(react@18.2.0)
 
 devDependencies:
   '@commitlint/cli':
@@ -170,8 +176,8 @@ devDependencies:
     specifier: ^14.5.2
     version: 14.5.2(@testing-library/dom@9.3.3)
   '@tszhong0411/eslint-config':
-    specifier: ^1.0.37
-    version: 1.0.37(eslint@8.56.0)(prettier@3.1.1)(tailwindcss@3.4.1)(typescript@5.3.3)
+    specifier: ^1.0.38
+    version: 1.0.38(eslint@8.56.0)(prettier@3.1.1)(tailwindcss@3.4.1)(typescript@5.3.3)
   '@tszhong0411/prettier-config':
     specifier: ^1.0.8
     version: 1.0.8(eslint@8.56.0)(prettier@3.1.1)
@@ -3041,8 +3047,8 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@t3-oss/env-core@0.7.1(typescript@5.3.3)(zod@3.22.4):
-    resolution: {integrity: sha512-3+SQt39OlmSaRLqYVFv8uRm1BpFepM5TIiMytRqO9cjH+wB77o6BIJdeyM5h5U4qLBMEzOJWCY4MBaU/rLwbYw==}
+  /@t3-oss/env-core@0.7.3(typescript@5.3.3)(zod@3.22.4):
+    resolution: {integrity: sha512-hhtj59TKC6TKVdwJ0CcbKsvkr9R8Pc/SNKd4IgGUIC9T9X6moB8EZZ3FTJdABA/h9UABCK4J+KsF8gzmvMvHPg==}
     peerDependencies:
       typescript: '>=4.7.2'
       zod: ^3.0.0
@@ -3054,8 +3060,8 @@ packages:
       zod: 3.22.4
     dev: false
 
-  /@t3-oss/env-nextjs@0.7.1(typescript@5.3.3)(zod@3.22.4):
-    resolution: {integrity: sha512-tQDbNLGCOvKGi+JoGuJ/CJInJI7/kLWJqtgGppAKS7ZFLdVOqZYR/uRjxlXOWPnxmUKF8VswOAsq7fXUpNZDhA==}
+  /@t3-oss/env-nextjs@0.7.3(typescript@5.3.3)(zod@3.22.4):
+    resolution: {integrity: sha512-90TNffS17vjkQwfYyMUb4Zw9yqHwFV40f78qFug4JiQa5+N6DydTdlLOpzOcj8Cna/qpAVDwMSypofF/TVQDuA==}
     peerDependencies:
       typescript: '>=4.7.2'
       zod: ^3.0.0
@@ -3063,7 +3069,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@t3-oss/env-core': 0.7.1(typescript@5.3.3)(zod@3.22.4)
+      '@t3-oss/env-core': 0.7.3(typescript@5.3.3)(zod@3.22.4)
       typescript: 5.3.3
       zod: 3.22.4
     dev: false
@@ -3160,8 +3166,8 @@ packages:
       '@testing-library/dom': 9.3.3
     dev: true
 
-  /@tszhong0411/eslint-config@1.0.37(eslint@8.56.0)(prettier@3.1.1)(tailwindcss@3.4.1)(typescript@5.3.3):
-    resolution: {integrity: sha512-i5T7yIuvOTXvL9XzfR0n4Fp6Mr21YDno0pz2qzuC3tWnQ/Xoht50GpdNT+uVnhsaMZM0GJg7PLQ5LU5yACLWBQ==}
+  /@tszhong0411/eslint-config@1.0.38(eslint@8.56.0)(prettier@3.1.1)(tailwindcss@3.4.1)(typescript@5.3.3):
+    resolution: {integrity: sha512-jb6k0fAaAfNGiLfz2Kw4DWNJVEl1F9gQFFPjWDJlFTNBklsCHVaTPW6OuspyINVAFp7E0BdROlxLOzI3HDOPiQ==}
     peerDependencies:
       eslint: 8.x
     dependencies:
@@ -3173,7 +3179,6 @@ packages:
       eslint-plugin-jsx-a11y: 6.8.0(eslint@8.56.0)
       eslint-plugin-prettier: 5.1.2(eslint-config-prettier@9.1.0)(eslint@8.56.0)(prettier@3.1.1)
       eslint-plugin-react: 7.33.2(eslint@8.56.0)
-      eslint-plugin-security: 1.7.1
       eslint-plugin-simple-import-sort: 10.0.0(eslint@8.56.0)
       eslint-plugin-sonarjs: 0.23.0(eslint@8.56.0)
       eslint-plugin-tailwindcss: 3.13.1(tailwindcss@3.4.1)
@@ -5201,12 +5206,6 @@ packages:
       resolve: 2.0.0-next.5
       semver: 6.3.1
       string.prototype.matchall: 4.0.10
-    dev: true
-
-  /eslint-plugin-security@1.7.1:
-    resolution: {integrity: sha512-sMStceig8AFglhhT2LqlU5r+/fn9OwsA72O5bBuQVTssPCdQAOQzL+oMn/ZcpeUY6KcNfLJArgcrsSULNjYYdQ==}
-    dependencies:
-      safe-regex: 2.1.1
     dev: true
 
   /eslint-plugin-simple-import-sort@10.0.0(eslint@8.56.0):
@@ -9008,12 +9007,6 @@ packages:
       is-regex: 1.1.4
     dev: true
 
-  /safe-regex@2.1.1:
-    resolution: {integrity: sha512-rx+x8AMzKb5Q5lQ95Zoi6ZbJqwCLkqi3XuJXp5P3rT8OEc6sZCJG5AE5dU3lsgRr/F4Bs31jSlVN+j5KrsGu9A==}
-    dependencies:
-      regexp-tree: 0.1.27
-    dev: true
-
   /safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
     dev: true
@@ -10499,6 +10492,26 @@ packages:
 
   /zod@3.22.4:
     resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
+    dev: false
+
+  /zustand@4.4.7(@types/react@18.2.47)(react@18.2.0):
+    resolution: {integrity: sha512-QFJWJMdlETcI69paJwhSMJz7PPWjVP8Sjhclxmxmxv/RYI7ZOvR5BHX+ktH0we9gTWQMxcne8q1OY8xxz604gw==}
+    engines: {node: '>=12.7.0'}
+    peerDependencies:
+      '@types/react': '>=16.8'
+      immer: '>=9.0'
+      react: '>=16.8'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      immer:
+        optional: true
+      react:
+        optional: true
+    dependencies:
+      '@types/react': 18.2.47
+      react: 18.2.0
+      use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
 
   /zwitch@2.0.4:
