@@ -18,7 +18,6 @@ describe('getAllPosts()', () => {
     const posts = getAllPosts()
     const dates = posts.map((post) => new Date(post.date))
     for (let i = 0; i < dates.length - 1; i++) {
-      // eslint-disable-next-line security/detect-object-injection
       expect(dates[i] >= dates[i + 1]).toBe(true)
     }
   })
