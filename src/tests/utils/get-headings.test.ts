@@ -1,4 +1,4 @@
-import { getHeadings } from '@/utils/get-headings'
+import getHeadings from '@/utils/get-headings'
 
 const content = `
 # Heading 1

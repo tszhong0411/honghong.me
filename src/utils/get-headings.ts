@@ -8,7 +8,7 @@ export type Heading = {
   title: string
 }
 
-export const getHeadings = (content: string): Heading[] => {
+const getHeadings = (content: string): Heading[] => {
   const headings: Heading[] = []
 
   const tokens = marked.lexer(content)
@@ -25,3 +25,5 @@ export const getHeadings = (content: string): Heading[] => {
 
   return headings
 }
+
+export default getHeadings
