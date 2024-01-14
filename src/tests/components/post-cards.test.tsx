@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react'
-import dayjs from 'dayjs'
 
 import PostCards from '@/components/post-cards'
+import dayjs from '@/utils/dayjs'
 
 import { allBlogPosts } from '../mocks/contentlayer'
 import { renderWithSWRConfig } from '../utils'
@@ -17,7 +17,7 @@ describe('<PostCard />', () => {
       expect(screen.getByText(post.summary)).toBeInTheDocument()
 
       expect(
-        await screen.findByText(dayjs(post.date).format('MMMM DD, YYYY'))
+        await screen.findByText(dayjs(post.date).format('LL'))
       ).toBeInTheDocument()
     }
 
