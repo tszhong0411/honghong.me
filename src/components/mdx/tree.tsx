@@ -1,5 +1,7 @@
-import { IconFile, IconFolder } from '@tabler/icons-react'
+import { IconChevronRight, IconFile, IconFolder } from '@tabler/icons-react'
 import React from 'react'
+
+import cn from '@/utils/cn'
 
 type Node = {
   name: string
@@ -15,9 +17,15 @@ type InnerType = {
   level: number
 }
 
+type NodeProps = {
+  name: string
+  children?: Node[]
+  level: number
+}
+
 const Tree = (props: TreeProps) => {
   return (
-    <div className='rounded-lg border bg-accent px-6 py-4'>
+    <div className='not-prose rounded-lg border bg-accent px-6 py-4'>
       <Inner {...props} level={0} />
     </div>
   )
@@ -27,39 +35,42 @@ const Inner = (props: InnerType) => {
   const { data, level } = props
 
   return (
-    <>
-      {data.map((node) => (
-        <React.Fragment key={node.name}>
-          <div className='relative flex items-center gap-2'>
-            {[...Array.from({ length: level }).keys()].map((i) => (
-              <div
-                key={i}
-                className='absolute h-full w-px -translate-x-1/2 bg-zinc-700'
-                style={{
-                  left: `calc(${i * 20}px + ${i * 4}px + 10px)`
-                }}
-              />
-            ))}
-            <div
-              style={{
-                paddingLeft: level * 24
-              }}
-            >
-              {node.children ? (
-                <IconFolder size={20} />
-              ) : (
-                <IconFile size={20} />
-              )}
-            </div>
-            <div className='font-mono'>{node.name}</div>
-          </div>
-
-          {node.children ? (
-            <Inner data={node.children} level={level + 1} />
-          ) : null}
-        </React.Fragment>
+    <ul>
+      {data.map((node, i) => (
+        <Node key={i} level={level} {...node} />
       ))}
-    </>
+    </ul>
+  )
+}
+
+const Node = (props: NodeProps) => {
+  const { name, children, level } = props
+  const [isOpen, setIsOpen] = React.useState(true)
+  const hasChildren = children && children.length > 0
+  const El = hasChildren ? 'button' : 'div'
+
+  return (
+    <li key={name}>
+      <El
+        className='relative flex h-8 items-center gap-1.5'
+        style={{
+          paddingLeft: level * 24
+        }}
+        {...(hasChildren && {
+          type: 'button',
+          onClick: () => setIsOpen((value) => !value)
+        })}
+      >
+        <IconChevronRight
+          size={22}
+          className={cn(!children && 'invisible', isOpen && 'rotate-90')}
+        />
+        {children ? <IconFolder size={20} /> : <IconFile size={20} />}
+        <div>{name}</div>
+      </El>
+
+      {isOpen && children ? <Inner data={children} level={level + 1} /> : null}
+    </li>
   )
 }
 
