@@ -71,31 +71,14 @@ The app will become available at `http://localhost:3000`.
 
 ## ✈️ TODO
 
-- Add comment function to blog posts using database instead of `giscus`
 - Use strict content security policy - still not working in `14.0.4`
   - `next/image` - https://github.com/vercel/next.js/issues/45184
   - `nonces` - https://github.com/vercel/next.js/discussions/54907
   - `main-app.js` - https://github.com/vercel/next.js/issues/55129
-- Fix `react-medium-image-zoom` on Edge Runtime bug
-  - https://github.com/rpearce/react-medium-image-zoom/issues/429
-
-## 🔔 Important Note
-
-Hello there! While I'm glad to see you're interested in my open-source project, I kindly request that you refrain from using this source code as a template for your website. Instead, I encourage you to use it as a learning resource and as an inspiration to create something unique.
-
-- **Originality**: Building something from scratch allows you to showcase your originality and creativity.
-- **Learning**: Creating your own project helps you learn and improve your skills.
-
-If you have questions or feedback, please reach out to me. Thank you for understanding!
 
 ## ❤️ Credits
 
 This project has been possible thanks to the wonderful open-source community. Special thanks to [Timothy](https://www.timlrx.com/) for the [Tailwind nextjs starter blog template](https://github.com/timlrx/tailwind-nextjs-starter-blog).
-
-<hr>
-<p align="center">
-Made with ❤️ in Hong Kong
-</p>
 
 ## ✨ Contributors
 
@@ -118,3 +101,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+<hr>
+<p align="center">
+Made with ❤️ in Hong Kong
+</p>
