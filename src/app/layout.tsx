@@ -9,6 +9,7 @@ import '@/styles/globals.css'
 import Analytics from '@/components/analytics'
 import Footer from '@/components/footer'
 import Header from '@/components/header'
+import Hello from '@/components/hello'
 import SignInModal from '@/components/sign-in-modal'
 import Toaster from '@/components/toaster'
 import site from '@/config/site'
@@ -106,6 +107,7 @@ const RootLayout = (props: RootLayoutProps) => {
     >
       <body>
         <SessionProvider>
+          <Hello />
           <Header />
           <main
             id='skip-nav'
