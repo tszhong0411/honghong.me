@@ -8,8 +8,6 @@ import site from '@/config/site'
 
 import Header from './header'
 
-export const runtime = 'edge'
-
 type ProjectPageProps = {
   params: {
     slug: string
