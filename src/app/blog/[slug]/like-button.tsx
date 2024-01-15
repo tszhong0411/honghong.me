@@ -121,7 +121,9 @@ const LikeButton = (props: LikeButtonProps) => {
                 y: '100%'
               }}
               animate={{
-                y: data ? `${100 - (data.likes + cacheCount) * 33}%` : '100%'
+                y: data
+                  ? `${100 - (data.currentUserLikes + cacheCount) * 33}%`
+                  : '100%'
               }}
             />
           </g>
