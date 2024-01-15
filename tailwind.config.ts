@@ -43,7 +43,7 @@ export default {
               margin: '0 auto'
             },
             'code, pre code': {
-              fontFamily: 'var(--font-geist-mono), var(--font-inter)'
+              fontFamily: 'var(--font-geist-mono)'
             },
             ':not(pre) > code': {
               padding: '0.12em 0.25em',
