@@ -4,7 +4,7 @@ import { IconArrowUpRight } from '@tabler/icons-react'
 import { type Project } from 'contentlayer/generated'
 import { motion } from 'framer-motion'
 
-import { buttonVariants } from '@/components/ui'
+import { buttonVariants, Link } from '@/components/ui'
 import site from '@/config/site'
 import cn from '@/utils/cn'
 
@@ -43,31 +43,21 @@ const Header = (props: HeaderProps) => {
         transition={{ delay: 0.1 }}
       >
         {homepage && (
-          <a
-            target='_blank'
-            rel='noopener noreferrer'
-            href={homepage}
-            className={cn(buttonVariants(), 'group')}
-          >
+          <Link href={homepage} className={cn(buttonVariants(), 'group')}>
             Visit Website
             <IconArrowUpRight
               size={20}
               className='ml-2 transition-transform duration-200 group-hover:-rotate-12'
             />
-          </a>
+          </Link>
         )}
-        <a
-          target='_blank'
-          rel='noopener noreferrer'
-          href={github}
-          className={cn(buttonVariants(), 'group')}
-        >
+        <Link href={github} className={cn(buttonVariants(), 'group')}>
           {site.githubUsername}/{repo}
           <IconArrowUpRight
             size={20}
             className='ml-2 transition-transform duration-200 group-hover:-rotate-12'
           />
-        </a>
+        </Link>
       </motion.div>
     </div>
   )

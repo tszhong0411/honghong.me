@@ -2,6 +2,7 @@
 
 import React from 'react'
 
+import { Link } from '@/components/ui'
 import dayjs from '@/utils/dayjs'
 
 const editURL = (slug: string) =>
@@ -23,14 +24,9 @@ const Footer = (props: FooterProps) => {
 
   return (
     <div className='my-8 flex w-full items-center justify-between py-4 text-sm'>
-      <a
-        target='_blank'
-        rel='noopener noreferrer'
-        href={editURL(slug)}
-        className='text-muted-foreground transition-colors duration-200 hover:text-foreground'
-      >
+      <Link href={editURL(slug)} variant='muted'>
         Edit on GitHub
-      </a>
+      </Link>
       <div className='text-muted-foreground'>
         Last updated: {formattedDate || '--/--/----'}
       </div>

@@ -5,6 +5,8 @@ import useSWR from 'swr'
 import fetcher from '@/lib/fetcher'
 import { type Song } from '@/types'
 
+import { Link } from './ui'
+
 const NowPlaying = () => {
   const { data, isLoading } = useSWR<Song>('/api/spotify', fetcher)
 
@@ -29,9 +31,9 @@ const NowPlaying = () => {
           {isLoading && 'Loading ...'}
           {!isLoading &&
             (data?.isPlaying && data.songUrl ? (
-              <a href={data.songUrl} target='_blank' rel='noopener noreferrer'>
+              <Link href={data.songUrl}>
                 {data.name} - {data.artist}
-              </a>
+              </Link>
             ) : (
               'Not Listening - Spotify'
             ))}

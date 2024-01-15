@@ -1,9 +1,9 @@
 'use client'
 
-import Link from 'next/link'
 import React from 'react'
 import useSWR from 'swr'
 
+import { Link } from '@/components/ui'
 import useGlowPointer from '@/hooks/use-glow-pointer'
 import fetcher from '@/lib/fetcher'
 import { type BlogPostCore, type Likes, type Views } from '@/types'

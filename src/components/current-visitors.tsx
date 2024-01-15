@@ -2,7 +2,7 @@
 
 import useSWR from 'swr'
 
-import { Skeleton } from '@/components/ui'
+import { Link, Skeleton } from '@/components/ui'
 import { env } from '@/env'
 import fetcher from '@/lib/fetcher'
 import { type Analytics } from '@/types'
@@ -13,11 +13,9 @@ const CurrentVisitors = () => {
   })
 
   return (
-    <a
+    <Link
       href={env.NEXT_PUBLIC_UMAMI_WEBSITE_SHARE_URL}
       className='flex items-center justify-center gap-2'
-      rel='noopener noreferrer'
-      target='_blank'
       aria-label={
         data
           ? `${data.visitors} current visitor${data.visitors === 1 ? '' : 's'}`
@@ -38,7 +36,7 @@ const CurrentVisitors = () => {
           data-testid='skeleton-loader'
         />
       )}
-    </a>
+    </Link>
   )
 }
 

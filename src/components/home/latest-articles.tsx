@@ -3,10 +3,10 @@
 import { IconArrowUpRight, IconPencil } from '@tabler/icons-react'
 import { motion, useInView } from 'framer-motion'
 import Image from 'next/image'
-import Link from 'next/link'
 import React from 'react'
 import useSWR from 'swr'
 
+import { Link } from '@/components/ui'
 import fetcher from '@/lib/fetcher'
 import getAllPosts from '@/lib/mdx'
 import { type BlogPostCore, type Likes, type Views } from '@/types'

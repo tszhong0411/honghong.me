@@ -7,9 +7,9 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui'
 import createHeading from '@/utils/create-heading'
 
 import ImageZoom from '../image-zoom'
+import { Link } from '../ui'
 import Image from './image'
 import ItemGrid from './item-grid'
-import Link from './link'
 import LinkCard from './link-card'
 import Logo from './logo'
 import Pre from './pre'
@@ -28,7 +28,9 @@ const components: MDXComponents = {
   h4: createHeading(4),
   h5: createHeading(5),
   h6: createHeading(6),
-  a: Link,
+  a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
+    return <Link variant='article' {...props} />
+  },
   Image: (props: React.ComponentPropsWithoutRef<typeof Image>) => {
     const { alt, ...rest } = props
 

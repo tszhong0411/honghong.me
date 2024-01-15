@@ -15,11 +15,6 @@ import {
   IconUserCircle
 } from '@tabler/icons-react'
 
-export type Link = {
-  href: string
-  title: string
-}
-
 type HeaderLinks = Array<{
   icon: React.ReactNode
   href: string
@@ -28,7 +23,10 @@ type HeaderLinks = Array<{
 
 type FooterLinks = Array<{
   id: number
-  links: Link[]
+  links: Array<{
+    href: string
+    text: string
+  }>
 }>
 
 type SocialLinks = Array<{
@@ -76,19 +74,19 @@ export const FOOTER_LINKS: FooterLinks = [
     links: [
       {
         href: '/',
-        title: 'Home'
+        text: 'Home'
       },
       {
         href: '/blog',
-        title: 'Blog'
+        text: 'Blog'
       },
       {
         href: '/about',
-        title: 'About'
+        text: 'About'
       },
       {
         href: '/dashboard',
-        title: 'Dashboard'
+        text: 'Dashboard'
       }
     ]
   },
@@ -97,19 +95,19 @@ export const FOOTER_LINKS: FooterLinks = [
     links: [
       {
         href: '/guestbook',
-        title: 'Guestbook'
+        text: 'Guestbook'
       },
       {
         href: '/uses',
-        title: 'Uses'
+        text: 'Uses'
       },
       {
         href: '/projects',
-        title: 'Projects'
+        text: 'Projects'
       },
       {
         href: 'https://links.honghong.me',
-        title: 'Links'
+        text: 'Links'
       }
     ]
   },
@@ -118,19 +116,19 @@ export const FOOTER_LINKS: FooterLinks = [
     links: [
       {
         href: 'https://www.facebook.com/tszhong0411/',
-        title: 'Facebook'
+        text: 'Facebook'
       },
       {
         href: 'https://www.instagram.com/tszhong0411/',
-        title: 'Instagram'
+        text: 'Instagram'
       },
       {
         href: 'https://github.com/tszhong0411',
-        title: 'GitHub'
+        text: 'GitHub'
       },
       {
         href: 'https://www.youtube.com/@tszhong0411',
-        title: 'YouTube'
+        text: 'YouTube'
       }
     ]
   }

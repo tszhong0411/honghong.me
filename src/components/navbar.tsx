@@ -1,8 +1,8 @@
 'use client'
 
-import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
+import { Link } from '@/components/ui'
 import { HEADER_LINKS } from '@/config/links'
 import cn from '@/utils/cn'
 

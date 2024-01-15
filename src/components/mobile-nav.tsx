@@ -1,9 +1,9 @@
 'use client'
 
 import { IconMenu } from '@tabler/icons-react'
-import Link from 'next/link'
 import React from 'react'
 
+import { Link } from '@/components/ui'
 import {
   Button,
   DropdownMenu,

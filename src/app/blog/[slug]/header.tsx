@@ -6,6 +6,7 @@ import useSWR from 'swr'
 
 import ImageZoom from '@/components/image-zoom'
 import Image from '@/components/mdx/image'
+import { Link } from '@/components/ui'
 import fetcher from '@/lib/fetcher'
 import { type Views } from '@/types'
 import dayjs from '@/utils/dayjs'
@@ -73,10 +74,8 @@ const Header = (props: HeaderProps) => {
         <div className='grid grid-cols-2 text-sm max-md:gap-4 md:grid-cols-4'>
           <div className='space-y-1 md:mx-auto'>
             <div className='text-muted-foreground'>Written by</div>
-            <a
+            <Link
               href='https://github.com/tszhong0411'
-              rel='noopener noreferrer'
-              target='_blank'
               className='flex items-center gap-2'
             >
               <Image
@@ -87,7 +86,7 @@ const Header = (props: HeaderProps) => {
                 alt='Hong'
               />
               Hong
-            </a>
+            </Link>
           </div>
           <div className='space-y-1 md:mx-auto'>
             <div className='text-muted-foreground'>Published on</div>

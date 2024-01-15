@@ -1,12 +1,12 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Link from 'next/link'
 import React from 'react'
 
 import CommandMenu from '@/components/command-menu'
 import MobileNav from '@/components/mobile-nav'
 import Navbar from '@/components/navbar'
+import { Link } from '@/components/ui'
 import { Logo } from '@/components/ui'
 import cn from '@/utils/cn'
 

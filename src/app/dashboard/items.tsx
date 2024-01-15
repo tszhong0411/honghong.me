@@ -13,6 +13,7 @@ import useSWR from 'swr'
 
 import Counter from '@/components/counter'
 import { IconGitHub, IconWakaTime, IconYouTube } from '@/components/icons'
+import { Link } from '@/components/ui'
 import fetcher from '@/lib/fetcher'
 import {
   type Github,
@@ -128,7 +129,7 @@ const Items = () => {
   return (
     <>
       <div className='mb-4 mt-16 grid gap-4 sm:grid-cols-2 md:grid-cols-3'>
-        {data.map((item) => {
+        {data.map((item, i) => {
           const {
             icon,
             link,
@@ -140,10 +141,8 @@ const Items = () => {
           } = item
 
           return (
-            <a
-              key={title}
-              target='_blank'
-              rel='noopener noreferrer'
+            <Link
+              key={i}
               href={link}
               className='group relative overflow-hidden rounded-lg bg-accent p-4 transition-colors duration-200 hover:bg-accent-highlight'
             >
@@ -173,7 +172,7 @@ const Items = () => {
                 {linkText}
                 <IconArrowNarrowRight size={24} />
               </span>
-            </a>
+            </Link>
           )
         })}
       </div>

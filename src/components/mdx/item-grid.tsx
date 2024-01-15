@@ -1,6 +1,7 @@
 /**
  * Inspired by https://jahir.dev/uses
  */
+import { Link } from '../ui'
 import Image from './image'
 
 export type Items = Array<{
@@ -20,11 +21,9 @@ const ItemGrid = (props: ItemGridProps) => {
   return (
     <div className='mb-9 grid grid-cols-1 gap-4 sm:grid-cols-4'>
       {items.map((item) => (
-        <a
+        <Link
           key={item.name}
           href={item.url}
-          target='_blank'
-          rel='noopener noreferrer'
           className='flex gap-6 rounded-lg border bg-accent p-4 no-underline transition-colors duration-200 hover:border-border-highlight hover:bg-accent-highlight sm:flex-col sm:gap-3'
         >
           <Image
@@ -41,7 +40,7 @@ const ItemGrid = (props: ItemGridProps) => {
               {item.description}
             </div>
           </div>
-        </a>
+        </Link>
       ))}
     </div>
   )

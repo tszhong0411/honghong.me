@@ -1,9 +1,9 @@
 'use client'
 
 import { motion, useInView } from 'framer-motion'
-import Link from 'next/link'
 import React from 'react'
 
+import { Link } from '@/components/ui'
 import cn from '@/utils/cn'
 
 import { buttonVariants } from '../ui'

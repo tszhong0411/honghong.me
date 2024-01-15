@@ -1,6 +1,6 @@
 import { IconLink } from '@tabler/icons-react'
-import Link from 'next/link'
 
+import { Link } from '@/components/ui'
 import { SOCIAL_LINKS } from '@/config/links'
 
 const Connect = () => {
@@ -21,8 +21,6 @@ const Connect = () => {
               key={href}
               href={href}
               className='flex items-center gap-3 text-muted-foreground transition-colors duration-200 hover:text-foreground'
-              target='_blank'
-              rel='noopener noreferrer'
             >
               <Icon size={18} />
               <h2 className='font-light'>{title}</h2>

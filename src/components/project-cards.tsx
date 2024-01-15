@@ -1,8 +1,8 @@
 'use client'
 
 import { type Project } from 'contentlayer/generated'
-import Link from 'next/link'
 
+import { Link } from '@/components/ui'
 import useGlowPointer from '@/hooks/use-glow-pointer'
 
 import GlowCard from './glow-card'
