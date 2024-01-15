@@ -47,6 +47,21 @@ const nextConfig = {
         source: '/pc-specs',
         destination: '/uses',
         permanent: true
+      },
+      {
+        source: '/atom',
+        destination: '/rss.xml',
+        permanent: true
+      },
+      {
+        source: '/feed',
+        destination: '/rss.xml',
+        permanent: true
+      },
+      {
+        source: '/rss',
+        destination: '/rss.xml',
+        permanent: true
       }
     ]
   },
