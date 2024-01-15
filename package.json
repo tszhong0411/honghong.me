@@ -69,7 +69,7 @@
     "react-use": "^17.4.3",
     "rehype-pretty-code": "^0.12.3",
     "rss": "^1.2.2",
-    "sharp": "^0.33.2",
+    "sharp": "^0.33.1",
     "shikiji": "^0.9.19",
     "swr": "^2.2.4",
     "tailwind-merge": "^2.2.0",

@@ -126,7 +126,7 @@ dependencies:
     specifier: ^1.2.2
     version: 1.2.2
   sharp:
-    specifier: ^0.33.2
+    specifier: ^0.33.1
     version: 0.33.2
   shikiji:
     specifier: ^0.9.19
