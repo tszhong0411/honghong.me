@@ -36,6 +36,18 @@
   }
 }
 
+@layer components {
+  .h-content {
+    min-height: calc(100vh - 416px - 96px - 96px - 64px - 24px);
+  }
+
+  @media (max-width: 640px) {
+    .h-content {
+      min-height: calc(100vh - 600px - 96px - 96px - 64px - 24px);
+    }
+  }
+}
+
 /* Source: https://codepen.io/jh3y/pen/MWxgJXY */
 /* Card glow effect */
 [data-glow] {
