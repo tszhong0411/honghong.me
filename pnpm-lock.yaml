@@ -51,8 +51,8 @@ dependencies:
     specifier: ^0.7.3
     version: 0.7.3(typescript@5.3.3)(zod@3.22.4)
   '@tabler/icons-react':
-    specifier: ^2.45.0
-    version: 2.45.0(react@18.2.0)
+    specifier: ^2.46.0
+    version: 2.46.0(react@18.2.0)
   '@types/hast':
     specifier: ^3.0.3
     version: 3.0.3
@@ -3074,18 +3074,18 @@ packages:
       zod: 3.22.4
     dev: false
 
-  /@tabler/icons-react@2.45.0(react@18.2.0):
-    resolution: {integrity: sha512-1vSBsHnBi9AfMILeJQrQo1XIHtFOxuWNGOeIvNHpDcBXyFTfVvDuh64PjMl57xCh5y/PlQlu3Hpx9vSkpSYXYQ==}
+  /@tabler/icons-react@2.46.0(react@18.2.0):
+    resolution: {integrity: sha512-X8MRxuslIOFqMjAo+GvUZDpjlOwNYNJTuOsHXf/NBvVI6ygqUf0FUNsDLLA5fQ6k6KtRwxMlgGB+eR8ZG1UP0g==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0
     dependencies:
-      '@tabler/icons': 2.45.0
+      '@tabler/icons': 2.46.0
       prop-types: 15.8.1
       react: 18.2.0
     dev: false
 
-  /@tabler/icons@2.45.0:
-    resolution: {integrity: sha512-J10UDghOni9wlrj5CpKAzychDCABCKYq897mGg0wGFsd+tYLaUdz0dt/HZeGnV8gZJo0hIiTPLGwBp5EW42Qsg==}
+  /@tabler/icons@2.46.0:
+    resolution: {integrity: sha512-Q5G8Pj5IO+Uhc6pszpu5/hGYY018JwEzzvmuqr+gKJtfIvAHA3umpwUilMRLEy89p+WCP+YsDhicMhfBCCv1qA==}
     dev: false
 
   /@tailwindcss/typography@0.5.10(tailwindcss@3.4.1):
