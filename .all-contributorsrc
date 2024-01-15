@@ -1,0 +1,33 @@
+{
+  "projectName": "honghong.me",
+  "projectOwner": "tszhong0411",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 50,
+  "commit": true,
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "tszhong0411",
+      "name": "Hong",
+      "avatar_url": "https://avatars.githubusercontent.com/u/75498339?v=4",
+      "profile": "https://honghong.me/",
+      "contributions": [
+        "code",
+        "doc",
+        "design",
+        "ideas",
+        "maintenance",
+        "test",
+        "bug",
+        "question",
+        "review"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "linkToUsage": true
+}
