@@ -89,7 +89,7 @@ const ProjectPage = (props: ProjectPageProps) => {
         height={832}
         alt={name}
         className='my-12 rounded-lg'
-        priority
+        lazy={false}
       />
       <Mdx code={body.code} />
     </div>

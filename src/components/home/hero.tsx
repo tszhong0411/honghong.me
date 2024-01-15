@@ -97,8 +97,7 @@ const Hero = () => {
             width={112}
             height={112}
             alt='Hong'
-            loading='eager'
-            priority
+            lazy={false}
           />
           <div className='absolute inset-0 -z-10 bg-gradient-to-tl from-purple-700 to-orange-700 opacity-0 blur-2xl md:opacity-50' />
         </motion.div>
