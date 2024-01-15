@@ -1,12 +1,4 @@
 {
-  "projectName": "honghong.me",
-  "projectOwner": "tszhong0411",
-  "repoType": "github",
-  "repoHost": "https://github.com",
-  "files": [
-    "README.md"
-  ],
-  "imageSize": 50,
   "commit": true,
   "commitConvention": "angular",
   "contributors": [
@@ -29,5 +21,9 @@
     }
   ],
   "contributorsPerLine": 7,
-  "linkToUsage": true
+  "files": ["README.md"],
+  "imageSize": 50,
+  "projectName": "honghong.me",
+  "projectOwner": "tszhong0411",
+  "repoType": "github"
 }
