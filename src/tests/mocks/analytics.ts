@@ -4,6 +4,6 @@ export const currentVisitors: Analytics = {
   visitors: 100
 }
 
-export const noCurrentVisitors: Analytics = {
-  visitors: 0
+export const oneCurrentVisitor: Analytics = {
+  visitors: 1
 }

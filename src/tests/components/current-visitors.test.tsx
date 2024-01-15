@@ -3,7 +3,7 @@ import { http } from 'msw'
 
 import CurrentVisitors from '@/components/current-visitors'
 
-import { noCurrentVisitors } from '../mocks/analytics'
+import { oneCurrentVisitor } from '../mocks/analytics'
 import { server } from '../mocks/server'
 import { renderWithSWRConfig } from '../utils'
 
@@ -22,10 +22,10 @@ describe('<CurrentVisitors />', () => {
     })
   })
 
-  it('should not be in plural form when there are no current visitors', async () => {
+  it('should not be in plural form when there is only one current visitor', async () => {
     server.use(
       http.get('/api/analytics', () =>
-        Response.json(noCurrentVisitors, {
+        Response.json(oneCurrentVisitor, {
           status: 200
         })
       )
@@ -34,7 +34,7 @@ describe('<CurrentVisitors />', () => {
     renderWithSWRConfig(<CurrentVisitors />)
 
     await waitFor(() => {
-      expect(screen.getByText('0 current visitor')).toBeInTheDocument()
+      expect(screen.getByText('1 current visitor')).toBeInTheDocument()
     })
   })
 })
