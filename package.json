@@ -103,6 +103,7 @@
     "autoprefixer": "^10.4.16",
     "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
+    "dotenv": "^16.3.1",
     "eslint": "^8.56.0",
     "eslint-config-next": "^14.0.4",
     "eslint-plugin-playwright": "^0.21.0",

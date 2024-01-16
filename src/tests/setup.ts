@@ -1,6 +1,10 @@
+import dotenv from 'dotenv'
+
 import '@testing-library/jest-dom'
 
 import { server } from './mocks/server'
+
+dotenv.config({ path: '.env.local' })
 
 beforeAll(() => server.listen())
 afterEach(() => server.resetHandlers())

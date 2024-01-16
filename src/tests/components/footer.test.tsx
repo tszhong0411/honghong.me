@@ -7,8 +7,8 @@ describe('<Footer />', () => {
   it('should have all footer links', () => {
     render(<Footer />)
 
-    for (const { title, href } of FOOTER_LINKS.flatMap((l) => l.links)) {
-      expect(screen.getByRole('link', { name: title })).toHaveAttribute(
+    for (const { text, href } of FOOTER_LINKS.flatMap((l) => l.links)) {
+      expect(screen.getByRole('link', { name: text })).toHaveAttribute(
         'href',
         href
       )
