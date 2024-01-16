@@ -1,7 +1,7 @@
 'use client'
 
 import { type BlogPost } from 'contentlayer/generated'
-import { motion, useInView, useScroll } from 'framer-motion'
+import { motion, useScroll } from 'framer-motion'
 import React from 'react'
 
 import Mdx from '@/components/mdx'
@@ -15,22 +15,9 @@ type ContentProps = {
   slug: string
 }
 
-const variants = {
-  initial: {
-    x: 40,
-    opacity: 0
-  },
-  animate: {
-    x: 0,
-    opacity: 1
-  }
-}
-
 const Content = (props: ContentProps) => {
   const { post, slug } = props
   const headings = getHeadings(post.body.raw)
-  const divRef = React.useRef<HTMLDivElement>(null)
-  const isInView = useInView(divRef, { once: true, margin: '-100px' })
   const { scrollYProgress } = useScroll()
 
   return (
@@ -40,21 +27,12 @@ const Content = (props: ContentProps) => {
           <Mdx code={post.body.code} />
         </article>
         <aside className='lg:min-w-[270px] lg:max-w-[270px]'>
-          <motion.div
-            className='sticky top-24 will-change-[transform,opacity]'
-            initial='initial'
-            animate={isInView ? 'animate' : 'initial'}
-            variants={variants}
-            ref={divRef}
-            transition={{
-              duration: 0.5
-            }}
-          >
+          <div className='sticky top-24 will-change-[transform,opacity]'>
             {headings && headings.length > 0 && (
               <TableOfContents headings={headings} />
             )}
             <LikeButton slug={slug} />
-          </motion.div>
+          </div>
         </aside>
       </div>
       <motion.div
