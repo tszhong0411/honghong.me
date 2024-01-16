@@ -39,7 +39,7 @@ jobs:
         run: pnpm install -g vercel
 
       - name: Get preview environment variables
-        run: vercel env pull .env --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel env pull .env.local --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Lint
         run: pnpm lint
