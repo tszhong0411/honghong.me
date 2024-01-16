@@ -1,10 +1,7 @@
 'use client'
 
 import { IconBolt } from '@tabler/icons-react'
-import { motion } from 'framer-motion'
 import React from 'react'
-
-import cn from '@/utils/cn'
 
 import {
   IconCloudflare,
@@ -28,51 +25,7 @@ import {
   IconVite,
   IconVSCode
 } from '../icons'
-
-type InfiniteMovingCardsProps = {
-  items: Array<{
-    name: string
-    icon: React.ReactNode
-  }>
-  direction?: 'left' | 'right'
-}
-
-const InfiniteMovingCards = (props: InfiniteMovingCardsProps) => {
-  const { items, direction = 'left' } = props
-
-  return (
-    <div
-      className={cn('overflow-hidden')}
-      style={{
-        maskImage:
-          'linear-gradient(to right, transparent, white 20%, white 80%, transparent)'
-      }}
-    >
-      <motion.ul
-        className='flex w-max gap-4 py-4 will-change-transform'
-        animate={{
-          x:
-            direction === 'left'
-              ? ['0', 'calc(-50% - 0.5rem)']
-              : ['calc(-50% - 0.5rem)', '0']
-        }}
-        transition={{
-          ease: 'linear',
-          duration: 20,
-          repeat: Number.POSITIVE_INFINITY
-        }}
-      >
-        {[...Array.from({ length: 2 }).keys()].map(() =>
-          items.map((item) => (
-            <li className='[&>svg]:rounded-md' key={item.name}>
-              {item.icon}
-            </li>
-          ))
-        )}
-      </motion.ul>
-    </div>
-  )
-}
+import { Marquee } from '../ui'
 
 const StacksCard = () => {
   return (
@@ -81,96 +34,30 @@ const StacksCard = () => {
         <IconBolt fill='currentColor' size={18} />
         <h2 className='text-sm font-light'>Stacks</h2>
       </div>
-      <InfiniteMovingCards
-        items={[
-          {
-            name: 'HTML',
-            icon: <IconHTML width='52' height='52' />
-          },
-          {
-            name: 'CSS',
-            icon: <IconCSS width='52' height='52' />
-          },
-          {
-            name: 'Javascript',
-            icon: <IconJavascript width='52' height='52' />
-          },
-          {
-            name: 'Typescript',
-            icon: <IconTypescript width='52' height='52' />
-          },
-          {
-            name: 'Figma',
-            icon: <IconFigma width='52' height='52' />
-          },
-          {
-            name: 'Tailwindcss',
-            icon: <IconTailwindcss width='52' height='52' />
-          },
-          {
-            name: 'Next.js',
-            icon: <IconNextJS width='52' height='52' />
-          },
-          {
-            name: 'React.js',
-            icon: <IconReactJS width='52' height='52' />
-          },
-          {
-            name: 'Python',
-            icon: <IconPython width='52' height='52' />
-          },
-          {
-            name: 'Postgres',
-            icon: <IconPostgres width='52' height='52' />
-          }
-        ]}
-        direction='right'
-      />
-      <InfiniteMovingCards
-        items={[
-          {
-            name: 'Prisma',
-            icon: <IconPrisma width='52' height='52' />
-          },
-          {
-            name: 'MySQL',
-            icon: <IconMySQL width='52' height='52' />
-          },
-          {
-            name: 'Firebase',
-            icon: <IconFirebase width='52' height='52' />
-          },
-          {
-            name: 'Git',
-            icon: <IconGit width='52' height='52' />
-          },
-          {
-            name: 'Vite',
-            icon: <IconVite width='52' height='52' />
-          },
-          {
-            name: 'VSCode',
-            icon: <IconVSCode width='52' height='52' />
-          },
-          {
-            name: 'Cloudflare',
-            icon: <IconCloudflare width='52' height='52' />
-          },
-          {
-            name: 'Markdown',
-            icon: <IconMarkdown width='52' height='52' />
-          },
-          {
-            name: 'Jest',
-            icon: <IconJest width='52' height='52' />
-          },
-          {
-            name: 'Node.js',
-            icon: <IconNodeJS width='52' height='52' />
-          }
-        ]}
-        direction='left'
-      />
+      <Marquee className='py-4' fade pauseOnHover>
+        <IconHTML width='52' height='52' />
+        <IconCSS width='52' height='52' />
+        <IconJavascript width='52' height='52' />
+        <IconTypescript width='52' height='52' />
+        <IconFigma width='52' height='52' />
+        <IconTailwindcss width='52' height='52' />
+        <IconNextJS width='52' height='52' />
+        <IconReactJS width='52' height='52' />
+        <IconPython width='52' height='52' />
+        <IconPostgres width='52' height='52' />
+      </Marquee>
+      <Marquee className='py-4' reverse fade pauseOnHover>
+        <IconPrisma width='52' height='52' />
+        <IconMySQL width='52' height='52' />
+        <IconFirebase width='52' height='52' />
+        <IconGit width='52' height='52' />
+        <IconVite width='52' height='52' />
+        <IconVSCode width='52' height='52' />
+        <IconCloudflare width='52' height='52' />
+        <IconMarkdown width='52' height='52' />
+        <IconJest width='52' height='52' />
+        <IconNodeJS width='52' height='52' />
+      </Marquee>
     </div>
   )
 }

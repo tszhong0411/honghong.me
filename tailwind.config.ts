@@ -29,6 +29,20 @@ export default {
       boxShadow: {
         'card-border': '0 0 0 1px #ffffff0f, 0 -1px #ffffff1a'
       },
+      keyframes: {
+        'marquee-left': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(calc(-100% - var(--gap)))' }
+        },
+        'marquee-up': {
+          from: { transform: 'translateY(0)' },
+          to: { transform: 'translateY(calc(-100% - var(--gap)))' }
+        }
+      },
+      animation: {
+        'marquee-left': 'marquee-left var(--duration, 30s) linear infinite',
+        'marquee-up': 'marquee-up var(--duration, 30s) linear infinite'
+      },
       typography: {
         DEFAULT: {
           css: {
