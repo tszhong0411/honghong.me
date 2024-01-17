@@ -92,7 +92,7 @@
     "@tszhong0411/tsconfig": "^1.0.3",
     "@types/canvas-confetti": "^1.6.4",
     "@types/mdx": "^2.0.10",
-    "@types/node": "^20.11.1",
+    "@types/node": "^20.11.5",
     "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.18",
     "@types/rss": "^0.0.32",
