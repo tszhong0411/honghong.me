@@ -36,7 +36,12 @@ export const env = createEnv({
     UMAMI_DATABASE_URL: z.string().url()
   },
   client: {
-    NEXT_PUBLIC_GISCUS_REPO: z.string().min(1),
+    NEXT_PUBLIC_GISCUS_REPO: z.custom<`${string}/${string}`>(
+      (value) => /^[\w.-]+\/[\w.-]+$/.test(value as string),
+      {
+        message: 'Giscus repository name must be in the format of "owner/repo"'
+      }
+    ),
     NEXT_PUBLIC_GISCUS_REPOSITORY_ID: z.string().min(1),
     NEXT_PUBLIC_GISCUS_CATEGORY: z.string().min(1),
     NEXT_PUBLIC_GISCUS_CATEGORY_ID: z.string().min(1),
