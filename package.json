@@ -98,7 +98,7 @@
     "@types/rss": "^0.0.32",
     "@vitejs/plugin-react": "^4.2.1",
     "@vitest/coverage-v8": "^1.2.0",
-    "@vitest/ui": "^1.2.0",
+    "@vitest/ui": "^1.2.1",
     "all-contributors-cli": "^6.26.1",
     "autoprefixer": "^10.4.16",
     "concurrently": "^8.2.2",
