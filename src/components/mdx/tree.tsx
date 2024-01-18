@@ -35,7 +35,11 @@ const Inner = (props: InnerType) => {
   const { data, level } = props
 
   return (
-    <ul>
+    <ul
+      {...(level > 0 && {
+        'data-testid': 'tree-node-children'
+      })}
+    >
       {data.map((node, i) => (
         <Node key={i} level={level} {...node} />
       ))}
@@ -56,9 +60,11 @@ const Node = (props: NodeProps) => {
         style={{
           paddingLeft: level * 24
         }}
+        data-testid='tree-node-file'
         {...(hasChildren && {
           type: 'button',
-          onClick: () => setIsOpen((value) => !value)
+          onClick: () => setIsOpen((value) => !value),
+          'data-testid': 'tree-node-folder'
         })}
       >
         <IconChevronRight

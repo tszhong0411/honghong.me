@@ -1,4 +1,5 @@
-import { fireEvent, render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import FilteredPosts from '@/components/filtered-posts'
 
@@ -13,24 +14,23 @@ describe('<FilteredPosts />', () => {
     expect(screen.getByPlaceholderText(INPUT_PLACEHOLDER)).toBeInTheDocument()
   })
 
-  it('should filter posts based on search input', () => {
+  it('should filter posts based on search input', async () => {
     render(<FilteredPosts posts={allBlogPosts} />)
 
-    fireEvent.change(screen.getByPlaceholderText(INPUT_PLACEHOLDER), {
-      target: { value: 'foo' }
-    })
+    await userEvent.type(screen.getByPlaceholderText(INPUT_PLACEHOLDER), 'foo')
 
     expect(screen.getByText('Foo')).toBeInTheDocument()
     expect(screen.queryByText('Bar')).not.toBeInTheDocument()
     expect(screen.queryByText('Qux')).not.toBeInTheDocument()
   })
 
-  it('should display "No posts found" when no matching posts', () => {
+  it('should display "No posts found" when no matching posts', async () => {
     render(<FilteredPosts posts={allBlogPosts} />)
 
-    fireEvent.change(screen.getByPlaceholderText(INPUT_PLACEHOLDER), {
-      target: { value: 'Non-existent' }
-    })
+    await userEvent.type(
+      screen.getByPlaceholderText(INPUT_PLACEHOLDER),
+      'Non-existent'
+    )
 
     expect(screen.getByText('No posts found')).toBeInTheDocument()
   })
