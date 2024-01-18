@@ -1,6 +1,7 @@
 import React from 'react'
 
 import cn from '@/utils/cn'
+import range from '@/utils/range'
 
 type MarqueeProps = {
   children: React.ReactNode
@@ -28,6 +29,7 @@ const Marquee = (props: MarqueeProps) => {
         direction === 'left' ? 'flex-row' : 'flex-col',
         className
       )}
+      data-testid='marquee'
       style={{
         maskImage: fade
           ? `linear-gradient(${
@@ -41,7 +43,7 @@ const Marquee = (props: MarqueeProps) => {
           : undefined
       }}
     >
-      {[...Array.from({ length: 2 }).keys()].map((_, i) => (
+      {range(0, 2).map((i) => (
         <div
           key={i}
           className={cn(
@@ -52,6 +54,7 @@ const Marquee = (props: MarqueeProps) => {
             pauseOnHover && 'group-hover:[animation-play-state:paused]',
             reverse && 'direction-reverse'
           )}
+          data-testid={`marquee-child-${i + 1}`}
         >
           {children}
         </div>

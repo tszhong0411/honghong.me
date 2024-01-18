@@ -1,5 +1,6 @@
 import PageTitle from '@/components/page-title'
 import { Skeleton } from '@/components/ui'
+import range from '@/utils/range'
 
 import Pinned from './pinned'
 
@@ -27,7 +28,7 @@ const Loading = () => {
       <div className='mx-auto max-w-lg'>
         <Pinned />
         <div className='mt-10 flex flex-col gap-4'>
-          {[...Array.from({ length: 8 }).keys()].map((i) => (
+          {range(0, 8).map((i) => (
             <Placeholder key={i} />
           ))}
         </div>
