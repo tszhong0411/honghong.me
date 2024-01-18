@@ -1,6 +1,8 @@
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vitest/config'
 
+const resolve = (path: string) => new URL(path, import.meta.url).pathname
+
 export default defineConfig({
   plugins: [react()],
   test: {
@@ -14,11 +16,8 @@ export default defineConfig({
       provider: 'v8'
     },
     alias: {
-      '@': new URL('src', import.meta.url).pathname,
-      'contentlayer/generated': new URL(
-        'src/tests/mocks/contentlayer.ts',
-        import.meta.url
-      ).pathname
+      '@': resolve('src'),
+      'contentlayer/generated': resolve('src/tests/mocks/contentlayer.ts')
     }
   }
 })
