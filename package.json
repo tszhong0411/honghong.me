@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@giscus/react": "^2.4.0",
-    "@icons-pack/react-simple-icons": "^9.2.0",
+    "@icons-pack/react-simple-icons": "^9.3.0",
     "@next-auth/prisma-adapter": "^1.0.7",
     "@octokit/rest": "^20.0.2",
     "@prisma/client": "^5.8.1",
