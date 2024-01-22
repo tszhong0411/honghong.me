@@ -110,7 +110,7 @@
     "eslint-plugin-testing-library": "^6.2.0",
     "fast-xml-parser": "^4.3.3",
     "husky": "^8.0.3",
-    "jsdom": "^23.2.0",
+    "jsdom": "^24.0.0",
     "lint-staged": "^15.2.0",
     "msw": "^2.1.2",
     "postcss": "^8.4.33",
