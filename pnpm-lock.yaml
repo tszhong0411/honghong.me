@@ -251,8 +251,8 @@ devDependencies:
     specifier: ^15.2.0
     version: 15.2.0
   msw:
-    specifier: ^2.1.2
-    version: 2.1.2(typescript@5.3.3)
+    specifier: ^2.1.4
+    version: 2.1.4(typescript@5.3.3)
   postcss:
     specifier: ^8.4.33
     version: 8.4.33
@@ -530,12 +530,6 @@ packages:
     resolution: {integrity: sha512-Or6YHg/kamKHpxULAdSqhGqnWFneIXu1NKvvfBBzKGwpVsYuFIQ5aBPHDnnoR3ghW1nvSkALd+EF9iMtY7Vjxw==}
     dependencies:
       cookie: 0.5.0
-    dev: true
-
-  /@bundled-es-modules/js-levenshtein@2.0.1:
-    resolution: {integrity: sha512-DERMS3yfbAljKsQc0U2wcqGKUWpdFjwqWuoMugEJlqBnKO180/n+4SR/J8MRDt1AN48X1ovgoD9KrdVXcaa3Rg==}
-    dependencies:
-      js-levenshtein: 1.1.6
     dev: true
 
   /@bundled-es-modules/statuses@1.0.1:
@@ -3315,10 +3309,6 @@ packages:
   /@types/js-cookie@2.2.7:
     resolution: {integrity: sha512-aLkWa0C0vO5b4Sr798E26QgOkss68Un0bLjs7u9qxzPT5CG+8DuNTffWES58YzJs3hrVAOs1wonycqEBqNJubA==}
     dev: false
-
-  /@types/js-levenshtein@1.1.3:
-    resolution: {integrity: sha512-jd+Q+sD20Qfu9e2aEXogiO3vpOC1PYJOUdyN9gvs4Qrvkg4wF43L5OhqrPeokdv8TL0/mXoYfpkcoGZMNN2pkQ==}
-    dev: true
 
   /@types/json-schema@7.0.15:
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
@@ -6739,11 +6729,6 @@ packages:
     resolution: {integrity: sha512-HvdH2LzI/EAZcUwA8+0nKNtWHqS+ZmijLA30RwZA0bo7ToCckjK5MkGhjED9KoRcXO6BaGI3I9UIzSA1FKFPOQ==}
     dev: false
 
-  /js-levenshtein@1.1.6:
-    resolution: {integrity: sha512-X2BB11YZtrRqY4EnQcLX5Rh373zbK4alC1FW7D7MBhL2gtcC17cTnr6DmfHZeS0s2rTHjUTMMHfG7gO8SSdw+g==}
-    engines: {node: '>=0.10.0'}
-    dev: true
-
   /js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
 
@@ -7725,8 +7710,8 @@ packages:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
     dev: true
 
-  /msw@2.1.2(typescript@5.3.3):
-    resolution: {integrity: sha512-7OKbeZNFQTCPFe++o+zZHMkQRIUi4D/5N1dAD3lOlaV+2Wpv3Srp3VFrFeH+2ftZJbb4jAiC0caZoW1efr80KQ==}
+  /msw@2.1.4(typescript@5.3.3):
+    resolution: {integrity: sha512-YyIQpfLqAJf/O1kYPWBSbDqjgv71kRBmEbGLxkkai1Btcs/LcxKiAwT1My3COa9J/vTh9Ua41B/ReuiW9cXmkw==}
     engines: {node: '>=18'}
     hasBin: true
     requiresBuild: true
@@ -7737,13 +7722,11 @@ packages:
         optional: true
     dependencies:
       '@bundled-es-modules/cookie': 2.0.0
-      '@bundled-es-modules/js-levenshtein': 2.0.1
       '@bundled-es-modules/statuses': 1.0.1
       '@mswjs/cookies': 1.1.0
       '@mswjs/interceptors': 0.25.14
       '@open-draft/until': 2.1.0
       '@types/cookie': 0.6.0
-      '@types/js-levenshtein': 1.1.3
       '@types/statuses': 2.0.4
       chalk: 4.1.2
       chokidar: 3.5.3
@@ -7751,7 +7734,6 @@ packages:
       headers-polyfill: 4.0.2
       inquirer: 8.2.6
       is-node-process: 1.2.0
-      js-levenshtein: 1.1.6
       outvariant: 1.4.2
       path-to-regexp: 6.2.1
       strict-event-emitter: 0.5.1
