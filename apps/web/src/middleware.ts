@@ -4,7 +4,7 @@ const middleware = () => {
   const csp = `
     default-src 'self';
     script-src 'self' 'unsafe-inline' 'unsafe-eval' giscus.app *.honghong.me vercel.live;
-    style-src 'self' 'unsafe-inline';
+    style-src 'self' 'unsafe-inline' vercel.live;
     img-src * blob: data:;
     font-src 'self' assets.vercel.com fonts.gstatic.com;
     object-src 'none';
