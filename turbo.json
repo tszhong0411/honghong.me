@@ -1,0 +1,61 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["**/.env.*local"],
+  "globalEnv": [
+    "NODE_ENV",
+    "CI",
+    "ANALYZE",
+    "SPOTIFY_CLIENT_ID",
+    "SPOTIFY_CLIENT_SECRET",
+    "SPOTIFY_REFRESH_TOKEN",
+    "GOOGLE_API_KEY",
+    "GOOGLE_CLIENT_ID",
+    "GOOGLE_CLIENT_SECRET",
+    "NEXTAUTH_SECRET",
+    "NEXTAUTH_URL",
+    "OAUTH_CLIENT_KEY",
+    "OAUTH_CLIENT_SECRET",
+    "GITHUB_TOKEN",
+    "DATABASE_URL",
+    "IP_ADDRESS_SALT",
+    "WAKATIME_API_KEY",
+    "DISCORD_WEBHOOK_URL",
+    "UMAMI_DATABASE_URL",
+    "NEXT_PUBLIC_UMAMI_URL",
+    "NEXT_PUBLIC_UMAMI_WEBSITE_ID",
+    "NEXT_PUBLIC_UMAMI_WEBSITE_SHARE_URL",
+    "RESEND_API_KEY",
+    "AUTHOR_EMAIL"
+  ],
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
+    "check-updates": {},
+    "clean": {},
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "format:check": {
+      "cache": false
+    },
+    "format:write": {
+      "cache": false
+    },
+    "lint": {
+      "cache": false
+    },
+    "lint:fix": {
+      "cache": false
+    },
+    "start": {
+      "dependsOn": ["^build"]
+    },
+    "test": {
+      "cache": false
+    },
+    "type-check": {}
+  }
+}

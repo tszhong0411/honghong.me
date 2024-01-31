@@ -48,19 +48,19 @@ jobs:
         run: pnpm type-check
 
       - name: Unit test
-        run: pnpm test:unit --coverage
+        run: pnpm --filter=blog test:unit --coverage
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
 
       - name: Build app
-        run: pnpm build
+        run: pnpm --filter=blog build
 
       - name: Install playwright
-        run: pnpm playwright install --with-deps
+        run: pnpm --filter=blog exec playwright install --with-deps
 
       - name: E2E test
-        run: pnpm test:e2e
+        run: pnpm --filter=blog test:e2e
 
       - name: Upload Playwright report
         if: always()

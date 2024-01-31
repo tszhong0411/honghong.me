@@ -2,6 +2,12 @@
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
 
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
+
   "files.associations": {
     ".env*": "properties"
   },
@@ -10,8 +16,5 @@
     ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
     ["cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
     "className\\: '([^']*)'"
-  ],
-
-  "typescript.enablePromptUseWorkspaceTsdk": true,
-  "typescript.tsdk": "node_modules/typescript/lib"
+  ]
 }
