@@ -4,7 +4,7 @@ import { MDXRemote, type MDXRemoteProps } from 'next-mdx-remote'
 import { toast } from 'sonner'
 import useSWR from 'swr'
 
-import { getMarkdownPreview } from '@/actions/comment'
+import { getMarkdownPreview } from '@/lib/get-markdown-preview'
 import cn from '@/utils/cn'
 
 import Checkbox from '../mdx/checkbox'
