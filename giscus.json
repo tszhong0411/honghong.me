@@ -1,8 +1,0 @@
-{
-  "defaultCommentOrder": "newest",
-  "origins": ["https://honghong.me"],
-  "originsRegex": [
-    "https://honghongme-([A-z0-9]|-)*tszhong0411\\.vercel\\.app",
-    "https?://localhost:[0-9]+"
-  ]
-}

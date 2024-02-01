@@ -1,28 +1,3 @@
 {
-  "compilerOptions": {
-    "incremental": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"],
-      "contentlayer/generated": ["./.contentlayer/generated"]
-    },
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "types": ["vitest/globals"]
-  },
-  "exclude": ["node_modules", "coverage"],
-  "extends": "@tszhong0411/tsconfig/web.json",
-  "include": [
-    "next-env.d.ts",
-    "**/*.tsx",
-    "**/*.ts",
-    "**/*.js",
-    "**/*.cjs",
-    "**/*.mjs",
-    ".next/types/**/*.ts",
-    ".contentlayer/generated"
-  ]
+  "extends": "@tszhong0411/tsconfig/base.json"
 }

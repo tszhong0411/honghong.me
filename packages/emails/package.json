@@ -1,0 +1,45 @@
+{
+  "private": true,
+  "name": "@tszhong0411/emails",
+  "version": "0.0.0",
+  "license": "AGPL-3.0-only",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "email dev --port 3001 --dir src",
+    "export": "email export"
+  },
+  "dependencies": {
+    "@react-email/body": "^0.0.7",
+    "@react-email/button": "^0.0.13",
+    "@react-email/column": "^0.0.9",
+    "@react-email/container": "^0.0.11",
+    "@react-email/font": "^0.0.5",
+    "@react-email/head": "^0.0.7",
+    "@react-email/html": "^0.0.7",
+    "@react-email/img": "^0.0.7",
+    "@react-email/link": "^0.0.7",
+    "@react-email/markdown": "^0.0.8",
+    "@react-email/preview": "^0.0.8",
+    "@react-email/row": "^0.0.7",
+    "@react-email/section": "^0.0.11",
+    "@react-email/tailwind": "^0.0.14",
+    "react": "^18.2.0",
+    "react-email": "2.0.0"
+  },
+  "devDependencies": {
+    "@tszhong0411/eslint-config": "workspace:^",
+    "@tszhong0411/tsconfig": "workspace:*",
+    "@types/node": "^20.10.6",
+    "@types/react": "^18.2.46",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3"
+  },
+  "lint-staged": {
+    "*.{js,jsx,cjs,mjs,ts,tsx}": [
+      "eslint"
+    ],
+    "*.{json,css,md,mdx,js,jsx,ts,tsx,cjs,mjs}": [
+      "prettier -c"
+    ]
+  }
+}

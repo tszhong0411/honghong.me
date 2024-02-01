@@ -10,12 +10,12 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/tszhong0411/honghong.me)
 ![GitHub repo size](https://img.shields.io/github/repo-size/tszhong0411/honghong.me)
 
-Welcome to my personal blog repository! This repository houses the code for my blog, where I share my thoughts, projects, and insights. Feel free to explore and get inspired.
+Welcome to the monorepo of my personal blog! This repository houses the code for my blog, where I share my thoughts, projects, and insights. Feel free to explore and get inspired.
 
 ## ✨ Features
 
 - ⚡️ Next.js 14 with App Router (Turbo)
-- 📝 MDX + Contentlayer
+- 📝 MDX
 - 🎨 Tailwind CSS - for styling
 - 🌈 Radix UI - accessible UI components
 - 🛡 Strict TypeScript and ESLint configuration
