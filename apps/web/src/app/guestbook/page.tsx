@@ -1,9 +1,9 @@
 import type { Metadata, ResolvingMetadata } from 'next'
 
-import { getMessages } from '@/actions/guestbook'
 import PageTitle from '@/components/page-title'
 import site from '@/config/site'
 import { getCurrentUser } from '@/lib/auth'
+import { getMessages } from '@/queries/guestbook'
 
 import Form from './form'
 import Messages from './messages'

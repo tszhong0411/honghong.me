@@ -3,13 +3,11 @@
 import { type Prisma } from '@prisma/client'
 import { CommentNotification } from '@tszhong0411/emails'
 import { revalidatePath } from 'next/cache'
-import { serialize } from 'next-mdx-remote/serialize'
 import { Resend } from 'resend'
 import { z } from 'zod'
 
-import { rehypePlugins } from '@/config/rehype-plugins'
-import { remarkPlugins } from '@/config/remark-plugins'
 import { env } from '@/env'
+import { getMarkdownPreview } from '@/lib/get-markdown-preview'
 import { type BlogMetadata, getPage } from '@/lib/mdx'
 import prisma from '@/lib/prisma'
 import { type getComments } from '@/queries/comments'
@@ -18,19 +16,6 @@ import getErrorMessage from '@/utils/get-error-message'
 import { privateAction } from './private-action'
 
 const resend = new Resend(env.RESEND_API_KEY)
-
-export const getMarkdownPreview = async (content: string) => {
-  const result = await serialize(content, {
-    mdxOptions: {
-      // @ts-expect-error I don't know what's wrong
-      rehypePlugins,
-      remarkPlugins
-    }
-  })
-  return {
-    result
-  }
-}
 
 export const postComment = (slug: string, comment: string, parentId?: string) =>
   privateAction(async (user) => {
