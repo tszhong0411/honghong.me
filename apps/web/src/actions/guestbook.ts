@@ -128,11 +128,3 @@ export const createMessage = (formData: FormData) =>
       message: 'Created a message.'
     }
   })
-
-export const getMessages = async () => {
-  return await prisma.guestbook.findMany({
-    orderBy: {
-      updated_at: 'desc'
-    }
-  })
-}
