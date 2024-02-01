@@ -12,6 +12,7 @@ import { remarkPlugins } from '@/config/remark-plugins'
 import { env } from '@/env'
 import { type BlogMetadata, getPage } from '@/lib/mdx'
 import prisma from '@/lib/prisma'
+import { type getComments } from '@/queries/comments'
 import getErrorMessage from '@/utils/get-error-message'
 
 import { privateAction } from './private-action'
@@ -278,20 +279,6 @@ export const deleteComment = (id: string) =>
       message: 'Deleted a comment.'
     }
   })
-
-export const getComments = async (slug: string) => {
-  return await prisma.comment.findMany({
-    where: {
-      Post: {
-        slug
-      }
-    },
-    include: {
-      user: true,
-      upvotes: true
-    }
-  })
-}
 
 export const upvoteComment = (id: string) =>
   privateAction(async (user) => {

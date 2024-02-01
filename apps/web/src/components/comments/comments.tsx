@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { getComments } from '@/actions/comment'
 import { getCurrentUser } from '@/lib/auth'
+import { getComments } from '@/queries/comments'
 import formatComments from '@/utils/format-comments'
 
 import Comment from './comment'
