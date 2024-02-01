@@ -8,7 +8,7 @@
     "build": "next build",
     "bundle-analyzer": "ANALYZE=true pnpm run build",
     "clean": "rm -rf .next coverage .turbo",
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "format:check": "prettier -c .",
     "format:write": "prettier -w .",
     "postinstall": "prisma generate",
