@@ -108,7 +108,7 @@ export const postComment = (slug: string, comment: string, parentId?: string) =>
           }
         })
 
-        if (process.env.NODE_ENV === 'production') {
+        if (user.role === 'user' && process.env.NODE_ENV === 'production') {
           await resend.emails.send({
             from: 'Hong from honghong.me <me@honghong.me>',
             to: env.AUTHOR_EMAIL,
