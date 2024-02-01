@@ -5,6 +5,7 @@ import { useFormStatus } from 'react-dom'
 import { toast } from 'sonner'
 
 import { postComment } from '@/actions/comment'
+import { getMarkdownPreview } from '@/lib/get-markdown-preview'
 
 import {
   Button,
@@ -55,7 +56,10 @@ const CommentBox = (props: CommentBoxProps) => {
 
     const toastId = toast.loading('Creating a message...')
 
-    const result = await postComment(slug, comment, parentId)
+    const {
+      result: { compiledSource: processedComment }
+    } = await getMarkdownPreview(comment)
+    const result = await postComment(slug, processedComment, comment, parentId)
 
     toast.dismiss(toastId)
 

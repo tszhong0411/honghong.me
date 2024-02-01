@@ -7,7 +7,6 @@ import { Resend } from 'resend'
 import { z } from 'zod'
 
 import { env } from '@/env'
-import { getMarkdownPreview } from '@/lib/get-markdown-preview'
 import { type BlogMetadata, getPage } from '@/lib/mdx'
 import prisma from '@/lib/prisma'
 import { type getComments } from '@/queries/comments'
@@ -17,11 +16,19 @@ import { privateAction } from './private-action'
 
 const resend = new Resend(env.RESEND_API_KEY)
 
-export const postComment = (slug: string, comment: string, parentId?: string) =>
+export const postComment = (
+  slug: string,
+  comment: string,
+  markdown: string,
+  parentId?: string
+) =>
   privateAction(async (user) => {
     const schema = z.object({
       comment: z.string().min(1, {
         message: 'Comment is required.'
+      }),
+      markdown: z.string().min(1, {
+        message: 'Markdown is required.'
       }),
       slug: z.string().min(1, {
         message: 'Slug is required.'
@@ -31,6 +38,7 @@ export const postComment = (slug: string, comment: string, parentId?: string) =>
 
     const parsed = schema.safeParse({
       comment,
+      markdown,
       slug,
       parentId
     })
@@ -44,16 +52,15 @@ export const postComment = (slug: string, comment: string, parentId?: string) =>
 
     const {
       comment: parsedComment,
+      markdown: parsedMarkdown,
       slug: parsedSlug,
       parentId: parsedParentId
     } = parsed.data
 
     try {
-      const processedComment = await getMarkdownPreview(parsedComment)
-
       const createdComment = await prisma.comment.create({
         data: {
-          body: processedComment.result.compiledSource,
+          body: parsedComment,
           Post: {
             connect: {
               slug: parsedSlug
@@ -103,7 +110,7 @@ export const postComment = (slug: string, comment: string, parentId?: string) =>
               title,
               name: user.name as string,
               commenterName: user.name as string,
-              comment: parsedComment,
+              comment: parsedMarkdown,
               commentUrl: `https://honghong.me/blog/${slug}#comment-${createdComment.id}`,
               postUrl: `https://honghong.me/blog/${slug}`,
               type: 'comment'
@@ -139,7 +146,7 @@ export const postComment = (slug: string, comment: string, parentId?: string) =>
               title,
               name: user.name as string,
               commenterName: user.name as string,
-              comment: parsedComment,
+              comment: parsedMarkdown,
               commentUrl: `https://honghong.me/blog/${slug}#comment-${createdComment.id}`,
               postUrl: `https://honghong.me/blog/${slug}`,
               type: 'reply'
