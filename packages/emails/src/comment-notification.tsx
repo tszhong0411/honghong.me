@@ -78,7 +78,9 @@ const CommentNotification = (props: CommentNotificationProps) => {
               A new {type === 'comment' ? 'comment' : 'reply'}
             </h1>
             <Section className='text-zinc-700'>
-              <h2 className='mb-3 text-lg font-normal'>Hi there, {name}</h2>
+              <h2 className='mb-3 text-lg font-normal'>
+                Hi there, {type === 'comment' ? 'Hong' : name}
+              </h2>
               <p className='mb-8 text-sm'>
                 You have a new {type === 'comment' ? 'comment' : 'reply'} by{' '}
                 <span className='font-bold'>{commenterName}</span> on the post{' '}
