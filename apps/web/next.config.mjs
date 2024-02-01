@@ -13,6 +13,10 @@ const withBundleAnalyzer = bundleAnalyzer({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    ppr: true
+  },
+
   typescript: {
     ignoreBuildErrors: !!process.env.CI
   },
