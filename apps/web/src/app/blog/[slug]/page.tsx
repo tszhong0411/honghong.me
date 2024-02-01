@@ -1,8 +1,10 @@
 import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
+import React from 'react'
 import { type Article, type WithContext } from 'schema-dts'
 
 import Comments from '@/components/comments'
+import CommentsLoading from '@/components/comments/comments-loading'
 import site from '@/config/site'
 import { type BlogMetadata, getAllPages, getPage } from '@/lib/mdx'
 
@@ -132,7 +134,9 @@ const BlogPostPage = (props: BlogPostPageProps) => {
       <Content slug={slug} content={content} />
       <Footer slug={slug} modifiedTime={modifiedTime} />
 
-      <Comments slug={slug} />
+      <React.Suspense fallback={<CommentsLoading />}>
+        <Comments slug={slug} />
+      </React.Suspense>
     </>
   )
 }
