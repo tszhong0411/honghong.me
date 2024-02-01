@@ -33,7 +33,7 @@ importers:
         specifier: ^3.2.4
         version: 3.2.4
       turbo:
-        specifier: latest
+        specifier: ^1.11.3
         version: 1.11.3
 
   apps/web:
