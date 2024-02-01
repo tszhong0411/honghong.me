@@ -12,8 +12,8 @@ ci:
     preset: lighthouse:no-pwa
     assertions:
       csp-xss: off # https://github.com/tszhong0411/honghong.me#%EF%B8%8F-todo
-      bf-cache: off # no needed
-      valid-source-maps: off # no needed
+      bf-cache: off # no need
+      valid-source-maps: off # no need
       non-composited-animations: warn
       unminified-css: warn
       unused-css-rules: warn
