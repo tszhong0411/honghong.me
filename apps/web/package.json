@@ -80,7 +80,7 @@
   "devDependencies": {
     "@next/bundle-analyzer": "^14.1.0",
     "@octokit/types": "^12.4.0",
-    "@playwright/test": "^1.41.1",
+    "@playwright/test": "^1.41.2",
     "@tailwindcss/typography": "^0.5.10",
     "@testing-library/jest-dom": "^6.3.0",
     "@testing-library/react": "^14.1.2",
