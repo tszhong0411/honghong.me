@@ -8,7 +8,8 @@ export const getMarkdownPreview = async (content: string) => {
     mdxOptions: {
       // @ts-expect-error I don't know what's wrong
       rehypePlugins,
-      remarkPlugins
+      remarkPlugins,
+      development: process.env.NODE_ENV === 'development'
     }
   })
   return {
