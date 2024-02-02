@@ -103,7 +103,7 @@ const CommentBox = (props: CommentBoxProps) => {
         <TabsContent value='preview'>
           {comment ? (
             <MarkdownPreview
-              className='min-h-20 rounded-lg border p-4'
+              className='min-h-20 rounded-lg border px-2 py-4 sm:px-4'
               source={comment}
               commentId={id}
             />

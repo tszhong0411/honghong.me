@@ -117,7 +117,7 @@ const Comment = (props: CommentProps) => {
           : 'scroll-mt-20 border'
       )}
     >
-      <div className={cn('px-4', !parentId && 'border-b py-2')}>
+      <div className={cn('px-2 sm:px-4', !parentId && 'border-b py-2')}>
         <div className='flex items-center justify-between'>
           <div className='flex items-center gap-2 text-sm'>
             <Image
@@ -234,7 +234,7 @@ const Comment = (props: CommentProps) => {
       </div>
 
       {!parentId && (
-        <div className='rounded-b-lg bg-accent px-3 py-2'>
+        <div className='rounded-b-lg bg-accent p-2 sm:px-3'>
           {isReplying ? (
             <CommentBox
               slug={slug}

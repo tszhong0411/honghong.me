@@ -18,7 +18,7 @@ const Comments = async (props: CommentsProps) => {
 
   return (
     <div className='space-y-6'>
-      <div className='rounded-lg border bg-accent p-4'>
+      <div className='rounded-lg border bg-accent px-2 py-4 sm:px-4'>
         <CommentBox slug={slug} />
       </div>
       <div className='space-y-8'>
