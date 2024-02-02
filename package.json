@@ -25,7 +25,7 @@
     "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/prettier-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
-    "husky": "^9.0.6",
+    "husky": "^9.0.10",
     "lint-staged": "^15.2.0",
     "prettier": "^3.2.4",
     "turbo": "^1.12.2"
