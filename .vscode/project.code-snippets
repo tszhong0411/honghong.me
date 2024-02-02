@@ -1,5 +1,5 @@
 {
-  "Create a icon component": {
+  "Custom Icon Component": {
     "scope": "typescriptreact",
     "prefix": "icon",
     "body": [
@@ -20,6 +20,19 @@
       "  )",
       "}",
       ""
+    ]
+  },
+  "Stateless Functional Component": {
+    "scope": "typescriptreact",
+    "prefix": "sfc",
+    "body": [
+      "const $1 = ($2) => {",
+      "  return (",
+      "    $3",
+      "  )",
+      "}",
+      "",
+      "export default $1"
     ]
   }
 }
