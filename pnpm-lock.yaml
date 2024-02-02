@@ -268,8 +268,8 @@ importers:
         specifier: ^8.56.0
         version: 8.56.0
       eslint-config-next:
-        specifier: 14.1.1-canary.27
-        version: 14.1.1-canary.27(eslint@8.56.0)(typescript@5.3.3)
+        specifier: 14.1.1-canary.28
+        version: 14.1.1-canary.28(eslint@8.56.0)(typescript@5.3.3)
       eslint-plugin-playwright:
         specifier: ^0.22.1
         version: 0.22.1(eslint@8.56.0)
@@ -1703,8 +1703,8 @@ packages:
     resolution: {integrity: sha512-v6FRSD3aZ1lf9sLAaGBlvGccffSRx3NhbANdFO2yrj6TVdFkAOvemhwL6GBZ2V+2MlAbTqWtVW7oJie+GgQWoA==}
     dev: false
 
-  /@next/eslint-plugin-next@14.1.1-canary.27:
-    resolution: {integrity: sha512-mXBXP962E5xBlUvG0M4CsQWEzC6vLJp3ghGKZ3bCRqASfbR1+NdCMq7wnl8w8mdm0g9TdcjfSXQR+xap6LeC0Q==}
+  /@next/eslint-plugin-next@14.1.1-canary.28:
+    resolution: {integrity: sha512-Ho9GYgGhijrzI+3lxXZ0QWUTbNT+kTAvPqp5yjvfcj7ZWB0x7UaVD13CfHUwQkQWKzqOuErB974Hs04voJJklQ==}
     dependencies:
       glob: 10.3.10
     dev: true
@@ -5890,8 +5890,8 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
-  /eslint-config-next@14.1.1-canary.27(eslint@8.56.0)(typescript@5.3.3):
-    resolution: {integrity: sha512-KKUkqIQ9kqwCYhA91GZdb1GIP8bbd4uKPX3FhKTO+ZbJ/fE8PmzEP+PFK/xSV8gXVqZdRojK6r+asxNRlOyMXA==}
+  /eslint-config-next@14.1.1-canary.28(eslint@8.56.0)(typescript@5.3.3):
+    resolution: {integrity: sha512-gdh+2xF+E+MP3kCkBU8h94M5m0RenrHAk2u1HnfcJshSo4fUA1sc0zUER7s9l17MFWfe0oV/3JFX1ydtqgIEjQ==}
     peerDependencies:
       eslint: ^7.23.0 || ^8.0.0
       typescript: '>=3.3.1'
@@ -5899,7 +5899,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@next/eslint-plugin-next': 14.1.1-canary.27
+      '@next/eslint-plugin-next': 14.1.1-canary.28
       '@rushstack/eslint-patch': 1.7.2
       '@typescript-eslint/parser': 6.17.0(eslint@8.56.0)(typescript@5.3.3)
       eslint: 8.56.0
@@ -6812,7 +6812,7 @@ packages:
     dependencies:
       array-union: 2.1.0
       dir-glob: 3.0.1
-      fast-glob: 3.3.1
+      fast-glob: 3.3.2
       ignore: 5.3.0
       merge2: 1.4.1
       slash: 3.0.0
@@ -9829,6 +9829,7 @@ packages:
 
   /resolve@1.22.8:
     resolution: {integrity: sha512-oKWePCxqpd6FlLvGV1VU0x7bkPmmCNolxzjMf4NczoDnQcIWrAF+cPtZn5i6n+RfD2d9i0tzpKnG6Yk168yIyw==}
+    hasBin: true
     dependencies:
       is-core-module: 2.13.1
       path-parse: 1.0.7
@@ -10008,6 +10009,7 @@ packages:
   /semver@7.5.4:
     resolution: {integrity: sha512-1bCSESV6Pv+i21Hvpxp3Dx+pSD8lIPt8uVjRrxAUt/nbswYc+tK6Y2btiULjd4+fnq15PX+nqQDC7Oft7WkwcA==}
     engines: {node: '>=10'}
+    hasBin: true
     dependencies:
       lru-cache: 6.0.0
 
