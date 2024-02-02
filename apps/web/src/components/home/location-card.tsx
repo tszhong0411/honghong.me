@@ -75,8 +75,7 @@ const LocationCard = () => {
             display: 'flex',
             placeItems: 'center',
             placeContent: 'center',
-            overflow: 'visible',
-            background: 'rgb(0,0,0)'
+            overflow: 'visible'
           }}
         >
           <div
