@@ -2,8 +2,8 @@
 
 import { IconMapPinFilled } from '@tabler/icons-react'
 import createGlobe from 'cobe'
-import { useSpring } from 'framer-motion'
 import React from 'react'
+import { useSpring } from 'react-spring'
 
 const LocationCard = () => {
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
@@ -12,13 +12,15 @@ const LocationCard = () => {
   const fadeMask =
     'radial-gradient(circle at 50% 50%, rgb(0, 0, 0) 60%, rgb(0, 0, 0, 0) 70%)'
 
-  const r = useSpring(0, {
-    stiffness: 200,
-    damping: 40,
-    mass: 1,
-    restDelta: 0.0001,
-    restSpeed: 0.0001
-  })
+  const [{ r }, api] = useSpring(() => ({
+    r: 0,
+    config: {
+      mass: 1,
+      tension: 280,
+      friction: 40,
+      precision: 0.001
+    }
+  }))
 
   React.useEffect(() => {
     let width = 0
@@ -36,7 +38,7 @@ const LocationCard = () => {
       devicePixelRatio: 2,
       width: width * 2,
       height: width * 2,
-      phi: 2.75,
+      phi: 0,
       theta: -0.1,
       dark: 1,
       diffuse: 2,
@@ -48,7 +50,7 @@ const LocationCard = () => {
       markers: [{ location: [22.3193, 114.1694], size: 0.1 }],
       scale: 1.05,
       onRender: (state) => {
-        state.phi = r.get() + 2.75
+        state.phi = 2.75 + r.get()
         state.width = width * 2
         state.height = width * 2
       }
@@ -102,14 +104,13 @@ const LocationCard = () => {
                 pointerInteracting.current = null
                 canvasRef.current && (canvasRef.current.style.cursor = 'grab')
               }}
-              onPointerOver={() => {
-                canvasRef.current && (canvasRef.current.style.cursor = 'grab')
-              }}
               onMouseMove={(e) => {
                 if (pointerInteracting.current !== null) {
                   const delta = e.clientX - pointerInteracting.current
                   pointerInteractionMovement.current = delta
-                  r.set(delta / 200)
+                  api.start({
+                    r: delta / 200
+                  })
                 }
               }}
               onTouchMove={(e) => {
@@ -117,7 +118,9 @@ const LocationCard = () => {
                   const delta =
                     e.touches[0].clientX - pointerInteracting.current
                   pointerInteractionMovement.current = delta
-                  r.set(delta / 100)
+                  api.start({
+                    r: delta / 100
+                  })
                 }
               }}
               style={{
