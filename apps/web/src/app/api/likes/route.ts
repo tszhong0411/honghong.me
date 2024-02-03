@@ -5,6 +5,7 @@ import { z } from 'zod'
 
 import { env } from '@/env'
 import prisma from '@/lib/prisma'
+import getErrorMessage from '@/utils/get-error-message'
 
 const schema = z.object({
   slug: z.string(),
@@ -142,7 +143,7 @@ export const PATCH = async (req: Request) => {
   } catch (error) {
     return NextResponse.json(
       {
-        error: (error as Error).message
+        error: getErrorMessage(error)
       },
       { status: 500 }
     )
