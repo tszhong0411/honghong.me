@@ -1,5 +1,4 @@
 import { Octokit } from '@octokit/rest'
-import { type Endpoints } from '@octokit/types'
 import { unstable_noStore as noStore } from 'next/cache'
 import { NextResponse } from 'next/server'
 
@@ -15,19 +14,15 @@ export const GET = async () => {
     auth: env.GITHUB_TOKEN
   })
 
-  const { data: repos }: Endpoints['GET /users/{username}/repos']['response'] =
-    await octokit.request('GET /users/{username}/repos', {
-      username: site.githubUsername
-    })
+  const { data: repos } = await octokit.request('GET /users/{username}/repos', {
+    username: site.githubUsername
+  })
 
   const {
     data: { followers }
-  }: Endpoints['GET /users/{username}']['response'] = await octokit.request(
-    'GET /users/{username}',
-    {
-      username: site.githubUsername
-    }
-  )
+  } = await octokit.request('GET /users/{username}', {
+    username: site.githubUsername
+  })
 
   const stars = repos
     .filter((repo) => {
