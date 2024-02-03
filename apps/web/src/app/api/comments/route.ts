@@ -12,7 +12,7 @@ export const GET = async (req: Request) => {
   if (!slug) {
     return NextResponse.json(
       {
-        error: 'Slug is required.'
+        error: 'Slug is required'
       },
       { status: 400 }
     )
