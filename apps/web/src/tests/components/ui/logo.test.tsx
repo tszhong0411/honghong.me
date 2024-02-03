@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react'
-
-import { Logo } from '@/components/ui'
+import { Logo } from '@tszhong0411/ui'
 
 describe('<Logo />', () => {
   it('forwards classes to the textarea element', () => {

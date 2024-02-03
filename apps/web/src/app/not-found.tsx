@@ -1,7 +1,6 @@
+import { Link } from '@tszhong0411/ui'
+import { buttonVariants } from '@tszhong0411/ui'
 import type { Metadata } from 'next'
-
-import { Link } from '@/components/ui'
-import { buttonVariants } from '@/components/ui'
 
 export const metadata: Metadata = {
   title: '404'

@@ -1,9 +1,8 @@
 'use client'
 
+import { cn } from '@tszhong0411/utils'
 import NextImage from 'next/image'
 import React from 'react'
-
-import cn from '@/utils/cn'
 
 type ImageProps = {
   imageClassName?: string

@@ -1,9 +1,8 @@
 'use client'
 
 import { IconChevronRight, IconFile, IconFolder } from '@tabler/icons-react'
+import { cn } from '@tszhong0411/utils'
 import React from 'react'
-
-import cn from '@/utils/cn'
 
 type Node = {
   name: string

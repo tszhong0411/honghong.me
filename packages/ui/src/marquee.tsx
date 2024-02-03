@@ -1,6 +1,5 @@
+import { cn } from '@tszhong0411/utils'
 import React from 'react'
-
-import cn from '@/utils/cn'
 
 type MarqueeProps = {
   children: React.ReactNode
@@ -13,7 +12,7 @@ type MarqueeProps = {
   className?: string
 }
 
-const Marquee = (props: MarqueeProps) => {
+const Marquee = React.forwardRef<HTMLDivElement, MarqueeProps>((props, ref) => {
   const {
     children,
     speed = 20,
@@ -33,6 +32,7 @@ const Marquee = (props: MarqueeProps) => {
       data-marquee
       data-direction={direction}
       data-reverse={reverse}
+      ref={ref}
       style={
         {
           maskImage: fade
@@ -71,6 +71,8 @@ const Marquee = (props: MarqueeProps) => {
       </ul>
     </div>
   )
-}
+})
+
+Marquee.displayName = 'Marquee'
 
 export { Marquee }

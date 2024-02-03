@@ -6,9 +6,8 @@ import {
   IconChevronRight,
   IconPointFilled
 } from '@tabler/icons-react'
+import { cn } from '@tszhong0411/utils'
 import React from 'react'
-
-import cn from '@/utils/cn'
 
 const DropdownMenu = DropdownMenuPrimitive.Root
 const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger
@@ -208,16 +207,20 @@ const DropdownMenuSeparator = React.forwardRef<
   )
 })
 
-const DropdownMenuShortcut = (props: React.HTMLAttributes<HTMLSpanElement>) => {
+const DropdownMenuShortcut = React.forwardRef<
+  HTMLSpanElement,
+  React.HTMLAttributes<HTMLSpanElement>
+>((props, ref) => {
   const { className, ...rest } = props
 
   return (
     <span
       className={cn('ml-auto text-xs tracking-widest opacity-60', className)}
+      ref={ref}
       {...rest}
     />
   )
-}
+})
 
 DropdownMenuSubTrigger.displayName =
   DropdownMenuPrimitive.SubTrigger.displayName

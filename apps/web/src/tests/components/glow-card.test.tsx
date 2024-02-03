@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react'
-
-import GlowCard from '@/components/glow-card'
+import { GlowCard } from '@tszhong0411/ui'
 
 describe('<GlowCard />', () => {
   it('has a container that should be a div element when asChild is false', () => {

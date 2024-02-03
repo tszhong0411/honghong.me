@@ -1,15 +1,14 @@
 'use client'
 
 import { IconArrowUpRight, IconBulbFilled } from '@tabler/icons-react'
+import { Link } from '@tszhong0411/ui'
+import { buttonVariants } from '@tszhong0411/ui'
+import { cn } from '@tszhong0411/utils'
 import { motion, useInView } from 'framer-motion'
 import Image from 'next/image'
 import React from 'react'
 
-import { Link } from '@/components/ui'
 import { type ProjectMetadata } from '@/lib/mdx'
-import cn from '@/utils/cn'
-
-import { buttonVariants } from '../ui'
 
 const variants = {
   initial: {

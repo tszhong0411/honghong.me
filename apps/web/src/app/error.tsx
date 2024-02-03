@@ -1,8 +1,7 @@
 'use client'
 
+import { Button } from '@tszhong0411/ui'
 import React from 'react'
-
-import { Button } from '@/components/ui'
 
 type ErrorPageProps = {
   error: Error & { digest?: string }

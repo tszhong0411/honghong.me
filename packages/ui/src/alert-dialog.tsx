@@ -1,9 +1,8 @@
 'use client'
 
 import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog'
+import { cn } from '@tszhong0411/utils'
 import React from 'react'
-
-import cn from '@/utils/cn'
 
 import { buttonVariants } from './button'
 
@@ -54,7 +53,10 @@ const AlertDialogContent = React.forwardRef<
   )
 })
 
-const AlertDialogHeader = (props: React.HTMLAttributes<HTMLDivElement>) => {
+const AlertDialogHeader = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>((props, ref) => {
   const { className, ...rest } = props
 
   return (
@@ -63,12 +65,16 @@ const AlertDialogHeader = (props: React.HTMLAttributes<HTMLDivElement>) => {
         'flex flex-col space-y-2 text-center sm:text-left',
         className
       )}
+      ref={ref}
       {...rest}
     />
   )
-}
+})
 
-const AlertDialogFooter = (props: React.HTMLAttributes<HTMLDivElement>) => {
+const AlertDialogFooter = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>((props, ref) => {
   const { className, ...rest } = props
 
   return (
@@ -77,11 +83,11 @@ const AlertDialogFooter = (props: React.HTMLAttributes<HTMLDivElement>) => {
         'flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2',
         className
       )}
+      ref={ref}
       {...rest}
     />
   )
-}
-
+})
 const AlertDialogTitle = React.forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Title>,
   React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Title>

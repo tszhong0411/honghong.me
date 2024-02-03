@@ -1,6 +1,6 @@
 import { IconLink } from '@tabler/icons-react'
+import { Link } from '@tszhong0411/ui'
 
-import { Link } from '@/components/ui'
 import { SOCIAL_LINKS } from '@/config/links'
 
 const Connect = () => {

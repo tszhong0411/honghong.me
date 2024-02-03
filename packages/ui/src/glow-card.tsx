@@ -42,4 +42,4 @@ const GlowCard = React.forwardRef<HTMLDivElement, GlowCardProps>(
 
 GlowCard.displayName = 'GlowCard'
 
-export default GlowCard
+export { GlowCard }

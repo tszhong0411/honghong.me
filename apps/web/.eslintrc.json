@@ -1,6 +1,17 @@
 {
   "$schema": "https://json.schemastore.org/eslintrc",
   "extends": ["next/core-web-vitals", "@tszhong0411/eslint-config"],
+  "overrides": [
+    {
+      "files": ["./src/tests/!(e2e)/**/*.test.{ts,tsx}"],
+      "extends": ["plugin:testing-library/react"],
+      "plugins": ["testing-library"]
+    },
+    {
+      "files": ["./src/tests/e2e/**/*.test.{ts,tsx}"],
+      "extends": ["plugin:playwright/recommended"]
+    }
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": true

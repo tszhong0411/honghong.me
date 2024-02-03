@@ -1,38 +1,40 @@
 import { render, screen } from '@testing-library/react'
+import { Marquee } from '@tszhong0411/ui'
 import React from 'react'
 
 import '@testing-library/jest-dom'
-import { Marquee } from '@/components/ui'
 
 describe('<Marquee />', () => {
-  it('renders children and animates left', () => {
+  it('renders children and animates horizontally', () => {
     render(
-      <Marquee direction='left'>
+      <Marquee direction='horizontal'>
         <div>Child 1</div>
         <div>Child 2</div>
         <div>Child 3</div>
       </Marquee>
     )
 
-    const marqueeChild1 = screen.getByTestId('marquee-child-1')
-    const marqueeChild2 = screen.getByTestId('marquee-child-2')
-    expect(marqueeChild1).toHaveClass('animate-marquee-left')
-    expect(marqueeChild2).toHaveClass('animate-marquee-left')
+    expect(screen.getByTestId('marquee')).toBeInTheDocument()
+    expect(screen.getByTestId('marquee')).toHaveAttribute(
+      'data-direction',
+      'horizontal'
+    )
   })
 
-  it('renders children and animates up', () => {
+  it('renders children and animates vertically', () => {
     render(
-      <Marquee direction='up'>
+      <Marquee direction='vertical'>
         <div>Child 1</div>
         <div>Child 2</div>
         <div>Child 3</div>
       </Marquee>
     )
 
-    const marqueeChild1 = screen.getByTestId('marquee-child-1')
-    const marqueeChild2 = screen.getByTestId('marquee-child-2')
-    expect(marqueeChild1).toHaveClass('animate-marquee-up')
-    expect(marqueeChild2).toHaveClass('animate-marquee-up')
+    expect(screen.getByTestId('marquee')).toBeInTheDocument()
+    expect(screen.getByTestId('marquee')).toHaveAttribute(
+      'data-direction',
+      'vertical'
+    )
   })
 
   it('pauses the animation on hover', () => {
@@ -63,15 +65,15 @@ describe('<Marquee />', () => {
       </Marquee>
     )
 
-    const marqueeChild1 = screen.getByTestId('marquee-child-1')
-    const marqueeChild2 = screen.getByTestId('marquee-child-2')
-    expect(marqueeChild1).toHaveClass('direction-reverse')
-    expect(marqueeChild2).toHaveClass('direction-reverse')
+    expect(screen.getByTestId('marquee')).toHaveAttribute(
+      'data-reverse',
+      'true'
+    )
   })
 
-  it('renders children and fades with direction left', () => {
+  it('renders children and fades with direction horizontally', () => {
     render(
-      <Marquee direction='left' fade>
+      <Marquee direction='horizontal' fade>
         <div>Child 1</div>
         <div>Child 2</div>
         <div>Child 3</div>
@@ -84,9 +86,9 @@ describe('<Marquee />', () => {
     )
   })
 
-  it('renders children and fades with direction up', () => {
+  it('renders children and fades with direction vertically', () => {
     render(
-      <Marquee direction='up' fade>
+      <Marquee direction='vertical' fade>
         <div>Child 1</div>
         <div>Child 2</div>
         <div>Child 3</div>

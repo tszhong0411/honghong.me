@@ -1,7 +1,8 @@
 /**
  * Inspired by https://jahir.dev/uses
  */
-import { Link } from '../ui'
+import { Link } from '@tszhong0411/ui'
+
 import Image from './image'
 
 type Items = Array<{

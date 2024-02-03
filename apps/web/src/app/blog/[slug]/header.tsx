@@ -1,11 +1,11 @@
 'use client'
 
+import { Link } from '@tszhong0411/ui'
 import React from 'react'
 import useSWR from 'swr'
 
 import ImageZoom from '@/components/image-zoom'
 import Image from '@/components/mdx/image'
-import { Link } from '@/components/ui'
 import fetcher from '@/lib/fetcher'
 import { type Comments, type Views } from '@/types'
 import dayjs from '@/utils/dayjs'

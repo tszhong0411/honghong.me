@@ -1,8 +1,7 @@
+import { cn } from '@tszhong0411/utils'
 import { type Element } from 'hast'
 import { s } from 'hastscript'
 import rehypePrettyCode, { type Options } from 'rehype-pretty-code'
-
-import cn from '@/utils/cn'
 
 const generateIcon = (path: string, color?: string, className?: string) =>
   s(

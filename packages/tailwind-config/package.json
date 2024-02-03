@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "name": "@tszhong0411/tailwind-config",
+  "version": "0.0.0",
+  "license": "AGPL-3.0-only",
+  "main": "tailwind.config.ts",
+  "dependencies": {
+    "@tailwindcss/typography": "^0.5.10",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}

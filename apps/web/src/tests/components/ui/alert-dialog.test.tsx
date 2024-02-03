@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react'
-
 import {
   AlertDialog,
   AlertDialogAction,
@@ -10,7 +9,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger
-} from '@/components/ui'
+} from '@tszhong0411/ui'
 
 describe('<AlertDialog />', () => {
   it('renders all children', () => {

@@ -1,7 +1,6 @@
+import { cn } from '@tszhong0411/utils'
 import { cva, type VariantProps } from 'class-variance-authority'
 import React from 'react'
-
-import cn from '@/utils/cn'
 
 export const alertVariants = cva(
   'flex w-full justify-start gap-4 rounded-lg border p-4',

@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react'
-
-import { Separator } from '@/components/ui'
+import { Separator } from '@tszhong0411/ui'
 
 describe('<Separator />', () => {
   it('has a height of 1px when orientation is horizontal', () => {

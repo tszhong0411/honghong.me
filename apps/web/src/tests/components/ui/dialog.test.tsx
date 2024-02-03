@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react'
-
 import {
   Button,
   Dialog,
@@ -9,7 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger
-} from '@/components/ui'
+} from '@tszhong0411/ui'
 
 describe('<Dialog />', () => {
   it('renders all children', () => {

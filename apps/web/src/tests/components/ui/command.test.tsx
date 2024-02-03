@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
-
 import {
   Command,
   CommandDialog,
@@ -11,7 +10,7 @@ import {
   CommandList,
   CommandSeparator,
   CommandShortcut
-} from '@/components/ui'
+} from '@tszhong0411/ui'
 
 describe('<Command />', () => {
   it('renders all children', () => {

@@ -1,16 +1,16 @@
 'use client'
 
+import { Link } from '@tszhong0411/ui'
+import { GlowCard } from '@tszhong0411/ui'
 import React from 'react'
 import useSWR from 'swr'
 
-import { Link } from '@/components/ui'
 import useGlowPointer from '@/hooks/use-glow-pointer'
 import fetcher from '@/lib/fetcher'
 import { type BlogMetadata } from '@/lib/mdx'
 import { type Likes, type Views } from '@/types'
 import dayjs from '@/utils/dayjs'
 
-import GlowCard from './glow-card'
 import Image from './mdx/image'
 
 type PostCardsProps = {

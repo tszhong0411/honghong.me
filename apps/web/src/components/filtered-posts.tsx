@@ -1,9 +1,9 @@
 'use client'
 
 import { IconSearch } from '@tabler/icons-react'
+import { Input, Label } from '@tszhong0411/ui'
 import React from 'react'
 
-import { Input, Label } from '@/components/ui'
 import { type BlogMetadata } from '@/lib/mdx'
 
 import PostCards from './post-cards'

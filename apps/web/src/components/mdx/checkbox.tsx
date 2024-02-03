@@ -1,4 +1,4 @@
-import { Checkbox as UICheckbox } from '../ui/checkbox'
+import { Checkbox as UICheckbox } from '@tszhong0411/ui'
 
 const Checkbox = (props: React.InputHTMLAttributes<HTMLInputElement>) => {
   const { checked } = props

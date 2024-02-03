@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
-
-import { Label, Textarea } from '@/components/ui'
+import { Label, Textarea } from '@tszhong0411/ui'
 
 describe('<Textarea />', () => {
   it('forwards classes to the textarea element', () => {

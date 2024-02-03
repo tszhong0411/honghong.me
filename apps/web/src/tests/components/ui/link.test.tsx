@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react'
-
-import { Link } from '@/components/ui'
+import { Link } from '@tszhong0411/ui'
 
 describe('<Link />', () => {
   it('renders internal links', () => {

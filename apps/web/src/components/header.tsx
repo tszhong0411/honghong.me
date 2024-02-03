@@ -1,16 +1,15 @@
 'use client'
 
+import { Link } from '@tszhong0411/ui'
+import { Logo } from '@tszhong0411/ui'
+import { Separator } from '@tszhong0411/ui'
+import { cn } from '@tszhong0411/utils'
 import { motion } from 'framer-motion'
 import React from 'react'
 
 import CommandMenu from '@/components/command-menu'
 import MobileNav from '@/components/mobile-nav'
 import Navbar from '@/components/navbar'
-import { Link } from '@/components/ui'
-import { Logo } from '@/components/ui'
-import cn from '@/utils/cn'
-
-import { Separator } from './ui/separator'
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = React.useState(false)

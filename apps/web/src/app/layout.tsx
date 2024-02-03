@@ -1,3 +1,4 @@
+import { cn } from '@tszhong0411/utils'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
 import type { Metadata, Viewport } from 'next'
@@ -12,7 +13,6 @@ import Header from '@/components/header'
 import Hello from '@/components/hello'
 import SignInModal from '@/components/sign-in-modal'
 import site from '@/config/site'
-import cn from '@/utils/cn'
 
 import Providers from './providers'
 

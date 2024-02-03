@@ -1,12 +1,12 @@
 'use client'
 
 import { IconArrowUpRight } from '@tabler/icons-react'
+import { buttonVariants, Link } from '@tszhong0411/ui'
+import { cn } from '@tszhong0411/utils'
 import { motion } from 'framer-motion'
 
-import { buttonVariants, Link } from '@/components/ui'
 import site from '@/config/site'
 import { type ProjectMetadata } from '@/lib/mdx'
-import cn from '@/utils/cn'
 
 const animation = {
   hide: {

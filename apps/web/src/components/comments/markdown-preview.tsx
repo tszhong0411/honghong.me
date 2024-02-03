@@ -1,11 +1,11 @@
 'use client'
 
+import { cn } from '@tszhong0411/utils'
 import { MDXRemote, type MDXRemoteProps } from 'next-mdx-remote'
 import { toast } from 'sonner'
 import useSWR from 'swr'
 
 import { getMarkdownPreview } from '@/lib/get-markdown-preview'
-import cn from '@/utils/cn'
 
 import Checkbox from '../mdx/checkbox'
 import Pre from '../mdx/pre'

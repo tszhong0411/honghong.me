@@ -1,10 +1,6 @@
 'use client'
 
 import { SiGithub } from '@icons-pack/react-simple-icons'
-import { signIn } from 'next-auth/react'
-
-import { useSignInModal } from '@/store/use-sign-in-modal'
-
 import {
   Button,
   Dialog,
@@ -12,7 +8,10 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle
-} from './ui'
+} from '@tszhong0411/ui'
+import { signIn } from 'next-auth/react'
+
+import { useSignInModal } from '@/store/use-sign-in-modal'
 
 const SignInModal = () => {
   const { open, setOpen } = useSignInModal()

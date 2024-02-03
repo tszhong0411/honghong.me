@@ -1,12 +1,5 @@
 'use client'
 
-import React from 'react'
-import { useFormStatus } from 'react-dom'
-import { toast } from 'sonner'
-
-import { postComment } from '@/actions/comment'
-import { getMarkdownPreview } from '@/lib/get-markdown-preview'
-
 import {
   Button,
   Link,
@@ -15,7 +8,14 @@ import {
   TabsList,
   TabsTrigger,
   Textarea
-} from '../ui'
+} from '@tszhong0411/ui'
+import React from 'react'
+import { useFormStatus } from 'react-dom'
+import { toast } from 'sonner'
+
+import { postComment } from '@/actions/comment'
+import { getMarkdownPreview } from '@/lib/get-markdown-preview'
+
 import MarkdownPreview from './markdown-preview'
 
 type CommentBoxProps =

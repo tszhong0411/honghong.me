@@ -1,11 +1,10 @@
 'use client'
 
+import { Link } from '@tszhong0411/ui'
 import useSWR from 'swr'
 
 import fetcher from '@/lib/fetcher'
 import { type Song } from '@/types'
-
-import { Link } from './ui'
 
 const NowPlaying = () => {
   const { data, isLoading } = useSWR<Song>('/api/spotify', fetcher)

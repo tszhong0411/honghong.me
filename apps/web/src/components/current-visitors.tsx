@@ -1,8 +1,8 @@
 'use client'
 
+import { Link, Skeleton } from '@tszhong0411/ui'
 import useSWR from 'swr'
 
-import { Link, Skeleton } from '@/components/ui'
 import { env } from '@/env'
 import fetcher from '@/lib/fetcher'
 import { type Analytics } from '@/types'

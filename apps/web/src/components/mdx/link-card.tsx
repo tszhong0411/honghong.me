@@ -1,6 +1,6 @@
 import { IconExternalLink } from '@tabler/icons-react'
+import { Link } from '@tszhong0411/ui'
 
-import { Link } from '../ui'
 import Image from './image'
 
 type LinkCardProps = {

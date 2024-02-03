@@ -1,12 +1,11 @@
 import { act, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger
-} from '@/components/ui'
+} from '@tszhong0411/ui'
 
 describe('<Tooltip />', () => {
   beforeEach(() => {

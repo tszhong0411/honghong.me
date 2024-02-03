@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react'
-
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui'
+import { Avatar, AvatarFallback, AvatarImage } from '@tszhong0411/ui'
 
 describe('<Avatar />', () => {
   it('renders the fallback', () => {

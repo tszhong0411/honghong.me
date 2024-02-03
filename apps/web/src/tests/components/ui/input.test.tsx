@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
-
-import { Input, Label } from '@/components/ui'
+import { Input, Label } from '@tszhong0411/ui'
 
 describe('<Input />', () => {
   it('forwards classes to the input element', () => {

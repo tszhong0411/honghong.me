@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "name": "@tszhong0411/utils",
+  "version": "0.0.0",
+  "license": "AGPL-3.0-only",
+  "main": "src/index.ts",
+  "dependencies": {
+    "clsx": "^2.1.0",
+    "tailwind-merge": "^2.2.1"
+  }
+}

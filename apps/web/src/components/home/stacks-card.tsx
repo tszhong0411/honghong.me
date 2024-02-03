@@ -1,6 +1,7 @@
 'use client'
 
 import { IconBolt } from '@tabler/icons-react'
+import { Marquee } from '@tszhong0411/ui'
 import React from 'react'
 
 import {
@@ -25,7 +26,6 @@ import {
   IconVite,
   IconVSCode
 } from '../icons'
-import { Marquee } from '../ui'
 
 const StacksCard = () => {
   return (

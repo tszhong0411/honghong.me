@@ -2,21 +2,6 @@
 // TODO: Clean up the code
 import { type CommentUpvote } from '@prisma/client'
 import { IconArrowUp, IconDots } from '@tabler/icons-react'
-import Image from 'next/image'
-import { type User } from 'next-auth'
-import React from 'react'
-import { toast } from 'sonner'
-
-import {
-  type CommentWithReplies,
-  deleteComment,
-  upvoteComment
-} from '@/actions/comment'
-import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard'
-import { useFormattedDate } from '@/hooks/use-formatted-date'
-import cn from '@/utils/cn'
-import generateId from '@/utils/generate-id'
-
 import {
   AlertDialog,
   AlertDialogAction,
@@ -33,9 +18,26 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-  Skeleton
-} from '../ui'
-import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip'
+  Skeleton,
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger
+} from '@tszhong0411/ui'
+import { cn } from '@tszhong0411/utils'
+import Image from 'next/image'
+import { type User } from 'next-auth'
+import React from 'react'
+import { toast } from 'sonner'
+
+import {
+  type CommentWithReplies,
+  deleteComment,
+  upvoteComment
+} from '@/actions/comment'
+import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard'
+import { useFormattedDate } from '@/hooks/use-formatted-date'
+import generateId from '@/utils/generate-id'
+
 import CommentBox from './comment-box'
 import MarkdownPreview from './markdown-preview'
 

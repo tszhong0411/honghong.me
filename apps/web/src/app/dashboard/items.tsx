@@ -8,12 +8,12 @@ import {
   IconPencil,
   IconStarFilled
 } from '@tabler/icons-react'
+import { Link } from '@tszhong0411/ui'
 import React from 'react'
 import useSWR, { type SWRConfiguration } from 'swr'
 
 import Counter from '@/components/counter'
 import { IconGitHub, IconWakaTime, IconYouTube } from '@/components/icons'
-import { Link } from '@/components/ui'
 import fetcher from '@/lib/fetcher'
 import {
   type Github,

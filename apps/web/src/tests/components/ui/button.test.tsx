@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react'
-
-import { Button, buttonVariants } from '@/components/ui'
+import { Button, buttonVariants } from '@tszhong0411/ui'
 
 describe('<Button />', () => {
   it('forwards classes to the button element', () => {

@@ -1,16 +1,16 @@
 'use client'
 
 import { IconMenu } from '@tabler/icons-react'
-import React from 'react'
-
-import { Link } from '@/components/ui'
+import { Link } from '@tszhong0411/ui'
 import {
   Button,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger
-} from '@/components/ui'
+} from '@tszhong0411/ui'
+import React from 'react'
+
 import { HEADER_LINKS } from '@/config/links'
 
 const MobileNav = () => {

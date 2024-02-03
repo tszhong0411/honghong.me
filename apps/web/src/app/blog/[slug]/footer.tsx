@@ -1,8 +1,8 @@
 'use client'
 
+import { Link } from '@tszhong0411/ui'
 import React from 'react'
 
-import { Link } from '@/components/ui'
 import dayjs from '@/utils/dayjs'
 
 const editURL = (slug: string) =>

@@ -1,6 +1,5 @@
+import { Logo as HongLogo } from '@tszhong0411/ui'
 import React from 'react'
-
-import { Logo as HongLogo } from '@/components/ui'
 
 const Logo = () => {
   return (

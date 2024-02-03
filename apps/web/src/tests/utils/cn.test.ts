@@ -1,4 +1,4 @@
-import cn from '@/utils/cn'
+import { cn } from '@tszhong0411/utils'
 
 describe('cn()', () => {
   it('merges class names', () => {

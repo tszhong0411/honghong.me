@@ -1,11 +1,6 @@
 'use client'
 
 import { type Guestbook } from '@prisma/client'
-import { type User } from 'next-auth'
-import React from 'react'
-import { toast } from 'sonner'
-
-import { deleteMessage } from '@/actions/guestbook'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -22,7 +17,12 @@ import {
   Button,
   buttonVariants,
   Skeleton
-} from '@/components/ui'
+} from '@tszhong0411/ui'
+import { type User } from 'next-auth'
+import React from 'react'
+import { toast } from 'sonner'
+
+import { deleteMessage } from '@/actions/guestbook'
 import dayjs from '@/utils/dayjs'
 
 type MessagesProps = {

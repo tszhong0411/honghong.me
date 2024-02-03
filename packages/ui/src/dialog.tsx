@@ -2,9 +2,8 @@
 
 import * as DialogPrimitive from '@radix-ui/react-dialog'
 import { IconX } from '@tabler/icons-react'
+import { cn } from '@tszhong0411/utils'
 import React from 'react'
-
-import cn from '@/utils/cn'
 
 const Dialog = DialogPrimitive.Root
 const DialogTrigger = DialogPrimitive.Trigger
@@ -66,7 +65,10 @@ const DialogContent = React.forwardRef<
   )
 })
 
-const DialogHeader = (props: React.HTMLAttributes<HTMLDivElement>) => {
+const DialogHeader = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>((props, ref) => {
   const { className, ...rest } = props
 
   return (
@@ -75,12 +77,16 @@ const DialogHeader = (props: React.HTMLAttributes<HTMLDivElement>) => {
         'flex flex-col space-y-1.5 text-center sm:text-left',
         className
       )}
+      ref={ref}
       {...rest}
     />
   )
-}
+})
 
-const DialogFooter = (props: React.HTMLAttributes<HTMLDivElement>) => {
+const DialogFooter = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>((props, ref) => {
   const { className, ...rest } = props
 
   return (
@@ -89,10 +95,11 @@ const DialogFooter = (props: React.HTMLAttributes<HTMLDivElement>) => {
         'flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2',
         className
       )}
+      ref={ref}
       {...rest}
     />
   )
-}
+})
 
 const DialogTitle = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Title>,
@@ -130,6 +137,8 @@ const DialogDescription = React.forwardRef<
 DialogPortal.displayName = DialogPrimitive.Portal.displayName
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName
 DialogContent.displayName = DialogPrimitive.Content.displayName
+DialogHeader.displayName = 'DialogHeader'
+DialogFooter.displayName = 'DialogFooter'
 DialogTitle.displayName = DialogPrimitive.Title.displayName
 DialogDescription.displayName = DialogPrimitive.Description.displayName
 

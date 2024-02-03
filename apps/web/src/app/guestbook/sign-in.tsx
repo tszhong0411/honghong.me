@@ -1,6 +1,7 @@
 'use client'
 
-import { Button } from '@/components/ui'
+import { Button } from '@tszhong0411/ui'
+
 import { useSignInModal } from '@/store/use-sign-in-modal'
 
 const SignIn = () => {

@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react'
-
 import {
   Table,
   TableBody,
@@ -9,7 +8,7 @@ import {
   TableHead,
   TableHeader,
   TableRow
-} from '@/components/ui'
+} from '@tszhong0411/ui'
 
 describe('<Table />', () => {
   it('renders all children', () => {

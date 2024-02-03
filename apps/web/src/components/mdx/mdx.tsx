@@ -1,14 +1,14 @@
+import { Alert, AlertDescription, AlertTitle } from '@tszhong0411/ui'
+import { Link } from '@tszhong0411/ui'
 import { type MDXComponents } from 'mdx/types'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import React from 'react'
 
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui'
 import { rehypePlugins } from '@/config/rehype-plugins'
 import { remarkPlugins } from '@/config/remark-plugins'
 import createHeading from '@/utils/create-heading'
 
 import ImageZoom from '../image-zoom'
-import { Link } from '../ui'
 import Checkbox from './checkbox'
 import Image from './image'
 import ItemGrid from './item-grid'

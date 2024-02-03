@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@tszhong0411/ui'
 
 describe('<Tabs />', () => {
   it('renders and displays the correct content when a tab is clicked', async () => {

@@ -1,10 +1,11 @@
 'use client'
 
-import { Link } from '@/components/ui'
+import { Link } from '@tszhong0411/ui'
+import { GlowCard } from '@tszhong0411/ui'
+
 import useGlowPointer from '@/hooks/use-glow-pointer'
 import { type ProjectMetadata } from '@/lib/mdx'
 
-import GlowCard from './glow-card'
 import Image from './mdx/image'
 
 type ProjectCardProps = ProjectMetadata

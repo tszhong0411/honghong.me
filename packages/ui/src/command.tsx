@@ -2,10 +2,9 @@
 
 import { type DialogProps } from '@radix-ui/react-dialog'
 import { IconSearch } from '@tabler/icons-react'
+import { cn } from '@tszhong0411/utils'
 import { Command as CommandPrimitive } from 'cmdk'
 import React from 'react'
-
-import cn from '@/utils/cn'
 
 import { Dialog, DialogContent } from './dialog'
 
@@ -161,7 +160,10 @@ const CommandItem = React.forwardRef<
   )
 })
 
-const CommandShortcut = (props: React.HTMLAttributes<HTMLSpanElement>) => {
+const CommandShortcut = React.forwardRef<
+  HTMLSpanElement,
+  React.HTMLAttributes<HTMLSpanElement>
+>((props, ref) => {
   const { className, ...rest } = props
 
   return (
@@ -170,19 +172,20 @@ const CommandShortcut = (props: React.HTMLAttributes<HTMLSpanElement>) => {
         'ml-auto text-xs tracking-widest text-muted-foreground',
         className
       )}
+      ref={ref}
       {...rest}
     />
   )
-}
+})
 
 Command.displayName = CommandPrimitive.displayName
-CommandDialog.displayName = CommandPrimitive.Dialog.displayName
 CommandInput.displayName = CommandPrimitive.Input.displayName
 CommandList.displayName = CommandPrimitive.List.displayName
 CommandEmpty.displayName = CommandPrimitive.Empty.displayName
 CommandGroup.displayName = CommandPrimitive.Group.displayName
 CommandSeparator.displayName = CommandPrimitive.Separator.displayName
 CommandItem.displayName = CommandPrimitive.Item.displayName
+CommandShortcut.displayName = 'CommandShortcut'
 
 export {
   Command,

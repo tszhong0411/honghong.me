@@ -14,9 +14,6 @@ import {
   IconLogin,
   IconLogout
 } from '@tabler/icons-react'
-import { signOut, useSession } from 'next-auth/react'
-import React from 'react'
-
 import {
   Button,
   CommandDialog,
@@ -26,7 +23,10 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator
-} from '@/components/ui'
+} from '@tszhong0411/ui'
+import { signOut, useSession } from 'next-auth/react'
+import React from 'react'
+
 import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard'
 import { useSignInModal } from '@/store/use-sign-in-modal'
 

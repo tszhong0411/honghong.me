@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
+import { ScrollArea, ScrollBar } from '@tszhong0411/ui'
 
-import { ScrollArea, ScrollBar } from '@/components/ui'
 import { queryByAttr } from '@/tests/utils'
 
 describe('<ScrollArea />', () => {

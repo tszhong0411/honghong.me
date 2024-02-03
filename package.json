@@ -22,9 +22,7 @@
   "devDependencies": {
     "@commitlint/cli": "^18.6.0",
     "@commitlint/config-conventional": "^18.6.0",
-    "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/prettier-config": "workspace:*",
-    "@tszhong0411/tsconfig": "workspace:*",
     "husky": "^9.0.10",
     "lint-staged": "^15.2.0",
     "prettier": "^3.2.4",

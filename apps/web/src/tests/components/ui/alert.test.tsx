@@ -1,11 +1,10 @@
 import { render, screen } from '@testing-library/react'
-
 import {
   Alert,
   AlertDescription,
   AlertTitle,
   alertVariants
-} from '@/components/ui'
+} from '@tszhong0411/ui'
 
 describe('<Alert />', () => {
   it('renders with title and description', () => {

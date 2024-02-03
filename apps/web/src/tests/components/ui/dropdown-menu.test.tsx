@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react'
-
 import {
   Button,
   DropdownMenu,
@@ -16,7 +15,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger
-} from '@/components/ui'
+} from '@tszhong0411/ui'
 
 describe('<DropdownMenu />', () => {
   it('renders all children', () => {
