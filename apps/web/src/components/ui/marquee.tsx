@@ -1,64 +1,74 @@
 import React from 'react'
 
 import cn from '@/utils/cn'
-import range from '@/utils/range'
 
 type MarqueeProps = {
   children: React.ReactNode
-  direction?: 'left' | 'up'
+  speed?: number
+  direction?: 'vertical' | 'horizontal'
   pauseOnHover?: boolean
   reverse?: boolean
   fade?: boolean
+  inset?: number
   className?: string
 }
 
 const Marquee = (props: MarqueeProps) => {
   const {
     children,
-    direction = 'left',
+    speed = 20,
+    direction = 'horizontal',
     pauseOnHover = false,
     reverse = false,
     fade = false,
+    inset = 2,
     className
   } = props
+  const items = React.Children.toArray(children)
 
   return (
     <div
-      className={cn(
-        'group flex gap-4 overflow-hidden',
-        direction === 'left' ? 'flex-row' : 'flex-col',
-        className
-      )}
+      className={cn('overflow-hidden', className)}
       data-testid='marquee'
-      style={{
-        maskImage: fade
-          ? `linear-gradient(${
-              direction === 'left' ? 'to right' : 'to bottom'
-            }, transparent 0%, rgba(0, 0, 0, 1.0) 10%, rgba(0, 0, 0, 1.0) 90%, transparent 100%)`
-          : undefined,
-        WebkitMaskImage: fade
-          ? `linear-gradient(${
-              direction === 'left' ? 'to right' : 'to bottom'
-            }, transparent 0%, rgba(0, 0, 0, 1.0) 10%, rgba(0, 0, 0, 1.0) 90%, transparent 100%)`
-          : undefined
-      }}
+      data-marquee
+      data-direction={direction}
+      data-reverse={reverse}
+      style={
+        {
+          maskImage: fade
+            ? `linear-gradient(${
+                direction === 'horizontal' ? 'to right' : 'to bottom'
+              }, transparent 0%, rgba(0, 0, 0, 1.0) 10%, rgba(0, 0, 0, 1.0) 90%, transparent 100%)`
+            : undefined,
+          WebkitMaskImage: fade
+            ? `linear-gradient(${
+                direction === 'horizontal' ? 'to right' : 'to bottom'
+              }, transparent 0%, rgba(0, 0, 0, 1.0) 10%, rgba(0, 0, 0, 1.0) 90%, transparent 100%)`
+            : undefined,
+          '--speed': speed,
+          '--count': items.length,
+          '--inset': inset
+        } as React.CSSProperties
+      }
     >
-      {range(0, 2).map((i) => (
-        <div
-          key={i}
-          className={cn(
-            'flex shrink-0 justify-around gap-4 [--gap:1rem]',
-            direction === 'left'
-              ? 'animate-marquee-left flex-row'
-              : 'animate-marquee-up flex-col',
-            pauseOnHover && 'group-hover:[animation-play-state:paused]',
-            reverse && 'direction-reverse'
-          )}
-          data-testid={`marquee-child-${i + 1}`}
-        >
-          {children}
-        </div>
-      ))}
+      <ul className='group flex'>
+        {items.map((item, i) => (
+          <li
+            key={i}
+            style={
+              {
+                '--index': i
+              } as React.CSSProperties
+            }
+            className={cn(
+              pauseOnHover && 'group-hover:[animation-play-state:paused]'
+            )}
+            data-testid={`marquee-child-${i + 1}`}
+          >
+            {item}
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }

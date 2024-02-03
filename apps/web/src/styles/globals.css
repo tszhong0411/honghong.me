@@ -152,3 +152,47 @@
     border-width: calc(var(--border-size) * 1);
   }
 }
+
+/* Marquee */
+[data-marquee][data-reverse='true'] * {
+  animation-direction: reverse;
+}
+
+[data-marquee][data-direction='horizontal'] ul {
+  width: fit-content;
+  align-items: center;
+}
+
+[data-marquee][data-direction='vertical'] ul {
+  height: fit-content;
+  justify-items: center;
+  flex-direction: column;
+}
+
+[data-marquee] li {
+  --duration: calc(var(--speed) * 1s);
+  --delay: calc(
+    (var(--duration) / var(--count)) * (var(--index, 0) - (var(--count) * 0.5))
+  );
+  animation: marquee var(--duration) calc(var(--delay) - (var(--count) * 0.5s))
+    infinite linear;
+  translate: var(--origin-x) var(--origin-y);
+}
+[data-marquee][data-direction='horizontal'] li {
+  --origin-x: calc(((var(--count) - var(--index)) + var(--inset, 0)) * 100%);
+  --origin-y: 0;
+  --destination-x: calc(calc((var(--index) + 1) * -100%));
+  --destination-y: 0;
+}
+[data-marquee][data-direction='vertical'] li {
+  --origin-x: 0;
+  --origin-y: calc(((var(--count) - var(--index)) + var(--inset, 0)) * 100%);
+  --destination-x: 0;
+  --destination-y: calc(calc((var(--index) + 1) * -100%));
+}
+
+@keyframes marquee {
+  100% {
+    translate: var(--destination-x) var(--destination-y);
+  }
+}
