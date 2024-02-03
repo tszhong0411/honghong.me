@@ -33,9 +33,6 @@ const getNowPlaying = async () => {
   const response = await fetch(NOW_PLAYING_ENDPOINT, {
     headers: {
       Authorization: `Bearer ${accessToken}`
-    },
-    next: {
-      revalidate: 60
     }
   })
 

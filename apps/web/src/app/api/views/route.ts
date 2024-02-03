@@ -1,8 +1,11 @@
+import { unstable_noStore as noStore } from 'next/cache'
 import { NextResponse } from 'next/server'
 
 import prisma from '@/lib/prisma'
 
 export const GET = async (req: Request) => {
+  noStore()
+
   const { searchParams } = new URL(req.url)
   const slug = searchParams.get('slug')
 

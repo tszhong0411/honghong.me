@@ -1,3 +1,4 @@
+import { unstable_noStore as noStore } from 'next/cache'
 import { NextResponse } from 'next/server'
 
 import { env } from '@/env'
@@ -6,6 +7,8 @@ export const runtime = 'edge'
 export const dynamic = 'force-dynamic'
 
 export const GET = async () => {
+  noStore()
+
   const res = await fetch(
     'https://wakatime.com/api/v1/users/current/all_time_since_today',
     {

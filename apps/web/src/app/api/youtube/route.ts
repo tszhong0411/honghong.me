@@ -1,3 +1,4 @@
+import { unstable_noStore as noStore } from 'next/cache'
 import { NextResponse } from 'next/server'
 
 import { env } from '@/env'
@@ -6,6 +7,8 @@ export const runtime = 'edge'
 export const dynamic = 'force-dynamic'
 
 export const GET = async () => {
+  noStore()
+
   const res = await fetch(
     `https://www.googleapis.com/youtube/v3/channels?id=UC2hMWOaOlk9vrkvFVaGmn0Q&part=statistics&key=${env.GOOGLE_API_KEY}`
   )

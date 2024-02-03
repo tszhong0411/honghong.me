@@ -1,3 +1,4 @@
+import { unstable_noStore as noStore } from 'next/cache'
 import { NextResponse } from 'next/server'
 import { createHash } from 'node:crypto'
 import { z } from 'zod'
@@ -20,6 +21,8 @@ const getSessionId = (slug: string, req: Request): string => {
 }
 
 export const GET = async (req: Request) => {
+  noStore()
+
   const { searchParams } = new URL(req.url)
   const slug = searchParams.get('slug')
 

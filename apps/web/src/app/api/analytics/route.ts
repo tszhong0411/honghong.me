@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client'
+import { unstable_noStore as noStore } from 'next/cache'
 import { NextResponse } from 'next/server'
 
 import { env } from '@/env'
@@ -11,6 +12,8 @@ const prisma = new PrismaClient({
 })
 
 export const GET = async () => {
+  noStore()
+
   try {
     const result: [
       {

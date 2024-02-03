@@ -9,7 +9,7 @@ import {
   IconStarFilled
 } from '@tabler/icons-react'
 import React from 'react'
-import useSWR from 'swr'
+import useSWR, { type SWRConfiguration } from 'swr'
 
 import Counter from '@/components/counter'
 import { IconGitHub, IconWakaTime, IconYouTube } from '@/components/icons'
@@ -37,11 +37,22 @@ type Card = {
 }
 
 const Items = () => {
-  const { data: youtubeData } = useSWR<YouTube>('/api/youtube', fetcher)
-  const { data: githubData } = useSWR<Github>('/api/github', fetcher)
-  const { data: likesData } = useSWR<Likes>('/api/likes', fetcher)
-  const { data: viewsData } = useSWR<Views>('/api/views', fetcher)
-  const { data: wakatimeData } = useSWR<Wakatime>('/api/wakatime', fetcher)
+  const swrConfig: SWRConfiguration = {
+    revalidateOnFocus: false
+  }
+  const { data: youtubeData } = useSWR<YouTube>(
+    '/api/youtube',
+    fetcher,
+    swrConfig
+  )
+  const { data: githubData } = useSWR<Github>('/api/github', fetcher, swrConfig)
+  const { data: likesData } = useSWR<Likes>('/api/likes', fetcher, swrConfig)
+  const { data: viewsData } = useSWR<Views>('/api/views', fetcher, swrConfig)
+  const { data: wakatimeData } = useSWR<Wakatime>(
+    '/api/wakatime',
+    fetcher,
+    swrConfig
+  )
 
   const data: Card[] = [
     {
