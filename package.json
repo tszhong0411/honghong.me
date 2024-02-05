@@ -32,6 +32,6 @@
     "node": ">=18",
     "pnpm": ">=8"
   },
-  "packageManager": "pnpm@8.14.3",
+  "packageManager": "pnpm@8.15.1",
   "prettier": "@tszhong0411/prettier-config"
 }
