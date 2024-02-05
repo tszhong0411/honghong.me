@@ -33,7 +33,7 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
       - name: Install Vercel
         run: pnpm install -g vercel
