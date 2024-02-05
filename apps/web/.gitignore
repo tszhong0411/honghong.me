@@ -4,3 +4,13 @@
 .env.development.local
 .env.test.local
 .env.production.local
+
+# Testing
+coverage
+playwright-report
+test-results
+
+# Build Outputs
+.next/
+out/
+build
