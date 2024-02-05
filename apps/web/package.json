@@ -88,7 +88,7 @@
     "eslint-config-next": "14.1.1-canary.33",
     "eslint-plugin-playwright": "^0.22.1",
     "eslint-plugin-testing-library": "^6.2.0",
-    "fast-xml-parser": "^4.3.3",
+    "fast-xml-parser": "^4.3.4",
     "jsdom": "^24.0.0",
     "msw": "^2.1.5",
     "prisma": "^5.8.1",
