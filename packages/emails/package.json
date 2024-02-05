@@ -31,7 +31,7 @@
     "react-email": "2.0.0"
   },
   "devDependencies": {
-    "@tszhong0411/eslint-config": "workspace:^",
+    "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
     "@types/node": "^20.10.6",
     "@types/react": "^18.2.46",

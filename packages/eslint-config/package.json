@@ -3,7 +3,7 @@
   "name": "@tszhong0411/eslint-config",
   "version": "0.0.0",
   "license": "AGPL-3.0-only",
-  "devDependencies": {
+  "dependencies": {
     "@typescript-eslint/eslint-plugin": "^6.17.0",
     "@typescript-eslint/parser": "^6.20.0",
     "eslint-config-prettier": "^9.1.0",
@@ -18,5 +18,8 @@
     "eslint-plugin-unicorn": "^50.0.1",
     "eslint-plugin-unused-imports": "^3.0.0",
     "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0"
   }
 }

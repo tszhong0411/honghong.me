@@ -3,7 +3,7 @@
   "name": "@tszhong0411/prettier-config",
   "version": "0.0.0",
   "license": "AGPL-3.0-only",
-  "devDependencies": {
+  "dependencies": {
     "prettier-plugin-package-perfection": "^1.1.0",
     "prettier-plugin-prisma": "^5.0.0",
     "prettier-plugin-sort-json": "^3.1.0"
