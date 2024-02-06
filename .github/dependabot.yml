@@ -1,34 +1,7 @@
 version: 2
 updates:
   - package-ecosystem: 'npm'
-    directory: '/apps/web'
+    directory: '/'
     schedule:
       interval: 'daily'
-  - package-ecosystem: 'npm'
-    directory: '/packages/emails'
-    schedule:
-      interval: 'daily'
-  - package-ecosystem: 'npm'
-    directory: '/packages/eslint-config'
-    schedule:
-      interval: 'daily'
-  - package-ecosystem: 'npm'
-    directory: '/packages/prettier-config'
-    schedule:
-      interval: 'daily'
-  - package-ecosystem: 'npm'
-    directory: '/packages/tsconfig'
-    schedule:
-      interval: 'daily'
-  - package-ecosystem: 'npm'
-    directory: '/packages/tailwind-config'
-    schedule:
-      interval: 'daily'
-  - package-ecosystem: 'npm'
-    directory: '/packages/ui'
-    schedule:
-      interval: 'daily'
-  - package-ecosystem: 'npm'
-    directory: '/packages/utils'
-    schedule:
-      interval: 'daily'
+    versioning-strategy: 'increase'
