@@ -1,9 +1,8 @@
 'use client'
 
 import { Link } from '@tszhong0411/ui'
+import { dayjs } from '@tszhong0411/utils'
 import React from 'react'
-
-import dayjs from '@/utils/dayjs'
 
 const editURL = (slug: string) =>
   `https://github.com/tszhong0411/honghong.me/blob/main/src/content/blog/${slug}.mdx?plain=1`

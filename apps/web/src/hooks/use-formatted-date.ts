@@ -1,6 +1,5 @@
+import { dayjs } from '@tszhong0411/utils'
 import React from 'react'
-
-import dayjs from '@/utils/dayjs'
 
 export const useFormattedDate = (date: Date) => {
   const [formattedDate, setFormattedDate] = React.useState<string | null>(null)

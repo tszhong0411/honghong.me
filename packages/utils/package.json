@@ -4,8 +4,31 @@
   "version": "0.0.0",
   "license": "AGPL-3.0-only",
   "main": "src/index.ts",
+  "scripts": {
+    "clean": "rm -rf .turbo",
+    "format:check": "prettier -c .",
+    "format:write": "prettier -w .",
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint --fix .",
+    "type-check": "tsc --noEmit"
+  },
   "dependencies": {
     "clsx": "^2.1.0",
+    "dayjs": "^1.11.10",
     "tailwind-merge": "^2.2.1"
+  },
+  "devDependencies": {
+    "@tszhong0411/eslint-config": "workspace:^",
+    "@tszhong0411/tsconfig": "workspace:^",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3"
+  },
+  "lint-staged": {
+    "*.{js,jsx,cjs,mjs,ts,tsx}": [
+      "eslint"
+    ],
+    "*.{json,css,md,mdx,js,jsx,ts,tsx,cjs,mjs}": [
+      "prettier -c"
+    ]
   }
 }

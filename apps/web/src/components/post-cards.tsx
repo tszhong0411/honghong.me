@@ -2,6 +2,7 @@
 
 import { Link } from '@tszhong0411/ui'
 import { GlowCard } from '@tszhong0411/ui'
+import { dayjs } from '@tszhong0411/utils'
 import React from 'react'
 import useSWR from 'swr'
 
@@ -9,7 +10,6 @@ import useGlowPointer from '@/hooks/use-glow-pointer'
 import fetcher from '@/lib/fetcher'
 import { type BlogMetadata } from '@/lib/mdx'
 import { type Likes, type Views } from '@/types'
-import dayjs from '@/utils/dayjs'
 
 import Image from './mdx/image'
 

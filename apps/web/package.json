@@ -7,7 +7,7 @@
   "scripts": {
     "build": "next build",
     "bundle-analyzer": "ANALYZE=true pnpm run build",
-    "clean": "rm -rf .next coverage .turbo",
+    "clean": "rm -rf .next coverage .turbo playwright-report test-results",
     "dev": "next dev --turbo",
     "format:check": "prettier -c .",
     "format:write": "prettier -w .",
@@ -34,7 +34,6 @@
     "@tszhong0411/utils": "workspace:*",
     "canvas-confetti": "^1.9.2",
     "cobe": "^0.6.3",
-    "dayjs": "^1.11.10",
     "framer-motion": "^11.0.3",
     "geist": "^1.2.2",
     "gray-matter": "^4.0.3",

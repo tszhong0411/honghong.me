@@ -66,7 +66,6 @@ const CommentNotification = (props: CommentNotificationProps) => {
                     src='https://honghong.me/images/email/logo.png'
                     alt="Hong's logo"
                     height='50'
-                    className='rounded-full'
                   />
                 </Column>
                 <Column align='right' className='font-bold'>

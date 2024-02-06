@@ -1,9 +1,9 @@
 import { PrismaClient } from '@prisma/client'
+import { dayjs } from '@tszhong0411/utils'
 import { unstable_noStore as noStore } from 'next/cache'
 import { NextResponse } from 'next/server'
 
 import { env } from '@/env'
-import dayjs from '@/utils/dayjs'
 
 export const dynamic = 'force-dynamic'
 

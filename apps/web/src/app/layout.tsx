@@ -4,7 +4,6 @@ import { GeistSans } from 'geist/font/sans'
 import type { Metadata, Viewport } from 'next'
 import localFont from 'next/font/local'
 import Image from 'next/image'
-import { Toaster } from 'sonner'
 
 import '@/styles/globals.css'
 import Analytics from '@/components/analytics'
@@ -137,20 +136,6 @@ const RootLayout = (props: RootLayoutProps) => {
             alt=''
             role='presentation'
             priority
-          />
-          <Toaster
-            toastOptions={{
-              classNames: {
-                success: '[&>[data-icon]]:text-green-500',
-                error: '[&>[data-icon]]:text-red-500',
-                info: '[&>[data-icon]]:text-blue-500',
-                warning: '[&>[data-icon]]:text-yellow-500'
-              },
-              duration: 2500
-            }}
-            visibleToasts={5}
-            theme='dark'
-            expand
           />
         </Providers>
       </body>

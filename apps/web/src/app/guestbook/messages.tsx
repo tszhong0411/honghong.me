@@ -18,12 +18,12 @@ import {
   buttonVariants,
   Skeleton
 } from '@tszhong0411/ui'
+import { dayjs } from '@tszhong0411/utils'
 import { type User } from 'next-auth'
 import React from 'react'
 import { toast } from 'sonner'
 
 import { deleteMessage } from '@/actions/guestbook'
-import dayjs from '@/utils/dayjs'
 
 type MessagesProps = {
   user: User | null
