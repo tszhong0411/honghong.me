@@ -344,8 +344,8 @@ importers:
         specifier: ^0.23.0
         version: 0.23.0(eslint@8.56.0)
       eslint-plugin-tailwindcss:
-        specifier: ^3.14.1
-        version: 3.14.1(tailwindcss@3.4.1)
+        specifier: ^3.14.2
+        version: 3.14.2(tailwindcss@3.4.1)
       eslint-plugin-unicorn:
         specifier: ^50.0.1
         version: 50.0.1(eslint@8.56.0)
@@ -8680,8 +8680,8 @@ packages:
       eslint: 8.56.0
     dev: false
 
-  /eslint-plugin-tailwindcss@3.14.1(tailwindcss@3.4.1):
-    resolution: {integrity: sha512-orNkVzJ1fdCkj5d8AHE3tAbixNpMJRoKoHPnxZbZ6iBHTsNvOEmeBz62C3THPhFnXCXaD55SRbNjqGzMEXRoZA==}
+  /eslint-plugin-tailwindcss@3.14.2(tailwindcss@3.4.1):
+    resolution: {integrity: sha512-fNzdf4poZP2yQC0xC2prQxMuArMSb5mnellLQvwb9HC3NcLzxs+0IVKWIg1BqUqyui0c+bbjMmhWcKUWK67SLQ==}
     engines: {node: '>=12.13.0'}
     peerDependencies:
       tailwindcss: ^3.4.0
