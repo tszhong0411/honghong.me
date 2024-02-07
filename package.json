@@ -25,7 +25,7 @@
     "@commitlint/config-conventional": "^18.6.0",
     "@tszhong0411/prettier-config": "workspace:*",
     "husky": "^9.0.10",
-    "knip": "^4.3.1",
+    "knip": "^4.4.0",
     "lint-staged": "^15.2.0",
     "prettier": "^3.2.4",
     "turbo": "^1.12.2"
