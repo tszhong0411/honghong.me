@@ -34,7 +34,7 @@
     "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
     "@types/node": "^20.10.6",
-    "@types/react": "^18.2.54",
+    "@types/react": "^18.2.55",
     "eslint": "^8.56.0",
     "typescript": "^5.3.3"
   },
