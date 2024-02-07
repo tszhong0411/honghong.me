@@ -21,8 +21,8 @@ importers:
         specifier: ^9.0.10
         version: 9.0.10
       knip:
-        specifier: ^4.3.1
-        version: 4.3.1(@types/node@20.11.16)(typescript@5.3.3)
+        specifier: ^4.4.0
+        version: 4.4.0(@types/node@20.11.16)(typescript@5.3.3)
       lint-staged:
         specifier: ^15.2.0
         version: 15.2.2
@@ -7459,6 +7459,7 @@ packages:
   /clone@1.0.4:
     resolution: {integrity: sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg==}
     engines: {node: '>=0.8'}
+    requiresBuild: true
 
   /clsx@1.2.1:
     resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
@@ -7913,6 +7914,7 @@ packages:
 
   /defaults@1.0.4:
     resolution: {integrity: sha512-eFuaLoy/Rxalv2kr+lqMlUnrDWV+3j4pljOIJgLIhI058IQfWJ7vXhyEIHu+HtC738klGALYxOKDO0bQP3tg8A==}
+    requiresBuild: true
     dependencies:
       clone: 1.0.4
 
@@ -10508,8 +10510,8 @@ packages:
     engines: {node: '>=6'}
     dev: false
 
-  /knip@4.3.1(@types/node@20.11.16)(typescript@5.3.3):
-    resolution: {integrity: sha512-NqH3XlnZnG+SmjEfIl3zlY4ZQmt1YkYq/YoEBmG70HuYSWknM9vgNyLfnTA9wcgyxi5NQtlZQZWk+2KwPqR71A==}
+  /knip@4.4.0(@types/node@20.11.16)(typescript@5.3.3):
+    resolution: {integrity: sha512-SV3BUf3Swnkzr0i9LM7keCNSj1pGChhvZjcyJgYUzcJrGgc3OHBsSM8v5F3IBZ6kNhdKGHUWr0VK3T3K145bMA==}
     engines: {node: '>=18.6.0'}
     hasBin: true
     peerDependencies:
