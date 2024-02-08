@@ -38,12 +38,12 @@ const Marquee = React.forwardRef<HTMLDivElement, MarqueeProps>((props, ref) => {
           maskImage: fade
             ? `linear-gradient(${
                 direction === 'horizontal' ? 'to right' : 'to bottom'
-              }, transparent 0%, rgba(0, 0, 0, 1.0) 10%, rgba(0, 0, 0, 1.0) 90%, transparent 100%)`
+              }, transparent 0%, rgb(0 0 0) 10%, rgb(0 0 0) 90%, transparent 100%)`
             : undefined,
           WebkitMaskImage: fade
             ? `linear-gradient(${
                 direction === 'horizontal' ? 'to right' : 'to bottom'
-              }, transparent 0%, rgba(0, 0, 0, 1.0) 10%, rgba(0, 0, 0, 1.0) 90%, transparent 100%)`
+              }, transparent 0%, rgb(0 0 0) 10%, rgb(0 0 0) 90%, transparent 100%)`
             : undefined,
           '--speed': speed,
           '--count': items.length,

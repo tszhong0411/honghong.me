@@ -82,7 +82,7 @@ describe('<Marquee />', () => {
 
     const marquee = screen.getByTestId('marquee')
     expect(marquee).toHaveStyle(
-      'mask-image:linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 1.0) 10%, rgba(0, 0, 0, 1.0) 90%, transparent 100%)'
+      'mask-image:linear-gradient(to right, transparent 0%, rgb(0 0 0) 10%, rgb(0 0 0) 90%, transparent 100%)'
     )
   })
 
@@ -97,7 +97,7 @@ describe('<Marquee />', () => {
 
     const marquee = screen.getByTestId('marquee')
     expect(marquee).toHaveStyle(
-      'mask-image:linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 1.0) 10%, rgba(0, 0, 0, 1.0) 90%, transparent 100%)'
+      'mask-image:linear-gradient(to bottom, transparent 0%, rgb(0 0 0) 10%, rgb(0 0 0) 90%, transparent 100%)'
     )
   })
 })
