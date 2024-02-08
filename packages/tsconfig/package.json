@@ -1,6 +1,30 @@
 {
-  "private": true,
   "name": "@tszhong0411/tsconfig",
   "version": "0.0.0",
-  "license": "AGPL-3.0-only"
+  "description": "The typescript config for tszhong0411 projects",
+  "license": "MIT",
+  "author": "tszhong0411 <me@honghong.me> (https://github.com/tszhong0411/)",
+  "homepage": "https://github.com/tszhong0411/honghong.me#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tszhong0411/honghong.me.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tszhong0411/honghong.me/issues"
+  },
+  "files": [
+    "base.json",
+    "nextjs.json"
+  ],
+  "peerDependencies": {
+    "typescript": "5.x"
+  },
+  "keywords": [
+    "tsconfig",
+    "tszhong0411",
+    "typescript"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }

@@ -1,8 +1,21 @@
 {
-  "private": true,
   "name": "@tszhong0411/eslint-config",
   "version": "0.0.0",
-  "license": "AGPL-3.0-only",
+  "description": "The eslint config for tszhong0411 projects",
+  "license": "MIT",
+  "author": "tszhong0411 me@honghong.me (https://github.com/tszhong0411/)",
+  "homepage": "https://github.com/tszhong0411/honghong.me#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tszhong0411/honghong.me.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tszhong0411/honghong.me/issues"
+  },
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^6.17.0",
     "@typescript-eslint/parser": "^6.20.0",
@@ -16,10 +29,21 @@
     "eslint-plugin-sonarjs": "^0.23.0",
     "eslint-plugin-tailwindcss": "^3.14.2",
     "eslint-plugin-unicorn": "^51.0.1",
-    "eslint-plugin-unused-imports": "^3.0.0",
-    "typescript": "^5.3.3"
+    "eslint-plugin-unused-imports": "^3.0.0"
+  },
+  "peerDependencies": {
+    "eslint": "8.x"
   },
   "devDependencies": {
     "eslint": "^8.56.0"
+  },
+  "keywords": [
+    "eslint",
+    "eslint-config",
+    "eslintconfig",
+    "tszhong0411"
+  ],
+  "publishConfig": {
+    "access": "public"
   }
 }

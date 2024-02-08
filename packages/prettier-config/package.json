@@ -1,11 +1,35 @@
 {
-  "private": true,
   "name": "@tszhong0411/prettier-config",
   "version": "0.0.0",
-  "license": "AGPL-3.0-only",
+  "description": "The prettier config for tszhong0411 projects",
+  "license": "MIT",
+  "author": "tszhong0411 <me@honghong.me> (https://github.com/tszhong0411/)",
+  "homepage": "https://github.com/tszhong0411/honghong.me#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tszhong0411/honghong.me.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tszhong0411/honghong.me/issues"
+  },
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
   "dependencies": {
     "prettier-plugin-package-perfection": "^1.1.0",
     "prettier-plugin-prisma": "^5.0.0",
     "prettier-plugin-sort-json": "^3.1.0"
+  },
+  "peerDependencies": {
+    "prettier": "3.x"
+  },
+  "keywords": [
+    "prettier",
+    "prettier-config",
+    "tszhong0411"
+  ],
+  "publishConfig": {
+    "access": "public"
   }
 }

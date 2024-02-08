@@ -1,0 +1,22 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@3.0.0/schema.json",
+  "access": "public",
+  "baseBranch": "main",
+  "changelog": [
+    "@changesets/changelog-github",
+    {
+      "repo": "tszhong0411/honghong.me"
+    }
+  ],
+  "commit": false,
+  "fixed": [],
+  "ignore": [
+    "blog",
+    "@tszhong0411/emails",
+    "@tszhong0411/tailwind-config",
+    "@tszhong0411/ui",
+    "@tszhong0411/utils"
+  ],
+  "linked": [],
+  "updateInternalDependencies": "patch"
+}
