@@ -29,7 +29,7 @@
     "knip": "^4.4.0",
     "lint-staged": "^15.2.0",
     "prettier": "^3.2.4",
-    "turbo": "^1.12.2"
+    "turbo": "^1.12.3"
   },
   "engines": {
     "node": ">=18",
