@@ -2,7 +2,7 @@
   "private": true,
   "name": "@tszhong0411/utils",
   "version": "0.0.0",
-  "license": "AGPL-3.0-only",
+  "license": "MIT",
   "main": "src/index.ts",
   "scripts": {
     "clean": "rm -rf .turbo",
