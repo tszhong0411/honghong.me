@@ -1,0 +1,4 @@
+# Build Outputs
+.next/
+out/
+build

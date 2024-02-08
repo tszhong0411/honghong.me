@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "blog",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "license": "AGPL-3.0-only",
   "type": "module",
   "scripts": {

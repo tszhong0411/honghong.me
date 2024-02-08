@@ -11,6 +11,7 @@
     "dev": "turbo dev",
     "dev:blog": "turbo dev --filter=blog",
     "dev:emails": "turbo dev --filter=emails",
+    "dev:links": "turbo dev --filter=links",
     "format:check": "turbo format:check",
     "format:write": "turbo format:write",
     "preinstall": "npx only-allow pnpm",
