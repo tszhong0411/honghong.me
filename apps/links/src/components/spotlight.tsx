@@ -11,7 +11,7 @@ const Spotlight = (props: SpotlightProps) => {
   return (
     <svg
       className={cn(
-        'animate-spotlight pointer-events-none absolute z-10 h-[169%] w-[84%] opacity-0',
+        'pointer-events-none absolute z-10 h-[169%] w-[84%] animate-spotlight opacity-0',
         className
       )}
       aria-label='A spotlight effect'
