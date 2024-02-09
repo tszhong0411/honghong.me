@@ -3,7 +3,7 @@ import React from 'react'
 import slugify from './slugify'
 
 /**
- * Source: https://github.com/leerob/leerob.io/blob/6ecab76e6dd84000a9bb0156dcd4a3b02f8c7d5d/app/components/mdx.tsx#L131-L147
+ * Adopted from https://github.com/leerob/leerob.io/blob/6ecab76e6dd84000a9bb0156dcd4a3b02f8c7d5d/app/components/mdx.tsx#L131-L147
  */
 const createHeading = (
   level: number

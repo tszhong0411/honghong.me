@@ -1,5 +1,5 @@
 /**
- * Source: https://codepen.io/jh3y/pen/MWxgJXY
+ * Adopted from https://codepen.io/jh3y/pen/MWxgJXY
  */
 import React from 'react'
 
