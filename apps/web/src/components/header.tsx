@@ -1,11 +1,9 @@
 'use client'
 
-import { Link } from '@tszhong0411/ui'
-import { Logo } from '@tszhong0411/ui'
-import { Separator } from '@tszhong0411/ui'
+import { Link, Logo, Separator } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { motion } from 'framer-motion'
-import React from 'react'
+import * as React from 'react'
 
 import CommandMenu from '@/components/command-menu'
 import MobileNav from '@/components/mobile-nav'

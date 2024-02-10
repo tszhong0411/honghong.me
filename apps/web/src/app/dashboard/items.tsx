@@ -9,7 +9,7 @@ import {
   IconStarFilled
 } from '@tabler/icons-react'
 import { Link } from '@tszhong0411/ui'
-import React from 'react'
+import * as React from 'react'
 import useSWR, { type SWRConfiguration } from 'swr'
 
 import Counter from '@/components/counter'

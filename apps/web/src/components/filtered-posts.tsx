@@ -2,7 +2,7 @@
 
 import { IconSearch } from '@tabler/icons-react'
 import { Input, Label } from '@tszhong0411/ui'
-import React from 'react'
+import * as React from 'react'
 
 import { type BlogMetadata } from '@/lib/mdx'
 

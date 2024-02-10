@@ -6,7 +6,7 @@
 
 import { cn } from '@tszhong0411/utils'
 import NextImage from 'next/image'
-import React from 'react'
+import * as React from 'react'
 
 type ImageProps = {
   imageClassName?: string

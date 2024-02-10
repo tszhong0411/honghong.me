@@ -3,7 +3,7 @@
     "scope": "typescriptreact",
     "prefix": "icon",
     "body": [
-      "import React from 'react'",
+      "import * as React from 'react'",
       "",
       "export const Icon$1 = (props: React.SVGAttributes<SVGElement>) => {",
       "  return (",

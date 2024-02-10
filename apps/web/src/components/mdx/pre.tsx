@@ -1,7 +1,7 @@
 'use client'
 
 import { IconCheck, IconCopy } from '@tabler/icons-react'
-import React from 'react'
+import * as React from 'react'
 
 import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard'
 

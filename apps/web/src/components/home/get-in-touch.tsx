@@ -2,7 +2,7 @@
 
 import { motion, useAnimate, useInView } from 'framer-motion'
 import Image from 'next/image'
-import React from 'react'
+import * as React from 'react'
 
 const variants = {
   initial: {

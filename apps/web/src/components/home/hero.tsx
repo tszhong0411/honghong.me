@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, useAnimate } from 'framer-motion'
-import React from 'react'
+import * as React from 'react'
 
 import Image from '@/components/mdx/image'
 

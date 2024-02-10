@@ -9,7 +9,7 @@ import {
   TabsTrigger,
   Textarea
 } from '@tszhong0411/ui'
-import React from 'react'
+import * as React from 'react'
 import { useFormStatus } from 'react-dom'
 import { toast } from 'sonner'
 

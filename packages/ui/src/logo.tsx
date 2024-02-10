@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 
 const Logo = React.forwardRef<SVGSVGElement, React.SVGAttributes<SVGElement>>(
   (props, ref) => {

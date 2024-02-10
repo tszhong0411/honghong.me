@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import React from 'react'
+import * as React from 'react'
 
 import AboutMe from '@/components/home/about-me'
 import GetInTouch from '@/components/home/get-in-touch'

@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 
 import { getCurrentUser } from '@/lib/auth'
 import { getComments } from '@/queries/comments'

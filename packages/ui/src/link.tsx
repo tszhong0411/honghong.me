@@ -1,7 +1,7 @@
 import { cn } from '@tszhong0411/utils'
 import { cva, type VariantProps } from 'class-variance-authority'
 import NextLink from 'next/link'
-import React from 'react'
+import * as React from 'react'
 
 const linkVariants = cva('', {
   variants: {

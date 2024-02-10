@@ -1,5 +1,5 @@
 import { useInView, useMotionValue, useSpring } from 'framer-motion'
-import React from 'react'
+import * as React from 'react'
 
 type CounterProps = {
   value: number

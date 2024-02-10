@@ -1,7 +1,7 @@
 /**
  * Adopted from https://codepen.io/jh3y/pen/MWxgJXY
  */
-import React from 'react'
+import * as React from 'react'
 
 const useGlowPointer = (): null => {
   const update = React.useCallback(({ x, y }: { x: number; y: number }) => {

@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 
 export const IconPostgres = (props: React.SVGAttributes<SVGElement>) => {
   return (

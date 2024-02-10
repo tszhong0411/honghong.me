@@ -26,7 +26,7 @@ import {
 import { cn } from '@tszhong0411/utils'
 import Image from 'next/image'
 import { type User } from 'next-auth'
-import React from 'react'
+import * as React from 'react'
 import { toast } from 'sonner'
 
 import {

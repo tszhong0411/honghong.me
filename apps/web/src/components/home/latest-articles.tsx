@@ -1,13 +1,11 @@
 'use client'
 
 import { IconArrowUpRight, IconPencil } from '@tabler/icons-react'
-import { Link } from '@tszhong0411/ui'
-import { buttonVariants } from '@tszhong0411/ui'
-import { cn } from '@tszhong0411/utils'
-import { dayjs } from '@tszhong0411/utils'
+import { buttonVariants, Link } from '@tszhong0411/ui'
+import { cn, dayjs } from '@tszhong0411/utils'
 import { motion, useInView } from 'framer-motion'
 import Image from 'next/image'
-import React from 'react'
+import * as React from 'react'
 import useSWR from 'swr'
 
 import fetcher from '@/lib/fetcher'

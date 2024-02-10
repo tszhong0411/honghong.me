@@ -2,7 +2,7 @@
 
 import { IconMapPinFilled } from '@tabler/icons-react'
 import createGlobe from 'cobe'
-import React from 'react'
+import * as React from 'react'
 import { useSpring } from 'react-spring'
 
 const LocationCard = () => {

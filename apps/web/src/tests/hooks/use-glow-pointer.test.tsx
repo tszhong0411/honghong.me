@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react'
-import React from 'react'
+import * as React from 'react'
 import { type MockInstance } from 'vitest'
 
 import useGlowPointer from '@/hooks/use-glow-pointer'

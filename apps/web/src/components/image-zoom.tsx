@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import * as React from 'react'
 import Zoom from 'react-medium-image-zoom'
 
 import '@/styles/image-zoom.css'

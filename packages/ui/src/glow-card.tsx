@@ -1,7 +1,7 @@
 'use client'
 
 import { Slot, Slottable } from '@radix-ui/react-slot'
-import React from 'react'
+import * as React from 'react'
 
 type GlowCardProps = {
   asChild?: boolean

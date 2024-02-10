@@ -1,6 +1,6 @@
 import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
-import React from 'react'
+import * as React from 'react'
 import { type Article, type WithContext } from 'schema-dts'
 
 import Comments from '@/components/comments'

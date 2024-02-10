@@ -1,15 +1,15 @@
 'use client'
 
 import { IconMenu } from '@tabler/icons-react'
-import { Link } from '@tszhong0411/ui'
 import {
   Button,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
+  Link
 } from '@tszhong0411/ui'
-import React from 'react'
+import * as React from 'react'
 
 import { HEADER_LINKS } from '@/config/links'
 

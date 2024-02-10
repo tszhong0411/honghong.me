@@ -5,7 +5,7 @@
  */
 import { Separator } from '@tszhong0411/ui'
 import { motion } from 'framer-motion'
-import React from 'react'
+import * as React from 'react'
 import { toast } from 'sonner'
 import useSWR from 'swr'
 import { useDebouncedCallback } from 'use-debounce'

@@ -2,7 +2,7 @@
 
 import { Link } from '@tszhong0411/ui'
 import { dayjs } from '@tszhong0411/utils'
-import React from 'react'
+import * as React from 'react'
 import useSWR from 'swr'
 
 import ImageZoom from '@/components/image-zoom'

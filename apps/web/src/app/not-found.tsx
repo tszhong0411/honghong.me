@@ -1,5 +1,4 @@
-import { Link } from '@tszhong0411/ui'
-import { buttonVariants } from '@tszhong0411/ui'
+import { buttonVariants, Link } from '@tszhong0411/ui'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {

@@ -2,7 +2,7 @@
 
 import { IconBolt } from '@tabler/icons-react'
 import { Marquee } from '@tszhong0411/ui'
-import React from 'react'
+import * as React from 'react'
 
 import {
   IconCloudflare,

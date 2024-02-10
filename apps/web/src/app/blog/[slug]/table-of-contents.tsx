@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@tszhong0411/utils'
-import React from 'react'
+import * as React from 'react'
 
 import useScrollspy from '@/hooks/use-scrollspy'
 import { type Heading } from '@/utils/get-headings'

@@ -7,7 +7,7 @@ import {
   IconPointFilled
 } from '@tabler/icons-react'
 import { cn } from '@tszhong0411/utils'
-import React from 'react'
+import * as React from 'react'
 
 const DropdownMenu = DropdownMenuPrimitive.Root
 const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger

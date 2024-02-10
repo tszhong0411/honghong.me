@@ -1,8 +1,7 @@
-import { Alert, AlertDescription, AlertTitle } from '@tszhong0411/ui'
-import { Link } from '@tszhong0411/ui'
+import { Alert, AlertDescription, AlertTitle, Link } from '@tszhong0411/ui'
 import { type MDXComponents } from 'mdx/types'
 import { MDXRemote } from 'next-mdx-remote/rsc'
-import React from 'react'
+import * as React from 'react'
 
 import { rehypePlugins } from '@/config/rehype-plugins'
 import { remarkPlugins } from '@/config/remark-plugins'

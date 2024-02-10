@@ -25,7 +25,7 @@ import {
   CommandSeparator
 } from '@tszhong0411/ui'
 import { signOut, useSession } from 'next-auth/react'
-import React from 'react'
+import * as React from 'react'
 
 import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard'
 import { useSignInModal } from '@/store/use-sign-in-modal'

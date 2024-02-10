@@ -1,10 +1,9 @@
 'use client'
 
-import { Link } from '@tszhong0411/ui'
-import { buttonVariants } from '@tszhong0411/ui'
+import { buttonVariants, Link } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { motion, useInView } from 'framer-motion'
-import React from 'react'
+import * as React from 'react'
 
 import CodingHours from './coding-hours'
 import Connect from './connect'
