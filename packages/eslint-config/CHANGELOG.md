@@ -1,5 +1,11 @@
 # @tszhong0411/eslint-config
 
+## 0.0.3
+
+### Patch Changes
+
+- [`2116078`](https://github.com/tszhong0411/honghong.me/commit/2116078f9c650e98e965b0347678c38e2eb4c8da) Thanks [@tszhong0411](https://github.com/tszhong0411)! - remove turbo eslint
+
 ## 0.0.2
 
 ### Patch Changes
