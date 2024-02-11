@@ -54,8 +54,8 @@ export const generateMetadata = async (
       images: [
         {
           url: `${site.url}${image}`,
-          width: 1200,
-          height: 630,
+          width: 1280,
+          height: 832,
           alt: description,
           type: 'image/png'
         }
