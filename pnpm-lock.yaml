@@ -229,8 +229,8 @@ importers:
         specifier: ^24.0.0
         version: 24.0.0
       msw:
-        specifier: ^2.1.5
-        version: 2.1.6(typescript@5.3.3)
+        specifier: ^2.1.7
+        version: 2.1.7(typescript@5.3.3)
       prisma:
         specifier: ^5.8.1
         version: 5.9.1
@@ -3232,8 +3232,8 @@ packages:
     engines: {node: '>=18'}
     dev: true
 
-  /@mswjs/interceptors@0.25.15:
-    resolution: {integrity: sha512-s4jdyxmq1eeftfDXJ7MUiK/jlvYaU8Sr75+42hHCVBrYez0k51RHbMitKIKdmsF92Q6gwhp8Sm1MmvdA9llpcg==}
+  /@mswjs/interceptors@0.25.16:
+    resolution: {integrity: sha512-8QC8JyKztvoGAdPgyZy49c9vSHHAZjHagwl4RY9E8carULk8ym3iTaiawrT1YoLF/qb449h48f71XDPgkUSOUg==}
     engines: {node: '>=18'}
     dependencies:
       '@open-draft/deferred-promise': 2.2.0
@@ -12278,8 +12278,8 @@ packages:
   /ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
 
-  /msw@2.1.6(typescript@5.3.3):
-    resolution: {integrity: sha512-62NX1pdMa1C17U/6+SQjQFxwHx0bcWHzZoDN2mK97FvEttTkX9CyJqx3OcYYBpNykDx+segweaO4yxapjifj4g==}
+  /msw@2.1.7(typescript@5.3.3):
+    resolution: {integrity: sha512-yTIYqEMqDSrdbVMrfmqP6rTKQsnIbglTvVmAHDWwNegyXPXRcV+RjsaFEqubRS266gwWCDLm9YdOkWSKLdDvJQ==}
     engines: {node: '>=18'}
     hasBin: true
     requiresBuild: true
@@ -12292,7 +12292,7 @@ packages:
       '@bundled-es-modules/cookie': 2.0.0
       '@bundled-es-modules/statuses': 1.0.1
       '@mswjs/cookies': 1.1.0
-      '@mswjs/interceptors': 0.25.15
+      '@mswjs/interceptors': 0.25.16
       '@open-draft/until': 2.1.0
       '@types/cookie': 0.6.0
       '@types/statuses': 2.0.4
