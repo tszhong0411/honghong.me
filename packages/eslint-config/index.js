@@ -18,7 +18,6 @@ module.exports = {
     'plugin:tailwindcss/recommended',
     'plugin:sonarjs/recommended',
     'plugin:unicorn/recommended',
-    'plugin:turbo/recommended',
     'plugin:prettier/recommended'
   ],
   globals: {

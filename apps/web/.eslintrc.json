@@ -1,6 +1,10 @@
 {
   "$schema": "https://json.schemastore.org/eslintrc",
-  "extends": ["next/core-web-vitals", "@tszhong0411/eslint-config"],
+  "extends": [
+    "next/core-web-vitals",
+    "@tszhong0411/eslint-config",
+    "plugin:turbo/recommended"
+  ],
   "overrides": [
     {
       "files": ["./src/tests/!(e2e)/**/*.test.{ts,tsx}"],
