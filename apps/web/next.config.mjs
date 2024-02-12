@@ -17,10 +17,12 @@ const nextConfig = {
     ppr: true
   },
 
+  // Type check is already done on GitHub actions
   typescript: {
     ignoreBuildErrors: !!process.env.CI
   },
 
+  // Linting is already done on GitHub actions
   eslint: {
     ignoreDuringBuilds: !!process.env.CI
   },
@@ -38,7 +40,6 @@ const nextConfig = {
     ]
   },
 
-  // eslint-disable-next-line @typescript-eslint/require-await
   async redirects() {
     return [
       {
@@ -64,7 +65,6 @@ const nextConfig = {
     ]
   },
 
-  // eslint-disable-next-line @typescript-eslint/require-await
   async headers() {
     return [
       {
