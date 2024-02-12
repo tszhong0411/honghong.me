@@ -1,5 +1,11 @@
 # @tszhong0411/eslint-config
 
+## 0.0.4
+
+### Patch Changes
+
+- [`98b464b`](https://github.com/tszhong0411/honghong.me/commit/98b464bea5534104c3c29e9f95ae670d22f34c57) Thanks [@tszhong0411](https://github.com/tszhong0411)! - only apply typescript eslint for ts files
+
 ## 0.0.3
 
 ### Patch Changes
