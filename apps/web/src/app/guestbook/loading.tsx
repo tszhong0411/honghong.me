@@ -1,7 +1,7 @@
 import { Skeleton } from '@tszhong0411/ui'
+import { range } from '@tszhong0411/utils'
 
 import PageTitle from '@/components/page-title'
-import range from '@/utils/range'
 
 import Pinned from './pinned'
 
