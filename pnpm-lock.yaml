@@ -347,8 +347,8 @@ importers:
         specifier: ^4.6.0
         version: 4.6.0(eslint@8.56.0)
       eslint-plugin-simple-import-sort:
-        specifier: ^11.0.0
-        version: 11.0.0(eslint@8.56.0)
+        specifier: ^12.0.0
+        version: 12.0.0(eslint@8.56.0)
       eslint-plugin-sonarjs:
         specifier: ^0.23.0
         version: 0.23.0(eslint@8.56.0)
@@ -8971,8 +8971,8 @@ packages:
       semver: 6.3.1
       string.prototype.matchall: 4.0.10
 
-  /eslint-plugin-simple-import-sort@11.0.0(eslint@8.56.0):
-    resolution: {integrity: sha512-3zxeF/0piwHA7/JlbpOmMJ1/1tc1dSRiir4DwpEnP747alKwZbj5xX+ZxroShMBU6LNDkpquo7FsXHCBc0HgCA==}
+  /eslint-plugin-simple-import-sort@12.0.0(eslint@8.56.0):
+    resolution: {integrity: sha512-8o0dVEdAkYap0Cn5kNeklaKcT1nUsa3LITWEuFk3nJifOoD+5JQGoyDUW2W/iPWwBsNBJpyJS9y4je/BgxLcyQ==}
     peerDependencies:
       eslint: '>=5.0.0'
     dependencies:
