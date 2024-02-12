@@ -15,7 +15,7 @@ export default defineConfig({
   use: {
     baseURL,
     trace: 'on-first-retry',
-    headless: true,
+    headless: CI,
     video: 'on'
   },
   projects: [
