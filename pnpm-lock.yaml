@@ -27,8 +27,8 @@ importers:
         specifier: ^9.0.10
         version: 9.0.10
       knip:
-        specifier: ^4.5.0
-        version: 4.5.0(@types/node@20.11.17)(typescript@5.3.3)
+        specifier: ^5.0.0
+        version: 5.0.0(@types/node@20.11.17)(typescript@5.3.3)
       lint-staged:
         specifier: ^15.2.0
         version: 15.2.2
@@ -10853,8 +10853,8 @@ packages:
     resolution: {integrity: sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==}
     engines: {node: '>=6'}
 
-  /knip@4.5.0(@types/node@20.11.17)(typescript@5.3.3):
-    resolution: {integrity: sha512-eZyV1hH708Lfoc+AY4Dcn2d9ovvjzk4zOM2KiBQuV3OPbxwlJexBx4Q2BCY89XH8NFHTB9KK9snAN0EUO4dzlw==}
+  /knip@5.0.0(@types/node@20.11.17)(typescript@5.3.3):
+    resolution: {integrity: sha512-BbwirfhCoCkBCXp8oZ+1QHnpFbTlt41UTY+HEChg8xIMpGSfuVLTnEFxsq/iEz+LPBgUBiSB8pxda8bSj1cv5A==}
     engines: {node: '>=18.6.0'}
     hasBin: true
     peerDependencies:
@@ -10879,6 +10879,7 @@ packages:
       picocolors: 1.0.0
       picomatch: 4.0.1
       pretty-ms: 9.0.0
+      semver: 7.6.0
       smol-toml: 1.1.4
       strip-json-comments: 5.0.1
       summary: 2.1.0
