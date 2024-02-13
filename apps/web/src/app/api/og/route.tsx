@@ -4,18 +4,6 @@ import { NextResponse } from 'next/server'
 
 export const runtime = 'edge'
 
-const arrayBufferToBase64 = (buffer: ArrayBuffer) => {
-  let binary = ''
-
-  const bytes = new Uint8Array(buffer)
-  const len = bytes.byteLength
-
-  for (let i = 0; i < len; i++) {
-    binary += String.fromCodePoint(bytes[i]!)
-  }
-  return btoa(binary)
-}
-
 export const GET = async (req: Request) => {
   try {
     const { searchParams } = new URL(req.url)
@@ -55,21 +43,17 @@ export const GET = async (req: Request) => {
       )
     ).arrayBuffer()
 
-    const ogImage = await (
-      await fetch(
-        new URL('../../../../public/images/og-background.png', import.meta.url)
-      )
-    ).arrayBuffer()
-
-    const [fontInterSemiBold, fontCalSansSemiBold, ogBuffer] =
-      await Promise.all([interSemiBold, CalSansSemiBold, ogImage])
+    const [fontInterSemiBold, fontCalSansSemiBold] = await Promise.all([
+      interSemiBold,
+      CalSansSemiBold
+    ])
 
     return new ImageResponse(
       (
         <div
           tw='w-full h-full flex flex-col px-14 py-12 text-white justify-between'
           style={{
-            backgroundImage: `url(data:image/png;base64,${arrayBufferToBase64(ogBuffer)})`
+            backgroundImage: 'url(https://honghong.me/images/og-background.png)'
           }}
         >
           <div tw='text-3xl font-semibold' style={{ fontFamily: 'Inter' }}>
