@@ -5,5 +5,5 @@
   },
   "exclude": ["node_modules"],
   "extends": "@tszhong0411/tsconfig/base.json",
-  "include": ["**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.mjs"]
+  "include": ["**/*.ts", "**/*.tsx"]
 }
