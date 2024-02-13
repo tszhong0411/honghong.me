@@ -1,5 +1,11 @@
 # @tszhong0411/eslint-config
 
+## 0.0.5
+
+### Patch Changes
+
+- [`6728590`](https://github.com/tszhong0411/honghong.me/commit/67285903508a48739f023dae9f4630a42699972c) Thanks [@tszhong0411](https://github.com/tszhong0411)! - update deps
+
 ## 0.0.4
 
 ### Patch Changes
