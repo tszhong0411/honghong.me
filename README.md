@@ -45,7 +45,7 @@ Welcome to the monorepo of my personal blog! This repository houses the code for
 
 ## 🔨 Requirements
 
-- Node with [Corepack](https://github.com/nodejs/corepack), recommended `18.x`, minimum `16.9.0`
+- Node, recommended `20.x`, minimum `18`
 - pnpm, recommended `8.14.0`, minimum `8.x`
 - MySQL, recommended `8.0`, minimum `5.6`
 - [Visual Studio Code](https://code.visualstudio.com/) with [recommended extensions](.vscode/extensions.json)
