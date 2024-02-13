@@ -5,7 +5,7 @@ import { type Article, type WithContext } from 'schema-dts'
 
 import Comments from '@/components/comments'
 import CommentsLoading from '@/components/comments/comments-loading'
-import site from '@/config/site'
+import { SITE_NAME, WEBAPP_URL } from '@/lib/constants'
 import { type BlogMetadata, getAllPages, getPage } from '@/lib/mdx'
 
 import Content from './content'
@@ -42,26 +42,26 @@ export const generateMetadata = async (
   const ISOPublishedTime = new Date(date).toISOString()
   const ISOModifiedTime = new Date(modifiedTime).toISOString()
   const previousTwitter = (await parent)?.twitter ?? {}
+  const previousOpenGraph = (await parent)?.openGraph ?? {}
 
   return {
     title: title,
     description: summary,
     alternates: {
-      canonical: `${site.url}/blog/${slug}`
+      canonical: `${WEBAPP_URL}/blog/${slug}`
     },
     openGraph: {
-      url: `${site.url}/blog/${slug}`,
+      ...previousOpenGraph,
+      url: `${WEBAPP_URL}/blog/${slug}`,
       type: 'article',
       title: title,
-      siteName: site.name,
       description: summary,
-      locale: 'en-US',
       publishedTime: ISOPublishedTime,
       modifiedTime: ISOModifiedTime,
-      authors: site.url,
+      authors: WEBAPP_URL,
       images: [
         {
-          url: `${site.url}/api/og?title=${title}&date=${
+          url: `${WEBAPP_URL}/api/og?title=${title}&date=${
             date.split('T')[0]
           }&url=honghong.me/blog`,
           width: 1200,
@@ -76,7 +76,7 @@ export const generateMetadata = async (
       title: title,
       description: summary,
       images: [
-        `${site.url}/api/og?title=${title}&date=${
+        `${WEBAPP_URL}/api/og?title=${title}&date=${
           date.split('T')[0]
         }&url=honghong.me/blog`
       ]
@@ -108,18 +108,18 @@ const BlogPostPage = (props: BlogPostPageProps) => {
     description: summary,
     datePublished: date,
     dateModified: modifiedTime,
-    image: `${site.url}/api/og?title=${title}&date=${
+    image: `${WEBAPP_URL}/api/og?title=${title}&date=${
       date.split('T')[0]
     }&url=honghong.me/blog`,
     author: {
       '@type': 'Person',
-      name: site.name,
-      url: site.url
+      name: SITE_NAME,
+      url: WEBAPP_URL
     },
     publisher: {
       '@type': 'Person',
-      name: site.name,
-      url: site.url
+      name: SITE_NAME,
+      url: WEBAPP_URL
     }
   }
 

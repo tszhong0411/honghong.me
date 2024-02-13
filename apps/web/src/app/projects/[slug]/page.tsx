@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 
 import Mdx from '@/components/mdx'
 import Image from '@/components/mdx/image'
-import site from '@/config/site'
+import { WEBAPP_URL } from '@/lib/constants'
 import { getAllPages, getPage, type ProjectMetadata } from '@/lib/mdx'
 
 import Header from './header'
@@ -37,23 +37,22 @@ export const generateMetadata = async (
     metadata: { name, description, image }
   } = project
   const previousTwitter = (await parent)?.twitter ?? {}
+  const previousOpenGraph = (await parent)?.openGraph ?? {}
 
   return {
     title: name,
     description: description,
     alternates: {
-      canonical: `${site.url}/projects/${params.slug}`
+      canonical: `${WEBAPP_URL}/projects/${params.slug}`
     },
     openGraph: {
-      url: `${site.url}/projects/${params.slug}`,
-      type: 'website',
+      ...previousOpenGraph,
+      url: `${WEBAPP_URL}/projects/${params.slug}`,
       title: name,
-      siteName: site.name,
       description: description,
-      locale: 'en-US',
       images: [
         {
-          url: `${site.url}${image}`,
+          url: `${WEBAPP_URL}${image}`,
           width: 1280,
           height: 832,
           alt: description,
@@ -65,7 +64,7 @@ export const generateMetadata = async (
       ...previousTwitter,
       title: name,
       description: description,
-      images: [`${site.url}${image}`]
+      images: [`${WEBAPP_URL}${image}`]
     }
   }
 }

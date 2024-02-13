@@ -1,8 +1,8 @@
 import type { Metadata, ResolvingMetadata } from 'next'
 
 import PageTitle from '@/components/page-title'
-import site from '@/config/site'
 import { getCurrentUser } from '@/lib/auth'
+import { WEBAPP_URL } from '@/lib/constants'
 import { getMessages } from '@/queries/guestbook'
 
 import Form from './form'
@@ -29,11 +29,11 @@ export const generateMetadata = async (
     title,
     description,
     alternates: {
-      canonical: `${site.url}/guestbook`
+      canonical: `${WEBAPP_URL}/guestbook`
     },
     openGraph: {
       ...previousOpenGraph,
-      url: `${site.url}/guestbook`,
+      url: `${WEBAPP_URL}/guestbook`,
       title,
       description
     },

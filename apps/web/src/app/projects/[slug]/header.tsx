@@ -5,7 +5,7 @@ import { buttonVariants, Link } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { motion } from 'framer-motion'
 
-import site from '@/config/site'
+import { GITHUB_USERNAME } from '@/lib/constants'
 import { type ProjectMetadata } from '@/lib/mdx'
 
 const animation = {
@@ -56,7 +56,7 @@ const Header = (props: HeaderProps) => {
           </Link>
         )}
         <Link href={github} className={cn(buttonVariants(), 'group')}>
-          {site.githubUsername}/{repo}
+          {GITHUB_USERNAME}/{repo}
           <IconArrowUpRight
             size={20}
             className='ml-2 transition-transform duration-200 group-hover:-rotate-12'

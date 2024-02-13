@@ -2,8 +2,8 @@ import { Octokit } from '@octokit/rest'
 import { unstable_noStore as noStore } from 'next/cache'
 import { NextResponse } from 'next/server'
 
-import site from '@/config/site'
 import { env } from '@/env'
+import { GITHUB_USERNAME } from '@/lib/constants'
 
 export const dynamic = 'force-dynamic'
 
@@ -15,13 +15,13 @@ export const GET = async () => {
   })
 
   const { data: repos } = await octokit.request('GET /users/{username}/repos', {
-    username: site.githubUsername
+    username: GITHUB_USERNAME
   })
 
   const {
     data: { followers }
   } = await octokit.request('GET /users/{username}', {
-    username: site.githubUsername
+    username: GITHUB_USERNAME
   })
 
   const stars = repos

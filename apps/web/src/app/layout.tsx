@@ -11,7 +11,12 @@ import Footer from '@/components/footer'
 import Header from '@/components/header'
 import Hello from '@/components/hello'
 import SignInModal from '@/components/sign-in-modal'
-import site from '@/config/site'
+import {
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_TITLE,
+  WEBAPP_URL
+} from '@/lib/constants'
 
 import Providers from './providers'
 
@@ -20,12 +25,12 @@ type RootLayoutProps = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
+  metadataBase: new URL(WEBAPP_URL),
   title: {
-    default: site.title,
-    template: `%s ${site.titleTemplate}`
+    default: SITE_TITLE,
+    template: `%s | ${SITE_TITLE}`
   },
-  description: site.description,
+  description: SITE_DESCRIPTION,
   robots: {
     index: true,
     follow: true,
@@ -40,29 +45,29 @@ export const metadata: Metadata = {
   manifest: '/favicon/site.webmanifest',
   twitter: {
     card: 'summary_large_image',
-    title: site.name,
-    description: site.description,
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
     site: '@tszhong0411',
     siteId: '1152256803746377730',
     creator: '@tszhong0411',
     creatorId: '1152256803746377730',
-    images: [`${site.url}/images/og.png`]
+    images: [`${WEBAPP_URL}/images/og.png`]
   },
-  keywords: site.keywords,
+  keywords: ['tszhong0411', 'Next.js', 'React', 'TypeScript', 'Node.js'],
   creator: 'tszhong0411',
   openGraph: {
-    url: site.url,
+    url: WEBAPP_URL,
     type: 'website',
-    title: site.title,
-    siteName: site.title,
-    description: site.description,
+    title: SITE_TITLE,
+    siteName: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     locale: 'en-US',
     images: [
       {
-        url: `${site.url}/images/og.png`,
+        url: `${WEBAPP_URL}/images/og.png`,
         width: 1200,
         height: 630,
-        alt: site.description,
+        alt: SITE_DESCRIPTION,
         type: 'image/png'
       }
     ]
@@ -77,7 +82,20 @@ export const metadata: Metadata = {
         type: 'image/png'
       }
     ],
-    other: [...site.favicons]
+    other: [
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        url: '/favicon/favicon-16x16.png'
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        url: '/favicon/favicon-32x32.png'
+      }
+    ]
   }
 }
 
