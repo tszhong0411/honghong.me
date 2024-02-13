@@ -57,8 +57,7 @@
         "NEXT_PUBLIC_UMAMI_WEBSITE_ID",
         "NEXT_PUBLIC_UMAMI_WEBSITE_SHARE_URL",
         "RESEND_API_KEY",
-        "AUTHOR_EMAIL",
-        "NEXT_PUBLIC_VERCEL_URL"
+        "AUTHOR_EMAIL"
       ]
     }
   }
