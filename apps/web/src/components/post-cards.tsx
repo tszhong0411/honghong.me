@@ -1,11 +1,10 @@
 'use client'
 
-import { GlowCard, Link } from '@tszhong0411/ui'
-import { dayjs } from '@tszhong0411/utils'
+import { Link } from '@tszhong0411/ui'
 import * as React from 'react'
 import useSWR from 'swr'
 
-import useGlowPointer from '@/hooks/use-glow-pointer'
+import { useFormattedDate } from '@/hooks/use-formatted-date'
 import fetcher from '@/lib/fetcher'
 import { type BlogMetadata } from '@/lib/mdx'
 import { type Likes, type Views } from '@/types'
@@ -19,7 +18,6 @@ type PostCardProps = BlogMetadata
 
 const PostCards = (props: PostCardsProps) => {
   const { posts } = props
-  useGlowPointer()
 
   return (
     <div className='grid gap-4 md:grid-cols-2'>
@@ -32,7 +30,10 @@ const PostCards = (props: PostCardsProps) => {
 
 const PostCard = (props: PostCardProps) => {
   const { slug, title, summary, date } = props
-  const [formattedDate, setFormattedDate] = React.useState('')
+  const formattedDate = useFormattedDate(date, {
+    format: 'LL',
+    loading: '--'
+  })
   const { data: viewsData, isLoading: viewsIsLoading } = useSWR<Views>(
     `/api/views?slug=${slug}`,
     fetcher
@@ -42,38 +43,32 @@ const PostCard = (props: PostCardProps) => {
     fetcher
   )
 
-  React.useEffect(() => {
-    setFormattedDate(dayjs(date).format('LL'))
-  }, [date])
-
   return (
-    <GlowCard asChild>
-      <Link
-        href={`/blog/${slug}`}
-        className='group flex flex-col space-y-3 rounded-xl p-6'
-      >
-        <Image
-          src={`/images/blog/${slug}/cover.png`}
-          className='rounded-xl'
-          width={1200}
-          height={630}
-          imageClassName='transition-transform duration-200 group-hover:scale-105'
-          alt={title}
-        />
-        <div className='flex items-center justify-between gap-2 px-2 pt-4 text-sm text-zinc-500'>
-          {formattedDate || '--'}
-          <div className='flex gap-2'>
-            {likesIsLoading ? '--' : <div>{likesData?.likes} likes</div>}
-            <div>&middot;</div>
-            {viewsIsLoading ? '--' : <div>{viewsData?.views} views</div>}
-          </div>
+    <Link
+      href={`/blog/${slug}`}
+      className='group rounded-xl bg-background-lighter/60 px-2 py-4 shadow-card-border transition-colors duration-200 hover:bg-background-lighter'
+    >
+      <Image
+        src={`/images/blog/${slug}/cover.png`}
+        className='rounded-lg'
+        width={1200}
+        height={630}
+        imageClassName='transition-transform duration-200 group-hover:scale-105'
+        alt={title}
+      />
+      <div className='flex items-center justify-between gap-2 px-2 pt-4 text-sm text-zinc-500'>
+        {formattedDate}
+        <div className='flex gap-2'>
+          {likesIsLoading ? '--' : <div>{likesData?.likes} likes</div>}
+          <div>&middot;</div>
+          {viewsIsLoading ? '--' : <div>{viewsData?.views} views</div>}
         </div>
-        <div className='flex flex-col px-2 py-4'>
-          <h3 className='font-title text-2xl font-bold'>{title}</h3>
-          <p className='mt-2 text-muted-foreground'>{summary}</p>
-        </div>
-      </Link>
-    </GlowCard>
+      </div>
+      <div className='flex flex-col px-2 py-4'>
+        <h3 className='font-title text-2xl font-bold'>{title}</h3>
+        <p className='mt-2 text-muted-foreground'>{summary}</p>
+      </div>
+    </Link>
   )
 }
 
