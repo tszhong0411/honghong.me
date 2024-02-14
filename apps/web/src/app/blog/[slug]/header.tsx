@@ -1,12 +1,12 @@
 'use client'
 
 import { Link } from '@tszhong0411/ui'
-import { dayjs } from '@tszhong0411/utils'
 import * as React from 'react'
 import useSWR from 'swr'
 
 import ImageZoom from '@/components/image-zoom'
 import Image from '@/components/mdx/image'
+import { useFormattedDate } from '@/hooks/use-formatted-date'
 import fetcher from '@/lib/fetcher'
 import { type Comments, type Views } from '@/types'
 
@@ -18,7 +18,10 @@ type HeaderProps = {
 
 const Header = (props: HeaderProps) => {
   const { date, title, slug } = props
-  const [formattedDate, setFormattedDate] = React.useState('')
+  const formattedDate = useFormattedDate(date, {
+    format: 'LL',
+    loading: '--'
+  })
   const { data: viewsData, isLoading: viewsIsLoading } = useSWR<Views>(
     `/api/views?slug=${slug}`,
     fetcher
@@ -27,10 +30,6 @@ const Header = (props: HeaderProps) => {
     `/api/comments?slug=${slug}`,
     fetcher
   )
-
-  React.useEffect(() => {
-    setFormattedDate(dayjs(date).format('LL'))
-  }, [date])
 
   React.useEffect(() => {
     const increment = async () => {
@@ -73,7 +72,7 @@ const Header = (props: HeaderProps) => {
           </div>
           <div className='space-y-1 md:mx-auto'>
             <div className='text-muted-foreground'>Published on</div>
-            <div>{formattedDate || '--'}</div>
+            <div>{formattedDate}</div>
           </div>
           <div className='space-y-1 md:mx-auto'>
             <div className='text-muted-foreground'>Views</div>

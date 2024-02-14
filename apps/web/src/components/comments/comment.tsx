@@ -63,7 +63,10 @@ const Comment = (props: CommentProps) => {
     user
   } = props
 
-  const formattedDate = useFormattedDate(created_at)
+  const formattedDate = useFormattedDate(created_at, {
+    format: 'MMM DD, YYYY',
+    relative: true
+  })
   const [isReplying, setIsReplying] = React.useState(false)
   const [copy] = useCopyToClipboard()
   const [optimisticUpvotes, upvoteOptimistic] = React.useOptimistic<

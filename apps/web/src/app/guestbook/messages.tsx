@@ -18,12 +18,12 @@ import {
   buttonVariants,
   Skeleton
 } from '@tszhong0411/ui'
-import { dayjs } from '@tszhong0411/utils'
 import { type User } from 'next-auth'
 import * as React from 'react'
 import { toast } from 'sonner'
 
 import { deleteMessage } from '@/actions/guestbook'
+import { useFormattedDate } from '@/hooks/use-formatted-date'
 
 type MessagesProps = {
   user: User | null
@@ -36,11 +36,9 @@ type UpdatedDateProps = {
 
 const UpdatedDate = (props: UpdatedDateProps) => {
   const { date } = props
-  const [formattedDate, setFormattedDate] = React.useState('')
-
-  React.useEffect(() => {
-    setFormattedDate(dayjs(date).format('YYYY-MM-DD HH:mm'))
-  }, [date])
+  const formattedDate = useFormattedDate(date, {
+    format: 'YYYY-MM-DD HH:mm'
+  })
 
   if (!formattedDate) return <Skeleton className='h-4 w-24 rounded-md' />
 

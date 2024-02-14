@@ -2,12 +2,13 @@
 
 import { IconArrowUpRight, IconPencil } from '@tabler/icons-react'
 import { buttonVariants, Link } from '@tszhong0411/ui'
-import { cn, dayjs } from '@tszhong0411/utils'
+import { cn } from '@tszhong0411/utils'
 import { motion, useInView } from 'framer-motion'
 import Image from 'next/image'
 import * as React from 'react'
 import useSWR from 'swr'
 
+import { useFormattedDate } from '@/hooks/use-formatted-date'
 import fetcher from '@/lib/fetcher'
 import { type BlogMetadata } from '@/lib/mdx'
 import { type Likes, type Views } from '@/types'
@@ -98,7 +99,10 @@ type ArticleCardProps = BlogMetadata
 
 const ArticleCard = (props: ArticleCardProps) => {
   const { slug, title, summary, date } = props
-  const [formattedDate, setFormattedDate] = React.useState('')
+  const formattedDate = useFormattedDate(date, {
+    format: 'LL',
+    loading: '--'
+  })
   const { data: viewsData, isLoading: viewsIsLoading } = useSWR<Views>(
     `/api/views?slug=${slug}`,
     fetcher
@@ -108,13 +112,8 @@ const ArticleCard = (props: ArticleCardProps) => {
     fetcher
   )
 
-  React.useEffect(() => {
-    setFormattedDate(dayjs(date).format('LL'))
-  }, [date])
-
   return (
     <Link
-      key={slug}
       href={`/blog/${slug}`}
       className='group rounded-xl bg-background-lighter/60 p-2 shadow-card-border transition-colors duration-200 hover:bg-background-lighter'
     >
@@ -133,10 +132,10 @@ const ArticleCard = (props: ArticleCardProps) => {
         height={630}
         src={`/images/blog/${slug}/cover.png`}
         alt={title}
-        className='rounded-xl'
+        className='rounded-lg'
       />
       <div className='flex items-center justify-between gap-2 px-2 pt-4 text-sm text-zinc-500'>
-        {formattedDate || '--'}
+        {formattedDate}
         <div className='flex gap-2'>
           {likesIsLoading ? '--' : <div>{likesData?.likes} likes</div>}
           <div>&middot;</div>
