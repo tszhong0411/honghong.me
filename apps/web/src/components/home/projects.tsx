@@ -93,7 +93,7 @@ const Projects = (props: ProjectsProps) => {
                 height={832}
                 src={project.image}
                 alt={project.description}
-                className='rounded-[11px]'
+                className='rounded-lg'
               />
               <div className='absolute bottom-6 left-7 flex flex-col transition-[left] duration-200 ease-out group-hover:left-[30px]'>
                 <h3 className='font-title text-2xl font-bold'>
