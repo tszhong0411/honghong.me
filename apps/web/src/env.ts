@@ -33,15 +33,12 @@ export const env = createEnv({
 
     DISCORD_WEBHOOK_URL: z.string().url(),
 
-    UMAMI_DATABASE_URL: z.string().url(),
-
     RESEND_API_KEY: z.string().min(1),
     AUTHOR_EMAIL: z.string().email()
   },
   client: {
     NEXT_PUBLIC_UMAMI_URL: z.string().url(),
-    NEXT_PUBLIC_UMAMI_WEBSITE_ID: z.string().uuid(),
-    NEXT_PUBLIC_UMAMI_WEBSITE_SHARE_URL: z.string().url()
+    NEXT_PUBLIC_UMAMI_WEBSITE_ID: z.string().uuid()
   },
   runtimeEnv: {
     SPOTIFY_CLIENT_ID: process.env.SPOTIFY_CLIENT_ID,
@@ -70,11 +67,8 @@ export const env = createEnv({
 
     DISCORD_WEBHOOK_URL: process.env.DISCORD_WEBHOOK_URL,
 
-    UMAMI_DATABASE_URL: process.env.UMAMI_DATABASE_URL,
     NEXT_PUBLIC_UMAMI_URL: process.env.NEXT_PUBLIC_UMAMI_URL,
     NEXT_PUBLIC_UMAMI_WEBSITE_ID: process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID,
-    NEXT_PUBLIC_UMAMI_WEBSITE_SHARE_URL:
-      process.env.NEXT_PUBLIC_UMAMI_WEBSITE_SHARE_URL,
 
     RESEND_API_KEY: process.env.RESEND_API_KEY,
     AUTHOR_EMAIL: process.env.AUTHOR_EMAIL

@@ -20,11 +20,4 @@ describe('<Footer />', () => {
 
     expect(screen.getByText('Loading ...')).toBeInTheDocument()
   })
-
-  it('renders <CurrentVisitors /> when NODE_ENV = production', () => {
-    vi.stubEnv('NODE_ENV', 'production')
-    render(<Footer />)
-
-    expect(screen.getByTestId('skeleton-loader')).toBeInTheDocument()
-  })
 })
