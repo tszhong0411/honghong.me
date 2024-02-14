@@ -40,7 +40,7 @@
     "hastscript": "^9.0.0",
     "jiti": "^1.21.0",
     "marked": "^12.0.0",
-    "next": "14.1.1-canary.44",
+    "next": "14.1.1-canary.52",
     "next-auth": "5.0.0-beta.4",
     "next-mdx-remote": "^4.4.1",
     "react": "^18.2.0",
