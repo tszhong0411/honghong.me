@@ -24,8 +24,8 @@ importers:
         specifier: workspace:*
         version: link:packages/prettier-config
       husky:
-        specifier: ^9.0.10
-        version: 9.0.10
+        specifier: ^9.0.11
+        version: 9.0.11
       knip:
         specifier: ^5.0.0
         version: 5.0.0(@types/node@20.11.17)(typescript@5.3.3)
@@ -10019,8 +10019,8 @@ packages:
     engines: {node: '>=16.17.0'}
     dev: true
 
-  /husky@9.0.10:
-    resolution: {integrity: sha512-TQGNknoiy6bURzIO77pPRu+XHi6zI7T93rX+QnJsoYFf3xdjKOur+IlfqzJGMHIK/wXrLg+GsvMs8Op7vI2jVA==}
+  /husky@9.0.11:
+    resolution: {integrity: sha512-AB6lFlbwwyIqMdHYhwPe+kjOC3Oc5P3nThEoW/AaO2BX3vJDjWPFxYLxokUZOo6RNX20He3AaT8sESs9NJcmEw==}
     engines: {node: '>=18'}
     hasBin: true
     dev: true
