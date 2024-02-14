@@ -17,6 +17,12 @@ export const metadata: Metadata = {
 
 const HomePage = () => {
   const posts = getAllPages<BlogMetadata>('blog')
+  const latestPosts = posts
+    .sort((a, b) => {
+      return new Date(b.date).getTime() - new Date(a.date).getTime()
+    })
+    .slice(0, 2)
+
   const projects = getAllPages<ProjectMetadata>('projects')
 
   return (
@@ -24,7 +30,7 @@ const HomePage = () => {
       <Hero />
       <Projects projects={projects} />
       <AboutMe />
-      <LatestArticles posts={posts} />
+      <LatestArticles posts={latestPosts} />
       <GetInTouch />
     </>
   )

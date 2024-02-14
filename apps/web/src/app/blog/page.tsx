@@ -42,7 +42,9 @@ export const generateMetadata = async (
 }
 
 const BlogPage = () => {
-  const posts = getAllPages<BlogMetadata>('blog')
+  const posts = getAllPages<BlogMetadata>('blog').sort((a, b) => {
+    return new Date(b.date).getTime() - new Date(a.date).getTime()
+  })
 
   return (
     <>
