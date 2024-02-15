@@ -34,7 +34,7 @@ export const generateMetadata = async (
   }
 
   const {
-    metadata: { name, description, image }
+    metadata: { name, description }
   } = project
   const previousTwitter = (await parent)?.twitter ?? {}
   const previousOpenGraph = (await parent)?.openGraph ?? {}
@@ -52,7 +52,7 @@ export const generateMetadata = async (
       description: description,
       images: [
         {
-          url: `${WEBAPP_URL}${image}`,
+          url: `${WEBAPP_URL}/images/projects/${params.slug}/cover.png`,
           width: 1280,
           height: 832,
           alt: description,
@@ -64,7 +64,14 @@ export const generateMetadata = async (
       ...previousTwitter,
       title: name,
       description: description,
-      images: [`${WEBAPP_URL}${image}`]
+      images: [
+        {
+          url: `${WEBAPP_URL}/images/projects/${params.slug}/cover.png`,
+          width: 1280,
+          height: 832,
+          alt: description
+        }
+      ]
     }
   }
 }
@@ -86,7 +93,7 @@ const ProjectPage = (props: ProjectPageProps) => {
     <div className='mx-auto max-w-3xl'>
       <Header metadata={metadata} />
       <Image
-        src={metadata.image}
+        src={`/images/projects/${slug}/cover.png`}
         width={1280}
         height={832}
         alt={metadata.name}

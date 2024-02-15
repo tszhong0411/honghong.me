@@ -24,7 +24,7 @@ const ProjectCards = (props: ProjectCardsProps) => {
 }
 
 const ProjectCard = (props: ProjectCardProps) => {
-  const { name, image, description, techstack, slug } = props
+  const { name, description, techstack, slug } = props
 
   return (
     <Link
@@ -32,7 +32,7 @@ const ProjectCard = (props: ProjectCardProps) => {
       className='group rounded-xl bg-background-lighter/60 px-2 py-4 shadow-card-border transition-colors duration-200 hover:bg-background-lighter'
     >
       <Image
-        src={image}
+        src={`/images/projects/${slug}/cover.png`}
         width={1280}
         height={832}
         imageClassName='transition-transform duration-200 group-hover:scale-105'

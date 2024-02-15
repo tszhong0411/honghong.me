@@ -91,7 +91,7 @@ const Projects = (props: ProjectsProps) => {
               <Image
                 width={1280}
                 height={832}
-                src={project.image}
+                src={`/images/projects/${project.slug}/cover.png`}
                 alt={project.description}
                 className='rounded-lg'
               />

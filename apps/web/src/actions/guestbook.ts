@@ -117,7 +117,8 @@ export const createMessage = (formData: FormData) =>
             }
           ],
           username: 'Blog',
-          avatar_url: 'https://honghong.me/images/projects/blog/logo.png',
+          avatar_url:
+            'https://cdn.discordapp.com/avatars/1123845082672537751/8af603a10f1d2f86ebc922ede339cd3a.webp',
           attachments: []
         })
       })

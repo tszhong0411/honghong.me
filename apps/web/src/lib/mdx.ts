@@ -7,8 +7,6 @@ export type ProjectMetadata = {
   description: string
   homepage: string
   github: string
-  image: string
-  repo: string
   techstack: Array<{ label: string }>
   selected: boolean
   slug: string

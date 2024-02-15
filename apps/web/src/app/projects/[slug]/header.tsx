@@ -25,8 +25,10 @@ type HeaderProps = {
 
 const Header = (props: HeaderProps) => {
   const {
-    metadata: { name, description, homepage, github, repo }
+    metadata: { name, description, homepage, github }
   } = props
+
+  const repo = github.split('/').pop()
 
   return (
     <div className='space-y-8 pt-10'>
