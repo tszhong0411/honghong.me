@@ -51,7 +51,14 @@ export const metadata: Metadata = {
     siteId: '1152256803746377730',
     creator: '@tszhong0411',
     creatorId: '1152256803746377730',
-    images: [`${WEBAPP_URL}/images/og.png`]
+    images: [
+      {
+        url: `${WEBAPP_URL}/images/og.png`,
+        width: 1200,
+        height: 630,
+        alt: SITE_DESCRIPTION
+      }
+    ]
   },
   keywords: ['tszhong0411', 'Next.js', 'React', 'TypeScript', 'Node.js'],
   creator: 'tszhong0411',

@@ -76,9 +76,14 @@ export const generateMetadata = async (
       title: title,
       description: summary,
       images: [
-        `${WEBAPP_URL}/api/og?title=${title}&date=${
-          date.split('T')[0]
-        }&url=honghong.me/blog`
+        {
+          url: `${WEBAPP_URL}/api/og?title=${title}&date=${
+            date.split('T')[0]
+          }&url=honghong.me/blog`,
+          width: 1200,
+          height: 630,
+          alt: title
+        }
       ]
     }
   }
