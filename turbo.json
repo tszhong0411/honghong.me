@@ -7,7 +7,6 @@
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**", "dist/**"]
     },
-    "check-updates": {},
     "clean": {},
     "dev": {
       "cache": false,
