@@ -12,7 +12,8 @@
   "bugs": {
     "url": "https://github.com/tszhong0411/honghong.me/issues"
   },
-  "main": "src/index.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "files": [
     "dist"
   ],
@@ -26,6 +27,7 @@
     "lint:fix": "eslint --fix .",
     "type-check": "tsc --noEmit"
   },
+  "types": "./dist/index.d.ts",
   "dependencies": {
     "clsx": "^2.1.0",
     "dayjs": "^1.11.10",
@@ -40,6 +42,13 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
   },
   "lint-staged": {
     "*.{js,jsx,cjs,mjs,ts,tsx}": [
