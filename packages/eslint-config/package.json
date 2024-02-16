@@ -1,9 +1,9 @@
 {
   "name": "@tszhong0411/eslint-config",
   "version": "0.0.5",
-  "description": "The eslint config for tszhong0411 projects",
+  "description": "The eslint config for tszhong0411's projects",
   "license": "MIT",
-  "author": "tszhong0411 me@honghong.me (https://github.com/tszhong0411/)",
+  "author": "tszhong0411 <me@honghong.me> (https://github.com/tszhong0411/)",
   "homepage": "https://github.com/tszhong0411/honghong.me#readme",
   "repository": {
     "type": "git",
@@ -37,12 +37,6 @@
   "devDependencies": {
     "eslint": "^8.56.0"
   },
-  "keywords": [
-    "eslint",
-    "eslint-config",
-    "eslintconfig",
-    "tszhong0411"
-  ],
   "publishConfig": {
     "access": "public"
   }

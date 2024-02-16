@@ -1,14 +1,29 @@
 {
-  "private": true,
   "name": "@tszhong0411/tailwind-config",
   "version": "0.0.0",
+  "description": "The Tailwind CSS configuration for tszhong0411's projects",
   "license": "MIT",
+  "author": "tszhong0411 <me@honghong.me> (https://github.com/tszhong0411/)",
+  "homepage": "https://github.com/tszhong0411/honghong.me#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tszhong0411/honghong.me.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tszhong0411/honghong.me/issues"
+  },
   "main": "tailwind.config.ts",
+  "files": [
+    "tailwind.config.ts"
+  ],
   "dependencies": {
     "@tailwindcss/typography": "^0.5.10",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.1"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

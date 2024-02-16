@@ -5,7 +5,7 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**"]
+      "outputs": [".next/**", "!.next/cache/**", "dist/**"]
     },
     "check-updates": {},
     "clean": {},
@@ -28,13 +28,10 @@
     "start": {
       "dependsOn": ["^build"]
     },
-    "test": {
-      "cache": false
-    },
     "type-check": {},
     "blog#build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**"],
+      "outputs": [".next/**", "!.next/cache/**"],
       "env": [
         "ANALYZE",
         "SPOTIFY_CLIENT_ID",

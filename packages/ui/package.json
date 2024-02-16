@@ -1,12 +1,25 @@
 {
-  "private": true,
   "name": "@tszhong0411/ui",
   "version": "0.0.0",
+  "description": "The UI components for tszhong0411's projects",
   "license": "MIT",
-  "type": "module",
+  "author": "tszhong0411 <me@honghong.me> (https://github.com/tszhong0411/)",
+  "homepage": "https://github.com/tszhong0411/honghong.me#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tszhong0411/honghong.me.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tszhong0411/honghong.me/issues"
+  },
   "main": "src/index.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "clean": "rm -rf .turbo",
+    "build": "tsup",
+    "clean": "rm -rf .turbo dist",
+    "dev": "tsup --watch",
     "format:check": "prettier -c .",
     "format:write": "prettier -w .",
     "lint": "eslint . --max-warnings 0",
@@ -27,25 +40,31 @@
     "@radix-ui/react-tabs": "^1.0.4",
     "@radix-ui/react-tooltip": "^1.0.7",
     "@tabler/icons-react": "^2.46.0",
-    "@tszhong0411/utils": "workspace:*",
     "class-variance-authority": "^0.7.0",
     "cmdk": "^0.2.0",
     "react-textarea-autosize": "^8.5.3"
   },
   "peerDependencies": {
-    "next": "^14",
-    "react": "^18.2.0"
+    "@tszhong0411/utils": ">=0",
+    "next": ">=13",
+    "react": ">=18",
+    "react-dom": ">=18"
   },
   "devDependencies": {
     "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/tailwind-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
+    "@tszhong0411/utils": "workspace:*",
     "@types/react": "^18.2.55",
     "eslint": "^8.56.0",
     "next": "14.1.1-canary.44",
     "react": "^18.2.0",
     "tailwindcss": "^3.4.1",
+    "tsup": "^8.0.2",
     "typescript": "^5.3.3"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "lint-staged": {
     "*.{js,jsx,cjs,mjs,ts,tsx}": [

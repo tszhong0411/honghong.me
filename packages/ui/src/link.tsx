@@ -9,7 +9,7 @@ const linkVariants = cva('', {
       article:
         'bg-[linear-gradient(rgb(0,0,0,0)70%,rgb(173,32,60)0)] no-underline',
       muted:
-        'text-muted-foreground hover:text-foreground transition-colors duration-200'
+        'text-muted-foreground transition-colors duration-200 hover:text-foreground'
     }
   }
 })

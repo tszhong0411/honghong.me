@@ -36,7 +36,7 @@ const CommandDialog = (props: CommandDialogProps) => {
       <DialogContent className='overflow-hidden p-0 shadow-lg'>
         <Command
           className={cn(
-            '[&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium',
+            '[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground',
             '[&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2',
             '[&_[cmdk-input-wrapper]_svg]:size-5',
             '[&_[cmdk-input]]:h-12',
@@ -116,8 +116,8 @@ const CommandGroup = React.forwardRef<
     <CommandPrimitive.Group
       ref={ref}
       className={cn(
-        'text-foreground overflow-hidden p-1',
-        '[&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium',
+        'overflow-hidden p-1 text-foreground',
+        '[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground',
         className
       )}
       {...rest}
@@ -134,7 +134,7 @@ const CommandSeparator = React.forwardRef<
   return (
     <CommandPrimitive.Separator
       ref={ref}
-      className={cn('bg-border -mx-1 h-px', className)}
+      className={cn('-mx-1 h-px bg-border', className)}
       {...rest}
     />
   )
@@ -150,7 +150,7 @@ const CommandItem = React.forwardRef<
     <CommandPrimitive.Item
       ref={ref}
       className={cn(
-        'text-muted-foreground relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none',
+        'relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm text-muted-foreground outline-none',
         'aria-selected:bg-accent aria-selected:text-foreground',
         'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
         className
@@ -169,7 +169,7 @@ const CommandShortcut = React.forwardRef<
   return (
     <span
       className={cn(
-        'text-muted-foreground ml-auto text-xs tracking-widest',
+        'ml-auto text-xs tracking-widest text-muted-foreground',
         className
       )}
       ref={ref}

@@ -1,11 +1,25 @@
 {
-  "private": true,
   "name": "@tszhong0411/utils",
   "version": "0.0.0",
+  "description": "A collection of utility functions for tszhong0411's projects",
   "license": "MIT",
+  "author": "tszhong0411 <me@honghong.me> (https://github.com/tszhong0411/)",
+  "homepage": "https://github.com/tszhong0411/honghong.me#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tszhong0411/honghong.me.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tszhong0411/honghong.me/issues"
+  },
   "main": "src/index.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "clean": "rm -rf .turbo",
+    "build": "tsup",
+    "clean": "rm -rf .turbo dist",
+    "dev": "tsup --watch",
     "format:check": "prettier -c .",
     "format:write": "prettier -w .",
     "lint": "eslint . --max-warnings 0",
@@ -21,7 +35,11 @@
     "@tszhong0411/eslint-config": "workspace:^",
     "@tszhong0411/tsconfig": "workspace:^",
     "eslint": "^8.56.0",
+    "tsup": "^8.0.2",
     "typescript": "^5.3.3"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "lint-staged": {
     "*.{js,jsx,cjs,mjs,ts,tsx}": [
