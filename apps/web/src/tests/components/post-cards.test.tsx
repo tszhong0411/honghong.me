@@ -1,8 +1,8 @@
 import { screen } from '@testing-library/react'
-import { dayjs } from '@tszhong0411/utils'
 
 import PostCards from '@/components/post-cards'
 import { type BlogMetadata, getAllPages } from '@/lib/mdx'
+import { dayjs } from '@/utils/dayjs'
 
 import { renderWithSWRConfig } from '../utils'
 
