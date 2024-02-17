@@ -40,6 +40,9 @@ jobs:
       - name: Get preview environment variables
         run: vercel env pull apps/web/.env.local --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
+      - name: Build packages
+        run: pnpm build --filter=./packages/*
+
       - name: Lint
         run: pnpm lint
 
