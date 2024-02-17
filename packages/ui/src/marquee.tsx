@@ -1,4 +1,4 @@
-import { cn, range } from '@tszhong0411/utils'
+import { cn } from '@tszhong0411/utils'
 import React from 'react'
 
 type MarqueeProps = {
@@ -41,7 +41,7 @@ const Marquee = (props: MarqueeProps) => {
           : undefined
       }}
     >
-      {range(0, 2).map((i) => (
+      {Array.from({ length: 2 }, (_, i) => (
         <div
           key={i}
           className={cn(
