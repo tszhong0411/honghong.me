@@ -1,5 +1,6 @@
-import { dayjs } from '@tszhong0411/utils'
 import * as React from 'react'
+
+import { dayjs } from '@/utils/dayjs'
 
 type Options = {
   format: string

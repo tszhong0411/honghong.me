@@ -74,6 +74,9 @@ importers:
       cobe:
         specifier: ^0.6.3
         version: 0.6.3
+      dayjs:
+        specifier: ^1.11.10
+        version: 1.11.10
       framer-motion:
         specifier: ^11.0.3
         version: 11.0.3(react-dom@18.2.0)(react@18.2.0)
@@ -496,9 +499,6 @@ importers:
       clsx:
         specifier: ^2.1.0
         version: 2.1.0
-      dayjs:
-        specifier: ^1.11.10
-        version: 1.11.10
       tailwind-merge:
         specifier: ^2.2.1
         version: 2.2.1
@@ -509,6 +509,9 @@ importers:
       '@tszhong0411/tsconfig':
         specifier: workspace:^
         version: link:../tsconfig
+      '@types/node':
+        specifier: ^20.11.17
+        version: 20.11.17
       eslint:
         specifier: ^8.56.0
         version: 8.56.0

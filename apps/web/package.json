@@ -34,6 +34,7 @@
     "@tszhong0411/utils": "workspace:*",
     "canvas-confetti": "^1.9.2",
     "cobe": "^0.6.3",
+    "dayjs": "^1.11.10",
     "framer-motion": "^11.0.3",
     "geist": "^1.2.2",
     "gray-matter": "^4.0.3",
