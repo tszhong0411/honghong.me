@@ -1,5 +1,13 @@
 # @tszhong0411/utils
 
+## 0.0.4
+
+### Patch Changes
+
+- [`0ac65b9`](https://github.com/tszhong0411/honghong.me/commit/0ac65b9fe08356ca093c6f72874f4fc49d2eb0bc) Thanks [@tszhong0411](https://github.com/tszhong0411)! - remove range function
+
+- [#756](https://github.com/tszhong0411/honghong.me/pull/756) [`17ad46d`](https://github.com/tszhong0411/honghong.me/commit/17ad46dbfe5afa85872478d6099273da7fd90b62) Thanks [@tszhong0411](https://github.com/tszhong0411)! - remove dayjs from @tszhong0411/utils
+
 ## 0.0.3
 
 ### Patch Changes

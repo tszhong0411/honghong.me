@@ -1,5 +1,14 @@
 # @tszhong0411/ui
 
+## 0.0.4
+
+### Patch Changes
+
+- [`80546d7`](https://github.com/tszhong0411/honghong.me/commit/80546d77649248e18ff61b3158e14717646d6e74) Thanks [@tszhong0411](https://github.com/tszhong0411)! - remove range function
+
+- Updated dependencies [[`0ac65b9`](https://github.com/tszhong0411/honghong.me/commit/0ac65b9fe08356ca093c6f72874f4fc49d2eb0bc), [`17ad46d`](https://github.com/tszhong0411/honghong.me/commit/17ad46dbfe5afa85872478d6099273da7fd90b62)]:
+  - @tszhong0411/utils@0.0.4
+
 ## 0.0.3
 
 ### Patch Changes
