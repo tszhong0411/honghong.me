@@ -1,19 +1,18 @@
-name: Publish
+name: Release
 
 on:
   push:
     branches:
-      - main
+      - dev
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
-  build:
-    if: ${{ github.repository_owner == 'tszhong0411' }}
-    name: Create a PR for release workflow
+  release:
+    name: Release
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Install pnpm
@@ -21,20 +20,19 @@ jobs:
         with:
           version: 8
 
-      - name: Setup node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
+          cache: 'pnpm'
 
       - name: Install dependencies
         run: pnpm install
 
-      - name: Create version PR or Publish to NPM
+      - name: Create Release Pull Request or Publish to NPM
         id: changesets
         uses: changesets/action@v1
         with:
-          commit: 'chore(release): version packages'
-          title: 'chore(release): version packages'
           version: pnpm version
           publish: pnpm publish
         env:

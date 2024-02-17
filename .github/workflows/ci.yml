@@ -12,7 +12,6 @@ env:
 
 jobs:
   ci:
-    if: github.event_name == 'pull_request'
     name: CI
     timeout-minutes: 60
     runs-on: ubuntu-latest
