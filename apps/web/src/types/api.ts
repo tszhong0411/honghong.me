@@ -37,7 +37,3 @@ export type Github = {
 export type Wakatime = {
   seconds: number
 }
-
-export type Analytics = {
-  visitors: number
-}
