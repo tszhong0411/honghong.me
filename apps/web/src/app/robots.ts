@@ -1,6 +1,6 @@
 import { type MetadataRoute } from 'next'
 
-import { WEBAPP_URL } from '@/lib/constants'
+import { SITE_URL } from '@/lib/constants'
 
 const robots = (): MetadataRoute.Robots => ({
   rules: [
@@ -10,8 +10,8 @@ const robots = (): MetadataRoute.Robots => ({
       disallow: ['/404', '/500', '/api/*']
     }
   ],
-  sitemap: `${WEBAPP_URL}/sitemap.xml`,
-  host: `${WEBAPP_URL}`
+  sitemap: `${SITE_URL}/sitemap.xml`,
+  host: `${SITE_URL}`
 })
 
 export default robots

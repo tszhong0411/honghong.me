@@ -15,7 +15,7 @@ import {
   SITE_DESCRIPTION,
   SITE_NAME,
   SITE_TITLE,
-  WEBAPP_URL
+  SITE_URL
 } from '@/lib/constants'
 
 import Providers from './providers'
@@ -25,7 +25,7 @@ type RootLayoutProps = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL(WEBAPP_URL),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: SITE_TITLE,
     template: `%s | ${SITE_TITLE}`
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     creatorId: '1152256803746377730',
     images: [
       {
-        url: `${WEBAPP_URL}/images/og.png`,
+        url: `${SITE_URL}/images/og.png`,
         width: 1200,
         height: 630,
         alt: SITE_DESCRIPTION
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
   keywords: ['tszhong0411', 'Next.js', 'React', 'TypeScript', 'Node.js'],
   creator: 'tszhong0411',
   openGraph: {
-    url: WEBAPP_URL,
+    url: SITE_URL,
     type: 'website',
     title: SITE_TITLE,
     siteName: SITE_TITLE,
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     locale: 'en-US',
     images: [
       {
-        url: `${WEBAPP_URL}/images/og.png`,
+        url: `${SITE_URL}/images/og.png`,
         width: 1200,
         height: 630,
         alt: SITE_DESCRIPTION,

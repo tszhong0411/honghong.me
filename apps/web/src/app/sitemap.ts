@@ -1,6 +1,6 @@
 import { type MetadataRoute } from 'next'
 
-import { WEBAPP_URL } from '@/lib/constants'
+import { SITE_URL } from '@/lib/constants'
 import {
   type BlogMetadata,
   getAllPages,
@@ -10,7 +10,7 @@ import {
 
 const sitemap = (): MetadataRoute.Sitemap => {
   const blogPosts = getAllPages<BlogMetadata>('blog').map((post) => ({
-    url: `${WEBAPP_URL}/blog/${post.slug}`,
+    url: `${SITE_URL}/blog/${post.slug}`,
     lastModified: post.date.split('T')[0]
   }))
 
@@ -25,7 +25,7 @@ const sitemap = (): MetadataRoute.Sitemap => {
       (project) => `/projects/${project.slug}`
     )
   ].map((route) => ({
-    url: `${WEBAPP_URL}${route}`,
+    url: `${SITE_URL}${route}`,
     lastModified: new Date().toISOString().split('T')[0]
   }))
 

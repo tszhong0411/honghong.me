@@ -1,4 +1,4 @@
-export const WEBAPP_URL =
+export const SITE_URL =
   process.env.NODE_ENV === 'production'
     ? 'https://honghong.me'
     : 'http://localhost:3000'

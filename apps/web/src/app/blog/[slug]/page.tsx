@@ -5,7 +5,7 @@ import { type Article, type WithContext } from 'schema-dts'
 
 import Comments from '@/components/comments'
 import CommentsLoading from '@/components/comments/comments-loading'
-import { SITE_NAME, WEBAPP_URL } from '@/lib/constants'
+import { SITE_NAME, SITE_URL } from '@/lib/constants'
 import { type BlogMetadata, getAllPages, getPage } from '@/lib/mdx'
 
 import Content from './content'
@@ -48,20 +48,20 @@ export const generateMetadata = async (
     title: title,
     description: summary,
     alternates: {
-      canonical: `${WEBAPP_URL}/blog/${slug}`
+      canonical: `${SITE_URL}/blog/${slug}`
     },
     openGraph: {
       ...previousOpenGraph,
-      url: `${WEBAPP_URL}/blog/${slug}`,
+      url: `${SITE_URL}/blog/${slug}`,
       type: 'article',
       title: title,
       description: summary,
       publishedTime: ISOPublishedTime,
       modifiedTime: ISOModifiedTime,
-      authors: WEBAPP_URL,
+      authors: SITE_URL,
       images: [
         {
-          url: `${WEBAPP_URL}/api/og?title=${title}&date=${
+          url: `${SITE_URL}/api/og?title=${title}&date=${
             date.split('T')[0]
           }&url=honghong.me/blog`,
           width: 1200,
@@ -77,7 +77,7 @@ export const generateMetadata = async (
       description: summary,
       images: [
         {
-          url: `${WEBAPP_URL}/api/og?title=${title}&date=${
+          url: `${SITE_URL}/api/og?title=${title}&date=${
             date.split('T')[0]
           }&url=honghong.me/blog`,
           width: 1200,
@@ -113,18 +113,18 @@ const BlogPostPage = (props: BlogPostPageProps) => {
     description: summary,
     datePublished: date,
     dateModified: modifiedTime,
-    image: `${WEBAPP_URL}/api/og?title=${title}&date=${
+    image: `${SITE_URL}/api/og?title=${title}&date=${
       date.split('T')[0]
     }&url=honghong.me/blog`,
     author: {
       '@type': 'Person',
       name: SITE_NAME,
-      url: WEBAPP_URL
+      url: SITE_URL
     },
     publisher: {
       '@type': 'Person',
       name: SITE_NAME,
-      url: WEBAPP_URL
+      url: SITE_URL
     }
   }
 
