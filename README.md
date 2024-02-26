@@ -1,14 +1,21 @@
 <p align="center">
-  <img src="https://honghong.me/images/projects/blog/cover.png">
+  <img alt="" src="https://honghong.me/images/projects/blog/cover.png">
 </p>
 
-[![GitHub](https://img.shields.io/github/license/tszhong0411/honghong.me)](https://github.com/tszhong0411/honghong.me/blob/main/LICENSE)
-[![codecov](https://codecov.io/gh/tszhong0411/honghong.me/branch/main/graph/badge.svg)](https://codecov.io/gh/tszhong0411/honghong.me)
-[![CodeFactor](https://www.codefactor.io/repository/github/tszhong0411/honghong.me/badge)](https://www.codefactor.io/repository/github/tszhong0411/honghong.me)
-[![CI](https://github.com/tszhong0411/honghong.me/actions/workflows/ci.yml/badge.svg)](https://github.com/tszhong0411/honghong.me/actions/workflows/ci.yml)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/tszhong0411/honghong.me/blob/main/CONTRIBUTING.md)
-![GitHub top language](https://img.shields.io/github/languages/top/tszhong0411/honghong.me)
-![GitHub repo size](https://img.shields.io/github/repo-size/tszhong0411/honghong.me)
+<h1 align="center">
+  honghong.me
+</h1>
+
+<p align="center">
+  <a aria-label="Framework" href="https://nextjs.org">
+    <img alt="" src="https://img.shields.io/badge/Next.js-000000.svg?style=for-the-badge&logo=Next.js&labelColor=000">
+  </a>
+  <img alt="" src="https://img.shields.io/github/languages/top/tszhong0411/honghong.me?style=for-the-badge&labelColor=000
+  ">
+  <a aria-label="License" href="https://github.com/tszhong0411/honghong.me/blob/main/LICENSE">
+    <img alt="" src="https://img.shields.io/github/license/tszhong0411/honghong.me?style=for-the-badge&labelColor=000">
+  </a>
+</p>
 
 Welcome to the monorepo of my personal blog! This repository houses the code for my blog, where I share my thoughts, projects, and insights. Feel free to explore and get inspired.
 
@@ -20,7 +27,7 @@ Welcome to the monorepo of my personal blog! This repository houses the code for
 - 🌈 Radix UI - accessible UI components
 - 🛡 Strict TypeScript and ESLint configuration
 - 📱 Responsive design
-- 🌗 Dark mode
+- 🌗 Light / Dark mode
 - 📈 SEO optimized with meta tags and JSON-LD
 - 📰 RSS feed
 - 🗺 Sitemap
@@ -29,18 +36,15 @@ Welcome to the monorepo of my personal blog! This repository houses the code for
 - 🔎 Blog post search
 - 📖 Table of contents for blog posts
 - 📷 Image zoom - zoom in on images in blog posts
-- 📝 Code syntax highlighting - for code blocks in blog posts
+- 📝 Code syntax highlighting - using Shiki
 - 🎨 Animation - using Framer Motion
 - 🤖 GitHub Actions for CI/CD
 - 🏠 LightHouse score of nearly 100
-- 🧪 Vitest - unit and integration tests
-- 🎭 Playwright - end-to-end tests
-- ☂️ Codecov - code coverage
 - 🔨 Husky & Lint Staged - lint and format code before committing
 - ✅ Conventional commit lint - make sure commit messages follow the conventional commit format
 - 🔒 NextAuth.js - authentication
 - 💄 Prettier - code formatting
-- ◮ Prisma - ORM
+- 〰️ Drizzle - ORM
 - 👷🏻‍♂️ t3-env - validate environment variables before building
 
 ## 🔨 Requirements
@@ -80,6 +84,10 @@ The app will become available at `http://localhost:3000`.
 
 This project has been possible thanks to the wonderful open-source community. Special thanks to [Timothy](https://www.timlrx.com/) for the [Tailwind nextjs starter blog template](https://github.com/timlrx/tailwind-nextjs-starter-blog).
 
+## ✍🏻 Author
+
+- [@tszhong0411](https://github.com/tszhong0411)
+
 ## ✨ Contributors
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
@@ -101,6 +109,10 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+## 🪪 License
+
+This project is open source and available under the [MIT License](LICENSE).
 
 <hr>
 <p align="center">

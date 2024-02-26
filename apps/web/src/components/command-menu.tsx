@@ -8,13 +8,6 @@ import {
   SiYoutube
 } from '@icons-pack/react-simple-icons'
 import {
-  IconCode,
-  IconCommand,
-  IconLink,
-  IconLogin,
-  IconLogout
-} from '@tabler/icons-react'
-import {
   Button,
   CommandDialog,
   CommandEmpty,
@@ -24,6 +17,13 @@ import {
   CommandList,
   CommandSeparator
 } from '@tszhong0411/ui'
+import {
+  CodeIcon,
+  CommandIcon,
+  LinkIcon,
+  LogInIcon,
+  LogOutIcon
+} from 'lucide-react'
 import { signOut, useSession } from 'next-auth/react'
 import * as React from 'react'
 
@@ -70,14 +70,14 @@ const CommandMenu = () => {
           ? [
               {
                 title: 'Sign out',
-                icon: <IconLogout />,
+                icon: <LogOutIcon className='mr-3 size-4' />,
                 onSelect: () => signOut()
               }
             ]
           : [
               {
                 title: 'Sign in',
-                icon: <IconLogin />,
+                icon: <LogInIcon className='mr-3 size-4' />,
                 onSelect: () => {
                   setOpen(false)
                   setSignInModalOpen(true)
@@ -91,7 +91,7 @@ const CommandMenu = () => {
       actions: [
         {
           title: 'Copy Link',
-          icon: <IconLink />,
+          icon: <LinkIcon className='mr-3 size-4' />,
           onSelect: async () => {
             setOpen(false)
 
@@ -110,7 +110,7 @@ const CommandMenu = () => {
         },
         {
           title: 'Source code',
-          icon: <IconCode />,
+          icon: <CodeIcon className='mr-3 size-4' />,
           onSelect: () => openLink('https://github.com/tszhong0411/honghong.me')
         }
       ]
@@ -120,27 +120,27 @@ const CommandMenu = () => {
       actions: [
         {
           title: 'GitHub',
-          icon: <SiGithub />,
+          icon: <SiGithub className='mr-3 size-4' />,
           onSelect: () => openLink('https://github.com/tszhong0411')
         },
         {
           title: 'Facebook',
-          icon: <SiFacebook />,
+          icon: <SiFacebook className='mr-3 size-4' />,
           onSelect: () => openLink('https://www.facebook.com/tszhong0411/')
         },
         {
           title: 'Instagram',
-          icon: <SiInstagram />,
+          icon: <SiInstagram className='mr-3 size-4' />,
           onSelect: () => openLink('https://instagram.com/tszhong0411/')
         },
         {
           title: 'X',
-          icon: <SiX />,
+          icon: <SiX className='mr-3 size-4' />,
           onSelect: () => openLink('https://x.com/tszhong0411')
         },
         {
           title: 'YouTube',
-          icon: <SiYoutube />,
+          icon: <SiYoutube className='mr-3 size-4' />,
           onSelect: () => openLink('https://youtube.com/@tszhong0411')
         }
       ]
@@ -157,7 +157,7 @@ const CommandMenu = () => {
         aria-label='Open command menu'
       >
         <span className='sr-only'>Open command menu</span>
-        <IconCommand size={20} />
+        <CommandIcon className='size-4' />
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder='Type a command or search...' />

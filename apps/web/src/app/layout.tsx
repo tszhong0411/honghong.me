@@ -7,6 +7,7 @@ import Image from 'next/image'
 
 import '@/styles/globals.css'
 import Analytics from '@/components/analytics'
+import { AutoRefresh } from '@/components/auto-refresh'
 import Footer from '@/components/footer'
 import Header from '@/components/header'
 import Hello from '@/components/hello'
@@ -15,7 +16,7 @@ import {
   SITE_DESCRIPTION,
   SITE_NAME,
   SITE_TITLE,
-  WEBAPP_URL
+  SITE_URL
 } from '@/lib/constants'
 
 import Providers from './providers'
@@ -25,7 +26,7 @@ type RootLayoutProps = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL(WEBAPP_URL),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: SITE_TITLE,
     template: `%s | ${SITE_TITLE}`
@@ -53,7 +54,7 @@ export const metadata: Metadata = {
     creatorId: '1152256803746377730',
     images: [
       {
-        url: `${WEBAPP_URL}/images/og.png`,
+        url: `${SITE_URL}/images/og.png`,
         width: 1200,
         height: 630,
         alt: SITE_DESCRIPTION
@@ -63,7 +64,7 @@ export const metadata: Metadata = {
   keywords: ['tszhong0411', 'Next.js', 'React', 'TypeScript', 'Node.js'],
   creator: 'tszhong0411',
   openGraph: {
-    url: WEBAPP_URL,
+    url: SITE_URL,
     type: 'website',
     title: SITE_TITLE,
     siteName: SITE_TITLE,
@@ -71,7 +72,7 @@ export const metadata: Metadata = {
     locale: 'en-US',
     images: [
       {
-        url: `${WEBAPP_URL}/images/og.png`,
+        url: `${SITE_URL}/images/og.png`,
         width: 1200,
         height: 630,
         alt: SITE_DESCRIPTION,
@@ -121,50 +122,52 @@ const RootLayout = (props: RootLayoutProps) => {
   const { children } = props
 
   return (
-    <html
-      lang='en-US'
-      className={cn(
-        GeistSans.variable,
-        GeistMono.variable,
-        calcom.variable,
-        'scroll-smooth'
-      )}
-    >
-      <body>
-        <Providers>
-          <Hello />
-          <Header />
-          <main
-            id='skip-nav'
-            className='mx-auto mb-16 max-w-5xl px-5 py-24 sm:px-8'
-          >
-            {children}
-          </main>
+    <AutoRefresh>
+      <html
+        lang='en-US'
+        className={cn(
+          GeistSans.variable,
+          GeistMono.variable,
+          calcom.variable,
+          'scroll-smooth'
+        )}
+      >
+        <body>
+          <Providers>
+            <Hello />
+            <Header />
+            <main
+              id='skip-nav'
+              className='mx-auto mb-16 max-w-5xl px-5 py-24 sm:px-8'
+            >
+              {children}
+            </main>
 
-          <Footer />
-          <Analytics />
-          <SignInModal />
-          <Image
-            width={1512}
-            height={550}
-            className='absolute left-1/2 top-0 -z-10 -translate-x-1/2'
-            src='/images/gradient-background-top.png'
-            alt=''
-            role='presentation'
-            priority
-          />
-          <Image
-            width={1512}
-            height={447}
-            className='absolute -bottom-6 left-1/2 -z-10 -translate-x-1/2'
-            src='/images/gradient-background-bottom.png'
-            alt=''
-            role='presentation'
-            priority
-          />
-        </Providers>
-      </body>
-    </html>
+            <Footer />
+            <Analytics />
+            <SignInModal />
+            <Image
+              width={1512}
+              height={550}
+              className='absolute left-1/2 top-0 -z-10 -translate-x-1/2'
+              src='/images/gradient-background-top.png'
+              alt=''
+              role='presentation'
+              priority
+            />
+            <Image
+              width={1512}
+              height={447}
+              className='absolute -bottom-6 left-1/2 -z-10 -translate-x-1/2'
+              src='/images/gradient-background-bottom.png'
+              alt=''
+              role='presentation'
+              priority
+            />
+          </Providers>
+        </body>
+      </html>
+    </AutoRefresh>
   )
 }
 

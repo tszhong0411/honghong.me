@@ -7,13 +7,13 @@ import {
   SiYoutube
 } from '@icons-pack/react-simple-icons'
 import {
-  IconChartBar,
-  IconDeviceDesktop,
-  IconFlame,
-  IconMessageCircle,
-  IconPencil,
-  IconUserCircle
-} from '@tabler/icons-react'
+  BarChartIcon,
+  FlameIcon,
+  MessageCircleIcon,
+  MonitorIcon,
+  PencilIcon,
+  UserCircleIcon
+} from 'lucide-react'
 
 type HeaderLinks = Array<{
   icon: React.ReactNode
@@ -37,32 +37,32 @@ type SocialLinks = Array<{
 
 export const HEADER_LINKS: HeaderLinks = [
   {
-    icon: <IconPencil size={14} />,
+    icon: <PencilIcon className='size-3.5' />,
     href: '/blog',
     text: 'Blog'
   },
   {
-    icon: <IconMessageCircle size={14} />,
+    icon: <MessageCircleIcon className='size-3.5' />,
     href: '/guestbook',
     text: 'Guestbook'
   },
   {
-    icon: <IconChartBar size={14} />,
+    icon: <BarChartIcon className='size-3.5' />,
     href: '/dashboard',
     text: 'Dashboard'
   },
   {
-    icon: <IconFlame size={14} />,
+    icon: <FlameIcon className='size-3.5' />,
     href: '/projects',
     text: 'Projects'
   },
   {
-    icon: <IconUserCircle size={14} />,
+    icon: <UserCircleIcon className='size-3.5' />,
     href: '/about',
     text: 'About'
   },
   {
-    icon: <IconDeviceDesktop size={14} />,
+    icon: <MonitorIcon className='size-3.5' />,
     href: '/uses',
     text: 'Uses'
   }

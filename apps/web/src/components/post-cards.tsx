@@ -1,15 +1,13 @@
 'use client'
 
-import { Link } from '@tszhong0411/ui'
+import { BlurImage, Link } from '@tszhong0411/ui'
 import * as React from 'react'
 import useSWR from 'swr'
 
 import { useFormattedDate } from '@/hooks/use-formatted-date'
-import fetcher from '@/lib/fetcher'
+import { fetcher } from '@/lib/fetcher'
 import { type BlogMetadata } from '@/lib/mdx'
 import { type Likes, type Views } from '@/types'
-
-import Image from './mdx/image'
 
 type PostCardsProps = {
   posts: BlogMetadata[]
@@ -46,14 +44,14 @@ const PostCard = (props: PostCardProps) => {
   return (
     <Link
       href={`/blog/${slug}`}
-      className='group rounded-xl bg-background-lighter/60 px-2 py-4 shadow-card-border transition-colors duration-200 hover:bg-background-lighter'
+      className='group rounded-xl px-2 py-4 shadow-feature-card dark:shadow-feature-card-dark'
     >
-      <Image
+      <BlurImage
         src={`/images/blog/${slug}/cover.png`}
         className='rounded-lg'
         width={1200}
         height={630}
-        imageClassName='transition-transform duration-200 group-hover:scale-105'
+        imageClassName='transition-transform group-hover:scale-105'
         alt={title}
       />
       <div className='flex items-center justify-between gap-2 px-2 pt-4 text-sm text-zinc-500'>

@@ -52,7 +52,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module'
   },
-  ignorePatterns: ['node_modules/'],
+  ignorePatterns: ['node_modules/', 'dist/'],
   overrides: [
     {
       files: [
@@ -156,6 +156,7 @@ module.exports = {
     'react/react-in-jsx-scope': 0,
     'react/button-has-type': 2,
     'react/self-closing-comp': [2, { component: true, html: true }],
+    'react/no-unescaped-entities': 0,
 
     // Unused import
     'unused-imports/no-unused-imports': 2,

@@ -1,14 +1,14 @@
 import { cn } from '@tszhong0411/utils'
 import * as React from 'react'
 
-const Table = React.forwardRef<
+export const Table = React.forwardRef<
   HTMLTableElement,
   React.HTMLAttributes<HTMLTableElement>
 >((props, ref) => {
   const { className, ...rest } = props
 
   return (
-    <div className='w-full overflow-auto'>
+    <div className='relative w-full overflow-auto'>
       <table
         ref={ref}
         className={cn('w-full caption-bottom text-sm', className)}
@@ -18,7 +18,7 @@ const Table = React.forwardRef<
   )
 })
 
-const TableHeader = React.forwardRef<
+export const TableHeader = React.forwardRef<
   HTMLTableSectionElement,
   React.HTMLAttributes<HTMLTableSectionElement>
 >((props, ref) => {
@@ -29,7 +29,7 @@ const TableHeader = React.forwardRef<
   )
 })
 
-const TableBody = React.forwardRef<
+export const TableBody = React.forwardRef<
   HTMLTableSectionElement,
   React.HTMLAttributes<HTMLTableSectionElement>
 >((props, ref) => {
@@ -44,7 +44,7 @@ const TableBody = React.forwardRef<
   )
 })
 
-const TableFooter = React.forwardRef<
+export const TableFooter = React.forwardRef<
   HTMLTableSectionElement,
   React.HTMLAttributes<HTMLTableSectionElement>
 >((props, ref) => {
@@ -53,13 +53,16 @@ const TableFooter = React.forwardRef<
   return (
     <tfoot
       ref={ref}
-      className={cn('bg-accent font-medium', className)}
+      className={cn(
+        'border-t bg-muted/50 font-medium [&>tr]:last:border-b-0',
+        className
+      )}
       {...rest}
     />
   )
 })
 
-const TableRow = React.forwardRef<
+export const TableRow = React.forwardRef<
   HTMLTableRowElement,
   React.HTMLAttributes<HTMLTableRowElement>
 >((props, ref) => {
@@ -69,9 +72,9 @@ const TableRow = React.forwardRef<
     <tr
       ref={ref}
       className={cn(
-        'border-b transition-colors duration-200',
-        'hover:bg-accent',
-        'data-[state=selected]:bg-accent',
+        'border-b transition-colors',
+        'hover:bg-muted/50',
+        'data-[state=selected]:bg-muted',
         className
       )}
       {...rest}
@@ -79,7 +82,7 @@ const TableRow = React.forwardRef<
   )
 })
 
-const TableHead = React.forwardRef<
+export const TableHead = React.forwardRef<
   HTMLTableCellElement,
   React.ThHTMLAttributes<HTMLTableCellElement>
 >((props, ref) => {
@@ -98,7 +101,7 @@ const TableHead = React.forwardRef<
   )
 })
 
-const TableCell = React.forwardRef<
+export const TableCell = React.forwardRef<
   HTMLTableCellElement,
   React.TdHTMLAttributes<HTMLTableCellElement>
 >((props, ref) => {
@@ -117,7 +120,7 @@ const TableCell = React.forwardRef<
   )
 })
 
-const TableCaption = React.forwardRef<
+export const TableCaption = React.forwardRef<
   HTMLTableCaptionElement,
   React.HTMLAttributes<HTMLTableCaptionElement>
 >((props, ref) => {
@@ -140,14 +143,3 @@ TableRow.displayName = 'TableRow'
 TableHead.displayName = 'TableHead'
 TableCell.displayName = 'TableCell'
 TableCaption.displayName = 'TableCaption'
-
-export {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableFooter,
-  TableHead,
-  TableHeader,
-  TableRow
-}

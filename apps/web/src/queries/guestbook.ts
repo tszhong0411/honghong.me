@@ -1,9 +1,10 @@
-import prisma from '@/lib/prisma'
+import { desc } from 'drizzle-orm'
+
+import { db } from '@/db'
+import { guestbook } from '@/db/schema'
 
 export const getMessages = async () => {
-  return await prisma.guestbook.findMany({
-    orderBy: {
-      updated_at: 'desc'
-    }
+  return db.query.guestbook.findMany({
+    orderBy: [desc(guestbook.updatedAt)]
   })
 }

@@ -9,6 +9,8 @@ import CommandMenu from '@/components/command-menu'
 import MobileNav from '@/components/mobile-nav'
 import Navbar from '@/components/navbar'
 
+import ThemeToggle from './theme-toggle'
+
 const Header = () => {
   const [isScrolled, setIsScrolled] = React.useState(false)
 
@@ -29,7 +31,7 @@ const Header = () => {
   return (
     <motion.header
       className={cn(
-        'fixed inset-x-0 top-4 z-40 mx-auto flex h-[60px] max-w-5xl items-center justify-between rounded-2xl bg-background/30 px-8 shadow-sm saturate-100 backdrop-blur-[10px] transition-colors duration-200',
+        'fixed inset-x-0 top-4 z-40 mx-auto flex h-[60px] max-w-5xl items-center justify-between rounded-2xl bg-background/30 px-8 shadow-sm saturate-100 backdrop-blur-[10px] transition-colors',
         isScrolled && 'bg-background/80'
       )}
       initial={{
@@ -44,7 +46,7 @@ const Header = () => {
     >
       <a
         href='#skip-nav'
-        className='fixed left-4 top-4 -translate-y-20 rounded-sm bg-accent p-2 font-medium transition-transform duration-200 focus:translate-y-0 focus:ring focus:ring-ring focus:ring-offset-2'
+        className='fixed left-4 top-4 -translate-y-20 rounded-sm border bg-background p-2 font-medium shadow-sm transition-transform focus-visible:translate-y-0 focus-visible:ring focus-visible:ring-ring focus-visible:ring-offset-2'
       >
         <span>Skip to main content</span>
       </a>
@@ -55,6 +57,7 @@ const Header = () => {
       <div className='flex items-center gap-2'>
         <Navbar />
         <Separator orientation='vertical' className='h-6' />
+        <ThemeToggle />
         <CommandMenu />
         <MobileNav />
       </div>

@@ -1,20 +1,16 @@
 /**
- * Inspired by https://fig.io
+ * Inspired by: https://fig.io
  */
 'use client'
 
-import {
-  IconArrowNarrowRight,
-  IconPencil,
-  IconStarFilled
-} from '@tabler/icons-react'
+import { SiGithub, SiWakatime, SiYoutube } from '@icons-pack/react-simple-icons'
 import { Link } from '@tszhong0411/ui'
+import { ArrowRightIcon, PencilIcon, StarIcon } from 'lucide-react'
 import * as React from 'react'
 import useSWR, { type SWRConfiguration } from 'swr'
 
 import Counter from '@/components/counter'
-import { IconGitHub, IconWakaTime, IconYouTube } from '@/components/icons'
-import fetcher from '@/lib/fetcher'
+import { fetcher } from '@/lib/fetcher'
 import {
   type Github,
   type Likes,
@@ -61,7 +57,7 @@ const Items = () => {
       value: wakatimeData?.seconds
         ? Math.round(wakatimeData.seconds / 60 / 60)
         : undefined,
-      icon: <IconWakaTime className='text-[#0061ff]' />,
+      icon: <SiWakatime className='text-[#0061ff]' />,
       linkText: 'WakaTime',
       gradient: {
         startColor: '#0061ff',
@@ -73,7 +69,7 @@ const Items = () => {
       title: 'YouTube Subscribers',
       link: 'https://youtube.com/@tszhong0411',
       value: youtubeData?.subscribers,
-      icon: <IconYouTube />,
+      icon: <SiYoutube className='text-[#ff0000]' />,
       linkText: 'YouTube',
       gradient: {
         startColor: '#ff0000',
@@ -84,7 +80,7 @@ const Items = () => {
       title: 'YouTube Views',
       link: 'https://youtube.com/@tszhong0411',
       value: youtubeData?.views,
-      icon: <IconYouTube />,
+      icon: <SiYoutube className='text-[#ff0000]' />,
       linkText: 'YouTube',
       gradient: {
         startColor: '#ff0000',
@@ -95,7 +91,7 @@ const Items = () => {
       title: 'GitHub Followers',
       link: 'https://github.com/tszhong0411',
       value: githubData?.followers,
-      icon: <IconGitHub className='text-[#fee000]' />,
+      icon: <SiGithub className='text-[#fee000]' />,
       linkText: 'GitHub',
       gradient: {
         startColor: '#fee000',
@@ -106,7 +102,7 @@ const Items = () => {
       title: 'GitHub Stars',
       link: 'https://github.com/tszhong0411',
       value: githubData?.stars,
-      icon: <IconStarFilled size={24} className='text-[#fee000]' />,
+      icon: <StarIcon className='size-6 text-[#fee000]' />,
       linkText: 'GitHub',
       gradient: {
         startColor: '#fee000',
@@ -117,7 +113,7 @@ const Items = () => {
       title: 'Blog Total Views',
       link: 'https://honghong.me',
       value: viewsData?.views,
-      icon: <IconPencil size={24} className='text-[#ff0f7b]' />,
+      icon: <PencilIcon className='size-6 text-[#ff0f7b]' />,
       linkText: 'Blog',
       gradient: {
         startColor: '#ff0f7b',
@@ -128,7 +124,7 @@ const Items = () => {
       title: 'Blog Total Likes',
       link: 'https://honghong.me',
       value: likesData?.likes,
-      icon: <IconPencil size={24} className='text-[#ff0f7b]' />,
+      icon: <PencilIcon className='size-6 text-[#ff0f7b]' />,
       linkText: 'Blog',
       gradient: {
         startColor: '#ff0f7b',
@@ -155,9 +151,9 @@ const Items = () => {
             <Link
               key={i}
               href={link}
-              className='group relative overflow-hidden rounded-lg bg-accent p-4 transition-colors duration-200 hover:bg-accent-highlight'
+              className='group relative overflow-hidden rounded-lg border p-4 shadow-sm transition-colors hover:bg-zinc-100 dark:bg-zinc-900 dark:hover:bg-zinc-800'
             >
-              <div className='flex flex-col items-center justify-center gap-2 transition-transform duration-200 group-hover:-translate-y-24 group-focus:-translate-y-24'>
+              <div className='flex flex-col items-center justify-center gap-2 transition-transform group-hover:-translate-y-24 group-focus:-translate-y-24'>
                 <div className='flex items-center gap-2 text-3xl font-bold'>
                   {value === 0 || value !== undefined ? (
                     <>
@@ -179,9 +175,9 @@ const Items = () => {
                 </div>
                 <div className='text-xl font-medium'>{title}</div>
               </div>
-              <span className='absolute left-1/2 top-1/2 flex -translate-x-1/2 translate-y-24 items-center gap-1 text-2xl font-bold opacity-0 transition duration-300 group-hover:-translate-y-1/2 group-hover:opacity-100 group-focus:-translate-y-1/2 group-focus:opacity-100'>
+              <span className='absolute left-1/2 top-1/2 flex -translate-x-1/2 translate-y-24 items-center gap-1 text-2xl font-bold opacity-0 transition group-hover:-translate-y-1/2 group-hover:opacity-100 group-focus:-translate-y-1/2 group-focus:opacity-100'>
                 {linkText}
-                <IconArrowNarrowRight size={24} />
+                <ArrowRightIcon className='size-6' />
               </span>
             </Link>
           )

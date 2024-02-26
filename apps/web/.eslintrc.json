@@ -5,16 +5,5 @@
     "@tszhong0411/eslint-config",
     "plugin:turbo/recommended"
   ],
-  "overrides": [
-    {
-      "files": ["./src/tests/!(e2e)/**/*.test.{ts,tsx}"],
-      "extends": ["plugin:testing-library/react"],
-      "plugins": ["testing-library"]
-    },
-    {
-      "files": ["./src/tests/e2e/**/*.test.{ts,tsx}"],
-      "extends": ["plugin:playwright/recommended"]
-    }
-  ],
   "root": true
 }

@@ -1,15 +1,14 @@
 'use client'
 
-import { IconArrowUpRight, IconPencil } from '@tabler/icons-react'
-import { buttonVariants, Link } from '@tszhong0411/ui'
+import { BlurImage, buttonVariants, Link } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { motion, useInView } from 'framer-motion'
-import Image from 'next/image'
+import { ArrowUpRightIcon, PencilIcon } from 'lucide-react'
 import * as React from 'react'
 import useSWR from 'swr'
 
 import { useFormattedDate } from '@/hooks/use-formatted-date'
-import fetcher from '@/lib/fetcher'
+import { fetcher } from '@/lib/fetcher'
 import { type BlogMetadata } from '@/lib/mdx'
 import { type Likes, type Views } from '@/types'
 
@@ -75,7 +74,7 @@ const LatestArticles = (props: LatestArticlesProps) => {
         }}
       >
         {posts.map((post) => (
-          <ArticleCard key={post.slug} {...post} />
+          <Card key={post.slug} post={post} />
         ))}
       </motion.div>
       <div className='my-8 flex items-center justify-center'>
@@ -95,10 +94,13 @@ const LatestArticles = (props: LatestArticlesProps) => {
   )
 }
 
-type ArticleCardProps = BlogMetadata
+type CardProps = {
+  post: BlogMetadata
+}
 
-const ArticleCard = (props: ArticleCardProps) => {
-  const { slug, title, summary, date } = props
+const Card = (props: CardProps) => {
+  const { post } = props
+  const { slug, title, summary, date } = post
   const formattedDate = useFormattedDate(date, {
     format: 'LL',
     loading: '--'
@@ -115,19 +117,16 @@ const ArticleCard = (props: ArticleCardProps) => {
   return (
     <Link
       href={`/blog/${slug}`}
-      className='group rounded-xl bg-background-lighter/60 p-2 shadow-card-border transition-colors duration-200 hover:bg-background-lighter'
+      className='group relative rounded-xl p-2 shadow-feature-card dark:shadow-feature-card-dark'
     >
       <div className='flex items-center justify-between p-4'>
         <div className='flex items-center gap-3'>
-          <IconPencil size={18} />
+          <PencilIcon className='size-[18px]' />
           <h2 className='font-light'>Blog</h2>
         </div>
-        <IconArrowUpRight
-          size={18}
-          className='opacity-0 transition-opacity duration-200 group-hover:opacity-100'
-        />
+        <ArrowUpRightIcon className='size-[18px] opacity-0 transition-opacity group-hover:opacity-100' />
       </div>
-      <Image
+      <BlurImage
         width={1200}
         height={630}
         src={`/images/blog/${slug}/cover.png`}
@@ -142,7 +141,7 @@ const ArticleCard = (props: ArticleCardProps) => {
           {viewsIsLoading ? '--' : <div>{viewsData?.views} views</div>}
         </div>
       </div>
-      <div className='flex flex-col px-2 py-4 transition-transform duration-200 ease-out group-hover:translate-x-0.5'>
+      <div className='flex flex-col px-2 py-4 transition-transform ease-out group-hover:translate-x-0.5'>
         <h3 className='font-title text-2xl font-bold'>{title}</h3>
         <p className='mt-2 text-muted-foreground'>{summary}</p>
       </div>

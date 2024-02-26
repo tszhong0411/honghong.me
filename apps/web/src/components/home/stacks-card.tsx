@@ -1,62 +1,61 @@
 'use client'
 
-import { IconBolt } from '@tabler/icons-react'
-import { Marquee } from '@tszhong0411/ui'
-import * as React from 'react'
-
 import {
-  IconCloudflare,
-  IconCSS,
-  IconFigma,
-  IconFirebase,
-  IconGit,
-  IconHTML,
-  IconJavascript,
-  IconJest,
-  IconMarkdown,
-  IconMySQL,
-  IconNextJS,
-  IconNodeJS,
-  IconPostgres,
-  IconPrisma,
-  IconPython,
-  IconReactJS,
-  IconTailwindcss,
-  IconTypescript,
-  IconVite,
-  IconVSCode
-} from '../icons'
+  SiCloudflare,
+  SiCss3,
+  SiFigma,
+  SiFirebase,
+  SiGit,
+  SiHtml5,
+  SiJavascript,
+  SiJest,
+  SiMarkdown,
+  SiMysql,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiPostgresql,
+  SiPrisma,
+  SiPython,
+  SiReact,
+  SiTailwindcss,
+  SiTypescript,
+  SiVisualstudiocode,
+  SiVite
+} from '@icons-pack/react-simple-icons'
+import { Marquee } from '@tszhong0411/ui'
+import { ZapIcon } from 'lucide-react'
+import * as React from 'react'
 
 const StacksCard = () => {
   return (
-    <div className='flex h-60 flex-col gap-2 overflow-hidden rounded-xl bg-background-lighter/60 p-4 shadow-card-border lg:p-6'>
+    <div className='flex h-60 flex-col gap-2 overflow-hidden rounded-xl p-4 shadow-feature-card dark:shadow-feature-card-dark lg:p-6'>
       <div className='flex items-center gap-2'>
-        <IconBolt fill='currentColor' size={18} />
+        <ZapIcon className='size-[18px]' />
         <h2 className='text-sm font-light'>Stacks</h2>
       </div>
-      <Marquee className='py-4' fade pauseOnHover>
-        <IconHTML width='52' height='52' />
-        <IconCSS width='52' height='52' />
-        <IconJavascript width='52' height='52' />
-        <IconTypescript width='52' height='52' />
-        <IconFigma width='52' height='52' />
-        <IconTailwindcss width='52' height='52' />
-        <IconNextJS width='52' height='52' />
-        <IconReactJS width='52' height='52' />
-        <IconPython width='52' height='52' />
-        <IconPostgres width='52' height='52' />
+      <Marquee gap='20px' className='py-4' fade pauseOnHover>
+        <SiHtml5 className='size-10' />
+        <SiCss3 className='size-10' />
+        <SiJavascript className='size-10' />
+        <SiTypescript className='size-10' />
+        <SiFigma className='size-10' />
+        <SiTailwindcss className='size-10' />
+        <SiNextdotjs className='size-10' />
+        <SiReact className='size-10' />
+        <SiPython className='size-10' />
+        <SiPostgresql className='size-10' />
       </Marquee>
-      <Marquee className='py-4' reverse fade pauseOnHover>
-        <IconPrisma width='52' height='52' />
-        <IconMySQL width='52' height='52' />
-        <IconFirebase width='52' height='52' />
-        <IconGit width='52' height='52' />
-        <IconVite width='52' height='52' />
-        <IconVSCode width='52' height='52' />
-        <IconCloudflare width='52' height='52' />
-        <IconMarkdown width='52' height='52' />
-        <IconJest width='52' height='52' />
-        <IconNodeJS width='52' height='52' />
+      <Marquee gap='20px' className='py-4' reverse fade pauseOnHover>
+        <SiPrisma className='size-10' />
+        <SiMysql className='size-10' />
+        <SiFirebase className='size-10' />
+        <SiGit className='size-10' />
+        <SiVite className='size-10' />
+        <SiVisualstudiocode className='size-10' />
+        <SiCloudflare className='size-10' />
+        <SiMarkdown className='size-10' />
+        <SiJest className='size-10' />
+        <SiNodedotjs className='size-10' />
       </Marquee>
     </div>
   )

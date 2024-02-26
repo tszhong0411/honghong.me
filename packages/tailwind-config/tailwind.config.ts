@@ -2,32 +2,53 @@ import typography from '@tailwindcss/typography'
 import type { Config } from 'tailwindcss'
 import animate from 'tailwindcss-animate'
 
-const config: Omit<Config, 'content'> = {
+const config: Partial<Config> = {
   theme: {
     extend: {
       colors: {
-        background: 'rgb(var(--background))',
-        'background-lighter': 'rgb(var(--background-lighter))',
-        foreground: 'rgb(var(--foreground))',
-        'muted-foreground': 'rgb(var(--muted-foreground))',
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))'
+        },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))'
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))'
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))'
+        },
         accent: {
-          DEFAULT: 'rgb(var(--accent))',
-          highlight: 'rgb(var(--accent-highlight))'
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))'
         },
-        border: {
-          DEFAULT: 'rgb(var(--border))',
-          primary: 'rgb(var(--border-primary))',
-          highlight: 'rgb(var(--border-highlight))'
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))'
         },
-        ring: 'rgb(var(--ring))'
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))'
+        }
+      },
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)'
       },
       fontFamily: {
         sans: ['var(--font-geist-sans)'],
         mono: ['var(--font-geist-mono)'],
         title: ['var(--font-title)']
-      },
-      boxShadow: {
-        'card-border': '0 0 0 1px #ffffff0f, 0 -1px #ffffff1a'
       },
       keyframes: {
         'marquee-left': {
@@ -43,94 +64,63 @@ const config: Omit<Config, 'content'> = {
         'marquee-left': 'marquee-left var(--duration, 30s) linear infinite',
         'marquee-up': 'marquee-up var(--duration, 30s) linear infinite'
       },
+      backgroundImage: {
+        'article-link':
+          'linear-gradient(rgb(0 0 0 / 0) 70%, rgb(255 15 64 / 0.4) 0)',
+        'article-link-dark':
+          'linear-gradient(rgb(0 0 0 / 0) 70%, rgb(173 32 60) 0)'
+      },
       typography: {
         DEFAULT: {
           css: {
-            'h2, h3, h4, h5, h6': {
-              position: 'relative',
-              scrollMarginTop: '128px',
-              '& a::before': {
-                content: 'none !important'
-              }
-            },
+            '--tw-prose-body': "theme('colors.foreground / 90%')",
+            '--tw-prose-headings': "theme('colors.foreground')",
+            '--tw-prose-lead': "theme('colors.foreground')",
+            '--tw-prose-links': "theme('colors.foreground')",
+            '--tw-prose-bold': "theme('colors.foreground')",
+            '--tw-prose-counters': "theme('colors.muted.foreground')",
+            '--tw-prose-bullets': "theme('colors.muted.foreground')",
+            '--tw-prose-hr': "theme('colors.border')",
+            '--tw-prose-quotes': "theme('colors.foreground')",
+            '--tw-prose-quote-borders': "theme('colors.border')",
+            '--tw-prose-captions': "theme('colors.foreground')",
+            '--tw-prose-th-borders': "theme('colors.border')",
+            '--tw-prose-td-borders': "theme('colors.border')",
+            '--tw-prose-code': "theme('colors.foreground')",
+            '--tw-prose-kbd': "theme('colors.foreground')",
+            '--tw-prose-kbd-shadows': "theme('colors.primary.DEFAULT / 50%')",
+            '--tw-prose-pre-bg': false,
+            '--tw-prose-pre-code': false,
+
+            maxWidth: 'none',
+
             img: {
               margin: '0 auto'
             },
-            'ul > li': {
-              color: '#8d8d8d'
-            },
-            'code, pre code': {
-              fontFamily: 'var(--font-geist-mono)'
-            },
-            ':not(pre) > code': {
-              padding: '0.12em 0.25em',
-              borderRadius: '0.375rem',
-              display: 'inline-block',
-              lineHeight: '1.2',
-              background: '#2a2828',
-              border: '1px solid #3e3c3c',
 
-              '&::before, &::after': {
-                content: 'none'
-              }
+            kbd: {
+              boxShadow:
+                '0 0 0 1px var(--tw-prose-kbd-shadows),0 3px 0 var(--tw-prose-kbd-shadows)'
             },
-            blockquote: {
-              borderLeftColor: '#666666'
-            },
-            hr: {
-              borderColor: '#3f3f3f'
-            },
-            pre: {
-              background: 'rgb(var(--accent))',
-              padding: '12px 0',
-              lineHeight: 2,
-              border: '1px solid rgb(var(--border))',
-              '> code:not([data-language])': {
-                padding: '0 12px'
-              },
-              '> code': {
-                display: 'grid',
-                counterReset: 'line',
 
-                '> [data-line]': {
-                  borderLeft: '2px solid transparent',
-                  padding: '0 12px',
+            code: {
+              padding: '2px 4px',
+              fontSize: '13px',
+              borderRadius: '6px',
+              background: "theme('colors.secondary.DEFAULT / 50%')",
+              border: '1px solid hsl(var(--border))'
+            },
 
-                  '> [data-highlighted-chars]': {
-                    padding: '2px 4px',
-                    borderRadius: '0.25rem',
-                    background: '#3c3c3c'
-                  }
-                },
-                '> [data-highlighted-line]': {
-                  borderLeftColor: '#fff',
-                  background: '#3c3c3c'
-                }
-              }
+            ul: {
+              listStylePosition: 'inside',
+              paddingLeft: '0'
             },
-            '[data-rehype-pretty-code-title] ~ pre ~ button': {
-              top: '54px !important'
-            },
-            '[data-rehype-pretty-code-title]': {
-              backgroundColor: 'rgb(var(--accent))',
-              border: '1px solid rgb(var(--border))',
-              borderTopLeftRadius: '8px',
-              borderTopRightRadius: '8px',
-              padding: '10px 20px',
-              fontSize: '14px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '10px'
-            },
-            '[data-rehype-pretty-code-title] ~ pre': {
-              marginTop: '0',
-              borderTopLeftRadius: '0',
-              borderTopRightRadius: '0',
-              borderTopWidth: '0'
-            },
-            '[data-rehype-pretty-code-figure]': {
-              position: 'relative'
-            }
+
+            'pre code': false,
+            'pre code::after': false,
+            'pre code::before': false,
+            'code::after': false,
+            'code::before': false
           }
         }
       }

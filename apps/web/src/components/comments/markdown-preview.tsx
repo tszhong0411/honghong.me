@@ -1,8 +1,8 @@
 'use client'
 
+import { MDXRemote, type MDXRemoteProps } from '@tszhong0411/mdx'
+import { toast } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
-import { MDXRemote, type MDXRemoteProps } from 'next-mdx-remote'
-import { toast } from 'sonner'
 import useSWR from 'swr'
 
 import { getMarkdownPreview } from '@/lib/get-markdown-preview'
@@ -24,13 +24,14 @@ type MarkdownProps =
       className?: string
     }
 
-const CommentRenderer = (props: MDXRemoteProps) => {
+const CommentRenderer = (props: Omit<MDXRemoteProps, 'frontmatter'>) => {
   return (
     <MDXRemote
       components={{
         pre: Pre,
         input: Checkbox
       }}
+      frontmatter={{}}
       {...props}
     />
   )
@@ -54,17 +55,11 @@ const MarkdownPreview = (props: MarkdownProps) => {
   return (
     <div
       className={cn(
-        'prose prose-invert w-full max-w-none break-words [&_table_*]:border-border',
+        'prose w-full break-words [&_table_*]:border-border',
         className
       )}
     >
-      {compiledSource && (
-        <CommentRenderer
-          compiledSource={compiledSource}
-          scope={{}}
-          frontmatter={{}}
-        />
-      )}
+      {compiledSource && <CommentRenderer compiledSource={compiledSource} />}
       {source && (
         <>
           {isLoading || !data ? (

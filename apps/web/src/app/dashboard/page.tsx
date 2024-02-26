@@ -1,7 +1,7 @@
 import type { Metadata, ResolvingMetadata } from 'next'
 
 import PageTitle from '@/components/page-title'
-import { WEBAPP_URL } from '@/lib/constants'
+import { SITE_URL } from '@/lib/constants'
 
 import Items from './items'
 
@@ -25,11 +25,11 @@ export const generateMetadata = async (
     title,
     description,
     alternates: {
-      canonical: `${WEBAPP_URL}/dashboard`
+      canonical: `${SITE_URL}/dashboard`
     },
     openGraph: {
       ...previousOpenGraph,
-      url: `${WEBAPP_URL}/dashboard`,
+      url: `${SITE_URL}/dashboard`,
       title,
       description
     },

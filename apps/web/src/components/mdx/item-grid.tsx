@@ -1,9 +1,7 @@
 /**
- * Inspired by https://jahir.dev/uses
+ * Inspired by: https://jahir.dev/uses
  */
-import { Link } from '@tszhong0411/ui'
-
-import Image from './image'
+import { BlurImage, Link } from '@tszhong0411/ui'
 
 type Items = Array<{
   image: string
@@ -25,9 +23,9 @@ const ItemGrid = (props: ItemGridProps) => {
         <Link
           key={item.name}
           href={item.url}
-          className='flex gap-6 rounded-lg border bg-accent p-4 no-underline transition-colors duration-200 hover:border-border-highlight hover:bg-accent-highlight sm:flex-col sm:gap-3'
+          className='flex gap-6 rounded-lg border p-4 no-underline shadow-sm transition-colors hover:bg-zinc-100 dark:bg-zinc-900 dark:hover:bg-zinc-800 sm:flex-col sm:gap-3'
         >
-          <Image
+          <BlurImage
             src={item.image}
             width={256}
             height={256}

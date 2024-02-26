@@ -1,7 +1,5 @@
-import { IconExternalLink } from '@tabler/icons-react'
-import { Link } from '@tszhong0411/ui'
-
-import Image from './image'
+import { BlurImage, Link } from '@tszhong0411/ui'
+import { ExternalLinkIcon } from 'lucide-react'
 
 type LinkCardProps = {
   href: string
@@ -18,7 +16,7 @@ const LinkCard = (props: LinkCardProps) => {
         href={href}
         className='my-8 flex items-center justify-center gap-4 rounded-lg border p-4'
       >
-        <Image
+        <BlurImage
           src={`/images/website-icons/${hostname}.png`}
           className='rounded-lg'
           width={48}
@@ -29,7 +27,7 @@ const LinkCard = (props: LinkCardProps) => {
           <div>{title}</div>
           <div className='text-sm text-muted-foreground'>{href}</div>
         </div>
-        <IconExternalLink size={22} data-testid='external-link-icon' />
+        <ExternalLinkIcon className='size-[22px]' />
       </Link>
     </div>
   )

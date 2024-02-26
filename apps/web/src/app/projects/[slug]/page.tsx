@@ -1,9 +1,9 @@
+import { BlurImage } from '@tszhong0411/ui'
 import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import Mdx from '@/components/mdx'
-import Image from '@/components/mdx/image'
-import { WEBAPP_URL } from '@/lib/constants'
+import { SITE_URL } from '@/lib/constants'
 import { getAllPages, getPage, type ProjectMetadata } from '@/lib/mdx'
 
 import Header from './header'
@@ -43,16 +43,16 @@ export const generateMetadata = async (
     title: name,
     description: description,
     alternates: {
-      canonical: `${WEBAPP_URL}/projects/${params.slug}`
+      canonical: `${SITE_URL}/projects/${params.slug}`
     },
     openGraph: {
       ...previousOpenGraph,
-      url: `${WEBAPP_URL}/projects/${params.slug}`,
+      url: `${SITE_URL}/projects/${params.slug}`,
       title: name,
       description: description,
       images: [
         {
-          url: `${WEBAPP_URL}/images/projects/${params.slug}/cover.png`,
+          url: `${SITE_URL}/images/projects/${params.slug}/cover.png`,
           width: 1280,
           height: 832,
           alt: description,
@@ -66,7 +66,7 @@ export const generateMetadata = async (
       description: description,
       images: [
         {
-          url: `${WEBAPP_URL}/images/projects/${params.slug}/cover.png`,
+          url: `${SITE_URL}/images/projects/${params.slug}/cover.png`,
           width: 1280,
           height: 832,
           alt: description
@@ -92,7 +92,7 @@ const ProjectPage = (props: ProjectPageProps) => {
   return (
     <div className='mx-auto max-w-3xl'>
       <Header metadata={metadata} />
-      <Image
+      <BlurImage
         src={`/images/projects/${slug}/cover.png`}
         width={1280}
         height={832}

@@ -5,7 +5,7 @@ import {
   SITE_DESCRIPTION,
   SITE_NAME,
   SITE_TITLE,
-  WEBAPP_URL
+  SITE_URL
 } from '@/lib/constants'
 import { type BlogMetadata, getAllPages } from '@/lib/mdx'
 
@@ -13,10 +13,10 @@ export const GET = () => {
   const feed = new RSS({
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    site_url: `${WEBAPP_URL}`,
-    feed_url: `${WEBAPP_URL}/rss.xml`,
+    site_url: `${SITE_URL}`,
+    feed_url: `${SITE_URL}/rss.xml`,
     language: 'en-US',
-    image_url: `${WEBAPP_URL}/images/og.png`
+    image_url: `${SITE_URL}/images/og.png`
   })
 
   const posts = getAllPages<BlogMetadata>('blog')
@@ -26,7 +26,7 @@ export const GET = () => {
 
     feed.item({
       title,
-      url: `${WEBAPP_URL}/blog/${slug}`,
+      url: `${SITE_URL}/blog/${slug}`,
       date,
       description: summary,
       author: SITE_NAME

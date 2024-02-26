@@ -1,7 +1,7 @@
 'use client'
 
-import { IconSearch } from '@tabler/icons-react'
 import { Input, Label } from '@tszhong0411/ui'
+import { SearchIcon } from 'lucide-react'
 import * as React from 'react'
 
 import { type BlogMetadata } from '@/lib/mdx'
@@ -33,10 +33,7 @@ const FilteredPosts = (props: FilteredPostsProps) => {
           id='search'
         />
         <Label htmlFor='search'>
-          <IconSearch
-            className='absolute left-4 top-1/2 -translate-y-1/2'
-            size={20}
-          />
+          <SearchIcon className='absolute left-4 top-1/2 size-5 -translate-y-1/2' />
         </Label>
       </div>
       {filteredPosts.length === 0 && (

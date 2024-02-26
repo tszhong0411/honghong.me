@@ -1,7 +1,9 @@
+import { eq, sql, sum } from 'drizzle-orm'
 import { unstable_noStore as noStore } from 'next/cache'
 import { NextResponse } from 'next/server'
 
-import prisma from '@/lib/prisma'
+import { db } from '@/db'
+import { posts } from '@/db/schema'
 
 export const GET = async (req: Request) => {
   noStore()
@@ -10,27 +12,25 @@ export const GET = async (req: Request) => {
   const slug = searchParams.get('slug')
 
   if (!slug) {
-    const views = await prisma.post.aggregate({
-      _sum: {
-        views: true
-      }
-    })
+    const views = await db
+      .select({
+        value: sum(posts.views)
+      })
+      .from(posts)
 
     return NextResponse.json({
-      views: views._sum.views ?? 0
+      views: views[0]?.value ?? 0
     })
   }
 
-  const post = await prisma.post.findUnique({
-    where: {
-      slug
-    },
-    select: {
-      views: true
-    }
-  })
+  const post = await db
+    .select({
+      views: posts.views
+    })
+    .from(posts)
+    .where(eq(posts.slug, slug))
 
-  if (!post) {
+  if (!post[0]) {
     return NextResponse.json(
       {
         error: 'Post not found'
@@ -40,7 +40,7 @@ export const GET = async (req: Request) => {
   }
 
   return NextResponse.json({
-    views: post.views
+    views: post[0].views
   })
 }
 
@@ -58,19 +58,17 @@ export const POST = async (req: Request) => {
     )
   }
 
-  await prisma.post.upsert({
-    where: {
-      slug
-    },
-    create: {
-      slug
-    },
-    update: {
-      views: {
-        increment: 1
+  await db
+    .insert(posts)
+    .values({
+      slug: slug,
+      views: sql<number>`${posts.views} + 1`
+    })
+    .onDuplicateKeyUpdate({
+      set: {
+        views: sql<number>`${posts.views} + 1`
       }
-    }
-  })
+    })
 
   return NextResponse.json({
     error: null

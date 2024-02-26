@@ -1,0 +1,4 @@
+# Misc
+.changeset/*.md
+pnpm-lock.yaml
+pnpm-workspace.yaml

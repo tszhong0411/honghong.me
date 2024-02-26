@@ -1,7 +1,9 @@
+import { count, eq } from 'drizzle-orm'
 import { unstable_noStore as noStore } from 'next/cache'
 import { NextResponse } from 'next/server'
 
-import prisma from '@/lib/prisma'
+import { db } from '@/db'
+import { comments } from '@/db/schema'
 
 export const GET = async (req: Request) => {
   noStore()
@@ -18,15 +20,14 @@ export const GET = async (req: Request) => {
     )
   }
 
-  const comments = await prisma.comment.count({
-    where: {
-      Post: {
-        slug
-      }
-    }
-  })
+  const res = await db
+    .select({
+      value: count()
+    })
+    .from(comments)
+    .where(eq(comments.postId, slug))
 
   return NextResponse.json({
-    comments
+    value: res[0]?.value ?? 0
   })
 }

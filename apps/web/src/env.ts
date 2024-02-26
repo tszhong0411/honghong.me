@@ -3,7 +3,7 @@ import { z } from 'zod'
 
 /* c8 ignore start */
 export const env = createEnv({
-  skipValidation: process.env.CI === 'true' || process.env.NODE_ENV === 'test',
+  skipValidation: process.env.CI === 'true',
   server: {
     SPOTIFY_CLIENT_ID: z.string().min(1),
     SPOTIFY_CLIENT_SECRET: z.string().min(1),
@@ -11,10 +11,6 @@ export const env = createEnv({
 
     NEXTAUTH_SECRET: z.string().min(1),
     NEXTAUTH_URL: z.string().min(1),
-
-    NODE_ENV: z
-      .enum(['development', 'test', 'production'])
-      .default('development'),
 
     GOOGLE_API_KEY: z.string().min(1),
     GOOGLE_CLIENT_ID: z.string().min(1),
@@ -47,8 +43,6 @@ export const env = createEnv({
 
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
-
-    NODE_ENV: process.env.NODE_ENV,
 
     GOOGLE_API_KEY: process.env.GOOGLE_API_KEY,
     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,

@@ -1,15 +1,19 @@
-import prisma from '@/lib/prisma'
+import { eq } from 'drizzle-orm'
+
+import { db } from '@/db'
+import { comments } from '@/db/schema'
 
 export const getComments = async (slug: string) => {
-  return await prisma.comment.findMany({
-    where: {
-      Post: {
-        slug
-      }
-    },
-    include: {
+  return await db.query.comments.findMany({
+    where: eq(comments.postId, slug),
+    with: {
       user: true,
-      upvotes: true
+      upvotes: true,
+      replies: {
+        with: {
+          user: true
+        }
+      }
     }
   })
 }
