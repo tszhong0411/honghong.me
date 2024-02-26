@@ -1,5 +1,11 @@
 # @tszhong0411/tailwind-config
 
+## 0.0.2
+
+### Patch Changes
+
+- [#758](https://github.com/tszhong0411/honghong.me/pull/758) [`c6eccaa`](https://github.com/tszhong0411/honghong.me/commit/c6eccaab231468cdc92f800d06128902bccc79cf) Thanks [@tszhong0411](https://github.com/tszhong0411)! - update ui
+
 ## 0.0.1
 
 ### Patch Changes
