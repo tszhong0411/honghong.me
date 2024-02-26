@@ -1,18 +1,7 @@
-import { serialize } from 'next-mdx-remote/serialize'
-
-import { rehypePlugins } from '@/config/rehype-plugins'
-import { remarkPlugins } from '@/config/remark-plugins'
+import { serialize } from '@tszhong0411/mdx'
 
 export const getMarkdownPreview = async (content: string) => {
-  const result = await serialize(content, {
-    mdxOptions: {
-      // @ts-expect-error I don't know what's wrong
-      rehypePlugins,
-      remarkPlugins,
-      development: process.env.NODE_ENV === 'development'
-    }
-  })
   return {
-    result
+    result: await serialize(content)
   }
 }

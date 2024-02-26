@@ -1,4 +1,4 @@
-const getErrorMessage = (error: unknown): string => {
+export const getErrorMessage = (error: unknown): string => {
   if (error instanceof Error) {
     return error.message
   }
@@ -13,5 +13,3 @@ const getErrorMessage = (error: unknown): string => {
 
   return 'Something went wrong'
 }
-
-export default getErrorMessage

@@ -2,7 +2,6 @@ import * as React from 'react'
 
 import { getCurrentUser } from '@/lib/auth'
 import { getComments } from '@/queries/comments'
-import formatComments from '@/utils/format-comments'
 
 import Comment from './comment'
 import CommentBox from './comment-box'
@@ -18,13 +17,20 @@ const Comments = async (props: CommentsProps) => {
 
   return (
     <div className='space-y-6'>
-      <div className='rounded-lg border bg-accent px-2 py-4 sm:px-4'>
+      <div className='rounded-lg border px-2 py-4 dark:bg-zinc-900/30 sm:px-4'>
         <CommentBox slug={slug} />
       </div>
       <div className='space-y-8'>
-        {formatComments(comments).map((comment) => (
-          <Comment key={comment.id} user={user} slug={slug} comment={comment} />
-        ))}
+        {comments
+          .filter((c) => !c.parentId)
+          .map((comment) => (
+            <Comment
+              key={comment.id}
+              user={user}
+              slug={slug}
+              comment={comment}
+            />
+          ))}
       </div>
     </div>
   )

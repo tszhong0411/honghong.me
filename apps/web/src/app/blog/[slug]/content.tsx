@@ -1,5 +1,6 @@
+import { getTOC } from '@tszhong0411/mdx'
+
 import Mdx from '@/components/mdx'
-import getHeadings from '@/utils/get-headings'
 
 import LikeButton from './like-button'
 import ProgressBar from './progress-bar'
@@ -10,9 +11,9 @@ type ContentProps = {
   slug: string
 }
 
-const Content = (props: ContentProps) => {
+const Content = async (props: ContentProps) => {
   const { content, slug } = props
-  const headings = getHeadings(content)
+  const toc = await getTOC(content)
 
   return (
     <>
@@ -22,9 +23,7 @@ const Content = (props: ContentProps) => {
         </article>
         <aside className='lg:min-w-[270px] lg:max-w-[270px]'>
           <div className='sticky top-24 will-change-[transform,opacity]'>
-            {headings && headings.length > 0 && (
-              <TableOfContents headings={headings} />
-            )}
+            {toc && toc.length > 0 && <TableOfContents toc={toc} />}
             <LikeButton slug={slug} />
           </div>
         </aside>

@@ -17,7 +17,9 @@ const ErrorPage = (props: ErrorPageProps) => {
       <Button onClick={reset} type='button'>
         Try again
       </Button>
-      <p className='break-words rounded-md bg-zinc-800 p-4'>{error.message}</p>
+      <p className='break-words rounded-md bg-zinc-100 p-4 dark:bg-zinc-800'>
+        {error.message}
+      </p>
     </div>
   )
 }

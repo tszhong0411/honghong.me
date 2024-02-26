@@ -1,8 +1,8 @@
+import { BlurImage } from '@tszhong0411/ui'
 import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import Mdx from '@/components/mdx'
-import Image from '@/components/mdx/image'
 import { SITE_URL } from '@/lib/constants'
 import { getAllPages, getPage, type ProjectMetadata } from '@/lib/mdx'
 
@@ -92,7 +92,7 @@ const ProjectPage = (props: ProjectPageProps) => {
   return (
     <div className='mx-auto max-w-3xl'>
       <Header metadata={metadata} />
-      <Image
+      <BlurImage
         src={`/images/projects/${slug}/cover.png`}
         width={1280}
         height={832}

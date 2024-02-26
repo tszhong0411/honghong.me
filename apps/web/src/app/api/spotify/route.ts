@@ -1,7 +1,7 @@
 import { unstable_noStore as noStore } from 'next/cache'
 import { NextResponse } from 'next/server'
 
-import getNowPlaying from '@/lib/spotify'
+import { getNowPlaying } from '@/lib/spotify'
 
 export const runtime = 'edge'
 export const dynamic = 'force-dynamic'

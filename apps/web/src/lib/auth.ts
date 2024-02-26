@@ -1,23 +1,23 @@
-import { PrismaAdapter } from '@next-auth/prisma-adapter'
-import { type User as PrismaUser } from '@prisma/client'
 import type { NextAuthConfig } from 'next-auth'
 import NextAuth from 'next-auth'
 import GithubProvider from 'next-auth/providers/github'
 import GoogleProvider from 'next-auth/providers/google'
 
+import { db, DrizzleAdapter } from '@/db'
+import type { users } from '@/db/schema'
 import { env } from '@/env'
 
-import prisma from './prisma'
+type DatabaseUser = typeof users.$inferSelect
 
 declare module 'next-auth' {
   // We're extending interfaces from 'next-auth' and we can't use 'type' for these declarations.
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
   interface Session {
-    user: PrismaUser
+    user: DatabaseUser
   }
 
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions, @typescript-eslint/no-empty-interface
-  interface User extends PrismaUser {}
+  interface User extends DatabaseUser {}
 }
 
 const config: NextAuthConfig = {
@@ -33,7 +33,7 @@ const config: NextAuthConfig = {
     })
   ],
 
-  adapter: PrismaAdapter(prisma),
+  adapter: DrizzleAdapter(db),
 
   callbacks: {
     session: ({ session, user }) => {

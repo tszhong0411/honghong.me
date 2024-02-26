@@ -1,16 +1,18 @@
 'use server'
 
-import { type Prisma } from '@prisma/client'
+import { createId } from '@paralleldrive/cuid2'
 import { CommentNotification } from '@tszhong0411/emails'
+import { and, eq } from 'drizzle-orm'
 import { revalidatePath } from 'next/cache'
 import { Resend } from 'resend'
 import { z } from 'zod'
 
+import { db } from '@/db'
+import { comments, commentUpvotes, users } from '@/db/schema'
 import { env } from '@/env'
 import { type BlogMetadata, getPage } from '@/lib/mdx'
-import prisma from '@/lib/prisma'
 import { type getComments } from '@/queries/comments'
-import getErrorMessage from '@/utils/get-error-message'
+import { getErrorMessage } from '@/utils/get-error-message'
 
 import { privateAction } from './private-action'
 
@@ -28,7 +30,7 @@ export const postComment = (
         message: 'Comment is required.'
       }),
       markdown: z.string().min(1, {
-        message: 'Markdown is required.'
+        message: 'Comment is required.'
       }),
       slug: z.string().min(1, {
         message: 'Slug is required.'
@@ -58,27 +60,16 @@ export const postComment = (
     } = parsed.data
 
     try {
-      const createdComment = await prisma.comment.create({
-        data: {
-          body: parsedComment,
-          Post: {
-            connect: {
-              slug: parsedSlug
-            }
-          },
-          user: {
-            connect: {
-              id: user.id
-            }
-          },
-          ...(parentId && {
-            parent: {
-              connect: {
-                id: parsedParentId
-              }
-            }
-          })
-        }
+      const commentId = createId()
+
+      await db.insert(comments).values({
+        id: commentId,
+        body: parsedComment,
+        userId: user.id as string,
+        postId: parsedSlug,
+        ...(parentId && {
+          parentId: parsedParentId
+        })
       })
 
       const {
@@ -86,19 +77,10 @@ export const postComment = (
       } = getPage<BlogMetadata>(`/blog/${slug}`)!
 
       if (!parentId) {
-        await prisma.commentUpvote.create({
-          data: {
-            user: {
-              connect: {
-                id: user.id
-              }
-            },
-            comment: {
-              connect: {
-                id: createdComment.id
-              }
-            }
-          }
+        await db.insert(commentUpvotes).values({
+          id: createId(),
+          userId: user.id as string,
+          commentId
         })
 
         if (user.role === 'user' && process.env.NODE_ENV === 'production') {
@@ -111,7 +93,7 @@ export const postComment = (
               name: user.name as string,
               commenterName: user.name as string,
               comment: parsedMarkdown,
-              commentUrl: `https://honghong.me/blog/${slug}#comment-${createdComment.id}`,
+              commentUrl: `https://honghong.me/blog/${slug}#comment-${commentId}`,
               postUrl: `https://honghong.me/blog/${slug}`,
               type: 'comment'
             })
@@ -120,34 +102,27 @@ export const postComment = (
       }
 
       if (parentId) {
-        const parentComment = await prisma.comment.findUnique({
-          where: {
-            id: parentId
-          },
-          select: {
-            user: {
-              select: {
-                email: true
-              }
-            }
-          }
-        })
+        const parentComment = await db
+          .select()
+          .from(comments)
+          .where(eq(comments.id, parentId))
+          .innerJoin(users, eq(users.id, comments.userId))
 
         if (
-          parentComment &&
-          parentComment.user.email !== user.email &&
+          parentComment[0] &&
+          parentComment[0].user.email !== user.email &&
           process.env.NODE_ENV === 'production'
         ) {
           await resend.emails.send({
             from: 'Hong from honghong.me <me@honghong.me>',
-            to: parentComment.user.email as string,
+            to: parentComment[0].user.email,
             subject: 'New reply posted',
             react: CommentNotification({
               title,
               name: user.name as string,
               commenterName: user.name as string,
               comment: parsedMarkdown,
-              commentUrl: `https://honghong.me/blog/${slug}#comment-${createdComment.id}`,
+              commentUrl: `https://honghong.me/blog/${slug}#comment-${commentId}`,
               postUrl: `https://honghong.me/blog/${slug}`,
               type: 'reply'
             })
@@ -190,18 +165,12 @@ export const deleteComment = (id: string) =>
 
     const email = user.email
 
-    const comment = await prisma.comment.findUnique({
-      where: {
-        id: parsedId
-      },
-      select: {
-        user: {
-          select: {
-            email: true
-          }
-        },
+    const comment = await db.query.comments.findFirst({
+      where: eq(comments.id, parsedId),
+      with: {
+        user: true,
         replies: true,
-        parentId: true
+        parent: true
       }
     })
 
@@ -222,40 +191,30 @@ export const deleteComment = (id: string) =>
     try {
       // If the comment has replies, just mark it as deleted.
       if (comment.replies.length > 0) {
-        await prisma.comment.update({
-          where: {
-            id: parsedId
-          },
-          data: {
+        await db
+          .update(comments)
+          .set({
             body: '[This comment has been deleted]',
             isDeleted: true
-          }
-        })
+          })
+          .where(eq(comments.id, parsedId))
       } else {
-        await prisma.comment.delete({
-          where: {
-            id: parsedId
-          }
-        })
+        await db.delete(comments).where(eq(comments.id, parsedId))
 
         if (comment.parentId) {
-          const parent = await prisma.comment.findUnique({
-            where: {
-              id: comment.parentId,
-              isDeleted: true
-            },
-            select: {
+          const parentComment = await db.query.comments.findFirst({
+            where: and(
+              eq(comments.id, comment.parentId),
+              eq(comments.isDeleted, true)
+            ),
+            with: {
               replies: true
             }
           })
 
           // If the parent comment (which is marked as deleted) has no replies, delete it also.
-          if (parent?.replies.length === 0) {
-            await prisma.comment.delete({
-              where: {
-                id: comment.parentId
-              }
-            })
+          if (parentComment?.replies.length === 0) {
+            await db.delete(comments).where(eq(comments.id, comment.parentId))
           }
         }
       }
@@ -293,15 +252,11 @@ export const upvoteComment = (id: string) =>
 
     const { id: parsedId } = parsed.data
 
-    const comment = await prisma.comment.findUnique({
-      where: {
-        id: parsedId
-      },
-      select: {
+    const comment = await db.query.comments.findFirst({
+      where: eq(comments.id, parsedId),
+      with: {
         upvotes: {
-          where: {
-            userId: user.id
-          }
+          where: eq(commentUpvotes.userId, user.id as string)
         }
       }
     })
@@ -314,11 +269,9 @@ export const upvoteComment = (id: string) =>
     }
 
     if (comment.upvotes.length > 0) {
-      await prisma.commentUpvote.delete({
-        where: {
-          id: comment.upvotes[0]!.id
-        }
-      })
+      await db
+        .delete(commentUpvotes)
+        .where(eq(commentUpvotes.id, comment.upvotes[0]!.id))
 
       revalidatePath('/blog/[slug]', 'page')
       return {
@@ -327,19 +280,10 @@ export const upvoteComment = (id: string) =>
     }
 
     try {
-      await prisma.commentUpvote.create({
-        data: {
-          user: {
-            connect: {
-              id: user.id
-            }
-          },
-          comment: {
-            connect: {
-              id: parsedId
-            }
-          }
-        }
+      await db.insert(commentUpvotes).values({
+        id: createId(),
+        userId: user.id as string,
+        commentId: parsedId
       })
     } catch (error) {
       return {
@@ -354,7 +298,7 @@ export const upvoteComment = (id: string) =>
     }
   })
 
-export type Comment = Prisma.PromiseReturnType<typeof getComments>[0]
-export type CommentWithReplies = Comment & {
-  replies: CommentWithReplies[]
+export type Comment = Awaited<ReturnType<typeof getComments>>[0]
+export type Reply = typeof comments.$inferSelect & {
+  user: typeof users.$inferSelect
 }

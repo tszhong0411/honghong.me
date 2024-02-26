@@ -1,16 +1,15 @@
-'use client'
-
 /**
- * (Styling) Inspired by https://framer.university/resources/like-button-component
+ * Inspired by: https://framer.university/resources/like-button-component
  */
+'use client'
 import { Separator } from '@tszhong0411/ui'
+import { toast } from '@tszhong0411/ui'
 import { motion } from 'framer-motion'
 import * as React from 'react'
-import { toast } from 'sonner'
 import useSWR from 'swr'
 import { useDebouncedCallback } from 'use-debounce'
 
-import fetcher from '@/lib/fetcher'
+import { fetcher } from '@/lib/fetcher'
 import { type Likes } from '@/types'
 
 type LikeButtonProps = {
@@ -57,7 +56,7 @@ const LikeButton = (props: LikeButtonProps) => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ slug, count: value })
+        body: JSON.stringify({ slug, value })
       })
 
       const newData = (await res.json()) as Likes
@@ -87,7 +86,7 @@ const LikeButton = (props: LikeButtonProps) => {
     <div className='mt-12 flex justify-center'>
       <button
         ref={buttonRef}
-        className='flex items-center gap-3 rounded-xl bg-gradient-to-b from-[#1c1c1d] to-[#141414] px-4 py-2 text-lg shadow-[rgb(255,255,255,0.02)1px_1px_0px_0px_inset,rgb(255,255,255,0.02)-1px_-1px_0px_0px_inset,rgb(255,255,255,0.02)1px_-1px_0px_0px_inset,rgb(255,255,255,0.02)-1px_1px_0px_0px_inset,rgb(255,255,255,0.05)0px_1px_0px_0px_inset,rgb(0,0,0,0.5)0px_4px_8px_0px,rgb(0,0,0,0.17)0px_2px_4px_0px]'
+        className='flex items-center gap-3 rounded-xl bg-zinc-900 px-4 py-2 text-lg text-white'
         type='button'
         onClick={handleLike}
         aria-label='Like this post'
@@ -129,7 +128,7 @@ const LikeButton = (props: LikeButtonProps) => {
           </g>
         </svg>
         Like{data && data.likes + cacheCount === 1 ? '' : 's'}
-        <Separator orientation='vertical' />
+        <Separator orientation='vertical' className='bg-zinc-700' />
         {isLoading || !data ? (
           <div> -- </div>
         ) : (

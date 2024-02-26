@@ -1,6 +1,5 @@
 'use client'
 
-import { type Guestbook } from '@prisma/client'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -18,16 +17,17 @@ import {
   buttonVariants,
   Skeleton
 } from '@tszhong0411/ui'
+import { toast } from '@tszhong0411/ui'
 import { type User } from 'next-auth'
 import * as React from 'react'
-import { toast } from 'sonner'
 
 import { deleteMessage } from '@/actions/guestbook'
+import type { guestbook } from '@/db/schema'
 import { useFormattedDate } from '@/hooks/use-formatted-date'
 
 type MessagesProps = {
   user: User | null
-  messages: Guestbook[]
+  messages: Array<typeof guestbook.$inferSelect>
 }
 
 type UpdatedDateProps = {
@@ -49,7 +49,7 @@ const Messages = (props: MessagesProps) => {
   const { user, messages } = props
   const [isDeleting, setIsDeleting] = React.useState(false)
 
-  const deleteMessageHandler = async (id: number) => {
+  const deleteMessageHandler = async (id: string) => {
     const toastId = toast.loading('Deleting a message...')
 
     setIsDeleting(true)
@@ -70,26 +70,29 @@ const Messages = (props: MessagesProps) => {
   return (
     <div className='mt-10 flex flex-col gap-4'>
       {messages.map((message) => {
-        const { id, email, image, created_by, updated_at, body } = message
+        const { id, email, image, createdBy, updatedAt, body } = message
 
         return (
-          <div key={id} className='rounded-lg border bg-accent p-4'>
+          <div
+            key={id}
+            className='rounded-lg border p-4 shadow-sm dark:bg-zinc-900/30'
+          >
             <div className='mb-3 flex gap-3'>
               <Avatar>
                 <AvatarImage
-                  src={image}
+                  src={image as string}
                   width={40}
                   height={40}
                   className='size-10 rounded-full'
-                  alt={created_by}
+                  alt={createdBy}
                 />
                 <AvatarFallback className='bg-transparent'>
                   <Skeleton className='size-10 rounded-full' />
                 </AvatarFallback>
               </Avatar>
               <div className='flex flex-col justify-center gap-px text-sm'>
-                <div>{created_by}</div>
-                <UpdatedDate date={updated_at} />
+                <div>{createdBy}</div>
+                <UpdatedDate date={updatedAt} />
               </div>
             </div>
             <div className='break-words pl-[52px]'>{body}</div>
@@ -117,7 +120,7 @@ const Messages = (props: MessagesProps) => {
                     <AlertDialogFooter>
                       <AlertDialogCancel>Cancel</AlertDialogCancel>
                       <AlertDialogAction
-                        onClick={() => deleteMessageHandler(Number(id))}
+                        onClick={() => deleteMessageHandler(id)}
                         className={buttonVariants({ variant: 'destructive' })}
                       >
                         Delete

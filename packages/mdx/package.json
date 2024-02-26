@@ -1,0 +1,41 @@
+{
+  "private": true,
+  "name": "@tszhong0411/mdx",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "./src/index.tsx",
+  "scripts": {
+    "clean": "rm -rf .turbo dist",
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint --fix .",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@mdx-js/mdx": "^3.0.1",
+    "@mdx-js/react": "^3.0.1",
+    "@shikijs/rehype": "^1.1.7",
+    "@shikijs/transformers": "^1.1.7",
+    "github-slugger": "^2.0.0",
+    "hast": "^1.0.0",
+    "remark": "^15.0.1",
+    "remark-gfm": "^4.0.0",
+    "shiki": "^1.1.7",
+    "unified": "^11.0.4",
+    "unist-util-visit": "^5.0.0",
+    "vfile": "^6.0.1",
+    "vfile-matter": "^5.0.0"
+  },
+  "peerDependencies": {
+    "react": ">=16.x",
+    "react-dom": ">=16.x"
+  },
+  "devDependencies": {
+    "@tszhong0411/eslint-config": "workspace:*",
+    "@tszhong0411/tsconfig": "workspace:*",
+    "@types/hast": "^3.0.4",
+    "@types/node": "^20.11.20",
+    "@types/react": "^18.2.58",
+    "eslint": "^8.57.0",
+    "react": "^18.2.0"
+  }
+}

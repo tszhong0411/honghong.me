@@ -7,16 +7,12 @@
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**", "dist/**"]
     },
-    "clean": {},
+    "clean": {
+      "cache": false
+    },
     "dev": {
       "cache": false,
       "persistent": true
-    },
-    "format:check": {
-      "cache": false
-    },
-    "format:write": {
-      "cache": false
     },
     "lint": {
       "cache": false
@@ -27,6 +23,9 @@
     "start": {
       "dependsOn": ["^build"]
     },
+    "db:check": {},
+    "db:generate": {},
+    "db:push": {},
     "type-check": {},
     "blog#build": {
       "dependsOn": ["^build"],
@@ -53,6 +52,9 @@
         "RESEND_API_KEY",
         "AUTHOR_EMAIL"
       ]
+    },
+    "ui#build": {
+      "dependsOn": ["utils#build"]
     }
   }
 }

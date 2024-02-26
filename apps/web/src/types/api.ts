@@ -8,7 +8,7 @@ export type Likes = {
 }
 
 export type Comments = {
-  comments: number
+  value: number
 }
 
 export type Song =

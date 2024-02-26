@@ -1,9 +1,8 @@
 'use client'
 
+import { BlurImage } from '@tszhong0411/ui'
 import { motion, useAnimate } from 'framer-motion'
 import * as React from 'react'
-
-import Image from '@/components/mdx/image'
 
 const TEXTS = [
   {
@@ -62,8 +61,8 @@ const Hero = () => {
             duration: 0.5
           }}
         >
-          <h1 className='bg-gradient-to-b from-white via-white/90 to-white/70 to-90% bg-clip-text font-title text-2xl font-bold leading-9 text-transparent sm:text-4xl sm:leading-[3.5rem]'>
-            I&apos;m Hong, a Full Stack Developer creating{' '}
+          <h1 className='bg-gradient-to-b from-black via-black/90 to-black/70 to-90% bg-clip-text font-title text-2xl font-bold leading-9 text-transparent dark:from-white dark:via-white/90 dark:to-white/70 sm:text-4xl sm:leading-[3.5rem]'>
+            I'm Hong, a Full Stack Developer creating{' '}
             <div className='inline-grid h-9 overflow-hidden sm:h-[3.5rem]'>
               <div ref={scope}>
                 {TEXTS.map(({ text, className }, index) => (
@@ -91,7 +90,7 @@ const Hero = () => {
             duration: 0.3
           }}
         >
-          <Image
+          <BlurImage
             src='/images/avatar.png'
             className='rounded-full'
             width={112}

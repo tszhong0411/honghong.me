@@ -9,12 +9,17 @@
   ],
 
   "files.associations": {
-    ".env*": "properties"
+    ".env*": "properties",
+    "*.css": "tailwindcss"
   },
 
   "tailwindCSS.experimental.classRegex": [
     ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
     ["cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
     "className\\: '([^']*)'"
-  ]
+  ],
+
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.preferences.preferTypeOnlyAutoImports": true,
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

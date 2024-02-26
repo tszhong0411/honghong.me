@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-const useScrollspy = (
+export const useScrollspy = (
   ids: string[],
   options: IntersectionObserverInit
 ): string | undefined => {
@@ -31,5 +31,3 @@ const useScrollspy = (
 
   return activeId
 }
-
-export default useScrollspy

@@ -1,9 +1,9 @@
 'use client'
 
-import { IconArrowUpRight } from '@tabler/icons-react'
 import { buttonVariants, Link } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { motion } from 'framer-motion'
+import { ArrowUpRightIcon } from 'lucide-react'
 
 import { GITHUB_USERNAME } from '@/lib/constants'
 import { type ProjectMetadata } from '@/lib/mdx'
@@ -51,18 +51,12 @@ const Header = (props: HeaderProps) => {
         {homepage && (
           <Link href={homepage} className={cn(buttonVariants(), 'group')}>
             Visit Website
-            <IconArrowUpRight
-              size={20}
-              className='ml-2 transition-transform duration-200 group-hover:-rotate-12'
-            />
+            <ArrowUpRightIcon className='ml-2 size-5 transition-transform group-hover:-rotate-12' />
           </Link>
         )}
         <Link href={github} className={cn(buttonVariants(), 'group')}>
           {GITHUB_USERNAME}/{repo}
-          <IconArrowUpRight
-            size={20}
-            className='ml-2 transition-transform duration-200 group-hover:-rotate-12'
-          />
+          <ArrowUpRightIcon className='ml-2 size-5 transition-transform group-hover:-rotate-12' />
         </Link>
       </motion.div>
     </div>

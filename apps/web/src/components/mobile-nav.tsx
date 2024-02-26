@@ -1,6 +1,5 @@
 'use client'
 
-import { IconMenu } from '@tabler/icons-react'
 import {
   Button,
   DropdownMenu,
@@ -9,6 +8,7 @@ import {
   DropdownMenuTrigger,
   Link
 } from '@tszhong0411/ui'
+import { MenuIcon } from 'lucide-react'
 import * as React from 'react'
 
 import { HEADER_LINKS } from '@/config/links'
@@ -24,10 +24,10 @@ const MobileNav = () => {
           variant='ghost'
         >
           <span className='sr-only'>Toggle menu</span>
-          <IconMenu size={20} />
+          <MenuIcon className='size-4' />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align='end' className='min-w-[10rem]'>
+      <DropdownMenuContent align='end' className='min-w-52'>
         {HEADER_LINKS.map((link) => (
           <DropdownMenuItem key={link.text} asChild>
             <Link href={link.href} className='flex items-center gap-4'>

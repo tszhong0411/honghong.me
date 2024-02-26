@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json.schemastore.org/eslintrc",
+  "extends": ["@tszhong0411/eslint-config"],
+  "overrides": [
+    {
+      "files": ["./src/plugins/**/*.ts"],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": 0,
+        "@typescript-eslint/no-unsafe-argument": 0
+      }
+    }
+  ],
+  "root": true
+}

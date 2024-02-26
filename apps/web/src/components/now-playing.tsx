@@ -3,7 +3,7 @@
 import { Link } from '@tszhong0411/ui'
 import useSWR from 'swr'
 
-import fetcher from '@/lib/fetcher'
+import { fetcher } from '@/lib/fetcher'
 import { type Song } from '@/types'
 
 const NowPlaying = () => {

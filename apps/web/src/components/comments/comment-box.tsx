@@ -9,9 +9,9 @@ import {
   TabsTrigger,
   Textarea
 } from '@tszhong0411/ui'
+import { toast } from '@tszhong0411/ui'
 import * as React from 'react'
 import { useFormStatus } from 'react-dom'
-import { toast } from 'sonner'
 
 import { postComment } from '@/actions/comment'
 import { getMarkdownPreview } from '@/lib/get-markdown-preview'
@@ -80,15 +80,8 @@ const CommentBox = (props: CommentBoxProps) => {
   return (
     <Tabs defaultValue='write'>
       <TabsList>
-        <TabsTrigger value='write' className='data-[state=active]:bg-zinc-800'>
-          Write
-        </TabsTrigger>
-        <TabsTrigger
-          value='preview'
-          className='data-[state=active]:bg-zinc-800'
-        >
-          Preview
-        </TabsTrigger>
+        <TabsTrigger value='write'>Write</TabsTrigger>
+        <TabsTrigger value='preview'>Preview</TabsTrigger>
       </TabsList>
       <form onSubmit={postCommentHandler}>
         <TabsContent value='write'>

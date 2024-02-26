@@ -27,7 +27,7 @@ const getAccessToken = async () => {
   return data.access_token as string
 }
 
-const getNowPlaying = async () => {
+export const getNowPlaying = async () => {
   const accessToken = await getAccessToken()
 
   const response = await fetch(NOW_PLAYING_ENDPOINT, {
@@ -55,5 +55,3 @@ const getNowPlaying = async () => {
     }
   }
 }
-
-export default getNowPlaying

@@ -1,7 +1,7 @@
 'use client'
 
-import { IconChevronRight, IconFile, IconFolder } from '@tabler/icons-react'
 import { cn } from '@tszhong0411/utils'
+import { ChevronRightIcon, FileIcon, FolderIcon } from 'lucide-react'
 import * as React from 'react'
 
 type Node = {
@@ -36,11 +36,7 @@ const Inner = (props: InnerType) => {
   const { data, level } = props
 
   return (
-    <ul
-      {...(level > 0 && {
-        'data-testid': 'tree-node-children'
-      })}
-    >
+    <ul>
       {data.map((node, i) => (
         <Node key={i} level={level} {...node} />
       ))}
@@ -61,18 +57,23 @@ const Node = (props: NodeProps) => {
         style={{
           paddingLeft: level * 24
         }}
-        data-testid='tree-node-file'
         {...(hasChildren && {
           type: 'button',
-          onClick: () => setIsOpen((value) => !value),
-          'data-testid': 'tree-node-folder'
+          onClick: () => setIsOpen((value) => !value)
         })}
       >
-        <IconChevronRight
-          size={22}
-          className={cn(!children && 'invisible', isOpen && 'rotate-90')}
+        <ChevronRightIcon
+          className={cn(
+            'size-[22px]',
+            !children && 'invisible',
+            isOpen && 'rotate-90'
+          )}
         />
-        {children ? <IconFolder size={20} /> : <IconFile size={20} />}
+        {children ? (
+          <FolderIcon className='size-5' />
+        ) : (
+          <FileIcon className='size-5' />
+        )}
         <div>{name}</div>
       </El>
 

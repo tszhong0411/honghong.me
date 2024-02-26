@@ -1,47 +1,35 @@
 'use server'
 
+import { createId } from '@paralleldrive/cuid2'
+import { and, eq } from 'drizzle-orm'
 import { revalidatePath } from 'next/cache'
 import { z } from 'zod'
 
+import { db } from '@/db'
+import { guestbook } from '@/db/schema'
 import { env } from '@/env'
-import prisma from '@/lib/prisma'
-import getErrorMessage from '@/utils/get-error-message'
+import { getErrorMessage } from '@/utils/get-error-message'
 
 import { privateAction } from './private-action'
 
-export const deleteMessage = (id: number) =>
+export const deleteMessage = (id: string) =>
   privateAction(async (user) => {
-    const email = user.email
+    const email = user.email as string
 
-    const message = await prisma.guestbook.findUnique({
-      where: {
-        id
-      },
-      select: {
-        email: true
-      }
-    })
+    const message = await db
+      .select()
+      .from(guestbook)
+      .where(and(eq(guestbook.id, id), eq(guestbook.email, email)))
 
-    if (!message) {
+    if (!message[0]) {
       return {
         message: 'Message not found',
         error: true
       }
     }
 
-    if (message.email !== email) {
-      return {
-        message: 'Unauthorized',
-        error: true
-      }
-    }
-
     try {
-      await prisma.guestbook.delete({
-        where: {
-          id
-        }
-      })
+      await db.delete(guestbook).where(eq(guestbook.id, id))
     } catch (error) {
       return {
         message: getErrorMessage(error),
@@ -80,13 +68,12 @@ export const createMessage = (formData: FormData) =>
     const image = user.image as string
 
     try {
-      await prisma.guestbook.create({
-        data: {
-          email,
-          body: message,
-          image,
-          created_by: name
-        }
+      await db.insert(guestbook).values({
+        id: createId(),
+        email,
+        body: message,
+        image,
+        createdBy: name
       })
     } catch (error) {
       return {

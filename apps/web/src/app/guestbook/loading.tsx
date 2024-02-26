@@ -5,7 +5,7 @@ import PageTitle from '@/components/page-title'
 import Pinned from './pinned'
 
 const Placeholder = () => (
-  <div className='rounded-lg border bg-accent p-4'>
+  <div className='rounded-lg border p-4 shadow-sm dark:bg-zinc-900/30'>
     <div className='mb-3 flex gap-3'>
       <Skeleton className='size-10 rounded-full' />
       <div className='flex flex-col justify-center gap-1'>

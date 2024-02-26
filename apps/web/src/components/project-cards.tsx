@@ -1,10 +1,8 @@
 'use client'
 
-import { Link } from '@tszhong0411/ui'
+import { BlurImage, Link } from '@tszhong0411/ui'
 
 import { type ProjectMetadata } from '@/lib/mdx'
-
-import Image from './mdx/image'
 
 type ProjectCardProps = ProjectMetadata
 type ProjectCardsProps = {
@@ -29,13 +27,13 @@ const ProjectCard = (props: ProjectCardProps) => {
   return (
     <Link
       href={`/projects/${slug}`}
-      className='group rounded-xl bg-background-lighter/60 px-2 py-4 shadow-card-border transition-colors duration-200 hover:bg-background-lighter'
+      className='group rounded-xl px-2 py-4 shadow-feature-card dark:shadow-feature-card-dark'
     >
-      <Image
+      <BlurImage
         src={`/images/projects/${slug}/cover.png`}
         width={1280}
         height={832}
-        imageClassName='transition-transform duration-200 group-hover:scale-105'
+        imageClassName='group-hover:scale-105'
         alt={name}
         className='rounded-lg'
       />
@@ -51,7 +49,7 @@ const ProjectCard = (props: ProjectCardProps) => {
             return (
               <div
                 key={label}
-                className='rounded-full border bg-zinc-900 px-3 py-2 text-xs leading-4'
+                className='rounded-full border bg-zinc-50 px-3 py-2 text-xs leading-4 dark:bg-zinc-900'
               >
                 {label}
               </div>

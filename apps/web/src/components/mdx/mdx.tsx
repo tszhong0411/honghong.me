@@ -1,15 +1,16 @@
-import { Alert, AlertDescription, AlertTitle, Link } from '@tszhong0411/ui'
-import { type MDXComponents } from 'mdx/types'
-import { MDXRemote } from 'next-mdx-remote/rsc'
+import { type MDXComponents, MDXRemoteRSC } from '@tszhong0411/mdx'
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+  BlurImage,
+  Link
+} from '@tszhong0411/ui'
 import * as React from 'react'
-
-import { rehypePlugins } from '@/config/rehype-plugins'
-import { remarkPlugins } from '@/config/remark-plugins'
-import createHeading from '@/utils/create-heading'
 
 import ImageZoom from '../image-zoom'
 import Checkbox from './checkbox'
-import Image from './image'
+import Heading from './heading'
 import ItemGrid from './item-grid'
 import LinkCard from './link-card'
 import Logo from './logo'
@@ -23,11 +24,21 @@ type MdxProps = {
 }
 
 const components: MDXComponents = {
-  h2: createHeading(2),
-  h3: createHeading(3),
-  h4: createHeading(4),
-  h5: createHeading(5),
-  h6: createHeading(6),
+  h2: (props: React.ComponentPropsWithoutRef<'h2'>) => (
+    <Heading as='h2' {...props} />
+  ),
+  h3: (props: React.ComponentPropsWithoutRef<'h3'>) => (
+    <Heading as='h3' {...props} />
+  ),
+  h4: (props: React.ComponentPropsWithoutRef<'h4'>) => (
+    <Heading as='h4' {...props} />
+  ),
+  h5: (props: React.ComponentPropsWithoutRef<'h5'>) => (
+    <Heading as='h5' {...props} />
+  ),
+  h6: (props: React.ComponentPropsWithoutRef<'h6'>) => (
+    <Heading as='h6' {...props} />
+  ),
   a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
     const { children, ...rest } = props
 
@@ -37,13 +48,13 @@ const components: MDXComponents = {
       </Link>
     )
   },
-  Image: (props: React.ComponentPropsWithoutRef<typeof Image>) => {
+  Image: (props: React.ComponentPropsWithoutRef<typeof BlurImage>) => {
     const { alt, ...rest } = props
 
     return (
       <>
         <ImageZoom>
-          <Image className='rounded-lg border' alt={alt} {...rest} />
+          <BlurImage className='rounded-lg border' alt={alt} {...rest} />
         </ImageZoom>
         <figcaption className='mt-4 text-center'>{alt}</figcaption>
       </>
@@ -74,18 +85,8 @@ const Mdx = (props: MdxProps) => {
   const { content } = props
 
   return (
-    <div className='prose prose-invert w-full max-w-none'>
-      <MDXRemote
-        source={content}
-        components={components}
-        options={{
-          mdxOptions: {
-            // @ts-expect-error I don't know what's wrong
-            rehypePlugins,
-            remarkPlugins
-          }
-        }}
-      />
+    <div className='prose w-full'>
+      <MDXRemoteRSC source={content} components={components} />
     </div>
   )
 }

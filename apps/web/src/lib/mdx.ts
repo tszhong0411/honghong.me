@@ -24,10 +24,7 @@ export type PageMetadata = {
   slug: string
 }
 
-export const mdxFilesRootDirectory =
-  process.env.NODE_ENV === 'test'
-    ? path.join(process.cwd(), 'src', 'tests', 'mocks', 'mdx')
-    : path.join(process.cwd(), 'src', 'content')
+const mdxFilesRootDirectory = path.join(process.cwd(), 'src', 'content')
 
 const readFile = (filePath: string) => {
   return fs.readFileSync(filePath, 'utf8')

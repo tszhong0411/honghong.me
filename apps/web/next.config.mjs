@@ -1,6 +1,12 @@
 import bundleAnalyzer from '@next/bundle-analyzer'
+import * as dotenv from 'dotenv'
 import jiti from 'jiti'
 import { fileURLToPath } from 'node:url'
+
+dotenv.config({
+  path: '../../.env.local'
+})
+
 const filename = fileURLToPath(import.meta.url)
 
 const envPath = './src/env'
