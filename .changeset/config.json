@@ -10,7 +10,7 @@
   ],
   "commit": false,
   "fixed": [],
-  "ignore": ["blog", "@tszhong0411/emails"],
+  "ignore": ["blog", "@tszhong0411/emails", "@tszhong0411/mdx"],
   "linked": [],
   "updateInternalDependencies": "patch"
 }
