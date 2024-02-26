@@ -101,6 +101,9 @@ importers:
       jiti:
         specifier: ^1.21.0
         version: 1.21.0
+      js-sha512:
+        specifier: ^0.9.0
+        version: 0.9.0
       lucide-react:
         specifier: ^0.331.0
         version: 0.331.0(react@18.2.0)
@@ -162,6 +165,9 @@ importers:
       '@types/canvas-confetti':
         specifier: ^1.6.4
         version: 1.6.4
+      '@types/js-sha512':
+        specifier: ^0.8.0
+        version: 0.8.0
       '@types/node':
         specifier: ^20.11.20
         version: 20.11.20
@@ -6374,6 +6380,13 @@ packages:
       '@types/istanbul-lib-report': 3.0.3
     dev: false
 
+  /@types/js-sha512@0.8.0:
+    resolution: {integrity: sha512-y+GnsWv7/8I3XkMt36KBy6XJfmbKHutMs4Kqj9uj8KImUd7zkLlDSGPDi/Y2CFPcx1rMk6hi9ZohtRqOqcMj9Q==}
+    deprecated: This is a stub types definition. js-sha512 provides its own type definitions, so you do not need this installed.
+    dependencies:
+      js-sha512: 0.9.0
+    dev: true
+
   /@types/json-schema@7.0.15:
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
     dev: false
@@ -10480,6 +10493,9 @@ packages:
       glob: 10.3.10
       nopt: 7.2.0
     dev: false
+
+  /js-sha512@0.9.0:
+    resolution: {integrity: sha512-mirki9WS/SUahm+1TbAPkqvbCiCfOAAsyXeHxK1UkullnJVVqoJG2pL9ObvT05CN+tM7fxhfYm0NbXn+1hWoZg==}
 
   /js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}

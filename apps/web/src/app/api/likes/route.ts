@@ -1,7 +1,7 @@
 import { eq, sql, sum } from 'drizzle-orm'
+import { sha512 } from 'js-sha512'
 import { unstable_noStore as noStore } from 'next/cache'
 import { NextResponse } from 'next/server'
-import { createHash } from 'node:crypto'
 import { z } from 'zod'
 
 import { db } from '@/db'
@@ -18,9 +18,7 @@ const schema = z.object({
 
 const getSessionId = (slug: string, req: Request): string => {
   const ipAddress = req.headers.get('x-forwarded-for') ?? '0.0.0.0'
-  const currentUserId = createHash('sha512')
-    .update(ipAddress + env.IP_ADDRESS_SALT, 'utf8')
-    .digest('hex')
+  const currentUserId = sha512(ipAddress + env.IP_ADDRESS_SALT)
 
   return `${slug}___${currentUserId}`
 }
