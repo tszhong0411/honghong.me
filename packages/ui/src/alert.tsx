@@ -24,22 +24,24 @@ type AlertProps = {
 } & React.HTMLAttributes<HTMLDivElement> &
   VariantProps<typeof alertVariants>
 
-const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
-  const { variant, className, icon, children, ...rest } = props
+export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
+  (props, ref) => {
+    const { variant, className, icon, children, ...rest } = props
 
-  return (
-    <div
-      ref={ref}
-      className={cn(alertVariants({ variant, className }))}
-      {...rest}
-    >
-      <div className='flex size-5 items-center justify-center'>{icon}</div>
-      <div className='flex-1 space-y-1.5'>{children}</div>
-    </div>
-  )
-})
+    return (
+      <div
+        ref={ref}
+        className={cn(alertVariants({ variant, className }))}
+        {...rest}
+      >
+        <div className='flex size-5 items-center justify-center'>{icon}</div>
+        <div className='flex-1 space-y-1.5'>{children}</div>
+      </div>
+    )
+  }
+)
 
-const AlertTitle = React.forwardRef<
+export const AlertTitle = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >((props, ref) => {
@@ -54,7 +56,7 @@ const AlertTitle = React.forwardRef<
   )
 })
 
-const AlertDescription = React.forwardRef<
+export const AlertDescription = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >((props, ref) => {
@@ -66,5 +68,3 @@ const AlertDescription = React.forwardRef<
 Alert.displayName = 'Alert'
 AlertTitle.displayName = 'AlertTitle'
 AlertDescription.displayName = 'AlertDescription'
-
-export { Alert, AlertDescription, AlertTitle }

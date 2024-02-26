@@ -12,7 +12,7 @@
   "bugs": {
     "url": "https://github.com/tszhong0411/honghong.me/issues"
   },
-  "main": "./dist/index.js",
+  "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "files": [
     "dist"
@@ -21,13 +21,11 @@
     "build": "tsup",
     "clean": "rm -rf .turbo dist",
     "dev": "tsup --watch",
-    "format:check": "prettier -c .",
-    "format:write": "prettier -w .",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint --fix .",
     "type-check": "tsc --noEmit"
   },
-  "types": "./dist/index.d.ts",
+  "types": "./dist/index.d.mts",
   "dependencies": {
     "@radix-ui/react-alert-dialog": "^1.0.5",
     "@radix-ui/react-aspect-ratio": "^1.0.3",
@@ -42,10 +40,11 @@
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-tabs": "^1.0.4",
     "@radix-ui/react-tooltip": "^1.0.7",
-    "@tabler/icons-react": "^2.46.0",
     "class-variance-authority": "^0.7.0",
     "cmdk": "^0.2.0",
-    "react-textarea-autosize": "^8.5.3"
+    "lucide-react": "^0.331.0",
+    "react-textarea-autosize": "^8.5.3",
+    "sonner": "^1.4.1"
   },
   "peerDependencies": {
     "@tszhong0411/utils": ">=0",
@@ -58,13 +57,11 @@
     "@tszhong0411/tailwind-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
     "@tszhong0411/utils": "workspace:*",
-    "@types/react": "^18.2.55",
-    "eslint": "^8.56.0",
+    "@types/react": "^18.2.58",
+    "eslint": "^8.57.0",
     "next": "14.1.1-canary.44",
     "react": "^18.2.0",
-    "tailwindcss": "^3.4.1",
-    "tsup": "^8.0.2",
-    "typescript": "^5.3.3"
+    "tailwindcss": "^3.4.1"
   },
   "publishConfig": {
     "access": "public"
@@ -72,16 +69,7 @@
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "types": "./dist/index.d.mts"
     }
-  },
-  "lint-staged": {
-    "*.{js,jsx,cjs,mjs,ts,tsx}": [
-      "eslint"
-    ],
-    "*.{json,css,md,mdx,js,jsx,ts,tsx,cjs,mjs}": [
-      "prettier -c"
-    ]
   }
 }

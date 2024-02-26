@@ -1,3 +1,3 @@
 # @tszhong0411/ui
 
-This package is used for tszhong0411's projects and is intended for internal use only. It is not production ready and may have some breaking changes.
+⚠️ Warning: This package is intended for honghong.me's internal use. It might release breaking changes frequently and not be documented. Use it at your own risk.

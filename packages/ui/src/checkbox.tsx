@@ -1,11 +1,11 @@
 'use client'
 
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
-import { IconCheck } from '@tabler/icons-react'
 import { cn } from '@tszhong0411/utils'
+import { CheckIcon } from 'lucide-react'
 import * as React from 'react'
 
-const Checkbox = React.forwardRef<
+export const Checkbox = React.forwardRef<
   React.ElementRef<typeof CheckboxPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>
 >((props, ref) => {
@@ -15,9 +15,9 @@ const Checkbox = React.forwardRef<
     <CheckboxPrimitive.Root
       ref={ref}
       className={cn(
-        'peer size-4 shrink-0 rounded-sm border border-border-primary shadow',
-        'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring',
-        'data-[state=checked]:bg-foreground data-[state=checked]:text-background',
+        'peer size-4 shrink-0 rounded-sm border border-primary ring-offset-background',
+        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+        'data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground',
         'disabled:cursor-not-allowed disabled:opacity-50',
         className
       )}
@@ -26,12 +26,10 @@ const Checkbox = React.forwardRef<
       <CheckboxPrimitive.Indicator
         className={cn('flex items-center justify-center text-current')}
       >
-        <IconCheck size={16} />
+        <CheckIcon className='size-4' />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
   )
 })
 
 Checkbox.displayName = CheckboxPrimitive.Root.displayName
-
-export { Checkbox }

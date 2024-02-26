@@ -3,13 +3,13 @@ import * as React from 'react'
 
 type SkeletonProps = React.HTMLAttributes<HTMLDivElement>
 
-const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
+export const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
   (props, ref) => {
     const { className, ...rest } = props
 
     return (
       <div
-        className={cn('animate-pulse rounded-md bg-border', className)}
+        className={cn('animate-pulse rounded-md bg-muted', className)}
         ref={ref}
         {...rest}
       />
@@ -18,5 +18,3 @@ const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
 )
 
 Skeleton.displayName = 'Skeleton'
-
-export { Skeleton }

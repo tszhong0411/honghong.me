@@ -3,16 +3,39 @@ import React from 'react'
 
 type MarqueeProps = {
   children: React.ReactNode
+  /**
+   * The gap between each child.
+   * @default '1rem'
+   * @example '20px' | '1rem' | '2em'
+   */
+  gap?: string
+  /**
+   * The direction of the marquee.
+   * @default 'left'
+   */
   direction?: 'left' | 'up'
+  /**
+   * Pause the marquee on hover.
+   * @default false
+   */
   pauseOnHover?: boolean
+  /**
+   * Reverse the direction of the marquee.
+   * @default false
+   */
   reverse?: boolean
+  /**
+   * Fade the marquee edges.
+   * @default false
+   */
   fade?: boolean
   className?: string
 }
 
-const Marquee = (props: MarqueeProps) => {
+export const Marquee = (props: MarqueeProps) => {
   const {
     children,
+    gap = '1rem',
     direction = 'left',
     pauseOnHover = false,
     reverse = false,
@@ -23,11 +46,10 @@ const Marquee = (props: MarqueeProps) => {
   return (
     <div
       className={cn(
-        'group flex gap-4 overflow-hidden',
+        'group flex overflow-hidden',
         direction === 'left' ? 'flex-row' : 'flex-col',
         className
       )}
-      data-testid='marquee'
       style={{
         maskImage: fade
           ? `linear-gradient(${
@@ -38,21 +60,26 @@ const Marquee = (props: MarqueeProps) => {
           ? `linear-gradient(${
               direction === 'left' ? 'to right' : 'to bottom'
             }, transparent 0%, rgba(0, 0, 0, 1.0) 10%, rgba(0, 0, 0, 1.0) 90%, transparent 100%)`
-          : undefined
+          : undefined,
+        gap
       }}
     >
-      {Array.from({ length: 2 }, (_, i) => (
+      {Array.from({ length: 2 }).map((_, i) => (
         <div
           key={i}
+          style={
+            {
+              '--gap': gap
+            } as React.CSSProperties
+          }
           className={cn(
-            'flex shrink-0 justify-around gap-4 [--gap:1rem]',
+            'flex shrink-0 justify-around gap-[var(--gap)]',
             direction === 'left'
               ? 'animate-marquee-left flex-row'
               : 'animate-marquee-up flex-col',
             pauseOnHover && 'group-hover:[animation-play-state:paused]',
             reverse && 'direction-reverse'
           )}
-          data-testid={`marquee-child-${i + 1}`}
         >
           {children}
         </div>
@@ -60,5 +87,3 @@ const Marquee = (props: MarqueeProps) => {
     </div>
   )
 }
-
-export { Marquee }
