@@ -1,5 +1,11 @@
 # @tszhong0411/utils
 
+## 0.0.5
+
+### Patch Changes
+
+- [#758](https://github.com/tszhong0411/honghong.me/pull/758) [`14aa0e1`](https://github.com/tszhong0411/honghong.me/commit/14aa0e1c4b6000576b3fb5e1e97d975ecf28efe1) Thanks [@tszhong0411](https://github.com/tszhong0411)! - refactor
+
 ## 0.0.4
 
 ### Patch Changes

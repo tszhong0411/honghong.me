@@ -1,5 +1,15 @@
 # @tszhong0411/eslint-config
 
+## 0.0.6
+
+### Patch Changes
+
+- [#758](https://github.com/tszhong0411/honghong.me/pull/758) [`d900d5c`](https://github.com/tszhong0411/honghong.me/commit/d900d5c56f2ef3ff0ab8cb70deed5f4205c4db3d) Thanks [@tszhong0411](https://github.com/tszhong0411)! - update deps and readme
+
+- [#758](https://github.com/tszhong0411/honghong.me/pull/758) [`6b81b01`](https://github.com/tszhong0411/honghong.me/commit/6b81b010b707821e94576f11da29e50c5ae6b0f6) Thanks [@tszhong0411](https://github.com/tszhong0411)! - update ignorePatterns
+
+- [#758](https://github.com/tszhong0411/honghong.me/pull/758) [`fb58079`](https://github.com/tszhong0411/honghong.me/commit/fb5807996730d4c542e854a834272fb629de4ce7) Thanks [@tszhong0411](https://github.com/tszhong0411)! - turn off a react rule
+
 ## 0.0.5
 
 ### Patch Changes
