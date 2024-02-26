@@ -5,6 +5,8 @@ import { NextResponse } from 'next/server'
 import { db } from '@/db'
 import { comments } from '@/db/schema'
 
+export const runtime = 'edge'
+
 export const GET = async (req: Request) => {
   noStore()
 

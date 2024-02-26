@@ -5,7 +5,7 @@ import { NextResponse } from 'next/server'
 import { env } from '@/env'
 import { GITHUB_USERNAME } from '@/lib/constants'
 
-export const dynamic = 'force-dynamic'
+export const runtime = 'edge'
 
 export const GET = async () => {
   noStore()

@@ -4,7 +4,6 @@ import { NextResponse } from 'next/server'
 import { getNowPlaying } from '@/lib/spotify'
 
 export const runtime = 'edge'
-export const dynamic = 'force-dynamic'
 
 export const GET = async () => {
   noStore()

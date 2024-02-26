@@ -9,6 +9,8 @@ import { likesSessions, posts } from '@/db/schema'
 import { env } from '@/env'
 import { getErrorMessage } from '@/utils/get-error-message'
 
+export const runtime = 'edge'
+
 const schema = z.object({
   slug: z.string(),
   value: z.number().int().positive().min(1).max(3)
