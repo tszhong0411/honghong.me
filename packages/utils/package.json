@@ -12,7 +12,7 @@
   "bugs": {
     "url": "https://github.com/tszhong0411/honghong.me/issues"
   },
-  "main": "./dist/index.js",
+  "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "files": [
     "dist"
@@ -21,13 +21,11 @@
     "build": "tsup",
     "clean": "rm -rf .turbo dist",
     "dev": "tsup --watch",
-    "format:check": "prettier -c .",
-    "format:write": "prettier -w .",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint --fix .",
     "type-check": "tsc --noEmit"
   },
-  "types": "./dist/index.d.ts",
+  "types": "./dist/index.d.mts",
   "dependencies": {
     "clsx": "^2.1.0",
     "tailwind-merge": "^2.2.1"
@@ -35,10 +33,8 @@
   "devDependencies": {
     "@tszhong0411/eslint-config": "workspace:^",
     "@tszhong0411/tsconfig": "workspace:^",
-    "@types/node": "^20.11.17",
-    "eslint": "^8.56.0",
-    "tsup": "^8.0.2",
-    "typescript": "^5.3.3"
+    "@types/node": "^20.11.20",
+    "eslint": "^8.57.0"
   },
   "publishConfig": {
     "access": "public"
@@ -46,16 +42,7 @@
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "types": "./dist/index.d.mts"
     }
-  },
-  "lint-staged": {
-    "*.{js,jsx,cjs,mjs,ts,tsx}": [
-      "eslint"
-    ],
-    "*.{json,css,md,mdx,js,jsx,ts,tsx,cjs,mjs}": [
-      "prettier -c"
-    ]
   }
 }
