@@ -51,7 +51,7 @@ Welcome to the monorepo of my personal blog! This repository houses the code for
 
 - Node, recommended `20.x`, minimum `18`
 - pnpm, recommended `8.14.0`, minimum `8.x`
-- MySQL, recommended `8.0`, minimum `5.6`
+- MySQL, recommended `8.0`, minimum `5.6` (optional if you don't need all the functionalities)
 - [Visual Studio Code](https://code.visualstudio.com/) with [recommended extensions](.vscode/extensions.json)
 - Optionally [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
 
@@ -67,11 +67,33 @@ pnpm install
 
 Create a `.env.local` file based on the provided `.env.example` file and fill in the necessary variables.
 
+OR you can skip this by modifying `apps/web/src/env.ts`:
+
+```ts
+export const env = createEnv({
+  skipValidation: true
+
+  // ...
+})
+```
+
+It will skip the validation of environment variables. And you may notice that some functionalities will not work properly. But it's okay for learning.
+
+Then build the necessary packages:
+
+```bash
+pnpm build:packages
+```
+
+To run the app in development mode:
+
 ```bash
 pnpm dev
 ```
 
-The app will become available at `http://localhost:3000`.
+The app will be available at `localhost:3000`.
+
+The `react email` will be available at `localhost:3001`.
 
 ## ✈️ TODO
 
