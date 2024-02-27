@@ -47,6 +47,6 @@
     "*.{js,jsx,ts,tsx}": "eslint --cache --fix",
     "*.{js,jsx,ts,tsx,json,md,mdx}": "prettier --cache --write"
   },
-  "packageManager": "pnpm@8.15.1",
+  "packageManager": "pnpm@8.15.4",
   "prettier": "@tszhong0411/prettier-config"
 }
