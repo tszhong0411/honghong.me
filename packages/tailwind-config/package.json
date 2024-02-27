@@ -25,5 +25,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "lint-staged": {
+    "*.{ts,json,md}": "prettier --cache --write"
   }
 }
