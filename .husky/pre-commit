@@ -1,2 +1,2 @@
-pnpm check
+pnpm lint-staged
 pnpm --filter=blog generate-posts
