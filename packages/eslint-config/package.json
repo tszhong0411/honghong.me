@@ -17,8 +17,8 @@
     "index.js"
   ],
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.17.0",
-    "@typescript-eslint/parser": "^6.20.0",
+    "@typescript-eslint/eslint-plugin": "^7.1.0",
+    "@typescript-eslint/parser": "^7.1.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
@@ -27,9 +27,9 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-simple-import-sort": "^12.0.0",
     "eslint-plugin-sonarjs": "^0.24.0",
-    "eslint-plugin-tailwindcss": "^3.14.2",
+    "eslint-plugin-tailwindcss": "^3.14.3",
     "eslint-plugin-unicorn": "^51.0.1",
-    "eslint-plugin-unused-imports": "^3.0.0"
+    "eslint-plugin-unused-imports": "^3.1.0"
   },
   "peerDependencies": {
     "eslint": "8.x"
