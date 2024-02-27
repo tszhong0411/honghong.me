@@ -1,11 +1,8 @@
-const { resolve } = require('node:path')
-
-const project = resolve(process.cwd(), 'tsconfig.json')
-
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
   extends: [
     'eslint:recommended',
+    'plugin:import/recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:eslint-comments/recommended',
@@ -26,7 +23,8 @@ module.exports = {
   settings: {
     'import/resolver': {
       typescript: {
-        project
+        alwaysTryTypes: true,
+        project: '**/tsconfig.json'
       }
     },
     react: {
@@ -48,7 +46,7 @@ module.exports = {
   },
   plugins: ['react', 'simple-import-sort', 'unused-imports'],
   parserOptions: {
-    project,
+    project: '**/tsconfig.json',
     ecmaVersion: 'latest',
     sourceType: 'module'
   },
