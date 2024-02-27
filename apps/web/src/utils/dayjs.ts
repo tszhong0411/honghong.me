@@ -1,11 +1,11 @@
-import dayjs from 'dayjs'
+import dayjs, { extend } from 'dayjs'
 import localizedFormat from 'dayjs/plugin/localizedFormat'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import updateLocale from 'dayjs/plugin/updateLocale'
 
-dayjs.extend(localizedFormat)
-dayjs.extend(updateLocale)
-dayjs.extend(relativeTime)
+extend(localizedFormat)
+extend(updateLocale)
+extend(relativeTime)
 
 dayjs.updateLocale('en', {
   relativeTime: {

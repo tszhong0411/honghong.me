@@ -17,11 +17,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
   Skeleton,
+  toast,
   Tooltip,
   TooltipContent,
   TooltipTrigger
 } from '@tszhong0411/ui'
-import { toast } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { ArrowUpIcon, MoreHorizontalIcon } from 'lucide-react'
 import Image from 'next/image'

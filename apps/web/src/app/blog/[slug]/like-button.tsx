@@ -2,8 +2,7 @@
  * Inspired by: https://framer.university/resources/like-button-component
  */
 'use client'
-import { Separator } from '@tszhong0411/ui'
-import { toast } from '@tszhong0411/ui'
+import { Separator, toast } from '@tszhong0411/ui'
 import { motion } from 'framer-motion'
 import * as React from 'react'
 import useSWR from 'swr'

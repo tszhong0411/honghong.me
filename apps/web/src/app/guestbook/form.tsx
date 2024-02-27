@@ -6,9 +6,9 @@ import {
   AvatarImage,
   Button,
   Skeleton,
-  Textarea
+  Textarea,
+  toast
 } from '@tszhong0411/ui'
-import { toast } from '@tszhong0411/ui'
 import { type User } from 'next-auth'
 import { signOut } from 'next-auth/react'
 import * as React from 'react'

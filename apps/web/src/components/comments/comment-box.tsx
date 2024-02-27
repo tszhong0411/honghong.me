@@ -7,9 +7,9 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-  Textarea
+  Textarea,
+  toast
 } from '@tszhong0411/ui'
-import { toast } from '@tszhong0411/ui'
 import * as React from 'react'
 import { useFormStatus } from 'react-dom'
 

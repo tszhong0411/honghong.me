@@ -15,9 +15,9 @@ import {
   AvatarImage,
   Button,
   buttonVariants,
-  Skeleton
+  Skeleton,
+  toast
 } from '@tszhong0411/ui'
-import { toast } from '@tszhong0411/ui'
 import { type User } from 'next-auth'
 import * as React from 'react'
 

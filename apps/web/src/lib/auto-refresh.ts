@@ -1,7 +1,7 @@
 /**
  * Adapted from: https://github.com/souporserious/next-remote-refresh/blob/60387a25fa3183b65834844b5ccf0d9ebde2991b/server.js
  */
-import chokidar from 'chokidar'
+import * as chokidar from 'chokidar'
 import { type WebSocket, WebSocketServer } from 'ws'
 
 const createServer = () => {
