@@ -3,6 +3,7 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:import/recommended',
+    'plugin:import/typescript',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:eslint-comments/recommended',
@@ -103,7 +104,12 @@ module.exports = {
             prefer: 'type-imports',
             fixStyle: 'inline-type-imports'
           }
-        ]
+        ],
+
+        'import/default': 0,
+        'import/export': 0,
+        'import/namespace': 0,
+        'import/no-unresolved': 0
       }
     }
   ],
