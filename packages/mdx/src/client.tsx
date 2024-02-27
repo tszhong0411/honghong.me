@@ -1,7 +1,7 @@
 'use client'
 
 import { MDXProvider, useMDXComponents } from '@mdx-js/react'
-import React from 'react'
+import * as React from 'react'
 import * as jsxDevRuntime from 'react/jsx-dev-runtime'
 import * as jsxRuntime from 'react/jsx-runtime'
 
