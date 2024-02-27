@@ -71,5 +71,9 @@
       "import": "./dist/index.mjs",
       "types": "./dist/index.d.mts"
     }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "eslint --fix",
+    "*.{js,jsx,ts,tsx,json,md}": "prettier --cache --write"
   }
 }

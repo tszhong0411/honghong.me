@@ -5,7 +5,7 @@ import {
   SiReact,
   SiTypescript
 } from '@icons-pack/react-simple-icons'
-import { Button, ScrollArea } from '@tszhong0411/ui'
+import { Button, type ButtonProps, ScrollArea } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { CheckIcon, CopyIcon, FileIcon, TerminalIcon } from 'lucide-react'
 import * as React from 'react'
@@ -17,7 +17,7 @@ type PreProps = {
 } & React.ComponentPropsWithoutRef<'pre'>
 type CopyButtonProps = {
   text: string
-} & React.ComponentPropsWithoutRef<typeof Button>
+} & ButtonProps
 
 const getLanguageIcon = (lang: string): React.ReactNode => {
   switch (lang) {
