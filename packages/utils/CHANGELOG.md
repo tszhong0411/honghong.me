@@ -1,5 +1,11 @@
 # @tszhong0411/utils
 
+## 0.0.6
+
+### Patch Changes
+
+- [`ce8dedb`](https://github.com/tszhong0411/honghong.me/commit/ce8dedbedae131d0f5e81bece692947d8a7140ca) Thanks [@tszhong0411](https://github.com/tszhong0411)! - add lint-staged
+
 ## 0.0.5
 
 ### Patch Changes
