@@ -1,5 +1,11 @@
 # @tszhong0411/tailwind-config
 
+## 0.0.3
+
+### Patch Changes
+
+- [`0293f1e`](https://github.com/tszhong0411/honghong.me/commit/0293f1eef1160f3746fc1bdd5c7d914182f6c044) Thanks [@tszhong0411](https://github.com/tszhong0411)! - add lint-staged
+
 ## 0.0.2
 
 ### Patch Changes

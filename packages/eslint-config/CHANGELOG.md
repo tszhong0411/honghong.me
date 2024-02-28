@@ -1,5 +1,19 @@
 # @tszhong0411/eslint-config
 
+## 0.0.7
+
+### Patch Changes
+
+- [`75eefee`](https://github.com/tszhong0411/honghong.me/commit/75eefee1d6fee2bf325e02372e39b8831f3e6f8a) Thanks [@tszhong0411](https://github.com/tszhong0411)! - add lint-staged
+
+- [`630de30`](https://github.com/tszhong0411/honghong.me/commit/630de3082a4006918a1f2d90a33a625b4cd1db4c) Thanks [@tszhong0411](https://github.com/tszhong0411)! - update deps
+
+- [`f2572a7`](https://github.com/tszhong0411/honghong.me/commit/f2572a78c350b1841b4a121b3b1ef2b04ea91a8b) Thanks [@tszhong0411](https://github.com/tszhong0411)! - add eslint plugin import
+
+- [`337aa0e`](https://github.com/tszhong0411/honghong.me/commit/337aa0e5cd9b0ce8fd210a0bf1841a798f654c9a) Thanks [@tszhong0411](https://github.com/tszhong0411)! - update rules
+
+- [`9fb3f40`](https://github.com/tszhong0411/honghong.me/commit/9fb3f40532ca325525fd8869cf22f6ff920a6884) Thanks [@tszhong0411](https://github.com/tszhong0411)! - update eslint plugin import settings
+
 ## 0.0.6
 
 ### Patch Changes

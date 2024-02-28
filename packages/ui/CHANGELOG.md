@@ -1,5 +1,18 @@
 # @tszhong0411/ui
 
+## 0.0.6
+
+### Patch Changes
+
+- [`0a6fafb`](https://github.com/tszhong0411/honghong.me/commit/0a6fafb51f39452ac4825df4192e3b3fd2650764) Thanks [@tszhong0411](https://github.com/tszhong0411)! - update deps and export button props type
+
+- [`3c5b098`](https://github.com/tszhong0411/honghong.me/commit/3c5b09876e247fffee511d669ddf4ebccfaf1ae4) Thanks [@tszhong0411](https://github.com/tszhong0411)! - downgrade sonner, refactor import
+
+- [`7f7f686`](https://github.com/tszhong0411/honghong.me/commit/7f7f686b5bc570e4d0b08f213e548f747a308403) Thanks [@tszhong0411](https://github.com/tszhong0411)! - export button props type, update deps
+
+- Updated dependencies [[`ce8dedb`](https://github.com/tszhong0411/honghong.me/commit/ce8dedbedae131d0f5e81bece692947d8a7140ca)]:
+  - @tszhong0411/utils@0.0.6
+
 ## 0.0.5
 
 ### Patch Changes
