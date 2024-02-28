@@ -143,6 +143,7 @@ module.exports = {
       {
         allow: [
           'eslint-disable',
+          'eslint-enable',
           'eslint-disable-line',
           'eslint-disable-next-line'
         ]
