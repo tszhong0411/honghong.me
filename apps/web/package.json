@@ -5,7 +5,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "build": "next build && generate-posts",
+    "build": "next build && pnpm generate-posts",
     "bundle-analyzer": "ANALYZE=true pnpm run build",
     "clean": "rm -rf .next .turbo",
     "db:check": "drizzle-kit check:mysql",

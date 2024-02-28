@@ -1,4 +1,4 @@
-import type { NextAuthConfig } from 'next-auth'
+import type { NextAuthConfig, NextAuthResult } from 'next-auth'
 import NextAuth from 'next-auth'
 import GithubProvider from 'next-auth/providers/github'
 import GoogleProvider from 'next-auth/providers/google'
@@ -46,9 +46,10 @@ const config: NextAuthConfig = {
 }
 
 export const {
-  handlers: { GET, POST },
-  auth
+  handlers: { GET, POST }
 } = NextAuth(config)
+
+export const auth: NextAuthResult['auth'] = NextAuth(config).auth
 
 export const getCurrentUser = async () => {
   const session = await auth()
