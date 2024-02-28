@@ -1,6 +1,0 @@
-!apps/
-!packages/
-packages/*config/
-
-!package.json
-!pnpm-lock.yaml
