@@ -13,7 +13,7 @@ type TableOfContentsProps = {
 const TableOfContents = (props: TableOfContentsProps) => {
   const { toc } = props
   const activeId = useScrollspy(
-    toc.map((item) => item.title),
+    toc.map((item) => item.url),
     { rootMargin: '0% 0% -80% 0%' }
   )
 
