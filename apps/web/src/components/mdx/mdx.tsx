@@ -4,6 +4,9 @@ import {
   AlertDescription,
   AlertTitle,
   BlurImage,
+  File,
+  Files,
+  Folder,
   Link
 } from '@tszhong0411/ui'
 import * as React from 'react'
@@ -16,7 +19,6 @@ import LinkCard from './link-card'
 import Logo from './logo'
 import Pre from './pre'
 import Table from './table'
-import Tree from './tree'
 import Video from './video'
 
 type MdxProps = {
@@ -75,10 +77,12 @@ const components: MDXComponents = {
   ) => <AlertDescription {...props} />,
   Table,
   ItemGrid,
-  Tree,
   Video,
   LinkCard,
-  Logo
+  Logo,
+  Files,
+  File,
+  Folder
 }
 
 const Mdx = (props: MdxProps) => {

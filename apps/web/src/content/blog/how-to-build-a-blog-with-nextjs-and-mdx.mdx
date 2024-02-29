@@ -42,35 +42,27 @@ Next, create the following file:
 - `lib/format-date.js` - Format the date as `MM DD, YYYY`
 - `pages/blog/[slug].jsx` - article page, using [dynamic routes](https://nextjs.org/docs/routing/dynamic-routes)
 
-<Tree
-  data={[
-    {
-      name: 'components',
-      children: [{ name: 'layout.jsx' }]
-    },
-    {
-      name: 'data',
-      children: [
-        {
-          name: 'blog',
-          children: [
-            { name: 'markdown.mdx' },
-            { name: 'nextjs.mdx' },
-            { name: 'react.mdx' }
-          ]
-        }
-      ]
-    },
-    {
-      name: 'lib',
-      children: [{ name: 'format-date.js' }, { name: 'mdx.js' }]
-    },
-    {
-      name: 'pages',
-      children: [{ name: 'blog', children: [{ name: '[slug].jsx' }] }]
-    }
-  ]}
-/>
+<Files>
+  <Folder name='components' defaultOpen>
+    <File name='layout.jsx' />
+  </Folder>
+  <Folder name='data' defaultOpen>
+    <Folder name='blog' defaultOpen>
+      <File name='markdown.mdx' />
+      <File name='nextjs.mdx' />
+      <File name='react.mdx' />
+    </Folder>
+  </Folder>
+  <Folder name='lib' defaultOpen>
+    <File name='format-date.js' />
+    <File name='mdx.js' />
+  </Folder>
+  <Folder name='pages' defaultOpen>
+    <Folder name='blog' defaultOpen>
+      <File name='[slug].jsx' />
+    </Folder>
+  </Folder>
+</Files>
 
 ### How to handle Markdown files
 
