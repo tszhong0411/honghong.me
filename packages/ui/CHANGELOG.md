@@ -1,5 +1,11 @@
 # @tszhong0411/ui
 
+## 0.0.7
+
+### Patch Changes
+
+- [`dc7ad29`](https://github.com/tszhong0411/honghong.me/commit/dc7ad298cc2c3768828b73e5adb82d3f61f05a0d) Thanks [@tszhong0411](https://github.com/tszhong0411)! - add collapsible and files components
+
 ## 0.0.6
 
 ### Patch Changes
