@@ -26,6 +26,7 @@
     "db:check": {},
     "db:generate": {},
     "db:push": {},
+    "db:studio": {},
     "type-check": {},
     "blog#build": {
       "dependsOn": ["^build"],
