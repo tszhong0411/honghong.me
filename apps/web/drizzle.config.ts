@@ -8,15 +8,11 @@ dotenv.config({
   path: '../../.env.local'
 })
 
-if (!process.env.DATABASE_URL) {
-  throw new Error('DATABASE_URL is required')
-}
-
 export default {
   schema: './src/db/schema.ts',
   driver: 'mysql2',
   dbCredentials: {
-    uri: process.env.DATABASE_URL
+    uri: process.env.DATABASE_URL ?? ''
   },
   out: './src/db/migration'
 } satisfies Config
