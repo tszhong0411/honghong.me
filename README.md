@@ -71,9 +71,11 @@ OR you can skip this by modifying `apps/web/src/env.ts`:
 
 ```ts
 export const env = createEnv({
-  skipValidation: true
+  skipValidation: true,
 
-  // ...
+  server: {
+    // ...
+  }
 })
 ```
 
