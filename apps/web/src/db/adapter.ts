@@ -1,13 +1,12 @@
 import { createId } from '@paralleldrive/cuid2'
 import { and, eq } from 'drizzle-orm'
-import { type PlanetScaleDatabase } from 'drizzle-orm/planetscale-serverless'
+import type { PgDatabase } from 'drizzle-orm/pg-core'
 import { type Adapter } from 'next-auth/adapters'
 
-import type * as schema from './schema'
 import { accounts, sessions, users, verificationTokens } from './schema'
 
 export const DrizzleAdapter = (
-  db: PlanetScaleDatabase<typeof schema>
+  db: InstanceType<typeof PgDatabase>
 ): Adapter => {
   return {
     createUser: async (user) => {

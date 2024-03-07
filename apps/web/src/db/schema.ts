@@ -1,60 +1,57 @@
 import { relations } from 'drizzle-orm'
 import {
   boolean,
-  int,
-  longtext,
-  mysqlEnum,
-  mysqlTable,
+  integer,
+  pgEnum,
+  pgTable,
   primaryKey,
-  timestamp,
-  varchar
-} from 'drizzle-orm/mysql-core'
+  text,
+  timestamp
+} from 'drizzle-orm/pg-core'
 import { type AdapterAccount } from 'next-auth/adapters'
 
-export const users = mysqlTable('user', {
-  id: varchar('id', { length: 255 }).notNull().primaryKey(),
-  name: varchar('name', { length: 255 }),
-  email: varchar('email', { length: 255 }).notNull(),
+export const roleEnum = pgEnum('role', ['user', 'admin'])
+
+export const users = pgTable('user', {
+  id: text('id').notNull().primaryKey(),
+  name: text('name'),
+  email: text('email').notNull(),
   emailVerified: timestamp('email_verified', {
     mode: 'date',
-    fsp: 3
+    precision: 3
   }).defaultNow(),
-  image: varchar('image', { length: 255 }),
-  role: mysqlEnum('role', ['user', 'admin']).notNull().default('user'),
+  image: text('image'),
+  role: roleEnum('role').default('user'),
   createdAt: timestamp('created_at', {
     mode: 'date',
-    fsp: 3
+    precision: 3
   })
     .notNull()
     .defaultNow(),
   updatedAt: timestamp('updated_at', {
     mode: 'date',
-    fsp: 3
+    precision: 3
   })
     .notNull()
     .defaultNow()
 })
 
-export const accounts = mysqlTable(
+export const accounts = pgTable(
   'account',
   {
-    userId: varchar('user_id', { length: 255 })
+    userId: text('user_id')
       .notNull()
       .references(() => users.id, { onDelete: 'cascade' }),
-    type: varchar('type', { length: 255 })
-      .$type<AdapterAccount['type']>()
-      .notNull(),
-    provider: varchar('provider', { length: 255 }).notNull(),
-    providerAccountId: varchar('provider_account_id', {
-      length: 255
-    }).notNull(),
-    refreshToken: varchar('refresh_token', { length: 255 }),
-    accessToken: varchar('access_token', { length: 255 }),
-    expiresAt: int('expires_at'),
-    tokenType: varchar('token_type', { length: 255 }),
-    scope: varchar('scope', { length: 255 }),
-    idToken: varchar('id_token', { length: 255 }),
-    sessionState: varchar('session_state', { length: 255 })
+    type: text('type').$type<AdapterAccount['type']>().notNull(),
+    provider: text('provider').notNull(),
+    providerAccountId: text('provider_account_id').notNull(),
+    refreshToken: text('refresh_token'),
+    accessToken: text('access_token'),
+    expiresAt: integer('expires_at'),
+    tokenType: text('token_type'),
+    scope: text('scope'),
+    idToken: text('id_token'),
+    sessionState: text('session_state')
   },
   (account) => ({
     compoundKey: primaryKey({
@@ -63,27 +60,25 @@ export const accounts = mysqlTable(
   })
 )
 
-export const sessions = mysqlTable('session', {
-  sessionToken: varchar('session_token', { length: 255 })
-    .notNull()
-    .primaryKey(),
-  userId: varchar('user_id', { length: 255 })
+export const sessions = pgTable('session', {
+  sessionToken: text('session_token').notNull().primaryKey(),
+  userId: text('user_id')
     .notNull()
     .references(() => users.id, { onDelete: 'cascade' }),
   expires: timestamp('expires', {
     mode: 'date',
-    fsp: 3
+    precision: 3
   }).notNull()
 })
 
-export const verificationTokens = mysqlTable(
+export const verificationTokens = pgTable(
   'verification_token',
   {
-    identifier: varchar('identifier', { length: 255 }).notNull(),
-    token: varchar('token', { length: 255 }).notNull(),
+    identifier: text('identifier').notNull(),
+    token: text('token').notNull(),
     expires: timestamp('expires', {
       mode: 'date',
-      fsp: 3
+      precision: 3
     }).notNull()
   },
   (verificationToken) => ({
@@ -93,74 +88,74 @@ export const verificationTokens = mysqlTable(
   })
 )
 
-export const guestbook = mysqlTable('guestbook', {
-  id: varchar('id', { length: 255 }).notNull().primaryKey(),
-  email: varchar('email', { length: 255 }).notNull(),
-  image: varchar('image', { length: 255 }),
-  body: varchar('body', { length: 1024 }).notNull(),
-  createdBy: varchar('created_by', { length: 255 }).notNull(),
+export const guestbook = pgTable('guestbook', {
+  id: text('id').notNull().primaryKey(),
+  email: text('email').notNull(),
+  image: text('image'),
+  body: text('body').notNull(),
+  createdBy: text('created_by').notNull(),
   createdAt: timestamp('created_at', {
     mode: 'date',
-    fsp: 3
+    precision: 3
   })
     .notNull()
     .defaultNow(),
   updatedAt: timestamp('updated_at', {
     mode: 'date',
-    fsp: 3
+    precision: 3
   })
     .notNull()
     .defaultNow()
 })
 
-export const posts = mysqlTable('post', {
+export const posts = pgTable('post', {
   createdAt: timestamp('created_at', {
     mode: 'date',
-    fsp: 3
+    precision: 3
   })
     .notNull()
     .defaultNow(),
-  slug: varchar('slug', { length: 255 }).notNull().primaryKey(),
-  likes: int('likes').notNull().default(0),
-  views: int('views').notNull().default(0)
+  slug: text('slug').notNull().primaryKey(),
+  likes: integer('likes').notNull().default(0),
+  views: integer('views').notNull().default(0)
 })
 
-export const likesSessions = mysqlTable('likes_session', {
-  id: varchar('id', { length: 255 }).notNull().primaryKey(),
+export const likesSessions = pgTable('likes_session', {
+  id: text('id').notNull().primaryKey(),
   createdAt: timestamp('created_at', {
     mode: 'date',
-    fsp: 3
+    precision: 3
   })
     .notNull()
     .defaultNow(),
-  likes: int('likes').notNull().default(0)
+  likes: integer('likes').notNull().default(0)
 })
 
-export const comments = mysqlTable('comment', {
-  id: varchar('id', { length: 255 }).notNull().primaryKey(),
-  body: longtext('body').notNull(),
-  userId: varchar('user_id', { length: 255 }).notNull(),
+export const comments = pgTable('comment', {
+  id: text('id').notNull().primaryKey(),
+  body: text('body').notNull(),
+  userId: text('user_id').notNull(),
   createdAt: timestamp('created_at', {
     mode: 'date',
-    fsp: 3
+    precision: 3
   })
     .notNull()
     .defaultNow(),
   updatedAt: timestamp('updated_at', {
     mode: 'date',
-    fsp: 3
+    precision: 3
   })
     .notNull()
     .defaultNow(),
-  postId: varchar('post_id', { length: 255 }).notNull(),
-  parentId: varchar('parent_id', { length: 255 }),
+  postId: text('post_id').notNull(),
+  parentId: text('parent_id'),
   isDeleted: boolean('is_deleted').notNull().default(false)
 })
 
-export const commentUpvotes = mysqlTable('comment_upvote', {
-  id: varchar('id', { length: 255 }).notNull().primaryKey(),
-  userId: varchar('user_id', { length: 255 }).notNull(),
-  commentId: varchar('comment_id', { length: 255 })
+export const commentUpvotes = pgTable('comment_upvote', {
+  id: text('id').notNull().primaryKey(),
+  userId: text('user_id').notNull(),
+  commentId: text('comment_id')
     .notNull()
     .references(() => comments.id, { onDelete: 'cascade' })
 })

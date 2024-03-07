@@ -9,8 +9,6 @@ import { likesSessions, posts } from '@/db/schema'
 import { env } from '@/env'
 import { getErrorMessage } from '@/utils/get-error-message'
 
-export const runtime = 'edge'
-
 const schema = z.object({
   slug: z.string(),
   value: z.number().int().positive().min(1).max(3)
@@ -105,7 +103,8 @@ export const PATCH = async (req: Request) => {
         slug,
         likes: value
       })
-      .onDuplicateKeyUpdate({
+      .onConflictDoUpdate({
+        target: posts.slug,
         set: {
           likes: sql<number>`${posts.likes} + ${value}`
         }
@@ -117,9 +116,10 @@ export const PATCH = async (req: Request) => {
         id: getSessionId(slug, req),
         likes: value
       })
-      .onDuplicateKeyUpdate({
+      .onConflictDoUpdate({
+        target: likesSessions.id,
         set: {
-          likes: sql<number>`${likesSessions.likes} + 1`
+          likes: sql<number>`${likesSessions.likes} + ${value}`
         }
       })
 

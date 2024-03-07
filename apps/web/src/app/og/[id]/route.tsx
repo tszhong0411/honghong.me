@@ -9,8 +9,6 @@ import { getErrorMessage } from '@/utils/get-error-message'
 
 import postsData from './posts.json'
 
-export const runtime = 'edge'
-
 type OGRouteProps = {
   params: {
     id: string

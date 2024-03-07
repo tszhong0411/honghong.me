@@ -5,8 +5,6 @@ import { NextResponse } from 'next/server'
 import { db } from '@/db'
 import { posts } from '@/db/schema'
 
-export const runtime = 'edge'
-
 export const GET = async (req: Request) => {
   noStore()
 
@@ -64,9 +62,10 @@ export const POST = async (req: Request) => {
     .insert(posts)
     .values({
       slug: slug,
-      views: sql<number>`${posts.views} + 1`
+      views: 1
     })
-    .onDuplicateKeyUpdate({
+    .onConflictDoUpdate({
+      target: posts.slug,
       set: {
         views: sql<number>`${posts.views} + 1`
       }
