@@ -6,7 +6,6 @@ import path from 'node:path'
 
 import { db } from '@/db'
 import { posts } from '@/db/schema'
-import { SITE_URL } from '@/lib/constants'
 import { getErrorMessage } from '@/utils/get-error-message'
 
 import postsData from './posts.json'
@@ -55,7 +54,12 @@ export const GET = async (_: Request, props: OGRouteProps) => {
       (
         <div
           style={{
-            backgroundImage: `url(${SITE_URL}/images/og-background.png)`,
+            backgroundImage: `url(data:image/png;base64,${fs.readFileSync(
+              path.join(process.cwd(), 'public/images/og-background.png'),
+              {
+                encoding: 'base64'
+              }
+            )})`,
             width: '100%',
             height: '100%',
             display: 'flex',
