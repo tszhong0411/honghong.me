@@ -1,6 +1,8 @@
 import { eq } from 'drizzle-orm'
 import { ImageResponse } from 'next/og'
 import { NextResponse } from 'next/server'
+import fs from 'node:fs'
+import path from 'node:path'
 
 import { db } from '@/db'
 import { posts } from '@/db/schema'
@@ -48,15 +50,6 @@ export const GET = async (_: Request, props: OGRouteProps) => {
       if (title.length > 40) return 48
       return 64
     }
-
-    const RobotoCondensedBold = await (
-      await fetch(
-        new URL(
-          '../../../../public/fonts/RobotoCondensed-Bold.ttf',
-          import.meta.url
-        )
-      )
-    ).arrayBuffer()
 
     return new ImageResponse(
       (
@@ -152,7 +145,9 @@ export const GET = async (_: Request, props: OGRouteProps) => {
         fonts: [
           {
             name: 'Roboto Condensed',
-            data: RobotoCondensedBold,
+            data: fs.readFileSync(
+              path.join(process.cwd(), 'public/fonts/RobotoCondensed-Bold.ttf')
+            ),
             weight: 700,
             style: 'normal'
           }
