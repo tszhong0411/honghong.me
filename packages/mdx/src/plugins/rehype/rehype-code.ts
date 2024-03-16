@@ -9,8 +9,8 @@ import type { Plugin } from 'unified'
 const titleRegex = /title="([^"]*)"/
 
 export const DEFAULT_SHIKI_THEMES = {
-  light: 'github-light',
-  dark: 'github-dark'
+  light: 'github-light-default',
+  dark: 'github-dark-default'
 }
 
 export const rehypeCode: [
