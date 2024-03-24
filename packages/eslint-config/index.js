@@ -135,7 +135,7 @@ module.exports = {
     'unicorn/prefer-export-from': [2, { ignoreUsedVariables: true }],
 
     // SonarJS
-    'sonarjs/no-duplicate-string': [2, { threshold: 5 }],
+    'sonarjs/no-duplicate-string': 0,
 
     // Eslint comments
     'eslint-comments/no-use': [
