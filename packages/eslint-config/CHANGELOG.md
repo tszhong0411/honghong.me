@@ -1,5 +1,11 @@
 # @tszhong0411/eslint-config
 
+## 0.0.8
+
+### Patch Changes
+
+- [`5146ee9`](https://github.com/tszhong0411/honghong.me/commit/5146ee9777cdddcd80aae80a7025c256811f8174) Thanks [@tszhong0411](https://github.com/tszhong0411)! - disable no duplicate string
+
 ## 0.0.7
 
 ### Patch Changes
