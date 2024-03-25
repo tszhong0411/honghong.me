@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { AlertOctagonIcon, AlertTriangleIcon, InfoIcon } from 'lucide-react'
 import * as React from 'react'
 
-export const alertVariants = cva(
+export const calloutVariants = cva(
   'my-6 flex flex-row gap-2 rounded-lg border bg-card p-3 text-sm text-muted-foreground shadow-md',
   {
     variants: {
@@ -19,10 +19,10 @@ export const alertVariants = cva(
   }
 )
 
-type AlertProps = { title?: string } & React.HTMLAttributes<HTMLDivElement> &
-  VariantProps<typeof alertVariants>
+type CalloutProps = { title?: string } & React.HTMLAttributes<HTMLDivElement> &
+  VariantProps<typeof calloutVariants>
 
-export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
+export const Callout = React.forwardRef<HTMLDivElement, CalloutProps>(
   (props, ref) => {
     const { variant, className, title, children, ...rest } = props
 
@@ -37,7 +37,7 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
     return (
       <div
         ref={ref}
-        className={cn(alertVariants({ variant, className }))}
+        className={cn(calloutVariants({ variant, className }))}
         {...rest}
       >
         {variant ? icons[variant] : icons['info']}
@@ -52,30 +52,4 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
   }
 )
 
-export const AlertTitle = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->((props, ref) => {
-  const { className, ...rest } = props
-
-  return (
-    <div
-      ref={ref}
-      className={cn('flex h-5 items-center font-semibold', className)}
-      {...rest}
-    />
-  )
-})
-
-export const AlertDescription = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->((props, ref) => {
-  const { className, ...rest } = props
-
-  return <div ref={ref} className={cn('text-sm', className)} {...rest} />
-})
-
-Alert.displayName = 'Alert'
-AlertTitle.displayName = 'AlertTitle'
-AlertDescription.displayName = 'AlertDescription'
+Callout.displayName = 'Callout'
