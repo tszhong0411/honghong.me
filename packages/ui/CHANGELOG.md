@@ -1,5 +1,11 @@
 # @tszhong0411/ui
 
+## 0.0.9
+
+### Patch Changes
+
+- [`e1703ef`](https://github.com/tszhong0411/honghong.me/commit/e1703ef363a94aa994c998f53aabf8319c9501d6) Thanks [@tszhong0411](https://github.com/tszhong0411)! - update alert component
+
 ## 0.0.8
 
 ### Patch Changes
