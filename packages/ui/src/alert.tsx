@@ -1,32 +1,38 @@
 import { cn } from '@tszhong0411/utils'
 import { cva, type VariantProps } from 'class-variance-authority'
+import { AlertOctagonIcon, AlertTriangleIcon, InfoIcon } from 'lucide-react'
 import * as React from 'react'
 
 export const alertVariants = cva(
-  'flex w-full justify-start gap-4 rounded-lg border p-4',
+  'my-6 flex flex-row gap-2 rounded-lg border bg-card p-3 text-sm text-muted-foreground shadow-md',
   {
     variants: {
       variant: {
-        default: '',
-        danger: 'border-red-200/30 bg-red-900/30 text-red-200',
+        error: 'border-red-200/30 bg-red-900/30 text-red-200',
         info: 'border-blue-200/30 bg-blue-900/30 text-blue-200',
         warning: 'border-yellow-200/30 bg-yellow-700/30 text-yellow-200'
       }
     },
     defaultVariants: {
-      variant: 'default'
+      variant: 'info'
     }
   }
 )
 
-type AlertProps = {
-  icon?: React.ReactNode
-} & React.HTMLAttributes<HTMLDivElement> &
+type AlertProps = { title?: string } & React.HTMLAttributes<HTMLDivElement> &
   VariantProps<typeof alertVariants>
 
 export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
   (props, ref) => {
-    const { variant, className, icon, children, ...rest } = props
+    const { variant, className, title, children, ...rest } = props
+
+    const icons = {
+      info: <InfoIcon className='size-5 fill-blue-500 text-card' />,
+      warning: (
+        <AlertTriangleIcon className='size-5 fill-orange-500 text-card' />
+      ),
+      error: <AlertOctagonIcon className='size-5 fill-red-500 text-card' />
+    }
 
     return (
       <div
@@ -34,8 +40,13 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
         className={cn(alertVariants({ variant, className }))}
         {...rest}
       >
-        <div className='flex size-5 items-center justify-center'>{icon}</div>
-        <div className='flex-1 space-y-1.5'>{children}</div>
+        {variant ? icons[variant] : icons['info']}
+        <div className='w-0 flex-1'>
+          {title ? (
+            <div className='mb-2 font-medium text-card-foreground'>{title}</div>
+          ) : null}
+          <div className='prose-no-margin'>{children}</div>
+        </div>
       </div>
     )
   }
