@@ -1,5 +1,11 @@
 # @tszhong0411/ui
 
+## 0.0.10
+
+### Patch Changes
+
+- [`cf53729`](https://github.com/tszhong0411/honghong.me/commit/cf537298d0c062fb0cf39c58d4c078229dba6b4b) Thanks [@tszhong0411](https://github.com/tszhong0411)! - rename alert to callout
+
 ## 0.0.9
 
 ### Patch Changes
