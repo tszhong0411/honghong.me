@@ -1,5 +1,11 @@
 # @tszhong0411/ui
 
+## 0.0.8
+
+### Patch Changes
+
+- [`629e630`](https://github.com/tszhong0411/honghong.me/commit/629e630fac94ed56c76f57caa95ddb5a720ed279) Thanks [@tszhong0411](https://github.com/tszhong0411)! - add dist
+
 ## 0.0.7
 
 ### Patch Changes
