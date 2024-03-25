@@ -1,5 +1,11 @@
 # @tszhong0411/utils
 
+## 0.0.7
+
+### Patch Changes
+
+- [`973b5e6`](https://github.com/tszhong0411/honghong.me/commit/973b5e60c9b4459d883802d72768c7e5be8c99f4) Thanks [@tszhong0411](https://github.com/tszhong0411)! - add dist
+
 ## 0.0.6
 
 ### Patch Changes
