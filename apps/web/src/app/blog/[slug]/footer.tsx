@@ -6,7 +6,7 @@ import * as React from 'react'
 import { useFormattedDate } from '@/hooks/use-formatted-date'
 
 const editURL = (slug: string) =>
-  `https://github.com/tszhong0411/honghong.me/blob/main/src/content/blog/${slug}.mdx?plain=1`
+  `https://github.com/tszhong0411/honghong.me/blob/main/apps/web/src/content/blog/${slug}.mdx?plain=1`
 
 type FooterProps = {
   slug: string

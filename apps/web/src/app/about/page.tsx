@@ -3,7 +3,6 @@ import { notFound } from 'next/navigation'
 
 import Mdx from '@/components/mdx'
 import PageTitle from '@/components/page-title'
-import { SITE_URL } from '@/lib/constants'
 import { getPage, type PageMetadata } from '@/lib/mdx'
 
 const title = 'About'
@@ -25,11 +24,11 @@ export const generateMetadata = async (
     title,
     description,
     alternates: {
-      canonical: `${SITE_URL}/about`
+      canonical: '/about'
     },
     openGraph: {
       ...previousOpenGraph,
-      url: `${SITE_URL}/about`,
+      url: '/about',
       type: 'profile',
       title,
       description

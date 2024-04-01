@@ -1,14 +1,5 @@
 import { type MDXComponents, MDXRemoteRSC } from '@tszhong0411/mdx'
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-  BlurImage,
-  File,
-  Files,
-  Folder,
-  Link
-} from '@tszhong0411/ui'
+import { BlurImage, File, Files, Folder, Link } from '@tszhong0411/ui'
 import * as React from 'react'
 
 import ImageZoom from '../image-zoom'
@@ -66,15 +57,6 @@ const components: MDXComponents = {
   input: Checkbox,
 
   // Custom components
-  Alert: (props: React.ComponentPropsWithoutRef<typeof Alert>) => (
-    <Alert {...props} />
-  ),
-  AlertTitle: (props: React.ComponentPropsWithoutRef<typeof AlertTitle>) => (
-    <AlertTitle {...props} />
-  ),
-  AlertDescription: (
-    props: React.ComponentPropsWithoutRef<typeof AlertDescription>
-  ) => <AlertDescription {...props} />,
   Table,
   ItemGrid,
   Video,

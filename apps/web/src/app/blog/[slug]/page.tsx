@@ -48,11 +48,11 @@ export const generateMetadata = async (
     title: title,
     description: summary,
     alternates: {
-      canonical: `${SITE_URL}/blog/${slug}`
+      canonical: `/blog/${slug}`
     },
     openGraph: {
       ...previousOpenGraph,
-      url: `${SITE_URL}/blog/${slug}`,
+      url: `/blog/${slug}`,
       type: 'article',
       title: title,
       description: summary,
@@ -61,9 +61,7 @@ export const generateMetadata = async (
       authors: SITE_URL,
       images: [
         {
-          url: `${SITE_URL}/api/og?title=${title}&date=${
-            date.split('T')[0]
-          }&url=honghong.me/blog`,
+          url: `/og/${slug}`,
           width: 1200,
           height: 630,
           alt: title,
@@ -77,9 +75,7 @@ export const generateMetadata = async (
       description: summary,
       images: [
         {
-          url: `${SITE_URL}/api/og?title=${title}&date=${
-            date.split('T')[0]
-          }&url=honghong.me/blog`,
+          url: `/og/${slug}`,
           width: 1200,
           height: 630,
           alt: title
@@ -113,9 +109,7 @@ const BlogPostPage = (props: BlogPostPageProps) => {
     description: summary,
     datePublished: date,
     dateModified: modifiedTime,
-    image: `${SITE_URL}/api/og?title=${title}&date=${
-      date.split('T')[0]
-    }&url=honghong.me/blog`,
+    image: `${SITE_URL}/og/${slug}`,
     author: {
       '@type': 'Person',
       name: SITE_NAME,

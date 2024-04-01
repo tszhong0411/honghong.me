@@ -55,7 +55,7 @@ export const GET = async (_: Request, props: OGRouteProps) => {
         <div
           style={{
             backgroundImage: `url(data:image/png;base64,${fs.readFileSync(
-              path.join(process.cwd(), 'public/images/og-background.png'),
+              path.join(process.cwd(), 'src/assets/og-background.png'),
               {
                 encoding: 'base64'
               }
@@ -150,7 +150,7 @@ export const GET = async (_: Request, props: OGRouteProps) => {
           {
             name: 'Roboto Condensed',
             data: fs.readFileSync(
-              path.join(process.cwd(), 'public/fonts/RobotoCondensed-Bold.ttf')
+              path.join(process.cwd(), 'src/assets/RobotoCondensed-Bold.ttf')
             ),
             weight: 700,
             style: 'normal'

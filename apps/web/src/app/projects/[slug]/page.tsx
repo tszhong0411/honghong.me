@@ -3,7 +3,6 @@ import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import Mdx from '@/components/mdx'
-import { SITE_URL } from '@/lib/constants'
 import { getAllPages, getPage, type ProjectMetadata } from '@/lib/mdx'
 
 import Header from './header'
@@ -43,16 +42,16 @@ export const generateMetadata = async (
     title: name,
     description: description,
     alternates: {
-      canonical: `${SITE_URL}/projects/${params.slug}`
+      canonical: `/projects/${params.slug}`
     },
     openGraph: {
       ...previousOpenGraph,
-      url: `${SITE_URL}/projects/${params.slug}`,
+      url: `/projects/${params.slug}`,
       title: name,
       description: description,
       images: [
         {
-          url: `${SITE_URL}/images/projects/${params.slug}/cover.png`,
+          url: `/images/projects/${params.slug}/cover.png`,
           width: 1280,
           height: 832,
           alt: description,
@@ -66,7 +65,7 @@ export const generateMetadata = async (
       description: description,
       images: [
         {
-          url: `${SITE_URL}/images/projects/${params.slug}/cover.png`,
+          url: `/images/projects/${params.slug}/cover.png`,
           width: 1280,
           height: 832,
           alt: description

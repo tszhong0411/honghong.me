@@ -2,7 +2,6 @@ import type { Metadata, ResolvingMetadata } from 'next'
 
 import FilteredPosts from '@/components/filtered-posts'
 import PageTitle from '@/components/page-title'
-import { SITE_URL } from '@/lib/constants'
 import { type BlogMetadata, getAllPages } from '@/lib/mdx'
 
 const title = 'Blog'
@@ -25,11 +24,11 @@ export const generateMetadata = async (
     title,
     description,
     alternates: {
-      canonical: `${SITE_URL}/blog`
+      canonical: '/blog'
     },
     openGraph: {
       ...previousOpenGraph,
-      url: `${SITE_URL}/blog`,
+      url: '/blog',
       title,
       description
     },
