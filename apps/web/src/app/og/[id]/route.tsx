@@ -17,6 +17,13 @@ type OGRouteProps = {
 }
 
 export const GET = async (_: Request, props: OGRouteProps) => {
+  console.log(process.cwd())
+  console.log(fs.readdirSync(path.join(process.cwd(), 'public/images')))
+  console.log(fs.readdirSync(path.join(process.cwd(), 'public/fonts')))
+  console.log(
+    fs.existsSync(path.join(process.cwd(), 'public/images/og-background.png'))
+  )
+
   try {
     const {
       params: { id }
