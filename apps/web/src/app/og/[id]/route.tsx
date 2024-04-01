@@ -19,6 +19,7 @@ type OGRouteProps = {
 export const GET = async (_: Request, props: OGRouteProps) => {
   console.log(process.cwd())
   console.log(fs.readdirSync(process.cwd()))
+  console.log(fs.readdirSync(path.join(process.cwd(), 'public')))
 
   try {
     const {
