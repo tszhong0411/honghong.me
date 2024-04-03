@@ -354,11 +354,11 @@ importers:
         specifier: ^3.0.1
         version: 3.0.1(@types/react@18.2.60)(react@18.2.0)
       '@shikijs/rehype':
-        specifier: ^1.2.0
-        version: 1.2.0
+        specifier: ^1.2.4
+        version: 1.2.4
       '@shikijs/transformers':
-        specifier: ^1.2.0
-        version: 1.2.0
+        specifier: ^1.2.4
+        version: 1.2.4
       github-slugger:
         specifier: ^2.0.0
         version: 2.0.0
@@ -375,8 +375,8 @@ importers:
         specifier: ^4.0.0
         version: 4.0.0
       shiki:
-        specifier: ^1.2.0
-        version: 1.2.0
+        specifier: ^1.2.4
+        version: 1.2.4
       unified:
         specifier: ^11.0.4
         version: 11.0.4
@@ -6179,25 +6179,25 @@ packages:
       selderee: 0.11.0
     dev: false
 
-  /@shikijs/core@1.2.0:
-    resolution: {integrity: sha512-OlFvx+nyr5C8zpcMBnSGir0YPD6K11uYhouqhNmm1qLiis4GA7SsGtu07r9gKS9omks8RtQqHrJL4S+lqWK01A==}
+  /@shikijs/core@1.2.4:
+    resolution: {integrity: sha512-ClaUWpt8oTzjcF0MM1P81AeWyzc1sNSJlAjMG80CbwqbFqXSNz+NpQVUC0icobt3sZn43Sn27M4pHD/Jmp3zHw==}
     dev: false
 
-  /@shikijs/rehype@1.2.0:
-    resolution: {integrity: sha512-k6LARhiQEufC2TR7Jb3mFgGSHil/vYnrqInTq1goEWRCCm+88GlysE4KwC6lyOjigKTlaV1thVfFXP2+LD2bKw==}
+  /@shikijs/rehype@1.2.4:
+    resolution: {integrity: sha512-g7kopA0+CcZbnudUSHGKUjOguHtX/KN2ArTs+61cz+QY9EIN7fbOstuA6Gcj8a9WWSDxJPlqjr3S6jzq+qFrdg==}
     dependencies:
-      '@shikijs/transformers': 1.2.0
+      '@shikijs/transformers': 1.2.4
       '@types/hast': 3.0.4
       hast-util-to-string: 3.0.0
-      shiki: 1.2.0
+      shiki: 1.2.4
       unified: 11.0.4
       unist-util-visit: 5.0.0
     dev: false
 
-  /@shikijs/transformers@1.2.0:
-    resolution: {integrity: sha512-xKn7DtA65DQV4FOfYsrvqM80xOy2xuXnxWWKsZmHv1VII/IOuDUDsWDu3KnpeLH6wqNJWp1GRoNUsHR1aw/VhQ==}
+  /@shikijs/transformers@1.2.4:
+    resolution: {integrity: sha512-ysGkpsHxRxLmz8nGKeFdV+gKj1NXt+88sM/34kfKVWTWIXg5gsFOJxJBbG7k+fUR5JlD6sNh65W9qPXrbVE1wQ==}
     dependencies:
-      shiki: 1.2.0
+      shiki: 1.2.4
     dev: false
 
   /@sideway/address@4.1.5:
@@ -14613,10 +14613,10 @@ packages:
       rechoir: 0.6.2
     dev: false
 
-  /shiki@1.2.0:
-    resolution: {integrity: sha512-xLhiTMOIUXCv5DqJ4I70GgQCtdlzsTqFLZWcMHHG3TAieBUbvEGthdrlPDlX4mL/Wszx9C6rEcxU6kMlg4YlxA==}
+  /shiki@1.2.4:
+    resolution: {integrity: sha512-Q9n9jKiOjJCRPztA9POn3/uZXNySHDNKAsPNpmtHDcFyi6ZQhx5vQKZW3Nhrwn8TWW3RudSRk66zqY603EZDeg==}
     dependencies:
-      '@shikijs/core': 1.2.0
+      '@shikijs/core': 1.2.4
     dev: false
 
   /side-channel@1.0.4:
