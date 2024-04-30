@@ -2,7 +2,7 @@
   "private": true,
   "name": "blog",
   "version": "0.0.0",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "type": "module",
   "scripts": {
     "build": "next build && pnpm generate-posts",

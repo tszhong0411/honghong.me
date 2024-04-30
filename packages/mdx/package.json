@@ -2,7 +2,7 @@
   "private": true,
   "name": "@tszhong0411/mdx",
   "version": "0.0.0",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "main": "./src/index.tsx",
   "scripts": {
     "clean": "rm -rf .turbo dist",
