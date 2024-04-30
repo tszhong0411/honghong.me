@@ -32,11 +32,11 @@
     "@tszhong0411/prettier-config": "workspace:*",
     "dotenv": "^16.4.5",
     "husky": "^9.0.11",
-    "knip": "^5.0.2",
+    "knip": "^5.9.4",
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
     "tsup": "^8.0.2",
-    "tsx": "^4.7.1",
+    "tsx": "^4.7.2",
     "turbo": "^1.12.4",
     "typescript": "^5.3.3"
   },
@@ -44,6 +44,6 @@
     "node": ">=18",
     "pnpm": ">=8"
   },
-  "packageManager": "pnpm@8.15.4",
+  "packageManager": "pnpm@9.0.6",
   "prettier": "@tszhong0411/prettier-config"
 }
