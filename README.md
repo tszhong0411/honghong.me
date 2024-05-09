@@ -49,7 +49,7 @@ Welcome to the monorepo of my personal blog! This repository houses the code for
 ## 🔨 Requirements
 
 - Node, recommended `20.x`
-- pnpm, recommended `9.0.6`
+- pnpm, recommended `9.x`
 - PostgreSQL, recommended `14.x` (optional if you don't need all the functionalities)
 - [Visual Studio Code](https://code.visualstudio.com/) with [recommended extensions](.vscode/extensions.json)
 - Optionally [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
