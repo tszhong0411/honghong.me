@@ -2,9 +2,10 @@ import Script from 'next/script'
 import * as React from 'react'
 
 import { env } from '@/env'
+import { isProduction } from '@/lib/constants'
 
 const Analytics = () => {
-  if (process.env.NODE_ENV !== 'production') return null
+  if (!isProduction) return null
 
   return (
     <Script

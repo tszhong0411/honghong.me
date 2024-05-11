@@ -1,24 +1,22 @@
 {
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
+    "tables": {},
+    "columns": {}
   },
-  "dialect": "pg",
+  "dialect": "postgresql",
   "enums": {
-    "role": {
+    "public.role": {
       "name": "role",
-      "values": {
-        "user": "user",
-        "admin": "admin"
-      }
+      "schema": "public",
+      "values": ["user", "admin"]
     }
   },
   "id": "aa1246c5-ce83-4e1f-adc0-1fa0f5949748",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "schemas": {},
   "tables": {
-    "account": {
+    "public.account": {
       "name": "account",
       "schema": "",
       "columns": {
@@ -94,11 +92,11 @@
         "account_user_id_user_id_fk": {
           "name": "account_user_id_user_id_fk",
           "tableFrom": "account",
-          "tableTo": "user",
           "columnsFrom": ["user_id"],
+          "tableTo": "user",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {
@@ -109,7 +107,7 @@
       },
       "uniqueConstraints": {}
     },
-    "comment_upvote": {
+    "public.comment_upvote": {
       "name": "comment_upvote",
       "schema": "",
       "columns": {
@@ -137,17 +135,17 @@
         "comment_upvote_comment_id_comment_id_fk": {
           "name": "comment_upvote_comment_id_comment_id_fk",
           "tableFrom": "comment_upvote",
-          "tableTo": "comment",
           "columnsFrom": ["comment_id"],
+          "tableTo": "comment",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "comment": {
+    "public.comment": {
       "name": "comment",
       "schema": "",
       "columns": {
@@ -208,7 +206,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "guestbook": {
+    "public.guestbook": {
       "name": "guestbook",
       "schema": "",
       "columns": {
@@ -262,7 +260,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "likes_session": {
+    "public.likes_session": {
       "name": "likes_session",
       "schema": "",
       "columns": {
@@ -292,7 +290,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "post": {
+    "public.post": {
       "name": "post",
       "schema": "",
       "columns": {
@@ -329,7 +327,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "session": {
+    "public.session": {
       "name": "session",
       "schema": "",
       "columns": {
@@ -357,17 +355,17 @@
         "session_user_id_user_id_fk": {
           "name": "session_user_id_user_id_fk",
           "tableFrom": "session",
-          "tableTo": "user",
           "columnsFrom": ["user_id"],
+          "tableTo": "user",
           "columnsTo": ["id"],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "user": {
+    "public.user": {
       "name": "user",
       "schema": "",
       "columns": {
@@ -429,7 +427,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "verification_token": {
+    "public.verification_token": {
       "name": "verification_token",
       "schema": "",
       "columns": {
@@ -463,5 +461,5 @@
       "uniqueConstraints": {}
     }
   },
-  "version": "5"
+  "version": "6"
 }

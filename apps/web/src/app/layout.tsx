@@ -13,6 +13,7 @@ import Header from '@/components/header'
 import Hello from '@/components/hello'
 import SignInModal from '@/components/sign-in-modal'
 import {
+  flags,
   SITE_DESCRIPTION,
   SITE_NAME,
   SITE_TITLE,
@@ -144,7 +145,7 @@ const RootLayout = (props: RootLayoutProps) => {
             </main>
 
             <Footer />
-            <Analytics />
+            {flags.analytics && <Analytics />}
             <SignInModal />
             <Image
               width={1512}

@@ -5,11 +5,15 @@ dotenv.config({
   path: '../../.env.local'
 })
 
+if (!process.env.DATABASE_URL) {
+  throw new Error('DATABASE_URL is required')
+}
+
 export default {
+  dialect: 'postgresql',
   schema: './src/db/schema.ts',
-  driver: 'pg',
   dbCredentials: {
-    connectionString: process.env.DATABASE_URL!
+    url: process.env.DATABASE_URL
   },
   out: './src/db/migration'
 } satisfies Config

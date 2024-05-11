@@ -1,6 +1,7 @@
 import type { Metadata, ResolvingMetadata } from 'next'
 
 import PageTitle from '@/components/page-title'
+import { flags } from '@/lib/constants'
 
 import Items from './items'
 
@@ -49,7 +50,7 @@ const DashboardPage = () => {
         serverless functions. I use this dashboard to track various metrics
         across platforms like YouTube, GitHub, and more.'
       />
-      <Items />
+      {flags.stats && <Items />}
     </>
   )
 }

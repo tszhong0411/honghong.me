@@ -10,6 +10,7 @@ import { z } from 'zod'
 import { db } from '@/db'
 import { comments, commentUpvotes, users } from '@/db/schema'
 import { env } from '@/env'
+import { isProduction } from '@/lib/constants'
 import { type BlogMetadata, getPage } from '@/lib/mdx'
 import { type getComments } from '@/queries/comments'
 import { getErrorMessage } from '@/utils/get-error-message'
@@ -83,7 +84,7 @@ export const postComment = (
           commentId
         })
 
-        if (user.role === 'user' && process.env.NODE_ENV === 'production') {
+        if (user.role === 'user' && isProduction) {
           await resend.emails.send({
             from: 'Hong from honghong.me <me@honghong.me>',
             to: env.AUTHOR_EMAIL,
@@ -111,7 +112,7 @@ export const postComment = (
         if (
           parentComment[0] &&
           parentComment[0].user.email !== user.email &&
-          process.env.NODE_ENV === 'production'
+          isProduction
         ) {
           await resend.emails.send({
             from: 'Hong from honghong.me <me@honghong.me>',

@@ -2,6 +2,7 @@ import type { Metadata, ResolvingMetadata } from 'next'
 
 import PageTitle from '@/components/page-title'
 import { getCurrentUser } from '@/lib/auth'
+import { flags } from '@/lib/constants'
 import { getMessages } from '@/queries/guestbook'
 
 import Form from './form'
@@ -47,6 +48,8 @@ export const generateMetadata = async (
 export const dynamic = 'force-dynamic'
 
 const GuestbookPage = async () => {
+  if (!flags.auth) return null
+
   const user = await getCurrentUser()
   const messages = await getMessages()
 

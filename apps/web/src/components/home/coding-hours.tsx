@@ -3,11 +3,15 @@
 import { ClockIcon } from 'lucide-react'
 import useSWR from 'swr'
 
+import { flags } from '@/lib/constants'
 import { fetcher } from '@/lib/fetcher'
 import { type Wakatime } from '@/types'
 
 const CodingHours = () => {
-  const { data: wakatimeData } = useSWR<Wakatime>('/api/wakatime', fetcher)
+  const { data: wakatimeData } = useSWR<Wakatime>(
+    flags.stats ? '/api/wakatime' : null,
+    fetcher
+  )
 
   return (
     <div className='flex flex-col gap-6 rounded-xl p-4 shadow-feature-card dark:shadow-feature-card-dark lg:p-6'>

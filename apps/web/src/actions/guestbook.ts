@@ -8,6 +8,7 @@ import { z } from 'zod'
 import { db } from '@/db'
 import { guestbook } from '@/db/schema'
 import { env } from '@/env'
+import { flags } from '@/lib/constants'
 import { getErrorMessage } from '@/utils/get-error-message'
 
 import { privateAction } from './private-action'
@@ -82,7 +83,7 @@ export const createMessage = (formData: FormData) =>
       }
     }
 
-    if (process.env.NODE_ENV === 'production') {
+    if (flags.guestbookNotification) {
       await fetch(env.DISCORD_WEBHOOK_URL, {
         method: 'POST',
         headers: {

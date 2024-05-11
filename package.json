@@ -12,7 +12,7 @@
     "db:check": "turbo db:check",
     "db:generate": "turbo db:generate",
     "db:push": "turbo db:push",
-    "db:seed": "tsx ./apps/web/src/db/seed.ts",
+    "db:seed": "turbo db:seed",
     "db:studio": "turbo db:studio",
     "dev": "turbo dev",
     "format:check": "prettier --cache --check --ignore-path .gitignore --ignore-path .prettierignore .",

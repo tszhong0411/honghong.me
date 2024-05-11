@@ -7,6 +7,7 @@ Welcome to the honghong.me repository! We're glad you're interested in contribut
 - [Issues](#issues)
 - [Pull Requests](#pull-requests)
 - [Setup](#setup)
+- [Flags](#flags)
 - [Conventional Commits](#conventional-commits)
 - [Code Formatting](#code-formatting)
 
@@ -25,6 +26,7 @@ We welcome contributions through pull requests! If you're working on a bug fix, 
 3. Make your changes and commit following the [Conventional Commits](#conventional-commits) guidelines.
 4. Push your changes to your forked repository.
 5. Open a pull request from your branch to the `main` branch of the original repository.
+6. Make sure you run `pnpm check` before submitting your pull request to ensure there are no issues.
 
 ## Setup
 
@@ -40,6 +42,8 @@ cd honghong.me
 ```
 
 3. Copy the `.env.example` file to `.env.local`:
+
+   Most features are turned off by default, so you don't need to set up all the environment variables to run the app. However, if you want to use a specific feature, you can set the necessary environment variables in the `.env.local` file and set the [flags](#flags) to true.
 
 ```bash
 cp .env.example .env.local
@@ -57,7 +61,21 @@ pnpm install
 pnpm build:packages
 ```
 
-6. Run the app in development mode:
+6. Run PostgreSQL using Docker Compose (or your preferred method):
+
+```bash
+mkdir -p ./volumes/pg_data
+docker compose up
+```
+
+7. Seed the database:
+
+```bash
+pnpm db:push
+pnpm db:seed
+```
+
+8. Run the app in development mode:
 
 ```bash
 pnpm dev
@@ -66,6 +84,18 @@ pnpm dev
 The app will be available at `localhost:3000`.
 
 The `react email` will be available at `localhost:3001`.
+
+## Flags
+
+The following flags can be set in the `.env.local` file to enable specific features:
+
+- `NEXT_PUBLIC_FLAG_COMMENT`: Comments on blog posts.
+- `NEXT_PUBLIC_FLAG_AUTH`: Authentication.
+- `NEXT_PUBLIC_FLAG_STATS`: Dashboard page.
+- `NEXT_PUBLIC_FLAG_SPOTIFY`: Spotify integration (Now Playing).
+- `NEXT_PUBLIC_FLAG_ANALYTICS`: Umami analytics.
+- `NEXT_PUBLIC_FLAG_GUESTBOOK_NOTIFICATION`: Discord notification for guestbook.
+- `NEXT_PUPLIC_FLAG_LIKE_BUTTON`: Like button for blog posts.
 
 ## Conventional Commits
 
@@ -86,13 +116,14 @@ Before submitting a pull request, make sure your code is properly formatted. You
 
 - Run lint fixes:
 
-  ```bash
-  pnpm lint:fix
-  ```
+```bash
+pnpm lint:fix
+```
 
 - Format code:
-  ```bash
-  pnpm format
-  ```
+
+```bash
+pnpm format
+```
 
 Make sure your changes are well-tested and your code follows best practices. Thank you for contributing to honghong.me! 🚀

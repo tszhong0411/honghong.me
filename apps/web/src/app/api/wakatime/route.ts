@@ -2,10 +2,15 @@ import { unstable_noStore as noStore } from 'next/cache'
 import { NextResponse } from 'next/server'
 
 import { env } from '@/env'
+import { flags } from '@/lib/constants'
 
 export const runtime = 'edge'
 
 export const GET = async () => {
+  if (!flags.stats) {
+    throw new Error('Stats is disabled')
+  }
+
   noStore()
 
   const res = await fetch(

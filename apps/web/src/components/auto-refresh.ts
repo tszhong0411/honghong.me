@@ -3,6 +3,8 @@
 import { useRouter } from 'next/navigation'
 import * as React from 'react'
 
+import { isProduction } from '@/lib/constants'
+
 type AutoRefreshProps = {
   children: React.ReactNode
 }
@@ -13,7 +15,7 @@ export let AutoRefresh = (props: AutoRefreshProps) => {
   return children
 }
 
-if (process.env.NODE_ENV === 'development') {
+if (!isProduction) {
   AutoRefresh = (props: AutoRefreshProps) => {
     const { children } = props
 
