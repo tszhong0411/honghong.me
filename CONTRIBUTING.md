@@ -30,30 +30,42 @@ We welcome contributions through pull requests! If you're working on a bug fix, 
 
 To set up the project locally, follow these steps:
 
-1. Clone the repository:
+1. Fork the repository.
+
+2. Clone the repository:
 
 ```bash
-git clone https://github.com/tszhong0411/honghong.me.git
+git clone <your-forked-repo-url>
 cd honghong.me
 ```
 
-2. Install dependencies using pnpm:
+3. Copy the `.env.example` file to `.env.local`:
+
+```bash
+cp .env.example .env.local
+```
+
+4. Install the dependencies:
 
 ```bash
 pnpm install
 ```
 
-3. Then build the necessary packages:
+5. Build the necessary packages:
 
 ```bash
 pnpm build:packages
 ```
 
-4. Start the development server:
+6. Run the app in development mode:
 
 ```bash
 pnpm dev
 ```
+
+The app will be available at `localhost:3000`.
+
+The `react email` will be available at `localhost:3001`.
 
 ## Conventional Commits
 
