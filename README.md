@@ -49,51 +49,13 @@ Welcome to the monorepo of my personal blog! This repository houses the code for
 
 - Node, recommended `20.x`
 - pnpm, recommended `9.x`
-- PostgreSQL, recommended `14.x` (optional if you don't need all the functionalities)
+- PostgreSQL, recommended `14.x` (using [docker compose](./docker-compose.yml))
 - [Visual Studio Code](https://code.visualstudio.com/) with [recommended extensions](.vscode/extensions.json)
 - Optionally [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
 
 ## 👋 Getting Started
 
-Follow these steps to run the project locally on your machine:
-
-```bash
-git clone https://github.com/tszhong0411/honghong.me.git
-cd honghong.me
-pnpm install
-```
-
-Create a `.env.local` file based on the provided `.env.example` file and fill in the necessary variables.
-
-OR you can skip this by modifying `apps/web/src/env.ts`:
-
-```ts
-export const env = createEnv({
-  skipValidation: true,
-
-  server: {
-    // ...
-  }
-})
-```
-
-It will skip the validation of environment variables. And you may notice that some functionalities will not work properly. But it's okay for learning.
-
-Then build the necessary packages:
-
-```bash
-pnpm build:packages
-```
-
-To run the app in development mode:
-
-```bash
-pnpm dev
-```
-
-The app will be available at `localhost:3000`.
-
-The `react email` will be available at `localhost:3001`.
+Please refer to the [contributing guidelines](./CONTRIBUTING.md) for detailed information on how to start the app locally and contribute to this project.
 
 ## ✈️ TODO
 
@@ -133,6 +95,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
 
 ## 🪪 License
+
+Please do not deploy this directly to production. It is not a template and is not intended to be used as one.
 
 This project is open source and available under the [GPL3 License](LICENSE).
 
