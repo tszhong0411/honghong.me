@@ -24,8 +24,8 @@ const config: NextAuthConfig = {
   secret: env.NEXTAUTH_SECRET,
   providers: [
     GithubProvider({
-      clientId: env.OAUTH_CLIENT_KEY,
-      clientSecret: env.OAUTH_CLIENT_SECRET
+      clientId: env.GITHUB_CLIENT_ID,
+      clientSecret: env.GITHUB_CLIENT_SECRET
     }),
     GoogleProvider({
       clientId: env.GOOGLE_CLIENT_ID,
