@@ -20,7 +20,7 @@ Welcome to the monorepo of my personal blog! This repository houses the code for
 
 ## ✨ Features
 
-- ⚡️ Next.js 14 with App Router (Turbo)
+- ⚡️ Next.js 14 with App Router
 - 📝 MDX
 - 🎨 Tailwind CSS - for styling
 - 🌈 Radix UI - accessible UI components
@@ -37,7 +37,6 @@ Welcome to the monorepo of my personal blog! This repository houses the code for
 - 📷 Image zoom - zoom in on images in blog posts
 - 📝 Code syntax highlighting - using Shiki
 - 🎨 Animation - using Framer Motion
-- 🤖 GitHub Actions for CI/CD
 - 🏠 LightHouse score of nearly 100
 - 🔨 Husky & Lint Staged - lint and format code before committing
 - ✅ Conventional commit lint - make sure commit messages follow the conventional commit format
