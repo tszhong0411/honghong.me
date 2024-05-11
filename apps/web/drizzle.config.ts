@@ -1,6 +1,3 @@
-/**
- * Don't know why env.ts is not working
- */
 import * as dotenv from 'dotenv'
 import { type Config } from 'drizzle-kit'
 
