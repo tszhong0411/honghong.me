@@ -20,17 +20,7 @@ const withBundleAnalyzer = bundleAnalyzer({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    ppr: true
-  },
-
-  // Type check is already done on GitHub actions
-  typescript: {
-    ignoreBuildErrors: !!process.env.CI
-  },
-
-  // Linting is already done on GitHub actions
-  eslint: {
-    ignoreDuringBuilds: !!process.env.CI
+    optimizePackageImports: ['shiki']
   },
 
   images: {
