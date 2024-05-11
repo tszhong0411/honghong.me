@@ -43,10 +43,12 @@ const main = async () => {
     }
 
     await db.insert(schema.posts).values(data)
+    console.log('🎉 Data inserted successfully!')
   } catch (error) {
-    console.error(error)
+    console.error('❌ Error inserting data:', error)
   } finally {
     client.end()
+    console.log('✅ Database connection closed.')
   }
 }
 
