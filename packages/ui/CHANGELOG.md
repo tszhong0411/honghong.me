@@ -1,5 +1,11 @@
 # @tszhong0411/ui
 
+## 0.0.11
+
+### Patch Changes
+
+- [`8a53ec9`](https://github.com/tszhong0411/honghong.me/commit/8a53ec912ce4dbf1aeab4cef6bb8a61318bb2770) Thanks [@tszhong0411](https://github.com/tszhong0411)! - update deps
+
 ## 0.0.10
 
 ### Patch Changes
