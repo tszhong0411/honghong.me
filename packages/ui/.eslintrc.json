@@ -1,5 +1,5 @@
 {
   "$schema": "https://json.schemastore.org/eslintrc",
-  "extends": ["@tszhong0411/eslint-config"],
+  "extends": ["next/core-web-vitals", "@tszhong0411/eslint-config"],
   "root": true
 }

@@ -60,7 +60,8 @@
     "@tszhong0411/utils": "workspace:*",
     "@types/react": "^18.2.60",
     "eslint": "^8.57.0",
-    "next": "14.1.1-canary.44",
+    "eslint-config-next": "^14.2.3",
+    "next": "14.2.3",
     "react": "^18.2.0",
     "tailwindcss": "^3.4.1"
   },
