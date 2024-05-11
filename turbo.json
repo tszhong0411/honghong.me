@@ -23,12 +23,24 @@
     "start": {
       "dependsOn": ["^build"]
     },
-    "db:check": {},
-    "db:generate": {},
-    "db:push": {},
-    "db:studio": {},
-    "db:seed": {},
-    "type-check": {},
+    "db:check": {
+      "cache": false
+    },
+    "db:generate": {
+      "cache": false
+    },
+    "db:push": {
+      "cache": false
+    },
+    "db:studio": {
+      "cache": false
+    },
+    "db:seed": {
+      "cache": false
+    },
+    "type-check": {
+      "cache": false
+    },
     "blog#build": {
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**"],
