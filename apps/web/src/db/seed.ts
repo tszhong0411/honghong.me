@@ -7,7 +7,7 @@ import pg from 'pg'
 import * as schema from './schema'
 
 dotenv.config({
-  path: process.cwd() + '/.env.local'
+  path: '../../.env.local'
 })
 
 if (!process.env.DATABASE_URL) {
@@ -32,7 +32,7 @@ const main = async () => {
     const data = []
 
     for (const post of fs.readdirSync(
-      path.join(process.cwd(), 'apps/web/src/content/blog')
+      path.join(process.cwd(), 'src/content/blog')
     )) {
       data.push({
         createdAt: new Date(),
@@ -45,10 +45,9 @@ const main = async () => {
     await db.insert(schema.posts).values(data)
     console.log('🎉 Data inserted successfully!')
   } catch (error) {
-    console.error('❌ Error inserting data:', error)
+    console.error('❌ Error inserting data:\n', error)
   } finally {
     client.end()
-    console.log('✅ Database connection closed.')
   }
 }
 
