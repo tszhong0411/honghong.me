@@ -32,21 +32,28 @@ To set up the project locally, follow these steps:
 
 1. Clone the repository:
 
-   ```bash
-   git clone https://github.com/tszhong0411/honghong.me.git
-   cd honghong.me
-   ```
+```bash
+git clone https://github.com/tszhong0411/honghong.me.git
+cd honghong.me
+```
 
 2. Install dependencies using pnpm:
 
-   ```bash
-   pnpm install
-   ```
+```bash
+pnpm install
+```
 
-3. Start the development server:
-   ```bash
-   pnpm dev
-   ```
+3. Then build the necessary packages:
+
+```bash
+pnpm build:packages
+```
+
+4. Start the development server:
+
+```bash
+pnpm dev
+```
 
 ## Conventional Commits
 
