@@ -3,9 +3,9 @@ import { notFound } from 'next/navigation'
 import * as React from 'react'
 import { type Article, type WithContext } from 'schema-dts'
 
-import Comments from '@/components/comments'
-import CommentsLoading from '@/components/comments/comments-loading'
-import { flags, SITE_NAME, SITE_URL } from '@/lib/constants'
+// import Comments from '@/components/comments'
+// import CommentsLoading from '@/components/comments/comments-loading'
+import { SITE_NAME, SITE_URL } from '@/lib/constants'
 import { type BlogMetadata, getAllPages, getPage } from '@/lib/mdx'
 
 import Content from './content'
@@ -133,11 +133,11 @@ const BlogPostPage = (props: BlogPostPageProps) => {
       <Content slug={slug} content={content} />
       <Footer slug={slug} modifiedTime={modifiedTime} />
 
-      {flags.comment && (
+      {/* {flags.comment && (
         <React.Suspense fallback={<CommentsLoading />}>
           <Comments slug={slug} />
         </React.Suspense>
-      )}
+      )} */}
     </>
   )
 }
