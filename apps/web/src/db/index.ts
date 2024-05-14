@@ -1,10 +1,12 @@
 import { drizzle } from 'drizzle-orm/node-postgres'
 import { Client } from 'pg'
 
+import { env } from '@/env'
+
 import * as schema from './schema'
 
 const client = new Client({
-  connectionString: process.env.DATABASE_URL!
+  connectionString: env.DATABASE_URL
 })
 
 client.connect()
