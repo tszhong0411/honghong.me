@@ -63,7 +63,8 @@ export const env = createEnv({
     NEXT_PUBLIC_FLAG_STATS: z.string().min(1).optional(),
     NEXT_PUBLIC_FLAG_SPOTIFY: z.string().min(1).optional(),
     NEXT_PUBLIC_FLAG_ANALYTICS: z.string().min(1).optional(),
-    NEXT_PUBLIC_FLAG_GUESTBOOK_NOTIFICATION: z.string().min(1).optional()
+    NEXT_PUBLIC_FLAG_GUESTBOOK_NOTIFICATION: z.string().min(1).optional(),
+    NEXT_PUBLIC_FLAG_LIKE_BUTTON: z.string().min(1).optional()
   },
   runtimeEnv: {
     SPOTIFY_CLIENT_ID: process.env.SPOTIFY_CLIENT_ID,
@@ -103,7 +104,8 @@ export const env = createEnv({
     NEXT_PUBLIC_FLAG_SPOTIFY: process.env.NEXT_PUBLIC_FLAG_SPOTIFY,
     NEXT_PUBLIC_FLAG_ANALYTICS: process.env.NEXT_PUBLIC_FLAG_ANALYTICS,
     NEXT_PUBLIC_FLAG_GUESTBOOK_NOTIFICATION:
-      process.env.NEXT_PUBLIC_FLAG_GUESTBOOK_NOTIFICATION
+      process.env.NEXT_PUBLIC_FLAG_GUESTBOOK_NOTIFICATION,
+    NEXT_PUBLIC_FLAG_LIKE_BUTTON: process.env.NEXT_PUBLIC_FLAG_LIKE_BUTTON
   },
 
   emptyStringAsUndefined: true
