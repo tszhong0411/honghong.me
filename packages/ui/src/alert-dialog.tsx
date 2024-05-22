@@ -2,7 +2,7 @@
 
 import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog'
 import { cn } from '@tszhong0411/utils'
-import * as React from 'react'
+import { forwardRef } from 'react'
 
 import { buttonVariants } from './button'
 
@@ -10,7 +10,7 @@ export const AlertDialog = AlertDialogPrimitive.Root
 export const AlertDialogTrigger = AlertDialogPrimitive.Trigger
 const AlertDialogPortal = AlertDialogPrimitive.Portal
 
-const AlertDialogOverlay = React.forwardRef<
+const AlertDialogOverlay = forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Overlay>,
   React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Overlay>
 >((props, ref) => {
@@ -30,7 +30,7 @@ const AlertDialogOverlay = React.forwardRef<
   )
 })
 
-export const AlertDialogContent = React.forwardRef<
+export const AlertDialogContent = forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Content>
 >((props, ref) => {
@@ -53,7 +53,7 @@ export const AlertDialogContent = React.forwardRef<
   )
 })
 
-export const AlertDialogHeader = React.forwardRef<
+export const AlertDialogHeader = forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >((props, ref) => {
@@ -71,7 +71,7 @@ export const AlertDialogHeader = React.forwardRef<
   )
 })
 
-export const AlertDialogFooter = React.forwardRef<
+export const AlertDialogFooter = forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >((props, ref) => {
@@ -88,7 +88,7 @@ export const AlertDialogFooter = React.forwardRef<
     />
   )
 })
-export const AlertDialogTitle = React.forwardRef<
+export const AlertDialogTitle = forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Title>,
   React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Title>
 >((props, ref) => {
@@ -103,7 +103,7 @@ export const AlertDialogTitle = React.forwardRef<
   )
 })
 
-export const AlertDialogDescription = React.forwardRef<
+export const AlertDialogDescription = forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Description>,
   React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Description>
 >((props, ref) => {
@@ -118,7 +118,7 @@ export const AlertDialogDescription = React.forwardRef<
   )
 })
 
-export const AlertDialogAction = React.forwardRef<
+export const AlertDialogAction = forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Action>,
   React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Action>
 >((props, ref) => {
@@ -133,7 +133,7 @@ export const AlertDialogAction = React.forwardRef<
   )
 })
 
-export const AlertDialogCancel = React.forwardRef<
+export const AlertDialogCancel = forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Cancel>,
   React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Cancel>
 >((props, ref) => {

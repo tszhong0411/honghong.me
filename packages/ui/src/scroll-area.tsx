@@ -2,9 +2,9 @@
 
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area'
 import { cn } from '@tszhong0411/utils'
-import * as React from 'react'
+import { forwardRef } from 'react'
 
-export const ScrollArea = React.forwardRef<
+export const ScrollArea = forwardRef<
   React.ElementRef<typeof ScrollAreaPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root>
 >((props, ref) => {
@@ -25,7 +25,7 @@ export const ScrollArea = React.forwardRef<
   )
 })
 
-export const ScrollBar = React.forwardRef<
+export const ScrollBar = forwardRef<
   React.ElementRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>,
   React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>
 >((props, ref) => {

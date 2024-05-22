@@ -1,7 +1,7 @@
 import { cn } from '@tszhong0411/utils'
-import * as React from 'react'
+import { forwardRef } from 'react'
 
-export const Table = React.forwardRef<
+export const Table = forwardRef<
   HTMLTableElement,
   React.HTMLAttributes<HTMLTableElement>
 >((props, ref) => {
@@ -18,7 +18,7 @@ export const Table = React.forwardRef<
   )
 })
 
-export const TableHeader = React.forwardRef<
+export const TableHeader = forwardRef<
   HTMLTableSectionElement,
   React.HTMLAttributes<HTMLTableSectionElement>
 >((props, ref) => {
@@ -29,7 +29,7 @@ export const TableHeader = React.forwardRef<
   )
 })
 
-export const TableBody = React.forwardRef<
+export const TableBody = forwardRef<
   HTMLTableSectionElement,
   React.HTMLAttributes<HTMLTableSectionElement>
 >((props, ref) => {
@@ -44,7 +44,7 @@ export const TableBody = React.forwardRef<
   )
 })
 
-export const TableFooter = React.forwardRef<
+export const TableFooter = forwardRef<
   HTMLTableSectionElement,
   React.HTMLAttributes<HTMLTableSectionElement>
 >((props, ref) => {
@@ -62,7 +62,7 @@ export const TableFooter = React.forwardRef<
   )
 })
 
-export const TableRow = React.forwardRef<
+export const TableRow = forwardRef<
   HTMLTableRowElement,
   React.HTMLAttributes<HTMLTableRowElement>
 >((props, ref) => {
@@ -82,7 +82,7 @@ export const TableRow = React.forwardRef<
   )
 })
 
-export const TableHead = React.forwardRef<
+export const TableHead = forwardRef<
   HTMLTableCellElement,
   React.ThHTMLAttributes<HTMLTableCellElement>
 >((props, ref) => {
@@ -101,7 +101,7 @@ export const TableHead = React.forwardRef<
   )
 })
 
-export const TableCell = React.forwardRef<
+export const TableCell = forwardRef<
   HTMLTableCellElement,
   React.TdHTMLAttributes<HTMLTableCellElement>
 >((props, ref) => {
@@ -120,7 +120,7 @@ export const TableCell = React.forwardRef<
   )
 })
 
-export const TableCaption = React.forwardRef<
+export const TableCaption = forwardRef<
   HTMLTableCaptionElement,
   React.HTMLAttributes<HTMLTableCaptionElement>
 >((props, ref) => {

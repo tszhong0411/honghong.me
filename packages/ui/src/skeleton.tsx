@@ -1,9 +1,9 @@
 import { cn } from '@tszhong0411/utils'
-import * as React from 'react'
+import { forwardRef } from 'react'
 
 type SkeletonProps = React.HTMLAttributes<HTMLDivElement>
 
-export const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
+export const Skeleton = forwardRef<HTMLDivElement, SkeletonProps>(
   (props, ref) => {
     const { className, ...rest } = props
 

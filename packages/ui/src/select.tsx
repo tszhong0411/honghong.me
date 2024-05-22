@@ -3,7 +3,7 @@
 import * as SelectPrimitive from '@radix-ui/react-select'
 import { cn } from '@tszhong0411/utils'
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from 'lucide-react'
-import * as React from 'react'
+import { forwardRef } from 'react'
 
 export const Select = SelectPrimitive.Root
 
@@ -11,7 +11,7 @@ export const SelectGroup = SelectPrimitive.Group
 
 export const SelectValue = SelectPrimitive.Value
 
-export const SelectTrigger = React.forwardRef<
+export const SelectTrigger = forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
 >((props, ref) => {
@@ -38,7 +38,7 @@ export const SelectTrigger = React.forwardRef<
   )
 })
 
-export const SelectScrollUpButton = React.forwardRef<
+export const SelectScrollUpButton = forwardRef<
   React.ElementRef<typeof SelectPrimitive.ScrollUpButton>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.ScrollUpButton>
 >((props, ref) => {
@@ -58,7 +58,7 @@ export const SelectScrollUpButton = React.forwardRef<
   )
 })
 
-export const SelectScrollDownButton = React.forwardRef<
+export const SelectScrollDownButton = forwardRef<
   React.ElementRef<typeof SelectPrimitive.ScrollDownButton>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.ScrollDownButton>
 >((props, ref) => {
@@ -78,7 +78,7 @@ export const SelectScrollDownButton = React.forwardRef<
   )
 })
 
-export const SelectContent = React.forwardRef<
+export const SelectContent = forwardRef<
   React.ElementRef<typeof SelectPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>
 >((props, ref) => {
@@ -119,7 +119,7 @@ export const SelectContent = React.forwardRef<
   )
 })
 
-export const SelectLabel = React.forwardRef<
+export const SelectLabel = forwardRef<
   React.ElementRef<typeof SelectPrimitive.Label>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Label>
 >((props, ref) => {
@@ -134,7 +134,7 @@ export const SelectLabel = React.forwardRef<
   )
 })
 
-export const SelectItem = React.forwardRef<
+export const SelectItem = forwardRef<
   React.ElementRef<typeof SelectPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item>
 >((props, ref) => {
@@ -161,7 +161,7 @@ export const SelectItem = React.forwardRef<
   )
 })
 
-export const SelectSeparator = React.forwardRef<
+export const SelectSeparator = forwardRef<
   React.ElementRef<typeof SelectPrimitive.Separator>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Separator>
 >((props, ref) => {

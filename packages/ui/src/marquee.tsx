@@ -1,5 +1,4 @@
 import { cn } from '@tszhong0411/utils'
-import * as React from 'react'
 
 type MarqueeProps = {
   children: React.ReactNode
