@@ -3,7 +3,7 @@
 import { Link, Logo, Separator } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { motion } from 'framer-motion'
-import * as React from 'react'
+import { useEffect, useState } from 'react'
 
 import CommandMenu from '@/components/command-menu'
 import MobileNav from '@/components/mobile-nav'
@@ -12,9 +12,9 @@ import Navbar from '@/components/navbar'
 import ThemeToggle from './theme-toggle'
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = React.useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
 
-  React.useEffect(() => {
+  useEffect(() => {
     const changeBackground = () => {
       if (window.scrollY > 100) {
         setIsScrolled(true)

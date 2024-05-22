@@ -3,11 +3,11 @@
 import { buttonVariants, Link } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { motion, useInView } from 'framer-motion'
-import * as React from 'react'
+import { useRef } from 'react'
 
 import CodingHours from './coding-hours'
 import Connect from './connect'
-import FavouriteFramework from './favourite-framework'
+import FavoriteFramework from './favorite-framework'
 import LocationCard from './location-card'
 import StacksCard from './stacks-card'
 
@@ -23,7 +23,7 @@ const variants = {
 }
 
 const AboutMe = () => {
-  const cardsRef = React.useRef<HTMLDivElement>(null)
+  const cardsRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(cardsRef, { once: true, margin: '-100px' })
 
   return (
@@ -75,7 +75,7 @@ const AboutMe = () => {
           <Connect />
           <div className='grid gap-4 [@media(min-width:450px)]:grid-cols-2'>
             <CodingHours />
-            <FavouriteFramework />
+            <FavoriteFramework />
           </div>
         </div>
       </motion.div>

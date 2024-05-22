@@ -1,5 +1,4 @@
 import { Logo as HongLogo } from '@tszhong0411/ui'
-import * as React from 'react'
 
 const Logo = () => {
   return (

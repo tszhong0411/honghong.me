@@ -1,5 +1,4 @@
 import Script from 'next/script'
-import * as React from 'react'
 
 import { env } from '@/env'
 import { isProduction } from '@/lib/constants'

@@ -4,7 +4,7 @@ import { BlurImage, buttonVariants, Link } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { motion, useInView } from 'framer-motion'
 import { ArrowUpRightIcon, LightbulbIcon } from 'lucide-react'
-import * as React from 'react'
+import { useRef } from 'react'
 
 import { type ProjectMetadata } from '@/lib/mdx'
 
@@ -29,7 +29,7 @@ type CardProps = {
 
 const SelectedProjects = (props: ProjectsProps) => {
   const { projects } = props
-  const projectsRef = React.useRef<HTMLDivElement>(null)
+  const projectsRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(projectsRef, { once: true, margin: '-100px' })
 
   return (

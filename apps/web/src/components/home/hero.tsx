@@ -2,7 +2,7 @@
 
 import { BlurImage } from '@tszhong0411/ui'
 import { motion, useAnimate } from 'framer-motion'
-import * as React from 'react'
+import { useEffect } from 'react'
 
 const TEXTS = [
   {
@@ -30,7 +30,7 @@ const TEXTS = [
 const Hero = () => {
   const [scope, animate] = useAnimate()
 
-  React.useEffect(() => {
+  useEffect(() => {
     animate(
       [
         [scope.current, { y: '0%' }, { duration: 0 }],

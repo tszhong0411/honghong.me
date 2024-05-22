@@ -1,7 +1,7 @@
 'use client'
 
 import { MDXProvider, useMDXComponents } from '@mdx-js/react'
-import * as React from 'react'
+import { useMemo } from 'react'
 import * as jsxDevRuntime from 'react/jsx-dev-runtime'
 import * as jsxRuntime from 'react/jsx-runtime'
 
@@ -19,7 +19,7 @@ export const MDXRemote = ({
 }: MDXRemoteProps) => {
   const isDev = process.env.NODE_ENV === 'development'
 
-  const Content: React.ElementType = React.useMemo(() => {
+  const Content: React.ElementType = useMemo(() => {
     const fullScope = Object.assign(
       {
         opts: {

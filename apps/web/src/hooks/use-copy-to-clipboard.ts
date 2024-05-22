@@ -1,5 +1,5 @@
 import { toast } from '@tszhong0411/ui'
-import * as React from 'react'
+import { useState } from 'react'
 
 type CopyOptions = {
   text: string
@@ -12,7 +12,7 @@ export const useCopyToClipboard = (): [
   (options: CopyOptions) => Promise<void>,
   boolean
 ] => {
-  const [isCopied, setIsCopied] = React.useState(false)
+  const [isCopied, setIsCopied] = useState(false)
 
   const copy = async ({
     text,

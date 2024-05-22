@@ -11,12 +11,5 @@
       "",
       "export default $1"
     ]
-  },
-  "Import React": {
-    "scope": "typescriptreact",
-    "prefix": "imr",
-    "body": [
-      "import * as React from 'react'"
-    ]
   }
 }

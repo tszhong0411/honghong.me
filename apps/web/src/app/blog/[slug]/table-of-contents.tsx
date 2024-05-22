@@ -2,7 +2,6 @@
 
 import { type TOC } from '@tszhong0411/mdx'
 import { cn } from '@tszhong0411/utils'
-import * as React from 'react'
 
 import { useScrollspy } from '@/hooks/use-scrollspy'
 

@@ -2,7 +2,7 @@
 
 import { Input, Label } from '@tszhong0411/ui'
 import { SearchIcon } from 'lucide-react'
-import * as React from 'react'
+import { useState } from 'react'
 
 import { type BlogMetadata } from '@/lib/mdx'
 
@@ -14,7 +14,7 @@ type FilteredPostsProps = {
 
 const FilteredPosts = (props: FilteredPostsProps) => {
   const { posts } = props
-  const [searchValue, setSearchValue] = React.useState('')
+  const [searchValue, setSearchValue] = useState('')
 
   const filteredPosts = posts.filter((post) =>
     post.title.toLowerCase().includes(searchValue.toLowerCase())
@@ -36,9 +36,9 @@ const FilteredPosts = (props: FilteredPostsProps) => {
           <SearchIcon className='absolute left-4 top-1/2 size-5 -translate-y-1/2' />
         </Label>
       </div>
-      {filteredPosts.length === 0 && (
+      {filteredPosts.length === 0 ? (
         <div className='my-24 text-center text-xl'>No posts found</div>
-      )}
+      ) : null}
       <PostCards posts={filteredPosts} />
     </>
   )

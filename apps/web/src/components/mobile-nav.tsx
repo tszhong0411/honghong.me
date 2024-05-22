@@ -9,7 +9,6 @@ import {
   Link
 } from '@tszhong0411/ui'
 import { MenuIcon } from 'lucide-react'
-import * as React from 'react'
 
 import { HEADER_LINKS } from '@/config/links'
 

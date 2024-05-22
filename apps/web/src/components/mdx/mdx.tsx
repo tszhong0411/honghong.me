@@ -1,6 +1,5 @@
 import { type MDXComponents, MDXRemoteRSC } from '@tszhong0411/mdx'
 import { BlurImage, File, Files, Folder, Link } from '@tszhong0411/ui'
-import * as React from 'react'
 
 import ImageZoom from '../image-zoom'
 import Checkbox from './checkbox'
