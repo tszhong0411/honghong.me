@@ -16,7 +16,6 @@ export const env = createEnv({
     ...(flags.auth
       ? {
           NEXTAUTH_SECRET: z.string().min(1),
-          NEXTAUTH_URL: z.string().min(1),
           GOOGLE_CLIENT_ID: z.string().min(1),
           GOOGLE_CLIENT_SECRET: z.string().min(1),
           GITHUB_CLIENT_ID: z.string().min(1),
@@ -78,7 +77,6 @@ export const env = createEnv({
     WAKATIME_API_KEY: process.env.WAKATIME_API_KEY,
 
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
-    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
 
     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
     GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
