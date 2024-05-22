@@ -11,5 +11,6 @@ module.exports = {
     'prettier-plugin-prisma',
     'prettier-plugin-sort-json',
     'prettier-plugin-package-perfection'
-  ]
+  ],
+  printWidth: 80
 }

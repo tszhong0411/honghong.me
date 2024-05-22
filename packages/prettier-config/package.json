@@ -28,6 +28,6 @@
     "access": "public"
   },
   "lint-staged": {
-    "*.{js,json,md}": "prettier --cache --write"
+    "*.{js,jsx,ts,tsx,json,md,mdx}": "prettier --cache --write"
   }
 }
