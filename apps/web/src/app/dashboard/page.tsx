@@ -50,7 +50,7 @@ const DashboardPage = () => {
         serverless functions. I use this dashboard to track various metrics
         across platforms like YouTube, GitHub, and more.'
       />
-      {flags.stats && <Items />}
+      {flags.stats ? <Items /> : null}
     </>
   )
 }

@@ -132,6 +132,7 @@ const RootLayout = (props: RootLayoutProps) => {
           calcom.variable,
           'scroll-smooth'
         )}
+        suppressHydrationWarning
       >
         <body>
           <Providers>
@@ -145,7 +146,7 @@ const RootLayout = (props: RootLayoutProps) => {
             </main>
 
             <Footer />
-            {flags.analytics && <Analytics />}
+            {flags.analytics ? <Analytics /> : null}
             <SignInModal />
             <Image
               width={1512}
