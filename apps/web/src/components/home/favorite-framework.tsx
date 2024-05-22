@@ -1,7 +1,7 @@
 import { SiNextdotjs } from '@icons-pack/react-simple-icons'
 import { HeartIcon } from 'lucide-react'
 
-const FavouriteFramework = () => {
+const FavoriteFramework = () => {
   return (
     <div className='flex flex-col gap-6 rounded-xl p-4 shadow-feature-card dark:shadow-feature-card-dark lg:p-6'>
       <div className='flex items-center gap-2'>
@@ -15,4 +15,4 @@ const FavouriteFramework = () => {
   )
 }
 
-export default FavouriteFramework
+export default FavoriteFramework
