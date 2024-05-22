@@ -11,10 +11,10 @@ import {
 } from '@tszhong0411/ui'
 import { signIn } from 'next-auth/react'
 
-import { useSignInModal } from '@/store/use-sign-in-modal'
+import { useSignInModalStore } from '@/stores/use-sign-in-modal-store'
 
 const SignInModal = () => {
-  const { open, setOpen } = useSignInModal()
+  const { open, setOpen } = useSignInModalStore()
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
