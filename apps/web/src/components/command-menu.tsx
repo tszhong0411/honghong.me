@@ -25,10 +25,10 @@ import {
   LogOutIcon
 } from 'lucide-react'
 import { signOut, useSession } from 'next-auth/react'
-import * as React from 'react'
+import { Fragment, useCallback, useEffect, useState } from 'react'
 
 import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard'
-import { useSignInModal } from '@/store/use-sign-in-modal'
+import { useSignInModalStore } from '@/stores/use-sign-in-modal-store'
 
 type Groups = Array<{
   name: string
@@ -40,12 +40,12 @@ type Groups = Array<{
 }>
 
 const CommandMenu = () => {
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = useState(false)
   const [copy] = useCopyToClipboard()
   const { status } = useSession()
-  const { setOpen: setSignInModalOpen } = useSignInModal()
+  const { setOpen: setSignInModalOpen } = useSignInModalStore()
 
-  React.useEffect(() => {
+  useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
         e.preventDefault()
@@ -57,7 +57,7 @@ const CommandMenu = () => {
     return () => document.removeEventListener('keydown', down)
   }, [])
 
-  const openLink = React.useCallback((url: string) => {
+  const openLink = useCallback((url: string) => {
     setOpen(false)
     window.open(url, '_blank', 'noopener')
   }, [])
@@ -95,17 +95,7 @@ const CommandMenu = () => {
           onSelect: async () => {
             setOpen(false)
 
-            await copy({
-              text: window.location.href,
-              successMessage: (
-                <div className='flex flex-col'>
-                  <div>Copied</div>
-                  <div className='text-sm text-muted-foreground'>
-                    You can now share it with anyone.
-                  </div>
-                </div>
-              )
-            })
+            await copy({ text: window.location.href })
           }
         },
         {
@@ -160,11 +150,11 @@ const CommandMenu = () => {
         <CommandIcon className='size-4' />
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder='Type a command or search...' />
+        <CommandInput placeholder='Type a command or search' />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           {groups.map((group, i) => (
-            <React.Fragment key={group.name}>
+            <Fragment key={group.name}>
               <CommandGroup heading={group.name}>
                 {group.actions.map((action) => (
                   <CommandItem key={action.title} onSelect={action.onSelect}>
@@ -173,8 +163,8 @@ const CommandMenu = () => {
                   </CommandItem>
                 ))}
               </CommandGroup>
-              {i !== groups.length - 1 && <CommandSeparator />}
-            </React.Fragment>
+              {i === groups.length - 1 ? null : <CommandSeparator />}
+            </Fragment>
           ))}
         </CommandList>
       </CommandDialog>
