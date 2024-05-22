@@ -44,10 +44,11 @@ Welcome to the monorepo of my personal blog! This repository houses the code for
 - 💄 Prettier - code formatting
 - 〰️ Drizzle - ORM
 - 👷🏻‍♂️ t3-env - validate environment variables before building
+- 🤖 Auto refresh - fast refresh when updating MDX
 
 ## 🔨 Requirements
 
-- Node, recommended `20.x`
+- Node, recommended `20.x` with [corepack](https://nodejs.org/api/corepack.html) enabled
 - pnpm, recommended `9.x`
 - PostgreSQL, recommended `14.x` (using [docker compose](./docker-compose.yml))
 - [Visual Studio Code](https://code.visualstudio.com/) with [recommended extensions](.vscode/extensions.json)
@@ -68,7 +69,8 @@ Please refer to the [contributing guidelines](./CONTRIBUTING.md) for detailed in
 
 This project has been possible thanks to the wonderful open-source community. Special thanks to [Timothy](https://www.timlrx.com/) for the [Tailwind nextjs starter blog template](https://github.com/timlrx/tailwind-nextjs-starter-blog).
 
-This project also uses / adapts the following open-source projects:
+This project also uses / adapts the following open-source projects
+Without them, this project would not have been possible:
 
 - Comment System - from [fuma-comment](https://github.com/fuma-nama/fuma-comment)
 - Rehype Plugins - from [fuma-docs](https://github.com/fuma-nama/fumadocs)
