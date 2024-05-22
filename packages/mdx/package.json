@@ -26,20 +26,21 @@
     "vfile-matter": "^5.0.0"
   },
   "peerDependencies": {
+    "@tszhong0411/utils": ">=0",
     "react": ">=16.x",
     "react-dom": ">=16.x"
   },
   "devDependencies": {
     "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
+    "@tszhong0411/utils": "workspace:*",
     "@types/hast": "^3.0.4",
     "@types/node": "^20.11.20",
     "@types/react": "^18.2.60",
-    "eslint": "^8.57.0",
     "react": "^18.2.0"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --fix",
-    "*.{js,jsx,ts,tsx,json,md}": "prettier --cache --write"
+    "*.{js,jsx,ts,tsx,json,md,mdx}": "prettier --cache --write"
   }
 }

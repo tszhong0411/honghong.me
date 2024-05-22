@@ -16,17 +16,24 @@
   "files": [
     "tailwind.config.ts"
   ],
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint --fix ."
+  },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.10",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@tszhong0411/eslint-config": "workspace:*",
+    "@tszhong0411/tsconfig": "workspace:*",
     "tailwindcss": "^3.4.1"
   },
   "publishConfig": {
     "access": "public"
   },
   "lint-staged": {
-    "*.{ts,json,md}": "prettier --cache --write"
+    "*.{js,jsx,ts,tsx}": "eslint --fix",
+    "*.{js,jsx,ts,tsx,json,md,mdx}": "prettier --cache --write"
   }
 }
