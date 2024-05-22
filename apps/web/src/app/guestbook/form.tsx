@@ -9,55 +9,54 @@ import {
   Textarea,
   toast
 } from '@tszhong0411/ui'
-import { type User } from 'next-auth'
 import { signOut } from 'next-auth/react'
-import * as React from 'react'
-import { useFormStatus } from 'react-dom'
+import { useRef } from 'react'
 
-import { createMessage } from '@/actions/guestbook'
+import type { User } from '@/lib/auth'
+import { api } from '@/trpc/react'
 
 type FormProps = {
   user: User
 }
 
-const SubmitButton = () => {
-  const { pending } = useFormStatus()
-
-  return (
-    <Button type='submit' disabled={pending} aria-disabled={pending}>
-      Submit
-    </Button>
-  )
-}
-
 const Form = (props: FormProps) => {
   const { user } = props
-  const formRef = React.useRef<HTMLFormElement>(null)
+  const textareaRef = useRef<HTMLTextAreaElement>(null)
+  const utils = api.useUtils()
+  const guestbookMutation = api.guestbook.create.useMutation({
+    onSuccess: () => {
+      textareaRef.current!.value = ''
+      toast.success('Create message successfully')
+    },
+    onSettled: () => utils.guestbook.get.invalidate(),
+    onError: (error) => toast.error(error.message)
+  })
 
-  const createMessageHandler = async (formData: FormData) => {
-    const toastId = toast.loading('Creating a message...')
+  const createMessageHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
 
-    const result = await createMessage(formData)
+    const message = textareaRef.current?.value
 
-    toast.dismiss(toastId)
+    if (!message) {
+      toast.error('Message cannot be empty')
 
-    if (result.error) {
-      toast.error(result.message)
-    } else {
-      toast.success(result.message)
-      formRef.current?.reset()
+      return
     }
+
+    guestbookMutation.mutate({
+      message
+    })
   }
 
   return (
-    <form action={createMessageHandler} ref={formRef}>
+    <form onSubmit={createMessageHandler}>
       <div className='mb-2 flex gap-3'>
         <Avatar>
           <AvatarImage
-            src={user.image as string}
+            src={user.image}
             width={40}
             height={40}
-            alt={user.name as string}
+            alt={user.name}
             className='size-10'
           />
           <AvatarFallback className='bg-transparent'>
@@ -65,9 +64,10 @@ const Form = (props: FormProps) => {
           </AvatarFallback>
         </Avatar>
         <Textarea
-          aria-label='Your message'
-          placeholder='Your message ...'
+          aria-label='Leave message'
+          placeholder='Leave message'
           name='message'
+          ref={textareaRef}
           required
         />
       </div>
@@ -75,7 +75,13 @@ const Form = (props: FormProps) => {
         <Button variant='outline' onClick={() => signOut()} type='button'>
           Logout
         </Button>
-        <SubmitButton />
+        <Button
+          type='submit'
+          disabled={guestbookMutation.isPending}
+          aria-disabled={guestbookMutation.isPending}
+        >
+          Submit
+        </Button>
       </div>
     </form>
   )

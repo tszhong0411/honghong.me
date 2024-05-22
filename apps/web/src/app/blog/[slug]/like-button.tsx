@@ -1,15 +1,14 @@
+'use client'
+
 /**
  * Inspired by: https://framer.university/resources/like-button-component
  */
-'use client'
-import { Separator, toast } from '@tszhong0411/ui'
+import { Separator } from '@tszhong0411/ui'
 import { motion } from 'framer-motion'
-import * as React from 'react'
-import useSWR from 'swr'
+import { useRef, useState } from 'react'
 import { useDebouncedCallback } from 'use-debounce'
 
-import { fetcher } from '@/lib/fetcher'
-import { type Likes } from '@/types'
+import { api } from '@/trpc/react'
 
 type LikeButtonProps = {
   slug: string
@@ -17,15 +16,38 @@ type LikeButtonProps = {
 
 const LikeButton = (props: LikeButtonProps) => {
   const { slug } = props
-  const [cacheCount, setCacheCount] = React.useState(0)
-  const buttonRef = React.useRef<HTMLButtonElement>(null)
+  const [cacheCount, setCacheCount] = useState(0)
+  const buttonRef = useRef<HTMLButtonElement>(null)
+  const utils = api.useUtils()
 
-  const { data, isLoading, mutate } = useSWR<Likes>(
-    `/api/likes?slug=${slug}`,
-    fetcher
-  )
+  const likesQuery = api.likes.get.useQuery({ slug })
+  const likesMutation = api.likes.patch.useMutation({
+    onMutate: (newData) => {
+      utils.likes.get.cancel({ slug })
 
-  const handleConfetti = async () => {
+      const previousData = utils.likes.get.getData({ slug })
+
+      utils.likes.get.setData({ slug }, (old) => {
+        if (!old) return old
+
+        return {
+          ...old,
+          likes: old.likes + newData.value,
+          currentUserLikes: old.currentUserLikes + newData.value
+        }
+      })
+
+      return { previousData }
+    },
+    onError: (_, __, ctx) => {
+      if (ctx?.previousData) {
+        utils.likes.get.setData({ slug }, ctx.previousData)
+      }
+    },
+    onSettled: () => utils.likes.get.invalidate()
+  })
+
+  const confettiHandler = async () => {
     const { clientWidth, clientHeight } = document.documentElement
     const boundingBox = buttonRef.current?.getBoundingClientRect?.()
 
@@ -48,34 +70,24 @@ const LikeButton = (props: LikeButtonProps) => {
     })
   }
 
-  const onLikeSaving = useDebouncedCallback(async (value: number) => {
-    try {
-      const res = await fetch('/api/likes', {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ slug, value })
-      })
-
-      const newData = (await res.json()) as Likes
-
-      await mutate(newData)
-    } catch {
-      toast.error('Unable to like this post. Please try again.')
-    } finally {
-      setCacheCount(0)
-    }
+  const onLikeSaving = useDebouncedCallback((value: number) => {
+    likesMutation.mutate({ slug, value })
+    setCacheCount(0)
   }, 1000)
 
-  const handleLike = () => {
-    if (isLoading || !data || data.currentUserLikes + cacheCount >= 3) return
+  const likeHandler = () => {
+    if (
+      likesQuery.isLoading ||
+      !likesQuery.data ||
+      likesQuery.data.currentUserLikes + cacheCount >= 3
+    )
+      return
 
     const value = cacheCount === 3 ? cacheCount : cacheCount + 1
     setCacheCount(value)
 
-    if (data.currentUserLikes + cacheCount === 2) {
-      handleConfetti()
+    if (likesQuery.data.currentUserLikes + cacheCount === 2) {
+      confettiHandler()
     }
 
     return onLikeSaving(value)
@@ -87,7 +99,7 @@ const LikeButton = (props: LikeButtonProps) => {
         ref={buttonRef}
         className='flex items-center gap-3 rounded-xl bg-zinc-900 px-4 py-2 text-lg text-white'
         type='button'
-        onClick={handleLike}
+        onClick={likeHandler}
         aria-label='Like this post'
       >
         <svg
@@ -119,19 +131,20 @@ const LikeButton = (props: LikeButtonProps) => {
                 y: '100%'
               }}
               animate={{
-                y: data
-                  ? `${100 - (data.currentUserLikes + cacheCount) * 33}%`
+                y: likesQuery.data
+                  ? `${100 - (likesQuery.data.currentUserLikes + cacheCount) * 33}%`
                   : '100%'
               }}
             />
           </g>
         </svg>
-        Like{data && data.likes + cacheCount === 1 ? '' : 's'}
+        Like
+        {likesQuery.data && likesQuery.data.likes + cacheCount === 1 ? '' : 's'}
         <Separator orientation='vertical' className='bg-zinc-700' />
-        {isLoading || !data ? (
+        {likesQuery.isLoading ? (
           <div> -- </div>
         ) : (
-          <div>{data.likes + cacheCount}</div>
+          <div>{likesQuery.data!.likes + cacheCount}</div>
         )}
       </button>
     </div>

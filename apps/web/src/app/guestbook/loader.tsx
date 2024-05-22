@@ -1,9 +1,5 @@
 import { Skeleton } from '@tszhong0411/ui'
 
-import PageTitle from '@/components/page-title'
-
-import Pinned from './pinned'
-
 const Placeholder = () => (
   <div className='rounded-lg border p-4 shadow-sm dark:bg-zinc-900/30'>
     <div className='mb-3 flex gap-3'>
@@ -17,24 +13,14 @@ const Placeholder = () => (
   </div>
 )
 
-const Loading = () => {
+const Loader = () => {
   return (
     <>
-      <PageTitle
-        title='Guestbook'
-        description='You can tell me anything here!'
-        animate={false}
-      />
-      <div className='mx-auto max-w-lg'>
-        <Pinned />
-        <div className='mt-10 flex flex-col gap-4'>
-          {Array.from({ length: 8 }).map((_, i) => (
-            <Placeholder key={i} />
-          ))}
-        </div>
-      </div>
+      {Array.from({ length: 8 }).map((_, i) => (
+        <Placeholder key={i} />
+      ))}
     </>
   )
 }
 
-export default Loading
+export default Loader

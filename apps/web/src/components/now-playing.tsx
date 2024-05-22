@@ -1,13 +1,11 @@
 'use client'
 
 import { Link } from '@tszhong0411/ui'
-import useSWR from 'swr'
 
-import { fetcher } from '@/lib/fetcher'
-import { type Song } from '@/types'
+import { api } from '@/trpc/react'
 
 const NowPlaying = () => {
-  const { data, isLoading } = useSWR<Song>('/api/spotify', fetcher)
+  const spotifyQuery = api.spotify.get.useQuery()
 
   return (
     <div className='flex items-center gap-4'>
@@ -27,15 +25,15 @@ const NowPlaying = () => {
 
       <div className='inline-flex w-full items-center justify-center gap-1 text-sm md:justify-start'>
         <p>
-          {isLoading && 'Loading ...'}
-          {!isLoading &&
-            (data?.isPlaying && data.songUrl ? (
-              <Link href={data.songUrl}>
-                {data.name} - {data.artist}
-              </Link>
-            ) : (
-              'Not Listening - Spotify'
-            ))}
+          {spotifyQuery.isLoading ? (
+            'Loading ...'
+          ) : spotifyQuery.data?.isPlaying && spotifyQuery.data.songUrl ? (
+            <Link href={spotifyQuery.data.songUrl}>
+              {spotifyQuery.data.name} - {spotifyQuery.data.artist}
+            </Link>
+          ) : (
+            'Not Listening - Spotify'
+          )}
         </p>
       </div>
     </div>

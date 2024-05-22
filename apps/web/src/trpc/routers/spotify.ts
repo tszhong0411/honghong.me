@@ -1,5 +1,7 @@
 import { env } from '@/env'
 
+import { createTRPCRouter, publicProcedure } from '../trpc'
+
 const CLIENT_ID = env.SPOTIFY_CLIENT_ID
 const CLIENT_SECRET = env.SPOTIFY_CLIENT_SECRET
 const REFRESH_TOKEN = env.SPOTIFY_REFRESH_TOKEN
@@ -27,31 +29,34 @@ const getAccessToken = async () => {
   return data.access_token as string
 }
 
-export const getNowPlaying = async () => {
-  const accessToken = await getAccessToken()
+export const spotifyRouter = createTRPCRouter({
+  get: publicProcedure.query(async () => {
+    const accessToken = await getAccessToken()
 
-  const response = await fetch(NOW_PLAYING_ENDPOINT, {
-    headers: {
-      Authorization: `Bearer ${accessToken}`
+    const response = await fetch(NOW_PLAYING_ENDPOINT, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      }
+    })
+
+    if (response.status === 204) {
+      return {
+        isPlaying: false,
+        songUrl: null,
+        name: null,
+        artist: null
+      }
     }
-  })
 
-  if (response.status === 204) {
-    return {
-      status: response.status
-    }
-  }
-
-  try {
     const song = await response.json()
 
     return {
-      status: response.status,
-      data: song
+      isPlaying: song.is_playing as boolean,
+      songUrl: song.item.external_urls.spotify as string,
+      name: song.item.name as string,
+      artist: song.item.artists
+        .map((artist: { name: string }) => artist.name)
+        .join(', ') as string
     }
-  } catch {
-    return {
-      status: response.status
-    }
-  }
-}
+  })
+})

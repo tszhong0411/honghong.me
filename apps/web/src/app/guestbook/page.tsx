@@ -3,7 +3,6 @@ import type { Metadata, ResolvingMetadata } from 'next'
 import PageTitle from '@/components/page-title'
 import { getCurrentUser } from '@/lib/auth'
 import { flags } from '@/lib/constants'
-import { getMessages } from '@/queries/guestbook'
 
 import Form from './form'
 import Messages from './messages'
@@ -51,7 +50,6 @@ const GuestbookPage = async () => {
   if (!flags.auth) return null
 
   const user = await getCurrentUser()
-  const messages = await getMessages()
 
   return (
     <>
@@ -61,9 +59,8 @@ const GuestbookPage = async () => {
       />
       <div className='mx-auto max-w-lg'>
         <Pinned />
-        {!user && <SignIn />}
-        {user && <Form user={user} />}
-        <Messages user={user} messages={messages} />
+        {user ? <Form user={user} /> : <SignIn />}
+        <Messages />
       </div>
     </>
   )

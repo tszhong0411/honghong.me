@@ -1,13 +1,11 @@
 'use client'
 
 import { BlurImage, Link } from '@tszhong0411/ui'
-import * as React from 'react'
-import useSWR from 'swr'
+import { useEffect, useRef } from 'react'
 
 import ImageZoom from '@/components/image-zoom'
 import { useFormattedDate } from '@/hooks/use-formatted-date'
-import { fetcher } from '@/lib/fetcher'
-import { type Comments, type Views } from '@/types'
+import { api } from '@/trpc/react'
 
 type HeaderProps = {
   date: string
@@ -21,30 +19,28 @@ const Header = (props: HeaderProps) => {
     format: 'LL',
     loading: '--'
   })
-  const { data: viewsData, isLoading: viewsIsLoading } = useSWR<Views>(
-    `/api/views?slug=${slug}`,
-    fetcher
-  )
-  const { data: commentsData, isLoading: commentsIsLoading } = useSWR<Comments>(
-    `/api/comments?slug=${slug}`,
-    fetcher
-  )
+  const utils = api.useUtils()
 
-  React.useEffect(() => {
-    const increment = async () => {
-      await fetch('/api/views', {
-        method: 'POST',
-        body: JSON.stringify({
-          slug
-        }),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
+  const incrementMutation = api.views.increment.useMutation({
+    onSettled: () => utils.views.get.invalidate()
+  })
+
+  const viewsQuery = api.views.get.useQuery({
+    slug
+  })
+
+  const commentsQuery = api.comments.getCount.useQuery({
+    slug
+  })
+
+  const incremented = useRef(false)
+
+  useEffect(() => {
+    if (!incremented.current) {
+      incrementMutation.mutate({ slug })
+      incremented.current = true
     }
-
-    increment()
-  }, [slug])
+  }, [incrementMutation, slug])
 
   return (
     <div className='space-y-16 py-16'>
@@ -75,11 +71,15 @@ const Header = (props: HeaderProps) => {
           </div>
           <div className='space-y-1 md:mx-auto'>
             <div className='text-muted-foreground'>Views</div>
-            {viewsIsLoading ? '--' : <div>{viewsData?.views}</div>}
+            {viewsQuery.isLoading ? '--' : <div>{viewsQuery.data?.views}</div>}
           </div>
           <div className='space-y-1 md:mx-auto'>
             <div className='text-muted-foreground'>Comments</div>
-            {commentsIsLoading ? '--' : <div>{commentsData?.value}</div>}
+            {commentsQuery.isLoading ? (
+              '--'
+            ) : (
+              <div>{commentsQuery.data?.value}</div>
+            )}
           </div>
         </div>
       </div>
