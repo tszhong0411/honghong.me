@@ -14,7 +14,8 @@
   },
   "files": [
     "base.json",
-    "nextjs.json"
+    "nextjs.json",
+    "react-library.json"
   ],
   "peerDependencies": {
     "typescript": "5.x"
@@ -23,6 +24,6 @@
     "access": "public"
   },
   "lint-staged": {
-    "*.{json,md}": "prettier --cache --write"
+    "*.{js,jsx,ts,tsx,json,md,mdx}": "prettier --cache --write"
   }
 }
