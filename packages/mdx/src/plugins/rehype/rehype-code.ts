@@ -56,6 +56,12 @@ export const rehypeCode: [
       return { title }
     },
     themes: DEFAULT_SHIKI_THEMES,
-    defaultColor: false
+    defaultColor: false,
+    langs: [
+      import('shiki/langs/js.mjs'),
+      import('shiki/langs/bash.mjs'),
+      import('shiki/langs/jsx.mjs'),
+      import('shiki/langs/php.mjs')
+    ]
   }
 ]

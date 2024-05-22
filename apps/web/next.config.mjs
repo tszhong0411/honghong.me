@@ -16,6 +16,13 @@ const nextConfig = {
     optimizePackageImports: ['shiki']
   },
 
+  transpilePackages: [
+    '@tszhong0411/emails',
+    '@tszhong0411/mdx',
+    '@tszhong0411/ui',
+    '@tszhong0411/utils'
+  ],
+
   images: {
     remotePatterns: [
       {
