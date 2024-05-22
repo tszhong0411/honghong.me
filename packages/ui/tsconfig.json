@@ -1,9 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "compilerOptions": {
-    "jsx": "react-jsx"
-  },
   "exclude": ["node_modules"],
-  "extends": "@tszhong0411/tsconfig/base.json",
+  "extends": "@tszhong0411/tsconfig/react-library.json",
   "include": ["**/*.ts", "**/*.tsx"]
 }

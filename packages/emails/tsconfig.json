@@ -2,12 +2,11 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
     "baseUrl": ".",
-    "jsx": "preserve",
     "paths": {
       "@/*": ["./src/*"]
     }
   },
   "exclude": ["node_modules"],
-  "extends": "@tszhong0411/tsconfig/base.json",
-  "include": ["src/**/*.ts", "src/**/*.tsx"]
+  "extends": "@tszhong0411/tsconfig/react-library.json",
+  "include": ["**/*.ts", "**/*.tsx"]
 }
