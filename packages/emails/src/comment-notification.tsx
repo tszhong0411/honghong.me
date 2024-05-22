@@ -1,31 +1,36 @@
 import { Body } from '@react-email/body'
-import { Button } from '@react-email/button'
 import { Column } from '@react-email/column'
 import { Container } from '@react-email/container'
 import { Font } from '@react-email/font'
 import { Head } from '@react-email/head'
+import { Hr } from '@react-email/hr'
 import { Html } from '@react-email/html'
 import { Img } from '@react-email/img'
 import { Link } from '@react-email/link'
-import { Markdown } from '@react-email/markdown'
 import { Preview } from '@react-email/preview'
 import { Row } from '@react-email/row'
 import { Section } from '@react-email/section'
 import { Tailwind } from '@react-email/tailwind'
+import { Text } from '@react-email/text'
+import { Fragment } from 'react'
 
 type CommentNotificationProps = {
-  title: string
-  name: string
-  commenterName: string
   comment: string
-  commentUrl: string
-  postUrl: string
+  commenter: {
+    name: string
+    image: string
+  }
+  date: string
+  commentIdentifier: string
+  post: {
+    title: string
+    url: string
+  }
   type: 'comment' | 'reply'
 }
 
 const CommentNotification = (props: CommentNotificationProps) => {
-  const { title, name, commenterName, comment, commentUrl, postUrl, type } =
-    props
+  const { comment, commenter, date, commentIdentifier, post, type } = props
 
   return (
     <Html lang='en-US'>
@@ -42,7 +47,8 @@ const CommentNotification = (props: CommentNotificationProps) => {
         />
       </Head>
       <Preview>
-        New {type === 'comment' ? 'comment' : 'reply'} on the post &quot;{title}
+        New {type === 'comment' ? 'comment' : 'reply'} on the post &quot;
+        {post.title}
         &quot; on honghong.me
       </Preview>
       <Tailwind
@@ -50,168 +56,97 @@ const CommentNotification = (props: CommentNotificationProps) => {
           theme: {
             extend: {
               colors: {
-                accent: '#0e0e10',
-                border: '#e6e6e6'
+                accent: '#f0f0f0',
+                border: '#242424'
               }
             }
           }
         }}
       >
-        <Body className='mx-auto bg-white'>
-          <Container className='border-border mx-auto my-10 max-w-3xl rounded-lg border border-solid p-[20px]'>
-            <Section className='mb-14'>
-              <Row>
-                <Column align='justify'>
-                  <Img
-                    src='https://honghong.me/images/email/logo.png'
-                    alt="Hong's logo"
-                    height='50'
-                  />
-                </Column>
-                <Column align='right' className='font-bold'>
-                  honghong.me
-                </Column>
-              </Row>
-            </Section>
-            <h1 className='mb-6'>
-              A new {type === 'comment' ? 'comment' : 'reply'}
-            </h1>
-            <Section className='text-zinc-700'>
-              <h2 className='mb-3 text-lg font-normal'>
-                Hi there, {type === 'comment' ? 'Hong' : name}
-              </h2>
-              <p className='mb-8 text-sm'>
-                You have a new {type === 'comment' ? 'comment' : 'reply'} by{' '}
-                <span className='font-bold'>{commenterName}</span> on the post{' '}
-                <Link href={postUrl} className='font-bold'>
-                  {title}
+        <Fragment>
+          <Body className='mx-auto bg-black text-[#f0f0f0]'>
+            <Container className='border-border mx-auto my-10 max-w-3xl rounded-lg border border-solid p-6'>
+              <Section className='mb-8'>
+                <Img
+                  src='https://honghong.me/images/email/logo.png'
+                  alt="Hong's logo"
+                  width='50'
+                  height='50'
+                />
+              </Section>
+              <Section>
+                <Text>
+                  A new {type === 'comment' ? 'comment' : 'reply'} has been
+                  posted on the post &quot;{post.title}&quot; on honghong.me
+                </Text>
+              </Section>
+              <Hr className='border-border my-4' />
+              <Section>
+                <Row>
+                  <Column className='w-8'>
+                    <Img
+                      src={commenter.image}
+                      alt={commenter.name}
+                      width='32'
+                      height='32'
+                      className='rounded-full'
+                    />
+                  </Column>
+                  <Column className='pl-2 font-medium'>
+                    <Text>
+                      {commenter.name}
+                      <span className='pl-3 text-[#999]'>{date}</span>
+                    </Text>
+                  </Column>
+                </Row>
+                <div dangerouslySetInnerHTML={{ __html: comment }} />
+              </Section>
+              <Hr className='border-border my-4' />
+              <Section>
+                <Link
+                  href={`${post.url}#${commentIdentifier}`}
+                  className='border-border my-8 block w-full rounded-lg border border-solid bg-zinc-900 py-4 text-center text-white'
+                >
+                  View {type === 'comment' ? 'comment' : 'reply'} on honghong.me
                 </Link>
-                :
-              </p>
-              <Markdown
-                markdownCustomStyles={{
-                  codeBlock: {
-                    backgroundColor: '#f0f0f0',
-                    padding: '12px',
-                    border: '1px solid #e6e6e6',
-                    borderRadius: '8px'
-                  },
-                  codeInline: {
-                    backgroundColor: '#f0f0f0',
-                    padding: '0.12em 0.25em',
-                    borderRadius: '6px',
-                    border: '1px solid #e6e6e6'
-                  },
-                  blockQuote: {
-                    backgroundColor: 'transparent',
-                    fontStyle: 'italic',
-                    borderLeft: '4px solid #989898',
-                    paddingLeft: '1em',
-                    margin: '16px 0'
-                  },
-                  li: {
-                    paddingLeft: '0.375em',
-                    margin: '0.5em 0'
-                  },
-                  link: {
-                    color: 'black'
-                  },
-                  table: {
-                    width: '100%',
-                    borderCollapse: 'collapse',
-                    fontSize: '14px',
-                    lineHeight: '20px',
-                    captionSide: 'bottom'
-                  },
-                  tr: {
-                    borderBottom: '1px solid #e6e6e6'
-                  },
-                  td: {
-                    verticalAlign: 'middle',
-                    padding: '16px'
-                  },
-                  image: {
-                    maxWidth: '100%',
-                    height: 'auto'
-                  },
-                  hr: {
-                    height: '1px',
-                    backgroundColor: 'rgb(212 212 212)',
-                    border: 'none'
-                  }
-                }}
-                markdownContainerStyles={{
-                  padding: '12px',
-                  border: '1px solid #e6e6e6',
-                  borderRadius: '8px',
-                  maxWidth: '768px',
-                  overflowWrap: 'break-word'
-                }}
-              >
-                {comment}
-              </Markdown>
-            </Section>
-            <Button
-              href={commentUrl}
-              className='border-border my-8 block w-full rounded-lg border border-solid bg-zinc-900 py-4 text-center text-white'
-            >
-              View comment on honghong.me
-            </Button>
-          </Container>
-        </Body>
+              </Section>
+            </Container>
+          </Body>
+        </Fragment>
       </Tailwind>
     </Html>
   )
 }
 
 CommentNotification.PreviewProps = {
-  title: 'Hello World',
-  name: 'Hong',
-  commenterName: 'John Doe',
   comment: `
-Markdown test
-
-# Heading 1
-## Heading 2
-### Heading 3
-#### Heading 4
-##### Heading 5
-###### Heading 6
-
-> This is a blockquote
-
-\`\`\`js
-const test = 'Hello World'
-\`\`\`
-
----
-
-- List item 1
-- List item 2
-
-1. List item 1
-2. List item 2
-
-[Link](https://honghong.me)
-
-![Image](https://honghong.me/images/avatar.png)
-
-**Bold**
-
-~~Strikethrough~~
-
-*Italic*
-
-\`Code\`
-
-| Table | Table |
-| ----- | ----- |
-| Table | Table |
-| Table | Table |
+    <p>This is a rich comment</p>
+    <p>This is <strong>bold</strong></p>
+    <p></p>
+    <p><em>This is italic</em></p>
+    <p></p>
+    <p><s>This is strike</s></p>
+    <p></p>
+    <p>
+      <strong>
+        <em>
+          <s>This is everything!!
+          </s>
+        </em>
+      </strong>
+    </p>
   `,
-  commentUrl: 'http://localhost:3000/blog/hello-world#comment-1',
-  postUrl: 'http://localhost:3000/blog/hello-world',
-  type: 'reply'
-}
+  commenter: {
+    name: 'John Doe',
+    image: 'http://localhost:3000/api/avatar/john-doe'
+  },
+  date: '1970-01-01 00:00:00',
+  commentIdentifier: 'comment-1',
+  post: {
+    title: 'Hello World',
+    url: 'http://localhost:3000/blog/hello-world'
+  },
+  type: 'comment'
+} satisfies CommentNotificationProps
 
 export default CommentNotification
