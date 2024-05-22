@@ -20,5 +20,5 @@ if (posts.length > 0) {
     )}\n`
   )
 
-  console.log('Generated posts.json')
+  console.log('✅ Generated posts.json')
 }
