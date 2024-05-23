@@ -95,7 +95,7 @@ The following flags can be set in the `.env.local` file to enable specific featu
 - `NEXT_PUBLIC_FLAG_SPOTIFY`: Spotify integration (Now Playing).
 - `NEXT_PUBLIC_FLAG_ANALYTICS`: Umami analytics.
 - `NEXT_PUBLIC_FLAG_GUESTBOOK_NOTIFICATION`: Discord notification for guestbook.
-- `NEXT_PUPLIC_FLAG_LIKE_BUTTON`: Like button for blog posts.
+- `NEXT_PUBLIC_FLAG_LIKE_BUTTON`: Like button for blog posts.
 
 ## Conventional Commits
 

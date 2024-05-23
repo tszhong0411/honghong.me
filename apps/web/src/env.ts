@@ -16,7 +16,6 @@ export const env = createEnv({
     ...(flags.auth
       ? {
           NEXTAUTH_SECRET: z.string().min(1),
-          NEXTAUTH_URL: z.string().min(1),
           GOOGLE_CLIENT_ID: z.string().min(1),
           GOOGLE_CLIENT_SECRET: z.string().min(1),
           GITHUB_CLIENT_ID: z.string().min(1),
@@ -63,7 +62,8 @@ export const env = createEnv({
     NEXT_PUBLIC_FLAG_STATS: z.string().min(1).optional(),
     NEXT_PUBLIC_FLAG_SPOTIFY: z.string().min(1).optional(),
     NEXT_PUBLIC_FLAG_ANALYTICS: z.string().min(1).optional(),
-    NEXT_PUBLIC_FLAG_GUESTBOOK_NOTIFICATION: z.string().min(1).optional()
+    NEXT_PUBLIC_FLAG_GUESTBOOK_NOTIFICATION: z.string().min(1).optional(),
+    NEXT_PUBLIC_FLAG_LIKE_BUTTON: z.string().min(1).optional()
   },
   runtimeEnv: {
     SPOTIFY_CLIENT_ID: process.env.SPOTIFY_CLIENT_ID,
@@ -77,7 +77,6 @@ export const env = createEnv({
     WAKATIME_API_KEY: process.env.WAKATIME_API_KEY,
 
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
-    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
 
     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
     GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
@@ -103,7 +102,8 @@ export const env = createEnv({
     NEXT_PUBLIC_FLAG_SPOTIFY: process.env.NEXT_PUBLIC_FLAG_SPOTIFY,
     NEXT_PUBLIC_FLAG_ANALYTICS: process.env.NEXT_PUBLIC_FLAG_ANALYTICS,
     NEXT_PUBLIC_FLAG_GUESTBOOK_NOTIFICATION:
-      process.env.NEXT_PUBLIC_FLAG_GUESTBOOK_NOTIFICATION
+      process.env.NEXT_PUBLIC_FLAG_GUESTBOOK_NOTIFICATION,
+    NEXT_PUBLIC_FLAG_LIKE_BUTTON: process.env.NEXT_PUBLIC_FLAG_LIKE_BUTTON
   },
 
   emptyStringAsUndefined: true

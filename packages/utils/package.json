@@ -31,10 +31,9 @@
     "tailwind-merge": "^2.2.1"
   },
   "devDependencies": {
-    "@tszhong0411/eslint-config": "workspace:^",
-    "@tszhong0411/tsconfig": "workspace:^",
-    "@types/node": "^20.11.20",
-    "eslint": "^8.57.0"
+    "@tszhong0411/eslint-config": "workspace:*",
+    "@tszhong0411/tsconfig": "workspace:*",
+    "@types/node": "^20.11.20"
   },
   "publishConfig": {
     "access": "public"
@@ -47,6 +46,6 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --fix",
-    "*.{js,jsx,ts,tsx,json,md}": "prettier --cache --write"
+    "*.{js,jsx,ts,tsx,json,md,mdx}": "prettier --cache --write"
   }
 }

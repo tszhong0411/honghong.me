@@ -48,12 +48,12 @@ const Header = (props: HeaderProps) => {
         animate={animation.show}
         transition={{ delay: 0.1 }}
       >
-        {homepage && (
+        {homepage ? (
           <Link href={homepage} className={cn(buttonVariants(), 'group')}>
             Visit Website
             <ArrowUpRightIcon className='ml-2 size-5 transition-transform group-hover:-rotate-12' />
           </Link>
-        )}
+        ) : null}
         <Link href={github} className={cn(buttonVariants(), 'group')}>
           {GITHUB_USERNAME}/{repo}
           <ArrowUpRightIcon className='ml-2 size-5 transition-transform group-hover:-rotate-12' />

@@ -3,7 +3,7 @@
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
 import { cn } from '@tszhong0411/utils'
 import { CheckIcon, ChevronRightIcon, DotIcon } from 'lucide-react'
-import * as React from 'react'
+import { forwardRef } from 'react'
 
 export const DropdownMenu = DropdownMenuPrimitive.Root
 export const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger
@@ -12,7 +12,7 @@ export const DropdownMenuPortal = DropdownMenuPrimitive.Portal
 export const DropdownMenuSub = DropdownMenuPrimitive.Sub
 export const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup
 
-export const DropdownMenuSubTrigger = React.forwardRef<
+export const DropdownMenuSubTrigger = forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.SubTrigger>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.SubTrigger> & {
     inset?: boolean
@@ -38,7 +38,7 @@ export const DropdownMenuSubTrigger = React.forwardRef<
   )
 })
 
-export const DropdownMenuSubContent = React.forwardRef<
+export const DropdownMenuSubContent = forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.SubContent>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.SubContent>
 >((props, ref) => {
@@ -48,7 +48,7 @@ export const DropdownMenuSubContent = React.forwardRef<
     <DropdownMenuPrimitive.SubContent
       ref={ref}
       className={cn(
-        'z-50 min-w-[8rem] overflow-hidden rounded-md border bg-accent p-1 text-popover-foreground shadow-lg',
+        'z-50 min-w-32 overflow-hidden rounded-md border bg-accent p-1 text-popover-foreground shadow-lg',
         'data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95',
         'data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',
         'data-[side=top]:slide-in-from-bottom-2',
@@ -62,7 +62,7 @@ export const DropdownMenuSubContent = React.forwardRef<
   )
 })
 
-export const DropdownMenuContent = React.forwardRef<
+export const DropdownMenuContent = forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Content>
 >((props, ref) => {
@@ -74,7 +74,7 @@ export const DropdownMenuContent = React.forwardRef<
         ref={ref}
         sideOffset={sideOffset}
         className={cn(
-          'z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md',
+          'z-50 min-w-32 overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md',
           'data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95',
           'data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',
           'data-[side=top]:slide-in-from-bottom-2',
@@ -89,7 +89,7 @@ export const DropdownMenuContent = React.forwardRef<
   )
 })
 
-export const DropdownMenuItem = React.forwardRef<
+export const DropdownMenuItem = forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item> & {
     inset?: boolean
@@ -112,7 +112,7 @@ export const DropdownMenuItem = React.forwardRef<
   )
 })
 
-export const DropdownMenuCheckboxItem = React.forwardRef<
+export const DropdownMenuCheckboxItem = forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.CheckboxItem>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.CheckboxItem>
 >((props, ref) => {
@@ -140,7 +140,7 @@ export const DropdownMenuCheckboxItem = React.forwardRef<
   )
 })
 
-export const DropdownMenuRadioItem = React.forwardRef<
+export const DropdownMenuRadioItem = forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.RadioItem>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.RadioItem>
 >((props, ref) => {
@@ -167,7 +167,7 @@ export const DropdownMenuRadioItem = React.forwardRef<
   )
 })
 
-export const DropdownMenuLabel = React.forwardRef<
+export const DropdownMenuLabel = forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Label>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Label> & {
     inset?: boolean
@@ -188,7 +188,7 @@ export const DropdownMenuLabel = React.forwardRef<
   )
 })
 
-export const DropdownMenuSeparator = React.forwardRef<
+export const DropdownMenuSeparator = forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Separator>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Separator>
 >((props, ref) => {
@@ -203,7 +203,7 @@ export const DropdownMenuSeparator = React.forwardRef<
   )
 })
 
-export const DropdownMenuShortcut = React.forwardRef<
+export const DropdownMenuShortcut = forwardRef<
   HTMLSpanElement,
   React.HTMLAttributes<HTMLSpanElement>
 >((props, ref) => {

@@ -2,7 +2,7 @@
 
 import { BlurImage } from '@tszhong0411/ui'
 import { motion, useAnimate, useInView } from 'framer-motion'
-import * as React from 'react'
+import { useEffect, useRef } from 'react'
 
 import me from '~/images/me.png'
 
@@ -19,10 +19,10 @@ const variants = {
 
 const GetInTouch = () => {
   const [scope, animate] = useAnimate()
-  const cardsRef = React.useRef<HTMLDivElement>(null)
+  const cardsRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(cardsRef, { once: true, margin: '-100px' })
 
-  React.useEffect(() => {
+  useEffect(() => {
     animate(
       [
         ['#pointer', { left: 200, top: 60 }, { duration: 0 }],

@@ -2,11 +2,11 @@
 
 import * as TabsPrimitive from '@radix-ui/react-tabs'
 import { cn } from '@tszhong0411/utils'
-import * as React from 'react'
+import { forwardRef } from 'react'
 
 export const Tabs = TabsPrimitive.Root
 
-export const TabsList = React.forwardRef<
+export const TabsList = forwardRef<
   React.ElementRef<typeof TabsPrimitive.List>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>
 >((props, ref) => {
@@ -24,7 +24,7 @@ export const TabsList = React.forwardRef<
   )
 })
 
-export const TabsTrigger = React.forwardRef<
+export const TabsTrigger = forwardRef<
   React.ElementRef<typeof TabsPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
 >((props, ref) => {
@@ -45,7 +45,7 @@ export const TabsTrigger = React.forwardRef<
   )
 })
 
-export const TabsContent = React.forwardRef<
+export const TabsContent = forwardRef<
   React.ElementRef<typeof TabsPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
 >((props, ref) => {

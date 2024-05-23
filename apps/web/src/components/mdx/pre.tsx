@@ -8,7 +8,7 @@ import {
 import { Button, type ButtonProps, ScrollArea } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { CheckIcon, CopyIcon, FileIcon, TerminalIcon } from 'lucide-react'
-import * as React from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard'
 
@@ -50,10 +50,10 @@ const getLanguageIcon = (lang: string): React.ReactNode => {
 const Pre = (props: PreProps) => {
   const { children, className, title, 'data-lang': lang, ...rest } = props
 
-  const textInput = React.useRef<HTMLPreElement>(null)
-  const [text, setText] = React.useState<string>('')
+  const textInput = useRef<HTMLPreElement>(null)
+  const [text, setText] = useState<string>('')
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (textInput.current) {
       setText(textInput.current.textContent ?? '')
     }
@@ -63,9 +63,9 @@ const Pre = (props: PreProps) => {
     <figure className='not-prose group relative my-6 overflow-hidden rounded-lg border bg-secondary/50 text-sm'>
       {title ? (
         <div className='flex flex-row items-center gap-2 border-b bg-muted px-4 py-1.5'>
-          {lang && (
+          {lang ? (
             <div className='text-muted-foreground'>{getLanguageIcon(lang)}</div>
-          )}
+          ) : null}
           <figcaption className='flex-1 truncate text-muted-foreground'>
             {title}
           </figcaption>

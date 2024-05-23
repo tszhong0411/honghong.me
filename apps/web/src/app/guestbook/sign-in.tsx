@@ -2,10 +2,10 @@
 
 import { Button } from '@tszhong0411/ui'
 
-import { useSignInModal } from '@/store/use-sign-in-modal'
+import { useSignInModalStore } from '@/stores/use-sign-in-modal-store'
 
 const SignIn = () => {
-  const { setOpen } = useSignInModal()
+  const { setOpen } = useSignInModalStore()
 
   return (
     <>

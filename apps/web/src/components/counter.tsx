@@ -1,5 +1,5 @@
 import { useInView, useMotionValue, useSpring } from 'framer-motion'
-import * as React from 'react'
+import { useEffect, useRef } from 'react'
 
 type CounterProps = {
   value: number
@@ -8,7 +8,7 @@ type CounterProps = {
 
 const Counter = (props: CounterProps) => {
   const { value, direction = 'up', ...rest } = props
-  const ref = React.useRef<HTMLSpanElement>(null)
+  const ref = useRef<HTMLSpanElement>(null)
   const motionValue = useMotionValue(direction === 'down' ? value : 0)
   const springValue = useSpring(motionValue, {
     damping: 100,
@@ -16,13 +16,13 @@ const Counter = (props: CounterProps) => {
   })
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (isInView) {
       motionValue.set(direction === 'down' ? 0 : value)
     }
   }, [motionValue, isInView, direction, value])
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (ref.current && value === 0) {
       ref.current.textContent = '0'
 

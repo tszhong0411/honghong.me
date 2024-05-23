@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { useEffect, useState } from 'react'
 
 import { dayjs } from '@/utils/dayjs'
 
@@ -18,11 +18,11 @@ export const useFormattedDate = (date: Date | string, options: Options) => {
     prefix = '',
     suffix = ''
   } = options
-  const [formattedDate, setFormattedDate] = React.useState<string | null>(
+  const [formattedDate, setFormattedDate] = useState<string | null>(
     loading ?? null
   )
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (relative) {
       const targetDate = dayjs(date)
 

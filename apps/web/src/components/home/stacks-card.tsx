@@ -24,7 +24,6 @@ import {
 } from '@icons-pack/react-simple-icons'
 import { Marquee } from '@tszhong0411/ui'
 import { ZapIcon } from 'lucide-react'
-import * as React from 'react'
 
 const StacksCard = () => {
   return (

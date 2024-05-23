@@ -1,5 +1,13 @@
+const { resolve } = require('node:path')
+
+const project = resolve(process.cwd(), 'tsconfig.json')
+
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
+  env: {
+    node: true,
+    browser: true
+  },
   extends: [
     'eslint:recommended',
     'plugin:import/recommended',
@@ -17,62 +25,8 @@ module.exports = {
     React: true,
     JSX: true
   },
-  env: {
-    node: true,
-    browser: true
-  },
-  settings: {
-    'import/resolver': {
-      typescript: {
-        alwaysTryTypes: true,
-        project: '**/tsconfig.json'
-      }
-    },
-    react: {
-      pragma: 'React',
-      version: 'detect'
-    },
-    'jsx-a11y': {
-      components: {
-        Button: 'button',
-        Image: 'img',
-        Input: 'input',
-        Textarea: 'textarea',
-        Link: 'a'
-      }
-    },
-    tailwindcss: {
-      callees: ['cn', 'cva']
-    }
-  },
-  plugins: ['react', 'simple-import-sort', 'unused-imports'],
-  parserOptions: {
-    project: '**/tsconfig.json',
-    ecmaVersion: 'latest',
-    sourceType: 'module'
-  },
-  ignorePatterns: ['node_modules/', 'dist/'],
+  ignorePatterns: ['node_modules/', 'dist/', '!.*.*js', '!.*.*ts'],
   overrides: [
-    {
-      files: [
-        '*.js',
-        '*.jsx',
-        '*.ts',
-        '*.tsx',
-        '*.cjs',
-        '*.mjs',
-        '*.mts',
-        '*.cts'
-      ],
-      rules: {
-        'simple-import-sort/imports': [
-          2,
-          {
-            groups: [['^@?\\w'], ['^[\\w]'], ['^'], ['^\\.']]
-          }
-        ]
-      }
-    },
     {
       files: ['*.ts', '*.tsx'],
       extends: [
@@ -95,7 +49,7 @@ module.exports = {
         '@typescript-eslint/no-unsafe-call': 0,
         '@typescript-eslint/no-unsafe-assignment': 0,
         '@typescript-eslint/no-unsafe-member-access': 0,
-        '@typescript-eslint/consistent-type-definitions': [2, 'type'],
+        '@typescript-eslint/consistent-type-definitions': 0,
         '@typescript-eslint/no-floating-promises': 0,
         '@typescript-eslint/no-non-null-assertion': 0,
         '@typescript-eslint/consistent-type-imports': [
@@ -104,15 +58,15 @@ module.exports = {
             prefer: 'type-imports',
             fixStyle: 'inline-type-imports'
           }
-        ],
-
-        'import/default': 0,
-        'import/export': 0,
-        'import/namespace': 0,
-        'import/no-unresolved': 0
+        ]
       }
     }
   ],
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module'
+  },
+  plugins: ['react', 'simple-import-sort', 'unused-imports'],
   rules: {
     // Eslint
     quotes: [
@@ -124,20 +78,13 @@ module.exports = {
     ],
     semi: [2, 'never'],
 
-    // Import sorting
-    'simple-import-sort/imports': 2,
-    'simple-import-sort/exports': 2,
-
-    // Unicorn
-    'unicorn/prevent-abbreviations': 0,
-    'unicorn/no-null': 0,
-    'unicorn/no-await-expression-member': 0,
-    'unicorn/prefer-export-from': [2, { ignoreUsedVariables: true }],
-
-    // SonarJS
-    'sonarjs/no-duplicate-string': 0,
-
     // Eslint comments
+    'eslint-comments/disable-enable-pair': 0,
+    'eslint-comments/no-aggregating-enable': 0,
+    'eslint-comments/no-duplicate-disable': 2,
+    'eslint-comments/no-unlimited-disable': 2,
+    'eslint-comments/no-unused-disable': 2,
+    'eslint-comments/no-unused-enable': 2,
     'eslint-comments/no-use': [
       2,
       {
@@ -149,21 +96,37 @@ module.exports = {
         ]
       }
     ],
-    'eslint-comments/disable-enable-pair': 0,
-    'eslint-comments/no-aggregating-enable': 0,
-    'eslint-comments/no-duplicate-disable': 2,
-    'eslint-comments/no-unlimited-disable': 2,
-    'eslint-comments/no-unused-disable': 2,
-    'eslint-comments/no-unused-enable': 2,
 
     // React
+    'react/button-has-type': 2,
+    'react/no-unescaped-entities': 0,
     'react/prop-types': 0,
     'react/react-in-jsx-scope': 0,
-    'react/button-has-type': 2,
     'react/self-closing-comp': [2, { component: true, html: true }],
-    'react/no-unescaped-entities': 0,
 
-    // Unused import
+    // Simple import sort
+    'simple-import-sort/exports': 2,
+    'simple-import-sort/imports': [
+      2,
+      {
+        groups: [['^@?\\w'], ['^[\\w]'], ['^'], ['^\\.']]
+      }
+    ],
+
+    // Sonarjs
+    'sonarjs/no-duplicate-string': 0,
+
+    // Tailwindcss
+    'tailwindcss/no-custom-classname': 0,
+
+    // Unicorn
+    'unicorn/no-await-expression-member': 0,
+    'unicorn/no-null': 0,
+    'unicorn/prefer-export-from': [2, { ignoreUsedVariables: true }],
+    'unicorn/prefer-module': 0,
+    'unicorn/prevent-abbreviations': 0,
+
+    // Unused imports
     'unused-imports/no-unused-imports': 2,
     'unused-imports/no-unused-vars': [
       2,
@@ -173,9 +136,28 @@ module.exports = {
         args: 'after-used',
         argsIgnorePattern: '^_'
       }
-    ],
-
-    // Tailwindcss
-    'tailwindcss/no-custom-classname': 0
+    ]
+  },
+  settings: {
+    'import/resolver': {
+      typescript: {
+        project
+      }
+    },
+    react: {
+      version: 'detect'
+    },
+    'jsx-a11y': {
+      components: {
+        Button: 'button',
+        Image: 'img',
+        Input: 'input',
+        Textarea: 'textarea',
+        Link: 'a'
+      }
+    },
+    tailwindcss: {
+      callees: ['cn', 'cva']
+    }
   }
 }

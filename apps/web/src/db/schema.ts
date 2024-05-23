@@ -1,19 +1,24 @@
+import { createId } from '@paralleldrive/cuid2'
 import { relations } from 'drizzle-orm'
 import {
   boolean,
   integer,
+  jsonb,
   pgEnum,
   pgTable,
   primaryKey,
   text,
   timestamp
 } from 'drizzle-orm/pg-core'
-import { type AdapterAccount } from 'next-auth/adapters'
+import { type AdapterAccountType } from 'next-auth/adapters'
 
 export const roleEnum = pgEnum('role', ['user', 'admin'])
 
 export const users = pgTable('user', {
-  id: text('id').notNull().primaryKey(),
+  id: text('id')
+    .notNull()
+    .primaryKey()
+    .$defaultFn(() => createId()),
   name: text('name'),
   email: text('email').notNull(),
   emailVerified: timestamp('email_verified', {
@@ -21,7 +26,7 @@ export const users = pgTable('user', {
     precision: 3
   }).defaultNow(),
   image: text('image'),
-  role: roleEnum('role').default('user'),
+  role: roleEnum('role').default('user').notNull(),
   createdAt: timestamp('created_at', {
     mode: 'date',
     precision: 3
@@ -42,16 +47,16 @@ export const accounts = pgTable(
     userId: text('user_id')
       .notNull()
       .references(() => users.id, { onDelete: 'cascade' }),
-    type: text('type').$type<AdapterAccount['type']>().notNull(),
+    type: text('type').$type<AdapterAccountType>().notNull(),
     provider: text('provider').notNull(),
     providerAccountId: text('provider_account_id').notNull(),
-    refreshToken: text('refresh_token'),
-    accessToken: text('access_token'),
-    expiresAt: integer('expires_at'),
-    tokenType: text('token_type'),
+    refresh_token: text('refresh_token'),
+    access_token: text('access_token'),
+    expires_at: integer('expires_at'),
+    token_type: text('token_type'),
     scope: text('scope'),
-    idToken: text('id_token'),
-    sessionState: text('session_state')
+    id_token: text('id_token'),
+    session_state: text('session_state')
   },
   (account) => ({
     compoundKey: primaryKey({
@@ -90,10 +95,10 @@ export const verificationTokens = pgTable(
 
 export const guestbook = pgTable('guestbook', {
   id: text('id').notNull().primaryKey(),
-  email: text('email').notNull(),
-  image: text('image'),
   body: text('body').notNull(),
-  createdBy: text('created_by').notNull(),
+  userId: text('user_id')
+    .notNull()
+    .references(() => users.id),
   createdAt: timestamp('created_at', {
     mode: 'date',
     precision: 3
@@ -133,8 +138,10 @@ export const likesSessions = pgTable('likes_session', {
 
 export const comments = pgTable('comment', {
   id: text('id').notNull().primaryKey(),
-  body: text('body').notNull(),
-  userId: text('user_id').notNull(),
+  body: jsonb('body').notNull(),
+  userId: text('user_id')
+    .notNull()
+    .references(() => users.id),
   createdAt: timestamp('created_at', {
     mode: 'date',
     precision: 3
@@ -147,25 +154,37 @@ export const comments = pgTable('comment', {
   })
     .notNull()
     .defaultNow(),
-  postId: text('post_id').notNull(),
+  postId: text('post_id')
+    .notNull()
+    .references(() => posts.slug),
   parentId: text('parent_id'),
   isDeleted: boolean('is_deleted').notNull().default(false)
 })
 
-export const commentUpvotes = pgTable('comment_upvote', {
-  id: text('id').notNull().primaryKey(),
-  userId: text('user_id').notNull(),
-  commentId: text('comment_id')
-    .notNull()
-    .references(() => comments.id, { onDelete: 'cascade' })
-})
+export const rates = pgTable(
+  'rate',
+  {
+    userId: text('user_id')
+      .notNull()
+      .references(() => users.id),
+    commentId: text('comment_id')
+      .notNull()
+      .references(() => comments.id, { onDelete: 'cascade' }),
+    like: boolean('like').notNull()
+  },
+  (rate) => ({
+    compoundKey: primaryKey({
+      columns: [rate.userId, rate.commentId]
+    })
+  })
+)
 
-// Relationships
+// Relations
 export const usersRelations = relations(users, ({ many }) => ({
   accounts: many(accounts),
   sessions: many(sessions),
   comments: many(comments),
-  commentUpvotes: many(commentUpvotes)
+  guestbook: many(guestbook)
 }))
 
 export const accountsRelations = relations(accounts, ({ one }) => ({
@@ -186,6 +205,13 @@ export const postsRelations = relations(posts, ({ many }) => ({
   comments: many(comments)
 }))
 
+export const guestbookRelations = relations(guestbook, ({ one }) => ({
+  user: one(users, {
+    fields: [guestbook.userId],
+    references: [users.id]
+  })
+}))
+
 export const commentsRelations = relations(comments, ({ one, many }) => ({
   user: one(users, {
     fields: [comments.userId],
@@ -203,16 +229,16 @@ export const commentsRelations = relations(comments, ({ one, many }) => ({
   replies: many(comments, {
     relationName: 'comment_replies'
   }),
-  upvotes: many(commentUpvotes)
+  rates: many(rates)
 }))
 
-export const commentUpvotesRelations = relations(commentUpvotes, ({ one }) => ({
+export const ratesRelations = relations(rates, ({ one }) => ({
   user: one(users, {
-    fields: [commentUpvotes.userId],
+    fields: [rates.userId],
     references: [users.id]
   }),
   comment: one(comments, {
-    fields: [commentUpvotes.commentId],
+    fields: [rates.commentId],
     references: [comments.id]
   })
 }))

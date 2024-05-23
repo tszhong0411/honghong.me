@@ -3,7 +3,6 @@
  */
 import { cn } from '@tszhong0411/utils'
 import { LinkIcon } from 'lucide-react'
-import * as React from 'react'
 
 type Types = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 type HeadingProps<T extends Types> = Omit<
@@ -15,7 +14,7 @@ type HeadingProps<T extends Types> = Omit<
 
 const Heading = <T extends Types = 'h1'>(props: HeadingProps<T>) => {
   const { as, className, children, id, ...rest } = props
-  const Component = as || 'h1'
+  const Component = as ?? 'h1'
 
   return (
     <Component className={cn('scroll-m-32', className)} id={id} {...rest}>

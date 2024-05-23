@@ -12,8 +12,8 @@ export const remarkHeading: Plugin = () => {
     slugger.reset()
 
     visit(tree, 'heading', (node: any) => {
-      node.data ||= {}
-      node.data.hProperties ||= {}
+      node.data ??= {}
+      node.data.hProperties ??= {}
 
       const text = node.children[0].value
       const id = slugger.slug(text)

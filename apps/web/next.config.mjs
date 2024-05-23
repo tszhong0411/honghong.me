@@ -1,17 +1,10 @@
 import bundleAnalyzer from '@next/bundle-analyzer'
-import * as dotenv from 'dotenv'
-import jiti from 'jiti'
+import createJiti from 'jiti'
 import { fileURLToPath } from 'node:url'
 
-dotenv.config({
-  path: '../../.env.local'
-})
+const jiti = createJiti(fileURLToPath(import.meta.url))
 
-const filename = fileURLToPath(import.meta.url)
-
-const envPath = './src/env'
-
-jiti(filename)(envPath)
+jiti('./src/env')
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true'
@@ -22,6 +15,13 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['shiki']
   },
+
+  transpilePackages: [
+    '@tszhong0411/emails',
+    '@tszhong0411/mdx',
+    '@tszhong0411/ui',
+    '@tszhong0411/utils'
+  ],
 
   images: {
     remotePatterns: [

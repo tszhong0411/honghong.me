@@ -1,21 +1,21 @@
 /**
- * Adapted from https://github.com/delbaoliveira/website/blob/59e6f181ad75751342ceaa8931db4cbcef86b018/ui/BlurImage.tsx
+ * Adapted from: https://github.com/delbaoliveira/website/blob/59e6f181ad75751342ceaa8931db4cbcef86b018/ui/BlurImage.tsx
  */
 'use client'
 
 import { cn } from '@tszhong0411/utils'
 import NextImage from 'next/image'
-import * as React from 'react'
+import { forwardRef, useState } from 'react'
 
 type ImageProps = {
   imageClassName?: string
   lazy?: boolean
 } & React.ComponentPropsWithoutRef<typeof NextImage>
 
-export const BlurImage = React.forwardRef<HTMLDivElement, ImageProps>(
+export const BlurImage = forwardRef<HTMLDivElement, ImageProps>(
   (props, ref) => {
     const { alt, src, className, imageClassName, lazy = true, ...rest } = props
-    const [isLoading, setLoading] = React.useState(true)
+    const [isLoading, setLoading] = useState(true)
 
     return (
       <div

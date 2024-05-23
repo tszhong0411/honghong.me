@@ -44,10 +44,11 @@ Welcome to the monorepo of my personal blog! This repository houses the code for
 - 💄 Prettier - code formatting
 - 〰️ Drizzle - ORM
 - 👷🏻‍♂️ t3-env - validate environment variables before building
+- 🤖 Auto refresh - fast refresh when updating MDX
 
 ## 🔨 Requirements
 
-- Node, recommended `20.x`
+- Node, recommended `20.x` with [corepack](https://nodejs.org/api/corepack.html) enabled
 - pnpm, recommended `9.x`
 - PostgreSQL, recommended `14.x` (using [docker compose](./docker-compose.yml))
 - [Visual Studio Code](https://code.visualstudio.com/) with [recommended extensions](.vscode/extensions.json)
@@ -67,6 +68,37 @@ Please refer to the [contributing guidelines](./CONTRIBUTING.md) for detailed in
 ## ❤️ Credits
 
 This project has been possible thanks to the wonderful open-source community. Special thanks to [Timothy](https://www.timlrx.com/) for the [Tailwind nextjs starter blog template](https://github.com/timlrx/tailwind-nextjs-starter-blog).
+
+This project also uses / adapts the following open-source projects
+Without them, this project would not have been possible:
+
+- Comment System - from [fuma-comment](https://github.com/fuma-nama/fuma-comment)
+- Rehype Plugins - from [fuma-docs](https://github.com/fuma-nama/fumadocs)
+- MDX Rendering - from [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote)
+- Auto Refresh - from [next-remote-refresh](https://github.com/souporserious/next-remote-refresh)
+- UI - from [shadcn/ui](https://github.com/shadcn-ui/ui)
+
+Referenced the following projects for inspiration:
+
+- [fumadocs](https://fumadocs.vercel.app/) ❤️
+- [leerob.io](https://leerob.io/)
+- [nextra](https://nextra.site/)
+- [theodorusclarence.com](https://theodorusclarence.com/)
+- [ped.ro](https://ped.ro/)
+- [delba.dev](https://delba.dev/)
+- [joshwcomeau.com](https://www.joshwcomeau.com/)
+- [blog.maximeheckel.com](https://blog.maximeheckel.com/)
+- [zenorocha.com](https://zenorocha.com/)
+- [jahir.dev](https://jahir.dev/)
+- [anishde.dev](https://anishde.dev/)
+- [nikolovlazar.com](https://nikolovlazar.com/)
+- [samuelkraft.com](https://samuelkraft.com/)
+- [bentogrids](https://bentogrids.com/)
+- [ui.aceternity.com](https://ui.aceternity.com/)
+- [hover.dev](https://www.hover.dev/)
+- [vocs.dev](https://vocs.dev/)
+
+and more but I can't remember them all 🥹
 
 ## ✍🏻 Author
 

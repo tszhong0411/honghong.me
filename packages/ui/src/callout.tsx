@@ -1,7 +1,7 @@
 import { cn } from '@tszhong0411/utils'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { AlertOctagonIcon, AlertTriangleIcon, InfoIcon } from 'lucide-react'
-import * as React from 'react'
+import { forwardRef } from 'react'
 
 export const calloutVariants = cva(
   'my-6 flex flex-row gap-2 rounded-lg border bg-card p-3 text-sm text-muted-foreground shadow-md',
@@ -22,7 +22,7 @@ export const calloutVariants = cva(
 type CalloutProps = { title?: string } & React.HTMLAttributes<HTMLDivElement> &
   VariantProps<typeof calloutVariants>
 
-export const Callout = React.forwardRef<HTMLDivElement, CalloutProps>(
+export const Callout = forwardRef<HTMLDivElement, CalloutProps>(
   (props, ref) => {
     const { variant, className, title, children, ...rest } = props
 

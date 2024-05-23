@@ -1,9 +1,9 @@
 'use client'
 
-import * as React from 'react'
+import { useEffect } from 'react'
 
 const Hello = () => {
-  React.useEffect(() => {
+  useEffect(() => {
     console.log(`
 ██╗  ██╗ ██████╗ ███╗   ██╗ ██████╗
 ██║  ██║██╔═══██╗████╗  ██║██╔════╝

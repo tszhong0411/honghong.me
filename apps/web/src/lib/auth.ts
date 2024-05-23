@@ -1,23 +1,30 @@
-import type { NextAuthConfig, NextAuthResult } from 'next-auth'
+import { DrizzleAdapter } from '@auth/drizzle-adapter'
+import type { InferSelectModel } from 'drizzle-orm'
+import type { DefaultSession, NextAuthConfig } from 'next-auth'
 import NextAuth from 'next-auth'
 import GithubProvider from 'next-auth/providers/github'
 import GoogleProvider from 'next-auth/providers/google'
+import { cache } from 'react'
 
-import { db, DrizzleAdapter } from '@/db'
-import type { users } from '@/db/schema'
+import { db } from '@/db'
+import { accounts, sessions, users, verificationTokens } from '@/db/schema'
 import { env } from '@/env'
-
-type DatabaseUser = typeof users.$inferSelect
+import { getDefaultUser } from '@/utils/get-default-user'
 
 declare module 'next-auth' {
-  // We're extending interfaces from 'next-auth' and we can't use 'type' for these declarations.
-  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
-  interface Session {
-    user: DatabaseUser
+  interface Session extends Omit<DefaultSession, 'user'> {
+    user: {
+      id: string
+      name?: string | null
+      email: string
+      image?: string | null
+      role: InferSelectModel<typeof users>['role']
+    }
   }
 
-  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions, @typescript-eslint/no-empty-interface
-  interface User extends DatabaseUser {}
+  interface User {
+    role: InferSelectModel<typeof users>['role']
+  }
 }
 
 const config: NextAuthConfig = {
@@ -33,14 +40,22 @@ const config: NextAuthConfig = {
     })
   ],
 
-  adapter: DrizzleAdapter(db),
+  adapter: DrizzleAdapter(db, {
+    usersTable: users,
+    accountsTable: accounts,
+    sessionsTable: sessions,
+    verificationTokensTable: verificationTokens
+  }),
 
   callbacks: {
     session: ({ session, user }) => {
-      session.user.id = user.id
-      session.user.role = user.role
-
-      return session
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          role: user.role
+        }
+      }
     }
   }
 }
@@ -49,14 +64,22 @@ export const {
   handlers: { GET, POST }
 } = NextAuth(config)
 
-export const auth: NextAuthResult['auth'] = NextAuth(config).auth
+export const auth = NextAuth(config).auth
 
-export const getCurrentUser = async () => {
+export const getCurrentUser = cache(async () => {
   const session = await auth()
 
   if (!session?.user) {
     return null
   }
 
-  return session.user
-}
+  const { defaultImage, defaultName } = getDefaultUser(session.user.id)
+
+  return {
+    ...session.user,
+    name: session.user.name ?? defaultName,
+    image: session.user.image ?? defaultImage
+  }
+})
+
+export type User = NonNullable<Awaited<ReturnType<typeof getCurrentUser>>>

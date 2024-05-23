@@ -2,13 +2,13 @@
 
 import createGlobe from 'cobe'
 import { MapPinIcon } from 'lucide-react'
-import * as React from 'react'
+import { useEffect, useRef } from 'react'
 import { useSpring } from 'react-spring'
 
 const LocationCard = () => {
-  const canvasRef = React.useRef<HTMLCanvasElement>(null)
-  const pointerInteracting = React.useRef<number | null>(null)
-  const pointerInteractionMovement = React.useRef(0)
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const pointerInteracting = useRef<number | null>(null)
+  const pointerInteractionMovement = useRef(0)
   const fadeMask =
     'radial-gradient(circle at 50% 50%, rgb(0, 0, 0) 60%, rgb(0, 0, 0, 0) 70%)'
 
@@ -22,7 +22,7 @@ const LocationCard = () => {
     }
   }))
 
-  React.useEffect(() => {
+  useEffect(() => {
     let width = 0
 
     const onResize = () => {

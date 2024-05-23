@@ -1,7 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "globalDependencies": ["**/.env.*local"],
-  "globalEnv": ["NODE_ENV", "CI"],
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
@@ -29,6 +28,9 @@
     "db:generate": {
       "cache": false
     },
+    "db:migrate": {
+      "cache": false
+    },
     "db:push": {
       "cache": false
     },
@@ -53,7 +55,6 @@
         "GITHUB_TOKEN",
         "WAKATIME_API_KEY",
         "NEXTAUTH_SECRET",
-        "NEXTAUTH_URL",
         "GOOGLE_CLIENT_ID",
         "GOOGLE_CLIENT_SECRET",
         "GITHUB_CLIENT_ID",
@@ -71,7 +72,8 @@
         "NEXT_PUBLIC_FLAG_SPOTIFY",
         "NEXT_PUBLIC_FLAG_ANALYTICS",
         "NEXT_PUBLIC_FLAG_GUESTBOOK_NOTIFICATION",
-        "NEXT_PUBLIC_FLAG_LIKE_BUTTON"
+        "NEXT_PUBLIC_FLAG_LIKE_BUTTON",
+        "VERCEL_URL"
       ]
     },
     "ui#build": {

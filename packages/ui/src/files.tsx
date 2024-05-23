@@ -6,7 +6,7 @@
 import { cn } from '@tszhong0411/utils'
 import { cva } from 'class-variance-authority'
 import { FileIcon, FolderIcon, FolderOpenIcon } from 'lucide-react'
-import * as React from 'react'
+import { useState } from 'react'
 
 import {
   Collapsible,
@@ -54,7 +54,7 @@ export const File = (props: FileProps) => {
 
 export const Folder = (props: FolderProps) => {
   const { children, name, defaultOpen = false, ...rest } = props
-  const [open, setOpen] = React.useState(defaultOpen)
+  const [open, setOpen] = useState(defaultOpen)
 
   return (
     <Collapsible open={open} onOpenChange={setOpen} {...rest}>

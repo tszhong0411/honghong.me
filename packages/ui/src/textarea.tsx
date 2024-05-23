@@ -1,5 +1,5 @@
 import { cn } from '@tszhong0411/utils'
-import * as React from 'react'
+import { forwardRef } from 'react'
 import TextareaAutosize, {
   type TextareaAutosizeProps
 } from 'react-textarea-autosize'
@@ -7,7 +7,7 @@ import TextareaAutosize, {
 type TextareaProps = TextareaAutosizeProps &
   React.TextareaHTMLAttributes<HTMLTextAreaElement>
 
-export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
+export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   (props, ref) => {
     const { className, ...rest } = props
 

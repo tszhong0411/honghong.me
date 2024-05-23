@@ -1,38 +1,44 @@
-import * as React from 'react'
+'use client'
 
-import { getCurrentUser } from '@/lib/auth'
-import { getComments } from '@/queries/comments'
+import { useCallback, useRef } from 'react'
 
-import Comment from './comment'
-import CommentBox from './comment-box'
+import { CommentsProvider } from '@/contexts/comments'
+
+import { RatesProvider } from '../../contexts/rates'
+import CommentPost from './comment-post'
+import CommentsList from './comments-list'
 
 type CommentsProps = {
   slug: string
 }
 
-const Comments = async (props: CommentsProps) => {
+const Comments = (props: CommentsProps) => {
   const { slug } = props
-  const comments = await getComments(slug)
-  const user = await getCurrentUser()
+  const mutationCount = useRef(0)
+
+  const increment = useCallback(() => {
+    mutationCount.current += 1
+  }, [])
+
+  const decrement = useCallback(() => {
+    mutationCount.current -= 1
+  }, [])
+
+  const getCount = useCallback(() => mutationCount.current, [])
 
   return (
-    <div className='space-y-6'>
-      <div className='rounded-lg border px-2 py-4 dark:bg-zinc-900/30 sm:px-4'>
-        <CommentBox slug={slug} />
-      </div>
-      <div className='space-y-8'>
-        {comments
-          .filter((c) => !c.parentId)
-          .map((comment) => (
-            <Comment
-              key={comment.id}
-              user={user}
-              slug={slug}
-              comment={comment}
-            />
-          ))}
-      </div>
-    </div>
+    <RatesProvider value={{ increment, decrement, getCount }}>
+      <CommentsProvider
+        value={{
+          slug
+        }}
+      >
+        <div className='space-y-6'>
+          <CommentPost />
+          <CommentsList />
+        </div>
+      </CommentsProvider>
+    </RatesProvider>
   )
 }
 

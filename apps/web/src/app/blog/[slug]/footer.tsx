@@ -1,7 +1,6 @@
 'use client'
 
 import { Link } from '@tszhong0411/ui'
-import * as React from 'react'
 
 import { useFormattedDate } from '@/hooks/use-formatted-date'
 

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "ignoreBinaries": ["only-allow"],
+  "workspaces": {
+    ".": {
+      "project": ["**/*.{js,ts,tsx}"]
+    },
+    "apps/web": {
+      "entry": ["./src/**/*.{js,ts,tsx}"],
+      "ignoreDependencies": ["sharp"]
+    },
+    "packages/eslint-config": {
+      "eslint": {
+        "config": "index.js"
+      }
+    },
+    "packages/prettier-config": {
+      "prettier": {
+        "config": "index.js"
+      }
+    }
+  }
+}

@@ -1,13 +1,10 @@
 'use client'
 
 import { BlurImage, Link } from '@tszhong0411/ui'
-import * as React from 'react'
-import useSWR from 'swr'
 
 import { useFormattedDate } from '@/hooks/use-formatted-date'
-import { fetcher } from '@/lib/fetcher'
 import { type BlogMetadata } from '@/lib/mdx'
-import { type Likes, type Views } from '@/types'
+import { api } from '@/trpc/react'
 
 type PostCardsProps = {
   posts: BlogMetadata[]
@@ -32,14 +29,14 @@ const PostCard = (props: PostCardProps) => {
     format: 'LL',
     loading: '--'
   })
-  const { data: viewsData, isLoading: viewsIsLoading } = useSWR<Views>(
-    `/api/views?slug=${slug}`,
-    fetcher
-  )
-  const { data: likesData, isLoading: likesIsLoading } = useSWR<Likes>(
-    `/api/likes?slug=${slug}`,
-    fetcher
-  )
+
+  const viewsQuery = api.views.get.useQuery({
+    slug
+  })
+
+  const likesQuery = api.likes.get.useQuery({
+    slug
+  })
 
   return (
     <Link
@@ -57,9 +54,17 @@ const PostCard = (props: PostCardProps) => {
       <div className='flex items-center justify-between gap-2 px-2 pt-4 text-sm text-zinc-500'>
         {formattedDate}
         <div className='flex gap-2'>
-          {likesIsLoading ? '--' : <div>{likesData?.likes} likes</div>}
+          {likesQuery.isLoading ? (
+            '--'
+          ) : (
+            <div>{likesQuery.data?.likes} likes</div>
+          )}
           <div>&middot;</div>
-          {viewsIsLoading ? '--' : <div>{viewsData?.views} views</div>}
+          {viewsQuery.isLoading ? (
+            '--'
+          ) : (
+            <div>{viewsQuery.data?.views} views</div>
+          )}
         </div>
       </div>
       <div className='flex flex-col px-2 py-4'>

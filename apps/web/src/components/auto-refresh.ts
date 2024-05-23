@@ -1,7 +1,7 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import * as React from 'react'
+import { useEffect } from 'react'
 
 import { isProduction } from '@/lib/constants'
 
@@ -21,7 +21,7 @@ if (!isProduction) {
 
     const router = useRouter()
 
-    React.useEffect(() => {
+    useEffect(() => {
       const ws = new WebSocket('ws://localhost:5500')
 
       ws.addEventListener('message', (event) => {

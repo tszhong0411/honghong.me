@@ -24,8 +24,8 @@ const Content = async (props: ContentProps) => {
         </article>
         <aside className='lg:min-w-[270px] lg:max-w-[270px]'>
           <div className='sticky top-24 will-change-[transform,opacity]'>
-            {toc && toc.length > 0 && <TableOfContents toc={toc} />}
-            {flags.likeButton && <LikeButton slug={slug} />}
+            {toc && toc.length > 0 ? <TableOfContents toc={toc} /> : null}
+            {flags.likeButton ? <LikeButton slug={slug} /> : null}
           </div>
         </aside>
       </div>

@@ -1,5 +1,4 @@
 import { PinIcon } from 'lucide-react'
-import * as React from 'react'
 
 const Pinned = () => {
   return (

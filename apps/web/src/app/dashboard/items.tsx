@@ -6,18 +6,9 @@
 import { SiGithub, SiWakatime, SiYoutube } from '@icons-pack/react-simple-icons'
 import { Link } from '@tszhong0411/ui'
 import { ArrowRightIcon, PencilIcon, StarIcon } from 'lucide-react'
-import * as React from 'react'
-import useSWR, { type SWRConfiguration } from 'swr'
 
 import Counter from '@/components/counter'
-import { fetcher } from '@/lib/fetcher'
-import {
-  type Github,
-  type Likes,
-  type Views,
-  type Wakatime,
-  type YouTube
-} from '@/types'
+import { api } from '@/trpc/react'
 
 type Card = {
   icon: React.ReactNode
@@ -33,29 +24,19 @@ type Card = {
 }
 
 const Items = () => {
-  const swrConfig: SWRConfiguration = {
-    revalidateOnFocus: false
-  }
-  const { data: youtubeData } = useSWR<YouTube>(
-    '/api/youtube',
-    fetcher,
-    swrConfig
-  )
-  const { data: githubData } = useSWR<Github>('/api/github', fetcher, swrConfig)
-  const { data: likesData } = useSWR<Likes>('/api/likes', fetcher, swrConfig)
-  const { data: viewsData } = useSWR<Views>('/api/views', fetcher, swrConfig)
-  const { data: wakatimeData } = useSWR<Wakatime>(
-    '/api/wakatime',
-    fetcher,
-    swrConfig
-  )
+  const youtubeQuery = api.youtube.get.useQuery()
+  const githubQuery = api.github.get.useQuery()
+
+  const likesQuery = api.likes.getCount.useQuery()
+  const viewsQuery = api.views.getCount.useQuery()
+  const wakatimeQuery = api.wakatime.get.useQuery()
 
   const data: Card[] = [
     {
       title: 'Coding Hours',
       link: 'https://wakatime.com/@tszhong0411',
-      value: wakatimeData?.seconds
-        ? Math.round(wakatimeData.seconds / 60 / 60)
+      value: wakatimeQuery.data?.seconds
+        ? Math.round(wakatimeQuery.data.seconds / 60 / 60)
         : undefined,
       icon: <SiWakatime className='text-[#0061ff]' />,
       linkText: 'WakaTime',
@@ -68,7 +49,7 @@ const Items = () => {
     {
       title: 'YouTube Subscribers',
       link: 'https://youtube.com/@tszhong0411',
-      value: youtubeData?.subscribers,
+      value: youtubeQuery.data?.subscribers,
       icon: <SiYoutube className='text-[#ff0000]' />,
       linkText: 'YouTube',
       gradient: {
@@ -79,7 +60,7 @@ const Items = () => {
     {
       title: 'YouTube Views',
       link: 'https://youtube.com/@tszhong0411',
-      value: youtubeData?.views,
+      value: youtubeQuery.data?.views,
       icon: <SiYoutube className='text-[#ff0000]' />,
       linkText: 'YouTube',
       gradient: {
@@ -90,7 +71,7 @@ const Items = () => {
     {
       title: 'GitHub Followers',
       link: 'https://github.com/tszhong0411',
-      value: githubData?.followers,
+      value: githubQuery.data?.followers,
       icon: <SiGithub className='text-[#fee000]' />,
       linkText: 'GitHub',
       gradient: {
@@ -101,7 +82,7 @@ const Items = () => {
     {
       title: 'GitHub Stars',
       link: 'https://github.com/tszhong0411',
-      value: githubData?.stars,
+      value: githubQuery.data?.stars,
       icon: <StarIcon className='size-6 text-[#fee000]' />,
       linkText: 'GitHub',
       gradient: {
@@ -112,7 +93,7 @@ const Items = () => {
     {
       title: 'Blog Total Views',
       link: 'https://honghong.me',
-      value: viewsData?.views,
+      value: viewsQuery.data?.views,
       icon: <PencilIcon className='size-6 text-[#ff0f7b]' />,
       linkText: 'Blog',
       gradient: {
@@ -123,7 +104,7 @@ const Items = () => {
     {
       title: 'Blog Total Likes',
       link: 'https://honghong.me',
-      value: likesData?.likes,
+      value: likesQuery.data?.likes,
       icon: <PencilIcon className='size-6 text-[#ff0f7b]' />,
       linkText: 'Blog',
       gradient: {
@@ -166,7 +147,7 @@ const Items = () => {
                         }}
                       >
                         <Counter value={Number(value)} />
-                        {suffix && <span>{` ${suffix}`}</span>}
+                        {suffix ? <span>{` ${suffix}`}</span> : null}
                       </div>
                     </>
                   ) : (

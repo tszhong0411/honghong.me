@@ -1,4 +1,5 @@
 import { compile } from '@mdx-js/mdx'
+import { getErrorMessage } from '@tszhong0411/utils'
 import { VFile, type VFileCompatible } from 'vfile'
 import { matter } from 'vfile-matter'
 
@@ -32,8 +33,8 @@ export const serialize = async <T>(
       remarkPlugins,
       rehypePlugins
     })
-  } catch {
-    throw new Error('Error compiling MDX')
+  } catch (error) {
+    throw new Error(`Error compiling MDX: ${getErrorMessage(error)}`)
   }
 
   return {

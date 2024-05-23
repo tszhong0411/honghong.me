@@ -5,7 +5,7 @@
  */
 import type { RehypeShikiCoreOptions } from '@shikijs/rehype/core'
 import type { Root } from 'hast'
-import { bundledLanguages, getHighlighter, type Highlighter } from 'shiki'
+import { getHighlighter, type Highlighter } from 'shiki'
 import type { Plugin } from 'unified'
 import { visit } from 'unist-util-visit'
 
@@ -23,7 +23,7 @@ export const rehypeInlineCode: Plugin<[RehypeShikiCoreOptions], Root> = () => {
     if (!promise) {
       promise = getHighlighter({
         themes: themeNames,
-        langs: Object.keys(bundledLanguages)
+        langs: [import('shiki/langs/js.mjs')]
       })
     }
 

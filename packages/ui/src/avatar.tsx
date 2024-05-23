@@ -2,9 +2,9 @@
 
 import * as AvatarPrimitive from '@radix-ui/react-avatar'
 import { cn } from '@tszhong0411/utils'
-import * as React from 'react'
+import { forwardRef } from 'react'
 
-export const Avatar = React.forwardRef<
+export const Avatar = forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>
 >((props, ref) => {
@@ -22,7 +22,7 @@ export const Avatar = React.forwardRef<
   )
 })
 
-export const AvatarImage = React.forwardRef<
+export const AvatarImage = forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Image>,
   React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>
 >((props, ref) => {
@@ -37,7 +37,7 @@ export const AvatarImage = React.forwardRef<
   )
 })
 
-export const AvatarFallback = React.forwardRef<
+export const AvatarFallback = forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Fallback>,
   React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback>
 >((props, ref) => {

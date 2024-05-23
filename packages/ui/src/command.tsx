@@ -4,11 +4,11 @@ import { type DialogProps } from '@radix-ui/react-dialog'
 import { cn } from '@tszhong0411/utils'
 import { Command as CommandPrimitive } from 'cmdk'
 import { SearchIcon } from 'lucide-react'
-import * as React from 'react'
+import { forwardRef } from 'react'
 
 import { Dialog, DialogContent } from './dialog'
 
-export const Command = React.forwardRef<
+export const Command = forwardRef<
   React.ElementRef<typeof CommandPrimitive>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive>
 >((props, ref) => {
@@ -50,7 +50,7 @@ export const CommandDialog = (props: CommandDialogProps) => {
   )
 }
 
-export const CommandInput = React.forwardRef<
+export const CommandInput = forwardRef<
   React.ElementRef<typeof CommandPrimitive.Input>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input>
 >((props, ref) => {
@@ -73,7 +73,7 @@ export const CommandInput = React.forwardRef<
   )
 })
 
-export const CommandList = React.forwardRef<
+export const CommandList = forwardRef<
   React.ElementRef<typeof CommandPrimitive.List>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.List>
 >((props, ref) => {
@@ -91,7 +91,7 @@ export const CommandList = React.forwardRef<
   )
 })
 
-export const CommandEmpty = React.forwardRef<
+export const CommandEmpty = forwardRef<
   React.ElementRef<typeof CommandPrimitive.Empty>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Empty>
 >((props, ref) => {
@@ -104,7 +104,7 @@ export const CommandEmpty = React.forwardRef<
   )
 })
 
-export const CommandGroup = React.forwardRef<
+export const CommandGroup = forwardRef<
   React.ElementRef<typeof CommandPrimitive.Group>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Group>
 >((props, ref) => {
@@ -123,7 +123,7 @@ export const CommandGroup = React.forwardRef<
   )
 })
 
-export const CommandSeparator = React.forwardRef<
+export const CommandSeparator = forwardRef<
   React.ElementRef<typeof CommandPrimitive.Separator>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Separator>
 >((props, ref) => {
@@ -138,7 +138,7 @@ export const CommandSeparator = React.forwardRef<
   )
 })
 
-export const CommandItem = React.forwardRef<
+export const CommandItem = forwardRef<
   React.ElementRef<typeof CommandPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Item>
 >((props, ref) => {
@@ -158,7 +158,7 @@ export const CommandItem = React.forwardRef<
   )
 })
 
-export const CommandShortcut = React.forwardRef<
+export const CommandShortcut = forwardRef<
   HTMLSpanElement,
   React.HTMLAttributes<HTMLSpanElement>
 >((props, ref) => {
