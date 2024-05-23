@@ -153,7 +153,7 @@ export const codeBlockShiki = CodeBlock.extend<
             if (
               transaction.docChanged &&
               ([oldNodeName, newNodeName].includes(this.name) ||
-                // @ts-expect-error attr
+                // @ts-expect-error -- Some items contain `attr` property
                 transaction.steps.some((item) => item.attr === 'language'))
             ) {
               return getDecorations({
