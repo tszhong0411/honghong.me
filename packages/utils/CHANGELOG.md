@@ -1,5 +1,11 @@
 # @tszhong0411/utils
 
+## 0.0.8
+
+### Patch Changes
+
+- [#773](https://github.com/tszhong0411/honghong.me/pull/773) [`c6e8f51`](https://github.com/tszhong0411/honghong.me/commit/c6e8f5128f07eb16e30178a3996ec150f871cdd9) Thanks [@tszhong0411](https://github.com/tszhong0411)! - update utils
+
 ## 0.0.7
 
 ### Patch Changes

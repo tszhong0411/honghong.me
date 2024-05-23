@@ -1,5 +1,11 @@
 # @tszhong0411/eslint-config
 
+## 0.0.9
+
+### Patch Changes
+
+- [#773](https://github.com/tszhong0411/honghong.me/pull/773) [`e8a3e45`](https://github.com/tszhong0411/honghong.me/commit/e8a3e45913920aaa34c96914ef1cea49358ac509) Thanks [@tszhong0411](https://github.com/tszhong0411)! - update config
+
 ## 0.0.8
 
 ### Patch Changes
