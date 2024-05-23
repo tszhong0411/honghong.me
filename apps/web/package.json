@@ -99,6 +99,7 @@
     "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
     "drizzle-kit": "^0.21.1",
+    "eslint-config-next": "^14.2.3",
     "postcss": "^8.4.35",
     "postcss-lightningcss": "^1.0.0",
     "schema-dts": "^1.1.2",
