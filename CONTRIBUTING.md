@@ -126,4 +126,10 @@ pnpm lint:fix
 pnpm format
 ```
 
+- Check everything:
+
+```bash
+pnpm check
+```
+
 Make sure your changes are well-tested and your code follows best practices. Thank you for contributing to honghong.me! 🚀
