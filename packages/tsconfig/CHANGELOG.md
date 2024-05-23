@@ -1,5 +1,11 @@
 # @tszhong0411/tsconfig
 
+## 0.0.3
+
+### Patch Changes
+
+- [#773](https://github.com/tszhong0411/honghong.me/pull/773) [`98bf3c7`](https://github.com/tszhong0411/honghong.me/commit/98bf3c7e181d3532b36259f6f0abc7b371a805c4) Thanks [@tszhong0411](https://github.com/tszhong0411)! - update config
+
 ## 0.0.2
 
 ### Patch Changes
