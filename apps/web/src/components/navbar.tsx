@@ -37,7 +37,7 @@ const Navbar = () => {
               {isActive ? (
                 <>
                   <div className='absolute bottom-0 left-1/2 h-px w-12 -translate-x-1/2 bg-nav-link-indicator dark:bg-nav-link-indicator-dark' />
-                  <div className='absolute bottom-0 left-1/2 size-2.5 -translate-x-1/2 rounded-[4px] bg-[rgb(255_122_151)] blur-[8px] dark:bg-[rgb(223_29_72)]' />
+                  <div className='absolute bottom-0 left-1/2 size-2.5 -translate-x-1/2 rounded-[4px] bg-[rgb(255_122_151)] blur dark:bg-[rgb(223_29_72)]' />
                 </>
               ) : null}
             </li>
