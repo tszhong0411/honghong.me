@@ -266,25 +266,7 @@ export const commentsRouter = createTRPCRouter({
         await ctx.db
           .update(comments)
           .set({
-            body: {
-              type: 'doc',
-              content: [
-                {
-                  type: 'paragraph',
-                  content: [
-                    {
-                      type: 'text',
-                      marks: [
-                        {
-                          type: 'italic'
-                        }
-                      ],
-                      text: '[This comment has been deleted]'
-                    }
-                  ]
-                }
-              ]
-            },
+            body: null,
             isDeleted: true
           })
           .where(eq(comments.id, input.id))

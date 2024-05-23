@@ -138,7 +138,7 @@ export const likesSessions = pgTable('likes_session', {
 
 export const comments = pgTable('comment', {
   id: text('id').notNull().primaryKey(),
-  body: jsonb('body').notNull(),
+  body: jsonb('body'),
   userId: text('user_id')
     .notNull()
     .references(() => users.id),

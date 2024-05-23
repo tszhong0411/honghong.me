@@ -25,6 +25,26 @@ type CommentProps = {
   comment: CommentsOutput[0]
 }
 
+const deletedBody = {
+  type: 'doc',
+  content: [
+    {
+      type: 'paragraph',
+      content: [
+        {
+          type: 'text',
+          marks: [
+            {
+              type: 'italic'
+            }
+          ],
+          text: '[This comment has been deleted]'
+        }
+      ]
+    }
+  ]
+}
+
 const Comment = (props: CommentProps) => {
   const { comment } = props
   const { slug } = useCommentsContext()
@@ -108,7 +128,7 @@ const Comment = (props: CommentProps) => {
               <CommentEditor
                 editor={editor}
                 onChange={setEditor}
-                content={body}
+                content={isDeleted ? deletedBody : body}
                 editable={false}
               />
             </div>
