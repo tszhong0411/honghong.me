@@ -61,10 +61,9 @@ const config: NextAuthConfig = {
 }
 
 export const {
-  handlers: { GET, POST }
+  handlers: { GET, POST },
+  auth
 } = NextAuth(config)
-
-export const auth = NextAuth(config).auth
 
 export const getCurrentUser = cache(async () => {
   const session = await auth()
