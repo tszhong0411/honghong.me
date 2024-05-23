@@ -10,7 +10,7 @@ const SignIn = () => {
   return (
     <>
       <Button
-        className='inline-block bg-gradient-to-br from-[#fcd34d] via-[#ef4444] to-[#ec4899] font-extrabold text-foreground'
+        className='inline-block bg-gradient-to-br from-[#fcd34d] via-[#ef4444] to-[#ec4899] font-extrabold dark:text-foreground'
         onClick={() => setOpen(true)}
         type='button'
       >

@@ -36,7 +36,8 @@ const SignInModal = () => {
           </Button>
           <Button
             type='button'
-            className='h-10 rounded-xl bg-white font-bold text-black hover:bg-white/90 hover:text-black'
+            className='h-10 rounded-xl border font-bold'
+            variant='ghost'
             onClick={() => signIn('google')}
           >
             <svg
