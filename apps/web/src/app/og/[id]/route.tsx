@@ -1,12 +1,8 @@
 import { getErrorMessage } from '@tszhong0411/utils'
-import { eq } from 'drizzle-orm'
 import { ImageResponse } from 'next/og'
 import { NextResponse } from 'next/server'
-import fs from 'node:fs'
-import path from 'node:path'
 
-import { db } from '@/db'
-import { posts } from '@/db/schema'
+import { SITE_URL } from '@/lib/constants'
 
 import postsData from './posts.json'
 
@@ -15,6 +11,8 @@ type OGRouteProps = {
     id: string
   }
 }
+
+export const runtime = 'edge'
 
 export const GET = async (_: Request, props: OGRouteProps) => {
   try {
@@ -36,28 +34,24 @@ export const GET = async (_: Request, props: OGRouteProps) => {
 
     const { title, date } = postMetadata
 
-    const post = await db
-      .select({
-        views: posts.views,
-        likes: posts.likes
-      })
-      .from(posts)
-      .where(eq(posts.slug, id))
-
     const getTitleFontSize = () => {
       if (title.length > 50) return 36
       if (title.length > 40) return 48
       return 64
     }
 
+    const roboto = await fetch(
+      new URL(
+        '../../../../public/fonts/RobotoCondensed-Bold.ttf',
+        import.meta.url
+      )
+    ).then((res) => res.arrayBuffer())
+
     return new ImageResponse(
       (
         <div
           style={{
-            backgroundImage: `url(data:image/png;base64,${fs.readFileSync(
-              path.resolve('./public/images/og-background.png'),
-              { encoding: 'base64' }
-            )})`,
+            backgroundImage: `url(${SITE_URL}/images/og-background.png)`,
             width: '100%',
             height: '100%',
             display: 'flex',
@@ -97,20 +91,6 @@ export const GET = async (_: Request, props: OGRouteProps) => {
             >
               {title}
             </div>
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                fontSize: 24,
-                gap: 16,
-                color: 'hsl(0 0% 90%)'
-              }}
-            >
-              <span>{post[0]?.likes ?? 0} likes</span>
-              <span>·</span>
-              <span>{post[0]?.views ?? 0} views</span>
-            </div>
           </div>
           <div
             style={{
@@ -146,9 +126,7 @@ export const GET = async (_: Request, props: OGRouteProps) => {
         fonts: [
           {
             name: 'Roboto Condensed',
-            data: fs.readFileSync(
-              path.resolve('./public/fonts/RobotoCondensed-Bold.ttf')
-            ),
+            data: roboto,
             weight: 700,
             style: 'normal'
           }
@@ -156,11 +134,6 @@ export const GET = async (_: Request, props: OGRouteProps) => {
       }
     )
   } catch (error) {
-    console.log({
-      process_cwd: process.cwd(),
-      ls_pwd: fs.readdirSync(process.cwd())
-    })
-
     return NextResponse.json(
       {
         error: 'Failed to generate image: ' + getErrorMessage(error)
