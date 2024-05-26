@@ -1,5 +1,11 @@
 # @tszhong0411/eslint-config
 
+## 0.0.10
+
+### Patch Changes
+
+- [`c120f64`](https://github.com/tszhong0411/honghong.me/commit/c120f64f083dc3a6a04174481584bc885353119c) Thanks [@tszhong0411](https://github.com/tszhong0411)! - update rule
+
 ## 0.0.9
 
 ### Patch Changes
