@@ -97,9 +97,6 @@ module.exports = {
       }
     ],
 
-    // Import
-    'import/no-anonymous-default-export': 0,
-
     // React
     'react/button-has-type': 2,
     'react/no-unescaped-entities': 0,
