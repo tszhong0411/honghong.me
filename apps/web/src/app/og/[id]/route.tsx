@@ -156,6 +156,11 @@ export const GET = async (_: Request, props: OGRouteProps) => {
       }
     )
   } catch (error) {
+    console.log({
+      process_cwd: process.cwd(),
+      ls_pwd: fs.readdirSync(process.cwd())
+    })
+
     return NextResponse.json(
       {
         error: 'Failed to generate image: ' + getErrorMessage(error)
