@@ -1,7 +1,5 @@
-import { and, eq } from 'drizzle-orm'
+import { and, eq, rates } from '@tszhong0411/db'
 import { z } from 'zod'
-
-import { rates } from '@/db/schema'
 
 import { createTRPCRouter, protectedProcedure } from '../trpc'
 

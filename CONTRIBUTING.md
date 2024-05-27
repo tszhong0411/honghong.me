@@ -72,7 +72,6 @@ docker compose up
 
 ```bash
 pnpm db:push
-pnpm db:seed
 ```
 
 8. Run the app in development mode:

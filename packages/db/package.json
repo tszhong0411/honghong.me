@@ -1,0 +1,36 @@
+{
+  "private": true,
+  "name": "@tszhong0411/db",
+  "version": "0.0.0",
+  "license": "GPL-3.0",
+  "main": "./src/index.ts",
+  "scripts": {
+    "clean": "rm -rf .turbo",
+    "db:check": "dotenv -e ../../.env.local -- drizzle-kit check",
+    "db:generate": "dotenv -e ../../.env.local -- drizzle-kit generate",
+    "db:migrate": "dotenv -e ../../.env.local -- tsx ./src/migrate.ts",
+    "db:push": "dotenv -e ../../.env.local -- drizzle-kit push",
+    "db:seed": "dotenv -e ../../.env.local -- tsx ./src/seed.ts",
+    "db:studio": "dotenv -e ../../.env.local -- drizzle-kit studio",
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint --fix .",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@paralleldrive/cuid2": "^2.2.2",
+    "@tszhong0411/env": "workspace:*",
+    "drizzle-orm": "^0.29.4",
+    "pg": "^8.11.3"
+  },
+  "devDependencies": {
+    "@tszhong0411/eslint-config": "workspace:*",
+    "@tszhong0411/tsconfig": "workspace:*",
+    "@types/node": "^20.11.20",
+    "@types/pg": "^8.11.6",
+    "drizzle-kit": "^0.21.1"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "eslint --fix",
+    "*.{js,jsx,ts,tsx,json,md,mdx}": "prettier --cache --write"
+  }
+}

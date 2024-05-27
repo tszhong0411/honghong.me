@@ -8,13 +8,21 @@ import { Strike } from '@tiptap/extension-strike'
 import { Text } from '@tiptap/extension-text'
 import { generateHTML } from '@tiptap/html'
 import { TRPCError } from '@trpc/server'
+import {
+  and,
+  asc,
+  comments,
+  count,
+  desc,
+  eq,
+  isNull,
+  rates
+} from '@tszhong0411/db'
 import { CommentNotification } from '@tszhong0411/emails'
 import { env } from '@tszhong0411/env'
-import { and, asc, count, desc, eq, isNull } from 'drizzle-orm'
 import { Resend } from 'resend'
 import { z } from 'zod'
 
-import { comments, rates } from '@/db/schema'
 import { isProduction } from '@/lib/constants'
 import { type BlogMetadata, getPage } from '@/lib/mdx'
 import { getDefaultUser } from '@/utils/get-default-user'

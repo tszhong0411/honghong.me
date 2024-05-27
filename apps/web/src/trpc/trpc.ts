@@ -1,8 +1,8 @@
 import { initTRPC, TRPCError } from '@trpc/server'
+import { db } from '@tszhong0411/db'
 import { SuperJSON } from 'superjson'
 import { ZodError } from 'zod'
 
-import { db } from '@/db'
 import { auth } from '@/lib/auth'
 
 export const createTRPCContext = async (opts: { headers: Headers }) => {

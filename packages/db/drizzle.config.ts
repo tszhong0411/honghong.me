@@ -3,9 +3,9 @@ import { type Config } from 'drizzle-kit'
 
 export default {
   dialect: 'postgresql',
-  schema: './src/db/schema.ts',
+  schema: './src/schema.ts',
   dbCredentials: {
     url: env.DATABASE_URL
   },
-  out: './src/db/migrations'
+  out: './src/migrations'
 } satisfies Config

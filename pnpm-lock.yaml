@@ -158,6 +158,9 @@ importers:
       '@trpc/server':
         specifier: 11.0.0-rc.373
         version: 11.0.0-rc.373
+      '@tszhong0411/db':
+        specifier: workspace:*
+        version: link:../../packages/db
       '@tszhong0411/emails':
         specifier: workspace:*
         version: link:../../packages/emails
@@ -185,9 +188,6 @@ importers:
       dayjs:
         specifier: ^1.11.10
         version: 1.11.11
-      drizzle-orm:
-        specifier: ^0.29.4
-        version: 0.29.5(@types/pg@8.11.6)(@types/react@18.3.2)(pg@8.11.5)(react@18.2.0)
       framer-motion:
         specifier: ^11.0.6
         version: 11.2.6(@emotion/is-prop-valid@0.8.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -215,9 +215,6 @@ importers:
       next-themes:
         specifier: ^0.2.1
         version: 0.2.1(next@14.2.3(@babel/core@7.24.5)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      pg:
-        specifier: ^8.11.3
-        version: 8.11.5
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -285,9 +282,6 @@ importers:
       '@types/nodemailer':
         specifier: ^6.4.14
         version: 6.4.15
-      '@types/pg':
-        specifier: ^8.11.2
-        version: 8.11.6
       '@types/react':
         specifier: ^18.2.60
         version: 18.3.2
@@ -312,9 +306,6 @@ importers:
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
-      drizzle-kit:
-        specifier: ^0.21.1
-        version: 0.21.4
       eslint-config-next:
         specifier: ^14.2.3
         version: 14.2.3(eslint@8.57.0)(typescript@5.4.5)
@@ -333,6 +324,37 @@ importers:
       ws:
         specifier: ^8.16.0
         version: 8.17.0
+
+  packages/db:
+    dependencies:
+      '@paralleldrive/cuid2':
+        specifier: ^2.2.2
+        version: 2.2.2
+      '@tszhong0411/env':
+        specifier: workspace:*
+        version: link:../env
+      drizzle-orm:
+        specifier: ^0.29.4
+        version: 0.29.5(@types/pg@8.11.6)(@types/react@18.3.2)(pg@8.11.5)(react@18.2.0)
+      pg:
+        specifier: ^8.11.3
+        version: 8.11.5
+    devDependencies:
+      '@tszhong0411/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@tszhong0411/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+      '@types/node':
+        specifier: ^20.11.20
+        version: 20.12.12
+      '@types/pg':
+        specifier: ^8.11.6
+        version: 8.11.6
+      drizzle-kit:
+        specifier: ^0.21.1
+        version: 0.21.4
 
   packages/emails:
     dependencies:

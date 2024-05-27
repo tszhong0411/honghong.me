@@ -1,8 +1,6 @@
 import { TRPCError } from '@trpc/server'
-import { eq, sql, sum } from 'drizzle-orm'
+import { eq, posts, sql, sum } from '@tszhong0411/db'
 import { z } from 'zod'
-
-import { posts } from '@/db/schema'
 
 import { createTRPCRouter, publicProcedure } from '../trpc'
 

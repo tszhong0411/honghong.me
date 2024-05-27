@@ -1,14 +1,19 @@
 import { DrizzleAdapter } from '@auth/drizzle-adapter'
+import type { InferSelectModel } from '@tszhong0411/db'
+import {
+  accounts,
+  db,
+  sessions,
+  users,
+  verificationTokens
+} from '@tszhong0411/db'
 import { env } from '@tszhong0411/env'
-import type { InferSelectModel } from 'drizzle-orm'
 import type { DefaultSession, NextAuthConfig } from 'next-auth'
 import NextAuth from 'next-auth'
 import GithubProvider from 'next-auth/providers/github'
 import GoogleProvider from 'next-auth/providers/google'
 import { cache } from 'react'
 
-import { db } from '@/db'
-import { accounts, sessions, users, verificationTokens } from '@/db/schema'
 import { getDefaultUser } from '@/utils/get-default-user'
 
 declare module 'next-auth' {
