@@ -3,6 +3,7 @@ import type { InferSelectModel } from '@tszhong0411/db'
 import {
   accounts,
   db,
+  eq,
   sessions,
   users,
   verificationTokens
@@ -53,6 +54,34 @@ const config: NextAuthConfig = {
   }),
 
   callbacks: {
+    async signIn({ account, profile, user }) {
+      // Update data when user signs in every time
+      if (account?.provider === 'google') {
+        if (!profile) return true
+
+        await db
+          .update(users)
+          .set({
+            name: profile.name,
+            image: profile.picture
+          })
+          .where(eq(users.id, user.id as string))
+      }
+
+      if (account?.provider === 'github') {
+        if (!profile) return true
+
+        await db
+          .update(users)
+          .set({
+            name: profile.name,
+            image: profile.avatar_url as string
+          })
+          .where(eq(users.id, user.id as string))
+      }
+      return true
+    },
+
     session: ({ session, user }) => {
       return {
         ...session,
