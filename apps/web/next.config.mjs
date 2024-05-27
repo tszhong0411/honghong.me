@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url'
 
 const jiti = createJiti(fileURLToPath(import.meta.url))
 
-jiti('./src/env')
+jiti('@tszhong0411/env')
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true'

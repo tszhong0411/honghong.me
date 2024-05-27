@@ -1,9 +1,10 @@
+import { flags } from '@tszhong0411/env'
 import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 import { type Article, type WithContext } from 'schema-dts'
 
 import Comments from '@/components/comments'
-import { flags, SITE_NAME, SITE_URL } from '@/lib/constants'
+import { SITE_NAME, SITE_URL } from '@/lib/constants'
 import { type BlogMetadata, getAllPages, getPage } from '@/lib/mdx'
 
 import Content from './content'

@@ -1,3 +1,4 @@
+import { flags } from '@tszhong0411/env'
 import { cn } from '@tszhong0411/utils'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
@@ -13,7 +14,6 @@ import Header from '@/components/header'
 import Hello from '@/components/hello'
 import SignInModal from '@/components/sign-in-modal'
 import {
-  flags,
   SITE_DESCRIPTION,
   SITE_NAME,
   SITE_TITLE,

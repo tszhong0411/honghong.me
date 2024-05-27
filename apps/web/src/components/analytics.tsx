@@ -1,6 +1,6 @@
+import { env } from '@tszhong0411/env'
 import Script from 'next/script'
 
-import { env } from '@/env'
 import { isProduction } from '@/lib/constants'
 
 const Analytics = () => {

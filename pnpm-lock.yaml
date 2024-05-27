@@ -104,9 +104,6 @@ importers:
       '@paralleldrive/cuid2':
         specifier: ^2.2.2
         version: 2.2.2
-      '@t3-oss/env-nextjs':
-        specifier: ^0.9.2
-        version: 0.9.2(typescript@5.4.5)(zod@3.23.8)
       '@tanstack/react-query':
         specifier: ^5.36.2
         version: 5.37.1(react@18.2.0)
@@ -164,6 +161,9 @@ importers:
       '@tszhong0411/emails':
         specifier: workspace:*
         version: link:../../packages/emails
+      '@tszhong0411/env':
+        specifier: workspace:*
+        version: link:../../packages/env
       '@tszhong0411/mdx':
         specifier: workspace:*
         version: link:../../packages/mdx
@@ -397,6 +397,22 @@ importers:
       '@types/react':
         specifier: ^18.2.60
         version: 18.3.2
+
+  packages/env:
+    dependencies:
+      '@t3-oss/env-nextjs':
+        specifier: ^0.9.2
+        version: 0.9.2(typescript@5.4.5)(zod@3.23.8)
+      zod:
+        specifier: ^3.22.4
+        version: 3.23.8
+    devDependencies:
+      '@tszhong0411/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@tszhong0411/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
 
   packages/eslint-config:
     dependencies:
@@ -8365,6 +8381,7 @@ packages:
 
   rimraf@2.6.3:
     resolution: {integrity: sha512-mwqeW5XsA2qAejG46gYdENaxXjx9onRNCfn7L0duuP4hCuTIi/QO7PDK07KJfp1d+izWPrzEJDcSqBa0OZQriA==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
 
   rimraf@3.0.2:

@@ -1,7 +1,7 @@
+import { flags } from '@tszhong0411/env'
 import type { Metadata, ResolvingMetadata } from 'next'
 
 import PageTitle from '@/components/page-title'
-import { flags } from '@/lib/constants'
 
 import Items from './items'
 

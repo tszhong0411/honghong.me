@@ -1,8 +1,8 @@
+import { flags } from '@tszhong0411/env'
 import type { Metadata, ResolvingMetadata } from 'next'
 
 import PageTitle from '@/components/page-title'
 import { getCurrentUser } from '@/lib/auth'
-import { flags } from '@/lib/constants'
 
 import Form from './form'
 import Messages from './messages'

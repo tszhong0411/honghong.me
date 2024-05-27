@@ -1,0 +1,25 @@
+{
+  "private": true,
+  "name": "@tszhong0411/env",
+  "version": "0.0.0",
+  "license": "GPL-3.0",
+  "main": "./src/index.ts",
+  "scripts": {
+    "clean": "rm -rf .turbo",
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint --fix .",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@t3-oss/env-nextjs": "^0.9.2",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@tszhong0411/eslint-config": "workspace:*",
+    "@tszhong0411/tsconfig": "workspace:*"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "eslint --fix",
+    "*.{js,jsx,ts,tsx,json,md,mdx}": "prettier --cache --write"
+  }
+}

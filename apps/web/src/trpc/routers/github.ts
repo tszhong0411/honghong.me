@@ -1,6 +1,6 @@
 import { Octokit } from '@octokit/rest'
+import { env } from '@tszhong0411/env'
 
-import { env } from '@/env'
 import { GITHUB_USERNAME } from '@/lib/constants'
 
 import { createTRPCRouter, publicProcedure } from '../trpc'

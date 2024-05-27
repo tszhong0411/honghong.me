@@ -1,7 +1,7 @@
+import { flags } from '@tszhong0411/env'
 import { Link } from '@tszhong0411/ui'
 
 import { FOOTER_LINKS } from '@/config/links'
-import { flags } from '@/lib/constants'
 
 import NowPlaying from './now-playing'
 

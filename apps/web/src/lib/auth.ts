@@ -1,4 +1,5 @@
 import { DrizzleAdapter } from '@auth/drizzle-adapter'
+import { env } from '@tszhong0411/env'
 import type { InferSelectModel } from 'drizzle-orm'
 import type { DefaultSession, NextAuthConfig } from 'next-auth'
 import NextAuth from 'next-auth'
@@ -8,7 +9,6 @@ import { cache } from 'react'
 
 import { db } from '@/db'
 import { accounts, sessions, users, verificationTokens } from '@/db/schema'
-import { env } from '@/env'
 import { getDefaultUser } from '@/utils/get-default-user'
 
 declare module 'next-auth' {

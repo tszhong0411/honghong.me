@@ -1,8 +1,8 @@
 'use client'
 
+import { flags } from '@tszhong0411/env'
 import { ClockIcon } from 'lucide-react'
 
-import { flags } from '@/lib/constants'
 import { api } from '@/trpc/react'
 
 const CodingHours = () => {

@@ -1,10 +1,10 @@
 import { TRPCError } from '@trpc/server'
+import { env } from '@tszhong0411/env'
 import { eq, sql, sum } from 'drizzle-orm'
 import { sha512 } from 'js-sha512'
 import { z } from 'zod'
 
 import { likesSessions, posts } from '@/db/schema'
-import { env } from '@/env'
 
 import { createTRPCRouter, publicProcedure } from '../trpc'
 

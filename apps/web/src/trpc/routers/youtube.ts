@@ -1,4 +1,4 @@
-import { env } from '@/env'
+import { env } from '@tszhong0411/env'
 
 import { createTRPCRouter, publicProcedure } from '../trpc'
 

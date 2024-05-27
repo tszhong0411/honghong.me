@@ -1,7 +1,7 @@
+import { flags } from '@tszhong0411/env'
 import { getTOC } from '@tszhong0411/mdx'
 
 import Mdx from '@/components/mdx'
-import { flags } from '@/lib/constants'
 
 import LikeButton from './like-button'
 import ProgressBar from './progress-bar'
