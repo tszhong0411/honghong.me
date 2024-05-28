@@ -61,7 +61,7 @@ pnpm install
 pnpm build:packages
 ```
 
-6. Run sqlite using Turso CLI (or your preferred method):
+6. Run libSQL using Turso CLI (or your preferred method):
 
 Install the [Turso CLI](https://docs.turso.tech/reference/turso-cli).
 
@@ -69,7 +69,7 @@ Install the [Turso CLI](https://docs.turso.tech/reference/turso-cli).
 turso dev --db-file honghong-me.db
 ```
 
-7. Migrate to gave the database schema up to date:
+7. Run the database migrations:
 
 ```bash
 pnpm db:migrate
