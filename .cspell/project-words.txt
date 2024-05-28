@@ -22,6 +22,7 @@ joshwcomeau
 karabiner
 keka
 leerob
+libsql
 lightroom
 linktree
 macbook
@@ -49,11 +50,10 @@ simulately
 tableplus
 techstack
 theodorusclarence
+turso
 umami
 unzoom
 visualstudiocode
 vocs
 wakatime
 zenorocha
-turso
-libsql
