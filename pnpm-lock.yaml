@@ -339,9 +339,6 @@ importers:
       drizzle-orm:
         specifier: ^0.29.4
         version: 0.29.5(@libsql/client@0.6.0)(@types/pg@8.11.6)(@types/react@18.3.2)(pg@8.11.5)(react@18.2.0)
-      pg:
-        specifier: ^8.11.3
-        version: 8.11.5
     devDependencies:
       '@tszhong0411/eslint-config':
         specifier: workspace:*
@@ -352,9 +349,6 @@ importers:
       '@types/node':
         specifier: ^20.11.20
         version: 20.12.12
-      '@types/pg':
-        specifier: ^8.11.6
-        version: 8.11.6
       drizzle-kit:
         specifier: ^0.21.1
         version: 0.21.4
@@ -6855,7 +6849,6 @@ packages:
 
   libsql@0.3.18:
     resolution: {integrity: sha512-lvhKr7WV3NLWRbXkjn/MeKqXOAqWKU0PX9QYrvDh7fneukapj+iUQ4qgJASrQyxcCrEsClXCQiiK5W6OoYPAlA==}
-    cpu: [x64, arm64, wasm32]
     os: [darwin, linux, win32]
 
   lighthouse-logger@1.4.2:
@@ -13491,6 +13484,7 @@ snapshots:
       '@types/node': 20.12.12
       pg-protocol: 1.6.1
       pg-types: 4.0.2
+    optional: true
 
   '@types/prismjs@1.26.4': {}
 
@@ -17688,7 +17682,8 @@ snapshots:
       define-properties: 1.2.1
       es-object-atoms: 1.0.0
 
-  obuf@1.1.2: {}
+  obuf@1.1.2:
+    optional: true
 
   on-finished@2.3.0:
     dependencies:
@@ -17856,17 +17851,22 @@ snapshots:
   pg-cloudflare@1.1.1:
     optional: true
 
-  pg-connection-string@2.6.4: {}
+  pg-connection-string@2.6.4:
+    optional: true
 
-  pg-int8@1.0.1: {}
+  pg-int8@1.0.1:
+    optional: true
 
-  pg-numeric@1.0.2: {}
+  pg-numeric@1.0.2:
+    optional: true
 
   pg-pool@3.6.2(pg@8.11.5):
     dependencies:
       pg: 8.11.5
+    optional: true
 
-  pg-protocol@1.6.1: {}
+  pg-protocol@1.6.1:
+    optional: true
 
   pg-types@2.2.0:
     dependencies:
@@ -17875,6 +17875,7 @@ snapshots:
       postgres-bytea: 1.0.0
       postgres-date: 1.0.7
       postgres-interval: 1.2.0
+    optional: true
 
   pg-types@4.0.2:
     dependencies:
@@ -17885,6 +17886,7 @@ snapshots:
       postgres-date: 2.1.0
       postgres-interval: 3.0.0
       postgres-range: 1.1.4
+    optional: true
 
   pg@8.11.5:
     dependencies:
@@ -17895,10 +17897,12 @@ snapshots:
       pgpass: 1.0.5
     optionalDependencies:
       pg-cloudflare: 1.1.1
+    optional: true
 
   pgpass@1.0.5:
     dependencies:
       split2: 4.2.0
+    optional: true
 
   phenomenon@1.6.0: {}
 
@@ -18014,27 +18018,36 @@ snapshots:
       picocolors: 1.0.1
       source-map-js: 1.2.0
 
-  postgres-array@2.0.0: {}
+  postgres-array@2.0.0:
+    optional: true
 
-  postgres-array@3.0.2: {}
+  postgres-array@3.0.2:
+    optional: true
 
-  postgres-bytea@1.0.0: {}
+  postgres-bytea@1.0.0:
+    optional: true
 
   postgres-bytea@3.0.0:
     dependencies:
       obuf: 1.1.2
+    optional: true
 
-  postgres-date@1.0.7: {}
+  postgres-date@1.0.7:
+    optional: true
 
-  postgres-date@2.1.0: {}
+  postgres-date@2.1.0:
+    optional: true
 
   postgres-interval@1.2.0:
     dependencies:
       xtend: 4.0.2
+    optional: true
 
-  postgres-interval@3.0.0: {}
+  postgres-interval@3.0.0:
+    optional: true
 
-  postgres-range@1.1.4: {}
+  postgres-range@1.1.4:
+    optional: true
 
   preact-render-to-string@5.2.3(preact@10.11.3):
     dependencies:
