@@ -1,9 +1,5 @@
-'use client'
-
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
-
-import { isProduction } from '@/lib/constants'
 
 type AutoRefreshProps = {
   children: React.ReactNode
@@ -15,7 +11,7 @@ export let AutoRefresh = (props: AutoRefreshProps) => {
   return children
 }
 
-if (!isProduction) {
+if (process.env.NODE_ENV === 'development') {
   AutoRefresh = (props: AutoRefreshProps) => {
     const { children } = props
 

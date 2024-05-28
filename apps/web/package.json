@@ -8,7 +8,7 @@
     "build": "dotenv -e ../../.env.local -- next build && pnpm generate-posts",
     "bundle-analyzer": "cross-env ANALYZE=true pnpm run build",
     "clean": "rm -rf .next .turbo",
-    "dev": "concurrently \"tsx ./src/lib/auto-refresh.ts\" \"dotenv -e ../../.env.local -- next dev\"",
+    "dev": "concurrently \"auto-refresh \"./src/content/**/*.mdx\"\" \"dotenv -e ../../.env.local -- next dev\"",
     "generate-posts": "tsx ./src/scripts/generate-posts.ts",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint --fix .",
@@ -75,6 +75,7 @@
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^14.1.0",
+    "@tszhong0411/auto-refresh": "workspace:*",
     "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/tailwind-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",

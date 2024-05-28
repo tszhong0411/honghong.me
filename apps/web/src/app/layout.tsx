@@ -1,3 +1,4 @@
+import { AutoRefresh } from '@tszhong0411/auto-refresh'
 import { flags } from '@tszhong0411/env'
 import { cn } from '@tszhong0411/utils'
 import { GeistMono } from 'geist/font/mono'
@@ -8,7 +9,6 @@ import Image from 'next/image'
 
 import '@/styles/globals.css'
 import Analytics from '@/components/analytics'
-import { AutoRefresh } from '@/components/auto-refresh'
 import Footer from '@/components/footer'
 import Header from '@/components/header'
 import Hello from '@/components/hello'

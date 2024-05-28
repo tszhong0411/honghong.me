@@ -261,6 +261,9 @@ importers:
       '@next/bundle-analyzer':
         specifier: ^14.1.0
         version: 14.2.3
+      '@tszhong0411/auto-refresh':
+        specifier: workspace:*
+        version: link:../../packages/auto-refresh
       '@tszhong0411/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
@@ -324,6 +327,43 @@ importers:
       ws:
         specifier: ^8.16.0
         version: 8.17.0
+
+  packages/auto-refresh:
+    dependencies:
+      chokidar:
+        specifier: ^3.6.0
+        version: 3.6.0
+      commander:
+        specifier: ^12.1.0
+        version: 12.1.0
+      react-dom:
+        specifier: '>=18'
+        version: 18.2.0(react@18.3.1)
+      ws:
+        specifier: ^8.16.0
+        version: 8.17.0
+    devDependencies:
+      '@tszhong0411/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@tszhong0411/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+      '@types/node':
+        specifier: ^20.11.20
+        version: 20.12.12
+      '@types/react':
+        specifier: ^18.2.60
+        version: 18.3.2
+      '@types/ws':
+        specifier: ^8.5.10
+        version: 8.5.10
+      next:
+        specifier: 14.2.3
+        version: 14.2.3(react-dom@18.2.0(react@18.3.1))(react@18.3.1)
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
 
   packages/db:
     dependencies:
@@ -17569,6 +17609,31 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
+  next@14.2.3(react-dom@18.2.0(react@18.3.1))(react@18.3.1):
+    dependencies:
+      '@next/env': 14.2.3
+      '@swc/helpers': 0.5.5
+      busboy: 1.6.0
+      caniuse-lite: 1.0.30001621
+      graceful-fs: 4.2.11
+      postcss: 8.4.31
+      react: 18.3.1
+      react-dom: 18.2.0(react@18.3.1)
+      styled-jsx: 5.1.1(react@18.3.1)
+    optionalDependencies:
+      '@next/swc-darwin-arm64': 14.2.3
+      '@next/swc-darwin-x64': 14.2.3
+      '@next/swc-linux-arm64-gnu': 14.2.3
+      '@next/swc-linux-arm64-musl': 14.2.3
+      '@next/swc-linux-x64-gnu': 14.2.3
+      '@next/swc-linux-x64-musl': 14.2.3
+      '@next/swc-win32-arm64-msvc': 14.2.3
+      '@next/swc-win32-ia32-msvc': 14.2.3
+      '@next/swc-win32-x64-msvc': 14.2.3
+    transitivePeerDependencies:
+      - '@babel/core'
+      - babel-plugin-macros
+
   nocache@3.0.4: {}
 
   node-abort-controller@3.1.1: {}
@@ -18288,6 +18353,12 @@ snapshots:
       react: 18.2.0
       scheduler: 0.23.2
 
+  react-dom@18.2.0(react@18.3.1):
+    dependencies:
+      loose-envify: 1.4.0
+      react: 18.3.1
+      scheduler: 0.23.2
+
   react-email@2.1.0(@swc/helpers@0.5.5)(eslint@8.57.0):
     dependencies:
       '@radix-ui/colors': 1.0.1
@@ -18512,8 +18583,8 @@ snapshots:
 
   react-zdog@1.2.2:
     dependencies:
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
+      react: 18.3.1
+      react-dom: 18.2.0(react@18.3.1)
       resize-observer-polyfill: 1.5.1
 
   react@18.2.0:
@@ -18523,7 +18594,6 @@ snapshots:
   react@18.3.1:
     dependencies:
       loose-envify: 1.4.0
-    optional: true
 
   read-cache@1.0.0:
     dependencies:
@@ -19256,6 +19326,11 @@ snapshots:
       react: 18.2.0
     optionalDependencies:
       '@babel/core': 7.24.5
+
+  styled-jsx@5.1.1(react@18.3.1):
+    dependencies:
+      client-only: 0.0.1
+      react: 18.3.1
 
   sucrase@3.35.0:
     dependencies:
