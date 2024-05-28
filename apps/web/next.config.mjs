@@ -17,7 +17,9 @@ const nextConfig = {
   },
 
   transpilePackages: [
+    '@tszhong0411/db',
     '@tszhong0411/emails',
+    '@tszhong0411/env',
     '@tszhong0411/mdx',
     '@tszhong0411/ui',
     '@tszhong0411/utils'
