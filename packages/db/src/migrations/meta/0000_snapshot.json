@@ -1,90 +1,93 @@
 {
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
+    "tables": {},
+    "columns": {}
   },
-  "dialect": "postgresql",
-  "enums": {
-    "public.role": {
-      "name": "role",
-      "schema": "public",
-      "values": ["user", "admin"]
-    }
-  },
-  "id": "e146a517-6b29-408f-8723-c7d6a2952ad4",
+  "dialect": "sqlite",
+  "enums": {},
+  "id": "a07e2a0e-4721-4097-9f5a-a4986cb64b88",
   "prevId": "00000000-0000-0000-0000-000000000000",
-  "schemas": {},
   "tables": {
-    "public.account": {
+    "account": {
       "name": "account",
-      "schema": "",
       "columns": {
         "user_id": {
           "name": "user_id",
           "type": "text",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "type": {
           "name": "type",
           "type": "text",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "provider": {
           "name": "provider",
           "type": "text",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "provider_account_id": {
           "name": "provider_account_id",
           "type": "text",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "refresh_token": {
           "name": "refresh_token",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "autoincrement": false
         },
         "access_token": {
           "name": "access_token",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "autoincrement": false
         },
         "expires_at": {
           "name": "expires_at",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "autoincrement": false
         },
         "token_type": {
           "name": "token_type",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "autoincrement": false
         },
         "scope": {
           "name": "scope",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "autoincrement": false
         },
         "id_token": {
           "name": "id_token",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "autoincrement": false
         },
         "session_state": {
           "name": "session_state",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "autoincrement": false
         }
       },
       "indexes": {},
@@ -101,65 +104,215 @@
       },
       "compositePrimaryKeys": {
         "account_provider_provider_account_id_pk": {
-          "name": "account_provider_provider_account_id_pk",
-          "columns": ["provider", "provider_account_id"]
+          "columns": ["provider", "provider_account_id"],
+          "name": "account_provider_provider_account_id_pk"
         }
       },
       "uniqueConstraints": {}
     },
-    "public.comment": {
-      "name": "comment",
-      "schema": "",
+    "session": {
+      "name": "session",
       "columns": {
-        "id": {
-          "name": "id",
+        "session_token": {
+          "name": "session_token",
           "type": "text",
           "primaryKey": true,
-          "notNull": true
-        },
-        "body": {
-          "name": "body",
-          "type": "jsonb",
-          "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "user_id": {
           "name": "user_id",
           "type": "text",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
+        },
+        "expires": {
+          "name": "expires",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "session_user_id_user_id_fk": {
+          "name": "session_user_id_user_id_fk",
+          "tableFrom": "session",
+          "tableTo": "user",
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "user": {
+      "name": "user",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "email_verified": {
+          "name": "email_verified",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "image": {
+          "name": "image",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "role": {
+          "name": "role",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'user'"
         },
         "created_at": {
           "name": "created_at",
-          "type": "timestamp (3)",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true,
-          "default": "now()"
+          "autoincrement": false,
+          "default": "(strftime('%s', 'now'))"
         },
         "updated_at": {
           "name": "updated_at",
-          "type": "timestamp (3)",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true,
-          "default": "now()"
+          "autoincrement": false,
+          "default": "(strftime('%s', 'now'))"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "verification_token": {
+      "name": "verification_token",
+      "columns": {
+        "identifier": {
+          "name": "identifier",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "token": {
+          "name": "token",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "expires": {
+          "name": "expires",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "verification_token_identifier_token_pk": {
+          "columns": ["identifier", "token"],
+          "name": "verification_token_identifier_token_pk"
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "comment": {
+      "name": "comment",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "body": {
+          "name": "body",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(strftime('%s', 'now'))"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(strftime('%s', 'now'))"
         },
         "post_id": {
           "name": "post_id",
           "type": "text",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "parent_id": {
           "name": "parent_id",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "autoincrement": false
         },
         "is_deleted": {
           "name": "is_deleted",
-          "type": "boolean",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true,
+          "autoincrement": false,
           "default": false
         }
       },
@@ -187,146 +340,29 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "public.guestbook": {
-      "name": "guestbook",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "text",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "body": {
-          "name": "body",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "user_id": {
-          "name": "user_id",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamp (3)",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        },
-        "updated_at": {
-          "name": "updated_at",
-          "type": "timestamp (3)",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {
-        "guestbook_user_id_user_id_fk": {
-          "name": "guestbook_user_id_user_id_fk",
-          "tableFrom": "guestbook",
-          "tableTo": "user",
-          "columnsFrom": ["user_id"],
-          "columnsTo": ["id"],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
-    },
-    "public.likes_session": {
-      "name": "likes_session",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "text",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamp (3)",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        },
-        "likes": {
-          "name": "likes",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true,
-          "default": 0
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
-    },
-    "public.post": {
-      "name": "post",
-      "schema": "",
-      "columns": {
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamp (3)",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        },
-        "slug": {
-          "name": "slug",
-          "type": "text",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "likes": {
-          "name": "likes",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true,
-          "default": 0
-        },
-        "views": {
-          "name": "views",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true,
-          "default": 0
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
-    },
-    "public.rate": {
+    "rate": {
       "name": "rate",
-      "schema": "",
       "columns": {
         "user_id": {
           "name": "user_id",
           "type": "text",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "comment_id": {
           "name": "comment_id",
           "type": "text",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "like": {
           "name": "like",
-          "type": "boolean",
+          "type": "integer",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         }
       },
       "indexes": {},
@@ -352,106 +388,93 @@
       },
       "compositePrimaryKeys": {
         "rate_user_id_comment_id_pk": {
-          "name": "rate_user_id_comment_id_pk",
-          "columns": ["user_id", "comment_id"]
+          "columns": ["comment_id", "user_id"],
+          "name": "rate_user_id_comment_id_pk"
         }
       },
       "uniqueConstraints": {}
     },
-    "public.session": {
-      "name": "session",
-      "schema": "",
+    "guestbook": {
+      "name": "guestbook",
       "columns": {
-        "session_token": {
-          "name": "session_token",
+        "id": {
+          "name": "id",
           "type": "text",
           "primaryKey": true,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
+        },
+        "body": {
+          "name": "body",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
         },
         "user_id": {
           "name": "user_id",
           "type": "text",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
-        "expires": {
-          "name": "expires",
-          "type": "timestamp (3)",
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(strftime('%s', 'now'))"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(strftime('%s', 'now'))"
         }
       },
       "indexes": {},
       "foreignKeys": {
-        "session_user_id_user_id_fk": {
-          "name": "session_user_id_user_id_fk",
-          "tableFrom": "session",
+        "guestbook_user_id_user_id_fk": {
+          "name": "guestbook_user_id_user_id_fk",
+          "tableFrom": "guestbook",
           "tableTo": "user",
           "columnsFrom": ["user_id"],
           "columnsTo": ["id"],
-          "onDelete": "cascade",
+          "onDelete": "no action",
           "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "public.user": {
-      "name": "user",
-      "schema": "",
+    "likes_session": {
+      "name": "likes_session",
       "columns": {
         "id": {
           "name": "id",
           "type": "text",
           "primaryKey": true,
-          "notNull": true
-        },
-        "name": {
-          "name": "name",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "email": {
-          "name": "email",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "email_verified": {
-          "name": "email_verified",
-          "type": "timestamp (3)",
-          "primaryKey": false,
-          "notNull": false,
-          "default": "now()"
-        },
-        "image": {
-          "name": "image",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "role": {
-          "name": "role",
-          "type": "role",
-          "typeSchema": "public",
-          "primaryKey": false,
           "notNull": true,
-          "default": "'user'"
+          "autoincrement": false
         },
         "created_at": {
           "name": "created_at",
-          "type": "timestamp (3)",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true,
-          "default": "now()"
+          "autoincrement": false,
+          "default": "(strftime('%s', 'now'))"
         },
-        "updated_at": {
-          "name": "updated_at",
-          "type": "timestamp (3)",
+        "likes": {
+          "name": "likes",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true,
-          "default": "now()"
+          "autoincrement": false,
+          "default": 0
         }
       },
       "indexes": {},
@@ -459,37 +482,44 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "public.verification_token": {
-      "name": "verification_token",
-      "schema": "",
+    "post": {
+      "name": "post",
       "columns": {
-        "identifier": {
-          "name": "identifier",
-          "type": "text",
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(strftime('%s', 'now'))"
         },
-        "token": {
-          "name": "token",
+        "slug": {
+          "name": "slug",
           "type": "text",
-          "primaryKey": false,
-          "notNull": true
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
         },
-        "expires": {
-          "name": "expires",
-          "type": "timestamp (3)",
+        "likes": {
+          "name": "likes",
+          "type": "integer",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false,
+          "default": 0
+        },
+        "views": {
+          "name": "views",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 0
         }
       },
       "indexes": {},
       "foreignKeys": {},
-      "compositePrimaryKeys": {
-        "verification_token_identifier_token_pk": {
-          "name": "verification_token_identifier_token_pk",
-          "columns": ["identifier", "token"]
-        }
-      },
+      "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     }
   },

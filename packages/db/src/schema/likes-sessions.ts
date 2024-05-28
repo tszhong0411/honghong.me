@@ -1,12 +1,12 @@
-import { integer, pgTable, text, timestamp } from 'drizzle-orm/pg-core'
+import { sql } from 'drizzle-orm'
+import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core'
 
-export const likesSessions = pgTable('likes_session', {
+export const likesSessions = sqliteTable('likes_session', {
   id: text('id').notNull().primaryKey(),
-  createdAt: timestamp('created_at', {
-    mode: 'date',
-    precision: 3
+  createdAt: integer('created_at', {
+    mode: 'timestamp'
   })
     .notNull()
-    .defaultNow(),
+    .default(sql`(strftime('%s', 'now'))`),
   likes: integer('likes').notNull().default(0)
 })

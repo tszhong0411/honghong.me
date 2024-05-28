@@ -1,42 +1,33 @@
-import { relations } from 'drizzle-orm'
-import {
-  boolean,
-  jsonb,
-  pgTable,
-  primaryKey,
-  text,
-  timestamp
-} from 'drizzle-orm/pg-core'
+import { relations, sql } from 'drizzle-orm'
+import { integer, primaryKey, sqliteTable, text } from 'drizzle-orm/sqlite-core'
 
 import { users } from './auth'
 import { posts } from './posts'
 
-export const comments = pgTable('comment', {
+export const comments = sqliteTable('comment', {
   id: text('id').notNull().primaryKey(),
-  body: jsonb('body'),
+  body: text('body', { mode: 'json' }),
   userId: text('user_id')
     .notNull()
     .references(() => users.id),
-  createdAt: timestamp('created_at', {
-    mode: 'date',
-    precision: 3
+  createdAt: integer('created_at', {
+    mode: 'timestamp'
   })
     .notNull()
-    .defaultNow(),
-  updatedAt: timestamp('updated_at', {
-    mode: 'date',
-    precision: 3
+    .default(sql`(strftime('%s', 'now'))`),
+  updatedAt: integer('updated_at', {
+    mode: 'timestamp'
   })
     .notNull()
-    .defaultNow(),
+    .default(sql`(strftime('%s', 'now'))`),
   postId: text('post_id')
     .notNull()
     .references(() => posts.slug),
   parentId: text('parent_id'),
-  isDeleted: boolean('is_deleted').notNull().default(false)
+  isDeleted: integer('is_deleted', { mode: 'boolean' }).notNull().default(false)
 })
 
-export const rates = pgTable(
+export const rates = sqliteTable(
   'rate',
   {
     userId: text('user_id')
@@ -45,7 +36,7 @@ export const rates = pgTable(
     commentId: text('comment_id')
       .notNull()
       .references(() => comments.id, { onDelete: 'cascade' }),
-    like: boolean('like').notNull()
+    like: integer('like', { mode: 'boolean' }).notNull()
   },
   (rate) => ({
     compoundKey: primaryKey({

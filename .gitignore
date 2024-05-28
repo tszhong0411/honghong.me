@@ -32,5 +32,7 @@ out/
 build
 dist
 
-# Docker volumes
-volumes
+# Database
+honghong-me.db
+honghong-me.db-shm
+honghong-me.db-wal

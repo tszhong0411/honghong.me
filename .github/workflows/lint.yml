@@ -32,7 +32,9 @@ jobs:
         run: pnpm build:packages
 
       - name: Create dotenv file
-        run: echo "DATABASE_URL=postgres://postgres:@localhost:5432" >> .env.local
+        run: |
+          echo "DATABASE_URL=http://127.0.0.1:8080" >> .env.local
+          echo "DATABASE_AUTH_TOKEN=no-need-for-local-development" >> .env.local
 
       - name: Check
         run: pnpm check

@@ -60,7 +60,8 @@ export const env = createEnv({
         }
       : {}),
 
-    DATABASE_URL: z.string().url()
+    DATABASE_URL: z.string().url(),
+    DATABASE_AUTH_TOKEN: z.string().min(1)
   },
   client: {
     ...(flags.analytics
@@ -98,6 +99,7 @@ export const env = createEnv({
     GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
 
     DATABASE_URL: process.env.DATABASE_URL,
+    DATABASE_AUTH_TOKEN: process.env.DATABASE_AUTH_TOKEN,
 
     IP_ADDRESS_SALT: process.env.IP_ADDRESS_SALT,
 

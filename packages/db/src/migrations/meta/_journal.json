@@ -1,18 +1,11 @@
 {
-  "dialect": "postgresql",
+  "dialect": "sqlite",
   "entries": [
     {
       "idx": 0,
       "version": "6",
-      "when": 1716180242877,
-      "tag": "0000_bizarre_night_thrasher",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "6",
-      "when": 1716455580929,
-      "tag": "0001_sour_champions",
+      "when": 1716887398148,
+      "tag": "0000_perpetual_fantastic_four",
       "breakpoints": true
     }
   ],

@@ -1,26 +1,24 @@
-import { relations } from 'drizzle-orm'
-import { pgTable, text, timestamp } from 'drizzle-orm/pg-core'
+import { relations, sql } from 'drizzle-orm'
+import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core'
 
 import { users } from './auth'
 
-export const guestbook = pgTable('guestbook', {
+export const guestbook = sqliteTable('guestbook', {
   id: text('id').notNull().primaryKey(),
   body: text('body').notNull(),
   userId: text('user_id')
     .notNull()
     .references(() => users.id),
-  createdAt: timestamp('created_at', {
-    mode: 'date',
-    precision: 3
+  createdAt: integer('created_at', {
+    mode: 'timestamp'
   })
     .notNull()
-    .defaultNow(),
-  updatedAt: timestamp('updated_at', {
-    mode: 'date',
-    precision: 3
+    .default(sql`(strftime('%s', 'now'))`),
+  updatedAt: integer('updated_at', {
+    mode: 'timestamp'
   })
     .notNull()
-    .defaultNow()
+    .default(sql`(strftime('%s', 'now'))`)
 })
 
 export const guestbookRelations = relations(guestbook, ({ one }) => ({

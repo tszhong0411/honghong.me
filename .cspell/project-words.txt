@@ -55,3 +55,5 @@ visualstudiocode
 vocs
 wakatime
 zenorocha
+turso
+libsql

@@ -1,1 +1,0 @@
-ALTER TABLE "comment" ALTER COLUMN "body" DROP NOT NULL;

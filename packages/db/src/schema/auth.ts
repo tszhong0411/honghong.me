@@ -1,47 +1,37 @@
 import { createId } from '@paralleldrive/cuid2'
-import { relations } from 'drizzle-orm'
-import {
-  integer,
-  pgEnum,
-  pgTable,
-  primaryKey,
-  text,
-  timestamp
-} from 'drizzle-orm/pg-core'
+import { relations, sql } from 'drizzle-orm'
+import { integer, primaryKey, sqliteTable, text } from 'drizzle-orm/sqlite-core'
 
 import { comments } from './comments'
 import { guestbook } from './guestbook'
 
-export const roleEnum = pgEnum('role', ['user', 'admin'])
-
-export const users = pgTable('user', {
+export const users = sqliteTable('user', {
   id: text('id')
     .notNull()
     .primaryKey()
     .$defaultFn(() => createId()),
   name: text('name'),
   email: text('email').notNull(),
-  emailVerified: timestamp('email_verified', {
-    mode: 'date',
-    precision: 3
-  }).defaultNow(),
+  emailVerified: integer('email_verified', {
+    mode: 'timestamp_ms'
+  }),
   image: text('image'),
-  role: roleEnum('role').default('user').notNull(),
-  createdAt: timestamp('created_at', {
-    mode: 'date',
-    precision: 3
+  role: text('role', { enum: ['user', 'admin'] })
+    .default('user')
+    .notNull(),
+  createdAt: integer('created_at', {
+    mode: 'timestamp'
   })
     .notNull()
-    .defaultNow(),
-  updatedAt: timestamp('updated_at', {
-    mode: 'date',
-    precision: 3
+    .default(sql`(strftime('%s', 'now'))`),
+  updatedAt: integer('updated_at', {
+    mode: 'timestamp'
   })
     .notNull()
-    .defaultNow()
+    .default(sql`(strftime('%s', 'now'))`)
 })
 
-export const accounts = pgTable(
+export const accounts = sqliteTable(
   'account',
   {
     userId: text('user_id')
@@ -65,25 +55,23 @@ export const accounts = pgTable(
   })
 )
 
-export const sessions = pgTable('session', {
+export const sessions = sqliteTable('session', {
   sessionToken: text('session_token').notNull().primaryKey(),
   userId: text('user_id')
     .notNull()
     .references(() => users.id, { onDelete: 'cascade' }),
-  expires: timestamp('expires', {
-    mode: 'date',
-    precision: 3
+  expires: integer('expires', {
+    mode: 'timestamp_ms'
   }).notNull()
 })
 
-export const verificationTokens = pgTable(
+export const verificationTokens = sqliteTable(
   'verification_token',
   {
     identifier: text('identifier').notNull(),
     token: text('token').notNull(),
-    expires: timestamp('expires', {
-      mode: 'date',
-      precision: 3
+    expires: integer('expires', {
+      mode: 'timestamp_ms'
     }).notNull()
   },
   (verificationToken) => ({

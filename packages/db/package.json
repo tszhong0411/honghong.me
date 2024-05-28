@@ -17,16 +17,15 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@libsql/client": "^0.6.0",
     "@paralleldrive/cuid2": "^2.2.2",
     "@tszhong0411/env": "workspace:*",
-    "drizzle-orm": "^0.29.4",
-    "pg": "^8.11.3"
+    "drizzle-orm": "^0.29.4"
   },
   "devDependencies": {
     "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
     "@types/node": "^20.11.20",
-    "@types/pg": "^8.11.6",
     "drizzle-kit": "^0.21.1"
   },
   "lint-staged": {

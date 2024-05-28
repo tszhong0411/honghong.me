@@ -327,6 +327,9 @@ importers:
 
   packages/db:
     dependencies:
+      '@libsql/client':
+        specifier: ^0.6.0
+        version: 0.6.0
       '@paralleldrive/cuid2':
         specifier: ^2.2.2
         version: 2.2.2
@@ -335,7 +338,7 @@ importers:
         version: link:../env
       drizzle-orm:
         specifier: ^0.29.4
-        version: 0.29.5(@types/pg@8.11.6)(@types/react@18.3.2)(pg@8.11.5)(react@18.2.0)
+        version: 0.29.5(@libsql/client@0.6.0)(@types/pg@8.11.6)(@types/react@18.3.2)(pg@8.11.5)(react@18.2.0)
       pg:
         specifier: ^8.11.3
         version: 8.11.5
@@ -2558,6 +2561,56 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
+  '@libsql/client@0.6.0':
+    resolution: {integrity: sha512-qhQzTG/y2IEVbL3+9PULDvlQFWJ/RnjFXECr/Nc3nRngGiiMysDaOV5VUzYk7DulUX98EA4wi+z3FspKrUplUA==}
+
+  '@libsql/core@0.6.0':
+    resolution: {integrity: sha512-affAB8vSqQwqI9NBDJ5uJCVaHoOAS2pOpbv1kWConh1SBbmJBnHHd4KG73RAJ2sgd2+NbT9WA+XJBqxgp28YSw==}
+
+  '@libsql/darwin-arm64@0.3.18':
+    resolution: {integrity: sha512-Zt49dt+cwhPCkuoWgvjbQd4ckNfCJR5xzIAyhgHl3CBZqZaEuaXTOGKLNQT7bnFRPuQcdLt5PBT1cenKu2N6pA==}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@libsql/darwin-x64@0.3.18':
+    resolution: {integrity: sha512-faq6HUGDaNaueeqPei5cypHaD/hhazUyfHo094CXiEeRZq6ZKtNl5PHdlr8jE/Uw8USNpVVQaLdnvSgKcpRPHw==}
+    cpu: [x64]
+    os: [darwin]
+
+  '@libsql/hrana-client@0.6.0':
+    resolution: {integrity: sha512-k+fqzdjqg3IvWfKmVJK5StsbjeTcyNAXFelUbXbGNz3yH1gEVT9mZ6kmhsIXP30ZSyVV0AE1Gi25p82mxC9hwg==}
+
+  '@libsql/isomorphic-fetch@0.2.1':
+    resolution: {integrity: sha512-Sv07QP1Aw8A5OOrmKgRUBKe2fFhF2hpGJhtHe3d1aRnTESZCGkn//0zDycMKTGamVWb3oLYRroOsCV8Ukes9GA==}
+
+  '@libsql/isomorphic-ws@0.1.5':
+    resolution: {integrity: sha512-DtLWIH29onUYR00i0GlQ3UdcTRC6EP4u9w/h9LxpUZJWRMARk6dQwZ6Jkd+QdwVpuAOrdxt18v0K2uIYR3fwFg==}
+
+  '@libsql/linux-arm64-gnu@0.3.18':
+    resolution: {integrity: sha512-5m9xtDAhoyLSV54tho9uQ2ZIDeJWc0vU3Xpe/VK4+6bpURISs23qNhXiCrZnnq3oV0hFlBfcIgQUIATmb6jD2A==}
+    cpu: [arm64]
+    os: [linux]
+
+  '@libsql/linux-arm64-musl@0.3.18':
+    resolution: {integrity: sha512-oYD5+oM2gPEalp+EoR5DVQBRtdGjLsocjsRbQs5O2m4WOBJKER7VUfDYZHsifLGZoBSc11Yo6s9IR9rjGWy20w==}
+    cpu: [arm64]
+    os: [linux]
+
+  '@libsql/linux-x64-gnu@0.3.18':
+    resolution: {integrity: sha512-QDSSP60nS8KIldGE7H3bpEflQHiL1erwED6huoVJdmDFxsyDJX2CYdWUWW8Za0ZUOvUbnEWAOyMhp6j1dBbZqw==}
+    cpu: [x64]
+    os: [linux]
+
+  '@libsql/linux-x64-musl@0.3.18':
+    resolution: {integrity: sha512-5SXwTlaLCUPzxYyq+P0c7Ko7tcEjpd1X6RZKe1DuRFmJPg6f7j2+LrPEhMSIbqKcrl5ACUUAyoKmGZqNYwz23w==}
+    cpu: [x64]
+    os: [linux]
+
+  '@libsql/win32-x64-msvc@0.3.18':
+    resolution: {integrity: sha512-9EEIHz+e8tTbx9TMkb8ByZnzxc0pYFirK1nSbqC6cFEST95fiY0NCfQ/zAzJxe90KckbjifX6BbO69eWIi3TAg==}
+    cpu: [x64]
+    os: [win32]
+
   '@manypkg/find-root@1.1.0':
     resolution: {integrity: sha512-mki5uBvhHzO8kYYix/WRy2WX8S3B5wdVSc9D6KcU5lQNglP2yt58/VfLuAK49glRXChosY8ap2oJ1qgma3GUVA==}
 
@@ -2572,6 +2625,9 @@ packages:
     peerDependencies:
       '@types/react': '>=16'
       react: '>=16'
+
+  '@neon-rs/load@0.0.4':
+    resolution: {integrity: sha512-kTPhdZyTQxB+2wpiRcFWrDcejc4JI6tkPuS7UZCG4l6Zvc5kU/gGQ/ozvHTh1XR5tS+UlfAfGuPajjzQjCiHCw==}
 
   '@next/bundle-analyzer@14.2.3':
     resolution: {integrity: sha512-Z88hbbngMs7njZKI8kTJIlpdLKYfMSLwnsqYe54AP4aLmgL70/Ynx/J201DQ+q2Lr6FxFw1uCeLGImDrHOl2ZA==}
@@ -5149,6 +5205,10 @@ packages:
     resolution: {integrity: sha512-2iy1EkLdlBzQGvbweYRFxmFath8+K7+AKB0TlhHWkNuH+TmovaMH/Wp7V7R4u7f4SnX3OgLsU9t1NI9ioDnUpg==}
     engines: {node: '>=8'}
 
+  data-uri-to-buffer@4.0.1:
+    resolution: {integrity: sha512-0R9ikRb668HB7QDxT1vkpuUBtqc53YyAwMwGeUFKRojY/NWKvdZ+9UYtRfGmhqNbRkTSVpMbmyhXipFFv2cb/A==}
+    engines: {node: '>= 12'}
+
   data-view-buffer@1.0.1:
     resolution: {integrity: sha512-0lht7OugA5x3iJLOWFhWK/5ehONdprk0ISXqVFn/NFrDu+cuc8iADFrGQz5BnRK7LLU3JmkbXSxaqX+/mXYtUA==}
     engines: {node: '>= 0.4'}
@@ -5265,6 +5325,10 @@ packages:
     resolution: {integrity: sha512-pGjwhsmsp4kL2RTz08wcOlGN83otlqHeD/Z5T8GXZB+/YcpQ/dgo+lbU8ZsGxV0HIvqqxo9l7mqYwyYMD9bKDg==}
     engines: {node: '>=0.10'}
     hasBin: true
+
+  detect-libc@2.0.2:
+    resolution: {integrity: sha512-UX6sGumvvqSaXgdKGUsgZWqcUyIXZ/vZTrlRT/iobiKhGL0zL4d3osHj3uqllWJK+i+sixDS/3COVEOFbupFyw==}
+    engines: {node: '>=8'}
 
   detect-libc@2.0.3:
     resolution: {integrity: sha512-bwy0MGW55bG41VqxxypOsdSdGqLwXPI/focwgTYCFMbdUiBAxLg9CFzG08sz2aqzknwiX7Hkl0bQENjg8iLByw==}
@@ -5877,6 +5941,10 @@ packages:
   fb-watchman@2.0.2:
     resolution: {integrity: sha512-p5161BqbuCaSnB8jIbzQHOlpgsPmK5rJVDfDKO91Axs5NC1uu3HRQm6wt9cd9/+GtQQIO53JdGXXoyDpTAsgYA==}
 
+  fetch-blob@3.2.0:
+    resolution: {integrity: sha512-7yAQpD2UMJzLi1Dqv7qFYnPbaPx7ZfFK6PiIxQ4PfkGPyNyl2Ugx+a/umUonmKqjhM4DnfbMvdX6otXq83soQQ==}
+    engines: {node: ^12.20 || >= 14.13}
+
   file-entry-cache@6.0.1:
     resolution: {integrity: sha512-7Gps/XWymbLk2QLYK4NzpMOrYjMhdIxXuIvy2QBsLE6ljuodKvdkWs/cpyJJ3CVIVpH0Oi1Hvg1ovbMzLdFBBg==}
     engines: {node: ^10.12.0 || >=12.0.0}
@@ -5947,6 +6015,10 @@ packages:
   foreground-child@3.1.1:
     resolution: {integrity: sha512-TMKDUnIte6bfb5nWv7V/caI169OHgvwjb7V4WkeUvbQQdjr5rWKqHFiKWb/fcOwB+CzBT+qbWjvj+DVwRskpIg==}
     engines: {node: '>=14'}
+
+  formdata-polyfill@4.0.10:
+    resolution: {integrity: sha512-buewHzMvYL29jdeQTVILecSaZKnt/RJWjoZCF5OW60Z67/GmSLBkOFM7qh1PI3zFNtJbaZL5eQu1vLfazOwj4g==}
+    engines: {node: '>=12.20.0'}
 
   fraction.js@4.3.7:
     resolution: {integrity: sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==}
@@ -6640,6 +6712,9 @@ packages:
     resolution: {integrity: sha512-34wB/Y7MW7bzjKRjUKTa46I2Z7eV62Rkhva+KkopW7Qvv/OSWBqvkSY7vusOPrNuZcUG3tApvdVgNB8POj3SPw==}
     engines: {node: '>=10'}
 
+  js-base64@3.7.7:
+    resolution: {integrity: sha512-7rCnleh0z2CkXhH67J8K1Ytz0b2Y+yxTPL+/KOJoa20hfnVQ/3/T6W/KflYI4bRHRagNeXeU2bkNGI3v1oS/lw==}
+
   js-beautify@1.15.1:
     resolution: {integrity: sha512-ESjNzSlt/sWE8sciZH8kBF8BPlwXPwhR6pWKAw8bw4Bwj+iZcnKW6ONWUutJ7eObuBZQpiIb8S7OYspWrKt7rA==}
     engines: {node: '>=14'}
@@ -6777,6 +6852,11 @@ packages:
   levn@0.4.1:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
     engines: {node: '>= 0.8.0'}
+
+  libsql@0.3.18:
+    resolution: {integrity: sha512-lvhKr7WV3NLWRbXkjn/MeKqXOAqWKU0PX9QYrvDh7fneukapj+iUQ4qgJASrQyxcCrEsClXCQiiK5W6OoYPAlA==}
+    cpu: [x64, arm64, wasm32]
+    os: [darwin, linux, win32]
 
   lighthouse-logger@1.4.2:
     resolution: {integrity: sha512-gPWxznF6TKmUHrOQjlVo2UbaL2EJ71mb2CCeRs/2qBpi4L/g4LUVc9+3lKQ6DTUZwJswfM7ainGrLO1+fOqa2g==}
@@ -7458,6 +7538,10 @@ packages:
     resolution: {integrity: sha512-tmPX422rYgofd4epzrNoOXiE8XFZYOcCq1vD7MAXCDO+O+zndlA2ztdKKMa+EeuBG5tHETpr4ml4RGgpqDCCAg==}
     engines: {node: '>= 0.10.5'}
 
+  node-domexception@1.0.0:
+    resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==}
+    engines: {node: '>=10.5.0'}
+
   node-fetch@2.7.0:
     resolution: {integrity: sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==}
     engines: {node: 4.x || >=6.0.0}
@@ -7466,6 +7550,10 @@ packages:
     peerDependenciesMeta:
       encoding:
         optional: true
+
+  node-fetch@3.3.2:
+    resolution: {integrity: sha512-dRB78srN/l6gqWulah9SrxeYnxeddIG30+GOqK/9OlLVyLg3HPnr6SqOWTWOXKRwC2eGYCkZ59NNuSgvSrpgOA==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
   node-forge@1.3.1:
     resolution: {integrity: sha512-dPEtOeMvF9VMcYV/1Wb8CPoVAXtp6MKMlcbAt4ddqmGqUJ6fQZFXkNZNkNlfevtNkGtaSoXf/vNNNSvgrdXwtA==}
@@ -9346,6 +9434,10 @@ packages:
 
   wcwidth@1.0.1:
     resolution: {integrity: sha512-XHPEwS0q6TaxcvG85+8EYkbiCux2XtWG2mkc47Ng2A77BQu9+DqIOJldST4HgPkuea7dvKSj5VgX3P1d4rW8Tg==}
+
+  web-streams-polyfill@3.3.3:
+    resolution: {integrity: sha512-d2JWLCivmZYTSIoge9MsgFCZrt571BikcWGYkjC1khllbTeDlGqZ2D8vD8E/lJa8WGWbb7Plm8/XJYV7IJHZZw==}
+    engines: {node: '>= 8'}
 
   webidl-conversions@3.0.1:
     resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
@@ -11475,6 +11567,61 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
+  '@libsql/client@0.6.0':
+    dependencies:
+      '@libsql/core': 0.6.0
+      '@libsql/hrana-client': 0.6.0
+      js-base64: 3.7.7
+      libsql: 0.3.18
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
+  '@libsql/core@0.6.0':
+    dependencies:
+      js-base64: 3.7.7
+
+  '@libsql/darwin-arm64@0.3.18':
+    optional: true
+
+  '@libsql/darwin-x64@0.3.18':
+    optional: true
+
+  '@libsql/hrana-client@0.6.0':
+    dependencies:
+      '@libsql/isomorphic-fetch': 0.2.1
+      '@libsql/isomorphic-ws': 0.1.5
+      js-base64: 3.7.7
+      node-fetch: 3.3.2
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
+  '@libsql/isomorphic-fetch@0.2.1': {}
+
+  '@libsql/isomorphic-ws@0.1.5':
+    dependencies:
+      '@types/ws': 8.5.10
+      ws: 8.17.0
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
+  '@libsql/linux-arm64-gnu@0.3.18':
+    optional: true
+
+  '@libsql/linux-arm64-musl@0.3.18':
+    optional: true
+
+  '@libsql/linux-x64-gnu@0.3.18':
+    optional: true
+
+  '@libsql/linux-x64-musl@0.3.18':
+    optional: true
+
+  '@libsql/win32-x64-msvc@0.3.18':
+    optional: true
+
   '@manypkg/find-root@1.1.0':
     dependencies:
       '@babel/runtime': 7.24.5
@@ -11524,6 +11671,8 @@ snapshots:
       '@types/mdx': 2.0.13
       '@types/react': 18.3.2
       react: 18.2.0
+
+  '@neon-rs/load@0.0.4': {}
 
   '@next/bundle-analyzer@14.2.3':
     dependencies:
@@ -14455,6 +14604,8 @@ snapshots:
 
   dargs@7.0.0: {}
 
+  data-uri-to-buffer@4.0.1: {}
+
   data-view-buffer@1.0.1:
     dependencies:
       call-bind: 1.0.7
@@ -14546,6 +14697,8 @@ snapshots:
 
   detect-libc@1.0.3: {}
 
+  detect-libc@2.0.2: {}
+
   detect-libc@2.0.3: {}
 
   detect-node-es@1.1.0: {}
@@ -14629,8 +14782,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.29.5(@types/pg@8.11.6)(@types/react@18.3.2)(pg@8.11.5)(react@18.2.0):
+  drizzle-orm@0.29.5(@libsql/client@0.6.0)(@types/pg@8.11.6)(@types/react@18.3.2)(pg@8.11.5)(react@18.2.0):
     optionalDependencies:
+      '@libsql/client': 0.6.0
       '@types/pg': 8.11.6
       '@types/react': 18.3.2
       pg: 8.11.5
@@ -15429,6 +15583,11 @@ snapshots:
     dependencies:
       bser: 2.1.1
 
+  fetch-blob@3.2.0:
+    dependencies:
+      node-domexception: 1.0.0
+      web-streams-polyfill: 3.3.3
+
   file-entry-cache@6.0.1:
     dependencies:
       flat-cache: 3.2.0
@@ -15509,6 +15668,10 @@ snapshots:
     dependencies:
       cross-spawn: 7.0.3
       signal-exit: 4.1.0
+
+  formdata-polyfill@4.0.10:
+    dependencies:
+      fetch-blob: 3.2.0
 
   fraction.js@4.3.7: {}
 
@@ -16202,6 +16365,8 @@ snapshots:
 
   joycon@3.1.1: {}
 
+  js-base64@3.7.7: {}
+
   js-beautify@1.15.1:
     dependencies:
       config-chain: 1.1.13
@@ -16352,6 +16517,19 @@ snapshots:
     dependencies:
       prelude-ls: 1.2.1
       type-check: 0.4.0
+
+  libsql@0.3.18:
+    dependencies:
+      '@neon-rs/load': 0.0.4
+      detect-libc: 2.0.2
+    optionalDependencies:
+      '@libsql/darwin-arm64': 0.3.18
+      '@libsql/darwin-x64': 0.3.18
+      '@libsql/linux-arm64-gnu': 0.3.18
+      '@libsql/linux-arm64-musl': 0.3.18
+      '@libsql/linux-x64-gnu': 0.3.18
+      '@libsql/linux-x64-musl': 0.3.18
+      '@libsql/win32-x64-msvc': 0.3.18
 
   lighthouse-logger@1.4.2:
     dependencies:
@@ -17404,9 +17582,17 @@ snapshots:
     dependencies:
       minimatch: 3.1.2
 
+  node-domexception@1.0.0: {}
+
   node-fetch@2.7.0:
     dependencies:
       whatwg-url: 5.0.0
+
+  node-fetch@3.3.2:
+    dependencies:
+      data-uri-to-buffer: 4.0.1
+      fetch-blob: 3.2.0
+      formdata-polyfill: 4.0.10
 
   node-forge@1.3.1: {}
 
@@ -19591,6 +19777,8 @@ snapshots:
   wcwidth@1.0.1:
     dependencies:
       defaults: 1.0.4
+
+  web-streams-polyfill@3.3.3: {}
 
   webidl-conversions@3.0.1: {}
 

@@ -21,7 +21,8 @@
     "CHANGELOG.md",
     "*.mp4",
     "volumes",
-    "*.txt"
+    "*.txt",
+    "packages/db/src/migrations"
   ],
   "import": [
     "@cspell/dict-typescript/cspell-ext.json",
