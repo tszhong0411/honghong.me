@@ -10,7 +10,6 @@ import { cn } from '@tszhong0411/utils'
 import { useEffect, useState } from 'react'
 
 import CommentToolbar from './comment-toolbar'
-import { codeBlockShiki } from './extensions'
 
 type CommentEditorProps = {
   editor: UseCommentEditor | null
@@ -84,8 +83,7 @@ const CommentEditor = (props: CommentEditorProps) => {
         Placeholder.configure({
           placeholder,
           showOnlyWhenEditable: false
-        }),
-        codeBlockShiki
+        })
       ],
       autofocus,
       content,

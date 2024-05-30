@@ -25,10 +25,6 @@ const CommentToolbar = (props: CommentToolbarProps) => {
           name: 'italic',
           icon: <ItalicIcon className='size-4' />
         }
-        // {
-        //   name: 'codeBlock',
-        //   icon: <CodeIcon className='size-4' />
-        // }
       ].map((item) => (
         <Button
           key={item.name}
