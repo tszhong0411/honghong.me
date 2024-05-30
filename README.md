@@ -45,12 +45,13 @@ Welcome to the monorepo of my personal blog! This repository houses the code for
 - 〰️ Drizzle - ORM
 - 👷🏻‍♂️ t3-env - validate environment variables before building
 - 🤖 Auto refresh - fast refresh when updating MDX
+- 🌄 Open graph image - using `next/og`
 
 ## 🔨 Requirements
 
 - Node, recommended `20.x` with [corepack](https://nodejs.org/api/corepack.html) enabled
 - pnpm, recommended `9.x`
-- Turso CLI
+- [Turso CLI](https://docs.turso.tech/reference/turso-cli)
 - [Visual Studio Code](https://code.visualstudio.com/) with [recommended extensions](.vscode/extensions.json)
 - Optionally [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
 
@@ -58,18 +59,12 @@ Welcome to the monorepo of my personal blog! This repository houses the code for
 
 Please refer to the [contributing guidelines](./CONTRIBUTING.md) for detailed information on how to start the app locally and contribute to this project.
 
-## ✈️ TODO
-
-- Use strict content security policy - still not working in `14.0.4`
-  - `next/image` - https://github.com/vercel/next.js/issues/45184
-  - `nonces` - https://github.com/vercel/next.js/discussions/54907
-  - `main-app.js` - https://github.com/vercel/next.js/issues/55129
-
 ## ❤️ Credits
 
 This project has been possible thanks to the wonderful open-source community. Special thanks to [Timothy](https://www.timlrx.com/) for the [Tailwind nextjs starter blog template](https://github.com/timlrx/tailwind-nextjs-starter-blog).
 
 This project also uses / adapts the following open-source projects
+
 Without them, this project would not have been possible:
 
 - Comment System - from [fuma-comment](https://github.com/fuma-nama/fuma-comment)
