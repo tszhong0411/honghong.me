@@ -44,8 +44,6 @@ export const generateMetadata = async (
   }
 }
 
-export const dynamic = 'force-dynamic'
-
 const GuestbookPage = async () => {
   if (!flags.auth) return null
 
