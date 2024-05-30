@@ -23,8 +23,8 @@
     "preinstall": "npx only-allow pnpm",
     "lint": "turbo lint",
     "lint:fix": "turbo lint:fix && pnpm format:write && tsx scripts/fix-cspell.ts",
-    "prepare": "husky",
-    "release": "turbo build --filter=./packages/* && changeset publish",
+    "prepare": "husky && pnpm build:packages",
+    "release": "changeset publish",
     "type-check": "turbo type-check",
     "version": "changeset version"
   },
