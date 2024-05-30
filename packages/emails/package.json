@@ -23,7 +23,6 @@
     "@react-email/preview": "^0.0.8",
     "@react-email/row": "^0.0.7",
     "@react-email/section": "^0.0.11",
-    "@react-email/tailwind": "^0.0.14",
     "@react-email/text": "^0.0.8",
     "react": "^18.2.0",
     "react-email": "2.1.0"
