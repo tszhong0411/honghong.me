@@ -1,10 +1,10 @@
+import { db, eq, posts } from '@tszhong0411/db'
 import { getErrorMessage } from '@tszhong0411/utils'
+import { allBlogPosts } from 'mdx/generated'
 import { ImageResponse } from 'next/og'
 import { NextResponse } from 'next/server'
 
 import { SITE_URL } from '@/lib/constants'
-
-import postsData from './posts.json'
 
 type OGRouteProps = {
   params: {
@@ -19,7 +19,7 @@ export const GET = async (_: Request, props: OGRouteProps) => {
     const {
       params: { id }
     } = props
-    const postMetadata = postsData.find((p) => p.slug === id)
+    const postMetadata = allBlogPosts.find((p) => p.slug === id)
 
     if (!postMetadata) {
       return NextResponse.json(
@@ -47,6 +47,14 @@ export const GET = async (_: Request, props: OGRouteProps) => {
       )
     ).then((res) => res.arrayBuffer())
 
+    const post = await db
+      .select({
+        views: posts.views,
+        likes: posts.likes
+      })
+      .from(posts)
+      .where(eq(posts.slug, id))
+
     return new ImageResponse(
       (
         <div
@@ -69,7 +77,7 @@ export const GET = async (_: Request, props: OGRouteProps) => {
               fontSize: 30
             }}
           >
-            {date}
+            {date.split('T')[0]}
           </div>
           <div
             style={{
@@ -90,6 +98,20 @@ export const GET = async (_: Request, props: OGRouteProps) => {
               }}
             >
               {title}
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                fontSize: 24,
+                gap: 16,
+                color: 'hsl(0 0% 90%)'
+              }}
+            >
+              <span>{post[0]?.likes ?? 0} likes</span>
+              <span>·</span>
+              <span>{post[0]?.views ?? 0} views</span>
             </div>
           </div>
           <div

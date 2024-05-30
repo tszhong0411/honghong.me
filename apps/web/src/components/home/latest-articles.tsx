@@ -4,10 +4,10 @@ import { BlurImage, buttonVariants, Link } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { motion, useInView } from 'framer-motion'
 import { ArrowUpRightIcon, PencilIcon } from 'lucide-react'
+import type { BlogPost } from 'mdx/generated'
 import { useRef } from 'react'
 
 import { useFormattedDate } from '@/hooks/use-formatted-date'
-import { type BlogMetadata } from '@/lib/mdx'
 import { api } from '@/trpc/react'
 
 const variants = {
@@ -22,7 +22,7 @@ const variants = {
 }
 
 type LatestArticlesProps = {
-  posts: BlogMetadata[]
+  posts: BlogPost[]
 }
 
 const LatestArticles = (props: LatestArticlesProps) => {
@@ -93,7 +93,7 @@ const LatestArticles = (props: LatestArticlesProps) => {
 }
 
 type CardProps = {
-  post: BlogMetadata
+  post: BlogPost
 }
 
 const Card = (props: CardProps) => {

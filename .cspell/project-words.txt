@@ -6,6 +6,7 @@ calcom
 callees
 cleanmymac
 cleanshot
+contentlayer
 corepack
 customizer
 delba

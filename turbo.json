@@ -78,6 +78,9 @@
     },
     "ui#build": {
       "dependsOn": ["utils#build"]
+    },
+    "mdx#build": {
+      "dependsOn": ["utils#build"]
     }
   }
 }

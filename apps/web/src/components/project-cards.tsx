@@ -1,12 +1,11 @@
 'use client'
 
 import { BlurImage, Link } from '@tszhong0411/ui'
+import type { Project } from 'mdx/generated'
 
-import { type ProjectMetadata } from '@/lib/mdx'
-
-type ProjectCardProps = ProjectMetadata
+type ProjectCardProps = Project
 type ProjectCardsProps = {
-  projects: ProjectMetadata[]
+  projects: Project[]
 }
 
 const ProjectCards = (props: ProjectCardsProps) => {

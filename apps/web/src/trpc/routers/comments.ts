@@ -20,11 +20,11 @@ import {
 } from '@tszhong0411/db'
 import { CommentNotification } from '@tszhong0411/emails'
 import { env } from '@tszhong0411/env'
+import { allBlogPosts } from 'mdx/generated'
 import { Resend } from 'resend'
 import { z } from 'zod'
 
 import { isProduction } from '@/lib/constants'
-import { type BlogMetadata, getPage } from '@/lib/mdx'
 import { getDefaultUser } from '@/utils/get-default-user'
 
 import type { RouterOutputs } from '../react'
@@ -176,11 +176,11 @@ export const commentsRouter = createTRPCRouter({
           : {})
       })
 
-      const page = getPage<BlogMetadata>(`/blog/${input.slug}`)
+      const page = allBlogPosts.find((post) => post.slug === input.slug)
 
       if (!page) return
 
-      const title = page.metadata.title
+      const title = page.title
       const { defaultImage, defaultName } = getDefaultUser(user.id)
 
       const sendNotification = async (

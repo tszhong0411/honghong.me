@@ -1,8 +1,8 @@
+import { allProjects } from 'mdx/generated'
 import type { Metadata, ResolvingMetadata } from 'next'
 
 import PageTitle from '@/components/page-title'
 import ProjectCards from '@/components/project-cards'
-import { getAllPages, type ProjectMetadata } from '@/lib/mdx'
 
 const title = 'Projects'
 const description = 'The list of my projects.'
@@ -40,7 +40,7 @@ export const generateMetadata = async (
 }
 
 const ProjectsPage = () => {
-  const projects = getAllPages<ProjectMetadata>('projects')
+  const projects = allProjects
 
   return (
     <>

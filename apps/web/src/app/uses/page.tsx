@@ -1,9 +1,9 @@
+import { allPages } from 'mdx/generated'
 import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import Mdx from '@/components/mdx'
 import PageTitle from '@/components/page-title'
-import { getPage, type PageMetadata } from '@/lib/mdx'
 
 const title = 'Uses'
 const description =
@@ -42,13 +42,13 @@ export const generateMetadata = async (
 }
 
 const UsesPage = () => {
-  const page = getPage<PageMetadata>('pages/uses')
+  const page = allPages.find((p) => p.slug === 'uses')
 
   if (!page) {
     return notFound()
   }
 
-  const { content } = page
+  const { body } = page
 
   return (
     <>
@@ -57,7 +57,7 @@ const UsesPage = () => {
         description='This is the equipment I currently use for gaming, programming, making
         videos, and every day.'
       />
-      <Mdx content={content} />
+      <Mdx content={body} />
     </>
   )
 }

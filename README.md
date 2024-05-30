@@ -75,7 +75,7 @@ Without them, this project would not have been possible:
 - Comment System - from [fuma-comment](https://github.com/fuma-nama/fuma-comment)
 - Rehype Plugins - from [fuma-docs](https://github.com/fuma-nama/fumadocs)
 - MDX Rendering - from [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote)
-- Auto Refresh - from [next-remote-refresh](https://github.com/souporserious/next-remote-refresh)
+- MDX Handling - from [contentlayer](https://github.com/contentlayerdev/contentlayer)
 - UI - from [shadcn/ui](https://github.com/shadcn-ui/ui)
 
 Referenced the following projects for inspiration:

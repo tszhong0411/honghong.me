@@ -6,7 +6,7 @@
       "project": ["**/*.{js,ts,tsx}"]
     },
     "apps/web": {
-      "entry": ["./src/**/*.{js,ts,tsx}"],
+      "entry": ["./src/**/*.{js,ts,tsx}", "mdx.config.ts"],
       "ignoreDependencies": ["sharp"]
     },
     "packages/eslint-config": {

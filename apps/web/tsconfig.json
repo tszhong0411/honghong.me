@@ -4,6 +4,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
+      "mdx/generated": ["./.mdx/generated"],
       "~/*": ["./public/*"]
     },
     "plugins": [{ "name": "next" }]
@@ -15,6 +16,7 @@
     "next.config.js",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    ".mdx/generated"
   ]
 }

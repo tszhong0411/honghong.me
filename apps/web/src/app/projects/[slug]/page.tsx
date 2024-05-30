@@ -1,9 +1,9 @@
 import { BlurImage } from '@tszhong0411/ui'
+import { allProjects } from 'mdx/generated'
 import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import Mdx from '@/components/mdx'
-import { getAllPages, getPage, type ProjectMetadata } from '@/lib/mdx'
 
 import Header from './header'
 
@@ -15,7 +15,7 @@ type ProjectPageProps = {
 }
 
 export const generateStaticParams = (): Array<ProjectPageProps['params']> => {
-  return getAllPages<ProjectMetadata>('projects').map((project) => ({
+  return allProjects.map((project) => ({
     slug: project.slug
   }))
 }
@@ -26,15 +26,13 @@ export const generateMetadata = async (
 ): Promise<Metadata> => {
   const { params } = props
 
-  const project = getPage<ProjectMetadata>(`projects/${params.slug}`)
+  const project = allProjects.find((p) => p.slug === params.slug)
 
   if (!project) {
     return {}
   }
 
-  const {
-    metadata: { name, description }
-  } = project
+  const { name, description } = project
   const previousTwitter = (await parent)?.twitter ?? {}
   const previousOpenGraph = (await parent)?.openGraph ?? {}
 
@@ -80,26 +78,26 @@ const ProjectPage = (props: ProjectPageProps) => {
     params: { slug }
   } = props
 
-  const project = getPage<ProjectMetadata>(`projects/${slug}`)
+  const project = allProjects.find((p) => p.slug === slug)
 
   if (!project) {
     notFound()
   }
 
-  const { metadata, content } = project
+  const { name, body } = project
 
   return (
     <div className='mx-auto max-w-3xl'>
-      <Header metadata={metadata} />
+      <Header {...project} />
       <BlurImage
         src={`/images/projects/${slug}/cover.png`}
         width={1280}
         height={832}
-        alt={metadata.name}
+        alt={name}
         className='my-12 rounded-lg'
         lazy={false}
       />
-      <Mdx content={content} />
+      <Mdx content={body} />
     </div>
   )
 }

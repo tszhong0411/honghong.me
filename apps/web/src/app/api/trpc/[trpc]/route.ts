@@ -4,7 +4,7 @@ import type { NextRequest } from 'next/server'
 import { appRouter } from '@/trpc/root'
 import { createTRPCContext } from '@/trpc/trpc'
 
-// export const runtime = 'edge'
+export const runtime = 'edge'
 
 const createContext = async (req: NextRequest) => {
   return createTRPCContext({

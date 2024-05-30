@@ -8,7 +8,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['./src/plugins/**/*.ts'],
+      files: ['./src/core/plugins/**/*.ts'],
       rules: {
         '@typescript-eslint/no-explicit-any': 0,
         '@typescript-eslint/no-unsafe-argument': 0

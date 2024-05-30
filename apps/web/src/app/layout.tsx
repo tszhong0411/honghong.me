@@ -1,4 +1,3 @@
-import { AutoRefresh } from '@tszhong0411/auto-refresh'
 import { flags } from '@tszhong0411/env'
 import { cn } from '@tszhong0411/utils'
 import { GeistMono } from 'geist/font/mono'
@@ -123,53 +122,51 @@ const RootLayout = (props: RootLayoutProps) => {
   const { children } = props
 
   return (
-    <AutoRefresh>
-      <html
-        lang='en-US'
-        className={cn(
-          GeistSans.variable,
-          GeistMono.variable,
-          calcom.variable,
-          'scroll-smooth'
-        )}
-        suppressHydrationWarning
-      >
-        <body>
-          <Providers>
-            <Hello />
-            <Header />
-            <main
-              id='skip-nav'
-              className='mx-auto mb-16 max-w-5xl px-5 py-24 sm:px-8'
-            >
-              {children}
-            </main>
+    <html
+      lang='en-US'
+      className={cn(
+        GeistSans.variable,
+        GeistMono.variable,
+        calcom.variable,
+        'scroll-smooth'
+      )}
+      suppressHydrationWarning
+    >
+      <body>
+        <Providers>
+          <Hello />
+          <Header />
+          <main
+            id='skip-nav'
+            className='mx-auto mb-16 max-w-5xl px-5 py-24 sm:px-8'
+          >
+            {children}
+          </main>
 
-            <Footer />
-            {flags.analytics ? <Analytics /> : null}
-            <SignInModal />
-            <Image
-              width={1512}
-              height={550}
-              className='absolute left-1/2 top-0 -z-10 -translate-x-1/2'
-              src='/images/gradient-background-top.png'
-              alt=''
-              role='presentation'
-              priority
-            />
-            <Image
-              width={1512}
-              height={447}
-              className='absolute -bottom-6 left-1/2 -z-10 -translate-x-1/2'
-              src='/images/gradient-background-bottom.png'
-              alt=''
-              role='presentation'
-              priority
-            />
-          </Providers>
-        </body>
-      </html>
-    </AutoRefresh>
+          <Footer />
+          {flags.analytics ? <Analytics /> : null}
+          <SignInModal />
+          <Image
+            width={1512}
+            height={550}
+            className='absolute left-1/2 top-0 -z-10 -translate-x-1/2'
+            src='/images/gradient-background-top.png'
+            alt=''
+            role='presentation'
+            priority
+          />
+          <Image
+            width={1512}
+            height={447}
+            className='absolute -bottom-6 left-1/2 -z-10 -translate-x-1/2'
+            src='/images/gradient-background-bottom.png'
+            alt=''
+            role='presentation'
+            priority
+          />
+        </Providers>
+      </body>
+    </html>
   )
 }
 

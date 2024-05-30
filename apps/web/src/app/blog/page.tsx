@@ -1,8 +1,8 @@
+import { allBlogPosts } from 'mdx/generated'
 import type { Metadata, ResolvingMetadata } from 'next'
 
 import FilteredPosts from '@/components/filtered-posts'
 import PageTitle from '@/components/page-title'
-import { type BlogMetadata, getAllPages } from '@/lib/mdx'
 
 const title = 'Blog'
 const description =
@@ -41,7 +41,7 @@ export const generateMetadata = async (
 }
 
 const BlogPage = () => {
-  const posts = getAllPages<BlogMetadata>('blog').sort((a, b) => {
+  const posts = allBlogPosts.sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime()
   })
 

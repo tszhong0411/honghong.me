@@ -1,11 +1,11 @@
 import { flags } from '@tszhong0411/env'
+import { allBlogPosts } from 'mdx/generated'
 import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 import { type Article, type WithContext } from 'schema-dts'
 
 import Comments from '@/components/comments'
 import { SITE_NAME, SITE_URL } from '@/lib/constants'
-import { type BlogMetadata, getAllPages, getPage } from '@/lib/mdx'
 
 import Content from './content'
 import Footer from './footer'
@@ -19,7 +19,7 @@ type BlogPostPageProps = {
 }
 
 export const generateStaticParams = (): Array<BlogPostPageProps['params']> => {
-  return getAllPages<BlogMetadata>('blog').map((post) => ({
+  return allBlogPosts.map((post) => ({
     slug: post.slug
   }))
 }
@@ -32,11 +32,11 @@ export const generateMetadata = async (
     params: { slug }
   } = props
 
-  const post = getPage<BlogMetadata>(`blog/${slug}`)
+  const post = allBlogPosts.find((p) => p.slug === slug)
 
   if (!post) return {}
 
-  const { date, modifiedTime, title, summary } = post.metadata
+  const { date, modifiedTime, title, summary } = post
 
   const ISOPublishedTime = new Date(date).toISOString()
   const ISOModifiedTime = new Date(modifiedTime).toISOString()
@@ -89,16 +89,13 @@ const BlogPostPage = (props: BlogPostPageProps) => {
     params: { slug }
   } = props
 
-  const post = getPage<BlogMetadata>(`blog/${slug}`)
+  const post = allBlogPosts.find((p) => p.slug === slug)
 
   if (!post) {
     notFound()
   }
 
-  const {
-    metadata: { title, summary, date, modifiedTime },
-    content
-  } = post
+  const { title, summary, date, modifiedTime, body } = post
 
   const jsonLd: WithContext<Article> = {
     '@context': 'https://schema.org',
@@ -129,7 +126,7 @@ const BlogPostPage = (props: BlogPostPageProps) => {
       />
 
       <Header date={date} title={title} slug={slug} />
-      <Content slug={slug} content={content} />
+      <Content slug={slug} content={body} />
       <Footer slug={slug} modifiedTime={modifiedTime} />
 
       {flags.comment ? <Comments slug={slug} /> : null}

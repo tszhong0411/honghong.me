@@ -2,14 +2,13 @@
 
 import { Input, Label } from '@tszhong0411/ui'
 import { SearchIcon } from 'lucide-react'
+import type { BlogPost } from 'mdx/generated'
 import { useState } from 'react'
-
-import { type BlogMetadata } from '@/lib/mdx'
 
 import PostCards from './post-cards'
 
 type FilteredPostsProps = {
-  posts: BlogMetadata[]
+  posts: BlogPost[]
 }
 
 const FilteredPosts = (props: FilteredPostsProps) => {

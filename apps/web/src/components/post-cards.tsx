@@ -1,15 +1,16 @@
 'use client'
 
 import { BlurImage, Link } from '@tszhong0411/ui'
+import type { BlogPost } from 'mdx/generated'
 
 import { useFormattedDate } from '@/hooks/use-formatted-date'
-import { type BlogMetadata } from '@/lib/mdx'
 import { api } from '@/trpc/react'
 
 type PostCardsProps = {
-  posts: BlogMetadata[]
+  posts: BlogPost[]
 }
-type PostCardProps = BlogMetadata
+
+type PostCardProps = BlogPost
 
 const PostCards = (props: PostCardsProps) => {
   const { posts } = props

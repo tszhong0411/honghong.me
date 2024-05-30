@@ -5,11 +5,10 @@
   "license": "GPL-3.0",
   "type": "module",
   "scripts": {
-    "build": "dotenv -e ../../.env.local -- next build && pnpm generate-posts",
+    "build": "mdx build && dotenv -e ../../.env.local -- next build",
     "bundle-analyzer": "cross-env ANALYZE=true pnpm run build",
     "clean": "rm -rf .next .turbo",
-    "dev": "concurrently \"auto-refresh \"./src/content/**/*.mdx\"\" \"dotenv -e ../../.env.local -- next dev\"",
-    "generate-posts": "tsx ./src/scripts/generate-posts.ts",
+    "dev": "concurrently \"mdx dev\" \"dotenv -e ../../.env.local -- next dev\"",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint --fix .",
     "start": "dotenv -e ../../.env.local -- next start",
@@ -51,7 +50,6 @@
     "dayjs": "^1.11.10",
     "framer-motion": "^11.0.6",
     "geist": "^1.2.2",
-    "gray-matter": "^4.0.3",
     "jiti": "^1.21.0",
     "js-sha512": "^0.9.0",
     "lucide-react": "^0.341.0",
@@ -75,7 +73,6 @@
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^14.1.0",
-    "@tszhong0411/auto-refresh": "workspace:*",
     "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/tailwind-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
@@ -87,16 +84,13 @@
     "@types/react-dom": "^18.2.19",
     "@types/rss": "^0.0.32",
     "@types/tinycolor2": "^1.4.6",
-    "@types/ws": "^8.5.10",
-    "chokidar": "^3.6.0",
     "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
     "eslint-config-next": "^14.2.3",
     "postcss": "^8.4.35",
     "postcss-lightningcss": "^1.0.0",
     "schema-dts": "^1.1.2",
-    "tailwindcss": "^3.4.1",
-    "ws": "^8.16.0"
+    "tailwindcss": "^3.4.1"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --fix",

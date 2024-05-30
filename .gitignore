@@ -36,3 +36,6 @@ dist
 honghong-me.db
 honghong-me.db-shm
 honghong-me.db-wal
+
+# MDX
+.mdx

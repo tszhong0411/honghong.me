@@ -1,3 +1,4 @@
+import { allBlogPosts } from 'mdx/generated'
 import { NextResponse } from 'next/server'
 import RSS from 'rss'
 
@@ -7,7 +8,6 @@ import {
   SITE_TITLE,
   SITE_URL
 } from '@/lib/constants'
-import { type BlogMetadata, getAllPages } from '@/lib/mdx'
 
 export const GET = () => {
   const feed = new RSS({
@@ -19,7 +19,7 @@ export const GET = () => {
     image_url: `${SITE_URL}/images/og.png`
   })
 
-  const posts = getAllPages<BlogMetadata>('blog')
+  const posts = allBlogPosts
 
   for (const post of posts) {
     const { title, summary, date, slug } = post
