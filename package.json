@@ -17,6 +17,7 @@
     "db:seed": "turbo db:seed",
     "db:studio": "turbo db:studio",
     "dev": "turbo dev",
+    "dev:packages": "turbo dev --filter=./packages/*",
     "format:check": "prettier --cache --check --ignore-path .gitignore --ignore-path .prettierignore .",
     "format:write": "prettier --cache --write --list-different --ignore-path .gitignore --ignore-path .prettierignore .",
     "preinstall": "npx only-allow pnpm",
