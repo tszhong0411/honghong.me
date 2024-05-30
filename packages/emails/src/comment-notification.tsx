@@ -10,9 +10,7 @@ import { Link } from '@react-email/link'
 import { Preview } from '@react-email/preview'
 import { Row } from '@react-email/row'
 import { Section } from '@react-email/section'
-import { Tailwind } from '@react-email/tailwind'
 import { Text } from '@react-email/text'
-import { Fragment } from 'react'
 
 type CommentNotificationProps = {
   comment: string
@@ -51,69 +49,110 @@ const CommentNotification = (props: CommentNotificationProps) => {
         {post.title}
         &quot; on honghong.me
       </Preview>
-      <Tailwind
-        config={{
-          theme: {
-            extend: {
-              colors: {
-                accent: '#f0f0f0',
-                border: '#242424'
-              }
-            }
-          }
+      <Body
+        style={{
+          margin: '0 auto',
+          backgroundColor: '#000',
+          color: '#f0f0f0'
         }}
       >
-        <Fragment>
-          <Body className='mx-auto bg-black text-[#f0f0f0]'>
-            <Container className='border-border mx-auto my-10 max-w-3xl rounded-lg border border-solid p-6'>
-              <Section className='mb-8'>
+        <Container
+          style={{
+            border: '1px solid #242424',
+            margin: '40px auto',
+            maxWidth: '768px',
+            borderRadius: '8px',
+            padding: '24px'
+          }}
+        >
+          <Section
+            style={{
+              marginBottom: '32px'
+            }}
+          >
+            <Img
+              src='https://honghong.me/images/email/logo.png'
+              alt="Hong's logo"
+              width='50'
+              height='50'
+            />
+          </Section>
+          <Section>
+            <Text>
+              A new {type === 'comment' ? 'comment' : 'reply'} has been posted
+              on the post &quot;{post.title}&quot; on honghong.me
+            </Text>
+          </Section>
+          <Hr
+            style={{
+              borderTop: '1px solid #242424',
+              margin: '16px 0'
+            }}
+          />
+          <Section>
+            <Row>
+              <Column
+                style={{
+                  width: '32px'
+                }}
+              >
                 <Img
-                  src='https://honghong.me/images/email/logo.png'
-                  alt="Hong's logo"
-                  width='50'
-                  height='50'
+                  src={commenter.image}
+                  alt={commenter.name}
+                  width='32'
+                  height='32'
+                  style={{
+                    borderRadius: '50%'
+                  }}
                 />
-              </Section>
-              <Section>
+              </Column>
+              <Column
+                style={{
+                  paddingLeft: '8px',
+                  fontWeight: '500'
+                }}
+              >
                 <Text>
-                  A new {type === 'comment' ? 'comment' : 'reply'} has been
-                  posted on the post &quot;{post.title}&quot; on honghong.me
+                  {commenter.name}
+                  <span
+                    style={{
+                      paddingLeft: '12px',
+                      color: '#999'
+                    }}
+                  >
+                    {date}
+                  </span>
                 </Text>
-              </Section>
-              <Hr className='border-border my-4' />
-              <Section>
-                <Row>
-                  <Column className='w-8'>
-                    <Img
-                      src={commenter.image}
-                      alt={commenter.name}
-                      width='32'
-                      height='32'
-                      className='rounded-full'
-                    />
-                  </Column>
-                  <Column className='pl-2 font-medium'>
-                    <Text>
-                      {commenter.name}
-                      <span className='pl-3 text-[#999]'>{date}</span>
-                    </Text>
-                  </Column>
-                </Row>
-                <div dangerouslySetInnerHTML={{ __html: comment }} />
-              </Section>
-              <Hr className='border-border my-4' />
-              <Section>
-                <Link
-                  href={`${post.url}#${commentIdentifier}`}
-                  className='border-border my-8 block w-full rounded-lg border border-solid bg-zinc-900 py-4 text-center text-white'
-                >
-                  View {type === 'comment' ? 'comment' : 'reply'} on honghong.me
-                </Link>
-              </Section>
-            </Container>
-          </Body>
-        </Fragment>
-      </Tailwind>
+              </Column>
+            </Row>
+            <div dangerouslySetInnerHTML={{ __html: comment }} />
+          </Section>
+          <Hr
+            style={{
+              borderTop: '1px solid #242424',
+              margin: '16px 0'
+            }}
+          />
+          <Section>
+            <Link
+              href={`${post.url}#${commentIdentifier}`}
+              style={{
+                border: '1px solid #242424',
+                margin: '32px 0',
+                display: 'block',
+                width: '100%',
+                borderRadius: '8px',
+                backgroundColor: '#18181b',
+                padding: '16px 0',
+                textAlign: 'center',
+                color: '#fff'
+              }}
+            >
+              View {type === 'comment' ? 'comment' : 'reply'} on honghong.me
+            </Link>
+          </Section>
+        </Container>
+      </Body>
     </Html>
   )
 }
