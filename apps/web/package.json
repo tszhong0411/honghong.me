@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "web",
+  "name": "@tszhong0411/web",
   "version": "0.0.0",
   "license": "GPL-3.0",
   "type": "module",
