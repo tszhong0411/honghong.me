@@ -11,7 +11,7 @@
   "commit": false,
   "fixed": [],
   "ignore": [
-    "web",
+    "@tszhong0411/web",
     "@tszhong0411/db",
     "@tszhong0411/emails",
     "@tszhong0411/env",
