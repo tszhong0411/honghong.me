@@ -1,4 +1,5 @@
 import { createEnv } from '@t3-oss/env-nextjs'
+import { vercel } from '@t3-oss/env-nextjs/presets'
 import { z } from 'zod'
 
 export const isProduction = process.env.NODE_ENV === 'production'
@@ -17,6 +18,14 @@ export const flags = {
 }
 
 export const env = createEnv({
+  extends: [vercel],
+
+  shared: {
+    NODE_ENV: z
+      .enum(['development', 'production', 'test'])
+      .default('development')
+  },
+
   server: {
     ...(flags.spotify
       ? {
@@ -79,37 +88,11 @@ export const env = createEnv({
     NEXT_PUBLIC_FLAG_GUESTBOOK_NOTIFICATION: z.string().min(1).optional(),
     NEXT_PUBLIC_FLAG_LIKE_BUTTON: z.string().min(1).optional()
   },
-  runtimeEnv: {
-    SPOTIFY_CLIENT_ID: process.env.SPOTIFY_CLIENT_ID,
-    SPOTIFY_CLIENT_SECRET: process.env.SPOTIFY_CLIENT_SECRET,
-    SPOTIFY_REFRESH_TOKEN: process.env.SPOTIFY_REFRESH_TOKEN,
-
-    GOOGLE_API_KEY: process.env.GOOGLE_API_KEY,
-
-    GITHUB_TOKEN: process.env.GITHUB_TOKEN,
-
-    WAKATIME_API_KEY: process.env.WAKATIME_API_KEY,
-
-    NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
-
-    GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
-    GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
-
-    GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
-    GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
-
-    DATABASE_URL: process.env.DATABASE_URL,
-    DATABASE_AUTH_TOKEN: process.env.DATABASE_AUTH_TOKEN,
-
-    IP_ADDRESS_SALT: process.env.IP_ADDRESS_SALT,
-
-    DISCORD_WEBHOOK_URL: process.env.DISCORD_WEBHOOK_URL,
+  experimental__runtimeEnv: {
+    NODE_ENV: process.env.NODE_ENV,
 
     NEXT_PUBLIC_UMAMI_URL: process.env.NEXT_PUBLIC_UMAMI_URL,
     NEXT_PUBLIC_UMAMI_WEBSITE_ID: process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID,
-
-    RESEND_API_KEY: process.env.RESEND_API_KEY,
-    AUTHOR_EMAIL: process.env.AUTHOR_EMAIL,
 
     NEXT_PUBLIC_FLAG_COMMENT: process.env.NEXT_PUBLIC_FLAG_COMMENT,
     NEXT_PUBLIC_FLAG_AUTH: process.env.NEXT_PUBLIC_FLAG_AUTH,
