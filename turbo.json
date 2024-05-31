@@ -60,6 +60,7 @@
         "GITHUB_CLIENT_ID",
         "GITHUB_CLIENT_SECRET",
         "DATABASE_URL",
+        "DATABASE_AUTH_TOKEN",
         "IP_ADDRESS_SALT",
         "DISCORD_WEBHOOK_URL",
         "NEXT_PUBLIC_UMAMI_URL",
@@ -72,8 +73,7 @@
         "NEXT_PUBLIC_FLAG_SPOTIFY",
         "NEXT_PUBLIC_FLAG_ANALYTICS",
         "NEXT_PUBLIC_FLAG_GUESTBOOK_NOTIFICATION",
-        "NEXT_PUBLIC_FLAG_LIKE_BUTTON",
-        "VERCEL_URL"
+        "NEXT_PUBLIC_FLAG_LIKE_BUTTON"
       ]
     },
     "ui#build": {
