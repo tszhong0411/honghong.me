@@ -43,7 +43,7 @@
     "type-check": {
       "cache": false
     },
-    "blog#build": {
+    "web#build": {
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**"],
       "env": [
