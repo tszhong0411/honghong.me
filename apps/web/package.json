@@ -7,7 +7,7 @@
   "scripts": {
     "build": "mdx build && dotenv -e ../../.env.local -- next build",
     "bundle-analyzer": "cross-env ANALYZE=true pnpm run build",
-    "clean": "rm -rf .next .turbo",
+    "clean": "rm -rf .next .turbo .mdx",
     "dev": "concurrently \"mdx dev\" \"dotenv -e ../../.env.local -- next dev\"",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint --fix .",
