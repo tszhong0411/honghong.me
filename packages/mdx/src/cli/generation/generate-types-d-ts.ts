@@ -1,4 +1,4 @@
-import { Project, QuoteKind, type SourceFile, ts } from 'ts-morph'
+import { Project, QuoteKind, ts } from 'ts-morph'
 
 import type { DocumentType, FieldDefs } from '../../source-files'
 import { AUTO_GENERATED_NOTE, BASE_FOLDER_PATH } from '../constants'
@@ -34,7 +34,7 @@ export const generateTypesDts = async (defs: DocumentType[]) => {
     }
   })
 
-  const sourceFile: SourceFile = project.createSourceFile(
+  const sourceFile = project.createSourceFile(
     `${BASE_FOLDER_PATH}/types.d.ts`,
     '',
     { overwrite: true }

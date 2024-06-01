@@ -1,11 +1,5 @@
 import pluralize from 'pluralize'
-import {
-  Project,
-  QuoteKind,
-  type SourceFile,
-  ts,
-  VariableDeclarationKind
-} from 'ts-morph'
+import { Project, QuoteKind, ts, VariableDeclarationKind } from 'ts-morph'
 
 import type { DocumentType } from '../../source-files'
 import { AUTO_GENERATED_NOTE, BASE_FOLDER_PATH } from '../constants'
@@ -17,7 +11,7 @@ export const generateIndexDts = async (defs: DocumentType[]) => {
     }
   })
 
-  const sourceFile: SourceFile = project.createSourceFile(
+  const sourceFile = project.createSourceFile(
     `${BASE_FOLDER_PATH}/index.d.ts`,
     '',
     { overwrite: true }
