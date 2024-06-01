@@ -13,7 +13,7 @@ export const generateIndexMjs = async (defs: DocumentType[]) => {
 
   const sourceFile = project.createSourceFile(
     `${BASE_FOLDER_PATH}/index.mjs`,
-    '',
+    undefined,
     { overwrite: true }
   )
 

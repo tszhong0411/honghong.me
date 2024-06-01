@@ -13,7 +13,7 @@ export const generateIndexDts = async (defs: DocumentType[]) => {
 
   const sourceFile = project.createSourceFile(
     `${BASE_FOLDER_PATH}/index.d.ts`,
-    '',
+    undefined,
     { overwrite: true }
   )
 
