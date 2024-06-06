@@ -22,6 +22,7 @@ jahir
 joshwcomeau
 karabiner
 keka
+keychron
 leerob
 libsql
 lightroom
