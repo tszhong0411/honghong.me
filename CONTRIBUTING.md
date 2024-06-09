@@ -114,12 +114,6 @@ Before submitting a pull request, make sure your code is properly formatted. You
 pnpm lint:fix
 ```
 
-- Format code:
-
-```bash
-pnpm format
-```
-
 - Check everything:
 
 ```bash
