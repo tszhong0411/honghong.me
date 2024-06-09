@@ -16,6 +16,7 @@ export const Toaster = (props: ToasterProps) => {
   return (
     <Sonner
       theme={theme}
+      // eslint-disable-next-line tailwindcss/no-custom-classname -- it's a custom class
       className='toaster group'
       toastOptions={{
         classNames: {

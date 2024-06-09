@@ -158,7 +158,6 @@ AlertDialogContent.displayName = AlertDialogPrimitive.Content.displayName
 AlertDialogHeader.displayName = 'AlertDialogHeader'
 AlertDialogFooter.displayName = 'AlertDialogFooter'
 AlertDialogTitle.displayName = AlertDialogPrimitive.Title.displayName
-AlertDialogDescription.displayName =
-  AlertDialogPrimitive.Description.displayName
+AlertDialogDescription.displayName = AlertDialogPrimitive.Description.displayName
 AlertDialogAction.displayName = AlertDialogPrimitive.Action.displayName
 AlertDialogCancel.displayName = AlertDialogPrimitive.Cancel.displayName

@@ -40,12 +40,10 @@ export const Callout = forwardRef<HTMLDivElement, CalloutProps>(
         className={cn(calloutVariants({ variant, className }))}
         {...rest}
       >
-        {variant ? icons[variant] : icons['info']}
+        {variant ? icons[variant] : icons.info}
         <div className='w-0 flex-1'>
-          {title ? (
-            <div className='mb-2 font-medium text-card-foreground'>{title}</div>
-          ) : null}
-          <div className='prose-no-margin'>{children}</div>
+          {title ? (<div className='mb-2 font-medium text-card-foreground'>{title}</div>) : null}
+          <div>{children}</div>
         </div>
       </div>
     )

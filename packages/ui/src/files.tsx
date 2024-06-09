@@ -59,11 +59,7 @@ export const Folder = (props: FolderProps) => {
   return (
     <Collapsible open={open} onOpenChange={setOpen} {...rest}>
       <CollapsibleTrigger className={cn(item({ className: 'w-full' }))}>
-        {open ? (
-          <FolderOpenIcon className='size-4' />
-        ) : (
-          <FolderIcon className='size-4' />
-        )}
+        {open ? (<FolderOpenIcon className='size-4' />) : (<FolderIcon className='size-4' />)}
         {name}
       </CollapsibleTrigger>
       <CollapsibleContent>

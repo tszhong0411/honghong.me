@@ -96,8 +96,7 @@ export const SelectContent = forwardRef<
           'data-[side=right]:slide-in-from-left-2',
           'data-[side=bottom]:slide-in-from-top-2',
           'data-[side=left]:slide-in-from-right-2',
-          position === 'popper' &&
-            'data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1',
+          position === 'popper' && 'data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1',
           className
         )}
         position={position}
@@ -107,8 +106,7 @@ export const SelectContent = forwardRef<
         <SelectPrimitive.Viewport
           className={cn(
             'p-1',
-            position === 'popper' &&
-              'h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]'
+            position === 'popper' && 'h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]'
           )}
         >
           {children}
@@ -178,8 +176,7 @@ export const SelectSeparator = forwardRef<
 
 SelectTrigger.displayName = SelectPrimitive.Trigger.displayName
 SelectScrollUpButton.displayName = SelectPrimitive.ScrollUpButton.displayName
-SelectScrollDownButton.displayName =
-  SelectPrimitive.ScrollDownButton.displayName
+SelectScrollDownButton.displayName = SelectPrimitive.ScrollDownButton.displayName
 SelectContent.displayName = SelectPrimitive.Content.displayName
 SelectLabel.displayName = SelectPrimitive.Label.displayName
 SelectItem.displayName = SelectPrimitive.Item.displayName

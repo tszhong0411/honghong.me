@@ -1,4 +1,4 @@
-import { cn } from '@tszhong0411/utils'
+import { cn, range } from '@tszhong0411/utils'
 
 type MarqueeProps = {
   children: React.ReactNode
@@ -51,21 +51,19 @@ export const Marquee = (props: MarqueeProps) => {
       )}
       style={{
         maskImage: fade
-          ? `linear-gradient(${
-              direction === 'left' ? 'to right' : 'to bottom'
-            }, transparent 0%, rgba(0, 0, 0, 1.0) 10%, rgba(0, 0, 0, 1.0) 90%, transparent 100%)`
+          ? `linear-gradient(${direction === 'left' ? 'to right' : 'to bottom'
+          }, transparent 0%, rgba(0, 0, 0, 1.0) 10%, rgba(0, 0, 0, 1.0) 90%, transparent 100%)`
           : undefined,
         WebkitMaskImage: fade
-          ? `linear-gradient(${
-              direction === 'left' ? 'to right' : 'to bottom'
-            }, transparent 0%, rgba(0, 0, 0, 1.0) 10%, rgba(0, 0, 0, 1.0) 90%, transparent 100%)`
+          ? `linear-gradient(${direction === 'left' ? 'to right' : 'to bottom'
+          }, transparent 0%, rgba(0, 0, 0, 1.0) 10%, rgba(0, 0, 0, 1.0) 90%, transparent 100%)`
           : undefined,
         gap
       }}
     >
-      {Array.from({ length: 2 }).map((_, i) => (
+      {range(2).map((n) => (
         <div
-          key={i}
+          key={n}
           style={
             {
               '--gap': gap
