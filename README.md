@@ -49,7 +49,7 @@ Welcome to the monorepo of my personal blog! This repository houses the code for
 
 ## 🔨 Requirements
 
-- Node, recommended `>=21.2.0` with [corepack](https://nodejs.org/api/corepack.html) enabled
+- Node, recommended `>=20.11.0` with [corepack](https://nodejs.org/api/corepack.html) enabled
 - pnpm, recommended `>=9.x`
 - [Turso CLI](https://docs.turso.tech/reference/turso-cli)
 - [Visual Studio Code](https://code.visualstudio.com/) with [recommended extensions](.vscode/extensions.json)
