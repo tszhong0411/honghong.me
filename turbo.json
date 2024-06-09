@@ -1,7 +1,8 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "experimentalUI": true,
-  "globalDependencies": [".env.*local"],
+  "globalDependencies": [
+    ".env.*local"
+  ],
   "globalEnv": [
     "NODE_ENV",
     "CI",
@@ -34,14 +35,24 @@
     "NEXT_PUBLIC_FLAG_GUESTBOOK_NOTIFICATION",
     "NEXT_PUBLIC_FLAG_LIKE_BUTTON"
   ],
-  "pipeline": {
+  "tasks": {
     "build": {
-      "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**", "dist/**"]
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**",
+        "dist/**"
+      ]
     },
     "build:packages": {
-      "dependsOn": ["^build"],
-      "outputs": ["dist/**"]
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "dist/**"
+      ]
     },
     "clean": {
       "cache": false
@@ -75,10 +86,16 @@
       "interactive": true
     },
     "test:e2e": {
-      "outputs": ["playwright-report/**", "test-results/**"]
+      "outputs": [
+        "playwright-report/**",
+        "test-results/**"
+      ]
     },
     "test:e2e:ui": {
-      "outputs": ["playwright-report/**", "test-results/**"]
+      "outputs": [
+        "playwright-report/**",
+        "test-results/**"
+      ]
     },
     "type-check": {}
   }
