@@ -1,12 +1,10 @@
 # @tszhong0411/eslint-config
 
-## 1.0.0
-
-### Major Changes
-
-- [`e632ac3`](https://github.com/tszhong0411/honghong.me/commit/e632ac37ce024c3466fa7d5085031bffb05f46c4) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Use flat config
+## 0.1.0
 
 ### Patch Changes
+
+- [`e632ac3`](https://github.com/tszhong0411/honghong.me/commit/e632ac37ce024c3466fa7d5085031bffb05f46c4) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Use flat config
 
 - [`9ec0941`](https://github.com/tszhong0411/honghong.me/commit/9ec0941334638c7a6d2d57c1977665c8f6b4b239) Thanks [@tszhong0411](https://github.com/tszhong0411)! - lint json with eslint
 
