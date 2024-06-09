@@ -1,9 +1,9 @@
 {
-  "private": true,
   "name": "@tszhong0411/env",
-  "version": "0.0.0",
-  "license": "GPL-3.0",
   "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "license": "GPL-3.0",
   "main": "./src/index.ts",
   "scripts": {
     "clean": "rm -rf .turbo",
