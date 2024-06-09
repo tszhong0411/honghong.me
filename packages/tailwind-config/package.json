@@ -17,8 +17,10 @@
     "tailwind.config.ts"
   ],
   "scripts": {
+    "clean": "rm -rf .turbo",
     "lint": "eslint . --max-warnings 0",
-    "lint:fix": "eslint --fix ."
+    "lint:fix": "eslint --fix .",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.10",
@@ -33,7 +35,6 @@
     "access": "public"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "eslint --fix",
-    "*.{js,jsx,ts,tsx,json,md,mdx}": "prettier --cache --write"
+    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx}": "eslint --fix"
   }
 }
