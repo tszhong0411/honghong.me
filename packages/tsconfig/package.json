@@ -12,6 +12,7 @@
   "bugs": {
     "url": "https://github.com/tszhong0411/honghong.me/issues"
   },
+  "type": "module",
   "files": [
     "base.json",
     "nextjs.json",
@@ -24,6 +25,6 @@
     "access": "public"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,json,md,mdx}": "prettier --cache --write"
+    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx}": "eslint --fix"
   }
 }
