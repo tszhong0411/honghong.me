@@ -27,9 +27,11 @@ runs:
           ${{ runner.os }}-pnpm-store-
 
     - name: Install dependencies
+      shell: bash
       run: pnpm install
 
     - name: Create dotenv file
+      shell: bash
       run: |
         echo "DATABASE_URL=http://127.0.0.1:8080" >> .env.local
         echo "DATABASE_AUTH_TOKEN=no-need-for-local-development" >> .env.local
