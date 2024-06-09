@@ -1,9 +1,10 @@
 {
   "name": "@tszhong0411/utils",
+  "type": "module",
   "version": "0.0.8",
   "description": "A collection of utility functions for tszhong0411's projects",
-  "license": "GPL-3.0",
   "author": "tszhong0411 <me@honghong.me> (https://github.com/tszhong0411/)",
+  "license": "GPL-3.0",
   "homepage": "https://github.com/tszhong0411/honghong.me#readme",
   "repository": {
     "type": "git",
@@ -12,9 +13,15 @@
   "bugs": {
     "url": "https://github.com/tszhong0411/honghong.me/issues"
   },
-  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
   "main": "./dist/index.js",
   "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -26,7 +33,6 @@
     "lint:fix": "eslint --fix .",
     "type-check": "tsc --noEmit"
   },
-  "types": "./dist/index.d.ts",
   "dependencies": {
     "clsx": "^2.1.0",
     "tailwind-merge": "^2.2.1"
@@ -38,12 +44,6 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    }
   },
   "lint-staged": {
     "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx}": "eslint --fix"

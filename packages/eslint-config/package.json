@@ -1,9 +1,10 @@
 {
   "name": "@tszhong0411/eslint-config",
+  "type": "module",
   "version": "0.0.9",
   "description": "The eslint config for tszhong0411's projects",
-  "license": "GPL-3.0",
   "author": "tszhong0411 <me@honghong.me> (https://github.com/tszhong0411/)",
+  "license": "GPL-3.0",
   "homepage": "https://github.com/tszhong0411/honghong.me#readme",
   "repository": {
     "type": "git",
@@ -12,13 +13,12 @@
   "bugs": {
     "url": "https://github.com/tszhong0411/honghong.me/issues"
   },
-  "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
-  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup",
     "clean": "rm -rf .turbo dist",
@@ -26,6 +26,9 @@
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint --fix .",
     "type-check": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "eslint": ">=8.40.0"
   },
   "dependencies": {
     "@eslint-react/eslint-plugin": "^1.5.15",
@@ -38,6 +41,7 @@
     "eslint-define-config": "^2.1.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsonc": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-playwright": "^1.6.2",
     "eslint-plugin-react-hooks": "^4.6.2",
@@ -53,9 +57,6 @@
   },
   "devDependencies": {
     "@tszhong0411/tsconfig": "workspace:*"
-  },
-  "peerDependencies": {
-    "eslint": ">=8.40.0"
   },
   "publishConfig": {
     "access": "public"

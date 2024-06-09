@@ -2,13 +2,15 @@ import type { FlatESLintConfig } from 'eslint-define-config'
 
 import { comments } from './configs/comments'
 import { ignores } from './configs/ignores'
+import { importSort } from './configs/import-sort'
 import { imports } from './configs/imports'
 import { javascript } from './configs/javascript'
+import { jsonSort } from './configs/json-sort'
+import { jsonc } from './configs/jsonc'
 import { next } from './configs/next'
 import { playwright } from './configs/playwright'
 import { react } from './configs/react'
 import { sonarjs } from './configs/sonarjs'
-import { sort } from './configs/sort'
 import { stylistic } from './configs/stylistic'
 import { tailwindcss } from './configs/tailwindcss'
 import { testingLibrary } from './configs/testing-library'
@@ -50,10 +52,12 @@ const tszhong0411 = async (options: Options = {}, ...userConfigs: UserConfigs): 
     ...unicorn,
     ...comments,
     ...stylistic,
-    ...sort,
+    ...importSort,
+    ...jsonSort,
     ...sonarjs,
     ...tailwindcss,
-    ...imports
+    ...imports,
+    ...jsonc
   ]
 
   if (enableGitignore) {

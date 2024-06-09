@@ -2,7 +2,7 @@ import type { FlatESLintConfig } from 'eslint-define-config'
 
 import { simpleImportSortPlugin } from '../plugins'
 
-export const sort: FlatESLintConfig[] = [
+export const importSort: FlatESLintConfig[] = [
   {
     plugins: {
       'simple-import-sort': simpleImportSortPlugin
