@@ -1,5 +1,11 @@
 # @tszhong0411/tsconfig
 
+## 0.0.4
+
+### Patch Changes
+
+- [`a6eedd0`](https://github.com/tszhong0411/honghong.me/commit/a6eedd0ae8ec5d4c58b26055143749e480ff8553) Thanks [@tszhong0411](https://github.com/tszhong0411)! - set type to module
+
 ## 0.0.3
 
 ### Patch Changes

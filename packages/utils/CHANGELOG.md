@@ -1,5 +1,13 @@
 # @tszhong0411/utils
 
+## 0.0.9
+
+### Patch Changes
+
+- [`a15dbd0`](https://github.com/tszhong0411/honghong.me/commit/a15dbd08f6edf5c30fd4b9832b0fc695c06c213e) Thanks [@tszhong0411](https://github.com/tszhong0411)! - add range util
+
+- [`9ec0941`](https://github.com/tszhong0411/honghong.me/commit/9ec0941334638c7a6d2d57c1977665c8f6b4b239) Thanks [@tszhong0411](https://github.com/tszhong0411)! - lint json with eslint
+
 ## 0.0.8
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # @tszhong0411/tailwind-config
 
+## 0.0.4
+
+### Patch Changes
+
+- [`4d4342e`](https://github.com/tszhong0411/honghong.me/commit/4d4342e75709ba9939561b76171466e2e6becac9) Thanks [@tszhong0411](https://github.com/tszhong0411)! - update code style
+
+- [`9ec0941`](https://github.com/tszhong0411/honghong.me/commit/9ec0941334638c7a6d2d57c1977665c8f6b4b239) Thanks [@tszhong0411](https://github.com/tszhong0411)! - lint json with eslint
+
 ## 0.0.3
 
 ### Patch Changes
