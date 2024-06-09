@@ -9,7 +9,7 @@ const sortWordsInFile = (path: string) => {
   const words = fs
     .readFileSync(path, 'utf8')
     .split('\n')
-    .map((word) => word.trim())
+    .map((word) => word.trim().toLowerCase())
     .filter((word) => word.length > 0)
 
   words.sort((a, b) => a.localeCompare(b))

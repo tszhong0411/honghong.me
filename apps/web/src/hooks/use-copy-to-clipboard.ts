@@ -22,13 +22,6 @@ export const useCopyToClipboard = (): [
   }: CopyOptions) => {
     if (isCopied) return
 
-    if (!navigator?.clipboard) {
-      toast.error(
-        'Unable to access clipboard. Please grant permission to enable clipboard access.'
-      )
-      return
-    }
-
     try {
       await navigator.clipboard.writeText(text)
       setIsCopied(true)

@@ -13,10 +13,10 @@ export type CommentContext = {
   comment: CommentsOutput[0]
 }
 
-const CommentContext = createContext<CommentContext | undefined>(undefined)
+const Context = createContext<CommentContext | undefined>(undefined)
 
 export const useCommentContext = () => {
-  const context = useContext(CommentContext)
+  const context = useContext(Context)
 
   if (!context) {
     throw new Error('useCommentContext must be used within a CommentProvider')
@@ -25,4 +25,4 @@ export const useCommentContext = () => {
   return context
 }
 
-export const CommentProvider = CommentContext.Provider
+export const CommentProvider = Context.Provider

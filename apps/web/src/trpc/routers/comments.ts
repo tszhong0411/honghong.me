@@ -46,8 +46,8 @@ const baseJSONContent = z.object({
   text: z.string().optional()
 })
 
-const JSONContentSchema: z.ZodType<z.infer<typeof baseJSONContent>> =
-  baseJSONContent.extend({
+const JSONContentSchema: z.ZodType<z.infer<typeof baseJSONContent>>
+  = baseJSONContent.extend({
     content: z.array(z.lazy(() => JSONContentSchema)).optional()
   })
 
@@ -223,7 +223,7 @@ export const commentsRouter = createTRPCRouter({
 
       // Notify the author of the blog post via email
       if (!input.parentId && user.role === 'user') {
-        sendNotification('comment', env.AUTHOR_EMAIL)
+        await sendNotification('comment', env.AUTHOR_EMAIL)
       }
 
       // Notify the parent comment owner via email
@@ -236,7 +236,7 @@ export const commentsRouter = createTRPCRouter({
         })
 
         if (parentComment && parentComment.user.email !== user.email) {
-          sendNotification('reply', parentComment.user.email)
+          await sendNotification('reply', parentComment.user.email)
         }
       }
     }),

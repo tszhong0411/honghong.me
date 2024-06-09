@@ -29,7 +29,7 @@ const SignInModal = () => {
           <Button
             type='button'
             className='h-10 rounded-xl font-bold'
-            onClick={() => signIn('github')}
+            onClick={() => void signIn('github')}
           >
             <SiGithub className='mr-3' />
             Continue with GitHub
@@ -38,7 +38,7 @@ const SignInModal = () => {
             type='button'
             className='h-10 rounded-xl border font-bold'
             variant='ghost'
-            onClick={() => signIn('google')}
+            onClick={() => void signIn('google')}
           >
             <svg
               version='1.1'

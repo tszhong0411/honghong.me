@@ -22,7 +22,7 @@ export const likesRouter = createTRPCRouter({
       .from(posts)
 
     return {
-      likes: Number(likes[0]?.value) ?? 0
+      likes: likes[0]?.value ? Number(likes[0].value) : 0
     }
   }),
   get: publicProcedure
@@ -46,13 +46,6 @@ export const likesRouter = createTRPCRouter({
           .from(likesSessions)
           .where(eq(likesSessions.id, getSessionId(input.slug, ctx.headers)))
       ])
-
-      if (!post) {
-        throw new TRPCError({
-          code: 'NOT_FOUND',
-          message: 'Post not found'
-        })
-      }
 
       return {
         likes: post[0]?.likes ?? 0,

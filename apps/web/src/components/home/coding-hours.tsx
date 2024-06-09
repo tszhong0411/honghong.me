@@ -19,7 +19,8 @@ const CodingHours = () => {
       <div className='flex grow items-center justify-center font-title text-4xl font-semibold'>
         {wakatimeQuery.isLoading
           ? '--'
-          : Math.round(wakatimeQuery.data!.seconds / 60 / 60)}{' '}
+          : Math.round(wakatimeQuery.data!.seconds / 60 / 60)}
+        {' '}
         hrs
       </div>
     </div>

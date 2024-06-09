@@ -23,7 +23,7 @@ const GetInTouch = () => {
   const isInView = useInView(cardsRef, { once: true, margin: '-100px' })
 
   useEffect(() => {
-    animate(
+    void animate(
       [
         ['#pointer', { left: 200, top: 60 }, { duration: 0 }],
         ['#javascript', { opacity: 1 }, { duration: 0.3 }],
@@ -134,7 +134,8 @@ const GetInTouch = () => {
               Any questions about Next.js?
             </p>
             <p className='text-zinc-800 dark:text-zinc-300'>
-              Feel free to reach out to me!{' '}
+              Feel free to reach out to me!
+              {' '}
               <span className='text-muted-foreground'>
                 I'm unavailable for collaboration.
               </span>

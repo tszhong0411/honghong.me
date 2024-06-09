@@ -5,11 +5,11 @@
   "scripts": {
     "build": "turbo build",
     "build:packages": "turbo build --filter=./packages/*",
-    "check": "turbo lint && pnpm format:check && turbo type-check && pnpm check:spelling && pnpm check:knip",
+    "check": "turbo lint && turbo type-check && pnpm check:spelling && pnpm check:knip",
     "check:knip": "dotenv -e .env.local -- knip",
     "check:npm": "pnpm dlx npm-check-updates --deep --interactive --format group",
     "check:spelling": "cspell \"**\" --show-context --show-suggestions",
-    "clean": "turbo clean",
+    "clean": "turbo clean && rm -rf .turbo",
     "db:check": "turbo db:check",
     "db:generate": "turbo db:generate",
     "db:migrate": "turbo db:migrate",
@@ -18,11 +18,9 @@
     "db:studio": "turbo db:studio",
     "dev": "turbo dev",
     "dev:packages": "turbo dev --filter=./packages/*",
-    "format:check": "prettier --cache --check --ignore-path .gitignore --ignore-path .prettierignore .",
-    "format:write": "prettier --cache --write --list-different --ignore-path .gitignore --ignore-path .prettierignore .",
     "preinstall": "npx only-allow pnpm",
     "lint": "turbo lint",
-    "lint:fix": "turbo lint:fix && pnpm format:write && tsx scripts/fix-cspell.ts",
+    "lint:fix": "turbo lint:fix && tsx scripts/fix-cspell.ts",
     "prepare": "husky && pnpm build:packages",
     "release": "changeset publish",
     "test:e2e": "turbo test:e2e",
@@ -43,10 +41,10 @@
     "@cspell/dict-markdown": "^2.0.1",
     "@cspell/dict-node": "^5.0.1",
     "@cspell/dict-npm": "^5.0.16",
+    "@cspell/dict-software-terms": "^3.4.3",
     "@cspell/dict-typescript": "^3.1.4",
     "@playwright/test": "^1.44.1",
     "@tszhong0411/eslint-config": "workspace:*",
-    "@tszhong0411/prettier-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
     "@types/node": "^20.11.20",
     "@vitest/coverage-v8": "^1.6.0",
@@ -54,13 +52,10 @@
     "cspell": "^8.8.1",
     "dotenv-cli": "^7.4.2",
     "eslint": "^8.56.0",
-    "eslint-plugin-testing-library": "^6.2.2",
-    "eslint-plugin-turbo": "^1.13.3",
     "husky": "^9.0.11",
     "jsdom": "^24.1.0",
     "knip": "^5.9.4",
     "lint-staged": "^15.2.2",
-    "prettier": "^3.2.5",
     "tsup": "^8.0.2",
     "tsx": "^4.7.2",
     "turbo": "^1.12.4",
@@ -68,9 +63,8 @@
     "vitest": "^1.6.0"
   },
   "engines": {
-    "node": ">=18",
-    "pnpm": ">=8"
+    "node": ">=21.2.0",
+    "pnpm": ">=9"
   },
-  "packageManager": "pnpm@9.1.2+sha256.19c17528f9ca20bd442e4ca42f00f1b9808a9cb419383cd04ba32ef19322aba7",
-  "prettier": "@tszhong0411/prettier-config"
+  "packageManager": "pnpm@9.2.0+sha256.94fab213df221c55b6956b14a2264c21c6203cca9f0b3b95ff2fe9b84b120390"
 }

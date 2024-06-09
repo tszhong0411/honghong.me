@@ -6,5 +6,5 @@ export const capitalizeFirstChar = (str: string) => {
 }
 
 export const writeJSON = async (filePath: string, data: unknown) => {
-  return await fs.writeFile(filePath, JSON.stringify(data, null, 2), 'utf8')
+  await fs.writeFile(filePath, JSON.stringify(data, null, 2), 'utf8')
 }

@@ -61,19 +61,23 @@ const Pre = (props: PreProps) => {
 
   return (
     <figure className='not-prose group relative my-6 overflow-hidden rounded-lg border bg-secondary/50 text-sm'>
-      {title ? (
-        <div className='flex flex-row items-center gap-2 border-b bg-muted px-4 py-1.5'>
-          {lang ? (
-            <div className='text-muted-foreground'>{getLanguageIcon(lang)}</div>
-          ) : null}
-          <figcaption className='flex-1 truncate text-muted-foreground'>
-            {title}
-          </figcaption>
-          <CopyButton text={text} />
-        </div>
-      ) : (
-        <CopyButton className='absolute right-4 top-3 z-10' text={text} />
-      )}
+      {title
+        ? (
+          <div className='flex flex-row items-center gap-2 border-b bg-muted px-4 py-1.5'>
+            {lang
+              ? (
+                <div className='text-muted-foreground'>{getLanguageIcon(lang)}</div>
+                )
+              : null}
+            <figcaption className='flex-1 truncate text-muted-foreground'>
+              {title}
+            </figcaption>
+            <CopyButton text={text} />
+          </div>
+          )
+        : (
+          <CopyButton className='absolute right-4 top-3 z-10' text={text} />
+          )}
 
       <ScrollArea>
         <pre ref={textInput} className={cn('py-4', className)} {...rest}>
@@ -95,16 +99,12 @@ const CopyButton = (props: CopyButtonProps) => {
         className
       )}
       variant='outline'
-      onClick={() => copy({ text })}
+      onClick={() => { void copy({ text }) }}
       type='button'
       aria-label='Copy code to clipboard'
       {...rest}
     >
-      {isCopied ? (
-        <CheckIcon className='size-4' />
-      ) : (
-        <CopyIcon className='size-4' />
-      )}
+      {isCopied ? (<CheckIcon className='size-4' />) : (<CopyIcon className='size-4' />)}
     </Button>
   )
 }

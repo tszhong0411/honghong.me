@@ -40,8 +40,8 @@ export const generateMetadata = async (
 
   const ISOPublishedTime = new Date(date).toISOString()
   const ISOModifiedTime = new Date(modifiedTime).toISOString()
-  const previousTwitter = (await parent)?.twitter ?? {}
-  const previousOpenGraph = (await parent)?.openGraph ?? {}
+  const previousTwitter = (await parent).twitter ?? {}
+  const previousOpenGraph = (await parent).openGraph ?? {}
 
   return {
     title: title,

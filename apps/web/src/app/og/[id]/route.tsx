@@ -55,6 +55,8 @@ export const GET = async (_: Request, props: OGRouteProps) => {
       .from(posts)
       .where(eq(posts.slug, id))
 
+    const textColor = 'hsl(0 0% 90%)'
+
     return new ImageResponse(
       (
         <div
@@ -73,7 +75,7 @@ export const GET = async (_: Request, props: OGRouteProps) => {
         >
           <div
             style={{
-              color: 'hsl(0 0% 90%)',
+              color: textColor,
               fontSize: 30
             }}
           >
@@ -106,7 +108,7 @@ export const GET = async (_: Request, props: OGRouteProps) => {
                 alignItems: 'center',
                 fontSize: 24,
                 gap: 16,
-                color: 'hsl(0 0% 90%)'
+                color: textColor
               }}
             >
               <span>{post[0]?.likes ?? 0} likes</span>
@@ -116,7 +118,7 @@ export const GET = async (_: Request, props: OGRouteProps) => {
           </div>
           <div
             style={{
-              color: 'hsl(0 0% 90%)',
+              color: textColor,
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',

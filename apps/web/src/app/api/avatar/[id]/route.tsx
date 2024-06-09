@@ -17,7 +17,7 @@ type AvatarRouteProps = {
 const djb2 = (str: string) => {
   let hash = 5381
   for (let i = 0; i < str.length; i++) {
-    hash = (hash << 5) + hash + (str.codePointAt(i) as number)
+    hash = (hash << 5) + hash + (str.codePointAt(i)!)
   }
   return hash
 }
@@ -34,7 +34,7 @@ const generateGradient = (id: string) => {
 
 export const GET = (req: Request, props: AvatarRouteProps) => {
   const params = new URL(req.url)
-  const size = Number(params.searchParams.get('size')) || 40
+  const size = params.searchParams.get('size') ?? '40'
 
   try {
     const {
@@ -70,8 +70,8 @@ export const GET = (req: Request, props: AvatarRouteProps) => {
         </svg>
       ),
       {
-        width: size,
-        height: size
+        width: Number(size),
+        height: Number(size)
       }
     )
   } catch (error) {

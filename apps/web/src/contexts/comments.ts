@@ -4,10 +4,10 @@ export type CommentsContext = {
   slug: string
 }
 
-const CommentsContext = createContext<CommentsContext | undefined>(undefined)
+const Context = createContext<CommentsContext | undefined>(undefined)
 
 export const useCommentsContext = () => {
-  const context = useContext(CommentsContext)
+  const context = useContext(Context)
 
   if (!context) {
     throw new Error('useCommentsContext must be used within a CommentsProvider')
@@ -16,4 +16,4 @@ export const useCommentsContext = () => {
   return context
 }
 
-export const CommentsProvider = CommentsContext.Provider
+export const CommentsProvider = Context.Provider

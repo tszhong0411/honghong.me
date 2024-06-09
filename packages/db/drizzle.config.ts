@@ -9,5 +9,7 @@ export default {
     url: env.DATABASE_URL,
     authToken: env.DATABASE_AUTH_TOKEN
   },
-  out: './src/migrations'
+  out: './src/migrations',
+  strict: true,
+  verbose: true
 } satisfies Config

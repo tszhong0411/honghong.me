@@ -10,14 +10,12 @@ export const flags = {
   stats: isProduction || process.env.NEXT_PUBLIC_FLAG_STATS === 'true',
   spotify: isProduction || process.env.NEXT_PUBLIC_FLAG_SPOTIFY === 'true',
   analytics: isProduction || process.env.NEXT_PUBLIC_FLAG_ANALYTICS === 'true',
-  guestbookNotification:
-    isProduction ||
-    process.env.NEXT_PUBLIC_FLAG_GUESTBOOK_NOTIFICATION === 'true',
-  likeButton:
-    isProduction || process.env.NEXT_PUBLIC_FLAG_LIKE_BUTTON === 'true'
+  guestbookNotification: isProduction || process.env.NEXT_PUBLIC_FLAG_GUESTBOOK_NOTIFICATION === 'true',
+  likeButton: isProduction || process.env.NEXT_PUBLIC_FLAG_LIKE_BUTTON === 'true'
 }
 
 export const env = createEnv({
+  skipValidation: !!process.env.CI,
   extends: [vercel],
 
   shared: {
@@ -99,8 +97,7 @@ export const env = createEnv({
     NEXT_PUBLIC_FLAG_STATS: process.env.NEXT_PUBLIC_FLAG_STATS,
     NEXT_PUBLIC_FLAG_SPOTIFY: process.env.NEXT_PUBLIC_FLAG_SPOTIFY,
     NEXT_PUBLIC_FLAG_ANALYTICS: process.env.NEXT_PUBLIC_FLAG_ANALYTICS,
-    NEXT_PUBLIC_FLAG_GUESTBOOK_NOTIFICATION:
-      process.env.NEXT_PUBLIC_FLAG_GUESTBOOK_NOTIFICATION,
+    NEXT_PUBLIC_FLAG_GUESTBOOK_NOTIFICATION: process.env.NEXT_PUBLIC_FLAG_GUESTBOOK_NOTIFICATION,
     NEXT_PUBLIC_FLAG_LIKE_BUTTON: process.env.NEXT_PUBLIC_FLAG_LIKE_BUTTON
   },
 

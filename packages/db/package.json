@@ -3,6 +3,7 @@
   "name": "@tszhong0411/db",
   "version": "0.0.0",
   "license": "GPL-3.0",
+  "type": "module",
   "main": "./src/index.ts",
   "scripts": {
     "clean": "rm -rf .turbo",
@@ -29,7 +30,6 @@
     "drizzle-kit": "^0.21.1"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "eslint --fix",
-    "*.{js,jsx,ts,tsx,json,md,mdx}": "prettier --cache --write"
+    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx}": "eslint --fix"
   }
 }

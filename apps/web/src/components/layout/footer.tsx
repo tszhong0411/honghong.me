@@ -15,11 +15,11 @@ const Footer = () => {
             key={list.id}
             className='mb-10 flex flex-col items-start gap-4 pr-4'
           >
-            {list.links.map((link, i) => {
+            {list.links.map((link) => {
               const { href, text } = link
 
               return (
-                <Link key={i} href={href} variant='muted'>
+                <Link key={href} href={href} variant='muted'>
                   {text}
                 </Link>
               )

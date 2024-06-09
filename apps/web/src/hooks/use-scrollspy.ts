@@ -11,19 +11,19 @@ export const useScrollspy = (
     const elements = ids.map((id) => document.querySelector(`#${id}`))
 
     if (observer.current) {
-      observer.current?.disconnect()
+      observer.current.disconnect()
     }
 
     observer.current = new IntersectionObserver((entries) => {
       for (const entry of entries) {
-        if (entry?.isIntersecting) {
+        if (entry.isIntersecting) {
           setActiveId(entry.target.id)
         }
       }
     }, options)
 
     for (const el of elements) {
-      el && observer.current?.observe(el)
+      el && observer.current.observe(el)
     }
 
     return () => observer.current?.disconnect()

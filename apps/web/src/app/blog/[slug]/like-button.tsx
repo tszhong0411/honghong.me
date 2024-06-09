@@ -23,7 +23,7 @@ const LikeButton = (props: LikeButtonProps) => {
   const likesQuery = api.likes.get.useQuery({ slug })
   const likesMutation = api.likes.patch.useMutation({
     onMutate: (newData) => {
-      utils.likes.get.cancel({ slug })
+      void utils.likes.get.cancel({ slug })
 
       const previousData = utils.likes.get.getData({ slug })
 
@@ -49,7 +49,7 @@ const LikeButton = (props: LikeButtonProps) => {
 
   const confettiHandler = async () => {
     const { clientWidth, clientHeight } = document.documentElement
-    const boundingBox = buttonRef.current?.getBoundingClientRect?.()
+    const boundingBox = buttonRef.current?.getBoundingClientRect()
 
     const targetY = boundingBox?.y ?? 0
     const targetX = boundingBox?.x ?? 0
@@ -77,9 +77,9 @@ const LikeButton = (props: LikeButtonProps) => {
 
   const likeHandler = () => {
     if (
-      likesQuery.isLoading ||
-      !likesQuery.data ||
-      likesQuery.data.currentUserLikes + cacheCount >= 3
+      likesQuery.isLoading
+      || !likesQuery.data
+      || likesQuery.data.currentUserLikes + cacheCount >= 3
     )
       return
 
@@ -87,7 +87,7 @@ const LikeButton = (props: LikeButtonProps) => {
     setCacheCount(value)
 
     if (likesQuery.data.currentUserLikes + cacheCount === 2) {
-      confettiHandler()
+      void confettiHandler()
     }
 
     return onLikeSaving(value)
@@ -141,11 +141,7 @@ const LikeButton = (props: LikeButtonProps) => {
         Like
         {likesQuery.data && likesQuery.data.likes + cacheCount === 1 ? '' : 's'}
         <Separator orientation='vertical' className='bg-zinc-700' />
-        {likesQuery.isLoading ? (
-          <div> -- </div>
-        ) : (
-          <div>{likesQuery.data!.likes + cacheCount}</div>
-        )}
+        {likesQuery.isLoading ? (<div> -- </div>) : (<div>{likesQuery.data!.likes + cacheCount}</div>)}
       </button>
     </div>
   )

@@ -14,21 +14,26 @@ export const dev = async () => {
     persistent: true
   })
 
-  watcher.on('change', async (path) => {
+  watcher.on('change', (path) => {
     console.log(`${LOG_PREFIX}${path} has changed. Rebuilding...`)
-    await build()
+    void build()
   })
 
   console.log(`${LOG_PREFIX}Watching for file changes...`)
 
-  const handleTermination = () => {
+  const handleTermination = async () => {
     console.log(`${LOG_PREFIX}Terminating watcher...`)
-    watcher.close().then(() => {
-      console.log(`${LOG_PREFIX}Watcher closed.`)
-      throw new Error('Process terminated.')
-    })
+
+    await watcher.close()
+
+    console.log(`${LOG_PREFIX}Watcher closed.`)
+    console.log(`${LOG_PREFIX}Exiting...`)
   }
 
-  process.on('SIGINT', handleTermination)
-  process.on('SIGTERM', handleTermination)
+  process.on('SIGINT', () => {
+    void handleTermination()
+  })
+  process.on('SIGTERM', () => {
+    void handleTermination()
+  })
 }

@@ -33,8 +33,8 @@ export const generateMetadata = async (
   }
 
   const { name, description } = project
-  const previousTwitter = (await parent)?.twitter ?? {}
-  const previousOpenGraph = (await parent)?.openGraph ?? {}
+  const previousTwitter = (await parent).twitter ?? {}
+  const previousOpenGraph = (await parent).openGraph ?? {}
 
   return {
     title: name,

@@ -31,21 +31,27 @@ const CommentReplies = () => {
       <Button
         variant='ghost'
         className='mb-3 px-3 py-2'
-        onClick={() => setIsOpenReplies(!isOpenReplies)}
+        onClick={() => { setIsOpenReplies(!isOpenReplies) }}
         type='button'
       >
-        {isOpenReplies && commentsQuery.isLoading ? (
-          <Loader2Icon className='mr-2 size-3 animate-spin' />
-        ) : null}
-        {comment.replies} Replies
+        {isOpenReplies && commentsQuery.isLoading
+          ? (
+            <Loader2Icon className='mr-2 size-3 animate-spin' />
+            )
+          : null}
+        {comment.replies}
+        {' '}
+        Replies
       </Button>
-      {isOpenReplies ? (
-        <div>
-          {commentsQuery.data?.map((reply) => (
-            <Comment key={reply.id} comment={reply} />
-          ))}
-        </div>
-      ) : null}
+      {isOpenReplies
+        ? (
+          <div>
+            {commentsQuery.data?.map((reply) => (
+              <Comment key={reply.id} comment={reply} />
+            ))}
+          </div>
+          )
+        : null}
     </div>
   )
 }

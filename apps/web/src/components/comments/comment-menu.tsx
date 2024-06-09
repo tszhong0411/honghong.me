@@ -65,24 +65,25 @@ const CommentMenu = () => {
         <DropdownMenuContent align='end'>
           <DropdownMenuItem
             onClick={() =>
-              copy({
+              void copy({
                 text: `${window.location.origin}/blog/${slug}#${commentIdentifier}`,
                 successMessage: 'Link copied to clipboard'
-              })
-            }
+              })}
           >
             Copy link
           </DropdownMenuItem>
           <AlertDialogTrigger asChild>
-            {!isDeleted && data && data.user.id === userId ? (
-              <DropdownMenuItem
-                className='text-red-600 focus:text-red-500'
-                disabled={deleteCommentMutation.isPending}
-                aria-disabled={deleteCommentMutation.isPending}
-              >
-                Delete
-              </DropdownMenuItem>
-            ) : null}
+            {!isDeleted && data && data.user.id === userId
+              ? (
+                <DropdownMenuItem
+                  className='text-red-600 focus:text-red-500'
+                  disabled={deleteCommentMutation.isPending}
+                  aria-disabled={deleteCommentMutation.isPending}
+                >
+                  Delete
+                </DropdownMenuItem>
+                )
+              : null}
           </AlertDialogTrigger>
         </DropdownMenuContent>
       </DropdownMenu>
@@ -97,7 +98,7 @@ const CommentMenu = () => {
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction
-            onClick={() => deleteCommentMutation.mutate({ id })}
+            onClick={() => { deleteCommentMutation.mutate({ id }) }}
             className={buttonVariants({ variant: 'destructive' })}
           >
             Delete

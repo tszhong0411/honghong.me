@@ -26,13 +26,13 @@ const ThemeToggle = () => {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align='end'>
-        <DropdownMenuItem className='gap-2' onClick={() => setTheme('light')}>
+        <DropdownMenuItem className='gap-2' onClick={() => { setTheme('light') }}>
           <SunIcon className='size-[18px]' /> Light
         </DropdownMenuItem>
-        <DropdownMenuItem className='gap-2' onClick={() => setTheme('dark')}>
+        <DropdownMenuItem className='gap-2' onClick={() => { setTheme('dark') }}>
           <MoonIcon className='size-[18px]' /> Dark
         </DropdownMenuItem>
-        <DropdownMenuItem className='gap-2' onClick={() => setTheme('system')}>
+        <DropdownMenuItem className='gap-2' onClick={() => { setTheme('system') }}>
           <MonitorIcon className='size-[18px]' /> System
         </DropdownMenuItem>
       </DropdownMenuContent>

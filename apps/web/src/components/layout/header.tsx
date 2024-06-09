@@ -7,8 +7,8 @@ import { useEffect, useState } from 'react'
 
 import CommandMenu from '@/components/command-menu'
 import MobileNav from '@/components/mobile-nav'
-import Navbar from '@/components/navbar'
 
+import Navbar from './navbar'
 import ThemeToggle from './theme-toggle'
 
 const Header = () => {
@@ -25,7 +25,9 @@ const Header = () => {
 
     document.addEventListener('scroll', changeBackground)
 
-    return () => document.removeEventListener('scroll', changeBackground)
+    return () => {
+      document.removeEventListener('scroll', changeBackground)
+    }
   }, [])
 
   return (

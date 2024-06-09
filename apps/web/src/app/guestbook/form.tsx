@@ -72,7 +72,7 @@ const Form = (props: FormProps) => {
         />
       </div>
       <div className='flex justify-end gap-2'>
-        <Button variant='outline' onClick={() => signOut()} type='button'>
+        <Button variant='outline' onClick={() => { void signOut() }} type='button'>
           Logout
         </Button>
         <Button

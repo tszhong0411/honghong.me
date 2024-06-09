@@ -17,7 +17,7 @@ const CommentReply = () => {
   const utils = api.useUtils()
 
   const commentsMutation = api.comments.post.useMutation({
-    onSuccess: () => setIsReplying(false),
+    onSuccess: () => { setIsReplying(false) },
     onError: (error) => toast.error(error.message),
     onSettled: () => utils.comments.get.invalidate()
   })
@@ -48,7 +48,7 @@ const CommentReply = () => {
       <CommentEditor
         editor={editor}
         onChange={setEditor}
-        placeholder={'Reply to comment'}
+        placeholder='Reply to comment'
         disabled={disabled}
       />
       <div className='mt-2 space-x-1'>
@@ -65,7 +65,7 @@ const CommentReply = () => {
           variant='secondary'
           className='h-8 px-2 text-xs font-medium'
           type='button'
-          onClick={() => setIsReplying(false)}
+          onClick={() => { setIsReplying(false) }}
         >
           Cancel
         </Button>

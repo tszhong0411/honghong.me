@@ -13,7 +13,7 @@ export const GET = () => {
   const feed = new RSS({
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    site_url: `${SITE_URL}`,
+    site_url: SITE_URL,
     feed_url: `${SITE_URL}/rss.xml`,
     language: 'en-US',
     image_url: `${SITE_URL}/images/og.png`

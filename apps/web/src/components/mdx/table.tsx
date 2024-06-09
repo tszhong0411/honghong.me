@@ -20,14 +20,17 @@ const Table = (props: TableProps) => {
       <TableHeader>
         <TableRow>
           {headers.map((header, i) => (
-            <TableHead key={i}>{header}</TableHead>
+            // eslint-disable-next-line @eslint-react/no-array-index-key -- it's static
+            <TableHead key={`${i}`}>{header}</TableHead>
           ))}
         </TableRow>
       </TableHeader>
       <TableBody>
         {rows.map((row, i) => (
+          // eslint-disable-next-line @eslint-react/no-array-index-key -- it's static
           <TableRow key={i}>
             {row.map((cell, j) => (
+              // eslint-disable-next-line @eslint-react/no-array-index-key -- it's static
               <TableCell key={j}>{cell}</TableCell>
             ))}
           </TableRow>

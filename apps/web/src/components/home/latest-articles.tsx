@@ -134,17 +134,9 @@ const Card = (props: CardProps) => {
       <div className='flex items-center justify-between gap-2 px-2 pt-4 text-sm text-zinc-500'>
         {formattedDate}
         <div className='flex gap-2'>
-          {likesQuery.isLoading ? (
-            '--'
-          ) : (
-            <div>{likesQuery.data?.likes} likes</div>
-          )}
+          {likesQuery.isLoading ? ('--') : (<div>{likesQuery.data?.likes} likes</div>)}
           <div>&middot;</div>
-          {viewsQuery.isLoading ? (
-            '--'
-          ) : (
-            <div>{viewsQuery.data?.views} views</div>
-          )}
+          {viewsQuery.isLoading ? ('--') : (<div>{viewsQuery.data?.views} views</div>)}
         </div>
       </div>
       <div className='flex flex-col px-2 py-4 transition-transform ease-out group-hover:translate-x-0.5'>

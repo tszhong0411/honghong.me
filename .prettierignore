@@ -1,5 +1,0 @@
-# Misc
-.changeset/*.md
-packages/db/src/migrations/**
-pnpm-lock.yaml
-pnpm-workspace.yaml

@@ -15,7 +15,7 @@ export type MDXRemoteProps = SerializeResult & {
 export const MDXRemote = ({
   compiledSource,
   frontmatter,
-  components = {}
+  components
 }: MDXRemoteProps) => {
   const isDev = process.env.NODE_ENV === 'development'
 

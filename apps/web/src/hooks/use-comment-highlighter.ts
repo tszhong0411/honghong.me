@@ -55,8 +55,7 @@ export const useCommentHighlighter = (
         targetComment.classList.add('highlighted-comment')
 
         setTimeout(() => {
-          const top =
-            targetComment.getBoundingClientRect().top + window.scrollY - 128
+          const top = targetComment.getBoundingClientRect().top + window.scrollY - 128
 
           window.scrollTo({ top, behavior: 'smooth' })
         }, 0)

@@ -115,28 +115,28 @@ const Items = () => {
   ]
 
   return (
-    <>
-      <div className='mb-4 mt-16 grid gap-4 sm:grid-cols-2 md:grid-cols-3'>
-        {data.map((item, i) => {
-          const {
-            icon,
-            link,
-            title,
-            value,
-            linkText,
-            gradient: { startColor, endColor },
-            suffix
-          } = item
+    <div className='mb-4 mt-16 grid gap-4 sm:grid-cols-2 md:grid-cols-3'>
+      {data.map((item) => {
+        const {
+          icon,
+          link,
+          title,
+          value,
+          linkText,
+          gradient: { startColor, endColor },
+          suffix
+        } = item
 
-          return (
-            <Link
-              key={i}
-              href={link}
-              className='group relative overflow-hidden rounded-lg border p-4 shadow-sm transition-colors hover:bg-zinc-100 dark:bg-zinc-900 dark:hover:bg-zinc-800'
-            >
-              <div className='flex flex-col items-center justify-center gap-2 transition-transform group-hover:-translate-y-24 group-focus:-translate-y-24'>
-                <div className='flex items-center gap-2 text-3xl font-bold'>
-                  {value === 0 || value !== undefined ? (
+        return (
+          <Link
+            key={item.title}
+            href={link}
+            className='group relative overflow-hidden rounded-lg border p-4 shadow-sm transition-colors hover:bg-zinc-100 dark:bg-zinc-900 dark:hover:bg-zinc-800'
+          >
+            <div className='flex flex-col items-center justify-center gap-2 transition-transform group-hover:-translate-y-24 group-focus:-translate-y-24'>
+              <div className='flex items-center gap-2 text-3xl font-bold'>
+                {value === 0 || value !== undefined
+                  ? (
                     <>
                       <span>{icon}</span>
                       <div
@@ -150,21 +150,19 @@ const Items = () => {
                         {suffix ? <span>{` ${suffix}`}</span> : null}
                       </div>
                     </>
-                  ) : (
-                    '--'
-                  )}
-                </div>
-                <div className='text-xl font-medium'>{title}</div>
+                    )
+                  : ('--')}
               </div>
-              <span className='absolute left-1/2 top-1/2 flex -translate-x-1/2 translate-y-24 items-center gap-1 text-2xl font-bold opacity-0 transition group-hover:-translate-y-1/2 group-hover:opacity-100 group-focus:-translate-y-1/2 group-focus:opacity-100'>
-                {linkText}
-                <ArrowRightIcon className='size-6' />
-              </span>
-            </Link>
-          )
-        })}
-      </div>
-    </>
+              <div className='text-xl font-medium'>{title}</div>
+            </div>
+            <span className='absolute left-1/2 top-1/2 flex -translate-x-1/2 translate-y-24 items-center gap-1 text-2xl font-bold opacity-0 transition group-hover:-translate-y-1/2 group-hover:opacity-100 group-focus:-translate-y-1/2 group-focus:opacity-100'>
+              {linkText}
+              <ArrowRightIcon className='size-6' />
+            </span>
+          </Link>
+        )
+      })}
+    </div>
   )
 }
 

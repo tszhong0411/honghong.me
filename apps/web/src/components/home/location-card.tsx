@@ -9,8 +9,7 @@ const LocationCard = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const pointerInteracting = useRef<number | null>(null)
   const pointerInteractionMovement = useRef(0)
-  const fadeMask =
-    'radial-gradient(circle at 50% 50%, rgb(0, 0, 0) 60%, rgb(0, 0, 0, 0) 70%)'
+  const fadeMask = 'radial-gradient(circle at 50% 50%, rgb(0, 0, 0) 60%, rgb(0, 0, 0, 0) 70%)'
 
   const [{ r }, api] = useSpring(() => ({
     r: 0,
@@ -90,10 +89,8 @@ const LocationCard = () => {
             <canvas
               ref={canvasRef}
               onPointerDown={(e) => {
-                pointerInteracting.current =
-                  e.clientX - pointerInteractionMovement.current
-                canvasRef.current &&
-                  (canvasRef.current.style.cursor = 'grabbing')
+                pointerInteracting.current = e.clientX - pointerInteractionMovement.current
+                canvasRef.current && (canvasRef.current.style.cursor = 'grabbing')
               }}
               onPointerUp={() => {
                 pointerInteracting.current = null
@@ -107,17 +104,16 @@ const LocationCard = () => {
                 if (pointerInteracting.current !== null) {
                   const delta = e.clientX - pointerInteracting.current
                   pointerInteractionMovement.current = delta
-                  api.start({
+                  void api.start({
                     r: delta / 200
                   })
                 }
               }}
               onTouchMove={(e) => {
                 if (pointerInteracting.current !== null && e.touches[0]) {
-                  const delta =
-                    e.touches[0].clientX - pointerInteracting.current
+                  const delta = e.touches[0].clientX - pointerInteracting.current
                   pointerInteractionMovement.current = delta
-                  api.start({
+                  void api.start({
                     r: delta / 100
                   })
                 }

@@ -42,7 +42,7 @@ const CommentActions = () => {
   > = {
     onMutate: (newData) => {
       increment()
-      utils.comments.get.cancel()
+      void utils.comments.get.cancel()
 
       const target = {
         slug,
@@ -65,8 +65,8 @@ const CommentActions = () => {
             if (c.liked === true) likes--
             if (c.liked === false) dislikes--
 
-            if (hasLike && newData.like === true) likes++
-            if (hasLike && newData.like === false) dislikes++
+            if (hasLike && newData.like) likes++
+            if (hasLike && !newData.like) dislikes++
 
             return {
               ...c,
@@ -91,7 +91,7 @@ const CommentActions = () => {
       decrement()
 
       if (getCount() === 0) {
-        utils.comments.get.invalidate()
+        void utils.comments.get.invalidate()
       }
     }
   }
@@ -114,7 +114,7 @@ const CommentActions = () => {
       <Button
         type='button'
         variant='secondary'
-        onClick={() => rateHandler(true)}
+        onClick={() => { rateHandler(true) }}
         className={rateVariants({
           active: comment.liked === true || !isAuthenticated
         })}
@@ -127,7 +127,7 @@ const CommentActions = () => {
       <Button
         type='button'
         variant='secondary'
-        onClick={() => rateHandler(false)}
+        onClick={() => { rateHandler(false) }}
         className={rateVariants({
           active: comment.liked === false || !isAuthenticated
         })}
@@ -137,16 +137,18 @@ const CommentActions = () => {
         <ThumbsDownIcon className='size-4' />
         {comment.dislikes}
       </Button>
-      {!comment.parentId && isAuthenticated ? (
-        <Button
-          type='button'
-          variant='secondary'
-          className='h-8 px-2 text-xs font-medium text-muted-foreground'
-          onClick={() => setIsReplying(true)}
-        >
-          Reply
-        </Button>
-      ) : null}
+      {!comment.parentId && isAuthenticated
+        ? (
+          <Button
+            type='button'
+            variant='secondary'
+            className='h-8 px-2 text-xs font-medium text-muted-foreground'
+            onClick={() => { setIsReplying(true) }}
+          >
+            Reply
+          </Button>
+          )
+        : null}
     </div>
   )
 }

@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
-  "dictionaries": ["libraries", "project-words"],
+  "dictionaries": ["libraries", "project-words", "names"],
   "dictionaryDefinitions": [
     {
       "name": "libraries",
@@ -11,6 +11,11 @@
       "name": "project-words",
       "path": "./.cspell/project-words.txt",
       "description": "A list of project specific words"
+    },
+    {
+      "name": "names",
+      "path": "./.cspell/names.txt",
+      "description": "A list of names (e.g. people, services, etc.)"
     }
   ],
   "files": [
@@ -20,7 +25,6 @@
     "*lock.{yaml,json}",
     "CHANGELOG.md",
     "*.mp4",
-    "volumes",
     "*.txt",
     "packages/db/src/migrations"
   ],
@@ -30,7 +34,8 @@
     "@cspell/dict-fullstack/cspell-ext.json",
     "@cspell/dict-markdown/cspell-ext.json",
     "@cspell/dict-npm/cspell-ext.json",
-    "@cspell/dict-node/cspell-ext.json"
+    "@cspell/dict-node/cspell-ext.json",
+    "@cspell/dict-software-terms/cspell-ext.json",
   ],
   "language": "en-US",
   "useGitignore": true,

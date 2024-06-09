@@ -55,7 +55,7 @@ export const generateTypesDts = async (defs: DocumentType[]) => {
     sourceFile.addTypeAliases(
       nestedDefs.map((def) => ({
         name: capitalizeFirstChar(def.name),
-        type: `{ ${def.fields ? renderFields(def.fields) : ''} }`,
+        type: `{ ${renderFields(def.fields)} }`,
         isExported: true
       }))
     )

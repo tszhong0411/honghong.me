@@ -75,11 +75,7 @@ const Header = (props: HeaderProps) => {
           </div>
           <div className='space-y-1 md:mx-auto'>
             <div className='text-muted-foreground'>Comments</div>
-            {commentsQuery.isLoading ? (
-              '--'
-            ) : (
-              <div>{commentsQuery.data?.value}</div>
-            )}
+            {commentsQuery.isLoading ? ('--') : (<div>{commentsQuery.data?.value}</div>)}
           </div>
         </div>
       </div>

@@ -65,7 +65,7 @@ const config: NextAuthConfig = {
             name: profile.name,
             image: profile.picture
           })
-          .where(eq(users.id, user.id as string))
+          .where(eq(users.id, user.id!))
       }
 
       if (account?.provider === 'github') {
@@ -77,7 +77,7 @@ const config: NextAuthConfig = {
             name: profile.name,
             image: profile.avatar_url as string
           })
-          .where(eq(users.id, user.id as string))
+          .where(eq(users.id, user.id!))
       }
       return true
     },

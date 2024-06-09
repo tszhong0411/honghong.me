@@ -3,9 +3,10 @@
   "name": "@tszhong0411/mdx",
   "version": "0.0.0",
   "license": "GPL-3.0",
-  "main": "./dist/index.mjs",
-  "module": "./dist/index.mjs",
-  "bin": "./dist/cli.mjs",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "bin": "./dist/cli.js",
   "files": [
     "dist"
   ],
@@ -17,7 +18,7 @@
     "lint:fix": "eslint --fix .",
     "type-check": "tsc --noEmit"
   },
-  "types": "./dist/index.d.mts",
+  "types": "./dist/index.d.ts",
   "dependencies": {
     "@mdx-js/mdx": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
@@ -52,16 +53,15 @@
   },
   "exports": {
     ".": {
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.mts"
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     },
     "./client": {
-      "import": "./dist/client.mjs",
-      "types": "./dist/client.d.mts"
+      "import": "./dist/client.js",
+      "types": "./dist/client.d.ts"
     }
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "eslint --fix",
-    "*.{js,jsx,ts,tsx,json,md,mdx}": "prettier --cache --write"
+    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx}": "eslint --fix"
   }
 }

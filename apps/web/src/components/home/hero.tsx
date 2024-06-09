@@ -31,7 +31,7 @@ const Hero = () => {
   const [scope, animate] = useAnimate()
 
   useEffect(() => {
-    animate(
+    void animate(
       [
         [scope.current, { y: '0%' }, { duration: 0 }],
         [scope.current, { y: '-25%' }, { duration: 0.3, at: '+1.3' }],
@@ -62,16 +62,19 @@ const Hero = () => {
           }}
         >
           <h1 className='bg-gradient-to-b from-black via-black/90 to-black/70 to-90% bg-clip-text font-title text-2xl font-bold leading-9 text-transparent dark:from-white dark:via-white/90 dark:to-white/70 sm:text-4xl sm:leading-[3.5rem]'>
-            I'm Hong, a Full Stack Developer creating{' '}
+            I'm Hong, a Full Stack Developer creating
+            {' '}
             <div className='inline-grid h-9 overflow-hidden sm:h-14'>
               <div ref={scope}>
-                {TEXTS.map(({ text, className }, index) => (
-                  <div className={className} key={index}>
+                {TEXTS.map(({ text, className }, i) => (
+                  // eslint-disable-next-line @eslint-react/no-array-index-key -- it's static
+                  <div className={className} key={i}>
                     {text}
                   </div>
                 ))}
               </div>
-            </div>{' '}
+            </div>
+            {' '}
             websites using React.
           </h1>
           <div className='text-sm text-muted-foreground'>

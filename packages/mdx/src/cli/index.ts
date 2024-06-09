@@ -15,4 +15,4 @@ program
   .description('Same as "mdx build" but with watch mode')
   .action(dev)
 
-program.parseAsync()
+await program.parseAsync()

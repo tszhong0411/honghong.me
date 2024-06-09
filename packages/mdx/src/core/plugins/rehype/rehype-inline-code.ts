@@ -20,16 +20,14 @@ export const rehypeInlineCode: Plugin<[RehypeShikiCoreOptions], Root> = () => {
   let promise: Promise<Highlighter>
 
   return async (tree) => {
-    if (!promise) {
-      promise = getHighlighter({
-        themes: themeNames,
-        langs: [import('shiki/langs/js.mjs')]
-      })
-    }
+    promise = getHighlighter({
+      themes: themeNames,
+      langs: [import('shiki/langs/js.mjs')]
+    })
 
     const highlighter = await promise
 
-    return visit(tree, 'element', (node, index, parent) => {
+    visit(tree, 'element', (node, index, parent) => {
       if (node.tagName !== 'code') return
 
       const match = (node.children[0] as any)?.value?.match(inlineShikiRegex)

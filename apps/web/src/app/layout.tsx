@@ -8,9 +8,9 @@ import Image from 'next/image'
 
 import '@/styles/globals.css'
 import Analytics from '@/components/analytics'
-import Footer from '@/components/footer'
-import Header from '@/components/header'
 import Hello from '@/components/hello'
+import Footer from '@/components/layout/footer'
+import Header from '@/components/layout/header'
 import SignInModal from '@/components/sign-in-modal'
 import {
   SITE_DESCRIPTION,

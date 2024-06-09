@@ -6,7 +6,7 @@ const baseURL = 'http://localhost:3000'
 
 export default defineConfig({
   globalTimeout: CI ? 1000 * 60 * 10 : undefined,
-  testDir: './src/tests/e2e',
+  testDir: './src/e2e',
   fullyParallel: true,
   forbidOnly: CI,
   retries: CI ? 2 : 0,

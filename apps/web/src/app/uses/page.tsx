@@ -6,8 +6,7 @@ import Mdx from '@/components/mdx'
 import PageTitle from '@/components/page-title'
 
 const title = 'Uses'
-const description =
-  'This is the equipment I currently use for gaming, programming, making videos, and every day.'
+const description = 'This is the equipment I currently use for gaming, programming, making videos, and every day.'
 
 type UsesPageProps = {
   params: Record<string, never>
@@ -18,8 +17,8 @@ export const generateMetadata = async (
   _: UsesPageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> => {
-  const previousOpenGraph = (await parent)?.openGraph ?? {}
-  const previousTwitter = (await parent)?.twitter ?? {}
+  const previousOpenGraph = (await parent).openGraph ?? {}
+  const previousTwitter = (await parent).twitter ?? {}
 
   return {
     title,

@@ -1,4 +1,5 @@
 import { Skeleton } from '@tszhong0411/ui'
+import { range } from '@tszhong0411/utils'
 
 const Placeholder = () => (
   <div className='rounded-lg border p-4 shadow-sm dark:bg-zinc-900/30'>
@@ -16,8 +17,8 @@ const Placeholder = () => (
 const Loader = () => {
   return (
     <>
-      {Array.from({ length: 8 }).map((_, i) => (
-        <Placeholder key={i} />
+      {range(8).map((n) => (
+        <Placeholder key={n} />
       ))}
     </>
   )

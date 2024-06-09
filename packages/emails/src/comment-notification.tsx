@@ -45,9 +45,7 @@ const CommentNotification = (props: CommentNotificationProps) => {
         />
       </Head>
       <Preview>
-        New {type === 'comment' ? 'comment' : 'reply'} on the post &quot;
-        {post.title}
-        &quot; on honghong.me
+        New {type === 'comment' ? 'comment' : 'reply'} on the post &quot; {post.title} &quot; on honghong.me
       </Preview>
       <Body
         style={{
@@ -79,8 +77,7 @@ const CommentNotification = (props: CommentNotificationProps) => {
           </Section>
           <Section>
             <Text>
-              A new {type === 'comment' ? 'comment' : 'reply'} has been posted
-              on the post &quot;{post.title}&quot; on honghong.me
+              A new {type === 'comment' ? 'comment' : 'reply'} has been posted on the post &quot;{post.title}&quot; on honghong.me
             </Text>
           </Section>
           <Hr

@@ -62,7 +62,7 @@
     "js-sha512": "^0.9.0",
     "lucide-react": "^0.341.0",
     "next": "14.2.3",
-    "next-auth": "5.0.0-beta.18",
+    "next-auth": "5.0.0-beta.19",
     "next-themes": "^0.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -92,14 +92,13 @@
     "@types/tinycolor2": "^1.4.6",
     "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
-    "eslint-config-next": "^14.2.3",
     "postcss": "^8.4.35",
     "postcss-lightningcss": "^1.0.0",
+    "postcss-load-config": "^6.0.1",
     "schema-dts": "^1.1.2",
     "tailwindcss": "^3.4.1"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "eslint --fix",
-    "*.{js,jsx,ts,tsx,json,md,mdx}": "prettier --cache --write"
+    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx}": "eslint --fix"
   }
 }

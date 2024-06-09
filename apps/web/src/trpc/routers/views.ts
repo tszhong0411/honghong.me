@@ -13,7 +13,7 @@ export const viewsRouter = createTRPCRouter({
       .from(posts)
 
     return {
-      views: Number(views[0]?.value) ?? 0
+      views: views[0]?.value ? Number(views[0].value) : 0
     }
   }),
   get: publicProcedure

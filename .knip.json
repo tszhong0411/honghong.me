@@ -3,19 +3,19 @@
   "ignoreBinaries": ["only-allow"],
   "workspaces": {
     ".": {
-      "project": ["**/*.{js,ts,tsx}"]
+      "commitlint": {
+        "config": "commitlint.config.mjs"
+      }
     },
     "apps/web": {
-      "entry": ["./src/**/*.{js,ts,tsx}", "mdx.config.ts"],
-      "ignoreDependencies": ["sharp"]
+      "entry": ["./src/**/*.{js,jsx,ts,tsx}", "mdx.config.ts"],
+      "ignoreDependencies": ["sharp"],
+      "postcss": {
+        "config": "postcss.config.mjs"
+      }
     },
     "packages/eslint-config": {
       "eslint": {
-        "config": "index.js"
-      }
-    },
-    "packages/prettier-config": {
-      "prettier": {
         "config": "index.js"
       }
     }
