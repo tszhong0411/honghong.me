@@ -9,27 +9,11 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Create dotenv file
-        run: |
-          echo "DATABASE_URL=http://127.0.0.1:8080" >> .env.local
-          echo "DATABASE_AUTH_TOKEN=no-need-for-local-development" >> .env.local
+      - name: Check setup
+        uses: ./.github/actions/check-setup
 
       - name: Check
         run: pnpm check

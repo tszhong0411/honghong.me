@@ -39,3 +39,8 @@ honghong-me.db-wal
 
 # MDX
 .mdx
+
+# Tests
+playwright-report/
+test-results/
+coverage/
