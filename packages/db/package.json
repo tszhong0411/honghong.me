@@ -30,6 +30,6 @@
     "drizzle-kit": "^0.21.1"
   },
   "lint-staged": {
-    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx}": "eslint --fix"
+    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix"
   }
 }

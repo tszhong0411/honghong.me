@@ -3,19 +3,19 @@
   "dictionaries": ["libraries", "project-words", "names"],
   "dictionaryDefinitions": [
     {
+      "description": "A list of libraries",
       "name": "libraries",
-      "path": "./.cspell/libraries.txt",
-      "description": "A list of libraries"
+      "path": "./.cspell/libraries.txt"
     },
     {
+      "description": "A list of project specific words",
       "name": "project-words",
-      "path": "./.cspell/project-words.txt",
-      "description": "A list of project specific words"
+      "path": "./.cspell/project-words.txt"
     },
     {
+      "description": "A list of names (e.g. people, services, etc.)",
       "name": "names",
-      "path": "./.cspell/names.txt",
-      "description": "A list of names (e.g. people, services, etc.)"
+      "path": "./.cspell/names.txt"
     }
   ],
   "files": [
@@ -35,7 +35,7 @@
     "@cspell/dict-markdown/cspell-ext.json",
     "@cspell/dict-npm/cspell-ext.json",
     "@cspell/dict-node/cspell-ext.json",
-    "@cspell/dict-software-terms/cspell-ext.json",
+    "@cspell/dict-software-terms/cspell-ext.json"
   ],
   "language": "en-US",
   "useGitignore": true,

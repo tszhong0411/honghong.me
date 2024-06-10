@@ -75,16 +75,6 @@
     },
     "lint": {},
     "lint:fix": {},
-    "test:unit": {},
-    "test:unit:coverage": {
-      "interactive": true,
-      "persistent": true,
-      "cache": false
-    },
-    "test:unit:ui": {
-      "persistent": true,
-      "interactive": true
-    },
     "test:e2e": {
       "outputs": [
         "playwright-report/**",
@@ -96,6 +86,17 @@
         "playwright-report/**",
         "test-results/**"
       ]
+    },
+    "test:unit": {},
+    "test:unit:coverage": {
+      "cache": false,
+      "interactive": true,
+      "persistent": true
+    },
+    "test:unit:ui": {
+      "cache": false,
+      "interactive": true,
+      "persistent": true
     },
     "type-check": {}
   }
