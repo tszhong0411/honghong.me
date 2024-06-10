@@ -1,0 +1,50 @@
+name: End to end tests
+
+on:
+  pull_request:
+
+jobs:
+  test:
+    name: End to end tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check setup
+        uses: ./.github/actions/check-setup
+
+      - name: Build the app
+        run: pnpm --filter=web build
+
+      - name: Store Playwright's Version
+        run: |
+          PLAYWRIGHT_VERSION=$(pnpm ls @playwright/test | grep @playwright | sed 's/.*@//')
+          echo "Playwright's Version: $PLAYWRIGHT_VERSION"
+          echo "PLAYWRIGHT_VERSION=$PLAYWRIGHT_VERSION" >> $GITHUB_ENV
+
+      - name: Cache Playwright Browsers for Playwright's Version
+        id: cache-playwright-browsers
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-browsers-${{ env.PLAYWRIGHT_VERSION }}
+
+      - name: Setup Playwright
+        if: steps.cache-playwright-browsers.outputs.cache-hit != 'true'
+        run: pnpm exec playwright install --with-deps
+
+      - name: Setup Playwright with cache
+        run: npx playwright install-deps
+        if: steps.cache-playwright-browsers.outputs.cache-hit == 'true'
+
+      - name: Run Playwright tests
+        run: pnpm run test:e2e
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: apps/web/playwright-report/
+          retention-days: 30

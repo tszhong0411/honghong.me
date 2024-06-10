@@ -43,7 +43,8 @@
       "outputs": [
         ".next/**",
         "!.next/cache/**",
-        "dist/**"
+        "dist/**",
+        ".mdx/**"
       ]
     },
     "build:packages": {

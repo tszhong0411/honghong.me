@@ -2,7 +2,6 @@ name: Lint
 
 on:
   pull_request:
-    types: [opened, synchronize]
 
 jobs:
   lint:
@@ -14,6 +13,9 @@ jobs:
 
       - name: Check setup
         uses: ./.github/actions/check-setup
+
+      - name: Build the app
+        run: pnpm --filter=web build
 
       - name: Check
         run: pnpm check
