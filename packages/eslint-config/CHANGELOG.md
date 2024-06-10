@@ -1,5 +1,11 @@
 # @tszhong0411/eslint-config
 
+## 0.1.1
+
+### Patch Changes
+
+- [`e56a965`](https://github.com/tszhong0411/honghong.me/commit/e56a96595ccc1d702377c74d3329d77f247c22ca) Thanks [@tszhong0411](https://github.com/tszhong0411)! - sort json
+
 ## 0.1.0
 
 ### Patch Changes
