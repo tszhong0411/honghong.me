@@ -65,7 +65,11 @@
     },
     "db:push": {},
     "db:seed": {},
-    "db:studio": {},
+    "db:studio": {
+      "cache": false,
+      "interactive": true,
+      "persistent": true
+    },
     "dev": {
       "cache": false,
       "persistent": true
