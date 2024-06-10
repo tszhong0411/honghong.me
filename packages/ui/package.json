@@ -74,6 +74,6 @@
     "access": "public"
   },
   "lint-staged": {
-    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx}": "eslint --fix"
+    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix"
   }
 }
