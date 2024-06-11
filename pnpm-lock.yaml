@@ -713,10 +713,10 @@ importers:
   packages/utils:
     dependencies:
       clsx:
-        specifier: ^2.1.0
+        specifier: ^2.1.1
         version: 2.1.1
       tailwind-merge:
-        specifier: ^2.2.1
+        specifier: ^2.3.0
         version: 2.3.0
     devDependencies:
       '@tszhong0411/eslint-config':
@@ -726,7 +726,7 @@ importers:
         specifier: workspace:*
         version: link:../tsconfig
       '@types/node':
-        specifier: ^20.11.20
+        specifier: ^20.14.2
         version: 20.14.2
 
 packages:
