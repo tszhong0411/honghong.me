@@ -1,16 +1,18 @@
-import { Body } from '@react-email/body'
-import { Column } from '@react-email/column'
-import { Container } from '@react-email/container'
-import { Font } from '@react-email/font'
-import { Head } from '@react-email/head'
-import { Hr } from '@react-email/hr'
-import { Html } from '@react-email/html'
-import { Img } from '@react-email/img'
-import { Link } from '@react-email/link'
-import { Preview } from '@react-email/preview'
-import { Row } from '@react-email/row'
-import { Section } from '@react-email/section'
-import { Text } from '@react-email/text'
+import {
+  Body,
+  Column,
+  Container,
+  Font,
+  Head,
+  Hr,
+  Html,
+  Img,
+  Link,
+  Preview,
+  Row,
+  Section,
+  Text
+} from '@react-email/components'
 
 type CommentNotificationProps = {
   comment: string
