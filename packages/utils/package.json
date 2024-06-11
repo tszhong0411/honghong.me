@@ -34,13 +34,13 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "clsx": "^2.1.0",
-    "tailwind-merge": "^2.2.1"
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.3.0"
   },
   "devDependencies": {
     "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
-    "@types/node": "^20.11.20"
+    "@types/node": "^20.14.2"
   },
   "publishConfig": {
     "access": "public"
