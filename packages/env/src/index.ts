@@ -16,7 +16,7 @@ export const flags = {
 
 export const env = createEnv({
   skipValidation: !!process.env.CI,
-  extends: [vercel],
+  extends: [vercel()],
 
   shared: {
     NODE_ENV: z
