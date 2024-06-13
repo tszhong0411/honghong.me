@@ -1,9 +1,9 @@
 {
-  "name": "@tszhong0411/web",
-  "type": "module",
-  "version": "0.0.0",
   "private": true,
+  "name": "@tszhong0411/web",
+  "version": "0.0.0",
   "license": "GPL-3.0",
+  "type": "module",
   "scripts": {
     "build": "mdx build && dotenv -e ../../.env.local -- next build",
     "bundle-analyzer": "cross-env ANALYZE=true pnpm run build",
@@ -99,6 +99,7 @@
     "tailwindcss": "^3.4.4"
   },
   "lint-staged": {
-    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix"
+    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix",
+    "**/*": "prettier --write --ignore-unknown"
   }
 }

@@ -6,7 +6,8 @@ import PageTitle from '@/components/page-title'
 import Items from './items'
 
 const title = 'Dashboard'
-const description = 'This is my personal dashboard, built with Next.js API routes deployed as serverless functions. I use this dashboard to track various metrics across platforms like YouTube, GitHub, and more.'
+const description =
+  'This is my personal dashboard, built with Next.js API routes deployed as serverless functions. I use this dashboard to track various metrics across platforms like YouTube, GitHub, and more.'
 
 type DashboardPageProps = {
   params: Record<string, never>

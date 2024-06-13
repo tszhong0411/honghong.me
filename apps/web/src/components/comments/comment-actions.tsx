@@ -114,7 +114,9 @@ const CommentActions = () => {
       <Button
         type='button'
         variant='secondary'
-        onClick={() => { rateHandler(true) }}
+        onClick={() => {
+          rateHandler(true)
+        }}
         className={rateVariants({
           active: comment.liked === true || !isAuthenticated
         })}
@@ -127,7 +129,9 @@ const CommentActions = () => {
       <Button
         type='button'
         variant='secondary'
-        onClick={() => { rateHandler(false) }}
+        onClick={() => {
+          rateHandler(false)
+        }}
         className={rateVariants({
           active: comment.liked === false || !isAuthenticated
         })}
@@ -137,18 +141,18 @@ const CommentActions = () => {
         <ThumbsDownIcon className='size-4' />
         {comment.dislikes}
       </Button>
-      {!comment.parentId && isAuthenticated
-        ? (
-          <Button
-            type='button'
-            variant='secondary'
-            className='h-8 px-2 text-xs font-medium text-muted-foreground'
-            onClick={() => { setIsReplying(true) }}
-          >
-            Reply
-          </Button>
-          )
-        : null}
+      {!comment.parentId && isAuthenticated ? (
+        <Button
+          type='button'
+          variant='secondary'
+          className='text-muted-foreground h-8 px-2 text-xs font-medium'
+          onClick={() => {
+            setIsReplying(true)
+          }}
+        >
+          Reply
+        </Button>
+      ) : null}
     </div>
   )
 }

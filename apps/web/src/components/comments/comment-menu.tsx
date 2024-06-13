@@ -44,9 +44,7 @@ const CommentMenu = () => {
     parentId
   } = comment
 
-  const commentIdentifier = parentId
-    ? `comment-${parentId}-${id}`
-    : `comment-${id}`
+  const commentIdentifier = parentId ? `comment-${parentId}-${id}` : `comment-${id}`
 
   return (
     <AlertDialog>
@@ -68,22 +66,21 @@ const CommentMenu = () => {
               void copy({
                 text: `${window.location.origin}/blog/${slug}#${commentIdentifier}`,
                 successMessage: 'Link copied to clipboard'
-              })}
+              })
+            }
           >
             Copy link
           </DropdownMenuItem>
           <AlertDialogTrigger asChild>
-            {!isDeleted && data && data.user.id === userId
-              ? (
-                <DropdownMenuItem
-                  className='text-red-600 focus:text-red-500'
-                  disabled={deleteCommentMutation.isPending}
-                  aria-disabled={deleteCommentMutation.isPending}
-                >
-                  Delete
-                </DropdownMenuItem>
-                )
-              : null}
+            {!isDeleted && data && data.user.id === userId ? (
+              <DropdownMenuItem
+                className='text-red-600 focus:text-red-500'
+                disabled={deleteCommentMutation.isPending}
+                aria-disabled={deleteCommentMutation.isPending}
+              >
+                Delete
+              </DropdownMenuItem>
+            ) : null}
           </AlertDialogTrigger>
         </DropdownMenuContent>
       </DropdownMenu>
@@ -91,14 +88,15 @@ const CommentMenu = () => {
         <AlertDialogHeader>
           <AlertDialogTitle>Delete a comment</AlertDialogTitle>
           <AlertDialogDescription>
-            Are you sure you want to delete this comment? This action cannot be
-            undone.
+            Are you sure you want to delete this comment? This action cannot be undone.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction
-            onClick={() => { deleteCommentMutation.mutate({ id }) }}
+            onClick={() => {
+              deleteCommentMutation.mutate({ id })
+            }}
             className={buttonVariants({ variant: 'destructive' })}
           >
             Delete

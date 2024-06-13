@@ -41,10 +41,7 @@ export const GET = async (_: Request, props: OGRouteProps) => {
     }
 
     const roboto = await fetch(
-      new URL(
-        '../../../../public/fonts/RobotoCondensed-Bold.ttf',
-        import.meta.url
-      )
+      new URL('../../../../public/fonts/RobotoCondensed-Bold.ttf', import.meta.url)
     ).then((res) => res.arrayBuffer())
 
     const post = await db
@@ -94,8 +91,7 @@ export const GET = async (_: Request, props: OGRouteProps) => {
                 WebkitBackgroundClip: 'text',
                 letterSpacing: '-0.03em',
                 color: 'transparent',
-                backgroundImage:
-                  'linear-gradient(91.52deg, #FF4D4D 0.79%, #FFCCCC 109.05%)',
+                backgroundImage: 'linear-gradient(91.52deg, #FF4D4D 0.79%, #FFCCCC 109.05%)',
                 marginBottom: 24
               }}
             >

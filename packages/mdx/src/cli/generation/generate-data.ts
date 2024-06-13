@@ -11,10 +11,7 @@ import { generateIndexDts } from './generate-index-d-ts'
 import { generateIndexMjs } from './generate-index-mjs'
 import { generateTypesDts } from './generate-types-d-ts'
 
-export const generateData = async (
-  defs: DocumentType[],
-  contentDirPath: string
-) => {
+export const generateData = async (defs: DocumentType[], contentDirPath: string) => {
   for (const def of defs) {
     const entries = await getEntries(def.filePathPattern, contentDirPath)
 

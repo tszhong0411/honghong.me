@@ -27,32 +27,16 @@ const GetInTouch = () => {
       [
         ['#pointer', { left: 200, top: 60 }, { duration: 0 }],
         ['#javascript', { opacity: 1 }, { duration: 0.3 }],
-        [
-          '#pointer',
-          { left: 50, top: 102 },
-          { at: '+0.5', duration: 0.5, ease: 'easeInOut' }
-        ],
+        ['#pointer', { left: 50, top: 102 }, { at: '+0.5', duration: 0.5, ease: 'easeInOut' }],
         ['#javascript', { opacity: 0.4 }, { at: '-0.3', duration: 0.1 }],
         ['#react-js', { opacity: 1 }, { duration: 0.3 }],
-        [
-          '#pointer',
-          { left: 224, top: 170 },
-          { at: '+0.5', duration: 0.5, ease: 'easeInOut' }
-        ],
+        ['#pointer', { left: 224, top: 170 }, { at: '+0.5', duration: 0.5, ease: 'easeInOut' }],
         ['#react-js', { opacity: 0.4 }, { at: '-0.3', duration: 0.1 }],
         ['#typescript', { opacity: 1 }, { duration: 0.3 }],
-        [
-          '#pointer',
-          { left: 88, top: 198 },
-          { at: '+0.5', duration: 0.5, ease: 'easeInOut' }
-        ],
+        ['#pointer', { left: 88, top: 198 }, { at: '+0.5', duration: 0.5, ease: 'easeInOut' }],
         ['#typescript', { opacity: 0.4 }, { at: '-0.3', duration: 0.1 }],
         ['#next-js', { opacity: 1 }, { duration: 0.3 }],
-        [
-          '#pointer',
-          { left: 200, top: 60 },
-          { at: '+0.5', duration: 0.5, ease: 'easeInOut' }
-        ],
+        ['#pointer', { left: 200, top: 60 }, { at: '+0.5', duration: 0.5, ease: 'easeInOut' }],
         ['#next-js', { opacity: 0.4 }, { at: '-0.3', duration: 0.1 }]
       ],
       {
@@ -63,7 +47,7 @@ const GetInTouch = () => {
 
   return (
     <motion.div
-      className='relative rounded-xl p-1 shadow-feature-card backdrop-blur-lg will-change-[transform,opacity] dark:shadow-feature-card-dark'
+      className='shadow-feature-card dark:shadow-feature-card-dark relative rounded-xl p-1 backdrop-blur-lg will-change-[transform,opacity]'
       initial='initial'
       animate={isInView ? 'animate' : 'initial'}
       variants={variants}
@@ -130,20 +114,17 @@ const GetInTouch = () => {
           </div>
 
           <div className='flex flex-col justify-center px-4'>
-            <p className='mb-2 bg-gradient-to-r from-black to-black/70 bg-clip-text font-title text-3xl font-bold text-transparent dark:from-zinc-100 dark:to-zinc-400'>
+            <p className='font-title mb-2 bg-gradient-to-r from-black to-black/70 bg-clip-text text-3xl font-bold text-transparent dark:from-zinc-100 dark:to-zinc-400'>
               Any questions about Next.js?
             </p>
             <p className='text-zinc-800 dark:text-zinc-300'>
-              Feel free to reach out to me!
-              {' '}
-              <span className='text-muted-foreground'>
-                I'm unavailable for collaboration.
-              </span>
+              Feel free to reach out to me!{' '}
+              <span className='text-muted-foreground'>I'm unavailable for collaboration.</span>
             </p>
             <div className='my-8'>
               <a
                 href='mailto:me@honghong.me'
-                className='rounded-full bg-email-button px-4 py-2 text-sm text-white'
+                className='bg-email-button rounded-full px-4 py-2 text-sm text-white'
               >
                 me@honghong.me
               </a>

@@ -135,23 +135,23 @@ const Items = () => {
           >
             <div className='flex flex-col items-center justify-center gap-2 transition-transform group-hover:-translate-y-24 group-focus:-translate-y-24'>
               <div className='flex items-center gap-2 text-3xl font-bold'>
-                {value === 0 || value !== undefined
-                  ? (
-                    <>
-                      <span>{icon}</span>
-                      <div
-                        style={{
-                          background: `linear-gradient(122.25deg, ${startColor} 12.16%, ${endColor} 70.98%)`,
-                          WebkitBackgroundClip: 'text',
-                          WebkitTextFillColor: 'transparent'
-                        }}
-                      >
-                        <Counter value={Number(value)} />
-                        {suffix ? <span>{` ${suffix}`}</span> : null}
-                      </div>
-                    </>
-                    )
-                  : ('--')}
+                {value === 0 || value !== undefined ? (
+                  <>
+                    <span>{icon}</span>
+                    <div
+                      style={{
+                        background: `linear-gradient(122.25deg, ${startColor} 12.16%, ${endColor} 70.98%)`,
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent'
+                      }}
+                    >
+                      <Counter value={Number(value)} />
+                      {suffix ? <span>{` ${suffix}`}</span> : null}
+                    </div>
+                  </>
+                ) : (
+                  '--'
+                )}
               </div>
               <div className='text-xl font-medium'>{title}</div>
             </div>

@@ -77,9 +77,9 @@ const LikeButton = (props: LikeButtonProps) => {
 
   const likeHandler = () => {
     if (
-      likesQuery.isLoading
-      || !likesQuery.data
-      || likesQuery.data.currentUserLikes + cacheCount >= 3
+      likesQuery.isLoading ||
+      !likesQuery.data ||
+      likesQuery.data.currentUserLikes + cacheCount >= 3
     )
       return
 
@@ -141,7 +141,7 @@ const LikeButton = (props: LikeButtonProps) => {
         Like
         {likesQuery.data && likesQuery.data.likes + cacheCount === 1 ? '' : 's'}
         <Separator orientation='vertical' className='bg-zinc-700' />
-        {likesQuery.isLoading ? (<div> -- </div>) : (<div>{likesQuery.data!.likes + cacheCount}</div>)}
+        {likesQuery.isLoading ? <div> -- </div> : <div>{likesQuery.data!.likes + cacheCount}</div>}
       </button>
     </div>
   )

@@ -1,6 +1,5 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "@tszhong0411/tsconfig/nextjs.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
@@ -10,6 +9,8 @@
     },
     "plugins": [{ "name": "next" }]
   },
+  "exclude": ["node_modules"],
+  "extends": "@tszhong0411/tsconfig/nextjs.json",
   "include": [
     "next-env.d.ts",
     "next.config.mjs",
@@ -19,6 +20,5 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".mdx/generated"
-  ],
-  "exclude": ["node_modules"]
+  ]
 }

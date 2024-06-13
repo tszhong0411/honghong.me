@@ -43,7 +43,7 @@ const SelectedProjects = (props: ProjectsProps) => {
       className='relative my-24 will-change-[transform,opacity]'
     >
       <motion.h2
-        className='text-center font-title text-3xl font-bold sm:text-4xl'
+        className='font-title text-center text-3xl font-bold sm:text-4xl'
         initial={{
           y: 30,
           opacity: 0
@@ -103,7 +103,7 @@ const Card = (props: CardProps) => {
     <Link
       key={slug}
       href={`/projects/${slug}`}
-      className='group relative rounded-xl p-2 shadow-feature-card dark:shadow-feature-card-dark'
+      className='shadow-feature-card dark:shadow-feature-card-dark group relative rounded-xl p-2'
     >
       <div className='flex items-center justify-between p-4'>
         <div className='flex items-center gap-3'>
@@ -121,9 +121,7 @@ const Card = (props: CardProps) => {
       />
       <div className='absolute bottom-6 left-7 flex flex-col transition-[left] ease-out group-hover:left-[30px]'>
         <h3 className='font-title text-2xl font-bold text-white'>{name}</h3>
-        <p className='mt-2 text-zinc-100 dark:text-muted-foreground'>
-          {description}
-        </p>
+        <p className='dark:text-muted-foreground mt-2 text-zinc-100'>{description}</p>
       </div>
     </Link>
   )

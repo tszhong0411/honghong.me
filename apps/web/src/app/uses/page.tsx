@@ -6,7 +6,8 @@ import Mdx from '@/components/mdx'
 import PageTitle from '@/components/page-title'
 
 const title = 'Uses'
-const description = 'This is the equipment I currently use for gaming, programming, making videos, and every day.'
+const description =
+  'This is the equipment I currently use for gaming, programming, making videos, and every day.'
 
 type UsesPageProps = {
   params: Record<string, never>

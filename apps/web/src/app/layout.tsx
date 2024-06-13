@@ -12,12 +12,7 @@ import Hello from '@/components/hello'
 import Footer from '@/components/layout/footer'
 import Header from '@/components/layout/header'
 import SignInModal from '@/components/sign-in-modal'
-import {
-  SITE_DESCRIPTION,
-  SITE_NAME,
-  SITE_TITLE,
-  SITE_URL
-} from '@/lib/constants'
+import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from '@/lib/constants'
 
 import Providers from './providers'
 
@@ -124,22 +119,14 @@ const RootLayout = (props: RootLayoutProps) => {
   return (
     <html
       lang='en-US'
-      className={cn(
-        GeistSans.variable,
-        GeistMono.variable,
-        calcom.variable,
-        'scroll-smooth'
-      )}
+      className={cn(GeistSans.variable, GeistMono.variable, calcom.variable, 'scroll-smooth')}
       suppressHydrationWarning
     >
       <body>
         <Providers>
           <Hello />
           <Header />
-          <main
-            id='skip-nav'
-            className='mx-auto mb-16 max-w-5xl px-5 py-24 sm:px-8'
-          >
+          <main id='skip-nav' className='mx-auto mb-16 max-w-5xl px-5 py-24 sm:px-8'>
             {children}
           </main>
 

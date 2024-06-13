@@ -42,7 +42,7 @@ const LatestArticles = (props: LatestArticlesProps) => {
       className='my-24 will-change-[transform,opacity]'
     >
       <motion.h2
-        className='text-center font-title text-3xl font-bold sm:text-4xl'
+        className='font-title text-center text-3xl font-bold sm:text-4xl'
         initial={{
           y: 30,
           opacity: 0
@@ -115,7 +115,7 @@ const Card = (props: CardProps) => {
   return (
     <Link
       href={`/blog/${slug}`}
-      className='group relative rounded-xl p-2 shadow-feature-card dark:shadow-feature-card-dark'
+      className='shadow-feature-card dark:shadow-feature-card-dark group relative rounded-xl p-2'
     >
       <div className='flex items-center justify-between p-4'>
         <div className='flex items-center gap-3'>
@@ -134,14 +134,14 @@ const Card = (props: CardProps) => {
       <div className='flex items-center justify-between gap-2 px-2 pt-4 text-sm text-zinc-500'>
         {formattedDate}
         <div className='flex gap-2'>
-          {likesQuery.isLoading ? ('--') : (<div>{likesQuery.data?.likes} likes</div>)}
+          {likesQuery.isLoading ? '--' : <div>{likesQuery.data?.likes} likes</div>}
           <div>&middot;</div>
-          {viewsQuery.isLoading ? ('--') : (<div>{viewsQuery.data?.views} views</div>)}
+          {viewsQuery.isLoading ? '--' : <div>{viewsQuery.data?.views} views</div>}
         </div>
       </div>
       <div className='flex flex-col px-2 py-4 transition-transform ease-out group-hover:translate-x-0.5'>
         <h3 className='font-title text-2xl font-bold'>{title}</h3>
-        <p className='mt-2 text-muted-foreground'>{summary}</p>
+        <p className='text-muted-foreground mt-2'>{summary}</p>
       </div>
     </Link>
   )

@@ -1,11 +1,6 @@
 'use client'
 
-import {
-  Skeleton,
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger
-} from '@tszhong0411/ui'
+import { Skeleton, Tooltip, TooltipContent, TooltipTrigger } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import Image from 'next/image'
 import { useMemo, useState } from 'react'
@@ -102,33 +97,27 @@ const Comment = (props: CommentProps) => {
               <div className='flex items-center gap-2 text-sm'>
                 <div className='font-semibold'>{name}</div>
                 <div className='text-muted-foreground'>
-                  {formattedDate
-                    ? (
-                      <Tooltip>
-                        <TooltipTrigger>
-                          <span>{formattedDate}</span>
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          {new Date(createdAt).toString()}
-                        </TooltipContent>
-                      </Tooltip>
-                      )
-                    : (
-                      <Skeleton className='h-4 w-24' />
-                      )}
+                  {formattedDate ? (
+                    <Tooltip>
+                      <TooltipTrigger>
+                        <span>{formattedDate}</span>
+                      </TooltipTrigger>
+                      <TooltipContent>{new Date(createdAt).toString()}</TooltipContent>
+                    </Tooltip>
+                  ) : (
+                    <Skeleton className='h-4 w-24' />
+                  )}
                 </div>
-                {role === 'admin'
-                  ? (
-                    <div className='rounded-full border border-red-500/50 bg-red-100/50 px-2 py-0.5 text-sm dark:bg-red-900/50'>
-                      Author
-                    </div>
-                    )
-                  : null}
+                {role === 'admin' ? (
+                  <div className='rounded-full border border-red-500/50 bg-red-100/50 px-2 py-0.5 text-sm dark:bg-red-900/50'>
+                    Author
+                  </div>
+                ) : null}
               </div>
               <CommentMenu />
             </div>
 
-            <div className={cn(isDeleted && 'text-sm text-muted-foreground')}>
+            <div className={cn(isDeleted && 'text-muted-foreground text-sm')}>
               <CommentEditor
                 editor={editor}
                 onChange={setEditor}

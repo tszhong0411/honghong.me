@@ -61,7 +61,7 @@ const LocationCard = () => {
   }, [r])
 
   return (
-    <div className='relative flex h-60 flex-col gap-6 overflow-hidden rounded-xl p-4 shadow-feature-card dark:shadow-feature-card-dark lg:p-6'>
+    <div className='shadow-feature-card dark:shadow-feature-card-dark relative flex h-60 flex-col gap-6 overflow-hidden rounded-xl p-4 lg:p-6'>
       <div className='flex items-center gap-2'>
         <MapPinIcon className='size-[18px]' />
         <h2 className='text-sm font-light'>Hong Kong</h2>

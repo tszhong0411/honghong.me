@@ -18,9 +18,7 @@
       "path": "./.cspell/names.txt"
     }
   ],
-  "files": [
-    "**/*.{js,cjs,mjs,ts,jsx,tsx,md,mdx,html,json,css,toml,yaml,yml,css}"
-  ],
+  "files": ["**/*.{js,cjs,mjs,ts,jsx,tsx,md,mdx,html,json,css,toml,yaml,yml,css}"],
   "ignorePaths": [
     "*lock.{yaml,json}",
     "CHANGELOG.md",

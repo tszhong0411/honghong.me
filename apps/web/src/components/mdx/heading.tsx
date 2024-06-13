@@ -5,10 +5,7 @@ import { cn } from '@tszhong0411/utils'
 import { LinkIcon } from 'lucide-react'
 
 type Types = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
-type HeadingProps<T extends Types> = Omit<
-  React.ComponentPropsWithoutRef<T>,
-  'as'
-> & {
+type HeadingProps<T extends Types> = Omit<React.ComponentPropsWithoutRef<T>, 'as'> & {
   as?: T
 }
 
@@ -22,7 +19,7 @@ const Heading = <T extends Types = 'h1'>(props: HeadingProps<T>) => {
         {children}
         <LinkIcon
           aria-label='Link to section'
-          className='ml-2 inline size-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100'
+          className='text-muted-foreground ml-2 inline size-4 opacity-0 transition-opacity group-hover:opacity-100'
         />
       </a>
     </Component>

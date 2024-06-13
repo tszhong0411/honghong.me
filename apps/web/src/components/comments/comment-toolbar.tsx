@@ -31,10 +31,7 @@ const CommentToolbar = (props: CommentToolbarProps) => {
           aria-label={`Toggle ${item.name}`}
           variant='ghost'
           size='icon'
-          className={cn(
-            'size-7',
-            editor.isActive(item.name) && 'bg-accent text-accent-foreground'
-          )}
+          className={cn('size-7', editor.isActive(item.name) && 'bg-accent text-accent-foreground')}
           disabled={!editor.can().toggleMark(item.name) || !editor.isEditable}
           onClick={() => editor.commands.toggleMark(item.name)}
           type='button'

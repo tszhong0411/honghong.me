@@ -1,12 +1,7 @@
 {
+  "private": true,
   "name": "honghong-me-monorepo",
   "type": "module",
-  "private": true,
-  "packageManager": "pnpm@9.2.0+sha256.94fab213df221c55b6956b14a2264c21c6203cca9f0b3b95ff2fe9b84b120390",
-  "engines": {
-    "node": ">=20.11.0",
-    "pnpm": ">=9"
-  },
   "scripts": {
     "build": "turbo build",
     "build:packages": "turbo build --filter=./packages/*",
@@ -23,9 +18,11 @@
     "db:studio": "turbo db:studio",
     "dev": "turbo dev",
     "dev:packages": "turbo dev --filter=./packages/*",
+    "format:check": "prettier --cache --check --ignore-path .gitignore --ignore-path .prettierignore .",
+    "format:write": "prettier --cache --write --list-different --ignore-path .gitignore --ignore-path .prettierignore .",
     "preinstall": "npx only-allow pnpm",
     "lint": "turbo lint",
-    "lint:fix": "turbo lint:fix && tsx scripts/fix-cspell.ts",
+    "lint:fix": "turbo lint:fix && pnpm format:write && tsx scripts/fix-cspell.ts",
     "prepare": "husky && pnpm build:packages",
     "release": "changeset publish",
     "test:e2e": "turbo test:e2e",
@@ -50,6 +47,7 @@
     "@cspell/dict-typescript": "^3.1.5",
     "@playwright/test": "^1.44.1",
     "@tszhong0411/eslint-config": "workspace:*",
+    "@tszhong0411/prettier-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
     "@types/node": "^20.14.2",
     "@vitest/coverage-v8": "^1.6.0",
@@ -61,13 +59,20 @@
     "jsdom": "^24.1.0",
     "knip": "^5.18.2",
     "lint-staged": "^15.2.6",
+    "prettier": "^3.3.2",
     "tsup": "^8.1.0",
     "tsx": "^4.15.2",
     "turbo": "^2.0.3",
     "typescript": "^5.4.5",
     "vitest": "^1.6.0"
   },
+  "engines": {
+    "node": ">=20.11.0",
+    "pnpm": ">=9"
+  },
   "lint-staged": {
-    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix"
-  }
+    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix",
+    "**/*": "prettier --write --ignore-unknown"
+  },
+  "packageManager": "pnpm@9.2.0+sha256.94fab213df221c55b6956b14a2264c21c6203cca9f0b3b95ff2fe9b84b120390"
 }

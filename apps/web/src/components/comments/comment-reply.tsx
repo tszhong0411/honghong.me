@@ -17,7 +17,9 @@ const CommentReply = () => {
   const utils = api.useUtils()
 
   const commentsMutation = api.comments.post.useMutation({
-    onSuccess: () => { setIsReplying(false) },
+    onSuccess: () => {
+      setIsReplying(false)
+    },
     onError: (error) => toast.error(error.message),
     onSettled: () => utils.comments.get.invalidate()
   })
@@ -65,7 +67,9 @@ const CommentReply = () => {
           variant='secondary'
           className='h-8 px-2 text-xs font-medium'
           type='button'
-          onClick={() => { setIsReplying(false) }}
+          onClick={() => {
+            setIsReplying(false)
+          }}
         >
           Cancel
         </Button>

@@ -38,7 +38,7 @@ const AboutMe = () => {
       className='relative my-24 will-change-[transform,opacity]'
     >
       <motion.h2
-        className='text-center font-title text-3xl font-bold sm:text-4xl'
+        className='font-title text-center text-3xl font-bold sm:text-4xl'
         initial={{
           y: 30,
           opacity: 0
@@ -80,10 +80,7 @@ const AboutMe = () => {
         </div>
       </motion.div>
       <div className='my-8 flex items-center justify-center'>
-        <Link
-          href='/about'
-          className={cn(buttonVariants({ variant: 'outline' }), 'rounded-xl')}
-        >
+        <Link href='/about' className={cn(buttonVariants({ variant: 'outline' }), 'rounded-xl')}>
           Know more about me
         </Link>
       </div>

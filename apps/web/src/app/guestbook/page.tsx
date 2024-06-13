@@ -51,10 +51,7 @@ const GuestbookPage = async () => {
 
   return (
     <>
-      <PageTitle
-        title='Guestbook'
-        description='You can tell me anything here!'
-      />
+      <PageTitle title='Guestbook' description='You can tell me anything here!' />
       <div className='mx-auto max-w-lg'>
         <Pinned />
         {user ? <Form user={user} /> : <SignIn />}

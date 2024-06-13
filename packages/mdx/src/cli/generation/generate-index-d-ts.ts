@@ -11,11 +11,9 @@ export const generateIndexDts = async (defs: DocumentType[]) => {
     }
   })
 
-  const sourceFile = project.createSourceFile(
-    `${BASE_FOLDER_PATH}/index.d.ts`,
-    undefined,
-    { overwrite: true }
-  )
+  const sourceFile = project.createSourceFile(`${BASE_FOLDER_PATH}/index.d.ts`, undefined, {
+    overwrite: true
+  })
 
   sourceFile.addImportDeclaration({
     namedImports: [...defs.map((def) => def.name), 'DocumentTypes'],

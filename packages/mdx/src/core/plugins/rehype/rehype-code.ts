@@ -13,10 +13,7 @@ export const DEFAULT_SHIKI_THEMES = {
   dark: 'github-dark-default'
 }
 
-export const rehypeCode: [
-  Plugin<[RehypeShikiOptions], Root>,
-  RehypeShikiOptions
-] = [
+export const rehypeCode: [Plugin<[RehypeShikiOptions], Root>, RehypeShikiOptions] = [
   rehypeShiki,
   {
     transformers: [

@@ -17,7 +17,7 @@ type AvatarRouteProps = {
 const djb2 = (str: string) => {
   let hash = 5381
   for (let i = 0; i < str.length; i++) {
-    hash = (hash << 5) + hash + (str.codePointAt(i)!)
+    hash = (hash << 5) + hash + str.codePointAt(i)!
   }
   return hash
 }
@@ -59,13 +59,7 @@ export const GET = (req: Request, props: AvatarRouteProps) => {
                 <stop offset='100%' stopColor={gradient.toColor} />
               </linearGradient>
             </defs>
-            <rect
-              fill='url(#gradient)'
-              x='0'
-              y='0'
-              width={size}
-              height={size}
-            />
+            <rect fill='url(#gradient)' x='0' y='0' width={size} height={size} />
           </g>
         </svg>
       ),

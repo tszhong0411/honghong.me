@@ -10,7 +10,8 @@ export const flags = {
   stats: isProduction || process.env.NEXT_PUBLIC_FLAG_STATS === 'true',
   spotify: isProduction || process.env.NEXT_PUBLIC_FLAG_SPOTIFY === 'true',
   analytics: isProduction || process.env.NEXT_PUBLIC_FLAG_ANALYTICS === 'true',
-  guestbookNotification: isProduction || process.env.NEXT_PUBLIC_FLAG_GUESTBOOK_NOTIFICATION === 'true',
+  guestbookNotification:
+    isProduction || process.env.NEXT_PUBLIC_FLAG_GUESTBOOK_NOTIFICATION === 'true',
   likeButton: isProduction || process.env.NEXT_PUBLIC_FLAG_LIKE_BUTTON === 'true'
 }
 
@@ -19,9 +20,7 @@ export const env = createEnv({
   extends: [vercel()],
 
   shared: {
-    NODE_ENV: z
-      .enum(['development', 'production', 'test'])
-      .default('development')
+    NODE_ENV: z.enum(['development', 'production', 'test']).default('development')
   },
 
   server: {

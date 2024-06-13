@@ -7,23 +7,19 @@ import { useEffect } from 'react'
 const TEXTS = [
   {
     text: 'amazing',
-    className:
-      'bg-clip-text text-transparent bg-gradient-to-r from-[#ff1835] to-[#ffc900]'
+    className: 'bg-clip-text text-transparent bg-gradient-to-r from-[#ff1835] to-[#ffc900]'
   },
   {
     text: 'stunning',
-    className:
-      'bg-clip-text text-transparent bg-gradient-to-r from-[#0077ff] to-[#00e7df]'
+    className: 'bg-clip-text text-transparent bg-gradient-to-r from-[#0077ff] to-[#00e7df]'
   },
   {
     text: 'fantastic',
-    className:
-      'bg-clip-text text-transparent bg-gradient-to-r from-[#7f00de] to-[#ff007f]'
+    className: 'bg-clip-text text-transparent bg-gradient-to-r from-[#7f00de] to-[#ff007f]'
   },
   {
     text: 'amazing',
-    className:
-      'bg-clip-text text-transparent bg-gradient-to-r from-[#ff1835] to-[#ffc900]'
+    className: 'bg-clip-text text-transparent bg-gradient-to-r from-[#ff1835] to-[#ffc900]'
   }
 ]
 
@@ -61,9 +57,8 @@ const Hero = () => {
             duration: 0.5
           }}
         >
-          <h1 className='bg-gradient-to-b from-black via-black/90 to-black/70 to-90% bg-clip-text font-title text-2xl font-bold leading-9 text-transparent dark:from-white dark:via-white/90 dark:to-white/70 sm:text-4xl sm:leading-[3.5rem]'>
-            I'm Hong, a Full Stack Developer creating
-            {' '}
+          <h1 className='font-title bg-gradient-to-b from-black via-black/90 to-black/70 to-90% bg-clip-text text-2xl font-bold leading-9 text-transparent sm:text-4xl sm:leading-[3.5rem] dark:from-white dark:via-white/90 dark:to-white/70'>
+            I'm Hong, a Full Stack Developer creating{' '}
             <div className='inline-grid h-9 overflow-hidden sm:h-14'>
               <div ref={scope}>
                 {TEXTS.map(({ text, className }, i) => (
@@ -73,13 +68,10 @@ const Hero = () => {
                   </div>
                 ))}
               </div>
-            </div>
-            {' '}
+            </div>{' '}
             websites using React.
           </h1>
-          <div className='text-sm text-muted-foreground'>
-            Hong Kong • UTC/GMT +8
-          </div>
+          <div className='text-muted-foreground text-sm'>Hong Kong • UTC/GMT +8</div>
         </motion.div>
         <motion.div
           className='relative size-20 md:size-28'

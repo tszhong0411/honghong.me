@@ -26,7 +26,7 @@ const ProjectCard = (props: ProjectCardProps) => {
   return (
     <Link
       href={`/projects/${slug}`}
-      className='group rounded-xl px-2 py-4 shadow-feature-card dark:shadow-feature-card-dark'
+      className='shadow-feature-card dark:shadow-feature-card-dark group rounded-xl px-2 py-4'
     >
       <BlurImage
         src={`/images/projects/${slug}/cover.png`}

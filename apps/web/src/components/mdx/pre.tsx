@@ -1,10 +1,6 @@
 'use client'
 
-import {
-  SiJavascript,
-  SiReact,
-  SiTypescript
-} from '@icons-pack/react-simple-icons'
+import { SiJavascript, SiReact, SiTypescript } from '@icons-pack/react-simple-icons'
 import { Button, type ButtonProps, ScrollArea } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { CheckIcon, CopyIcon, FileIcon, TerminalIcon } from 'lucide-react'
@@ -60,24 +56,16 @@ const Pre = (props: PreProps) => {
   }, [])
 
   return (
-    <figure className='not-prose group relative my-6 overflow-hidden rounded-lg border bg-secondary/50 text-sm'>
-      {title
-        ? (
-          <div className='flex flex-row items-center gap-2 border-b bg-muted px-4 py-1.5'>
-            {lang
-              ? (
-                <div className='text-muted-foreground'>{getLanguageIcon(lang)}</div>
-                )
-              : null}
-            <figcaption className='flex-1 truncate text-muted-foreground'>
-              {title}
-            </figcaption>
-            <CopyButton text={text} />
-          </div>
-          )
-        : (
-          <CopyButton className='absolute right-4 top-3 z-10' text={text} />
-          )}
+    <figure className='not-prose bg-secondary/50 group relative my-6 overflow-hidden rounded-lg border text-sm'>
+      {title ? (
+        <div className='bg-muted flex flex-row items-center gap-2 border-b px-4 py-1.5'>
+          {lang ? <div className='text-muted-foreground'>{getLanguageIcon(lang)}</div> : null}
+          <figcaption className='text-muted-foreground flex-1 truncate'>{title}</figcaption>
+          <CopyButton text={text} />
+        </div>
+      ) : (
+        <CopyButton className='absolute right-4 top-3 z-10' text={text} />
+      )}
 
       <ScrollArea>
         <pre ref={textInput} className={cn('py-4', className)} {...rest}>
@@ -94,17 +82,16 @@ const CopyButton = (props: CopyButtonProps) => {
 
   return (
     <Button
-      className={cn(
-        'size-8 p-0 opacity-0 transition-opacity group-hover:opacity-100',
-        className
-      )}
+      className={cn('size-8 p-0 opacity-0 transition-opacity group-hover:opacity-100', className)}
       variant='outline'
-      onClick={() => { void copy({ text }) }}
+      onClick={() => {
+        void copy({ text })
+      }}
       type='button'
       aria-label='Copy code to clipboard'
       {...rest}
     >
-      {isCopied ? (<CheckIcon className='size-4' />) : (<CopyIcon className='size-4' />)}
+      {isCopied ? <CheckIcon className='size-4' /> : <CopyIcon className='size-4' />}
     </Button>
   )
 }

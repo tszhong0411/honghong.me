@@ -11,16 +11,8 @@ type Options = {
 }
 
 export const useFormattedDate = (date: Date | string, options: Options) => {
-  const {
-    relative = false,
-    format,
-    loading,
-    prefix = '',
-    suffix = ''
-  } = options
-  const [formattedDate, setFormattedDate] = useState<string | null>(
-    loading ?? null
-  )
+  const { relative = false, format, loading, prefix = '', suffix = '' } = options
+  const [formattedDate, setFormattedDate] = useState<string | null>(loading ?? null)
 
   useEffect(() => {
     if (relative) {

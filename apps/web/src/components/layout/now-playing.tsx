@@ -25,19 +25,15 @@ const NowPlaying = () => {
 
       <div className='inline-flex w-full items-center justify-center gap-1 text-sm md:justify-start'>
         <p>
-          {spotifyQuery.isLoading
-            ? (
-                'Loading ...'
-              )
-            : (spotifyQuery.data?.isPlaying && spotifyQuery.data.songUrl
-                ? (
-                  <Link href={spotifyQuery.data.songUrl}>
-                    {spotifyQuery.data.name} - {spotifyQuery.data.artist}
-                  </Link>
-                  )
-                : (
-                    'Not Listening - Spotify'
-                  ))}
+          {spotifyQuery.isLoading ? (
+            'Loading ...'
+          ) : spotifyQuery.data?.isPlaying && spotifyQuery.data.songUrl ? (
+            <Link href={spotifyQuery.data.songUrl}>
+              {spotifyQuery.data.name} - {spotifyQuery.data.artist}
+            </Link>
+          ) : (
+            'Not Listening - Spotify'
+          )}
         </p>
       </div>
     </div>

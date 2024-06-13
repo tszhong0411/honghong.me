@@ -1,6 +1,7 @@
 {
   "$schema": "https://unpkg.com/knip@5/schema.json",
   "ignoreBinaries": ["only-allow"],
+  "ignoreDependencies": ["prettier-plugin-*"],
   "workspaces": {
     ".": {
       "commitlint": {
@@ -14,9 +15,9 @@
         "config": "postcss.config.mjs"
       }
     },
-    "packages/eslint-config": {
-      "eslint": {
-        "config": "index.js"
+    "packages/prettier-config": {
+      "prettier": {
+        "config": "../../prettier.config.mjs"
       }
     }
   }

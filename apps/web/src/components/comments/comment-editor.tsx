@@ -66,10 +66,7 @@ const CommentEditor = (props: CommentEditorProps) => {
     'aria-disabled:cursor-not-allowed aria-disabled:opacity-80'
   )
 
-  const tiptapClassName = cn(
-    'focus-visible:outline-none',
-    editable && 'min-h-10 px-3 py-2'
-  )
+  const tiptapClassName = cn('focus-visible:outline-none', editable && 'min-h-10 px-3 py-2')
 
   useEffect(() => {
     const instance = new Editor({

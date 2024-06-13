@@ -49,8 +49,8 @@ export const TRPCReactProvider = (props: TRPCReactProviderProps) => {
       links: [
         loggerLink({
           enabled: (op) =>
-            process.env.NODE_ENV === 'development'
-            || (op.direction === 'down' && op.result instanceof Error)
+            process.env.NODE_ENV === 'development' ||
+            (op.direction === 'down' && op.result instanceof Error)
         }),
         unstable_httpBatchStreamLink({
           transformer: SuperJSON,
@@ -66,10 +66,7 @@ export const TRPCReactProvider = (props: TRPCReactProviderProps) => {
   )
 
   return (
-    <QueryNormalizerProvider
-      queryClient={queryClient}
-      normalizerConfig={{ devLogging: true }}
-    >
+    <QueryNormalizerProvider queryClient={queryClient} normalizerConfig={{ devLogging: true }}>
       <api.Provider client={trpcClient} queryClient={queryClient}>
         <QueryClientProvider client={queryClient}>
           <ReactQueryStreamedHydration transformer={SuperJSON}>

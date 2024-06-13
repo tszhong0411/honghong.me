@@ -11,12 +11,9 @@ export const githubRouter = createTRPCRouter({
       auth: env.GITHUB_TOKEN
     })
 
-    const { data: repos } = await octokit.request(
-      'GET /users/{username}/repos',
-      {
-        username: GITHUB_USERNAME
-      }
-    )
+    const { data: repos } = await octokit.request('GET /users/{username}/repos', {
+      username: GITHUB_USERNAME
+    })
 
     const { data: user } = await octokit.request('GET /users/{username}', {
       username: GITHUB_USERNAME

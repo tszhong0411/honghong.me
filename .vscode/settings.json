@@ -8,8 +8,8 @@
     "source.fixAll.eslint": "explicit",
     "source.organizeImports": "never"
   },
-  "editor.formatOnPaste": false,
-  "editor.formatOnSave": false,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
 
   "eslint.experimental.useFlatConfig": true,
   "eslint.runtime": "node",
@@ -23,8 +23,6 @@
     "*.css": "tailwindcss",
     ".env*": "properties"
   },
-
-  "prettier.enable": false,
 
   "tailwindCSS.experimental.classRegex": [
     ["cva\\(([^)]*)\\)", "'([^']*)'"],

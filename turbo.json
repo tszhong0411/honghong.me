@@ -1,8 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": [
-    ".env.*local"
-  ],
+  "globalDependencies": [".env.*local"],
   "globalEnv": [
     "NODE_ENV",
     "CI",
@@ -37,23 +35,12 @@
   ],
   "tasks": {
     "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "outputs": [
-        ".next/**",
-        "!.next/cache/**",
-        "dist/**",
-        ".mdx/**"
-      ]
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "!.next/cache/**", "dist/**", ".mdx/**"]
     },
     "build:packages": {
-      "dependsOn": [
-        "^build"
-      ],
-      "outputs": [
-        "dist/**"
-      ]
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
     },
     "clean": {
       "cache": false
@@ -81,16 +68,10 @@
     "lint": {},
     "lint:fix": {},
     "test:e2e": {
-      "outputs": [
-        "playwright-report/**",
-        "test-results/**"
-      ]
+      "outputs": ["playwright-report/**", "test-results/**"]
     },
     "test:e2e:ui": {
-      "outputs": [
-        "playwright-report/**",
-        "test-results/**"
-      ]
+      "outputs": ["playwright-report/**", "test-results/**"]
     },
     "test:unit": {},
     "test:unit:coverage": {

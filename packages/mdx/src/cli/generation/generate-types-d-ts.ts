@@ -34,11 +34,9 @@ export const generateTypesDts = async (defs: DocumentType[]) => {
     }
   })
 
-  const sourceFile = project.createSourceFile(
-    `${BASE_FOLDER_PATH}/types.d.ts`,
-    undefined,
-    { overwrite: true }
-  )
+  const sourceFile = project.createSourceFile(`${BASE_FOLDER_PATH}/types.d.ts`, undefined, {
+    overwrite: true
+  })
 
   sourceFile.addTypeAliases(
     defs.map((def, i) => ({

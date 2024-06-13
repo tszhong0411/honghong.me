@@ -12,11 +12,7 @@ export type MDXRemoteProps = SerializeResult & {
   components?: MDXComponents
 }
 
-export const MDXRemote = ({
-  compiledSource,
-  frontmatter,
-  components
-}: MDXRemoteProps) => {
+export const MDXRemote = ({ compiledSource, frontmatter, components }: MDXRemoteProps) => {
   const isDev = process.env.NODE_ENV === 'development'
 
   const Content: React.ElementType = useMemo(() => {

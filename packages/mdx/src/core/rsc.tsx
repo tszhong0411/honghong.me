@@ -10,10 +10,7 @@ export type MDXRemoteRSCProps = {
   components?: MDXComponents
 }
 
-export const compileMDX = async ({
-  source,
-  components = {}
-}: MDXRemoteRSCProps) => {
+export const compileMDX = async ({ source, components = {} }: MDXRemoteRSCProps) => {
   const { compiledSource, frontmatter } = await serialize(source, {
     rsc: true
   })

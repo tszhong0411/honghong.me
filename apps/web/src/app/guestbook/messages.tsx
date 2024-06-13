@@ -37,7 +37,7 @@ const UpdatedDate = (props: UpdatedDateProps) => {
 
   if (!formattedDate) return <Skeleton className='h-4 w-24 rounded-md' />
 
-  return <div className='text-xs text-muted-foreground'>{formattedDate}</div>
+  return <div className='text-muted-foreground text-xs'>{formattedDate}</div>
 }
 
 const Messages = () => {
@@ -55,81 +55,78 @@ const Messages = () => {
 
   return (
     <div className='mt-10 flex flex-col gap-4'>
-      {guestbookQuery.isLoading
-        ? (<Loader />)
-        : (
-            guestbookQuery.data?.map((message) => {
-              const {
-                id,
-                user: { name, image, id: userId },
-                updatedAt,
-                body
-              } = message
+      {guestbookQuery.isLoading ? (
+        <Loader />
+      ) : (
+        guestbookQuery.data?.map((message) => {
+          const {
+            id,
+            user: { name, image, id: userId },
+            updatedAt,
+            body
+          } = message
 
-              return (
-                <div
-                  key={id}
-                  className='rounded-lg border p-4 shadow-sm dark:bg-zinc-900/30'
-                >
-                  <div className='mb-3 flex gap-3'>
-                    <Avatar>
-                      <AvatarImage
-                        src={image}
-                        width={40}
-                        height={40}
-                        className='size-10 rounded-full'
-                        alt={name}
-                      />
-                      <AvatarFallback className='bg-transparent'>
-                        <Skeleton className='size-10 rounded-full' />
-                      </AvatarFallback>
-                    </Avatar>
-                    <div className='flex flex-col justify-center gap-px text-sm'>
-                      <div>{name}</div>
-                      <UpdatedDate date={updatedAt} />
-                    </div>
-                  </div>
-                  <div className='break-words pl-[52px]'>{body}</div>
-                  {data?.user && userId === data.user.id
-                    ? (
-                      <div className='mt-4 flex justify-end'>
-                        <AlertDialog>
-                          <AlertDialogTrigger asChild>
-                            <Button
-                              variant='destructive'
-                              type='button'
-                              disabled={guestbookMutation.isPending}
-                              aria-disabled={guestbookMutation.isPending}
-                            >
-                              Delete
-                            </Button>
-                          </AlertDialogTrigger>
-                          <AlertDialogContent>
-                            <AlertDialogHeader>
-                              <AlertDialogTitle>Delete a comment</AlertDialogTitle>
-                              <AlertDialogDescription>
-                                Are you sure you want to delete this comment? This
-                                action cannot be undone.
-                              </AlertDialogDescription>
-                            </AlertDialogHeader>
-                            <AlertDialogFooter>
-                              <AlertDialogCancel>Cancel</AlertDialogCancel>
-                              <AlertDialogAction
-                                onClick={() => { deleteMessageHandler(id) }}
-                                className={buttonVariants({ variant: 'destructive' })}
-                              >
-                                Delete
-                              </AlertDialogAction>
-                            </AlertDialogFooter>
-                          </AlertDialogContent>
-                        </AlertDialog>
-                      </div>
-                      )
-                    : null}
+          return (
+            <div key={id} className='rounded-lg border p-4 shadow-sm dark:bg-zinc-900/30'>
+              <div className='mb-3 flex gap-3'>
+                <Avatar>
+                  <AvatarImage
+                    src={image}
+                    width={40}
+                    height={40}
+                    className='size-10 rounded-full'
+                    alt={name}
+                  />
+                  <AvatarFallback className='bg-transparent'>
+                    <Skeleton className='size-10 rounded-full' />
+                  </AvatarFallback>
+                </Avatar>
+                <div className='flex flex-col justify-center gap-px text-sm'>
+                  <div>{name}</div>
+                  <UpdatedDate date={updatedAt} />
                 </div>
-              )
-            })
-          )}
+              </div>
+              <div className='break-words pl-[52px]'>{body}</div>
+              {data?.user && userId === data.user.id ? (
+                <div className='mt-4 flex justify-end'>
+                  <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                      <Button
+                        variant='destructive'
+                        type='button'
+                        disabled={guestbookMutation.isPending}
+                        aria-disabled={guestbookMutation.isPending}
+                      >
+                        Delete
+                      </Button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                      <AlertDialogHeader>
+                        <AlertDialogTitle>Delete a comment</AlertDialogTitle>
+                        <AlertDialogDescription>
+                          Are you sure you want to delete this comment? This action cannot be
+                          undone.
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+                      <AlertDialogFooter>
+                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogAction
+                          onClick={() => {
+                            deleteMessageHandler(id)
+                          }}
+                          className={buttonVariants({ variant: 'destructive' })}
+                        >
+                          Delete
+                        </AlertDialogAction>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialog>
+                </div>
+              ) : null}
+            </div>
+          )
+        })
+      )}
     </div>
   )
 }

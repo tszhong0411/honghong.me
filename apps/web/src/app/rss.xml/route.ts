@@ -2,12 +2,7 @@ import { allBlogPosts } from 'mdx/generated'
 import { NextResponse } from 'next/server'
 import RSS from 'rss'
 
-import {
-  SITE_DESCRIPTION,
-  SITE_NAME,
-  SITE_TITLE,
-  SITE_URL
-} from '@/lib/constants'
+import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from '@/lib/constants'
 
 export const GET = () => {
   const feed = new RSS({

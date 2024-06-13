@@ -11,11 +11,9 @@ export const generateIndexMjs = async (defs: DocumentType[]) => {
     }
   })
 
-  const sourceFile = project.createSourceFile(
-    `${BASE_FOLDER_PATH}/index.mjs`,
-    undefined,
-    { overwrite: true }
-  )
+  const sourceFile = project.createSourceFile(`${BASE_FOLDER_PATH}/index.mjs`, undefined, {
+    overwrite: true
+  })
 
   sourceFile.addImportDeclarations(
     defs.map((def, i) => ({
@@ -31,9 +29,7 @@ export const generateIndexMjs = async (defs: DocumentType[]) => {
     namedExports: defs.map((def) => `all${pluralize(def.name)}`)
   })
 
-  const allDocuments = defs
-    .map((def) => `...all${pluralize(def.name)}`)
-    .join(', ')
+  const allDocuments = defs.map((def) => `...all${pluralize(def.name)}`).join(', ')
 
   sourceFile.addVariableStatement({
     declarationKind: VariableDeclarationKind.Const,

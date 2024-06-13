@@ -35,7 +35,7 @@ const PageTitle = (props: PageTitleProps) => {
         {title}
       </motion.h1>
       <motion.p
-        className='mb-8 text-muted-foreground'
+        className='text-muted-foreground mb-8'
         {...(animate && {
           initial: animation.hide,
           animate: animation.show,

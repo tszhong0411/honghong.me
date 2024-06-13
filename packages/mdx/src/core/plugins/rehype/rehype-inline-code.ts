@@ -52,9 +52,7 @@ export const rehypeInlineCode: Plugin<[RehypeShikiCoreOptions], Root> = () => {
       if (!isLang) {
         const colors = themeNames.map(
           (name) =>
-            highlighter
-              .getTheme(name)
-              .settings.find(({ scope }) => scope?.includes(lang.slice(1)))
+            highlighter.getTheme(name).settings.find(({ scope }) => scope?.includes(lang.slice(1)))
               ?.settings.foreground ?? 'inherit'
         )
 

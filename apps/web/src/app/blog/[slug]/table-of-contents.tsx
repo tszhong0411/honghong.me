@@ -28,7 +28,7 @@ const TableOfContents = (props: TableOfContentsProps) => {
               key={url}
               href={`#${url}`}
               className={cn(
-                'block py-2.5 pr-2.5 text-sm leading-[1.2] text-muted-foreground transition-all hover:text-foreground',
+                'text-muted-foreground hover:text-foreground block py-2.5 pr-2.5 text-sm leading-[1.2] transition-all',
                 url === activeId && 'text-foreground'
               )}
               style={{

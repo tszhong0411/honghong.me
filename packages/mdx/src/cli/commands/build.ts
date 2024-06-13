@@ -43,10 +43,7 @@ export const build = async () => {
       `${LOG_PREFIX}Generated ${await getDocumentsCount(contentDirPath)} documents in .mdx.`
     )
   } catch (error) {
-    console.error(
-      `${LOG_PREFIX}An error occurred during the build process:`,
-      error
-    )
+    console.error(`${LOG_PREFIX}An error occurred during the build process:`, error)
   }
 }
 
@@ -84,10 +81,7 @@ const createPackageJson = async () => {
   await writeJSON('.mdx/package.json', packageJsonContent)
 }
 
-const findErrors = async (
-  defs: DocumentType[],
-  contentDirPath: string
-): Promise<Error[]> => {
+const findErrors = async (defs: DocumentType[], contentDirPath: string): Promise<Error[]> => {
   const errors: Error[] = []
 
   for (const def of defs) {

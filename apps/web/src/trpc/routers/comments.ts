@@ -8,16 +8,7 @@ import { Strike } from '@tiptap/extension-strike'
 import { Text } from '@tiptap/extension-text'
 import { generateHTML } from '@tiptap/html'
 import { TRPCError } from '@trpc/server'
-import {
-  and,
-  asc,
-  comments,
-  count,
-  desc,
-  eq,
-  isNull,
-  rates
-} from '@tszhong0411/db'
+import { and, asc, comments, count, desc, eq, isNull, rates } from '@tszhong0411/db'
 import { CommentNotification } from '@tszhong0411/emails'
 import { env } from '@tszhong0411/env'
 import { allBlogPosts } from 'mdx/generated'
@@ -46,10 +37,9 @@ const baseJSONContent = z.object({
   text: z.string().optional()
 })
 
-const JSONContentSchema: z.ZodType<z.infer<typeof baseJSONContent>>
-  = baseJSONContent.extend({
-    content: z.array(z.lazy(() => JSONContentSchema)).optional()
-  })
+const JSONContentSchema: z.ZodType<z.infer<typeof baseJSONContent>> = baseJSONContent.extend({
+  content: z.array(z.lazy(() => JSONContentSchema)).optional()
+})
 
 export const commentsRouter = createTRPCRouter({
   get: publicProcedure
@@ -66,9 +56,7 @@ export const commentsRouter = createTRPCRouter({
       const query = await ctx.db.query.comments.findMany({
         where: and(
           eq(comments.postId, input.slug),
-          input.parentId
-            ? eq(comments.parentId, input.parentId)
-            : isNull(comments.parentId)
+          input.parentId ? eq(comments.parentId, input.parentId) : isNull(comments.parentId)
         ),
         with: {
           user: {
@@ -83,10 +71,7 @@ export const commentsRouter = createTRPCRouter({
             where: eq(rates.userId, session?.user.id ?? '')
           }
         },
-        orderBy:
-          input.sort === 'newest'
-            ? [desc(comments.createdAt)]
-            : [asc(comments.createdAt)],
+        orderBy: input.sort === 'newest' ? [desc(comments.createdAt)] : [asc(comments.createdAt)],
         columns: {
           id: true,
           userId: true,
@@ -183,10 +168,7 @@ export const commentsRouter = createTRPCRouter({
       const title = page.title
       const { defaultImage, defaultName } = getDefaultUser(user.id)
 
-      const sendNotification = async (
-        type: 'comment' | 'reply',
-        to: string
-      ) => {
+      const sendNotification = async (type: 'comment' | 'reply', to: string) => {
         if (!isProduction) return
         if (type === 'reply' && !input.parentId) return
 
@@ -195,14 +177,7 @@ export const commentsRouter = createTRPCRouter({
           to,
           subject: `New ${type} posted`,
           react: CommentNotification({
-            comment: generateHTML(input.content, [
-              Bold,
-              Document,
-              Italic,
-              Paragraph,
-              Strike,
-              Text
-            ]),
+            comment: generateHTML(input.content, [Bold, Document, Italic, Paragraph, Strike, Text]),
             commenter: {
               name: user.name ?? defaultName,
               image: user.image ?? defaultImage
@@ -288,10 +263,7 @@ export const commentsRouter = createTRPCRouter({
       // Case: deleting a reply
       if (comment.parentId) {
         const parentComment = await ctx.db.query.comments.findFirst({
-          where: and(
-            eq(comments.id, comment.parentId),
-            eq(comments.isDeleted, true)
-          ),
+          where: and(eq(comments.id, comment.parentId), eq(comments.isDeleted, true)),
           with: {
             replies: true
           }

@@ -53,9 +53,7 @@ export const spotifyRouter = createTRPCRouter({
       isPlaying: song.is_playing as boolean,
       songUrl: song.item.external_urls.spotify as string,
       name: song.item.name as string,
-      artist: song.item.artists
-        .map((artist: { name: string }) => artist.name)
-        .join(', ') as string
+      artist: song.item.artists.map((artist: { name: string }) => artist.name).join(', ') as string
     }
   })
 })

@@ -42,7 +42,7 @@ const PostCard = (props: PostCardProps) => {
   return (
     <Link
       href={`/blog/${slug}`}
-      className='group rounded-xl px-2 py-4 shadow-feature-card dark:shadow-feature-card-dark'
+      className='shadow-feature-card dark:shadow-feature-card-dark group rounded-xl px-2 py-4'
     >
       <BlurImage
         src={`/images/blog/${slug}/cover.png`}
@@ -55,14 +55,14 @@ const PostCard = (props: PostCardProps) => {
       <div className='flex items-center justify-between gap-2 px-2 pt-4 text-sm text-zinc-500'>
         {formattedDate}
         <div className='flex gap-2'>
-          {likesQuery.isLoading ? ('--') : (<div>{likesQuery.data?.likes} likes</div>)}
+          {likesQuery.isLoading ? '--' : <div>{likesQuery.data?.likes} likes</div>}
           <div>&middot;</div>
-          {viewsQuery.isLoading ? ('--') : (<div>{viewsQuery.data?.views} views</div>)}
+          {viewsQuery.isLoading ? '--' : <div>{viewsQuery.data?.views} views</div>}
         </div>
       </div>
       <div className='flex flex-col px-2 py-4'>
         <h3 className='font-title text-2xl font-bold'>{title}</h3>
-        <p className='mt-2 text-muted-foreground'>{summary}</p>
+        <p className='text-muted-foreground mt-2'>{summary}</p>
       </div>
     </Link>
   )

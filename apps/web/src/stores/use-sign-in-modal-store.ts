@@ -7,5 +7,7 @@ type SignInModalStore = {
 
 export const useSignInModalStore = create<SignInModalStore>()((set) => ({
   open: false,
-  setOpen: (value) => { set({ open: value }) }
+  setOpen: (value) => {
+    set({ open: value })
+  }
 }))

@@ -66,15 +66,18 @@ const CommentPost = () => {
         >
           <SendIcon className='size-4' />
         </Button>
-        {status === 'unauthenticated'
-          ? (
-            <div className='absolute inset-0 flex items-center justify-center rounded-lg bg-black/5 backdrop-blur-[0.8px]'>
-              <Button type='button' onClick={() => { setOpen(true) }}>
-                Sign In
-              </Button>
-            </div>
-            )
-          : null}
+        {status === 'unauthenticated' ? (
+          <div className='absolute inset-0 flex items-center justify-center rounded-lg bg-black/5 backdrop-blur-[0.8px]'>
+            <Button
+              type='button'
+              onClick={() => {
+                setOpen(true)
+              }}
+            >
+              Sign In
+            </Button>
+          </div>
+        ) : null}
       </div>
     </form>
   )

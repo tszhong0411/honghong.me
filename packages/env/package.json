@@ -1,9 +1,9 @@
 {
-  "name": "@tszhong0411/env",
-  "type": "module",
-  "version": "0.0.0",
   "private": true,
+  "name": "@tszhong0411/env",
+  "version": "0.0.0",
   "license": "GPL-3.0",
+  "type": "module",
   "main": "./src/index.ts",
   "scripts": {
     "clean": "rm -rf .turbo",
@@ -20,6 +20,7 @@
     "@tszhong0411/tsconfig": "workspace:*"
   },
   "lint-staged": {
-    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix"
+    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix",
+    "**/*": "prettier --write --ignore-unknown"
   }
 }

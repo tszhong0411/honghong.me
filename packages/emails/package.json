@@ -1,9 +1,9 @@
 {
-  "name": "@tszhong0411/emails",
-  "type": "module",
-  "version": "0.0.0",
   "private": true,
+  "name": "@tszhong0411/emails",
+  "version": "0.0.0",
   "license": "GPL-3.0",
+  "type": "module",
   "main": "src/index.ts",
   "scripts": {
     "dev": "email dev --port 3001 --dir src",
@@ -23,6 +23,7 @@
     "@types/react": "^18.3.3"
   },
   "lint-staged": {
-    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix"
+    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix",
+    "**/*": "prettier --write --ignore-unknown"
   }
 }
