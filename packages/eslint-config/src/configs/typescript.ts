@@ -1,11 +1,12 @@
-import type { FlatESLintConfig } from 'eslint-define-config'
+import type { Linter } from 'eslint'
 
 import { GLOB_TS, GLOB_TSX } from '../globs'
 import type { Options } from '../index'
 import { typescriptParser, typescriptPlugin } from '../plugins'
 
-export const typescript = (options?: Options): FlatESLintConfig[] => [
+export const typescript = (options?: Options): Linter.FlatConfig[] => [
   {
+    name: 'tszhong0411:typescript',
     plugins: {
       '@typescript-eslint': typescriptPlugin as unknown as Record<string, unknown>
     },
@@ -22,19 +23,13 @@ export const typescript = (options?: Options): FlatESLintConfig[] => [
       }
     },
     rules: {
+      ...typescriptPlugin.configs['recommended-type-checked']!.rules,
       ...typescriptPlugin.configs['strict-type-checked']!.rules,
+      ...typescriptPlugin.configs['stylistic-type-checked']!.rules,
 
       '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
-      '@typescript-eslint/no-unused-vars': 'error',
-      '@typescript-eslint/no-empty-function': 'error',
-      '@typescript-eslint/no-namespace': 'off',
-      '@typescript-eslint/no-invalid-this': ['error'],
-      '@typescript-eslint/no-shadow': ['error'],
-      '@typescript-eslint/no-unsafe-call': 'off',
-      '@typescript-eslint/no-unsafe-assignment': 'off',
-      '@typescript-eslint/no-unsafe-member-access': 'off',
-      '@typescript-eslint/consistent-type-definitions': 'off',
-      '@typescript-eslint/no-non-null-assertion': 'off',
+      '@typescript-eslint/no-invalid-this': 'error',
+      '@typescript-eslint/no-shadow': 'error',
       '@typescript-eslint/consistent-type-imports': [
         'error',
         {
@@ -43,6 +38,13 @@ export const typescript = (options?: Options): FlatESLintConfig[] => [
         }
       ],
       '@typescript-eslint/restrict-template-expressions': ['error', { allowNumber: true }],
+
+      '@typescript-eslint/no-namespace': 'off',
+      '@typescript-eslint/no-unsafe-call': 'off',
+      '@typescript-eslint/no-unsafe-assignment': 'off',
+      '@typescript-eslint/no-unsafe-member-access': 'off',
+      '@typescript-eslint/consistent-type-definitions': 'off',
+      '@typescript-eslint/no-non-null-assertion': 'off',
 
       // Turn off due to poor performance
       '@typescript-eslint/no-misused-promises': 'off',

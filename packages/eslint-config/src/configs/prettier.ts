@@ -1,9 +1,10 @@
-import type { FlatESLintConfig } from 'eslint-define-config'
+import type { Linter } from 'eslint'
 
 import { prettierConfig, prettierPlugin } from '../plugins'
 
-export const prettier: FlatESLintConfig[] = [
+export const prettier: Linter.FlatConfig[] = [
   {
+    name: 'tszhong0411:prettier',
     plugins: {
       prettier: prettierPlugin
     },

@@ -19,9 +19,9 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "tsup && eslint-config-inspector build",
     "clean": "rm -rf .turbo dist",
-    "dev": "tsup --watch",
+    "dev": "concurrently \"tsup --watch\" \"eslint-config-inspector\"",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint --fix .",
     "type-check": "tsc --noEmit"
@@ -35,7 +35,6 @@
     "@typescript-eslint/parser": "^7.13.0",
     "eslint-config-flat-gitignore": "^0.1.5",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-define-config": "^2.1.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsx-a11y": "^6.8.0",
@@ -56,6 +55,7 @@
     "eslint": ">=8.40.0"
   },
   "devDependencies": {
+    "@eslint/config-inspector": "^0.4.11",
     "@tszhong0411/tsconfig": "workspace:*"
   },
   "publishConfig": {

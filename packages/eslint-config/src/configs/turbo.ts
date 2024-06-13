@@ -1,9 +1,10 @@
-import type { FlatESLintConfig } from 'eslint-define-config'
+import type { Linter } from 'eslint'
 
 import { turboPlugin } from '../plugins'
 
-export const turbo: FlatESLintConfig[] = [
+export const turbo: Linter.FlatConfig[] = [
   {
+    name: 'tszhong0411:turbo',
     plugins: {
       turbo: turboPlugin
     },

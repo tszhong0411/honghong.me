@@ -1,9 +1,10 @@
-import type { FlatESLintConfig } from 'eslint-define-config'
+import type { Linter } from 'eslint'
 
 import { eslintCommentsPlugin } from '../plugins'
 
-export const comments: FlatESLintConfig[] = [
+export const comments: Linter.FlatConfig[] = [
   {
+    name: 'tszhong0411:comments',
     plugins: {
       'eslint-comments': eslintCommentsPlugin
     },

@@ -1,15 +1,15 @@
-import type { ESLint } from 'eslint'
-import type { FlatESLintConfig } from 'eslint-define-config'
+import type { ESLint, Linter } from 'eslint'
 
 import { GLOB_JS, GLOB_JSX, GLOB_TS, GLOB_TSX } from '../globs'
 import type { Options } from '../index'
 import { jsxA11yPlugin, reactHooksPlugin, reactPlugin, typescriptParser } from '../plugins'
 
-export const react = (options?: Options): FlatESLintConfig[] => {
+export const react = (options?: Options): Linter.FlatConfig[] => {
   const plugins = reactPlugin.configs.all.plugins
 
   return [
     {
+      name: 'tszhong0411:react',
       plugins: {
         '@eslint-react': plugins['@eslint-react'] as Record<string, ESLint.Plugin>,
         '@eslint-react/dom': plugins['@eslint-react/dom'] as Record<string, ESLint.Plugin>,

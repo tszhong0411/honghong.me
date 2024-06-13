@@ -1,13 +1,15 @@
-import type { FlatESLintConfig } from 'eslint-define-config'
+import type { Linter } from 'eslint'
 
 import { importPlugin } from '../plugins'
 
-export const imports: FlatESLintConfig[] = [
+export const imports: Linter.FlatConfig[] = [
   {
+    name: 'tszhong0411:imports',
     plugins: {
       import: importPlugin as unknown as Record<string, unknown>
     },
     rules: {
+      'import/no-amd': 'error',
       'import/no-commonjs': 'error',
       'import/first': 'error',
       'import/no-duplicates': 'error',

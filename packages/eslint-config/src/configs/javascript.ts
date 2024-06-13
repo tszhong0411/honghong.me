@@ -1,11 +1,11 @@
-import type { FlatESLintConfig } from 'eslint-define-config'
+import type { Linter } from 'eslint'
 import globals from 'globals'
 
 import { eslintPlugin, unusedImportsPlugin } from '../plugins'
 
-export const javascript: FlatESLintConfig[] = [
-  eslintPlugin.configs.recommended,
+export const javascript: Linter.FlatConfig[] = [
   {
+    name: 'tszhong0411:javascript',
     languageOptions: {
       ecmaVersion: 2022,
       globals: {
@@ -31,6 +31,8 @@ export const javascript: FlatESLintConfig[] = [
       'unused-imports': unusedImportsPlugin
     },
     rules: {
+      ...eslintPlugin.configs.recommended.rules,
+
       'unused-imports/no-unused-imports': 'error',
       'unused-imports/no-unused-vars': [
         'error',

@@ -1,11 +1,15 @@
-import type { FlatESLintConfig } from 'eslint-define-config'
+import type { Linter } from 'eslint'
 
 import { unicornPlugin } from '../plugins'
 
-export const unicorn: FlatESLintConfig[] = [
-  unicornPlugin.configs['flat/recommended'],
+export const unicorn: Linter.FlatConfig[] = [
   {
+    name: 'tszhong0411:unicorn',
+    plugins: {
+      unicorn: unicornPlugin
+    },
     rules: {
+      ...unicornPlugin.configs.recommended.rules,
       'unicorn/no-await-expression-member': 'off',
       'unicorn/no-null': 'off',
       'unicorn/prefer-export-from': ['error', { ignoreUsedVariables: true }],

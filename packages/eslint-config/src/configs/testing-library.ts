@@ -1,10 +1,11 @@
-import type { FlatESLintConfig } from 'eslint-define-config'
+import type { Linter } from 'eslint'
 
 import { GLOB_TEST } from '../globs'
 import { testingLibraryPlugin } from '../plugins'
 
-export const testingLibrary: FlatESLintConfig[] = [
+export const testingLibrary: Linter.FlatConfig[] = [
   {
+    name: 'tszhong0411:testing-library',
     plugins: {
       'testing-library': testingLibraryPlugin
     },

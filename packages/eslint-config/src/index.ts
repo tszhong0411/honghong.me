@@ -1,4 +1,4 @@
-import type { FlatESLintConfig } from 'eslint-define-config'
+import type { Linter } from 'eslint'
 
 import { comments } from './configs/comments'
 import { ignores } from './configs/ignores'
@@ -31,12 +31,12 @@ export type Options = {
   tsconfigRootDir?: string
 }
 
-type UserConfigs = FlatESLintConfig[]
+type UserConfigs = Linter.FlatConfig[]
 
 const tszhong0411 = async (
   options: Options = {},
   ...userConfigs: UserConfigs
-): Promise<FlatESLintConfig[]> => {
+): Promise<Linter.FlatConfig[]> => {
   const {
     typescript: enableTypeScript = hasTypeScript,
     react: enableReact = false,
@@ -47,7 +47,13 @@ const tszhong0411 = async (
     gitignore: enableGitignore = true
   } = options
 
-  const configs = [
+  const configs: Linter.FlatConfig[] = []
+
+  if (enableGitignore) {
+    configs.push((await import('eslint-config-flat-gitignore')).default())
+  }
+
+  configs.push(
     ...ignores,
     ...javascript,
     ...unicorn,
@@ -57,13 +63,7 @@ const tszhong0411 = async (
     ...tailwindcss,
     ...imports,
     ...prettier
-  ]
-
-  if (enableGitignore) {
-    configs.push(
-      (await import('eslint-config-flat-gitignore')).default() as unknown as FlatESLintConfig
-    )
-  }
+  )
 
   if (enableTypeScript) {
     configs.push(...typescript(options))
