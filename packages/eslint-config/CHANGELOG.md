@@ -1,5 +1,11 @@
 # @tszhong0411/eslint-config
 
+## 0.1.6
+
+### Patch Changes
+
+- [`99347b9`](https://github.com/tszhong0411/honghong.me/commit/99347b93a647b9d1a8aa2347893038987619e5ea) Thanks [@tszhong0411](https://github.com/tszhong0411)! - add a script to sync repo
+
 ## 0.1.5
 
 ### Patch Changes
