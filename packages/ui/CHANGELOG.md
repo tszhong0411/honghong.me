@@ -1,5 +1,14 @@
 # @tszhong0411/ui
 
+## 0.0.17
+
+### Patch Changes
+
+- [`af75553`](https://github.com/tszhong0411/honghong.me/commit/af755535a4c2dbce86fe5f989b59e8bcf64bf433) Thanks [@tszhong0411](https://github.com/tszhong0411)! - remove unused `eslint-disable-next-line`
+
+- Updated dependencies []:
+  - @tszhong0411/utils@0.0.12
+
 ## 0.0.16
 
 ### Patch Changes
