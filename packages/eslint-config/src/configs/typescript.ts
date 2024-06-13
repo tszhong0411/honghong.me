@@ -23,7 +23,6 @@ export const typescript = (options?: Options): FlatESLintConfig[] => [
     },
     rules: {
       ...typescriptPlugin.configs['strict-type-checked']!.rules,
-      ...typescriptPlugin.configs['stylistic-type-checked']!.rules,
 
       '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
       '@typescript-eslint/no-unused-vars': 'error',

@@ -5,13 +5,11 @@ import { ignores } from './configs/ignores'
 import { importSort } from './configs/import-sort'
 import { imports } from './configs/imports'
 import { javascript } from './configs/javascript'
-import { jsonSort } from './configs/json-sort'
-import { jsonc } from './configs/jsonc'
 import { next } from './configs/next'
 import { playwright } from './configs/playwright'
+import { prettier } from './configs/prettier'
 import { react } from './configs/react'
 import { sonarjs } from './configs/sonarjs'
-import { stylistic } from './configs/stylistic'
 import { tailwindcss } from './configs/tailwindcss'
 import { testingLibrary } from './configs/testing-library'
 import { turbo } from './configs/turbo'
@@ -35,7 +33,10 @@ export type Options = {
 
 type UserConfigs = FlatESLintConfig[]
 
-const tszhong0411 = async (options: Options = {}, ...userConfigs: UserConfigs): Promise<FlatESLintConfig[]> => {
+const tszhong0411 = async (
+  options: Options = {},
+  ...userConfigs: UserConfigs
+): Promise<FlatESLintConfig[]> => {
   const {
     typescript: enableTypeScript = hasTypeScript,
     react: enableReact = false,
@@ -51,17 +52,17 @@ const tszhong0411 = async (options: Options = {}, ...userConfigs: UserConfigs): 
     ...javascript,
     ...unicorn,
     ...comments,
-    ...stylistic,
     ...importSort,
-    ...jsonSort,
     ...sonarjs,
     ...tailwindcss,
     ...imports,
-    ...jsonc
+    ...prettier
   ]
 
   if (enableGitignore) {
-    configs.push((await import('eslint-config-flat-gitignore')).default() as unknown as FlatESLintConfig)
+    configs.push(
+      (await import('eslint-config-flat-gitignore')).default() as unknown as FlatESLintConfig
+    )
   }
 
   if (enableTypeScript) {

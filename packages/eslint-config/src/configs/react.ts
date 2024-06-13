@@ -14,8 +14,14 @@ export const react = (options?: Options): FlatESLintConfig[] => {
         '@eslint-react': plugins['@eslint-react'] as Record<string, ESLint.Plugin>,
         '@eslint-react/dom': plugins['@eslint-react/dom'] as Record<string, ESLint.Plugin>,
         'react-hooks': reactHooksPlugin,
-        '@eslint-react/hooks-extra': plugins['@eslint-react/hooks-extra'] as Record<string, ESLint.Plugin>,
-        '@eslint-react/naming-convention': plugins['@eslint-react/naming-convention'] as Record<string, ESLint.Plugin>,
+        '@eslint-react/hooks-extra': plugins['@eslint-react/hooks-extra'] as Record<
+          string,
+          ESLint.Plugin
+        >,
+        '@eslint-react/naming-convention': plugins['@eslint-react/naming-convention'] as Record<
+          string,
+          ESLint.Plugin
+        >,
         'jsx-a11y': jsxA11yPlugin
       },
       files: [GLOB_JS, GLOB_JSX, GLOB_TS, GLOB_TSX],
