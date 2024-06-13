@@ -13,8 +13,8 @@ mkdir -p $TMP
 cd $TMP
 
 # Set global Git configuration
-git config --global user.email "me@honghong.me"
-git config --global user.name "tszhong0411"
+git config --global user.email "github-actions[bot]"
+git config --global user.name "github-actions[bot]@users.noreply.github.com"
 
 rm -rf eslint-config-inspector
 git clone --depth 1 --single-branch --branch main https://github.com/tszhong0411/eslint-config-inspector.git
@@ -34,4 +34,4 @@ EOF
 git add -A
 git commit -m "version $npm_package_version"
 
-git push https://github.com/tszhong0411/eslint-config-inspector.git main -f
+git push https://$GITHUB_TOKEN@github.com/tszhong0411/eslint-config-inspector.git main -f
