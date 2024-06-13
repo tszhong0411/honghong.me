@@ -27,7 +27,6 @@ export const typescript = (options?: Options): FlatESLintConfig[] => [
       '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
       '@typescript-eslint/no-unused-vars': 'error',
       '@typescript-eslint/no-empty-function': 'error',
-      // '@typescript-eslint/no-misused-promises': 'off',
       '@typescript-eslint/no-namespace': 'off',
       '@typescript-eslint/no-invalid-this': ['error'],
       '@typescript-eslint/no-shadow': ['error'],
@@ -35,7 +34,6 @@ export const typescript = (options?: Options): FlatESLintConfig[] => [
       '@typescript-eslint/no-unsafe-assignment': 'off',
       '@typescript-eslint/no-unsafe-member-access': 'off',
       '@typescript-eslint/consistent-type-definitions': 'off',
-      // '@typescript-eslint/no-floating-promises': 'off',
       '@typescript-eslint/no-non-null-assertion': 'off',
       '@typescript-eslint/consistent-type-imports': [
         'error',
@@ -44,7 +42,11 @@ export const typescript = (options?: Options): FlatESLintConfig[] => [
           fixStyle: 'inline-type-imports'
         }
       ],
-      '@typescript-eslint/restrict-template-expressions': ['error', { allowNumber: true }]
+      '@typescript-eslint/restrict-template-expressions': ['error', { allowNumber: true }],
+
+      // Turn off due to poor performance
+      '@typescript-eslint/no-misused-promises': 'off',
+      '@typescript-eslint/no-floating-promises': 'off'
     }
   }
 ]
