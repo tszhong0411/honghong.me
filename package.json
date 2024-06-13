@@ -10,6 +10,7 @@
     "check:npm": "pnpm dlx npm-check-updates --deep --interactive --format group",
     "check:spelling": "cspell \"**\" --show-context --show-suggestions",
     "clean": "turbo clean && rm -rf .turbo",
+    "commit": "git-cz",
     "db:check": "turbo db:check",
     "db:generate": "turbo db:generate",
     "db:migrate": "turbo db:migrate",
@@ -33,6 +34,11 @@
     "type-check": "turbo type-check",
     "version": "changeset version"
   },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-git"
+    }
+  },
   "devDependencies": {
     "@changesets/changelog-github": "^0.5.0",
     "@changesets/cli": "^2.27.5",
@@ -52,7 +58,9 @@
     "@types/node": "^20.14.2",
     "@vitest/coverage-v8": "^1.6.0",
     "@vitest/ui": "^1.6.0",
+    "commitizen": "^4.3.0",
     "cspell": "^8.8.4",
+    "cz-git": "^1.9.3",
     "dotenv-cli": "^7.4.2",
     "eslint": "^8.57.0",
     "husky": "^9.0.11",

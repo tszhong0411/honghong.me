@@ -5,7 +5,7 @@
   "workspaces": {
     ".": {
       "commitlint": {
-        "config": "commitlint.config.mjs"
+        "config": ".commitlintrc.js"
       }
     },
     "apps/web": {
@@ -17,7 +17,7 @@
     },
     "packages/prettier-config": {
       "prettier": {
-        "config": "../../prettier.config.mjs"
+        "config": "../../prettier.config.js"
       }
     }
   }
