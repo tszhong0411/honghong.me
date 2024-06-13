@@ -90,7 +90,6 @@
     "@types/react-dom": "^18.3.0",
     "@types/rss": "^0.0.32",
     "@types/tinycolor2": "^1.4.6",
-    "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
     "postcss": "^8.4.38",
     "postcss-lightningcss": "^1.0.0",

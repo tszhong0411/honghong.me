@@ -31,6 +31,7 @@ yarn-error.log*
 out/
 build
 dist
+.eslint-config-inspector
 
 # Database
 honghong-me.db

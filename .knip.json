@@ -15,6 +15,9 @@
         "config": "postcss.config.mjs"
       }
     },
+    "packages/eslint-config": {
+      "ignoreDependencies": ["@eslint/config-inspector"]
+    },
     "packages/prettier-config": {
       "prettier": {
         "config": "../../prettier.config.js"

@@ -59,6 +59,7 @@
     "@vitest/coverage-v8": "^1.6.0",
     "@vitest/ui": "^1.6.0",
     "commitizen": "^4.3.0",
+    "concurrently": "^8.2.2",
     "cspell": "^8.8.4",
     "cz-git": "^1.9.3",
     "dotenv-cli": "^7.4.2",
