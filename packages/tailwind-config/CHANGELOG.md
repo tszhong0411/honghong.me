@@ -1,5 +1,11 @@
 # @tszhong0411/tailwind-config
 
+## 0.0.7
+
+### Patch Changes
+
+- [`b613eb3`](https://github.com/tszhong0411/honghong.me/commit/b613eb37f940d1c9f9d20cd923ff0d2fa26057df) Thanks [@tszhong0411](https://github.com/tszhong0411)! - update code style
+
 ## 0.0.6
 
 ### Patch Changes

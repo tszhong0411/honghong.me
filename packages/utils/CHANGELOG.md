@@ -1,5 +1,11 @@
 # @tszhong0411/utils
 
+## 0.0.12
+
+### Patch Changes
+
+- [`097f0d0`](https://github.com/tszhong0411/honghong.me/commit/097f0d0d4463ddf5cec7d24ea0dfb632200535fc) Thanks [@tszhong0411](https://github.com/tszhong0411)! - update code style
+
 ## 0.0.11
 
 ### Patch Changes
