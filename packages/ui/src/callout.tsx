@@ -22,32 +22,24 @@ export const calloutVariants = cva(
 type CalloutProps = { title?: string } & React.HTMLAttributes<HTMLDivElement> &
   VariantProps<typeof calloutVariants>
 
-export const Callout = forwardRef<HTMLDivElement, CalloutProps>(
-  (props, ref) => {
-    const { variant, className, title, children, ...rest } = props
+export const Callout = forwardRef<HTMLDivElement, CalloutProps>((props, ref) => {
+  const { variant, className, title, children, ...rest } = props
 
-    const icons = {
-      info: <InfoIcon className='size-5 fill-blue-500 text-card' />,
-      warning: (
-        <AlertTriangleIcon className='size-5 fill-orange-500 text-card' />
-      ),
-      error: <AlertOctagonIcon className='size-5 fill-red-500 text-card' />
-    }
-
-    return (
-      <div
-        ref={ref}
-        className={cn(calloutVariants({ variant, className }))}
-        {...rest}
-      >
-        {variant ? icons[variant] : icons.info}
-        <div className='w-0 flex-1'>
-          {title ? (<div className='mb-2 font-medium text-card-foreground'>{title}</div>) : null}
-          <div>{children}</div>
-        </div>
-      </div>
-    )
+  const icons = {
+    info: <InfoIcon className='text-card size-5 fill-blue-500' />,
+    warning: <AlertTriangleIcon className='text-card size-5 fill-orange-500' />,
+    error: <AlertOctagonIcon className='text-card size-5 fill-red-500' />
   }
-)
+
+  return (
+    <div ref={ref} className={cn(calloutVariants({ variant, className }))} {...rest}>
+      {variant ? icons[variant] : icons.info}
+      <div className='w-0 flex-1'>
+        {title ? <div className='text-card-foreground mb-2 font-medium'>{title}</div> : null}
+        <div>{children}</div>
+      </div>
+    </div>
+  )
+})
 
 Callout.displayName = 'Callout'

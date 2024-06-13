@@ -51,12 +51,14 @@ export const Marquee = (props: MarqueeProps) => {
       )}
       style={{
         maskImage: fade
-          ? `linear-gradient(${direction === 'left' ? 'to right' : 'to bottom'
-          }, transparent 0%, rgba(0, 0, 0, 1.0) 10%, rgba(0, 0, 0, 1.0) 90%, transparent 100%)`
+          ? `linear-gradient(${
+              direction === 'left' ? 'to right' : 'to bottom'
+            }, transparent 0%, rgba(0, 0, 0, 1.0) 10%, rgba(0, 0, 0, 1.0) 90%, transparent 100%)`
           : undefined,
         WebkitMaskImage: fade
-          ? `linear-gradient(${direction === 'left' ? 'to right' : 'to bottom'
-          }, transparent 0%, rgba(0, 0, 0, 1.0) 10%, rgba(0, 0, 0, 1.0) 90%, transparent 100%)`
+          ? `linear-gradient(${
+              direction === 'left' ? 'to right' : 'to bottom'
+            }, transparent 0%, rgba(0, 0, 0, 1.0) 10%, rgba(0, 0, 0, 1.0) 90%, transparent 100%)`
           : undefined,
         gap
       }}
@@ -71,9 +73,7 @@ export const Marquee = (props: MarqueeProps) => {
           }
           className={cn(
             'flex shrink-0 justify-around gap-[var(--gap)]',
-            direction === 'left'
-              ? 'animate-marquee-left flex-row'
-              : 'animate-marquee-up flex-col',
+            direction === 'left' ? 'animate-marquee-left flex-row' : 'animate-marquee-up flex-col',
             pauseOnHover && 'group-hover:[animation-play-state:paused]',
             reverse && 'direction-reverse'
           )}

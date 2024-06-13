@@ -8,12 +8,7 @@ export const Separator = forwardRef<
   React.ElementRef<typeof SeparatorPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>
 >((props, ref) => {
-  const {
-    className,
-    orientation = 'horizontal',
-    decorative = true,
-    ...rest
-  } = props
+  const { className, orientation = 'horizontal', decorative = true, ...rest } = props
 
   return (
     <SeparatorPrimitive.Root
@@ -21,7 +16,7 @@ export const Separator = forwardRef<
       decorative={decorative}
       orientation={orientation}
       className={cn(
-        'shrink-0 bg-border',
+        'bg-border shrink-0',
         orientation === 'horizontal' ? 'h-px w-full' : 'h-full w-px',
         className
       )}

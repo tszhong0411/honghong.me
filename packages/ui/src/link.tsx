@@ -12,8 +12,7 @@ export const linkVariants = cva('', {
   }
 })
 
-type LinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> &
-  VariantProps<typeof linkVariants>
+type LinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & VariantProps<typeof linkVariants>
 
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => {
   const { href, className, children, variant, ...rest } = props
@@ -22,7 +21,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => {
     throw new Error('Link must have an href')
   }
 
-  if ((href).startsWith('/')) {
+  if (href.startsWith('/')) {
     return (
       <NextLink
         className={cn(linkVariants({ variant, className }))}
@@ -35,14 +34,9 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => {
     )
   }
 
-  if ((href).startsWith('#')) {
+  if (href.startsWith('#')) {
     return (
-      <a
-        className={cn(linkVariants({ variant, className }))}
-        href={href}
-        ref={ref}
-        {...rest}
-      >
+      <a className={cn(linkVariants({ variant, className }))} href={href} ref={ref} {...rest}>
         {children}
       </a>
     )

@@ -8,11 +8,7 @@ import { cva } from 'class-variance-authority'
 import { FileIcon, FolderIcon, FolderOpenIcon } from 'lucide-react'
 import { useState } from 'react'
 
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger
-} from './collapsible'
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from './collapsible'
 
 type FilesProps = React.ComponentPropsWithoutRef<'div'>
 type FileProps = {
@@ -32,10 +28,7 @@ export const Files = (props: FilesProps) => {
   const { children, className, ...rest } = props
 
   return (
-    <div
-      className={cn('not-prose rounded-md border bg-card p-2', className)}
-      {...rest}
-    >
+    <div className={cn('not-prose bg-card rounded-md border p-2', className)} {...rest}>
       {children}
     </div>
   )
@@ -59,7 +52,7 @@ export const Folder = (props: FolderProps) => {
   return (
     <Collapsible open={open} onOpenChange={setOpen} {...rest}>
       <CollapsibleTrigger className={cn(item({ className: 'w-full' }))}>
-        {open ? (<FolderOpenIcon className='size-4' />) : (<FolderIcon className='size-4' />)}
+        {open ? <FolderOpenIcon className='size-4' /> : <FolderIcon className='size-4' />}
         {name}
       </CollapsibleTrigger>
       <CollapsibleContent>

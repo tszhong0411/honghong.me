@@ -42,7 +42,7 @@ export const AlertDialogContent = forwardRef<
       <AlertDialogPrimitive.Content
         ref={ref}
         className={cn(
-          'fixed left-1/2 top-1/2 z-50 grid w-full max-w-lg -translate-x-1/2 -translate-y-1/2 gap-4 border bg-background p-6 shadow-lg sm:rounded-lg',
+          'bg-background fixed left-1/2 top-1/2 z-50 grid w-full max-w-lg -translate-x-1/2 -translate-y-1/2 gap-4 border p-6 shadow-lg sm:rounded-lg',
           'data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]',
           'data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%]',
           className
@@ -53,41 +53,33 @@ export const AlertDialogContent = forwardRef<
   )
 })
 
-export const AlertDialogHeader = forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->((props, ref) => {
-  const { className, ...rest } = props
+export const AlertDialogHeader = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  (props, ref) => {
+    const { className, ...rest } = props
 
-  return (
-    <div
-      className={cn(
-        'flex flex-col space-y-2 text-center sm:text-left',
-        className
-      )}
-      ref={ref}
-      {...rest}
-    />
-  )
-})
+    return (
+      <div
+        className={cn('flex flex-col space-y-2 text-center sm:text-left', className)}
+        ref={ref}
+        {...rest}
+      />
+    )
+  }
+)
 
-export const AlertDialogFooter = forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->((props, ref) => {
-  const { className, ...rest } = props
+export const AlertDialogFooter = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  (props, ref) => {
+    const { className, ...rest } = props
 
-  return (
-    <div
-      className={cn(
-        'flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2',
-        className
-      )}
-      ref={ref}
-      {...rest}
-    />
-  )
-})
+    return (
+      <div
+        className={cn('flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2', className)}
+        ref={ref}
+        {...rest}
+      />
+    )
+  }
+)
 export const AlertDialogTitle = forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Title>,
   React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Title>
@@ -112,7 +104,7 @@ export const AlertDialogDescription = forwardRef<
   return (
     <AlertDialogPrimitive.Description
       ref={ref}
-      className={cn('text-sm text-muted-foreground', className)}
+      className={cn('text-muted-foreground text-sm', className)}
       {...rest}
     />
   )
@@ -125,11 +117,7 @@ export const AlertDialogAction = forwardRef<
   const { className, ...rest } = props
 
   return (
-    <AlertDialogPrimitive.Action
-      ref={ref}
-      className={cn(buttonVariants(), className)}
-      {...rest}
-    />
+    <AlertDialogPrimitive.Action ref={ref} className={cn(buttonVariants(), className)} {...rest} />
   )
 })
 
@@ -142,11 +130,7 @@ export const AlertDialogCancel = forwardRef<
   return (
     <AlertDialogPrimitive.Cancel
       ref={ref}
-      className={cn(
-        buttonVariants({ variant: 'outline' }),
-        'mt-2 sm:mt-0',
-        className
-      )}
+      className={cn(buttonVariants({ variant: 'outline' }), 'mt-2 sm:mt-0', className)}
       {...rest}
     />
   )

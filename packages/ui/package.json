@@ -1,10 +1,9 @@
 {
   "name": "@tszhong0411/ui",
-  "type": "module",
   "version": "0.0.15",
   "description": "The UI components for tszhong0411's projects",
-  "author": "tszhong0411 <me@honghong.me> (https://github.com/tszhong0411/)",
   "license": "GPL-3.0",
+  "author": "tszhong0411 <me@honghong.me> (https://github.com/tszhong0411/)",
   "homepage": "https://github.com/tszhong0411/honghong.me#readme",
   "repository": {
     "type": "git",
@@ -13,15 +12,9 @@
   "bugs": {
     "url": "https://github.com/tszhong0411/honghong.me/issues"
   },
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    }
-  },
+  "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -33,12 +26,7 @@
     "lint:fix": "eslint --fix .",
     "type-check": "tsc --noEmit"
   },
-  "peerDependencies": {
-    "@tszhong0411/utils": ">=0",
-    "next": ">=13",
-    "react": ">=18",
-    "react-dom": ">=18"
-  },
+  "types": "./dist/index.d.ts",
   "dependencies": {
     "@radix-ui/react-alert-dialog": "^1.0.5",
     "@radix-ui/react-aspect-ratio": "^1.0.3",
@@ -60,6 +48,12 @@
     "react-textarea-autosize": "^8.5.3",
     "sonner": "1.5.0"
   },
+  "peerDependencies": {
+    "@tszhong0411/utils": ">=0",
+    "next": ">=13",
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
   "devDependencies": {
     "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/tailwind-config": "workspace:*",
@@ -73,7 +67,14 @@
   "publishConfig": {
     "access": "public"
   },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
   "lint-staged": {
-    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix"
+    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix",
+    "**/*": "prettier --write --ignore-unknown"
   }
 }
