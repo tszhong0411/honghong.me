@@ -2,8 +2,8 @@
   "name": "@tszhong0411/tailwind-config",
   "version": "0.0.6",
   "description": "The Tailwind CSS configuration for tszhong0411's projects",
-  "author": "tszhong0411 <me@honghong.me> (https://github.com/tszhong0411/)",
   "license": "GPL-3.0",
+  "author": "tszhong0411 <me@honghong.me> (https://github.com/tszhong0411/)",
   "homepage": "https://github.com/tszhong0411/honghong.me#readme",
   "repository": {
     "type": "git",
@@ -35,6 +35,7 @@
     "access": "public"
   },
   "lint-staged": {
-    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix"
+    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix",
+    "**/*": "prettier --write --ignore-unknown"
   }
 }
