@@ -1,5 +1,11 @@
 # @tszhong0411/prettier-config
 
+## 0.0.4
+
+### Patch Changes
+
+- [`4f0e1f1`](https://github.com/tszhong0411/honghong.me/commit/4f0e1f11021036bb7506eba3ed8554df3ef7c7ea) Thanks [@tszhong0411](https://github.com/tszhong0411)! - update config
+
 ## 0.0.3
 
 ### Patch Changes
