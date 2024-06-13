@@ -8,6 +8,7 @@ nextdotjs
 nocheck
 nodedotjs
 nosniff
+postpublish
 sameorigin
 simulately
 techstack

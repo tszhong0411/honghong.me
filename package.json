@@ -25,7 +25,7 @@
     "lint": "turbo lint",
     "lint:fix": "turbo lint:fix && pnpm format:write && tsx scripts/fix-cspell.ts",
     "prepare": "husky && pnpm build:packages",
-    "release": "changeset publish",
+    "release": "changeset publish && pnpm -r run postpublish",
     "test:e2e": "turbo test:e2e",
     "test:e2e:ui": "turbo test:e2e:ui",
     "test:unit": "turbo test:unit",

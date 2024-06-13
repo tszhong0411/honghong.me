@@ -19,11 +19,12 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup && eslint-config-inspector build",
+    "build": "tsup",
     "clean": "rm -rf .turbo dist",
     "dev": "concurrently \"tsup --watch\" \"eslint-config-inspector\"",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint --fix .",
+    "postpublish": "bash ./scripts/update-git-repo.sh",
     "type-check": "tsc --noEmit"
   },
   "types": "./dist/index.d.ts",
