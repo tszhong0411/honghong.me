@@ -33,8 +33,8 @@ EOF
 
 if [ "$CI" ]; then
   # Set global Git configuration
-  git config --global user.email "github-actions[bot]"
-  git config --global user.name "github-actions[bot]@users.noreply.github.com"
+  git config --global user.name "github-actions[bot]"
+  git config --global user.email "github-actions[bot]@users.noreply.github.com"
 fi
 
 git add -A
