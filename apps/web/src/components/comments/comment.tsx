@@ -17,7 +17,7 @@ import CommentReplies from './comment-replies'
 import CommentReply from './comment-reply'
 
 type CommentProps = {
-  comment: CommentsOutput[0]
+  comment: CommentsOutput[number]
 }
 
 const deletedBody = {
@@ -53,8 +53,8 @@ const Comment = (props: CommentProps) => {
     relative: true
   })
 
-  const context = useMemo<CommentContext>(() => {
-    return {
+  const context = useMemo<CommentContext>(
+    () => ({
       isEditing,
       isReplying,
       isOpenReplies,
@@ -63,8 +63,9 @@ const Comment = (props: CommentProps) => {
       setIsOpenReplies,
       slug,
       comment
-    }
-  }, [comment, isEditing, isOpenReplies, isReplying, slug])
+    }),
+    [comment, isEditing, isOpenReplies, isReplying, slug]
+  )
 
   const {
     body,

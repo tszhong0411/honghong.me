@@ -162,7 +162,6 @@ const CommandMenu = () => {
             <Fragment key={group.name}>
               <CommandGroup heading={group.name}>
                 {group.actions.map((action) => (
-                  // eslint-disable-next-line @typescript-eslint/no-misused-promises -- it's fine
                   <CommandItem key={action.title} onSelect={action.onSelect}>
                     {action.icon}
                     {action.title}

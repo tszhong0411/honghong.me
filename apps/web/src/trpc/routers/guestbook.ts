@@ -6,6 +6,7 @@ import { z } from 'zod'
 
 import { getDefaultUser } from '@/utils/get-default-user'
 
+import type { RouterOutputs } from '../react'
 import { createTRPCRouter, protectedProcedure, publicProcedure } from '../trpc'
 
 export const guestbookRouter = createTRPCRouter({
@@ -105,3 +106,5 @@ export const guestbookRouter = createTRPCRouter({
       await ctx.db.delete(guestbook).where(eq(guestbook.id, input.id))
     })
 })
+
+export type GuestbookOutput = RouterOutputs['guestbook']['get']

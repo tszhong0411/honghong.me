@@ -1,32 +1,23 @@
 'use client'
 
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-  Button,
-  buttonVariants,
-  Skeleton,
-  toast
-} from '@tszhong0411/ui'
+import { Avatar, AvatarFallback, AvatarImage, Skeleton } from '@tszhong0411/ui'
 import { useSession } from 'next-auth/react'
+import { useMemo } from 'react'
 
+import { type MessageContext, MessageProvider } from '@/contexts/message'
 import { useFormattedDate } from '@/hooks/use-formatted-date'
 import { api } from '@/trpc/react'
+import type { GuestbookOutput } from '@/trpc/routers/guestbook'
 
 import Loader from './loader'
+import Menu from './menu'
 
 type UpdatedDateProps = {
   date: Date
+}
+
+type MessageProps = {
+  message: GuestbookOutput[number]
 }
 
 const UpdatedDate = (props: UpdatedDateProps) => {
@@ -41,93 +32,64 @@ const UpdatedDate = (props: UpdatedDateProps) => {
 }
 
 const Messages = () => {
-  const { data } = useSession()
-  const utils = api.useUtils()
   const guestbookQuery = api.guestbook.get.useQuery()
-  const guestbookMutation = api.guestbook.delete.useMutation({
-    onSettled: () => utils.guestbook.get.invalidate(),
-    onError: (error) => toast.error(error.message)
-  })
-
-  const deleteMessageHandler = (id: string) => {
-    guestbookMutation.mutate({ id })
-  }
 
   return (
     <div className='mt-10 flex flex-col gap-4'>
       {guestbookQuery.isLoading ? (
         <Loader />
       ) : (
-        guestbookQuery.data?.map((message) => {
-          const {
-            id,
-            user: { name, image, id: userId },
-            updatedAt,
-            body
-          } = message
-
-          return (
-            <div key={id} className='rounded-lg border p-4 shadow-sm dark:bg-zinc-900/30'>
-              <div className='mb-3 flex gap-3'>
-                <Avatar>
-                  <AvatarImage
-                    src={image}
-                    width={40}
-                    height={40}
-                    className='size-10 rounded-full'
-                    alt={name}
-                  />
-                  <AvatarFallback className='bg-transparent'>
-                    <Skeleton className='size-10 rounded-full' />
-                  </AvatarFallback>
-                </Avatar>
-                <div className='flex flex-col justify-center gap-px text-sm'>
-                  <div>{name}</div>
-                  <UpdatedDate date={updatedAt} />
-                </div>
-              </div>
-              <div className='break-words pl-[52px]'>{body}</div>
-              {data?.user && userId === data.user.id ? (
-                <div className='mt-4 flex justify-end'>
-                  <AlertDialog>
-                    <AlertDialogTrigger asChild>
-                      <Button
-                        variant='destructive'
-                        type='button'
-                        disabled={guestbookMutation.isPending}
-                        aria-disabled={guestbookMutation.isPending}
-                      >
-                        Delete
-                      </Button>
-                    </AlertDialogTrigger>
-                    <AlertDialogContent>
-                      <AlertDialogHeader>
-                        <AlertDialogTitle>Delete a comment</AlertDialogTitle>
-                        <AlertDialogDescription>
-                          Are you sure you want to delete this comment? This action cannot be
-                          undone.
-                        </AlertDialogDescription>
-                      </AlertDialogHeader>
-                      <AlertDialogFooter>
-                        <AlertDialogCancel>Cancel</AlertDialogCancel>
-                        <AlertDialogAction
-                          onClick={() => {
-                            deleteMessageHandler(id)
-                          }}
-                          className={buttonVariants({ variant: 'destructive' })}
-                        >
-                          Delete
-                        </AlertDialogAction>
-                      </AlertDialogFooter>
-                    </AlertDialogContent>
-                  </AlertDialog>
-                </div>
-              ) : null}
-            </div>
-          )
-        })
+        guestbookQuery.data?.map((message) => <Message key={message.id} message={message} />)
       )}
     </div>
+  )
+}
+
+const Message = (props: MessageProps) => {
+  const { message } = props
+  const { data } = useSession()
+
+  const {
+    message: {
+      id,
+      user: { name, image, id: userId },
+      updatedAt,
+      body
+    }
+  } = props
+
+  const context = useMemo<MessageContext>(
+    () => ({
+      message
+    }),
+    [message]
+  )
+
+  return (
+    <MessageProvider value={context}>
+      <div key={id} className='rounded-lg border p-4 shadow-sm dark:bg-zinc-900/30'>
+        <div className='mb-3 flex gap-3'>
+          <Avatar>
+            <AvatarImage
+              src={image}
+              width={40}
+              height={40}
+              className='size-10 rounded-full'
+              alt={name}
+            />
+            <AvatarFallback className='bg-transparent'>
+              <Skeleton className='size-10 rounded-full' />
+            </AvatarFallback>
+          </Avatar>
+          <div className='flex flex-col justify-center gap-px text-sm'>
+            <div>{name}</div>
+            <UpdatedDate date={updatedAt} />
+          </div>
+        </div>
+        <div className='break-words pl-[52px]'>{body}</div>
+        {data?.user && userId === data.user.id ? <Menu /> : null}
+      </div>
+    </MessageProvider>
   )
 }
 
