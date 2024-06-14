@@ -1,12 +1,14 @@
 {
   "$schema": "https://unpkg.com/knip@5/schema.json",
+  "ignore": ["**/tests/fixtures/**"],
   "ignoreBinaries": ["only-allow"],
   "ignoreDependencies": ["prettier-plugin-*"],
   "workspaces": {
     ".": {
       "commitlint": {
         "config": ".commitlintrc.js"
-      }
+      },
+      "entry": ["vitest.shared.ts"]
     },
     "apps/web": {
       "entry": ["./src/**/*.{js,jsx,ts,tsx}", "mdx.config.ts"],

@@ -73,17 +73,6 @@
     "test:e2e:ui": {
       "outputs": ["playwright-report/**", "test-results/**"]
     },
-    "test:unit": {},
-    "test:unit:coverage": {
-      "cache": false,
-      "interactive": true,
-      "persistent": true
-    },
-    "test:unit:ui": {
-      "cache": false,
-      "interactive": true,
-      "persistent": true
-    },
     "type-check": {}
   }
 }

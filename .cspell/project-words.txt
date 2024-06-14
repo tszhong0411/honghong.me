@@ -3,6 +3,7 @@ customizer
 ependencies
 honghong
 innerhtml
+lcov
 lockb
 nextdotjs
 nocheck
