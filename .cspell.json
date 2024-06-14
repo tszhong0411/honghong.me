@@ -18,7 +18,7 @@
       "path": "./.cspell/names.txt"
     }
   ],
-  "files": ["**/*.{js,cjs,mjs,ts,jsx,tsx,md,mdx,html,json,css,toml,yaml,yml,css}"],
+  "enableFiletypes": ["github-actions-workflow", "shellscript"],
   "ignorePaths": [
     "*lock.{yaml,json}",
     "CHANGELOG.md",
