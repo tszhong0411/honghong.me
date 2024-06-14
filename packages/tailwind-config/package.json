@@ -26,6 +26,9 @@
     "@tailwindcss/typography": "^0.5.13",
     "tailwindcss-animate": "^1.0.7"
   },
+  "peerDependencies": {
+    "tailwindcss": "3.x"
+  },
   "devDependencies": {
     "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
