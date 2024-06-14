@@ -30,3 +30,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           UPDATE_REPO_SSH_KEY: ${{ secrets.UPDATE_REPO_SSH_KEY }}
+
+      - name: Check if eslint config was released
+        run: echo "PACKAGE_RELEASED=$(jq -r '.packages | map(select(.name == "@tszhong0411/eslint-config")) | length > 0' < changesets/output.json)" >> $GITHUB_ENV
+
+      - name: Sync repo if needed
+        if: env.PACKAGE_RELEASED == 'true'
+        run: pnpm -r run postpublish
