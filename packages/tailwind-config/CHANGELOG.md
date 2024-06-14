@@ -1,5 +1,11 @@
 # @tszhong0411/tailwind-config
 
+## 0.0.8
+
+### Patch Changes
+
+- [`4572db9`](https://github.com/tszhong0411/honghong.me/commit/4572db99b755ec13ddeed22c6034a096c2f701fc) Thanks [@tszhong0411](https://github.com/tszhong0411)! - add peerDependencies
+
 ## 0.0.7
 
 ### Patch Changes

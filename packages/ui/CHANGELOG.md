@@ -1,5 +1,11 @@
 # @tszhong0411/ui
 
+## 0.0.18
+
+### Patch Changes
+
+- [`5a4bb8d`](https://github.com/tszhong0411/honghong.me/commit/5a4bb8d1a2ea8ef14e5af481bbf68e03d81e8ade) Thanks [@tszhong0411](https://github.com/tszhong0411)! - pin react version
+
 ## 0.0.17
 
 ### Patch Changes
