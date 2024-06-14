@@ -12,13 +12,13 @@ import SignIn from './sign-in'
 const title = 'Guestbook'
 const description = 'Sign my guestbook and share your idea.'
 
-type GuestbookPageProps = {
+type PageProps = {
   params: Record<string, never>
   searchParams: Record<string, never>
 }
 
 export const generateMetadata = async (
-  _: GuestbookPageProps,
+  _: PageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> => {
   const previousOpenGraph = (await parent).openGraph ?? {}
@@ -44,7 +44,7 @@ export const generateMetadata = async (
   }
 }
 
-const GuestbookPage = async () => {
+const Page = async () => {
   if (!flags.auth) return null
 
   const user = await getCurrentUser()
@@ -61,4 +61,4 @@ const GuestbookPage = async () => {
   )
 }
 
-export default GuestbookPage
+export default Page

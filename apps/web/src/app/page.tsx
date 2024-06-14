@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   }
 }
 
-const HomePage = () => {
+const Page = () => {
   const posts = allBlogPosts
   const latestPosts = posts
     .sort((a, b) => {
@@ -35,4 +35,4 @@ const HomePage = () => {
   )
 }
 
-export default HomePage
+export default Page

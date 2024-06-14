@@ -2,12 +2,12 @@
 
 import { Button } from '@tszhong0411/ui'
 
-type ErrorPageProps = {
+type PageProps = {
   error: Error & { digest?: string }
   reset: () => void
 }
 
-const ErrorPage = (props: ErrorPageProps) => {
+const Page = (props: PageProps) => {
   const { error, reset } = props
 
   return (
@@ -21,4 +21,4 @@ const ErrorPage = (props: ErrorPageProps) => {
   )
 }
 
-export default ErrorPage
+export default Page

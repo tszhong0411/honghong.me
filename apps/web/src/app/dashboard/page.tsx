@@ -9,13 +9,13 @@ const title = 'Dashboard'
 const description =
   'This is my personal dashboard, built with Next.js API routes deployed as serverless functions. I use this dashboard to track various metrics across platforms like YouTube, GitHub, and more.'
 
-type DashboardPageProps = {
+type PageProps = {
   params: Record<string, never>
   searchParams: Record<string, never>
 }
 
 export const generateMetadata = async (
-  _: DashboardPageProps,
+  _: PageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> => {
   const previousOpenGraph = (await parent).openGraph ?? {}
@@ -41,7 +41,7 @@ export const generateMetadata = async (
   }
 }
 
-const DashboardPage = () => {
+const Page = () => {
   return (
     <>
       <PageTitle
@@ -55,4 +55,4 @@ const DashboardPage = () => {
   )
 }
 
-export default DashboardPage
+export default Page

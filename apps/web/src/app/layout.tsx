@@ -16,7 +16,7 @@ import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from '@/lib/constan
 
 import Providers from './providers'
 
-type RootLayoutProps = {
+type LayoutProps = {
   children: React.ReactNode
 }
 
@@ -113,7 +113,7 @@ const calcom = localFont({
   variable: '--font-title'
 })
 
-const RootLayout = (props: RootLayoutProps) => {
+const Layout = (props: LayoutProps) => {
   const { children } = props
 
   return (
@@ -157,4 +157,4 @@ const RootLayout = (props: RootLayoutProps) => {
   )
 }
 
-export default RootLayout
+export default Layout

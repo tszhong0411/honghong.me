@@ -9,13 +9,13 @@ const title = 'Uses'
 const description =
   'This is the equipment I currently use for gaming, programming, making videos, and every day.'
 
-type UsesPageProps = {
+type PageProps = {
   params: Record<string, never>
   searchParams: Record<string, never>
 }
 
 export const generateMetadata = async (
-  _: UsesPageProps,
+  _: PageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> => {
   const previousOpenGraph = (await parent).openGraph ?? {}
@@ -41,7 +41,7 @@ export const generateMetadata = async (
   }
 }
 
-const UsesPage = () => {
+const Page = () => {
   const page = allPages.find((p) => p.slug === 'uses')
 
   if (!page) {
@@ -62,4 +62,4 @@ const UsesPage = () => {
   )
 }
 
-export default UsesPage
+export default Page

@@ -7,21 +7,21 @@ import Mdx from '@/components/mdx'
 
 import Header from './header'
 
-type ProjectPageProps = {
+type PageProps = {
   params: {
     slug: string
   }
   searchParams: Record<string, never>
 }
 
-export const generateStaticParams = (): Array<ProjectPageProps['params']> => {
+export const generateStaticParams = (): Array<PageProps['params']> => {
   return allProjects.map((project) => ({
     slug: project.slug
   }))
 }
 
 export const generateMetadata = async (
-  props: ProjectPageProps,
+  props: PageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> => {
   const { params } = props
@@ -73,7 +73,7 @@ export const generateMetadata = async (
   }
 }
 
-const ProjectPage = (props: ProjectPageProps) => {
+const Page = (props: PageProps) => {
   const {
     params: { slug }
   } = props
@@ -102,4 +102,4 @@ const ProjectPage = (props: ProjectPageProps) => {
   )
 }
 
-export default ProjectPage
+export default Page

@@ -7,13 +7,13 @@ import ProjectCards from '@/components/project-cards'
 const title = 'Projects'
 const description = 'The list of my projects.'
 
-type ProjectsPageProps = {
+type PageProps = {
   params: Record<string, never>
   searchParams: Record<string, never>
 }
 
 export const generateMetadata = async (
-  _: ProjectsPageProps,
+  _: PageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> => {
   const previousOpenGraph = (await parent).openGraph ?? {}
@@ -39,7 +39,7 @@ export const generateMetadata = async (
   }
 }
 
-const ProjectsPage = () => {
+const Page = () => {
   const projects = allProjects
 
   return (
@@ -53,4 +53,4 @@ const ProjectsPage = () => {
   )
 }
 
-export default ProjectsPage
+export default Page

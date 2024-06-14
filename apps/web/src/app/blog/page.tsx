@@ -8,13 +8,13 @@ const title = 'Blog'
 const description =
   'My personal website and blog where I share my thoughts on various topics including tutorials, notes, and personal experiences. As a full-stack developer from Hong Kong, I started learning web development as a hobby in December 2020. I use Next.js for building websites, GitHub for code hosting, and Vercel for deployment. Explore my site to learn more about my Journey and discover some of the web development resources that have inspired me.'
 
-type BlogPageProps = {
+type PageProps = {
   params: Record<string, never>
   searchParams: Record<string, never>
 }
 
 export const generateMetadata = async (
-  _: BlogPageProps,
+  _: PageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> => {
   const previousOpenGraph = (await parent).openGraph ?? {}
@@ -40,7 +40,7 @@ export const generateMetadata = async (
   }
 }
 
-const BlogPage = () => {
+const Page = () => {
   const posts = allBlogPosts.sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime()
   })
@@ -58,4 +58,4 @@ const BlogPage = () => {
   )
 }
 
-export default BlogPage
+export default Page

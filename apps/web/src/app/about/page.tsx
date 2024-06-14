@@ -8,13 +8,13 @@ import PageTitle from '@/components/page-title'
 const title = 'About'
 const description = 'A student who loves web development.'
 
-type AboutPageProps = {
+type PageProps = {
   params: Record<string, never>
   searchParams: Record<string, never>
 }
 
 export const generateMetadata = async (
-  _: AboutPageProps,
+  _: PageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> => {
   const previousOpenGraph = (await parent).openGraph ?? {}
@@ -41,7 +41,7 @@ export const generateMetadata = async (
   }
 }
 
-const AboutPage = () => {
+const Page = () => {
   const page = allPages.find((p) => p.slug === 'about')
 
   if (!page) {
@@ -58,4 +58,4 @@ const AboutPage = () => {
   )
 }
 
-export default AboutPage
+export default Page

@@ -11,21 +11,21 @@ import Content from './content'
 import Footer from './footer'
 import Header from './header'
 
-type BlogPostPageProps = {
+type PageProps = {
   params: {
     slug: string
   }
   searchParams: Record<string, never>
 }
 
-export const generateStaticParams = (): Array<BlogPostPageProps['params']> => {
+export const generateStaticParams = (): Array<PageProps['params']> => {
   return allBlogPosts.map((post) => ({
     slug: post.slug
   }))
 }
 
 export const generateMetadata = async (
-  props: BlogPostPageProps,
+  props: PageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> => {
   const {
@@ -84,7 +84,7 @@ export const generateMetadata = async (
   }
 }
 
-const BlogPostPage = (props: BlogPostPageProps) => {
+const Page = (props: PageProps) => {
   const {
     params: { slug }
   } = props
@@ -134,4 +134,4 @@ const BlogPostPage = (props: BlogPostPageProps) => {
   )
 }
 
-export default BlogPostPage
+export default Page
