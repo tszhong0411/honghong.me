@@ -1,20 +1,16 @@
 # Dependencies
-node_modules
-.pnp
-.pnp.js
+node_modules/
+.pnp/
+.pnp.*
 
 # Local env files
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env*
 
 # Turbo
-.turbo
+.turbo/
 
 # Vercel
-.vercel
+.vercel/
 
 # Debug
 npm-debug.log*
@@ -29,9 +25,9 @@ yarn-error.log*
 # Build outputs
 .next/
 out/
-build
-dist
-.eslint-config-inspector
+build/
+dist/
+.eslint-config-inspector/
 
 # Database
 honghong-me.db
@@ -39,9 +35,13 @@ honghong-me.db-shm
 honghong-me.db-wal
 
 # MDX
-.mdx
+.mdx/
 
-# Tests
+# Testing
 playwright-report/
 test-results/
 coverage/
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
