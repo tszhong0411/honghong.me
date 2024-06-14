@@ -5,7 +5,7 @@ import { getConfig } from '../get-config'
 import { build } from './build'
 
 export const dev = async () => {
-  const { contentDirPath } = await getConfig()
+  const { contentDirPath } = await getConfig(process.cwd())
 
   // Initial build
   await build()

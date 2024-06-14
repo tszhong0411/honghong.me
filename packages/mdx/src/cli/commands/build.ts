@@ -23,7 +23,7 @@ type Error = {
 }
 
 export const build = async () => {
-  const { contentDirPath, defs } = await getConfig()
+  const { contentDirPath, defs } = await getConfig(process.cwd())
 
   try {
     await ensureDirectoryExists(contentDirPath)
