@@ -4,7 +4,7 @@ on:
   pull_request:
 
 jobs:
-  test:
+  tests:
     name: End to end tests
     runs-on: ubuntu-latest
     steps:
@@ -25,7 +25,7 @@ jobs:
 
       - name: Cache Playwright Browsers for Playwright's Version
         id: cache-playwright-browsers
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.cache/ms-playwright
           key: playwright-browsers-${{ env.PLAYWRIGHT_VERSION }}
@@ -35,7 +35,7 @@ jobs:
         run: pnpm exec playwright install --with-deps
 
       - name: Setup Playwright with cache
-        run: npx playwright install-deps
+        run: pnpm exec playwright install-deps
         if: steps.cache-playwright-browsers.outputs.cache-hit == 'true'
 
       - name: Run Playwright tests
