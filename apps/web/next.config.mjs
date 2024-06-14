@@ -11,7 +11,7 @@ const withBundleAnalyzer = bundleAnalyzer({
 })
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const config = {
   experimental: {
     optimizePackageImports: ['shiki']
   },
@@ -95,4 +95,4 @@ const nextConfig = {
   }
 }
 
-export default withBundleAnalyzer(nextConfig)
+export default withBundleAnalyzer(config)
