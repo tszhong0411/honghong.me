@@ -5,7 +5,9 @@ export default defineConfig({
     coverage: {
       reporter: ['lcov', 'html'],
       all: true,
-      provider: 'v8'
+      provider: 'v8',
+      include: ['apps/**', 'packages/**'],
+      exclude: ['**/tests/**', '**/.next/**', '**/.mdx/**', '**/.eslint-config-inspector/**']
     }
   }
 })
