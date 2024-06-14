@@ -303,9 +303,6 @@ importers:
       '@types/node':
         specifier: ^20.14.2
         version: 20.14.2
-      '@types/nodemailer':
-        specifier: ^6.4.15
-        version: 6.4.15
       '@types/react':
         specifier: ^18.3.3
         version: 18.3.3
@@ -350,7 +347,7 @@ importers:
         version: link:../env
       drizzle-orm:
         specifier: ^0.31.2
-        version: 0.31.2(@libsql/client@0.6.2)(@types/react@18.3.3)(react@18.2.0)
+        version: 0.31.2(@libsql/client@0.6.2)(@types/react@18.3.3)(react@18.3.1)
     devDependencies:
       '@tszhong0411/eslint-config':
         specifier: workspace:*
@@ -371,7 +368,7 @@ importers:
         specifier: ^0.0.19
         version: 0.0.19(@types/react@18.3.3)(react@18.2.0)
       react:
-        specifier: ^18.2.0
+        specifier: 18.2.0
         version: 18.2.0
       react-email:
         specifier: 2.1.4
@@ -527,7 +524,7 @@ importers:
         specifier: ^8.0.0
         version: 8.0.0
       react:
-        specifier: ^18.2.0
+        specifier: 18.2.0
         version: 18.2.0
       remark:
         specifier: ^15.0.1
@@ -702,7 +699,7 @@ importers:
         specifier: 14.2.3
         version: 14.2.3(@playwright/test@1.44.1)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react:
-        specifier: ^18.2.0
+        specifier: 18.2.0
         version: 18.2.0
       tailwindcss:
         specifier: ^3.4.4
@@ -4352,9 +4349,6 @@ packages:
 
   '@types/node@20.14.2':
     resolution: {integrity: sha512-xyu6WAMVwv6AKFLB+e/7ySZVr/0zLCzOa7rSpq6jNwpqOrUbcACDWC+53d4n2QHOnDou0fbIsg8wZu/sxrnI4Q==}
-
-  '@types/nodemailer@6.4.15':
-    resolution: {integrity: sha512-0EBJxawVNjPkng1zm2vopRctuWVCxk34JcIlRuXSf54habUWdz1FB7wHDqOqvDa8Mtpt0Q3LTXQkAs2LNyK5jQ==}
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -8816,6 +8810,10 @@ packages:
 
   react@18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
+    engines: {node: '>=0.10.0'}
+
+  react@18.3.1:
+    resolution: {integrity: sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==}
     engines: {node: '>=0.10.0'}
 
   read-cache@1.0.0:
@@ -14331,10 +14329,6 @@ snapshots:
     dependencies:
       undici-types: 5.26.5
 
-  '@types/nodemailer@6.4.15':
-    dependencies:
-      '@types/node': 20.14.2
-
   '@types/normalize-package-data@2.4.4': {}
 
   '@types/parse-json@4.0.2': {}
@@ -15824,11 +15818,11 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.31.2(@libsql/client@0.6.2)(@types/react@18.3.3)(react@18.2.0):
+  drizzle-orm@0.31.2(@libsql/client@0.6.2)(@types/react@18.3.3)(react@18.3.1):
     optionalDependencies:
       '@libsql/client': 0.6.2
       '@types/react': 18.3.3
-      react: 18.2.0
+      react: 18.3.1
 
   duplexer@0.1.2: {}
 
@@ -19643,6 +19637,11 @@ snapshots:
   react@18.2.0:
     dependencies:
       loose-envify: 1.4.0
+
+  react@18.3.1:
+    dependencies:
+      loose-envify: 1.4.0
+    optional: true
 
   read-cache@1.0.0:
     dependencies:

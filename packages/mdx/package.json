@@ -33,7 +33,7 @@
     "gray-matter": "^4.0.3",
     "hast": "^1.0.0",
     "pluralize": "^8.0.0",
-    "react": "^18.2.0",
+    "react": "18.2.0",
     "remark": "^15.0.1",
     "remark-gfm": "^4.0.0",
     "shiki": "^1.6.4",
