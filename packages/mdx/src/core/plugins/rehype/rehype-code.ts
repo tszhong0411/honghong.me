@@ -22,7 +22,7 @@ export const rehypeCode: [Plugin<[RehypeShikiOptions], Root>, RehypeShikiOptions
          * - Remove trailing newline
          * - Remove title from meta
          */
-        preprocess: (code, { meta }) => {
+        preprocess(code, { meta }) {
           if (meta) {
             meta.__raw = meta.__raw?.replace(titleRegex, '')
           }

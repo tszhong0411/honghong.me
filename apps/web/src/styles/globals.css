@@ -96,15 +96,16 @@
   color: var(--shiki-dark);
 }
 
-pre.shiki .line {
-  font-size: 13px;
-  padding: 0 theme(spacing.4);
+pre.shiki .highlighted {
+  margin: 0 -16px;
+  padding: 0 16px;
+  display: inline-block;
+  min-width: calc(100% + 32px);
+  background-color: theme('colors.primary.DEFAULT / 10%');
 }
 
-pre.shiki .highlighted {
-  width: 100%;
-  display: inline-block;
-  background-color: theme('colors.primary.DEFAULT / 10%');
+pre.shiki code {
+  font-size: 13px;
 }
 
 .tiptap p.is-editor-empty:first-child::before {

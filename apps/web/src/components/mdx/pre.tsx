@@ -1,7 +1,7 @@
 'use client'
 
 import { SiJavascript, SiReact, SiTypescript } from '@icons-pack/react-simple-icons'
-import { Button, type ButtonProps, ScrollArea } from '@tszhong0411/ui'
+import { Button, type ButtonProps, ScrollArea, ScrollBar } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { CheckIcon, CopyIcon, FileIcon, TerminalIcon } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
@@ -68,9 +68,10 @@ const Pre = (props: PreProps) => {
       )}
 
       <ScrollArea>
-        <pre ref={textInput} className={cn('py-4', className)} {...rest}>
+        <pre ref={textInput} className={cn('p-4', className)} {...rest}>
           {children}
         </pre>
+        <ScrollBar orientation='horizontal' />
       </ScrollArea>
     </figure>
   )
