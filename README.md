@@ -100,28 +100,6 @@ and more but I can't remember them all 🥹
 
 - [@tszhong0411](https://github.com/tszhong0411)
 
-## ✨ Contributors
-
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tbody>
-    <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://honghong.me/"><img src="https://avatars.githubusercontent.com/u/75498339?v=4?s=50" width="50px;" alt="Hong"/><br /><sub><b>Hong</b></sub></a><br /><a href="https://github.com/tszhong0411/honghong.me/commits?author=tszhong0411" title="Code">💻</a> <a href="https://github.com/tszhong0411/honghong.me/commits?author=tszhong0411" title="Documentation">📖</a> <a href="#design-tszhong0411" title="Design">🎨</a> <a href="#ideas-tszhong0411" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-tszhong0411" title="Maintenance">🚧</a> <a href="https://github.com/tszhong0411/honghong.me/commits?author=tszhong0411" title="Tests">⚠️</a> <a href="https://github.com/tszhong0411/honghong.me/issues?q=author%3Atszhong0411" title="Bug reports">🐛</a> <a href="#question-tszhong0411" title="Answering Questions">💬</a> <a href="https://github.com/tszhong0411/honghong.me/pulls?q=is%3Apr+reviewed-by%3Atszhong0411" title="Reviewed Pull Requests">👀</a></td>
-    </tr>
-  </tbody>
-</table>
-
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
-
 ## 🪪 License
 
 Please do not deploy this directly to production. It is not a template and is not intended to be used as one.
