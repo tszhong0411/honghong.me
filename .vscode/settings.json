@@ -11,8 +11,8 @@
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
 
-  "eslint.experimental.useFlatConfig": true,
   "eslint.runtime": "node",
+  "eslint.useFlatConfig": true,
   "eslint.workingDirectories": [
     {
       "mode": "auto"
