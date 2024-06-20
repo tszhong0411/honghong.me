@@ -1,0 +1,33 @@
+---
+title: Toaster
+description: A notification component for displaying brief, non-intrusive messages to the user.
+---
+
+<ComponentPreview name='toaster/toaster' />
+
+## Usage
+
+```tsx title='app/layout.tsx'
+import { Toaster } from '@tszhong0411/ui'
+
+const Layout = ({ children }) => {
+  return (
+    <html>
+      <body>
+        {children}
+        <Toaster />
+      </body>
+    </html>
+  )
+}
+
+export default Layout
+```
+
+```tsx
+import { toast } from '@tszhong0411/ui'
+```
+
+```tsx
+toast('Event has been created.')
+```

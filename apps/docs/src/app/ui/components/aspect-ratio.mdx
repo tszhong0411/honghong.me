@@ -1,0 +1,20 @@
+---
+title: Aspect Ratio
+description: Displays content within a desired ratio.
+---
+
+<ComponentPreview name='aspect-ratio/aspect-ratio' />
+
+## Usage
+
+```tsx
+import { AspectRatio } from '@tszhong0411/ui'
+```
+
+```tsx
+<div className='w-[450px]'>
+  <AspectRatio ratio={16 / 9}>
+    <Image src='...' alt='Image' className='rounded-lg object-cover' />
+  </AspectRatio>
+</div>
+```

@@ -1,0 +1,24 @@
+---
+title: Files
+description: Provides a styled container for displaying files and folders.
+---
+
+<ComponentPreview name='files/files' />
+
+## Usage
+
+```tsx
+import { File, Files, Folder } from '@tszhong0411/ui'
+```
+
+```tsx
+<Files>
+  <Folder name='app' defaultOpen>
+    <File name='error.tsx' />
+    <File name='layout.tsx' />
+    <File name='not-found.tsx' />
+    <File name='page.tsx' />
+  </Folder>
+  <File name='package.json' />
+</Files>
+```

@@ -1,0 +1,25 @@
+---
+title: Select
+description: Displays a list of options for the user to pick from—triggered by a button.
+---
+
+<ComponentPreview name='select/select' />
+
+## Usage
+
+```tsx
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@tszhong0411/ui'
+```
+
+```tsx
+<Select>
+  <SelectTrigger className='w-[180px]'>
+    <SelectValue placeholder='Theme' />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value='light'>Light</SelectItem>
+    <SelectItem value='dark'>Dark</SelectItem>
+    <SelectItem value='system'>System</SelectItem>
+  </SelectContent>
+</Select>
+```

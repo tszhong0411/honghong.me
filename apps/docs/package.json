@@ -1,0 +1,53 @@
+{
+  "private": true,
+  "name": "@tszhong0411/docs",
+  "version": "0.0.0",
+  "license": "GPL-3.0",
+  "type": "module",
+  "scripts": {
+    "build": "mdx build && next build",
+    "bundle-analyzer": "cross-env ANALYZE=true pnpm run build",
+    "clean": "rm -rf .next .turbo .mdx",
+    "dev": "concurrently \"mdx dev\" \"next dev -p 3002\"",
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint --fix .",
+    "start": "next start",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@tszhong0411/mdx": "workspace:*",
+    "@tszhong0411/ui": "workspace:*",
+    "@tszhong0411/utils": "workspace:*",
+    "class-variance-authority": "^0.7.0",
+    "geist": "^1.3.0",
+    "lucide-react": "^0.394.0",
+    "next": "14.2.3",
+    "next-themes": "^0.3.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "sharp": "^0.33.2",
+    "shiki": "^1.6.4",
+    "unified": "^11.0.4",
+    "unist-util-visit": "^5.0.0"
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "^14.2.3",
+    "@tszhong0411/eslint-config": "workspace:*",
+    "@tszhong0411/shared": "workspace:*",
+    "@tszhong0411/tailwind-config": "workspace:*",
+    "@tszhong0411/tsconfig": "workspace:*",
+    "@types/hast": "^3.0.4",
+    "@types/node": "^20.14.2",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "cross-env": "^7.0.3",
+    "postcss": "^8.4.38",
+    "postcss-lightningcss": "^1.0.0",
+    "postcss-load-config": "^6.0.1",
+    "tailwindcss": "^3.4.4"
+  },
+  "lint-staged": {
+    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix",
+    "**/*": "prettier --write --ignore-unknown"
+  }
+}

@@ -75,9 +75,13 @@ pnpm db:migrate
 pnpm dev
 ```
 
-The app will be available at `localhost:3000`.
+The services will be available at the following URLs:
 
-The `react email` will be available at `localhost:3001`.
+| Service     | URL              |
+| ----------- | ---------------- |
+| App         | `localhost:3000` |
+| React Email | `localhost:3001` |
+| Docs        | `localhost:3002` |
 
 ## Flags
 
