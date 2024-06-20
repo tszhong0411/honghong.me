@@ -5,7 +5,7 @@
  */
 import type { RehypeShikiCoreOptions } from '@shikijs/rehype/core'
 import type { Root } from 'hast'
-import { getHighlighter, type Highlighter } from 'shiki'
+import { bundledLanguages, getHighlighter, type Highlighter } from 'shiki'
 import type { Plugin } from 'unified'
 import { visit } from 'unist-util-visit'
 
@@ -22,7 +22,7 @@ export const rehypeInlineCode: Plugin<[RehypeShikiCoreOptions], Root> = () => {
   return async (tree) => {
     promise = getHighlighter({
       themes: themeNames,
-      langs: [import('shiki/langs/js.mjs')]
+      langs: Object.keys(bundledLanguages)
     })
 
     const highlighter = await promise

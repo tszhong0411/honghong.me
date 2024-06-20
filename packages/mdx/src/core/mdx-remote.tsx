@@ -1,3 +1,4 @@
+import type { CompileOptions } from '@mdx-js/mdx'
 import * as jsxDevRuntime from 'react/jsx-dev-runtime'
 import * as jsxRuntime from 'react/jsx-runtime'
 import { type VFileCompatible } from 'vfile'
@@ -7,12 +8,17 @@ import { type MDXComponents } from './types'
 
 export type MDXRemoteRSCProps = {
   source: VFileCompatible
+  mdxOptions?: CompileOptions
   components?: MDXComponents
 }
 
-export const compileMDX = async ({ source, components = {} }: MDXRemoteRSCProps) => {
+export const compileMDX = async ({
+  source,
+  mdxOptions = {},
+  components = {}
+}: MDXRemoteRSCProps) => {
   const { compiledSource, frontmatter } = await serialize(source, {
-    rsc: true
+    mdxOptions
   })
 
   const isDev = process.env.NODE_ENV === 'development'
@@ -36,7 +42,7 @@ export const compileMDX = async ({ source, components = {} }: MDXRemoteRSCProps)
   }
 }
 
-export const MDXRemoteRSC = async (props: MDXRemoteRSCProps) => {
+export const MDXRemote = async (props: MDXRemoteRSCProps) => {
   const { content } = await compileMDX(props)
   return content
 }

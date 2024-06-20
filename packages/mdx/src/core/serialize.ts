@@ -1,9 +1,9 @@
-import { compile } from '@mdx-js/mdx'
+import { compile, type CompileOptions } from '@mdx-js/mdx'
 import { getErrorMessage } from '@tszhong0411/utils'
 import { VFile, type VFileCompatible } from 'vfile'
 import { matter } from 'vfile-matter'
 
-import { rehypePlugins, remarkPlugins } from './plugins'
+import { defaultRehypePlugins, defaultRemarkPlugins } from './plugins'
 
 export type SerializeResult<T = Record<string, unknown>> = {
   compiledSource: string
@@ -11,14 +11,16 @@ export type SerializeResult<T = Record<string, unknown>> = {
 }
 
 export type SerializeOptions = {
-  rsc?: boolean
+  mdxOptions: CompileOptions
 }
 
 export const serialize = async <T>(
   source: VFileCompatible,
-  options: SerializeOptions = {}
+  options: SerializeOptions
 ): Promise<SerializeResult<T>> => {
-  const { rsc = false } = options
+  const {
+    mdxOptions: { remarkPlugins, rehypePlugins, ...restOptions }
+  } = options
   const vfile = new VFile(source)
 
   matter(vfile, { strip: true })
@@ -28,10 +30,10 @@ export const serialize = async <T>(
   try {
     compiledMdx = await compile(vfile, {
       outputFormat: 'function-body',
-      providerImportSource: rsc ? undefined : '@mdx-js/react',
       development: process.env.NODE_ENV === 'development',
-      remarkPlugins,
-      rehypePlugins
+      remarkPlugins: [...defaultRemarkPlugins, ...(remarkPlugins ?? [])],
+      rehypePlugins: [...defaultRehypePlugins, ...(rehypePlugins ?? [])],
+      ...restOptions
     })
   } catch (error) {
     throw new Error(`Error compiling MDX: ${getErrorMessage(error)}`)

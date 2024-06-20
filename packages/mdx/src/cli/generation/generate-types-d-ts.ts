@@ -1,6 +1,7 @@
 import { Project, QuoteKind, ts } from 'ts-morph'
 
-import type { DocumentType, FieldDefs } from '../../source-files'
+import type { DocumentType, FieldDefs } from '@/types'
+
 import { AUTO_GENERATED_NOTE, BASE_FOLDER_PATH } from '../constants'
 import { getNestedDefs } from '../get-nested-defs'
 import { capitalizeFirstChar } from '../utils'
@@ -41,7 +42,7 @@ export const generateTypesDts = async (defs: DocumentType[]) => {
   sourceFile.addTypeAliases(
     defs.map((def, i) => ({
       name: def.name,
-      type: `{ ${def.fields ? renderFields(def.fields) : ''} body: string; slug: string; }`,
+      type: `{ ${def.fields ? renderFields(def.fields) : ''} body: string; slug: string; slugAsParams: string; }`,
       isExported: true,
       ...(i === 0 && {
         leadingTrivia: AUTO_GENERATED_NOTE

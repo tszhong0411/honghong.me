@@ -1,7 +1,8 @@
 import pluralize from 'pluralize'
 import { Project, QuoteKind, ts, VariableDeclarationKind } from 'ts-morph'
 
-import type { DocumentType } from '../../source-files'
+import type { DocumentType } from '@/types'
+
 import { AUTO_GENERATED_NOTE, BASE_FOLDER_PATH } from '../constants'
 
 export const generateIndexMjs = async (defs: DocumentType[]) => {

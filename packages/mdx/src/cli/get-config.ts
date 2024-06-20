@@ -1,6 +1,6 @@
 import { cosmiconfig } from 'cosmiconfig'
 
-import type { MakeSourceOptions } from '@/source-files/make-source'
+import type { MakeSourceOptions } from '@/types'
 
 import { LOG_PREFIX } from './constants'
 

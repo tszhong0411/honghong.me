@@ -1,4 +1,4 @@
-import type { DocumentType, ListFieldDef } from '../source-files'
+import type { DocumentType, ListFieldDef } from '@/types'
 
 export const getNestedDefs = (defs: DocumentType[]): ListFieldDef[] => {
   const nestedDefs = []

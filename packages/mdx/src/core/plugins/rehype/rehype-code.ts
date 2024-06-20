@@ -6,7 +6,7 @@ import { transformerMetaHighlight } from '@shikijs/transformers'
 import type { Root } from 'hast'
 import type { Plugin } from 'unified'
 
-const titleRegex = /title="([^"]*)"/
+const titleRegex = /title=["']([^"']*)["']/
 
 export const DEFAULT_SHIKI_THEMES = {
   light: 'github-light-default',
@@ -53,12 +53,6 @@ export const rehypeCode: [Plugin<[RehypeShikiOptions], Root>, RehypeShikiOptions
       return { title }
     },
     themes: DEFAULT_SHIKI_THEMES,
-    defaultColor: false,
-    langs: [
-      import('shiki/langs/js.mjs'),
-      import('shiki/langs/bash.mjs'),
-      import('shiki/langs/jsx.mjs'),
-      import('shiki/langs/php.mjs')
-    ]
+    defaultColor: false
   }
 ]

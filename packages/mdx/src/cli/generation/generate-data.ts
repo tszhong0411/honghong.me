@@ -2,7 +2,7 @@ import matter from 'gray-matter'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 
-import type { DocumentType } from '@/source-files'
+import type { DocumentType } from '@/types'
 
 import { BASE_FOLDER_PATH } from '../constants'
 import { getEntries } from '../get-entries'
@@ -31,7 +31,8 @@ export const generateData = async (defs: DocumentType[], contentDirPath: string)
       const content = {
         ...parsedContent.data,
         body: parsedContent.content,
-        slug: fileName
+        slug: fileName,
+        slugAsParams: entry.replace('.mdx', '')
       }
 
       indexJson.push(content)
