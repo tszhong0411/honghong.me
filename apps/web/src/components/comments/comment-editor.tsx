@@ -21,7 +21,7 @@ type CommentEditorProps = {
   onChange?: (editor: UseCommentEditor) => void
 }
 
-export type UseCommentEditor = {
+type UseCommentEditor = {
   editor: Editor
   isEmpty: boolean
   getValue: () => JSONContent
@@ -61,8 +61,8 @@ const CommentEditor = (props: CommentEditorProps) => {
   const innerEditor = editor?.editor ?? null
 
   const editorClassName = cn(
-    'rounded-lg border bg-background pb-1 ring-offset-background',
-    'focus-within:outline-none focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2',
+    'bg-background ring-offset-background rounded-lg border pb-1',
+    'focus-within:ring-ring focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2',
     'aria-disabled:cursor-not-allowed aria-disabled:opacity-80'
   )
 

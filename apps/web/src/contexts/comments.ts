@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react'
 
-export type CommentsContext = {
+type CommentsContext = {
   slug: string
 }
 

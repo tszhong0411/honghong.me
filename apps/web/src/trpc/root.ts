@@ -7,7 +7,7 @@ import { spotifyRouter } from './routers/spotify'
 import { viewsRouter } from './routers/views'
 import { wakatimeRouter } from './routers/wakatime'
 import { youtubeRouter } from './routers/youtube'
-import { createCallerFactory, createTRPCRouter } from './trpc'
+import { createTRPCRouter } from './trpc'
 
 export const appRouter = createTRPCRouter({
   github: githubRouter,
@@ -22,5 +22,3 @@ export const appRouter = createTRPCRouter({
 })
 
 export type AppRouter = typeof appRouter
-
-export const createCaller = createCallerFactory(appRouter)

@@ -2,11 +2,11 @@ import { useEffect } from 'react'
 
 import type { CommentsOutput } from '@/trpc/routers/comments'
 
-export const isValidCommentHash = (hash: string) => {
+const isValidCommentHash = (hash: string) => {
   return /^#comment-[\dA-Za-z]+$/.test(hash)
 }
 
-export const isValidReplyHash = (hash: string) => {
+const isValidReplyHash = (hash: string) => {
   return /^#comment(?:-[\dA-Za-z]+){2}$/.test(hash)
 }
 

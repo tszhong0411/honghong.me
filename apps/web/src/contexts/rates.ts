@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react'
 
-export type RatesContext = {
+type RatesContext = {
   increment: () => void
   decrement: () => void
   getCount: () => number
