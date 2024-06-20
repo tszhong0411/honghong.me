@@ -5,10 +5,11 @@
 
 import { cn } from '@tszhong0411/utils'
 import { cva } from 'class-variance-authority'
-import { FileIcon, FolderIcon, FolderOpenIcon } from 'lucide-react'
+import { FolderIcon, FolderOpenIcon } from 'lucide-react'
 import { useState } from 'react'
 
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from './collapsible'
+import { getIconByFilename } from './utils/get-icon-by-filename'
 
 type FilesProps = React.ComponentPropsWithoutRef<'div'>
 type FileProps = {
@@ -21,7 +22,7 @@ type FolderProps = {
 } & React.ComponentPropsWithoutRef<'div'>
 
 const item = cva(
-  'flex flex-row items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground'
+  'hover:bg-accent hover:text-accent-foreground flex flex-row items-center gap-2 rounded-md px-2 py-1.5 text-sm'
 )
 
 export const Files = (props: FilesProps) => {
@@ -37,9 +38,11 @@ export const Files = (props: FilesProps) => {
 export const File = (props: FileProps) => {
   const { name, className, ...rest } = props
 
+  const Icon = getIconByFilename(name)
+
   return (
     <div className={cn(item({ className }))} {...rest}>
-      <FileIcon className='size-4' />
+      <Icon className='size-4' />
       {name}
     </div>
   )

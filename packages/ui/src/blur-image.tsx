@@ -14,7 +14,7 @@ type ImageProps = {
 
 export const BlurImage = forwardRef<HTMLDivElement, ImageProps>((props, ref) => {
   const { alt, src, className, imageClassName, lazy = true, ...rest } = props
-  const [isLoading, setLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true)
 
   return (
     <div className={cn('overflow-hidden', isLoading && 'animate-pulse', className)} ref={ref}>
@@ -28,8 +28,8 @@ export const BlurImage = forwardRef<HTMLDivElement, ImageProps>((props, ref) => 
         loading={lazy ? 'lazy' : undefined}
         priority={!lazy}
         quality={100}
-        onLoad={() => {
-          setLoading(false)
+        onLoadingComplete={() => {
+          setIsLoading(false)
         }}
         {...rest}
       />

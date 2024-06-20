@@ -6,8 +6,7 @@ import { forwardRef } from 'react'
 export const linkVariants = cva('', {
   variants: {
     variant: {
-      article: 'bg-article-link no-underline dark:bg-article-link-dark',
-      muted: 'text-muted-foreground transition-colors hover:text-foreground'
+      muted: 'text-muted-foreground hover:text-foreground transition-colors'
     }
   }
 })

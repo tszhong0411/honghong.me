@@ -2,31 +2,10 @@ import { cn, range } from '@tszhong0411/utils'
 
 type MarqueeProps = {
   children: React.ReactNode
-  /**
-   * The gap between each child.
-   * @default '1rem'
-   * @example '20px' | '1rem' | '2em'
-   */
   gap?: string
-  /**
-   * The direction of the marquee.
-   * @default 'left'
-   */
   direction?: 'left' | 'up'
-  /**
-   * Pause the marquee on hover.
-   * @default false
-   */
   pauseOnHover?: boolean
-  /**
-   * Reverse the direction of the marquee.
-   * @default false
-   */
   reverse?: boolean
-  /**
-   * Fade the marquee edges.
-   * @default false
-   */
   fade?: boolean
   className?: string
 }
@@ -42,6 +21,12 @@ export const Marquee = (props: MarqueeProps) => {
     className
   } = props
 
+  const mask = fade
+    ? `linear-gradient(${
+        direction === 'left' ? 'to right' : 'to bottom'
+      }, transparent 0%, rgba(0, 0, 0, 1.0) 10%, rgba(0, 0, 0, 1.0) 90%, transparent 100%)`
+    : undefined
+
   return (
     <div
       className={cn(
@@ -50,16 +35,8 @@ export const Marquee = (props: MarqueeProps) => {
         className
       )}
       style={{
-        maskImage: fade
-          ? `linear-gradient(${
-              direction === 'left' ? 'to right' : 'to bottom'
-            }, transparent 0%, rgba(0, 0, 0, 1.0) 10%, rgba(0, 0, 0, 1.0) 90%, transparent 100%)`
-          : undefined,
-        WebkitMaskImage: fade
-          ? `linear-gradient(${
-              direction === 'left' ? 'to right' : 'to bottom'
-            }, transparent 0%, rgba(0, 0, 0, 1.0) 10%, rgba(0, 0, 0, 1.0) 90%, transparent 100%)`
-          : undefined,
+        maskImage: mask,
+        WebkitMaskImage: mask,
         gap
       }}
     >
