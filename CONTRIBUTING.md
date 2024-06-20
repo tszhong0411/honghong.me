@@ -77,11 +77,12 @@ pnpm dev
 
 The services will be available at the following URLs:
 
-| Service     | URL              |
-| ----------- | ---------------- |
-| App         | `localhost:3000` |
-| React Email | `localhost:3001` |
-| Docs        | `localhost:3002` |
+| Service                 | URL              |
+| ----------------------- | ---------------- |
+| App                     | `localhost:3000` |
+| React Email             | `localhost:3001` |
+| Docs                    | `localhost:3002` |
+| ESLint Config Inspector | `localhost:7777` |
 
 ## Flags
 
