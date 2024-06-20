@@ -28,7 +28,7 @@ export const BlurImage = forwardRef<HTMLDivElement, ImageProps>((props, ref) => 
         loading={lazy ? 'lazy' : undefined}
         priority={!lazy}
         quality={100}
-        onLoadingComplete={() => {
+        onLoad={() => {
           setIsLoading(false)
         }}
         {...rest}

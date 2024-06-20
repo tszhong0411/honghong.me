@@ -11,11 +11,13 @@
   "commit": false,
   "fixed": [],
   "ignore": [
-    "@tszhong0411/web",
     "@tszhong0411/db",
+    "@tszhong0411/docs",
     "@tszhong0411/emails",
     "@tszhong0411/env",
-    "@tszhong0411/mdx"
+    "@tszhong0411/mdx",
+    "@tszhong0411/shared",
+    "@tszhong0411/web"
   ],
   "linked": [],
   "updateInternalDependencies": "patch"
