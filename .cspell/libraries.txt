@@ -1,8 +1,13 @@
+astro
 autosize
+bradlc
 cmdk
 cobe
+commitlintrc
 contentlayer
 corepack
+dbaeumer
+esbenp
 fuma
 fumadocs
 jiti
@@ -11,6 +16,7 @@ libsql
 lightningcss
 nextra
 normy
+nuxt
 paralleldrive
 rehype
 rmiz
@@ -23,5 +29,6 @@ tinycolor2
 tiptap
 tsup
 turso
+unifiedjs
 vfile
 zustand

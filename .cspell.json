@@ -18,24 +18,14 @@
       "path": "./.cspell/names.txt"
     }
   ],
-  "enableFiletypes": ["github-actions-workflow", "shellscript"],
-  "ignorePaths": [
-    "*lock.{yaml,json}",
-    "CHANGELOG.md",
-    "*.mp4",
-    "*.txt",
-    "packages/db/src/migrations"
+  "enableFiletypes": ["github-actions-workflow", "shellscript", "tailwindcss"],
+  "files": [
+    "**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,md,mdx,json,yml,yaml,svg,webmanifest}",
+    "**/.*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,md,mdx,json,yml,yaml,svg,webmanifest}",
+    ".*/**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,md,mdx,json,yml,yaml,svg,webmanifest}"
   ],
-  "import": [
-    "@cspell/dict-typescript/cspell-ext.json",
-    "@cspell/dict-companies/cspell-ext.json",
-    "@cspell/dict-fullstack/cspell-ext.json",
-    "@cspell/dict-markdown/cspell-ext.json",
-    "@cspell/dict-npm/cspell-ext.json",
-    "@cspell/dict-node/cspell-ext.json",
-    "@cspell/dict-software-terms/cspell-ext.json"
-  ],
-  "language": "en-US",
+  "ignorePaths": ["pnpm-lock.yaml", "CHANGELOG.md"],
+  "import": ["@cspell/dict-software-terms", "@cspell/dict-npm"],
   "useGitignore": true,
   "version": "0.2"
 }
