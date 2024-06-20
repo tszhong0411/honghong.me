@@ -2,7 +2,10 @@ import typography from '@tailwindcss/typography'
 import type { Config } from 'tailwindcss'
 import animate from 'tailwindcss-animate'
 
+import { ui } from './src/plugin'
+
 const config: Partial<Config> = {
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -64,10 +67,6 @@ const config: Partial<Config> = {
         'marquee-left': 'marquee-left var(--duration, 30s) linear infinite',
         'marquee-up': 'marquee-up var(--duration, 30s) linear infinite'
       },
-      backgroundImage: {
-        'article-link': 'linear-gradient(rgb(0 0 0 / 0) 70%, rgb(255 15 64 / 0.4) 0)',
-        'article-link-dark': 'linear-gradient(rgb(0 0 0 / 0) 70%, rgb(173 32 60) 0)'
-      },
       typography: {
         DEFAULT: {
           css: {
@@ -126,7 +125,7 @@ const config: Partial<Config> = {
   future: {
     hoverOnlyWhenSupported: true
   },
-  plugins: [typography, animate]
+  plugins: [typography, animate, ui]
 }
 
 export default config
