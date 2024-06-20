@@ -123,7 +123,7 @@ const Layout = (props: LayoutProps) => {
       className={cn(GeistSans.variable, GeistMono.variable, calcom.variable, 'scroll-smooth')}
       suppressHydrationWarning
     >
-      <body>
+      <body className='relative'>
         <Providers>
           <Hello />
           <Header />
