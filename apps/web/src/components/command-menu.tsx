@@ -28,7 +28,7 @@ type Groups = Array<{
 }>
 
 const CommandMenu = () => {
-  const [open, setOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
   const [copy] = useCopyToClipboard()
   const { status } = useSession()
   const { setOpen: setSignInModalOpen } = useSignInModalStore()
@@ -37,7 +37,7 @@ const CommandMenu = () => {
     const down = (e: KeyboardEvent) => {
       if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
         e.preventDefault()
-        setOpen((value) => !value)
+        setIsOpen((value) => !value)
       }
     }
 
@@ -49,7 +49,7 @@ const CommandMenu = () => {
   }, [])
 
   const openLink = useCallback((url: string) => {
-    setOpen(false)
+    setIsOpen(false)
     window.open(url, '_blank', 'noopener')
   }, [])
 
@@ -70,7 +70,7 @@ const CommandMenu = () => {
                 title: 'Sign in',
                 icon: <LogInIcon className='mr-3 size-4' />,
                 onSelect: () => {
-                  setOpen(false)
+                  setIsOpen(false)
                   setSignInModalOpen(true)
                 }
               }
@@ -84,7 +84,7 @@ const CommandMenu = () => {
           title: 'Copy Link',
           icon: <LinkIcon className='mr-3 size-4' />,
           onSelect: async () => {
-            setOpen(false)
+            setIsOpen(false)
 
             await copy({ text: window.location.href })
           }
@@ -146,7 +146,7 @@ const CommandMenu = () => {
         variant='ghost'
         className='size-9 p-0'
         onClick={() => {
-          setOpen(true)
+          setIsOpen(true)
         }}
         type='button'
         aria-label='Open command menu'
@@ -154,7 +154,7 @@ const CommandMenu = () => {
         <span className='sr-only'>Open command menu</span>
         <CommandIcon className='size-4' />
       </Button>
-      <CommandDialog open={open} onOpenChange={setOpen}>
+      <CommandDialog open={isOpen} onOpenChange={setIsOpen}>
         <CommandInput placeholder='Type a command or search' />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
