@@ -58,8 +58,8 @@ export const DialogContent = forwardRef<
             'data-[state=open]:bg-accent data-[state=open]:text-muted-foreground'
           )}
         >
-          <XIcon className='size-4' />
           <span className='sr-only'>Close</span>
+          <XIcon className='size-4' />
         </DialogPrimitive.Close>
       </DialogPrimitive.Content>
     </DialogPortal>
