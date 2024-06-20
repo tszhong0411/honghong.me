@@ -1,0 +1,32 @@
+{
+  "private": true,
+  "name": "@tszhong0411/shared",
+  "version": "0.0.0",
+  "license": "GPL-3.0",
+  "type": "module",
+  "main": "./src/index.ts",
+  "module": "./dist/index.js",
+  "scripts": {
+    "build": "tsup",
+    "clean": "rm -rf .turbo dist",
+    "dev": "tsup --watch",
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint --fix .",
+    "type-check": "tsc --noEmit"
+  },
+  "types": "./dist/index.d.ts",
+  "devDependencies": {
+    "@tszhong0411/eslint-config": "workspace:*",
+    "@tszhong0411/tsconfig": "workspace:*"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "lint-staged": {
+    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix",
+    "**/*": "prettier --write --ignore-unknown"
+  }
+}
