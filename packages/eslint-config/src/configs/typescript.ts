@@ -26,6 +26,7 @@ export const typescript = (options?: Options): Linter.FlatConfig[] => [
       ...typescriptPlugin.configs['recommended-type-checked']!.rules,
       ...typescriptPlugin.configs['strict-type-checked']!.rules,
       ...typescriptPlugin.configs['stylistic-type-checked']!.rules,
+      ...typescriptPlugin.configs['eslint-recommended']!.overrides![0]!.rules!,
 
       '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
       '@typescript-eslint/no-invalid-this': 'error',

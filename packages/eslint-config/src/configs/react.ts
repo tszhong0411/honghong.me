@@ -32,12 +32,7 @@ export const react = (options?: Options): Linter.FlatConfig[] => {
             jsx: true
           },
           project: options?.project,
-          tsconfigRootDir: options?.tsconfigRootDir,
           sourceType: 'module'
-        },
-        globals: {
-          React: true,
-          JSX: true
         }
       },
       rules: {
