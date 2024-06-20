@@ -1,9 +1,4 @@
 {
-  "cSpell.diagnosticLevel": "Warning",
-  "cSpell.enableFiletypes": ["mdx"],
-  "cSpell.enabled": true,
-  "cSpell.showAutocompleteSuggestions": true,
-
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
     "source.organizeImports": "never"
