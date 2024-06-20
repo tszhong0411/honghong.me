@@ -103,9 +103,10 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: {
-    color: '#000000'
-  }
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' }
+  ]
 }
 
 const calcom = localFont({
