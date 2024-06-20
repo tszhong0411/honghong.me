@@ -59,7 +59,7 @@ export const AlertDialogHeader = forwardRef<HTMLDivElement, React.HTMLAttributes
 
     return (
       <div
-        className={cn('flex flex-col space-y-2 text-center sm:text-left', className)}
+        className={cn('flex flex-col gap-2 text-center sm:text-left', className)}
         ref={ref}
         {...rest}
       />
@@ -73,7 +73,7 @@ export const AlertDialogFooter = forwardRef<HTMLDivElement, React.HTMLAttributes
 
     return (
       <div
-        className={cn('flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2', className)}
+        className={cn('flex flex-col-reverse sm:flex-row sm:justify-end sm:gap-2', className)}
         ref={ref}
         {...rest}
       />

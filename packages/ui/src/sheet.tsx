@@ -75,9 +75,7 @@ export const SheetContent = forwardRef<
 export const SheetHeader = (props: React.HTMLAttributes<HTMLDivElement>) => {
   const { className, ...rest } = props
 
-  return (
-    <div className={cn('flex flex-col space-y-2 text-center sm:text-left', className)} {...rest} />
-  )
+  return <div className={cn('flex flex-col gap-2 text-center sm:text-left', className)} {...rest} />
 }
 
 export const SheetFooter = (props: React.HTMLAttributes<HTMLDivElement>) => {
@@ -85,7 +83,7 @@ export const SheetFooter = (props: React.HTMLAttributes<HTMLDivElement>) => {
 
   return (
     <div
-      className={cn('flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2', className)}
+      className={cn('flex flex-col-reverse sm:flex-row sm:justify-end sm:gap-2', className)}
       {...rest}
     />
   )
