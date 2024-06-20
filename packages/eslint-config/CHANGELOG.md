@@ -1,5 +1,13 @@
 # @tszhong0411/eslint-config
 
+## 0.1.7
+
+### Patch Changes
+
+- [`3c32410`](https://github.com/tszhong0411/honghong.me/commit/3c32410dc95c23aa4df7de65bba7aa1acfc55f3d) Thanks [@tszhong0411](https://github.com/tszhong0411)! - update ts, react rules
+
+- [`540ef39`](https://github.com/tszhong0411/honghong.me/commit/540ef39cada64ad1deaea676bc919d4953c80976) Thanks [@tszhong0411](https://github.com/tszhong0411)! - update rules for react and next
+
 ## 0.1.6
 
 ### Patch Changes
