@@ -1,5 +1,5 @@
-import { type MDXComponents, MDXRemoteRSC } from '@tszhong0411/mdx'
-import { BlurImage, File, Files, Folder, Link } from '@tszhong0411/ui'
+import { type MDXComponents, MDXRemote } from '@tszhong0411/mdx'
+import { BlurImage, CodeBlock, File, Files, Folder, Link } from '@tszhong0411/ui'
 
 import ImageZoom from '../image-zoom'
 import Checkbox from './checkbox'
@@ -7,7 +7,6 @@ import Heading from './heading'
 import ItemGrid from './item-grid'
 import LinkCard from './link-card'
 import Logo from './logo'
-import Pre from './pre'
 import Table from './table'
 import Video from './video'
 
@@ -25,7 +24,7 @@ const components: MDXComponents = {
     const { children, ...rest } = props
 
     return (
-      <Link variant='article' {...rest}>
+      <Link className='underline underline-offset-4' {...rest}>
         {children}
       </Link>
     )
@@ -42,7 +41,7 @@ const components: MDXComponents = {
       </>
     )
   },
-  pre: Pre,
+  pre: CodeBlock,
   input: Checkbox,
 
   // Custom components
@@ -61,7 +60,7 @@ const Mdx = (props: MdxProps) => {
 
   return (
     <div className='prose w-full'>
-      <MDXRemoteRSC source={content} components={components} />
+      <MDXRemote source={content} components={components} />
     </div>
   )
 }
