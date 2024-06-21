@@ -38,13 +38,13 @@ const LocationCard = () => {
       width: width * 2,
       height: width * 2,
       phi: 0,
-      theta: -0.1,
+      theta: 0,
       dark: 1,
       diffuse: 2,
-      mapSamples: 36_000,
+      mapSamples: 12_000,
       mapBrightness: 2,
       baseColor: [0.8, 0.8, 0.8],
-      markerColor: [235 / 255, 35 / 255, 35 / 255],
+      markerColor: [1, 1, 1],
       glowColor: [0.5, 0.5, 0.5],
       markers: [{ location: [22.3193, 114.1694], size: 0.1 }],
       scale: 1.05,
@@ -57,6 +57,7 @@ const LocationCard = () => {
 
     return () => {
       globe.destroy()
+      window.removeEventListener('resize', onResize)
     }
   }, [r])
 
