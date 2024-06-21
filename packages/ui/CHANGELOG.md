@@ -1,5 +1,11 @@
 # @tszhong0411/ui
 
+## 0.0.20
+
+### Patch Changes
+
+- [`28170c2`](https://github.com/tszhong0411/honghong.me/commit/28170c28d96d0ae89e94fc931b5f6863e87b09b4) Thanks [@tszhong0411](https://github.com/tszhong0411)! - refactor - use gap in flexbox
+
 ## 0.0.19
 
 ### Patch Changes
