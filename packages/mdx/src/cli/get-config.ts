@@ -15,5 +15,8 @@ export const getConfig = async (cwd: string) => {
     throw new Error(`${LOG_PREFIX}No configuration found`)
   }
 
-  return configResult.config as MakeSourceOptions
+  return {
+    config: configResult.config as MakeSourceOptions,
+    filepath: configResult.filepath
+  }
 }

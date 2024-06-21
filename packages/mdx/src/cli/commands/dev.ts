@@ -1,39 +1,18 @@
-import * as chokidar from 'chokidar'
+import { type ChildProcess, spawn } from 'node:child_process'
+import path from 'node:path'
 
-import { LOG_PREFIX } from '../constants'
-import { getConfig } from '../get-config'
-import { build } from './build'
+let serverProcess: ChildProcess | undefined
 
-export const dev = async () => {
-  const { contentDirPath } = await getConfig(process.cwd())
+export const dev = () => {
+  const startServerPath = path.resolve(import.meta.dirname, 'start-server')
 
-  // Initial build
-  await build()
-
-  const watcher = chokidar.watch(`${contentDirPath}/**/*.mdx`, {
-    persistent: true
+  serverProcess = spawn('node', [startServerPath], {
+    stdio: 'inherit'
   })
 
-  watcher.on('change', (path) => {
-    console.log(`${LOG_PREFIX}${path} has changed. Rebuilding...`)
-    void build()
-  })
-
-  console.log(`${LOG_PREFIX}Watching for file changes...`)
-
-  const handleTermination = async () => {
-    console.log(`${LOG_PREFIX}Terminating watcher...`)
-
-    await watcher.close()
-
-    console.log(`${LOG_PREFIX}Watcher closed.`)
-    console.log(`${LOG_PREFIX}Exiting...`)
-  }
-
-  process.on('SIGINT', () => {
-    void handleTermination()
-  })
-  process.on('SIGTERM', () => {
-    void handleTermination()
+  serverProcess.on('exit', (code) => {
+    if (code === 99) {
+      dev()
+    }
   })
 }
