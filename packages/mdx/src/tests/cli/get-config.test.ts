@@ -18,13 +18,16 @@ describe('getConfig', () => {
     const config = await getConfig(path.resolve(import.meta.dirname, '../fixtures/config'))
 
     expect(config).toEqual({
-      contentDirPath: 'content',
-      defs: [
-        {
-          name: 'Page',
-          filePathPattern: 'pages/*.mdx'
-        }
-      ]
+      config: {
+        contentDirPath: 'content',
+        defs: [
+          {
+            name: 'Page',
+            filePathPattern: 'pages/*.mdx'
+          }
+        ]
+      },
+      filepath: path.resolve(import.meta.dirname, '../fixtures/config/mdx.config.ts')
     })
   })
 })

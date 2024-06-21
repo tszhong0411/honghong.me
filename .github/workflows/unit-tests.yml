@@ -15,4 +15,4 @@ jobs:
         uses: ./.github/actions/check-setup
 
       - name: Run unit tests
-        run: pnpm run test:unit
+        run: pnpm test:unit

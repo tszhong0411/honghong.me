@@ -15,7 +15,7 @@ jobs:
         uses: ./.github/actions/check-setup
 
       - name: Build the app
-        run: pnpm --filter=web build
+        run: pnpm build:apps
 
       - name: Check
         run: pnpm check
