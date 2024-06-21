@@ -1,4 +1,5 @@
 import Slugger from 'github-slugger'
+import type { Heading } from 'mdast'
 import { type Plugin } from 'unified'
 import { visit } from 'unist-util-visit'
 
@@ -11,12 +12,16 @@ export const remarkHeading: Plugin = () => {
     const toc: TOC[] = []
     slugger.reset()
 
-    visit(tree, 'heading', (node: any) => {
+    visit(tree, 'heading', (node: Heading) => {
       node.data ??= {}
       node.data.hProperties ??= {}
 
-      const text = node.children[0].value
-      const id = slugger.slug(text)
+      const childNode = node.children[0]
+
+      if (childNode?.type !== 'text') return
+
+      const text = childNode.value
+      const id = slugger.slug(childNode.value)
 
       node.data.hProperties.id = id
 
