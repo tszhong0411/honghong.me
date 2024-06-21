@@ -7,7 +7,7 @@ import Items from './items'
 
 const title = 'Dashboard'
 const description =
-  'This is my personal dashboard, built with Next.js API routes deployed as serverless functions. I use this dashboard to track various metrics across platforms like YouTube, GitHub, and more.'
+  'This is my personal dashboard, built with Next.js API routes deployed as edge functions. I use this dashboard to track various metrics across platforms like YouTube, GitHub, and more.'
 
 type PageProps = {
   params: Record<string, never>
@@ -44,12 +44,7 @@ export const generateMetadata = async (
 const Page = () => {
   return (
     <>
-      <PageTitle
-        title='Dashboard'
-        description='This is my personal dashboard, built with Next.js API routes deployed as
-        serverless functions. I use this dashboard to track various metrics
-        across platforms like YouTube, GitHub, and more.'
-      />
+      <PageTitle title={title} description={description} />
       {flags.stats ? <Items /> : null}
     </>
   )

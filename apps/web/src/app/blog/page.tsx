@@ -47,12 +47,7 @@ const Page = () => {
 
   return (
     <>
-      <PageTitle
-        title='Blog'
-        description={`I started writing articles in December 2020, mainly about software and
-        sharing knowledge. I have written a total of ${posts.length} articles on
-        my blog. You can search for articles by title in the search box below.`}
-      />
+      <PageTitle title={title} description={description} />
       <FilteredPosts posts={posts} />
     </>
   )

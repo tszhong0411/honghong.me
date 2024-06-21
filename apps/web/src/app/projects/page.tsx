@@ -5,7 +5,7 @@ import PageTitle from '@/components/page-title'
 import ProjectCards from '@/components/project-cards'
 
 const title = 'Projects'
-const description = 'The list of my projects.'
+const description = 'The list of my projects. Everything was made with ❤️.'
 
 type PageProps = {
   params: Record<string, never>
@@ -44,10 +44,7 @@ const Page = () => {
 
   return (
     <>
-      <PageTitle
-        title='Projects'
-        description='The list of my projects. Everything was made with ❤️.'
-      />
+      <PageTitle title={title} description={description} />
       <ProjectCards projects={projects} />
     </>
   )

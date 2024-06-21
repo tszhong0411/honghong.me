@@ -52,11 +52,7 @@ const Page = () => {
 
   return (
     <>
-      <PageTitle
-        title='Uses'
-        description='This is the equipment I currently use for gaming, programming, making
-        videos, and every day.'
-      />
+      <PageTitle title={title} description={description} />
       <Mdx content={body} />
     </>
   )

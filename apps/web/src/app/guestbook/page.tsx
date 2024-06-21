@@ -10,7 +10,7 @@ import Pinned from './pinned'
 import SignIn from './sign-in'
 
 const title = 'Guestbook'
-const description = 'Sign my guestbook and share your idea.'
+const description = 'Sign my guestbook and share your idea. You can tell me anything here!'
 
 type PageProps = {
   params: Record<string, never>
@@ -51,7 +51,7 @@ const Page = async () => {
 
   return (
     <>
-      <PageTitle title='Guestbook' description='You can tell me anything here!' />
+      <PageTitle title={title} description={description} />
       <div className='mx-auto max-w-lg'>
         <Pinned />
         {user ? <Form user={user} /> : <SignIn />}
