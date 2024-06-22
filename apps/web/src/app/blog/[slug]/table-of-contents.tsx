@@ -1,6 +1,7 @@
 'use client'
 
 import { type TOC } from '@tszhong0411/mdx'
+import { Link } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 
 import { useScrollspy } from '@/hooks/use-scrollspy'
@@ -24,11 +25,11 @@ const TableOfContents = (props: TableOfContentsProps) => {
           const { title, url, depth } = item
 
           return (
-            <a
+            <Link
               key={url}
               href={`#${url}`}
               className={cn(
-                'text-muted-foreground hover:text-foreground block py-2.5 pr-2.5 text-sm leading-[1.2] transition-all',
+                'text-muted-foreground hover:text-foreground block py-2.5 pr-2.5 text-sm leading-[1.2] transition-colors',
                 url === activeId && 'text-foreground'
               )}
               style={{
@@ -36,7 +37,7 @@ const TableOfContents = (props: TableOfContentsProps) => {
               }}
             >
               {title}
-            </a>
+            </Link>
           )
         })}
       </div>

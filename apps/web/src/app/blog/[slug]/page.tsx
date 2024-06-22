@@ -1,15 +1,21 @@
 import { flags } from '@tszhong0411/env'
+import { getTOC } from '@tszhong0411/mdx'
 import { allBlogPosts } from 'mdx/generated'
 import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 import { type Article, type WithContext } from 'schema-dts'
 
 import Comments from '@/components/comments'
+import Mdx from '@/components/mdx'
 import { SITE_NAME, SITE_URL } from '@/lib/constants'
 
-import Content from './content'
 import Footer from './footer'
 import Header from './header'
+import LikeButton from './like-button'
+import MobileTableOfContents from './mobile-table-of-contents'
+import ProgressBar from './progress-bar'
+import Providers from './providers'
+import TableOfContents from './table-of-contents'
 
 type PageProps = {
   params: {
@@ -84,7 +90,7 @@ export const generateMetadata = async (
   }
 }
 
-const Page = (props: PageProps) => {
+const Page = async (props: PageProps) => {
   const {
     params: { slug }
   } = props
@@ -96,6 +102,8 @@ const Page = (props: PageProps) => {
   }
 
   const { title, summary, date, modifiedTime, body } = post
+
+  const toc = await getTOC(body)
 
   const jsonLd: WithContext<Article> = {
     '@context': 'https://schema.org',
@@ -125,9 +133,25 @@ const Page = (props: PageProps) => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <Header date={date} title={title} slug={slug} />
-      <Content slug={slug} content={body} />
-      <Footer slug={slug} modifiedTime={modifiedTime} />
+      <Providers post={post}>
+        <Header />
+
+        <div className='mt-8 flex flex-col justify-between lg:flex-row'>
+          <article className='w-full lg:w-[670px]'>
+            <Mdx content={body} />
+          </article>
+          <aside className='lg:min-w-[270px] lg:max-w-[270px]'>
+            <div className='sticky top-24'>
+              {toc.length > 0 ? <TableOfContents toc={toc} /> : null}
+              {flags.likeButton ? <LikeButton slug={slug} /> : null}
+            </div>
+          </aside>
+        </div>
+        <ProgressBar />
+
+        {toc.length > 0 ? <MobileTableOfContents toc={toc} /> : null}
+        <Footer />
+      </Providers>
 
       {flags.comment ? <Comments slug={slug} /> : null}
     </>
