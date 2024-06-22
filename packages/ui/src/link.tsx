@@ -23,9 +23,9 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => {
   if (href.startsWith('/')) {
     return (
       <NextLink
+        ref={ref}
         className={cn(linkVariants({ variant, className }))}
         href={href}
-        ref={ref}
         {...rest}
       >
         {children}

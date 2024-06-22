@@ -51,7 +51,7 @@ export const Button = forwardRef<
   const Component = asChild ? Slot : 'button'
 
   return (
-    <Component className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...rest} />
+    <Component ref={ref} className={cn(buttonVariants({ variant, size, className }))} {...rest} />
   )
 })
 

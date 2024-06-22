@@ -12,13 +12,14 @@ type ImageProps = {
   lazy?: boolean
 } & React.ComponentPropsWithoutRef<typeof NextImage>
 
-export const BlurImage = forwardRef<HTMLDivElement, ImageProps>((props, ref) => {
+export const BlurImage = forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
   const { alt, src, className, imageClassName, lazy = true, ...rest } = props
   const [isLoading, setIsLoading] = useState(true)
 
   return (
-    <div className={cn('overflow-hidden', isLoading && 'animate-pulse', className)} ref={ref}>
+    <div className={cn('overflow-hidden', isLoading && 'animate-pulse', className)}>
       <NextImage
+        ref={ref}
         className={cn(isLoading && 'scale-[1.02] blur-xl grayscale', imageClassName)}
         style={{
           transition: 'filter 700ms ease, transform 150ms ease'

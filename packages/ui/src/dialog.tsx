@@ -72,8 +72,8 @@ export const DialogHeader = forwardRef<HTMLDivElement, React.HTMLAttributes<HTML
 
     return (
       <div
-        className={cn('flex flex-col gap-1.5 text-center sm:text-left', className)}
         ref={ref}
+        className={cn('flex flex-col gap-1.5 text-center sm:text-left', className)}
         {...rest}
       />
     )
@@ -86,8 +86,8 @@ export const DialogFooter = forwardRef<HTMLDivElement, React.HTMLAttributes<HTML
 
     return (
       <div
-        className={cn('flex flex-col-reverse sm:flex-row sm:justify-end sm:gap-2', className)}
         ref={ref}
+        className={cn('flex flex-col-reverse sm:flex-row sm:justify-end sm:gap-2', className)}
         {...rest}
       />
     )

@@ -155,8 +155,8 @@ export const CommandShortcut = forwardRef<HTMLSpanElement, React.HTMLAttributes<
 
     return (
       <span
-        className={cn('text-muted-foreground ml-auto text-xs tracking-widest', className)}
         ref={ref}
+        className={cn('text-muted-foreground ml-auto text-xs tracking-widest', className)}
         {...rest}
       />
     )

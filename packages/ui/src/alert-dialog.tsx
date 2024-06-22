@@ -18,6 +18,7 @@ const AlertDialogOverlay = forwardRef<
 
   return (
     <AlertDialogPrimitive.Overlay
+      ref={ref}
       className={cn(
         'fixed inset-0 z-50 bg-black/40 backdrop-blur-sm',
         'data-[state=open]:animate-in data-[state=open]:fade-in-0',
@@ -25,7 +26,6 @@ const AlertDialogOverlay = forwardRef<
         className
       )}
       {...rest}
-      ref={ref}
     />
   )
 })
@@ -59,8 +59,8 @@ export const AlertDialogHeader = forwardRef<HTMLDivElement, React.HTMLAttributes
 
     return (
       <div
-        className={cn('flex flex-col gap-2 text-center sm:text-left', className)}
         ref={ref}
+        className={cn('flex flex-col gap-2 text-center sm:text-left', className)}
         {...rest}
       />
     )
@@ -73,8 +73,8 @@ export const AlertDialogFooter = forwardRef<HTMLDivElement, React.HTMLAttributes
 
     return (
       <div
-        className={cn('flex flex-col-reverse sm:flex-row sm:justify-end sm:gap-2', className)}
         ref={ref}
+        className={cn('flex flex-col-reverse sm:flex-row sm:justify-end sm:gap-2', className)}
         {...rest}
       />
     )
