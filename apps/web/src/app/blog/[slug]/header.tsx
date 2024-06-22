@@ -4,17 +4,12 @@ import { BlurImage, Link } from '@tszhong0411/ui'
 import { useEffect, useRef } from 'react'
 
 import ImageZoom from '@/components/image-zoom'
+import { usePostContext } from '@/contexts/post'
 import { useFormattedDate } from '@/hooks/use-formatted-date'
 import { api } from '@/trpc/react'
 
-type HeaderProps = {
-  date: string
-  title: string
-  slug: string
-}
-
-const Header = (props: HeaderProps) => {
-  const { date, title, slug } = props
+const Header = () => {
+  const { date, title, slug } = usePostContext()
   const formattedDate = useFormattedDate(date, {
     format: 'LL',
     loading: '--'

@@ -99,6 +99,10 @@ export const SIDEBAR_LINKS: SidebarLinks = [
         text: 'Marquee'
       },
       {
+        href: '/ui/components/popover',
+        text: 'Popover'
+      },
+      {
         href: '/ui/components/scroll-area',
         text: 'Scroll Area'
       },
