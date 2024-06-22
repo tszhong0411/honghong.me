@@ -11,6 +11,7 @@
     "check:npm": "pnpm dlx npm-check-updates --deep --interactive --format group",
     "check:spelling": "cspell --show-context --show-suggestions",
     "clean": "turbo clean && rm -rf .turbo coverage",
+    "commit": "cz",
     "db:check": "turbo db:check",
     "db:generate": "turbo db:generate",
     "db:migrate": "turbo db:migrate",
