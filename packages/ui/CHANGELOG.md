@@ -1,5 +1,13 @@
 # @tszhong0411/ui
 
+## 0.0.21
+
+### Patch Changes
+
+- [`2cc525a`](https://github.com/tszhong0411/honghong.me/commit/2cc525ab8e65ef8d117e7d9234d2fcab77458ba9) Thanks [@tszhong0411](https://github.com/tszhong0411)! - sort ref
+
+- [#792](https://github.com/tszhong0411/honghong.me/pull/792) [`446ecee`](https://github.com/tszhong0411/honghong.me/commit/446ecee5476fd273508192529bb7256e4fd39353) Thanks [@tszhong0411](https://github.com/tszhong0411)! - add new component: popover
+
 ## 0.0.20
 
 ### Patch Changes
