@@ -25,7 +25,7 @@
     ".*/**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,md,mdx,json,yml,yaml,svg,webmanifest}"
   ],
   "ignorePaths": ["pnpm-lock.yaml", "CHANGELOG.md"],
-  "import": ["@cspell/dict-software-terms", "@cspell/dict-npm"],
+  "import": ["@cspell/dict-software-terms", "@cspell/dict-npm", "@cspell/dict-fullstack"],
   "useGitignore": true,
   "version": "0.2"
 }

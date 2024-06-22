@@ -45,6 +45,7 @@
     "@changesets/cli": "^2.27.5",
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
+    "@cspell/dict-fullstack": "^3.1.8",
     "@cspell/dict-npm": "^5.0.16",
     "@cspell/dict-software-terms": "^3.4.6",
     "@playwright/test": "^1.44.1",

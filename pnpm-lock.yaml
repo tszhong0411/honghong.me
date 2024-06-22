@@ -20,6 +20,9 @@ importers:
       '@commitlint/config-conventional':
         specifier: ^19.2.2
         version: 19.2.2
+      '@cspell/dict-fullstack':
+        specifier: ^3.1.8
+        version: 3.1.8
       '@cspell/dict-npm':
         specifier: ^5.0.16
         version: 5.0.16
