@@ -30,11 +30,18 @@ export const rehypeInlineCode: Plugin<[RehypeShikiCoreOptions], Root> = () => {
     visit(tree, 'element', (node, index, parent) => {
       if (node.tagName !== 'code') return
 
-      const match = (node.children[0] as any)?.value?.match(inlineShikiRegex)
+      const childNode = node.children[0]
+
+      if (childNode?.type !== 'text') return
+
+      const match = childNode.value.match(inlineShikiRegex)
       if (!match) return
 
       const [, code, lang] = match
-      const isLang = lang[0] !== '.'
+
+      if (!code || !lang) return
+
+      const isLang = !lang.startsWith('.')
 
       const hast = highlighter.codeToHast(code, {
         themes: DEFAULT_SHIKI_THEMES,
@@ -42,8 +49,13 @@ export const rehypeInlineCode: Plugin<[RehypeShikiCoreOptions], Root> = () => {
         defaultColor: false
       })
 
-      const inlineCode = (hast.children[0] as any).children[0]
-      if (!inlineCode) return
+      const preNode = hast.children[0]
+
+      if (preNode?.type !== 'element') return
+      if (preNode.tagName !== 'pre') return
+
+      const inlineCode = preNode.children[0]
+      if (inlineCode?.type !== 'element') return
 
       /**
        * Set the color by scope if language is not specified
@@ -56,7 +68,12 @@ export const rehypeInlineCode: Plugin<[RehypeShikiCoreOptions], Root> = () => {
               ?.settings.foreground ?? 'inherit'
         )
 
-        inlineCode.children[0].children[0].properties.style = themeKeys
+        const spanNode = inlineCode.children[0]
+
+        if (spanNode?.type !== 'element') return
+        if (spanNode.tagName !== 'span') return
+
+        spanNode.properties.style = themeKeys
           .map((key, i) => `--shiki-${key}:${colors[i]}`)
           .join(';')
       }
