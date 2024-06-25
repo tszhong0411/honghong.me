@@ -25,15 +25,17 @@ export default defineConfig({
     },
     {
       name: 'firefox',
-      use: { ...devices['Desktop Firefox'] }
+      use: { ...devices['Desktop Firefox'] },
+      testIgnore: 'lighthouse.test.ts'
     },
     {
       name: 'webkit',
-      use: { ...devices['Desktop Safari'] }
+      use: { ...devices['Desktop Safari'] },
+      testIgnore: 'lighthouse.test.ts'
     }
   ],
   webServer: {
-    command: `pnpm --filter=web ${CI ? 'start' : 'dev'}`,
+    command: `pnpm --filter=web start`,
     url: baseURL,
     timeout: 1000 * 60 * 5,
     reuseExistingServer: !CI

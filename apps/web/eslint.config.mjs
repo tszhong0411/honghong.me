@@ -1,10 +1,23 @@
 import tszhong0411 from '@tszhong0411/eslint-config'
 
-export default tszhong0411({
-  project: './tsconfig.json',
-  tsconfigRootDir: import.meta.dirname,
-  react: true,
-  next: true,
-  playwright: true,
-  testingLibrary: true
-})
+export default tszhong0411(
+  {
+    project: './tsconfig.json',
+    tsconfigRootDir: import.meta.dirname,
+    react: true,
+    next: true,
+    playwright: true,
+    testingLibrary: true
+  },
+  {
+    rules: {
+      'playwright/expect-expect': [
+        'error',
+        {
+          assertFunctionNames: ['playAudit']
+        }
+      ]
+    },
+    files: ['**/lighthouse.test.ts']
+  }
+)
