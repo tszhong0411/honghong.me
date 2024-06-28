@@ -29,10 +29,8 @@ build/
 dist/
 .eslint-config-inspector/
 
-# Database
-honghong-me.db
-honghong-me.db-shm
-honghong-me.db-wal
+# Docker data folder
+volumes/
 
 # MDX
 .mdx/

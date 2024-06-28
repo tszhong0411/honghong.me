@@ -55,12 +55,10 @@ cp .env.example .env.local
 pnpm install
 ```
 
-5. Run libSQL using Turso CLI (or your preferred method):
-
-Install the [Turso CLI](https://docs.turso.tech/reference/turso-cli).
+5. Run libSQL using Docker (or your preferred method):
 
 ```bash
-turso dev --db-file honghong-me.db
+docker compose up
 ```
 
 6. Run the database migrations:
@@ -83,6 +81,7 @@ The services will be available at the following URLs:
 | React Email             | `localhost:3001` |
 | Docs                    | `localhost:3002` |
 | ESLint Config Inspector | `localhost:7777` |
+| Database                | `localhost:8080` |
 
 ## Flags
 

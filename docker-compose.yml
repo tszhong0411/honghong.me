@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  db:
+    image: ghcr.io/tursodatabase/libsql-server:latest
+    container_name: honghongme-db
+    platform: linux/amd64
+    ports:
+      - '8080:8080'
+    volumes:
+      - ./volumes/libsql:/var/lib/sqld
