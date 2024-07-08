@@ -6,7 +6,7 @@ const middleware = () => {
     script-src 'self' 'unsafe-inline' 'unsafe-eval' *.honghong.me vercel.live;
     style-src 'self' 'unsafe-inline' vercel.live;
     img-src * blob: data:;
-    font-src 'self' assets.vercel.com fonts.gstatic.com vercel.live;
+    font-src 'self' data: assets.vercel.com vercel.live;
     object-src 'none';
     base-uri 'self';
     form-action 'self';
