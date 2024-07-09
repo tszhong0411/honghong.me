@@ -4,12 +4,12 @@ import { type MetadataRoute } from 'next'
 import { SITE_URL } from '@/lib/constants'
 
 const sitemap = (): MetadataRoute.Sitemap => {
-  const blogPosts = allBlogPosts.map((post) => ({
+  const blogPosts: MetadataRoute.Sitemap = allBlogPosts.map((post) => ({
     url: `${SITE_URL}/blog/${post.slug}`,
     lastModified: post.date.split('T')[0]
   }))
 
-  const routes = [
+  const routes: MetadataRoute.Sitemap = [
     '',
     '/blog',
     '/guestbook',
