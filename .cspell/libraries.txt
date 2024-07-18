@@ -7,6 +7,7 @@ commitlintrc
 contentlayer
 corepack
 dbaeumer
+dockercompose
 esbenp
 fuma
 fumadocs
@@ -19,6 +20,7 @@ nextra
 normy
 nuxt
 paralleldrive
+ratelimit
 rehype
 rmiz
 shadcn
@@ -26,10 +28,12 @@ shiki
 shikijs
 sonarjs
 sonner
+sqld
 tinycolor2
 tiptap
 tsup
 turso
+tursodatabase
 unifiedjs
 vfile
 zustand

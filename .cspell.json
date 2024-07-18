@@ -18,7 +18,7 @@
       "path": "./.cspell/names.txt"
     }
   ],
-  "enableFiletypes": ["github-actions-workflow", "shellscript", "tailwindcss"],
+  "enableFiletypes": ["dockercompose", "github-actions-workflow", "shellscript", "tailwindcss"],
   "files": [
     "**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,md,mdx,json,yml,yaml,svg,webmanifest}",
     "**/.*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,md,mdx,json,yml,yaml,svg,webmanifest}",
