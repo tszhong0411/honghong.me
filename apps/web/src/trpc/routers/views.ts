@@ -2,23 +2,45 @@ import { TRPCError } from '@trpc/server'
 import { eq, posts, sql, sum } from '@tszhong0411/db'
 import { z } from 'zod'
 
+import { redis, redisKeys } from '@/lib/redis'
+
 import { createTRPCRouter, publicProcedure } from '../trpc'
 
 export const viewsRouter = createTRPCRouter({
   getCount: publicProcedure.query(async ({ ctx }) => {
-    const views = await ctx.db
+    const cachedViewCount = await redis.get<number>(redisKeys.postViewCount)
+
+    if (cachedViewCount) {
+      return {
+        views: cachedViewCount
+      }
+    }
+
+    const result = await ctx.db
       .select({
         value: sum(posts.views)
       })
       .from(posts)
 
+    const views = result[0]?.value ? Number(result[0].value) : 0
+
+    await redis.set(redisKeys.postViewCount, views)
+
     return {
-      views: views[0]?.value ? Number(views[0].value) : 0
+      views
     }
   }),
   get: publicProcedure
     .input(z.object({ slug: z.string().min(1) }))
     .query(async ({ ctx, input }) => {
+      const cachedViews = await redis.get<number>(redisKeys.postViews(input.slug))
+
+      if (cachedViews) {
+        return {
+          views: cachedViews
+        }
+      }
+
       const post = await ctx.db
         .select({ views: posts.views })
         .from(posts)
@@ -31,6 +53,8 @@ export const viewsRouter = createTRPCRouter({
         })
       }
 
+      await redis.set(redisKeys.postViews(input.slug), post[0].views)
+
       return {
         views: post[0].views
       }
@@ -38,7 +62,7 @@ export const viewsRouter = createTRPCRouter({
   increment: publicProcedure
     .input(z.object({ slug: z.string().min(1) }))
     .mutation(async ({ ctx, input }) => {
-      await ctx.db
+      const views = await ctx.db
         .insert(posts)
         .values({
           slug: input.slug,
@@ -50,5 +74,8 @@ export const viewsRouter = createTRPCRouter({
             views: sql<number>`${posts.views} + 1`
           }
         })
+        .returning()
+
+      await redis.set(redisKeys.postViews(input.slug), views[0]?.views)
     })
 })

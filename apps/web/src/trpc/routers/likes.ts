@@ -4,6 +4,8 @@ import { env } from '@tszhong0411/env'
 import { sha512 } from 'js-sha512'
 import { z } from 'zod'
 
+import { redis, redisKeys } from '@/lib/redis'
+
 import { createTRPCRouter, publicProcedure } from '../trpc'
 
 const getSessionId = (slug: string, headers: Headers): string => {
@@ -15,14 +17,26 @@ const getSessionId = (slug: string, headers: Headers): string => {
 
 export const likesRouter = createTRPCRouter({
   getCount: publicProcedure.query(async ({ ctx }) => {
-    const likes = await ctx.db
+    const cachedLikeCount = await redis.get<number>(redisKeys.postLikeCount)
+
+    if (cachedLikeCount) {
+      return {
+        likes: cachedLikeCount
+      }
+    }
+
+    const result = await ctx.db
       .select({
         value: sum(likesSessions.likes)
       })
       .from(posts)
 
+    const likes = result[0]?.value ? Number(result[0].value) : 0
+
+    await redis.set(redisKeys.postLikeCount, likes)
+
     return {
-      likes: likes[0]?.value ? Number(likes[0].value) : 0
+      likes
     }
   }),
   get: publicProcedure
@@ -32,6 +46,20 @@ export const likesRouter = createTRPCRouter({
       })
     )
     .query(async ({ ctx, input }) => {
+      const sessionId = getSessionId(input.slug, ctx.headers)
+
+      const cachedLikes = await redis.get<number>(redisKeys.postLikes(input.slug))
+      const cachedCurrentUserLikes = await redis.get<number>(
+        redisKeys.currentUserLikes(input.slug, sessionId)
+      )
+
+      if (cachedLikes && cachedCurrentUserLikes) {
+        return {
+          likes: cachedLikes,
+          currentUserLikes: cachedCurrentUserLikes
+        }
+      }
+
       const [post, user] = await Promise.all([
         ctx.db
           .select({
@@ -44,8 +72,11 @@ export const likesRouter = createTRPCRouter({
             likes: likesSessions.likes
           })
           .from(likesSessions)
-          .where(eq(likesSessions.id, getSessionId(input.slug, ctx.headers)))
+          .where(eq(likesSessions.id, sessionId))
       ])
+
+      await redis.set(redisKeys.postLikes(input.slug), post[0]?.likes ?? 0)
+      await redis.set(redisKeys.currentUserLikes(input.slug, sessionId), user[0]?.likes ?? 0)
 
       return {
         likes: post[0]?.likes ?? 0,
@@ -74,7 +105,7 @@ export const likesRouter = createTRPCRouter({
         })
       }
 
-      await ctx.db
+      const likes = await ctx.db
         .insert(posts)
         .values({
           slug: input.slug,
@@ -86,6 +117,7 @@ export const likesRouter = createTRPCRouter({
             likes: sql<number>`${posts.likes} + ${input.value}`
           }
         })
+        .returning()
 
       await ctx.db
         .insert(likesSessions)
@@ -99,5 +131,7 @@ export const likesRouter = createTRPCRouter({
             likes: sql<number>`${likesSessions.likes} + ${input.value}`
           }
         })
+
+      await redis.set(redisKeys.postLikes(input.slug), likes[0]?.likes)
     })
 })
