@@ -1,4 +1,5 @@
 import { fetchRequestHandler } from '@trpc/server/adapters/fetch'
+import { env } from '@tszhong0411/env'
 import type { NextRequest } from 'next/server'
 
 import { appRouter } from '@/trpc/root'
@@ -11,6 +12,11 @@ const createContext = async (req: NextRequest) => {
     headers: req.headers
   })
 }
+
+console.log({
+  restUrl: !!env.UPSTASH_REDIS_REST_URL,
+  restToken: !!env.UPSTASH_REDIS_REST_TOKEN
+})
 
 const handler = async (req: NextRequest) =>
   fetchRequestHandler({
