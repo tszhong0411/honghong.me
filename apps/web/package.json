@@ -47,7 +47,6 @@
     "@tszhong0411/mdx": "workspace:*",
     "@tszhong0411/ui": "workspace:*",
     "@tszhong0411/utils": "workspace:*",
-    "@upstash/ratelimit": "^1.2.1",
     "@upstash/redis": "^1.31.6",
     "@vitejs/plugin-react": "^4.3.1",
     "canvas-confetti": "^1.9.3",

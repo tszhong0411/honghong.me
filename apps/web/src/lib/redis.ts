@@ -7,11 +7,6 @@ export const redis = new Redis({
   token: env.UPSTASH_REDIS_REST_TOKEN
 })
 
-console.log({
-  restUrl: !!env.UPSTASH_REDIS_REST_URL,
-  restToken: !!env.UPSTASH_REDIS_REST_TOKEN
-})
-
 // export const ratelimit = new Ratelimit({
 //   redis,
 //   limiter: Ratelimit.slidingWindow(50, '10 s'),
