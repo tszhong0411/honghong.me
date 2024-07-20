@@ -1,5 +1,6 @@
 import { flags } from '@tszhong0411/env'
 import { cn } from '@tszhong0411/utils'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
 import type { Metadata, Viewport } from 'next'
@@ -153,6 +154,7 @@ const Layout = (props: LayoutProps) => {
             priority
           />
         </Providers>
+        <SpeedInsights />
       </body>
     </html>
   )

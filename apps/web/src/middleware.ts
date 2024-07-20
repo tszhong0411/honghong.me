@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 const middleware = () => {
   const csp = `
     default-src 'self';
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' *.honghong.me vercel.live;
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' *.honghong.me vercel.live va.vercel-scripts.com;
     style-src 'self' 'unsafe-inline' vercel.live;
     img-src * blob: data:;
     font-src 'self' data: assets.vercel.com vercel.live;
