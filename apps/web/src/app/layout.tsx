@@ -109,7 +109,7 @@ export const viewport: Viewport = {
   ]
 }
 
-const calcom = localFont({
+const CalSans = localFont({
   src: '../../public/fonts/CalSans-SemiBold.woff2',
   variable: '--font-title'
 })
@@ -120,7 +120,7 @@ const Layout = (props: LayoutProps) => {
   return (
     <html
       lang='en-US'
-      className={cn(GeistSans.variable, GeistMono.variable, calcom.variable, 'scroll-smooth')}
+      className={cn(GeistSans.variable, GeistMono.variable, CalSans.variable, 'scroll-smooth')}
       suppressHydrationWarning
     >
       <body className='relative'>
