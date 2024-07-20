@@ -26,10 +26,12 @@ shiki
 shikijs
 sonarjs
 sonner
+sqld
 tinycolor2
 tiptap
 tsup
 turso
+tursodatabase
 unifiedjs
 vfile
 zustand
