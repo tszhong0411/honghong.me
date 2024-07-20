@@ -1,5 +1,11 @@
 # @tszhong0411/ui
 
+## 0.0.22
+
+### Patch Changes
+
+- [`07ef77b`](https://github.com/tszhong0411/honghong.me/commit/07ef77bcf3fbdb1150e572769db8f09c3b06721c) Thanks [@tszhong0411](https://github.com/tszhong0411)! - export DialogClose
+
 ## 0.0.21
 
 ### Patch Changes
