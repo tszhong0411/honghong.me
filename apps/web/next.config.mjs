@@ -1,4 +1,5 @@
 import bundleAnalyzer from '@next/bundle-analyzer'
+import { withSentryConfig } from '@sentry/nextjs'
 import { NextConfigHeaders } from '@tszhong0411/shared'
 import createJiti from 'jiti'
 import { fileURLToPath } from 'node:url'
@@ -14,7 +15,8 @@ const withBundleAnalyzer = bundleAnalyzer({
 /** @type {import('next').NextConfig} */
 const config = {
   experimental: {
-    optimizePackageImports: ['shiki']
+    optimizePackageImports: ['shiki'],
+    instrumentationHook: true
   },
 
   transpilePackages: ['@tszhong0411/*'],
@@ -62,4 +64,14 @@ const config = {
   }
 }
 
-export default withBundleAnalyzer(config)
+export default withSentryConfig(withBundleAnalyzer(config), {
+  org: 'tszhong0411',
+  project: 'honghongme',
+  silent: !process.env.CI,
+  authToken: process.env.SENTRY_AUTH_TOKEN,
+  widenClientFileUpload: true,
+  tunnelRoute: '/monitoring',
+  hideSourceMaps: true,
+  disableLogger: true,
+  automaticVercelMonitors: true
+})

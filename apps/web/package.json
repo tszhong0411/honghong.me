@@ -22,6 +22,7 @@
     "@normy/react-query": "^0.14.2",
     "@octokit/rest": "^20.1.1",
     "@paralleldrive/cuid2": "^2.2.2",
+    "@sentry/nextjs": "^8",
     "@tanstack/react-query": "^5.44.0",
     "@tanstack/react-query-devtools": "^5.44.0",
     "@tanstack/react-query-next-experimental": "^5.44.0",
