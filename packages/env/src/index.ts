@@ -68,7 +68,9 @@ export const env = createEnv({
 
     DATABASE_URL: z.string().url(),
     DATABASE_AUTH_TOKEN: z.string().min(1),
-    SENTRY_AUTH_TOKEN: z.string().optional()
+    SENTRY_AUTH_TOKEN: z.string().optional(),
+    UPSTASH_REDIS_REST_URL: z.string().url(),
+    UPSTASH_REDIS_REST_TOKEN: z.string().min(1)
   },
   client: {
     ...(flags.analytics

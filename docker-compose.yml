@@ -9,3 +9,21 @@ services:
       - '8080:8080'
     volumes:
       - ./volumes/libsql:/var/lib/sqld
+
+  redis:
+    image: redis
+    container_name: honghongme-redis
+    ports:
+      - '6379:6379'
+    volumes:
+      - ./volumes/redis:/data
+
+  serverless-redis-http:
+    image: hiett/serverless-redis-http:latest
+    container_name: honghongme-redis-http
+    ports:
+      - '8079:80'
+    environment:
+      SRH_MODE: env
+      SRH_TOKEN: honghongme
+      SRH_CONNECTION_STRING: 'redis://redis:6379'

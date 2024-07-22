@@ -79,6 +79,7 @@
   "devDependencies": {
     "@next/bundle-analyzer": "^14.2.3",
     "@tszhong0411/eslint-config": "workspace:*",
+    "@tszhong0411/kv": "workspace:*",
     "@tszhong0411/shared": "workspace:*",
     "@tszhong0411/tailwind-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",

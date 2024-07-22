@@ -11,6 +11,7 @@ dockercompose
 esbenp
 fuma
 fumadocs
+hiett
 jiti
 knip
 libsql
