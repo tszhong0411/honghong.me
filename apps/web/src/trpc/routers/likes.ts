@@ -90,6 +90,8 @@ export const likesRouter = createTRPCRouter({
       })
     )
     .mutation(async ({ ctx, input }) => {
+      const sessionId = getSessionId(input.slug, ctx.headers)
+
       const session = await ctx.db
         .select({
           likes: likesSessions.likes
@@ -118,10 +120,10 @@ export const likesRouter = createTRPCRouter({
         })
         .returning()
 
-      await ctx.db
+      const currentUserLikes = await ctx.db
         .insert(likesSessions)
         .values({
-          id: getSessionId(input.slug, ctx.headers),
+          id: sessionId,
           likes: input.value
         })
         .onConflictDoUpdate({
@@ -130,7 +132,9 @@ export const likesRouter = createTRPCRouter({
             likes: sql<number>`${likesSessions.likes} + ${input.value}`
           }
         })
+        .returning()
 
       await redis.set(redisKeys.postLikes(input.slug), likes[0]?.likes)
+      await redis.set(redisKeys.currentUserLikes(input.slug, sessionId), currentUserLikes[0]?.likes)
     })
 })
