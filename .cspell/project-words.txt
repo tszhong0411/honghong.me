@@ -10,6 +10,7 @@ nocheck
 nodedotjs
 nosniff
 postpublish
+ratelimit
 sameorigin
 simulately
 techstack

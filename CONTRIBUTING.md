@@ -82,6 +82,8 @@ The services will be available at the following URLs:
 | Docs                    | `localhost:3002` |
 | ESLint Config Inspector | `localhost:7777` |
 | Database                | `localhost:8080` |
+| Redis                   | `localhost:6379` |
+| Redis serverless        | `localhost:8079` |
 
 ## Flags
 
