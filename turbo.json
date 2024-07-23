@@ -78,5 +78,6 @@
       "outputs": ["playwright-report/**", "test-results/**"]
     },
     "type-check": {}
-  }
+  },
+  "ui": "tui"
 }
