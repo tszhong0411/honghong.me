@@ -1,5 +1,11 @@
 # @tszhong0411/eslint-config
 
+## 0.1.8
+
+### Patch Changes
+
+- [`a3a78a4`](https://github.com/tszhong0411/honghong.me/commit/a3a78a47d684fd18590f9d20176e0036228dc105) Thanks [@tszhong0411](https://github.com/tszhong0411)! - export all globs
+
 ## 0.1.7
 
 ### Patch Changes
