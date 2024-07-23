@@ -7,6 +7,12 @@ jobs:
   tests:
     name: End to end tests
     runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      DATABASE_AUTH_TOKEN: ${{ secrets.DATABASE_AUTH_TOKEN }}
+      UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL }}
+      UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
+      RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -37,6 +43,9 @@ jobs:
       - name: Setup Playwright with cache
         run: pnpm exec playwright install-deps
         if: steps.cache-playwright-browsers.outputs.cache-hit == 'true'
+
+      - name: Run services
+        run: docker compose up -d
 
       - name: Run Playwright tests
         run: pnpm run test:e2e

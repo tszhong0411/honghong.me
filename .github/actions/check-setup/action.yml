@@ -29,12 +29,3 @@ runs:
     - name: Install dependencies
       shell: bash
       run: pnpm install
-
-    - name: Create .env.local file
-      shell: bash
-      run: |
-        echo "DATABASE_URL=http://127.0.0.1:8080" >> .env.local
-        echo "DATABASE_AUTH_TOKEN=no-need-for-local-development" >> .env.local
-        echo "RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" >> .env.local
-        echo "UPSTASH_REDIS_REST_URL=http://127.0.0.1:8079" >> .env.local
-        echo "UPSTASH_REDIS_REST_TOKEN=honghongme" >> .env.local
