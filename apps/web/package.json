@@ -17,7 +17,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@auth/drizzle-adapter": "^1.2.0",
+    "@auth/drizzle-adapter": "1.2.0",
     "@icons-pack/react-simple-icons": "^9.5.0",
     "@normy/react-query": "^0.14.2",
     "@octokit/rest": "^20.1.1",
