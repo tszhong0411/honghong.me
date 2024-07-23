@@ -94,4 +94,6 @@ const tszhong0411 = async (
   return configs
 }
 
+export * from './globs'
+
 export default tszhong0411
