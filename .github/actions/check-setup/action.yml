@@ -29,3 +29,13 @@ runs:
     - name: Install dependencies
       shell: bash
       run: pnpm install
+
+    - name: Create environment variables file
+      run: |
+        echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> .env.local
+        echo "DATABASE_AUTH_TOKEN=${{ secrets.DATABASE_AUTH_TOKEN }}" >> .env.local
+        echo "UPSTASH_REDIS_REST_URL=${{ secrets.UPSTASH_REDIS_REST_URL }}" >> .env.local
+        echo "UPSTASH_REDIS_REST_TOKEN=${{ secrets.UPSTASH_REDIS_REST_TOKEN }}" >> .env.local
+        echo "RESEND_API_KEY=${{ secrets.RESEND_API_KEY }}" >> .env.local
+        echo "AUTH_TRUST_HOST=${{ secrets.AUTH_TRUST_HOST }}" >> .env.local
+        echo "AUTH_SECRET=${{ secrets.AUTH_SECRET }}" >> .env.local

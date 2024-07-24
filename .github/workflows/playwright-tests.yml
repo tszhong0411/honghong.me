@@ -7,14 +7,6 @@ jobs:
   tests:
     name: End to end tests
     runs-on: ubuntu-latest
-    env:
-      DATABASE_URL: ${{ secrets.DATABASE_URL }}
-      DATABASE_AUTH_TOKEN: ${{ secrets.DATABASE_AUTH_TOKEN }}
-      UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL }}
-      UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
-      RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-      AUTH_TRUST_HOST: ${{ secrets.AUTH_TRUST_HOST }}
-      AUTH_SECRET: ${{ secrets.AUTH_SECRET }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
