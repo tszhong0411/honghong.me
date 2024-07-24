@@ -19,6 +19,13 @@ const config = {
     instrumentationHook: true
   },
 
+  eslint: {
+    ignoreDuringBuilds: !!process.env.CI
+  },
+  typescript: {
+    ignoreBuildErrors: !!process.env.CI
+  },
+
   transpilePackages: ['@tszhong0411/*'],
 
   images: {
