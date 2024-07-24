@@ -82,3 +82,8 @@ export default withSentryConfig(withBundleAnalyzer(config), {
   disableLogger: true,
   automaticVercelMonitors: true
 })
+
+console.log({
+  CI: process.env.CI,
+  NODE_ENV: process.env.NODE_ENV
+})
