@@ -33,7 +33,7 @@ export default defineConfig({
     }
   ],
   webServer: {
-    command: `NODE_ENV=test pnpm --filter=web ${CI ? 'start' : 'dev'}`,
+    command: `pnpm --filter=web ${CI ? 'start' : 'dev'}`,
     url: baseURL,
     timeout: 1000 * 60 * 5,
     reuseExistingServer: !CI
