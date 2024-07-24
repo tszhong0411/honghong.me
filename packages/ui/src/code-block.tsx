@@ -13,23 +13,16 @@ import { getIconByFilename } from './utils/get-icon-by-filename'
 type CodeBlockProps = {
   'data-lang'?: string
 } & React.ComponentPropsWithoutRef<'pre'>
-type CopyButtonProps = {
-  text: string
-} & ButtonProps
 
 export const CodeBlock = forwardRef<HTMLPreElement, CodeBlockProps>((props, ref) => {
   const { children, className, title, 'data-lang': lang, ...rest } = props
 
   const textInput = useRef<HTMLPreElement>(null)
-  const [text, setText] = useState<string>('')
-
-  useEffect(() => {
-    if (textInput.current) {
-      setText(textInput.current.textContent ?? '')
-    }
-  }, [])
-
   const Icon = getIconByFilename(lang ?? '')
+
+  const onCopy = () => {
+    void navigator.clipboard.writeText(textInput.current?.textContent ?? '')
+  }
 
   return (
     <figure className='not-prose bg-secondary/50 group relative my-6 overflow-hidden rounded-lg border text-sm'>
@@ -39,10 +32,10 @@ export const CodeBlock = forwardRef<HTMLPreElement, CodeBlockProps>((props, ref)
             <Icon className='size-3.5' />
           </div>
           <figcaption className='text-muted-foreground flex-1 truncate'>{title}</figcaption>
-          <CopyButton text={text} />
+          <CopyButton onCopy={onCopy} />
         </div>
       ) : (
-        <CopyButton className='absolute right-4 top-3 z-10' text={text} />
+        <CopyButton className='absolute right-4 top-3 z-10' onCopy={onCopy} />
       )}
 
       <ScrollArea>
@@ -55,8 +48,12 @@ export const CodeBlock = forwardRef<HTMLPreElement, CodeBlockProps>((props, ref)
   )
 })
 
+type CopyButtonProps = {
+  onCopy: () => void
+} & ButtonProps
+
 const CopyButton = (props: CopyButtonProps) => {
-  const { text, className, ...rest } = props
+  const { onCopy, className, ...rest } = props
   const [isCopied, setIsCopied] = useState(false)
 
   useEffect(() => {
@@ -70,7 +67,7 @@ const CopyButton = (props: CopyButtonProps) => {
       className={cn('size-8 p-0 opacity-0 transition-opacity group-hover:opacity-100', className)}
       variant='outline'
       onClick={() => {
-        void navigator.clipboard.writeText(text)
+        onCopy()
         setIsCopied(true)
       }}
       type='button'
