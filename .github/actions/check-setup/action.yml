@@ -32,18 +32,10 @@ runs:
 
     - name: Create environment variables file
       run: |
-        echo "DATABASE_URL=${DATABASE_URL}" >> .env.local
-        echo "DATABASE_AUTH_TOKEN=${DATABASE_AUTH_TOKEN}" >> .env.local
-        echo "UPSTASH_REDIS_REST_URL=${UPSTASH_REDIS_REST_URL}" >> .env.local
-        echo "UPSTASH_REDIS_REST_TOKEN=${UPSTASH_REDIS_REST_TOKEN}" >> .env.local
-        echo "RESEND_API_KEY=${RESEND_API_KEY}" >> .env.local
-        echo "AUTH_TRUST_HOST=${AUTH_TRUST_HOST}" >> .env.local
-        echo "AUTH_SECRET=${AUTH_SECRET}" >> .env.local
-      env:
-        DATABASE_URL: ${{ secrets.DATABASE_URL }}
-        DATABASE_AUTH_TOKEN: ${{ secrets.DATABASE_AUTH_TOKEN }}
-        UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL }}
-        UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
-        RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-        AUTH_TRUST_HOST: ${{ secrets.AUTH_TRUST_HOST }}
-        AUTH_SECRET: ${{ secrets.AUTH_SECRET }}
+        echo "DATABASE_URL=http://127.0.0.1:8080" >> .env.local
+        echo "DATABASE_AUTH_TOKEN=no-need-for-local-development" >> .env.local
+        echo "RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" >> .env.local
+        echo "UPSTASH_REDIS_REST_URL=http://127.0.0.1:8079" >> .env.local
+        echo "UPSTASH_REDIS_REST_TOKEN=honghongme" >> .env.local
+        echo "AUTH_SECRET=honghongme" >> .env.local
+        echo "AUTH_TRUST_HOST=true" >> .env.local
