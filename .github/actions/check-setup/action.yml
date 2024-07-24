@@ -30,7 +30,7 @@ runs:
       shell: bash
       run: pnpm install
 
-    - name: Create .env.local file
+    - name: Create environment variables file
       shell: bash
       run: |
         echo "DATABASE_URL=http://127.0.0.1:8080" >> .env.local
@@ -38,3 +38,5 @@ runs:
         echo "RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" >> .env.local
         echo "UPSTASH_REDIS_REST_URL=http://127.0.0.1:8079" >> .env.local
         echo "UPSTASH_REDIS_REST_TOKEN=honghongme" >> .env.local
+        echo "AUTH_SECRET=honghongme" >> .env.local
+        echo "AUTH_TRUST_HOST=true" >> .env.local

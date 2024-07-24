@@ -17,6 +17,7 @@ knip
 libsql
 lightningcss
 mdast
+nextauth
 nextra
 normy
 nuxt
