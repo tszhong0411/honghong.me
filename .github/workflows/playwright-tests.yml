@@ -21,7 +21,7 @@ jobs:
         uses: ./.github/actions/check-setup
 
       - name: Build the app
-        run: pnpm --filter=web build
+        run: NODE_ENV=test pnpm --filter=web build
 
       - name: Store Playwright's Version
         run: |
