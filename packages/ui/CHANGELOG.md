@@ -1,5 +1,11 @@
 # @tszhong0411/ui
 
+## 0.0.23
+
+### Patch Changes
+
+- [`1233631`](https://github.com/tszhong0411/honghong.me/commit/12336316ba141cdf9c9e32a6b9a1f752223ac74c) Thanks [@tszhong0411](https://github.com/tszhong0411)! - fix eslint warning
+
 ## 0.0.22
 
 ### Patch Changes
