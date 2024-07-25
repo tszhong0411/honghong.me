@@ -5,7 +5,7 @@
  */
 import type { RehypeShikiCoreOptions } from '@shikijs/rehype/core'
 import type { Root } from 'hast'
-import { bundledLanguages, getHighlighter, type Highlighter } from 'shiki'
+import { bundledLanguages, getSingletonHighlighter } from 'shiki'
 import type { Plugin } from 'unified'
 import { visit } from 'unist-util-visit'
 
@@ -17,15 +17,11 @@ const themeNames = Object.values(DEFAULT_SHIKI_THEMES)
 const themeKeys = Object.keys(DEFAULT_SHIKI_THEMES)
 
 export const rehypeInlineCode: Plugin<[RehypeShikiCoreOptions], Root> = () => {
-  let promise: Promise<Highlighter>
-
   return async (tree) => {
-    promise = getHighlighter({
+    const highlighter = await getSingletonHighlighter({
       themes: themeNames,
       langs: Object.keys(bundledLanguages)
     })
-
-    const highlighter = await promise
 
     visit(tree, 'element', (node, index, parent) => {
       if (node.tagName !== 'code') return

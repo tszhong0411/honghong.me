@@ -1,7 +1,7 @@
 import type { Root } from 'hast'
 import fs from 'node:fs'
 import path from 'node:path'
-import { getHighlighter, type Highlighter } from 'shiki'
+import { getSingletonHighlighter } from 'shiki'
 import type { Plugin } from 'unified'
 import { visit } from 'unist-util-visit'
 
@@ -10,15 +10,11 @@ import { visit } from 'unist-util-visit'
  * if the node is a `ComponentPreview` element.
  */
 export const rehypeComponentCode: Plugin<unknown[], Root> = () => {
-  let promise: Promise<Highlighter>
-
   return async (tree) => {
-    promise = getHighlighter({
+    const highlighter = await getSingletonHighlighter({
       themes: ['github-light', 'github-dark'],
       langs: ['tsx']
     })
-
-    const highlighter = await promise
 
     visit(tree, (node) => {
       if (node.type !== 'mdxJsxFlowElement') return
