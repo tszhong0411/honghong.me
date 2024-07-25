@@ -27,7 +27,7 @@ declare module 'next-auth' {
 }
 
 const config: NextAuthConfig = {
-  secret: env.NEXTAUTH_SECRET,
+  secret: env.AUTH_SECRET,
   providers: [
     GithubProvider({
       clientId: env.GITHUB_CLIENT_ID,
