@@ -2,17 +2,14 @@ import { createEnv } from '@t3-oss/env-nextjs'
 import { vercel } from '@t3-oss/env-nextjs/presets'
 import { z } from 'zod'
 
-export const isProduction = process.env.NODE_ENV === 'production'
-
 export const flags = {
-  comment: isProduction && process.env.NEXT_PUBLIC_FLAG_COMMENT === 'true',
-  auth: isProduction && process.env.NEXT_PUBLIC_FLAG_AUTH === 'true',
-  stats: isProduction && process.env.NEXT_PUBLIC_FLAG_STATS === 'true',
-  spotify: isProduction && process.env.NEXT_PUBLIC_FLAG_SPOTIFY === 'true',
-  analytics: isProduction && process.env.NEXT_PUBLIC_FLAG_ANALYTICS === 'true',
-  guestbookNotification:
-    isProduction && process.env.NEXT_PUBLIC_FLAG_GUESTBOOK_NOTIFICATION === 'true',
-  likeButton: isProduction && process.env.NEXT_PUBLIC_FLAG_LIKE_BUTTON === 'true'
+  comment: process.env.NEXT_PUBLIC_FLAG_COMMENT === 'true',
+  auth: process.env.NEXT_PUBLIC_FLAG_AUTH === 'true',
+  stats: process.env.NEXT_PUBLIC_FLAG_STATS === 'true',
+  spotify: process.env.NEXT_PUBLIC_FLAG_SPOTIFY === 'true',
+  analytics: process.env.NEXT_PUBLIC_FLAG_ANALYTICS === 'true',
+  guestbookNotification: process.env.NEXT_PUBLIC_FLAG_GUESTBOOK_NOTIFICATION === 'true',
+  likeButton: process.env.NEXT_PUBLIC_FLAG_LIKE_BUTTON === 'true'
 }
 
 export const env = createEnv({
