@@ -17,6 +17,7 @@ knip
 libsql
 lightningcss
 mdast
+nanostores
 nextauth
 nextra
 normy

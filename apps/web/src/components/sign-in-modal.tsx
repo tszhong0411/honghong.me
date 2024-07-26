@@ -1,6 +1,7 @@
 'use client'
 
 import { SiGithub } from '@icons-pack/react-simple-icons'
+import { useStore } from '@nanostores/react'
 import {
   Button,
   Dialog,
@@ -11,13 +12,18 @@ import {
 } from '@tszhong0411/ui'
 import { signIn } from 'next-auth/react'
 
-import { useSignInModalStore } from '@/stores/use-sign-in-modal-store'
+import { modals, setModals } from '@/store/modals'
 
 const SignInModal = () => {
-  const { open, setOpen } = useSignInModalStore()
+  const { signIn: isOpened } = useStore(modals)
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog
+      open={isOpened}
+      onOpenChange={(v) => {
+        setModals({ signIn: v })
+      }}
+    >
       <DialogContent className='sm:max-w-[425px]'>
         <DialogHeader>
           <DialogTitle className='text-left text-2xl'>Sign in</DialogTitle>

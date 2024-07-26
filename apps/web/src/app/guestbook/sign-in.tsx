@@ -2,17 +2,15 @@
 
 import { Button } from '@tszhong0411/ui'
 
-import { useSignInModalStore } from '@/stores/use-sign-in-modal-store'
+import { setModals } from '@/store/modals'
 
 const SignIn = () => {
-  const { setOpen } = useSignInModalStore()
-
   return (
     <>
       <Button
         className='dark:text-foreground inline-block bg-gradient-to-br from-[#fcd34d] via-[#ef4444] to-[#ec4899] font-extrabold'
         onClick={() => {
-          setOpen(true)
+          setModals({ signIn: true })
         }}
         type='button'
       >
