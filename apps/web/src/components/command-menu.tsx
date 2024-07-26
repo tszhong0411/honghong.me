@@ -16,7 +16,7 @@ import { signOut, useSession } from 'next-auth/react'
 import { Fragment, useCallback, useEffect, useState } from 'react'
 
 import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard'
-import { useSignInModalStore } from '@/stores/use-sign-in-modal-store'
+import { setModals } from '@/store/modals'
 
 type Groups = Array<{
   name: string
@@ -31,7 +31,6 @@ const CommandMenu = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [copy] = useCopyToClipboard()
   const { status } = useSession()
-  const { setOpen: setSignInModalOpen } = useSignInModalStore()
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -71,7 +70,7 @@ const CommandMenu = () => {
                 icon: <LogInIcon className='mr-3 size-4' />,
                 onSelect: () => {
                   setIsOpen(false)
-                  setSignInModalOpen(true)
+                  setModals({ signIn: true })
                 }
               }
             ])

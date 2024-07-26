@@ -5,7 +5,7 @@ import { SendIcon } from 'lucide-react'
 import { useSession } from 'next-auth/react'
 
 import { useCommentsContext } from '@/contexts/comments'
-import { useSignInModalStore } from '@/stores/use-sign-in-modal-store'
+import { setModals } from '@/store/modals'
 import { api } from '@/trpc/react'
 
 import CommentEditor, { useCommentEditor } from './comment-editor'
@@ -14,7 +14,6 @@ const CommentPost = () => {
   const { slug } = useCommentsContext()
   const [editor, setEditor] = useCommentEditor()
   const { status } = useSession()
-  const { setOpen } = useSignInModalStore()
   const utils = api.useUtils()
 
   const commentsMutation = api.comments.post.useMutation({
@@ -71,7 +70,7 @@ const CommentPost = () => {
             <Button
               type='button'
               onClick={() => {
-                setOpen(true)
+                setModals({ signIn: true })
               }}
             >
               Sign In

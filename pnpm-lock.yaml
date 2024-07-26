@@ -198,6 +198,9 @@ importers:
       '@icons-pack/react-simple-icons':
         specifier: ^9.5.0
         version: 9.6.0(react@18.2.0)
+      '@nanostores/react':
+        specifier: ^0.7.2
+        version: 0.7.2(nanostores@0.10.3)(react@18.2.0)
       '@normy/react-query':
         specifier: ^0.14.2
         version: 0.14.3(@tanstack/react-query@5.51.11(react@18.2.0))
@@ -321,6 +324,9 @@ importers:
       lucide-react:
         specifier: ^0.394.0
         version: 0.394.0(react@18.2.0)
+      nanostores:
+        specifier: ^0.10.3
+        version: 0.10.3
       next:
         specifier: 14.2.3
         version: 14.2.3(@babel/core@7.24.9)(@opentelemetry/api@1.9.0)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -363,9 +369,6 @@ importers:
       zod:
         specifier: ^3.23.8
         version: 3.23.8
-      zustand:
-        specifier: ^4.5.2
-        version: 4.5.4(@types/react@18.3.3)(react@18.2.0)
     devDependencies:
       '@next/bundle-analyzer':
         specifier: ^14.2.3
@@ -2986,6 +2989,13 @@ packages:
     peerDependencies:
       '@types/react': '>=16'
       react: '>=16'
+
+  '@nanostores/react@0.7.2':
+    resolution: {integrity: sha512-e3OhHJFv3NMSFYDgREdlAQqkyBTHJM91s31kOZ4OvZwJKdFk5BLk0MLbh51EOGUz9QGX2aCHfy1RvweSi7fgwA==}
+    engines: {node: ^18.0.0 || >=20.0.0}
+    peerDependencies:
+      nanostores: ^0.9.0 || ^0.10.0
+      react: '>=18.0.0'
 
   '@neon-rs/load@0.0.4':
     resolution: {integrity: sha512-kTPhdZyTQxB+2wpiRcFWrDcejc4JI6tkPuS7UZCG4l6Zvc5kU/gGQ/ozvHTh1XR5tS+UlfAfGuPajjzQjCiHCw==}
@@ -8615,6 +8625,10 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
+  nanostores@0.10.3:
+    resolution: {integrity: sha512-Nii8O1XqmawqSCf9o2aWqVxhKRN01+iue9/VEd1TiJCr9VT5XxgPFbF1Edl1XN6pwJcZRsl8Ki+z01yb/T/C2g==}
+    engines: {node: ^18.0.0 || >=20.0.0}
+
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
 
@@ -10670,11 +10684,6 @@ packages:
       '@types/react':
         optional: true
 
-  use-sync-external-store@1.2.0:
-    resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-
   use-sync-external-store@1.2.2:
     resolution: {integrity: sha512-PElTlVMwpblvbNqQ82d2n6RjStvdSoNe9FG28kNfz3WiXilJm4DdNkEzRhCZuIDwY8U08WVihhGR5iRqAwfDiw==}
     peerDependencies:
@@ -11047,21 +11056,6 @@ packages:
     peerDependencies:
       react: '>=16.8'
     peerDependenciesMeta:
-      react:
-        optional: true
-
-  zustand@4.5.4:
-    resolution: {integrity: sha512-/BPMyLKJPtFEvVL0E9E9BTUM63MNyhPGlvxk1XjrfWTUlV+BR8jufjsovHzrtR6YNcBEcL7cMHovL1n9xHawEg==}
-    engines: {node: '>=12.7.0'}
-    peerDependencies:
-      '@types/react': '>=16.8'
-      immer: '>=9.0.6'
-      react: '>=16.8'
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-      immer:
-        optional: true
       react:
         optional: true
 
@@ -13359,6 +13353,11 @@ snapshots:
     dependencies:
       '@types/mdx': 2.0.13
       '@types/react': 18.3.3
+      react: 18.2.0
+
+  '@nanostores/react@0.7.2(nanostores@0.10.3)(react@18.2.0)':
+    dependencies:
+      nanostores: 0.10.3
       react: 18.2.0
 
   '@neon-rs/load@0.0.4': {}
@@ -15793,7 +15792,7 @@ snapshots:
     dependencies:
       '@types/node': 20.14.11
       tapable: 2.2.1
-      webpack: 5.93.0(@swc/core@1.3.101)(esbuild@0.23.0)
+      webpack: 5.93.0(@swc/core@1.3.101(@swc/helpers@0.5.5))(esbuild@0.19.11)
     transitivePeerDependencies:
       - '@swc/core'
       - esbuild
@@ -20111,6 +20110,8 @@ snapshots:
 
   nanoid@3.3.7: {}
 
+  nanostores@0.10.3: {}
+
   natural-compare@1.4.0: {}
 
   negotiator@0.6.3: {}
@@ -22018,6 +22019,18 @@ snapshots:
 
   term-size@2.2.1: {}
 
+  terser-webpack-plugin@5.3.10(@swc/core@1.3.101(@swc/helpers@0.5.5))(esbuild@0.19.11)(webpack@5.93.0(@swc/core@1.3.101)(esbuild@0.23.0)):
+    dependencies:
+      '@jridgewell/trace-mapping': 0.3.25
+      jest-worker: 27.5.1
+      schema-utils: 3.3.0
+      serialize-javascript: 6.0.2
+      terser: 5.31.3
+      webpack: 5.93.0(@swc/core@1.3.101(@swc/helpers@0.5.5))(esbuild@0.19.11)
+    optionalDependencies:
+      '@swc/core': 1.3.101(@swc/helpers@0.5.5)
+      esbuild: 0.19.11
+
   terser-webpack-plugin@5.3.10(@swc/core@1.3.101)(esbuild@0.23.0)(webpack@5.93.0(@swc/core@1.3.101)(esbuild@0.23.0)):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
@@ -22411,10 +22424,6 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.3.3
 
-  use-sync-external-store@1.2.0(react@18.2.0):
-    dependencies:
-      react: 18.2.0
-
   use-sync-external-store@1.2.2(react@18.2.0):
     dependencies:
       react: 18.2.0
@@ -22566,6 +22575,37 @@ snapshots:
   webpack-sources@3.2.3: {}
 
   webpack-virtual-modules@0.5.0: {}
+
+  webpack@5.93.0(@swc/core@1.3.101(@swc/helpers@0.5.5))(esbuild@0.19.11):
+    dependencies:
+      '@types/eslint-scope': 3.7.7
+      '@types/estree': 1.0.5
+      '@webassemblyjs/ast': 1.12.1
+      '@webassemblyjs/wasm-edit': 1.12.1
+      '@webassemblyjs/wasm-parser': 1.12.1
+      acorn: 8.12.1
+      acorn-import-attributes: 1.9.5(acorn@8.12.1)
+      browserslist: 4.23.2
+      chrome-trace-event: 1.0.4
+      enhanced-resolve: 5.17.1
+      es-module-lexer: 1.5.4
+      eslint-scope: 5.1.1
+      events: 3.3.0
+      glob-to-regexp: 0.4.1
+      graceful-fs: 4.2.11
+      json-parse-even-better-errors: 2.3.1
+      loader-runner: 4.3.0
+      mime-types: 2.1.35
+      neo-async: 2.6.2
+      schema-utils: 3.3.0
+      tapable: 2.2.1
+      terser-webpack-plugin: 5.3.10(@swc/core@1.3.101(@swc/helpers@0.5.5))(esbuild@0.19.11)(webpack@5.93.0(@swc/core@1.3.101)(esbuild@0.23.0))
+      watchpack: 2.4.1
+      webpack-sources: 3.2.3
+    transitivePeerDependencies:
+      - '@swc/core'
+      - esbuild
+      - uglify-js
 
   webpack@5.93.0(@swc/core@1.3.101)(esbuild@0.23.0):
     dependencies:
@@ -22797,13 +22837,6 @@ snapshots:
 
   zustand@3.7.2(react@18.2.0):
     optionalDependencies:
-      react: 18.2.0
-
-  zustand@4.5.4(@types/react@18.3.3)(react@18.2.0):
-    dependencies:
-      use-sync-external-store: 1.2.0(react@18.2.0)
-    optionalDependencies:
-      '@types/react': 18.3.3
       react: 18.2.0
 
   zwitch@2.0.4: {}
