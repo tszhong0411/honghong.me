@@ -11,7 +11,7 @@
     "dev": "concurrently \"mdx dev\" \"next dev -p 3002\"",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint --fix .",
-    "start": "next start",
+    "start": "next start -p 3002",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
