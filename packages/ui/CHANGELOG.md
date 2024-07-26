@@ -1,5 +1,11 @@
 # @tszhong0411/ui
 
+## 0.0.25
+
+### Patch Changes
+
+- [#812](https://github.com/tszhong0411/honghong.me/pull/812) [`c6530c6`](https://github.com/tszhong0411/honghong.me/commit/c6530c616ef68a7b9010b8c7c5dd441be966ba51) Thanks [@tszhong0411](https://github.com/tszhong0411)! - fix DialogContent requires a DialogTitle
+
 ## 0.0.24
 
 ### Patch Changes
