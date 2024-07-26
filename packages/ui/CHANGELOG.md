@@ -1,5 +1,11 @@
 # @tszhong0411/ui
 
+## 0.0.24
+
+### Patch Changes
+
+- [`40f2cf1`](https://github.com/tszhong0411/honghong.me/commit/40f2cf18994b996477c5902d3ae5a2160ff5309b) Thanks [@tszhong0411](https://github.com/tszhong0411)! - add visually hidden
+
 ## 0.0.23
 
 ### Patch Changes
