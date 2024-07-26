@@ -108,9 +108,10 @@ const Page = async (props: PageProps) => {
   const jsonLd: WithContext<Article> = {
     '@context': 'https://schema.org',
     '@type': 'Article',
-
     headline: title,
+    name: title,
     description: summary,
+    url: `${SITE_URL}/blog/${slug}`,
     datePublished: date,
     dateModified: modifiedTime,
     image: `${SITE_URL}/og/${slug}`,

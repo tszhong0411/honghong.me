@@ -15,6 +15,14 @@ import {
   UserCircleIcon
 } from 'lucide-react'
 
+import {
+  SITE_FACEBOOK_URL,
+  SITE_GITHUB_URL,
+  SITE_INSTAGRAM_URL,
+  SITE_X_URL,
+  SITE_YOUTUBE_URL
+} from '@/lib/constants'
+
 type HeaderLinks = Array<{
   icon: React.ReactNode
   href: string
@@ -115,19 +123,19 @@ export const FOOTER_LINKS: FooterLinks = [
     id: 3,
     links: [
       {
-        href: 'https://www.facebook.com/tszhong0411/',
+        href: SITE_FACEBOOK_URL,
         text: 'Facebook'
       },
       {
-        href: 'https://www.instagram.com/tszhong0411/',
+        href: SITE_INSTAGRAM_URL,
         text: 'Instagram'
       },
       {
-        href: 'https://github.com/tszhong0411',
+        href: SITE_GITHUB_URL,
         text: 'GitHub'
       },
       {
-        href: 'https://www.youtube.com/@tszhong0411',
+        href: SITE_YOUTUBE_URL,
         text: 'YouTube'
       }
     ]
@@ -136,27 +144,27 @@ export const FOOTER_LINKS: FooterLinks = [
 
 export const SOCIAL_LINKS: SocialLinks = [
   {
-    href: 'https://github.com/tszhong0411',
+    href: SITE_GITHUB_URL,
     title: 'GitHub',
     icon: SiGithub
   },
   {
-    href: 'https://www.facebook.com/tszhong0411/',
+    href: SITE_FACEBOOK_URL,
     title: 'Facebook',
     icon: SiFacebook
   },
   {
-    href: 'https://www.instagram.com/tszhong0411/',
+    href: SITE_INSTAGRAM_URL,
     title: 'Instagram',
     icon: SiInstagram
   },
   {
-    href: 'https://x.com/tszhong0411',
+    href: SITE_X_URL,
     title: 'X',
     icon: SiX
   },
   {
-    href: 'https://www.youtube.com/@tszhong0411',
+    href: SITE_YOUTUBE_URL,
     title: 'YouTube',
     icon: SiYoutube
   }

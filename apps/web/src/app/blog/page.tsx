@@ -1,8 +1,10 @@
 import { allBlogPosts } from 'mdx/generated'
 import type { Metadata, ResolvingMetadata } from 'next'
+import type { Blog, WithContext } from 'schema-dts'
 
 import FilteredPosts from '@/components/filtered-posts'
 import PageTitle from '@/components/page-title'
+import { SITE_NAME, SITE_URL } from '@/lib/constants'
 
 const title = 'Blog'
 const description =
@@ -11,6 +13,27 @@ const description =
 type PageProps = {
   params: Record<string, never>
   searchParams: Record<string, never>
+}
+
+const jsonLd: WithContext<Blog> = {
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  '@id': `${SITE_URL}/blog`,
+  name: title,
+  description,
+  url: `${SITE_URL}/blog`,
+  author: {
+    '@type': 'Person',
+    name: SITE_NAME,
+    url: SITE_URL
+  },
+  blogPost: allBlogPosts.map((post) => ({
+    '@type': 'BlogPosting',
+    headline: post.title,
+    url: `${SITE_URL}/blog/${post.slug}`,
+    datePublished: post.date,
+    dateModified: post.modifiedTime
+  }))
 }
 
 export const generateMetadata = async (
@@ -47,6 +70,10 @@ const Page = () => {
 
   return (
     <>
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <PageTitle title={title} description={description} />
       <FilteredPosts posts={posts} />
     </>
