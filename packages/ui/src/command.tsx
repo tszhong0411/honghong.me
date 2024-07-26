@@ -6,7 +6,8 @@ import { Command as CommandPrimitive } from 'cmdk'
 import { SearchIcon } from 'lucide-react'
 import { forwardRef } from 'react'
 
-import { Dialog, DialogContent } from './dialog'
+import { Dialog, DialogContent, DialogDescription, DialogTitle } from './dialog'
+import { VisuallyHidden } from './visually-hidden'
 
 export const Command = forwardRef<
   React.ElementRef<typeof CommandPrimitive>,
@@ -34,6 +35,10 @@ export const CommandDialog = (props: CommandDialogProps) => {
   return (
     <Dialog {...rest}>
       <DialogContent className='overflow-hidden p-0 shadow-lg'>
+        <VisuallyHidden>
+          <DialogTitle>Command Menu</DialogTitle>
+          <DialogDescription>Search a command</DialogDescription>
+        </VisuallyHidden>
         <Command
           className={cn(
             '[&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium',
