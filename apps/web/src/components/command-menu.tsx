@@ -16,6 +16,13 @@ import { signOut, useSession } from 'next-auth/react'
 import { Fragment, useCallback, useEffect, useState } from 'react'
 
 import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard'
+import {
+  SITE_FACEBOOK_URL,
+  SITE_GITHUB_URL,
+  SITE_INSTAGRAM_URL,
+  SITE_X_URL,
+  SITE_YOUTUBE_URL
+} from '@/lib/constants'
 import { setModals } from '@/store/modals'
 
 type Groups = Array<{
@@ -104,35 +111,35 @@ const CommandMenu = () => {
           title: 'GitHub',
           icon: <SiGithub className='mr-3 size-4' />,
           onSelect: () => {
-            openLink('https://github.com/tszhong0411')
+            openLink(SITE_GITHUB_URL)
           }
         },
         {
           title: 'Facebook',
           icon: <SiFacebook className='mr-3 size-4' />,
           onSelect: () => {
-            openLink('https://www.facebook.com/tszhong0411/')
+            openLink(SITE_FACEBOOK_URL)
           }
         },
         {
           title: 'Instagram',
           icon: <SiInstagram className='mr-3 size-4' />,
           onSelect: () => {
-            openLink('https://instagram.com/tszhong0411/')
+            openLink(SITE_INSTAGRAM_URL)
           }
         },
         {
           title: 'X',
           icon: <SiX className='mr-3 size-4' />,
           onSelect: () => {
-            openLink('https://x.com/tszhong0411')
+            openLink(SITE_X_URL)
           }
         },
         {
           title: 'YouTube',
           icon: <SiYoutube className='mr-3 size-4' />,
           onSelect: () => {
-            openLink('https://youtube.com/@tszhong0411')
+            openLink(SITE_YOUTUBE_URL)
           }
         }
       ]

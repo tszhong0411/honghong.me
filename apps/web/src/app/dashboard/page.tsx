@@ -1,7 +1,9 @@
 import { flags } from '@tszhong0411/env'
 import type { Metadata, ResolvingMetadata } from 'next'
+import type { WebPage, WithContext } from 'schema-dts'
 
 import PageTitle from '@/components/page-title'
+import { SITE_TITLE, SITE_URL } from '@/lib/constants'
 
 import Items from './items'
 
@@ -12,6 +14,19 @@ const description =
 type PageProps = {
   params: Record<string, never>
   searchParams: Record<string, never>
+}
+
+const jsonLd: WithContext<WebPage> = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: title,
+  description,
+  url: `${SITE_URL}/dashboard`,
+  isPartOf: {
+    '@type': 'WebSite',
+    name: SITE_TITLE,
+    url: SITE_URL
+  }
 }
 
 export const generateMetadata = async (
@@ -44,6 +59,10 @@ export const generateMetadata = async (
 const Page = () => {
   return (
     <>
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <PageTitle title={title} description={description} />
       {flags.stats ? <Items /> : null}
     </>

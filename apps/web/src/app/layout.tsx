@@ -13,7 +13,7 @@ import Hello from '@/components/hello'
 import Footer from '@/components/layout/footer'
 import Header from '@/components/layout/header'
 import SignInModal from '@/components/sign-in-modal'
-import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from '@/lib/constants'
+import { SITE_DESCRIPTION, SITE_KEYWORDS, SITE_NAME, SITE_TITLE, SITE_URL } from '@/lib/constants'
 
 import Providers from './providers'
 
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
       }
     ]
   },
-  keywords: ['tszhong0411', 'Next.js', 'React', 'TypeScript', 'Node.js'],
+  keywords: SITE_KEYWORDS,
   creator: 'tszhong0411',
   openGraph: {
     url: SITE_URL,
