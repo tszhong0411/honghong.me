@@ -38,6 +38,8 @@ Welcome to the monorepo of my personal blog! This repository houses the code for
 - 📝 Code syntax highlighting - using Shiki
 - 🎨 Animation - using Framer Motion
 - 🏠 LightHouse score of nearly 100
+- 🧪 Vitest - unit and integration tests
+- 🎭 Playwright - end-to-end tests
 - 🔨 Husky & Lint Staged - lint and format code before committing
 - ✅ Conventional commit lint - make sure commit messages follow the conventional commit format
 - 🔒 NextAuth.js - authentication
