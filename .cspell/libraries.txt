@@ -24,6 +24,7 @@ normy
 nuxt
 paralleldrive
 rehype
+rharkor
 rmiz
 shadcn
 shiki

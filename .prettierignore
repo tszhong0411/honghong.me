@@ -1,3 +1,6 @@
 pnpm-lock.yaml
 *.code-snippets
 **/migrations/**
+
+# For CI
+.pnpm-store/

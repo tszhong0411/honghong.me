@@ -26,6 +26,9 @@ runs:
         restore-keys: |
           ${{ runner.os }}-pnpm-store-
 
+    - name: Cache for Turbo
+      uses: rharkor/caching-for-turbo@v1.5
+
     - name: Install dependencies
       shell: bash
       run: pnpm install

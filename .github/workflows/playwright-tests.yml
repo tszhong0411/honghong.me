@@ -14,8 +14,8 @@ jobs:
       - name: Check setup
         uses: ./.github/actions/check-setup
 
-      - name: Build the app
-        run: pnpm --filter=web build
+      - name: Build the apps
+        run: pnpm build:apps
 
       - name: Store Playwright's Version
         run: |
