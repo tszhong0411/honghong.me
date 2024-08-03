@@ -2,6 +2,7 @@
   "private": true,
   "name": "@tszhong0411/mdx",
   "version": "0.0.0",
+  "description": "The MDX compiler for tszhong0411's projects",
   "license": "GPL-3.0",
   "type": "module",
   "main": "./dist/index.js",
