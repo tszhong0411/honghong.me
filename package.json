@@ -81,5 +81,5 @@
     "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix",
     "**/*": "prettier --write --ignore-unknown"
   },
-  "packageManager": "pnpm@9.2.0+sha256.94fab213df221c55b6956b14a2264c21c6203cca9f0b3b95ff2fe9b84b120390"
+  "packageManager": "pnpm@9.6.0+sha512.38dc6fba8dba35b39340b9700112c2fe1e12f10b17134715a4aa98ccf7bb035e76fd981cf0bb384dfa98f8d6af5481c2bef2f4266a24bfa20c34eb7147ce0b5e"
 }
