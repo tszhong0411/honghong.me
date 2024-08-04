@@ -1,0 +1,58 @@
+{
+  {{#unless shouldPublish}}
+  "private": true,
+  {{/unless}}
+  "name": "@tszhong0411/{{ name }}",
+  "version": "{{ version }}",
+  "description": "{{ description }}",
+  "license": "GPL-3.0",
+  {{#if shouldPublish}}
+  "author": "tszhong0411 <me@honghong.me> (https://github.com/tszhong0411/)",
+  "homepage": "https://github.com/tszhong0411/honghong.me#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tszhong0411/honghong.me.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tszhong0411/honghong.me/issues"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  {{/if}}
+  "type": "module",
+  {{#if shouldCompile}}
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  {{else}}
+  "main": "./src/index.ts",
+  {{/if}}
+  "scripts": {
+    "clean": "rm -rf .turbo",
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint --fix .",
+    "type-check": "tsc --noEmit",
+    {{#if shouldCompile}}
+    "build": "tsup",
+    "dev": "tsup --watch"
+    {{/if}}
+  },
+  "devDependencies": {
+    "@tszhong0411/eslint-config": "workspace:*",
+    "@tszhong0411/tsconfig": "workspace:*"
+  },
+  "lint-staged": {
+    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix",
+    "**/*": "prettier --write --ignore-unknown"
+  }
+}

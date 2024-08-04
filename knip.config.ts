@@ -7,6 +7,9 @@ const config: KnipConfig = {
   },
   ignoreDependencies: ['prettier-plugin-*', 'sharp'],
   workspaces: {
+    '.': {
+      entry: ['turbo/generators/config.ts']
+    },
     'apps/docs': {
       entry: ['mdx.config.ts', 'src/components/demos/**/*.tsx'],
       postcss: {

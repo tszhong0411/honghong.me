@@ -52,6 +52,7 @@
     "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/prettier-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
+    "@turbo/gen": "^2.0.11",
     "@types/node": "^20.14.2",
     "@vitest/coverage-v8": "^1.6.0",
     "@vitest/ui": "^1.6.0",
