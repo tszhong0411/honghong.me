@@ -11,8 +11,6 @@ export const ratesRouter = createTRPCRouter({
       })
     )
     .mutation(async ({ ctx, input }) => {
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-
       const user = ctx.session.user
 
       await ctx.db
@@ -27,7 +25,6 @@ export const ratesRouter = createTRPCRouter({
       })
     )
     .mutation(async ({ ctx, input }) => {
-      await new Promise((resolve) => setTimeout(resolve, 1000))
       const user = ctx.session.user
 
       await ctx.db
