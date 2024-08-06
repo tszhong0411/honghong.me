@@ -73,7 +73,7 @@ Without them, this project would not have been possible:
 - MDX Rendering - from [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote)
 - MDX Handling - from [contentlayer](https://github.com/contentlayerdev/contentlayer)
 - UI - from [shadcn/ui](https://github.com/shadcn-ui/ui)
-- ESLint config -from [@antfu/eslint-config](https://github.com/antfu/eslint-config)
+- ESLint config - from [@antfu/eslint-config](https://github.com/antfu/eslint-config)
 
 Referenced the following projects for inspiration:
 
