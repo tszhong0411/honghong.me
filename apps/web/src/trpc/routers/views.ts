@@ -1,12 +1,22 @@
 import { TRPCError } from '@trpc/server'
 import { eq, posts, sql, sum } from '@tszhong0411/db'
-import { redis, redisKeys } from '@tszhong0411/kv'
+import { ratelimit, redis, redisKeys } from '@tszhong0411/kv'
 import { z } from 'zod'
+
+import { getIp } from '@/utils/get-ip'
 
 import { createTRPCRouter, publicProcedure } from '../trpc'
 
+const getKey = (id: string) => `views:${id}`
+
 export const viewsRouter = createTRPCRouter({
   getCount: publicProcedure.query(async ({ ctx }) => {
+    const ip = getIp(ctx.headers)
+
+    const { success } = await ratelimit.limit(getKey(`getCount:${ip}`))
+
+    if (!success) throw new TRPCError({ code: 'TOO_MANY_REQUESTS' })
+
     const cachedViewCount = await redis.get<number>(redisKeys.postViewCount)
 
     if (cachedViewCount) {
@@ -32,6 +42,12 @@ export const viewsRouter = createTRPCRouter({
   get: publicProcedure
     .input(z.object({ slug: z.string().min(1) }))
     .query(async ({ ctx, input }) => {
+      const ip = getIp(ctx.headers)
+
+      const { success } = await ratelimit.limit(getKey(`get:${ip}`))
+
+      if (!success) throw new TRPCError({ code: 'TOO_MANY_REQUESTS' })
+
       const cachedViews = await redis.get<number>(redisKeys.postViews(input.slug))
 
       if (cachedViews) {
@@ -61,6 +77,12 @@ export const viewsRouter = createTRPCRouter({
   increment: publicProcedure
     .input(z.object({ slug: z.string().min(1) }))
     .mutation(async ({ ctx, input }) => {
+      const ip = ctx.headers.get('x-forwarded-for') ?? '0.0.0.0'
+
+      const { success } = await ratelimit.limit(getKey(`increment:${ip}`))
+
+      if (!success) throw new TRPCError({ code: 'TOO_MANY_REQUESTS' })
+
       const views = await ctx.db
         .insert(posts)
         .values({

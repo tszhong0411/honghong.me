@@ -2,15 +2,26 @@ import { createId } from '@paralleldrive/cuid2'
 import { TRPCError } from '@trpc/server'
 import { and, desc, eq, guestbook } from '@tszhong0411/db'
 import { env, flags } from '@tszhong0411/env'
+import { ratelimit } from '@tszhong0411/kv'
 import { z } from 'zod'
 
+import { isProduction } from '@/lib/constants'
 import { getDefaultUser } from '@/utils/get-default-user'
+import { getIp } from '@/utils/get-ip'
 
 import type { RouterOutputs } from '../react'
 import { createTRPCRouter, protectedProcedure, publicProcedure } from '../trpc'
 
+const getKey = (id: string) => `guestbook:${id}`
+
 export const guestbookRouter = createTRPCRouter({
   get: publicProcedure.query(async ({ ctx }) => {
+    const ip = getIp(ctx.headers)
+
+    const { success } = await ratelimit.limit(getKey(`get:${ip}`))
+
+    if (!success) throw new TRPCError({ code: 'TOO_MANY_REQUESTS' })
+
     const query = await ctx.db.query.guestbook.findMany({
       with: {
         user: {
@@ -48,13 +59,17 @@ export const guestbookRouter = createTRPCRouter({
     .mutation(async ({ ctx, input }) => {
       const user = ctx.session.user
 
+      const { success } = await ratelimit.limit(getKey(`create:${user.id}`))
+
+      if (!success) throw new TRPCError({ code: 'TOO_MANY_REQUESTS' })
+
       await ctx.db.insert(guestbook).values({
         id: createId(),
         body: input.message,
         userId: user.id
       })
 
-      if (flags.guestbookNotification) {
+      if (flags.guestbookNotification && isProduction) {
         await fetch(env.DISCORD_WEBHOOK_URL, {
           method: 'POST',
           headers: {
@@ -91,6 +106,10 @@ export const guestbookRouter = createTRPCRouter({
     )
     .mutation(async ({ ctx, input }) => {
       const user = ctx.session.user
+
+      const { success } = await ratelimit.limit(getKey(`delete:${user.id}`))
+
+      if (!success) throw new TRPCError({ code: 'TOO_MANY_REQUESTS' })
 
       const message = await ctx.db.query.guestbook.findFirst({
         where: and(eq(guestbook.id, input.id), eq(guestbook.userId, user.id))

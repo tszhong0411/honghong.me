@@ -1,21 +1,30 @@
 import { TRPCError } from '@trpc/server'
 import { eq, likesSessions, posts, sql, sum } from '@tszhong0411/db'
 import { env } from '@tszhong0411/env'
-import { redis, redisKeys } from '@tszhong0411/kv'
+import { ratelimit, redis, redisKeys } from '@tszhong0411/kv'
 import { sha512 } from 'js-sha512'
 import { z } from 'zod'
 
+import { getIp } from '@/utils/get-ip'
+
 import { createTRPCRouter, publicProcedure } from '../trpc'
 
-const getSessionId = (slug: string, headers: Headers): string => {
-  const ipAddress = headers.get('x-forwarded-for') ?? '0.0.0.0'
-  const currentUserId = sha512(ipAddress + env.IP_ADDRESS_SALT)
+const getSessionId = (slug: string, ip: string): string => {
+  const currentUserId = sha512(ip + env.IP_ADDRESS_SALT)
 
   return `${slug}___${currentUserId}`
 }
 
+const getKey = (id: string) => `likes:${id}`
+
 export const likesRouter = createTRPCRouter({
   getCount: publicProcedure.query(async ({ ctx }) => {
+    const ip = getIp(ctx.headers)
+
+    const { success } = await ratelimit.limit(getKey(`getCount:${ip}`))
+
+    if (!success) throw new TRPCError({ code: 'TOO_MANY_REQUESTS' })
+
     const cachedLikeCount = await redis.get<number>(redisKeys.postLikeCount)
 
     if (cachedLikeCount) {
@@ -45,7 +54,12 @@ export const likesRouter = createTRPCRouter({
       })
     )
     .query(async ({ ctx, input }) => {
-      const sessionId = getSessionId(input.slug, ctx.headers)
+      const ip = getIp(ctx.headers)
+      const sessionId = getSessionId(input.slug, ip)
+
+      const { success } = await ratelimit.limit(getKey(`get:${sessionId}`))
+
+      if (!success) throw new TRPCError({ code: 'TOO_MANY_REQUESTS' })
 
       const cachedLikes = await redis.get<number>(redisKeys.postLikes(input.slug))
       const cachedCurrentUserLikes = await redis.get<number>(
@@ -90,14 +104,19 @@ export const likesRouter = createTRPCRouter({
       })
     )
     .mutation(async ({ ctx, input }) => {
-      const sessionId = getSessionId(input.slug, ctx.headers)
+      const ip = getIp(ctx.headers)
+      const sessionId = getSessionId(input.slug, ip)
+
+      const { success } = await ratelimit.limit(getKey(`patch:${sessionId}`))
+
+      if (!success) throw new TRPCError({ code: 'TOO_MANY_REQUESTS' })
 
       const session = await ctx.db
         .select({
           likes: likesSessions.likes
         })
         .from(likesSessions)
-        .where(eq(likesSessions.id, getSessionId(input.slug, ctx.headers)))
+        .where(eq(likesSessions.id, getSessionId(input.slug, ip)))
 
       if (session[0] && session[0].likes + input.value > 3) {
         throw new TRPCError({
