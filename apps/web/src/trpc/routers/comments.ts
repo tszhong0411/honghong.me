@@ -11,12 +11,14 @@ import { TRPCError } from '@trpc/server'
 import { and, asc, comments, count, desc, eq, isNull, rates } from '@tszhong0411/db'
 import { CommentNotification } from '@tszhong0411/emails'
 import { env } from '@tszhong0411/env'
+import { ratelimit } from '@tszhong0411/kv'
 import { allBlogPosts } from 'mdx/generated'
 import { Resend } from 'resend'
 import { z } from 'zod'
 
 import { isProduction } from '@/lib/constants'
 import { getDefaultUser } from '@/utils/get-default-user'
+import { getIp } from '@/utils/get-ip'
 
 import type { RouterOutputs } from '../react'
 import { createTRPCRouter, protectedProcedure, publicProcedure } from '../trpc'
@@ -41,6 +43,8 @@ const JSONContentSchema: z.ZodType<z.infer<typeof baseJSONContent>> = baseJSONCo
   content: z.array(z.lazy(() => JSONContentSchema)).optional()
 })
 
+const getKey = (id: string) => `comments:${id}`
+
 export const commentsRouter = createTRPCRouter({
   get: publicProcedure
     .input(
@@ -52,6 +56,12 @@ export const commentsRouter = createTRPCRouter({
     )
     .query(async ({ ctx, input }) => {
       const session = ctx.session
+
+      const ip = getIp(ctx.headers)
+
+      const { success } = await ratelimit.limit(getKey(`get:${ip}`))
+
+      if (!success) throw new TRPCError({ code: 'TOO_MANY_REQUESTS' })
 
       const query = await ctx.db.query.comments.findMany({
         where: and(
@@ -126,6 +136,12 @@ export const commentsRouter = createTRPCRouter({
   getCount: publicProcedure
     .input(z.object({ slug: z.string().min(1) }))
     .query(async ({ ctx, input }) => {
+      const ip = getIp(ctx.headers)
+
+      const { success } = await ratelimit.limit(getKey(`getCount:${ip}`))
+
+      if (!success) throw new TRPCError({ code: 'TOO_MANY_REQUESTS' })
+
       const value = await ctx.db
         .select({
           value: count()
@@ -147,6 +163,11 @@ export const commentsRouter = createTRPCRouter({
     )
     .mutation(async ({ ctx, input }) => {
       const user = ctx.session.user
+
+      const { success } = await ratelimit.limit(getKey(`post:${user.id}`))
+
+      if (!success) throw new TRPCError({ code: 'TOO_MANY_REQUESTS' })
+
       const commentId = createId()
 
       await ctx.db.insert(comments).values({
@@ -218,6 +239,12 @@ export const commentsRouter = createTRPCRouter({
   delete: protectedProcedure
     .input(z.object({ id: z.string().min(1) }))
     .mutation(async ({ ctx, input }) => {
+      const user = ctx.session.user
+
+      const { success } = await ratelimit.limit(getKey(`delete:${user.id}`))
+
+      if (!success) throw new TRPCError({ code: 'TOO_MANY_REQUESTS' })
+
       const email = ctx.session.user.email
 
       const comment = await ctx.db.query.comments.findFirst({
