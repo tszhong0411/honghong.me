@@ -1,5 +1,5 @@
 import { env } from '@tszhong0411/env'
-// import { Ratelimit } from '@upstash/ratelimit'
+import { Ratelimit } from '@upstash/ratelimit'
 import { Redis } from '@upstash/redis'
 
 export const redis = new Redis({
@@ -7,11 +7,11 @@ export const redis = new Redis({
   token: env.UPSTASH_REDIS_REST_TOKEN
 })
 
-// export const ratelimit = new Ratelimit({
-//   redis,
-//   limiter: Ratelimit.slidingWindow(50, '10 s'),
-//   analytics: true
-// })
+export const ratelimit = new Ratelimit({
+  redis,
+  limiter: Ratelimit.slidingWindow(5, '10 s'),
+  analytics: true
+})
 
 export const redisKeys = {
   postViews: (slug: string) => `post:views:${slug}`,
