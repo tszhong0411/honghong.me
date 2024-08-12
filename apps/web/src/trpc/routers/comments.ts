@@ -8,7 +8,7 @@ import { Strike } from '@tiptap/extension-strike'
 import { Text } from '@tiptap/extension-text'
 import { generateHTML } from '@tiptap/html'
 import { TRPCError } from '@trpc/server'
-import { and, asc, comments, count, desc, eq, isNull, rates } from '@tszhong0411/db'
+import { and, asc, comments, count, desc, eq, isNotNull, isNull, rates } from '@tszhong0411/db'
 import { CommentNotification } from '@tszhong0411/emails'
 import { env } from '@tszhong0411/env'
 import { ratelimit } from '@tszhong0411/kv'
@@ -20,7 +20,7 @@ import { isProduction } from '@/lib/constants'
 import { getDefaultUser } from '@/utils/get-default-user'
 import { getIp } from '@/utils/get-ip'
 
-import type { RouterOutputs } from '../react'
+import type { RouterInputs, RouterOutputs } from '../react'
 import { createTRPCRouter, protectedProcedure, publicProcedure } from '../trpc'
 
 const resend = new Resend(env.RESEND_API_KEY)
@@ -148,6 +148,46 @@ export const commentsRouter = createTRPCRouter({
         })
         .from(comments)
         .where(eq(comments.postId, input.slug))
+
+      return {
+        value: value[0]?.value ?? 0
+      }
+    }),
+  getCommentsCount: publicProcedure
+    .input(z.object({ slug: z.string().min(1) }))
+    .query(async ({ ctx, input }) => {
+      const ip = getIp(ctx.headers)
+
+      const { success } = await ratelimit.limit(getKey(`getCommentsCount:${ip}`))
+
+      if (!success) throw new TRPCError({ code: 'TOO_MANY_REQUESTS' })
+
+      const value = await ctx.db
+        .select({
+          value: count()
+        })
+        .from(comments)
+        .where(and(eq(comments.postId, input.slug), isNull(comments.parentId)))
+
+      return {
+        value: value[0]?.value ?? 0
+      }
+    }),
+  getRepliesCount: publicProcedure
+    .input(z.object({ slug: z.string().min(1) }))
+    .query(async ({ ctx, input }) => {
+      const ip = getIp(ctx.headers)
+
+      const { success } = await ratelimit.limit(getKey(`getRepliesCount:${ip}`))
+
+      if (!success) throw new TRPCError({ code: 'TOO_MANY_REQUESTS' })
+
+      const value = await ctx.db
+        .select({
+          value: count()
+        })
+        .from(comments)
+        .where(and(eq(comments.postId, input.slug), isNotNull(comments.parentId)))
 
       return {
         value: value[0]?.value ?? 0
@@ -304,4 +344,5 @@ export const commentsRouter = createTRPCRouter({
     })
 })
 
+export type CommentsInput = RouterInputs['comments']['get']
 export type CommentsOutput = RouterOutputs['comments']['get']

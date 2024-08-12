@@ -20,11 +20,11 @@ const Header = () => {
     onSettled: () => utils.views.get.invalidate()
   })
 
-  const viewsQuery = api.views.get.useQuery({
+  const viewsCountQuery = api.views.get.useQuery({
     slug
   })
 
-  const commentsQuery = api.comments.getCount.useQuery({
+  const commentsCountQuery = api.comments.getCount.useQuery({
     slug
   })
 
@@ -63,11 +63,11 @@ const Header = () => {
           </div>
           <div className='space-y-1 md:mx-auto'>
             <div className='text-muted-foreground'>Views</div>
-            {viewsQuery.isLoading ? '--' : <div>{viewsQuery.data?.views}</div>}
+            {viewsCountQuery.isLoading ? '--' : <div>{viewsCountQuery.data?.views}</div>}
           </div>
           <div className='space-y-1 md:mx-auto'>
             <div className='text-muted-foreground'>Comments</div>
-            {commentsQuery.isLoading ? '--' : <div>{commentsQuery.data?.value}</div>}
+            {commentsCountQuery.isLoading ? '--' : <div>{commentsCountQuery.data?.value}</div>}
           </div>
         </div>
       </div>

@@ -21,7 +21,11 @@ const CommentReply = () => {
       setIsReplying(false)
     },
     onError: (error) => toast.error(error.message),
-    onSettled: () => utils.comments.get.invalidate()
+    onSettled: () => {
+      utils.comments.get.invalidate()
+      utils.comments.getRepliesCount.invalidate()
+      utils.comments.getCount.invalidate()
+    }
   })
 
   const replyHandler = (e: React.FormEvent<HTMLFormElement>) => {

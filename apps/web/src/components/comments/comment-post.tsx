@@ -22,7 +22,11 @@ const CommentPost = () => {
       toast.success('Comment posted')
     },
     onError: (error) => toast.error(error.message),
-    onSettled: () => utils.comments.get.invalidate()
+    onSettled: () => {
+      utils.comments.get.invalidate()
+      utils.comments.getCommentsCount.invalidate()
+      utils.comments.getCount.invalidate()
+    }
   })
 
   const commentHandler = (e: React.FormEvent<HTMLFormElement>) => {
