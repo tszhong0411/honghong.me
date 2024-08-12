@@ -5,6 +5,7 @@
  */
 import { Separator } from '@tszhong0411/ui'
 import { motion } from 'framer-motion'
+import pluralize from 'pluralize'
 import { useRef, useState } from 'react'
 import { useDebouncedCallback } from 'use-debounce'
 
@@ -138,8 +139,7 @@ const LikeButton = (props: LikeButtonProps) => {
             />
           </g>
         </svg>
-        Like
-        {likesQuery.data && likesQuery.data.likes + cacheCount === 1 ? '' : 's'}
+        {likesQuery.data && pluralize('Like', likesQuery.data.likes + cacheCount)}
         <Separator orientation='vertical' className='bg-zinc-700' />
         {likesQuery.isLoading ? <div> -- </div> : <div>{likesQuery.data!.likes + cacheCount}</div>}
       </button>
