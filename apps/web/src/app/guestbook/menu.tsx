@@ -21,6 +21,7 @@ const Menu = () => {
   const utils = api.useUtils()
 
   const guestbookMutation = api.guestbook.delete.useMutation({
+    onSuccess: () => toast.success('Delete message successfully'),
     onSettled: () => utils.guestbook.get.invalidate(),
     onError: (error) => toast.error(error.message)
   })
