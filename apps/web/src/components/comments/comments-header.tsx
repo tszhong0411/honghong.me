@@ -11,23 +11,32 @@ import {
 import { ListFilterIcon } from 'lucide-react'
 import pluralize from 'pluralize'
 
+import { useCommentsContext } from '@/contexts/comments'
+import { api } from '@/trpc/react'
 import type { CommentsInput } from '@/trpc/routers/comments'
 
 type CommentHeaderProps = {
   sort: CommentsInput['sort']
   onSortChange: (sort: CommentsInput['sort']) => void
-  commentsCount: number | undefined
-  repliesCount: number | undefined
 }
 
 const CommentHeader = (props: CommentHeaderProps) => {
-  const { sort, onSortChange, commentsCount, repliesCount } = props
+  const { sort, onSortChange } = props
+  const { slug } = useCommentsContext()
+
+  const commentsCountQuery = api.comments.getCommentsCount.useQuery({ slug })
+  const repliesCountQuery = api.comments.getRepliesCount.useQuery({ slug })
 
   return (
     <div className='flex items-center justify-between px-1'>
       <div>
-        {commentsCount ? pluralize('comment', commentsCount, true) : '-- comments'} ·{' '}
-        {repliesCount ? pluralize('reply', repliesCount, true) : '-- replies'}
+        {commentsCountQuery.isLoading
+          ? '-- comments'
+          : pluralize('comment', commentsCountQuery.data?.value, true)}{' '}
+        ·{' '}
+        {repliesCountQuery.isLoading
+          ? '-- replies'
+          : pluralize('reply', repliesCountQuery.data?.value, true)}
       </div>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
