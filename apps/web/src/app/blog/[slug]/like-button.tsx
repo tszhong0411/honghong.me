@@ -5,7 +5,6 @@
  */
 import { Separator } from '@tszhong0411/ui'
 import { motion } from 'framer-motion'
-import pluralize from 'pluralize'
 import { useRef, useState } from 'react'
 import { useDebouncedCallback } from 'use-debounce'
 
@@ -21,14 +20,16 @@ const LikeButton = (props: LikeButtonProps) => {
   const buttonRef = useRef<HTMLButtonElement>(null)
   const utils = api.useUtils()
 
-  const likesQuery = api.likes.get.useQuery({ slug })
+  const queryKey = { slug }
+
+  const likesQuery = api.likes.get.useQuery(queryKey)
   const likesMutation = api.likes.patch.useMutation({
-    onMutate: (newData) => {
-      void utils.likes.get.cancel({ slug })
+    onMutate: async (newData) => {
+      await utils.likes.get.cancel(queryKey)
 
-      const previousData = utils.likes.get.getData({ slug })
+      const previousData = utils.likes.get.getData(queryKey)
 
-      utils.likes.get.setData({ slug }, (old) => {
+      utils.likes.get.setData(queryKey, (old) => {
         if (!old) return old
 
         return {
@@ -42,7 +43,7 @@ const LikeButton = (props: LikeButtonProps) => {
     },
     onError: (_, __, ctx) => {
       if (ctx?.previousData) {
-        utils.likes.get.setData({ slug }, ctx.previousData)
+        utils.likes.get.setData(queryKey, ctx.previousData)
       }
     },
     onSettled: () => utils.likes.get.invalidate()
@@ -139,7 +140,7 @@ const LikeButton = (props: LikeButtonProps) => {
             />
           </g>
         </svg>
-        {likesQuery.data && pluralize('Like', likesQuery.data.likes + cacheCount)}
+        Like
         <Separator orientation='vertical' className='bg-zinc-700' />
         {likesQuery.isLoading ? <div> -- </div> : <div>{likesQuery.data!.likes + cacheCount}</div>}
       </button>
