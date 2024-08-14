@@ -21,7 +21,3 @@
   pointer-events: none;
   @apply text-muted-foreground;
 }
-
-[id^='comment-'].highlighted-comment {
-  @apply bg-accent;
-}

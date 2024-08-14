@@ -339,6 +339,9 @@ importers:
       next-themes:
         specifier: ^0.3.0
         version: 0.3.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      nuqs:
+        specifier: ^1.17.8
+        version: 1.17.8(next@14.2.3(@babel/core@7.24.9)(@opentelemetry/api@1.9.0)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
       pluralize:
         specifier: ^8.0.0
         version: 8.0.0
@@ -348,6 +351,9 @@ importers:
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
+      react-intersection-observer:
+        specifier: ^9.13.0
+        version: 9.13.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react-medium-image-zoom:
         specifier: ^5.2.4
         version: 5.2.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -372,6 +378,9 @@ importers:
       use-debounce:
         specifier: ^10.0.1
         version: 10.0.1(react@18.2.0)
+      usehooks-ts:
+        specifier: ^3.1.0
+        version: 3.1.0(react@18.2.0)
       zod:
         specifier: ^3.23.8
         version: 3.23.8
@@ -8778,6 +8787,9 @@ packages:
     resolution: {integrity: sha512-qOOzS1cBTWYF4BH8fVePDBOO9iptMnGUEZwNc/cMWnTV2nVLZ7VoNWEPHkYczZA0pdoA7dl6e7FL659nX9S2aw==}
     engines: {node: '>=16 || 14 >=14.17'}
 
+  mitt@3.0.1:
+    resolution: {integrity: sha512-vKivATfr97l2/QBCYAkXYDbrIWPM2IIKEl7YPhjCvKlG3kE2gm+uBo6nEXK3M5/Ffh/FLpKExzOQ3JJoJGFKBw==}
+
   mkdirp@0.5.6:
     resolution: {integrity: sha512-FP+p8RB8OWpF3YZBCrP5gtADmtXApB5AMLn+vdyA+PyxCjrCs00mjyUozssO33cwDeT3wNGdLxJ5M//YqtHAJw==}
     hasBin: true
@@ -8977,6 +8989,11 @@ packages:
 
   nullthrows@1.1.1:
     resolution: {integrity: sha512-2vPPEi+Z7WqML2jZYddDIfy5Dqb0r2fze2zTxNNknZaFpVHU3mFB3R+DWeJWGVx0ecvttSGlJTI+WG+8Z4cDWw==}
+
+  nuqs@1.17.8:
+    resolution: {integrity: sha512-JqsnzO+hJyjJE7ebuhpHMLA2iGY48e2xr0oJQFhj7kjUmDABL2XOup47rxF5TL/5b9jEsmU2t0lAKin1VdK1/A==}
+    peerDependencies:
+      next: '>=13.4 <14.0.2 || ^14.0.3'
 
   nwsapi@2.2.12:
     resolution: {integrity: sha512-qXDmcVlZV4XRtKFzddidpfVP4oMSGhga+xdMc25mv8kaLUHtgzCDhUxkrN8exkGdTlLNaXj7CV3GtON7zuGZ+w==}
@@ -9699,6 +9716,15 @@ packages:
     resolution: {integrity: sha512-YKZ4jhkalWcNyaw4qyI//+QeTeUxe/ptqI+wSc4wVIoHzqffAWoV5x/jBpFex3FQ636xVIDFrvGq39rUVL7zSQ==}
     engines: {node: '>=18.0.0'}
     hasBin: true
+
+  react-intersection-observer@9.13.0:
+    resolution: {integrity: sha512-y0UvBfjDiXqC8h0EWccyaj4dVBWMxgEx0t5RGNzQsvkfvZwugnKwxpu70StY4ivzYuMajavwUDjH4LJyIki9Lw==}
+    peerDependencies:
+      react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
 
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
@@ -11006,6 +11032,12 @@ packages:
     resolution: {integrity: sha512-PElTlVMwpblvbNqQ82d2n6RjStvdSoNe9FG28kNfz3WiXilJm4DdNkEzRhCZuIDwY8U08WVihhGR5iRqAwfDiw==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
+
+  usehooks-ts@3.1.0:
+    resolution: {integrity: sha512-bBIa7yUyPhE1BCc0GmR96VU/15l/9gP1Ch5mYdLcFBaFGQsdmXkvjV0TtOqW1yUd6VjIwDunm+flSciCQXujiw==}
+    engines: {node: '>=16.15.0'}
+    peerDependencies:
+      react: ^16.8.0  || ^17 || ^18
 
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
@@ -20662,6 +20694,8 @@ snapshots:
 
   minipass@7.1.2: {}
 
+  mitt@3.0.1: {}
+
   mkdirp@0.5.6:
     dependencies:
       minimist: 1.2.8
@@ -20872,6 +20906,11 @@ snapshots:
       path-key: 4.0.0
 
   nullthrows@1.1.1: {}
+
+  nuqs@1.17.8(next@14.2.3(@babel/core@7.24.9)(@opentelemetry/api@1.9.0)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)):
+    dependencies:
+      mitt: 3.0.1
+      next: 14.2.3(@babel/core@7.24.9)(@opentelemetry/api@1.9.0)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
 
   nwsapi@2.2.12: {}
 
@@ -21667,6 +21706,12 @@ snapshots:
       - uglify-js
       - utf-8-validate
       - webpack-cli
+
+  react-intersection-observer@9.13.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+    dependencies:
+      react: 18.2.0
+    optionalDependencies:
+      react-dom: 18.2.0(react@18.2.0)
 
   react-is@16.13.1: {}
 
@@ -23249,6 +23294,11 @@ snapshots:
 
   use-sync-external-store@1.2.2(react@18.2.0):
     dependencies:
+      react: 18.2.0
+
+  usehooks-ts@3.1.0(react@18.2.0):
+    dependencies:
+      lodash.debounce: 4.0.8
       react: 18.2.0
 
   util-deprecate@1.0.2: {}

@@ -8,7 +8,20 @@ import { Strike } from '@tiptap/extension-strike'
 import { Text } from '@tiptap/extension-text'
 import { generateHTML } from '@tiptap/html'
 import { TRPCError } from '@trpc/server'
-import { and, asc, comments, count, desc, eq, isNotNull, isNull, rates } from '@tszhong0411/db'
+import {
+  and,
+  asc,
+  comments,
+  count,
+  desc,
+  eq,
+  gt,
+  isNotNull,
+  isNull,
+  lt,
+  ne,
+  rates
+} from '@tszhong0411/db'
 import { CommentNotification } from '@tszhong0411/emails'
 import { env } from '@tszhong0411/env'
 import { ratelimit } from '@tszhong0411/kv'
@@ -46,12 +59,16 @@ const JSONContentSchema: z.ZodType<z.infer<typeof baseJSONContent>> = baseJSONCo
 const getKey = (id: string) => `comments:${id}`
 
 export const commentsRouter = createTRPCRouter({
-  get: publicProcedure
+  getInfiniteComments: publicProcedure
     .input(
       z.object({
         slug: z.string().min(1),
         parentId: z.string().optional(),
-        sort: z.enum(['newest', 'oldest']).optional()
+        sort: z.enum(['newest', 'oldest']).default('newest'),
+        cursor: z.date().nullish(),
+        limit: z.number().min(1).max(50).default(10),
+        type: z.enum(['comments', 'replies']).default('comments'),
+        highlightedCommentId: z.string().optional()
       })
     )
     .query(async ({ ctx, input }) => {
@@ -59,15 +76,23 @@ export const commentsRouter = createTRPCRouter({
 
       const ip = getIp(ctx.headers)
 
-      const { success } = await ratelimit.limit(getKey(`get:${ip}`))
+      const { success } = await ratelimit.limit(getKey(`getInfiniteComments:${ip}`))
 
       if (!success) throw new TRPCError({ code: 'TOO_MANY_REQUESTS' })
 
       const query = await ctx.db.query.comments.findMany({
         where: and(
           eq(comments.postId, input.slug),
-          input.parentId ? eq(comments.parentId, input.parentId) : isNull(comments.parentId)
+          input.parentId ? eq(comments.parentId, input.parentId) : isNull(comments.parentId),
+          input.type === 'comments' ? isNull(comments.parentId) : isNotNull(comments.parentId),
+          input.cursor
+            ? input.sort === 'newest'
+              ? lt(comments.createdAt, input.cursor)
+              : gt(comments.createdAt, input.cursor)
+            : undefined,
+          input.highlightedCommentId ? ne(comments.id, input.highlightedCommentId) : undefined
         ),
+        limit: input.limit,
         with: {
           user: {
             columns: {
@@ -81,7 +106,7 @@ export const commentsRouter = createTRPCRouter({
             where: eq(rates.userId, session?.user.id ?? '')
           }
         },
-        orderBy: input.sort === 'newest' ? [desc(comments.createdAt)] : [asc(comments.createdAt)],
+        orderBy: input.sort === 'newest' ? desc(comments.createdAt) : asc(comments.createdAt),
         columns: {
           id: true,
           userId: true,
@@ -92,7 +117,36 @@ export const commentsRouter = createTRPCRouter({
         }
       })
 
-      return await Promise.all(
+      if (input.highlightedCommentId && !input.cursor) {
+        const highlightedComment = await ctx.db.query.comments.findFirst({
+          where: eq(comments.id, input.highlightedCommentId),
+          with: {
+            user: {
+              columns: {
+                name: true,
+                image: true,
+                role: true,
+                id: true
+              }
+            },
+            rates: {
+              where: eq(rates.userId, session?.user.id ?? '')
+            }
+          },
+          columns: {
+            id: true,
+            userId: true,
+            parentId: true,
+            body: true,
+            createdAt: true,
+            isDeleted: true
+          }
+        })
+
+        highlightedComment && query.unshift(highlightedComment)
+      }
+
+      const result = await Promise.all(
         query.map(async (comment) => {
           const replies = await ctx.db
             .select({
@@ -123,7 +177,7 @@ export const commentsRouter = createTRPCRouter({
             replies: replies[0]?.value ?? 0,
             likes: likes[0]?.value ?? 0,
             dislikes: dislikes[0]?.value ?? 0,
-            liked: selfRate?.like ?? undefined,
+            liked: selfRate?.like ?? null,
             user: {
               ...comment.user,
               image: comment.user.image ?? defaultImage,
@@ -132,13 +186,18 @@ export const commentsRouter = createTRPCRouter({
           }
         })
       )
+
+      return {
+        comments: result,
+        nextCursor: result.at(-1)?.createdAt ?? null
+      }
     }),
-  getCount: publicProcedure
+  getTotalCommentsCount: publicProcedure
     .input(z.object({ slug: z.string().min(1) }))
     .query(async ({ ctx, input }) => {
       const ip = getIp(ctx.headers)
 
-      const { success } = await ratelimit.limit(getKey(`getCount:${ip}`))
+      const { success } = await ratelimit.limit(getKey(`getTotalCommentsCount:${ip}`))
 
       if (!success) throw new TRPCError({ code: 'TOO_MANY_REQUESTS' })
 
@@ -344,5 +403,5 @@ export const commentsRouter = createTRPCRouter({
     })
 })
 
-export type CommentsInput = RouterInputs['comments']['get']
-export type CommentsOutput = RouterOutputs['comments']['get']
+export type CommentsInput = RouterInputs['comments']['getInfiniteComments']
+export type CommentsOutput = RouterOutputs['comments']['getInfiniteComments']

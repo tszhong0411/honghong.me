@@ -5,10 +5,10 @@ import { SendIcon } from 'lucide-react'
 import { useSession } from 'next-auth/react'
 
 import { useCommentsContext } from '@/contexts/comments'
-import { setModals } from '@/store/modals'
 import { api } from '@/trpc/react'
 
 import CommentEditor, { useCommentEditor } from './comment-editor'
+import UnauthorizedOverlay from './unauthorized-overlay'
 
 const CommentPost = () => {
   const { slug } = useCommentsContext()
@@ -23,9 +23,7 @@ const CommentPost = () => {
     },
     onError: (error) => toast.error(error.message),
     onSettled: () => {
-      utils.comments.get.invalidate()
-      utils.comments.getCommentsCount.invalidate()
-      utils.comments.getCount.invalidate()
+      utils.comments.invalidate()
     }
   })
 
@@ -69,18 +67,7 @@ const CommentPost = () => {
         >
           <SendIcon className='size-4' />
         </Button>
-        {status === 'unauthenticated' ? (
-          <div className='absolute inset-0 flex items-center justify-center rounded-lg bg-black/5 backdrop-blur-[0.8px]'>
-            <Button
-              type='button'
-              onClick={() => {
-                setModals({ signIn: true })
-              }}
-            >
-              Sign In
-            </Button>
-          </div>
-        ) : null}
+        {status === 'unauthenticated' ? <UnauthorizedOverlay /> : null}
       </div>
     </form>
   )

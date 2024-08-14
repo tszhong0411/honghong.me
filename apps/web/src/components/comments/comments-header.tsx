@@ -2,10 +2,8 @@ import {
   Button,
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuLabel,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger
 } from '@tszhong0411/ui'
 import { ListFilterIcon } from 'lucide-react'
@@ -15,14 +13,8 @@ import { useCommentsContext } from '@/contexts/comments'
 import { api } from '@/trpc/react'
 import type { CommentsInput } from '@/trpc/routers/comments'
 
-type CommentHeaderProps = {
-  sort: CommentsInput['sort']
-  onSortChange: (sort: CommentsInput['sort']) => void
-}
-
-const CommentHeader = (props: CommentHeaderProps) => {
-  const { sort, onSortChange } = props
-  const { slug } = useCommentsContext()
+const CommentHeader = () => {
+  const { slug, sort, setSort } = useCommentsContext()
 
   const commentsCountQuery = api.comments.getCommentsCount.useQuery({ slug })
   const repliesCountQuery = api.comments.getRepliesCount.useQuery({ slug })
@@ -42,16 +34,14 @@ const CommentHeader = (props: CommentHeaderProps) => {
         <DropdownMenuTrigger asChild>
           <Button type='button' variant='outline' size='sm' className='h-7 gap-1 text-sm'>
             <ListFilterIcon className='size-3.5' />
-            <span>Filter</span>
+            <span>Sort by</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align='end'>
-          <DropdownMenuLabel>Filter by</DropdownMenuLabel>
-          <DropdownMenuSeparator />
           <DropdownMenuRadioGroup
             value={sort}
             onValueChange={(value) => {
-              onSortChange(value as CommentsInput['sort'])
+              setSort(value as CommentsInput['sort'])
             }}
           >
             <DropdownMenuRadioItem value='newest'>Newest</DropdownMenuRadioItem>

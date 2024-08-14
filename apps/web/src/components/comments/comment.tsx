@@ -3,10 +3,12 @@
 import { Skeleton, Tooltip, TooltipContent, TooltipTrigger } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import Image from 'next/image'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { useOnClickOutside } from 'usehooks-ts'
 
 import { type CommentContext, CommentProvider } from '@/contexts/comment'
 import { useCommentsContext } from '@/contexts/comments'
+import { useCommentParams } from '@/hooks/use-comment-params'
 import { useFormattedDate } from '@/hooks/use-formatted-date'
 import type { CommentsOutput } from '@/trpc/routers/comments'
 
@@ -17,7 +19,7 @@ import CommentReplies from './comment-replies'
 import CommentReply from './comment-reply'
 
 type CommentProps = {
-  comment: CommentsOutput[number]
+  comment: CommentsOutput['comments'][number]
 }
 
 const deletedBody = {
@@ -47,10 +49,28 @@ const Comment = (props: CommentProps) => {
   const [isEditing, setIsEditing] = useState(false)
   const [isReplying, setIsReplying] = useState(false)
   const [isOpenReplies, setIsOpenReplies] = useState(false)
+  const commentRef = useRef<HTMLDivElement>(null)
+  const [params] = useCommentParams()
+  const [isHighlighted, setIsHighlighted] = useState(
+    params.comment === comment.id || params.reply === comment.id
+  )
+
+  const {
+    body,
+    createdAt,
+    isDeleted,
+    parentId,
+    user: { image, name, role },
+    replies
+  } = comment
 
   const formattedDate = useFormattedDate(comment.createdAt, {
     format: 'MMM DD, YYYY',
     relative: true
+  })
+
+  useOnClickOutside(commentRef, () => {
+    setIsHighlighted(false)
   })
 
   const context = useMemo<CommentContext>(
@@ -67,24 +87,23 @@ const Comment = (props: CommentProps) => {
     [comment, isEditing, isOpenReplies, isReplying, slug]
   )
 
-  const {
-    body,
-    createdAt,
-    id,
-    isDeleted,
-    parentId,
-    user: { image, name, role },
-    replies
-  } = comment
+  useEffect(() => {
+    if (isHighlighted && commentRef.current) {
+      const top = commentRef.current.getBoundingClientRect().top + window.scrollY - 128
+
+      window.scrollTo({ top, behavior: 'smooth' })
+    }
+  }, [isHighlighted])
 
   return (
     <CommentProvider value={context}>
-      <div
-        key={id}
-        className='overflow-hidden'
-        id={parentId ? `comment-${parentId}-${id}` : `comment-${id}`}
-      >
-        <div className='flex gap-2 p-2 sm:px-4'>
+      <div className='overflow-hidden'>
+        <div
+          ref={commentRef}
+          className={cn('flex gap-2 p-2 sm:px-4', {
+            'bg-accent/50': isHighlighted
+          })}
+        >
           <Image
             src={image}
             alt={name}

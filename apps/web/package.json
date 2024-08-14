@@ -66,9 +66,11 @@
     "next": "14.2.3",
     "next-auth": "5.0.0-beta.19",
     "next-themes": "^0.3.0",
+    "nuqs": "^1.17.8",
     "pluralize": "^8.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-intersection-observer": "^9.13.0",
     "react-medium-image-zoom": "^5.2.4",
     "react-spring": "^9.7.3",
     "resend": "^3.2.0",
@@ -77,6 +79,7 @@
     "superjson": "^2.2.1",
     "tinycolor2": "^1.6.0",
     "use-debounce": "^10.0.1",
+    "usehooks-ts": "^3.1.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {

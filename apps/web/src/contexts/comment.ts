@@ -10,7 +10,7 @@ export type CommentContext = {
   setIsReplying: (value: boolean) => void
   setIsOpenReplies: (value: boolean) => void
   slug: string
-  comment: CommentsOutput[number]
+  comment: CommentsOutput['comments'][number]
 }
 
 const Context = createContext<CommentContext | undefined>(undefined)

@@ -24,7 +24,7 @@ const Header = () => {
     slug
   })
 
-  const commentsCountQuery = api.comments.getCount.useQuery({
+  const commentsCountQuery = api.comments.getTotalCommentsCount.useQuery({
     slug
   })
 

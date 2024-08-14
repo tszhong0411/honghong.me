@@ -21,6 +21,7 @@ nanostores
 nextauth
 nextra
 normy
+nuqs
 nuxt
 paralleldrive
 rehype
@@ -38,5 +39,6 @@ tsup
 turso
 tursodatabase
 unifiedjs
+usehooks
 vfile
 zustand
