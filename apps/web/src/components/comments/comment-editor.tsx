@@ -119,14 +119,7 @@ const CommentEditor = (props: CommentEditorProps) => {
   innerEditor.setEditable(!disabled)
 
   return (
-    // eslint-disable-next-line jsx-a11y/no-static-element-interactions -- trigger focus
-    <div
-      aria-disabled={disabled}
-      className={editorClassName}
-      onMouseUp={() => {
-        innerEditor.commands.focus()
-      }}
-    >
+    <div aria-disabled={disabled} className={editorClassName}>
       <EditorContent editor={innerEditor} />
       <CommentToolbar editor={innerEditor} />
     </div>
