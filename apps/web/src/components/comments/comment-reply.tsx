@@ -1,18 +1,20 @@
 'use client'
 
+import type { JSONContent } from '@tiptap/core'
 import { Button, toast } from '@tszhong0411/ui'
 import { useSession } from 'next-auth/react'
+import { useState } from 'react'
 
 import { useCommentContext } from '@/contexts/comment'
 import { useCommentsContext } from '@/contexts/comments'
 import { api } from '@/trpc/react'
 import type { CommentsInput } from '@/trpc/routers/comments'
 
-import CommentEditor, { useCommentEditor } from './comment-editor'
+import CommentEditor from './comment-editor'
 import UnauthorizedOverlay from './unauthorized-overlay'
 
 const CommentReply = () => {
-  const [editor, setEditor] = useCommentEditor()
+  const [content, setContent] = useState<JSONContent | null>(null)
   const { comment, setIsReplying } = useCommentContext()
   const { status } = useSession()
   const { slug, sort } = useCommentsContext()
@@ -76,14 +78,11 @@ const CommentReply = () => {
   const replyHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    if (!editor) return
-    if (editor.isEmpty) {
+    if (!content) {
       toast.error('Reply cannot be empty')
 
       return
     }
-
-    const content = editor.getValue()
 
     commentsMutation.mutate({
       slug,
@@ -98,8 +97,7 @@ const CommentReply = () => {
     <form onSubmit={replyHandler}>
       <div className='relative'>
         <CommentEditor
-          editor={editor}
-          onChange={setEditor}
+          onUpdate={setContent}
           placeholder='Reply to comment'
           disabled={disabled}
           autofocus
@@ -111,8 +109,8 @@ const CommentReply = () => {
           variant='secondary'
           className='h-8 px-2 text-xs font-medium'
           type='submit'
-          disabled={disabled || !editor || editor.isEmpty}
-          aria-disabled={disabled || !editor || editor.isEmpty}
+          disabled={disabled || !content}
+          aria-disabled={disabled || !content}
         >
           Reply
         </Button>

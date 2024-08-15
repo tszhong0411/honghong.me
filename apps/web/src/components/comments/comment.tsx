@@ -13,7 +13,7 @@ import { useFormattedDate } from '@/hooks/use-formatted-date'
 import type { CommentsOutput } from '@/trpc/routers/comments'
 
 import CommentActions from './comment-actions'
-import CommentEditor, { useCommentEditor } from './comment-editor'
+import CommentEditor from './comment-editor'
 import CommentMenu from './comment-menu'
 import CommentReplies from './comment-replies'
 import CommentReply from './comment-reply'
@@ -45,7 +45,6 @@ const deletedBody = {
 const Comment = (props: CommentProps) => {
   const { comment } = props
   const { slug } = useCommentsContext()
-  const [editor, setEditor] = useCommentEditor()
   const [isEditing, setIsEditing] = useState(false)
   const [isReplying, setIsReplying] = useState(false)
   const [isOpenReplies, setIsOpenReplies] = useState(false)
@@ -138,12 +137,7 @@ const Comment = (props: CommentProps) => {
             </div>
 
             <div className={cn(isDeleted && 'text-muted-foreground text-sm')}>
-              <CommentEditor
-                editor={editor}
-                onChange={setEditor}
-                content={isDeleted ? deletedBody : body}
-                editable={false}
-              />
+              <CommentEditor content={isDeleted ? deletedBody : body} editable={false} />
             </div>
             {isReplying ? <CommentReply /> : <CommentActions />}
           </div>

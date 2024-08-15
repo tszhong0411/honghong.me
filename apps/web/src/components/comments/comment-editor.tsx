@@ -13,60 +13,34 @@ import { Placeholder } from '@tiptap/extension-placeholder'
 import { Strike } from '@tiptap/extension-strike'
 import { Text } from '@tiptap/extension-text'
 import { Typography } from '@tiptap/extension-typography'
-import { Editor, EditorContent, type JSONContent } from '@tiptap/react'
+import { EditorContent, type JSONContent, useEditor } from '@tiptap/react'
 import { cn } from '@tszhong0411/utils'
-import { useEffect, useState } from 'react'
+import { forwardRef, useImperativeHandle } from 'react'
 
 import CommentToolbar from './comment-toolbar'
 
+export type CommentEditorRef = {
+  clearContent: () => void
+}
+
 type CommentEditorProps = {
-  editor: UseCommentEditor | null
+  onUpdate?: (content: JSONContent) => void
   placeholder?: string
   autofocus?: boolean
   editable?: boolean
   disabled?: boolean
   content?: JSONContent
-  onChange?: (editor: UseCommentEditor) => void
 }
 
-type UseCommentEditor = {
-  editor: Editor
-  isEmpty: boolean
-  getValue: () => JSONContent
-  clearValue: () => void
-}
-
-export const useCommentEditor = (): [
-  editor: UseCommentEditor | null,
-  setEditor: (editor: UseCommentEditor) => void
-] => {
-  return useState<UseCommentEditor | null>(null)
-}
-
-const createCommentEditor = (editor: Editor): UseCommentEditor => {
-  return {
-    editor,
-    isEmpty: editor.isEmpty,
-    getValue() {
-      return editor.getJSON()
-    },
-    clearValue() {
-      editor.commands.clearContent(true)
-    }
-  }
-}
-
-const CommentEditor = (props: CommentEditorProps) => {
+const CommentEditor = forwardRef<CommentEditorRef, CommentEditorProps>((props, ref) => {
   const {
-    editor,
+    onUpdate,
     placeholder,
     autofocus = false,
     editable = true,
     disabled = false,
-    content,
-    onChange
+    content
   } = props
-  const innerEditor = editor?.editor ?? null
 
   const editorClassName = cn(
     'bg-background ring-offset-background rounded-lg border pb-1',
@@ -76,61 +50,61 @@ const CommentEditor = (props: CommentEditorProps) => {
 
   const tiptapClassName = cn('prose focus-visible:outline-none', editable && 'min-h-10 px-3 py-2')
 
-  useEffect(() => {
-    const instance = new Editor({
-      extensions: [
-        Bold,
-        Document,
-        Italic,
-        Paragraph,
-        Strike,
-        Text,
-        Typography,
-        Blockquote,
-        HorizontalRule,
-        ListItem,
-        OrderedList,
-        BulletList,
-        History,
-        Heading.configure({
-          levels: [1, 2, 3, 4]
-        }),
-        Placeholder.configure({
-          placeholder: ({ node }) => {
-            if (node.type.name === 'heading') {
-              return `Heading ${node.attrs.level}`
-            }
+  const editor = useEditor({
+    extensions: [
+      Bold,
+      Document,
+      Italic,
+      Paragraph,
+      Strike,
+      Text,
+      Typography,
+      Blockquote,
+      HorizontalRule,
+      ListItem,
+      OrderedList,
+      BulletList,
+      History,
+      Heading.configure({
+        levels: [1, 2, 3, 4]
+      }),
+      Placeholder.configure({
+        placeholder: ({ node }) => {
+          if (node.type.name === 'heading') {
+            return `Heading ${node.attrs.level}`
+          }
 
-            if (node.type.name === 'blockquote') {
-              return 'Blockquote'
-            }
+          if (node.type.name === 'blockquote') {
+            return 'Blockquote'
+          }
 
-            return placeholder ?? ''
-          },
-          showOnlyWhenEditable: false
-        })
-      ],
-      autofocus,
-      content,
-      editorProps: {
-        attributes: {
-          class: tiptapClassName
-        }
-      },
-      editable,
-      onTransaction: () => {
-        onChange?.(createCommentEditor(instance))
+          return placeholder ?? ''
+        },
+        showOnlyWhenEditable: false
+      })
+    ],
+    autofocus,
+    content,
+    editorProps: {
+      attributes: {
+        class: tiptapClassName
       }
-    })
+    },
+    onUpdate: (updateProps) => {
+      onUpdate?.(updateProps.editor.getJSON())
+    },
+    editable: editable && !disabled,
+    immediatelyRender: false,
+    shouldRerenderOnTransaction: false
+  })
 
-    onChange?.(createCommentEditor(instance))
-
-    return () => {
-      instance.destroy()
+  useImperativeHandle(ref, () => ({
+    clearContent: () => {
+      editor?.commands.clearContent()
     }
-  }, [autofocus, content, editable, onChange, placeholder, tiptapClassName])
+  }))
 
-  if (!innerEditor) {
+  if (!editor) {
     return (
       <div aria-disabled className={editorClassName}>
         <div className={cn('tiptap', tiptapClassName)}>
@@ -141,17 +115,17 @@ const CommentEditor = (props: CommentEditorProps) => {
   }
 
   if (!editable) {
-    return <EditorContent editor={innerEditor} />
+    return <EditorContent editor={editor} />
   }
-
-  innerEditor.setEditable(!disabled)
 
   return (
     <div aria-disabled={disabled} className={editorClassName}>
-      <EditorContent editor={innerEditor} />
-      <CommentToolbar editor={innerEditor} />
+      <EditorContent editor={editor} />
+      <CommentToolbar editor={editor} />
     </div>
   )
-}
+})
+
+CommentEditor.displayName = 'CommentEditor'
 
 export default CommentEditor
