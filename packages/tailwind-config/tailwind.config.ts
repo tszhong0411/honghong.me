@@ -107,16 +107,18 @@ const config: Partial<Config> = {
               border: '1px solid hsl(var(--border))'
             },
 
-            ul: {
-              listStylePosition: 'inside',
-              paddingLeft: '0'
-            },
-
             'pre code': false,
             'pre code::after': false,
             'pre code::before': false,
             'code::after': false,
-            'code::before': false
+            'code::before': false,
+
+            'blockquote p:first-of-type::before': {
+              content: 'none'
+            },
+            'blockquote p:first-of-type::after': {
+              content: 'none'
+            }
           }
         }
       }
