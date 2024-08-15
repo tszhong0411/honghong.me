@@ -1,0 +1,13 @@
+.tiptap .is-editor-empty:first-child::before,
+.tiptap .is-empty::before {
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+  @apply text-muted-foreground;
+}
+
+.tiptap :is(ol, ul).is-editor-empty:first-child::before,
+.tiptap :is(ol, ul).is-empty::before {
+  @apply pl-1.5;
+}

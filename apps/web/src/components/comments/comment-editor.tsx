@@ -1,10 +1,18 @@
+import { Blockquote } from '@tiptap/extension-blockquote'
 import { Bold } from '@tiptap/extension-bold'
+import { BulletList } from '@tiptap/extension-bullet-list'
 import { Document } from '@tiptap/extension-document'
+import { Heading } from '@tiptap/extension-heading'
+import { History } from '@tiptap/extension-history'
+import { HorizontalRule } from '@tiptap/extension-horizontal-rule'
 import { Italic } from '@tiptap/extension-italic'
+import { ListItem } from '@tiptap/extension-list-item'
+import { OrderedList } from '@tiptap/extension-ordered-list'
 import { Paragraph } from '@tiptap/extension-paragraph'
 import { Placeholder } from '@tiptap/extension-placeholder'
 import { Strike } from '@tiptap/extension-strike'
 import { Text } from '@tiptap/extension-text'
+import { Typography } from '@tiptap/extension-typography'
 import { Editor, EditorContent, type JSONContent } from '@tiptap/react'
 import { cn } from '@tszhong0411/utils'
 import { useEffect, useState } from 'react'
@@ -66,7 +74,7 @@ const CommentEditor = (props: CommentEditorProps) => {
     'aria-disabled:cursor-not-allowed aria-disabled:opacity-80'
   )
 
-  const tiptapClassName = cn('focus-visible:outline-none', editable && 'min-h-10 px-3 py-2')
+  const tiptapClassName = cn('prose focus-visible:outline-none', editable && 'min-h-10 px-3 py-2')
 
   useEffect(() => {
     const instance = new Editor({
@@ -77,8 +85,28 @@ const CommentEditor = (props: CommentEditorProps) => {
         Paragraph,
         Strike,
         Text,
+        Typography,
+        Blockquote,
+        HorizontalRule,
+        ListItem,
+        OrderedList,
+        BulletList,
+        History,
+        Heading.configure({
+          levels: [1, 2, 3, 4]
+        }),
         Placeholder.configure({
-          placeholder,
+          placeholder: ({ node }) => {
+            if (node.type.name === 'heading') {
+              return `Heading ${node.attrs.level}`
+            }
+
+            if (node.type.name === 'blockquote') {
+              return 'Blockquote'
+            }
+
+            return placeholder ?? ''
+          },
           showOnlyWhenEditable: false
         })
       ],

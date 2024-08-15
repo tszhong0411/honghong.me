@@ -1,3 +1,4 @@
+@import './tiptap.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -12,12 +13,4 @@
       min-height: calc(100vh - 600px - 96px - 96px - 64px - 24px);
     }
   }
-}
-
-.tiptap p.is-editor-empty:first-child::before {
-  content: attr(data-placeholder);
-  float: left;
-  height: 0;
-  pointer-events: none;
-  @apply text-muted-foreground;
 }
