@@ -31,8 +31,8 @@ const CommentPost = () => {
     }
   })
 
-  const commentHandler = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+  const commentHandler = (e?: React.FormEvent<HTMLFormElement>) => {
+    e?.preventDefault()
 
     if (!content) {
       toast.error('Comment cannot be empty')
@@ -54,6 +54,7 @@ const CommentPost = () => {
         <CommentEditor
           ref={editorRef}
           onUpdate={setContent}
+          onModEnter={commentHandler}
           placeholder='Leave comment'
           disabled={disabled}
         />

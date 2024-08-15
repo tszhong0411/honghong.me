@@ -25,6 +25,7 @@ export type CommentEditorRef = {
 
 type CommentEditorProps = {
   onUpdate?: (content: JSONContent) => void
+  onModEnter?: () => void
   placeholder?: string
   autofocus?: boolean
   editable?: boolean
@@ -35,6 +36,7 @@ type CommentEditorProps = {
 const CommentEditor = forwardRef<CommentEditorRef, CommentEditorProps>((props, ref) => {
   const {
     onUpdate,
+    onModEnter,
     placeholder,
     autofocus = false,
     editable = true,
@@ -88,6 +90,14 @@ const CommentEditor = forwardRef<CommentEditorRef, CommentEditorProps>((props, r
     editorProps: {
       attributes: {
         class: tiptapClassName
+      },
+      handleDOMEvents: {
+        keydown: (_, e) => {
+          if (e.key === 'Enter' && e.metaKey) {
+            e.preventDefault()
+            onModEnter?.()
+          }
+        }
       }
     },
     onUpdate: (updateProps) => {

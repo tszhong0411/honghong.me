@@ -75,8 +75,8 @@ const CommentReply = () => {
     }
   })
 
-  const replyHandler = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+  const replyHandler = (e?: React.FormEvent<HTMLFormElement>) => {
+    e?.preventDefault()
 
     if (!content) {
       toast.error('Reply cannot be empty')
@@ -98,6 +98,7 @@ const CommentReply = () => {
       <div className='relative'>
         <CommentEditor
           onUpdate={setContent}
+          onModEnter={replyHandler}
           placeholder='Reply to comment'
           disabled={disabled}
           autofocus
