@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useOnClickOutside } from 'usehooks-ts'
 
-import { type CommentContext, CommentProvider } from '@/contexts/comment'
+import { type CommentContext, CommentProvider, type IsReplyingParams } from '@/contexts/comment'
 import { useCommentsContext } from '@/contexts/comments'
 import { useCommentParams } from '@/hooks/use-comment-params'
 import { useFormattedDate } from '@/hooks/use-formatted-date'
@@ -22,31 +22,14 @@ type CommentProps = {
   comment: CommentsOutput['comments'][number]
 }
 
-const deletedBody = {
-  type: 'doc',
-  content: [
-    {
-      type: 'paragraph',
-      content: [
-        {
-          type: 'text',
-          marks: [
-            {
-              type: 'italic'
-            }
-          ],
-          text: '[This comment has been deleted]'
-        }
-      ]
-    }
-  ]
-}
-
 const Comment = (props: CommentProps) => {
   const { comment } = props
   const { slug } = useCommentsContext()
   const [isEditing, setIsEditing] = useState(false)
-  const [isReplying, setIsReplying] = useState(false)
+  const [isReplying, setIsReplying] = useState<IsReplyingParams>({
+    value: false,
+    content: undefined
+  })
   const [isOpenReplies, setIsOpenReplies] = useState(false)
   const commentRef = useRef<HTMLDivElement>(null)
   const [params] = useCommentParams()
@@ -136,10 +119,15 @@ const Comment = (props: CommentProps) => {
               <CommentMenu />
             </div>
 
-            <div className={cn(isDeleted && 'text-muted-foreground text-sm')}>
-              <CommentEditor content={isDeleted ? deletedBody : body} editable={false} />
-            </div>
-            {isReplying ? <CommentReply /> : <CommentActions />}
+            {isDeleted ? (
+              <p className='text-muted-foreground text-sm italic'>
+                [This comment has been deleted]
+              </p>
+            ) : (
+              <CommentEditor content={body} editable={false} />
+            )}
+
+            {isReplying.value ? <CommentReply /> : <CommentActions />}
           </div>
         </div>
 

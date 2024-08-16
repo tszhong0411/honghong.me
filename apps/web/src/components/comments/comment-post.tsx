@@ -22,7 +22,7 @@ const CommentPost = () => {
   const commentsMutation = api.comments.post.useMutation({
     onSuccess: () => {
       setContent(null)
-      editorRef.current?.clearContent()
+      editorRef.current?.commands.clearContent()
       toast.success('Comment posted')
     },
     onError: (error) => toast.error(error.message),
@@ -34,7 +34,7 @@ const CommentPost = () => {
   const commentHandler = (e?: React.FormEvent<HTMLFormElement>) => {
     e?.preventDefault()
 
-    if (!content) {
+    if (!content || editorRef.current?.isEmpty) {
       toast.error('Comment cannot be empty')
 
       return
@@ -63,9 +63,9 @@ const CommentPost = () => {
           size='icon'
           className='absolute bottom-1.5 right-2 size-7'
           type='submit'
-          disabled={disabled || !content}
+          disabled={disabled || !content || editorRef.current?.isEmpty}
           aria-label='Send comment'
-          aria-disabled={disabled || !content}
+          aria-disabled={disabled || !content || editorRef.current?.isEmpty}
         >
           <SendIcon className='size-4' />
         </Button>

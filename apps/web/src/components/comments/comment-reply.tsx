@@ -1,9 +1,9 @@
 'use client'
 
-import type { JSONContent } from '@tiptap/core'
+import type { Editor, JSONContent } from '@tiptap/core'
 import { Button, toast } from '@tszhong0411/ui'
 import { useSession } from 'next-auth/react'
-import { useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import { useCommentContext } from '@/contexts/comment'
 import { useCommentsContext } from '@/contexts/comments'
@@ -15,10 +15,14 @@ import UnauthorizedOverlay from './unauthorized-overlay'
 
 const CommentReply = () => {
   const [content, setContent] = useState<JSONContent | null>(null)
-  const { comment, setIsReplying } = useCommentContext()
+  const [editor, setEditor] = useState<Editor | null>(null)
+  const { comment, isReplying, setIsReplying } = useCommentContext()
   const { status } = useSession()
   const { slug, sort } = useCommentsContext()
   const utils = api.useUtils()
+  const editorRef = useCallback((e: Editor | null) => {
+    if (e !== null) setEditor(e)
+  }, [])
 
   const queryKey: CommentsInput = {
     slug,
@@ -62,7 +66,7 @@ const CommentReply = () => {
       return { previousData }
     },
     onSuccess: () => {
-      setIsReplying(false)
+      setIsReplying({ value: false })
     },
     onError: (error, _, ctx) => {
       if (ctx?.previousData) {
@@ -78,7 +82,7 @@ const CommentReply = () => {
   const replyHandler = (e?: React.FormEvent<HTMLFormElement>) => {
     e?.preventDefault()
 
-    if (!content) {
+    if (!content || editor?.isEmpty) {
       toast.error('Reply cannot be empty')
 
       return
@@ -91,6 +95,16 @@ const CommentReply = () => {
     })
   }
 
+  useEffect(() => {
+    if (editor && isReplying.content) {
+      editor.commands.insertContent(isReplying.content)
+
+      setTimeout(() => {
+        editor.commands.focus('end')
+      }, 0)
+    }
+  }, [editor, isReplying.content, isReplying.value])
+
   const disabled = status === 'unauthenticated' || commentsMutation.isPending
 
   return (
@@ -99,6 +113,7 @@ const CommentReply = () => {
         <CommentEditor
           onUpdate={setContent}
           onModEnter={replyHandler}
+          ref={editorRef}
           placeholder='Reply to comment'
           disabled={disabled}
           autofocus
@@ -110,8 +125,8 @@ const CommentReply = () => {
           variant='secondary'
           className='h-8 px-2 text-xs font-medium'
           type='submit'
-          disabled={disabled || !content}
-          aria-disabled={disabled || !content}
+          disabled={disabled || !content || editor?.isEmpty}
+          aria-disabled={disabled || !content || editor?.isEmpty}
         >
           Reply
         </Button>
@@ -120,12 +135,12 @@ const CommentReply = () => {
           className='h-8 px-2 text-xs font-medium'
           type='button'
           onClick={() => {
-            setIsReplying(false)
+            setIsReplying({ value: false })
           }}
         >
           Cancel
         </Button>
-      </div>{' '}
+      </div>
     </form>
   )
 }

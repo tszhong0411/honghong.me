@@ -1,3 +1,4 @@
+import { type Editor } from '@tiptap/core'
 import { Blockquote } from '@tiptap/extension-blockquote'
 import { Bold } from '@tiptap/extension-bold'
 import { BulletList } from '@tiptap/extension-bullet-list'
@@ -19,9 +20,7 @@ import { forwardRef, useImperativeHandle } from 'react'
 
 import CommentToolbar from './comment-toolbar'
 
-export type CommentEditorRef = {
-  clearContent: () => void
-}
+export type CommentEditorRef = Editor | null
 
 type CommentEditorProps = {
   onUpdate?: (content: JSONContent) => void
@@ -108,11 +107,7 @@ const CommentEditor = forwardRef<CommentEditorRef, CommentEditorProps>((props, r
     shouldRerenderOnTransaction: false
   })
 
-  useImperativeHandle(ref, () => ({
-    clearContent: () => {
-      editor?.commands.clearContent()
-    }
-  }))
+  useImperativeHandle<CommentEditorRef, CommentEditorRef>(ref, () => editor)
 
   if (!editor) {
     return (
