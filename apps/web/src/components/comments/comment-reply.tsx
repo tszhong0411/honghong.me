@@ -113,6 +113,9 @@ const CommentReply = () => {
         <CommentEditor
           onUpdate={setContent}
           onModEnter={replyHandler}
+          onEscape={() => {
+            setIsReplying({ value: false })
+          }}
           ref={editorRef}
           placeholder='Reply to comment'
           disabled={disabled}

@@ -25,6 +25,7 @@ export type CommentEditorRef = Editor | null
 type CommentEditorProps = {
   onUpdate?: (content: JSONContent) => void
   onModEnter?: () => void
+  onEscape?: () => void
   placeholder?: string
   autofocus?: boolean
   editable?: boolean
@@ -36,6 +37,7 @@ const CommentEditor = forwardRef<CommentEditorRef, CommentEditorProps>((props, r
   const {
     onUpdate,
     onModEnter,
+    onEscape,
     placeholder,
     autofocus = false,
     editable = true,
@@ -95,6 +97,11 @@ const CommentEditor = forwardRef<CommentEditorRef, CommentEditorProps>((props, r
           if (e.key === 'Enter' && e.metaKey) {
             e.preventDefault()
             onModEnter?.()
+          }
+
+          if (e.key === 'Escape') {
+            e.preventDefault()
+            onEscape?.()
           }
         }
       }
