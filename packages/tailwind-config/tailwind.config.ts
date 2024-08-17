@@ -118,6 +118,9 @@ const config: Partial<Config> = {
             },
             'blockquote p:first-of-type::after': {
               content: 'none'
+            },
+            blockquote: {
+              fontStyle: 'normal'
             }
           }
         }
