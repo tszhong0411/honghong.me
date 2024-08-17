@@ -4,7 +4,7 @@
   {{/unless}}
   "name": "@tszhong0411/{{ name }}",
   "version": "{{ version }}",
-  "description": "{{ description }}",
+  "description": "{{{ description }}}",
   "license": "GPL-3.0",
   {{#if shouldPublish}}
   "author": "tszhong0411 <me@honghong.me> (https://github.com/tszhong0411/)",
@@ -41,9 +41,9 @@
     "clean": "rm -rf .turbo",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint --fix .",
-    "type-check": "tsc --noEmit",
+    "type-check": "tsc --noEmit"
     {{#if shouldCompile}}
-    "build": "tsup",
+    ,"build": "tsup",
     "dev": "tsup --watch"
     {{/if}}
   },
