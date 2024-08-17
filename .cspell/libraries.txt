@@ -34,7 +34,6 @@ sonarjs
 sonner
 sqld
 tinycolor2
-tiptap
 tsup
 turso
 tursodatabase

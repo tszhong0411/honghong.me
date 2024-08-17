@@ -1,28 +1,24 @@
 'use client'
 
-import type { Editor, JSONContent } from '@tiptap/core'
 import { Button, toast } from '@tszhong0411/ui'
 import { useSession } from 'next-auth/react'
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { useCommentContext } from '@/contexts/comment'
 import { useCommentsContext } from '@/contexts/comments'
 import { api } from '@/trpc/react'
 import type { CommentsInput } from '@/trpc/routers/comments'
 
-import CommentEditor from './comment-editor'
+import CommentEditor, { type CommentEditorRef } from './comment-editor'
 import UnauthorizedOverlay from './unauthorized-overlay'
 
 const CommentReply = () => {
-  const [content, setContent] = useState<JSONContent | null>(null)
-  const [editor, setEditor] = useState<Editor | null>(null)
+  const [content, setContent] = useState('')
   const { comment, isReplying, setIsReplying } = useCommentContext()
   const { status } = useSession()
   const { slug, sort } = useCommentsContext()
   const utils = api.useUtils()
-  const editorRef = useCallback((e: Editor | null) => {
-    if (e !== null) setEditor(e)
-  }, [])
+  const textareaRef = useRef<CommentEditorRef>(null)
 
   const queryKey: CommentsInput = {
     slug,
@@ -82,7 +78,7 @@ const CommentReply = () => {
   const replyHandler = (e?: React.FormEvent<HTMLFormElement>) => {
     e?.preventDefault()
 
-    if (!content || editor?.isEmpty) {
+    if (!content) {
       toast.error('Reply cannot be empty')
 
       return
@@ -96,14 +92,13 @@ const CommentReply = () => {
   }
 
   useEffect(() => {
-    if (editor && isReplying.content) {
-      editor.commands.insertContent(isReplying.content)
-
+    if (isReplying.content) {
       setTimeout(() => {
-        editor.commands.focus('end')
+        textareaRef.current?.setCursorToEnd()
+        textareaRef.current?.focus()
       }, 0)
     }
-  }, [editor, isReplying.content, isReplying.value])
+  }, [isReplying.content])
 
   const disabled = status === 'unauthenticated' || commentsMutation.isPending
 
@@ -111,15 +106,19 @@ const CommentReply = () => {
     <form onSubmit={replyHandler}>
       <div className='relative'>
         <CommentEditor
-          onUpdate={setContent}
+          onChange={(e) => {
+            setContent(e.target.value)
+          }}
+          ref={textareaRef}
+          initialValue={isReplying.content}
           onModEnter={replyHandler}
           onEscape={() => {
             setIsReplying({ value: false })
           }}
-          ref={editorRef}
           placeholder='Reply to comment'
           disabled={disabled}
-          autofocus
+          // eslint-disable-next-line jsx-a11y/no-autofocus -- Autofocus is necessary because user is replying to a comment
+          autoFocus
         />
         {status === 'unauthenticated' ? <UnauthorizedOverlay /> : null}
       </div>
@@ -128,8 +127,8 @@ const CommentReply = () => {
           variant='secondary'
           className='h-8 px-2 text-xs font-medium'
           type='submit'
-          disabled={disabled || !content || editor?.isEmpty}
-          aria-disabled={disabled || !content || editor?.isEmpty}
+          disabled={disabled || !content}
+          aria-disabled={disabled || !content}
         >
           Reply
         </Button>

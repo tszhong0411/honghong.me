@@ -6,7 +6,7 @@ import { posts } from './posts'
 
 export const comments = sqliteTable('comment', {
   id: text('id').notNull().primaryKey(),
-  body: text('body', { mode: 'json' }),
+  body: text('body').notNull(),
   userId: text('user_id')
     .notNull()
     .references(() => users.id),

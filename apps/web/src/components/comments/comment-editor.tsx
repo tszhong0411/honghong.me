@@ -1,139 +1,201 @@
-import { type Editor } from '@tiptap/core'
-import { Blockquote } from '@tiptap/extension-blockquote'
-import { Bold } from '@tiptap/extension-bold'
-import { BulletList } from '@tiptap/extension-bullet-list'
-import { Document } from '@tiptap/extension-document'
-import { Heading } from '@tiptap/extension-heading'
-import { History } from '@tiptap/extension-history'
-import { HorizontalRule } from '@tiptap/extension-horizontal-rule'
-import { Italic } from '@tiptap/extension-italic'
-import { ListItem } from '@tiptap/extension-list-item'
-import { OrderedList } from '@tiptap/extension-ordered-list'
-import { Paragraph } from '@tiptap/extension-paragraph'
-import { Placeholder } from '@tiptap/extension-placeholder'
-import { Strike } from '@tiptap/extension-strike'
-import { Text } from '@tiptap/extension-text'
-import { Typography } from '@tiptap/extension-typography'
-import { EditorContent, type JSONContent, useEditor } from '@tiptap/react'
+import { Button, Textarea } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
-import { forwardRef, useImperativeHandle } from 'react'
+import { BoldIcon, ItalicIcon, StrikethroughIcon } from 'lucide-react'
+import { forwardRef, useImperativeHandle, useRef } from 'react'
 
-import CommentToolbar from './comment-toolbar'
-
-export type CommentEditorRef = Editor | null
-
-type CommentEditorProps = {
-  onUpdate?: (content: JSONContent) => void
+type Command = {
   onModEnter?: () => void
   onEscape?: () => void
-  placeholder?: string
-  autofocus?: boolean
-  editable?: boolean
-  disabled?: boolean
-  content?: JSONContent
+}
+
+type CommentEditorProps = {
+  initialValue?: string
+} & Command &
+  React.ComponentPropsWithoutRef<typeof Textarea>
+
+const setRangeText = (
+  textarea: HTMLTextAreaElement,
+  replacement: string,
+  start: number,
+  end: number,
+  selectionMode?: SelectionMode
+) => {
+  textarea.setRangeText(replacement, start, end, selectionMode)
+  // Trigger input event to update the value
+  textarea.dispatchEvent(new Event('input', { bubbles: true }))
+}
+
+const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>, command: Command) => {
+  const { onModEnter, onEscape } = command
+  const textarea = event.target as HTMLTextAreaElement
+  const { selectionStart, selectionEnd, value } = textarea
+
+  if (event.key === 'Tab') {
+    event.preventDefault()
+    const tabSpace = '  '
+
+    setRangeText(textarea, tabSpace, selectionStart, selectionEnd, 'end')
+    textarea.setSelectionRange(selectionStart + tabSpace.length, selectionStart + tabSpace.length)
+  }
+
+  if (event.key === 'Escape') {
+    event.preventDefault()
+    onEscape?.()
+
+    return
+  }
+
+  if (event.key === 'Enter' && (event.metaKey || event.ctrlKey)) {
+    event.preventDefault()
+    onModEnter?.()
+
+    return
+  }
+
+  if (event.key === 'Enter') {
+    const currentLine = value.slice(0, Math.max(0, selectionStart)).split('\n').pop()
+
+    const unorderedListNoContent = currentLine?.match(/^(\s*)([*-])\s$/)
+    const orderedListNoContent = currentLine?.match(/^(\d+)\.\s$/)
+
+    if (!!unorderedListNoContent || !!orderedListNoContent) {
+      event.preventDefault()
+
+      const lineStart = value.lastIndexOf('\n', selectionStart - 1) + 1
+      const lineEnd = selectionStart
+      setRangeText(textarea, '', lineStart, lineEnd, 'start')
+
+      return
+    }
+
+    const orderedList = currentLine?.match(/^(\d+)\.\s/)
+
+    if (orderedList?.[1]) {
+      const number = Number.parseInt(orderedList[1], 10) + 1
+      const insertText = `\n${number}. `
+
+      event.preventDefault()
+      setRangeText(textarea, insertText, selectionStart, selectionEnd, 'end')
+    }
+
+    const unorderedList = currentLine?.match(/^(\s*)([*-])\s/)
+
+    if (unorderedList) {
+      const insertText = `\n${unorderedList[1]}${unorderedList[2]} `
+
+      event.preventDefault()
+      setRangeText(textarea, insertText, selectionStart, selectionEnd, 'end')
+    }
+  }
+}
+
+const decorateText = (
+  textarea: HTMLTextAreaElement | null,
+  type: 'bold' | 'italic' | 'strikethrough'
+) => {
+  if (!textarea) return
+
+  const { selectionStart, selectionEnd, value } = textarea
+  const selectedText = value.slice(selectionStart, selectionEnd)
+
+  const decoration = {
+    bold: `**${selectedText}**`,
+    strikethrough: `~~${selectedText}~~`,
+    italic: `*${selectedText}*`
+  }
+
+  const newSelectionStart = selectionStart + 2
+
+  setRangeText(textarea, decoration[type], selectionStart, selectionEnd, 'end')
+
+  if (!selectedText) {
+    textarea.setSelectionRange(newSelectionStart, newSelectionStart)
+  }
+
+  textarea.focus()
+}
+
+export type CommentEditorRef = {
+  focus: () => void
+  setCursorToEnd: () => void
 }
 
 const CommentEditor = forwardRef<CommentEditorRef, CommentEditorProps>((props, ref) => {
-  const {
-    onUpdate,
-    onModEnter,
-    onEscape,
-    placeholder,
-    autofocus = false,
-    editable = true,
-    disabled = false,
-    content
-  } = props
+  const { onModEnter, onEscape, initialValue, ...rest } = props
+  const textareaRef = useRef<HTMLTextAreaElement>(null)
 
-  const editorClassName = cn(
-    'bg-background ring-offset-background rounded-lg border pb-1',
-    'focus-within:ring-ring focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2',
-    'aria-disabled:cursor-not-allowed aria-disabled:opacity-80'
-  )
-
-  const tiptapClassName = cn('prose focus-visible:outline-none', editable && 'min-h-10 px-3 py-2')
-
-  const editor = useEditor({
-    extensions: [
-      Bold,
-      Document,
-      Italic,
-      Paragraph,
-      Strike,
-      Text,
-      Typography,
-      Blockquote,
-      HorizontalRule,
-      ListItem,
-      OrderedList,
-      BulletList,
-      History,
-      Heading.configure({
-        levels: [1, 2, 3, 4]
-      }),
-      Placeholder.configure({
-        placeholder: ({ node }) => {
-          if (node.type.name === 'heading') {
-            return `Heading ${node.attrs.level}`
-          }
-
-          if (node.type.name === 'blockquote') {
-            return 'Blockquote'
-          }
-
-          return placeholder ?? ''
-        },
-        showOnlyWhenEditable: false
-      })
-    ],
-    autofocus,
-    content,
-    editorProps: {
-      attributes: {
-        class: tiptapClassName
-      },
-      handleDOMEvents: {
-        keydown: (_, e) => {
-          if (e.key === 'Enter' && e.metaKey) {
-            e.preventDefault()
-            onModEnter?.()
-          }
-
-          if (e.key === 'Escape') {
-            e.preventDefault()
-            onEscape?.()
-          }
-        }
-      }
+  useImperativeHandle(ref, () => ({
+    focus: () => {
+      textareaRef.current?.focus()
     },
-    onUpdate: (updateProps) => {
-      onUpdate?.(updateProps.editor.getJSON())
-    },
-    editable: editable && !disabled,
-    immediatelyRender: false,
-    shouldRerenderOnTransaction: false
-  })
-
-  useImperativeHandle<CommentEditorRef, CommentEditorRef>(ref, () => editor)
-
-  if (!editor) {
-    return (
-      <div aria-disabled className={editorClassName}>
-        <div className={cn('tiptap', tiptapClassName)}>
-          <p className='is-editor-empty' data-placeholder={placeholder} />
-        </div>
-      </div>
-    )
-  }
-
-  if (!editable) {
-    return <EditorContent editor={editor} />
-  }
+    setCursorToEnd: () => {
+      textareaRef.current?.setSelectionRange(
+        textareaRef.current.value.length,
+        textareaRef.current.value.length
+      )
+    }
+  }))
 
   return (
-    <div aria-disabled={disabled} className={editorClassName}>
-      <EditorContent editor={editor} />
-      <CommentToolbar editor={editor} />
+    <div
+      className={cn(
+        'bg-background ring-offset-background focus-within:ring-ring rounded-lg border pb-1',
+        'focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2',
+        'aria-disabled:cursor-not-allowed aria-disabled:opacity-80'
+      )}
+    >
+      <Textarea
+        rows={1}
+        onKeyDown={(e) => {
+          handleKeyDown(e, { onModEnter, onEscape })
+        }}
+        ref={textareaRef}
+        defaultValue={initialValue}
+        className='min-h-10 resize-none border-none focus-visible:ring-0'
+        autoComplete='off'
+        autoCorrect='off'
+        autoCapitalize='off'
+        spellCheck='false'
+        {...rest}
+      />
+      <div className='flex flex-row items-center gap-0.5 px-1.5'>
+        <Button
+          type='button'
+          aria-label='Toggle bold'
+          variant='ghost'
+          size='icon'
+          className='size-7'
+          onClick={() => {
+            decorateText(textareaRef.current, 'bold')
+          }}
+        >
+          <BoldIcon className='size-4' />
+        </Button>
+        <Button
+          type='button'
+          aria-label='Toggle strikethrough'
+          variant='ghost'
+          size='icon'
+          className='size-7'
+          onClick={() => {
+            decorateText(textareaRef.current, 'strikethrough')
+          }}
+        >
+          <StrikethroughIcon className='size-4' />
+        </Button>
+        <Button
+          type='button'
+          aria-label='Toggle italic'
+          variant='ghost'
+          size='icon'
+          className='size-7'
+          onClick={() => {
+            decorateText(textareaRef.current, 'italic')
+          }}
+        >
+          <ItalicIcon className='size-4' />
+        </Button>
+      </div>
     </div>
   )
 })

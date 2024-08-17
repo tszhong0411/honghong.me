@@ -38,7 +38,7 @@ const CommentsList = () => {
   return (
     <>
       <CommentHeader />
-      <div className='space-y-2 rounded-lg border py-2 dark:bg-zinc-900/30'>
+      <div className='space-y-2 rounded-lg border py-2'>
         {status === 'pending' ? <CommentLoader /> : null}
         {status === 'success'
           ? data.pages.map((page) =>

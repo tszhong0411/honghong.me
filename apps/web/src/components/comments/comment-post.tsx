@@ -1,28 +1,25 @@
 'use client'
 
-import type { JSONContent } from '@tiptap/core'
 import { Button, toast } from '@tszhong0411/ui'
 import { SendIcon } from 'lucide-react'
 import { useSession } from 'next-auth/react'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 
 import { useCommentsContext } from '@/contexts/comments'
 import { api } from '@/trpc/react'
 
-import CommentEditor, { type CommentEditorRef } from './comment-editor'
+import CommentEditor from './comment-editor'
 import UnauthorizedOverlay from './unauthorized-overlay'
 
 const CommentPost = () => {
   const { slug } = useCommentsContext()
-  const [content, setContent] = useState<JSONContent | null>(null)
+  const [content, setContent] = useState('')
   const { status } = useSession()
   const utils = api.useUtils()
-  const editorRef = useRef<CommentEditorRef>(null)
 
   const commentsMutation = api.comments.post.useMutation({
     onSuccess: () => {
-      setContent(null)
-      editorRef.current?.commands.clearContent()
+      setContent('')
       toast.success('Comment posted')
     },
     onError: (error) => toast.error(error.message),
@@ -31,10 +28,8 @@ const CommentPost = () => {
     }
   })
 
-  const commentHandler = (e?: React.FormEvent<HTMLFormElement>) => {
-    e?.preventDefault()
-
-    if (!content || editorRef.current?.isEmpty) {
+  const commentHandler = (value?: string) => {
+    if (!content && !value) {
       toast.error('Comment cannot be empty')
 
       return
@@ -42,18 +37,25 @@ const CommentPost = () => {
 
     commentsMutation.mutate({
       slug,
-      content
+      content: value ?? content
     })
   }
 
   const disabled = status !== 'authenticated' || commentsMutation.isPending
 
   return (
-    <form onSubmit={commentHandler}>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault()
+        commentHandler()
+      }}
+    >
       <div className='relative'>
         <CommentEditor
-          ref={editorRef}
-          onUpdate={setContent}
+          value={content}
+          onChange={(e) => {
+            setContent(e.target.value)
+          }}
           onModEnter={commentHandler}
           placeholder='Leave comment'
           disabled={disabled}
@@ -63,9 +65,9 @@ const CommentPost = () => {
           size='icon'
           className='absolute bottom-1.5 right-2 size-7'
           type='submit'
-          disabled={disabled || !content || editorRef.current?.isEmpty}
+          disabled={disabled || !content}
           aria-label='Send comment'
-          aria-disabled={disabled || !content || editorRef.current?.isEmpty}
+          aria-disabled={disabled || !content}
         >
           <SendIcon className='size-4' />
         </Button>

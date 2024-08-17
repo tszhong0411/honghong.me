@@ -1,12 +1,4 @@
 import { createId } from '@paralleldrive/cuid2'
-import type { JSONContent } from '@tiptap/core'
-import { Bold } from '@tiptap/extension-bold'
-import { Document } from '@tiptap/extension-document'
-import { Italic } from '@tiptap/extension-italic'
-import { Paragraph } from '@tiptap/extension-paragraph'
-import { Strike } from '@tiptap/extension-strike'
-import { Text } from '@tiptap/extension-text'
-import { generateHTML } from '@tiptap/html'
 import { TRPCError } from '@trpc/server'
 import {
   and,
@@ -37,24 +29,6 @@ import type { RouterInputs, RouterOutputs } from '../react'
 import { createTRPCRouter, protectedProcedure, publicProcedure } from '../trpc'
 
 const resend = new Resend(env.RESEND_API_KEY)
-
-const baseJSONContent = z.object({
-  type: z.string().optional(),
-  attrs: z.record(z.any()).optional(),
-  marks: z
-    .array(
-      z.object({
-        type: z.string(),
-        attrs: z.record(z.any()).optional()
-      })
-    )
-    .optional(),
-  text: z.string().optional()
-})
-
-const JSONContentSchema: z.ZodType<z.infer<typeof baseJSONContent>> = baseJSONContent.extend({
-  content: z.array(z.lazy(() => JSONContentSchema)).optional()
-})
 
 const getKey = (id: string) => `comments:${id}`
 
@@ -173,7 +147,7 @@ export const commentsRouter = createTRPCRouter({
 
           return {
             ...comment,
-            body: comment.body as JSONContent,
+            body: comment.body,
             replies: replies[0]?.value ?? 0,
             likes: likes[0]?.value ?? 0,
             dislikes: dislikes[0]?.value ?? 0,
@@ -256,7 +230,7 @@ export const commentsRouter = createTRPCRouter({
     .input(
       z.object({
         slug: z.string().min(1),
-        content: JSONContentSchema,
+        content: z.string().min(1),
         parentId: z.string().optional()
       })
     )
@@ -297,7 +271,7 @@ export const commentsRouter = createTRPCRouter({
           to,
           subject: `New ${type} posted`,
           react: CommentNotification({
-            comment: generateHTML(input.content, [Bold, Document, Italic, Paragraph, Strike, Text]),
+            comment: input.content,
             commenter: {
               name: user.name ?? defaultName,
               image: user.image ?? defaultImage
@@ -372,13 +346,7 @@ export const commentsRouter = createTRPCRouter({
       // If the comment has replies, just mark it as deleted.
       // And keep the replies.
       if (comment.replies.length > 0) {
-        await ctx.db
-          .update(comments)
-          .set({
-            body: null,
-            isDeleted: true
-          })
-          .where(eq(comments.id, input.id))
+        await ctx.db.update(comments).set({ isDeleted: true }).where(eq(comments.id, input.id))
 
         return
       }

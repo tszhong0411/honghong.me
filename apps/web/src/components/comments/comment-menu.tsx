@@ -83,20 +83,11 @@ const CommentMenu = () => {
             onClick={() => {
               setIsReplying({
                 value: true,
-                // Not sure if this will work in all cases
-                // Wrap the reply in blockquote
-                content: {
-                  type: 'doc',
-                  content: [
-                    {
-                      type: 'blockquote',
-                      content: [...(comment.body.content ?? [])]
-                    },
-                    {
-                      type: 'paragraph'
-                    }
-                  ]
-                }
+                // Convert to blockquote and add two new line
+                content: `${comment.body
+                  .split('\n')
+                  .map((line) => `> ${line.trim()}`)
+                  .join('\n')}\n\n`
               })
             }}
           >

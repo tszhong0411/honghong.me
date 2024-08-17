@@ -1,11 +1,10 @@
-import type { JSONContent } from '@tiptap/core'
 import { createContext, useContext } from 'react'
 
 import type { CommentsOutput } from '@/trpc/routers/comments'
 
 export type IsReplyingParams = {
   value: boolean
-  content?: JSONContent
+  content?: string
 }
 
 export type CommentContext = {

@@ -12,8 +12,8 @@ import { useCommentParams } from '@/hooks/use-comment-params'
 import { useFormattedDate } from '@/hooks/use-formatted-date'
 import type { CommentsOutput } from '@/trpc/routers/comments'
 
+import Markdown from '../mdx/markdown'
 import CommentActions from './comment-actions'
-import CommentEditor from './comment-editor'
 import CommentMenu from './comment-menu'
 import CommentReplies from './comment-replies'
 import CommentReply from './comment-reply'
@@ -124,7 +124,7 @@ const Comment = (props: CommentProps) => {
                 [This comment has been deleted]
               </p>
             ) : (
-              <CommentEditor content={body} editable={false} />
+              <Markdown>{body}</Markdown>
             )}
 
             {isReplying.value ? <CommentReply /> : <CommentActions />}
