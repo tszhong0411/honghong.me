@@ -68,13 +68,6 @@ const CommentActions = () => {
               ...page,
               comments: page.comments.map((c) => {
                 if (c.id === newData.id) {
-                  console.log({
-                    likes: c.likes,
-                    dislikes: c.dislikes,
-                    liked: c.liked,
-                    newData
-                  })
-
                   let likes: number = c.likes
                   let dislikes: number = c.dislikes
 
