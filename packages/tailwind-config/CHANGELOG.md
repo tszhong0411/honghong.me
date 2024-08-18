@@ -1,5 +1,11 @@
 # @tszhong0411/tailwind-config
 
+## 0.0.10
+
+### Patch Changes
+
+- [`221776c`](https://github.com/tszhong0411/honghong.me/commit/221776c1d71aa0f2d252da9ad7a97406ee7e5e29) Thanks [@tszhong0411](https://github.com/tszhong0411)! - publish the src folder as well
+
 ## 0.0.9
 
 ### Patch Changes
