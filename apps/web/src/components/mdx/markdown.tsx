@@ -1,6 +1,8 @@
-import { CodeBlock, Link } from '@tszhong0411/ui'
+import { Link } from '@tszhong0411/ui'
 import MarkdownToJSX from 'markdown-to-jsx'
 import { memo } from 'react'
+
+import CommentCodeBlock from '../comments/comment-code-block'
 
 type MarkdownProps = {
   children: string
@@ -10,13 +12,14 @@ const Markdown = memo((props: MarkdownProps) => {
   const { children } = props
 
   return (
-    <div className='prose'>
+    <div className='prose [&_blockquote_*]:text-muted-foreground'>
       <MarkdownToJSX
         options={{
           overrides: {
             a: Link,
-            pre: CodeBlock
-          }
+            pre: CommentCodeBlock
+          },
+          disableParsingRawHTML: true
         }}
       >
         {children}
