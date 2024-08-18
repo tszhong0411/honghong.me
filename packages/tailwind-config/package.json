@@ -14,7 +14,7 @@
   },
   "main": "tailwind.config.ts",
   "files": [
-    "tailwind.config.ts"
+    "src"
   ],
   "scripts": {
     "clean": "rm -rf .turbo",
