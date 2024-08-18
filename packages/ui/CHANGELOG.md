@@ -1,5 +1,11 @@
 # @tszhong0411/ui
 
+## 0.0.26
+
+### Patch Changes
+
+- [`2159de2`](https://github.com/tszhong0411/honghong.me/commit/2159de24014d86317b846f8bcfee5ffc794eb4b8) Thanks [@tszhong0411](https://github.com/tszhong0411)! - imported wrong ScrollArea
+
 ## 0.0.25
 
 ### Patch Changes

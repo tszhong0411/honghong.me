@@ -1,13 +1,12 @@
 'use client'
 
-import { ScrollArea } from '@radix-ui/react-scroll-area'
 import { cn } from '@tszhong0411/utils'
 import { CheckIcon, CopyIcon } from 'lucide-react'
 import mergeRefs from 'merge-refs'
 import { forwardRef, useEffect, useRef, useState } from 'react'
 
 import { Button, type ButtonProps } from './button'
-import { ScrollBar } from './scroll-area'
+import { ScrollArea, ScrollBar } from './scroll-area'
 import { getIconByFilename } from './utils/get-icon-by-filename'
 
 type CodeBlockProps = {
