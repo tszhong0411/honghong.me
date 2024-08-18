@@ -86,7 +86,7 @@ const CommentMenu = () => {
                 // Convert to blockquote and add two new line
                 content: `${comment.body
                   .split('\n')
-                  .map((line) => `> ${line.trim()}`)
+                  .map((line) => `> ${line}`)
                   .join('\n')}\n\n`
               })
             }}
