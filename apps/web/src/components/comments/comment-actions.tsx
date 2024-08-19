@@ -155,7 +155,7 @@ const CommentActions = () => {
           variant='secondary'
           className='text-muted-foreground h-8 px-2 text-xs font-medium'
           onClick={() => {
-            setIsReplying({ value: true })
+            setIsReplying(true)
           }}
         >
           Reply

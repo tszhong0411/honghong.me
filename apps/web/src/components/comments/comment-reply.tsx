@@ -2,23 +2,22 @@
 
 import { Button, toast } from '@tszhong0411/ui'
 import { useSession } from 'next-auth/react'
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 
 import { useCommentContext } from '@/contexts/comment'
 import { useCommentsContext } from '@/contexts/comments'
 import { api } from '@/trpc/react'
 import type { CommentsInput } from '@/trpc/routers/comments'
 
-import CommentEditor, { type CommentEditorRef } from './comment-editor'
+import CommentEditor from './comment-editor'
 import UnauthorizedOverlay from './unauthorized-overlay'
 
 const CommentReply = () => {
   const [content, setContent] = useState('')
-  const { comment, isReplying, setIsReplying } = useCommentContext()
+  const { comment, setIsReplying } = useCommentContext()
   const { status } = useSession()
   const { slug, sort } = useCommentsContext()
   const utils = api.useUtils()
-  const textareaRef = useRef<CommentEditorRef>(null)
 
   const queryKey: CommentsInput = {
     slug,
@@ -62,7 +61,7 @@ const CommentReply = () => {
       return { previousData }
     },
     onSuccess: () => {
-      setIsReplying({ value: false })
+      setIsReplying(false)
     },
     onError: (error, _, ctx) => {
       if (ctx?.previousData) {
@@ -91,15 +90,6 @@ const CommentReply = () => {
     })
   }
 
-  useEffect(() => {
-    if (isReplying.content) {
-      setTimeout(() => {
-        textareaRef.current?.setCursorToEnd()
-        textareaRef.current?.focus()
-      }, 0)
-    }
-  }, [isReplying.content])
-
   const disabled = status === 'unauthenticated' || commentsMutation.isPending
 
   return (
@@ -109,11 +99,9 @@ const CommentReply = () => {
           onChange={(e) => {
             setContent(e.target.value)
           }}
-          ref={textareaRef}
-          initialValue={isReplying.content}
           onModEnter={replyHandler}
           onEscape={() => {
-            setIsReplying({ value: false })
+            setIsReplying(false)
           }}
           placeholder='Reply to comment'
           disabled={disabled}
@@ -137,7 +125,7 @@ const CommentReply = () => {
           className='h-8 px-2 text-xs font-medium'
           type='button'
           onClick={() => {
-            setIsReplying({ value: false })
+            setIsReplying(false)
           }}
         >
           Cancel

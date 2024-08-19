@@ -2,17 +2,12 @@ import { createContext, useContext } from 'react'
 
 import type { CommentsOutput } from '@/trpc/routers/comments'
 
-export type IsReplyingParams = {
-  value: boolean
-  content?: string
-}
-
 export type CommentContext = {
   isEditing: boolean
-  isReplying: IsReplyingParams
+  isReplying: boolean
   isOpenReplies: boolean
   setIsEditing: (value: boolean) => void
-  setIsReplying: ({ value, content }: IsReplyingParams) => void
+  setIsReplying: (value: boolean) => void
   setIsOpenReplies: (value: boolean) => void
   slug: string
   comment: CommentsOutput['comments'][number]

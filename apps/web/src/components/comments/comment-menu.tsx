@@ -25,7 +25,7 @@ import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard'
 import { api } from '@/trpc/react'
 
 const CommentMenu = () => {
-  const { comment, setIsReplying } = useCommentContext()
+  const { comment } = useCommentContext()
   const { slug } = useCommentsContext()
   const { data } = useSession()
   const utils = api.useUtils()
@@ -62,13 +62,7 @@ const CommentMenu = () => {
             <MoreVerticalIcon className='size-5' />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent
-          onCloseAutoFocus={(e) => {
-            // Prevent button focus when dropdown is closed to focus on reply textarea
-            e.preventDefault()
-          }}
-          align='end'
-        >
+        <DropdownMenuContent align='end'>
           <DropdownMenuItem
             onClick={() =>
               void copy({
@@ -78,20 +72,6 @@ const CommentMenu = () => {
             }
           >
             Copy link
-          </DropdownMenuItem>
-          <DropdownMenuItem
-            onClick={() => {
-              setIsReplying({
-                value: true,
-                // Convert to blockquote and add two new line
-                content: `${comment.body
-                  .split('\n')
-                  .map((line) => `> ${line}`)
-                  .join('\n')}\n\n`
-              })
-            }}
-          >
-            Quote reply
           </DropdownMenuItem>
           <AlertDialogTrigger asChild>
             {!isDeleted && data && data.user.id === userId ? (

@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useOnClickOutside } from 'usehooks-ts'
 
-import { type CommentContext, CommentProvider, type IsReplyingParams } from '@/contexts/comment'
+import { type CommentContext, CommentProvider } from '@/contexts/comment'
 import { useCommentsContext } from '@/contexts/comments'
 import { useCommentParams } from '@/hooks/use-comment-params'
 import { useFormattedDate } from '@/hooks/use-formatted-date'
@@ -26,10 +26,7 @@ const Comment = (props: CommentProps) => {
   const { comment } = props
   const { slug } = useCommentsContext()
   const [isEditing, setIsEditing] = useState(false)
-  const [isReplying, setIsReplying] = useState<IsReplyingParams>({
-    value: false,
-    content: undefined
-  })
+  const [isReplying, setIsReplying] = useState(false)
   const [isOpenReplies, setIsOpenReplies] = useState(false)
   const commentRef = useRef<HTMLDivElement>(null)
   const [params] = useCommentParams()
@@ -127,7 +124,7 @@ const Comment = (props: CommentProps) => {
               <Markdown>{body}</Markdown>
             )}
 
-            {isReplying.value ? <CommentReply /> : <CommentActions />}
+            {isReplying ? <CommentReply /> : <CommentActions />}
           </div>
         </div>
 
