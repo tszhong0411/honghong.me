@@ -1,7 +1,7 @@
 import { Button, Textarea } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { BoldIcon, ItalicIcon, StrikethroughIcon } from 'lucide-react'
-import { forwardRef, useImperativeHandle, useRef } from 'react'
+import { useRef } from 'react'
 
 type Command = {
   onModEnter?: () => void
@@ -115,26 +115,9 @@ const decorateText = (
   textarea.focus()
 }
 
-export type CommentEditorRef = {
-  focus: () => void
-  setCursorToEnd: () => void
-}
-
-const CommentEditor = forwardRef<CommentEditorRef, CommentEditorProps>((props, ref) => {
+const CommentEditor = (props: CommentEditorProps) => {
   const { onModEnter, onEscape, initialValue, ...rest } = props
   const textareaRef = useRef<HTMLTextAreaElement>(null)
-
-  useImperativeHandle(ref, () => ({
-    focus: () => {
-      textareaRef.current?.focus()
-    },
-    setCursorToEnd: () => {
-      textareaRef.current?.setSelectionRange(
-        textareaRef.current.value.length,
-        textareaRef.current.value.length
-      )
-    }
-  }))
 
   return (
     <div
@@ -198,8 +181,6 @@ const CommentEditor = forwardRef<CommentEditorRef, CommentEditorProps>((props, r
       </div>
     </div>
   )
-})
-
-CommentEditor.displayName = 'CommentEditor'
+}
 
 export default CommentEditor
