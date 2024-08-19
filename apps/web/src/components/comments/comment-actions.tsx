@@ -120,7 +120,7 @@ const CommentActions = () => {
   }
 
   return (
-    <div className='flex gap-1'>
+    <div className='flex gap-1 pl-10'>
       <Button
         type='button'
         variant='secondary'

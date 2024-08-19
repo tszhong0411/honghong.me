@@ -46,7 +46,7 @@ const CommentReplies = () => {
   }, [comment.id, params.comment, setIsOpenReplies])
 
   return (
-    <div className='ml-10'>
+    <div className='pl-12 sm:pl-14'>
       <Button
         variant='ghost'
         className='mb-3 px-3 py-2'

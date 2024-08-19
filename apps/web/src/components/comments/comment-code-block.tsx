@@ -18,7 +18,7 @@ const CommentCodeBlock = (props: CommentCodeBlockProps) => {
   } = props
 
   return (
-    <CodeBlock data-lang={className?.replace('lang-', '')} title={title}>
+    <CodeBlock data-lang={className?.replace('lang-', '')} title={title} figureClassName='my-2'>
       <code>{children}</code>
     </CodeBlock>
   )

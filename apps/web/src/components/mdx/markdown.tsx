@@ -13,7 +13,7 @@ const Markdown = memo((props: MarkdownProps) => {
   const { children } = props
 
   return (
-    <div className='prose [&_blockquote_*]:text-muted-foreground my-2'>
+    <div className='prose [&_blockquote_*]:text-muted-foreground my-3 pl-10'>
       <MarkdownToJSX
         options={{
           overrides: {
