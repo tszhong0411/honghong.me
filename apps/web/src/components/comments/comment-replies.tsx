@@ -1,7 +1,5 @@
 'use client'
 
-import { Button } from '@tszhong0411/ui'
-import { Loader2Icon } from 'lucide-react'
 import { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 
@@ -46,22 +44,9 @@ const CommentReplies = () => {
   }, [comment.id, params.comment, setIsOpenReplies])
 
   return (
-    <div className='pl-12 sm:pl-14'>
-      <Button
-        variant='ghost'
-        className='mb-3 px-3 py-2'
-        onClick={() => {
-          setIsOpenReplies(!isOpenReplies)
-        }}
-        type='button'
-      >
-        {isOpenReplies && status === 'pending' ? (
-          <Loader2Icon className='mr-2 size-3 animate-spin' />
-        ) : null}
-        {comment.replies} Replies
-      </Button>
+    <>
       {isOpenReplies ? (
-        <div>
+        <div className='pl-8 pt-3'>
           {status === 'success'
             ? data.pages.map((page) =>
                 page.comments.map((reply) => <Comment key={reply.id} comment={reply} />)
@@ -77,7 +62,7 @@ const CommentReplies = () => {
           {hasNextPage ? <CommentLoader ref={ref} /> : null}
         </div>
       ) : null}
-    </div>
+    </>
   )
 }
 

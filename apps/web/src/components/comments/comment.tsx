@@ -116,9 +116,7 @@ const Comment = (props: CommentProps) => {
             </div>
 
             {isDeleted ? (
-              <p className='text-muted-foreground text-sm italic'>
-                [This comment has been deleted]
-              </p>
+              <p className='text-muted-foreground my-3 text-sm'>[This comment has been deleted]</p>
             ) : (
               <Markdown>{body}</Markdown>
             )}

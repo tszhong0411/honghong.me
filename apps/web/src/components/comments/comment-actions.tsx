@@ -1,6 +1,7 @@
 import { Button, buttonVariants, toast } from '@tszhong0411/ui'
+import { cn } from '@tszhong0411/utils'
 import { cva } from 'class-variance-authority'
-import { ThumbsDownIcon, ThumbsUpIcon } from 'lucide-react'
+import { ChevronDownIcon, ThumbsDownIcon, ThumbsUpIcon } from 'lucide-react'
 import { useSession } from 'next-auth/react'
 
 import { useCommentContext } from '@/contexts/comment'
@@ -26,7 +27,7 @@ const rateVariants = cva(
 )
 
 const CommentActions = () => {
-  const { comment, setIsReplying } = useCommentContext()
+  const { comment, setIsReplying, isOpenReplies, setIsOpenReplies } = useCommentContext()
   const { increment, decrement, getCount } = useRatesContext()
   const { slug, sort } = useCommentsContext()
   const { status } = useSession()
@@ -120,47 +121,67 @@ const CommentActions = () => {
   }
 
   return (
-    <div className='flex gap-1 pl-10'>
-      <Button
-        type='button'
-        variant='secondary'
-        onClick={() => {
-          rateHandler(true)
-        }}
-        className={rateVariants({
-          active: comment.liked === true
-        })}
-        aria-label='Like'
-      >
-        <ThumbsUpIcon className='size-4' />
-        {comment.likes}
-      </Button>
-      <Button
-        type='button'
-        variant='secondary'
-        onClick={() => {
-          rateHandler(false)
-        }}
-        className={rateVariants({
-          active: comment.liked === false
-        })}
-        aria-label='Dislike'
-      >
-        <ThumbsDownIcon className='size-4' />
-        {comment.dislikes}
-      </Button>
-      {comment.parentId ? null : (
+    <div className='flex items-center justify-between'>
+      <div className='flex gap-1'>
         <Button
           type='button'
           variant='secondary'
-          className='text-muted-foreground h-8 px-2 text-xs font-medium'
           onClick={() => {
-            setIsReplying(true)
+            rateHandler(true)
           }}
+          className={rateVariants({
+            active: comment.liked === true
+          })}
+          aria-label='Like'
         >
-          Reply
+          <ThumbsUpIcon className='size-4' />
+          {comment.likes}
         </Button>
-      )}
+        <Button
+          type='button'
+          variant='secondary'
+          onClick={() => {
+            rateHandler(false)
+          }}
+          className={rateVariants({
+            active: comment.liked === false
+          })}
+          aria-label='Dislike'
+        >
+          <ThumbsDownIcon className='size-4' />
+          {comment.dislikes}
+        </Button>
+        {comment.parentId ? null : (
+          <Button
+            type='button'
+            variant='secondary'
+            className='text-muted-foreground h-8 px-2 text-xs font-medium'
+            onClick={() => {
+              setIsReplying(true)
+            }}
+          >
+            Reply
+          </Button>
+        )}
+      </div>
+      {!comment.parentId && comment.replies > 0 ? (
+        <Button
+          variant='ghost'
+          size='sm'
+          className='h-8 gap-1.5 px-2 text-xs font-medium'
+          onClick={() => {
+            setIsOpenReplies(!isOpenReplies)
+          }}
+          type='button'
+        >
+          <ChevronDownIcon
+            className={cn('size-4 transition-transform', {
+              'rotate-180': isOpenReplies
+            })}
+          />
+          {comment.replies} Replies
+        </Button>
+      ) : null}
     </div>
   )
 }

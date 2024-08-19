@@ -93,7 +93,7 @@ const CommentReply = () => {
   const disabled = status === 'unauthenticated' || commentsMutation.isPending
 
   return (
-    <form onSubmit={replyHandler} className='pl-10'>
+    <form onSubmit={replyHandler}>
       <div className='relative'>
         <CommentEditor
           onChange={(e) => {
