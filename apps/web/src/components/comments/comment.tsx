@@ -79,21 +79,20 @@ const Comment = (props: CommentProps) => {
       <div className='overflow-hidden'>
         <div
           ref={commentRef}
-          className={cn('flex gap-2 p-2 sm:px-4', {
+          className={cn('p-2 sm:px-4', {
             'bg-accent/50': isHighlighted
           })}
         >
-          <Image
-            src={image}
-            alt={name}
-            width={32}
-            height={32}
-            className='z-10 size-8 rounded-full'
-          />
-
-          <div className='flex-1 space-y-2'>
+          <div className='flex flex-col'>
             <div className='flex items-center justify-between'>
               <div className='flex items-center gap-2 text-sm'>
+                <Image
+                  src={image}
+                  alt={name}
+                  width={32}
+                  height={32}
+                  className='z-10 size-8 rounded-full'
+                />
                 <div className='font-semibold'>{name}</div>
                 <div className='text-muted-foreground'>
                   {formattedDate ? (
