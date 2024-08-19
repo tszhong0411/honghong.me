@@ -34,7 +34,9 @@ const CommentMenu = () => {
   const deleteCommentMutation = api.comments.delete.useMutation({
     onSuccess: () => toast.success('Deleted a comment'),
     onError: (error) => toast.error(error.message),
-    onSettled: () => utils.comments.get.invalidate()
+    onSettled: () => {
+      utils.comments.invalidate()
+    }
   })
 
   const {
@@ -44,7 +46,7 @@ const CommentMenu = () => {
     parentId
   } = comment
 
-  const commentIdentifier = parentId ? `comment-${parentId}-${id}` : `comment-${id}`
+  const commentQuery = parentId ? `comment=${parentId}&reply=${id}` : `comment=${id}`
 
   return (
     <AlertDialog>
@@ -64,7 +66,7 @@ const CommentMenu = () => {
           <DropdownMenuItem
             onClick={() =>
               void copy({
-                text: `${window.location.origin}/blog/${slug}#${commentIdentifier}`,
+                text: `${window.location.origin}/blog/${slug}?${commentQuery}`,
                 successMessage: 'Link copied to clipboard'
               })
             }

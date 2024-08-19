@@ -31,6 +31,11 @@ type CommentNotificationProps = {
 
 const CommentNotification = (props: CommentNotificationProps) => {
   const { comment, commenter, date, commentIdentifier, post, type } = props
+  const year = new Date().getFullYear()
+
+  const borderColor = '#e5e5e5'
+  const mutedForeground = '#737373'
+  const white = '#ffffff'
 
   return (
     <Html lang='en-US'>
@@ -52,41 +57,53 @@ const CommentNotification = (props: CommentNotificationProps) => {
       </Preview>
       <Body
         style={{
-          margin: '0 auto',
-          backgroundColor: '#000',
-          color: '#f0f0f0'
+          margin: 'auto auto',
+          backgroundColor: white,
+          padding: '4px'
         }}
       >
         <Container
           style={{
-            border: '1px solid #242424',
+            border: `1px solid ${borderColor}`,
             margin: '40px auto',
-            maxWidth: '768px',
+            maxWidth: '100%',
+            width: '550px',
             borderRadius: '8px',
             padding: '24px'
           }}
         >
           <Section
             style={{
-              marginBottom: '32px'
+              marginBottom: '16px'
             }}
           >
             <Img
-              src='https://honghong.me/images/email/logo.png'
+              src='https://honghong.me/images/avatar.png'
               alt="Hong's logo"
               width='50'
               height='50'
+              style={{
+                margin: '0 auto',
+                borderRadius: '12px'
+              }}
             />
           </Section>
           <Section>
-            <Text>
-              A new {type === 'comment' ? 'comment' : 'reply'} has been posted on the post &quot;
-              {post.title}&quot; on honghong.me
-            </Text>
+            {type === 'comment' ? (
+              <Text>
+                A new comment has been posted on the post &quot;
+                {post.title}&quot; on <Link href='https://honghong.me'>honghong.me</Link>
+              </Text>
+            ) : (
+              <Text>
+                {commenter.name} has replied to your comment on the post &quot;{post.title}&quot; on
+                <Link href='https://honghong.me'>honghong.me</Link>
+              </Text>
+            )}
           </Section>
           <Hr
             style={{
-              borderTop: '1px solid #242424',
+              borderTop: `1px solid ${borderColor}`,
               margin: '16px 0'
             }}
           />
@@ -109,7 +126,7 @@ const CommentNotification = (props: CommentNotificationProps) => {
               </Column>
               <Column
                 style={{
-                  paddingLeft: '8px',
+                  paddingLeft: '12px',
                   fontWeight: '500'
                 }}
               >
@@ -118,7 +135,7 @@ const CommentNotification = (props: CommentNotificationProps) => {
                   <span
                     style={{
                       paddingLeft: '12px',
-                      color: '#999'
+                      color: mutedForeground
                     }}
                   >
                     {date}
@@ -126,31 +143,47 @@ const CommentNotification = (props: CommentNotificationProps) => {
                 </Text>
               </Column>
             </Row>
-            <div dangerouslySetInnerHTML={{ __html: comment }} />
+            <pre
+              style={{
+                fontFamily: 'monospace',
+                padding: '0 4px 8px 4px'
+              }}
+            >
+              {comment}
+            </pre>
           </Section>
           <Hr
             style={{
-              borderTop: '1px solid #242424',
+              borderTop: `1px solid ${borderColor}`,
               margin: '16px 0'
             }}
           />
           <Section>
             <Link
-              href={`${post.url}#${commentIdentifier}`}
+              href={`${post.url}?${commentIdentifier}`}
               style={{
-                border: '1px solid #242424',
-                margin: '32px 0',
+                margin: '16px 0',
                 display: 'block',
                 width: '100%',
                 borderRadius: '8px',
-                backgroundColor: '#18181b',
+                backgroundColor: '#171717',
                 padding: '16px 0',
                 textAlign: 'center',
-                color: '#fff'
+                color: white
               }}
             >
               View {type === 'comment' ? 'comment' : 'reply'} on honghong.me
             </Link>
+          </Section>
+          <Section>
+            <Text
+              style={{
+                color: mutedForeground,
+                marginBottom: '0px'
+              }}
+            >
+              &copy; {year} Hong
+            </Text>
           </Section>
         </Container>
       </Body>
@@ -158,30 +191,36 @@ const CommentNotification = (props: CommentNotificationProps) => {
   )
 }
 
+const markdown = `
+This is a rich comment
+
+This is **bold**
+
+This is *italic*
+
+This is ~~strike~~
+
+\`\`\`js
+console.log('Hello World')
+\`\`\`
+
+\`code\`
+
+| Month    | Savings |
+| -------- | ------- |
+| January  | $250    |
+| February | $80     |
+| March    | $420    |
+`
+
 CommentNotification.PreviewProps = {
-  comment: `
-    <p>This is a rich comment</p>
-    <p>This is <strong>bold</strong></p>
-    <p></p>
-    <p><em>This is italic</em></p>
-    <p></p>
-    <p><s>This is strike</s></p>
-    <p></p>
-    <p>
-      <strong>
-        <em>
-          <s>This is everything!!
-          </s>
-        </em>
-      </strong>
-    </p>
-  `,
+  comment: markdown,
   commenter: {
     name: 'John Doe',
     image: 'http://localhost:3000/api/avatar/john-doe'
   },
   date: '1970-01-01 00:00:00',
-  commentIdentifier: 'comment-1',
+  commentIdentifier: 'comment=1',
   post: {
     title: 'Hello World',
     url: 'http://localhost:3000/blog/hello-world'

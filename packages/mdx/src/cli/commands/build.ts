@@ -1,6 +1,7 @@
 import matter from 'gray-matter'
 import fs from 'node:fs/promises'
 import path from 'node:path'
+import pluralize from 'pluralize'
 
 import type { DocumentType, FieldDefs } from '@/types'
 
@@ -43,7 +44,7 @@ export const build = async () => {
 
     const count = await getDocumentsCount(contentDirPath)
 
-    console.log(`${LOG_PREFIX}Generated ${count} document${count === 1 ? '' : 's'} in .mdx.`)
+    console.log(`${LOG_PREFIX}Generated ${pluralize('document', count, true)} in .mdx.`)
   } catch (error) {
     console.error(`${LOG_PREFIX}An error occurred during the build process:`, error)
   }

@@ -8,28 +8,11 @@ import { createTRPCRouter, protectedProcedure } from '../trpc'
 const getKey = (id: string) => `rates:${id}`
 
 export const ratesRouter = createTRPCRouter({
-  delete: protectedProcedure
-    .input(
-      z.object({
-        id: z.string()
-      })
-    )
-    .mutation(async ({ ctx, input }) => {
-      const user = ctx.session.user
-
-      const { success } = await ratelimit.limit(getKey(`delete:${user.id}`))
-
-      if (!success) throw new TRPCError({ code: 'TOO_MANY_REQUESTS' })
-
-      await ctx.db
-        .delete(rates)
-        .where(and(eq(rates.commentId, input.id), eq(rates.userId, user.id)))
-    }),
   set: protectedProcedure
     .input(
       z.object({
         id: z.string(),
-        like: z.boolean()
+        like: z.boolean().nullable()
       })
     )
     .mutation(async ({ ctx, input }) => {
@@ -38,6 +21,14 @@ export const ratesRouter = createTRPCRouter({
       const { success } = await ratelimit.limit(getKey(`set:${user.id}`))
 
       if (!success) throw new TRPCError({ code: 'TOO_MANY_REQUESTS' })
+
+      if (input.like === null) {
+        await ctx.db
+          .delete(rates)
+          .where(and(eq(rates.commentId, input.id), eq(rates.userId, user.id)))
+
+        return
+      }
 
       await ctx.db
         .insert(rates)

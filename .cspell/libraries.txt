@@ -21,6 +21,7 @@ nanostores
 nextauth
 nextra
 normy
+nuqs
 nuxt
 paralleldrive
 rehype
@@ -33,10 +34,10 @@ sonarjs
 sonner
 sqld
 tinycolor2
-tiptap
 tsup
 turso
 tursodatabase
 unifiedjs
+usehooks
 vfile
 zustand

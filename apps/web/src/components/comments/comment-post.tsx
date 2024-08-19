@@ -3,54 +3,60 @@
 import { Button, toast } from '@tszhong0411/ui'
 import { SendIcon } from 'lucide-react'
 import { useSession } from 'next-auth/react'
+import { useState } from 'react'
 
 import { useCommentsContext } from '@/contexts/comments'
-import { setModals } from '@/store/modals'
 import { api } from '@/trpc/react'
 
-import CommentEditor, { useCommentEditor } from './comment-editor'
+import CommentEditor from './comment-editor'
+import UnauthorizedOverlay from './unauthorized-overlay'
 
 const CommentPost = () => {
   const { slug } = useCommentsContext()
-  const [editor, setEditor] = useCommentEditor()
+  const [content, setContent] = useState('')
   const { status } = useSession()
   const utils = api.useUtils()
 
   const commentsMutation = api.comments.post.useMutation({
     onSuccess: () => {
-      editor?.clearValue()
+      setContent('')
       toast.success('Comment posted')
     },
     onError: (error) => toast.error(error.message),
-    onSettled: () => utils.comments.get.invalidate()
+    onSettled: () => {
+      utils.comments.invalidate()
+    }
   })
 
-  const commentHandler = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-
-    if (!editor) return
-    if (editor.isEmpty) {
+  const commentHandler = (value?: string) => {
+    if (!content && !value) {
       toast.error('Comment cannot be empty')
 
       return
     }
 
-    const content = editor.getValue()
-
     commentsMutation.mutate({
       slug,
-      content
+      content: value ?? content
     })
   }
 
   const disabled = status !== 'authenticated' || commentsMutation.isPending
 
   return (
-    <form onSubmit={commentHandler}>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault()
+        commentHandler()
+      }}
+    >
       <div className='relative'>
         <CommentEditor
-          editor={editor}
-          onChange={setEditor}
+          value={content}
+          onChange={(e) => {
+            setContent(e.target.value)
+          }}
+          onModEnter={commentHandler}
           placeholder='Leave comment'
           disabled={disabled}
         />
@@ -59,24 +65,13 @@ const CommentPost = () => {
           size='icon'
           className='absolute bottom-1.5 right-2 size-7'
           type='submit'
-          disabled={disabled || !editor || editor.isEmpty}
+          disabled={disabled || !content}
           aria-label='Send comment'
-          aria-disabled={disabled || !editor || editor.isEmpty}
+          aria-disabled={disabled || !content}
         >
           <SendIcon className='size-4' />
         </Button>
-        {status === 'unauthenticated' ? (
-          <div className='absolute inset-0 flex items-center justify-center rounded-lg bg-black/5 backdrop-blur-[0.8px]'>
-            <Button
-              type='button'
-              onClick={() => {
-                setModals({ signIn: true })
-              }}
-            >
-              Sign In
-            </Button>
-          </div>
-        ) : null}
+        {status === 'unauthenticated' ? <UnauthorizedOverlay /> : null}
       </div>
     </form>
   )

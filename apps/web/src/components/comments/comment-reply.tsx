@@ -2,39 +2,86 @@
 
 import { Button, toast } from '@tszhong0411/ui'
 import { useSession } from 'next-auth/react'
+import { useState } from 'react'
 
 import { useCommentContext } from '@/contexts/comment'
 import { useCommentsContext } from '@/contexts/comments'
 import { api } from '@/trpc/react'
+import type { CommentsInput } from '@/trpc/routers/comments'
 
-import CommentEditor, { useCommentEditor } from './comment-editor'
+import CommentEditor from './comment-editor'
+import UnauthorizedOverlay from './unauthorized-overlay'
 
 const CommentReply = () => {
-  const [editor, setEditor] = useCommentEditor()
+  const [content, setContent] = useState('')
   const { comment, setIsReplying } = useCommentContext()
   const { status } = useSession()
-  const { slug } = useCommentsContext()
+  const { slug, sort } = useCommentsContext()
   const utils = api.useUtils()
 
+  const queryKey: CommentsInput = {
+    slug,
+    sort
+  }
+
   const commentsMutation = api.comments.post.useMutation({
+    onMutate: async () => {
+      await utils.comments.getInfiniteComments.cancel(queryKey)
+
+      const previousData = utils.comments.getInfiniteComments.getInfiniteData(queryKey)
+
+      utils.comments.getInfiniteComments.setInfiniteData(queryKey, (oldData) => {
+        if (!oldData) {
+          return {
+            pages: [],
+            pageParams: []
+          }
+        }
+
+        return {
+          ...oldData,
+          pages: oldData.pages.map((page) => {
+            return {
+              ...page,
+              comments: page.comments.map((c) => {
+                if (c.id === comment.id) {
+                  return {
+                    ...c,
+                    replies: c.replies + 1
+                  }
+                }
+
+                return c
+              })
+            }
+          })
+        }
+      })
+
+      return { previousData }
+    },
     onSuccess: () => {
       setIsReplying(false)
     },
-    onError: (error) => toast.error(error.message),
-    onSettled: () => utils.comments.get.invalidate()
+    onError: (error, _, ctx) => {
+      if (ctx?.previousData) {
+        utils.comments.getInfiniteComments.setInfiniteData(queryKey, ctx.previousData)
+      }
+      toast.error(error.message)
+    },
+    onSettled: () => {
+      utils.comments.invalidate()
+    }
   })
 
-  const replyHandler = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+  const replyHandler = (e?: React.FormEvent<HTMLFormElement>) => {
+    e?.preventDefault()
 
-    if (!editor) return
-    if (editor.isEmpty) {
+    if (!content) {
       toast.error('Reply cannot be empty')
 
       return
     }
-
-    const content = editor.getValue()
 
     commentsMutation.mutate({
       slug,
@@ -43,23 +90,33 @@ const CommentReply = () => {
     })
   }
 
-  const disabled = status !== 'authenticated' || commentsMutation.isPending
+  const disabled = status === 'unauthenticated' || commentsMutation.isPending
 
   return (
     <form onSubmit={replyHandler}>
-      <CommentEditor
-        editor={editor}
-        onChange={setEditor}
-        placeholder='Reply to comment'
-        disabled={disabled}
-      />
+      <div className='relative'>
+        <CommentEditor
+          onChange={(e) => {
+            setContent(e.target.value)
+          }}
+          onModEnter={replyHandler}
+          onEscape={() => {
+            setIsReplying(false)
+          }}
+          placeholder='Reply to comment'
+          disabled={disabled}
+          // eslint-disable-next-line jsx-a11y/no-autofocus -- Autofocus is necessary because user is replying to a comment
+          autoFocus
+        />
+        {status === 'unauthenticated' ? <UnauthorizedOverlay /> : null}
+      </div>
       <div className='mt-2 space-x-1'>
         <Button
           variant='secondary'
           className='h-8 px-2 text-xs font-medium'
           type='submit'
-          disabled={disabled || !editor || editor.isEmpty}
-          aria-disabled={disabled || !editor || editor.isEmpty}
+          disabled={disabled || !content}
+          aria-disabled={disabled || !content}
         >
           Reply
         </Button>

@@ -1,4 +1,4 @@
-import { type DocumentType, type MakeSourceOptions } from '@tszhong0411/mdx'
+import type { DocumentType, MakeSourceOptions } from '@/types'
 
 const Page = {
   name: 'Page',

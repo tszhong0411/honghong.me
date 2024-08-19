@@ -1,134 +1,184 @@
-import { Bold } from '@tiptap/extension-bold'
-import { Document } from '@tiptap/extension-document'
-import { Italic } from '@tiptap/extension-italic'
-import { Paragraph } from '@tiptap/extension-paragraph'
-import { Placeholder } from '@tiptap/extension-placeholder'
-import { Strike } from '@tiptap/extension-strike'
-import { Text } from '@tiptap/extension-text'
-import { Editor, EditorContent, type JSONContent } from '@tiptap/react'
+import { Button, Textarea } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
-import { useEffect, useState } from 'react'
+import { BoldIcon, ItalicIcon, StrikethroughIcon } from 'lucide-react'
+import { useRef } from 'react'
 
-import CommentToolbar from './comment-toolbar'
+type Command = {
+  onModEnter?: () => void
+  onEscape?: () => void
+}
 
 type CommentEditorProps = {
-  editor: UseCommentEditor | null
-  placeholder?: string
-  autofocus?: boolean
-  editable?: boolean
-  disabled?: boolean
-  content?: JSONContent
-  onChange?: (editor: UseCommentEditor) => void
+  initialValue?: string
+} & Command &
+  React.ComponentPropsWithoutRef<typeof Textarea>
+
+const setRangeText = (
+  textarea: HTMLTextAreaElement,
+  replacement: string,
+  start: number,
+  end: number,
+  selectionMode?: SelectionMode
+) => {
+  textarea.setRangeText(replacement, start, end, selectionMode)
+  // Trigger input event to update the value
+  textarea.dispatchEvent(new Event('input', { bubbles: true }))
 }
 
-type UseCommentEditor = {
-  editor: Editor
-  isEmpty: boolean
-  getValue: () => JSONContent
-  clearValue: () => void
-}
+const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>, command: Command) => {
+  const { onModEnter, onEscape } = command
+  const textarea = event.target as HTMLTextAreaElement
+  const { selectionStart, selectionEnd, value } = textarea
 
-export const useCommentEditor = (): [
-  editor: UseCommentEditor | null,
-  setEditor: (editor: UseCommentEditor) => void
-] => {
-  return useState<UseCommentEditor | null>(null)
-}
+  if (event.key === 'Tab') {
+    event.preventDefault()
+    const tabSpace = '  '
 
-const createCommentEditor = (editor: Editor): UseCommentEditor => {
-  return {
-    editor,
-    isEmpty: editor.isEmpty,
-    getValue() {
-      return editor.getJSON()
-    },
-    clearValue() {
-      editor.commands.clearContent(true)
+    setRangeText(textarea, tabSpace, selectionStart, selectionEnd, 'end')
+    textarea.setSelectionRange(selectionStart + tabSpace.length, selectionStart + tabSpace.length)
+  }
+
+  if (event.key === 'Escape') {
+    event.preventDefault()
+    onEscape?.()
+
+    return
+  }
+
+  if (event.key === 'Enter' && (event.metaKey || event.ctrlKey)) {
+    event.preventDefault()
+    onModEnter?.()
+
+    return
+  }
+
+  if (event.key === 'Enter') {
+    const currentLine = value.slice(0, Math.max(0, selectionStart)).split('\n').pop()
+
+    const unorderedListNoContent = currentLine?.match(/^(\s*)([*-])\s$/)
+    const orderedListNoContent = currentLine?.match(/^(\d+)\.\s$/)
+
+    if (!!unorderedListNoContent || !!orderedListNoContent) {
+      event.preventDefault()
+
+      const lineStart = value.lastIndexOf('\n', selectionStart - 1) + 1
+      const lineEnd = selectionStart
+      setRangeText(textarea, '', lineStart, lineEnd, 'start')
+
+      return
+    }
+
+    const orderedList = currentLine?.match(/^(\d+)\.\s/)
+
+    if (orderedList?.[1]) {
+      const number = Number.parseInt(orderedList[1], 10) + 1
+      const insertText = `\n${number}. `
+
+      event.preventDefault()
+      setRangeText(textarea, insertText, selectionStart, selectionEnd, 'end')
+    }
+
+    const unorderedList = currentLine?.match(/^(\s*)([*-])\s/)
+
+    if (unorderedList) {
+      const insertText = `\n${unorderedList[1]}${unorderedList[2]} `
+
+      event.preventDefault()
+      setRangeText(textarea, insertText, selectionStart, selectionEnd, 'end')
     }
   }
+}
+
+const decorateText = (
+  textarea: HTMLTextAreaElement | null,
+  type: 'bold' | 'italic' | 'strikethrough'
+) => {
+  if (!textarea) return
+
+  const { selectionStart, selectionEnd, value } = textarea
+  const selectedText = value.slice(selectionStart, selectionEnd)
+
+  const decoration = {
+    bold: `**${selectedText}**`,
+    strikethrough: `~~${selectedText}~~`,
+    italic: `*${selectedText}*`
+  }
+
+  const newSelectionStart = selectionStart + 2
+
+  setRangeText(textarea, decoration[type], selectionStart, selectionEnd, 'end')
+
+  if (!selectedText) {
+    textarea.setSelectionRange(newSelectionStart, newSelectionStart)
+  }
+
+  textarea.focus()
 }
 
 const CommentEditor = (props: CommentEditorProps) => {
-  const {
-    editor,
-    placeholder,
-    autofocus = false,
-    editable = true,
-    disabled = false,
-    content,
-    onChange
-  } = props
-  const innerEditor = editor?.editor ?? null
-
-  const editorClassName = cn(
-    'bg-background ring-offset-background rounded-lg border pb-1',
-    'focus-within:ring-ring focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2',
-    'aria-disabled:cursor-not-allowed aria-disabled:opacity-80'
-  )
-
-  const tiptapClassName = cn('focus-visible:outline-none', editable && 'min-h-10 px-3 py-2')
-
-  useEffect(() => {
-    const instance = new Editor({
-      extensions: [
-        Bold,
-        Document,
-        Italic,
-        Paragraph,
-        Strike,
-        Text,
-        Placeholder.configure({
-          placeholder,
-          showOnlyWhenEditable: false
-        })
-      ],
-      autofocus,
-      content,
-      editorProps: {
-        attributes: {
-          class: tiptapClassName
-        }
-      },
-      editable,
-      onTransaction: () => {
-        onChange?.(createCommentEditor(instance))
-      }
-    })
-
-    onChange?.(createCommentEditor(instance))
-
-    return () => {
-      instance.destroy()
-    }
-  }, [autofocus, content, editable, onChange, placeholder, tiptapClassName])
-
-  if (!innerEditor) {
-    return (
-      <div aria-disabled className={editorClassName}>
-        <div className={cn('tiptap', tiptapClassName)}>
-          <p className='is-editor-empty' data-placeholder={placeholder} />
-        </div>
-      </div>
-    )
-  }
-
-  if (!editable) {
-    return <EditorContent editor={innerEditor} />
-  }
-
-  innerEditor.setEditable(!disabled)
+  const { onModEnter, onEscape, initialValue, ...rest } = props
+  const textareaRef = useRef<HTMLTextAreaElement>(null)
 
   return (
-    // eslint-disable-next-line jsx-a11y/no-static-element-interactions -- trigger focus
     <div
-      aria-disabled={disabled}
-      className={editorClassName}
-      onMouseUp={() => {
-        innerEditor.commands.focus()
-      }}
+      className={cn(
+        'bg-background ring-offset-background focus-within:ring-ring rounded-lg border pb-1',
+        'focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2',
+        'aria-disabled:cursor-not-allowed aria-disabled:opacity-80'
+      )}
     >
-      <EditorContent editor={innerEditor} />
-      <CommentToolbar editor={innerEditor} />
+      <Textarea
+        rows={1}
+        onKeyDown={(e) => {
+          handleKeyDown(e, { onModEnter, onEscape })
+        }}
+        ref={textareaRef}
+        defaultValue={initialValue}
+        className='min-h-10 resize-none border-none focus-visible:ring-0 focus-visible:ring-offset-0'
+        autoComplete='off'
+        autoCorrect='off'
+        autoCapitalize='off'
+        spellCheck='false'
+        {...rest}
+      />
+      <div className='flex flex-row items-center gap-0.5 px-1.5'>
+        <Button
+          type='button'
+          aria-label='Toggle bold'
+          variant='ghost'
+          size='icon'
+          className='size-7'
+          onClick={() => {
+            decorateText(textareaRef.current, 'bold')
+          }}
+        >
+          <BoldIcon className='size-4' />
+        </Button>
+        <Button
+          type='button'
+          aria-label='Toggle strikethrough'
+          variant='ghost'
+          size='icon'
+          className='size-7'
+          onClick={() => {
+            decorateText(textareaRef.current, 'strikethrough')
+          }}
+        >
+          <StrikethroughIcon className='size-4' />
+        </Button>
+        <Button
+          type='button'
+          aria-label='Toggle italic'
+          variant='ghost'
+          size='icon'
+          className='size-7'
+          onClick={() => {
+            decorateText(textareaRef.current, 'italic')
+          }}
+        >
+          <ItalicIcon className='size-4' />
+        </Button>
+      </div>
     </div>
   )
 }

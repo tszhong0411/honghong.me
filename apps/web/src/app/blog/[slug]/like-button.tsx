@@ -20,14 +20,16 @@ const LikeButton = (props: LikeButtonProps) => {
   const buttonRef = useRef<HTMLButtonElement>(null)
   const utils = api.useUtils()
 
-  const likesQuery = api.likes.get.useQuery({ slug })
+  const queryKey = { slug }
+
+  const likesQuery = api.likes.get.useQuery(queryKey)
   const likesMutation = api.likes.patch.useMutation({
-    onMutate: (newData) => {
-      void utils.likes.get.cancel({ slug })
+    onMutate: async (newData) => {
+      await utils.likes.get.cancel(queryKey)
 
-      const previousData = utils.likes.get.getData({ slug })
+      const previousData = utils.likes.get.getData(queryKey)
 
-      utils.likes.get.setData({ slug }, (old) => {
+      utils.likes.get.setData(queryKey, (old) => {
         if (!old) return old
 
         return {
@@ -41,7 +43,7 @@ const LikeButton = (props: LikeButtonProps) => {
     },
     onError: (_, __, ctx) => {
       if (ctx?.previousData) {
-        utils.likes.get.setData({ slug }, ctx.previousData)
+        utils.likes.get.setData(queryKey, ctx.previousData)
       }
     },
     onSettled: () => utils.likes.get.invalidate()
@@ -139,7 +141,6 @@ const LikeButton = (props: LikeButtonProps) => {
           </g>
         </svg>
         Like
-        {likesQuery.data && likesQuery.data.likes + cacheCount === 1 ? '' : 's'}
         <Separator orientation='vertical' className='bg-zinc-700' />
         {likesQuery.isLoading ? <div> -- </div> : <div>{likesQuery.data!.likes + cacheCount}</div>}
       </button>

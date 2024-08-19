@@ -1,8 +1,9 @@
 'use client'
 
-import { useCallback, useRef } from 'react'
+import { useCallback, useRef, useState } from 'react'
 
 import { CommentsProvider } from '@/contexts/comments'
+import type { CommentsInput } from '@/trpc/routers/comments'
 
 import { RatesProvider } from '../../contexts/rates'
 import CommentPost from './comment-post'
@@ -15,6 +16,7 @@ type CommentsProps = {
 const Comments = (props: CommentsProps) => {
   const { slug } = props
   const mutationCount = useRef(0)
+  const [sort, setSort] = useState<CommentsInput['sort']>('newest')
 
   const increment = useCallback(() => {
     mutationCount.current += 1
@@ -30,7 +32,9 @@ const Comments = (props: CommentsProps) => {
     <RatesProvider value={{ increment, decrement, getCount }}>
       <CommentsProvider
         value={{
-          slug
+          slug,
+          sort,
+          setSort
         }}
       >
         <div className='space-y-6'>

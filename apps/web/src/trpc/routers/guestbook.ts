@@ -32,7 +32,7 @@ export const guestbookRouter = createTRPCRouter({
           }
         }
       },
-      orderBy: [desc(guestbook.updatedAt)]
+      orderBy: desc(guestbook.updatedAt)
     })
 
     return query.map((message) => {
