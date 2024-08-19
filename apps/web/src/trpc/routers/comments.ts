@@ -278,8 +278,8 @@ export const commentsRouter = createTRPCRouter({
             },
             commentIdentifier:
               type === 'comment'
-                ? `comment-${commentId}`
-                : `comment-${input.parentId}-${commentId}`,
+                ? `comment=${commentId}`
+                : `comment=${input.parentId}&reply=${commentId}`,
             date: new Date().toDateString(),
             post: {
               title,
