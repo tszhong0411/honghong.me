@@ -151,7 +151,7 @@ const CommentEditor = forwardRef<CommentEditorRef, CommentEditorProps>((props, r
         }}
         ref={textareaRef}
         defaultValue={initialValue}
-        className='min-h-10 resize-none border-none focus-visible:ring-0'
+        className='min-h-10 resize-none border-none focus-visible:ring-0 focus-visible:ring-offset-0'
         autoComplete='off'
         autoCorrect='off'
         autoCapitalize='off'
