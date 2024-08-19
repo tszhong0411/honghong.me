@@ -11,10 +11,11 @@ import { getIconByFilename } from './utils/get-icon-by-filename'
 
 type CodeBlockProps = {
   'data-lang'?: string
+  figureClassName?: string
 } & React.ComponentPropsWithoutRef<'pre'>
 
 export const CodeBlock = forwardRef<HTMLPreElement, CodeBlockProps>((props, ref) => {
-  const { children, className, title, 'data-lang': lang, ...rest } = props
+  const { children, className, title, 'data-lang': lang, figureClassName, ...rest } = props
 
   const textInput = useRef<HTMLPreElement>(null)
   const Icon = getIconByFilename(lang ?? '')
@@ -24,7 +25,12 @@ export const CodeBlock = forwardRef<HTMLPreElement, CodeBlockProps>((props, ref)
   }
 
   return (
-    <figure className='not-prose bg-secondary/50 group relative my-6 overflow-hidden rounded-lg border text-sm'>
+    <figure
+      className={cn(
+        'not-prose bg-secondary/50 group relative my-6 overflow-hidden rounded-lg border text-sm',
+        figureClassName
+      )}
+    >
       {title ? (
         <div className='bg-muted/50 flex flex-row items-center gap-2 border-b px-4 py-1.5'>
           <div className='text-muted-foreground'>
