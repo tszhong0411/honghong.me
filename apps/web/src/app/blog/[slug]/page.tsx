@@ -3,6 +3,7 @@ import { getTOC } from '@tszhong0411/mdx'
 import { allBlogPosts } from 'mdx/generated'
 import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
+import { Suspense } from 'react'
 import { type Article, type WithContext } from 'schema-dts'
 
 import Comments from '@/components/comments'
@@ -154,7 +155,11 @@ const Page = async (props: PageProps) => {
         <Footer />
       </Providers>
 
-      {flags.comment ? <Comments slug={slug} /> : null}
+      {flags.comment ? (
+        <Suspense>
+          <Comments slug={slug} />
+        </Suspense>
+      ) : null}
     </>
   )
 }
