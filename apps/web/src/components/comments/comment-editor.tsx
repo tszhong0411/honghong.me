@@ -104,12 +104,16 @@ const decorateText = (
     italic: `*${selectedText}*`
   }
 
-  const newSelectionStart = selectionStart + 2
+  const newSelectionStart = {
+    bold: selectionStart + 2,
+    strikethrough: selectionStart + 2,
+    italic: selectionStart + 1
+  }
 
   setRangeText(textarea, decoration[type], selectionStart, selectionEnd, 'end')
 
   if (!selectedText) {
-    textarea.setSelectionRange(newSelectionStart, newSelectionStart)
+    textarea.setSelectionRange(newSelectionStart[type], newSelectionStart[type])
   }
 
   textarea.focus()
