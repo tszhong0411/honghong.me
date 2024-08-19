@@ -1,5 +1,13 @@
 # @tszhong0411/tailwind-config
 
+## 0.0.11
+
+### Patch Changes
+
+- [#836](https://github.com/tszhong0411/honghong.me/pull/836) [`32cf8ad`](https://github.com/tszhong0411/honghong.me/commit/32cf8ade55089eb5fc8909ec222f3aba4167f135) Thanks [@tszhong0411](https://github.com/tszhong0411)! - update the style of ul, blockquote
+
+- [#836](https://github.com/tszhong0411/honghong.me/pull/836) [`80e221c`](https://github.com/tszhong0411/honghong.me/commit/80e221c06956636387a75438fb9d94c2bc4f0bfb) Thanks [@tszhong0411](https://github.com/tszhong0411)! - set blockquote to normal font style
+
 ## 0.0.10
 
 ### Patch Changes

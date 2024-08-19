@@ -1,5 +1,11 @@
 # @tszhong0411/ui
 
+## 0.0.27
+
+### Patch Changes
+
+- [#836](https://github.com/tszhong0411/honghong.me/pull/836) [`b58d852`](https://github.com/tszhong0411/honghong.me/commit/b58d8523c90ad85f8e084eb400efdec2b5bb5c05) Thanks [@tszhong0411](https://github.com/tszhong0411)! - figure className is now available in code block
+
 ## 0.0.26
 
 ### Patch Changes
