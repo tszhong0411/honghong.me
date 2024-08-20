@@ -1,5 +1,11 @@
 # @tszhong0411/ui
 
+## 0.0.28
+
+### Patch Changes
+
+- [#841](https://github.com/tszhong0411/honghong.me/pull/841) [`1b50560`](https://github.com/tszhong0411/honghong.me/commit/1b505605880569c286f9102ddb364866220e33f8) Thanks [@tszhong0411](https://github.com/tszhong0411)! - add form component
+
 ## 0.0.27
 
 ### Patch Changes
