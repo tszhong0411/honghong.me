@@ -83,6 +83,10 @@ export const SIDEBAR_LINKS: SidebarLinks = [
         text: 'Files'
       },
       {
+        href: '/ui/components/form',
+        text: 'Form'
+      },
+      {
         href: '/ui/components/input',
         text: 'Input'
       },

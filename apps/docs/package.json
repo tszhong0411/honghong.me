@@ -16,6 +16,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.9.0",
     "@tszhong0411/mdx": "workspace:*",
     "@tszhong0411/ui": "workspace:*",
     "@tszhong0411/utils": "workspace:*",
@@ -26,10 +27,12 @@
     "next-themes": "^0.3.0",
     "react": "18.3.1",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.52.2",
     "sharp": "^0.33.2",
     "shiki": "^1.6.4",
     "unified": "^11.0.4",
-    "unist-util-visit": "^5.0.0"
+    "unist-util-visit": "^5.0.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^14.2.3",
