@@ -6,7 +6,7 @@ import PageTitle from '@/components/page-title'
 import { getCurrentUser } from '@/lib/auth'
 import { SITE_TITLE, SITE_URL } from '@/lib/constants'
 
-import Form from './form'
+import MessageBox from './message-box'
 import Messages from './messages'
 import Pinned from './pinned'
 import SignIn from './sign-in'
@@ -73,7 +73,7 @@ const Page = async () => {
       <PageTitle title={title} description={description} />
       <div className='mx-auto max-w-lg'>
         <Pinned />
-        {user ? <Form user={user} /> : <SignIn />}
+        {user ? <MessageBox user={user} /> : <SignIn />}
         <Messages />
       </div>
     </>
