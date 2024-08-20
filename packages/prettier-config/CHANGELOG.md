@@ -1,5 +1,11 @@
 # @tszhong0411/prettier-config
 
+## 0.0.6
+
+### Patch Changes
+
+- [#846](https://github.com/tszhong0411/honghong.me/pull/846) [`ffeeb82`](https://github.com/tszhong0411/honghong.me/commit/ffeeb82b01e12597980fbb797e5d499591c23cc4) Thanks [@tszhong0411](https://github.com/tszhong0411)! - tree-shakable
+
 ## 0.0.5
 
 ### Patch Changes

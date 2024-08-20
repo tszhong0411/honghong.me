@@ -1,5 +1,14 @@
 # @tszhong0411/ui
 
+## 0.0.29
+
+### Patch Changes
+
+- [#846](https://github.com/tszhong0411/honghong.me/pull/846) [`d0eab68`](https://github.com/tszhong0411/honghong.me/commit/d0eab68d7f0b6c8f7d6d479b259a4462cc001350) Thanks [@tszhong0411](https://github.com/tszhong0411)! - tree-shakable
+
+- Updated dependencies [[`67739dd`](https://github.com/tszhong0411/honghong.me/commit/67739dd261ee2eaa41d0b4a7e9ac303b558b1ff6)]:
+  - @tszhong0411/utils@0.0.14
+
 ## 0.0.28
 
 ### Patch Changes
