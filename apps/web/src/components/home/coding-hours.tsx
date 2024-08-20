@@ -6,7 +6,7 @@ import { ClockIcon } from 'lucide-react'
 import { api } from '@/trpc/react'
 
 const CodingHours = () => {
-  const wakatimeQuery = api.wakatime.get.useQuery(undefined, {
+  const { status, data } = api.wakatime.get.useQuery(undefined, {
     enabled: flags.stats
   })
 
@@ -17,10 +17,9 @@ const CodingHours = () => {
         <h2 className='text-sm font-light'>Coding hours</h2>
       </div>
       <div className='font-title flex grow items-center justify-center text-4xl font-semibold'>
-        {wakatimeQuery.isLoading || !wakatimeQuery.data?.seconds
-          ? '--'
-          : Math.round(wakatimeQuery.data.seconds / 60 / 60)}{' '}
-        hrs
+        {status === 'pending' ? '--' : null}
+        {status === 'error' ? 'Error' : null}
+        {status === 'success' ? Math.round(data.seconds / 60 / 60) : null} hrs
       </div>
     </div>
   )

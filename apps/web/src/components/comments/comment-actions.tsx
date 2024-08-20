@@ -3,6 +3,7 @@ import { cn } from '@tszhong0411/utils'
 import { cva } from 'class-variance-authority'
 import { ChevronDownIcon, ThumbsDownIcon, ThumbsUpIcon } from 'lucide-react'
 import { useSession } from 'next-auth/react'
+import pluralize from 'pluralize'
 
 import { useCommentContext } from '@/contexts/comment'
 import { useCommentsContext } from '@/contexts/comments'
@@ -179,7 +180,7 @@ const CommentActions = () => {
               'rotate-180': isOpenReplies
             })}
           />
-          {comment.replies} Replies
+          {pluralize('reply', comment.replies, true)}
         </Button>
       ) : null}
     </div>

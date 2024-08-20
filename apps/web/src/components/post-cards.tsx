@@ -2,6 +2,7 @@
 
 import { BlurImage, Link } from '@tszhong0411/ui'
 import type { BlogPost } from 'mdx/generated'
+import pluralize from 'pluralize'
 
 import { useFormattedDate } from '@/hooks/use-formatted-date'
 import { api } from '@/trpc/react'
@@ -55,9 +56,17 @@ const PostCard = (props: PostCardProps) => {
       <div className='flex items-center justify-between gap-2 px-2 pt-4 text-sm text-zinc-500'>
         {formattedDate}
         <div className='flex gap-2'>
-          {likesQuery.isLoading ? '--' : <div>{likesQuery.data?.likes} likes</div>}
+          {likesQuery.status === 'pending' ? '--' : null}
+          {likesQuery.status === 'error' ? 'Error' : null}
+          {likesQuery.status === 'success' ? (
+            <div>{pluralize('like', likesQuery.data.likes, true)}</div>
+          ) : null}
           <div>&middot;</div>
-          {viewsQuery.isLoading ? '--' : <div>{viewsQuery.data?.views} views</div>}
+          {viewsQuery.status === 'pending' ? '--' : null}
+          {viewsQuery.status === 'error' ? 'Error' : null}
+          {viewsQuery.status === 'success' ? (
+            <div>{pluralize('view', viewsQuery.data.views, true)}</div>
+          ) : null}
         </div>
       </div>
       <div className='flex flex-col px-2 py-4'>

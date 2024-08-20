@@ -5,7 +5,7 @@ import { Link } from '@tszhong0411/ui'
 import { api } from '@/trpc/react'
 
 const NowPlaying = () => {
-  const spotifyQuery = api.spotify.get.useQuery()
+  const { status, data } = api.spotify.get.useQuery()
 
   return (
     <div className='flex items-center gap-4'>
@@ -25,15 +25,16 @@ const NowPlaying = () => {
 
       <div className='inline-flex w-full items-center justify-center gap-1 text-sm md:justify-start'>
         <p>
-          {spotifyQuery.isLoading ? (
-            'Loading ...'
-          ) : spotifyQuery.data?.isPlaying && spotifyQuery.data.songUrl ? (
-            <Link href={spotifyQuery.data.songUrl}>
-              {spotifyQuery.data.name} - {spotifyQuery.data.artist}
+          {status === 'pending' ? 'Loading ...' : null}
+          {status === 'error' ? 'Failed to fetch Spotify data' : null}
+          {status === 'success' && data.isPlaying && data.songUrl ? (
+            <Link href={data.songUrl}>
+              {data.name} - {data.artist}
             </Link>
-          ) : (
-            'Not Listening - Spotify'
-          )}
+          ) : null}
+          {status === 'success' && (!data.isPlaying || !data.songUrl)
+            ? 'Not Listening - Spotify'
+            : null}
         </p>
       </div>
     </div>

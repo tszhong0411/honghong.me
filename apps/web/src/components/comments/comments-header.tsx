@@ -22,13 +22,17 @@ const CommentHeader = () => {
   return (
     <div className='flex items-center justify-between px-1'>
       <div>
-        {commentsCountQuery.isLoading
-          ? '-- comments'
-          : pluralize('comment', commentsCountQuery.data?.value, true)}{' '}
-        ·{' '}
-        {repliesCountQuery.isLoading
-          ? '-- replies'
-          : pluralize('reply', repliesCountQuery.data?.value, true)}
+        {commentsCountQuery.status === 'pending' ? '-- comments' : null}
+        {commentsCountQuery.status === 'error' ? 'Error' : null}
+        {commentsCountQuery.status === 'success'
+          ? pluralize('comment', commentsCountQuery.data.comments, true)
+          : null}
+        {' · '}
+        {repliesCountQuery.status === 'pending' ? '-- replies' : null}
+        {repliesCountQuery.status === 'error' ? 'Error' : null}
+        {repliesCountQuery.status === 'success'
+          ? pluralize('reply', repliesCountQuery.data.replies, true)
+          : null}
       </div>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>

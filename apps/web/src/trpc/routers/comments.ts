@@ -183,7 +183,7 @@ export const commentsRouter = createTRPCRouter({
         .where(eq(comments.postId, input.slug))
 
       return {
-        value: value[0]?.value ?? 0
+        comments: value[0]?.value ?? 0
       }
     }),
   getCommentsCount: publicProcedure
@@ -203,7 +203,7 @@ export const commentsRouter = createTRPCRouter({
         .where(and(eq(comments.postId, input.slug), isNull(comments.parentId)))
 
       return {
-        value: value[0]?.value ?? 0
+        comments: value[0]?.value ?? 0
       }
     }),
   getRepliesCount: publicProcedure
@@ -223,7 +223,7 @@ export const commentsRouter = createTRPCRouter({
         .where(and(eq(comments.postId, input.slug), isNotNull(comments.parentId)))
 
       return {
-        value: value[0]?.value ?? 0
+        replies: value[0]?.value ?? 0
       }
     }),
   post: protectedProcedure

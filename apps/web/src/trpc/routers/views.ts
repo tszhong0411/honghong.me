@@ -31,12 +31,12 @@ export const viewsRouter = createTRPCRouter({
       })
       .from(posts)
 
-    const views = result[0]?.value ? Number(result[0].value) : 0
+    const value = result[0]?.value ? Number(result[0].value) : 0
 
-    await redis.set(redisKeys.postViewCount, views)
+    await redis.set(redisKeys.postViewCount, value)
 
     return {
-      views
+      views: value
     }
   }),
   get: publicProcedure

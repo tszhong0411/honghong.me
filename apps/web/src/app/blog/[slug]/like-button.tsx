@@ -22,7 +22,7 @@ const LikeButton = (props: LikeButtonProps) => {
 
   const queryKey = { slug }
 
-  const likesQuery = api.likes.get.useQuery(queryKey)
+  const { status, data } = api.likes.get.useQuery(queryKey)
   const likesMutation = api.likes.patch.useMutation({
     onMutate: async (newData) => {
       await utils.likes.get.cancel(queryKey)
@@ -78,17 +78,12 @@ const LikeButton = (props: LikeButtonProps) => {
   }, 1000)
 
   const likeHandler = () => {
-    if (
-      likesQuery.isLoading ||
-      !likesQuery.data ||
-      likesQuery.data.currentUserLikes + cacheCount >= 3
-    )
-      return
+    if (status === 'pending' || !data || data.currentUserLikes + cacheCount >= 3) return
 
     const value = cacheCount === 3 ? cacheCount : cacheCount + 1
     setCacheCount(value)
 
-    if (likesQuery.data.currentUserLikes + cacheCount === 2) {
+    if (data.currentUserLikes + cacheCount === 2) {
       void confettiHandler()
     }
 
@@ -133,16 +128,16 @@ const LikeButton = (props: LikeButtonProps) => {
                 y: '100%'
               }}
               animate={{
-                y: likesQuery.data
-                  ? `${100 - (likesQuery.data.currentUserLikes + cacheCount) * 33}%`
-                  : '100%'
+                y: data ? `${100 - (data.currentUserLikes + cacheCount) * 33}%` : '100%'
               }}
             />
           </g>
         </svg>
         Like
         <Separator orientation='vertical' className='bg-zinc-700' />
-        {likesQuery.isLoading ? <div> -- </div> : <div>{likesQuery.data!.likes + cacheCount}</div>}
+        {status === 'pending' ? <div>--</div> : null}
+        {status === 'error' ? <div>Error</div> : null}
+        {status === 'success' ? <div>{data.likes + cacheCount}</div> : null}
       </button>
     </div>
   )
