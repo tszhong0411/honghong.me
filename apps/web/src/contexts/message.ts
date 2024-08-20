@@ -3,7 +3,7 @@ import { createContext, useContext } from 'react'
 import type { GuestbookOutput } from '@/trpc/routers/guestbook'
 
 export type MessageContext = {
-  message: GuestbookOutput[number]
+  message: GuestbookOutput['messages'][number]
 }
 
 const Context = createContext<MessageContext | undefined>(undefined)

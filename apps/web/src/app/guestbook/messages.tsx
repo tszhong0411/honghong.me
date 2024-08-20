@@ -1,8 +1,10 @@
 'use client'
 
+import { keepPreviousData } from '@tanstack/react-query'
 import { Avatar, AvatarFallback, AvatarImage, Skeleton } from '@tszhong0411/ui'
 import { useSession } from 'next-auth/react'
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
+import { useInView } from 'react-intersection-observer'
 
 import { type MessageContext, MessageProvider } from '@/contexts/message'
 import { useFormattedDate } from '@/hooks/use-formatted-date'
@@ -17,7 +19,7 @@ type UpdatedDateProps = {
 }
 
 type MessageProps = {
-  message: GuestbookOutput[number]
+  message: GuestbookOutput['messages'][number]
 }
 
 const UpdatedDate = (props: UpdatedDateProps) => {
@@ -32,15 +34,44 @@ const UpdatedDate = (props: UpdatedDateProps) => {
 }
 
 const Messages = () => {
-  const guestbookQuery = api.guestbook.get.useQuery()
+  const { status, data, fetchNextPage, hasNextPage } =
+    api.guestbook.getInfiniteMessages.useInfiniteQuery(
+      {},
+      {
+        getNextPageParam: (lastPage) => lastPage.nextCursor,
+        placeholderData: keepPreviousData
+      }
+    )
+
+  const { ref, inView } = useInView()
+
+  useEffect(() => {
+    if (inView && hasNextPage) fetchNextPage()
+  }, [fetchNextPage, hasNextPage, inView])
 
   return (
     <div className='mt-10 flex flex-col gap-4'>
-      {guestbookQuery.isLoading ? (
-        <Loader />
-      ) : (
-        guestbookQuery.data?.map((message) => <Message key={message.id} message={message} />)
-      )}
+      {status === 'pending' ? <Loader /> : null}
+      {status === 'success'
+        ? data.pages.map((page) =>
+            page.messages.map((message) => <Message key={message.id} message={message} />)
+          )
+        : null}
+      {status === 'success' && data.pages[0]?.messages.length === 0 ? (
+        <div className='flex min-h-24 items-center justify-center'>
+          <p className='text-muted-foreground text-sm'>
+            No messages. Be the first to leave a message!
+          </p>
+        </div>
+      ) : null}
+      {status === 'error' ? (
+        <div className='flex min-h-24 items-center justify-center'>
+          <p className='text-muted-foreground text-sm'>
+            Failed to load messages. Please refresh the page.
+          </p>
+        </div>
+      ) : null}
+      {hasNextPage ? <Loader ref={ref} /> : null}
     </div>
   )
 }
