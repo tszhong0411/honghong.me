@@ -1,5 +1,11 @@
 # @tszhong0411/tailwind-config
 
+## 0.0.12
+
+### Patch Changes
+
+- [#841](https://github.com/tszhong0411/honghong.me/pull/841) [`7287d58`](https://github.com/tszhong0411/honghong.me/commit/7287d58e01d380c935f96d8e45ffa8a69bd8e575) Thanks [@tszhong0411](https://github.com/tszhong0411)! - update destructive color in dark mode
+
 ## 0.0.11
 
 ### Patch Changes
