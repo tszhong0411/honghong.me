@@ -18,8 +18,7 @@
     "@tszhong0411/kv",
     "@tszhong0411/mdx",
     "@tszhong0411/shared",
-    "@tszhong0411/web",
-    "@tszhong0411/ws"
+    "@tszhong0411/web"
   ],
   "linked": [],
   "updateInternalDependencies": "patch"

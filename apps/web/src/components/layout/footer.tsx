@@ -4,7 +4,6 @@ import { Link } from '@tszhong0411/ui'
 import { FOOTER_LINKS } from '@/config/links'
 
 import NowPlaying from './now-playing'
-import VisitorCount from './visitor-count'
 
 const Footer = () => {
   return (
@@ -25,9 +24,8 @@ const Footer = () => {
           </div>
         ))}
       </div>
-      <div className='mt-20 flex items-center justify-between text-sm'>
+      <div className='mt-20 text-sm'>
         <div>&copy; {new Date().getFullYear()} Hong</div>
-        <VisitorCount />
       </div>
     </footer>
   )

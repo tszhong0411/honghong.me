@@ -19,6 +19,5 @@ export const redisKeys = {
   postLikes: (slug: string) => `post:likes:${slug}`,
   postLikeCount: 'post:likes:count',
   currentUserLikes: (slug: string, sessionId: string) =>
-    `post:likes:${slug}:current-user-likes:${sessionId}`,
-  socketSessions: 'socket:sessions'
+    `post:likes:${slug}:current-user-likes:${sessionId}`
 }

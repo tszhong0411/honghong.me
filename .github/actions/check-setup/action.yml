@@ -43,4 +43,3 @@ runs:
         echo "UPSTASH_REDIS_REST_TOKEN=honghongme" >> .env.local
         echo "AUTH_SECRET=honghongme" >> .env.local
         echo "AUTH_TRUST_HOST=true" >> .env.local
-        echo "NEXT_PUBLIC_WS_URL=http://localhost:3003" >> .env.local
