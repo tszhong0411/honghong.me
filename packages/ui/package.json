@@ -26,6 +26,7 @@
     "lint:fix": "eslint --fix .",
     "type-check": "tsc --noEmit"
   },
+  "sideEffects": false,
   "types": "./dist/index.d.ts",
   "dependencies": {
     "@icons-pack/react-simple-icons": "^9.5.0",

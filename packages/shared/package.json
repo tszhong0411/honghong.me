@@ -15,6 +15,7 @@
     "lint:fix": "eslint --fix .",
     "type-check": "tsc --noEmit"
   },
+  "sideEffects": false,
   "types": "./dist/index.d.ts",
   "devDependencies": {
     "@tszhong0411/eslint-config": "workspace:*",

@@ -7,5 +7,6 @@ export default defineConfig({
   },
   dts: true,
   format: ['esm'],
-  target: 'esnext'
+  target: 'esnext',
+  clean: true
 })
