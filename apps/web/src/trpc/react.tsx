@@ -72,7 +72,7 @@ export const TRPCReactProvider = (props: TRPCReactProviderProps) => {
           <ReactQueryStreamedHydration transformer={SuperJSON}>
             {children}
           </ReactQueryStreamedHydration>
-          <ReactQueryDevtools buttonPosition='bottom-left' />
+          <ReactQueryDevtools />
         </QueryClientProvider>
       </api.Provider>
     </QueryNormalizerProvider>
