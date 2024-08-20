@@ -63,11 +63,17 @@ const Header = () => {
           </div>
           <div className='space-y-1 md:mx-auto'>
             <div className='text-muted-foreground'>Views</div>
-            {viewsCountQuery.isLoading ? '--' : <div>{viewsCountQuery.data?.views}</div>}
+            {viewsCountQuery.status === 'pending' ? '--' : null}
+            {viewsCountQuery.status === 'error' ? 'Error' : null}
+            {viewsCountQuery.status === 'success' ? <div>{viewsCountQuery.data.views}</div> : null}
           </div>
           <div className='space-y-1 md:mx-auto'>
             <div className='text-muted-foreground'>Comments</div>
-            {commentsCountQuery.isLoading ? '--' : <div>{commentsCountQuery.data?.value}</div>}
+            {commentsCountQuery.status === 'pending' ? '--' : null}
+            {commentsCountQuery.status === 'error' ? 'Error' : null}
+            {commentsCountQuery.status === 'success' ? (
+              <div>{commentsCountQuery.data.comments}</div>
+            ) : null}
           </div>
         </div>
       </div>

@@ -5,6 +5,7 @@ import { cn } from '@tszhong0411/utils'
 import { motion, useInView } from 'framer-motion'
 import { ArrowUpRightIcon, PencilIcon } from 'lucide-react'
 import type { BlogPost } from 'mdx/generated'
+import pluralize from 'pluralize'
 import { useRef } from 'react'
 
 import { useFormattedDate } from '@/hooks/use-formatted-date'
@@ -134,9 +135,17 @@ const Card = (props: CardProps) => {
       <div className='flex items-center justify-between gap-2 px-2 pt-4 text-sm text-zinc-500'>
         {formattedDate}
         <div className='flex gap-2'>
-          {likesQuery.isLoading ? '--' : <div>{likesQuery.data?.likes} likes</div>}
+          {likesQuery.status === 'pending' ? '--' : null}
+          {likesQuery.status === 'error' ? 'Error' : null}
+          {likesQuery.status === 'success' ? (
+            <div>{pluralize('like', likesQuery.data.likes, true)}</div>
+          ) : null}
           <div>&middot;</div>
-          {viewsQuery.isLoading ? '--' : <div>{viewsQuery.data?.views} views</div>}
+          {viewsQuery.status === 'pending' ? '--' : null}
+          {viewsQuery.status === 'error' ? 'Error' : null}
+          {viewsQuery.status === 'success' ? (
+            <div>{pluralize('view', viewsQuery.data.views, true)}</div>
+          ) : null}
         </div>
       </div>
       <div className='flex flex-col px-2 py-4 transition-transform ease-out group-hover:translate-x-0.5'>
