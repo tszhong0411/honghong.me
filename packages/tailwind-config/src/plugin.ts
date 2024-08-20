@@ -55,7 +55,7 @@ export const ui = plugin(({ addBase, addComponents }) => {
       '--accent': '0 0% 15%',
       '--accent-foreground': '0 0% 100%',
 
-      '--destructive': '0 62.8% 30.6%',
+      '--destructive': '6 84% 48%',
       '--destructive-foreground': '0 0% 98%',
 
       '--border': '0 0% 14%',
