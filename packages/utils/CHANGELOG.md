@@ -1,5 +1,11 @@
 # @tszhong0411/utils
 
+## 0.0.14
+
+### Patch Changes
+
+- [#846](https://github.com/tszhong0411/honghong.me/pull/846) [`67739dd`](https://github.com/tszhong0411/honghong.me/commit/67739dd261ee2eaa41d0b4a7e9ac303b558b1ff6) Thanks [@tszhong0411](https://github.com/tszhong0411)! - tree-shakable
+
 ## 0.0.13
 
 ### Patch Changes

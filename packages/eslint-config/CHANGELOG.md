@@ -1,5 +1,11 @@
 # @tszhong0411/eslint-config
 
+## 0.1.9
+
+### Patch Changes
+
+- [#846](https://github.com/tszhong0411/honghong.me/pull/846) [`720fe93`](https://github.com/tszhong0411/honghong.me/commit/720fe936e3754e927943fcc513701e5be8cc4bed) Thanks [@tszhong0411](https://github.com/tszhong0411)! - tree-shakable
+
 ## 0.1.8
 
 ### Patch Changes
