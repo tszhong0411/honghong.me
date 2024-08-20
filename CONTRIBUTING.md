@@ -80,6 +80,7 @@ The services will be available at the following URLs:
 | App                     | `localhost:3000` |
 | React Email             | `localhost:3001` |
 | Docs                    | `localhost:3002` |
+| WebSocket               | `localhost:3003` |
 | ESLint Config Inspector | `localhost:7777` |
 | Database                | `localhost:8080` |
 | Redis                   | `localhost:6379` |

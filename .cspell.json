@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
-  "dictionaries": ["libraries", "project-words", "names"],
+  "dictionaries": ["libraries", "project-words", "names", "redis"],
   "dictionaryDefinitions": [
     {
       "description": "A list of libraries",
@@ -25,7 +25,12 @@
     ".*/**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,md,mdx,json,yml,yaml,svg,webmanifest}"
   ],
   "ignorePaths": ["pnpm-lock.yaml", "CHANGELOG.md", ".pnpm-store/"],
-  "import": ["@cspell/dict-software-terms", "@cspell/dict-npm", "@cspell/dict-fullstack"],
+  "import": [
+    "@cspell/dict-software-terms",
+    "@cspell/dict-npm",
+    "@cspell/dict-fullstack",
+    "@cspell/dict-redis"
+  ],
   "useGitignore": true,
   "version": "0.2"
 }
