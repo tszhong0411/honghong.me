@@ -1,0 +1,39 @@
+---
+title: Form
+description: Building forms with React Hook Form and Zod.
+---
+
+<ComponentPreview name='form/form' />
+
+## Usage
+
+```tsx
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage
+} from '@tszhong0411/ui'
+```
+
+```tsx
+<Form {...form}>
+  <form onSubmit={form.handleSubmit(onSubmit)}>
+    <FormField
+      control={form.control}
+      name='...'
+      render={({ field }) => (
+        <FormItem>
+          <FormLabel />
+          <FormControl />
+          <FormDescription />
+          <FormMessage />
+        </FormItem>
+      )}
+    />
+  </form>
+</Form>
+```
