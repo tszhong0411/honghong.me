@@ -74,7 +74,7 @@ const MessageBox = (props: FormProps) => {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Textarea placeholder='Leave message' {...field} />
+                  <Textarea placeholder='Leave a message' {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
