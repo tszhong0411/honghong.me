@@ -28,7 +28,7 @@ const Form = (props: FormProps) => {
       textareaRef.current!.value = ''
       toast.success('Create message successfully')
     },
-    onSettled: () => utils.guestbook.get.invalidate(),
+    onSettled: () => utils.guestbook.invalidate(),
     onError: (error) => toast.error(error.message)
   })
 

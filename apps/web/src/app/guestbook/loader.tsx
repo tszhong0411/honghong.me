@@ -1,5 +1,6 @@
 import { Skeleton } from '@tszhong0411/ui'
-import { range } from '@tszhong0411/utils'
+import { cn, range } from '@tszhong0411/utils'
+import { forwardRef } from 'react'
 
 const Placeholder = () => (
   <div className='rounded-lg border p-4 shadow-sm dark:bg-zinc-900/30'>
@@ -14,14 +15,18 @@ const Placeholder = () => (
   </div>
 )
 
-const Loader = () => {
+const Loader = forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>((props, ref) => {
+  const { className, ...rest } = props
+
   return (
-    <>
+    <div className={cn('flex flex-col gap-4', className)} ref={ref} {...rest}>
       {range(8).map((n) => (
         <Placeholder key={n} />
       ))}
-    </>
+    </div>
   )
-}
+})
+
+Loader.displayName = 'Loader'
 
 export default Loader

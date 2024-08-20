@@ -1,6 +1,6 @@
 import { createId } from '@paralleldrive/cuid2'
 import { TRPCError } from '@trpc/server'
-import { and, desc, eq, guestbook } from '@tszhong0411/db'
+import { and, desc, eq, guestbook, lt } from '@tszhong0411/db'
 import { env, flags } from '@tszhong0411/env'
 import { ratelimit } from '@tszhong0411/kv'
 import { z } from 'zod'
@@ -15,39 +15,53 @@ import { createTRPCRouter, protectedProcedure, publicProcedure } from '../trpc'
 const getKey = (id: string) => `guestbook:${id}`
 
 export const guestbookRouter = createTRPCRouter({
-  get: publicProcedure.query(async ({ ctx }) => {
-    const ip = getIp(ctx.headers)
+  getInfiniteMessages: publicProcedure
+    .input(
+      z.object({
+        cursor: z.date().nullish(),
+        limit: z.number().min(1).max(50).default(10)
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      const ip = getIp(ctx.headers)
 
-    const { success } = await ratelimit.limit(getKey(`get:${ip}`))
+      const { success } = await ratelimit.limit(getKey(`get:${ip}`))
 
-    if (!success) throw new TRPCError({ code: 'TOO_MANY_REQUESTS' })
+      if (!success) throw new TRPCError({ code: 'TOO_MANY_REQUESTS' })
 
-    const query = await ctx.db.query.guestbook.findMany({
-      with: {
-        user: {
-          columns: {
-            name: true,
-            image: true,
-            id: true
+      const query = await ctx.db.query.guestbook.findMany({
+        where: and(input.cursor ? lt(guestbook.createdAt, input.cursor) : undefined),
+        limit: input.limit,
+        with: {
+          user: {
+            columns: {
+              name: true,
+              image: true,
+              id: true
+            }
+          }
+        },
+        orderBy: desc(guestbook.updatedAt)
+      })
+
+      const result = query.map((message) => {
+        const { defaultImage, defaultName } = getDefaultUser(message.user.id)
+
+        return {
+          ...message,
+          user: {
+            ...message.user,
+            name: message.user.name ?? defaultName,
+            image: message.user.image ?? defaultImage
           }
         }
-      },
-      orderBy: desc(guestbook.updatedAt)
-    })
-
-    return query.map((message) => {
-      const { defaultImage, defaultName } = getDefaultUser(message.user.id)
+      })
 
       return {
-        ...message,
-        user: {
-          ...message.user,
-          name: message.user.name ?? defaultName,
-          image: message.user.image ?? defaultImage
-        }
+        messages: result,
+        nextCursor: result.at(-1)?.updatedAt ?? null
       }
-    })
-  }),
+    }),
   create: protectedProcedure
     .input(
       z.object({
@@ -126,4 +140,4 @@ export const guestbookRouter = createTRPCRouter({
     })
 })
 
-export type GuestbookOutput = RouterOutputs['guestbook']['get']
+export type GuestbookOutput = RouterOutputs['guestbook']['getInfiniteMessages']
