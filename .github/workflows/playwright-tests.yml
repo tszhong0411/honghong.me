@@ -41,6 +41,9 @@ jobs:
       - name: Run services
         run: docker compose up -d
 
+      - name: Migrate database
+        run: pnpm run db:migrate
+
       - name: Run Playwright tests
         run: pnpm run test:e2e
 
