@@ -2,6 +2,7 @@ import { AxeBuilder } from '@axe-core/playwright'
 import { expect, test } from '@playwright/test'
 
 import { A11Y_TAGS } from '../constants'
+import { createBrowserContext } from '../utils/theme'
 
 test.describe('homepage', () => {
   test('should not have any automatically detectable accessibility issues in light mode', async ({
@@ -15,12 +16,17 @@ test.describe('homepage', () => {
   })
 
   test('should not have any automatically detectable accessibility issues in dark mode', async ({
-    page
+    browser,
+    baseURL
   }) => {
-    await page.goto('/')
+    const context = await createBrowserContext(browser, {
+      baseURL,
+      localStorage: [{ name: 'theme', value: 'dark' }]
+    })
 
-    await page.locator('[data-test-id="theme-toggle"]').click()
-    await page.locator(`[data-test-id="theme-dark-button"]`).click()
+    const page = await context.newPage()
+
+    await page.goto('/')
 
     const a11yResults = await new AxeBuilder({ page }).withTags(A11Y_TAGS).analyze()
 

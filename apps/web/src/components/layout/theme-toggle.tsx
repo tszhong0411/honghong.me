@@ -19,7 +19,7 @@ const ThemeToggle = () => {
           className='size-9 p-0'
           type='button'
           aria-label='Toggle theme'
-          data-test-id='theme-toggle'
+          data-testid='theme-toggle'
         >
           <span className='sr-only'>Toggle theme</span>
           <SunIcon className='size-4 dark:hidden' />
@@ -32,7 +32,7 @@ const ThemeToggle = () => {
           onClick={() => {
             setTheme('light')
           }}
-          data-test-id='theme-light-button'
+          data-testid='theme-light-button'
         >
           <SunIcon className='size-[18px]' /> Light
         </DropdownMenuItem>
@@ -41,7 +41,7 @@ const ThemeToggle = () => {
           onClick={() => {
             setTheme('dark')
           }}
-          data-test-id='theme-dark-button'
+          data-testid='theme-dark-button'
         >
           <MoonIcon className='size-[18px]' /> Dark
         </DropdownMenuItem>
@@ -50,7 +50,7 @@ const ThemeToggle = () => {
           onClick={() => {
             setTheme('system')
           }}
-          data-test-id='theme-system-button'
+          data-testid='theme-system-button'
         >
           <MonitorIcon className='size-[18px]' /> System
         </DropdownMenuItem>

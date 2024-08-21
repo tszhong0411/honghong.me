@@ -3,6 +3,8 @@ import { accounts, db, sessions, users } from '@tszhong0411/db'
 import dayjs from 'dayjs'
 import path from 'node:path'
 
+import { TEST_USER } from './constants'
+
 const authenticatedStoragePath = path.resolve(import.meta.dirname, '.auth/user.json')
 const unauthenticatedStoragePath = path.resolve(import.meta.dirname, '.auth/unauthenticated.json')
 
@@ -11,8 +13,8 @@ setup('unauthenticated', async ({ page }) => {
 })
 
 setup('authenticate user', async ({ page }) => {
-  const userId = '000000000000000000000000'
-  const sessionToken = '00000000-0000-0000-0000-000000000000'
+  const userId = TEST_USER.id
+  const sessionToken = TEST_USER.sessionToken
   const expires = dayjs().add(1, 'month').toDate()
 
   await db
@@ -21,7 +23,7 @@ setup('authenticate user', async ({ page }) => {
       id: userId,
       name: 'Test User',
       email: 'user@honghong.me',
-      image: 'http://localhost/api/avatar/test',
+      image: 'http://localhost:3000/api/avatar/test',
       role: 'user'
     })
     .onConflictDoNothing({ target: users.id })

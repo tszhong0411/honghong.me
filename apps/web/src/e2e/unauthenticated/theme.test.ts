@@ -12,8 +12,8 @@ const createThemeTest = (theme: 'light' | 'dark') => {
     const page = await context.newPage()
     await page.goto('/')
 
-    await page.locator('[data-test-id="theme-toggle"]').click()
-    await page.locator(`[data-test-id="theme-${theme}-button"]`).click()
+    await page.getByTestId('theme-toggle').click()
+    await page.getByTestId(`theme-${theme}-button`).click()
 
     await checkStoredTheme(page, theme)
     await checkAppliedTheme(page, theme)

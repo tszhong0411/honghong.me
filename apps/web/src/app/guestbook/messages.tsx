@@ -50,7 +50,7 @@ const Messages = () => {
   }, [fetchNextPage, hasNextPage, inView])
 
   return (
-    <div className='mt-10 flex flex-col gap-4'>
+    <div className='mt-10 flex flex-col gap-4' data-testid='guestbook-messages-list'>
       {status === 'success'
         ? data.pages.map((page) =>
             page.messages.map((message) => <Message key={message.id} message={message} />)
@@ -98,7 +98,7 @@ const Message = (props: MessageProps) => {
 
   return (
     <MessageProvider value={context}>
-      <div key={id} className='rounded-lg border p-4 shadow-sm dark:bg-zinc-900/30'>
+      <div className='rounded-lg border p-4 shadow-sm dark:bg-zinc-900/30' id={`message-${id}`}>
         <div className='mb-3 flex gap-3'>
           <Avatar>
             <AvatarImage
