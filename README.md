@@ -7,13 +7,9 @@
 </h1>
 
 <p align="center">
-  <a aria-label="Framework" href="https://nextjs.org">
-    <img alt="" src="https://img.shields.io/badge/Next.js-000000.svg?style=for-the-badge&logo=Next.js&labelColor=000">
-  </a>
+  <img alt="" src="https://img.shields.io/badge/Next.js-000000.svg?style=for-the-badge&logo=Next.js&labelColor=000">
   <img alt="" src="https://img.shields.io/github/languages/top/tszhong0411/honghong.me?style=for-the-badge&labelColor=000">
-  <a aria-label="License" href="https://github.com/tszhong0411/honghong.me/blob/main/LICENSE">
-    <img alt="" src="https://img.shields.io/github/license/tszhong0411/honghong.me?style=for-the-badge&labelColor=000">
-  </a>
+  <img alt="" src="https://img.shields.io/github/license/tszhong0411/honghong.me?style=for-the-badge&labelColor=000">
 </p>
 
 Welcome to the monorepo of my personal blog! This repository houses the code for my blog, where I share my thoughts, projects, and insights. Feel free to explore and get inspired.
@@ -48,6 +44,9 @@ Welcome to the monorepo of my personal blog! This repository houses the code for
 - 👷🏻‍♂️ t3-env - validate environment variables before building
 - 🤖 Auto refresh - fast refresh when updating MDX
 - 🌄 Open graph image - using `next/og`
+- 📁 Redis - for caching
+- 🧯 Upstash - for API rate limiting
+- 🪄 CSpell - for spelling checking
 
 ## 🔨 Requirements
 
@@ -77,7 +76,7 @@ Without them, this project would not have been possible:
 
 Referenced the following projects for inspiration:
 
-- [fumadocs](https://fumadocs.vercel.app/) ❤️
+- [fumadocs](https://fumadocs.vercel.app/)
 - [leerob.io](https://leerob.io/)
 - [nextra](https://nextra.site/)
 - [theodorusclarence.com](https://theodorusclarence.com/)
@@ -112,6 +111,7 @@ This project is open source and available under the [GPL3 License](LICENSE).
 [![Star History Chart](https://api.star-history.com/svg?repos=tszhong0411/honghong.me&type=Date)](https://star-history.com/#tszhong0411/honghong.me&Date)
 
 <hr>
+
 <p align="center">
-Made with ❤️ in Hong Kong
+  Made with ❤️ in Hong Kong
 </p>
