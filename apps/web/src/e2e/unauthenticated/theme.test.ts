@@ -62,9 +62,11 @@ const createStorageThemeTest = (theme: 'light' | 'dark') => {
   })
 }
 
-createThemeTest('light')
-createThemeTest('dark')
-createSystemThemeTest('/', 'light', 'light')
-createSystemThemeTest('/', 'dark', 'dark')
-createStorageThemeTest('light')
-createStorageThemeTest('dark')
+test.describe('theme', () => {
+  createThemeTest('light')
+  createThemeTest('dark')
+  createSystemThemeTest('/', 'light', 'light')
+  createSystemThemeTest('/', 'dark', 'dark')
+  createStorageThemeTest('light')
+  createStorageThemeTest('dark')
+})

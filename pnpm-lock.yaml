@@ -127,13 +127,13 @@ importers:
         version: 0.7.0
       geist:
         specifier: ^1.3.0
-        version: 1.3.1(next@14.2.3(@babel/core@7.24.9)(@opentelemetry/api@1.9.0)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.3.1))(react@18.3.1))
+        version: 1.3.1(next@14.2.3(@opentelemetry/api@1.9.0)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.3.1))(react@18.3.1))
       lucide-react:
         specifier: ^0.394.0
         version: 0.394.0(react@18.3.1)
       next:
         specifier: 14.2.3
-        version: 14.2.3(@babel/core@7.24.9)(@opentelemetry/api@1.9.0)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.3.1))(react@18.3.1)
+        version: 14.2.3(@opentelemetry/api@1.9.0)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.3.1))(react@18.3.1)
       next-themes:
         specifier: ^0.3.0
         version: 0.3.0(react-dom@18.2.0(react@18.3.1))(react@18.3.1)
@@ -210,6 +210,9 @@ importers:
       '@auth/drizzle-adapter':
         specifier: 1.2.0
         version: 1.2.0
+      '@axe-core/playwright':
+        specifier: ^4.10.0
+        version: 4.10.0(playwright-core@1.45.3)
       '@hookform/resolvers':
         specifier: ^3.9.0
         version: 3.9.0(react-hook-form@7.52.2(react@18.3.1))
@@ -840,7 +843,7 @@ importers:
         version: 18.3.3
       next:
         specifier: 14.2.3
-        version: 14.2.3(@babel/core@7.24.9)(@opentelemetry/api@1.9.0)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.3.1))(react@18.3.1)
+        version: 14.2.3(@opentelemetry/api@1.9.0)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.3.1))(react@18.3.1)
       react:
         specifier: 18.3.1
         version: 18.3.1
@@ -896,6 +899,11 @@ packages:
 
   '@auth/drizzle-adapter@1.2.0':
     resolution: {integrity: sha512-95LHWlgtR4rQeHy4bACiVgTZdWkkEpVXYJim1IqbF1Hy0MnnMalmfGuIlNcOi64+6iC17j5FkDsMchqGwvj2Dg==}
+
+  '@axe-core/playwright@4.10.0':
+    resolution: {integrity: sha512-kEr3JPEVUSnKIYp/egV2jvFj+chIjCjPp3K3zlpJMza/CB3TFw8UZNbI9agEC2uMz4YbgAOyzlbUy0QS+OofFA==}
+    peerDependencies:
+      playwright-core: '>= 1.0.0'
 
   '@babel/code-frame@7.24.7':
     resolution: {integrity: sha512-BcYH1CVJBO9tvyIZ2jVeXgSIMvGZ2FDRvDdOIVQyuklNKSsx+eppDEBq/g47Ayw+RqNFE+URvOShmf+f/qwAlA==}
@@ -5562,6 +5570,10 @@ packages:
   available-typed-arrays@1.0.7:
     resolution: {integrity: sha512-wvUjBtSGN7+7SjNpq/9M2Tg350UZD3q62IFZLbRAR1bSMlCo1ZaeW+BJ+D090e4hIIZLBcTDWe4Mh4jvUDajzQ==}
     engines: {node: '>= 0.4'}
+
+  axe-core@4.10.0:
+    resolution: {integrity: sha512-Mr2ZakwQ7XUAjp7pAwQWRhhK8mQQ6JAaNWSjmjxil0R8BPioMtQsTLOolGYkji1rcL++3dCqZA3zWqpT+9Ew6g==}
+    engines: {node: '>=4'}
 
   axe-core@4.9.1:
     resolution: {integrity: sha512-QbUdXJVTpvUTHU7871ppZkdOLBeGUKBQWHkHrvN2V9IQWGMt61zf3B45BtzjxEJzYuj0JBjBZP/hmYS/R9pmAw==}
@@ -11275,6 +11287,11 @@ snapshots:
       - '@simplewebauthn/server'
       - nodemailer
 
+  '@axe-core/playwright@4.10.0(playwright-core@1.45.3)':
+    dependencies:
+      axe-core: 4.10.0
+      playwright-core: 1.45.3
+
   '@babel/code-frame@7.24.7':
     dependencies:
       '@babel/highlight': 7.24.7
@@ -16511,6 +16528,8 @@ snapshots:
     dependencies:
       possible-typed-array-names: 1.0.0
 
+  axe-core@4.10.0: {}
+
   axe-core@4.9.1: {}
 
   axobject-query@3.1.1:
@@ -18481,6 +18500,10 @@ snapshots:
   geist@1.3.1(next@14.2.3(@babel/core@7.24.9)(@opentelemetry/api@1.9.0)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.3.1))(react@18.3.1)):
     dependencies:
       next: 14.2.3(@babel/core@7.24.9)(@opentelemetry/api@1.9.0)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.3.1))(react@18.3.1)
+
+  geist@1.3.1(next@14.2.3(@opentelemetry/api@1.9.0)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.3.1))(react@18.3.1)):
+    dependencies:
+      next: 14.2.3(@opentelemetry/api@1.9.0)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.3.1))(react@18.3.1)
 
   gensequence@7.0.0: {}
 
@@ -20509,6 +20532,33 @@ snapshots:
       react: 18.3.1
       react-dom: 18.2.0(react@18.3.1)
       styled-jsx: 5.1.1(@babel/core@7.24.9)(react@18.3.1)
+    optionalDependencies:
+      '@next/swc-darwin-arm64': 14.2.3
+      '@next/swc-darwin-x64': 14.2.3
+      '@next/swc-linux-arm64-gnu': 14.2.3
+      '@next/swc-linux-arm64-musl': 14.2.3
+      '@next/swc-linux-x64-gnu': 14.2.3
+      '@next/swc-linux-x64-musl': 14.2.3
+      '@next/swc-win32-arm64-msvc': 14.2.3
+      '@next/swc-win32-ia32-msvc': 14.2.3
+      '@next/swc-win32-x64-msvc': 14.2.3
+      '@opentelemetry/api': 1.9.0
+      '@playwright/test': 1.45.3
+    transitivePeerDependencies:
+      - '@babel/core'
+      - babel-plugin-macros
+
+  next@14.2.3(@opentelemetry/api@1.9.0)(@playwright/test@1.45.3)(react-dom@18.2.0(react@18.3.1))(react@18.3.1):
+    dependencies:
+      '@next/env': 14.2.3
+      '@swc/helpers': 0.5.5
+      busboy: 1.6.0
+      caniuse-lite: 1.0.30001643
+      graceful-fs: 4.2.11
+      postcss: 8.4.31
+      react: 18.3.1
+      react-dom: 18.2.0(react@18.3.1)
+      styled-jsx: 5.1.1(@babel/core@7.24.5)(react@18.3.1)
     optionalDependencies:
       '@next/swc-darwin-arm64': 14.2.3
       '@next/swc-darwin-x64': 14.2.3

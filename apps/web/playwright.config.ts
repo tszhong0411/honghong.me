@@ -34,7 +34,7 @@ export default defineConfig({
     }
   ],
   webServer: {
-    command: 'pnpm start',
+    command: `pnpm ${CI ? 'start' : 'dev'}`,
     url: baseURL,
     timeout: 1000 * 60 * 5,
     reuseExistingServer: !CI

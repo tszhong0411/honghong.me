@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@auth/drizzle-adapter": "1.2.0",
+    "@axe-core/playwright": "^4.10.0",
     "@hookform/resolvers": "^3.9.0",
     "@icons-pack/react-simple-icons": "^9.5.0",
     "@nanostores/react": "^0.7.2",
