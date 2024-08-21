@@ -13,8 +13,8 @@
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint --fix .",
     "start": "dotenv -e ../../.env.local -- next start -p 3000",
-    "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui",
+    "test:e2e": "dotenv -e ../../.env.local -- playwright test",
+    "test:e2e:ui": "dotenv -e ../../.env.local -- playwright test --ui",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {

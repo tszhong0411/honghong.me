@@ -39,6 +39,7 @@ volumes/
 playwright-report/
 test-results/
 coverage/
+**/src/e2e/.auth/
 
 # TypeScript
 *.tsbuildinfo

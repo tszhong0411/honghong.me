@@ -28,6 +28,7 @@
     "prepare": "husky && pnpm build:packages",
     "release": "changeset publish",
     "test:e2e": "turbo test:e2e",
+    "test:e2e:install": "playwright install",
     "test:e2e:ui": "turbo test:e2e:ui",
     "test:unit": "vitest run",
     "test:unit:coverage": "vitest --coverage --ui",

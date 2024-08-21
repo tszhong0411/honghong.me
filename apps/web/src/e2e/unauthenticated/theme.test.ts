@@ -1,6 +1,6 @@
 import test from '@playwright/test'
 
-import { checkAppliedTheme, checkStoredTheme, createBrowserContext } from './utils/theme'
+import { checkAppliedTheme, checkStoredTheme, createBrowserContext } from '../utils/theme'
 
 const createThemeTest = (theme: 'light' | 'dark') => {
   test(`should render ${theme} theme`, async ({ browser, baseURL }) => {
