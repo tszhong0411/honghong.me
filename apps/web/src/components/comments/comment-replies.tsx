@@ -16,7 +16,7 @@ const CommentReplies = () => {
   const { slug } = useCommentsContext()
   const [params] = useCommentParams()
 
-  const { status, data, fetchNextPage, hasNextPage } =
+  const { status, data, fetchNextPage, hasNextPage, isFetchingNextPage } =
     api.comments.getInfiniteComments.useInfiniteQuery(
       {
         slug,
@@ -59,7 +59,8 @@ const CommentReplies = () => {
               </p>
             </div>
           ) : null}
-          {hasNextPage ? <CommentLoader ref={ref} /> : null}
+          {status === 'pending' || isFetchingNextPage ? <CommentLoader /> : null}
+          <span ref={ref} className='invisible' />
         </div>
       ) : null}
     </>

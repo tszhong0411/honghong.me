@@ -16,7 +16,7 @@ const CommentsList = () => {
   const { slug, sort } = useCommentsContext()
   const [params] = useCommentParams()
 
-  const { status, data, fetchNextPage, hasNextPage } =
+  const { status, data, fetchNextPage, hasNextPage, isFetchingNextPage } =
     api.comments.getInfiniteComments.useInfiniteQuery(
       {
         slug,
@@ -39,7 +39,6 @@ const CommentsList = () => {
     <>
       <CommentHeader />
       <div className='space-y-4 rounded-lg border py-2'>
-        {status === 'pending' ? <CommentLoader /> : null}
         {status === 'success'
           ? data.pages.map((page) =>
               page.comments.map((comment) => <Comment key={comment.id} comment={comment} />)
@@ -57,7 +56,8 @@ const CommentsList = () => {
             </p>
           </div>
         ) : null}
-        {hasNextPage ? <CommentLoader ref={ref} /> : null}
+        {status === 'pending' || isFetchingNextPage ? <CommentLoader /> : null}
+        <span ref={ref} className='invisible' />
       </div>
     </>
   )

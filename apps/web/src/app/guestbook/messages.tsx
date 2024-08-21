@@ -34,7 +34,7 @@ const UpdatedDate = (props: UpdatedDateProps) => {
 }
 
 const Messages = () => {
-  const { status, data, fetchNextPage, hasNextPage } =
+  const { status, data, fetchNextPage, hasNextPage, isFetchingNextPage } =
     api.guestbook.getInfiniteMessages.useInfiniteQuery(
       {},
       {
@@ -51,7 +51,6 @@ const Messages = () => {
 
   return (
     <div className='mt-10 flex flex-col gap-4'>
-      {status === 'pending' ? <Loader /> : null}
       {status === 'success'
         ? data.pages.map((page) =>
             page.messages.map((message) => <Message key={message.id} message={message} />)
@@ -71,7 +70,8 @@ const Messages = () => {
           </p>
         </div>
       ) : null}
-      {hasNextPage ? <Loader ref={ref} /> : null}
+      {status === 'pending' || isFetchingNextPage ? <Loader /> : null}
+      <span ref={ref} className='invisible' />
     </div>
   )
 }
