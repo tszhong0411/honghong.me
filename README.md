@@ -107,6 +107,10 @@ Please do not deploy this directly to production. It is not a template and is no
 
 This project is open source and available under the [GPL3 License](LICENSE).
 
+## ⭐️ Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=tszhong0411/honghong.me&type=Date)](https://star-history.com/#tszhong0411/honghong.me&Date)
+
 <hr>
 <p align="center">
 Made with ❤️ in Hong Kong
