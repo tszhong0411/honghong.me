@@ -1,3 +1,6 @@
+@import '@tszhong0411/tailwind-config/src/base.css';
+@import '@tszhong0411/tailwind-config/src/shiki.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
