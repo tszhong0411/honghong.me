@@ -1,5 +1,11 @@
 # @tszhong0411/tailwind-config
 
+## 0.0.14
+
+### Patch Changes
+
+- [`c55d148`](https://github.com/tszhong0411/honghong.me/commit/c55d14871ce7510226d2cb0b02222e86f23a8b40) Thanks [@tszhong0411](https://github.com/tszhong0411)! - use plugin instead
+
 ## 0.0.13
 
 ### Patch Changes
