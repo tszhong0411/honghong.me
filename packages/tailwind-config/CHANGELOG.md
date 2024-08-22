@@ -1,5 +1,11 @@
 # @tszhong0411/tailwind-config
 
+## 0.0.13
+
+### Patch Changes
+
+- [`cf4c3af`](https://github.com/tszhong0411/honghong.me/commit/cf4c3af98757bc3d2daf6dddb60ec68f5d492c29) Thanks [@tszhong0411](https://github.com/tszhong0411)! - export css
+
 ## 0.0.12
 
 ### Patch Changes
