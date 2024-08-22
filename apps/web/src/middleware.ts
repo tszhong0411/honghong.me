@@ -17,7 +17,7 @@ const middleware = () => {
     block-all-mixed-content;
     upgrade-insecure-requests;
     worker-src blob:;
-`
+  `
 
   const response = NextResponse.next()
 
