@@ -1,6 +1,3 @@
-@import '@tszhong0411/tailwind-config/src/base.css';
-@import '@tszhong0411/tailwind-config/src/shiki.css';
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -15,4 +12,24 @@
       min-height: calc(100vh - 600px - 96px - 96px - 64px - 24px);
     }
   }
+}
+
+.shiki span {
+  color: var(--shiki-light);
+}
+
+.dark .shiki span {
+  color: var(--shiki-dark);
+}
+
+pre.shiki {
+  font-size: 13px;
+}
+
+pre.shiki .highlighted {
+  margin: 0 -16px;
+  padding: 0 16px;
+  display: inline-block;
+  min-width: calc(100% + 32px);
+  background-color: theme('colors.primary.DEFAULT / 10%');
 }
