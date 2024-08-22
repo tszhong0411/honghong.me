@@ -15,7 +15,7 @@ export default tszhong0411(
       'playwright/expect-expect': [
         'error',
         {
-          assertFunctionNames: ['checkStoredTheme', 'checkAppliedTheme']
+          assertFunctionNames: ['checkStoredTheme', 'checkAppliedTheme', 'a11y']
         }
       ]
     }

@@ -1,7 +1,7 @@
-import { AxeBuilder } from '@axe-core/playwright'
-import { expect, test } from '@playwright/test'
+import { test } from '@playwright/test'
 
-import { A11Y_TAGS } from '../constants'
+import { a11y } from '../utils/a11y'
+import { scrollToBottom } from '../utils/scroll-to-bottom'
 import { createBrowserContext } from '../utils/theme'
 
 test.describe('homepage', () => {
@@ -9,10 +9,9 @@ test.describe('homepage', () => {
     page
   }) => {
     await page.goto('/')
+    await scrollToBottom(page)
 
-    const a11yResults = await new AxeBuilder({ page }).withTags(A11Y_TAGS).analyze()
-
-    expect(a11yResults.violations).toEqual([])
+    await a11y({ page })
   })
 
   test('should not have any automatically detectable accessibility issues in dark mode', async ({
@@ -25,11 +24,9 @@ test.describe('homepage', () => {
     })
 
     const page = await context.newPage()
-
     await page.goto('/')
+    await scrollToBottom(page)
 
-    const a11yResults = await new AxeBuilder({ page }).withTags(A11Y_TAGS).analyze()
-
-    expect(a11yResults.violations).toEqual([])
+    await a11y({ page })
   })
 })
