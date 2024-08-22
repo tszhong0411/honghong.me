@@ -2,8 +2,6 @@ import typography from '@tailwindcss/typography'
 import type { Config } from 'tailwindcss'
 import animate from 'tailwindcss-animate'
 
-import { ui } from './src/plugin'
-
 const config: Partial<Config> = {
   darkMode: 'class',
   theme: {
@@ -130,7 +128,7 @@ const config: Partial<Config> = {
   future: {
     hoverOnlyWhenSupported: true
   },
-  plugins: [typography, animate, ui]
+  plugins: [typography, animate]
 }
 
 export default config
