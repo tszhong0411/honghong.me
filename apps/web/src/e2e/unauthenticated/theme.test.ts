@@ -1,6 +1,6 @@
 import test from '@playwright/test'
 
-import { checkAppliedTheme, checkStoredTheme, createBrowserContext } from './utils/theme'
+import { checkAppliedTheme, checkStoredTheme, createBrowserContext } from '../utils/theme'
 
 const createThemeTest = (theme: 'light' | 'dark') => {
   test(`should render ${theme} theme`, async ({ browser, baseURL }) => {
@@ -12,8 +12,8 @@ const createThemeTest = (theme: 'light' | 'dark') => {
     const page = await context.newPage()
     await page.goto('/')
 
-    await page.locator('[data-test-id="theme-toggle"]').click()
-    await page.locator(`[data-test-id="theme-${theme}-button"]`).click()
+    await page.getByTestId('theme-toggle').click()
+    await page.getByTestId(`theme-${theme}-button`).click()
 
     await checkStoredTheme(page, theme)
     await checkAppliedTheme(page, theme)
@@ -62,9 +62,11 @@ const createStorageThemeTest = (theme: 'light' | 'dark') => {
   })
 }
 
-createThemeTest('light')
-createThemeTest('dark')
-createSystemThemeTest('/', 'light', 'light')
-createSystemThemeTest('/', 'dark', 'dark')
-createStorageThemeTest('light')
-createStorageThemeTest('dark')
+test.describe('theme', () => {
+  createThemeTest('light')
+  createThemeTest('dark')
+  createSystemThemeTest('/', 'light', 'light')
+  createSystemThemeTest('/', 'dark', 'dark')
+  createStorageThemeTest('light')
+  createStorageThemeTest('dark')
+})

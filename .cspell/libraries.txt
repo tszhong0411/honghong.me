@@ -1,4 +1,5 @@
 astro
+authjs
 autosize
 bradlc
 cmdk
