@@ -65,9 +65,9 @@ const CommentNotification = (props: CommentNotificationProps) => {
         <Container
           style={{
             border: `1px solid ${borderColor}`,
-            margin: '40px auto',
+            margin: '10px auto',
             maxWidth: '100%',
-            width: '550px',
+            width: '600px',
             borderRadius: '8px',
             padding: '24px'
           }}
