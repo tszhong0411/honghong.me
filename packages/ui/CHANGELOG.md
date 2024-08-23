@@ -1,5 +1,16 @@
 # @tszhong0411/ui
 
+## 0.0.30
+
+### Patch Changes
+
+- [`715584d`](https://github.com/tszhong0411/honghong.me/commit/715584daceb31a304b68500261f7ac3078206913) Thanks [@tszhong0411](https://github.com/tszhong0411)! - fix eslint error
+
+- [`f7c6e13`](https://github.com/tszhong0411/honghong.me/commit/f7c6e135a6e3a88e64a0638f60078fcc3f5151ec) Thanks [@tszhong0411](https://github.com/tszhong0411)! - fix eslint error
+
+- Updated dependencies []:
+  - @tszhong0411/utils@0.0.14
+
 ## 0.0.29
 
 ### Patch Changes

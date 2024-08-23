@@ -1,5 +1,11 @@
 # @tszhong0411/eslint-config
 
+## 0.1.10
+
+### Patch Changes
+
+- [`0c5c095`](https://github.com/tszhong0411/honghong.me/commit/0c5c0958541564c7748286b9ec77ad3d8d6e9041) Thanks [@tszhong0411](https://github.com/tszhong0411)! - add @eslint-react/web-api
+
 ## 0.1.9
 
 ### Patch Changes
