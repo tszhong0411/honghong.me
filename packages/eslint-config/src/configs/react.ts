@@ -22,6 +22,7 @@ export const react = (options?: Options): Linter.FlatConfig[] => {
           string,
           ESLint.Plugin
         >,
+        '@eslint-react/web-api': plugins['@eslint-react/web-api'] as Record<string, ESLint.Plugin>,
         'jsx-a11y': jsxA11yPlugin
       },
       files: [GLOB_JS, GLOB_JSX, GLOB_TS, GLOB_TSX],

@@ -58,7 +58,9 @@
   },
   "devDependencies": {
     "@eslint/config-inspector": "^0.4.11",
-    "@tszhong0411/tsconfig": "workspace:*"
+    "@tszhong0411/tsconfig": "workspace:*",
+    "@types/eslint": "^9.6.0",
+    "eslint": "^8.57.0"
   },
   "publishConfig": {
     "access": "public"
