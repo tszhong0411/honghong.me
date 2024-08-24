@@ -36,7 +36,9 @@ export const FormField = <
 >(
   props: ControllerProps<TFieldValues, TName>
 ) => {
-  const context = useMemo(() => ({ name: props.name }), [props.name])
+  const { name } = props
+
+  const context = useMemo(() => ({ name }), [name])
 
   return (
     <FormFieldContext.Provider value={context}>
