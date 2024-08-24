@@ -35,28 +35,33 @@ const CommentsList = () => {
     if (inView && hasNextPage) fetchNextPage()
   }, [fetchNextPage, hasNextPage, inView])
 
+  const isSuccess = status === 'success'
+  const isError = status === 'error'
+  const isLoading = status === 'pending' || isFetchingNextPage
+  const noComments = status === 'success' && data.pages[0]?.comments.length === 0
+
   return (
     <>
       <CommentHeader />
       <div className='space-y-4 rounded-lg border py-2'>
-        {status === 'success'
+        {isSuccess
           ? data.pages.map((page) =>
               page.comments.map((comment) => <Comment key={comment.id} comment={comment} />)
             )
           : null}
-        {status === 'success' && data.pages[0]?.comments.length === 0 ? (
+        {noComments ? (
           <div className='flex min-h-20 items-center justify-center'>
             <p className='text-muted-foreground text-sm'>No comments</p>
           </div>
         ) : null}
-        {status === 'error' ? (
+        {isError ? (
           <div className='flex min-h-20 items-center justify-center'>
             <p className='text-muted-foreground text-sm'>
               Failed to load comments. Please refresh the page.
             </p>
           </div>
         ) : null}
-        {status === 'pending' || isFetchingNextPage ? <CommentLoader /> : null}
+        {isLoading ? <CommentLoader /> : null}
         <span ref={ref} className='invisible' />
       </div>
     </>

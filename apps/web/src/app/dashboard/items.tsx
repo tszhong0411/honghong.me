@@ -127,6 +127,8 @@ const Items = () => {
           suffix
         } = item
 
+        const hasValue = value === 0 || value !== undefined
+
         return (
           <Link
             key={item.title}
@@ -135,7 +137,7 @@ const Items = () => {
           >
             <div className='flex flex-col items-center justify-center gap-2 transition-transform group-hover:-translate-y-24 group-focus:-translate-y-24'>
               <div className='flex items-center gap-2 text-3xl font-bold'>
-                {value === 0 || value !== undefined ? (
+                {hasValue ? (
                   <>
                     <span>{icon}</span>
                     <div

@@ -16,7 +16,7 @@ import {
 import { useMessageContext } from '@/contexts/message'
 import { api } from '@/trpc/react'
 
-const Menu = () => {
+const DeleteButton = () => {
   const { message } = useMessageContext()
   const utils = api.useUtils()
 
@@ -67,4 +67,4 @@ const Menu = () => {
   )
 }
 
-export default Menu
+export default DeleteButton

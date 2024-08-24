@@ -43,23 +43,27 @@ const CommentReplies = () => {
     }
   }, [comment.id, params.comment, setIsOpenReplies])
 
+  const isSuccess = status === 'success'
+  const isError = status === 'error'
+  const isLoading = status === 'pending' || isFetchingNextPage
+
   return (
     <>
       {isOpenReplies ? (
         <div className='pl-8 pt-3'>
-          {status === 'success'
+          {isSuccess
             ? data.pages.map((page) =>
                 page.comments.map((reply) => <Comment key={reply.id} comment={reply} />)
               )
             : null}
-          {status === 'error' ? (
+          {isError ? (
             <div className='flex min-h-20 items-center justify-center'>
               <p className='text-muted-foreground text-sm'>
                 Failed to load replies. Please refresh the page.
               </p>
             </div>
           ) : null}
-          {status === 'pending' || isFetchingNextPage ? <CommentLoader /> : null}
+          {isLoading ? <CommentLoader /> : null}
           <span ref={ref} className='invisible' />
         </div>
       ) : null}

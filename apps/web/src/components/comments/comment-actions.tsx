@@ -121,6 +121,8 @@ const CommentActions = () => {
     ratesSetMutation.mutate({ id: comment.id, like: like === comment.liked ? null : like })
   }
 
+  const hasReplies = !comment.parentId && comment.replies > 0
+
   return (
     <div className='flex items-center justify-between'>
       <div className='flex gap-1'>
@@ -165,7 +167,7 @@ const CommentActions = () => {
           </Button>
         )}
       </div>
-      {!comment.parentId && comment.replies > 0 ? (
+      {hasReplies ? (
         <Button
           variant='ghost'
           size='sm'

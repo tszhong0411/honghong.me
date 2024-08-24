@@ -11,8 +11,8 @@ import { useFormattedDate } from '@/hooks/use-formatted-date'
 import { api } from '@/trpc/react'
 import type { GuestbookOutput } from '@/trpc/routers/guestbook'
 
+import DeleteButton from './delete-button'
 import Loader from './loader'
-import Menu from './menu'
 
 type UpdatedDateProps = {
   date: Date
@@ -49,28 +49,33 @@ const Messages = () => {
     if (inView && hasNextPage) fetchNextPage()
   }, [fetchNextPage, hasNextPage, inView])
 
+  const isSuccess = status === 'success'
+  const isError = status === 'error'
+  const isLoading = status === 'pending' || isFetchingNextPage
+  const noMessages = status === 'success' && data.pages[0]?.messages.length === 0
+
   return (
     <div className='mt-10 flex flex-col gap-4' data-testid='guestbook-messages-list'>
-      {status === 'success'
+      {isSuccess
         ? data.pages.map((page) =>
             page.messages.map((message) => <Message key={message.id} message={message} />)
           )
         : null}
-      {status === 'success' && data.pages[0]?.messages.length === 0 ? (
+      {noMessages ? (
         <div className='flex min-h-24 items-center justify-center'>
           <p className='text-muted-foreground text-sm'>
             No messages. Be the first to leave a message!
           </p>
         </div>
       ) : null}
-      {status === 'error' ? (
+      {isError ? (
         <div className='flex min-h-24 items-center justify-center'>
           <p className='text-muted-foreground text-sm'>
             Failed to load messages. Please refresh the page.
           </p>
         </div>
       ) : null}
-      {status === 'pending' || isFetchingNextPage ? <Loader /> : null}
+      {isLoading ? <Loader /> : null}
       <span ref={ref} className='invisible' />
     </div>
   )
@@ -96,6 +101,8 @@ const Message = (props: MessageProps) => {
     [message]
   )
 
+  const isAuthor = data?.user && userId === data.user.id
+
   return (
     <MessageProvider value={context}>
       <div className='rounded-lg border p-4 shadow-sm dark:bg-zinc-900/30' id={`message-${id}`}>
@@ -118,7 +125,7 @@ const Message = (props: MessageProps) => {
           </div>
         </div>
         <div className='break-words pl-[52px]'>{body}</div>
-        {data?.user && userId === data.user.id ? <Menu /> : null}
+        {isAuthor ? <DeleteButton /> : null}
       </div>
     </MessageProvider>
   )

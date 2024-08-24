@@ -48,6 +48,8 @@ const CommentMenu = () => {
 
   const commentQuery = parentId ? `comment=${parentId}&reply=${id}` : `comment=${id}`
 
+  const isAuthor = !isDeleted && data?.user.id === userId
+
   return (
     <AlertDialog>
       <DropdownMenu>
@@ -74,7 +76,7 @@ const CommentMenu = () => {
             Copy link
           </DropdownMenuItem>
           <AlertDialogTrigger asChild>
-            {!isDeleted && data && data.user.id === userId ? (
+            {isAuthor ? (
               <DropdownMenuItem
                 className='text-red-600 focus:text-red-500'
                 disabled={deleteCommentMutation.isPending}

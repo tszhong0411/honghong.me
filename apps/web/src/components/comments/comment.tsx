@@ -74,6 +74,8 @@ const Comment = (props: CommentProps) => {
     }
   }, [isHighlighted])
 
+  const hasReplies = !parentId && replies > 0
+
   return (
     <CommentProvider value={context}>
       <div className='overflow-hidden'>
@@ -125,7 +127,7 @@ const Comment = (props: CommentProps) => {
           </div>
         </div>
 
-        {!parentId && replies > 0 ? <CommentReplies /> : null}
+        {hasReplies ? <CommentReplies /> : null}
       </div>
     </CommentProvider>
   )
