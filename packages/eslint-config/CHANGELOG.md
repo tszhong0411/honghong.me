@@ -1,5 +1,19 @@
 # @tszhong0411/eslint-config
 
+## 0.1.11
+
+### Patch Changes
+
+- [`ed6bbcc`](https://github.com/tszhong0411/honghong.me/commit/ed6bbcc865a28fa36660439d7948f61261f76586) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Enabled most of the rules in `@eslint-react/` packages.
+  Enabled two more rules of `jsx-a11y` package
+
+  ```json
+  {
+    "jsx-a11y/no-aria-hidden-on-focusable": "error",
+    "jsx-a11y/prefer-tag-over-role": "error"
+  }
+  ```
+
 ## 0.1.10
 
 ### Patch Changes
