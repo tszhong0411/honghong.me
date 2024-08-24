@@ -19,8 +19,8 @@
   "dependencies": {
     "@mdx-js/mdx": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
-    "@shikijs/rehype": "^1.6.4",
-    "@shikijs/transformers": "^1.6.4",
+    "@shikijs/rehype": "^1.14.1",
+    "@shikijs/transformers": "^1.14.1",
     "@tszhong0411/utils": "workspace:*",
     "chokidar": "^3.6.0",
     "commander": "^12.1.0",
@@ -34,11 +34,11 @@
     "react": "18.3.1",
     "remark": "^15.0.1",
     "remark-gfm": "^4.0.0",
-    "shiki": "^1.6.4",
-    "ts-morph": "^22.0.0",
-    "unified": "^11.0.4",
+    "shiki": "^1.14.1",
+    "ts-morph": "^23.0.0",
+    "unified": "^11.0.5",
     "unist-util-visit": "^5.0.0",
-    "vfile": "^6.0.1",
+    "vfile": "^6.0.2",
     "vfile-matter": "^5.0.0"
   },
   "devDependencies": {
@@ -46,9 +46,9 @@
     "@tszhong0411/tsconfig": "workspace:*",
     "@types/hast": "^3.0.4",
     "@types/mdast": "^4.0.4",
-    "@types/node": "^20.14.2",
+    "@types/node": "^22.5.0",
     "@types/pluralize": "^0.0.33",
-    "@types/react": "18.3.3"
+    "@types/react": "18.3.4"
   },
   "lint-staged": {
     "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix",
