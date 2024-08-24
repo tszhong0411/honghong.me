@@ -1,5 +1,11 @@
 # @tszhong0411/utils
 
+## 0.0.15
+
+### Patch Changes
+
+- [`a803edc`](https://github.com/tszhong0411/honghong.me/commit/a803edcd490b89a9d433249dd29b61b1d5032ae3) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Updated dependency `tailwind-merge` to `^2.5.2`.
+
 ## 0.0.14
 
 ### Patch Changes
