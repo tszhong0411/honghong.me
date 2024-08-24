@@ -220,8 +220,8 @@ importers:
         specifier: 9.5.0
         version: 9.5.0(react@18.3.1)
       '@nanostores/react':
-        specifier: ^0.7.2
-        version: 0.7.3(nanostores@0.10.3)(react@18.3.1)
+        specifier: ^0.7.3
+        version: 0.7.3(nanostores@0.11.2)(react@18.3.1)
       '@normy/react-query':
         specifier: ^0.14.2
         version: 0.14.3(@tanstack/react-query@5.52.1(react@18.3.1))
@@ -316,8 +316,8 @@ importers:
         specifier: ^7.4.7
         version: 7.5.0(react@18.3.1)
       nanostores:
-        specifier: ^0.10.3
-        version: 0.10.3
+        specifier: ^0.11.2
+        version: 0.11.2
       next:
         specifier: 14.2.3
         version: 14.2.3(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(@playwright/test@1.46.1)(react-dom@18.2.0(react@18.3.1))(react@18.3.1)
@@ -8616,8 +8616,8 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
-  nanostores@0.10.3:
-    resolution: {integrity: sha512-Nii8O1XqmawqSCf9o2aWqVxhKRN01+iue9/VEd1TiJCr9VT5XxgPFbF1Edl1XN6pwJcZRsl8Ki+z01yb/T/C2g==}
+  nanostores@0.11.2:
+    resolution: {integrity: sha512-6bucNxMJA5rNV554WQl+MWGng0QVMzlRgpKTHHfIbVLrhQ+yRXBychV9ECGVuuUfCMQPjfIG9bj8oJFZ9hYP/Q==}
     engines: {node: ^18.0.0 || >=20.0.0}
 
   natural-compare@1.4.0:
@@ -13397,9 +13397,9 @@ snapshots:
       '@types/react': 18.3.4
       react: 18.3.1
 
-  '@nanostores/react@0.7.3(nanostores@0.10.3)(react@18.3.1)':
+  '@nanostores/react@0.7.3(nanostores@0.11.2)(react@18.3.1)':
     dependencies:
-      nanostores: 0.10.3
+      nanostores: 0.11.2
       react: 18.3.1
 
   '@neon-rs/load@0.0.4': {}
@@ -20189,7 +20189,7 @@ snapshots:
 
   nanoid@3.3.7: {}
 
-  nanostores@0.10.3: {}
+  nanostores@0.11.2: {}
 
   natural-compare@1.4.0: {}
 
