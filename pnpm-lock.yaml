@@ -223,7 +223,7 @@ importers:
         specifier: ^0.7.3
         version: 0.7.3(nanostores@0.11.2)(react@18.3.1)
       '@normy/react-query':
-        specifier: ^0.14.2
+        specifier: ^0.14.3
         version: 0.14.3(@tanstack/react-query@5.52.1(react@18.3.1))
       '@octokit/rest':
         specifier: ^20.1.1
@@ -232,7 +232,7 @@ importers:
         specifier: ^2.2.2
         version: 2.2.2
       '@sentry/nextjs':
-        specifier: ^8
+        specifier: ^8.26.0
         version: 8.26.0(@opentelemetry/api@1.9.0)(@opentelemetry/core@1.25.1(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.52.1(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.25.1(@opentelemetry/api@1.9.0))(next@14.2.6(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(@playwright/test@1.46.1)(react-dom@18.2.0(react@18.3.1))(react@18.3.1))(react@18.3.1)(webpack@5.94.0(@swc/core@1.3.101)(esbuild@0.23.1))
       '@tanstack/react-query':
         specifier: ^5.44.0
@@ -292,16 +292,16 @@ importers:
         specifier: ^0.6.3
         version: 0.6.3
       dayjs:
-        specifier: ^1.11.11
+        specifier: ^1.11.13
         version: 1.11.13
       fast-xml-parser:
-        specifier: ^4.4.0
+        specifier: ^4.4.1
         version: 4.4.1
       framer-motion:
-        specifier: ^11.2.10
+        specifier: ^11.3.30
         version: 11.3.30(@emotion/is-prop-valid@0.8.8)(react-dom@18.2.0(react@18.3.1))(react@18.3.1)
       geist:
-        specifier: ^1.3.0
+        specifier: ^1.3.1
         version: 1.3.1(next@14.2.6(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(@playwright/test@1.46.1)(react-dom@18.2.0(react@18.3.1))(react@18.3.1))
       jiti:
         specifier: ^1.21.6
@@ -367,7 +367,7 @@ importers:
         specifier: ^1.6.0
         version: 1.6.0
       use-debounce:
-        specifier: ^10.0.1
+        specifier: ^10.0.3
         version: 10.0.3(react@18.3.1)
       usehooks-ts:
         specifier: ^3.1.0
