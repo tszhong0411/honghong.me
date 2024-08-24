@@ -860,7 +860,7 @@ importers:
         specifier: ^2.1.1
         version: 2.1.1
       tailwind-merge:
-        specifier: ^2.3.0
+        specifier: ^2.5.2
         version: 2.5.2
     devDependencies:
       '@tszhong0411/eslint-config':
@@ -870,8 +870,8 @@ importers:
         specifier: workspace:*
         version: link:../tsconfig
       '@types/node':
-        specifier: ^20.14.2
-        version: 20.16.1
+        specifier: ^22.5.0
+        version: 22.5.0
 
 packages:
 
