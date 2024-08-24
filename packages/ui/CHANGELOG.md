@@ -1,5 +1,14 @@
 # @tszhong0411/ui
 
+## 0.0.33
+
+### Patch Changes
+
+- [`db581c5`](https://github.com/tszhong0411/honghong.me/commit/db581c5af10ffe6eea8b84265b915c4f51c8ec30) Thanks [@tszhong0411](https://github.com/tszhong0411)! - use `.tsx` as needed
+
+- Updated dependencies []:
+  - @tszhong0411/utils@0.0.15
+
 ## 0.0.32
 
 ### Patch Changes
