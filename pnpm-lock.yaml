@@ -707,10 +707,10 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0(prettier@3.3.3)
       prettier-plugin-sort-json:
-        specifier: ^3.1.0
-        version: 3.1.0(prettier@3.3.3)
+        specifier: ^4.0.0
+        version: 4.0.0(prettier@3.3.3)
       prettier-plugin-tailwindcss:
-        specifier: ^0.6.4
+        specifier: ^0.6.6
         version: 0.6.6(prettier@3.3.3)
     devDependencies:
       '@tszhong0411/eslint-config':
@@ -9255,9 +9255,9 @@ packages:
     peerDependencies:
       prettier: '>=2 || >=3'
 
-  prettier-plugin-sort-json@3.1.0:
-    resolution: {integrity: sha512-eIDEUjwzekiVd+oKrpd0aoACBTp5zOW71wDTNy+qQ5C9Q8oqt9n9wCm4F+SeRZbXfgblh/WYIguJynImlBXrvQ==}
-    engines: {node: '>=16.0.0'}
+  prettier-plugin-sort-json@4.0.0:
+    resolution: {integrity: sha512-zV5g+bWFD2zAqyQ8gCkwUTC49o9FxslaUdirwivt5GZHcf57hCocavykuyYqbExoEsuBOg8IU36OY7zmVEMOWA==}
+    engines: {node: '>=18.0.0'}
     peerDependencies:
       prettier: ^3.0.0
 
@@ -20880,7 +20880,7 @@ snapshots:
       '@prisma/prisma-schema-wasm': 4.17.0-26.6b0aef69b7cdfc787f822ecd7cdc76d5f1991584
       prettier: 3.3.3
 
-  prettier-plugin-sort-json@3.1.0(prettier@3.3.3):
+  prettier-plugin-sort-json@4.0.0(prettier@3.3.3):
     dependencies:
       prettier: 3.3.3
 
