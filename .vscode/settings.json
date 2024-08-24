@@ -1,8 +1,14 @@
 {
+  "cSpell.diagnosticLevel": "Warning",
+  "cSpell.enabled": true,
+  "cSpell.ignorePaths": ["package-lock.json", "node_modules", "vscode-extension", ".git/objects"],
+  "cSpell.showAutocompleteSuggestions": true,
+
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
     "source.organizeImports": "never"
   },
+
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
 
