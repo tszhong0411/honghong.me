@@ -19,16 +19,16 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@libsql/client": "^0.6.2",
+    "@libsql/client": "^0.9.0",
     "@paralleldrive/cuid2": "^2.2.2",
     "@tszhong0411/env": "workspace:*",
-    "drizzle-orm": "^0.31.2"
+    "drizzle-orm": "^0.33.0"
   },
   "devDependencies": {
     "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
-    "@types/node": "^20.14.2",
-    "drizzle-kit": "^0.22.7"
+    "@types/node": "^22.5.0",
+    "drizzle-kit": "^0.24.1"
   },
   "lint-staged": {
     "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix",
