@@ -1,5 +1,12 @@
 # @tszhong0411/prettier-config
 
+## 0.0.7
+
+### Patch Changes
+
+- [`8e251d0`](https://github.com/tszhong0411/honghong.me/commit/8e251d073c19853086759036d41afd92bfe59b83) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Updated dependency `prettier-plugin-sort-json` to `^4.0.0`.
+  Updated dependency `prettier-plugin-tailwindcss` to `^0.6.6`.
+
 ## 0.0.6
 
 ### Patch Changes
