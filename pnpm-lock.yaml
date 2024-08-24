@@ -588,7 +588,7 @@ importers:
         specifier: ^2.0.1
         version: 2.0.1
       '@upstash/redis':
-        specifier: ^1.33.0
+        specifier: ^1.34.0
         version: 1.34.0
     devDependencies:
       '@tszhong0411/env':
