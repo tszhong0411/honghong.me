@@ -1,5 +1,11 @@
 # @tszhong0411/ui
 
+## 0.0.32
+
+### Patch Changes
+
+- [`0edf91f`](https://github.com/tszhong0411/honghong.me/commit/0edf91f03f13c46ffef38ba665f9dd4ff27741fe) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Pin `react-hook-form` version to `7.52.2`
+
 ## 0.0.31
 
 ### Patch Changes
