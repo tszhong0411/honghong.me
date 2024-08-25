@@ -108,7 +108,13 @@ This project is open source and available under the [GPL3 License](LICENSE).
 
 ## ⭐️ Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=tszhong0411/honghong.me&type=Date)](https://star-history.com/#tszhong0411/honghong.me&Date)
+<a href="https://star-history.com/#tszhong0411/honghong.me&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=tszhong0411/honghong.me&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=tszhong0411/honghong.me&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=tszhong0411/honghong.me&type=Date" />
+ </picture>
+</a>
 
 <hr>
 
