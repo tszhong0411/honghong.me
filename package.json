@@ -7,7 +7,7 @@
     "build:apps": "turbo build --filter=./apps/*",
     "build:packages": "turbo build --filter=./packages/*",
     "check": "turbo lint && turbo type-check && pnpm format:check && pnpm check:spelling && pnpm check:knip",
-    "check:knip": "VITE_CJS_IGNORE_WARNING=true dotenv -e .env.local -- knip",
+    "check:knip": "cross-env VITE_CJS_IGNORE_WARNING=true dotenv -e .env.local -- knip",
     "check:npm": "pnpm dlx npm-check-updates --deep --interactive --format group",
     "check:spelling": "cspell --show-context --show-suggestions",
     "clean": "turbo clean && rm -rf .turbo coverage",
