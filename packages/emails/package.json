@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "@react-email/components": "^0.0.23",
-    "@react-email/render": "^1.0.0",
     "react": "19.0.0-rc-b57d2823-20240822",
     "react-dom": "19.0.0-rc-b57d2823-20240822",
     "react-email": "3.0.1"
