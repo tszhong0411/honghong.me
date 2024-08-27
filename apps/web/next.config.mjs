@@ -15,8 +15,12 @@ const withBundleAnalyzer = bundleAnalyzer({
 /** @type {import('next').NextConfig} */
 const config = {
   experimental: {
-    optimizePackageImports: ['shiki'],
-    instrumentationHook: true
+    optimizePackageImports: ['shiki']
+  },
+
+  devIndicators: {
+    appIsrStatus: process.env.NODE_ENV !== 'test',
+    buildActivity: process.env.NODE_ENV !== 'test'
   },
 
   eslint: {

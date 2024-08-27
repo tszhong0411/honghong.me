@@ -1,5 +1,6 @@
 import {
   Body,
+  Button,
   Column,
   Container,
   Font,
@@ -44,7 +45,7 @@ const CommentNotification = (props: CommentNotificationProps) => {
           fontFamily='Inter'
           fallbackFontFamily='Arial'
           webFont={{
-            url: 'https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2',
+            url: 'https://fonts.googleapis.com/css2?family=Inter&display=swap',
             format: 'woff2'
           }}
           fontWeight={400}
@@ -66,8 +67,7 @@ const CommentNotification = (props: CommentNotificationProps) => {
           style={{
             border: `1px solid ${borderColor}`,
             margin: '10px auto',
-            maxWidth: '100%',
-            width: '600px',
+            maxWidth: '600px',
             borderRadius: '8px',
             padding: '24px'
           }}
@@ -159,32 +159,32 @@ const CommentNotification = (props: CommentNotificationProps) => {
             }}
           />
           <Section>
-            <Link
+            <Button
               href={`${post.url}?${commentIdentifier}`}
               style={{
-                margin: '16px 0',
                 display: 'block',
+                margin: '16px 0',
                 width: '100%',
                 borderRadius: '8px',
                 backgroundColor: '#171717',
                 padding: '16px 0',
+                textDecoration: 'none',
                 textAlign: 'center',
-                color: white
+                color: white,
+                fontWeight: '500'
               }}
             >
               View {type === 'comment' ? 'comment' : 'reply'} on honghong.me
-            </Link>
+            </Button>
           </Section>
-          <Section>
-            <Text
-              style={{
-                color: mutedForeground,
-                marginBottom: '0px'
-              }}
-            >
-              &copy; {year} Hong
-            </Text>
-          </Section>
+          <Text
+            style={{
+              color: mutedForeground,
+              marginBottom: '0px'
+            }}
+          >
+            &copy; {year} Hong
+          </Text>
         </Container>
       </Body>
     </Html>

@@ -48,7 +48,8 @@ const Comment = (props: CommentProps) => {
     relative: true
   })
 
-  useOnClickOutside(commentRef, () => {
+  // @ts-expect-error -- https://github.com/juliencrn/usehooks-ts/issues/602
+  useOnClickOutside<HTMLDivElement>(commentRef, () => {
     setIsHighlighted(false)
   })
 

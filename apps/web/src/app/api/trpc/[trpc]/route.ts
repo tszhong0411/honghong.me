@@ -4,7 +4,12 @@ import type { NextRequest } from 'next/server'
 import { appRouter } from '@/trpc/root'
 import { createTRPCContext } from '@/trpc/trpc'
 
-export const runtime = 'edge'
+/*
+ * React email renderer does not work with React 19 + Next.js 15
+ * Use Node.js runtime temporarily
+ * @see https://github.com/resend/react-email/issues/1630
+ */
+// export const runtime = 'edge'
 
 const createContext = async (req: NextRequest) => {
   return createTRPCContext({
