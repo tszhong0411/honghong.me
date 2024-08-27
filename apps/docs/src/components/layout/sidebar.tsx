@@ -6,11 +6,11 @@ import { usePathname } from 'next/navigation'
 
 import { SIDEBAR_LINKS } from '../../config/links'
 
-const sidebarLinkVariants = cva('', {
+const sidebarLinkVariants = cva('block rounded-lg px-4 py-2', {
   variants: {
     active: {
-      true: 'text-foreground font-medium',
-      false: 'hover:text-foreground/80 text-foreground/60 transition-colors'
+      true: 'bg-red-500/10 font-semibold text-red-500',
+      false: 'hover:bg-accent'
     }
   }
 })
@@ -19,11 +19,11 @@ const Sidebar = () => {
   const pathname = usePathname()
 
   return (
-    <aside className='sticky top-14 max-h-[calc(100vh-3.5rem)] w-full py-4 pr-4 max-md:hidden'>
-      <ScrollArea className='h-full'>
+    <aside className='sticky top-14 max-h-[calc(100vh-3.5rem)] w-full py-4 text-sm max-md:hidden'>
+      <ScrollArea className='h-full pr-4'>
         {SIDEBAR_LINKS.map((section) => (
-          <div key={section.title}>
-            <div className='font-semibold'>{section.title}</div>
+          <div key={section.title} className='mb-8'>
+            <div className='px-4 font-semibold'>{section.title}</div>
             <ul className='flex flex-col gap-2.5 py-4 text-sm font-medium'>
               {section.links.map((link) => (
                 <li key={link.text}>
