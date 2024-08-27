@@ -4,6 +4,7 @@ anishde
 antfu
 bentogrids
 calcom
+cleanmyma
 cleanmymac
 cleanshot
 delba

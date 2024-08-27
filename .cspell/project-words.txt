@@ -13,6 +13,7 @@ postpublish
 ratelimit
 sameorigin
 simulately
+srcset
 techstack
 testid
 tszhong
