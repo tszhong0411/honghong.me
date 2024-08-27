@@ -11,10 +11,8 @@ export const users = sqliteTable('user', {
     .primaryKey()
     .$defaultFn(() => createId()),
   name: text('name'),
-  email: text('email').notNull(),
-  emailVerified: integer('email_verified', {
-    mode: 'timestamp_ms'
-  }),
+  email: text('email').notNull().unique(),
+  emailVerified: integer('email_verified', { mode: 'timestamp_ms' }),
   image: text('image'),
   role: text('role', { enum: ['user', 'admin'] })
     .default('user')
@@ -60,9 +58,7 @@ export const sessions = sqliteTable('session', {
   userId: text('user_id')
     .notNull()
     .references(() => users.id, { onDelete: 'cascade' }),
-  expires: integer('expires', {
-    mode: 'timestamp_ms'
-  }).notNull()
+  expires: integer('expires', { mode: 'timestamp_ms' }).notNull()
 })
 
 export const verificationTokens = sqliteTable(
@@ -70,9 +66,7 @@ export const verificationTokens = sqliteTable(
   {
     identifier: text('identifier').notNull(),
     token: text('token').notNull(),
-    expires: integer('expires', {
-      mode: 'timestamp_ms'
-    }).notNull()
+    expires: integer('expires', { mode: 'timestamp_ms' }).notNull()
   },
   (verificationToken) => ({
     compoundKey: primaryKey({

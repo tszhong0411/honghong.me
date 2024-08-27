@@ -29,7 +29,8 @@ CREATE TABLE `user` (
 	`image` text,
 	`role` text DEFAULT 'user' NOT NULL,
 	`created_at` integer DEFAULT (strftime('%s', 'now')) NOT NULL,
-	`updated_at` integer DEFAULT (strftime('%s', 'now')) NOT NULL
+	`updated_at` integer DEFAULT (strftime('%s', 'now')) NOT NULL,
+  CONSTRAINT "user_email_unique" UNIQUE("email")
 );
 --> statement-breakpoint
 CREATE TABLE `verification_token` (
