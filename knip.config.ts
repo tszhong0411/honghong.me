@@ -30,6 +30,10 @@ const config: KnipConfig = {
       prettier: {
         config: '../../prettier.config.js'
       }
+    },
+    'packages/emails': {
+      // Required for React 19
+      ignoreDependencies: ['react-dom', '@types/react-dom']
     }
   }
 }
