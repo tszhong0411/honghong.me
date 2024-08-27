@@ -131,7 +131,7 @@ importers:
         version: 0.7.0
       geist:
         specifier: ^1.3.0
-        version: 1.3.1(next@15.0.0-canary.129(@opentelemetry/api@1.9.0)(@playwright/test@1.46.1)(react-dom@19.0.0-rc-b57d2823-20240822(react@19.0.0-rc-b57d2823-20240822))(react@19.0.0-rc-b57d2823-20240822))
+        version: 1.3.1(next@15.0.0-canary.129(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(@playwright/test@1.46.1)(react-dom@19.0.0-rc-b57d2823-20240822(react@19.0.0-rc-b57d2823-20240822))(react@19.0.0-rc-b57d2823-20240822))
       lucide-react:
         specifier: ^0.394.0
         version: 0.394.0(react@19.0.0-rc-b57d2823-20240822)
@@ -214,9 +214,6 @@ importers:
       '@auth/drizzle-adapter':
         specifier: 1.2.0
         version: 1.2.0
-      '@axe-core/playwright':
-        specifier: ^4.10.0
-        version: 4.10.0(playwright-core@1.46.1)
       '@hookform/resolvers':
         specifier: ^3.9.0
         version: 3.9.0(react-hook-form@7.52.2(react@19.0.0-rc-b57d2823-20240822))
@@ -247,12 +244,6 @@ importers:
       '@tanstack/react-query-next-experimental':
         specifier: ^5.44.0
         version: 5.52.1(@tanstack/react-query@5.52.1(react@19.0.0-rc-b57d2823-20240822))(next@15.0.0-canary.129(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(@playwright/test@1.46.1)(react-dom@19.0.0-rc-b57d2823-20240822(react@19.0.0-rc-b57d2823-20240822))(react@19.0.0-rc-b57d2823-20240822))(react@19.0.0-rc-b57d2823-20240822)
-      '@testing-library/jest-dom':
-        specifier: ^6.5.0
-        version: 6.5.0
-      '@testing-library/react':
-        specifier: ^16.0.0
-        version: 16.0.0(@testing-library/dom@10.4.0)(react-dom@19.0.0-rc-b57d2823-20240822(react@19.0.0-rc-b57d2823-20240822))(react@19.0.0-rc-b57d2823-20240822)(types-react-dom@19.0.0-rc.1)(types-react@19.0.0-rc.1)
       '@trpc/client':
         specifier: 11.0.0-rc.373
         version: 11.0.0-rc.373(@trpc/server@11.0.0-rc.373)
@@ -283,9 +274,6 @@ importers:
       '@vercel/speed-insights':
         specifier: ^1.0.12
         version: 1.0.12(next@15.0.0-canary.129(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(@playwright/test@1.46.1)(react-dom@19.0.0-rc-b57d2823-20240822(react@19.0.0-rc-b57d2823-20240822))(react@19.0.0-rc-b57d2823-20240822))(react@19.0.0-rc-b57d2823-20240822)
-      '@vitejs/plugin-react':
-        specifier: ^4.3.1
-        version: 4.3.1(vite@5.4.2(@types/node@20.16.1)(lightningcss@1.26.0)(terser@5.31.6))
       canvas-confetti:
         specifier: ^1.9.3
         version: 1.9.3
@@ -306,7 +294,7 @@ importers:
         version: 12.0.0-alpha.0(react-dom@19.0.0-rc-b57d2823-20240822(react@19.0.0-rc-b57d2823-20240822))(react@19.0.0-rc-b57d2823-20240822)
       geist:
         specifier: ^1.3.1
-        version: 1.3.1(next@15.0.0-canary.129(@opentelemetry/api@1.9.0)(@playwright/test@1.46.1)(react-dom@19.0.0-rc-b57d2823-20240822(react@19.0.0-rc-b57d2823-20240822))(react@19.0.0-rc-b57d2823-20240822))
+        version: 1.3.1(next@15.0.0-canary.129(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(@playwright/test@1.46.1)(react-dom@19.0.0-rc-b57d2823-20240822(react@19.0.0-rc-b57d2823-20240822))(react@19.0.0-rc-b57d2823-20240822))
       jiti:
         specifier: ^1.21.6
         version: 1.21.6
@@ -361,9 +349,6 @@ importers:
       rss:
         specifier: ^1.2.2
         version: 1.2.2
-      sharp:
-        specifier: ^0.33.2
-        version: 0.33.5
       superjson:
         specifier: ^2.2.1
         version: 2.2.1
@@ -380,9 +365,18 @@ importers:
         specifier: ^3.23.8
         version: 3.23.8
     devDependencies:
+      '@axe-core/playwright':
+        specifier: ^4.10.0
+        version: 4.10.0(playwright-core@1.46.1)
       '@next/bundle-analyzer':
         specifier: 15.0.0-canary.129
         version: 15.0.0-canary.129
+      '@testing-library/jest-dom':
+        specifier: ^6.5.0
+        version: 6.5.0
+      '@testing-library/react':
+        specifier: ^16.0.0
+        version: 16.0.0(@testing-library/dom@10.4.0)(react-dom@19.0.0-rc-b57d2823-20240822(react@19.0.0-rc-b57d2823-20240822))(react@19.0.0-rc-b57d2823-20240822)(types-react-dom@19.0.0-rc.1)(types-react@19.0.0-rc.1)
       '@tszhong0411/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
@@ -419,6 +413,9 @@ importers:
       '@types/tinycolor2':
         specifier: ^1.4.6
         version: 1.4.6
+      '@vitejs/plugin-react':
+        specifier: ^4.3.1
+        version: 4.3.1(vite@5.4.2(@types/node@20.16.1)(lightningcss@1.26.0)(terser@5.31.6))
       postcss:
         specifier: ^8.4.41
         version: 8.4.41
@@ -431,6 +428,9 @@ importers:
       schema-dts:
         specifier: ^1.1.2
         version: 1.1.2(typescript@5.5.4)
+      sharp:
+        specifier: ^0.33.2
+        version: 0.33.5
       tailwindcss:
         specifier: ^3.4.10
         version: 3.4.10(ts-node@10.9.2(@types/node@20.16.1)(typescript@5.5.4))
@@ -7881,12 +7881,10 @@ packages:
 
   libsql@0.3.19:
     resolution: {integrity: sha512-Aj5cQ5uk/6fHdmeW0TiXK42FqUlwx7ytmMLPSaUQPin5HKKKuUPD62MAbN4OEweGBBI7q1BekoEN4gPUEL6MZA==}
-    cpu: [x64, arm64, wasm32]
     os: [darwin, linux, win32]
 
   libsql@0.4.1:
     resolution: {integrity: sha512-qZlR9Yu1zMBeLChzkE/cKfoKV3Esp9cn9Vx5Zirn4AVhDWPcjYhKwbtJcMuHehgk3mH+fJr9qW+3vesBWbQpBg==}
-    cpu: [x64, arm64, wasm32]
     os: [darwin, linux, win32]
 
   lighthouse-logger@1.4.2:
@@ -18041,7 +18039,7 @@ snapshots:
 
   functions-have-names@1.2.3: {}
 
-  geist@1.3.1(next@15.0.0-canary.129(@opentelemetry/api@1.9.0)(@playwright/test@1.46.1)(react-dom@19.0.0-rc-b57d2823-20240822(react@19.0.0-rc-b57d2823-20240822))(react@19.0.0-rc-b57d2823-20240822)):
+  geist@1.3.1(next@15.0.0-canary.129(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(@playwright/test@1.46.1)(react-dom@19.0.0-rc-b57d2823-20240822(react@19.0.0-rc-b57d2823-20240822))(react@19.0.0-rc-b57d2823-20240822)):
     dependencies:
       next: 15.0.0-canary.129(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(@playwright/test@1.46.1)(react-dom@19.0.0-rc-b57d2823-20240822(react@19.0.0-rc-b57d2823-20240822))(react@19.0.0-rc-b57d2823-20240822)
 
