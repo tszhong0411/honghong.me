@@ -820,6 +820,9 @@ importers:
       cmdk:
         specifier: ^1.0.0
         version: 1.0.0(react-dom@19.0.0-rc-b57d2823-20240822(react@19.0.0-rc-b57d2823-20240822))(react@19.0.0-rc-b57d2823-20240822)(types-react-dom@19.0.0-rc.1)(types-react@19.0.0-rc.1)
+      framer-motion:
+        specifier: 12.0.0-alpha.0
+        version: 12.0.0-alpha.0(react-dom@19.0.0-rc-b57d2823-20240822(react@19.0.0-rc-b57d2823-20240822))(react@19.0.0-rc-b57d2823-20240822)
       lucide-react:
         specifier: ^0.435.0
         version: 0.435.0(react@19.0.0-rc-b57d2823-20240822)
