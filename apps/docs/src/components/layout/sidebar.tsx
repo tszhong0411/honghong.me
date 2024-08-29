@@ -1,6 +1,6 @@
 'use client'
 
-import { Link, ScrollArea } from '@tszhong0411/ui'
+import { BlurFade, Link, ScrollArea } from '@tszhong0411/ui'
 import { cva } from 'class-variance-authority'
 import { usePathname } from 'next/navigation'
 
@@ -19,29 +19,31 @@ const Sidebar = () => {
   const pathname = usePathname()
 
   return (
-    <aside className='sticky top-14 max-h-[calc(100vh-3.5rem)] w-full py-4 text-sm max-md:hidden'>
-      <ScrollArea className='h-full pr-4'>
-        {SIDEBAR_LINKS.map((section) => (
-          <div key={section.title} className='mb-8'>
-            <div className='px-4 font-semibold'>{section.title}</div>
-            <ul className='flex flex-col gap-2.5 py-4 text-sm font-medium'>
-              {section.links.map((link) => (
-                <li key={link.text}>
-                  <Link
-                    href={link.href}
-                    className={sidebarLinkVariants({
-                      active: pathname === link.href
-                    })}
-                  >
-                    {link.text}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </ScrollArea>
-    </aside>
+    <BlurFade>
+      <aside className='sticky top-14 max-h-[calc(100vh-3.5rem)] w-full py-8 text-sm max-md:hidden'>
+        <ScrollArea className='h-full pr-4'>
+          {SIDEBAR_LINKS.map((section) => (
+            <div key={section.title} className='mb-8'>
+              <div className='px-4 font-semibold'>{section.title}</div>
+              <ul className='flex flex-col gap-2.5 py-4 text-sm font-medium'>
+                {section.links.map((link) => (
+                  <li key={link.text}>
+                    <Link
+                      href={link.href}
+                      className={sidebarLinkVariants({
+                        active: pathname === link.href
+                      })}
+                    >
+                      {link.text}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </ScrollArea>
+      </aside>
+    </BlurFade>
   )
 }
 

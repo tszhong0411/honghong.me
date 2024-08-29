@@ -43,6 +43,10 @@ export const SIDEBAR_LINKS: SidebarLinks = [
         text: 'Avatar'
       },
       {
+        href: '/ui/components/blur-fade',
+        text: 'Blur Fade'
+      },
+      {
         href: '/ui/components/blur-image',
         text: 'Blur Image'
       },
