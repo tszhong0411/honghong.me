@@ -1,5 +1,11 @@
 # @tszhong0411/ui
 
+## 0.0.34
+
+### Patch Changes
+
+- [`9b50fa2`](https://github.com/tszhong0411/honghong.me/commit/9b50fa2ae6f466a0d1632a08c4e9d3667371e364) Thanks [@tszhong0411](https://github.com/tszhong0411)! - add blur fade
+
 ## 0.0.33
 
 ### Patch Changes
