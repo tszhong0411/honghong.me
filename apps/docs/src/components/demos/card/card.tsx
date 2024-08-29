@@ -17,7 +17,7 @@ import {
 
 const CardDemo = () => {
   return (
-    <Card className='w-[350px]'>
+    <Card className='w-full max-w-md'>
       <CardHeader>
         <CardTitle>Create project</CardTitle>
         <CardDescription>Deploy your new project in one-click.</CardDescription>
