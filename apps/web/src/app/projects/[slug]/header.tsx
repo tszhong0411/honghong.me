@@ -34,8 +34,8 @@ const Header = (props: HeaderProps) => {
         animate={animation.show}
       >
         <div className='flex flex-col gap-3'>
-          <div className='text-2xl font-bold'>{name}</div>
-          <div>{description}</div>
+          <h1 className='text-3xl font-bold'>{name}</h1>
+          <h2 className='text-muted-foreground'>{description}</h2>
         </div>
       </motion.div>
       <motion.div

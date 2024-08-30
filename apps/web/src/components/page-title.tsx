@@ -34,7 +34,7 @@ const PageTitle = (props: PageTitleProps) => {
       >
         {title}
       </motion.h1>
-      <motion.p
+      <motion.h2
         className='text-muted-foreground mb-8'
         {...(animate && {
           initial: animation.hide,
@@ -45,7 +45,7 @@ const PageTitle = (props: PageTitleProps) => {
         })}
       >
         {description}
-      </motion.p>
+      </motion.h2>
       <Separator className='absolute inset-x-0 translate-y-2 sm:translate-y-6' />
     </div>
   )
