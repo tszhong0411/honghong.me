@@ -1,5 +1,11 @@
 # @tszhong0411/tailwind-config
 
+## 0.0.15
+
+### Patch Changes
+
+- [`14a91df`](https://github.com/tszhong0411/honghong.me/commit/14a91df468fa5591b2c10263b9c34c1f30b02672) Thanks [@tszhong0411](https://github.com/tszhong0411)! - change dark background color from `0 0% 0%` to `0 0% 2%`.
+
 ## 0.0.14
 
 ### Patch Changes
