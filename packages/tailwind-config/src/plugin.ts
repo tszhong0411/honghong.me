@@ -35,7 +35,7 @@ export const ui = plugin(({ addBase }) => {
       '--radius': '0.5rem'
     },
     '.dark': {
-      '--background': '0 0% 0%',
+      '--background': '0 0% 2%',
       '--foreground': '0 0% 100%',
 
       '--card': '0 0% 4%',
