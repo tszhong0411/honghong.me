@@ -45,8 +45,8 @@ const Hero = () => {
   }, [animate, scope])
 
   return (
-    <div className='space-y-6 md:my-16'>
-      <div className='flex flex-col-reverse gap-8 md:flex-row md:justify-between'>
+    <div className='my-16 space-y-6'>
+      <div className='flex justify-between gap-8'>
         <motion.div
           className='flex flex-col gap-4 md:max-w-xl'
           initial={{
@@ -78,7 +78,7 @@ const Hero = () => {
           <div className='text-muted-foreground text-sm'>Hong Kong • UTC/GMT +8</div>
         </motion.div>
         <motion.div
-          className='relative size-20 md:size-28'
+          className='relative hidden size-28 md:block'
           initial={{
             scale: 0
           }}
@@ -97,7 +97,7 @@ const Hero = () => {
             alt='Hong'
             lazy={false}
           />
-          <div className='absolute inset-0 -z-10 bg-gradient-to-tl from-purple-700 to-orange-700 opacity-0 blur-2xl md:opacity-50' />
+          <div className='absolute inset-0 -z-10 bg-gradient-to-tl from-purple-700 to-orange-700 opacity-50 blur-2xl' />
         </motion.div>
       </div>
     </div>
