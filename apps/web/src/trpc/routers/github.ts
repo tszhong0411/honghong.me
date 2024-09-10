@@ -44,5 +44,22 @@ export const githubRouter = createTRPCRouter({
       stars,
       followers
     }
+  }),
+  getRepoStars: publicProcedure.query(async ({ ctx }) => {
+    const ip = getIp(ctx.headers)
+
+    const { success } = await ratelimit.limit(getKey(ip))
+
+    if (!success) throw new TRPCError({ code: 'TOO_MANY_REQUESTS' })
+
+    const octokit = new Octokit({
+      auth: env.GITHUB_TOKEN
+    })
+
+    const { data: repos } = await octokit.request('GET /users/{username}/repos', {
+      username: GITHUB_USERNAME
+    })
+
+    return repos.find((repo) => repo.name === 'honghong.me')?.stargazers_count ?? 0
   })
 })
