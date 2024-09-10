@@ -117,10 +117,7 @@ const GetInTouch = () => {
             <p className='font-title mb-2 bg-gradient-to-r from-black to-black/70 bg-clip-text text-3xl font-bold text-transparent dark:from-zinc-100 dark:to-zinc-400'>
               Any questions about Next.js?
             </p>
-            <p className='text-zinc-800 dark:text-zinc-300'>
-              Feel free to reach out to me!{' '}
-              <span className='text-muted-foreground'>I'm unavailable for collaboration.</span>
-            </p>
+            <p className='text-zinc-800 dark:text-zinc-300'>Feel free to reach out to me!</p>
             <div className='my-8'>
               <a
                 href='mailto:me@honghong.me'
