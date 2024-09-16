@@ -1,33 +1,25 @@
-import { relations, sql } from 'drizzle-orm'
-import { integer, primaryKey, sqliteTable, text } from 'drizzle-orm/sqlite-core'
+import { relations } from 'drizzle-orm'
+import { boolean, pgTable, primaryKey, text, timestamp } from 'drizzle-orm/pg-core'
 
 import { users } from './auth'
 import { posts } from './posts'
 
-export const comments = sqliteTable('comment', {
+export const comments = pgTable('comment', {
   id: text('id').notNull().primaryKey(),
   body: text('body').notNull(),
   userId: text('user_id')
     .notNull()
     .references(() => users.id),
-  createdAt: integer('created_at', {
-    mode: 'timestamp'
-  })
-    .notNull()
-    .default(sql`(strftime('%s', 'now'))`),
-  updatedAt: integer('updated_at', {
-    mode: 'timestamp'
-  })
-    .notNull()
-    .default(sql`(strftime('%s', 'now'))`),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at').notNull().defaultNow(),
   postId: text('post_id')
     .notNull()
     .references(() => posts.slug),
   parentId: text('parent_id'),
-  isDeleted: integer('is_deleted', { mode: 'boolean' }).notNull().default(false)
+  isDeleted: boolean('is_deleted').notNull().default(false)
 })
 
-export const rates = sqliteTable(
+export const rates = pgTable(
   'rate',
   {
     userId: text('user_id')
@@ -36,7 +28,7 @@ export const rates = sqliteTable(
     commentId: text('comment_id')
       .notNull()
       .references(() => comments.id, { onDelete: 'cascade' }),
-    like: integer('like', { mode: 'boolean' }).notNull()
+    like: boolean('like').notNull()
   },
   (rate) => ({
     compoundKey: primaryKey({

@@ -1,20 +1,27 @@
-// import { createClient } from '@libsql/client/web'
-// import { env } from '@tszhong0411/env'
-// import { drizzle } from 'drizzle-orm/libsql'
+import { env } from '@tszhong0411/env'
+// import { drizzle } from 'drizzle-orm/node-postgres'
+import pg from 'pg'
+
+// import * as schema from './schema'
+
+const client = new pg.Client({
+  connectionString: env.DATABASE_URL
+})
+
+client.connect()
+
+// const db = drizzle(client, {
+//   schema
+// })
 
 const main = () => {
   try {
-    // const db = drizzle(
-    //   createClient({
-    //     url: env.DATABASE_URL,
-    //     authToken: env.DATABASE_AUTH_TOKEN
-    //   })
-    // )
-
     // console.log('🎉 Data inserted successfully!')
     console.log('Nothing to do')
   } catch (error) {
     console.error('❌ Error inserting data:\n', error)
+  } finally {
+    client.end()
   }
 }
 

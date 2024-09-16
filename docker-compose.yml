@@ -2,14 +2,16 @@ version: '3'
 
 services:
   db:
-    image: ghcr.io/tursodatabase/libsql-server:latest
-    container_name: honghongme-db
-    platform: linux/amd64
+    image: postgres:16-alpine
+    container_name: honghongme-postgres
     ports:
-      - '8080:8080'
+      - 5432:5432
     volumes:
-      - ./volumes/libsql:/var/lib/sqld
-
+      - ./volumes/postgresql:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=honghongme
   redis:
     image: redis
     container_name: honghongme-redis

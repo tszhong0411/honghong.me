@@ -30,7 +30,12 @@
     "**/.*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,md,mdx,json,yml,yaml,svg,webmanifest}",
     ".*/**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,md,mdx,json,yml,yaml,svg,webmanifest}"
   ],
-  "ignorePaths": ["pnpm-lock.yaml", "CHANGELOG.md", ".pnpm-store/"],
+  "ignorePaths": [
+    "pnpm-lock.yaml",
+    "CHANGELOG.md",
+    ".pnpm-store/",
+    "packages/db/src/migrations/**"
+  ],
   "import": [
     "@cspell/dict-software-terms",
     "@cspell/dict-npm",

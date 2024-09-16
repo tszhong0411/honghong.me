@@ -15,7 +15,6 @@ fumadocs
 hiett
 jiti
 knip
-libsql
 lightningcss
 mdast
 nanostores
@@ -36,8 +35,6 @@ sonner
 sqld
 tinycolor2
 tsup
-turso
-tursodatabase
 unifiedjs
 usehooks
 vfile

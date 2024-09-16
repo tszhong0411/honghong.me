@@ -2,12 +2,10 @@ import { env } from '@tszhong0411/env'
 import { type Config } from 'drizzle-kit'
 
 export default {
-  dialect: 'sqlite',
-  driver: 'turso',
+  dialect: 'postgresql',
   schema: './src/schema/index.ts',
   dbCredentials: {
-    url: env.DATABASE_URL,
-    authToken: env.DATABASE_AUTH_TOKEN
+    url: env.DATABASE_URL
   },
   out: './src/migrations',
   strict: true,
