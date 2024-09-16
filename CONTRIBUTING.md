@@ -55,7 +55,7 @@ cp .env.example .env.local
 pnpm install
 ```
 
-5. Run libSQL using Docker (or your preferred method):
+5. Run PostgreSQL using Docker (or your preferred method):
 
 ```bash
 docker compose up

@@ -1,35 +1,27 @@
 import { createId } from '@paralleldrive/cuid2'
-import { relations, sql } from 'drizzle-orm'
-import { integer, primaryKey, sqliteTable, text } from 'drizzle-orm/sqlite-core'
+import { relations } from 'drizzle-orm'
+import { integer, pgEnum, pgTable, primaryKey, text, timestamp } from 'drizzle-orm/pg-core'
 
 import { comments } from './comments'
 import { guestbook } from './guestbook'
 
-export const users = sqliteTable('user', {
+export const roleEnum = pgEnum('role', ['user', 'admin'])
+
+export const users = pgTable('user', {
   id: text('id')
     .notNull()
     .primaryKey()
     .$defaultFn(() => createId()),
   name: text('name'),
   email: text('email').notNull().unique(),
-  emailVerified: integer('email_verified', { mode: 'timestamp_ms' }),
+  emailVerified: timestamp('email_verified'),
   image: text('image'),
-  role: text('role', { enum: ['user', 'admin'] })
-    .default('user')
-    .notNull(),
-  createdAt: integer('created_at', {
-    mode: 'timestamp'
-  })
-    .notNull()
-    .default(sql`(strftime('%s', 'now'))`),
-  updatedAt: integer('updated_at', {
-    mode: 'timestamp'
-  })
-    .notNull()
-    .default(sql`(strftime('%s', 'now'))`)
+  role: roleEnum('role').default('user').notNull(),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at').notNull().defaultNow()
 })
 
-export const accounts = sqliteTable(
+export const accounts = pgTable(
   'account',
   {
     userId: text('user_id')
@@ -53,20 +45,20 @@ export const accounts = sqliteTable(
   })
 )
 
-export const sessions = sqliteTable('session', {
+export const sessions = pgTable('session', {
   sessionToken: text('session_token').notNull().primaryKey(),
   userId: text('user_id')
     .notNull()
     .references(() => users.id, { onDelete: 'cascade' }),
-  expires: integer('expires', { mode: 'timestamp_ms' }).notNull()
+  expires: timestamp('expires').notNull()
 })
 
-export const verificationTokens = sqliteTable(
+export const verificationTokens = pgTable(
   'verification_token',
   {
     identifier: text('identifier').notNull(),
     token: text('token').notNull(),
-    expires: integer('expires', { mode: 'timestamp_ms' }).notNull()
+    expires: timestamp('expires').notNull()
   },
   (verificationToken) => ({
     compoundKey: primaryKey({

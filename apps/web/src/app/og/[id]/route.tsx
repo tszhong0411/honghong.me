@@ -12,8 +12,6 @@ type OGRouteProps = {
   }
 }
 
-export const runtime = 'edge'
-
 export const GET = async (_: Request, props: OGRouteProps) => {
   try {
     const {

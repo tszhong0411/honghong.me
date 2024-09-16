@@ -1,14 +1,10 @@
-import { relations, sql } from 'drizzle-orm'
-import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core'
+import { relations } from 'drizzle-orm'
+import { integer, pgTable, text, timestamp } from 'drizzle-orm/pg-core'
 
 import { comments } from './comments'
 
-export const posts = sqliteTable('post', {
-  createdAt: integer('created_at', {
-    mode: 'timestamp'
-  })
-    .notNull()
-    .default(sql`(strftime('%s', 'now'))`),
+export const posts = pgTable('post', {
+  createdAt: timestamp('created_at').notNull().defaultNow(),
   slug: text('slug').notNull().primaryKey(),
   likes: integer('likes').notNull().default(0),
   views: integer('views').notNull().default(0)
