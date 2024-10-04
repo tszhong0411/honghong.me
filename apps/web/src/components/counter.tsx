@@ -36,7 +36,11 @@ const Counter = (props: CounterProps) => {
     })
   }, [springValue, value])
 
-  return <span ref={ref} {...rest} />
+  return (
+    <span ref={ref} {...rest}>
+      0
+    </span>
+  )
 }
 
 export default Counter
