@@ -6,7 +6,7 @@ import { CheckIcon } from 'lucide-react'
 import { forwardRef } from 'react'
 
 export const Checkbox = forwardRef<
-  React.ElementRef<typeof CheckboxPrimitive.Root>,
+  React.ComponentRef<typeof CheckboxPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>
 >((props, ref) => {
   const { className, ...rest } = props

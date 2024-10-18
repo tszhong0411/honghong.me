@@ -5,7 +5,7 @@ import { cn } from '@tszhong0411/utils'
 import { forwardRef } from 'react'
 
 export const Separator = forwardRef<
-  React.ElementRef<typeof SeparatorPrimitive.Root>,
+  React.ComponentRef<typeof SeparatorPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>
 >((props, ref) => {
   const { className, orientation = 'horizontal', decorative = true, ...rest } = props

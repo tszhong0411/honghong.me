@@ -5,7 +5,7 @@ import { cn } from '@tszhong0411/utils'
 import { forwardRef } from 'react'
 
 export const Avatar = forwardRef<
-  React.ElementRef<typeof AvatarPrimitive.Root>,
+  React.ComponentRef<typeof AvatarPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>
 >((props, ref) => {
   const { className, ...rest } = props
@@ -20,7 +20,7 @@ export const Avatar = forwardRef<
 })
 
 export const AvatarImage = forwardRef<
-  React.ElementRef<typeof AvatarPrimitive.Image>,
+  React.ComponentRef<typeof AvatarPrimitive.Image>,
   React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>
 >((props, ref) => {
   const { className, ...rest } = props
@@ -35,7 +35,7 @@ export const AvatarImage = forwardRef<
 })
 
 export const AvatarFallback = forwardRef<
-  React.ElementRef<typeof AvatarPrimitive.Fallback>,
+  React.ComponentRef<typeof AvatarPrimitive.Fallback>,
   React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback>
 >((props, ref) => {
   const { className, ...rest } = props

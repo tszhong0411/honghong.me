@@ -86,7 +86,7 @@ export const FormItem = forwardRef<HTMLDivElement, React.ComponentPropsWithoutRe
 )
 
 export const FormLabel = forwardRef<
-  React.ElementRef<typeof LabelPrimitive.Root>,
+  React.ComponentRef<typeof LabelPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root>
 >((props, ref) => {
   const { className, ...rest } = props
@@ -103,7 +103,7 @@ export const FormLabel = forwardRef<
 })
 
 export const FormControl = forwardRef<
-  React.ElementRef<typeof Slot>,
+  React.ComponentRef<typeof Slot>,
   React.ComponentPropsWithoutRef<typeof Slot>
 >((props, ref) => {
   const { error, formItemId, formDescriptionId, formMessageId } = useFormField()

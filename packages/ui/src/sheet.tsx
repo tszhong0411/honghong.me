@@ -29,7 +29,7 @@ export const SheetPortal = SheetPrimitive.Portal
 export const SheetClose = SheetPrimitive.Close
 
 export const SheetOverlay = forwardRef<
-  React.ElementRef<typeof SheetPrimitive.Overlay>,
+  React.ComponentRef<typeof SheetPrimitive.Overlay>,
   React.ComponentPropsWithoutRef<typeof SheetPrimitive.Overlay>
 >((props, ref) => {
   const { className, ...rest } = props
@@ -49,7 +49,7 @@ export const SheetOverlay = forwardRef<
 })
 
 export const SheetContent = forwardRef<
-  React.ElementRef<typeof SheetPrimitive.Content>,
+  React.ComponentRef<typeof SheetPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content> & VariantProps<typeof sheetVariants>
 >((props, ref) => {
   const { side = 'right', className, children, ...rest } = props
@@ -90,7 +90,7 @@ export const SheetFooter = (props: React.HTMLAttributes<HTMLDivElement>) => {
 }
 
 export const SheetTitle = forwardRef<
-  React.ElementRef<typeof SheetPrimitive.Title>,
+  React.ComponentRef<typeof SheetPrimitive.Title>,
   React.ComponentPropsWithoutRef<typeof SheetPrimitive.Title>
 >((props, ref) => {
   const { className, ...rest } = props
@@ -105,7 +105,7 @@ export const SheetTitle = forwardRef<
 })
 
 export const SheetDescription = forwardRef<
-  React.ElementRef<typeof SheetPrimitive.Description>,
+  React.ComponentRef<typeof SheetPrimitive.Description>,
   React.ComponentPropsWithoutRef<typeof SheetPrimitive.Description>
 >((props, ref) => {
   const { className, ...rest } = props

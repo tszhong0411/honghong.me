@@ -7,7 +7,7 @@ import { forwardRef } from 'react'
 export const Tabs = TabsPrimitive.Root
 
 export const TabsList = forwardRef<
-  React.ElementRef<typeof TabsPrimitive.List>,
+  React.ComponentRef<typeof TabsPrimitive.List>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>
 >((props, ref) => {
   const { className, ...rest } = props
@@ -25,7 +25,7 @@ export const TabsList = forwardRef<
 })
 
 export const TabsTrigger = forwardRef<
-  React.ElementRef<typeof TabsPrimitive.Trigger>,
+  React.ComponentRef<typeof TabsPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
 >((props, ref) => {
   const { className, ...rest } = props
@@ -46,7 +46,7 @@ export const TabsTrigger = forwardRef<
 })
 
 export const TabsContent = forwardRef<
-  React.ElementRef<typeof TabsPrimitive.Content>,
+  React.ComponentRef<typeof TabsPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
 >((props, ref) => {
   const { className, ...rest } = props

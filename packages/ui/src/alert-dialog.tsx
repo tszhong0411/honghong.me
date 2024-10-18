@@ -11,7 +11,7 @@ export const AlertDialogTrigger = AlertDialogPrimitive.Trigger
 const AlertDialogPortal = AlertDialogPrimitive.Portal
 
 const AlertDialogOverlay = forwardRef<
-  React.ElementRef<typeof AlertDialogPrimitive.Overlay>,
+  React.ComponentRef<typeof AlertDialogPrimitive.Overlay>,
   React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Overlay>
 >((props, ref) => {
   const { className, ...rest } = props
@@ -31,7 +31,7 @@ const AlertDialogOverlay = forwardRef<
 })
 
 export const AlertDialogContent = forwardRef<
-  React.ElementRef<typeof AlertDialogPrimitive.Content>,
+  React.ComponentRef<typeof AlertDialogPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Content>
 >((props, ref) => {
   const { className, ...rest } = props
@@ -81,7 +81,7 @@ export const AlertDialogFooter = forwardRef<HTMLDivElement, React.HTMLAttributes
   }
 )
 export const AlertDialogTitle = forwardRef<
-  React.ElementRef<typeof AlertDialogPrimitive.Title>,
+  React.ComponentRef<typeof AlertDialogPrimitive.Title>,
   React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Title>
 >((props, ref) => {
   const { className, ...rest } = props
@@ -96,7 +96,7 @@ export const AlertDialogTitle = forwardRef<
 })
 
 export const AlertDialogDescription = forwardRef<
-  React.ElementRef<typeof AlertDialogPrimitive.Description>,
+  React.ComponentRef<typeof AlertDialogPrimitive.Description>,
   React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Description>
 >((props, ref) => {
   const { className, ...rest } = props
@@ -111,7 +111,7 @@ export const AlertDialogDescription = forwardRef<
 })
 
 export const AlertDialogAction = forwardRef<
-  React.ElementRef<typeof AlertDialogPrimitive.Action>,
+  React.ComponentRef<typeof AlertDialogPrimitive.Action>,
   React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Action>
 >((props, ref) => {
   const { className, ...rest } = props
@@ -122,7 +122,7 @@ export const AlertDialogAction = forwardRef<
 })
 
 export const AlertDialogCancel = forwardRef<
-  React.ElementRef<typeof AlertDialogPrimitive.Cancel>,
+  React.ComponentRef<typeof AlertDialogPrimitive.Cancel>,
   React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Cancel>
 >((props, ref) => {
   const { className, ...rest } = props

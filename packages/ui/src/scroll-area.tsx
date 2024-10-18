@@ -5,7 +5,7 @@ import { cn } from '@tszhong0411/utils'
 import { forwardRef } from 'react'
 
 export const ScrollArea = forwardRef<
-  React.ElementRef<typeof ScrollAreaPrimitive.Root>,
+  React.ComponentRef<typeof ScrollAreaPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root>
 >((props, ref) => {
   const { className, children, ...rest } = props
@@ -26,7 +26,7 @@ export const ScrollArea = forwardRef<
 })
 
 export const ScrollBar = forwardRef<
-  React.ElementRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>,
+  React.ComponentRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>,
   React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>
 >((props, ref) => {
   const { className, orientation = 'vertical', ...rest } = props

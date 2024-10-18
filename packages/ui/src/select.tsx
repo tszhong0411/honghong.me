@@ -12,7 +12,7 @@ export const SelectGroup = SelectPrimitive.Group
 export const SelectValue = SelectPrimitive.Value
 
 export const SelectTrigger = forwardRef<
-  React.ElementRef<typeof SelectPrimitive.Trigger>,
+  React.ComponentRef<typeof SelectPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
 >((props, ref) => {
   const { className, children, ...rest } = props
@@ -39,7 +39,7 @@ export const SelectTrigger = forwardRef<
 })
 
 export const SelectScrollUpButton = forwardRef<
-  React.ElementRef<typeof SelectPrimitive.ScrollUpButton>,
+  React.ComponentRef<typeof SelectPrimitive.ScrollUpButton>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.ScrollUpButton>
 >((props, ref) => {
   const { className, ...rest } = props
@@ -56,7 +56,7 @@ export const SelectScrollUpButton = forwardRef<
 })
 
 export const SelectScrollDownButton = forwardRef<
-  React.ElementRef<typeof SelectPrimitive.ScrollDownButton>,
+  React.ComponentRef<typeof SelectPrimitive.ScrollDownButton>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.ScrollDownButton>
 >((props, ref) => {
   const { className, ...rest } = props
@@ -73,7 +73,7 @@ export const SelectScrollDownButton = forwardRef<
 })
 
 export const SelectContent = forwardRef<
-  React.ElementRef<typeof SelectPrimitive.Content>,
+  React.ComponentRef<typeof SelectPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>
 >((props, ref) => {
   const { className, children, position = 'popper', ...rest } = props
@@ -114,7 +114,7 @@ export const SelectContent = forwardRef<
 })
 
 export const SelectLabel = forwardRef<
-  React.ElementRef<typeof SelectPrimitive.Label>,
+  React.ComponentRef<typeof SelectPrimitive.Label>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Label>
 >((props, ref) => {
   const { className, ...rest } = props
@@ -129,7 +129,7 @@ export const SelectLabel = forwardRef<
 })
 
 export const SelectItem = forwardRef<
-  React.ElementRef<typeof SelectPrimitive.Item>,
+  React.ComponentRef<typeof SelectPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item>
 >((props, ref) => {
   const { className, children, ...rest } = props
@@ -156,7 +156,7 @@ export const SelectItem = forwardRef<
 })
 
 export const SelectSeparator = forwardRef<
-  React.ElementRef<typeof SelectPrimitive.Separator>,
+  React.ComponentRef<typeof SelectPrimitive.Separator>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Separator>
 >((props, ref) => {
   const { className, ...rest } = props

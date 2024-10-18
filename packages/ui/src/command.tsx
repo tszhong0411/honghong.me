@@ -10,7 +10,7 @@ import { Dialog, DialogContent, DialogDescription, DialogTitle } from './dialog'
 import { VisuallyHidden } from './visually-hidden'
 
 export const Command = forwardRef<
-  React.ElementRef<typeof CommandPrimitive>,
+  React.ComponentRef<typeof CommandPrimitive>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive>
 >((props, ref) => {
   const { className, ...rest } = props
@@ -56,7 +56,7 @@ export const CommandDialog = (props: CommandDialogProps) => {
 }
 
 export const CommandInput = forwardRef<
-  React.ElementRef<typeof CommandPrimitive.Input>,
+  React.ComponentRef<typeof CommandPrimitive.Input>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input>
 >((props, ref) => {
   const { className, ...rest } = props
@@ -79,7 +79,7 @@ export const CommandInput = forwardRef<
 })
 
 export const CommandList = forwardRef<
-  React.ElementRef<typeof CommandPrimitive.List>,
+  React.ComponentRef<typeof CommandPrimitive.List>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.List>
 >((props, ref) => {
   const { className, ...rest } = props
@@ -94,14 +94,14 @@ export const CommandList = forwardRef<
 })
 
 export const CommandEmpty = forwardRef<
-  React.ElementRef<typeof CommandPrimitive.Empty>,
+  React.ComponentRef<typeof CommandPrimitive.Empty>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Empty>
 >((props, ref) => {
   return <CommandPrimitive.Empty ref={ref} className='py-6 text-center text-sm' {...props} />
 })
 
 export const CommandGroup = forwardRef<
-  React.ElementRef<typeof CommandPrimitive.Group>,
+  React.ComponentRef<typeof CommandPrimitive.Group>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Group>
 >((props, ref) => {
   const { className, ...rest } = props
@@ -120,7 +120,7 @@ export const CommandGroup = forwardRef<
 })
 
 export const CommandSeparator = forwardRef<
-  React.ElementRef<typeof CommandPrimitive.Separator>,
+  React.ComponentRef<typeof CommandPrimitive.Separator>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Separator>
 >((props, ref) => {
   const { className, ...rest } = props
@@ -135,7 +135,7 @@ export const CommandSeparator = forwardRef<
 })
 
 export const CommandItem = forwardRef<
-  React.ElementRef<typeof CommandPrimitive.Item>,
+  React.ComponentRef<typeof CommandPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Item>
 >((props, ref) => {
   const { className, ...rest } = props
