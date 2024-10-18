@@ -1,5 +1,11 @@
 # @tszhong0411/ui
 
+## 0.0.35
+
+### Patch Changes
+
+- [`9f92596`](https://github.com/tszhong0411/honghong.me/commit/9f925964529b7c7f95e4d151be1e24c382f93b4f) Thanks [@tszhong0411](https://github.com/tszhong0411)! - use `ComponentRef` instead of `ElementRef`
+
 ## 0.0.34
 
 ### Patch Changes
