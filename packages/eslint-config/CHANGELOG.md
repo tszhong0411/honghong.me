@@ -1,5 +1,11 @@
 # @tszhong0411/eslint-config
 
+## 0.1.12
+
+### Patch Changes
+
+- [`18c9e66`](https://github.com/tszhong0411/honghong.me/commit/18c9e66e50bb5d27eb9105a22a1d8aa55b55aba4) Thanks [@tszhong0411](https://github.com/tszhong0411)! - turn off a rule
+
 ## 0.1.11
 
 ### Patch Changes
