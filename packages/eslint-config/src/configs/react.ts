@@ -36,6 +36,7 @@ export const react = (options?: Options): Linter.FlatConfig[] => {
         '@eslint-react/no-leaked-conditional-rendering': 'error',
         '@eslint-react/avoid-shorthand-boolean': 'off',
         '@eslint-react/avoid-shorthand-fragment': 'off',
+        '@eslint-react/prefer-destructuring-assignment': 'off',
 
         // @eslint-react/dom
         '@eslint-react/dom/no-dangerously-set-innerhtml': 'off',
