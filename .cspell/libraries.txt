@@ -35,6 +35,7 @@ sonner
 sqld
 tinycolor2
 tsup
+turbopack
 unifiedjs
 usehooks
 vfile
