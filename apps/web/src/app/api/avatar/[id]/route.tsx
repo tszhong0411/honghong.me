@@ -9,9 +9,9 @@ import color from 'tinycolor2'
 export const runtime = 'edge'
 
 type AvatarRouteProps = {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 const djb2 = (str: string) => {
@@ -32,14 +32,12 @@ const generateGradient = (id: string) => {
   }
 }
 
-export const GET = (req: Request, props: AvatarRouteProps) => {
+export const GET = async (req: Request, props: AvatarRouteProps) => {
   const params = new URL(req.url)
   const size = params.searchParams.get('size') ?? '40'
 
   try {
-    const {
-      params: { id }
-    } = props
+    const { id } = await props.params
 
     const gradient = generateGradient(id)
 
