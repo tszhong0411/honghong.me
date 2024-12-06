@@ -15,8 +15,8 @@ const title = 'Guestbook'
 const description = 'Sign my guestbook and share your idea. You can tell me anything here!'
 
 type PageProps = {
-  params: Record<string, never>
-  searchParams: Record<string, never>
+  params: Promise<Record<string, never>>
+  searchParams: Promise<Record<string, never>>
 }
 
 const jsonLd: WithContext<WebPage> = {

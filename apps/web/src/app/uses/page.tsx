@@ -12,8 +12,8 @@ const description =
   'This is the equipment I currently use for gaming, programming, making videos, and every day.'
 
 type PageProps = {
-  params: Record<string, never>
-  searchParams: Record<string, never>
+  params: Promise<Record<string, never>>
+  searchParams: Promise<Record<string, never>>
 }
 
 export const generateMetadata = async (

@@ -7,16 +7,14 @@ import { NextResponse } from 'next/server'
 import { SITE_URL } from '@/lib/constants'
 
 type OGRouteProps = {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 export const GET = async (_: Request, props: OGRouteProps) => {
   try {
-    const {
-      params: { id }
-    } = props
+    const { id } = await props.params
     const postMetadata = allBlogPosts.find((p) => p.slug === id)
 
     if (!postMetadata) {

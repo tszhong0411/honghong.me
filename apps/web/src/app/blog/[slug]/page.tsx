@@ -19,13 +19,13 @@ import Providers from './providers'
 import TableOfContents from './table-of-contents'
 
 type PageProps = {
-  params: {
+  params: Promise<{
     slug: string
-  }
-  searchParams: Record<string, never>
+  }>
+  searchParams: Promise<Record<string, never>>
 }
 
-export const generateStaticParams = (): Array<PageProps['params']> => {
+export const generateStaticParams = (): Array<Awaited<PageProps['params']>> => {
   return allBlogPosts.map((post) => ({
     slug: post.slug
   }))
@@ -35,9 +35,7 @@ export const generateMetadata = async (
   props: PageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> => {
-  const {
-    params: { slug }
-  } = props
+  const { slug } = await props.params
 
   const post = allBlogPosts.find((p) => p.slug === slug)
 
@@ -92,9 +90,7 @@ export const generateMetadata = async (
 }
 
 const Page = async (props: PageProps) => {
-  const {
-    params: { slug }
-  } = props
+  const { slug } = await props.params
 
   const post = allBlogPosts.find((p) => p.slug === slug)
 

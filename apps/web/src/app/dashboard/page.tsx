@@ -12,8 +12,8 @@ const description =
   'This is my personal dashboard, built with Next.js API routes deployed as edge functions. I use this dashboard to track various metrics across platforms like YouTube, GitHub, and more.'
 
 type PageProps = {
-  params: Record<string, never>
-  searchParams: Record<string, never>
+  params: Promise<Record<string, never>>
+  searchParams: Promise<Record<string, never>>
 }
 
 const jsonLd: WithContext<WebPage> = {
