@@ -1,5 +1,14 @@
 # @tszhong0411/ui
 
+## 0.0.36
+
+### Patch Changes
+
+- [#868](https://github.com/tszhong0411/honghong.me/pull/868) [`9be8a0e`](https://github.com/tszhong0411/honghong.me/commit/9be8a0ecec826f6249cbea1b8d1a8c188df2673d) Thanks [@tszhong0411](https://github.com/tszhong0411)! - upgrade radix-ui, cmdk, cva, lucide-react, react-hook-form, react-textarea-autosize, sonner
+
+- [#868](https://github.com/tszhong0411/honghong.me/pull/868) [`7b6c528`](https://github.com/tszhong0411/honghong.me/commit/7b6c5287ab9c360237c7a2f538f9ec49b9666c91) Thanks [@tszhong0411](https://github.com/tszhong0411)! - upgrade next 15, react 19, radix-ui
+  use outline style for icon on callout
+
 ## 0.0.35
 
 ### Patch Changes
