@@ -54,3 +54,9 @@ jobs:
           name: playwright-report
           path: apps/web/playwright-report/
           retention-days: 30
+
+      - name: List files
+        shell: bash
+        run: |
+          echo "Listing files:"
+          ls -R
