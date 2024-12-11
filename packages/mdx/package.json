@@ -31,7 +31,7 @@
     "gray-matter": "^4.0.3",
     "hast": "^1.0.0",
     "pluralize": "^8.0.0",
-    "react": "19.0.0-rc-b57d2823-20240822",
+    "react": "19.0.0",
     "remark": "^15.0.1",
     "remark-gfm": "^4.0.0",
     "shiki": "^1.14.1",
@@ -48,7 +48,7 @@
     "@types/mdast": "^4.0.4",
     "@types/node": "^22.5.0",
     "@types/pluralize": "^0.0.33",
-    "@types/react": "npm:types-react@rc"
+    "@types/react": "19.0.1"
   },
   "lint-staged": {
     "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix",

@@ -10,13 +10,13 @@ import { SITE_NAME, SITE_URL } from '@/lib/constants'
 import Header from './header'
 
 type PageProps = {
-  params: {
+  params: Promise<{
     slug: string
-  }
-  searchParams: Record<string, never>
+  }>
+  searchParams: Promise<Record<string, never>>
 }
 
-export const generateStaticParams = (): Array<PageProps['params']> => {
+export const generateStaticParams = (): Array<Awaited<PageProps['params']>> => {
   return allProjects.map((project) => ({
     slug: project.slug
   }))
@@ -26,9 +26,9 @@ export const generateMetadata = async (
   props: PageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> => {
-  const { params } = props
+  const { slug } = await props.params
 
-  const project = allProjects.find((p) => p.slug === params.slug)
+  const project = allProjects.find((p) => p.slug === slug)
 
   if (!project) {
     return {}
@@ -42,16 +42,16 @@ export const generateMetadata = async (
     title: name,
     description: description,
     alternates: {
-      canonical: `/projects/${params.slug}`
+      canonical: `/projects/${slug}`
     },
     openGraph: {
       ...previousOpenGraph,
-      url: `/projects/${params.slug}`,
+      url: `/projects/${slug}`,
       title: name,
       description: description,
       images: [
         {
-          url: `/images/projects/${params.slug}/cover.png`,
+          url: `/images/projects/${slug}/cover.png`,
           width: 1280,
           height: 832,
           alt: description,
@@ -65,7 +65,7 @@ export const generateMetadata = async (
       description: description,
       images: [
         {
-          url: `/images/projects/${params.slug}/cover.png`,
+          url: `/images/projects/${slug}/cover.png`,
           width: 1280,
           height: 832,
           alt: description
@@ -75,10 +75,8 @@ export const generateMetadata = async (
   }
 }
 
-const Page = (props: PageProps) => {
-  const {
-    params: { slug }
-  } = props
+const Page = async (props: PageProps) => {
+  const { slug } = await props.params
 
   const project = allProjects.find((p) => p.slug === slug)
 

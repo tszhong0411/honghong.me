@@ -10,8 +10,8 @@ const title = 'Projects'
 const description = 'The list of my projects. Everything was made with ❤️.'
 
 type PageProps = {
-  params: Record<string, never>
-  searchParams: Record<string, never>
+  params: Promise<Record<string, never>>
+  searchParams: Promise<Record<string, never>>
 }
 
 export const generateMetadata = async (

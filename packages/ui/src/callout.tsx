@@ -12,9 +12,9 @@ export const Callout = forwardRef<HTMLDivElement, CalloutProps>((props, ref) => 
   const { title, type = 'info', icon, className, children, ...rest } = props
 
   const icons = {
-    info: <InfoIcon className='text-card size-5 fill-blue-500' />,
-    warning: <AlertTriangleIcon className='text-card size-5 fill-orange-500' />,
-    error: <AlertOctagonIcon className='text-card size-5 fill-red-500' />
+    info: <InfoIcon className='my-0.5 size-4 text-blue-500' />,
+    warning: <AlertTriangleIcon className='my-0.5 size-4 text-orange-500' />,
+    error: <AlertOctagonIcon className='my-0.5 size-4 text-red-500' />
   }
 
   return (

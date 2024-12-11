@@ -4,21 +4,19 @@ import { notFound } from 'next/navigation'
 import Mdx from '@/components/mdx'
 
 type PageProps = {
-  params: {
+  params: Promise<{
     slug?: string[]
-  }
+  }>
 }
 
-export const generateStaticParams = (): Array<PageProps['params']> => {
+export const generateStaticParams = (): Array<Awaited<PageProps['params']>> => {
   return allDocs.map((doc) => ({
     slug: doc.slugAsParams.split('/')
   }))
 }
 
-const Page = (props: PageProps) => {
-  const {
-    params: { slug }
-  } = props
+const Page = async (props: PageProps) => {
+  const { slug } = await props.params
 
   const doc = slug
     ? allDocs.find((d) => d.slugAsParams === slug.join('/'))
