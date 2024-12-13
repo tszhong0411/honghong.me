@@ -2,15 +2,106 @@ import { Toaster } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
+import type { Metadata, Viewport } from 'next'
 
 import '@/styles/globals.css'
 import Header from '@/components/layout/header'
 import Sidebar from '@/components/layout/sidebar'
+import { SITE_DESCRIPTION, SITE_KEYWORDS, SITE_TITLE, SITE_URL } from '@/lib/constants'
 
 import Providers from './providers'
 
 type LayoutProps = {
   children: React.ReactNode
+}
+
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: SITE_TITLE,
+    template: `%s | ${SITE_TITLE}`
+  },
+  description: SITE_DESCRIPTION,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1
+    }
+  },
+  manifest: '/favicon/site.webmanifest',
+  twitter: {
+    title: 'Hong',
+    card: 'summary_large_image',
+    site: '@tszhong0411',
+    creator: '@tszhong0411',
+    images: [
+      {
+        url: 'https://docs.honghong.me/images/og.png',
+        width: 1200,
+        height: 630,
+        alt: SITE_DESCRIPTION
+      }
+    ]
+  },
+  alternates: {
+    canonical: SITE_URL
+  },
+  keywords: SITE_KEYWORDS,
+  creator: 'tszhong0411',
+  openGraph: {
+    url: SITE_URL,
+    type: 'website',
+    title: SITE_TITLE,
+    siteName: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    locale: 'en-US',
+    images: [
+      {
+        url: 'https://docs.honghong.me/images/og.png',
+        width: 1200,
+        height: 630,
+        alt: SITE_DESCRIPTION,
+        type: 'image/png'
+      }
+    ]
+  },
+  icons: {
+    icon: '/favicon/favicon.ico',
+    shortcut: '/favicon/favicon.ico',
+    apple: [
+      {
+        url: '/favicon/apple-touch-icon.png',
+        sizes: '180x180',
+        type: 'image/png'
+      }
+    ],
+    other: [
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        url: '/favicon/favicon-16x16.png'
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        url: '/favicon/favicon-32x32.png'
+      }
+    ]
+  }
+}
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' }
+  ]
 }
 
 const Layout = (props: LayoutProps) => {
@@ -25,7 +116,7 @@ const Layout = (props: LayoutProps) => {
       <body>
         <Providers>
           <Header />
-          <div className='max-w-8xl mx-auto px-5 sm:px-8 md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10'>
+          <div className='mx-auto max-w-6xl px-5 sm:px-8 md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10'>
             <Sidebar />
             <main className='py-8'>{children}</main>
           </div>

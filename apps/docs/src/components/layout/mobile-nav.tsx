@@ -1,6 +1,15 @@
 'use client'
 
-import { Button, ScrollArea, Sheet, SheetContent, SheetTrigger } from '@tszhong0411/ui'
+import {
+  Button,
+  ScrollArea,
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetTitle,
+  SheetTrigger,
+  VisuallyHidden
+} from '@tszhong0411/ui'
 import { MenuIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -21,6 +30,10 @@ const MobileNav = () => {
         </Button>
       </SheetTrigger>
       <SheetContent side='left' className='flex flex-col gap-8'>
+        <VisuallyHidden>
+          <SheetTitle>Navigation menu</SheetTitle>
+          <SheetDescription>Navigation menu of the documentation site</SheetDescription>
+        </VisuallyHidden>
         <Link href='/' className='font-semibold tracking-tighter'>
           @tszhong0411/docs
         </Link>
