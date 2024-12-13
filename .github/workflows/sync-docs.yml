@@ -26,7 +26,7 @@ jobs:
 
       - name: Sync all files
         run: |
-          rsync -a --exclude '.git' --exclude 'sync-docs' ./ ./sync-docs/
+          rsync -a --exclude '.git' --exclude 'sync-docs' --exclude '.github' ./ ./sync-docs/
 
       - name: Commit and push changes to docs
         run: |
