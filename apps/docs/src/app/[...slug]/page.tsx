@@ -13,7 +13,7 @@ type PageProps = {
 const getDoc = (slug: string[] | undefined) => {
   return slug
     ? allDocs.find((d) => d.slugAsParams === slug.join('/'))
-    : allDocs.find((d) => d.slugAsParams === 'index')
+    : allDocs.find((d) => d.slugAsParams === 'introduction')
 }
 
 export const generateStaticParams = (): Array<Awaited<PageProps['params']>> => {

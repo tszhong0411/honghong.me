@@ -28,6 +28,16 @@ const config = {
 
   async headers() {
     return NextConfigHeaders
+  },
+
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/introduction',
+        permanent: true
+      }
+    ]
   }
 }
 
