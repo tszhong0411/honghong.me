@@ -12,6 +12,7 @@ duarte
 goodnotes
 googleusercontent
 gstatic
+IINA
 jahir
 joshwcomeau
 karabiner
@@ -33,6 +34,7 @@ planetscale
 raycast
 samuelkraft
 tableplus
+tabtab
 theodorusclarence
 umami
 visualstudiocode
