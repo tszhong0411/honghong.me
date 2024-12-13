@@ -13,13 +13,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Sync Docs
-        env:
-          TARGET_REPO: 'https://${{ secrets.SYNC_REPO_PAT }}@github.com/tszhong0411/docs.git'
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git init
-          git remote add origin $TARGET_REPO
-          git add .
+          git add -A
           git commit -m "chore: sync docs"
-          git push -f origin main
+          git push -f "https://${{ secrets.SYNC_REPO_PAT }}@github.com/tszhong0411/docs.git"
