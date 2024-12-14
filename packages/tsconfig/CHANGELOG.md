@@ -1,5 +1,11 @@
 # @tszhong0411/tsconfig
 
+## 0.0.7
+
+### Patch Changes
+
+- [#872](https://github.com/tszhong0411/honghong.me/pull/872) [`465cfdc`](https://github.com/tszhong0411/honghong.me/commit/465cfdcb436a30aeeef37e1813395d5d9d569737) Thanks [@tszhong0411](https://github.com/tszhong0411)! - add next to deps
+
 ## 0.0.6
 
 ### Patch Changes
