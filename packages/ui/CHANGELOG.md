@@ -1,5 +1,11 @@
 # @tszhong0411/ui
 
+## 0.0.38
+
+### Patch Changes
+
+- [`1edd706`](https://github.com/tszhong0411/honghong.me/commit/1edd706574de7c98e79915ca53d03d2fbbfdfa75) Thanks [@tszhong0411](https://github.com/tszhong0411)! - downgrade `react-hook-form` due to type errors
+
 ## 0.0.37
 
 ### Patch Changes
