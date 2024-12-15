@@ -3,7 +3,7 @@ import { getErrorMessage } from '@tszhong0411/utils'
 import { allBlogPosts } from 'mdx/generated'
 import { ImageResponse } from 'next/og'
 import { NextResponse } from 'next/server'
-import { readFileSync } from 'node:fs'
+import fs from 'node:fs'
 import path from 'node:path'
 
 import { SITE_URL } from '@/lib/constants'
@@ -12,10 +12,6 @@ type OGRouteProps = {
   params: Promise<{
     id: string
   }>
-}
-
-export const loadFile = (filePath: string): Buffer => {
-  return readFileSync(path.join(process.cwd(), filePath))
 }
 
 export const GET = async (_: Request, props: OGRouteProps) => {
@@ -42,7 +38,9 @@ export const GET = async (_: Request, props: OGRouteProps) => {
       return 64
     }
 
-    const roboto = loadFile('public/fonts/RobotoCondensed-Bold.ttf')
+    const roboto = fs.readFileSync(
+      path.join(process.cwd(), 'src/app/og/[id]/RobotoCondensed-Bold.ttf')
+    )
 
     const post = await db
       .select({
