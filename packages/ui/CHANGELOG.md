@@ -1,5 +1,11 @@
 # @tszhong0411/ui
 
+## 0.0.37
+
+### Patch Changes
+
+- [`9a24ff2`](https://github.com/tszhong0411/honghong.me/commit/9a24ff2f808346de29ddf7a8829caa782c3260a1) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Upgrade dependencies
+
 ## 0.0.36
 
 ### Patch Changes
