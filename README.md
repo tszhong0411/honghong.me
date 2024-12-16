@@ -16,7 +16,7 @@ Welcome to the monorepo of my personal blog! This repository houses the code for
 
 ## ✨ Features
 
-- ⚡️ Next.js 14 with App Router
+- ⚡️ Next.js 15 with App Router
 - 📝 MDX
 - 🎨 Tailwind CSS - for styling
 - 🌈 Radix UI - accessible UI components
