@@ -14,11 +14,11 @@ export const users = pgTable('user', {
     .$defaultFn(() => createId()),
   name: text('name'),
   email: text('email').notNull().unique(),
-  emailVerified: timestamp('email_verified'),
+  emailVerified: timestamp('email_verified', { precision: 3 }),
   image: text('image'),
   role: roleEnum('role').default('user').notNull(),
-  createdAt: timestamp('created_at').notNull().defaultNow(),
-  updatedAt: timestamp('updated_at').notNull().defaultNow()
+  createdAt: timestamp('created_at', { precision: 3 }).notNull().defaultNow(),
+  updatedAt: timestamp('updated_at', { precision: 3 }).notNull().defaultNow()
 })
 
 export const accounts = pgTable(
@@ -50,7 +50,7 @@ export const sessions = pgTable('session', {
   userId: text('user_id')
     .notNull()
     .references(() => users.id, { onDelete: 'cascade' }),
-  expires: timestamp('expires').notNull()
+  expires: timestamp('expires', { precision: 3 }).notNull()
 })
 
 export const verificationTokens = pgTable(
@@ -58,7 +58,7 @@ export const verificationTokens = pgTable(
   {
     identifier: text('identifier').notNull(),
     token: text('token').notNull(),
-    expires: timestamp('expires').notNull()
+    expires: timestamp('expires', { precision: 3 }).notNull()
   },
   (verificationToken) => ({
     compoundKey: primaryKey({

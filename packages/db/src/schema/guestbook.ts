@@ -9,8 +9,8 @@ export const guestbook = pgTable('guestbook', {
   userId: text('user_id')
     .notNull()
     .references(() => users.id),
-  createdAt: timestamp('created_at').notNull().defaultNow(),
-  updatedAt: timestamp('updated_at').notNull().defaultNow()
+  createdAt: timestamp('created_at', { precision: 3 }).notNull().defaultNow(),
+  updatedAt: timestamp('updated_at', { precision: 3 }).notNull().defaultNow()
 })
 
 export const guestbookRelations = relations(guestbook, ({ one }) => ({

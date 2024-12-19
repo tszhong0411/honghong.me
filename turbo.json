@@ -55,7 +55,10 @@
     "db:migrate": {
       "cache": false
     },
-    "db:push": {},
+    "db:push": {
+      "cache": false,
+      "interactive": true
+    },
     "db:seed": {},
     "db:studio": {
       "cache": false,
