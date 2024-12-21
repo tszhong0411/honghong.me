@@ -46,13 +46,13 @@
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.5.0",
-    "@changesets/cli": "^2.27.10",
-    "@commitlint/cli": "^19.6.0",
+    "@changesets/cli": "^2.27.11",
+    "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
     "@cspell/dict-fullstack": "^3.2.3",
-    "@cspell/dict-npm": "^5.1.17",
+    "@cspell/dict-npm": "^5.1.18",
     "@cspell/dict-redis": "^1.0.4",
-    "@cspell/dict-software-terms": "^3.4.10",
+    "@cspell/dict-software-terms": "^4.1.20",
     "@playwright/test": "^1.49.1",
     "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/prettier-config": "workspace:*",
@@ -64,13 +64,13 @@
     "commitizen": "^4.3.1",
     "concurrently": "^9.1.0",
     "cross-env": "^7.0.3",
-    "cspell": "^8.16.1",
+    "cspell": "^8.17.1",
     "cz-git": "^1.11.0",
-    "dotenv-cli": "^7.4.4",
+    "dotenv-cli": "^8.0.0",
     "eslint": "^8.57.1",
     "husky": "^9.1.7",
     "jsdom": "^25.0.1",
-    "knip": "^5.40.0",
+    "knip": "^5.41.1",
     "lint-staged": "^15.2.11",
     "prettier": "^3.4.2",
     "tsup": "^8.3.5",
@@ -87,5 +87,5 @@
     "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix",
     "**/*": "prettier --write --ignore-unknown"
   },
-  "packageManager": "pnpm@9.15.0+sha512.76e2379760a4328ec4415815bcd6628dee727af3779aaa4c914e3944156c4299921a89f976381ee107d41f12cfa4b66681ca9c718f0668fa0831ed4c6d8ba56c"
+  "packageManager": "pnpm@9.15.1+sha512.1acb565e6193efbebda772702950469150cf12bcc764262e7587e71d19dc98a423dff9536e57ea44c49bdf790ff694e83c27be5faa23d67e0c033b583be4bfcf"
 }
