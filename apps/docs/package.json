@@ -41,7 +41,7 @@
     "@tszhong0411/tailwind-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
     "@types/hast": "^3.0.4",
-    "@types/node": "^20.14.2",
+    "@types/node": "^22.10.2",
     "@types/react": "19.0.2",
     "@types/react-dom": "19.0.2",
     "cross-env": "^7.0.3",
