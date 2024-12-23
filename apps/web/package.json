@@ -41,7 +41,7 @@
     "@tszhong0411/utils": "workspace:*",
     "@vercel/speed-insights": "^1.0.12",
     "canvas-confetti": "^1.9.3",
-    "class-variance-authority": "^0.7.0",
+    "class-variance-authority": "^0.7.1",
     "cobe": "^0.6.3",
     "dayjs": "^1.11.13",
     "fast-xml-parser": "^4.4.1",
