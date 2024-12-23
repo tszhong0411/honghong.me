@@ -89,12 +89,12 @@
     "@types/rss": "^0.0.32",
     "@types/tinycolor2": "^1.4.6",
     "@vitejs/plugin-react": "^4.3.1",
-    "postcss": "^8.4.41",
+    "postcss": "^8.4.49",
     "postcss-lightningcss": "^1.0.1",
     "postcss-load-config": "^6.0.1",
     "schema-dts": "^1.1.2",
     "sharp": "^0.33.5",
-    "tailwindcss": "^3.4.10"
+    "tailwindcss": "^3.4.17"
   },
   "lint-staged": {
     "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix",

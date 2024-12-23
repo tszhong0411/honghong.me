@@ -45,10 +45,10 @@
     "@types/react": "19.0.2",
     "@types/react-dom": "19.0.2",
     "cross-env": "^7.0.3",
-    "postcss": "^8.4.38",
-    "postcss-lightningcss": "^1.0.0",
+    "postcss": "^8.4.49",
+    "postcss-lightningcss": "^1.0.1",
     "postcss-load-config": "^6.0.1",
-    "tailwindcss": "^3.4.4"
+    "tailwindcss": "^3.4.17"
   },
   "lint-staged": {
     "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix",
