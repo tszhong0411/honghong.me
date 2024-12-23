@@ -32,7 +32,7 @@
     "shiki": "^1.6.4",
     "unified": "^11.0.5",
     "unist-util-visit": "^5.0.0",
-    "zod": "^3.23.8"
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^15.1.2",
