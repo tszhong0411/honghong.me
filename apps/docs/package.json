@@ -35,7 +35,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "15.0.4",
+    "@next/bundle-analyzer": "^15.1.2",
     "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/shared": "workspace:*",
     "@tszhong0411/tailwind-config": "workspace:*",

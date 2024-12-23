@@ -73,7 +73,7 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.10.0",
-    "@next/bundle-analyzer": "15.0.4",
+    "@next/bundle-analyzer": "^15.1.2",
     "@testing-library/jest-dom": "^6.5.0",
     "@testing-library/react": "^16.0.0",
     "@tszhong0411/eslint-config": "workspace:*",
