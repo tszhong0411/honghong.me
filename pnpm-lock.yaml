@@ -147,7 +147,7 @@ importers:
         specifier: ^7.54.2
         version: 7.54.2(react@19.0.0)
       sharp:
-        specifier: ^0.33.2
+        specifier: ^0.33.5
         version: 0.33.5
       shiki:
         specifier: ^1.6.4
@@ -425,7 +425,7 @@ importers:
         specifier: ^1.1.2
         version: 1.1.2(typescript@5.7.2)
       sharp:
-        specifier: ^0.33.2
+        specifier: ^0.33.5
         version: 0.33.5
       tailwindcss:
         specifier: ^3.4.10
