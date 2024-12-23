@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@auth/drizzle-adapter": "1.7.2",
-    "@hookform/resolvers": "^3.9.0",
+    "@hookform/resolvers": "^3.9.1",
     "@icons-pack/react-simple-icons": "9.5.0",
     "@nanostores/react": "^0.7.3",
     "@normy/react-query": "^0.14.3",

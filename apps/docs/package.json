@@ -16,7 +16,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@hookform/resolvers": "^3.9.0",
+    "@hookform/resolvers": "^3.9.1",
     "@tszhong0411/mdx": "workspace:*",
     "@tszhong0411/ui": "workspace:*",
     "@tszhong0411/utils": "workspace:*",
