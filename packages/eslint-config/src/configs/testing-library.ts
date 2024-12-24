@@ -3,7 +3,7 @@ import type { Linter } from 'eslint'
 import { GLOB_TEST } from '../globs'
 import { testingLibraryPlugin } from '../plugins'
 
-export const testingLibrary: Linter.FlatConfig[] = [
+export const testingLibrary: Linter.Config[] = [
   {
     name: 'tszhong0411:testing-library',
     plugins: {

@@ -4,7 +4,7 @@ import { GLOB_TS, GLOB_TSX } from '../globs'
 import type { Options } from '../index'
 import { typescriptParser, typescriptPlugin } from '../plugins'
 
-export const typescript = (options?: Options): Linter.FlatConfig[] => [
+export const typescript = (options?: Options): Linter.Config[] => [
   {
     name: 'tszhong0411:typescript',
     plugins: {

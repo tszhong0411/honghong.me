@@ -2,7 +2,7 @@ import type { Linter } from 'eslint'
 
 import { eslintCommentsPlugin } from '../plugins'
 
-export const comments: Linter.FlatConfig[] = [
+export const comments: Linter.Config[] = [
   {
     name: 'tszhong0411:comments',
     plugins: {
