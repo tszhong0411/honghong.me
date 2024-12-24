@@ -17,8 +17,8 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@mdx-js/mdx": "^3.0.1",
-    "@mdx-js/react": "^3.0.1",
+    "@mdx-js/mdx": "^3.1.0",
+    "@mdx-js/react": "^3.1.0",
     "@shikijs/rehype": "^1.14.1",
     "@shikijs/transformers": "^1.14.1",
     "@tszhong0411/utils": "workspace:*",
