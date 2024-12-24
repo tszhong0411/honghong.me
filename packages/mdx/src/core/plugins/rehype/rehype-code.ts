@@ -47,7 +47,7 @@ export const rehypeCode: [Plugin<[RehypeShikiOptions], Root>, RehypeShikiOptions
       transformerMetaHighlight()
     ],
     parseMetaString: (meta) => {
-      const titleMatch = meta.match(titleRegex)
+      const titleMatch = titleRegex.exec(meta)
       const title = titleMatch?.[1] ?? null
 
       return { title }
