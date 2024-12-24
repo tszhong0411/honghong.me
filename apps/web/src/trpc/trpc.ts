@@ -1,21 +1,24 @@
 import { initTRPC, TRPCError } from '@trpc/server'
+import type { FetchCreateContextFnOptions } from '@trpc/server/adapters/fetch'
 import { db } from '@tszhong0411/db'
 import { SuperJSON } from 'superjson'
 import { ZodError } from 'zod'
 
 import { auth } from '@/lib/auth'
 
-export const createTRPCContext = async (opts: { headers: Headers }) => {
+export const createContext = async (opts: FetchCreateContextFnOptions) => {
   const session = await auth()
 
   return {
     db,
     session,
-    ...opts
+    headers: opts.req.headers
   }
 }
 
-const t = initTRPC.context<typeof createTRPCContext>().create({
+type Context = Awaited<ReturnType<typeof createContext>>
+
+const t = initTRPC.context<Context>().create({
   transformer: SuperJSON,
   errorFormatter({ shape, error }) {
     return {
