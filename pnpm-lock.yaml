@@ -594,11 +594,11 @@ importers:
   packages/kv:
     dependencies:
       '@upstash/ratelimit':
-        specifier: ^2.0.1
-        version: 2.0.1
+        specifier: ^2.0.5
+        version: 2.0.5(@upstash/redis@1.34.3)
       '@upstash/redis':
-        specifier: ^1.34.0
-        version: 1.34.0
+        specifier: ^1.34.3
+        version: 1.34.3
     devDependencies:
       '@tszhong0411/env':
         specifier: workspace:*
@@ -5186,11 +5186,13 @@ packages:
     resolution: {integrity: sha512-7qJHGxpQgQr9/vmeS1PktEwvNAF7TI4iJDi8Pu2CFZ9YUGHZH4fOP5TfYlZ4aVxfopnELiE4BS4FBjyK7V1/xQ==}
     engines: {node: '>=16.0.0'}
 
-  '@upstash/ratelimit@2.0.1':
-    resolution: {integrity: sha512-J+0hlkvWUjlVrjcBQhWx7gbaUGsvFF59i+GAx7YQk8L0E0MQ93xzCPu02uaXhGDJGkxiar7nRRPqj3hs+CdAJg==}
+  '@upstash/ratelimit@2.0.5':
+    resolution: {integrity: sha512-1FRv0cs3ZlBjCNOCpCmKYmt9BYGIJf0J0R3pucOPE88R21rL7jNjXG+I+rN/BVOvYJhI9niRAS/JaSNjiSICxA==}
+    peerDependencies:
+      '@upstash/redis': ^1.34.3
 
-  '@upstash/redis@1.34.0':
-    resolution: {integrity: sha512-TrXNoJLkysIl8SBc4u9bNnyoFYoILpCcFJcLyWCccb/QSUmaVKdvY0m5diZqc3btExsapcMbaw/s/wh9Sf1pJw==}
+  '@upstash/redis@1.34.3':
+    resolution: {integrity: sha512-VT25TyODGy/8ljl7GADnJoMmtmJ1F8d84UXfGonRRF8fWYJz7+2J6GzW+a6ETGtk4OyuRTt7FRSvFG5GvrfSdQ==}
 
   '@vercel/speed-insights@1.1.0':
     resolution: {integrity: sha512-rAXxuhhO4mlRGC9noa5F7HLMtGg8YF1zAN6Pjd1Ny4pII4cerhtwSG4vympbCl+pWkH7nBS9kVXRD4FAn54dlg==}
@@ -15995,13 +15997,14 @@ snapshots:
 
   '@upstash/core-analytics@0.0.10':
     dependencies:
-      '@upstash/redis': 1.34.0
+      '@upstash/redis': 1.34.3
 
-  '@upstash/ratelimit@2.0.1':
+  '@upstash/ratelimit@2.0.5(@upstash/redis@1.34.3)':
     dependencies:
       '@upstash/core-analytics': 0.0.10
+      '@upstash/redis': 1.34.3
 
-  '@upstash/redis@1.34.0':
+  '@upstash/redis@1.34.3':
     dependencies:
       crypto-js: 4.2.0
 
