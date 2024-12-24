@@ -54,16 +54,19 @@ export const commentsRouter = createTRPCRouter({
 
       if (!success) throw new TRPCError({ code: 'TOO_MANY_REQUESTS' })
 
+      const getCursorFilter = () => {
+        if (!input.cursor) return
+        return input.sort === 'newest'
+          ? lt(comments.createdAt, input.cursor)
+          : gt(comments.createdAt, input.cursor)
+      }
+
       const query = await ctx.db.query.comments.findMany({
         where: and(
           eq(comments.postId, input.slug),
           input.parentId ? eq(comments.parentId, input.parentId) : isNull(comments.parentId),
           input.type === 'comments' ? isNull(comments.parentId) : isNotNull(comments.parentId),
-          input.cursor
-            ? input.sort === 'newest'
-              ? lt(comments.createdAt, input.cursor)
-              : gt(comments.createdAt, input.cursor)
-            : undefined,
+          getCursorFilter(),
           input.highlightedCommentId ? ne(comments.id, input.highlightedCommentId) : undefined
         ),
         limit: input.limit,
@@ -117,7 +120,7 @@ export const commentsRouter = createTRPCRouter({
           }
         })
 
-        highlightedComment && query.unshift(highlightedComment)
+        if (highlightedComment) query.unshift(highlightedComment)
       }
 
       const result = await Promise.all(

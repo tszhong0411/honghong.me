@@ -92,7 +92,7 @@ const CommandMenu = () => {
           onSelect: async () => {
             setIsOpen(false)
 
-            await copy({ text: window.location.href })
+            await copy({ text: globalThis.location.href })
           }
         },
         {

@@ -31,7 +31,7 @@ const Hero = () => {
   const [scope, animate] = useAnimate()
 
   useEffect(() => {
-    void animate(
+    animate(
       [
         [scope.current, { y: '0%' }, { duration: 0 }],
         [scope.current, { y: '-25%' }, { duration: 0.3, at: '+1.3' }],

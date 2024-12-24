@@ -64,7 +64,7 @@ export const generateMetadata = async (
 }
 
 const Page = () => {
-  const posts = allBlogPosts.sort((a, b) => {
+  const posts = allBlogPosts.toSorted((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime()
   })
 

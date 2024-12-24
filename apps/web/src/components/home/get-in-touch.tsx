@@ -23,7 +23,7 @@ const GetInTouch = () => {
   const isInView = useInView(cardsRef, { once: true, margin: '-100px' })
 
   useEffect(() => {
-    void animate(
+    animate(
       [
         ['#pointer', { left: 200, top: 60 }, { duration: 0 }],
         ['#javascript', { opacity: 1 }, { duration: 0.3 }],
