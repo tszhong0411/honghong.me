@@ -3,22 +3,17 @@
 import * as DialogPrimitive from '@radix-ui/react-dialog'
 import { cn } from '@tszhong0411/utils'
 import { XIcon } from 'lucide-react'
-import { forwardRef } from 'react'
 
 export const Dialog = DialogPrimitive.Root
 export const DialogTrigger = DialogPrimitive.Trigger
 export const DialogClose = DialogPrimitive.Close
 const DialogPortal = DialogPrimitive.Portal
 
-const DialogOverlay = forwardRef<
-  React.ComponentRef<typeof DialogPrimitive.Overlay>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
->((props, ref) => {
+const DialogOverlay = (props: React.ComponentProps<typeof DialogPrimitive.Overlay>) => {
   const { className, ...rest } = props
 
   return (
     <DialogPrimitive.Overlay
-      ref={ref}
       className={cn(
         'fixed inset-0 z-50 bg-black/40 backdrop-blur-sm',
         'data-[state=open]:animate-in data-[state=open]:fade-in-0',
@@ -28,19 +23,15 @@ const DialogOverlay = forwardRef<
       {...rest}
     />
   )
-})
+}
 
-export const DialogContent = forwardRef<
-  React.ComponentRef<typeof DialogPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
->((props, ref) => {
+export const DialogContent = (props: React.ComponentProps<typeof DialogPrimitive.Content>) => {
   const { className, children, ...rest } = props
 
   return (
     <DialogPortal>
       <DialogOverlay />
       <DialogPrimitive.Content
-        ref={ref}
         className={cn(
           'bg-background fixed left-1/2 top-1/2 z-50 grid w-full max-w-lg -translate-x-1/2 -translate-y-1/2 gap-4 border p-6 shadow-lg sm:rounded-lg',
           'data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]',
@@ -65,65 +56,50 @@ export const DialogContent = forwardRef<
       </DialogPrimitive.Content>
     </DialogPortal>
   )
-})
+}
 
-export const DialogHeader = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
-  (props, ref) => {
-    const { className, ...rest } = props
+export const DialogHeader = (props: React.ComponentProps<'div'>) => {
+  const { className, ...rest } = props
 
-    return (
-      <div
-        ref={ref}
-        className={cn('flex flex-col gap-1.5 text-center sm:text-left', className)}
-        {...rest}
-      />
-    )
-  }
-)
+  return (
+    <div className={cn('flex flex-col gap-1.5 text-center sm:text-left', className)} {...rest} />
+  )
+}
 
-export const DialogFooter = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
-  (props, ref) => {
-    const { className, ...rest } = props
+export const DialogFooter = (props: React.ComponentProps<'div'>) => {
+  const { className, ...rest } = props
 
-    return (
-      <div
-        ref={ref}
-        className={cn('flex flex-col-reverse sm:flex-row sm:justify-end sm:gap-2', className)}
-        {...rest}
-      />
-    )
-  }
-)
+  return (
+    <div
+      className={cn('flex flex-col-reverse sm:flex-row sm:justify-end sm:gap-2', className)}
+      {...rest}
+    />
+  )
+}
 
-export const DialogTitle = forwardRef<
-  React.ComponentRef<typeof DialogPrimitive.Title>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title>
->((props, ref) => {
+export const DialogTitle = (props: React.ComponentProps<typeof DialogPrimitive.Title>) => {
   const { className, ...rest } = props
 
   return (
     <DialogPrimitive.Title
-      ref={ref}
       className={cn('text-lg font-semibold leading-none tracking-tight', className)}
       {...rest}
     />
   )
-})
+}
 
-export const DialogDescription = forwardRef<
-  React.ComponentRef<typeof DialogPrimitive.Description>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description>
->((props, ref) => {
+export const DialogDescription = (
+  props: React.ComponentProps<typeof DialogPrimitive.Description>
+) => {
   const { className, ...rest } = props
 
   return (
     <DialogPrimitive.Description
-      ref={ref}
       className={cn('text-muted-foreground text-sm', className)}
       {...rest}
     />
   )
-})
+}
 
 DialogPortal.displayName = DialogPrimitive.Portal.displayName
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName

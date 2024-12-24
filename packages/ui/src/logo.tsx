@@ -1,9 +1,6 @@
-import { forwardRef } from 'react'
-
-export const Logo = forwardRef<SVGSVGElement, React.SVGAttributes<SVGElement>>((props, ref) => {
+export const Logo = (props: React.SVGAttributes<SVGElement>) => {
   return (
     <svg
-      ref={ref}
       version='1.0'
       xmlns='http://www.w3.org/2000/svg'
       width={32}
@@ -17,6 +14,6 @@ export const Logo = forwardRef<SVGSVGElement, React.SVGAttributes<SVGElement>>((
       />
     </svg>
   )
-})
+}
 
 Logo.displayName = 'Logo'

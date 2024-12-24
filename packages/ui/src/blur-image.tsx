@@ -5,21 +5,20 @@
 
 import { cn } from '@tszhong0411/utils'
 import NextImage from 'next/image'
-import { forwardRef, useState } from 'react'
+import { useState } from 'react'
 
 type ImageProps = {
   imageClassName?: string
   lazy?: boolean
-} & React.ComponentPropsWithoutRef<typeof NextImage>
+} & React.ComponentProps<typeof NextImage>
 
-export const BlurImage = forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
+export const BlurImage = (props: ImageProps) => {
   const { alt, src, className, imageClassName, lazy = true, ...rest } = props
   const [isLoading, setIsLoading] = useState(true)
 
   return (
     <div className={cn('overflow-hidden', isLoading && 'animate-pulse', className)}>
       <NextImage
-        ref={ref}
         className={cn(isLoading && 'scale-[1.02] blur-xl grayscale', imageClassName)}
         style={{
           transition: 'filter 700ms ease, transform 150ms ease'
@@ -36,6 +35,6 @@ export const BlurImage = forwardRef<HTMLImageElement, ImageProps>((props, ref) =
       />
     </div>
   )
-})
+}
 
 BlurImage.displayName = 'Image'

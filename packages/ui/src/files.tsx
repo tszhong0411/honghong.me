@@ -11,15 +11,15 @@ import { useState } from 'react'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from './collapsible'
 import { getIconByFilename } from './utils/get-icon-by-filename'
 
-type FilesProps = React.ComponentPropsWithoutRef<'div'>
+type FilesProps = React.ComponentProps<'div'>
 type FileProps = {
   name: string
   icon?: React.ReactNode
-} & React.ComponentPropsWithoutRef<'div'>
+} & React.ComponentProps<'div'>
 type FolderProps = {
   name: string
   defaultOpen?: boolean
-} & React.ComponentPropsWithoutRef<'div'>
+} & React.ComponentProps<'div'>
 
 const item = cva(
   'hover:bg-accent hover:text-accent-foreground flex flex-row items-center gap-2 rounded-md px-2 py-1.5 text-sm'
