@@ -21,15 +21,15 @@
   "dependencies": {
     "@paralleldrive/cuid2": "^2.2.2",
     "@tszhong0411/env": "workspace:*",
-    "drizzle-orm": "^0.33.0",
-    "pg": "^8.12.0"
+    "drizzle-orm": "^0.38.2",
+    "pg": "^8.13.1"
   },
   "devDependencies": {
     "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
     "@types/node": "^22.10.2",
     "@types/pg": "^8.11.10",
-    "drizzle-kit": "^0.24.1"
+    "drizzle-kit": "^0.30.1"
   },
   "lint-staged": {
     "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix",

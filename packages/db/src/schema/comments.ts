@@ -30,11 +30,13 @@ export const rates = pgTable(
       .references(() => comments.id, { onDelete: 'cascade' }),
     like: boolean('like').notNull()
   },
-  (rate) => ({
-    compoundKey: primaryKey({
-      columns: [rate.userId, rate.commentId]
-    })
-  })
+  (rate) => [
+    {
+      compoundKey: primaryKey({
+        columns: [rate.userId, rate.commentId]
+      })
+    }
+  ]
 )
 
 export const commentsRelations = relations(comments, ({ one, many }) => ({

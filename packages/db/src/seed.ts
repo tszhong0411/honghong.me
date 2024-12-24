@@ -1,16 +1,10 @@
-import { env } from '@tszhong0411/env'
+// import { env } from '@tszhong0411/env'
 // import { drizzle } from 'drizzle-orm/node-postgres'
-import pg from 'pg'
 
 // import * as schema from './schema'
 
-const client = new pg.Client({
-  connectionString: env.DATABASE_URL
-})
-
-client.connect()
-
 // const db = drizzle(client, {
+//   connection: env.DATABASE_URL,
 //   schema
 // })
 
@@ -20,8 +14,6 @@ const main = () => {
     console.log('Nothing to do')
   } catch (error) {
     console.error('❌ Error inserting data:\n', error)
-  } finally {
-    client.end()
   }
 }
 
