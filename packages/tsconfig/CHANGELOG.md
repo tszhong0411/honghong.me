@@ -1,5 +1,13 @@
 # @tszhong0411/tsconfig
 
+## 0.0.8
+
+### Patch Changes
+
+- [#878](https://github.com/tszhong0411/honghong.me/pull/878) [`639e18c`](https://github.com/tszhong0411/honghong.me/commit/639e18c7c68f9f76a8f53637fe7306dcd89a7298) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Upgrade `next` to 15.1.2
+
+- [#878](https://github.com/tszhong0411/honghong.me/pull/878) [`b39286c`](https://github.com/tszhong0411/honghong.me/commit/b39286c720285e83332dd394427e41b0c893f2fa) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Update `@types/node` to 22.10.2
+
 ## 0.0.7
 
 ### Patch Changes

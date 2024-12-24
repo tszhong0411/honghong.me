@@ -1,5 +1,13 @@
 # @tszhong0411/utils
 
+## 0.0.16
+
+### Patch Changes
+
+- [#878](https://github.com/tszhong0411/honghong.me/pull/878) [`b39286c`](https://github.com/tszhong0411/honghong.me/commit/b39286c720285e83332dd394427e41b0c893f2fa) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Update `@types/node` to 22.10.2
+
+- [#878](https://github.com/tszhong0411/honghong.me/pull/878) [`a8c8269`](https://github.com/tszhong0411/honghong.me/commit/a8c8269e40d2c42ae4496a822e442fad6bf8a066) Thanks [@tszhong0411](https://github.com/tszhong0411)! - upgrade tailwind-merge
+
 ## 0.0.15
 
 ### Patch Changes
