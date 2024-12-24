@@ -1,5 +1,30 @@
 # @tszhong0411/ui
 
+## 0.0.39
+
+### Patch Changes
+
+- [#878](https://github.com/tszhong0411/honghong.me/pull/878) [`a3eaa92`](https://github.com/tszhong0411/honghong.me/commit/a3eaa92aad2aec4c3d3cdbcd7d88cb9361e934df) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Upgrade `@types/react`, `@types/react-dom` to 19.0.2
+
+- [#878](https://github.com/tszhong0411/honghong.me/pull/878) [`2ec46aa`](https://github.com/tszhong0411/honghong.me/commit/2ec46aad8d73814246a7f929d1c7e997a94fef56) Thanks [@tszhong0411](https://github.com/tszhong0411)! - upgrade radix-ui
+
+- [#878](https://github.com/tszhong0411/honghong.me/pull/878) [`ac99c5c`](https://github.com/tszhong0411/honghong.me/commit/ac99c5c0226703f41d0b37e5da82afb5df12cf17) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Solve ESLint errors
+
+- [#878](https://github.com/tszhong0411/honghong.me/pull/878) [`639e18c`](https://github.com/tszhong0411/honghong.me/commit/639e18c7c68f9f76a8f53637fe7306dcd89a7298) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Upgrade `next` to 15.1.2
+
+- [#878](https://github.com/tszhong0411/honghong.me/pull/878) [`b39286c`](https://github.com/tszhong0411/honghong.me/commit/b39286c720285e83332dd394427e41b0c893f2fa) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Update `@types/node` to 22.10.2
+
+- [#878](https://github.com/tszhong0411/honghong.me/pull/878) [`57c06ff`](https://github.com/tszhong0411/honghong.me/commit/57c06ff7fcbed821cc98d02c37e05c2ca8318ec7) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Update `lucide-react` to 0.469.0
+
+- [#878](https://github.com/tszhong0411/honghong.me/pull/878) [`0adfbee`](https://github.com/tszhong0411/honghong.me/commit/0adfbee6d3eab7797394934bb3f1789923b0c363) Thanks [@tszhong0411](https://github.com/tszhong0411)! - ref as a prop
+
+- [#878](https://github.com/tszhong0411/honghong.me/pull/878) [`20ced0c`](https://github.com/tszhong0411/honghong.me/commit/20ced0c0a65b98cfcff823ea479eb55e03725256) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Update `react-hook-form` to 7.54.2
+
+- [#878](https://github.com/tszhong0411/honghong.me/pull/878) [`b49a992`](https://github.com/tszhong0411/honghong.me/commit/b49a992688dd7c11e81115d541d960656d0329d2) Thanks [@tszhong0411](https://github.com/tszhong0411)! - upgrade tailwindcss
+
+- Updated dependencies [[`b39286c`](https://github.com/tszhong0411/honghong.me/commit/b39286c720285e83332dd394427e41b0c893f2fa), [`a8c8269`](https://github.com/tszhong0411/honghong.me/commit/a8c8269e40d2c42ae4496a822e442fad6bf8a066)]:
+  - @tszhong0411/utils@0.0.16
+
 ## 0.0.38
 
 ### Patch Changes

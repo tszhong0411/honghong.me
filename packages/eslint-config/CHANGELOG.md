@@ -1,5 +1,11 @@
 # @tszhong0411/eslint-config
 
+## 0.1.13
+
+### Patch Changes
+
+- [#878](https://github.com/tszhong0411/honghong.me/pull/878) [`a36fd40`](https://github.com/tszhong0411/honghong.me/commit/a36fd4020c8f1853648997fd7c3313bdc16691a5) Thanks [@tszhong0411](https://github.com/tszhong0411)! - upgrade to ESLint v9
+
 ## 0.1.12
 
 ### Patch Changes

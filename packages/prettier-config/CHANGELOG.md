@@ -1,5 +1,11 @@
 # @tszhong0411/prettier-config
 
+## 0.0.8
+
+### Patch Changes
+
+- [#878](https://github.com/tszhong0411/honghong.me/pull/878) [`aa124f0`](https://github.com/tszhong0411/honghong.me/commit/aa124f0398aff3ac8448864bac25af54d9ccf220) Thanks [@tszhong0411](https://github.com/tszhong0411)! - upgrade `prettier-plugin-tailwindcss` to 0.6.9
+
 ## 0.0.7
 
 ### Patch Changes
