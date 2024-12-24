@@ -1,13 +1,9 @@
 import bundleAnalyzer from '@next/bundle-analyzer'
 import { withSentryConfig } from '@sentry/nextjs'
 import { NextConfigHeaders } from '@tszhong0411/shared'
-import { createJiti } from 'jiti'
 import type { NextConfig } from 'next'
-import { fileURLToPath } from 'node:url'
 
-const jiti = createJiti(fileURLToPath(import.meta.url))
-
-await jiti.import('@tszhong0411/env')
+import '@tszhong0411/env'
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true'
