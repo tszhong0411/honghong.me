@@ -63,6 +63,7 @@ export const TRPCReactProvider = (props: TRPCReactProviderProps) => {
 
   return (
     <QueryNormalizerProvider queryClient={queryClient} normalizerConfig={{ devLogging: true }}>
+      {/* eslint-disable-next-line @eslint-react/no-context-provider -- custom context */}
       <api.Provider client={trpcClient} queryClient={queryClient}>
         <QueryClientProvider client={queryClient}>
           <ReactQueryStreamedHydration transformer={SuperJSON}>

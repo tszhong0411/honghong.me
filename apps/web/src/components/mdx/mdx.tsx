@@ -15,12 +15,12 @@ type MdxProps = {
 }
 
 const components: MDXComponents = {
-  h2: (props: React.ComponentPropsWithoutRef<'h2'>) => <Heading as='h2' {...props} />,
-  h3: (props: React.ComponentPropsWithoutRef<'h3'>) => <Heading as='h3' {...props} />,
-  h4: (props: React.ComponentPropsWithoutRef<'h4'>) => <Heading as='h4' {...props} />,
-  h5: (props: React.ComponentPropsWithoutRef<'h5'>) => <Heading as='h5' {...props} />,
-  h6: (props: React.ComponentPropsWithoutRef<'h6'>) => <Heading as='h6' {...props} />,
-  a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
+  h2: (props: React.ComponentProps<'h2'>) => <Heading as='h2' {...props} />,
+  h3: (props: React.ComponentProps<'h3'>) => <Heading as='h3' {...props} />,
+  h4: (props: React.ComponentProps<'h4'>) => <Heading as='h4' {...props} />,
+  h5: (props: React.ComponentProps<'h5'>) => <Heading as='h5' {...props} />,
+  h6: (props: React.ComponentProps<'h6'>) => <Heading as='h6' {...props} />,
+  a: (props: React.ComponentProps<'a'>) => {
     const { children, ...rest } = props
 
     return (
@@ -32,7 +32,7 @@ const components: MDXComponents = {
       </Link>
     )
   },
-  Image: (props: React.ComponentPropsWithoutRef<typeof BlurImage>) => {
+  Image: (props: React.ComponentProps<typeof BlurImage>) => {
     const { alt, ...rest } = props
 
     return (

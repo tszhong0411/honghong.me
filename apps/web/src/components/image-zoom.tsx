@@ -7,7 +7,7 @@ import 'react-medium-image-zoom/dist/styles.css'
 
 type ImageZoomProps = {
   children: React.ReactNode
-} & React.ComponentPropsWithoutRef<typeof Zoom>
+} & React.ComponentProps<typeof Zoom>
 
 const ImageZoom = (props: ImageZoomProps) => {
   const { children, ...rest } = props

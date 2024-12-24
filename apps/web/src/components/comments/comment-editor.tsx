@@ -11,7 +11,7 @@ type Command = {
 type CommentEditorProps = {
   initialValue?: string
 } & Command &
-  React.ComponentPropsWithoutRef<typeof Textarea>
+  React.ComponentProps<typeof Textarea>
 
 const setRangeText = (
   textarea: HTMLTextAreaElement,
