@@ -40,6 +40,8 @@
     "**/coverage/**": true,
     "**/dist/**": true,
     "**/node_modules/**": true,
+    "**/playwright-report/**": true,
+    "**/test-results/**": true,
     "**/volumes/**": true
   },
   "files.watcherExclude": {
@@ -54,6 +56,8 @@
     "**/coverage/**": true,
     "**/dist/**": true,
     "**/node_modules/**": true,
+    "**/playwright-report/**": true,
+    "**/test-results/**": true,
     "**/volumes/**": true
   },
 
