@@ -1,12 +1,12 @@
 import bundleAnalyzer from '@next/bundle-analyzer'
 import { NextConfigHeaders } from '@tszhong0411/shared'
+import type { NextConfig } from 'next'
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true'
 })
 
-/** @type {import('next').NextConfig} */
-const config = {
+const config: NextConfig = {
   experimental: {
     optimizePackageImports: ['shiki']
   },
@@ -26,10 +26,12 @@ const config = {
 
   transpilePackages: ['@tszhong0411/*'],
 
+  // eslint-disable-next-line @typescript-eslint/require-await -- it must return a promise
   async headers() {
     return NextConfigHeaders
   },
 
+  // eslint-disable-next-line @typescript-eslint/require-await -- it must return a promise
   async redirects() {
     return [
       {

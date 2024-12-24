@@ -11,7 +11,7 @@ import { visit } from 'unist-util-visit'
 
 import { DEFAULT_SHIKI_THEMES } from './rehype-code'
 
-const inlineShikiRegex = /(.*){:(.*)}$/
+const inlineShikiRegex = /^(.*?){:(.*)}$/
 
 const themeNames = Object.values(DEFAULT_SHIKI_THEMES)
 const themeKeys = Object.keys(DEFAULT_SHIKI_THEMES)
@@ -40,7 +40,7 @@ export const rehypeInlineCode: Plugin<[RehypeShikiCoreOptions], Root> = () => {
 
       if (childNode?.type !== 'text') return
 
-      const match = childNode.value.match(inlineShikiRegex)
+      const match = inlineShikiRegex.exec(childNode.value)
       if (!match) return
 
       const [, code, lang] = match

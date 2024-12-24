@@ -3,7 +3,7 @@ import globals from 'globals'
 
 import { eslintPlugin, unusedImportsPlugin } from '../plugins'
 
-export const javascript: Linter.FlatConfig[] = [
+export const javascript: Linter.Config[] = [
   {
     name: 'tszhong0411:javascript',
     languageOptions: {

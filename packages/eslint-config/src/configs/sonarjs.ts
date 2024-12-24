@@ -2,7 +2,7 @@ import type { Linter } from 'eslint'
 
 import { sonarjsPlugin } from '../plugins'
 
-export const sonarjs: Linter.FlatConfig[] = [
+export const sonarjs: Linter.Config[] = [
   {
     name: 'tszhong0411:sonarjs',
     plugins: {
@@ -10,7 +10,8 @@ export const sonarjs: Linter.FlatConfig[] = [
     },
     rules: {
       ...sonarjsPlugin.configs.recommended.rules,
-      'sonarjs/no-duplicate-string': 'off'
+      'sonarjs/no-duplicate-string': 'off',
+      'sonarjs/no-nested-functions': 'off'
     }
   }
 ]

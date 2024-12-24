@@ -68,7 +68,7 @@ const CommentMenu = () => {
           <DropdownMenuItem
             onClick={() =>
               void copy({
-                text: `${window.location.origin}/blog/${slug}?${commentQuery}`,
+                text: `${globalThis.location.origin}/blog/${slug}?${commentQuery}`,
                 successMessage: 'Link copied to clipboard'
               })
             }

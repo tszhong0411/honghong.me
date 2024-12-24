@@ -2,7 +2,7 @@ import type { Linter } from 'eslint'
 
 import { importPlugin } from '../plugins'
 
-export const imports: Linter.FlatConfig[] = [
+export const imports: Linter.Config[] = [
   {
     name: 'tszhong0411:imports',
     plugins: {

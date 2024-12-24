@@ -5,7 +5,7 @@ type VideoProps = {
   src: string
   width: number
   height: number
-} & React.ComponentPropsWithoutRef<'video'>
+} & React.ComponentProps<'video'>
 
 const Video = (props: VideoProps) => {
   const { src, width, height, controls = true, className, ...rest } = props

@@ -18,17 +18,21 @@ const createQueryClient = () => new QueryClient()
 let clientQueryClientSingleton: QueryClient | undefined
 
 const getBaseUrl = () => {
-  if (typeof window !== 'undefined') return ''
+  if (typeof globalThis !== 'undefined') return ''
   if (env.VERCEL_URL) return `https://${env.VERCEL_URL}`
   return `http://localhost:${process.env.PORT ?? 3000}`
 }
 
 const getQueryClient = () => {
-  if (typeof window === 'undefined') {
+  if (typeof globalThis === 'undefined') {
     return createQueryClient()
   }
 
-  return (clientQueryClientSingleton ??= createQueryClient())
+  if (!clientQueryClientSingleton) {
+    clientQueryClientSingleton = createQueryClient()
+  }
+
+  return clientQueryClientSingleton
 }
 
 export const api = createTRPCReact<AppRouter>()
@@ -55,11 +59,7 @@ export const TRPCReactProvider = (props: TRPCReactProviderProps) => {
         unstable_httpBatchStreamLink({
           transformer: SuperJSON,
           url: `${getBaseUrl()}/api/trpc`,
-          headers: () => {
-            const headers = new Headers()
-            headers.set('x-trpc-source', 'nextjs-react')
-            return headers
-          }
+          headers: { 'x-trpc-source': 'nextjs-react' }
         })
       ]
     })
@@ -67,6 +67,7 @@ export const TRPCReactProvider = (props: TRPCReactProviderProps) => {
 
   return (
     <QueryNormalizerProvider queryClient={queryClient} normalizerConfig={{ devLogging: true }}>
+      {/* eslint-disable-next-line @eslint-react/no-context-provider -- custom context */}
       <api.Provider client={trpcClient} queryClient={queryClient}>
         <QueryClientProvider client={queryClient}>
           <ReactQueryStreamedHydration transformer={SuperJSON}>

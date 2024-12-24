@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react'
 type CounterProps = {
   value: number
   direction?: 'up' | 'down'
-} & React.ComponentPropsWithoutRef<'span'>
+} & React.ComponentProps<'span'>
 
 const Counter = (props: CounterProps) => {
   const { value, direction = 'up', ...rest } = props

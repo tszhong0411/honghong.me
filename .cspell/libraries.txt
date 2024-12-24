@@ -13,7 +13,6 @@ esbenp
 fuma
 fumadocs
 hiett
-jiti
 knip
 lightningcss
 mdast

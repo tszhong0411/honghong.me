@@ -2,19 +2,14 @@
 
 import * as TabsPrimitive from '@radix-ui/react-tabs'
 import { cn } from '@tszhong0411/utils'
-import { forwardRef } from 'react'
 
 export const Tabs = TabsPrimitive.Root
 
-export const TabsList = forwardRef<
-  React.ComponentRef<typeof TabsPrimitive.List>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>
->((props, ref) => {
+export const TabsList = (props: React.ComponentProps<typeof TabsPrimitive.List>) => {
   const { className, ...rest } = props
 
   return (
     <TabsPrimitive.List
-      ref={ref}
       className={cn(
         'bg-muted text-muted-foreground inline-flex h-10 items-center justify-center rounded-md p-1',
         className
@@ -22,17 +17,13 @@ export const TabsList = forwardRef<
       {...rest}
     />
   )
-})
+}
 
-export const TabsTrigger = forwardRef<
-  React.ComponentRef<typeof TabsPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
->((props, ref) => {
+export const TabsTrigger = (props: React.ComponentProps<typeof TabsPrimitive.Trigger>) => {
   const { className, ...rest } = props
 
   return (
     <TabsPrimitive.Trigger
-      ref={ref}
       className={cn(
         'ring-offset-background inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium transition-all',
         'focus-visible:ring-ring focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
@@ -43,17 +34,13 @@ export const TabsTrigger = forwardRef<
       {...rest}
     />
   )
-})
+}
 
-export const TabsContent = forwardRef<
-  React.ComponentRef<typeof TabsPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
->((props, ref) => {
+export const TabsContent = (props: React.ComponentProps<typeof TabsPrimitive.Content>) => {
   const { className, ...rest } = props
 
   return (
     <TabsPrimitive.Content
-      ref={ref}
       className={cn(
         'ring-offset-background mt-2',
         'focus-visible:ring-ring focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
@@ -62,7 +49,7 @@ export const TabsContent = forwardRef<
       {...rest}
     />
   )
-})
+}
 
 TabsTrigger.displayName = TabsPrimitive.Trigger.displayName
 TabsList.displayName = TabsPrimitive.List.displayName

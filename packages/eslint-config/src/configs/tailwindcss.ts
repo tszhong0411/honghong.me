@@ -2,7 +2,7 @@ import type { Linter } from 'eslint'
 
 import { tailwindcssPlugin } from '../plugins'
 
-export const tailwindcss: Linter.FlatConfig[] = [
+export const tailwindcss: Linter.Config[] = [
   {
     name: 'tszhong0411:tailwindcss',
     plugins: {

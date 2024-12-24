@@ -18,9 +18,9 @@ export default defineConfig({
     video: 'on'
   },
   projects: [
-    { name: 'authenticated', testMatch: /.*\.authenticated\.test\.ts/ },
-    { name: 'unauthenticated', testMatch: /.*\.unauthenticated\.test\.ts/ },
-    { name: 'setup', testMatch: /.*\.setup\.ts/ },
+    { name: 'authenticated', testMatch: /\.authenticated\.test\.ts$/ },
+    { name: 'unauthenticated', testMatch: /\.unauthenticated\.test\.ts$/ },
+    { name: 'setup', testMatch: /\.setup\.ts$/ },
     {
       name: 'chromium',
       use: {

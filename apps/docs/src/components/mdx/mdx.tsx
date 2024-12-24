@@ -8,7 +8,7 @@ import ComponentPreview from './component-preview'
 
 type MdxProps = {
   content: string
-} & React.ComponentPropsWithoutRef<'div'>
+} & React.ComponentProps<'div'>
 
 const components: MDXComponents = {
   ...uiComponents,

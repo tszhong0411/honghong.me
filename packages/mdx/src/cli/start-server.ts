@@ -1,4 +1,4 @@
-import * as chokidar from 'chokidar'
+import chokidar from 'chokidar'
 import debounce from 'debounce'
 import { exit } from 'node:process'
 
@@ -15,15 +15,22 @@ const startServer = async () => {
   // Initial build
   await build()
 
-  const watcher = chokidar.watch(`${contentDirPath}/**/*.mdx`)
+  const { glob } = (await import('fast-glob')).default
+  const files = await glob(`${contentDirPath}/**/*.mdx`)
+
+  const watcher = chokidar.watch(files, {
+    ignored: (p) => !p.endsWith('.mdx')
+  })
+
   const configWatcher = chokidar.watch(filepath)
 
-  const debounceBuild = debounce((path) => {
-    console.log(`${LOG_PREFIX}${path} has changed. Rebuilding...`)
+  const debounceBuild = debounce((p) => {
+    console.log(`${LOG_PREFIX}${p} has changed. Rebuilding...`)
     void build()
   }, 500)
 
   watcher.on('change', debounceBuild)
+
   configWatcher.on('change', () => {
     console.log(`${LOG_PREFIX}Config file changed. Restarting...`)
     exit(99)
@@ -33,10 +40,7 @@ const startServer = async () => {
 
   const handleTermination = async () => {
     console.log(`${LOG_PREFIX}Terminating watcher...`)
-
-    await watcher.close()
-    await configWatcher.close()
-
+    await Promise.all([watcher.close(), configWatcher.close()])
     console.log(`${LOG_PREFIX}Watcher closed.`)
     console.log(`${LOG_PREFIX}Exiting...`)
   }
@@ -44,6 +48,7 @@ const startServer = async () => {
   process.on('SIGINT', () => {
     void handleTermination()
   })
+
   process.on('SIGTERM', () => {
     void handleTermination()
   })

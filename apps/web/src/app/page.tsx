@@ -52,7 +52,7 @@ const jsonLd: WithContext<WebSite> = {
 const Page = () => {
   const posts = allBlogPosts
   const latestPosts = posts
-    .sort((a, b) => {
+    .toSorted((a, b) => {
       return new Date(b.date).getTime() - new Date(a.date).getTime()
     })
     .slice(0, 2)

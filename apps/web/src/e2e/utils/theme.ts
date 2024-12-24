@@ -10,7 +10,7 @@ export const checkAppliedTheme = async (page: Page, theme: string) => {
 }
 
 export const checkStoredTheme = async (page: Page, expectedTheme: string) => {
-  const localStorage = await page.evaluate(() => window.localStorage)
+  const localStorage = await page.evaluate(() => globalThis.localStorage)
   expect(localStorage.theme).toBe(expectedTheme)
 }
 

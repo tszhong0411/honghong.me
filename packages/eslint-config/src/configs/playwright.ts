@@ -3,7 +3,7 @@ import type { Linter } from 'eslint'
 import { GLOB_E2E } from '../globs'
 import { playwrightPlugin } from '../plugins'
 
-export const playwright: Linter.FlatConfig[] = [
+export const playwright: Linter.Config[] = [
   {
     name: 'tszhong0411:playwright',
     ...playwrightPlugin.configs['flat/recommended'],

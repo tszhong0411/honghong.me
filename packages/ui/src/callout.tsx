@@ -1,14 +1,13 @@
 import { cn } from '@tszhong0411/utils'
 import { AlertOctagonIcon, AlertTriangleIcon, InfoIcon } from 'lucide-react'
-import { forwardRef } from 'react'
 
 type CalloutProps = {
   title?: React.ReactNode
   type?: 'info' | 'warning' | 'error'
   icon?: React.ReactNode
-} & React.HTMLAttributes<HTMLDivElement>
+} & React.ComponentProps<'div'>
 
-export const Callout = forwardRef<HTMLDivElement, CalloutProps>((props, ref) => {
+export const Callout = (props: CalloutProps) => {
   const { title, type = 'info', icon, className, children, ...rest } = props
 
   const icons = {
@@ -19,7 +18,6 @@ export const Callout = forwardRef<HTMLDivElement, CalloutProps>((props, ref) => 
 
   return (
     <div
-      ref={ref}
       className={cn(
         'bg-card text-muted-foreground my-6 flex w-full flex-row gap-2 rounded-lg border p-3 text-sm shadow-md',
         className
@@ -33,6 +31,6 @@ export const Callout = forwardRef<HTMLDivElement, CalloutProps>((props, ref) => 
       </div>
     </div>
   )
-})
+}
 
 Callout.displayName = 'Callout'

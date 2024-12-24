@@ -2,7 +2,7 @@ import type { Linter } from 'eslint'
 
 import { turboPlugin } from '../plugins'
 
-export const turbo: Linter.FlatConfig[] = [
+export const turbo: Linter.Config[] = [
   {
     name: 'tszhong0411:turbo',
     plugins: {

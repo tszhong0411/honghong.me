@@ -1,7 +1,7 @@
 import { Table } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 
-type CommentTableProps = React.ComponentPropsWithoutRef<'table'>
+type CommentTableProps = React.ComponentProps<'table'>
 
 const CommentTable = (props: CommentTableProps) => {
   const { className, ...rest } = props

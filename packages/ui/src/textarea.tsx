@@ -1,15 +1,13 @@
 import { cn } from '@tszhong0411/utils'
-import { forwardRef } from 'react'
 import TextareaAutosize, { type TextareaAutosizeProps } from 'react-textarea-autosize'
 
-type TextareaProps = TextareaAutosizeProps & React.TextareaHTMLAttributes<HTMLTextAreaElement>
+type TextareaProps = TextareaAutosizeProps & React.ComponentProps<'textarea'>
 
-export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, ref) => {
+export const Textarea = (props: TextareaProps) => {
   const { className, ...rest } = props
 
   return (
     <TextareaAutosize
-      ref={ref}
       className={cn(
         'border-input bg-background ring-offset-background flex min-h-20 w-full rounded-md border px-3 py-2 text-sm',
         'placeholder:text-muted-foreground',
@@ -20,6 +18,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, r
       {...rest}
     />
   )
-})
+}
 
 Textarea.displayName = 'Textarea'

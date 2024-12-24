@@ -48,8 +48,12 @@ const config: NextAuthConfig = {
 
   callbacks: {
     async signIn({ account, profile, user }) {
+      if (account?.type !== 'oauth') {
+        return false
+      }
+
       // Update data when user signs in every time
-      if (account?.provider === 'google') {
+      if (account.provider === 'google') {
         if (!profile) return true
 
         await db
@@ -61,7 +65,7 @@ const config: NextAuthConfig = {
           .where(eq(users.id, user.id!))
       }
 
-      if (account?.provider === 'github') {
+      if (account.provider === 'github') {
         if (!profile) return true
 
         await db
@@ -72,6 +76,7 @@ const config: NextAuthConfig = {
           })
           .where(eq(users.id, user.id!))
       }
+
       return true
     },
 

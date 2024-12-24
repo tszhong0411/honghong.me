@@ -2,7 +2,7 @@ import type { Linter } from 'eslint'
 
 import { simpleImportSortPlugin } from '../plugins'
 
-export const importSort: Linter.FlatConfig[] = [
+export const importSort: Linter.Config[] = [
   {
     name: 'tszhong0411:import-sort',
     plugins: {

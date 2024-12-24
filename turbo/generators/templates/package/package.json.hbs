@@ -45,7 +45,10 @@
     "type-check": "tsc --noEmit"
     {{#if shouldCompile}}
     ,"build": "tsup",
-    "dev": "tsup --watch"
+    "dev": "tsup --watch",
+    "clean": "rm -rf .turbo dist"
+    {{else}}
+    "clean": "rm -rf .turbo"
     {{/if}}
   },
   "devDependencies": {

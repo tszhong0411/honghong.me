@@ -3,7 +3,7 @@
 import { cn } from '@tszhong0411/utils'
 import { CheckIcon, CopyIcon } from 'lucide-react'
 import mergeRefs from 'merge-refs'
-import { forwardRef, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { Button, type ButtonProps } from './button'
 import { ScrollArea, ScrollBar } from './scroll-area'
@@ -12,10 +12,10 @@ import { getIconByFilename } from './utils/get-icon-by-filename'
 type CodeBlockProps = {
   'data-lang'?: string
   figureClassName?: string
-} & React.ComponentPropsWithoutRef<'pre'>
+} & React.ComponentProps<'pre'>
 
-export const CodeBlock = forwardRef<HTMLPreElement, CodeBlockProps>((props, ref) => {
-  const { children, className, title, 'data-lang': lang, figureClassName, ...rest } = props
+export const CodeBlock = (props: CodeBlockProps) => {
+  const { children, className, title, 'data-lang': lang, figureClassName, ref, ...rest } = props
 
   const textInput = useRef<HTMLPreElement>(null)
   const Icon = getIconByFilename(lang ?? '')
@@ -51,7 +51,7 @@ export const CodeBlock = forwardRef<HTMLPreElement, CodeBlockProps>((props, ref)
       </ScrollArea>
     </figure>
   )
-})
+}
 
 type CopyButtonProps = {
   onCopy: () => void
