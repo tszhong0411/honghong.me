@@ -1,19 +1,19 @@
 import bundleAnalyzer from '@next/bundle-analyzer'
 import { withSentryConfig } from '@sentry/nextjs'
 import { NextConfigHeaders } from '@tszhong0411/shared'
-import createJiti from 'jiti'
+import { createJiti } from 'jiti'
+import type { NextConfig } from 'next'
 import { fileURLToPath } from 'node:url'
 
 const jiti = createJiti(fileURLToPath(import.meta.url))
 
-jiti('@tszhong0411/env')
+await jiti.import('@tszhong0411/env')
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true'
 })
 
-/** @type {import('next').NextConfig} */
-const config = {
+const config: NextConfig = {
   experimental: {
     optimizePackageImports: ['shiki']
   },
@@ -45,6 +45,7 @@ const config = {
     ]
   },
 
+  // eslint-disable-next-line @typescript-eslint/require-await -- it must return a promise
   async redirects() {
     return [
       {
@@ -70,6 +71,7 @@ const config = {
     ]
   },
 
+  // eslint-disable-next-line @typescript-eslint/require-await -- it must return a promise
   async headers() {
     return NextConfigHeaders
   }
