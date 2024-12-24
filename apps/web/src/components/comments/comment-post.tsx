@@ -41,6 +41,8 @@ const CommentPost = () => {
     })
   }
 
+  if (status === 'loading') return null
+
   const disabled = status !== 'authenticated' || commentsMutation.isPending
 
   return (
