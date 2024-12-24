@@ -16,7 +16,6 @@ import {
 import {
   CloudIcon,
   CreditCardIcon,
-  GithubIcon,
   KeyboardIcon,
   LifeBuoyIcon,
   LogOutIcon,
@@ -99,10 +98,6 @@ const DropdownMenuDemo = () => {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <GithubIcon className='mr-2 size-4' />
-          <span>GitHub</span>
-        </DropdownMenuItem>
         <DropdownMenuItem>
           <LifeBuoyIcon className='mr-2 size-4' />
           <span>Support</span>
