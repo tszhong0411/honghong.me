@@ -2,7 +2,6 @@
   "cSpell.diagnosticLevel": "Warning",
   "cSpell.enabled": true,
   "cSpell.ignorePaths": ["package-lock.json", "node_modules", "vscode-extension", ".git/objects"],
-  "cSpell.showAutocompleteSuggestions": true,
 
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
@@ -23,6 +22,39 @@
   "files.associations": {
     "*.css": "tailwindcss",
     ".env*": "properties"
+  },
+
+  // Not sure why `fileWatcher` is using 100% CPU, exclude some folders to reduce the load
+  "files.exclude": {
+    "**/.DS_Store": true,
+    "**/.auth/**": true,
+    "**/.eslint-config-inspector": true,
+    "**/.git": true,
+    "**/.hg": true,
+    "**/.mdx/**": true,
+    "**/.next/**": true,
+    "**/.svn": true,
+    "**/.turbo/**": true,
+    "**/CVS": true,
+    "**/Thumbs.db": true,
+    "**/coverage/**": true,
+    "**/dist/**": true,
+    "**/node_modules/**": true,
+    "**/volumes/**": true
+  },
+  "files.watcherExclude": {
+    "**/.auth/**": true,
+    "**/.eslint-config-inspector": true,
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/.hg/store/**": true,
+    "**/.mdx/**": true,
+    "**/.next/**": true,
+    "**/.turbo/**": true,
+    "**/coverage/**": true,
+    "**/dist/**": true,
+    "**/node_modules/**": true,
+    "**/volumes/**": true
   },
 
   "tailwindCSS.experimental.classRegex": [
