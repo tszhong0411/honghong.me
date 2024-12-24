@@ -3,7 +3,7 @@
 import { Button, toast } from '@tszhong0411/ui'
 import { SendIcon } from 'lucide-react'
 import { useSession } from 'next-auth/react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { useCommentsContext } from '@/contexts/comments'
 import { api } from '@/trpc/react'
@@ -14,6 +14,7 @@ import UnauthorizedOverlay from './unauthorized-overlay'
 const CommentPost = () => {
   const { slug } = useCommentsContext()
   const [content, setContent] = useState('')
+  const [isMounted, setIsMounted] = useState(false)
   const { status } = useSession()
   const utils = api.useUtils()
 
@@ -41,7 +42,16 @@ const CommentPost = () => {
     })
   }
 
-  if (status === 'loading') return null
+  useEffect(() => {
+    // eslint-disable-next-line @eslint-react/hooks-extra/no-direct-set-state-in-use-effect -- it needs to be computed on client side
+    setIsMounted(true)
+
+    return () => {
+      setIsMounted(false)
+    }
+  }, [])
+
+  if (status === 'loading' || !isMounted) return null
 
   const disabled = status !== 'authenticated' || commentsMutation.isPending
 
