@@ -1,5 +1,6 @@
 'use client'
 
+import NumberFlow from '@number-flow/react'
 import { BlurImage, Link } from '@tszhong0411/ui'
 import { useEffect, useRef } from 'react'
 
@@ -65,14 +66,16 @@ const Header = () => {
             <div className='text-muted-foreground'>Views</div>
             {viewsCountQuery.status === 'pending' ? '--' : null}
             {viewsCountQuery.status === 'error' ? 'Error' : null}
-            {viewsCountQuery.status === 'success' ? <div>{viewsCountQuery.data.views}</div> : null}
+            {viewsCountQuery.status === 'success' ? (
+              <NumberFlow willChange continuous value={viewsCountQuery.data.views} />
+            ) : null}
           </div>
           <div className='space-y-1 md:mx-auto'>
             <div className='text-muted-foreground'>Comments</div>
             {commentsCountQuery.status === 'pending' ? '--' : null}
             {commentsCountQuery.status === 'error' ? 'Error' : null}
             {commentsCountQuery.status === 'success' ? (
-              <div>{commentsCountQuery.data.comments}</div>
+              <NumberFlow willChange continuous value={commentsCountQuery.data.comments} />
             ) : null}
           </div>
         </div>
