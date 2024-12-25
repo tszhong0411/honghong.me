@@ -3,6 +3,7 @@
 /**
  * Inspired by: https://framer.university/resources/like-button-component
  */
+import NumberFlow from '@number-flow/react'
 import { Separator } from '@tszhong0411/ui'
 import { motion } from 'framer-motion'
 import { useRef, useState } from 'react'
@@ -137,7 +138,9 @@ const LikeButton = (props: LikeButtonProps) => {
         <Separator orientation='vertical' className='bg-zinc-700' />
         {status === 'pending' ? <div>--</div> : null}
         {status === 'error' ? <div>Error</div> : null}
-        {status === 'success' ? <div>{data.likes + cacheCount}</div> : null}
+        {status === 'success' ? (
+          <NumberFlow willChange continuous value={data.likes + cacheCount} />
+        ) : null}
       </button>
     </div>
   )

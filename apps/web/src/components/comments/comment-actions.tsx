@@ -1,3 +1,4 @@
+import NumberFlow from '@number-flow/react'
 import { Button, buttonVariants, toast } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { cva } from 'class-variance-authority'
@@ -138,7 +139,7 @@ const CommentActions = () => {
           aria-label='Like'
         >
           <ThumbsUpIcon className='size-4' />
-          {comment.likes}
+          <NumberFlow willChange continuous value={comment.likes} />
         </Button>
         <Button
           type='button'
@@ -152,7 +153,7 @@ const CommentActions = () => {
           aria-label='Dislike'
         >
           <ThumbsDownIcon className='size-4' />
-          {comment.dislikes}
+          <NumberFlow willChange continuous value={comment.dislikes} />
         </Button>
         {comment.parentId ? null : (
           <Button

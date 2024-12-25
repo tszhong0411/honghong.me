@@ -24,6 +24,7 @@
     "@icons-pack/react-simple-icons": "9.5.0",
     "@nanostores/react": "^0.8.4",
     "@normy/react-query": "^0.17.1",
+    "@number-flow/react": "^0.4.4",
     "@octokit/rest": "^21.0.2",
     "@paralleldrive/cuid2": "^2.2.2",
     "@sentry/nextjs": "^8.47.0",

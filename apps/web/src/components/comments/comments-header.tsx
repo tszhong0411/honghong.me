@@ -1,3 +1,4 @@
+import NumberFlow, { NumberFlowGroup } from '@number-flow/react'
 import {
   Button,
   DropdownMenu,
@@ -21,19 +22,31 @@ const CommentHeader = () => {
 
   return (
     <div className='flex items-center justify-between px-1'>
-      <div>
-        {commentsCountQuery.status === 'pending' ? '-- comments' : null}
-        {commentsCountQuery.status === 'error' ? 'Error' : null}
-        {commentsCountQuery.status === 'success'
-          ? pluralize('comment', commentsCountQuery.data.comments, true)
-          : null}
-        {' · '}
-        {repliesCountQuery.status === 'pending' ? '-- replies' : null}
-        {repliesCountQuery.status === 'error' ? 'Error' : null}
-        {repliesCountQuery.status === 'success'
-          ? pluralize('reply', repliesCountQuery.data.replies, true)
-          : null}
-      </div>
+      <NumberFlowGroup>
+        <div>
+          {commentsCountQuery.status === 'pending' ? '-- comments' : null}
+          {commentsCountQuery.status === 'error' ? 'Error' : null}
+          {commentsCountQuery.status === 'success' ? (
+            <NumberFlow
+              willChange
+              continuous
+              value={commentsCountQuery.data.comments}
+              suffix={` ${pluralize('comment', commentsCountQuery.data.comments)}`}
+            />
+          ) : null}
+          {' · '}
+          {repliesCountQuery.status === 'pending' ? '-- replies' : null}
+          {repliesCountQuery.status === 'error' ? 'Error' : null}
+          {repliesCountQuery.status === 'success' ? (
+            <NumberFlow
+              willChange
+              continuous
+              value={repliesCountQuery.data.replies}
+              suffix={` ${pluralize('reply', repliesCountQuery.data.replies)}`}
+            />
+          ) : null}
+        </div>
+      </NumberFlowGroup>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button type='button' variant='outline' size='sm' className='h-7 gap-1 text-sm'>
