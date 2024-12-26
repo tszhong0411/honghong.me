@@ -6,7 +6,7 @@ type SortJsonOptions = {
   jsonSortOrder?: string
 }
 
-type Options = Config & SortJsonOptions & PluginOptions
+export type Options = Config & SortJsonOptions & PluginOptions
 
 const tszhong0411 = (options: Options = {}): Options => {
   const { plugins = [], ...rest } = options
