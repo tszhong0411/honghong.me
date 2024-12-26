@@ -1,5 +1,11 @@
 # @tszhong0411/prettier-config
 
+## 0.0.9
+
+### Patch Changes
+
+- [`fc119ae`](https://github.com/tszhong0411/honghong.me/commit/fc119ae7b1a366478489917ddedea7a3efd792af) Thanks [@tszhong0411](https://github.com/tszhong0411)! - export `Options` to fix TS2742 error
+
 ## 0.0.8
 
 ### Patch Changes
