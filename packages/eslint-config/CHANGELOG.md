@@ -1,5 +1,12 @@
 # @tszhong0411/eslint-config
 
+## 0.1.14
+
+### Patch Changes
+
+- [`a80ec11`](https://github.com/tszhong0411/honghong.me/commit/a80ec115d979814c560d6b380aafca2ba2aed396) Thanks [@tszhong0411](https://github.com/tszhong0411)! - - set eslint to `^9.10.0` in peerDependencies
+  - upgrade `@eslint/config-inspector` to `0.6.0`
+
 ## 0.1.13
 
 ### Patch Changes
