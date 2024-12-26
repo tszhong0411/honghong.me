@@ -54,10 +54,10 @@
     "local-pkg": "^0.5.1"
   },
   "peerDependencies": {
-    "eslint": ">=9.5.0"
+    "eslint": "^9.10.0"
   },
   "devDependencies": {
-    "@eslint/config-inspector": "^0.4.11",
+    "@eslint/config-inspector": "^0.6.0",
     "@tszhong0411/tsconfig": "workspace:*",
     "@types/eslint": "^9.6.1",
     "eslint": "^9.17.0"
