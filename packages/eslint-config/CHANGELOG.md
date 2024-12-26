@@ -1,5 +1,11 @@
 # @tszhong0411/eslint-config
 
+## 0.1.15
+
+### Patch Changes
+
+- [`421bb8a`](https://github.com/tszhong0411/honghong.me/commit/421bb8a05db2b3fbd0722bdf774b66f70d61bbb7) Thanks [@tszhong0411](https://github.com/tszhong0411)! - export `Configs` to fix TS2742 error
+
 ## 0.1.14
 
 ### Patch Changes
