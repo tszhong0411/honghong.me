@@ -31,12 +31,9 @@ export type Options = {
   tsconfigRootDir?: string
 }
 
-type UserConfigs = Linter.Config[]
+export type Configs = Linter.Config[]
 
-const tszhong0411 = async (
-  options: Options = {},
-  ...userConfigs: UserConfigs
-): Promise<Linter.Config[]> => {
+const tszhong0411 = async (options: Options = {}, ...userConfigs: Configs): Promise<Configs> => {
   const {
     typescript: enableTypeScript = hasTypeScript,
     react: enableReact = false,
@@ -47,7 +44,7 @@ const tszhong0411 = async (
     gitignore: enableGitignore = true
   } = options
 
-  const configs: Linter.Config[] = []
+  const configs: Configs = []
 
   if (enableGitignore) {
     configs.push((await import('eslint-config-flat-gitignore')).default())
