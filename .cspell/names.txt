@@ -9,6 +9,7 @@ cleanmymac
 cleanshot
 delba
 duarte
+ghostty
 goodnotes
 googleusercontent
 gstatic
