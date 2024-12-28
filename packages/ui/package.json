@@ -13,12 +13,6 @@
     "url": "https://github.com/tszhong0411/honghong.me/issues"
   },
   "type": "module",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    }
-  },
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "files": [
