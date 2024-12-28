@@ -1,9 +1,9 @@
 {
-  "name": "@tszhong0411/prettier-config",
-  "version": "0.0.10",
-  "description": "The prettier config for tszhong0411's projects",
+  "name": "@tszhong0411/prettier-plugin-package-json",
+  "version": "0.0.0",
+  "description": "A prettier plugin using prettier-package-json",
   "license": "GPL-3.0",
-  "author": "tszhong0411 <me@honghong.me> (https://github.com/tszhong0411/)",
+  "author": "tszhong0411 <me@honghong.me> (https://github.com/tszhong0411)",
   "homepage": "https://github.com/tszhong0411/honghong.me#readme",
   "repository": {
     "type": "git",
@@ -29,16 +29,14 @@
   "sideEffects": false,
   "types": "./dist/index.d.ts",
   "dependencies": {
-    "@tszhong0411/prettier-plugin-package-json": "workspace:*",
-    "prettier-plugin-prisma": "^5.0.0",
-    "prettier-plugin-sort-json": "^4.0.0",
-    "prettier-plugin-tailwindcss": "^0.6.9"
+    "prettier-package-json": "^2.8.0"
   },
   "peerDependencies": {
     "prettier": "3.x"
   },
   "devDependencies": {
-    "@tszhong0411/eslint-config": "workspace:*"
+    "@tszhong0411/eslint-config": "workspace:*",
+    "@tszhong0411/tsconfig": "workspace:*"
   },
   "publishConfig": {
     "access": "public"

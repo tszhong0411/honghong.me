@@ -1,17 +1,13 @@
-import { type Config } from 'prettier'
-import { type PluginOptions } from 'prettier-plugin-tailwindcss'
+import type { Options as PackageJSONOptions } from '@tszhong0411/prettier-plugin-package-json'
+import type { Config } from 'prettier'
+import type { PluginOptions } from 'prettier-plugin-tailwindcss'
 
 type SortJsonOptions = {
   jsonRecursiveSort?: boolean
   jsonSortOrder?: string
 }
 
-type PkgSortOptions = {
-  pkgsortExpandUsers?: boolean
-  pkgsortKeyOrder?: string[]
-}
-
-export type Options = Config & SortJsonOptions & PluginOptions & PkgSortOptions
+export type Options = Config & SortJsonOptions & PluginOptions & PackageJSONOptions
 
 const tszhong0411 = (options: Options = {}): Options => {
   const { plugins = [], ...rest } = options
@@ -27,7 +23,7 @@ const tszhong0411 = (options: Options = {}): Options => {
     plugins: [
       'prettier-plugin-prisma',
       'prettier-plugin-sort-json',
-      'prettier-plugin-pkgsort',
+      '@tszhong0411/prettier-plugin-package-json',
       ...plugins,
 
       'prettier-plugin-tailwindcss' // must be loaded last
