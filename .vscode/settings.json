@@ -25,25 +25,6 @@
   },
 
   // Not sure why `fileWatcher` is using 100% CPU, exclude some folders to reduce the load
-  "files.exclude": {
-    "**/.DS_Store": true,
-    "**/.auth/**": true,
-    "**/.eslint-config-inspector": true,
-    "**/.git": true,
-    "**/.hg": true,
-    "**/.mdx/**": true,
-    "**/.next/**": true,
-    "**/.svn": true,
-    "**/.turbo/**": true,
-    "**/CVS": true,
-    "**/Thumbs.db": true,
-    "**/coverage/**": true,
-    "**/dist/**": true,
-    "**/node_modules/**": true,
-    "**/playwright-report/**": true,
-    "**/test-results/**": true,
-    "**/volumes/**": true
-  },
   "files.watcherExclude": {
     "**/.auth/**": true,
     "**/.eslint-config-inspector": true,
