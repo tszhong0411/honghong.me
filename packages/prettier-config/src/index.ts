@@ -6,7 +6,12 @@ type SortJsonOptions = {
   jsonSortOrder?: string
 }
 
-export type Options = Config & SortJsonOptions & PluginOptions
+type PkgSortOptions = {
+  pkgsortExpandUsers?: boolean
+  pkgsortKeyOrder?: string[]
+}
+
+export type Options = Config & SortJsonOptions & PluginOptions & PkgSortOptions
 
 const tszhong0411 = (options: Options = {}): Options => {
   const { plugins = [], ...rest } = options
@@ -22,7 +27,7 @@ const tszhong0411 = (options: Options = {}): Options => {
     plugins: [
       'prettier-plugin-prisma',
       'prettier-plugin-sort-json',
-      'prettier-plugin-package-perfection',
+      'prettier-plugin-pkgsort',
       ...plugins,
 
       'prettier-plugin-tailwindcss' // must be loaded last

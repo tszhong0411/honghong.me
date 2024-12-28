@@ -23,6 +23,7 @@ normy
 nuqs
 nuxt
 paralleldrive
+pkgsort
 rehype
 rharkor
 rmiz
