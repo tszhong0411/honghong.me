@@ -1,5 +1,11 @@
 # @tszhong0411/prettier-config
 
+## 0.0.10
+
+### Patch Changes
+
+- [`b63fb95`](https://github.com/tszhong0411/honghong.me/commit/b63fb9579613f671d4382701d12c3c296f8348b4) Thanks [@tszhong0411](https://github.com/tszhong0411)! - use `pkgsort` instead of `package-perfection`
+
 ## 0.0.9
 
 ### Patch Changes
