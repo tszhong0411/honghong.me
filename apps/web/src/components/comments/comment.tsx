@@ -103,7 +103,7 @@ const Comment = (props: CommentProps) => {
                       <TooltipTrigger>
                         <span>{formattedDate}</span>
                       </TooltipTrigger>
-                      <TooltipContent>{new Date(createdAt).toString()}</TooltipContent>
+                      <TooltipContent>{new Date(createdAt).toLocaleString()}</TooltipContent>
                     </Tooltip>
                   ) : (
                     <Skeleton className='h-4 w-24' />
