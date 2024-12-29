@@ -100,7 +100,7 @@ export const packageGenerator = (plop: PlopTypes.NodePlopAPI): void => {
         actions.push({
           type: 'append',
           path: '.changeset/config.json',
-          pattern: / {2}"ignore": \[(?<insertion>)/g,
+          pattern: / {2}"ignore": \[/g,
           template: '    "@tszhong0411/{{ name }}",'
         })
       }
@@ -118,6 +118,7 @@ export const packageGenerator = (plop: PlopTypes.NodePlopAPI): void => {
       actions.push(() => {
         const packageName = (answers as { name: string }).name
 
+        /* eslint-disable sonarjs/no-os-command-from-path, sonarjs/os-command -- it's safe */
         execSync('pnpm install', {
           stdio: 'inherit'
         })
@@ -125,6 +126,7 @@ export const packageGenerator = (plop: PlopTypes.NodePlopAPI): void => {
         execSync(`pnpm prettier --write packages/${packageName}/**`, {
           stdio: 'inherit'
         })
+        /* eslint-enable sonarjs/no-os-command-from-path, sonarjs/os-command -- enable them again */
 
         return `@tszhong0411/${packageName} is created successfully!`
       })
