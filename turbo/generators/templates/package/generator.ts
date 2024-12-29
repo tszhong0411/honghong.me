@@ -68,13 +68,6 @@ export const packageGenerator = (plop: PlopTypes.NodePlopAPI): void => {
           path: 'packages/{{ name }}/package.json',
           templateFile: 'templates/package/package.json.hbs'
         },
-        // Remove the last line break from package.json
-        {
-          type: 'modify',
-          path: 'packages/{{ name }}/package.json',
-          pattern: /\n$/,
-          template: ''
-        },
         // Add ESLint configuration
         {
           type: 'add',
