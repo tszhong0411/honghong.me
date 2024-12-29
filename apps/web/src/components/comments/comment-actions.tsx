@@ -2,7 +2,7 @@ import NumberFlow from '@number-flow/react'
 import { Button, buttonVariants, toast } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { cva } from 'class-variance-authority'
-import { ChevronDownIcon, ThumbsDownIcon, ThumbsUpIcon } from 'lucide-react'
+import { ChevronDownIcon, MessageSquareIcon, ThumbsDownIcon, ThumbsUpIcon } from 'lucide-react'
 import { useSession } from 'next-auth/react'
 import pluralize from 'pluralize'
 
@@ -125,7 +125,7 @@ const CommentActions = () => {
   const hasReplies = !comment.parentId && comment.replies > 0
 
   return (
-    <div className='flex items-center justify-between'>
+    <>
       <div className='flex gap-1'>
         <Button
           type='button'
@@ -159,11 +159,12 @@ const CommentActions = () => {
           <Button
             type='button'
             variant='secondary'
-            className='text-muted-foreground h-8 px-2 text-xs font-medium'
+            className='text-muted-foreground h-8 gap-1.5 px-2 text-xs font-medium'
             onClick={() => {
               setIsReplying(true)
             }}
           >
+            <MessageSquareIcon className='size-4' />
             Reply
           </Button>
         )}
@@ -172,7 +173,7 @@ const CommentActions = () => {
         <Button
           variant='ghost'
           size='sm'
-          className='h-8 gap-1.5 px-2 text-xs font-medium'
+          className='mt-4 h-8 gap-1.5 px-2 text-xs font-medium'
           onClick={() => {
             setIsOpenReplies(!isOpenReplies)
           }}
@@ -186,7 +187,7 @@ const CommentActions = () => {
           {pluralize('reply', comment.replies, true)}
         </Button>
       ) : null}
-    </div>
+    </>
   )
 }
 

@@ -50,7 +50,7 @@ const CommentReplies = () => {
   return (
     <>
       {isOpenReplies ? (
-        <div className='pl-8 pt-3'>
+        <div className='space-y-8 pl-7'>
           {isSuccess
             ? data.pages.map((page) =>
                 page.comments.map((reply) => <Comment key={reply.id} comment={reply} />)

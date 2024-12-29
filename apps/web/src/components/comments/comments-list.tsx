@@ -43,7 +43,7 @@ const CommentsList = () => {
   return (
     <>
       <CommentHeader />
-      <div className='space-y-4 rounded-lg border py-2'>
+      <div className='space-y-8 py-2'>
         {isSuccess
           ? data.pages.map((page) =>
               page.comments.map((comment) => <Comment key={comment.id} comment={comment} />)

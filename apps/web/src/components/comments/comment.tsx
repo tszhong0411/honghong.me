@@ -79,23 +79,23 @@ const Comment = (props: CommentProps) => {
 
   return (
     <CommentProvider value={context}>
-      <div className='overflow-hidden'>
-        <div
-          ref={commentRef}
-          className={cn('p-2 sm:px-4', {
-            'bg-accent/50': isHighlighted
-          })}
-        >
-          <div className='flex flex-col'>
-            <div className='flex items-center justify-between'>
+      <div
+        ref={commentRef}
+        className={cn('p-2.5', {
+          'bg-accent/40 rounded-lg': isHighlighted
+        })}
+      >
+        <div className='flex gap-4'>
+          <Image
+            src={image}
+            alt={name}
+            width={32}
+            height={32}
+            className='z-10 size-8 rounded-full'
+          />
+          <div className='flex-1'>
+            <div className='ml-0.5 flex h-8 items-center justify-between'>
               <div className='flex items-center gap-2 text-sm'>
-                <Image
-                  src={image}
-                  alt={name}
-                  width={32}
-                  height={32}
-                  className='z-10 size-8 rounded-full'
-                />
                 <div className='font-semibold'>{name}</div>
                 <div className='text-muted-foreground'>
                   {formattedDate ? (
@@ -119,7 +119,9 @@ const Comment = (props: CommentProps) => {
             </div>
 
             {isDeleted ? (
-              <p className='text-muted-foreground my-3 text-sm'>[This comment has been deleted]</p>
+              <p className='text-muted-foreground my-3 ml-0.5 text-sm'>
+                [This comment has been deleted]
+              </p>
             ) : (
               <Markdown>{body}</Markdown>
             )}
@@ -127,9 +129,8 @@ const Comment = (props: CommentProps) => {
             {isReplying ? <CommentReply /> : <CommentActions />}
           </div>
         </div>
-
-        {hasReplies ? <CommentReplies /> : null}
       </div>
+      {hasReplies ? <CommentReplies /> : null}
     </CommentProvider>
   )
 }
