@@ -64,7 +64,6 @@ export const env = createEnv({
       : {}),
 
     DATABASE_URL: z.string().url(),
-    SENTRY_AUTH_TOKEN: z.string().optional(),
     UPSTASH_REDIS_REST_URL: z.string().url(),
     UPSTASH_REDIS_REST_TOKEN: z.string().min(1)
   },
@@ -75,8 +74,6 @@ export const env = createEnv({
           NEXT_PUBLIC_UMAMI_WEBSITE_ID: z.string().uuid()
         }
       : {}),
-
-    NEXT_PUBLIC_SENTRY_DSN: z.string().min(1).url().optional(),
 
     NEXT_PUBLIC_FLAG_COMMENT: z.string().min(1).optional(),
     NEXT_PUBLIC_FLAG_AUTH: z.string().min(1).optional(),
@@ -91,8 +88,6 @@ export const env = createEnv({
 
     NEXT_PUBLIC_UMAMI_URL: process.env.NEXT_PUBLIC_UMAMI_URL,
     NEXT_PUBLIC_UMAMI_WEBSITE_ID: process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID,
-
-    NEXT_PUBLIC_SENTRY_DSN: process.env.NEXT_PUBLIC_SENTRY_DSN,
 
     NEXT_PUBLIC_FLAG_COMMENT: process.env.NEXT_PUBLIC_FLAG_COMMENT,
     NEXT_PUBLIC_FLAG_AUTH: process.env.NEXT_PUBLIC_FLAG_AUTH,

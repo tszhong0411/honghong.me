@@ -1,8 +1,6 @@
 'use client'
 
-import * as Sentry from '@sentry/nextjs'
 import { Button } from '@tszhong0411/ui'
-import { useEffect } from 'react'
 
 type PageProps = {
   error: Error & { digest?: string }
@@ -11,11 +9,6 @@ type PageProps = {
 
 const Page = (props: PageProps) => {
   const { error, reset } = props
-
-  useEffect(() => {
-    // Log the error to Sentry
-    Sentry.captureException(error)
-  }, [error])
 
   return (
     <div className='h-content space-y-4 px-2 py-8'>

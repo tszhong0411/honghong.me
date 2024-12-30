@@ -1,5 +1,4 @@
 import bundleAnalyzer from '@next/bundle-analyzer'
-import { withSentryConfig } from '@sentry/nextjs'
 import { NextConfigHeaders } from '@tszhong0411/shared'
 import type { NextConfig } from 'next'
 
@@ -73,14 +72,4 @@ const config: NextConfig = {
   }
 }
 
-export default withSentryConfig(withBundleAnalyzer(config), {
-  org: 'tszhong0411',
-  project: 'honghongme',
-  silent: !process.env.CI,
-  authToken: process.env.SENTRY_AUTH_TOKEN,
-  widenClientFileUpload: true,
-  tunnelRoute: '/monitoring',
-  hideSourceMaps: true,
-  disableLogger: true,
-  automaticVercelMonitors: true
-})
+export default withBundleAnalyzer(config)
