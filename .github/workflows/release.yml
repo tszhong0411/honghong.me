@@ -2,6 +2,9 @@ name: Release
 
 on:
   push:
+    paths:
+      - '.changeset/**'
+      - 'packages/**'
     branches:
       - main
 
@@ -12,10 +15,10 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout branch
         uses: actions/checkout@v4
 
-      - name: Check setup
+      - name: Setup
         uses: ./.github/actions/check-setup
 
       - name: Create Release Pull Request or Publish to NPM
