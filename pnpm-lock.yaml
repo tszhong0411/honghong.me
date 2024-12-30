@@ -318,6 +318,9 @@ importers:
       nuqs:
         specifier: ^2.2.3
         version: 2.2.3(next@15.1.2(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(@playwright/test@1.49.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
+      pg:
+        specifier: ^8.13.1
+        version: 8.13.1
       pluralize:
         specifier: ^8.0.0
         version: 8.0.0
@@ -443,7 +446,7 @@ importers:
         specifier: ^0.38.2
         version: 0.38.2(@opentelemetry/api@1.9.0)(@types/pg@8.11.10)(@types/react@19.0.2)(pg@8.13.1)(react@19.0.0)
       pg:
-        specifier: ^8.13.1
+        specifier: ^8
         version: 8.13.1
     devDependencies:
       '@tszhong0411/eslint-config':
@@ -455,9 +458,6 @@ importers:
       '@types/node':
         specifier: ^22.10.2
         version: 22.10.2
-      '@types/pg':
-        specifier: ^8.11.10
-        version: 8.11.10
       drizzle-kit:
         specifier: ^0.30.1
         version: 0.30.1
@@ -9104,9 +9104,6 @@ packages:
     peerDependencies:
       pg: '>=8.0'
 
-  pg-protocol@1.6.1:
-    resolution: {integrity: sha512-jPIlvgoD63hrEuihvIg+tJhoGjUsLPn6poJY9N5CnlPd91c2T18T/9zBtLxZSb1EhYxBRoZJtzScCaWlYLtktg==}
-
   pg-protocol@1.7.0:
     resolution: {integrity: sha512-hTK/mE36i8fDDhgDFjy6xNOG+LCorxLG3WO17tku+ij6sVHXh1jQUJ8hYAnRhNla4QVD2H8er/FOjc/+EgC6yQ==}
 
@@ -15685,13 +15682,13 @@ snapshots:
   '@types/pg@8.11.10':
     dependencies:
       '@types/node': 22.10.2
-      pg-protocol: 1.6.1
+      pg-protocol: 1.7.0
       pg-types: 4.0.2
 
   '@types/pg@8.6.1':
     dependencies:
       '@types/node': 22.10.2
-      pg-protocol: 1.6.1
+      pg-protocol: 1.7.0
       pg-types: 2.2.0
 
   '@types/pluralize@0.0.33': {}
@@ -20626,8 +20623,6 @@ snapshots:
   pg-pool@3.7.0(pg@8.13.1):
     dependencies:
       pg: 8.13.1
-
-  pg-protocol@1.6.1: {}
 
   pg-protocol@1.7.0: {}
 
