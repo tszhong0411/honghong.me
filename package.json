@@ -5,6 +5,7 @@
   "scripts": {
     "build": "turbo build",
     "build:apps": "turbo build --filter=./apps/*",
+    "build:mdx": "turbo build:mdx",
     "build:packages": "turbo build --filter=./packages/*",
     "check": "turbo lint && turbo type-check && pnpm format:check && pnpm check:spelling && pnpm check:knip",
     "check:knip": "cross-env VITE_CJS_IGNORE_WARNING=true dotenv -e .env.local -- knip",

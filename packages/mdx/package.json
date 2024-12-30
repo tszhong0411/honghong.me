@@ -6,7 +6,9 @@
   "license": "GPL-3.0",
   "type": "module",
   "main": "./src/index.ts",
-  "bin": "./dist/cli.js",
+  "bin": {
+    "mdx": "./cli.js"
+  },
   "scripts": {
     "build": "tsup",
     "clean": "rm -rf .turbo dist",

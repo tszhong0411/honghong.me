@@ -1,0 +1,147 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Run unit tests
+        run: pnpm test:unit
+
+  eslint:
+    name: ESLint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Build MDX
+        run: pnpm build:mdx
+
+      - name: Run ESLint
+        run: pnpm lint
+
+  types:
+    name: TypeScript
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Build apps
+        run: pnpm build:apps
+
+      - name: Run type check
+        run: pnpm type-check
+
+  prettier:
+    name: Prettier
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Run Prettier
+        run: pnpm format:check
+
+  spelling:
+    name: Spelling
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Run spelling check
+        run: pnpm check:spelling
+
+  knip:
+    name: Knip
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Build MDX
+        run: pnpm build:mdx
+
+      - name: Run Knip
+        run: pnpm check:knip
+
+  e2e:
+    name: End to end tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    needs: [tests, eslint, types]
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Build apps
+        run: pnpm build:apps
+
+      - name: Store Playwright's Version
+        run: |
+          PLAYWRIGHT_VERSION=$(pnpm ls @playwright/test | grep @playwright | sed 's/.*@//')
+          echo "Playwright's Version: $PLAYWRIGHT_VERSION"
+          echo "PLAYWRIGHT_VERSION=$PLAYWRIGHT_VERSION" >> $GITHUB_ENV
+
+      - name: Cache Playwright browsers for Playwright's Version
+        id: cache-playwright-browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-browsers-${{ env.PLAYWRIGHT_VERSION }}
+
+      - name: Setup Playwright
+        if: steps.cache-playwright-browsers.outputs.cache-hit != 'true'
+        run: pnpm exec playwright install --with-deps
+
+      - name: Setup Playwright with cache
+        run: pnpm exec playwright install-deps
+        if: steps.cache-playwright-browsers.outputs.cache-hit == 'true'
+
+      - name: Run services
+        run: docker compose up -d
+
+      - name: Migrate database
+        run: pnpm run db:migrate
+
+      - name: Run Playwright tests
+        run: pnpm run test:e2e
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: apps/web/playwright-report/
+          retention-days: 30
