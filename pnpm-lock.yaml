@@ -214,8 +214,8 @@ importers:
         specifier: ^3.9.1
         version: 3.9.1(react-hook-form@7.54.2(react@19.0.0))
       '@icons-pack/react-simple-icons':
-        specifier: 9.5.0
-        version: 9.5.0(react@19.0.0)
+        specifier: 10.2.0
+        version: 10.2.0(react@19.0.0)
       '@nanostores/react':
         specifier: ^0.8.4
         version: 0.8.4(nanostores@0.11.3)(react@19.0.0)
@@ -779,8 +779,8 @@ importers:
   packages/ui:
     dependencies:
       '@icons-pack/react-simple-icons':
-        specifier: 9.6.0
-        version: 9.6.0(react@19.0.0)
+        specifier: 10.2.0
+        version: 10.2.0(react@19.0.0)
       '@radix-ui/react-alert-dialog':
         specifier: ^1.1.4
         version: 1.1.4(@types/react-dom@19.0.2(@types/react@19.0.2))(@types/react@19.0.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -2985,15 +2985,10 @@ packages:
     resolution: {integrity: sha512-c7hNEllBlenFTHBky65mhq8WD2kbN9Q6gk0bTk8lSBvc554jpXSkST1iePudpt7+A/AQvuHs9EMqjHDXMY1lrA==}
     engines: {node: '>=18.18'}
 
-  '@icons-pack/react-simple-icons@9.5.0':
-    resolution: {integrity: sha512-+y7GW8magFYS4bmlInrsW1q6NOy0dd3eNwjKashlg9hyhPF6PKTWB401qkXaH23mieb5TMMyf/U4mDDPfrjgGQ==}
+  '@icons-pack/react-simple-icons@10.2.0':
+    resolution: {integrity: sha512-QDUxup8D3GdIIzwGpxQs6bjeFV5mJes25qqf4aqP/PaBYQNCar7AiyD8C14636TosCG0A/QqAUwm/Hviep4d4g==}
     peerDependencies:
-      react: ^16.13 || ^17 || ^18
-
-  '@icons-pack/react-simple-icons@9.6.0':
-    resolution: {integrity: sha512-8lDLssg+2aJutepQV/P4zlGm0fgujSeIItCYaLKo+25NtwepozWxZJOnc5WGHSi3HjiLcGmxI6dA2eiD5w3i+w==}
-    peerDependencies:
-      react: ^16.13 || ^17 || ^18
+      react: ^16.13 || ^17 || ^18 || ^19
 
   '@img/sharp-darwin-arm64@0.33.5':
     resolution: {integrity: sha512-UT4p+iz/2H4twwAoLCqfA9UH5pI6DggwKEGuaPy7nCVQ8ZsiY5PIcrRvD1DzuY3qYL07NtIQcWnBSY/heikIFQ==}
@@ -12770,11 +12765,7 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.1': {}
 
-  '@icons-pack/react-simple-icons@9.5.0(react@19.0.0)':
-    dependencies:
-      react: 19.0.0
-
-  '@icons-pack/react-simple-icons@9.6.0(react@19.0.0)':
+  '@icons-pack/react-simple-icons@10.2.0(react@19.0.0)':
     dependencies:
       react: 19.0.0
 
