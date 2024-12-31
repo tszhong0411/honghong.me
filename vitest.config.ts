@@ -8,10 +8,12 @@ export default defineConfig({
       provider: 'v8',
       exclude: [
         ...coverageConfigDefaults.exclude,
-        'packages/*/dist/**',
+        '**/dist/**',
         '**/coverage/**',
         '**/fixtures/**',
-        '**/tests/**'
+        '**/tests/**',
+        './turbo/**',
+        './scripts/**'
       ]
     }
   }
