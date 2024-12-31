@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitest/config'
+import { coverageConfigDefaults, defineConfig } from 'vitest/config'
 
 export default defineConfig({
   test: {
@@ -6,8 +6,15 @@ export default defineConfig({
       reporter: ['lcov', 'html'],
       all: true,
       provider: 'v8',
-      include: ['apps/**', 'packages/**'],
-      exclude: ['**/tests/**', '**/.next/**', '**/.mdx/**', '**/.eslint-config-inspector/**']
+      exclude: [
+        ...coverageConfigDefaults.exclude,
+        '**/dist/**',
+        '**/coverage/**',
+        '**/fixtures/**',
+        '**/tests/**',
+        './turbo/**',
+        './scripts/**'
+      ]
     }
   }
 })
