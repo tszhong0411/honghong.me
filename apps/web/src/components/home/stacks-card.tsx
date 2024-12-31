@@ -3,12 +3,12 @@
 import {
   SiCloudflare,
   SiCss3,
+  SiDrizzle,
   SiFigma,
   SiFirebase,
   SiGit,
   SiHtml5,
   SiJavascript,
-  SiJest,
   SiMarkdown,
   SiMysql,
   SiNextdotjs,
@@ -16,11 +16,13 @@ import {
   SiPostgresql,
   SiPrisma,
   SiPython,
+  SiRadixui,
   SiReact,
+  SiReactquery,
   SiTailwindcss,
   SiTypescript,
-  SiVisualstudiocode,
-  SiVite
+  SiVite,
+  SiVitest
 } from '@icons-pack/react-simple-icons'
 import { Marquee } from '@tszhong0411/ui'
 import { ZapIcon } from 'lucide-react'
@@ -43,6 +45,7 @@ const StacksCard = () => {
         <SiReact className='size-10' />
         <SiPython className='size-10' />
         <SiPostgresql className='size-10' />
+        <SiRadixui className='size-10' />
       </Marquee>
       <Marquee gap='20px' className='py-4' reverse fade pauseOnHover>
         <SiPrisma className='size-10' />
@@ -50,11 +53,12 @@ const StacksCard = () => {
         <SiFirebase className='size-10' />
         <SiGit className='size-10' />
         <SiVite className='size-10' />
-        <SiVisualstudiocode className='size-10' />
+        <SiDrizzle className='size-10' />
         <SiCloudflare className='size-10' />
         <SiMarkdown className='size-10' />
-        <SiJest className='size-10' />
+        <SiVitest className='size-10' />
         <SiNodedotjs className='size-10' />
+        <SiReactquery className='size-10' />
       </Marquee>
     </div>
   )
