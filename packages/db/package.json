@@ -21,7 +21,7 @@
   "dependencies": {
     "@paralleldrive/cuid2": "^2.2.2",
     "@tszhong0411/env": "workspace:*",
-    "drizzle-orm": "^0.38.2"
+    "drizzle-orm": "^0.38.3"
   },
   "peerDependencies": {
     "pg": "^8"
