@@ -78,7 +78,8 @@ Referenced the following projects for inspiration:
 
 - [fumadocs](https://fumadocs.vercel.app/)
 - [leerob.io](https://leerob.io/)
-- [nextra](https://nextra.site/)
+- [nerdfish.be](https://www.nerdfish.be/)
+- [nextra.site](https://nextra.site/)
 - [theodorusclarence.com](https://theodorusclarence.com/)
 - [ped.ro](https://ped.ro/)
 - [delba.dev](https://delba.dev/)
@@ -89,7 +90,7 @@ Referenced the following projects for inspiration:
 - [anishde.dev](https://anishde.dev/)
 - [nikolovlazar.com](https://nikolovlazar.com/)
 - [samuelkraft.com](https://samuelkraft.com/)
-- [bentogrids](https://bentogrids.com/)
+- [bentogrids.com](https://bentogrids.com/)
 - [ui.aceternity.com](https://ui.aceternity.com/)
 - [hover.dev](https://www.hover.dev/)
 - [vocs.dev](https://vocs.dev/)
