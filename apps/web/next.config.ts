@@ -1,4 +1,5 @@
 import bundleAnalyzer from '@next/bundle-analyzer'
+import { withI18n } from '@tszhong0411/i18n/plugin'
 import { NextConfigHeaders } from '@tszhong0411/shared'
 import type { NextConfig } from 'next'
 
@@ -72,4 +73,4 @@ const config: NextConfig = {
   }
 }
 
-export default withBundleAnalyzer(config)
+export default withI18n('./i18n.config.ts', withBundleAnalyzer(config))

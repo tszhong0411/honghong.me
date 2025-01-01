@@ -1,4 +1,6 @@
 import { flags } from '@tszhong0411/env'
+import { NextIntlClientProvider } from '@tszhong0411/i18n/client'
+import { getMessages, setRequestLocale } from '@tszhong0411/i18n/server'
 import { cn } from '@tszhong0411/utils'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { GeistMono } from 'geist/font/mono'
@@ -16,10 +18,13 @@ import Header from '@/components/layout/header'
 import SignInModal from '@/components/sign-in-modal'
 import { SITE_DESCRIPTION, SITE_KEYWORDS, SITE_NAME, SITE_TITLE, SITE_URL } from '@/lib/constants'
 
-import Providers from './providers'
+import Providers from '../providers'
 
 type LayoutProps = {
   children: React.ReactNode
+  params: Promise<{
+    locale: string
+  }>
 }
 
 export const metadata: Metadata = {
@@ -112,49 +117,56 @@ export const viewport: Viewport = {
 }
 
 const CalSans = localFont({
-  src: '../../public/fonts/CalSans-SemiBold.woff2',
+  src: '../../../public/fonts/CalSans-SemiBold.woff2',
   variable: '--font-title'
 })
 
-const Layout = (props: LayoutProps) => {
+const Layout = async (props: LayoutProps) => {
   const { children } = props
+  const { locale } = await props.params
+
+  setRequestLocale(locale)
+
+  const messages = await getMessages()
 
   return (
     <html
-      lang='en-US'
+      lang={locale}
       className={cn(GeistSans.variable, GeistMono.variable, CalSans.variable, 'scroll-smooth')}
       suppressHydrationWarning
     >
       <body className='relative'>
         <NuqsAdapter>
           <Providers>
-            <Hello />
-            <Header />
-            <main id='skip-nav' className='mx-auto mb-16 max-w-5xl px-5 py-24 sm:px-8'>
-              {children}
-            </main>
+            <NextIntlClientProvider messages={messages}>
+              <Hello />
+              <Header />
+              <main id='skip-nav' className='mx-auto mb-16 max-w-5xl px-5 py-24 sm:px-8'>
+                {children}
+              </main>
 
-            <Footer />
-            {flags.analytics ? <Analytics /> : null}
-            <SignInModal />
-            <Image
-              width={1512}
-              height={550}
-              className='absolute left-1/2 top-0 -z-10 -translate-x-1/2'
-              src='/images/gradient-background-top.png'
-              alt=''
-              role='presentation'
-              priority
-            />
-            <Image
-              width={1512}
-              height={447}
-              className='absolute -bottom-6 left-1/2 -z-10 -translate-x-1/2'
-              src='/images/gradient-background-bottom.png'
-              alt=''
-              role='presentation'
-              priority
-            />
+              <Footer />
+              {flags.analytics ? <Analytics /> : null}
+              <SignInModal />
+              <Image
+                width={1512}
+                height={550}
+                className='absolute left-1/2 top-0 -z-10 -translate-x-1/2'
+                src='/images/gradient-background-top.png'
+                alt=''
+                role='presentation'
+                priority
+              />
+              <Image
+                width={1512}
+                height={447}
+                className='absolute -bottom-6 left-1/2 -z-10 -translate-x-1/2'
+                src='/images/gradient-background-bottom.png'
+                alt=''
+                role='presentation'
+                priority
+              />
+            </NextIntlClientProvider>
           </Providers>
         </NuqsAdapter>
         <SpeedInsights />

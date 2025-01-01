@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from '@tszhong0411/i18n/client'
 import { BlurImage, buttonVariants, Link } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { motion, useInView } from 'framer-motion'
@@ -30,6 +31,7 @@ const SelectedProjects = (props: ProjectsProps) => {
   const { projects } = props
   const projectsRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(projectsRef, { once: true, margin: '-100px' })
+  const t = useTranslations('homepage.selectedProjects')
 
   return (
     <motion.div
@@ -56,7 +58,7 @@ const SelectedProjects = (props: ProjectsProps) => {
           duration: 0.3
         }}
       >
-        Selected Projects
+        {t('title')}
       </motion.h2>
       <motion.div
         className='mt-12 grid gap-4 md:grid-cols-2'
@@ -88,7 +90,7 @@ const SelectedProjects = (props: ProjectsProps) => {
             'rounded-xl'
           )}
         >
-          See all project
+          {t('more')}
         </Link>
       </div>
     </motion.div>

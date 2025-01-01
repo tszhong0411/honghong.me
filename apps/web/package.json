@@ -37,6 +37,7 @@
     "@tszhong0411/db": "workspace:*",
     "@tszhong0411/emails": "workspace:*",
     "@tszhong0411/env": "workspace:*",
+    "@tszhong0411/i18n": "workspace:*",
     "@tszhong0411/mdx": "workspace:*",
     "@tszhong0411/ui": "workspace:*",
     "@tszhong0411/utils": "workspace:*",

@@ -15,6 +15,7 @@
     "@tszhong0411/docs",
     "@tszhong0411/emails",
     "@tszhong0411/env",
+    "@tszhong0411/i18n",
     "@tszhong0411/kv",
     "@tszhong0411/mdx",
     "@tszhong0411/shared",
