@@ -1,4 +1,5 @@
 import { flags } from '@tszhong0411/env'
+import { getTranslations } from '@tszhong0411/i18n/server'
 import type { Metadata, ResolvingMetadata } from 'next'
 import type { WebPage, WithContext } from 'schema-dts'
 
@@ -11,33 +12,23 @@ import Messages from './messages'
 import Pinned from './pinned'
 import SignIn from './sign-in'
 
-const title = 'Guestbook'
-const description = 'Sign my guestbook and share your idea. You can tell me anything here!'
-
 type PageProps = {
-  params: Promise<Record<string, never>>
+  params: Promise<{
+    locale: string
+  }>
   searchParams: Promise<Record<string, never>>
 }
 
-const jsonLd: WithContext<WebPage> = {
-  '@context': 'https://schema.org',
-  '@type': 'WebPage',
-  name: title,
-  description,
-  url: `${SITE_URL}/guestbook`,
-  isPartOf: {
-    '@type': 'WebSite',
-    name: SITE_TITLE,
-    url: SITE_URL
-  }
-}
-
 export const generateMetadata = async (
-  _: PageProps,
+  props: PageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> => {
+  const { locale } = await props.params
   const previousOpenGraph = (await parent).openGraph ?? {}
   const previousTwitter = (await parent).twitter ?? {}
+  const t = await getTranslations({ locale, namespace: 'guestbook' })
+  const title = t('title')
+  const description = t('description')
 
   return {
     title,
@@ -63,7 +54,22 @@ const Page = async () => {
   if (!flags.auth) return null
 
   const user = await getCurrentUser()
+  const t = await getTranslations('guestbook')
+  const title = t('title')
+  const description = t('description')
 
+  const jsonLd: WithContext<WebPage> = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: title,
+    description,
+    url: `${SITE_URL}/guestbook`,
+    isPartOf: {
+      '@type': 'WebSite',
+      name: SITE_TITLE,
+      url: SITE_URL
+    }
+  }
   return (
     <>
       <script
@@ -71,7 +77,7 @@ const Page = async () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <PageTitle title={title} description={description} />
-      <div className='mx-auto max-w-lg'>
+      <div className='mx-auto max-w-xl space-y-10'>
         <Pinned />
         {user ? <MessageBox user={user} /> : <SignIn />}
         <Messages />

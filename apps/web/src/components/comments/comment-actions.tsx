@@ -1,4 +1,5 @@
 import NumberFlow from '@number-flow/react'
+import { useTranslations } from '@tszhong0411/i18n/client'
 import { Button, buttonVariants, toast } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { cva } from 'class-variance-authority'
@@ -35,6 +36,7 @@ const CommentActions = () => {
   const { status } = useSession()
   const utils = api.useUtils()
   const [params] = useCommentParams()
+  const t = useTranslations('blog.comments')
 
   const queryKey: CommentsInput = {
     slug,
@@ -116,7 +118,7 @@ const CommentActions = () => {
 
   const rateHandler = (like: boolean) => {
     if (!isAuthenticated) {
-      toast.error('You need to be logged in to rate comments')
+      toast.error(t('need-logged-in-to-rate'))
       return
     }
     ratesSetMutation.mutate({ id: comment.id, like: like === comment.liked ? null : like })
@@ -136,7 +138,7 @@ const CommentActions = () => {
           className={rateVariants({
             active: comment.liked === true
           })}
-          aria-label='Like'
+          aria-label={t('like')}
         >
           <ThumbsUpIcon className='size-4' />
           <NumberFlow willChange continuous value={comment.likes} />
@@ -150,7 +152,7 @@ const CommentActions = () => {
           className={rateVariants({
             active: comment.liked === false
           })}
-          aria-label='Dislike'
+          aria-label={t('dislike')}
         >
           <ThumbsDownIcon className='size-4' />
           <NumberFlow willChange continuous value={comment.dislikes} />
@@ -165,7 +167,7 @@ const CommentActions = () => {
             }}
           >
             <MessageSquareIcon className='size-4' />
-            Reply
+            {t('reply')}
           </Button>
         )}
       </div>

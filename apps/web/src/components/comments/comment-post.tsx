@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from '@tszhong0411/i18n/client'
 import { Button, toast } from '@tszhong0411/ui'
 import { SendIcon } from 'lucide-react'
 import { useSession } from 'next-auth/react'
@@ -17,11 +18,12 @@ const CommentPost = () => {
   const [isMounted, setIsMounted] = useState(false)
   const { status } = useSession()
   const utils = api.useUtils()
+  const t = useTranslations('blog.comments')
 
   const commentsMutation = api.comments.post.useMutation({
     onSuccess: () => {
       setContent('')
-      toast.success('Comment posted')
+      toast.success(t('comment-posted'))
     },
     onError: (error) => toast.error(error.message),
     onSettled: () => {
@@ -31,7 +33,7 @@ const CommentPost = () => {
 
   const commentHandler = (value?: string) => {
     if (!content && !value) {
-      toast.error('Comment cannot be empty')
+      toast.error(t('comment-cannot-be-empty'))
 
       return
     }
@@ -69,7 +71,7 @@ const CommentPost = () => {
             setContent(e.target.value)
           }}
           onModEnter={commentHandler}
-          placeholder='Leave comment'
+          placeholder={t('placeholder')}
           disabled={disabled}
         />
         <Button
@@ -78,7 +80,7 @@ const CommentPost = () => {
           className='absolute bottom-1.5 right-2 size-7'
           type='submit'
           disabled={disabled || !content}
-          aria-label='Send comment'
+          aria-label={t('send-comment')}
           aria-disabled={disabled || !content}
         >
           <SendIcon className='size-4' />

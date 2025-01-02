@@ -1,10 +1,13 @@
 'use client'
 
+import { useTranslations } from '@tszhong0411/i18n/client'
 import { Button } from '@tszhong0411/ui'
 
 import { setModals } from '@/store/modals'
 
 const SignIn = () => {
+  const t = useTranslations('guestbook.signin')
+
   return (
     <>
       <Button
@@ -14,9 +17,9 @@ const SignIn = () => {
         }}
         type='button'
       >
-        Login
+        {t('button')}
       </Button>
-      <span className='ml-2'>to continue leaving a message</span>
+      <span className='ml-2'>{t('description')}</span>
     </>
   )
 }

@@ -1,6 +1,7 @@
 'use client'
 
 import { SiFacebook, SiGithub, SiInstagram, SiX, SiYoutube } from '@icons-pack/react-simple-icons'
+import { useTranslations } from '@tszhong0411/i18n/client'
 import {
   Button,
   CommandDialog,
@@ -38,6 +39,7 @@ const CommandMenu = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [copy] = useCopyToClipboard()
   const { status } = useSession()
+  const t = useTranslations('command-menu')
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -61,19 +63,19 @@ const CommandMenu = () => {
 
   const groups: Groups = [
     {
-      name: 'Account',
+      name: t('groups.account'),
       actions: [
         ...(status === 'authenticated'
           ? [
               {
-                title: 'Sign out',
+                title: t('actions.sign-out'),
                 icon: <LogOutIcon className='mr-3 size-4' />,
                 onSelect: () => signOut()
               }
             ]
           : [
               {
-                title: 'Sign in',
+                title: t('actions.sign-in'),
                 icon: <LogInIcon className='mr-3 size-4' />,
                 onSelect: () => {
                   setIsOpen(false)
@@ -84,10 +86,10 @@ const CommandMenu = () => {
       ]
     },
     {
-      name: 'General',
+      name: t('groups.general'),
       actions: [
         {
-          title: 'Copy Link',
+          title: t('actions.copy-link'),
           icon: <LinkIcon className='mr-3 size-4' />,
           onSelect: async () => {
             setIsOpen(false)
@@ -96,7 +98,7 @@ const CommandMenu = () => {
           }
         },
         {
-          title: 'Source code',
+          title: t('actions.source-code'),
           icon: <CodeIcon className='mr-3 size-4' />,
           onSelect: () => {
             openLink('https://github.com/tszhong0411/honghong.me')
@@ -105,7 +107,7 @@ const CommandMenu = () => {
       ]
     },
     {
-      name: 'Social',
+      name: t('groups.social'),
       actions: [
         {
           title: 'GitHub',
@@ -155,15 +157,15 @@ const CommandMenu = () => {
           setIsOpen(true)
         }}
         type='button'
-        aria-label='Open command menu'
+        aria-label={t('open-menu')}
       >
-        <span className='sr-only'>Open command menu</span>
+        <span className='sr-only'>{t('open-menu')}</span>
         <CommandIcon className='size-4' />
       </Button>
       <CommandDialog open={isOpen} onOpenChange={setIsOpen}>
-        <CommandInput placeholder='Type a command or search' />
+        <CommandInput placeholder={t('placeholder')} />
         <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
+          <CommandEmpty>{t('no-results')}</CommandEmpty>
           {groups.map((group, i) => (
             <Fragment key={group.name}>
               <CommandGroup heading={group.name}>

@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from '@tszhong0411/i18n/client'
 import { Skeleton, Tooltip, TooltipContent, TooltipTrigger } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import Image from 'next/image'
@@ -33,6 +34,7 @@ const Comment = (props: CommentProps) => {
   const [isHighlighted, setIsHighlighted] = useState(
     params.comment === comment.id || params.reply === comment.id
   )
+  const t = useTranslations('blog.comments')
 
   const {
     body,
@@ -44,7 +46,6 @@ const Comment = (props: CommentProps) => {
   } = comment
 
   const formattedDate = useFormattedDate(comment.createdAt, {
-    format: 'MMM DD, YYYY',
     relative: true
   })
 
@@ -111,7 +112,7 @@ const Comment = (props: CommentProps) => {
                 </div>
                 {role === 'admin' ? (
                   <div className='rounded-full border border-red-500/50 bg-red-100/50 px-2 py-0.5 text-sm dark:bg-red-900/50'>
-                    Author
+                    {t('author')}
                   </div>
                 ) : null}
               </div>
@@ -120,7 +121,7 @@ const Comment = (props: CommentProps) => {
 
             {isDeleted ? (
               <p className='text-muted-foreground my-3 ml-0.5 text-sm'>
-                [This comment has been deleted]
+                {t('this-comment-has-been-deleted')}
               </p>
             ) : (
               <Markdown>{body}</Markdown>

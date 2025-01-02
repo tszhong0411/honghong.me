@@ -1,4 +1,4 @@
-import { useInView, useMotionValue, useSpring } from 'framer-motion'
+import { useInView, useMotionValue, useSpring } from 'motion/react'
 import { useEffect, useRef } from 'react'
 
 type CounterProps = {

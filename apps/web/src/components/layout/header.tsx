@@ -1,18 +1,21 @@
 'use client'
 
-import { Link, Logo, Separator } from '@tszhong0411/ui'
+import { useTranslations } from '@tszhong0411/i18n/client'
+import { Logo, Separator } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { useEffect, useState } from 'react'
 
 import CommandMenu from '@/components/command-menu'
-import MobileNav from '@/components/mobile-nav'
 
+import Link from '../link'
+import MobileNav from './mobile-nav'
 import Navbar from './navbar'
 import ThemeToggle from './theme-toggle'
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
+  const t = useTranslations('layout')
 
   useEffect(() => {
     const changeBackground = () => {
@@ -50,10 +53,10 @@ const Header = () => {
         href='#skip-nav'
         className='bg-background focus-visible:ring-ring fixed left-4 top-4 -translate-y-20 rounded-sm border p-2 font-medium shadow-sm transition-transform focus-visible:translate-y-0 focus-visible:ring focus-visible:ring-offset-2'
       >
-        <span>Skip to main content</span>
+        <span>{t('skip-to-main-content')}</span>
       </a>
       <Link href='/' className='flex items-center justify-center gap-1'>
-        <span className='sr-only'>Homepage</span>
+        <span className='sr-only'>{t('home')}</span>
         <Logo width={28} height={28} aria-hidden='true' />
       </Link>
       <div className='flex items-center gap-2'>

@@ -1,9 +1,186 @@
 {
+  "blog": {
+    "comments": {
+      "author": "Author",
+      "cancel": "Cancel",
+      "comment-cannot-be-empty": "Comment cannot be empty",
+      "comment-posted": "Comment posted",
+      "comments": "{count, plural, =1 {comment} other {comments}}",
+      "confirm-delete-comment": "Are you sure you want to delete this comment? This action cannot be undone.",
+      "copy-link": "Copy Link",
+      "delete": "Delete",
+      "delete-a-comment": "Delete a comment",
+      "deleted-a-comment": "Deleted a comment",
+      "dislike": "Dislike",
+      "failed-to-load-comments": "Failed to load comments. Please refresh the page.",
+      "failed-to-load-replies": "Failed to load replies. Please refresh the page.",
+      "leave-comment": "Leave comment",
+      "like": "Like",
+      "link-copied": "Link copied to clipboard",
+      "need-logged-in-to-rate": "You need to be logged in to rate comments",
+      "newest": "Newest",
+      "no-comments": "No comments",
+      "oldest": "Oldest",
+      "open-menu": "Open menu",
+      "placeholder": "Leave a comment",
+      "replies": "{count, plural, =1 {reply} other {replies}}",
+      "reply": "Reply",
+      "reply-cannot-be-empty": "Reply cannot be empty",
+      "reply-to-comment": "Reply to comment",
+      "send-comment": "Send comment",
+      "sign-in": "Sign In",
+      "sort-by": "Sort by",
+      "this-comment-has-been-deleted": "[This comment has been deleted]",
+      "toggle-bold": "Toggle bold",
+      "toggle-italic": "Toggle italic",
+      "toggle-strikethrough": "Toggle strikethrough"
+    },
+    "description": "My personal website and blog where I share my thoughts on various topics including tutorials, notes, and personal experiences. As a full-stack engineer from Hong Kong, I started learning web development as a hobby in December 2020. I use Next.js for building websites, GitHub for code hosting, and Vercel for deployment. Explore my site to learn more about my Journey and discover some of the web development resources that have inspired me.",
+    "footer": {
+      "edit-on-github": "Edit on GitHub",
+      "last-updated": "Last updated: {date}"
+    },
+    "header": {
+      "comments": "Comments",
+      "published-on": "Published on",
+      "views": "Views",
+      "written-by": "Written by"
+    },
+    "like": "Like",
+    "on-this-page": "On this page",
+    "title": "Blog"
+  },
+  "command-menu": {
+    "actions": {
+      "copy-link": "Copy Link",
+      "sign-in": "Sign in",
+      "sign-out": "Sign out",
+      "source-code": "Source code"
+    },
+    "groups": {
+      "account": "Account",
+      "general": "General",
+      "social": "Social"
+    },
+    "no-results": "No results found.",
+    "open-menu": "Open command menu",
+    "placeholder": "Type a command or search"
+  },
+  "common": {
+    "error": "Error",
+    "likes": "{count, plural, =1 {# like} other {# likes}}",
+    "on": "on",
+    "views": "{count, plural, =1 {# view} other {# views}}"
+  },
+  "component": {
+    "filtered-posts": {
+      "no-posts-found": "No posts found",
+      "placeholder": "Search articles"
+    },
+    "go-to-homepage": "Go to homepage"
+  },
+  "dashboard": {
+    "description": "This is my personal dashboard, built with Next.js API routes deployed as serverless functions. I use this dashboard to track various metrics across platforms like YouTube, GitHub, and more.",
+    "items": {
+      "blog-total-likes": "Blog Total Likes",
+      "blog-total-views": "Blog Total Views",
+      "coding-hours": "Coding Hours",
+      "github-followers": "GitHub Followers",
+      "github-stars": "GitHub Stars",
+      "youtube-subscribers": "YouTube Subscribers",
+      "youtube-views": "YouTube Views"
+    },
+    "title": "Dashboard"
+  },
+  "guestbook": {
+    "description": "Sign my guestbook and share your idea. You can tell me anything here!",
+    "pinned": {
+      "description": "Thanks for visiting my website. If you have a moment, I'd love to hear your thoughts on my work. Please log in with your account to leave a comment. Thanks!",
+      "greeting": "Hey there! 👋"
+    },
+    "signin": {
+      "button": "Sign in",
+      "description": "to leave a message"
+    },
+    "title": "Guestbook"
+  },
   "homepage": {
-    "hero": {},
+    "about-me": {
+      "coding-hours": "Coding hours",
+      "connect": "Connect",
+      "fav-framework": "Fav. framework",
+      "location": "Hong Kong",
+      "more": "Know more about me",
+      "stacks": "Stacks",
+      "title": "About Me"
+    },
+    "get-in-touch": {
+      "description": "Feel free to reach out to me!",
+      "title": "Any questions about Next.js?"
+    },
+    "hero": {
+      "amazing": "Amazing",
+      "attractive": "Attractive",
+      "fantastic": "Fantastic",
+      "location-timezone": "Hong Kong • UTC/GMT +8",
+      "stunning": "Stunning",
+      "title-bottom": "React",
+      "title-middle-left": "building",
+      "title-middle-right": "websites using",
+      "title-top": "I'm Hong, a Full Stack Engineer"
+    },
+    "latest-articles": {
+      "card": "Article",
+      "more": "See all articles",
+      "title": "Latest Articles"
+    },
     "selectedProjects": {
+      "card": "Project",
       "more": "See all project",
       "title": "Selected Projects"
     }
+  },
+  "layout": {
+    "about": "About",
+    "blog": "Blog",
+    "dashboard": "Dashboard",
+    "facebook": "Facebook",
+    "github": "GitHub",
+    "guestbook": "Guestbook",
+    "home": "Home",
+    "instagram": "Instagram",
+    "links": "Links",
+    "now-playing": {
+      "error": "Failed to fetch Spotify data",
+      "loading": "Loading ...",
+      "not-listening": "Not Listening - Spotify"
+    },
+    "projects": "Projects",
+    "skip-to-main-content": "Skip to main content",
+    "toggle-menu": "Toggle menu",
+    "uses": "Uses",
+    "youtube": "YouTube"
+  },
+  "mdx": {
+    "link-to-section": "Link to section"
+  },
+  "modal": {
+    "sign-in": {
+      "continue-with": "Continue with {provider}",
+      "description": "to continue to honghong.me",
+      "title": "Sign in"
+    }
+  },
+  "projects": {
+    "description": "The list of my projects. Everything was made with ❤️.",
+    "title": "Projects"
+  },
+  "theme-toggle": {
+    "options": {
+      "dark": "Dark",
+      "light": "Light",
+      "system": "System"
+    },
+    "toggle-theme": "Toggle theme"
   }
 }

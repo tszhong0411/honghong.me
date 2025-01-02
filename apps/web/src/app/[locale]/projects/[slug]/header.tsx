@@ -1,11 +1,12 @@
 'use client'
 
-import { buttonVariants, Link } from '@tszhong0411/ui'
+import { buttonVariants } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
-import { motion } from 'framer-motion'
 import { ArrowUpRightIcon } from 'lucide-react'
 import type { Project } from 'mdx/generated'
+import { motion } from 'motion/react'
 
+import Link from '@/components/link'
 import { GITHUB_USERNAME } from '@/lib/constants'
 
 const animation = {

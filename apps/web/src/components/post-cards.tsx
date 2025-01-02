@@ -1,11 +1,13 @@
 'use client'
 
-import { BlurImage, Link } from '@tszhong0411/ui'
+import { useTranslations } from '@tszhong0411/i18n/client'
+import { BlurImage } from '@tszhong0411/ui'
 import type { BlogPost } from 'mdx/generated'
-import pluralize from 'pluralize'
 
 import { useFormattedDate } from '@/hooks/use-formatted-date'
 import { api } from '@/trpc/react'
+
+import Link from './link'
 
 type PostCardsProps = {
   posts: BlogPost[]
@@ -27,10 +29,8 @@ const PostCards = (props: PostCardsProps) => {
 
 const PostCard = (props: PostCardProps) => {
   const { slug, title, summary, date } = props
-  const formattedDate = useFormattedDate(date, {
-    format: 'LL',
-    loading: '--'
-  })
+  const formattedDate = useFormattedDate(date)
+  const t = useTranslations('common')
 
   const viewsQuery = api.views.get.useQuery({
     slug
@@ -57,15 +57,15 @@ const PostCard = (props: PostCardProps) => {
         {formattedDate}
         <div className='flex gap-2'>
           {likesQuery.status === 'pending' ? '--' : null}
-          {likesQuery.status === 'error' ? 'Error' : null}
+          {likesQuery.status === 'error' ? t('error') : null}
           {likesQuery.status === 'success' ? (
-            <div>{pluralize('like', likesQuery.data.likes, true)}</div>
+            <div>{t('likes', { count: likesQuery.data.likes })}</div>
           ) : null}
           <div>&middot;</div>
           {viewsQuery.status === 'pending' ? '--' : null}
-          {viewsQuery.status === 'error' ? 'Error' : null}
+          {viewsQuery.status === 'error' ? t('error') : null}
           {viewsQuery.status === 'success' ? (
-            <div>{pluralize('view', viewsQuery.data.views, true)}</div>
+            <div>{t('views', { count: viewsQuery.data.views })}</div>
           ) : null}
         </div>
       </div>

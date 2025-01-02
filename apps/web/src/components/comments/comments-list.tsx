@@ -1,6 +1,7 @@
 'use client'
 
 import { keepPreviousData } from '@tanstack/react-query'
+import { useTranslations } from '@tszhong0411/i18n/client'
 import { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 
@@ -15,6 +16,7 @@ import CommentHeader from './comments-header'
 const CommentsList = () => {
   const { slug, sort } = useCommentsContext()
   const [params] = useCommentParams()
+  const t = useTranslations('blog.comments')
 
   const { status, data, fetchNextPage, hasNextPage, isFetchingNextPage } =
     api.comments.getInfiniteComments.useInfiniteQuery(
@@ -51,14 +53,12 @@ const CommentsList = () => {
           : null}
         {noComments ? (
           <div className='flex min-h-20 items-center justify-center'>
-            <p className='text-muted-foreground text-sm'>No comments</p>
+            <p className='text-muted-foreground text-sm'>{t('no-comments')}</p>
           </div>
         ) : null}
         {isError ? (
           <div className='flex min-h-20 items-center justify-center'>
-            <p className='text-muted-foreground text-sm'>
-              Failed to load comments. Please refresh the page.
-            </p>
+            <p className='text-muted-foreground text-sm'>{t('failed-to-load-comments')}</p>
           </div>
         ) : null}
         {isLoading ? <CommentLoader /> : null}

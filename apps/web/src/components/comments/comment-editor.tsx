@@ -1,3 +1,4 @@
+import { useTranslations } from '@tszhong0411/i18n/client'
 import { Button, Textarea } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { BoldIcon, ItalicIcon, StrikethroughIcon } from 'lucide-react'
@@ -122,6 +123,7 @@ const decorateText = (
 const CommentEditor = (props: CommentEditorProps) => {
   const { onModEnter, onEscape, initialValue, ...rest } = props
   const textareaRef = useRef<HTMLTextAreaElement>(null)
+  const t = useTranslations('blog.comments')
 
   return (
     <div
@@ -148,7 +150,7 @@ const CommentEditor = (props: CommentEditorProps) => {
       <div className='flex flex-row items-center gap-0.5 px-1.5'>
         <Button
           type='button'
-          aria-label='Toggle bold'
+          aria-label={t('toggle-bold')}
           variant='ghost'
           size='icon'
           className='size-7'
@@ -160,7 +162,7 @@ const CommentEditor = (props: CommentEditorProps) => {
         </Button>
         <Button
           type='button'
-          aria-label='Toggle strikethrough'
+          aria-label={t('toggle-strikethrough')}
           variant='ghost'
           size='icon'
           className='size-7'
@@ -172,7 +174,7 @@ const CommentEditor = (props: CommentEditorProps) => {
         </Button>
         <Button
           type='button'
-          aria-label='Toggle italic'
+          aria-label={t('toggle-italic')}
           variant='ghost'
           size='icon'
           className='size-7'

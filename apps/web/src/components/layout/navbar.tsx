@@ -1,13 +1,16 @@
 'use client'
 
-import { Link } from '@tszhong0411/ui'
+import { useTranslations } from '@tszhong0411/i18n/client'
 import { cn } from '@tszhong0411/utils'
 import { usePathname } from 'next/navigation'
 
 import { HEADER_LINKS } from '@/config/links'
 
+import Link from '../link'
+
 const Navbar = () => {
   const pathname = usePathname()
+  const t = useTranslations('layout')
 
   return (
     <nav>
@@ -16,7 +19,7 @@ const Navbar = () => {
           const isActive = link.href === pathname
 
           return (
-            <li key={link.text} className='relative flex h-[60px] items-center justify-center'>
+            <li key={link.key} className='relative flex h-[60px] items-center justify-center'>
               <Link
                 className={cn(
                   'rounded px-3 py-2 text-sm font-medium transition-colors',
@@ -29,7 +32,7 @@ const Navbar = () => {
                 )}
                 href={link.href}
               >
-                {link.text}
+                {t(link.key)}
               </Link>
               {isActive ? (
                 <>

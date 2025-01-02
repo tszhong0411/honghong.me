@@ -1,14 +1,18 @@
-import { Link } from '@tszhong0411/ui'
+import { useTranslations } from '@tszhong0411/i18n/client'
 import { LinkIcon } from 'lucide-react'
 
 import { SOCIAL_LINKS } from '@/config/links'
 
+import Link from '../link'
+
 const Connect = () => {
+  const t = useTranslations('homepage.about-me')
+
   return (
     <div className='shadow-feature-card dark:shadow-feature-card-dark flex flex-col gap-6 rounded-xl p-4 lg:p-6'>
       <div className='flex items-center gap-2'>
         <LinkIcon className='size-[18px]' />
-        <h2 className='text-sm font-light'>Connect</h2>
+        <h2 className='text-sm font-light'>{t('connect')}</h2>
       </div>
       <div className='flex flex-col gap-4 px-2'>
         {SOCIAL_LINKS.map((link) => {

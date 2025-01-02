@@ -1,12 +1,14 @@
 'use client'
 
 import { useTranslations } from '@tszhong0411/i18n/client'
-import { BlurImage, buttonVariants, Link } from '@tszhong0411/ui'
+import { BlurImage, buttonVariants } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
-import { motion, useInView } from 'framer-motion'
 import { ArrowUpRightIcon, LightbulbIcon } from 'lucide-react'
 import type { Project } from 'mdx/generated'
+import { motion, useInView } from 'motion/react'
 import { useRef } from 'react'
+
+import Link from '../link'
 
 const variants = {
   initial: {
@@ -45,7 +47,7 @@ const SelectedProjects = (props: ProjectsProps) => {
       className='relative my-24'
     >
       <motion.h2
-        className='font-title text-center text-3xl font-bold sm:text-4xl'
+        className='font-title text-center text-3xl font-bold'
         initial={{
           y: 30,
           opacity: 0
@@ -100,6 +102,7 @@ const SelectedProjects = (props: ProjectsProps) => {
 const Card = (props: CardProps) => {
   const { project } = props
   const { slug, name, description } = project
+  const t = useTranslations('homepage.selectedProjects')
 
   return (
     <Link
@@ -110,7 +113,7 @@ const Card = (props: CardProps) => {
       <div className='flex items-center justify-between p-4'>
         <div className='flex items-center gap-3'>
           <LightbulbIcon className='size-[18px]' />
-          <h2 className='font-light'>Project</h2>
+          <h2 className='font-light'>{t('card')}</h2>
         </div>
         <ArrowUpRightIcon className='size-[18px] opacity-0 transition-opacity group-hover:opacity-100' />
       </div>

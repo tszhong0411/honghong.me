@@ -1,34 +1,35 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useFormatter, useTranslations } from '@tszhong0411/i18n/client'
 
 import { dayjs } from '@/utils/dayjs'
 
 type Options = {
-  format: string
-  loading?: string
   relative?: boolean
-  prefix?: string
-  suffix?: string
+  formatOptions?: Parameters<ReturnType<typeof useFormatter>['dateTime']>['1']
 }
 
-export const useFormattedDate = (date: Date | string, options: Options) => {
-  const { relative = false, format, loading, prefix = '', suffix = '' } = options
-  const [formattedDate, setFormattedDate] = useState<string | null>(loading ?? null)
-
-  const computedDate = useMemo(() => {
-    if (relative) {
-      const targetDate = dayjs(date)
-      const weeksDiff = dayjs().diff(targetDate, 'week')
-
-      return Math.abs(weeksDiff) > 1 ? `on ${targetDate.format(format)}` : dayjs().to(targetDate)
-    } else {
-      return `${prefix}${dayjs(date).format(format)}${suffix}`
+export const useFormattedDate = (date: Date | string, options: Options = {}) => {
+  const {
+    relative = false,
+    formatOptions = {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
     }
-  }, [date, format, prefix, relative, suffix])
+  } = options
 
-  useEffect(() => {
-    // eslint-disable-next-line @eslint-react/hooks-extra/no-direct-set-state-in-use-effect -- it needs to be computed on client side
-    setFormattedDate(computedDate)
-  }, [computedDate])
+  const format = useFormatter()
+  const t = useTranslations('common')
+  const now = new Date()
 
-  return formattedDate
+  const convertedDate = typeof date === 'string' ? new Date(date) : date
+
+  if (relative) {
+    const weeksDiff = dayjs().diff(date, 'week')
+
+    return Math.abs(weeksDiff) > 1
+      ? `${t('on')} ${format.dateTime(convertedDate, formatOptions)}`
+      : format.relativeTime(convertedDate, now)
+  } else {
+    return format.dateTime(convertedDate, formatOptions)
+  }
 }

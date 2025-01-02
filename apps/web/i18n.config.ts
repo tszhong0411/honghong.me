@@ -13,6 +13,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     messages: {
       ...(await import(`@tszhong0411/i18n/messages/${locale}.json`)).default
     },
-    locale
+    locale,
+    timeZone: 'UTC'
   }
 })

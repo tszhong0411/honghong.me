@@ -1,6 +1,7 @@
 /**
  * Adapted from: https://github.com/fuma-nama/fumadocs/blob/82c273917280f63da95687852135f89a08593e71/packages/ui/src/components/heading.tsx
  */
+import { useTranslations } from '@tszhong0411/i18n/client'
 import { cn } from '@tszhong0411/utils'
 import { LinkIcon } from 'lucide-react'
 
@@ -12,13 +13,14 @@ type HeadingProps<T extends Types> = Omit<React.ComponentProps<T>, 'as'> & {
 const Heading = <T extends Types = 'h1'>(props: HeadingProps<T>) => {
   const { as, className, children, id, ...rest } = props
   const Component = as ?? 'h1'
+  const t = useTranslations('mdx')
 
   return (
     <Component className={cn('scroll-m-32', className)} id={id} {...rest}>
       <a href={`#${id}`} className='not-prose group'>
         {children}
         <LinkIcon
-          aria-label='Link to section'
+          aria-label={t('link-to-section')}
           className='text-muted-foreground ml-2 inline size-4 opacity-0 transition-opacity group-hover:opacity-100'
         />
       </a>

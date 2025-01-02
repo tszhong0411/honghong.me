@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from '@tszhong0411/i18n/client'
 import { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 
@@ -15,6 +16,7 @@ const CommentReplies = () => {
   const { comment, isOpenReplies, setIsOpenReplies } = useCommentContext()
   const { slug } = useCommentsContext()
   const [params] = useCommentParams()
+  const t = useTranslations('blog.comments')
 
   const { status, data, fetchNextPage, hasNextPage, isFetchingNextPage } =
     api.comments.getInfiniteComments.useInfiniteQuery(
@@ -58,9 +60,7 @@ const CommentReplies = () => {
             : null}
           {isError ? (
             <div className='flex min-h-20 items-center justify-center'>
-              <p className='text-muted-foreground text-sm'>
-                Failed to load replies. Please refresh the page.
-              </p>
+              <p className='text-muted-foreground text-sm'>{t('failed-to-load-replies')}</p>
             </div>
           ) : null}
           {isLoading ? <CommentLoader /> : null}

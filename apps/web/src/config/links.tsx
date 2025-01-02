@@ -23,124 +23,74 @@ import {
   SITE_YOUTUBE_URL
 } from '@/lib/constants'
 
-type HeaderLinks = Array<{
-  icon: React.ReactNode
-  href: string
-  text: string
-}>
-
-type FooterLinks = Array<{
-  id: number
-  links: Array<{
-    href: string
-    text: string
-  }>
-}>
-
 type SocialLinks = Array<{
   href: string
   title: string
   icon: IconType
 }>
 
-export const HEADER_LINKS: HeaderLinks = [
+export const HEADER_LINKS = [
   {
     icon: <PencilIcon className='size-3.5' />,
     href: '/blog',
-    text: 'Blog'
+    key: 'blog'
   },
   {
     icon: <MessageCircleIcon className='size-3.5' />,
     href: '/guestbook',
-    text: 'Guestbook'
+    key: 'guestbook'
   },
   {
     icon: <BarChartIcon className='size-3.5' />,
     href: '/dashboard',
-    text: 'Dashboard'
+    key: 'dashboard'
   },
   {
     icon: <FlameIcon className='size-3.5' />,
     href: '/projects',
-    text: 'Projects'
+    key: 'projects'
   },
   {
     icon: <UserCircleIcon className='size-3.5' />,
     href: '/about',
-    text: 'About'
+    key: 'about'
   },
   {
     icon: <MonitorIcon className='size-3.5' />,
     href: '/uses',
-    text: 'Uses'
+    key: 'uses'
   }
-]
+] as const
 
-export const FOOTER_LINKS: FooterLinks = [
+export const FOOTER_LINKS = [
   {
     id: 1,
     links: [
-      {
-        href: '/',
-        text: 'Home'
-      },
-      {
-        href: '/blog',
-        text: 'Blog'
-      },
-      {
-        href: '/about',
-        text: 'About'
-      },
-      {
-        href: '/dashboard',
-        text: 'Dashboard'
-      }
+      { href: '/', key: 'home' },
+      { href: '/blog', key: 'blog' },
+      { href: '/about', key: 'about' },
+      { href: '/dashboard', key: 'dashboard' }
     ]
   },
   {
     id: 2,
     links: [
-      {
-        href: '/guestbook',
-        text: 'Guestbook'
-      },
-      {
-        href: '/uses',
-        text: 'Uses'
-      },
-      {
-        href: '/projects',
-        text: 'Projects'
-      },
-      {
-        href: 'https://links.honghong.me',
-        text: 'Links'
-      }
+      { href: '/guestbook', key: 'guestbook' },
+      { href: '/uses', key: 'uses' },
+      { href: '/projects', key: 'projects' },
+      { href: 'https://links.honghong.me', key: 'links' }
     ]
   },
   {
     id: 3,
     links: [
-      {
-        href: SITE_FACEBOOK_URL,
-        text: 'Facebook'
-      },
-      {
-        href: SITE_INSTAGRAM_URL,
-        text: 'Instagram'
-      },
-      {
-        href: SITE_GITHUB_URL,
-        text: 'GitHub'
-      },
-      {
-        href: SITE_YOUTUBE_URL,
-        text: 'YouTube'
-      }
+      { href: SITE_FACEBOOK_URL, key: 'facebook' },
+      { href: SITE_INSTAGRAM_URL, key: 'instagram' },
+      { href: SITE_GITHUB_URL, key: 'github' },
+      { href: SITE_YOUTUBE_URL, key: 'youtube' }
     ]
   }
-]
+] as const
 
 export const SOCIAL_LINKS: SocialLinks = [
   {

@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from '@tszhong0411/i18n/client'
 import { Input, Label } from '@tszhong0411/ui'
 import { SearchIcon } from 'lucide-react'
 import type { BlogPost } from 'mdx/generated'
@@ -14,6 +15,7 @@ type FilteredPostsProps = {
 const FilteredPosts = (props: FilteredPostsProps) => {
   const { posts } = props
   const [searchValue, setSearchValue] = useState('')
+  const t = useTranslations('component.filtered-posts')
 
   const filteredPosts = posts.filter((post) =>
     post.title.toLowerCase().includes(searchValue.toLowerCase())
@@ -28,8 +30,8 @@ const FilteredPosts = (props: FilteredPostsProps) => {
           onChange={(e) => {
             setSearchValue(e.target.value)
           }}
-          placeholder='Search articles'
-          aria-label='Search articles'
+          placeholder={t('placeholder')}
+          aria-label={t('placeholder')}
           className='w-full pl-12'
           id='search'
         />
@@ -38,7 +40,7 @@ const FilteredPosts = (props: FilteredPostsProps) => {
         </Label>
       </div>
       {filteredPosts.length === 0 ? (
-        <div className='my-24 text-center text-xl'>No posts found</div>
+        <div className='my-24 text-center text-xl'>{t('no-posts-found')}</div>
       ) : null}
       <PostCards posts={filteredPosts} />
     </>

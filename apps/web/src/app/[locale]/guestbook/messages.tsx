@@ -25,7 +25,15 @@ type MessageProps = {
 const UpdatedDate = (props: UpdatedDateProps) => {
   const { date } = props
   const formattedDate = useFormattedDate(date, {
-    format: 'YYYY-MM-DD HH:mm'
+    formatOptions: {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    },
+    relative: true
   })
 
   if (!formattedDate) return <Skeleton className='h-4 w-24 rounded-md' />
@@ -55,7 +63,7 @@ const Messages = () => {
   const noMessages = status === 'success' && data.pages[0]?.messages.length === 0
 
   return (
-    <div className='mt-10 flex flex-col gap-4' data-testid='guestbook-messages-list'>
+    <div className='flex flex-col gap-4' data-testid='guestbook-messages-list'>
       {isSuccess
         ? data.pages.map((page) =>
             page.messages.map((message) => <Message key={message.id} message={message} />)

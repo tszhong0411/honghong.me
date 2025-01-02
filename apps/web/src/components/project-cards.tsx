@@ -1,7 +1,9 @@
 'use client'
 
-import { BlurImage, Link } from '@tszhong0411/ui'
+import { BlurImage } from '@tszhong0411/ui'
 import type { Project } from 'mdx/generated'
+
+import Link from './link'
 
 type ProjectCardProps = Project
 type ProjectCardsProps = {

@@ -2,6 +2,7 @@
 
 import { SiGithub } from '@icons-pack/react-simple-icons'
 import { useStore } from '@nanostores/react'
+import { useTranslations } from '@tszhong0411/i18n/client'
 import {
   Button,
   Dialog,
@@ -49,6 +50,7 @@ const SignInModal = () => {
   const { signIn: isOpened } = useStore(modals)
   const [isGitHubLoading, setIsGitHubLoading] = useState(false)
   const [isGoogleLoading, setIsGoogleLoading] = useState(false)
+  const t = useTranslations('modal.sign-in')
 
   return (
     <Dialog
@@ -59,8 +61,8 @@ const SignInModal = () => {
     >
       <DialogContent className='sm:max-w-[425px]'>
         <DialogHeader>
-          <DialogTitle className='text-left text-2xl'>Sign in</DialogTitle>
-          <DialogDescription className='text-left'>to continue to honghong.me</DialogDescription>
+          <DialogTitle className='text-left text-2xl'>{t('title')}</DialogTitle>
+          <DialogDescription className='text-left'>{t('description')}</DialogDescription>
         </DialogHeader>
         <div className='my-6 flex flex-col gap-4'>
           <Button
@@ -77,7 +79,7 @@ const SignInModal = () => {
             ) : (
               <>
                 <SiGithub className='mr-3' />
-                Continue with GitHub
+                {t('continue-with', { provider: 'GitHub' })}
               </>
             )}
           </Button>
@@ -96,7 +98,7 @@ const SignInModal = () => {
             ) : (
               <>
                 <GoogleIcon />
-                Continue with Google
+                {t('continue-with', { provider: 'Google' })}
               </>
             )}
           </Button>

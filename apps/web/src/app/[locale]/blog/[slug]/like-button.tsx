@@ -4,8 +4,9 @@
  * Inspired by: https://framer.university/resources/like-button-component
  */
 import NumberFlow from '@number-flow/react'
+import { useTranslations } from '@tszhong0411/i18n/client'
 import { Separator } from '@tszhong0411/ui'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { useRef, useState } from 'react'
 import { useDebouncedCallback } from 'use-debounce'
 
@@ -20,6 +21,7 @@ const LikeButton = (props: LikeButtonProps) => {
   const [cacheCount, setCacheCount] = useState(0)
   const buttonRef = useRef<HTMLButtonElement>(null)
   const utils = api.useUtils()
+  const t = useTranslations('blog')
 
   const queryKey = { slug }
 
@@ -134,7 +136,7 @@ const LikeButton = (props: LikeButtonProps) => {
             />
           </g>
         </svg>
-        Like
+        {t('like')}
         <Separator orientation='vertical' className='bg-zinc-700' />
         {status === 'pending' ? <div>--</div> : null}
         {status === 'error' ? <div>Error</div> : null}

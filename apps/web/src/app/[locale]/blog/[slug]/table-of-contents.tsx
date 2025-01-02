@@ -1,9 +1,10 @@
 'use client'
 
+import { useTranslations } from '@tszhong0411/i18n/client'
 import { type TOC } from '@tszhong0411/mdx'
-import { Link } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 
+import Link from '@/components/link'
 import { useScrollspy } from '@/hooks/use-scrollspy'
 
 type TableOfContentsProps = {
@@ -16,10 +17,11 @@ const TableOfContents = (props: TableOfContentsProps) => {
     toc.map((item) => item.url),
     { rootMargin: '0% 0% -80% 0%' }
   )
+  const t = useTranslations('blog')
 
   return (
     <div className='hidden lg:block'>
-      <div className='mb-4 pl-4'>On this page</div>
+      <div className='mb-4 pl-4'>{t('on-this-page')}</div>
       <div>
         {toc.map((item) => {
           const { title, url, depth } = item
