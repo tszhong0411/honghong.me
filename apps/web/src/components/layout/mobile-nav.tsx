@@ -15,7 +15,7 @@ import { HEADER_LINKS } from '@/config/links'
 import Link from '../link'
 
 const MobileNav = () => {
-  const t = useTranslations('layout')
+  const t = useTranslations()
 
   return (
     <DropdownMenu>
@@ -23,10 +23,10 @@ const MobileNav = () => {
         <Button
           className='flex size-9 items-center justify-center p-0 md:hidden'
           type='button'
-          aria-label='Toggle menu'
+          aria-label={t('layout.toggle-menu')}
           variant='ghost'
         >
-          <span className='sr-only'>{t('toggle-menu')}</span>
+          <span className='sr-only'>{t('layout.toggle-menu')}</span>
           <MenuIcon className='size-4' />
         </Button>
       </DropdownMenuTrigger>
@@ -35,7 +35,7 @@ const MobileNav = () => {
           <DropdownMenuItem key={link.key} asChild>
             <Link href={link.href} className='flex items-center gap-4'>
               {link.icon}
-              <div>{t(link.key)}</div>
+              <div>{t(`layout.${link.key}`)}</div>
             </Link>
           </DropdownMenuItem>
         ))}

@@ -25,7 +25,7 @@ type HeaderProps = Project
 
 const Header = (props: HeaderProps) => {
   const { name, description, homepage, github } = props
-  const t = useTranslations('projects')
+  const t = useTranslations()
 
   const repo = github.split('/').pop()
 
@@ -49,7 +49,7 @@ const Header = (props: HeaderProps) => {
       >
         {homepage ? (
           <Link href={homepage} className={cn(buttonVariants(), 'group')}>
-            {t('visit-website')}
+            {t('projects.visit-website')}
             <ArrowUpRightIcon className='ml-2 size-5 transition-transform group-hover:-rotate-12' />
           </Link>
         ) : null}

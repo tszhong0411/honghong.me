@@ -16,7 +16,7 @@ const CommentReplies = () => {
   const { comment, isOpenReplies, setIsOpenReplies } = useCommentContext()
   const { slug } = useCommentsContext()
   const [params] = useCommentParams()
-  const t = useTranslations('blog.comments')
+  const t = useTranslations()
 
   const { status, data, fetchNextPage, hasNextPage, isFetchingNextPage } =
     api.comments.getInfiniteComments.useInfiniteQuery(
@@ -60,7 +60,9 @@ const CommentReplies = () => {
             : null}
           {isError ? (
             <div className='flex min-h-20 items-center justify-center'>
-              <p className='text-muted-foreground text-sm'>{t('failed-to-load-replies')}</p>
+              <p className='text-muted-foreground text-sm'>
+                {t('blog.comments.failed-to-load-replies')}
+              </p>
             </div>
           ) : null}
           {isLoading ? <CommentLoader /> : null}

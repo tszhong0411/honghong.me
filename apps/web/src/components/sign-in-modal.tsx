@@ -50,7 +50,7 @@ const SignInModal = () => {
   const { signIn: isOpened } = useStore(modals)
   const [isGitHubLoading, setIsGitHubLoading] = useState(false)
   const [isGoogleLoading, setIsGoogleLoading] = useState(false)
-  const t = useTranslations('modal.sign-in')
+  const t = useTranslations()
 
   return (
     <Dialog
@@ -61,8 +61,10 @@ const SignInModal = () => {
     >
       <DialogContent className='sm:max-w-[425px]'>
         <DialogHeader>
-          <DialogTitle className='text-left text-2xl'>{t('title')}</DialogTitle>
-          <DialogDescription className='text-left'>{t('description')}</DialogDescription>
+          <DialogTitle className='text-left text-2xl'>{t('modal.sign-in.title')}</DialogTitle>
+          <DialogDescription className='text-left'>
+            {t('modal.sign-in.description')}
+          </DialogDescription>
         </DialogHeader>
         <div className='my-6 flex flex-col gap-4'>
           <Button
@@ -79,7 +81,7 @@ const SignInModal = () => {
             ) : (
               <>
                 <SiGithub className='mr-3' />
-                {t('continue-with', { provider: 'GitHub' })}
+                {t('modal.sign-in.continue-with', { provider: 'GitHub' })}
               </>
             )}
           </Button>
@@ -98,7 +100,7 @@ const SignInModal = () => {
             ) : (
               <>
                 <GoogleIcon />
-                {t('continue-with', { provider: 'Google' })}
+                {t('modal.sign-in.continue-with', { provider: 'Google' })}
               </>
             )}
           </Button>

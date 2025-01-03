@@ -4,7 +4,7 @@ import { Button } from '@tszhong0411/ui'
 import { setModals } from '@/store/modals'
 
 const UnauthorizedOverlay = () => {
-  const t = useTranslations('blog.comments')
+  const t = useTranslations()
 
   return (
     <div className='absolute inset-0 flex items-center justify-center rounded-lg bg-black/5 backdrop-blur-[0.8px]'>
@@ -15,7 +15,7 @@ const UnauthorizedOverlay = () => {
           setModals({ signIn: true })
         }}
       >
-        {t('sign-in')}
+        {t('blog.comments.sign-in')}
       </Button>
     </div>
   )

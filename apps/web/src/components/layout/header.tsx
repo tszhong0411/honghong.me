@@ -15,7 +15,7 @@ import ThemeToggle from './theme-toggle'
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
-  const t = useTranslations('layout')
+  const t = useTranslations()
 
   useEffect(() => {
     const changeBackground = () => {
@@ -53,10 +53,10 @@ const Header = () => {
         href='#skip-nav'
         className='bg-background focus-visible:ring-ring fixed left-4 top-4 -translate-y-20 rounded-sm border p-2 font-medium shadow-sm transition-transform focus-visible:translate-y-0 focus-visible:ring focus-visible:ring-offset-2'
       >
-        <span>{t('skip-to-main-content')}</span>
+        <span>{t('layout.skip-to-main-content')}</span>
       </a>
       <Link href='/' className='flex items-center justify-center gap-1'>
-        <span className='sr-only'>{t('home')}</span>
+        <span className='sr-only'>{t('layout.home')}</span>
         <Logo width={28} height={28} aria-hidden='true' />
       </Link>
       <div className='flex items-center gap-2'>

@@ -11,7 +11,7 @@ const LocationCard = () => {
   const pointerInteracting = useRef<number | null>(null)
   const pointerInteractionMovement = useRef(0)
   const fadeMask = 'radial-gradient(circle at 50% 50%, rgb(0, 0, 0) 60%, rgb(0, 0, 0, 0) 70%)'
-  const t = useTranslations('homepage.about-me')
+  const t = useTranslations()
 
   const [{ r }, api] = useSpring(() => ({
     r: 0,
@@ -67,7 +67,7 @@ const LocationCard = () => {
     <div className='shadow-feature-card dark:shadow-feature-card-dark relative flex h-60 flex-col gap-6 overflow-hidden rounded-xl p-4 lg:p-6'>
       <div className='flex items-center gap-2'>
         <MapPinIcon className='size-[18px]' />
-        <h2 className='text-sm font-light'>{t('location')}</h2>
+        <h2 className='text-sm font-light'>{t('homepage.about-me.location')}</h2>
       </div>
       <div className='absolute inset-x-0 bottom-[-190px] mx-auto aspect-square h-[388px] [@media(max-width:420px)]:bottom-[-140px] [@media(max-width:420px)]:h-[320px] [@media(min-width:768px)_and_(max-width:858px)]:h-[350px]'>
         <div

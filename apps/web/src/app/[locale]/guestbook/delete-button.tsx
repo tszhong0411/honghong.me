@@ -1,3 +1,4 @@
+import { useTranslations } from '@tszhong0411/i18n/client'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -19,9 +20,10 @@ import { api } from '@/trpc/react'
 const DeleteButton = () => {
   const { message } = useMessageContext()
   const utils = api.useUtils()
+  const t = useTranslations()
 
   const guestbookMutation = api.guestbook.delete.useMutation({
-    onSuccess: () => toast.success('Delete message successfully'),
+    onSuccess: () => toast.success(t('guestbook.delete-message-successfully')),
     onSettled: () => utils.guestbook.invalidate(),
     onError: (error) => toast.error(error.message)
   })
@@ -40,25 +42,25 @@ const DeleteButton = () => {
             disabled={guestbookMutation.isPending}
             aria-disabled={guestbookMutation.isPending}
           >
-            Delete
+            {t('guestbook.delete-dialog.delete')}
           </Button>
         </AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Delete a comment</AlertDialogTitle>
+            <AlertDialogTitle>{t('guestbook.delete-dialog.title')}</AlertDialogTitle>
             <AlertDialogDescription>
-              Are you sure you want to delete this comment? This action cannot be undone.
+              {t('guestbook.delete-dialog.description')}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel>{t('guestbook.delete-dialog.cancel')}</AlertDialogCancel>
             <AlertDialogAction
               onClick={() => {
                 deleteMessageHandler(message.id)
               }}
               className={buttonVariants({ variant: 'destructive' })}
             >
-              Delete
+              {t('guestbook.delete-dialog.delete')}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

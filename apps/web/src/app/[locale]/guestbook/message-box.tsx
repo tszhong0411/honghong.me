@@ -1,6 +1,7 @@
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useTranslations } from '@tszhong0411/i18n/client'
 import {
   Avatar,
   AvatarFallback,
@@ -26,15 +27,16 @@ type FormProps = {
   user: User
 }
 
-const guestbookFormSchema = z.object({
-  message: z.string().min(1, {
-    message: 'Message cannot be empty'
-  })
-})
-
 const MessageBox = (props: FormProps) => {
   const { user } = props
   const utils = api.useUtils()
+  const t = useTranslations()
+
+  const guestbookFormSchema = z.object({
+    message: z.string().min(1, {
+      message: t('guestbook.message-cannot-be-empty')
+    })
+  })
 
   const form = useForm<z.infer<typeof guestbookFormSchema>>({
     resolver: zodResolver(guestbookFormSchema),
@@ -46,7 +48,7 @@ const MessageBox = (props: FormProps) => {
   const guestbookMutation = api.guestbook.create.useMutation({
     onSuccess: () => {
       form.reset()
-      toast.success('Create message successfully')
+      toast.success(t('guestbook.create-message-successfully'))
     },
     onSettled: () => utils.guestbook.invalidate(),
     onError: (error) => toast.error(error.message)
@@ -74,7 +76,7 @@ const MessageBox = (props: FormProps) => {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Textarea placeholder='Leave a message' {...field} />
+                  <Textarea placeholder={t('guestbook.placeholder')} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -88,14 +90,14 @@ const MessageBox = (props: FormProps) => {
               }}
               type='button'
             >
-              Logout
+              {t('guestbook.sign-out')}
             </Button>
             <Button
               type='submit'
               disabled={guestbookMutation.isPending}
               aria-disabled={guestbookMutation.isPending}
             >
-              Submit
+              {t('guestbook.submit')}
             </Button>
           </div>
         </form>

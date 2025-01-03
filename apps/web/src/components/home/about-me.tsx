@@ -27,7 +27,7 @@ const variants = {
 const AboutMe = () => {
   const cardsRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(cardsRef, { once: true, margin: '-100px' })
-  const t = useTranslations('homepage.about-me')
+  const t = useTranslations()
 
   return (
     <motion.div
@@ -54,7 +54,7 @@ const AboutMe = () => {
           duration: 0.3
         }}
       >
-        {t('title')}
+        {t('homepage.about-me.title')}
       </motion.h2>
       <motion.div
         className='mt-12 grid gap-4 md:grid-cols-2'
@@ -84,7 +84,7 @@ const AboutMe = () => {
       </motion.div>
       <div className='my-8 flex items-center justify-center'>
         <Link href='/about' className={cn(buttonVariants({ variant: 'outline' }), 'rounded-xl')}>
-          {t('more')}
+          {t('homepage.about-me.more')}
         </Link>
       </div>
     </motion.div>

@@ -123,7 +123,7 @@ const decorateText = (
 const CommentEditor = (props: CommentEditorProps) => {
   const { onModEnter, onEscape, initialValue, ...rest } = props
   const textareaRef = useRef<HTMLTextAreaElement>(null)
-  const t = useTranslations('blog.comments')
+  const t = useTranslations()
 
   return (
     <div
@@ -150,7 +150,7 @@ const CommentEditor = (props: CommentEditorProps) => {
       <div className='flex flex-row items-center gap-0.5 px-1.5'>
         <Button
           type='button'
-          aria-label={t('toggle-bold')}
+          aria-label={t('blog.comments.toggle-bold')}
           variant='ghost'
           size='icon'
           className='size-7'
@@ -162,7 +162,7 @@ const CommentEditor = (props: CommentEditorProps) => {
         </Button>
         <Button
           type='button'
-          aria-label={t('toggle-strikethrough')}
+          aria-label={t('blog.comments.toggle-strikethrough')}
           variant='ghost'
           size='icon'
           className='size-7'
@@ -174,7 +174,7 @@ const CommentEditor = (props: CommentEditorProps) => {
         </Button>
         <Button
           type='button'
-          aria-label={t('toggle-italic')}
+          aria-label={t('blog.comments.toggle-italic')}
           variant='ghost'
           size='icon'
           className='size-7'

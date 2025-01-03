@@ -15,6 +15,7 @@ fumadocs
 hiett
 knip
 lightningcss
+lokalise
 mdast
 nanostores
 nextauth

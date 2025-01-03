@@ -16,7 +16,7 @@ import CommentHeader from './comments-header'
 const CommentsList = () => {
   const { slug, sort } = useCommentsContext()
   const [params] = useCommentParams()
-  const t = useTranslations('blog.comments')
+  const t = useTranslations()
 
   const { status, data, fetchNextPage, hasNextPage, isFetchingNextPage } =
     api.comments.getInfiniteComments.useInfiniteQuery(
@@ -53,12 +53,14 @@ const CommentsList = () => {
           : null}
         {noComments ? (
           <div className='flex min-h-20 items-center justify-center'>
-            <p className='text-muted-foreground text-sm'>{t('no-comments')}</p>
+            <p className='text-muted-foreground text-sm'>{t('blog.comments.no-comments')}</p>
           </div>
         ) : null}
         {isError ? (
           <div className='flex min-h-20 items-center justify-center'>
-            <p className='text-muted-foreground text-sm'>{t('failed-to-load-comments')}</p>
+            <p className='text-muted-foreground text-sm'>
+              {t('blog.comments.failed-to-load-comments')}
+            </p>
           </div>
         ) : null}
         {isLoading ? <CommentLoader /> : null}

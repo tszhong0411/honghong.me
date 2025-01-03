@@ -18,12 +18,12 @@ const CommentPost = () => {
   const [isMounted, setIsMounted] = useState(false)
   const { status } = useSession()
   const utils = api.useUtils()
-  const t = useTranslations('blog.comments')
+  const t = useTranslations()
 
   const commentsMutation = api.comments.post.useMutation({
     onSuccess: () => {
       setContent('')
-      toast.success(t('comment-posted'))
+      toast.success(t('blog.comments.comment-posted'))
     },
     onError: (error) => toast.error(error.message),
     onSettled: () => {
@@ -33,7 +33,7 @@ const CommentPost = () => {
 
   const commentHandler = (value?: string) => {
     if (!content && !value) {
-      toast.error(t('comment-cannot-be-empty'))
+      toast.error(t('blog.comments.comment-cannot-be-empty'))
 
       return
     }
@@ -71,7 +71,7 @@ const CommentPost = () => {
             setContent(e.target.value)
           }}
           onModEnter={commentHandler}
-          placeholder={t('placeholder')}
+          placeholder={t('blog.comments.placeholder')}
           disabled={disabled}
         />
         <Button
@@ -80,7 +80,7 @@ const CommentPost = () => {
           className='absolute bottom-1.5 right-2 size-7'
           type='submit'
           disabled={disabled || !content}
-          aria-label={t('send-comment')}
+          aria-label={t('blog.comments.send-comment')}
           aria-disabled={disabled || !content}
         >
           <SendIcon className='size-4' />

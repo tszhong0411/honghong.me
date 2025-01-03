@@ -28,7 +28,7 @@ type CardProps = {
 const SelectedProjects = () => {
   const projectsRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(projectsRef, { once: true, margin: '-100px' })
-  const t = useTranslations('homepage.selectedProjects')
+  const t = useTranslations()
   const locale = useLocale()
   const filteredProjects = allProjects.filter(
     (project) => project.selected && project.language === locale
@@ -59,7 +59,7 @@ const SelectedProjects = () => {
           duration: 0.3
         }}
       >
-        {t('title')}
+        {t('homepage.selectedProjects.title')}
       </motion.h2>
       <motion.div
         className='mt-12 grid gap-4 md:grid-cols-2'
@@ -89,7 +89,7 @@ const SelectedProjects = () => {
             'rounded-xl'
           )}
         >
-          {t('more')}
+          {t('homepage.selectedProjects.more')}
         </Link>
       </div>
     </motion.div>
@@ -99,7 +99,7 @@ const SelectedProjects = () => {
 const Card = (props: CardProps) => {
   const { project } = props
   const { slug, name, description } = project
-  const t = useTranslations('homepage.selectedProjects')
+  const t = useTranslations()
 
   return (
     <Link
@@ -110,7 +110,7 @@ const Card = (props: CardProps) => {
       <div className='flex items-center justify-between p-4'>
         <div className='flex items-center gap-3'>
           <LightbulbIcon className='size-[18px]' />
-          <h2 className='font-light'>{t('card')}</h2>
+          <h2 className='font-light'>{t('homepage.selectedProjects.card')}</h2>
         </div>
         <ArrowUpRightIcon className='size-[18px] opacity-0 transition-opacity group-hover:opacity-100' />
       </div>

@@ -11,7 +11,7 @@ import { useTheme } from 'next-themes'
 
 const ThemeToggle = () => {
   const { setTheme } = useTheme()
-  const t = useTranslations('theme-toggle')
+  const t = useTranslations()
 
   return (
     <DropdownMenu>
@@ -20,10 +20,10 @@ const ThemeToggle = () => {
           variant='ghost'
           className='size-9 p-0'
           type='button'
-          aria-label={t('toggle-theme')}
+          aria-label={t('theme-toggle.toggle-theme')}
           data-testid='theme-toggle'
         >
-          <span className='sr-only'>{t('toggle-theme')}</span>
+          <span className='sr-only'>{t('theme-toggle.toggle-theme')}</span>
           <SunIcon className='size-4 dark:hidden' />
           <MoonIcon className='hidden size-4 dark:block' />
         </Button>
@@ -36,7 +36,7 @@ const ThemeToggle = () => {
           }}
           data-testid='theme-light-button'
         >
-          <SunIcon className='size-[18px]' /> {t('options.light')}
+          <SunIcon className='size-[18px]' /> {t('theme-toggle.options.light')}
         </DropdownMenuItem>
         <DropdownMenuItem
           className='gap-2'
@@ -45,7 +45,7 @@ const ThemeToggle = () => {
           }}
           data-testid='theme-dark-button'
         >
-          <MoonIcon className='size-[18px]' /> {t('options.dark')}
+          <MoonIcon className='size-[18px]' /> {t('theme-toggle.options.dark')}
         </DropdownMenuItem>
         <DropdownMenuItem
           className='gap-2'
@@ -54,7 +54,7 @@ const ThemeToggle = () => {
           }}
           data-testid='theme-system-button'
         >
-          <MonitorIcon className='size-[18px]' /> {t('options.system')}
+          <MonitorIcon className='size-[18px]' /> {t('theme-toggle.options.system')}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

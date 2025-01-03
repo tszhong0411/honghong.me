@@ -16,7 +16,7 @@ const getDoc = (slug: string[] | undefined) => {
     : allDocs.find((d) => d.slugAsParams === 'introduction')
 }
 
-export const generateStaticParams = (): Array<Awaited<{ slug: string[] }>> => {
+export const generateStaticParams = (): Array<{ slug: string[] }> => {
   return allDocs.map((doc) => ({
     slug: doc.slugAsParams.split('/')
   }))

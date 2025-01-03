@@ -32,11 +32,11 @@ const Items = () => {
   const viewsQuery = api.views.getCount.useQuery()
   const wakatimeQuery = api.wakatime.get.useQuery()
 
-  const t = useTranslations('dashboard.items')
+  const t = useTranslations()
 
   const data: Card[] = [
     {
-      title: t('coding-hours'),
+      title: t('dashboard.items.coding-hours'),
       link: 'https://wakatime.com/@tszhong0411',
       value: wakatimeQuery.data?.seconds
         ? Math.round(wakatimeQuery.data.seconds / 60 / 60)
@@ -50,7 +50,7 @@ const Items = () => {
       suffix: 'hrs'
     },
     {
-      title: t('youtube-subscribers'),
+      title: t('dashboard.items.youtube-subscribers'),
       link: 'https://youtube.com/@tszhong0411',
       value: youtubeQuery.data?.subscribers,
       icon: <SiYoutube className='text-[#ff0000]' />,
@@ -61,7 +61,7 @@ const Items = () => {
       }
     },
     {
-      title: t('youtube-views'),
+      title: t('dashboard.items.youtube-views'),
       link: 'https://youtube.com/@tszhong0411',
       value: youtubeQuery.data?.views,
       icon: <SiYoutube className='text-[#ff0000]' />,
@@ -72,7 +72,7 @@ const Items = () => {
       }
     },
     {
-      title: t('github-followers'),
+      title: t('dashboard.items.github-followers'),
       link: 'https://github.com/tszhong0411',
       value: githubQuery.data?.followers,
       icon: <SiGithub className='text-[#fee000]' />,
@@ -83,7 +83,7 @@ const Items = () => {
       }
     },
     {
-      title: t('github-stars'),
+      title: t('dashboard.items.github-stars'),
       link: 'https://github.com/tszhong0411',
       value: githubQuery.data?.stars,
       icon: <StarIcon className='size-6 text-[#fee000]' />,
@@ -94,7 +94,7 @@ const Items = () => {
       }
     },
     {
-      title: t('blog-total-views'),
+      title: t('dashboard.items.blog-total-views'),
       link: 'https://honghong.me',
       value: viewsQuery.data?.views,
       icon: <PencilIcon className='size-6 text-[#ff0f7b]' />,
@@ -105,7 +105,7 @@ const Items = () => {
       }
     },
     {
-      title: t('blog-total-likes'),
+      title: t('dashboard.items.blog-total-likes'),
       link: 'https://honghong.me',
       value: likesQuery.data?.likes,
       icon: <PencilIcon className='size-6 text-[#ff0f7b]' />,

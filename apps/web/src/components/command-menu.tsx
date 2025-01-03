@@ -39,7 +39,7 @@ const CommandMenu = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [copy] = useCopyToClipboard()
   const { status } = useSession()
-  const t = useTranslations('command-menu')
+  const t = useTranslations()
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -63,19 +63,19 @@ const CommandMenu = () => {
 
   const groups: Groups = [
     {
-      name: t('groups.account'),
+      name: t('command-menu.groups.account'),
       actions: [
         ...(status === 'authenticated'
           ? [
               {
-                title: t('actions.sign-out'),
+                title: t('command-menu.actions.sign-out'),
                 icon: <LogOutIcon className='mr-3 size-4' />,
                 onSelect: () => signOut()
               }
             ]
           : [
               {
-                title: t('actions.sign-in'),
+                title: t('command-menu.actions.sign-in'),
                 icon: <LogInIcon className='mr-3 size-4' />,
                 onSelect: () => {
                   setIsOpen(false)
@@ -86,10 +86,10 @@ const CommandMenu = () => {
       ]
     },
     {
-      name: t('groups.general'),
+      name: t('command-menu.groups.general'),
       actions: [
         {
-          title: t('actions.copy-link'),
+          title: t('command-menu.actions.copy-link'),
           icon: <LinkIcon className='mr-3 size-4' />,
           onSelect: async () => {
             setIsOpen(false)
@@ -98,7 +98,7 @@ const CommandMenu = () => {
           }
         },
         {
-          title: t('actions.source-code'),
+          title: t('command-menu.actions.source-code'),
           icon: <CodeIcon className='mr-3 size-4' />,
           onSelect: () => {
             openLink('https://github.com/tszhong0411/honghong.me')
@@ -107,7 +107,7 @@ const CommandMenu = () => {
       ]
     },
     {
-      name: t('groups.social'),
+      name: t('command-menu.groups.social'),
       actions: [
         {
           title: 'GitHub',
@@ -157,15 +157,15 @@ const CommandMenu = () => {
           setIsOpen(true)
         }}
         type='button'
-        aria-label={t('open-menu')}
+        aria-label={t('command-menu.open-menu')}
       >
-        <span className='sr-only'>{t('open-menu')}</span>
+        <span className='sr-only'>{t('command-menu.open-menu')}</span>
         <CommandIcon className='size-4' />
       </Button>
       <CommandDialog open={isOpen} onOpenChange={setIsOpen}>
-        <CommandInput placeholder={t('placeholder')} />
+        <CommandInput placeholder={t('command-menu.placeholder')} />
         <CommandList>
-          <CommandEmpty>{t('no-results')}</CommandEmpty>
+          <CommandEmpty>{t('command-menu.no-results')}</CommandEmpty>
           {groups.map((group, i) => (
             <Fragment key={group.name}>
               <CommandGroup heading={group.name}>

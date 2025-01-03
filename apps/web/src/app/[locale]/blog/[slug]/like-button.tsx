@@ -21,7 +21,7 @@ const LikeButton = (props: LikeButtonProps) => {
   const [cacheCount, setCacheCount] = useState(0)
   const buttonRef = useRef<HTMLButtonElement>(null)
   const utils = api.useUtils()
-  const t = useTranslations('blog')
+  const t = useTranslations()
 
   const queryKey = { slug }
 
@@ -100,7 +100,7 @@ const LikeButton = (props: LikeButtonProps) => {
         className='flex items-center gap-3 rounded-xl bg-zinc-900 px-4 py-2 text-lg text-white'
         type='button'
         onClick={likeHandler}
-        aria-label='Like this post'
+        aria-label={t('blog.like-this-post')}
       >
         <svg
           xmlns='http://www.w3.org/2000/svg'
@@ -136,10 +136,10 @@ const LikeButton = (props: LikeButtonProps) => {
             />
           </g>
         </svg>
-        {t('like')}
+        {t('blog.like')}
         <Separator orientation='vertical' className='bg-zinc-700' />
         {status === 'pending' ? <div>--</div> : null}
-        {status === 'error' ? <div>Error</div> : null}
+        {status === 'error' ? <div>{t('common.error')}</div> : null}
         {status === 'success' ? (
           <NumberFlow willChange continuous value={data.likes + cacheCount} />
         ) : null}

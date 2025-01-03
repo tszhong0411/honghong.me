@@ -17,11 +17,11 @@ const TableOfContents = (props: TableOfContentsProps) => {
     toc.map((item) => item.url),
     { rootMargin: '0% 0% -80% 0%' }
   )
-  const t = useTranslations('blog')
+  const t = useTranslations()
 
   return (
     <div className='hidden lg:block'>
-      <div className='mb-4 pl-4'>{t('on-this-page')}</div>
+      <div className='mb-4 pl-4'>{t('blog.on-this-page')}</div>
       <div>
         {toc.map((item) => {
           const { title, url, depth } = item

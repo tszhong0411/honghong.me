@@ -18,7 +18,7 @@ type PageProps = {
   searchParams: Promise<Record<string, never>>
 }
 
-export const generateStaticParams = (): Array<Awaited<{ slug: string }>> => {
+export const generateStaticParams = (): Array<{ slug: string }> => {
   return allProjects.map((project) => ({
     slug: project.slug
   }))

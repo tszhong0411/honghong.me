@@ -42,6 +42,11 @@
     "**/volumes/**": true
   },
 
+  "i18n-ally.enabledFrameworks": ["react", "next-intl", "general"],
+  "i18n-ally.extract.autoDetect": true,
+  "i18n-ally.keystyle": "nested",
+  "i18n-ally.localesPaths": ["packages/i18n/messages"],
+
   "tailwindCSS.experimental.classRegex": [
     ["cva\\(([^)]*)\\)", "'([^']*)'"],
     ["cn\\(([^)]*)\\)", "'([^']*)'"],

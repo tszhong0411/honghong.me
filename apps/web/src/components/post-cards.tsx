@@ -30,7 +30,7 @@ const PostCards = (props: PostCardsProps) => {
 const PostCard = (props: PostCardProps) => {
   const { slug, title, summary, date } = props
   const formattedDate = useFormattedDate(date)
-  const t = useTranslations('common')
+  const t = useTranslations()
 
   const viewsQuery = api.views.get.useQuery({
     slug
@@ -57,15 +57,15 @@ const PostCard = (props: PostCardProps) => {
         {formattedDate}
         <div className='flex gap-2'>
           {likesQuery.status === 'pending' ? '--' : null}
-          {likesQuery.status === 'error' ? t('error') : null}
+          {likesQuery.status === 'error' ? t('common.error') : null}
           {likesQuery.status === 'success' ? (
-            <div>{t('likes', { count: likesQuery.data.likes })}</div>
+            <div>{t('common.likes', { count: likesQuery.data.likes })}</div>
           ) : null}
           <div>&middot;</div>
           {viewsQuery.status === 'pending' ? '--' : null}
-          {viewsQuery.status === 'error' ? t('error') : null}
+          {viewsQuery.status === 'error' ? t('common.error') : null}
           {viewsQuery.status === 'success' ? (
-            <div>{t('views', { count: viewsQuery.data.views })}</div>
+            <div>{t('common.views', { count: viewsQuery.data.views })}</div>
           ) : null}
         </div>
       </div>

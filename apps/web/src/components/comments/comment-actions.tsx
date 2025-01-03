@@ -36,7 +36,7 @@ const CommentActions = () => {
   const { status } = useSession()
   const utils = api.useUtils()
   const [params] = useCommentParams()
-  const t = useTranslations('blog.comments')
+  const t = useTranslations()
 
   const queryKey: CommentsInput = {
     slug,
@@ -118,7 +118,7 @@ const CommentActions = () => {
 
   const rateHandler = (like: boolean) => {
     if (!isAuthenticated) {
-      toast.error(t('need-logged-in-to-rate'))
+      toast.error(t('blog.comments.need-logged-in-to-rate'))
       return
     }
     ratesSetMutation.mutate({ id: comment.id, like: like === comment.liked ? null : like })
@@ -138,7 +138,7 @@ const CommentActions = () => {
           className={rateVariants({
             active: comment.liked === true
           })}
-          aria-label={t('like')}
+          aria-label={t('blog.comments.like')}
         >
           <ThumbsUpIcon className='size-4' />
           <NumberFlow willChange continuous value={comment.likes} />
@@ -152,7 +152,7 @@ const CommentActions = () => {
           className={rateVariants({
             active: comment.liked === false
           })}
-          aria-label={t('dislike')}
+          aria-label={t('blog.comments.dislike')}
         >
           <ThumbsDownIcon className='size-4' />
           <NumberFlow willChange continuous value={comment.dislikes} />
@@ -167,7 +167,7 @@ const CommentActions = () => {
             }}
           >
             <MessageSquareIcon className='size-4' />
-            {t('reply')}
+            {t('blog.comments.reply')}
           </Button>
         )}
       </div>

@@ -3,7 +3,7 @@ import { Card } from '@tszhong0411/ui'
 import { MessageCircleIcon, PinIcon } from 'lucide-react'
 
 const Pinned = () => {
-  const t = useTranslations('guestbook.pinned')
+  const t = useTranslations()
 
   return (
     <Card className='relative overflow-hidden'>
@@ -19,8 +19,10 @@ const Pinned = () => {
             <MessageCircleIcon className='text-primary size-5' />
           </div>
           <div className='space-y-4'>
-            <h2 className='text-foreground text-xl font-semibold'>{t('greeting')}</h2>
-            <p className='text-muted-foreground'>{t('description')}</p>
+            <h2 className='text-foreground text-xl font-semibold'>
+              {t('guestbook.pinned.greeting')}
+            </h2>
+            <p className='text-muted-foreground'>{t('guestbook.pinned.description')}</p>
           </div>
         </div>
       </div>

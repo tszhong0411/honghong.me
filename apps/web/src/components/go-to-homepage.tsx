@@ -6,11 +6,11 @@ import { buttonVariants } from '@tszhong0411/ui'
 import Link from './link'
 
 const GoToHomepage = () => {
-  const t = useTranslations('component')
+  const t = useTranslations()
 
   return (
     <Link href='/' className={buttonVariants()}>
-      {t('go-to-homepage')}
+      {t('component.go-to-homepage')}
     </Link>
   )
 }

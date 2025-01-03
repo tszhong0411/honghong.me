@@ -31,10 +31,10 @@ const CommentMenu = () => {
   const { data } = useSession()
   const utils = api.useUtils()
   const [copy] = useCopyToClipboard()
-  const t = useTranslations('blog.comments')
+  const t = useTranslations()
 
   const deleteCommentMutation = api.comments.delete.useMutation({
-    onSuccess: () => toast.success(t('deleted-a-comment')),
+    onSuccess: () => toast.success(t('blog.comments.deleted-a-comment')),
     onError: (error) => toast.error(error.message),
     onSettled: () => {
       utils.comments.invalidate()
@@ -60,7 +60,7 @@ const CommentMenu = () => {
             variant='ghost'
             size='icon'
             className='size-8'
-            aria-label={t('open-menu')}
+            aria-label={t('blog.comments.open-menu')}
             type='button'
           >
             <MoreVerticalIcon className='size-5' />
@@ -71,11 +71,11 @@ const CommentMenu = () => {
             onClick={() =>
               void copy({
                 text: `${globalThis.location.origin}/blog/${slug}?${commentQuery}`,
-                successMessage: t('link-copied')
+                successMessage: t('blog.comments.link-copied')
               })
             }
           >
-            {t('copy-link')}
+            {t('blog.comments.copy-link')}
           </DropdownMenuItem>
           <AlertDialogTrigger asChild>
             {isAuthor ? (
@@ -84,7 +84,7 @@ const CommentMenu = () => {
                 disabled={deleteCommentMutation.isPending}
                 aria-disabled={deleteCommentMutation.isPending}
               >
-                {t('delete')}
+                {t('blog.comments.delete')}
               </DropdownMenuItem>
             ) : null}
           </AlertDialogTrigger>
@@ -92,18 +92,20 @@ const CommentMenu = () => {
       </DropdownMenu>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>{t('delete-a-comment')}</AlertDialogTitle>
-          <AlertDialogDescription>{t('confirm-delete-comment')}</AlertDialogDescription>
+          <AlertDialogTitle>{t('blog.comments.delete-a-comment')}</AlertDialogTitle>
+          <AlertDialogDescription>
+            {t('blog.comments.confirm-delete-comment')}
+          </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>{t('cancel')}</AlertDialogCancel>
+          <AlertDialogCancel>{t('blog.comments.cancel')}</AlertDialogCancel>
           <AlertDialogAction
             onClick={() => {
               deleteCommentMutation.mutate({ id })
             }}
             className={buttonVariants({ variant: 'destructive' })}
           >
-            {t('delete')}
+            {t('blog.comments.delete')}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

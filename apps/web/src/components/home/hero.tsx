@@ -47,7 +47,7 @@ const variants = {
 
 const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const t = useTranslations('homepage.hero')
+  const t = useTranslations()
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -67,14 +67,14 @@ const Hero = () => {
       <div className='flex justify-between gap-8'>
         <div className='flex flex-col gap-4'>
           <h1 className='font-title flex flex-col flex-wrap gap-2 text-xl font-bold sm:text-3xl'>
-            <div>{t('title-top')}</div>
+            <div>{t('homepage.hero.title-top')}</div>
             <div className='flex gap-2'>
               <motion.div
                 layout
                 key='title-middle-left'
                 className='leading-[30px] sm:leading-[45px]'
               >
-                {t('title-middle-left')}
+                {t('homepage.hero.title-middle-left')}
               </motion.div>
               <div className='relative overflow-hidden'>
                 <AnimatePresence mode='popLayout'>
@@ -92,7 +92,7 @@ const Hero = () => {
                     }}
                     className='inline-flex items-center justify-center leading-[30px] sm:leading-[45px]'
                   >
-                    <span className={textItem.className}>{t(textItem.key)}</span>
+                    <span className={textItem.className}>{t(`homepage.hero.${textItem.key}`)}</span>
                   </motion.div>
                 </AnimatePresence>
               </div>
@@ -101,12 +101,14 @@ const Hero = () => {
                 key='title-middle-right'
                 className='leading-[30px] sm:leading-[45px]'
               >
-                {t('title-middle-right')}
+                {t('homepage.hero.title-middle-right')}
               </motion.div>
             </div>
-            <div>{t('title-bottom')}</div>
+            <div>{t('homepage.hero.title-bottom')}</div>
           </h1>
-          <div className='text-muted-foreground text-sm'>{t('location-timezone')}</div>
+          <div className='text-muted-foreground text-sm'>
+            {t('homepage.hero.location-timezone')}
+          </div>
         </div>
         <motion.div
           className='relative hidden size-28 md:block'

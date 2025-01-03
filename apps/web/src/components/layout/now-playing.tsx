@@ -8,7 +8,7 @@ import Link from '../link'
 
 const NowPlaying = () => {
   const { status, data } = api.spotify.get.useQuery()
-  const t = useTranslations('layout.now-playing')
+  const t = useTranslations()
 
   const isPlaying = status === 'success' && data.isPlaying && data.songUrl
   const notListening = status === 'success' && (!data.isPlaying || !data.songUrl)
@@ -30,14 +30,14 @@ const NowPlaying = () => {
 
       <div className='inline-flex w-full items-center justify-center gap-1 text-sm md:justify-start'>
         <p>
-          {status === 'pending' ? t('loading') : null}
-          {status === 'error' ? t('error') : null}
+          {status === 'pending' ? t('layout.now-playing.loading') : null}
+          {status === 'error' ? t('layout.now-playing.error') : null}
           {isPlaying ? (
             <Link href={data.songUrl}>
               {data.name} - {data.artist}
             </Link>
           ) : null}
-          {notListening ? t('not-listening') : null}
+          {notListening ? t('layout.now-playing.not-listening') : null}
         </p>
       </div>
     </div>

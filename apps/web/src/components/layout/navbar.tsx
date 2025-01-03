@@ -10,7 +10,7 @@ import Link from '../link'
 
 const Navbar = () => {
   const pathname = usePathname()
-  const t = useTranslations('layout')
+  const t = useTranslations()
 
   return (
     <nav>
@@ -32,7 +32,7 @@ const Navbar = () => {
                 )}
                 href={link.href}
               >
-                {t(link.key)}
+                {t(`layout.${link.key}`)}
               </Link>
               {isActive ? (
                 <>

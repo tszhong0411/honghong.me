@@ -12,16 +12,18 @@ const editURL = (slug: string) =>
 
 const Footer = () => {
   const { slug, modifiedTime } = usePostContext()
-  const t = useTranslations('blog.footer')
+  const t = useTranslations()
 
   const formattedDate = useFormattedDate(modifiedTime)
 
   return (
     <div className='my-8 flex w-full items-center justify-between py-4 text-sm'>
       <Link href={editURL(slug)} className={linkVariants({ variant: 'muted' })}>
-        {t('edit-on-github')}
+        {t('blog.footer.edit-on-github')}
       </Link>
-      <div className='text-muted-foreground'>{t('last-updated', { date: formattedDate })}</div>
+      <div className='text-muted-foreground'>
+        {t('blog.footer.last-updated', { date: formattedDate })}
+      </div>
     </div>
   )
 }

@@ -17,13 +17,13 @@ const MobileTableOfContents = (props: MobileTableOfContentsProps) => {
   const { toc } = props
   const [isOpen, setIsOpen] = useState(false)
   const router = useRouter()
-  const t = useTranslations('blog')
+  const t = useTranslations()
 
   return (
     <Popover open={isOpen} onOpenChange={setIsOpen}>
       <PopoverTrigger className='gap-2' asChild>
         <Button type='button' variant='secondary' className='fixed bottom-2 right-2 z-50 lg:hidden'>
-          <AlignLeftIcon className='size-4' /> {t('on-this-page')}
+          <AlignLeftIcon className='size-4' /> {t('blog.on-this-page')}
         </Button>
       </PopoverTrigger>
       <PopoverContent align='end' side='top' className='px-0 py-2'>

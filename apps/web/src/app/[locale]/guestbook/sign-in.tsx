@@ -6,7 +6,7 @@ import { Button } from '@tszhong0411/ui'
 import { setModals } from '@/store/modals'
 
 const SignIn = () => {
-  const t = useTranslations('guestbook.signin')
+  const t = useTranslations()
 
   return (
     <>
@@ -17,9 +17,9 @@ const SignIn = () => {
         }}
         type='button'
       >
-        {t('button')}
+        {t('guestbook.signin.button')}
       </Button>
-      <span className='ml-2'>{t('description')}</span>
+      <span className='ml-2'>{t('guestbook.signin.description')}</span>
     </>
   )
 }

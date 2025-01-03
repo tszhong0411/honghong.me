@@ -16,7 +16,7 @@ import type { CommentsInput } from '@/trpc/routers/comments'
 
 const CommentHeader = () => {
   const { slug, sort, setSort } = useCommentsContext()
-  const t = useTranslations('blog.comments')
+  const t = useTranslations()
 
   const commentsCountQuery = api.comments.getCommentsCount.useQuery({ slug })
   const repliesCountQuery = api.comments.getRepliesCount.useQuery({ slug })
@@ -25,25 +25,29 @@ const CommentHeader = () => {
     <div className='flex items-center justify-between px-1'>
       <NumberFlowGroup>
         <div>
-          {commentsCountQuery.status === 'pending' ? '-- comments' : null}
-          {commentsCountQuery.status === 'error' ? 'Error' : null}
+          {commentsCountQuery.status === 'pending'
+            ? `-- ${t('blog.comments.comments', { count: 0 })}`
+            : null}
+          {commentsCountQuery.status === 'error' ? t('common.error') : null}
           {commentsCountQuery.status === 'success' ? (
             <NumberFlow
               willChange
               continuous
               value={commentsCountQuery.data.comments}
-              suffix={` ${t('comments', { count: commentsCountQuery.data.comments })}`}
+              suffix={` ${t('blog.comments.comments', { count: commentsCountQuery.data.comments })}`}
             />
           ) : null}
           {' · '}
-          {repliesCountQuery.status === 'pending' ? '-- replies' : null}
-          {repliesCountQuery.status === 'error' ? 'Error' : null}
+          {repliesCountQuery.status === 'pending'
+            ? `-- ${t('blog.comments.replies', { count: 0 })}`
+            : null}
+          {repliesCountQuery.status === 'error' ? t('common.error') : null}
           {repliesCountQuery.status === 'success' ? (
             <NumberFlow
               willChange
               continuous
               value={repliesCountQuery.data.replies}
-              suffix={` ${t('replies', { count: repliesCountQuery.data.replies })}`}
+              suffix={` ${t('blog.comments.replies', { count: repliesCountQuery.data.replies })}`}
             />
           ) : null}
         </div>
@@ -52,7 +56,7 @@ const CommentHeader = () => {
         <DropdownMenuTrigger asChild>
           <Button type='button' variant='outline' size='sm' className='h-7 gap-1 text-sm'>
             <ListFilterIcon className='size-3.5' />
-            <span>{t('sort-by')}</span>
+            <span>{t('blog.comments.sort-by')}</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align='end'>
@@ -62,8 +66,12 @@ const CommentHeader = () => {
               setSort(value as CommentsInput['sort'])
             }}
           >
-            <DropdownMenuRadioItem value='newest'>{t('newest')}</DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value='oldest'>{t('oldest')}</DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value='newest'>
+              {t('blog.comments.newest')}
+            </DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value='oldest'>
+              {t('blog.comments.oldest')}
+            </DropdownMenuRadioItem>
           </DropdownMenuRadioGroup>
         </DropdownMenuContent>
       </DropdownMenu>

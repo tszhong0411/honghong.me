@@ -28,7 +28,7 @@ const variants = {
 const LatestArticles = () => {
   const projectsRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(projectsRef, { once: true, margin: '-100px' })
-  const t = useTranslations('homepage.latest-articles')
+  const t = useTranslations()
   const locale = useLocale()
   const filteredPosts = allBlogPosts
     .toSorted((a, b) => {
@@ -62,7 +62,7 @@ const LatestArticles = () => {
           duration: 0.3
         }}
       >
-        {t('title')}
+        {t('homepage.latest-articles.title')}
       </motion.h2>
       <motion.div
         className='mt-12 grid gap-4 md:grid-cols-2'
@@ -92,7 +92,7 @@ const LatestArticles = () => {
             'rounded-xl'
           )}
         >
-          {t('more')}
+          {t('homepage.latest-articles.more')}
         </Link>
       </div>
     </motion.div>
@@ -107,7 +107,7 @@ const Card = (props: CardProps) => {
   const { post } = props
   const { slug, title, summary, date } = post
   const formattedDate = useFormattedDate(date)
-  const t = useTranslations('homepage.latest-articles')
+  const t = useTranslations()
 
   const viewsQuery = api.views.get.useQuery({
     slug
@@ -125,7 +125,7 @@ const Card = (props: CardProps) => {
       <div className='flex items-center justify-between p-4'>
         <div className='flex items-center gap-3'>
           <PencilIcon className='size-[18px]' />
-          <h2 className='font-light'>{t('card')}</h2>
+          <h2 className='font-light'>{t('homepage.latest-articles.card')}</h2>
         </div>
         <ArrowUpRightIcon className='size-[18px] opacity-0 transition-opacity group-hover:opacity-100' />
       </div>
@@ -140,13 +140,13 @@ const Card = (props: CardProps) => {
         {formattedDate}
         <div className='flex gap-2'>
           {likesQuery.status === 'pending' ? '--' : null}
-          {likesQuery.status === 'error' ? 'Error' : null}
+          {likesQuery.status === 'error' ? t('common.error') : null}
           {likesQuery.status === 'success' ? (
             <div>{pluralize('like', likesQuery.data.likes, true)}</div>
           ) : null}
           <div>&middot;</div>
           {viewsQuery.status === 'pending' ? '--' : null}
-          {viewsQuery.status === 'error' ? 'Error' : null}
+          {viewsQuery.status === 'error' ? t('common.error') : null}
           {viewsQuery.status === 'success' ? (
             <div>{pluralize('view', viewsQuery.data.views, true)}</div>
           ) : null}

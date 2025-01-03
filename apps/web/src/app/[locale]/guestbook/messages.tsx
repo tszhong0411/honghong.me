@@ -1,6 +1,7 @@
 'use client'
 
 import { keepPreviousData } from '@tanstack/react-query'
+import { useTranslations } from '@tszhong0411/i18n/client'
 import { Avatar, AvatarFallback, AvatarImage, Skeleton } from '@tszhong0411/ui'
 import { useSession } from 'next-auth/react'
 import { useEffect, useMemo } from 'react'
@@ -50,6 +51,7 @@ const Messages = () => {
         placeholderData: keepPreviousData
       }
     )
+  const t = useTranslations()
 
   const { ref, inView } = useInView()
 
@@ -71,16 +73,12 @@ const Messages = () => {
         : null}
       {noMessages ? (
         <div className='flex min-h-24 items-center justify-center'>
-          <p className='text-muted-foreground text-sm'>
-            No messages. Be the first to leave a message!
-          </p>
+          <p className='text-muted-foreground text-sm'>{t('guestbook.no-messages')}</p>
         </div>
       ) : null}
       {isError ? (
         <div className='flex min-h-24 items-center justify-center'>
-          <p className='text-muted-foreground text-sm'>
-            Failed to load messages. Please refresh the page.
-          </p>
+          <p className='text-muted-foreground text-sm'>{t('guestbook.failed-to-load-messages')}</p>
         </div>
       ) : null}
       {isLoading ? <Loader /> : null}

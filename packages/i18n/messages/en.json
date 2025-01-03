@@ -51,6 +51,7 @@
       "written-by": "Written by"
     },
     "like": "Like",
+    "like-this-post": "Like this post",
     "on-this-page": "On this page",
     "title": "Blog"
   },
@@ -96,16 +97,34 @@
     },
     "title": "Dashboard"
   },
+  "error": {
+    "something-went-wrong": "Something went wrong!",
+    "try-again": "Try again"
+  },
   "guestbook": {
+    "create-message-successfully": "Create message successfully",
+    "delete-dialog": {
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "description": "Are you sure you want to delete this comment? This action cannot be undone.",
+      "title": "Delete a comment"
+    },
+    "delete-message-successfully": "Delete message successfully",
     "description": "Sign my guestbook and share your idea. You can tell me anything here!",
+    "failed-to-load-messages": "Failed to load messages. Please refresh the page.",
+    "message-cannot-be-empty": "Message cannot be empty",
+    "no-messages": "No messages. Be the first to leave a message!",
     "pinned": {
       "description": "Thanks for visiting my website. If you have a moment, I'd love to hear your thoughts on my work. Please log in with your account to leave a comment. Thanks!",
       "greeting": "Hey there! 👋"
     },
+    "placeholder": "Leave a message",
+    "sign-out": "Sign out",
     "signin": {
       "button": "Sign in",
       "description": "to leave a message"
     },
+    "submit": "Submit",
     "title": "Guestbook"
   },
   "homepage": {
@@ -120,6 +139,7 @@
     },
     "get-in-touch": {
       "description": "Feel free to reach out to me!",
+      "image-alt": "Me sit in front of my desk and coding",
       "title": "Any questions about Next.js?"
     },
     "hero": {
@@ -142,6 +162,12 @@
       "card": "Project",
       "more": "See all project",
       "title": "Selected Projects"
+    }
+  },
+  "hook": {
+    "copy-to-clipboard": {
+      "copied": "Copied to clipboard!",
+      "error": "Unable to copy to clipboard. Please try again!"
     }
   },
   "layout": {
@@ -179,6 +205,7 @@
       "title": "Sign in"
     }
   },
+  "not-found": "404 Not Found",
   "projects": {
     "description": "The list of my projects. Everything was made with ❤️.",
     "title": "Projects",
