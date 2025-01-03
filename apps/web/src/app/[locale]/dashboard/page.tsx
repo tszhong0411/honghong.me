@@ -1,10 +1,11 @@
 import { flags } from '@tszhong0411/env'
-import { getTranslations } from '@tszhong0411/i18n/server'
+import { getLocale, getTranslations } from '@tszhong0411/i18n/server'
 import type { Metadata, ResolvingMetadata } from 'next'
 import type { WebPage, WithContext } from 'schema-dts'
 
 import PageTitle from '@/components/page-title'
-import { SITE_TITLE, SITE_URL } from '@/lib/constants'
+import { SITE_URL } from '@/lib/constants'
+import { getLocalizedPath } from '@/utils/get-localized-path'
 
 import Items from './items'
 
@@ -25,16 +26,17 @@ export const generateMetadata = async (
   const t = await getTranslations({ locale, namespace: 'dashboard' })
   const title = t('title')
   const description = t('description')
+  const url = getLocalizedPath({ slug: '/dashboard', locale })
 
   return {
     title,
     description,
     alternates: {
-      canonical: '/dashboard'
+      canonical: url
     },
     openGraph: {
       ...previousOpenGraph,
-      url: '/dashboard',
+      url,
       title,
       description
     },
@@ -47,19 +49,21 @@ export const generateMetadata = async (
 }
 
 const Page = async () => {
-  const t = await getTranslations('dashboard')
-  const title = t('title')
-  const description = t('description')
+  const t = await getTranslations()
+  const locale = await getLocale()
+  const title = t('dashboard.title')
+  const description = t('dashboard.description')
+  const url = `${SITE_URL}${getLocalizedPath({ slug: '/dashboard', locale })}`
 
   const jsonLd: WithContext<WebPage> = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     name: title,
     description,
-    url: `${SITE_URL}/dashboard`,
+    url,
     isPartOf: {
       '@type': 'WebSite',
-      name: SITE_TITLE,
+      name: t('metadata.site-title'),
       url: SITE_URL
     }
   }

@@ -6,6 +6,7 @@ import type { SoftwareApplication, WithContext } from 'schema-dts'
 
 import Mdx from '@/components/mdx'
 import { SITE_NAME, SITE_URL } from '@/lib/constants'
+import { getLocalizedPath } from '@/utils/get-localized-path'
 
 import Header from './header'
 
@@ -38,16 +39,17 @@ export const generateMetadata = async (
   const { name, description } = project
   const previousTwitter = (await parent).twitter ?? {}
   const previousOpenGraph = (await parent).openGraph ?? {}
+  const url = getLocalizedPath({ slug: `/projects/${slug}`, locale })
 
   return {
     title: name,
     description: description,
     alternates: {
-      canonical: `/projects/${slug}`
+      canonical: url
     },
     openGraph: {
       ...previousOpenGraph,
-      url: `/projects/${slug}`,
+      url,
       title: name,
       description: description,
       images: [
@@ -80,6 +82,8 @@ const Page = async (props: PageProps) => {
   const { slug, locale } = await props.params
 
   const project = allProjects.find((p) => p.slug === slug && p.language === locale)
+  const localizedPath = getLocalizedPath({ slug: `/projects/${slug}`, locale })
+  const url = `${SITE_URL}${localizedPath}`
 
   if (!project) {
     notFound()
@@ -92,7 +96,7 @@ const Page = async (props: PageProps) => {
     '@type': 'SoftwareApplication',
     name,
     description,
-    url: `${SITE_URL}/projects/${slug}`,
+    url,
     applicationCategory: 'WebApplication',
     author: {
       '@type': 'Person',

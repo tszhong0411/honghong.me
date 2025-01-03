@@ -6,6 +6,7 @@ import type { Blog, WithContext } from 'schema-dts'
 import FilteredPosts from '@/components/filtered-posts'
 import PageTitle from '@/components/page-title'
 import { SITE_NAME, SITE_URL } from '@/lib/constants'
+import { getLocalizedPath } from '@/utils/get-localized-path'
 
 type PageProps = {
   params: Promise<{
@@ -24,16 +25,17 @@ export const generateMetadata = async (
   const t = await getTranslations({ locale, namespace: 'blog' })
   const title = t('title')
   const description = t('description')
+  const url = getLocalizedPath({ slug: '/blog', locale })
 
   return {
     title,
     description,
     alternates: {
-      canonical: '/blog'
+      canonical: url
     },
     openGraph: {
       ...previousOpenGraph,
-      url: '/blog',
+      url,
       title,
       description
     },
@@ -50,6 +52,7 @@ const Page = async () => {
   const title = t('title')
   const description = t('description')
   const locale = await getLocale()
+  const url = `${SITE_URL}${getLocalizedPath({ slug: '/blog', locale })}`
 
   const posts = allBlogPosts
     .toSorted((a, b) => {
@@ -60,10 +63,10 @@ const Page = async () => {
   const jsonLd: WithContext<Blog> = {
     '@context': 'https://schema.org',
     '@type': 'Blog',
-    '@id': `${SITE_URL}/blog`,
+    '@id': url,
     name: title,
     description,
-    url: `${SITE_URL}/blog`,
+    url,
     author: {
       '@type': 'Person',
       name: SITE_NAME,
@@ -72,7 +75,7 @@ const Page = async () => {
     blogPost: allBlogPosts.map((post) => ({
       '@type': 'BlogPosting',
       headline: post.title,
-      url: `${SITE_URL}/blog/${post.slug}`,
+      url: `${url}/${post.slug}`,
       datePublished: post.date,
       dateModified: post.modifiedTime
     }))

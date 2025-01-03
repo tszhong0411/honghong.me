@@ -5,7 +5,8 @@ import type { CollectionPage, WithContext } from 'schema-dts'
 
 import PageTitle from '@/components/page-title'
 import ProjectCards from '@/components/project-cards'
-import { SITE_TITLE, SITE_URL } from '@/lib/constants'
+import { SITE_URL } from '@/lib/constants'
+import { getLocalizedPath } from '@/utils/get-localized-path'
 
 type PageProps = {
   params: Promise<{
@@ -24,16 +25,17 @@ export const generateMetadata = async (
   const t = await getTranslations({ locale, namespace: 'projects' })
   const title = t('title')
   const description = t('description')
+  const url = getLocalizedPath({ slug: '/projects', locale })
 
   return {
     title,
     description,
     alternates: {
-      canonical: '/projects'
+      canonical: url
     },
     openGraph: {
       ...previousOpenGraph,
-      url: '/projects',
+      url,
       title,
       description
     },
@@ -46,29 +48,31 @@ export const generateMetadata = async (
 }
 
 const Page = async () => {
-  const t = await getTranslations('projects')
-  const title = t('title')
-  const description = t('description')
+  const t = await getTranslations()
+  const title = t('projects.title')
+  const description = t('projects.description')
   const locale = await getLocale()
+  const url = `${SITE_URL}${getLocalizedPath({ slug: '/projects', locale })}`
 
   const projects = allProjects.filter((project) => project.language === locale)
 
   const jsonLd: WithContext<CollectionPage> = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
+    '@id': url,
     name: title,
     description,
-    url: `${SITE_URL}/projects`,
+    url,
     isPartOf: {
       '@type': 'WebSite',
-      name: SITE_TITLE,
+      name: t('metadata.site-title'),
       url: SITE_URL
     },
     hasPart: allProjects.map((project) => ({
       '@type': 'SoftwareApplication',
       name: project.name,
       description: project.description,
-      url: `${SITE_URL}/projects/${project.slug}`,
+      url: `${url}/${project.slug}`,
       applicationCategory: 'WebApplication'
     }))
   }

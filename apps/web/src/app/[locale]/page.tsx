@@ -1,3 +1,4 @@
+import { getLocale, getTranslations } from '@tszhong0411/i18n/server'
 import type { Metadata } from 'next'
 import type { WebSite, WithContext } from 'schema-dts'
 
@@ -7,48 +8,63 @@ import Hero from '@/components/home/hero'
 import LatestArticles from '@/components/home/latest-articles'
 import SelectedProjects from '@/components/home/selected-projects'
 import {
-  SITE_DESCRIPTION,
   SITE_FACEBOOK_URL,
   SITE_GITHUB_URL,
   SITE_INSTAGRAM_URL,
   SITE_KEYWORDS,
   SITE_NAME,
-  SITE_TITLE,
   SITE_URL,
   SITE_X_URL,
   SITE_YOUTUBE_URL
 } from '@/lib/constants'
+import { getLocalizedPath } from '@/utils/get-localized-path'
 
-export const metadata: Metadata = {
-  alternates: {
-    canonical: SITE_URL
+type PageProps = {
+  params: Promise<{
+    locale: string
+  }>
+  searchParams: Promise<Record<string, never>>
+}
+
+export const generateMetadata = async (props: PageProps): Promise<Metadata> => {
+  const { locale } = await props.params
+
+  return {
+    alternates: {
+      canonical: getLocalizedPath({ slug: '', locale })
+    }
   }
 }
 
-const jsonLd: WithContext<WebSite> = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: SITE_TITLE,
-  description: SITE_DESCRIPTION,
-  url: SITE_URL,
-  author: {
-    '@type': 'Person',
-    name: SITE_NAME,
-    url: SITE_URL,
-    sameAs: [SITE_FACEBOOK_URL, SITE_INSTAGRAM_URL, SITE_X_URL, SITE_GITHUB_URL, SITE_YOUTUBE_URL]
-  },
-  mainEntityOfPage: {
-    '@type': 'WebPage',
-    '@id': SITE_URL
-  },
-  inLanguage: 'en-US',
-  copyrightYear: new Date().getFullYear(),
-  keywords: SITE_KEYWORDS,
-  dateCreated: '2020-12-05',
-  dateModified: new Date().toISOString()
-}
+const Page = async () => {
+  const locale = await getLocale()
+  const t = await getTranslations('metadata')
 
-const Page = () => {
+  const url = `${SITE_URL}${getLocalizedPath({ slug: '', locale })}`
+
+  const jsonLd: WithContext<WebSite> = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: t('site-title'),
+    description: t('site-description'),
+    url,
+    author: {
+      '@type': 'Person',
+      name: SITE_NAME,
+      url: SITE_URL,
+      sameAs: [SITE_FACEBOOK_URL, SITE_INSTAGRAM_URL, SITE_X_URL, SITE_GITHUB_URL, SITE_YOUTUBE_URL]
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': SITE_URL
+    },
+    inLanguage: locale,
+    copyrightYear: new Date().getFullYear(),
+    keywords: SITE_KEYWORDS,
+    dateCreated: '2020-12-05',
+    dateModified: new Date().toISOString()
+  }
+
   return (
     <>
       <script

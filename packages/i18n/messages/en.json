@@ -168,6 +168,10 @@
   "mdx": {
     "link-to-section": "Link to section"
   },
+  "metadata": {
+    "site-description": "Hong • 18 y/o • Student • Full Stack Engineer",
+    "site-title": "Hong - A Full Stack Engineer"
+  },
   "modal": {
     "sign-in": {
       "continue-with": "Continue with {provider}",

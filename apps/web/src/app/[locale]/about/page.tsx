@@ -7,7 +7,6 @@ import type { AboutPage, WithContext } from 'schema-dts'
 import Mdx from '@/components/mdx'
 import PageTitle from '@/components/page-title'
 import {
-  SITE_DESCRIPTION,
   SITE_FACEBOOK_URL,
   SITE_GITHUB_URL,
   SITE_INSTAGRAM_URL,
@@ -16,6 +15,7 @@ import {
   SITE_X_URL,
   SITE_YOUTUBE_URL
 } from '@/lib/constants'
+import { getLocalizedPath } from '@/utils/get-localized-path'
 
 type PageProps = {
   params: Promise<{
@@ -34,16 +34,17 @@ export const generateMetadata = async (
   const t = await getTranslations({ locale, namespace: 'about' })
   const title = t('title')
   const description = t('description')
+  const url = getLocalizedPath({ slug: '/about', locale })
 
   return {
     title,
     description,
     alternates: {
-      canonical: '/about'
+      canonical: url
     },
     openGraph: {
       ...previousOpenGraph,
-      url: '/about',
+      url,
       type: 'profile',
       title,
       description
@@ -57,10 +58,11 @@ export const generateMetadata = async (
 }
 
 const Page = async () => {
-  const t = await getTranslations('about')
+  const t = await getTranslations()
   const locale = await getLocale()
-  const title = t('title')
-  const description = t('description')
+  const title = t('about.title')
+  const description = t('about.description')
+  const url = `${SITE_URL}${getLocalizedPath({ slug: '/about', locale })}`
   const page = allPages.find((p) => p.slug === 'about' && p.language === locale)
 
   const jsonLd: WithContext<AboutPage> = {
@@ -68,11 +70,11 @@ const Page = async () => {
     '@type': 'AboutPage',
     name: title,
     description,
-    url: `${SITE_URL}/about`,
+    url,
     mainEntity: {
       '@type': 'Person',
       name: SITE_NAME,
-      description: SITE_DESCRIPTION,
+      description: t('metadata.site-description'),
       url: SITE_URL,
       sameAs: [SITE_FACEBOOK_URL, SITE_INSTAGRAM_URL, SITE_X_URL, SITE_GITHUB_URL, SITE_YOUTUBE_URL]
     }

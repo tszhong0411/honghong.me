@@ -168,6 +168,10 @@
   "mdx": {
     "link-to-section": "連結至章節"
   },
+  "metadata": {
+    "site-description": "Hong • 18 y/o • 學生 • 全端工程師",
+    "site-title": "Hong - 一名全端工程師"
+  },
   "modal": {
     "sign-in": {
       "continue-with": "使用 {provider} 繼續",

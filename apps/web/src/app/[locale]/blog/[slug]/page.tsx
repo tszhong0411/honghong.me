@@ -9,6 +9,7 @@ import { type Article, type WithContext } from 'schema-dts'
 import Comments from '@/components/comments'
 import Mdx from '@/components/mdx'
 import { SITE_NAME, SITE_URL } from '@/lib/constants'
+import { getLocalizedPath } from '@/utils/get-localized-path'
 
 import Footer from './footer'
 import Header from './header'
@@ -48,16 +49,17 @@ export const generateMetadata = async (
   const ISOModifiedTime = new Date(modifiedTime).toISOString()
   const previousTwitter = (await parent).twitter ?? {}
   const previousOpenGraph = (await parent).openGraph ?? {}
+  const url = getLocalizedPath({ slug: `/blog/${slug}`, locale })
 
   return {
     title: title,
     description: summary,
     alternates: {
-      canonical: `/blog/${slug}`
+      canonical: url
     },
     openGraph: {
       ...previousOpenGraph,
-      url: `/blog/${slug}`,
+      url,
       type: 'article',
       title: title,
       description: summary,
@@ -94,6 +96,8 @@ const Page = async (props: PageProps) => {
   const { slug, locale } = await props.params
 
   const post = allBlogPosts.find((p) => p.slug === slug && p.language === locale)
+  const localizedPath = getLocalizedPath({ slug: `/blog/${slug}`, locale })
+  const url = `${SITE_URL}${localizedPath}`
 
   if (!post) {
     notFound()
@@ -109,7 +113,7 @@ const Page = async (props: PageProps) => {
     headline: title,
     name: title,
     description: summary,
-    url: `${SITE_URL}/blog/${slug}`,
+    url,
     datePublished: date,
     dateModified: modifiedTime,
     image: `${SITE_URL}/og/${slug}`,
