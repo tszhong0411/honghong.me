@@ -31,10 +31,16 @@ export const config = {
   /*
    * Match all request paths except for the ones starting with:
    * - api (API routes)
-   * - _next, _vercel (Internal end points)
-   * - the ones containing a dot (e.g. `favicon.ico`)
+   * - _next/static (static files)
+   * - _next/image (image optimization files)
+   * - favicon.ico (favicon file)
+   * - folders in public (which resolve to /foldername)
+   * - sitemap.xml
+   * - robots.txt
    */
-  matcher: ['/', '/(en|zh-TW)/:path*', `/((?!api|_next|_vercel|.*\\..*).*)`]
+  matcher: [
+    '/((?!api|_next/static|_next/image|og|favicon|fonts|images|videos|favicon.ico|sitemap.xml|robots.txt|rss.xml).*)'
+  ]
 }
 
 export default middleware
