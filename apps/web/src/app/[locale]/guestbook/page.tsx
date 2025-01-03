@@ -1,5 +1,6 @@
 import { flags } from '@tszhong0411/env'
-import { getLocale, getTranslations } from '@tszhong0411/i18n/server'
+import { i18n } from '@tszhong0411/i18n/config'
+import { getTranslations, setRequestLocale } from '@tszhong0411/i18n/server'
 import type { Metadata, ResolvingMetadata } from 'next'
 import type { WebPage, WithContext } from 'schema-dts'
 
@@ -18,6 +19,10 @@ type PageProps = {
     locale: string
   }>
   searchParams: Promise<Record<string, never>>
+}
+
+export const generateStaticParams = (): Array<{ locale: string }> => {
+  return i18n.locales.map((locale) => ({ locale }))
 }
 
 export const generateMetadata = async (
@@ -52,12 +57,13 @@ export const generateMetadata = async (
   }
 }
 
-const Page = async () => {
+const Page = async (props: PageProps) => {
   if (!flags.auth) return null
 
+  const { locale } = await props.params
+  setRequestLocale(locale)
   const user = await getCurrentUser()
   const t = await getTranslations()
-  const locale = await getLocale()
   const title = t('guestbook.title')
   const description = t('guestbook.description')
   const url = `${SITE_URL}${getLocalizedPath({ slug: '/guestbook', locale })}`

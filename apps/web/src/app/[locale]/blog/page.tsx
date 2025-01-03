@@ -1,4 +1,5 @@
-import { getLocale, getTranslations } from '@tszhong0411/i18n/server'
+import { i18n } from '@tszhong0411/i18n/config'
+import { getTranslations, setRequestLocale } from '@tszhong0411/i18n/server'
 import { allBlogPosts } from 'mdx/generated'
 import type { Metadata, ResolvingMetadata } from 'next'
 import type { Blog, WithContext } from 'schema-dts'
@@ -13,6 +14,10 @@ type PageProps = {
     locale: string
   }>
   searchParams: Promise<Record<string, never>>
+}
+
+export const generateStaticParams = (): Array<{ locale: string }> => {
+  return i18n.locales.map((locale) => ({ locale }))
 }
 
 export const generateMetadata = async (
@@ -47,11 +52,12 @@ export const generateMetadata = async (
   }
 }
 
-const Page = async () => {
+const Page = async (props: PageProps) => {
+  const { locale } = await props.params
+  setRequestLocale(locale)
   const t = await getTranslations('blog')
   const title = t('title')
   const description = t('description')
-  const locale = await getLocale()
   const url = `${SITE_URL}${getLocalizedPath({ slug: '/blog', locale })}`
 
   const posts = allBlogPosts

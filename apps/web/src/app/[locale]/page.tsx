@@ -1,4 +1,5 @@
-import { getLocale, getTranslations } from '@tszhong0411/i18n/server'
+import { i18n } from '@tszhong0411/i18n/config'
+import { getTranslations, setRequestLocale } from '@tszhong0411/i18n/server'
 import type { Metadata } from 'next'
 import type { WebSite, WithContext } from 'schema-dts'
 
@@ -26,6 +27,10 @@ type PageProps = {
   searchParams: Promise<Record<string, never>>
 }
 
+export const generateStaticParams = (): Array<{ locale: string }> => {
+  return i18n.locales.map((locale) => ({ locale }))
+}
+
 export const generateMetadata = async (props: PageProps): Promise<Metadata> => {
   const { locale } = await props.params
 
@@ -36,8 +41,9 @@ export const generateMetadata = async (props: PageProps): Promise<Metadata> => {
   }
 }
 
-const Page = async () => {
-  const locale = await getLocale()
+const Page = async (props: PageProps) => {
+  const { locale } = await props.params
+  setRequestLocale(locale)
   const t = await getTranslations('metadata')
 
   const url = `${SITE_URL}${getLocalizedPath({ slug: '', locale })}`

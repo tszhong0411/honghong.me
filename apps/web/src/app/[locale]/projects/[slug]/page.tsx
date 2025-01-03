@@ -1,3 +1,4 @@
+import { setRequestLocale } from '@tszhong0411/i18n/server'
 import { BlurImage } from '@tszhong0411/ui'
 import { allProjects } from 'mdx/generated'
 import type { Metadata, ResolvingMetadata } from 'next'
@@ -18,9 +19,10 @@ type PageProps = {
   searchParams: Promise<Record<string, never>>
 }
 
-export const generateStaticParams = (): Array<{ slug: string }> => {
+export const generateStaticParams = (): Array<{ slug: string; locale: string }> => {
   return allProjects.map((project) => ({
-    slug: project.slug
+    slug: project.slug,
+    locale: project.language
   }))
 }
 
@@ -80,6 +82,7 @@ export const generateMetadata = async (
 
 const Page = async (props: PageProps) => {
   const { slug, locale } = await props.params
+  setRequestLocale(locale)
 
   const project = allProjects.find((p) => p.slug === slug && p.language === locale)
   const localizedPath = getLocalizedPath({ slug: `/projects/${slug}`, locale })

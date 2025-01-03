@@ -1,4 +1,5 @@
-import { getLocale, getTranslations } from '@tszhong0411/i18n/server'
+import { i18n } from '@tszhong0411/i18n/config'
+import { getTranslations, setRequestLocale } from '@tszhong0411/i18n/server'
 import { allPages } from 'mdx/generated'
 import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
@@ -14,6 +15,10 @@ type PageProps = {
     locale: string
   }>
   searchParams: Promise<Record<string, never>>
+}
+
+export const generateStaticParams = (): Array<{ locale: string }> => {
+  return i18n.locales.map((locale) => ({ locale }))
 }
 
 export const generateMetadata = async (
@@ -48,9 +53,11 @@ export const generateMetadata = async (
   }
 }
 
-const Page = async () => {
+const Page = async (props: PageProps) => {
+  const { locale } = await props.params
+  setRequestLocale(locale)
+
   const t = await getTranslations()
-  const locale = await getLocale()
   const title = t('uses.title')
   const description = t('uses.description')
   const url = `${SITE_URL}${getLocalizedPath({ slug: '/uses', locale })}`

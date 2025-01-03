@@ -1,4 +1,5 @@
 import { flags } from '@tszhong0411/env'
+import { setRequestLocale } from '@tszhong0411/i18n/server'
 import { getTOC } from '@tszhong0411/mdx'
 import { allBlogPosts } from 'mdx/generated'
 import type { Metadata, ResolvingMetadata } from 'next'
@@ -27,9 +28,10 @@ type PageProps = {
   searchParams: Promise<Record<string, never>>
 }
 
-export const generateStaticParams = (): Array<{ slug: string }> => {
+export const generateStaticParams = (): Array<{ slug: string; locale: string }> => {
   return allBlogPosts.map((post) => ({
-    slug: post.slug
+    slug: post.slug,
+    locale: post.language
   }))
 }
 
@@ -94,6 +96,7 @@ export const generateMetadata = async (
 
 const Page = async (props: PageProps) => {
   const { slug, locale } = await props.params
+  setRequestLocale(locale)
 
   const post = allBlogPosts.find((p) => p.slug === slug && p.language === locale)
   const localizedPath = getLocalizedPath({ slug: `/blog/${slug}`, locale })

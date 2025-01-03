@@ -1,7 +1,7 @@
 import { flags } from '@tszhong0411/env'
 import { NextIntlClientProvider } from '@tszhong0411/i18n/client'
 import { i18n } from '@tszhong0411/i18n/config'
-import { getMessages, getTranslations } from '@tszhong0411/i18n/server'
+import { getMessages, getTranslations, setRequestLocale } from '@tszhong0411/i18n/server'
 import { cn } from '@tszhong0411/utils'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { GeistMono } from 'geist/font/mono'
@@ -134,6 +134,7 @@ const CalSans = localFont({
 const Layout = async (props: LayoutProps) => {
   const { children } = props
   const { locale } = await props.params
+  setRequestLocale(locale)
 
   const messages = await getMessages()
 
