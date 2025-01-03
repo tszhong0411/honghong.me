@@ -14,6 +14,15 @@ const Doc = {
       type: 'string',
       required: true
     }
+  ],
+  computedFields: [
+    {
+      name: 'slugAsParams',
+      type: 'string',
+      resolve: (doc) => {
+        return doc.filePath.replace('.mdx', '')
+      }
+    }
   ]
 } satisfies DocumentType
 
