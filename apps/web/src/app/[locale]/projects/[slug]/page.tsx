@@ -12,11 +12,12 @@ import Header from './header'
 type PageProps = {
   params: Promise<{
     slug: string
+    locale: string
   }>
   searchParams: Promise<Record<string, never>>
 }
 
-export const generateStaticParams = (): Array<Awaited<PageProps['params']>> => {
+export const generateStaticParams = (): Array<Awaited<{ slug: string }>> => {
   return allProjects.map((project) => ({
     slug: project.slug
   }))
@@ -26,9 +27,9 @@ export const generateMetadata = async (
   props: PageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> => {
-  const { slug } = await props.params
+  const { slug, locale } = await props.params
 
-  const project = allProjects.find((p) => p.slug === slug)
+  const project = allProjects.find((p) => p.slug === slug && p.language === locale)
 
   if (!project) {
     return {}
@@ -76,9 +77,9 @@ export const generateMetadata = async (
 }
 
 const Page = async (props: PageProps) => {
-  const { slug } = await props.params
+  const { slug, locale } = await props.params
 
-  const project = allProjects.find((p) => p.slug === slug)
+  const project = allProjects.find((p) => p.slug === slug && p.language === locale)
 
   if (!project) {
     notFound()

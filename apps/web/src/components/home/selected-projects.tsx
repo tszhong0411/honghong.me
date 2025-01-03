@@ -1,10 +1,10 @@
 'use client'
 
-import { useTranslations } from '@tszhong0411/i18n/client'
+import { useLocale, useTranslations } from '@tszhong0411/i18n/client'
 import { BlurImage, buttonVariants } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { ArrowUpRightIcon, LightbulbIcon } from 'lucide-react'
-import type { Project } from 'mdx/generated'
+import { allProjects, type Project } from 'mdx/generated'
 import { motion, useInView } from 'motion/react'
 import { useRef } from 'react'
 
@@ -21,19 +21,18 @@ const variants = {
   }
 }
 
-type ProjectsProps = {
-  projects: Project[]
-}
-
 type CardProps = {
   project: Project
 }
 
-const SelectedProjects = (props: ProjectsProps) => {
-  const { projects } = props
+const SelectedProjects = () => {
   const projectsRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(projectsRef, { once: true, margin: '-100px' })
   const t = useTranslations('homepage.selectedProjects')
+  const locale = useLocale()
+  const filteredProjects = allProjects.filter(
+    (project) => project.selected && project.language === locale
+  )
 
   return (
     <motion.div
@@ -76,11 +75,9 @@ const SelectedProjects = (props: ProjectsProps) => {
           duration: 0.3
         }}
       >
-        {projects
-          .filter((project) => project.selected)
-          .map((project) => (
-            <Card key={project.slug} project={project} />
-          ))}
+        {filteredProjects.map((project) => (
+          <Card key={project.slug} project={project} />
+        ))}
       </motion.div>
       <div className='my-8 flex items-center justify-center'>
         <Link

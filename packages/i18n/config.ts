@@ -1,4 +1,4 @@
-const supportedLanguages = [
+export const supportedLanguages = [
   {
     code: 'en',
     label: 'English',

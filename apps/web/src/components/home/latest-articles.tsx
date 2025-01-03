@@ -1,10 +1,10 @@
 'use client'
 
-import { useTranslations } from '@tszhong0411/i18n/client'
+import { useLocale, useTranslations } from '@tszhong0411/i18n/client'
 import { BlurImage, buttonVariants } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { ArrowUpRightIcon, PencilIcon } from 'lucide-react'
-import type { BlogPost } from 'mdx/generated'
+import { allBlogPosts, type BlogPost } from 'mdx/generated'
 import { motion, useInView } from 'motion/react'
 import pluralize from 'pluralize'
 import { useRef } from 'react'
@@ -25,15 +25,17 @@ const variants = {
   }
 }
 
-type LatestArticlesProps = {
-  posts: BlogPost[]
-}
-
-const LatestArticles = (props: LatestArticlesProps) => {
-  const { posts } = props
+const LatestArticles = () => {
   const projectsRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(projectsRef, { once: true, margin: '-100px' })
   const t = useTranslations('homepage.latest-articles')
+  const locale = useLocale()
+  const filteredPosts = allBlogPosts
+    .toSorted((a, b) => {
+      return new Date(b.date).getTime() - new Date(a.date).getTime()
+    })
+    .filter((post) => post.language === locale)
+    .slice(0, 2)
 
   return (
     <motion.div
@@ -76,7 +78,7 @@ const LatestArticles = (props: LatestArticlesProps) => {
           duration: 0.3
         }}
       >
-        {posts.map((post) => (
+        {filteredPosts.map((post) => (
           <Card key={post.slug} post={post} />
         ))}
       </motion.div>

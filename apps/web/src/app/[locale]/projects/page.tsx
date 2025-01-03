@@ -1,4 +1,4 @@
-import { getTranslations } from '@tszhong0411/i18n/server'
+import { getLocale, getTranslations } from '@tszhong0411/i18n/server'
 import { allProjects } from 'mdx/generated'
 import type { Metadata, ResolvingMetadata } from 'next'
 import type { CollectionPage, WithContext } from 'schema-dts'
@@ -46,10 +46,12 @@ export const generateMetadata = async (
 }
 
 const Page = async () => {
-  const projects = allProjects
   const t = await getTranslations('projects')
   const title = t('title')
   const description = t('description')
+  const locale = await getLocale()
+
+  const projects = allProjects.filter((project) => project.language === locale)
 
   const jsonLd: WithContext<CollectionPage> = {
     '@context': 'https://schema.org',

@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from '@tszhong0411/i18n/client'
 import { buttonVariants } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { ArrowUpRightIcon } from 'lucide-react'
@@ -24,6 +25,7 @@ type HeaderProps = Project
 
 const Header = (props: HeaderProps) => {
   const { name, description, homepage, github } = props
+  const t = useTranslations('projects')
 
   const repo = github.split('/').pop()
 
@@ -47,7 +49,7 @@ const Header = (props: HeaderProps) => {
       >
         {homepage ? (
           <Link href={homepage} className={cn(buttonVariants(), 'group')}>
-            Visit Website
+            {t('visit-website')}
             <ArrowUpRightIcon className='ml-2 size-5 transition-transform group-hover:-rotate-12' />
           </Link>
         ) : null}

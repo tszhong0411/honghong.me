@@ -1,4 +1,8 @@
 {
+  "about": {
+    "description": "👋 Hi there! I am Hong, a student who loves web development.",
+    "title": "About"
+  },
   "blog": {
     "comments": {
       "author": "Author",
@@ -173,7 +177,8 @@
   },
   "projects": {
     "description": "The list of my projects. Everything was made with ❤️.",
-    "title": "Projects"
+    "title": "Projects",
+    "visit-website": "Visit Website"
   },
   "theme-toggle": {
     "options": {
@@ -182,5 +187,9 @@
       "system": "System"
     },
     "toggle-theme": "Toggle theme"
+  },
+  "uses": {
+    "description": "This is the equipment I currently use for gaming, programming, making videos, and every day.",
+    "title": "Uses"
   }
 }

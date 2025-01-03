@@ -1,4 +1,4 @@
-import { getTranslations } from '@tszhong0411/i18n/server'
+import { getLocale, getTranslations } from '@tszhong0411/i18n/server'
 import { allBlogPosts } from 'mdx/generated'
 import type { Metadata, ResolvingMetadata } from 'next'
 import type { Blog, WithContext } from 'schema-dts'
@@ -49,10 +49,13 @@ const Page = async () => {
   const t = await getTranslations('blog')
   const title = t('title')
   const description = t('description')
+  const locale = await getLocale()
 
-  const posts = allBlogPosts.toSorted((a, b) => {
-    return new Date(b.date).getTime() - new Date(a.date).getTime()
-  })
+  const posts = allBlogPosts
+    .toSorted((a, b) => {
+      return new Date(b.date).getTime() - new Date(a.date).getTime()
+    })
+    .filter((post) => post.language === locale)
 
   const jsonLd: WithContext<Blog> = {
     '@context': 'https://schema.org',

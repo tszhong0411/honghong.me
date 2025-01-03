@@ -2,7 +2,7 @@ import { type DocumentType, type MakeSourceOptions } from '@tszhong0411/mdx'
 
 const BlogPost = {
   name: 'BlogPost',
-  filePathPattern: 'blog/*.mdx',
+  filePathPattern: '**/blog/*.mdx',
   fields: [
     {
       name: 'title',
@@ -23,13 +23,27 @@ const BlogPost = {
       name: 'summary',
       type: 'string',
       required: true
+    },
+    {
+      name: 'language',
+      type: 'string',
+      required: true
+    }
+  ],
+  computedFields: [
+    {
+      name: 'slug',
+      type: 'string',
+      resolve: (doc) => {
+        return doc.filePath.split('/').pop()?.replace('.mdx', '')
+      }
     }
   ]
 } satisfies DocumentType
 
 const Project = {
   name: 'Project',
-  filePathPattern: 'projects/*.mdx',
+  filePathPattern: '**/projects/*.mdx',
   fields: [
     {
       name: 'name',
@@ -66,13 +80,43 @@ const Project = {
     {
       name: 'selected',
       type: 'boolean'
+    },
+    {
+      name: 'language',
+      type: 'string',
+      required: true
+    }
+  ],
+  computedFields: [
+    {
+      name: 'slug',
+      type: 'string',
+      resolve: (doc) => {
+        return doc.filePath.split('/').pop()?.replace('.mdx', '')
+      }
     }
   ]
 } satisfies DocumentType
 
 const Page = {
   name: 'Page',
-  filePathPattern: 'pages/*.mdx'
+  filePathPattern: '**/pages/*.mdx',
+  fields: [
+    {
+      name: 'language',
+      type: 'string',
+      required: true
+    }
+  ],
+  computedFields: [
+    {
+      name: 'slug',
+      type: 'string',
+      resolve: (doc) => {
+        return doc.filePath.split('/').pop()?.replace('.mdx', '')
+      }
+    }
+  ]
 } satisfies DocumentType
 
 export default {

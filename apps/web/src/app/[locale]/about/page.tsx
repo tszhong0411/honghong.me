@@ -1,3 +1,4 @@
+import { getLocale, getTranslations } from '@tszhong0411/i18n/server'
 import { allPages } from 'mdx/generated'
 import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
@@ -16,20 +17,23 @@ import {
   SITE_YOUTUBE_URL
 } from '@/lib/constants'
 
-const title = 'About'
-const description = '👋 Hi there! I am Hong, a student who loves web development.'
-
 type PageProps = {
-  params: Promise<Record<string, never>>
+  params: Promise<{
+    locale: string
+  }>
   searchParams: Promise<Record<string, never>>
 }
 
 export const generateMetadata = async (
-  _: PageProps,
+  props: PageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> => {
+  const { locale } = await props.params
   const previousOpenGraph = (await parent).openGraph ?? {}
   const previousTwitter = (await parent).twitter ?? {}
+  const t = await getTranslations({ locale, namespace: 'about' })
+  const title = t('title')
+  const description = t('description')
 
   return {
     title,
@@ -52,23 +56,27 @@ export const generateMetadata = async (
   }
 }
 
-const jsonLd: WithContext<AboutPage> = {
-  '@context': 'https://schema.org',
-  '@type': 'AboutPage',
-  name: title,
-  description,
-  url: `${SITE_URL}/about`,
-  mainEntity: {
-    '@type': 'Person',
-    name: SITE_NAME,
-    description: SITE_DESCRIPTION,
-    url: SITE_URL,
-    sameAs: [SITE_FACEBOOK_URL, SITE_INSTAGRAM_URL, SITE_X_URL, SITE_GITHUB_URL, SITE_YOUTUBE_URL]
-  }
-}
+const Page = async () => {
+  const t = await getTranslations('about')
+  const locale = await getLocale()
+  const title = t('title')
+  const description = t('description')
+  const page = allPages.find((p) => p.slug === 'about' && p.language === locale)
 
-const Page = () => {
-  const page = allPages.find((p) => p.slug === 'about')
+  const jsonLd: WithContext<AboutPage> = {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: title,
+    description,
+    url: `${SITE_URL}/about`,
+    mainEntity: {
+      '@type': 'Person',
+      name: SITE_NAME,
+      description: SITE_DESCRIPTION,
+      url: SITE_URL,
+      sameAs: [SITE_FACEBOOK_URL, SITE_INSTAGRAM_URL, SITE_X_URL, SITE_GITHUB_URL, SITE_YOUTUBE_URL]
+    }
+  }
 
   if (!page) {
     return notFound()

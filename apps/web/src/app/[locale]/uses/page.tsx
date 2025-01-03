@@ -1,3 +1,4 @@
+import { getLocale, getTranslations } from '@tszhong0411/i18n/server'
 import { allPages } from 'mdx/generated'
 import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
@@ -7,21 +8,23 @@ import Mdx from '@/components/mdx'
 import PageTitle from '@/components/page-title'
 import { SITE_TITLE, SITE_URL } from '@/lib/constants'
 
-const title = 'Uses'
-const description =
-  'This is the equipment I currently use for gaming, programming, making videos, and every day.'
-
 type PageProps = {
-  params: Promise<Record<string, never>>
+  params: Promise<{
+    locale: string
+  }>
   searchParams: Promise<Record<string, never>>
 }
 
 export const generateMetadata = async (
-  _: PageProps,
+  props: PageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> => {
+  const { locale } = await props.params
   const previousOpenGraph = (await parent).openGraph ?? {}
   const previousTwitter = (await parent).twitter ?? {}
+  const t = await getTranslations({ locale, namespace: 'uses' })
+  const title = t('title')
+  const description = t('description')
 
   return {
     title,
@@ -43,21 +46,25 @@ export const generateMetadata = async (
   }
 }
 
-const jsonLd: WithContext<WebPage> = {
-  '@context': 'https://schema.org',
-  '@type': 'WebPage',
-  name: title,
-  description,
-  url: `${SITE_URL}/uses`,
-  isPartOf: {
-    '@type': 'WebSite',
-    name: SITE_TITLE,
-    url: SITE_URL
-  }
-}
+const Page = async () => {
+  const t = await getTranslations('uses')
+  const locale = await getLocale()
+  const title = t('title')
+  const description = t('description')
+  const page = allPages.find((p) => p.slug === 'uses' && p.language === locale)
 
-const Page = () => {
-  const page = allPages.find((p) => p.slug === 'uses')
+  const jsonLd: WithContext<WebPage> = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: title,
+    description,
+    url: `${SITE_URL}/uses`,
+    isPartOf: {
+      '@type': 'WebSite',
+      name: SITE_TITLE,
+      url: SITE_URL
+    }
+  }
 
   if (!page) {
     return notFound()

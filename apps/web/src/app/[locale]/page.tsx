@@ -1,4 +1,3 @@
-import { allBlogPosts, allProjects } from 'mdx/generated'
 import type { Metadata } from 'next'
 import type { WebSite, WithContext } from 'schema-dts'
 
@@ -50,15 +49,6 @@ const jsonLd: WithContext<WebSite> = {
 }
 
 const Page = () => {
-  const posts = allBlogPosts
-  const latestPosts = posts
-    .toSorted((a, b) => {
-      return new Date(b.date).getTime() - new Date(a.date).getTime()
-    })
-    .slice(0, 2)
-
-  const projects = allProjects
-
   return (
     <>
       <script
@@ -66,9 +56,9 @@ const Page = () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Hero />
-      <SelectedProjects projects={projects} />
+      <SelectedProjects />
       <AboutMe />
-      <LatestArticles posts={latestPosts} />
+      <LatestArticles />
       <GetInTouch />
     </>
   )
