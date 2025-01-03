@@ -2,28 +2,39 @@ import { Project, QuoteKind, ts } from 'ts-morph'
 
 import type { DocumentType, FieldDefs } from '@/types'
 
+import type { ComputedFields } from '../../types/config'
 import { AUTO_GENERATED_NOTE, BASE_FOLDER_PATH } from '../constants'
 import { getNestedDefs } from '../get-nested-defs'
 import { capitalizeFirstChar } from '../utils'
 
-const renderFields = (fields: FieldDefs) => {
-  let result = ''
+const renderComputedFields = (computedFields: ComputedFields): string => {
+  const types = []
+
+  for (const field of computedFields) {
+    types.push(`${field.name}: ${field.type}`)
+  }
+
+  return types.join('\n')
+}
+
+const renderFields = (fields: FieldDefs): string => {
+  const types = []
 
   for (const field of fields) {
     switch (field.type) {
       case 'boolean':
       case 'string': {
-        result += `${field.name}: ${field.type};`
+        types.push(`${field.name}: ${field.type}`)
         break
       }
       case 'list': {
-        result += `${field.name}: ${capitalizeFirstChar(field.name)}[];`
+        types.push(`${field.name}: ${capitalizeFirstChar(field.name)}[]`)
         break
       }
     }
   }
 
-  return result
+  return types.join('\n')
 }
 
 export const generateTypesDts = async (defs: DocumentType[]) => {
@@ -42,7 +53,14 @@ export const generateTypesDts = async (defs: DocumentType[]) => {
   sourceFile.addTypeAliases(
     defs.map((def, i) => ({
       name: def.name,
-      type: `{ ${def.fields ? renderFields(def.fields) : ''} body: string; slug: string; slugAsParams: string; }`,
+      type: `\
+{
+  ${def.fields ? renderFields(def.fields) : ''}
+  ${def.computedFields ? renderComputedFields(def.computedFields) : ''}
+  body: string;
+  fileName: string;
+  filePath: string;
+}`,
       isExported: true,
       ...(i === 0 && {
         leadingTrivia: AUTO_GENERATED_NOTE
@@ -54,7 +72,10 @@ export const generateTypesDts = async (defs: DocumentType[]) => {
     sourceFile.addTypeAliases(
       nestedDefs.map((def) => ({
         name: capitalizeFirstChar(def.name),
-        type: `{ ${renderFields(def.fields)} }`,
+        type: `\
+{
+  ${renderFields(def.fields)}
+}`,
         isExported: true
       }))
     )

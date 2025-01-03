@@ -1,7 +1,23 @@
+export type DocumentMetadata = {
+  body: string
+  fileName: string
+  filePath: string
+  [key: string]: unknown
+}
+
+export type ComputedField = {
+  name: string
+  type: 'string' | 'boolean' | 'list'
+  resolve: (doc: DocumentMetadata) => unknown
+}
+
+export type ComputedFields = ComputedField[]
+
 export type DocumentType = {
   name: string
   filePathPattern: string
   fields?: FieldDefs
+  computedFields?: ComputedFields
 }
 
 export type BaseFieldDef = {
