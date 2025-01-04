@@ -1,7 +1,7 @@
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { Button } from '@tszhong0411/ui'
 
-import { setModals } from '@/store/modals'
+import { setDialogs } from '@/store/dialogs'
 
 const UnauthorizedOverlay = () => {
   const t = useTranslations()
@@ -12,7 +12,7 @@ const UnauthorizedOverlay = () => {
         type='button'
         size='sm'
         onClick={() => {
-          setModals({ signIn: true })
+          setDialogs({ signIn: true })
         }}
       >
         {t('blog.comments.sign-in')}

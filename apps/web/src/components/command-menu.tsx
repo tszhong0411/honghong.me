@@ -24,7 +24,7 @@ import {
   SITE_X_URL,
   SITE_YOUTUBE_URL
 } from '@/lib/constants'
-import { setModals } from '@/store/modals'
+import { setDialogs } from '@/store/dialogs'
 
 type Groups = Array<{
   name: string
@@ -79,7 +79,7 @@ const CommandMenu = () => {
                 icon: <LogInIcon className='mr-3 size-4' />,
                 onSelect: () => {
                   setIsOpen(false)
-                  setModals({ signIn: true })
+                  setDialogs({ signIn: true })
                 }
               }
             ])

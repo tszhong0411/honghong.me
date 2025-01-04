@@ -16,7 +16,7 @@ import Analytics from '@/components/analytics'
 import Hello from '@/components/hello'
 import Footer from '@/components/layout/footer'
 import Header from '@/components/layout/header'
-import SignInModal from '@/components/sign-in-modal'
+import SignInDialog from '@/components/sign-in-dialog'
 import { SITE_KEYWORDS, SITE_NAME, SITE_URL } from '@/lib/constants'
 
 import Providers from '../providers'
@@ -156,7 +156,7 @@ const Layout = async (props: LayoutProps) => {
 
               <Footer />
               {flags.analytics ? <Analytics /> : null}
-              <SignInModal />
+              <SignInDialog />
               <Image
                 width={1512}
                 height={550}

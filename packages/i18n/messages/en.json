@@ -97,6 +97,13 @@
     },
     "title": "Dashboard"
   },
+  "dialog": {
+    "sign-in": {
+      "continue-with": "Continue with {provider}",
+      "description": "to continue to honghong.me",
+      "title": "Sign in"
+    }
+  },
   "error": {
     "something-went-wrong": "Something went wrong!",
     "try-again": "Try again"
@@ -198,13 +205,6 @@
   "metadata": {
     "site-description": "Hong • 18 y/o • Student • Full Stack Engineer",
     "site-title": "Hong - A Full Stack Engineer"
-  },
-  "modal": {
-    "sign-in": {
-      "continue-with": "Continue with {provider}",
-      "description": "to continue to honghong.me",
-      "title": "Sign in"
-    }
   },
   "not-found": "404 Not Found",
   "projects": {

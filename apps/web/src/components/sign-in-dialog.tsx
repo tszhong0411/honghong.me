@@ -15,7 +15,7 @@ import { Loader2Icon } from 'lucide-react'
 import { signIn } from 'next-auth/react'
 import { useState } from 'react'
 
-import { modals, setModals } from '@/store/modals'
+import { dialogs, setDialogs } from '@/store/dialogs'
 
 const GoogleIcon = () => {
   return (
@@ -46,8 +46,8 @@ const GoogleIcon = () => {
   )
 }
 
-const SignInModal = () => {
-  const { signIn: isOpened } = useStore(modals)
+const SignInDialog = () => {
+  const { signIn: isOpened } = useStore(dialogs)
   const [isGitHubLoading, setIsGitHubLoading] = useState(false)
   const [isGoogleLoading, setIsGoogleLoading] = useState(false)
   const t = useTranslations()
@@ -56,14 +56,14 @@ const SignInModal = () => {
     <Dialog
       open={isOpened}
       onOpenChange={(v) => {
-        setModals({ signIn: v })
+        setDialogs({ signIn: v })
       }}
     >
       <DialogContent className='sm:max-w-[425px]'>
         <DialogHeader>
-          <DialogTitle className='text-left text-2xl'>{t('modal.sign-in.title')}</DialogTitle>
+          <DialogTitle className='text-left text-2xl'>{t('dialog.sign-in.title')}</DialogTitle>
           <DialogDescription className='text-left'>
-            {t('modal.sign-in.description')}
+            {t('dialog.sign-in.description')}
           </DialogDescription>
         </DialogHeader>
         <div className='my-6 flex flex-col gap-4'>
@@ -81,7 +81,7 @@ const SignInModal = () => {
             ) : (
               <>
                 <SiGithub className='mr-3' />
-                {t('modal.sign-in.continue-with', { provider: 'GitHub' })}
+                {t('dialog.sign-in.continue-with', { provider: 'GitHub' })}
               </>
             )}
           </Button>
@@ -100,7 +100,7 @@ const SignInModal = () => {
             ) : (
               <>
                 <GoogleIcon />
-                {t('modal.sign-in.continue-with', { provider: 'Google' })}
+                {t('dialog.sign-in.continue-with', { provider: 'Google' })}
               </>
             )}
           </Button>
@@ -110,4 +110,4 @@ const SignInModal = () => {
   )
 }
 
-export default SignInModal
+export default SignInDialog

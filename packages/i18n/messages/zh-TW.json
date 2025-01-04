@@ -97,6 +97,13 @@
     },
     "title": "儀表板"
   },
+  "dialog": {
+    "sign-in": {
+      "continue-with": "使用 {provider} 繼續",
+      "description": "以繼續使用 honghong.me",
+      "title": "登入"
+    }
+  },
   "error": {
     "something-went-wrong": "出了一些問題！",
     "try-again": "再試一次"
@@ -198,13 +205,6 @@
   "metadata": {
     "site-description": "Hong • 18 y/o • 學生 • 全端工程師",
     "site-title": "Hong - 一名全端工程師"
-  },
-  "modal": {
-    "sign-in": {
-      "continue-with": "使用 {provider} 繼續",
-      "description": "以繼續使用 honghong.me",
-      "title": "登入"
-    }
   },
   "not-found": "404 未找到",
   "projects": {
