@@ -13,9 +13,7 @@ import { api } from '@/trpc/react'
 
 const Header = () => {
   const { date, title, slug } = usePostContext()
-  const formattedDate = useFormattedDate(date, {
-    relative: true
-  })
+  const formattedDate = useFormattedDate(date)
   const utils = api.useUtils()
   const t = useTranslations()
 

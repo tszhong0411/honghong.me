@@ -33,8 +33,7 @@ const UpdatedDate = (props: UpdatedDateProps) => {
       hour: '2-digit',
       minute: '2-digit',
       hour12: false
-    },
-    relative: true
+    }
   })
 
   if (!formattedDate) return <Skeleton className='h-4 w-24 rounded-md' />
