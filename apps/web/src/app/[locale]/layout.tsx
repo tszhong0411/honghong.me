@@ -1,4 +1,4 @@
-import { flags } from '@tszhong0411/env'
+import { env, flags } from '@tszhong0411/env'
 import { NextIntlClientProvider } from '@tszhong0411/i18n/client'
 import { i18n } from '@tszhong0411/i18n/config'
 import { getMessages, getTranslations, setRequestLocale } from '@tszhong0411/i18n/server'
@@ -10,7 +10,6 @@ import type { Metadata, Viewport } from 'next'
 import localFont from 'next/font/local'
 import Image from 'next/image'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
-import { Monitoring } from 'react-scan/monitoring/next'
 
 import '@/styles/globals.css'
 import Analytics from '@/components/analytics'
@@ -21,6 +20,7 @@ import SignInDialog from '@/components/sign-in-dialog'
 import { SITE_KEYWORDS, SITE_NAME, SITE_URL } from '@/lib/constants'
 
 import Providers from '../providers'
+import ReactScan from '../react-scan'
 
 type LayoutProps = {
   children: React.ReactNode
@@ -146,10 +146,6 @@ const Layout = async (props: LayoutProps) => {
       suppressHydrationWarning
     >
       <body className='relative'>
-        <Monitoring
-          apiKey='bdbW-utcY9Fk7KfRAPMnfaFmcZ8-aAdQ'
-          url='https://monitoring.react-scan.com/api/v1/ingest'
-        />
         <NuqsAdapter>
           <Providers>
             <NextIntlClientProvider messages={messages}>
@@ -184,6 +180,7 @@ const Layout = async (props: LayoutProps) => {
           </Providers>
         </NuqsAdapter>
         <SpeedInsights />
+        {!!env.REACT_SCAN_MONITOR_API_KEY && <ReactScan apiKey={env.REACT_SCAN_MONITOR_API_KEY} />}
       </body>
     </html>
   )

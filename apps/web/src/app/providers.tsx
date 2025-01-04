@@ -3,8 +3,11 @@
 import { Toaster, type ToasterProps, TooltipProvider } from '@tszhong0411/ui'
 import { SessionProvider } from 'next-auth/react'
 import { ThemeProvider, useTheme } from 'next-themes'
+import { Suspense } from 'react'
 
 import { TRPCReactProvider } from '@/trpc/react'
+
+import Debug from './debug'
 
 type ProvidesProps = {
   children: React.ReactNode
@@ -34,6 +37,9 @@ const Providers = (props: ProvidesProps) => {
               theme={theme as ToasterProps['theme']}
               expand
             />
+            <Suspense>
+              <Debug />
+            </Suspense>
           </TooltipProvider>
         </SessionProvider>
       </ThemeProvider>

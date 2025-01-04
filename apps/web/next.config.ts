@@ -1,10 +1,9 @@
 import bundleAnalyzer from '@next/bundle-analyzer'
+import { env } from '@tszhong0411/env'
 import { withI18n } from '@tszhong0411/i18n/plugin'
 import { NextConfigHeaders } from '@tszhong0411/shared'
 import type { NextConfig } from 'next'
 import ReactComponentName from 'react-scan/react-component-name/webpack'
-
-import '@tszhong0411/env'
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true'
@@ -18,11 +17,6 @@ const config: NextConfig = {
   devIndicators: {
     appIsrStatus: process.env.NODE_ENV !== 'test',
     buildActivity: process.env.NODE_ENV !== 'test'
-  },
-
-  webpack: (c) => {
-    c.plugins.push(ReactComponentName({}))
-    return config
   },
 
   eslint: {
@@ -76,6 +70,15 @@ const config: NextConfig = {
   // eslint-disable-next-line @typescript-eslint/require-await -- it must return a promise
   async headers() {
     return NextConfigHeaders
+  },
+
+  webpack: (c) => {
+    if (env.REACT_SCAN_MONITOR_API_KEY) {
+      c.plugins.push(ReactComponentName({}))
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- it's any
+    return c
   }
 }
 
