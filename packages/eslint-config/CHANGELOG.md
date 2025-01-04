@@ -1,5 +1,11 @@
 # @tszhong0411/eslint-config
 
+## 0.1.17
+
+### Patch Changes
+
+- [`3b84261`](https://github.com/tszhong0411/honghong.me/commit/3b84261a1d8c5ffa391b7bffd4aa1aaad8e86f48) Thanks [@tszhong0411](https://github.com/tszhong0411)! - update next to 15.1.3
+
 ## 0.1.16
 
 ### Patch Changes
