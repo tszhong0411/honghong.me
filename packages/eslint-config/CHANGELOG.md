@@ -1,5 +1,11 @@
 # @tszhong0411/eslint-config
 
+## 0.1.16
+
+### Patch Changes
+
+- [`4ba7cab`](https://github.com/tszhong0411/honghong.me/commit/4ba7cabbfc41bfd60b32d5328217d78d452d4e96) Thanks [@tszhong0411](https://github.com/tszhong0411)! - chore bump @typescript-eslint/eslint-plugin from 8.18.2 to 8.19.0
+
 ## 0.1.15
 
 ### Patch Changes
