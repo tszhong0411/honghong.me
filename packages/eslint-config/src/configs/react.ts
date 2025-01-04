@@ -38,6 +38,9 @@ export const react = (options?: Options): Linter.Config[] => {
         '@eslint-react/avoid-shorthand-fragment': 'off',
         '@eslint-react/prefer-destructuring-assignment': 'off',
 
+        // @eslint-react/hooks-extra
+        '@eslint-react/hooks-extra/no-direct-set-state-in-use-effect': 'off',
+
         // @eslint-react/dom
         '@eslint-react/dom/no-dangerously-set-innerhtml': 'off',
 
