@@ -47,6 +47,7 @@ Welcome to the monorepo of my personal blog! This repository houses the code for
 - 📁 Redis - for caching
 - 🧯 Upstash - for API rate limiting
 - 🪄 CSpell - for spelling checking
+- 🌐 I18n - internationalization support
 
 ## 🔨 Requirements
 
