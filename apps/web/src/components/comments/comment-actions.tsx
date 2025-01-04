@@ -5,7 +5,6 @@ import { cn } from '@tszhong0411/utils'
 import { cva } from 'class-variance-authority'
 import { ChevronDownIcon, MessageSquareIcon, ThumbsDownIcon, ThumbsUpIcon } from 'lucide-react'
 import { useSession } from 'next-auth/react'
-import pluralize from 'pluralize'
 
 import { useCommentContext } from '@/contexts/comment'
 import { useCommentsContext } from '@/contexts/comments'
@@ -186,7 +185,8 @@ const CommentActions = () => {
               'rotate-180': isOpenReplies
             })}
           />
-          {pluralize('reply', comment.replies, true)}
+          <NumberFlow willChange continuous value={comment.replies} />
+          {t('blog.comments.replies', { count: comment.replies })}
         </Button>
       ) : null}
     </>

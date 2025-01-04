@@ -6,7 +6,6 @@ import { cn } from '@tszhong0411/utils'
 import { ArrowUpRightIcon, PencilIcon } from 'lucide-react'
 import { allBlogPosts, type BlogPost } from 'mdx/generated'
 import { motion, useInView } from 'motion/react'
-import pluralize from 'pluralize'
 import { useRef } from 'react'
 
 import { useFormattedDate } from '@/hooks/use-formatted-date'
@@ -142,13 +141,13 @@ const Card = (props: CardProps) => {
           {likesQuery.status === 'pending' ? '--' : null}
           {likesQuery.status === 'error' ? t('common.error') : null}
           {likesQuery.status === 'success' ? (
-            <div>{pluralize('like', likesQuery.data.likes, true)}</div>
+            <div>{t('common.likes', { count: likesQuery.data.likes })}</div>
           ) : null}
           <div>&middot;</div>
           {viewsQuery.status === 'pending' ? '--' : null}
           {viewsQuery.status === 'error' ? t('common.error') : null}
           {viewsQuery.status === 'success' ? (
-            <div>{pluralize('view', viewsQuery.data.views, true)}</div>
+            <div>{t('common.views', { count: viewsQuery.data.views })}</div>
           ) : null}
         </div>
       </div>
