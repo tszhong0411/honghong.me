@@ -24,7 +24,7 @@ type Card = {
   suffix?: string
 }
 
-const Items = () => {
+const Metrics = () => {
   const youtubeQuery = api.youtube.get.useQuery()
   const githubQuery = api.github.get.useQuery()
 
@@ -36,7 +36,7 @@ const Items = () => {
 
   const data: Card[] = [
     {
-      title: t('dashboard.items.coding-hours'),
+      title: t('dashboard.metric.coding-hours'),
       link: 'https://wakatime.com/@tszhong0411',
       value: wakatimeQuery.data?.seconds
         ? Math.round(wakatimeQuery.data.seconds / 60 / 60)
@@ -50,7 +50,7 @@ const Items = () => {
       suffix: 'hrs'
     },
     {
-      title: t('dashboard.items.youtube-subscribers'),
+      title: t('dashboard.metric.youtube-subscribers'),
       link: 'https://youtube.com/@tszhong0411',
       value: youtubeQuery.data?.subscribers,
       icon: <SiYoutube className='text-[#ff0000]' />,
@@ -61,7 +61,7 @@ const Items = () => {
       }
     },
     {
-      title: t('dashboard.items.youtube-views'),
+      title: t('dashboard.metric.youtube-views'),
       link: 'https://youtube.com/@tszhong0411',
       value: youtubeQuery.data?.views,
       icon: <SiYoutube className='text-[#ff0000]' />,
@@ -72,7 +72,7 @@ const Items = () => {
       }
     },
     {
-      title: t('dashboard.items.github-followers'),
+      title: t('dashboard.metric.github-followers'),
       link: 'https://github.com/tszhong0411',
       value: githubQuery.data?.followers,
       icon: <SiGithub className='text-[#fee000]' />,
@@ -83,7 +83,7 @@ const Items = () => {
       }
     },
     {
-      title: t('dashboard.items.github-stars'),
+      title: t('dashboard.metric.github-stars'),
       link: 'https://github.com/tszhong0411',
       value: githubQuery.data?.stars,
       icon: <StarIcon className='size-6 text-[#fee000]' />,
@@ -94,7 +94,7 @@ const Items = () => {
       }
     },
     {
-      title: t('dashboard.items.blog-total-views'),
+      title: t('dashboard.metric.blog-total-views'),
       link: 'https://honghong.me',
       value: viewsQuery.data?.views,
       icon: <PencilIcon className='size-6 text-[#ff0f7b]' />,
@@ -105,7 +105,7 @@ const Items = () => {
       }
     },
     {
-      title: t('dashboard.items.blog-total-likes'),
+      title: t('dashboard.metric.blog-total-likes'),
       link: 'https://honghong.me',
       value: likesQuery.data?.likes,
       icon: <PencilIcon className='size-6 text-[#ff0f7b]' />,
@@ -119,7 +119,7 @@ const Items = () => {
 
   return (
     <div className='mb-4 mt-16 grid gap-4 sm:grid-cols-2 md:grid-cols-3'>
-      {data.map((item) => {
+      {data.map((metric) => {
         const {
           icon,
           link,
@@ -128,13 +128,13 @@ const Items = () => {
           linkText,
           gradient: { startColor, endColor },
           suffix
-        } = item
+        } = metric
 
         const hasValue = value === 0 || value !== undefined
 
         return (
           <Link
-            key={item.title}
+            key={metric.title}
             href={link}
             className='group relative overflow-hidden rounded-lg border p-4 shadow-sm transition-colors hover:bg-zinc-100 dark:bg-zinc-900/50 dark:hover:bg-zinc-900'
           >
@@ -171,4 +171,4 @@ const Items = () => {
   )
 }
 
-export default Items
+export default Metrics
