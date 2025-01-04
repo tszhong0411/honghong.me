@@ -37,7 +37,7 @@ const ComponentPreviewWrapper = (props: ComponentPreviewWrapperProps) => {
         </div>
       </TabsContent>
       <TabsContent value='code'>
-        <div className='[&_pre]:max-h-[350px] [&_pre]:overflow-auto'>{children}</div>
+        <div className='[&_figure]:m-0 [&_pre]:max-h-[350px] [&_pre]:overflow-auto'>{children}</div>
       </TabsContent>
     </Tabs>
   )
