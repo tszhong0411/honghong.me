@@ -48,38 +48,37 @@ const config: NextAuthConfig = {
 
   callbacks: {
     async signIn({ account, profile, user }) {
-      if (account?.type !== 'oauth') {
+      try {
+        // Update data when user signs in every time
+        if (account?.provider === 'google') {
+          if (!profile) return true
+
+          await db
+            .update(users)
+            .set({
+              name: profile.name,
+              image: profile.picture
+            })
+            .where(eq(users.id, user.id!))
+        }
+
+        if (account?.provider === 'github') {
+          if (!profile) return true
+
+          await db
+            .update(users)
+            .set({
+              name: profile.name,
+              image: profile.avatar_url as string
+            })
+            .where(eq(users.id, user.id!))
+        }
+        return true
+      } catch (error) {
+        console.log(error)
         return false
       }
-
-      // Update data when user signs in every time
-      if (account.provider === 'google') {
-        if (!profile) return true
-
-        await db
-          .update(users)
-          .set({
-            name: profile.name,
-            image: profile.picture
-          })
-          .where(eq(users.id, user.id!))
-      }
-
-      if (account.provider === 'github') {
-        if (!profile) return true
-
-        await db
-          .update(users)
-          .set({
-            name: profile.name,
-            image: profile.avatar_url as string
-          })
-          .where(eq(users.id, user.id!))
-      }
-
-      return true
     },
-
     session: ({ session, user }) => {
       return {
         ...session,
