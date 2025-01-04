@@ -1,5 +1,14 @@
 # @tszhong0411/ui
 
+## 0.0.41
+
+### Patch Changes
+
+- [`92360ae`](https://github.com/tszhong0411/honghong.me/commit/92360ae53640f7611ec686b4d23dc08129ad621e) Thanks [@tszhong0411](https://github.com/tszhong0411)! - add sidebar
+
+- Updated dependencies []:
+  - @tszhong0411/utils@0.0.16
+
 ## 0.0.40
 
 ### Patch Changes
