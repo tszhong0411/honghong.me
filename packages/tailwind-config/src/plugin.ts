@@ -32,7 +32,16 @@ export const ui = plugin(({ addBase }) => {
       '--input': '0 0% 89.8%',
       '--ring': '0 0% 63.9%',
 
-      '--radius': '0.5rem'
+      '--radius': '0.5rem',
+
+      '--sidebar-background': '0 0% 98%',
+      '--sidebar-foreground': '240 5.3% 26.1%',
+      '--sidebar-primary': '240 5.9% 10%',
+      '--sidebar-primary-foreground': '0 0% 98%',
+      '--sidebar-accent': '240 4.8% 95.9%',
+      '--sidebar-accent-foreground': '240 5.9% 10%',
+      '--sidebar-border': '220 13% 91%',
+      '--sidebar-ring': '217.2 91.2% 59.8%'
     },
     '.dark': {
       '--background': '0 0% 2%',
@@ -61,7 +70,16 @@ export const ui = plugin(({ addBase }) => {
 
       '--border': '0 0% 14%',
       '--input': '0 0% 14%',
-      '--ring': '0 0% 14.9%'
+      '--ring': '0 0% 14.9%',
+
+      '--sidebar-background': '240 5.9% 10%',
+      '--sidebar-foreground': '240 4.8% 95.9%',
+      '--sidebar-primary': '224.3 76.3% 48%',
+      '--sidebar-primary-foreground': '0 0% 100%',
+      '--sidebar-accent': '240 3.7% 15.9%',
+      '--sidebar-accent-foreground': '240 4.8% 95.9%',
+      '--sidebar-border': '240 3.7% 15.9%',
+      '--sidebar-ring': '217.2 91.2% 59.8%'
     },
     '*': {
       'border-color': "theme('colors.border')"
