@@ -45,7 +45,6 @@ const CommentPost = () => {
   }
 
   useEffect(() => {
-    // eslint-disable-next-line @eslint-react/hooks-extra/no-direct-set-state-in-use-effect -- it needs to be computed on client side
     setIsMounted(true)
 
     return () => {
