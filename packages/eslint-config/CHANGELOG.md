@@ -1,5 +1,11 @@
 # @tszhong0411/eslint-config
 
+## 0.1.18
+
+### Patch Changes
+
+- [`27a8f95`](https://github.com/tszhong0411/honghong.me/commit/27a8f95acb39c86851102d00bc984a0100e81cbb) Thanks [@tszhong0411](https://github.com/tszhong0411)! - turn off @eslint-react/hooks-extra/no-direct-set-state-in-use-effect
+
 ## 0.1.17
 
 ### Patch Changes

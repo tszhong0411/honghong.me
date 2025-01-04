@@ -1,5 +1,11 @@
 # @tszhong0411/tailwind-config
 
+## 0.0.17
+
+### Patch Changes
+
+- [`b982db2`](https://github.com/tszhong0411/honghong.me/commit/b982db22f671e5f2719fbffc0b8da48c1d9f93c1) Thanks [@tszhong0411](https://github.com/tszhong0411)! - add sidebar
+
 ## 0.0.16
 
 ### Patch Changes
