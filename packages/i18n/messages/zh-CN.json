@@ -1,0 +1,221 @@
+{
+  "about": {
+    "description": "👋 嗨！我是 Hong，一个热爱网页开发的学生。",
+    "title": "关于"
+  },
+  "blog": {
+    "comments": {
+      "author": "作者",
+      "comment-cannot-be-empty": "评论不能为空",
+      "comment-posted": "评论已发布",
+      "comments": "评论",
+      "confirm-delete-comment": "您确定要删除此评论吗？此动作无法复原。",
+      "copy-link": "复制连结",
+      "delete-a-comment": "删除评论",
+      "deleted-a-comment": "已删除评论",
+      "dislike": "倒赞",
+      "failed-to-load-comments": "无法载入评论。请重新整理页面。",
+      "failed-to-load-replies": "无法载入回复。请重新整理页面。",
+      "leave-comment": "留下评论",
+      "like": "赞",
+      "link-copied": "连结已复制到剪贴板",
+      "need-logged-in-to-rate": "您必须登入才能评分评论",
+      "newest": "最新",
+      "no-comments": "没有评论",
+      "oldest": "最旧",
+      "open-menu": "开启选单",
+      "placeholder": "留下评论",
+      "replies": "回复",
+      "reply": "回复",
+      "reply-cannot-be-empty": "回复不能为空",
+      "reply-to-comment": "回复评论",
+      "send-comment": "送出评论",
+      "sort-by": "排序方式",
+      "this-comment-has-been-deleted": "[此评论已被删除]",
+      "toggle-bold": "切换粗体",
+      "toggle-italic": "切换斜体",
+      "toggle-strikethrough": "切换删除线"
+    },
+    "description": "我的个人网站和博客，分享我对各种主题的想法，包括教学、笔记和个人经验。作为一名来自香港的全端工程师，我在 2020 年 12 月开始把学习网页开发当成一种兴趣。我使用 Next.js 建立网站，GitHub 用作源代码托管，Vercel 用作部署。探索我的网站，了解更多关于我的旅程，并发现一些启发我的网页开发资源。",
+    "footer": {
+      "edit-on-github": "在 GitHub 上编辑",
+      "last-updated": "最后更新日期：{date}"
+    },
+    "header": {
+      "comments": "评论数",
+      "published-on": "发布日期",
+      "views": "浏览次数",
+      "written-by": "撰写者"
+    },
+    "like": "赞",
+    "like-this-post": "喜欢这个文章",
+    "on-this-page": "目录",
+    "title": "博客"
+  },
+  "command-menu": {
+    "actions": {
+      "copy-link": "复制连结",
+      "source-code": "源代码"
+    },
+    "groups": {
+      "account": "账户",
+      "general": "一般",
+      "social": "社群"
+    },
+    "no-results": "没有找到结果。",
+    "open-menu": "开启指令选单",
+    "placeholder": "输入指令或搜寻"
+  },
+  "common": {
+    "cancel": "取消",
+    "delete": "删除",
+    "error": "错误",
+    "likes": "{count} 点赞",
+    "on": "于",
+    "sign-in": "登入",
+    "sign-out": "登出",
+    "views": "{count} 浏览次数"
+  },
+  "component": {
+    "filtered-posts": {
+      "no-posts-found": "没有找到文章",
+      "placeholder": "搜寻文章"
+    },
+    "go-to-homepage": "回到首页"
+  },
+  "dashboard": {
+    "description": "这是我的个人仪表板，使用 Next.js API 路由建立，并部署为 serverless functions。我使用这个仪表板追踪 YouTube、GitHub 等平台的各种指标。",
+    "metric": {
+      "blog-total-likes": "博客总点赞数",
+      "blog-total-views": "博客总浏览量",
+      "coding-hours": "编程时间",
+      "github-followers": "GitHub 关注者",
+      "github-stars": "GitHub 星数",
+      "youtube-subscribers": "YouTube 订阅者",
+      "youtube-views": "YouTube 浏览量"
+    },
+    "title": "仪表板"
+  },
+  "dialog": {
+    "sign-in": {
+      "continue-with": "使用 {provider} 继续",
+      "description": "以继续使用 honghong.me"
+    }
+  },
+  "error": {
+    "something-went-wrong": "出了一些问题！",
+    "try-again": "再试一次"
+  },
+  "guestbook": {
+    "create-message-successfully": "成功发布留言",
+    "delete-dialog": {
+      "description": "您确定要删除此评论吗？此操作无法撤销。",
+      "title": "删除评论"
+    },
+    "delete-message-successfully": "成功删除留言",
+    "description": "在我的留言板上留下您的想法。您可以在这里告诉我任何事情！",
+    "failed-to-load-messages": "无法载入留言。请重新整理页面。",
+    "message-cannot-be-empty": "留言不能为空",
+    "no-messages": "没有留言，快来成为第一位留言者！",
+    "pinned": {
+      "description": "感谢您造访我的网站。如果您有时间，我很乐意听取您对我作品的看法。请使用您的账户登入以留下评论。谢谢！",
+      "greeting": "嗨！ 👋"
+    },
+    "placeholder": "留言",
+    "signin": {
+      "description": "以留下评论"
+    },
+    "submit": "送出",
+    "title": "留言板"
+  },
+  "homepage": {
+    "about-me": {
+      "coding-hours": "编程时间",
+      "connect": "联系",
+      "fav-framework": "最爱框架",
+      "location": "香港",
+      "more": "进一步了解我",
+      "stacks": "技术栈",
+      "title": "关于我"
+    },
+    "get-in-touch": {
+      "description": "随时联络我！",
+      "image-alt": "我坐在办公桌前写程序",
+      "title": "有关 Next.js 的任何问题？"
+    },
+    "hero": {
+      "amazing": "精彩绝伦",
+      "attractive": "引人入胜",
+      "fantastic": "极致出色",
+      "location-timezone": "香港 • UTC/GMT +8",
+      "stunning": "惊艳非凡",
+      "title-bottom": "并使用 React 开发",
+      "title-middle-left": "制作",
+      "title-middle-right": "的网站",
+      "title-top": "我是 Hong，一位全端工程师"
+    },
+    "latest-articles": {
+      "card": "文章",
+      "more": "查看所有文章",
+      "title": "最新文章"
+    },
+    "selectedProjects": {
+      "card": "项目",
+      "more": "查看所有项目",
+      "title": "精选项目"
+    }
+  },
+  "hook": {
+    "copy-to-clipboard": {
+      "copied": "已复制到剪贴板！",
+      "error": "无法复制到剪贴板。请再试一次！"
+    }
+  },
+  "layout": {
+    "about": "关于",
+    "blog": "博客",
+    "change-language": "更改语言",
+    "dashboard": "仪表板",
+    "facebook": "Facebook",
+    "github": "GitHub",
+    "guestbook": "留言板",
+    "home": "首页",
+    "instagram": "Instagram",
+    "links": "连结",
+    "now-playing": {
+      "error": "无法获取 Spotify 资料",
+      "loading": "载入中 ...",
+      "not-listening": "未在收听 - Spotify"
+    },
+    "projects": "项目",
+    "skip-to-main-content": "跳至主要内容",
+    "toggle-menu": "打开选单",
+    "uses": "装备",
+    "youtube": "YouTube"
+  },
+  "mdx": {
+    "link-to-section": "连结至章节"
+  },
+  "metadata": {
+    "site-description": "Hong • 18 y/o • 学生 • 全端工程师",
+    "site-title": "Hong - 一名全端工程师"
+  },
+  "not-found": "404 未找到",
+  "projects": {
+    "description": "我的项目清单。所有东西都是用 ❤️ 制作",
+    "title": "项目",
+    "visit-website": "前往网站"
+  },
+  "theme-toggle": {
+    "options": {
+      "dark": "深色",
+      "light": "浅色",
+      "system": "系统"
+    },
+    "toggle-theme": "切换主题"
+  },
+  "uses": {
+    "description": "这是我目前用来玩游戏、程序设计、制作视频和日常使用的装备。",
+    "title": "装备"
+  }
+}
