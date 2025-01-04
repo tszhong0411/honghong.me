@@ -33,13 +33,14 @@ export const config = {
    * - api (API routes)
    * - _next/static (static files)
    * - _next/image (image optimization files)
+   * - _vercel (Vercel internal)
    * - favicon.ico (favicon file)
    * - folders in public (which resolve to /foldername)
    * - sitemap.xml
    * - robots.txt
    */
   matcher: [
-    '/((?!api|_next/static|_next/image|og|favicon|fonts|images|videos|favicon.ico|sitemap.xml|robots.txt|rss.xml).*)'
+    '/((?!api|_next/static|_next/image|_vercel|og|favicon|fonts|images|videos|favicon.ico|sitemap.xml|robots.txt|rss.xml).*)'
   ]
 }
 
