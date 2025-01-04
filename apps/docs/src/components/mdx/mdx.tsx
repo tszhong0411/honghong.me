@@ -5,6 +5,7 @@ import { cn } from '@tszhong0411/utils'
 import { rehypeComponentCode } from '@/lib/rehype-component-code'
 
 import ComponentPreview from './component-preview'
+import EmbedComponentPreview from './embed-component-preview'
 
 type MdxProps = {
   content: string
@@ -13,6 +14,7 @@ type MdxProps = {
 const components: MDXComponents = {
   ...uiComponents,
   ComponentPreview,
+  EmbedComponentPreview,
 
   pre: uiComponents.CodeBlock
 }

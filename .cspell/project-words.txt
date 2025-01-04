@@ -11,6 +11,7 @@ nextdotjs
 nocheck
 nodedotjs
 nosniff
+nums
 postpublish
 Radixui
 ratelimit

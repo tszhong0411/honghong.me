@@ -5,8 +5,6 @@ import { GeistSans } from 'geist/font/sans'
 import type { Metadata, Viewport } from 'next'
 
 import '@/styles/globals.css'
-import Header from '@/components/layout/header'
-import Sidebar from '@/components/layout/sidebar'
 import { SITE_DESCRIPTION, SITE_KEYWORDS, SITE_TITLE, SITE_URL } from '@/lib/constants'
 
 import Providers from './providers'
@@ -115,11 +113,7 @@ const Layout = (props: LayoutProps) => {
     >
       <body>
         <Providers>
-          <Header />
-          <div className='mx-auto max-w-6xl px-5 sm:px-8 md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10'>
-            <Sidebar />
-            <main className='py-8'>{children}</main>
-          </div>
+          {children}
           <Toaster />
         </Providers>
       </body>
