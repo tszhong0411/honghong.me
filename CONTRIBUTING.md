@@ -20,9 +20,7 @@ If you encounter any issues, have suggestions, or want to report a bug, feel fre
 We welcome contributions through pull requests! If you're working on a bug fix, new feature, or improvements, follow these steps:
 
 1. Fork the repository.
-2. Create a new branch with a descriptive name:
-   - For bug fixes: `fix/issue-number-fix-description`
-   - For features: `feature/description-of-feature`
+2. Create a new branch with a descriptive name.
 3. Make your changes and commit following the [Conventional Commits](#conventional-commits) guidelines.
 4. Push your changes to your forked repository.
 5. Open a pull request from your branch to the `main` branch of the original repository.
@@ -58,7 +56,7 @@ pnpm install
 5. Run PostgreSQL using Docker (or your preferred method):
 
 ```bash
-docker compose up
+docker compose up -d
 ```
 
 6. Run the database migrations:
@@ -107,8 +105,8 @@ We follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0
 
 For example:
 
-- `feat(homepage): add new hero section`
-- `fix(styles): correct header alignment`
+- `feat(web): add new hero section`
+- `fix(docs): correct header alignment`
 
 ## Code Formatting
 
@@ -126,4 +124,4 @@ pnpm lint:fix
 pnpm check
 ```
 
-Make sure your changes are well-tested and your code follows best practices. Thank you for contributing to honghong.me! 🚀
+Make sure your changes are well-tested and your code follows best practices. Thank you for contributing to honghong.me!

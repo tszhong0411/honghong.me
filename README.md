@@ -14,57 +14,78 @@
 
 Welcome to the monorepo of my personal blog! This repository houses the code for my blog, where I share my thoughts, projects, and insights. Feel free to explore and get inspired.
 
-## ✨ Features
+## Features
 
-- ⚡️ Next.js 15 with App Router
-- 📝 MDX
-- 🎨 Tailwind CSS - for styling
-- 🌈 Radix UI - accessible UI components
-- 🛡 Strict TypeScript and ESLint configuration
-- 📱 Responsive design
-- 🌗 Light / Dark mode
-- 📈 SEO optimized with meta tags and JSON-LD
-- 📰 RSS feed
-- 🗺 Sitemap
-- 📊 Umami Analytics
-- 📝 Blog with comments, likes, and post views
-- 🔎 Blog post search
-- 📖 Table of contents for blog posts
-- 📷 Image zoom - zoom in on images in blog posts
-- 📝 Code syntax highlighting - using Shiki
-- 🎨 Animation - using Framer Motion
-- 🏠 LightHouse score of nearly 100
-- 🧪 Vitest - unit and integration tests
-- 🎭 Playwright - end-to-end tests
-- 🔨 Husky & Lint Staged - lint and format code before committing
-- ✅ Conventional commit lint - make sure commit messages follow the conventional commit format
-- 🔒 NextAuth.js - authentication
-- 💄 Prettier - code formatting
-- 〰️ Drizzle - ORM
-- 👷🏻‍♂️ t3-env - validate environment variables before building
-- 🤖 Auto refresh - fast refresh when updating MDX
-- 🌄 Open graph image - using `next/og`
-- 📁 Redis - for caching
-- 🧯 Upstash - for API rate limiting
-- 🪄 CSpell - for spelling checking
-- 🌐 I18n - internationalization support
+### Core Technologies
 
-## 🔨 Requirements
+- Next.js 15 with App Router
+- TypeScript with strict configuration
+- Tailwind CSS for styling
+- MDX for content
+- Drizzle ORM
+- I18n for internationalization support
+
+### UI/UX
+
+- Radix UI for accessible UI components
+- Responsive design
+- Light/Dark mode
+- Image zoom in blog posts
+- Shiki for code syntax highlighting
+- Motion for animations
+- Table of contents for blog posts
+
+### Blog Features
+
+- Comments system
+- Like functionality
+- Post view counter
+- Blog post search
+- RSS feed
+- Sitemap
+
+### Performance & SEO
+
+- Lighthouse score of nearly 100
+- SEO optimized with meta tags and JSON-LD
+- Open graph images using `next/og`
+- Fast refresh when updating MDX
+
+### Development Experience
+
+- Vitest for unit/integration testing
+- Playwright for E2E testing
+- ESLint configuration
+- Prettier code formatting
+- Husky & lint-staged
+- Conventional commit lint
+- CSpell for spell checking
+- Auto refresh for MDX
+
+### Authentication & Data
+
+- NextAuth.js authentication
+- Redis caching
+- Upstash for API rate limiting
+- t3-env for environment variables
+- Umami Analytics
+
+## Requirements
 
 - Node, recommended `>=20.11.0` with [corepack](https://nodejs.org/api/corepack.html) enabled
 - pnpm, recommended `>=9.x`
 - [Visual Studio Code](https://code.visualstudio.com/) with [recommended extensions](.vscode/extensions.json)
 - Optionally [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
 
-## 👋 Getting Started
+## Getting Started
 
 Please refer to the [contributing guidelines](./CONTRIBUTING.md) for detailed information on how to start the app locally and contribute to this project.
 
-## ❤️ Credits
+## Credits
 
 This project has been possible thanks to the wonderful open-source community. Special thanks to [Timothy](https://www.timlrx.com/) for the [Tailwind nextjs starter blog template](https://github.com/timlrx/tailwind-nextjs-starter-blog).
 
-This project also uses / adapts the following open-source projects
+This project also uses / adapts the following open-source projects.
 
 Without them, this project would not have been possible:
 
@@ -96,30 +117,14 @@ Referenced the following projects for inspiration:
 - [hover.dev](https://www.hover.dev/)
 - [vocs.dev](https://vocs.dev/)
 
-and more but I can't remember them all 🥹
+and more but I can't remember them all
 
-## ✍🏻 Author
+## Author
 
 - [@tszhong0411](https://github.com/tszhong0411)
 
-## 🪪 License
+## License
 
 Please do not deploy this directly to production. It is not a template and is not intended to be used as one.
 
 This project is open source and available under the [GPL3 License](LICENSE).
-
-## ⭐️ Star History
-
-<a href="https://star-history.com/#tszhong0411/honghong.me&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=tszhong0411/honghong.me&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=tszhong0411/honghong.me&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=tszhong0411/honghong.me&type=Date" />
- </picture>
-</a>
-
-<hr>
-
-<p align="center">
-  Made with ❤️ in Hong Kong
-</p>
