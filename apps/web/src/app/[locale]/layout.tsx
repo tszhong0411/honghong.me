@@ -180,7 +180,9 @@ const Layout = async (props: LayoutProps) => {
           </Providers>
         </NuqsAdapter>
         <SpeedInsights />
-        {!!env.REACT_SCAN_MONITOR_API_KEY && <ReactScan apiKey={env.REACT_SCAN_MONITOR_API_KEY} />}
+        {env.REACT_SCAN_MONITOR_API_KEY ? (
+          <ReactScan apiKey={env.REACT_SCAN_MONITOR_API_KEY} />
+        ) : null}
       </body>
     </html>
   )
