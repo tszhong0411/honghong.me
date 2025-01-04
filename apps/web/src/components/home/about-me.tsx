@@ -1,10 +1,12 @@
 'use client'
 
-import { buttonVariants, Link } from '@tszhong0411/ui'
+import { useTranslations } from '@tszhong0411/i18n/client'
+import { buttonVariants } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
-import { motion, useInView } from 'framer-motion'
+import { motion, useInView } from 'motion/react'
 import { useRef } from 'react'
 
+import Link from '../link'
 import CodingHours from './coding-hours'
 import Connect from './connect'
 import FavoriteFramework from './favorite-framework'
@@ -25,6 +27,7 @@ const variants = {
 const AboutMe = () => {
   const cardsRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(cardsRef, { once: true, margin: '-100px' })
+  const t = useTranslations()
 
   return (
     <motion.div
@@ -38,7 +41,7 @@ const AboutMe = () => {
       className='relative my-24'
     >
       <motion.h2
-        className='font-title text-center text-3xl font-bold sm:text-4xl'
+        className='font-title text-center text-3xl font-bold'
         initial={{
           y: 30,
           opacity: 0
@@ -51,7 +54,7 @@ const AboutMe = () => {
           duration: 0.3
         }}
       >
-        About Me
+        {t('homepage.about-me.title')}
       </motion.h2>
       <motion.div
         className='mt-12 grid gap-4 md:grid-cols-2'
@@ -81,7 +84,7 @@ const AboutMe = () => {
       </motion.div>
       <div className='my-8 flex items-center justify-center'>
         <Link href='/about' className={cn(buttonVariants({ variant: 'outline' }), 'rounded-xl')}>
-          Know more about me
+          {t('homepage.about-me.more')}
         </Link>
       </div>
     </motion.div>

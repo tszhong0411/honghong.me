@@ -1,15 +1,18 @@
 'use client'
 
-import { BlurImage, buttonVariants, Link } from '@tszhong0411/ui'
+import { useLocale, useTranslations } from '@tszhong0411/i18n/client'
+import { BlurImage, buttonVariants } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
-import { motion, useInView } from 'framer-motion'
 import { ArrowUpRightIcon, PencilIcon } from 'lucide-react'
-import type { BlogPost } from 'mdx/generated'
+import { allBlogPosts, type BlogPost } from 'mdx/generated'
+import { motion, useInView } from 'motion/react'
 import pluralize from 'pluralize'
 import { useRef } from 'react'
 
 import { useFormattedDate } from '@/hooks/use-formatted-date'
 import { api } from '@/trpc/react'
+
+import Link from '../link'
 
 const variants = {
   initial: {
@@ -22,14 +25,17 @@ const variants = {
   }
 }
 
-type LatestArticlesProps = {
-  posts: BlogPost[]
-}
-
-const LatestArticles = (props: LatestArticlesProps) => {
-  const { posts } = props
+const LatestArticles = () => {
   const projectsRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(projectsRef, { once: true, margin: '-100px' })
+  const t = useTranslations()
+  const locale = useLocale()
+  const filteredPosts = allBlogPosts
+    .toSorted((a, b) => {
+      return new Date(b.date).getTime() - new Date(a.date).getTime()
+    })
+    .filter((post) => post.language === locale)
+    .slice(0, 2)
 
   return (
     <motion.div
@@ -43,7 +49,7 @@ const LatestArticles = (props: LatestArticlesProps) => {
       className='my-24'
     >
       <motion.h2
-        className='font-title text-center text-3xl font-bold sm:text-4xl'
+        className='font-title text-center text-3xl font-bold'
         initial={{
           y: 30,
           opacity: 0
@@ -56,7 +62,7 @@ const LatestArticles = (props: LatestArticlesProps) => {
           duration: 0.3
         }}
       >
-        Latest Articles
+        {t('homepage.latest-articles.title')}
       </motion.h2>
       <motion.div
         className='mt-12 grid gap-4 md:grid-cols-2'
@@ -72,7 +78,7 @@ const LatestArticles = (props: LatestArticlesProps) => {
           duration: 0.3
         }}
       >
-        {posts.map((post) => (
+        {filteredPosts.map((post) => (
           <Card key={post.slug} post={post} />
         ))}
       </motion.div>
@@ -86,7 +92,7 @@ const LatestArticles = (props: LatestArticlesProps) => {
             'rounded-xl'
           )}
         >
-          See all articles
+          {t('homepage.latest-articles.more')}
         </Link>
       </div>
     </motion.div>
@@ -100,10 +106,8 @@ type CardProps = {
 const Card = (props: CardProps) => {
   const { post } = props
   const { slug, title, summary, date } = post
-  const formattedDate = useFormattedDate(date, {
-    format: 'LL',
-    loading: '--'
-  })
+  const formattedDate = useFormattedDate(date)
+  const t = useTranslations()
 
   const viewsQuery = api.views.get.useQuery({
     slug
@@ -121,7 +125,7 @@ const Card = (props: CardProps) => {
       <div className='flex items-center justify-between p-4'>
         <div className='flex items-center gap-3'>
           <PencilIcon className='size-[18px]' />
-          <h2 className='font-light'>Blog</h2>
+          <h2 className='font-light'>{t('homepage.latest-articles.card')}</h2>
         </div>
         <ArrowUpRightIcon className='size-[18px] opacity-0 transition-opacity group-hover:opacity-100' />
       </div>
@@ -136,13 +140,13 @@ const Card = (props: CardProps) => {
         {formattedDate}
         <div className='flex gap-2'>
           {likesQuery.status === 'pending' ? '--' : null}
-          {likesQuery.status === 'error' ? 'Error' : null}
+          {likesQuery.status === 'error' ? t('common.error') : null}
           {likesQuery.status === 'success' ? (
             <div>{pluralize('like', likesQuery.data.likes, true)}</div>
           ) : null}
           <div>&middot;</div>
           {viewsQuery.status === 'pending' ? '--' : null}
-          {viewsQuery.status === 'error' ? 'Error' : null}
+          {viewsQuery.status === 'error' ? t('common.error') : null}
           {viewsQuery.status === 'success' ? (
             <div>{pluralize('view', viewsQuery.data.views, true)}</div>
           ) : null}

@@ -28,11 +28,26 @@ export const generateData = async (defs: DocumentType[], contentDirPath: string)
 
       const parsedContent = matter(fileContent)
 
-      const content = {
+      const staticFields = {
         ...parsedContent.data,
         body: parsedContent.content,
-        slug: fileName,
-        slugAsParams: entry.replace('.mdx', '')
+        fileName: fileName,
+        filePath: entry
+      }
+
+      const computedFields: Record<string, unknown> = {}
+
+      if (def.computedFields) {
+        for (const computedField of def.computedFields) {
+          computedFields[computedField.name] = computedField.resolve({
+            ...staticFields
+          })
+        }
+      }
+
+      const content = {
+        ...staticFields,
+        ...computedFields
       }
 
       indexJson.push(content)

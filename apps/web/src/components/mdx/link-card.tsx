@@ -1,5 +1,7 @@
-import { BlurImage, Link } from '@tszhong0411/ui'
+import { BlurImage } from '@tszhong0411/ui'
 import { ExternalLinkIcon } from 'lucide-react'
+
+import Link from '../link'
 
 type LinkCardProps = {
   href: string

@@ -1,7 +1,9 @@
 /**
  * Inspired by: https://jahir.dev/uses
  */
-import { BlurImage, Link } from '@tszhong0411/ui'
+import { BlurImage } from '@tszhong0411/ui'
+
+import Link from '../link'
 
 type Items = Array<{
   image: string

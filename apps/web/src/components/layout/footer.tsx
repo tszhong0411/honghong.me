@@ -1,18 +1,21 @@
 'use client'
 
 import { flags } from '@tszhong0411/env'
-import { Link } from '@tszhong0411/ui'
+import { useTranslations } from '@tszhong0411/i18n/client'
+import { linkVariants } from '@tszhong0411/ui'
 import { StarIcon } from 'lucide-react'
 
 import { FOOTER_LINKS } from '@/config/links'
 import { api } from '@/trpc/react'
 
+import Link from '../link'
 import NowPlaying from './now-playing'
 
 const Footer = () => {
   const { status, data } = api.github.getRepoStars.useQuery(undefined, {
     staleTime: 1000 * 60 * 60
   })
+  const t = useTranslations()
 
   return (
     <footer className='bg-background/30 relative mx-auto mb-6 flex max-w-5xl flex-col rounded-2xl p-8 shadow-sm saturate-100 backdrop-blur-[10px]'>
@@ -21,11 +24,11 @@ const Footer = () => {
         {FOOTER_LINKS.map((list) => (
           <div key={list.id} className='mb-10 flex flex-col items-start gap-4 pr-4'>
             {list.links.map((link) => {
-              const { href, text } = link
+              const { href, key } = link
 
               return (
-                <Link key={href} href={href} variant='muted'>
-                  {text}
+                <Link key={href} href={href} className={linkVariants({ variant: 'muted' })}>
+                  {t(`layout.${key}`)}
                 </Link>
               )
             })}
@@ -44,7 +47,7 @@ const Footer = () => {
           </div>
           <div className='bg-background flex h-8 items-center px-3'>
             {status === 'pending' ? '--' : null}
-            {status === 'error' ? 'Error' : null}
+            {status === 'error' ? t('common.error') : null}
             {status === 'success'
               ? Intl.NumberFormat('en', {
                   notation: 'compact',

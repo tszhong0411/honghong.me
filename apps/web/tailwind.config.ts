@@ -8,10 +8,6 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        pinned:
-          'linear-gradient(119deg, rgb(143 152 242) 0%, rgb(95 167 225) 30%, rgb(206 133 247) 47%, rgb(235 147 186) 69%, rgb(190 188 251) 80%)',
-        'pinned-dark':
-          'linear-gradient(119deg, rgb(75 87 196) 0%, rgb(31 133 206) 30%, rgb(125 20 166) 42%, rgb(134 15 60) 63%, rgb(18 8 45) 73%)',
         'nav-link-indicator':
           'radial-gradient(44.6% 825% at 50% 50%, rgb(255 133 133) 0%, rgb(255 72 109 / 0) 100%)',
         'nav-link-indicator-dark':

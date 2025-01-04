@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "exclude": ["node_modules"],
+  "extends": "@tszhong0411/tsconfig/base.json",
+  "include": ["**/*.ts"]
+}

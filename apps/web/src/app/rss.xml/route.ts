@@ -1,20 +1,24 @@
+import { i18n } from '@tszhong0411/i18n/config'
+import { getTranslations } from '@tszhong0411/i18n/server'
 import { allBlogPosts } from 'mdx/generated'
 import { NextResponse } from 'next/server'
 import RSS from 'rss'
 
-import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from '@/lib/constants'
+import { SITE_NAME, SITE_URL } from '@/lib/constants'
 
-export const GET = () => {
+export const GET = async () => {
+  const t = await getTranslations({ locale: i18n.defaultLocale })
+
   const feed = new RSS({
-    title: SITE_TITLE,
-    description: SITE_DESCRIPTION,
+    title: t('metadata.site-title'),
+    description: t('metadata.site-description'),
     site_url: SITE_URL,
     feed_url: `${SITE_URL}/rss.xml`,
     language: 'en-US',
     image_url: `${SITE_URL}/images/og.png`
   })
 
-  const posts = allBlogPosts
+  const posts = allBlogPosts.filter((p) => p.language === i18n.defaultLocale)
 
   for (const post of posts) {
     const { title, summary, date, slug } = post

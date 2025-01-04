@@ -24,15 +24,18 @@ import {
   SiVite,
   SiVitest
 } from '@icons-pack/react-simple-icons'
+import { useTranslations } from '@tszhong0411/i18n/client'
 import { Marquee } from '@tszhong0411/ui'
 import { ZapIcon } from 'lucide-react'
 
 const StacksCard = () => {
+  const t = useTranslations()
+
   return (
     <div className='shadow-feature-card dark:shadow-feature-card-dark flex h-60 flex-col gap-2 overflow-hidden rounded-xl p-4 lg:p-6'>
       <div className='flex items-center gap-2'>
         <ZapIcon className='size-[18px]' />
-        <h2 className='text-sm font-light'>Stacks</h2>
+        <h2 className='text-sm font-light'>{t('homepage.about-me.stacks')}</h2>
       </div>
       <Marquee gap='20px' className='py-4' fade pauseOnHover>
         <SiHtml5 className='size-10' />

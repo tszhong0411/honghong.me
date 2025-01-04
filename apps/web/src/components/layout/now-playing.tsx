@@ -1,11 +1,14 @@
 'use client'
 
-import { Link } from '@tszhong0411/ui'
+import { useTranslations } from '@tszhong0411/i18n/client'
 
 import { api } from '@/trpc/react'
 
+import Link from '../link'
+
 const NowPlaying = () => {
   const { status, data } = api.spotify.get.useQuery()
+  const t = useTranslations()
 
   const isPlaying = status === 'success' && data.isPlaying && data.songUrl
   const notListening = status === 'success' && (!data.isPlaying || !data.songUrl)
@@ -27,14 +30,14 @@ const NowPlaying = () => {
 
       <div className='inline-flex w-full items-center justify-center gap-1 text-sm md:justify-start'>
         <p>
-          {status === 'pending' ? 'Loading ...' : null}
-          {status === 'error' ? 'Failed to fetch Spotify data' : null}
+          {status === 'pending' ? t('layout.now-playing.loading') : null}
+          {status === 'error' ? t('layout.now-playing.error') : null}
           {isPlaying ? (
             <Link href={data.songUrl}>
               {data.name} - {data.artist}
             </Link>
           ) : null}
-          {notListening ? 'Not Listening - Spotify' : null}
+          {notListening ? t('layout.now-playing.not-listening') : null}
         </p>
       </div>
     </div>

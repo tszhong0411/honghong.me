@@ -1,82 +1,115 @@
 'use client'
 
+import { useTranslations } from '@tszhong0411/i18n/client'
 import { BlurImage } from '@tszhong0411/ui'
-import { motion, useAnimate } from 'framer-motion'
-import { useEffect } from 'react'
+import { AnimatePresence, motion } from 'motion/react'
+import { useEffect, useState } from 'react'
 
 const TEXTS = [
   {
-    text: 'amazing',
+    key: 'amazing',
     className:
       'bg-clip-text text-center text-transparent bg-gradient-to-r from-[#ff1835] to-[#ffc900]'
   },
   {
-    text: 'stunning',
+    key: 'stunning',
     className:
       'bg-clip-text text-center text-transparent bg-gradient-to-r from-[#0077ff] to-[#00e7df]'
   },
   {
-    text: 'fantastic',
+    key: 'fantastic',
     className:
       'bg-clip-text text-center text-transparent bg-gradient-to-r from-[#7f00de] to-[#ff007f]'
   },
   {
-    text: 'amazing',
+    key: 'attractive',
     className:
-      'bg-clip-text text-center text-transparent bg-gradient-to-r from-[#ff1835] to-[#ffc900]'
+      'bg-clip-text text-center text-transparent bg-gradient-to-r from-[#2ecc70] to-[#1ca085]'
   }
-]
+] as const
+
+const SPEED = 2
+
+const variants = {
+  enter: {
+    y: 100,
+    opacity: 0
+  },
+  center: {
+    y: 0,
+    opacity: 1
+  },
+  exit: {
+    y: -100,
+    opacity: 0
+  }
+}
 
 const Hero = () => {
-  const [scope, animate] = useAnimate()
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const t = useTranslations()
 
   useEffect(() => {
-    animate(
-      [
-        [scope.current, { y: '0%' }, { duration: 0 }],
-        [scope.current, { y: '-25%' }, { duration: 0.3, at: '+1.3' }],
-        [scope.current, { y: '-50%' }, { duration: 0.3, at: '+1.3' }],
-        [scope.current, { y: '-75%' }, { duration: 0.3, at: '+1.3' }]
-      ],
-      {
-        repeat: Number.POSITIVE_INFINITY
-      }
-    )
-  }, [animate, scope])
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % TEXTS.length)
+    }, SPEED * 1000)
+
+    return () => {
+      clearInterval(timer)
+    }
+  }, [])
+
+  const textItem = TEXTS[currentIndex]
+  if (!textItem) return null
 
   return (
     <div className='my-16 space-y-6'>
       <div className='flex justify-between gap-8'>
-        <motion.div
-          className='flex flex-col gap-4 md:max-w-xl'
-          initial={{
-            y: 40,
-            opacity: 0
-          }}
-          animate={{
-            y: 0,
-            opacity: 1
-          }}
-          transition={{
-            duration: 0.5
-          }}
-        >
-          <h1 className='font-title bg-gradient-to-b from-black via-black/90 to-black/70 to-90% bg-clip-text text-2xl font-bold leading-9 text-transparent sm:text-4xl sm:leading-[3.5rem] dark:from-white dark:via-white/90 dark:to-white/70'>
-            I'm Hong, a Full Stack Developer creating{' '}
-            <div className='inline-grid h-9 overflow-hidden sm:h-14'>
-              <div ref={scope}>
-                {TEXTS.map(({ text, className }, i) => (
-                  // eslint-disable-next-line @eslint-react/no-array-index-key -- it's static
-                  <div className={className} key={i}>
-                    {text}
-                  </div>
-                ))}
+        <div className='flex flex-col gap-4'>
+          <h1 className='font-title flex flex-col flex-wrap gap-2 text-xl font-bold sm:text-3xl'>
+            <div>{t('homepage.hero.title-top')}</div>
+            <div className='flex gap-2'>
+              <motion.div
+                layout
+                key='title-middle-left'
+                className='leading-[30px] sm:leading-[45px]'
+              >
+                {t('homepage.hero.title-middle-left')}
+              </motion.div>
+              <div className='relative overflow-hidden'>
+                <AnimatePresence mode='popLayout'>
+                  <motion.div
+                    key={currentIndex}
+                    variants={variants}
+                    initial='enter'
+                    animate='center'
+                    exit='exit'
+                    layout
+                    transition={{
+                      type: 'spring',
+                      stiffness: 300,
+                      damping: 30
+                    }}
+                    className='inline-flex items-center justify-center leading-[30px] sm:leading-[45px]'
+                  >
+                    <span className={textItem.className}>{t(`homepage.hero.${textItem.key}`)}</span>
+                  </motion.div>
+                </AnimatePresence>
               </div>
-            </div>{' '}
-            websites using React.
+              <motion.div
+                layout
+                key='title-middle-right'
+                className='leading-[30px] sm:leading-[45px]'
+              >
+                {t('homepage.hero.title-middle-right')}
+              </motion.div>
+            </div>
+            <div>{t('homepage.hero.title-bottom')}</div>
           </h1>
-          <div className='text-muted-foreground text-sm'>Hong Kong • UTC/GMT +8</div>
-        </motion.div>
+          <div className='text-muted-foreground text-sm'>
+            {t('homepage.hero.location-timezone')}
+          </div>
+        </div>
         <motion.div
           className='relative hidden size-28 md:block'
           initial={{

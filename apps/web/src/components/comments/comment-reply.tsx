@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from '@tszhong0411/i18n/client'
 import { Button, toast } from '@tszhong0411/ui'
 import { useSession } from 'next-auth/react'
 import { useState } from 'react'
@@ -18,6 +19,7 @@ const CommentReply = () => {
   const { status } = useSession()
   const { slug, sort } = useCommentsContext()
   const utils = api.useUtils()
+  const t = useTranslations()
 
   const queryKey: CommentsInput = {
     slug,
@@ -78,7 +80,7 @@ const CommentReply = () => {
     e?.preventDefault()
 
     if (!content) {
-      toast.error('Reply cannot be empty')
+      toast.error(t('blog.comments.reply-cannot-be-empty'))
 
       return
     }
@@ -103,7 +105,7 @@ const CommentReply = () => {
           onEscape={() => {
             setIsReplying(false)
           }}
-          placeholder='Reply to comment'
+          placeholder={t('blog.comments.reply-to-comment')}
           disabled={disabled}
           // eslint-disable-next-line jsx-a11y/no-autofocus -- Autofocus is necessary because user is replying to a comment
           autoFocus
@@ -118,7 +120,7 @@ const CommentReply = () => {
           disabled={disabled || !content}
           aria-disabled={disabled || !content}
         >
-          Reply
+          {t('blog.comments.reply')}
         </Button>
         <Button
           variant='secondary'
@@ -128,7 +130,7 @@ const CommentReply = () => {
             setIsReplying(false)
           }}
         >
-          Cancel
+          {t('blog.comments.cancel')}
         </Button>
       </div>
     </form>

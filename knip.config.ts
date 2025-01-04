@@ -17,7 +17,7 @@ const config: KnipConfig = {
       }
     },
     'apps/web': {
-      entry: ['mdx.config.ts'],
+      entry: ['mdx.config.ts', 'i18n.config.ts'],
       ignore: ['**/e2e/**'],
       postcss: {
         config: 'postcss.config.mjs'

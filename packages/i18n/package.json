@@ -1,0 +1,30 @@
+{
+  "private": true,
+  "name": "@tszhong0411/i18n",
+  "version": "0.0.0",
+  "description": "The internationalization package for tszhong0411's projects",
+  "license": "GPL-3.0",
+  "type": "module",
+  "scripts": {
+    "clean": "rm -rf .turbo",
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint --fix .",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next-intl": "^3.26.3"
+  },
+  "peerDependencies": {
+    "next": "^15"
+  },
+  "devDependencies": {
+    "@tszhong0411/eslint-config": "workspace:*",
+    "@tszhong0411/tsconfig": "workspace:*",
+    "@types/react": "19.0.2",
+    "next": "^15.1.2"
+  },
+  "lint-staged": {
+    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix",
+    "**/*": "prettier --write --ignore-unknown"
+  }
+}
