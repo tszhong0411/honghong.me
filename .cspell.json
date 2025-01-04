@@ -36,6 +36,7 @@
     ".pnpm-store/",
     "packages/db/src/migrations/**"
   ],
+  "ignoreRegExpList": ["apiKey='[a-zA-Z0-9-]{32}'"],
   "import": [
     "@cspell/dict-software-terms",
     "@cspell/dict-npm",

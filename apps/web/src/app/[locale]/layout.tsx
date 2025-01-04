@@ -10,6 +10,7 @@ import type { Metadata, Viewport } from 'next'
 import localFont from 'next/font/local'
 import Image from 'next/image'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
+import { Monitoring } from 'react-scan/monitoring/next'
 
 import '@/styles/globals.css'
 import Analytics from '@/components/analytics'
@@ -145,6 +146,10 @@ const Layout = async (props: LayoutProps) => {
       suppressHydrationWarning
     >
       <body className='relative'>
+        <Monitoring
+          apiKey='bdbW-utcY9Fk7KfRAPMnfaFmcZ8-aAdQ'
+          url='https://monitoring.react-scan.com/api/v1/ingest'
+        />
         <NuqsAdapter>
           <Providers>
             <NextIntlClientProvider messages={messages}>
