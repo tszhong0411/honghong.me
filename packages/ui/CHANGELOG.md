@@ -1,5 +1,14 @@
 # @tszhong0411/ui
 
+## 0.0.40
+
+### Patch Changes
+
+- [`3b84261`](https://github.com/tszhong0411/honghong.me/commit/3b84261a1d8c5ffa391b7bffd4aa1aaad8e86f48) Thanks [@tszhong0411](https://github.com/tszhong0411)! - update next to 15.1.3
+
+- Updated dependencies []:
+  - @tszhong0411/utils@0.0.16
+
 ## 0.0.39
 
 ### Patch Changes
