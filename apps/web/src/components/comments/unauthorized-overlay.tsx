@@ -15,7 +15,7 @@ const UnauthorizedOverlay = () => {
           setDialogs({ signIn: true })
         }}
       >
-        {t('blog.comments.sign-in')}
+        {t('common.sign-in')}
       </Button>
     </div>
   )

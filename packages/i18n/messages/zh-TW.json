@@ -6,13 +6,11 @@
   "blog": {
     "comments": {
       "author": "作者",
-      "cancel": "取消",
       "comment-cannot-be-empty": "評論不能為空",
       "comment-posted": "評論已發佈",
       "comments": "評論",
       "confirm-delete-comment": "您確定要刪除此評論嗎？此動作無法復原。",
       "copy-link": "複製連結",
-      "delete": "刪除",
       "delete-a-comment": "刪除評論",
       "deleted-a-comment": "已刪除評論",
       "dislike": "倒讚",
@@ -32,7 +30,6 @@
       "reply-cannot-be-empty": "回覆不能為空",
       "reply-to-comment": "回覆評論",
       "send-comment": "送出評論",
-      "sign-in": "登入",
       "sort-by": "排序方式",
       "this-comment-has-been-deleted": "[此評論已被刪除]",
       "toggle-bold": "切換粗體",
@@ -58,8 +55,6 @@
   "command-menu": {
     "actions": {
       "copy-link": "複製連結",
-      "sign-in": "登入",
-      "sign-out": "登出",
       "source-code": "原始碼"
     },
     "groups": {
@@ -72,9 +67,13 @@
     "placeholder": "輸入指令或搜尋"
   },
   "common": {
+    "cancel": "取消",
+    "delete": "刪除",
     "error": "錯誤",
     "likes": "{count} 按讚",
     "on": "於",
+    "sign-in": "登入",
+    "sign-out": "登出",
     "views": "{count} 瀏覽次數"
   },
   "component": {
@@ -100,8 +99,7 @@
   "dialog": {
     "sign-in": {
       "continue-with": "使用 {provider} 繼續",
-      "description": "以繼續使用 honghong.me",
-      "title": "登入"
+      "description": "以繼續使用 honghong.me"
     }
   },
   "error": {
@@ -111,8 +109,6 @@
   "guestbook": {
     "create-message-successfully": "成功發佈留言",
     "delete-dialog": {
-      "cancel": "取消",
-      "delete": "刪除",
       "description": "您確定要刪除此評論嗎？此操作無法撤銷。",
       "title": "刪除評論"
     },
@@ -126,9 +122,7 @@
       "greeting": "嗨！ 👋"
     },
     "placeholder": "留言",
-    "sign-out": "登出",
     "signin": {
-      "button": "登入",
       "description": "以留下評論"
     },
     "submit": "送出",

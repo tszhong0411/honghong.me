@@ -61,7 +61,7 @@ const SignInDialog = () => {
     >
       <DialogContent className='sm:max-w-[425px]'>
         <DialogHeader>
-          <DialogTitle className='text-left text-2xl'>{t('dialog.sign-in.title')}</DialogTitle>
+          <DialogTitle className='text-left text-2xl'>{t('common.sign-in')}</DialogTitle>
           <DialogDescription className='text-left'>
             {t('dialog.sign-in.description')}
           </DialogDescription>

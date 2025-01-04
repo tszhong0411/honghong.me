@@ -130,7 +130,7 @@ const CommentReply = () => {
             setIsReplying(false)
           }}
         >
-          {t('blog.comments.cancel')}
+          {t('common.cancel')}
         </Button>
       </div>
     </form>

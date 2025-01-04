@@ -84,7 +84,7 @@ const CommentMenu = () => {
                 disabled={deleteCommentMutation.isPending}
                 aria-disabled={deleteCommentMutation.isPending}
               >
-                {t('blog.comments.delete')}
+                {t('common.delete')}
               </DropdownMenuItem>
             ) : null}
           </AlertDialogTrigger>
@@ -98,14 +98,14 @@ const CommentMenu = () => {
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>{t('blog.comments.cancel')}</AlertDialogCancel>
+          <AlertDialogCancel>{t('common.cancel')}</AlertDialogCancel>
           <AlertDialogAction
             onClick={() => {
               deleteCommentMutation.mutate({ id })
             }}
             className={buttonVariants({ variant: 'destructive' })}
           >
-            {t('blog.comments.delete')}
+            {t('common.delete')}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

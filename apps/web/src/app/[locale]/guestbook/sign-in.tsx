@@ -17,7 +17,7 @@ const SignIn = () => {
         }}
         type='button'
       >
-        {t('guestbook.signin.button')}
+        {t('common.sign-in')}
       </Button>
       <span className='ml-2'>{t('guestbook.signin.description')}</span>
     </>

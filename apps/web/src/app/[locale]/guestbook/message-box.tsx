@@ -90,7 +90,7 @@ const MessageBox = (props: FormProps) => {
               }}
               type='button'
             >
-              {t('guestbook.sign-out')}
+              {t('common.sign-out')}
             </Button>
             <Button
               type='submit'

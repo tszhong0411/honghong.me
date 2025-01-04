@@ -68,14 +68,14 @@ const CommandMenu = () => {
         ...(status === 'authenticated'
           ? [
               {
-                title: t('command-menu.actions.sign-out'),
+                title: t('common.sign-out'),
                 icon: <LogOutIcon className='mr-3 size-4' />,
                 onSelect: () => signOut()
               }
             ]
           : [
               {
-                title: t('command-menu.actions.sign-in'),
+                title: t('common.sign-in'),
                 icon: <LogInIcon className='mr-3 size-4' />,
                 onSelect: () => {
                   setIsOpen(false)
