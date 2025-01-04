@@ -2,6 +2,7 @@ import bundleAnalyzer from '@next/bundle-analyzer'
 import { withI18n } from '@tszhong0411/i18n/plugin'
 import { NextConfigHeaders } from '@tszhong0411/shared'
 import type { NextConfig } from 'next'
+import ReactComponentName from 'react-scan/react-component-name/webpack'
 
 import '@tszhong0411/env'
 
@@ -17,6 +18,11 @@ const config: NextConfig = {
   devIndicators: {
     appIsrStatus: process.env.NODE_ENV !== 'test',
     buildActivity: process.env.NODE_ENV !== 'test'
+  },
+
+  webpack: (c) => {
+    c.plugins.push(ReactComponentName({}))
+    return config
   },
 
   eslint: {
