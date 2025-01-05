@@ -5,6 +5,7 @@ customizer
 honghong
 honghongme
 innerhtml
+jsxs
 keystyle
 lockb
 nextdotjs

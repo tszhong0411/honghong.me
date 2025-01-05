@@ -2,8 +2,6 @@ import { type MDXComponents, MDXRemote } from '@tszhong0411/mdx'
 import * as uiComponents from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 
-import { rehypeComponentCode } from '@/lib/rehype-component-code'
-
 import ComponentPreview from './component-preview'
 import EmbedComponentPreview from './embed-component-preview'
 
@@ -24,13 +22,7 @@ const Mdx = (props: MdxProps) => {
 
   return (
     <div className={cn('prose w-full', className)} {...rest}>
-      <MDXRemote
-        source={content}
-        components={components}
-        mdxOptions={{
-          rehypePlugins: [rehypeComponentCode]
-        }}
-      />
+      <MDXRemote source={content} components={components} />
     </div>
   )
 }
