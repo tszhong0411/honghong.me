@@ -32,6 +32,7 @@
     "github-slugger": "^2.0.0",
     "gray-matter": "^4.0.3",
     "hast": "^1.0.0",
+    "jiti": "^2.4.2",
     "pluralize": "^8.0.0",
     "react": "19.0.0",
     "remark": "^15.0.1",
