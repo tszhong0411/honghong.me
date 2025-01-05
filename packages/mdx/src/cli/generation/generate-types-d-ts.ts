@@ -57,7 +57,8 @@ export const generateTypesDts = async (defs: DocumentType[]) => {
 {
   ${def.fields ? renderFields(def.fields) : ''}
   ${def.computedFields ? renderComputedFields(def.computedFields) : ''}
-  body: string;
+  code: string;
+  raw: string;
   fileName: string;
   filePath: string;
 }`,

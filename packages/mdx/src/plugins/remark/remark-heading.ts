@@ -1,4 +1,5 @@
 import Slugger from 'github-slugger'
+import type { Properties } from 'hast'
 import type { Heading } from 'mdast'
 import { type Plugin } from 'unified'
 import { visit } from 'unist-util-visit'
@@ -7,13 +8,19 @@ import { type TOC } from '../../types'
 
 const slugger = new Slugger()
 
+declare module 'mdast' {
+  interface Data {
+    hProperties: Properties | undefined
+  }
+}
+
 export const remarkHeading: Plugin = () => {
   return (tree, file) => {
     const toc: TOC[] = []
     slugger.reset()
 
     visit(tree, 'heading', (node: Heading) => {
-      node.data ??= {}
+      node.data ??= { hProperties: {} }
       node.data.hProperties ??= {}
 
       const childNode = node.children[0]

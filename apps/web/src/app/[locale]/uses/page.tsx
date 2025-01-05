@@ -80,7 +80,7 @@ const Page = async (props: PageProps) => {
     return notFound()
   }
 
-  const { body } = page
+  const { code } = page
 
   return (
     <>
@@ -89,7 +89,7 @@ const Page = async (props: PageProps) => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <PageTitle title={title} description={description} />
-      <Mdx content={body} />
+      <Mdx code={code} />
     </>
   )
 }
