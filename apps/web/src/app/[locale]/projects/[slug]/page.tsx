@@ -92,7 +92,7 @@ const Page = async (props: PageProps) => {
     notFound()
   }
 
-  const { name, body, description, github } = project
+  const { name, code, description, github } = project
 
   const jsonLd: WithContext<SoftwareApplication> = {
     '@context': 'https://schema.org',
@@ -126,7 +126,7 @@ const Page = async (props: PageProps) => {
           className='my-12 rounded-lg'
           lazy={false}
         />
-        <Mdx content={body} />
+        <Mdx code={code} />
       </div>
     </>
   )

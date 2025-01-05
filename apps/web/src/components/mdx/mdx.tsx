@@ -1,4 +1,4 @@
-import { type MDXComponents, MDXRemote } from '@tszhong0411/mdx'
+import { getMDXComponent, type MDXComponents } from '@tszhong0411/mdx'
 import { BlurImage, CodeBlock, File, Files, Folder } from '@tszhong0411/ui'
 
 import ImageZoom from '../image-zoom'
@@ -12,7 +12,7 @@ import Table from './table'
 import Video from './video'
 
 type MdxProps = {
-  content: string
+  code: string
 }
 
 const components: MDXComponents = {
@@ -60,11 +60,12 @@ const components: MDXComponents = {
 }
 
 const Mdx = (props: MdxProps) => {
-  const { content } = props
+  const { code } = props
+  const MDXContent = getMDXComponent(code)
 
   return (
     <div className='prose w-full'>
-      <MDXRemote source={content} components={components} />
+      <MDXContent components={components} />
     </div>
   )
 }

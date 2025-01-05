@@ -106,9 +106,9 @@ const Page = async (props: PageProps) => {
     notFound()
   }
 
-  const { title, summary, date, modifiedTime, body } = post
+  const { title, summary, date, modifiedTime, code, raw } = post
 
-  const toc = await getTOC(body)
+  const toc = await getTOC(raw)
 
   const jsonLd: WithContext<Article> = {
     '@context': 'https://schema.org',
@@ -144,7 +144,7 @@ const Page = async (props: PageProps) => {
 
         <div className='mt-8 flex flex-col justify-between lg:flex-row'>
           <article className='w-full lg:w-[670px]'>
-            <Mdx content={body} />
+            <Mdx code={code} />
           </article>
           <aside className='lg:min-w-[270px] lg:max-w-[270px]'>
             <div className='sticky top-24'>

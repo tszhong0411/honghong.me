@@ -1,8 +1,9 @@
-import matter from 'gray-matter'
+import { bundleMDX } from 'mdx-bundler'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 
-import type { DocumentType } from '@/types'
+import { defaultRehypePlugins, defaultRemarkPlugins } from '@/plugins'
+import type { MakeSourceOptions } from '@/types'
 
 import { BASE_FOLDER_PATH } from '../constants'
 import { getEntries } from '../get-entries'
@@ -11,7 +12,9 @@ import { generateIndexDts } from './generate-index-d-ts'
 import { generateIndexMjs } from './generate-index-mjs'
 import { generateTypesDts } from './generate-types-d-ts'
 
-export const generateData = async (defs: DocumentType[], contentDirPath: string) => {
+export const generateData = async (config: MakeSourceOptions) => {
+  const { contentDirPath, defs, remarkPlugins = [], rehypePlugins = [] } = config
+
   for (const def of defs) {
     const entries = await getEntries(def.filePathPattern, contentDirPath)
 
@@ -26,11 +29,30 @@ export const generateData = async (defs: DocumentType[], contentDirPath: string)
       const fileName = path.basename(entry, '.mdx')
       const fileContent = await fs.readFile(fullPath, 'utf8')
 
-      const parsedContent = matter(fileContent)
+      const { code, matter } = await bundleMDX({
+        source: fileContent,
+        mdxOptions: (options) => {
+          options.remarkPlugins = [
+            ...(options.remarkPlugins ?? []),
+            ...defaultRemarkPlugins,
+            ...remarkPlugins
+          ]
+          options.rehypePlugins = [
+            ...(options.rehypePlugins ?? []),
+            ...defaultRehypePlugins,
+            ...rehypePlugins
+          ]
+
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- not sure why, but the type is correct
+          return options
+        }
+      })
+      const { data, content } = matter
 
       const staticFields = {
-        ...parsedContent.data,
-        body: parsedContent.content,
+        ...data,
+        code,
+        raw: content,
         fileName: fileName,
         filePath: entry
       }
@@ -45,12 +67,10 @@ export const generateData = async (defs: DocumentType[], contentDirPath: string)
         }
       }
 
-      const content = {
+      indexJson.push({
         ...staticFields,
         ...computedFields
-      }
-
-      indexJson.push(content)
+      })
     }
 
     await writeJSON(`${defFolderPath}/index.json`, indexJson)

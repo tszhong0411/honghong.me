@@ -1,5 +1,8 @@
+import type { PluggableList } from 'unified'
+
 export type DocumentMetadata = {
-  body: string
+  raw: string
+  code: string
   fileName: string
   filePath: string
   [key: string]: unknown
@@ -48,4 +51,6 @@ export type FieldDefs = FieldDef[]
 export type MakeSourceOptions = {
   contentDirPath: string
   defs: DocumentType[]
+  remarkPlugins?: PluggableList
+  rehypePlugins?: PluggableList
 }

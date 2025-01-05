@@ -24,9 +24,8 @@ type Error = {
 }
 
 export const build = async () => {
-  const {
-    config: { contentDirPath, defs }
-  } = await getConfig(process.cwd())
+  const { config } = await getConfig(process.cwd())
+  const { contentDirPath, defs } = config
 
   try {
     await ensureDirectoryExists(contentDirPath)
@@ -40,7 +39,7 @@ export const build = async () => {
       return
     }
 
-    await generateData(defs, contentDirPath)
+    await generateData(config)
 
     const count = await getDocumentsCount(contentDirPath)
 
