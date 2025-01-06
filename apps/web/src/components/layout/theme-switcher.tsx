@@ -1,3 +1,5 @@
+'use client'
+
 import { useTranslations } from '@tszhong0411/i18n/client'
 import {
   Button,
@@ -9,7 +11,7 @@ import {
 import { MonitorIcon, MoonIcon, SunIcon } from 'lucide-react'
 import { useTheme } from 'next-themes'
 
-const ThemeToggle = () => {
+const ThemeSwitcher = () => {
   const { setTheme } = useTheme()
   const t = useTranslations()
 
@@ -61,4 +63,4 @@ const ThemeToggle = () => {
   )
 }
 
-export default ThemeToggle
+export default ThemeSwitcher
