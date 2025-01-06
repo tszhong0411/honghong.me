@@ -7,7 +7,8 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuLabel,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
+  Skeleton
 } from '@tszhong0411/ui'
 import { useSession } from 'next-auth/react'
 
@@ -16,8 +17,12 @@ import { getAvatarAbbreviation } from '@/utils/get-avatar-abbreviation'
 import { getDefaultUser } from '@/utils/get-default-user'
 
 const AdminProfileDropdown = () => {
-  const { data } = useSession()
+  const { data, status } = useSession()
   const t = useTranslations()
+
+  if (status === 'loading') {
+    return <Skeleton className='size-9 rounded-full' />
+  }
 
   if (!data) {
     return (
