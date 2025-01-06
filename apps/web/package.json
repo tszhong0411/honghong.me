@@ -62,7 +62,7 @@
     "react-dom": "19.0.0",
     "react-hook-form": "^7.54.2",
     "react-intersection-observer": "^9.14.0",
-    "react-medium-image-zoom": "^5.2.12",
+    "react-medium-image-zoom": "^5.2.13",
     "react-scan": "^0.0.54",
     "react-spring": "^9.7.5",
     "resend": "^4.0.1",
