@@ -4,7 +4,9 @@ import { type ColumnDef, flexRender, getCoreRowModel, useReactTable } from '@tan
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@tszhong0411/ui'
 
-import { columns, type User } from './columns'
+import type { UsersOutput } from '@/trpc/routers/users'
+
+type User = UsersOutput['users'][number]
 
 type UsersTableProps = {
   data: User[]
@@ -14,14 +16,24 @@ const UsersTable = (props: UsersTableProps) => {
   const { data } = props
   const t = useTranslations()
 
-  const translatedColumns: Array<ColumnDef<User>> = columns.map((column) => ({
-    ...column,
-    header: t(column.header)
-  }))
+  const columns: Array<ColumnDef<User>> = [
+    {
+      header: t('admin.table.users.name'),
+      accessorKey: 'name'
+    },
+    {
+      header: t('admin.table.users.email'),
+      accessorKey: 'email'
+    },
+    {
+      header: t('admin.table.users.role'),
+      accessorKey: 'role'
+    }
+  ]
 
   const table = useReactTable({
     data,
-    columns: translatedColumns,
+    columns,
     getCoreRowModel: getCoreRowModel()
   })
 
