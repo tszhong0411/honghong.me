@@ -17,7 +17,7 @@ import Link from '../link'
 
 const AdminSidebar = () => {
   return (
-    <Sidebar variant='floating'>
+    <Sidebar collapsible='icon' variant='floating'>
       <SidebarContent>
         {ADMIN_SIDEBAR_LINKS.map((group) => (
           <SidebarGroup key={group.title}>

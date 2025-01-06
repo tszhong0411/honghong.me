@@ -1,5 +1,3 @@
-'use client'
-
 import { useTranslations } from '@tszhong0411/i18n/client'
 import {
   Button,

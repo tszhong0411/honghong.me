@@ -1,8 +1,8 @@
 import { redirect } from '@tszhong0411/i18n/routing'
-import { SidebarProvider, SidebarTrigger } from '@tszhong0411/ui'
+import { SidebarProvider } from '@tszhong0411/ui'
 
+import AdminHeader from '@/components/admin/admin-header'
 import AdminSidebar from '@/components/admin/admin-sidebar'
-import ThemeSwitcher from '@/components/layout/theme-switcher'
 import { getCurrentUser } from '@/lib/auth'
 
 type LayoutProps = {
@@ -28,11 +28,10 @@ const Layout = async (props: LayoutProps) => {
   return (
     <SidebarProvider>
       <AdminSidebar />
-      <main>
-        <SidebarTrigger />
-        <ThemeSwitcher />
-        {children}
-      </main>
+      <div className='flex w-full flex-col px-4'>
+        <AdminHeader />
+        <main className='py-6'>{children}</main>
+      </div>
     </SidebarProvider>
   )
 }
