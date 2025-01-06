@@ -9,6 +9,13 @@
       "dashboard": "儀表板",
       "general": "一般",
       "users": "使用者"
+    },
+    "table": {
+      "users": {
+        "email": "電子郵件",
+        "name": "名稱",
+        "role": "角色"
+      }
     }
   },
   "blog": {

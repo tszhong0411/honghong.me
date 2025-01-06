@@ -1,6 +1,7 @@
 'use client'
 
-import { flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table'
+import { type ColumnDef, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table'
+import { useTranslations } from '@tszhong0411/i18n/client'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@tszhong0411/ui'
 
 import { columns, type User } from './columns'
@@ -11,10 +12,16 @@ type UsersTableProps = {
 
 const UsersTable = (props: UsersTableProps) => {
   const { data } = props
+  const t = useTranslations()
+
+  const translatedColumns: Array<ColumnDef<User>> = columns.map((column) => ({
+    ...column,
+    header: t(column.header)
+  }))
 
   const table = useReactTable({
     data,
-    columns,
+    columns: translatedColumns,
     getCoreRowModel: getCoreRowModel()
   })
 

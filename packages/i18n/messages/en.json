@@ -9,6 +9,13 @@
       "dashboard": "Dashboard",
       "general": "General",
       "users": "Users"
+    },
+    "table": {
+      "users": {
+        "email": "Email",
+        "name": "Name",
+        "role": "Role"
+      }
     }
   },
   "blog": {

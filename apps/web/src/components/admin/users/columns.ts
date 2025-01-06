@@ -1,20 +1,18 @@
-import type { ColumnDef } from '@tanstack/react-table'
-
 import type { UsersOutput } from '@/trpc/routers/users'
 
 export type User = UsersOutput['users'][number]
 
-export const columns: Array<ColumnDef<User>> = [
+export const columns = [
   {
-    header: 'Name',
+    header: 'admin.table.users.name',
     accessorKey: 'name'
   },
   {
-    header: 'Email',
+    header: 'admin.table.users.email',
     accessorKey: 'email'
   },
   {
-    header: 'Role',
+    header: 'admin.table.users.role',
     accessorKey: 'role'
   }
-]
+] as const

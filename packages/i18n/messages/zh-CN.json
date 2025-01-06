@@ -9,6 +9,13 @@
       "dashboard": "仪表板",
       "general": "一般",
       "users": "用户"
+    },
+    "table": {
+      "users": {
+        "email": "电子邮件",
+        "name": "名称",
+        "role": "角色"
+      }
     }
   },
   "blog": {
