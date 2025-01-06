@@ -3,6 +3,14 @@
     "description": "👋 Hi there! I am Hong, a student who loves web development.",
     "title": "About"
   },
+  "admin": {
+    "nav": {
+      "comments": "Comments",
+      "dashboard": "Dashboard",
+      "general": "General",
+      "users": "Users"
+    }
+  },
   "blog": {
     "comments": {
       "author": "Author",

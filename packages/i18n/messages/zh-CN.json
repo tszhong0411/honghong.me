@@ -3,6 +3,14 @@
     "description": "👋 嗨！我是 Hong，一个热爱网页开发的学生。",
     "title": "关于"
   },
+  "admin": {
+    "nav": {
+      "comments": "评论",
+      "dashboard": "仪表板",
+      "general": "一般",
+      "users": "用户"
+    }
+  },
   "blog": {
     "comments": {
       "author": "作者",

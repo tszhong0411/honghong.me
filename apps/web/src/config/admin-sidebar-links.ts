@@ -1,35 +1,27 @@
 import { LayoutDashboardIcon, MessagesSquareIcon, UsersIcon } from 'lucide-react'
 
-export type SidebarLink = {
-  title: string
-  url: string
-  icon: React.ComponentType
-}
-
-export type SidebarGroup = {
-  title: string
-  links: SidebarLink[]
-}
-
-export const ADMIN_SIDEBAR_LINKS: SidebarGroup[] = [
+export const ADMIN_SIDEBAR_LINKS = [
   {
-    title: 'General',
+    titleKey: 'general',
     links: [
       {
-        title: 'Dashboard',
+        titleKey: 'dashboard',
         url: '/admin',
         icon: LayoutDashboardIcon
       },
       {
-        title: 'Users',
+        titleKey: 'users',
         url: '/admin/users',
         icon: UsersIcon
       },
       {
-        title: 'Comments',
+        titleKey: 'comments',
         url: '/admin/comments',
         icon: MessagesSquareIcon
       }
     ]
   }
-]
+] as const
+
+export type SidebarGroup = (typeof ADMIN_SIDEBAR_LINKS)[number]
+export type SidebarLink = SidebarGroup['links'][number]
