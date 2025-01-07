@@ -59,7 +59,11 @@
     "layout.links",
     "layout.projects",
     "layout.uses",
-    "layout.youtube"
+    "layout.youtube",
+    "admin.nav.comments",
+    "admin.nav.dashboard",
+    "admin.nav.general",
+    "admin.nav.users"
   ],
   "i18n-ally.keystyle": "nested",
   "i18n-ally.localesPaths": ["packages/i18n/messages"],
