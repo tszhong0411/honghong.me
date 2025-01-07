@@ -20,7 +20,7 @@ const Page = () => {
   }
 
   if (isError) {
-    return <div>{t('admin.table.users.failed-to-fetch-users')}</div>
+    return <div>{t('admin.table.users.failed-to-fetch-users-data')}</div>
   }
 
   return <UsersTable data={data.users} />
