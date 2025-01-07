@@ -374,5 +374,5 @@ export const commentsRouter = createTRPCRouter({
     })
 })
 
-export type CommentsInput = RouterInputs['comments']['getInfiniteComments']
-export type CommentsOutput = RouterOutputs['comments']['getInfiniteComments']
+export type GetInfiniteCommentsInput = RouterInputs['comments']['getInfiniteComments']
+export type GetInfiniteCommentsOutput = RouterOutputs['comments']['getInfiniteComments']

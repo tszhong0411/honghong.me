@@ -18,4 +18,4 @@ export const usersRouter = createTRPCRouter({
   })
 })
 
-export type UsersOutput = RouterOutputs['users']['getUsers']
+export type GetUsersOutput = RouterOutputs['users']['getUsers']

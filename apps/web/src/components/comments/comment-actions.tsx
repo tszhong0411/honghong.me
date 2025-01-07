@@ -11,7 +11,7 @@ import { useCommentsContext } from '@/contexts/comments'
 import { useRatesContext } from '@/contexts/rates'
 import { useCommentParams } from '@/hooks/use-comment-params'
 import { api } from '@/trpc/react'
-import type { CommentsInput } from '@/trpc/routers/comments'
+import type { GetInfiniteCommentsInput } from '@/trpc/routers/comments'
 
 const rateVariants = cva(
   buttonVariants({
@@ -37,7 +37,7 @@ const CommentActions = () => {
   const [params] = useCommentParams()
   const t = useTranslations()
 
-  const queryKey: CommentsInput = {
+  const queryKey: GetInfiniteCommentsInput = {
     slug,
     ...(comment.parentId
       ? {

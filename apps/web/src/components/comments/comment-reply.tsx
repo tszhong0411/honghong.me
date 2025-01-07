@@ -8,7 +8,7 @@ import { useState } from 'react'
 import { useCommentContext } from '@/contexts/comment'
 import { useCommentsContext } from '@/contexts/comments'
 import { api } from '@/trpc/react'
-import type { CommentsInput } from '@/trpc/routers/comments'
+import type { GetInfiniteCommentsInput } from '@/trpc/routers/comments'
 
 import CommentEditor from './comment-editor'
 import UnauthorizedOverlay from './unauthorized-overlay'
@@ -21,7 +21,7 @@ const CommentReply = () => {
   const utils = api.useUtils()
   const t = useTranslations()
 
-  const queryKey: CommentsInput = {
+  const queryKey: GetInfiniteCommentsInput = {
     slug,
     sort
   }

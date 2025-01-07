@@ -140,4 +140,4 @@ export const guestbookRouter = createTRPCRouter({
     })
 })
 
-export type GuestbookOutput = RouterOutputs['guestbook']['getInfiniteMessages']
+export type GetInfiniteMessagesOutput = RouterOutputs['guestbook']['getInfiniteMessages']

@@ -11,7 +11,7 @@ import { type CommentContext, CommentProvider } from '@/contexts/comment'
 import { useCommentsContext } from '@/contexts/comments'
 import { useCommentParams } from '@/hooks/use-comment-params'
 import { useFormattedDate } from '@/hooks/use-formatted-date'
-import type { CommentsOutput } from '@/trpc/routers/comments'
+import type { GetInfiniteCommentsOutput } from '@/trpc/routers/comments'
 
 import Markdown from '../mdx/markdown'
 import CommentActions from './comment-actions'
@@ -20,7 +20,7 @@ import CommentReplies from './comment-replies'
 import CommentReply from './comment-reply'
 
 type CommentProps = {
-  comment: CommentsOutput['comments'][number]
+  comment: GetInfiniteCommentsOutput['comments'][number]
 }
 
 const Comment = (props: CommentProps) => {

@@ -17,9 +17,9 @@ import {
 } from '@tszhong0411/ui'
 import { UserCogIcon, UserIcon } from 'lucide-react'
 
-import type { UsersOutput } from '@/trpc/routers/users'
+import type { GetUsersOutput } from '@/trpc/routers/users'
 
-type User = UsersOutput['users'][number]
+type User = GetUsersOutput['users'][number]
 
 type UsersTableProps = {
   data: User[]

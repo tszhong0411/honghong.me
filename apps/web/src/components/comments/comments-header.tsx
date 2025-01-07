@@ -12,7 +12,7 @@ import { ListFilterIcon } from 'lucide-react'
 
 import { useCommentsContext } from '@/contexts/comments'
 import { api } from '@/trpc/react'
-import type { CommentsInput } from '@/trpc/routers/comments'
+import type { GetInfiniteCommentsInput } from '@/trpc/routers/comments'
 
 const CommentHeader = () => {
   const { slug, sort, setSort } = useCommentsContext()
@@ -63,7 +63,7 @@ const CommentHeader = () => {
           <DropdownMenuRadioGroup
             value={sort}
             onValueChange={(value) => {
-              setSort(value as CommentsInput['sort'])
+              setSort(value as GetInfiniteCommentsInput['sort'])
             }}
           >
             <DropdownMenuRadioItem value='newest'>
