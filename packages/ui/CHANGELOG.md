@@ -1,5 +1,11 @@
 # @tszhong0411/ui
 
+## 0.0.43
+
+### Patch Changes
+
+- [`b58b930`](https://github.com/tszhong0411/honghong.me/commit/b58b9302a6db2f3603459ed3fa1009c6da371311) Thanks [@tszhong0411](https://github.com/tszhong0411)! - fix data table UI
+
 ## 0.0.42
 
 ### Patch Changes
