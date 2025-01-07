@@ -10,7 +10,26 @@
       "general": "General",
       "users": "Users"
     },
+    "page-header": {
+      "comments": {
+        "description": "Manage comments from users",
+        "title": "Comments"
+      },
+      "users": {
+        "description": "Manage users of the system",
+        "title": "Users"
+      }
+    },
     "table": {
+      "comments": {
+        "body": "Body",
+        "createdAt": "Created At",
+        "failed-to-fetch-comments-data": "Failed to fetch comments data. Please refresh the page.",
+        "filter-body": "Filter body...",
+        "filter-userId": "Filter user ID...",
+        "type": "Type",
+        "userId": "User ID"
+      },
       "users": {
         "email": "Email",
         "failed-to-fetch-users-data": "Failed to fetch users data. Please refresh the page.",

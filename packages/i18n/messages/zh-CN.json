@@ -10,7 +10,26 @@
       "general": "一般",
       "users": "用户"
     },
+    "page-header": {
+      "comments": {
+        "description": "管理用户的评论",
+        "title": "评论"
+      },
+      "users": {
+        "description": "管理系统中的用户",
+        "title": "用户"
+      }
+    },
     "table": {
+      "comments": {
+        "body": "内容",
+        "createdAt": "创建时间",
+        "failed-to-fetch-comments-data": "无法获取评论数据。请刷新页面。",
+        "filter-body": "过滤内容...",
+        "filter-userId": "过滤用户 ID...",
+        "type": "类型",
+        "userId": "用户 ID"
+      },
       "users": {
         "email": "电子邮件",
         "failed-to-fetch-users": "无法获取用户数据。请刷新页面。",
