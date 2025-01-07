@@ -23,7 +23,7 @@ const LocaleSwitcher = () => {
           type='button'
           aria-label={t('layout.change-language')}
         >
-          <span className='sr-only'></span>
+          <span className='sr-only'>{t('layout.change-language')}</span>
           <LanguagesIcon className='size-4' />
         </Button>
       </DropdownMenuTrigger>

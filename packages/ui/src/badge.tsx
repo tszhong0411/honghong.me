@@ -20,7 +20,7 @@ export const badgeVariants = cva(
   }
 )
 
-export type BadgeProps = React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof badgeVariants>
+export type BadgeProps = React.ComponentProps<'div'> & VariantProps<typeof badgeVariants>
 
 export const Badge = (props: BadgeProps) => {
   const { className, variant, ...rest } = props

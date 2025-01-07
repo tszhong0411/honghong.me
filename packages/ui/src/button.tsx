@@ -41,7 +41,7 @@ export type ButtonProps = {
 
 export const Button = (
   props: Omit<ButtonProps, 'type'> & {
-    type: React.ButtonHTMLAttributes<HTMLButtonElement>['type']
+    type: React.ComponentProps<'button'>['type']
   }
 ) => {
   const { className, variant, size, asChild = false, ...rest } = props

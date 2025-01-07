@@ -269,8 +269,8 @@ export const SidebarTrigger = (props: Omit<React.ComponentProps<typeof Button>, 
       }}
       {...rest}
     >
-      <PanelLeftIcon className='size-4' />
       <span className='sr-only'>Toggle Sidebar</span>
+      <PanelLeftIcon className='size-4' />
     </Button>
   )
 }
