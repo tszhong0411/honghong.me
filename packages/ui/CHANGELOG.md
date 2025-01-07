@@ -1,5 +1,13 @@
 # @tszhong0411/ui
 
+## 0.0.42
+
+### Patch Changes
+
+- [#905](https://github.com/tszhong0411/honghong.me/pull/905) [`3384555`](https://github.com/tszhong0411/honghong.me/commit/338455572a405e90fce956fe063fbd00774e1a2a) Thanks [@tszhong0411](https://github.com/tszhong0411)! - add Badge
+
+- [#907](https://github.com/tszhong0411/honghong.me/pull/907) [`7bb8c90`](https://github.com/tszhong0411/honghong.me/commit/7bb8c9024a25080e1576a7a750d7690b6a1c3c2f) Thanks [@tszhong0411](https://github.com/tszhong0411)! - add Data Table
+
 ## 0.0.41
 
 ### Patch Changes
