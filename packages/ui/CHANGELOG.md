@@ -1,5 +1,11 @@
 # @tszhong0411/ui
 
+## 0.0.44
+
+### Patch Changes
+
+- [`ce3a955`](https://github.com/tszhong0411/honghong.me/commit/ce3a955944ef445701e983d2c24871c79e8ef4e0) Thanks [@tszhong0411](https://github.com/tszhong0411)! - add Data Table Skeleton
+
 ## 0.0.43
 
 ### Patch Changes
