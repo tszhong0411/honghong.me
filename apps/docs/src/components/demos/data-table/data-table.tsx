@@ -130,7 +130,8 @@ const data: Task[] = [
   },
   {
     id: 'TASK-6699',
-    title: "I'll transmit the wireless JBOD capacitor, that should hard drive the SSD feed!",
+    title:
+      'If we index the program, we can get to the IB interface through the bluetooth JSON bus!',
     status: 'backlog',
     label: 'documentation',
     priority: 'medium'
@@ -469,7 +470,7 @@ const data: Task[] = [
   },
   {
     id: 'TASK-9549',
-    title: "You can't bypass the bus without connecting the neural JBOD bus!",
+    title: 'Use the 1080p UDP hard drive, then you can bypass the back-end program!',
     status: 'todo',
     label: 'feature',
     priority: 'high'
