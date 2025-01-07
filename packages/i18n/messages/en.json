@@ -13,6 +13,7 @@
     "table": {
       "users": {
         "email": "Email",
+        "filter-names": "Filter names...",
         "name": "Name",
         "role": "Role"
       }

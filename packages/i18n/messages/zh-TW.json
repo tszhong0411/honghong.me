@@ -13,6 +13,7 @@
     "table": {
       "users": {
         "email": "電子郵件",
+        "filter-names": "過濾名稱...",
         "name": "名稱",
         "role": "角色"
       }

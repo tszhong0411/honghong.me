@@ -1,8 +1,8 @@
 'use client'
 
-import { type ColumnDef, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table'
+import { type ColumnDef, getCoreRowModel, useReactTable } from '@tanstack/react-table'
 import { useTranslations } from '@tszhong0411/i18n/client'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@tszhong0411/ui'
+import { DataTable, type DataTableFilterField, DataTableToolbar } from '@tszhong0411/ui'
 
 import type { UsersOutput } from '@/trpc/routers/users'
 
@@ -31,6 +31,14 @@ const UsersTable = (props: UsersTableProps) => {
     }
   ]
 
+  const filterFields: Array<DataTableFilterField<User>> = [
+    {
+      id: 'name',
+      label: t('admin.table.users.name'),
+      placeholder: t('admin.table.users.filter-names')
+    }
+  ]
+
   const table = useReactTable({
     data,
     columns,
@@ -38,42 +46,9 @@ const UsersTable = (props: UsersTableProps) => {
   })
 
   return (
-    <div className='rounded-md border'>
-      <Table>
-        <TableHeader>
-          {table.getHeaderGroups().map((headerGroup) => (
-            <TableRow key={headerGroup.id}>
-              {headerGroup.headers.map((header) => (
-                <TableHead key={header.id}>
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(header.column.columnDef.header, header.getContext())}
-                </TableHead>
-              ))}
-            </TableRow>
-          ))}
-        </TableHeader>
-        <TableBody>
-          {table.getRowModel().rows.length > 0 ? (
-            table.getRowModel().rows.map((row) => (
-              <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'}>
-                {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))
-          ) : (
-            <TableRow>
-              <TableCell colSpan={columns.length} className='h-24 text-center'>
-                No results.
-              </TableCell>
-            </TableRow>
-          )}
-        </TableBody>
-      </Table>
-    </div>
+    <DataTable table={table}>
+      <DataTableToolbar table={table} filterFields={filterFields} />
+    </DataTable>
   )
 }
 
