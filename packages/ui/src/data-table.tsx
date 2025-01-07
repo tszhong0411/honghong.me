@@ -52,7 +52,7 @@ export const DataTable = <TData,>(props: DataTableProps<TData>) => {
   const { table, children, ...rest } = props
 
   return (
-    <div className='w-full space-y-2.5 overflow-auto' {...rest}>
+    <div className='w-full space-y-2.5' {...rest}>
       {children}
       <div className='rounded-md border'>
         <Table>
