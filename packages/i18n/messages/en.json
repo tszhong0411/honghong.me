@@ -13,6 +13,7 @@
     "table": {
       "users": {
         "email": "Email",
+        "failed-to-fetch-users": "Failed to fetch users. Please refresh the page.",
         "filter-names": "Filter names...",
         "name": "Name",
         "role": "Role"
