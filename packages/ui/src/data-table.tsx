@@ -1,7 +1,7 @@
 'use client'
 
 import { type Column, flexRender, type Table as TanstackTable } from '@tanstack/react-table'
-import { cn } from '@tszhong0411/utils'
+import { cn, range } from '@tszhong0411/utils'
 import {
   ArrowDownIcon,
   ArrowUpIcon,
@@ -42,6 +42,7 @@ import { Input } from './input'
 import { Popover, PopoverContent, PopoverTrigger } from './popover'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './select'
 import { Separator } from './separator'
+import { Skeleton } from './skeleton'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './table'
 
 type DataTableProps<TData> = {
@@ -116,7 +117,7 @@ const DataTablePagination = <TData,>(props: DataTablePaginationProps<TData>) => 
         {table.getFilteredRowModel().rows.length} row(s) selected.
       </div>
       <div className='flex flex-col-reverse items-center gap-4 sm:flex-row sm:gap-6 lg:gap-8'>
-        <div className='flex items-center space-x-2'>
+        <div className='flex items-center gap-2'>
           <p className='whitespace-nowrap text-sm font-medium'>Rows per page</p>
           <Select
             value={`${table.getState().pagination.pageSize}`}
@@ -139,7 +140,7 @@ const DataTablePagination = <TData,>(props: DataTablePaginationProps<TData>) => 
         <div className='flex items-center justify-center text-sm font-medium'>
           Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
         </div>
-        <div className='flex items-center space-x-2'>
+        <div className='flex items-center gap-2'>
           <Button
             aria-label='Go to first page'
             variant='outline'
@@ -220,7 +221,7 @@ export const DataTableColumnHeader = <TData, TValue>(
   const isUnsorted = !isDesc && !isAsc
 
   return (
-    <div className={cn('flex items-center space-x-2', className)}>
+    <div className={cn('flex items-center gap-2', className)}>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
@@ -451,7 +452,7 @@ export const DataTableToolbar = <TData,>(props: DataTableToolbarProps<TData>) =>
 
   return (
     <div className='flex items-center justify-between'>
-      <div className='flex flex-1 items-center space-x-2'>
+      <div className='flex flex-1 items-center gap-2'>
         {searchableColumns.length > 0 &&
           searchableColumns.map(
             (column) =>
@@ -498,6 +499,108 @@ export const DataTableToolbar = <TData,>(props: DataTableToolbarProps<TData>) =>
         )}
       </div>
       <DataTableViewOptions table={table} />
+    </div>
+  )
+}
+
+/**
+ * Adapted from: https://github.com/sadmann7/shadcn-table/blob/88abb37998be2ceb1c9b558beff05bb7d839b8cc/src/components/data-table/data-table-skeleton.tsx
+ */
+type DataTableSkeletonProps = {
+  columnCount: number
+  rowCount?: number
+  searchableColumnsCount?: number
+  filterableColumnCount?: number
+  cellWidths?: string[]
+} & React.ComponentProps<'div'>
+
+const defaultCellWidths = ['auto']
+
+export const DataTableSkeleton = (props: DataTableSkeletonProps) => {
+  const {
+    columnCount,
+    rowCount = 10,
+    searchableColumnsCount = 0,
+    filterableColumnCount = 0,
+    cellWidths = defaultCellWidths,
+    className,
+    ...rest
+  } = props
+
+  return (
+    <div className={cn('w-full space-y-2.5', className)} {...rest}>
+      {/* Toolbar skeleton */}
+      <div className='flex items-center justify-between'>
+        <div className='flex flex-1 items-center gap-2'>
+          {searchableColumnsCount > 0 &&
+            range(searchableColumnsCount).map((i) => (
+              <Skeleton key={i} className='h-8 w-40 lg:w-60' />
+            ))}
+          {filterableColumnCount > 0 &&
+            range(filterableColumnCount).map((i) => (
+              <Skeleton key={i} className='h-8 w-[4.5rem] border-dashed' />
+            ))}
+        </div>
+        <Skeleton className='ml-auto hidden h-8 w-[4.5rem] lg:flex' />
+      </div>
+      {/* Table skeleton */}
+      <div className='rounded-md border'>
+        <Table>
+          <TableHeader>
+            {range(1).map((i) => (
+              <TableRow key={i} className='hover:bg-transparent'>
+                {range(columnCount).map((j) => (
+                  <TableHead
+                    key={j}
+                    style={{
+                      width: cellWidths[j],
+                      minWidth: cellWidths[j]
+                    }}
+                  >
+                    <Skeleton className='h-6 w-full' />
+                  </TableHead>
+                ))}
+              </TableRow>
+            ))}
+          </TableHeader>
+          <TableBody>
+            {range(rowCount).map((i) => (
+              <TableRow key={i} className='hover:bg-transparent'>
+                {range(columnCount).map((j) => (
+                  <TableCell
+                    key={j}
+                    style={{
+                      width: cellWidths[j],
+                      minWidth: cellWidths[j]
+                    }}
+                  >
+                    <Skeleton className='h-6 w-full' />
+                  </TableCell>
+                ))}
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
+      {/* Pagination skeleton */}
+      <div className='flex w-full flex-col-reverse items-center justify-between gap-4 overflow-auto p-1 sm:flex-row sm:gap-8'>
+        <Skeleton className='h-7 w-40 shrink-0' />
+        <div className='flex flex-col-reverse items-center gap-4 sm:flex-row sm:gap-6 lg:gap-8'>
+          <div className='flex items-center gap-2'>
+            <Skeleton className='h-7 w-24' />
+            <Skeleton className='h-7 w-[4.5rem]' />
+          </div>
+          <div className='flex items-center justify-center text-sm font-medium'>
+            <Skeleton className='h-7 w-20' />
+          </div>
+          <div className='flex items-center gap-2'>
+            <Skeleton className='hidden size-7 lg:block' />
+            <Skeleton className='size-7' />
+            <Skeleton className='size-7' />
+            <Skeleton className='hidden size-7 lg:block' />
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
