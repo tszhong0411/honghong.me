@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
+    "@tanstack/react-table": "^8.20.6",
     "@tszhong0411/mdx": "workspace:*",
     "@tszhong0411/ui": "workspace:*",
     "@tszhong0411/utils": "workspace:*",

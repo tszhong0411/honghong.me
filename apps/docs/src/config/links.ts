@@ -79,6 +79,10 @@ export const SIDEBAR_LINKS: SidebarLinks = [
         text: 'Command'
       },
       {
+        href: '/ui/components/data-table',
+        text: 'Data Table'
+      },
+      {
         href: '/ui/components/dialog',
         text: 'Dialog'
       },
