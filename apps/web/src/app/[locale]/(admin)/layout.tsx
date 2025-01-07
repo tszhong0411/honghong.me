@@ -28,7 +28,7 @@ const Layout = async (props: LayoutProps) => {
   return (
     <SidebarProvider>
       <AdminSidebar />
-      <div className='flex w-full flex-col px-4'>
+      <div className='flex w-full flex-col overflow-x-hidden px-4'>
         <AdminHeader />
         <main className='py-6'>{children}</main>
       </div>
