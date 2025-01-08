@@ -45,13 +45,11 @@ const startServer = async () => {
     console.log(`${LOG_PREFIX}Exiting...`)
   }
 
-  process.on('SIGINT', () => {
-    void handleTermination()
-  })
+  const signals: NodeJS.Signals[] = ['SIGINT', 'SIGTERM']
 
-  process.on('SIGTERM', () => {
-    void handleTermination()
-  })
+  for (const signal of signals) {
+    process.on(signal, handleTermination)
+  }
 }
 
 startServer()
