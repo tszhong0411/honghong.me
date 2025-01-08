@@ -159,6 +159,10 @@ export const SIDEBAR_LINKS: SidebarLinks = [
         text: 'Toaster'
       },
       {
+        href: '/ui/components/toggle',
+        text: 'Toggle'
+      },
+      {
         href: '/ui/components/tooltip',
         text: 'Tooltip'
       }
