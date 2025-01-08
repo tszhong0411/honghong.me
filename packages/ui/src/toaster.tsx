@@ -1,6 +1,6 @@
 'use client'
 
-import { AlertCircleIcon, AlertTriangle, CheckCircle2Icon, InfoIcon } from 'lucide-react'
+import { AlertCircleIcon, AlertTriangleIcon, CheckCircle2Icon, InfoIcon } from 'lucide-react'
 import { Toaster as Sonner } from 'sonner'
 
 export type ToasterProps = React.ComponentProps<typeof Sonner>
@@ -26,7 +26,7 @@ export const Toaster = (props: ToasterProps) => {
       icons={{
         success: <CheckCircle2Icon className='size-5 text-green-500' />,
         error: <AlertCircleIcon className='size-5 text-red-500' />,
-        warning: <AlertTriangle className='size-5 text-yellow-500' />,
+        warning: <AlertTriangleIcon className='size-5 text-yellow-500' />,
         info: <InfoIcon className='size-5 text-blue-500' />
       }}
       {...rest}
