@@ -36,7 +36,7 @@ import {
   CircleIcon,
   CircleOffIcon,
   HelpCircleIcon,
-  MoreHorizontal,
+  MoreHorizontalIcon,
   TimerIcon
 } from 'lucide-react'
 
@@ -930,7 +930,7 @@ const columns: Array<ColumnDef<Task>> = [
             type='button'
           >
             <span className='sr-only'>Open menu</span>
-            <MoreHorizontal />
+            <MoreHorizontalIcon />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align='end' className='w-[160px]'>
