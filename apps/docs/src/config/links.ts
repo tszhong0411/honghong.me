@@ -147,6 +147,10 @@ export const SIDEBAR_LINKS: SidebarLinks = [
         text: 'Skeleton'
       },
       {
+        href: '/ui/components/slider',
+        text: 'Slider'
+      },
+      {
         href: '/ui/components/table',
         text: 'Table'
       },
