@@ -31,6 +31,10 @@ export const SIDEBAR_LINKS: SidebarLinks = [
     title: 'UI / Components',
     links: [
       {
+        href: '/ui/components/accordion',
+        text: 'Accordion'
+      },
+      {
         href: '/ui/components/alert-dialog',
         text: 'Alert Dialog'
       },
