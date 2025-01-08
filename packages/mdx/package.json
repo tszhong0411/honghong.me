@@ -24,7 +24,6 @@
     "chokidar": "^4.0.3",
     "commander": "^12.1.0",
     "cosmiconfig": "^9.0.0",
-    "debounce": "^2.2.0",
     "fast-glob": "^3.3.2",
     "github-slugger": "^2.0.0",
     "gray-matter": "^4.0.3",

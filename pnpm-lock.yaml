@@ -643,9 +643,6 @@ importers:
       cosmiconfig:
         specifier: ^9.0.0
         version: 9.0.0(typescript@5.7.2)
-      debounce:
-        specifier: ^2.2.0
-        version: 2.2.0
       fast-glob:
         specifier: ^3.3.2
         version: 3.3.2
@@ -6030,10 +6027,6 @@ packages:
 
   debounce@2.0.0:
     resolution: {integrity: sha512-xRetU6gL1VJbs85Mc4FoEGSjQxzpdxRyFhe3lmWFyy2EzydIcD4xzUvRJMD+NPDfMwKNhxa3PvsIOU32luIWeA==}
-    engines: {node: '>=18'}
-
-  debounce@2.2.0:
-    resolution: {integrity: sha512-Xks6RUDLZFdz8LIdR6q0MTH44k7FikOmnh5xkSjMig6ch45afc8sjTjRQf3P6ax8dMgcQrYO/AR2RGWURrruqw==}
     engines: {node: '>=18'}
 
   debug@2.6.9:
@@ -16489,8 +16482,6 @@ snapshots:
   debounce@1.2.1: {}
 
   debounce@2.0.0: {}
-
-  debounce@2.2.0: {}
 
   debug@2.6.9:
     dependencies:

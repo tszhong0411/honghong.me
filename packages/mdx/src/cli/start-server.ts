@@ -1,5 +1,4 @@
 import chokidar from 'chokidar'
-import debounce from 'debounce'
 import { exit } from 'node:process'
 
 import { build } from './commands'
@@ -7,51 +6,62 @@ import { LOG_PREFIX } from './constants'
 import { getConfig } from './get-config'
 
 const startServer = async () => {
-  const {
-    config: { contentDirPath },
-    filepath
-  } = await getConfig(process.cwd())
+  const { config, filepath } = await getConfig(process.cwd())
 
-  // Initial build
-  await build()
-
-  const { glob } = (await import('fast-glob')).default
-  const files = await glob(`${contentDirPath}/**/*.mdx`)
-
-  const watcher = chokidar.watch(files, {
-    ignored: (p) => !p.endsWith('.mdx')
+  const mdxWatcher = chokidar.watch(config.contentDirPath, {
+    ignored: (path, stats) => (stats ? stats.isFile() && !path.endsWith('.mdx') : false),
+    persistent: true,
+    ignoreInitial: true,
+    awaitWriteFinish: {
+      stabilityThreshold: 500,
+      pollInterval: 100
+    }
   })
 
-  const configWatcher = chokidar.watch(filepath)
+  const configWatcher = chokidar.watch(filepath, {
+    persistent: true,
+    ignoreInitial: true,
+    awaitWriteFinish: {
+      stabilityThreshold: 500,
+      pollInterval: 100
+    }
+  })
 
-  const debounceBuild = debounce((p) => {
-    console.log(`${LOG_PREFIX}${p} has changed. Rebuilding...`)
-    void build()
-  }, 500)
-
-  watcher.on('change', debounceBuild)
+  mdxWatcher
+    .on('ready', async () => {
+      console.log(`${LOG_PREFIX}Watching for file changes...`)
+      await build()
+    })
+    .on('add', async (path) => {
+      console.log(`${LOG_PREFIX}${path} has been added.`)
+      await build()
+    })
+    .on('change', async (path) => {
+      console.log(`${LOG_PREFIX}${path} has been changed.`)
+      await build()
+    })
+    .on('unlink', async (path) => {
+      console.log(`${LOG_PREFIX}${path} has been removed.`)
+      await build()
+    })
 
   configWatcher.on('change', () => {
     console.log(`${LOG_PREFIX}Config file changed. Restarting...`)
     exit(99)
   })
 
-  console.log(`${LOG_PREFIX}Watching for file changes...`)
-
   const handleTermination = async () => {
     console.log(`${LOG_PREFIX}Terminating watcher...`)
-    await Promise.all([watcher.close(), configWatcher.close()])
+    await Promise.all([mdxWatcher.close(), configWatcher.close()])
     console.log(`${LOG_PREFIX}Watcher closed.`)
     console.log(`${LOG_PREFIX}Exiting...`)
   }
 
-  process.on('SIGINT', () => {
-    void handleTermination()
-  })
+  const signals: NodeJS.Signals[] = ['SIGINT', 'SIGTERM']
 
-  process.on('SIGTERM', () => {
-    void handleTermination()
-  })
+  for (const signal of signals) {
+    process.on(signal, handleTermination)
+  }
 }
 
 startServer()
