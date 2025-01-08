@@ -1,9 +1,9 @@
 import { createContext, useContext } from 'react'
 
-import type { GuestbookOutput } from '@/trpc/routers/guestbook'
+import type { GetInfiniteMessagesOutput } from '@/trpc/routers/guestbook'
 
 export type MessageContext = {
-  message: GuestbookOutput['messages'][number]
+  message: GetInfiniteMessagesOutput['messages'][number]
 }
 
 const Context = createContext<MessageContext | undefined>(undefined)

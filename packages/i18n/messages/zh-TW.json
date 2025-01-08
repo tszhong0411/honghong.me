@@ -3,6 +3,42 @@
     "description": "👋 嗨！我是 Hong，一個熱愛網頁開發的學生。",
     "title": "關於"
   },
+  "admin": {
+    "nav": {
+      "comments": "評論",
+      "dashboard": "儀表板",
+      "general": "一般",
+      "users": "使用者"
+    },
+    "page-header": {
+      "comments": {
+        "description": "管理使用者的評論",
+        "title": "評論"
+      },
+      "users": {
+        "description": "管理系統中的使用者",
+        "title": "使用者"
+      }
+    },
+    "table": {
+      "comments": {
+        "body": "內容",
+        "createdAt": "建立時間",
+        "failed-to-fetch-comments-data": "無法獲取評論資料。請重新整理頁面。",
+        "filter-body": "篩選內容...",
+        "filter-userId": "篩選使用者 ID...",
+        "type": "類型",
+        "userId": "使用者 ID"
+      },
+      "users": {
+        "email": "電子郵件",
+        "failed-to-fetch-users-data": "無法獲取使用者資料。請重新整理頁面。",
+        "filter-names": "篩選名稱...",
+        "name": "名稱",
+        "role": "角色"
+      }
+    }
+  },
   "blog": {
     "comments": {
       "author": "作者",

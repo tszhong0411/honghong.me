@@ -3,6 +3,42 @@
     "description": "👋 嗨！我是 Hong，一个热爱网页开发的学生。",
     "title": "关于"
   },
+  "admin": {
+    "nav": {
+      "comments": "评论",
+      "dashboard": "仪表板",
+      "general": "一般",
+      "users": "用户"
+    },
+    "page-header": {
+      "comments": {
+        "description": "管理用户的评论",
+        "title": "评论"
+      },
+      "users": {
+        "description": "管理系统中的用户",
+        "title": "用户"
+      }
+    },
+    "table": {
+      "comments": {
+        "body": "内容",
+        "createdAt": "创建时间",
+        "failed-to-fetch-comments-data": "无法获取评论数据。请刷新页面。",
+        "filter-body": "过滤内容...",
+        "filter-userId": "过滤用户 ID...",
+        "type": "类型",
+        "userId": "用户 ID"
+      },
+      "users": {
+        "email": "电子邮件",
+        "failed-to-fetch-users": "无法获取用户数据。请刷新页面。",
+        "filter-names": "过滤名称...",
+        "name": "名称",
+        "role": "角色"
+      }
+    }
+  },
   "blog": {
     "comments": {
       "author": "作者",
@@ -14,8 +50,8 @@
       "delete-a-comment": "删除评论",
       "deleted-a-comment": "已删除评论",
       "dislike": "倒赞",
-      "failed-to-load-comments": "无法载入评论。请重新整理页面。",
-      "failed-to-load-replies": "无法载入回复。请重新整理页面。",
+      "failed-to-load-comments": "无法载入评论。请刷新页面。",
+      "failed-to-load-replies": "无法载入回复。请刷新页面。",
       "like": "赞",
       "link-copied": "连结已复制到剪贴板",
       "need-logged-in-to-rate": "您必须登入才能评分评论",
@@ -113,7 +149,7 @@
     },
     "delete-message-successfully": "成功删除留言",
     "description": "在我的留言板上留下您的想法。您可以在这里告诉我任何事情！",
-    "failed-to-load-messages": "无法载入留言。请重新整理页面。",
+    "failed-to-load-messages": "无法载入留言。请刷新页面。",
     "message-cannot-be-empty": "留言不能为空",
     "no-messages": "没有留言，快来成为第一位留言者！",
     "pinned": {

@@ -95,6 +95,7 @@ Without them, this project would not have been possible:
 - MDX Handling - from [contentlayer](https://github.com/contentlayerdev/contentlayer)
 - UI - from [shadcn/ui](https://github.com/shadcn-ui/ui)
 - ESLint config - from [@antfu/eslint-config](https://github.com/antfu/eslint-config)
+- Admin UI - from [shadcn-admin](https://github.com/satnaing/shadcn-admin)
 
 Referenced the following projects for inspiration:
 

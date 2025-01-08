@@ -8,14 +8,11 @@ import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
 import type { Metadata, Viewport } from 'next'
 import localFont from 'next/font/local'
-import Image from 'next/image'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
 
 import '@/styles/globals.css'
 import Analytics from '@/components/analytics'
 import Hello from '@/components/hello'
-import Footer from '@/components/layout/footer'
-import Header from '@/components/layout/header'
 import SignInDialog from '@/components/sign-in-dialog'
 import { SITE_KEYWORDS, SITE_NAME, SITE_URL } from '@/lib/constants'
 
@@ -150,32 +147,9 @@ const Layout = async (props: LayoutProps) => {
           <Providers>
             <NextIntlClientProvider messages={messages}>
               <Hello />
-              <Header />
-              <main id='skip-nav' className='mx-auto mb-16 max-w-5xl px-5 py-24 sm:px-8'>
-                {children}
-              </main>
-
-              <Footer />
+              {children}
               {flags.analytics ? <Analytics /> : null}
               <SignInDialog />
-              <Image
-                width={1512}
-                height={550}
-                className='absolute left-1/2 top-0 -z-10 -translate-x-1/2'
-                src='/images/gradient-background-top.png'
-                alt=''
-                role='presentation'
-                priority
-              />
-              <Image
-                width={1512}
-                height={447}
-                className='absolute -bottom-6 left-1/2 -z-10 -translate-x-1/2'
-                src='/images/gradient-background-bottom.png'
-                alt=''
-                role='presentation'
-                priority
-              />
             </NextIntlClientProvider>
           </Providers>
         </NuqsAdapter>

@@ -26,13 +26,33 @@ import { getDefaultUser } from '@/utils/get-default-user'
 import { getIp } from '@/utils/get-ip'
 
 import type { RouterInputs, RouterOutputs } from '../react'
-import { createTRPCRouter, protectedProcedure, publicProcedure } from '../trpc'
+import { adminProcedure, createTRPCRouter, protectedProcedure, publicProcedure } from '../trpc'
 
 const resend = new Resend(env.RESEND_API_KEY)
 
 const getKey = (id: string) => `comments:${id}`
 
 export const commentsRouter = createTRPCRouter({
+  getComments: adminProcedure.query(async ({ ctx }) => {
+    const query = await ctx.db.query.comments.findMany({
+      columns: {
+        id: true,
+        userId: true,
+        parentId: true,
+        body: true,
+        createdAt: true
+      }
+    })
+
+    const result = query.map((comment) => ({
+      ...comment,
+      type: comment.parentId ? 'reply' : 'comment'
+    }))
+
+    return {
+      comments: result
+    }
+  }),
   getInfiniteComments: publicProcedure
     .input(
       z.object({
@@ -374,5 +394,6 @@ export const commentsRouter = createTRPCRouter({
     })
 })
 
-export type CommentsInput = RouterInputs['comments']['getInfiniteComments']
-export type CommentsOutput = RouterOutputs['comments']['getInfiniteComments']
+export type GetInfiniteCommentsInput = RouterInputs['comments']['getInfiniteComments']
+export type GetInfiniteCommentsOutput = RouterOutputs['comments']['getInfiniteComments']
+export type GetCommentsOutput = RouterOutputs['comments']['getComments']

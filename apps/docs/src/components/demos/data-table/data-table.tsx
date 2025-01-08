@@ -874,7 +874,7 @@ const columns: Array<ColumnDef<Task>> = [
       const label = labels.find((l) => l.value === row.original.label)
 
       return (
-        <div className='flex space-x-2'>
+        <div className='flex gap-2'>
           {label && <Badge variant='outline'>{label.label}</Badge>}
           <span className='max-w-[500px] truncate font-medium'>{row.getValue('title')}</span>
         </div>
@@ -970,20 +970,12 @@ const filterFields: Array<DataTableFilterField<Task>> = [
   {
     id: 'status',
     label: 'Status',
-    options: statuses.map((status) => ({
-      label: status.label,
-      value: status.value,
-      icon: status.icon
-    }))
+    options: statuses
   },
   {
     id: 'priority',
     label: 'Priority',
-    options: priorities.map((priority) => ({
-      label: priority.label,
-      value: priority.value,
-      icon: priority.icon
-    }))
+    options: priorities
   }
 ]
 

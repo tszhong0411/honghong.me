@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react'
 
-import type { CommentsOutput } from '@/trpc/routers/comments'
+import type { GetInfiniteCommentsOutput } from '@/trpc/routers/comments'
 
 export type CommentContext = {
   isEditing: boolean
@@ -10,7 +10,7 @@ export type CommentContext = {
   setIsReplying: (value: boolean) => void
   setIsOpenReplies: (value: boolean) => void
   slug: string
-  comment: CommentsOutput['comments'][number]
+  comment: GetInfiniteCommentsOutput['comments'][number]
 }
 
 const Context = createContext<CommentContext | undefined>(undefined)

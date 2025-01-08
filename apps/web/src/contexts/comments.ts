@@ -1,11 +1,11 @@
 import { createContext, useContext } from 'react'
 
-import type { CommentsInput } from '@/trpc/routers/comments'
+import type { GetInfiniteCommentsInput } from '@/trpc/routers/comments'
 
 type CommentsContext = {
   slug: string
-  sort: CommentsInput['sort']
-  setSort: (sort: CommentsInput['sort']) => void
+  sort: GetInfiniteCommentsInput['sort']
+  setSort: (sort: GetInfiniteCommentsInput['sort']) => void
 }
 
 const Context = createContext<CommentsContext | undefined>(undefined)

@@ -12,7 +12,7 @@ import Link from '../link'
 import LocaleSwitcher from './locale-switcher'
 import MobileNav from './mobile-nav'
 import Navbar from './navbar'
-import ThemeToggle from './theme-toggle'
+import ThemeSwitcher from './theme-switcher'
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -63,7 +63,7 @@ const Header = () => {
       <div className='flex items-center gap-2'>
         <Navbar />
         <Separator orientation='vertical' className='h-6' />
-        <ThemeToggle />
+        <ThemeSwitcher />
         <LocaleSwitcher />
         <CommandMenu />
         <MobileNav />
