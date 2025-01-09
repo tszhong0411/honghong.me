@@ -38,6 +38,11 @@ const config: NextConfig = {
         source: '/',
         destination: '/introduction',
         permanent: true
+      },
+      {
+        source: '/ui/components',
+        destination: '/ui/components/accordion',
+        permanent: true
       }
     ]
   }
