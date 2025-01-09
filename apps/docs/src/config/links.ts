@@ -131,8 +131,8 @@ export const SIDEBAR_LINKS: SidebarLinks = [
         text: 'Navigation Menu'
       },
       {
-        href: '/ui/components/menubar',
-        text: 'Menubar'
+        href: '/ui/components/pagination',
+        text: 'Pagination'
       },
       {
         href: '/ui/components/popover',
