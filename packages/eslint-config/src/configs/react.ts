@@ -61,8 +61,7 @@ export const react = (options?: Options): Linter.Config[] => {
           }
         ],
         'jsx-a11y/lang': 'error',
-        'jsx-a11y/no-aria-hidden-on-focusable': 'error',
-        'jsx-a11y/prefer-tag-over-role': 'error'
+        'jsx-a11y/no-aria-hidden-on-focusable': 'error'
       },
       settings: {
         'jsx-a11y': {
