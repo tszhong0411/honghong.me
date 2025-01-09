@@ -135,9 +135,3 @@ export const FormMessage = (props: React.ComponentProps<'p'>) => {
     </p>
   )
 }
-
-FormItem.displayName = 'FormItem'
-FormLabel.displayName = 'FormLabel'
-FormControl.displayName = 'FormControl'
-FormDescription.displayName = 'FormDescription'
-FormMessage.displayName = 'FormMessage'

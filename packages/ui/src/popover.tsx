@@ -29,5 +29,3 @@ export const PopoverContent = (props: React.ComponentProps<typeof PopoverPrimiti
     </PopoverPrimitive.Portal>
   )
 }
-
-PopoverContent.displayName = PopoverPrimitive.Content.displayName

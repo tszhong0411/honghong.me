@@ -43,10 +43,3 @@ export const CardFooter = (props: React.ComponentProps<'div'>) => {
 
   return <div className={cn('flex items-center px-6 pb-6', className)} {...rest} />
 }
-
-Card.displayName = 'Card'
-CardHeader.displayName = 'CardHeader'
-CardTitle.displayName = 'CardTitle'
-CardDescription.displayName = 'CardDescription'
-CardContent.displayName = 'CardContent'
-CardFooter.displayName = 'CardFooter'

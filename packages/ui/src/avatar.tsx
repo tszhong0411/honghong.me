@@ -30,7 +30,3 @@ export const AvatarFallback = (props: React.ComponentProps<typeof AvatarPrimitiv
     />
   )
 }
-
-Avatar.displayName = AvatarPrimitive.Root.displayName
-AvatarImage.displayName = AvatarPrimitive.Image.displayName
-AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName

@@ -28,5 +28,3 @@ export const TooltipContent = (props: React.ComponentProps<typeof TooltipPrimiti
     />
   )
 }
-
-TooltipContent.displayName = TooltipPrimitive.Content.displayName

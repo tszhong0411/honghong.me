@@ -19,5 +19,3 @@ export const Input = (props: InputProps) => {
     />
   )
 }
-
-Input.displayName = 'Input'

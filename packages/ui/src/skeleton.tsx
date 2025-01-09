@@ -7,5 +7,3 @@ export const Skeleton = (props: SkeletonProps) => {
 
   return <div className={cn('bg-muted animate-pulse rounded-md', className)} {...rest} />
 }
-
-Skeleton.displayName = 'Skeleton'

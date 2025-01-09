@@ -133,12 +133,3 @@ export const CommandShortcut = (props: React.ComponentProps<'span'>) => {
     />
   )
 }
-
-Command.displayName = CommandPrimitive.displayName
-CommandInput.displayName = CommandPrimitive.Input.displayName
-CommandList.displayName = CommandPrimitive.List.displayName
-CommandEmpty.displayName = CommandPrimitive.Empty.displayName
-CommandGroup.displayName = CommandPrimitive.Group.displayName
-CommandSeparator.displayName = CommandPrimitive.Separator.displayName
-CommandItem.displayName = CommandPrimitive.Item.displayName
-CommandShortcut.displayName = 'CommandShortcut'

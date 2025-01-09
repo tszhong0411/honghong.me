@@ -32,5 +32,3 @@ export const Callout = (props: CalloutProps) => {
     </div>
   )
 }
-
-Callout.displayName = 'Callout'

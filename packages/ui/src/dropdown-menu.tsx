@@ -196,13 +196,3 @@ export const DropdownMenuShortcut = (props: React.ComponentProps<'span'>) => {
     />
   )
 }
-
-DropdownMenuSubTrigger.displayName = DropdownMenuPrimitive.SubTrigger.displayName
-DropdownMenuSubContent.displayName = DropdownMenuPrimitive.SubContent.displayName
-DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName
-DropdownMenuItem.displayName = DropdownMenuPrimitive.Item.displayName
-DropdownMenuCheckboxItem.displayName = DropdownMenuPrimitive.CheckboxItem.displayName
-DropdownMenuRadioItem.displayName = DropdownMenuPrimitive.RadioItem.displayName
-DropdownMenuLabel.displayName = DropdownMenuPrimitive.Label.displayName
-DropdownMenuSeparator.displayName = DropdownMenuPrimitive.Separator.displayName
-DropdownMenuShortcut.displayName = 'DropdownMenuShortcut'

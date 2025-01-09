@@ -47,5 +47,3 @@ export const Link = (props: LinkProps) => {
     </a>
   )
 }
-
-Link.displayName = 'Link'
