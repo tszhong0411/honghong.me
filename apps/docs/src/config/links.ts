@@ -59,6 +59,10 @@ export const SIDEBAR_LINKS: SidebarLinks = [
         text: 'Blur Image'
       },
       {
+        href: '/ui/components/breadcrumb',
+        text: 'Breadcrumb'
+      },
+      {
         href: '/ui/components/button',
         text: 'Button'
       },
