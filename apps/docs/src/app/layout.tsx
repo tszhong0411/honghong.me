@@ -111,7 +111,7 @@ const Layout = (props: LayoutProps) => {
       className={cn(GeistSans.variable, GeistMono.variable, 'scroll-smooth')}
       suppressHydrationWarning
     >
-      <body>
+      <body vaul-drawer-wrapper=''>
         <Providers>
           {children}
           <Toaster />
