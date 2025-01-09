@@ -36,5 +36,3 @@ export const BlurImage = (props: ImageProps) => {
     </div>
   )
 }
-
-BlurImage.displayName = 'Image'

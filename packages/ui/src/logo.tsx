@@ -15,5 +15,3 @@ export const Logo = (props: React.SVGAttributes<SVGElement>) => {
     </svg>
   )
 }
-
-Logo.displayName = 'Logo'

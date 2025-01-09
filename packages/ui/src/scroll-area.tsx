@@ -37,6 +37,3 @@ export const ScrollBar = (
     </ScrollAreaPrimitive.ScrollAreaScrollbar>
   )
 }
-
-ScrollArea.displayName = ScrollAreaPrimitive.ScrollArea.displayName
-ScrollBar.displayName = ScrollAreaPrimitive.Scrollbar.displayName

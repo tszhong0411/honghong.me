@@ -16,5 +16,3 @@ export const Label = (
 
   return <LabelPrimitive.Root className={cn(labelVariants(), className)} {...rest} />
 }
-
-Label.displayName = LabelPrimitive.Root.displayName

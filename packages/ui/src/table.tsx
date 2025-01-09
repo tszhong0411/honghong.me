@@ -78,12 +78,3 @@ export const TableCaption = (props: React.ComponentProps<'caption'>) => {
 
   return <caption className={cn('text-muted-foreground mt-4 text-sm', className)} {...rest} />
 }
-
-Table.displayName = 'Table'
-TableHeader.displayName = 'TableHeader'
-TableBody.displayName = 'TableBody'
-TableFooter.displayName = 'TableFooter'
-TableRow.displayName = 'TableRow'
-TableHead.displayName = 'TableHead'
-TableCell.displayName = 'TableCell'
-TableCaption.displayName = 'TableCaption'

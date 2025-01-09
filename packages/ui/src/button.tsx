@@ -50,5 +50,3 @@ export const Button = (
 
   return <Component className={cn(buttonVariants({ variant, size, className }))} {...rest} />
 }
-
-Button.displayName = 'Button'

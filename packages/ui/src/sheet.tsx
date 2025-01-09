@@ -102,10 +102,3 @@ export const SheetDescription = (
     />
   )
 }
-
-SheetOverlay.displayName = SheetPrimitive.Overlay.displayName
-SheetContent.displayName = SheetPrimitive.Content.displayName
-SheetHeader.displayName = 'SheetHeader'
-SheetFooter.displayName = 'SheetFooter'
-SheetTitle.displayName = SheetPrimitive.Title.displayName
-SheetDescription.displayName = SheetPrimitive.Description.displayName

@@ -100,11 +100,3 @@ export const DialogDescription = (
     />
   )
 }
-
-DialogPortal.displayName = DialogPrimitive.Portal.displayName
-DialogOverlay.displayName = DialogPrimitive.Overlay.displayName
-DialogContent.displayName = DialogPrimitive.Content.displayName
-DialogHeader.displayName = 'DialogHeader'
-DialogFooter.displayName = 'DialogFooter'
-DialogTitle.displayName = DialogPrimitive.Title.displayName
-DialogDescription.displayName = DialogPrimitive.Description.displayName

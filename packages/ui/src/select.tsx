@@ -141,11 +141,3 @@ export const SelectSeparator = (props: React.ComponentProps<typeof SelectPrimiti
     <SelectPrimitive.Separator className={cn('bg-muted -mx-1 my-1 h-px', className)} {...rest} />
   )
 }
-
-SelectTrigger.displayName = SelectPrimitive.Trigger.displayName
-SelectScrollUpButton.displayName = SelectPrimitive.ScrollUpButton.displayName
-SelectScrollDownButton.displayName = SelectPrimitive.ScrollDownButton.displayName
-SelectContent.displayName = SelectPrimitive.Content.displayName
-SelectLabel.displayName = SelectPrimitive.Label.displayName
-SelectItem.displayName = SelectPrimitive.Item.displayName
-SelectSeparator.displayName = SelectPrimitive.Separator.displayName

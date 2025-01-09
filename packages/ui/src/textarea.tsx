@@ -19,5 +19,3 @@ export const Textarea = (props: TextareaProps) => {
     />
   )
 }
-
-Textarea.displayName = 'Textarea'

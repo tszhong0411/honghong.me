@@ -87,5 +87,3 @@ const CopyButton = (props: CopyButtonProps) => {
     </Button>
   )
 }
-
-CodeBlock.displayName = 'CodeBlock'

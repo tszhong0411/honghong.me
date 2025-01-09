@@ -50,7 +50,3 @@ export const TabsContent = (props: React.ComponentProps<typeof TabsPrimitive.Con
     />
   )
 }
-
-TabsTrigger.displayName = TabsPrimitive.Trigger.displayName
-TabsList.displayName = TabsPrimitive.List.displayName
-TabsContent.displayName = TabsPrimitive.Content.displayName

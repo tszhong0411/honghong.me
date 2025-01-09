@@ -24,5 +24,3 @@ export const Checkbox = (props: React.ComponentProps<typeof CheckboxPrimitive.Ro
     </CheckboxPrimitive.Root>
   )
 }
-
-Checkbox.displayName = CheckboxPrimitive.Root.displayName

@@ -19,5 +19,3 @@ export const Separator = (props: React.ComponentProps<typeof SeparatorPrimitive.
     />
   )
 }
-
-Separator.displayName = SeparatorPrimitive.Root.displayName

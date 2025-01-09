@@ -652,27 +652,3 @@ export const SidebarMenuSubButton = (
     />
   )
 }
-
-SidebarProvider.displayName = 'SidebarProvider'
-Sidebar.displayName = 'Sidebar'
-SidebarTrigger.displayName = 'SidebarTrigger'
-SidebarRail.displayName = 'SidebarRail'
-SidebarInset.displayName = 'SidebarInset'
-SidebarInput.displayName = 'SidebarInput'
-SidebarHeader.displayName = 'SidebarHeader'
-SidebarFooter.displayName = 'SidebarFooter'
-SidebarSeparator.displayName = 'SidebarSeparator'
-SidebarContent.displayName = 'SidebarContent'
-SidebarGroup.displayName = 'SidebarGroup'
-SidebarGroupLabel.displayName = 'SidebarGroupLabel'
-SidebarGroupAction.displayName = 'SidebarGroupAction'
-SidebarGroupContent.displayName = 'SidebarGroupContent'
-SidebarMenu.displayName = 'SidebarMenu'
-SidebarMenuItem.displayName = 'SidebarMenuItem'
-SidebarMenuButton.displayName = 'SidebarMenuButton'
-SidebarMenuAction.displayName = 'SidebarMenuAction'
-SidebarMenuBadge.displayName = 'SidebarMenuBadge'
-SidebarMenuSkeleton.displayName = 'SidebarMenuSkeleton'
-SidebarMenuSub.displayName = 'SidebarMenuSub'
-SidebarMenuSubItem.displayName = 'SidebarMenuSubItem'
-SidebarMenuSubButton.displayName = 'SidebarMenuSubButton'
