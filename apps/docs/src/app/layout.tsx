@@ -111,6 +111,7 @@ const Layout = (props: LayoutProps) => {
       className={cn(GeistSans.variable, GeistMono.variable, 'scroll-smooth')}
       suppressHydrationWarning
     >
+      {/* eslint-disable-next-line @eslint-react/dom/no-unknown-property -- custom attribute */}
       <body vaul-drawer-wrapper=''>
         <Providers>
           {children}
