@@ -151,6 +151,10 @@ export const SIDEBAR_LINKS: SidebarLinks = [
         text: 'Slider'
       },
       {
+        href: '/ui/components/switch',
+        text: 'Switch'
+      },
+      {
         href: '/ui/components/table',
         text: 'Table'
       },
