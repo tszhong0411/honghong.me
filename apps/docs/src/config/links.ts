@@ -131,6 +131,10 @@ export const SIDEBAR_LINKS: SidebarLinks = [
         text: 'Popover'
       },
       {
+        href: '/ui/components/resizable',
+        text: 'Resizable'
+      },
+      {
         href: '/ui/components/scroll-area',
         text: 'Scroll Area'
       },
