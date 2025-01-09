@@ -39,5 +39,6 @@ tsup
 turbopack
 unifiedjs
 usehooks
+vaul
 vfile
 zustand

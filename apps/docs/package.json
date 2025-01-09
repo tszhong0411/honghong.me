@@ -31,6 +31,7 @@
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-hook-form": "^7.54.2",
+    "recharts": "^2.15.0",
     "sharp": "^0.33.5",
     "shiki": "^1.24.4",
     "zod": "^3.24.1"

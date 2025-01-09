@@ -99,6 +99,10 @@ export const SIDEBAR_LINKS: SidebarLinks = [
         text: 'Dialog'
       },
       {
+        href: '/ui/components/drawer',
+        text: 'Drawer'
+      },
+      {
         href: '/ui/components/dropdown-menu',
         text: 'Dropdown Menu'
       },
