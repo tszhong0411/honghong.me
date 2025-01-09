@@ -7,6 +7,7 @@ calcom
 cleanmyma
 cleanmymac
 cleanshot
+colm
 delba
 duarte
 ghostty
@@ -38,6 +39,7 @@ samuelkraft
 tableplus
 tabtab
 theodorusclarence
+Tuite
 umami
 visualstudiocode
 vocs
