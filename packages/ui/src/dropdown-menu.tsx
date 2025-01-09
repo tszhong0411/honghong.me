@@ -22,8 +22,8 @@ export const DropdownMenuSubTrigger = (
     <DropdownMenuPrimitive.SubTrigger
       className={cn(
         'flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none',
-        'focus:bg-accent',
-        'data-[state=open]:bg-accent',
+        'focus:bg-accent focus:text-accent-foreground',
+        'data-[state=open]:bg-accent data-[state=open]:text-accent-foreground',
         inset && 'pl-8',
         className
       )}
@@ -163,7 +163,11 @@ export const DropdownMenuLabel = (
 
   return (
     <DropdownMenuPrimitive.Label
-      className={cn('px-2 py-1.5 text-sm font-semibold', inset && 'pl-8', className)}
+      className={cn(
+        'text-foreground px-2 py-1.5 text-sm font-semibold',
+        inset && 'pl-8',
+        className
+      )}
       {...rest}
     />
   )
@@ -176,7 +180,7 @@ export const DropdownMenuSeparator = (
 
   return (
     <DropdownMenuPrimitive.Separator
-      className={cn('bg-muted -mx-1 my-1 h-px', className)}
+      className={cn('bg-border -mx-1 my-1 h-px', className)}
       {...rest}
     />
   )
@@ -185,7 +189,12 @@ export const DropdownMenuSeparator = (
 export const DropdownMenuShortcut = (props: React.ComponentProps<'span'>) => {
   const { className, ...rest } = props
 
-  return <span className={cn('ml-auto text-xs tracking-widest opacity-60', className)} {...rest} />
+  return (
+    <span
+      className={cn('text-muted-foreground ml-auto text-xs tracking-widest', className)}
+      {...rest}
+    />
+  )
 }
 
 DropdownMenuSubTrigger.displayName = DropdownMenuPrimitive.SubTrigger.displayName
