@@ -123,6 +123,10 @@ export const SIDEBAR_LINKS: SidebarLinks = [
         text: 'Marquee'
       },
       {
+        href: '/ui/components/navigation-menu',
+        text: 'Navigation Menu'
+      },
+      {
         href: '/ui/components/pagination',
         text: 'Pagination'
       },
