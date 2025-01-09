@@ -119,6 +119,10 @@ export const SIDEBAR_LINKS: SidebarLinks = [
         text: 'Marquee'
       },
       {
+        href: '/ui/components/menubar',
+        text: 'Menubar'
+      },
+      {
         href: '/ui/components/popover',
         text: 'Popover'
       },
