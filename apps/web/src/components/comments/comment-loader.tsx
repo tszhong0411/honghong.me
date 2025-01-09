@@ -11,6 +11,4 @@ const CommentLoader = (props: React.ComponentProps<'div'>) => {
   )
 }
 
-CommentLoader.displayName = 'Loader'
-
 export default CommentLoader

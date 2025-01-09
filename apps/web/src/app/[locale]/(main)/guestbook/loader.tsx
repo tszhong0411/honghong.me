@@ -26,6 +26,4 @@ const Loader = (props: React.ComponentProps<'div'>) => {
   )
 }
 
-Loader.displayName = 'Loader'
-
 export default Loader
