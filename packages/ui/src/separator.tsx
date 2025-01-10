@@ -3,7 +3,9 @@
 import * as SeparatorPrimitive from '@radix-ui/react-separator'
 import { cn } from '@tszhong0411/utils'
 
-export const Separator = (props: React.ComponentProps<typeof SeparatorPrimitive.Root>) => {
+type SeparatorProps = React.ComponentProps<typeof SeparatorPrimitive.Root>
+
+export const Separator = (props: SeparatorProps) => {
   const { className, orientation = 'horizontal', decorative = true, ...rest } = props
 
   return (

@@ -117,7 +117,9 @@ export const MenubarContent = (props: MenubarContentProps) => {
   )
 }
 
-type MenubarItemProps = { inset?: boolean } & React.ComponentProps<typeof MenubarPrimitive.Item>
+type MenubarItemProps = {
+  inset?: boolean
+} & React.ComponentProps<typeof MenubarPrimitive.Item>
 
 export const MenubarItem = (props: MenubarItemProps) => {
   const { className, inset, ...rest } = props
@@ -187,7 +189,9 @@ export const MenubarRadioItem = (props: MenubarRadioItemProps) => {
   )
 }
 
-type MenubarLabelProps = { inset?: boolean } & React.ComponentProps<typeof MenubarPrimitive.Label>
+type MenubarLabelProps = {
+  inset?: boolean
+} & React.ComponentProps<typeof MenubarPrimitive.Label>
 
 export const MenubarLabel = (props: MenubarLabelProps) => {
   const { className, inset, ...rest } = props

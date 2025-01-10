@@ -5,7 +5,9 @@ import { cn } from '@tszhong0411/utils'
 
 export const Tabs = TabsPrimitive.Root
 
-export const TabsList = (props: React.ComponentProps<typeof TabsPrimitive.List>) => {
+type TabsListProps = React.ComponentProps<typeof TabsPrimitive.List>
+
+export const TabsList = (props: TabsListProps) => {
   const { className, ...rest } = props
 
   return (
@@ -19,7 +21,9 @@ export const TabsList = (props: React.ComponentProps<typeof TabsPrimitive.List>)
   )
 }
 
-export const TabsTrigger = (props: React.ComponentProps<typeof TabsPrimitive.Trigger>) => {
+type TabsTriggerProps = React.ComponentProps<typeof TabsPrimitive.Trigger>
+
+export const TabsTrigger = (props: TabsTriggerProps) => {
   const { className, ...rest } = props
 
   return (
@@ -36,7 +40,9 @@ export const TabsTrigger = (props: React.ComponentProps<typeof TabsPrimitive.Tri
   )
 }
 
-export const TabsContent = (props: React.ComponentProps<typeof TabsPrimitive.Content>) => {
+type TabsContentProps = React.ComponentProps<typeof TabsPrimitive.Content>
+
+export const TabsContent = (props: TabsContentProps) => {
   const { className, ...rest } = props
 
   return (

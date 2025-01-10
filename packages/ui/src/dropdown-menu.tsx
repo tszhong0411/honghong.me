@@ -11,11 +11,11 @@ export const DropdownMenuPortal = DropdownMenuPrimitive.Portal
 export const DropdownMenuSub = DropdownMenuPrimitive.Sub
 export const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup
 
-export const DropdownMenuSubTrigger = (
-  props: React.ComponentProps<typeof DropdownMenuPrimitive.SubTrigger> & {
-    inset?: boolean
-  }
-) => {
+type DropdownMenuSubTriggerProps = {
+  inset?: boolean
+} & React.ComponentProps<typeof DropdownMenuPrimitive.SubTrigger>
+
+export const DropdownMenuSubTrigger = (props: DropdownMenuSubTriggerProps) => {
   const { className, children, inset, ...rest } = props
 
   return (
@@ -35,9 +35,9 @@ export const DropdownMenuSubTrigger = (
   )
 }
 
-export const DropdownMenuSubContent = (
-  props: React.ComponentProps<typeof DropdownMenuPrimitive.SubContent>
-) => {
+type DropdownMenuSubContentProps = React.ComponentProps<typeof DropdownMenuPrimitive.SubContent>
+
+export const DropdownMenuSubContent = (props: DropdownMenuSubContentProps) => {
   const { className, ...rest } = props
 
   return (
@@ -57,9 +57,9 @@ export const DropdownMenuSubContent = (
   )
 }
 
-export const DropdownMenuContent = (
-  props: React.ComponentProps<typeof DropdownMenuPrimitive.Content>
-) => {
+type DropdownMenuContentProps = React.ComponentProps<typeof DropdownMenuPrimitive.Content>
+
+export const DropdownMenuContent = (props: DropdownMenuContentProps) => {
   const { className, sideOffset = 4, ...rest } = props
 
   return (
@@ -82,11 +82,11 @@ export const DropdownMenuContent = (
   )
 }
 
-export const DropdownMenuItem = (
-  props: React.ComponentProps<typeof DropdownMenuPrimitive.Item> & {
-    inset?: boolean
-  }
-) => {
+type DropdownMenuItemProps = {
+  inset?: boolean
+} & React.ComponentProps<typeof DropdownMenuPrimitive.Item>
+
+export const DropdownMenuItem = (props: DropdownMenuItemProps) => {
   const { className, inset, ...rest } = props
 
   return (
@@ -103,9 +103,9 @@ export const DropdownMenuItem = (
   )
 }
 
-export const DropdownMenuCheckboxItem = (
-  props: React.ComponentProps<typeof DropdownMenuPrimitive.CheckboxItem>
-) => {
+type DropdownMenuCheckboxItemProps = React.ComponentProps<typeof DropdownMenuPrimitive.CheckboxItem>
+
+export const DropdownMenuCheckboxItem = (props: DropdownMenuCheckboxItemProps) => {
   const { className, children, checked, ...rest } = props
 
   return (
@@ -129,9 +129,9 @@ export const DropdownMenuCheckboxItem = (
   )
 }
 
-export const DropdownMenuRadioItem = (
-  props: React.ComponentProps<typeof DropdownMenuPrimitive.RadioItem>
-) => {
+type DropdownMenuRadioItemProps = React.ComponentProps<typeof DropdownMenuPrimitive.RadioItem>
+
+export const DropdownMenuRadioItem = (props: DropdownMenuRadioItemProps) => {
   const { className, children, ...rest } = props
 
   return (
@@ -154,11 +154,11 @@ export const DropdownMenuRadioItem = (
   )
 }
 
-export const DropdownMenuLabel = (
-  props: React.ComponentProps<typeof DropdownMenuPrimitive.Label> & {
-    inset?: boolean
-  }
-) => {
+type DropdownMenuLabelProps = {
+  inset?: boolean
+} & React.ComponentProps<typeof DropdownMenuPrimitive.Label>
+
+export const DropdownMenuLabel = (props: DropdownMenuLabelProps) => {
   const { className, inset, ...rest } = props
 
   return (
@@ -173,9 +173,9 @@ export const DropdownMenuLabel = (
   )
 }
 
-export const DropdownMenuSeparator = (
-  props: React.ComponentProps<typeof DropdownMenuPrimitive.Separator>
-) => {
+type DropdownMenuSeparatorProps = React.ComponentProps<typeof DropdownMenuPrimitive.Separator>
+
+export const DropdownMenuSeparator = (props: DropdownMenuSeparatorProps) => {
   const { className, ...rest } = props
 
   return (
@@ -186,7 +186,9 @@ export const DropdownMenuSeparator = (
   )
 }
 
-export const DropdownMenuShortcut = (props: React.ComponentProps<'span'>) => {
+type DropdownMenuShortcutProps = React.ComponentProps<'span'>
+
+export const DropdownMenuShortcut = (props: DropdownMenuShortcutProps) => {
   const { className, ...rest } = props
 
   return (

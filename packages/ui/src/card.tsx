@@ -1,6 +1,8 @@
 import { cn } from '@tszhong0411/utils'
 
-export const Card = (props: React.ComponentProps<'div'>) => {
+type CardProps = React.ComponentProps<'div'>
+
+export const Card = (props: CardProps) => {
   const { className, ...rest } = props
 
   return (
@@ -11,13 +13,17 @@ export const Card = (props: React.ComponentProps<'div'>) => {
   )
 }
 
-export const CardHeader = (props: React.ComponentProps<'div'>) => {
+type CardHeaderProps = React.ComponentProps<'div'>
+
+export const CardHeader = (props: CardHeaderProps) => {
   const { className, ...rest } = props
 
   return <div className={cn('flex flex-col gap-1.5 p-6', className)} {...rest} />
 }
 
-export const CardTitle = (props: React.ComponentProps<'h3'>) => {
+type CardTitleProps = React.ComponentProps<'h3'>
+
+export const CardTitle = (props: CardTitleProps) => {
   const { className, ...rest } = props
 
   return (
@@ -26,19 +32,25 @@ export const CardTitle = (props: React.ComponentProps<'h3'>) => {
   )
 }
 
-export const CardDescription = (props: React.ComponentProps<'p'>) => {
+type CardDescriptionProps = React.ComponentProps<'p'>
+
+export const CardDescription = (props: CardDescriptionProps) => {
   const { className, ...rest } = props
 
   return <p className={cn('text-muted-foreground text-sm', className)} {...rest} />
 }
 
-export const CardContent = (props: React.ComponentProps<'div'>) => {
+type CardContentProps = React.ComponentProps<'div'>
+
+export const CardContent = (props: CardContentProps) => {
   const { className, ...rest } = props
 
   return <div className={cn('px-6 pb-6', className)} {...rest} />
 }
 
-export const CardFooter = (props: React.ComponentProps<'div'>) => {
+type CardFooterProps = React.ComponentProps<'div'>
+
+export const CardFooter = (props: CardFooterProps) => {
   const { className, ...rest } = props
 
   return <div className={cn('flex items-center px-6 pb-6', className)} {...rest} />

@@ -5,12 +5,12 @@ import { cn } from '@tszhong0411/utils'
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from 'lucide-react'
 
 export const Select = SelectPrimitive.Root
-
 export const SelectGroup = SelectPrimitive.Group
-
 export const SelectValue = SelectPrimitive.Value
 
-export const SelectTrigger = (props: React.ComponentProps<typeof SelectPrimitive.Trigger>) => {
+type SelectTriggerProps = React.ComponentProps<typeof SelectPrimitive.Trigger>
+
+export const SelectTrigger = (props: SelectTriggerProps) => {
   const { className, children, ...rest } = props
 
   return (
@@ -33,9 +33,9 @@ export const SelectTrigger = (props: React.ComponentProps<typeof SelectPrimitive
   )
 }
 
-export const SelectScrollUpButton = (
-  props: React.ComponentProps<typeof SelectPrimitive.ScrollUpButton>
-) => {
+type SelectScrollUpButtonProps = React.ComponentProps<typeof SelectPrimitive.ScrollUpButton>
+
+export const SelectScrollUpButton = (props: SelectScrollUpButtonProps) => {
   const { className, ...rest } = props
 
   return (
@@ -48,9 +48,9 @@ export const SelectScrollUpButton = (
   )
 }
 
-export const SelectScrollDownButton = (
-  props: React.ComponentProps<typeof SelectPrimitive.ScrollDownButton>
-) => {
+type SelectScrollDownButtonProps = React.ComponentProps<typeof SelectPrimitive.ScrollDownButton>
+
+export const SelectScrollDownButton = (props: SelectScrollDownButtonProps) => {
   const { className, ...rest } = props
 
   return (
@@ -63,7 +63,9 @@ export const SelectScrollDownButton = (
   )
 }
 
-export const SelectContent = (props: React.ComponentProps<typeof SelectPrimitive.Content>) => {
+type SelectContentProps = React.ComponentProps<typeof SelectPrimitive.Content>
+
+export const SelectContent = (props: SelectContentProps) => {
   const { className, children, position = 'popper', ...rest } = props
 
   return (
@@ -100,7 +102,9 @@ export const SelectContent = (props: React.ComponentProps<typeof SelectPrimitive
   )
 }
 
-export const SelectLabel = (props: React.ComponentProps<typeof SelectPrimitive.Label>) => {
+type SelectLabelProps = React.ComponentProps<typeof SelectPrimitive.Label>
+
+export const SelectLabel = (props: SelectLabelProps) => {
   const { className, ...rest } = props
 
   return (
@@ -111,7 +115,9 @@ export const SelectLabel = (props: React.ComponentProps<typeof SelectPrimitive.L
   )
 }
 
-export const SelectItem = (props: React.ComponentProps<typeof SelectPrimitive.Item>) => {
+type SelectItemProps = React.ComponentProps<typeof SelectPrimitive.Item>
+
+export const SelectItem = (props: SelectItemProps) => {
   const { className, children, ...rest } = props
 
   return (
@@ -134,7 +140,9 @@ export const SelectItem = (props: React.ComponentProps<typeof SelectPrimitive.It
   )
 }
 
-export const SelectSeparator = (props: React.ComponentProps<typeof SelectPrimitive.Separator>) => {
+type SelectSeparatorProps = React.ComponentProps<typeof SelectPrimitive.Separator>
+
+export const SelectSeparator = (props: SelectSeparatorProps) => {
   const { className, ...rest } = props
 
   return (

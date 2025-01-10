@@ -6,7 +6,9 @@ import { cn } from '@tszhong0411/utils'
 export const Popover = PopoverPrimitive.Root
 export const PopoverTrigger = PopoverPrimitive.Trigger
 
-export const PopoverContent = (props: React.ComponentProps<typeof PopoverPrimitive.Content>) => {
+type PopoverContentProps = React.ComponentProps<typeof PopoverPrimitive.Content>
+
+export const PopoverContent = (props: PopoverContentProps) => {
   const { className, align = 'center', sideOffset = 4, ...rest } = props
 
   return (

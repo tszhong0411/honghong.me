@@ -27,7 +27,6 @@ type FormItemContextValue = {
 }
 
 const FormFieldContext = createContext<FormFieldContextValue | undefined>(undefined)
-
 const FormItemContext = createContext<FormItemContextValue | undefined>(undefined)
 
 export const FormField = <
@@ -70,7 +69,9 @@ const useFormField = () => {
   }
 }
 
-export const FormItem = (props: React.ComponentProps<'div'>) => {
+type FormItemProps = React.ComponentProps<'div'>
+
+export const FormItem = (props: FormItemProps) => {
   const { className, ...rest } = props
   const id = useId()
 
@@ -83,7 +84,9 @@ export const FormItem = (props: React.ComponentProps<'div'>) => {
   )
 }
 
-export const FormLabel = (props: React.ComponentProps<typeof LabelPrimitive.Root>) => {
+type FormLabelProps = React.ComponentProps<typeof LabelPrimitive.Root>
+
+export const FormLabel = (props: FormLabelProps) => {
   const { className, ...rest } = props
   const { error, formItemId } = useFormField()
 
@@ -92,7 +95,9 @@ export const FormLabel = (props: React.ComponentProps<typeof LabelPrimitive.Root
   )
 }
 
-export const FormControl = (props: React.ComponentProps<typeof Slot>) => {
+type FormControlProps = React.ComponentProps<typeof Slot>
+
+export const FormControl = (props: FormControlProps) => {
   const { error, formItemId, formDescriptionId, formMessageId } = useFormField()
 
   return (
@@ -105,7 +110,9 @@ export const FormControl = (props: React.ComponentProps<typeof Slot>) => {
   )
 }
 
-export const FormDescription = (props: React.ComponentProps<'p'>) => {
+type FormDescriptionProps = React.ComponentProps<'p'>
+
+export const FormDescription = (props: FormDescriptionProps) => {
   const { className, ...rest } = props
   const { formDescriptionId } = useFormField()
 
@@ -118,7 +125,9 @@ export const FormDescription = (props: React.ComponentProps<'p'>) => {
   )
 }
 
-export const FormMessage = (props: React.ComponentProps<'p'>) => {
+type FormMessageProps = React.ComponentProps<'p'>
+
+export const FormMessage = (props: FormMessageProps) => {
   const { className, children, ...rest } = props
   const { error, formMessageId } = useFormField()
   const body = error ? String(error.message) : children

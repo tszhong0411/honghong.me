@@ -10,14 +10,13 @@ export const linkVariants = cva('', {
   }
 })
 
-type LinkProps = React.ComponentProps<'a'> & VariantProps<typeof linkVariants>
+type LinkProps = {
+  href: string
+} & Omit<React.ComponentProps<'a'>, 'href'> &
+  VariantProps<typeof linkVariants>
 
 export const Link = (props: LinkProps) => {
   const { href, className, children, variant, ...rest } = props
-
-  if (!href) {
-    throw new Error('Link must have an href')
-  }
 
   if (href.startsWith('/')) {
     return (
