@@ -16,7 +16,7 @@ type PageProps = {
     slug: string
     locale: string
   }>
-  searchParams: Promise<Record<string, never>>
+  searchParams: Promise<Record<string, string | string[] | undefined>>
 }
 
 export const generateStaticParams = (): Array<{ slug: string; locale: string }> => {

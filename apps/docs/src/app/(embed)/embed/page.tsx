@@ -1,14 +1,16 @@
 import { getErrorMessage } from '@tszhong0411/utils'
 
 type PageProps = {
-  params: Promise<Record<string, never>>
-  searchParams: Promise<{
-    component: string
-  }>
+  params: Promise<Record<string, string | string[] | undefined>>
+  searchParams: Promise<Record<string, string | string[] | undefined>>
 }
 
 const Page = async (props: PageProps) => {
   const { component } = await props.searchParams
+
+  if (!component || typeof component !== 'string') {
+    return <div>Error: Invalid component name</div>
+  }
 
   try {
     const Component = (await import(`@/components/demos/${component}`)).default
