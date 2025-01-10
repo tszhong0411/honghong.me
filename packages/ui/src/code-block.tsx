@@ -79,7 +79,6 @@ const CopyButton = (props: CopyButtonProps) => {
         onCopy()
         setIsCopied(true)
       }}
-      type='button'
       aria-label='Copy code to clipboard'
       {...rest}
     >

@@ -11,19 +11,11 @@ import { useState } from 'react'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from './collapsible'
 import { getIconByFilename } from './utils/get-icon-by-filename'
 
-type FilesProps = React.ComponentProps<'div'>
-type FileProps = {
-  name: string
-  icon?: React.ReactNode
-} & React.ComponentProps<'div'>
-type FolderProps = {
-  name: string
-  defaultOpen?: boolean
-} & React.ComponentProps<'div'>
-
 const item = cva(
   'hover:bg-accent hover:text-accent-foreground flex flex-row items-center gap-2 rounded-md px-2 py-1.5 text-sm'
 )
+
+type FilesProps = React.ComponentProps<'div'>
 
 export const Files = (props: FilesProps) => {
   const { children, className, ...rest } = props
@@ -34,6 +26,11 @@ export const Files = (props: FilesProps) => {
     </div>
   )
 }
+
+type FileProps = {
+  name: string
+  icon?: React.ReactNode
+} & React.ComponentProps<'div'>
 
 export const File = (props: FileProps) => {
   const { name, className, ...rest } = props
@@ -47,6 +44,11 @@ export const File = (props: FileProps) => {
     </div>
   )
 }
+
+type FolderProps = {
+  name: string
+  defaultOpen?: boolean
+} & React.ComponentProps<'div'>
 
 export const Folder = (props: FolderProps) => {
   const { children, name, defaultOpen = false, ...rest } = props

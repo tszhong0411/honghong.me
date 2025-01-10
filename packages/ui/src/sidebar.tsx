@@ -44,13 +44,13 @@ export const useSidebar = () => {
   return context
 }
 
-export const SidebarProvider = (
-  props: {
-    defaultOpen?: boolean
-    open?: boolean
-    onOpenChange?: (open: boolean) => void
-  } & React.ComponentProps<'div'>
-) => {
+type SidebarProviderProps = {
+  defaultOpen?: boolean
+  open?: boolean
+  onOpenChange?: (open: boolean) => void
+} & React.ComponentProps<'div'>
+
+export const SidebarProvider = (props: SidebarProviderProps) => {
   const {
     defaultOpen = true,
     open: openProp,
@@ -150,13 +150,13 @@ export const SidebarProvider = (
   )
 }
 
-export const Sidebar = (
-  props: {
-    side?: 'left' | 'right'
-    variant?: 'sidebar' | 'floating' | 'inset'
-    collapsible?: 'offcanvas' | 'icon' | 'none'
-  } & React.ComponentProps<'div'>
-) => {
+type SidebarProps = {
+  side?: 'left' | 'right'
+  variant?: 'sidebar' | 'floating' | 'inset'
+  collapsible?: 'offcanvas' | 'icon' | 'none'
+} & React.ComponentProps<'div'>
+
+export const Sidebar = (props: SidebarProps) => {
   const {
     side = 'left',
     variant = 'sidebar',
@@ -252,13 +252,14 @@ export const Sidebar = (
   )
 }
 
-export const SidebarTrigger = (props: Omit<React.ComponentProps<typeof Button>, 'type'>) => {
+type SidebarTriggerProps = React.ComponentProps<typeof Button>
+
+export const SidebarTrigger = (props: SidebarTriggerProps) => {
   const { className, onClick, ...rest } = props
   const { toggleSidebar } = useSidebar()
 
   return (
     <Button
-      type='button'
       data-sidebar='trigger'
       variant='ghost'
       size='icon'
@@ -275,7 +276,9 @@ export const SidebarTrigger = (props: Omit<React.ComponentProps<typeof Button>, 
   )
 }
 
-export const SidebarRail = (props: React.ComponentProps<'button'>) => {
+type SidebarRailProps = React.ComponentProps<'button'>
+
+export const SidebarRail = (props: SidebarRailProps) => {
   const { className, ...rest } = props
   const { toggleSidebar } = useSidebar()
 
@@ -301,7 +304,9 @@ export const SidebarRail = (props: React.ComponentProps<'button'>) => {
   )
 }
 
-export const SidebarInset = (props: React.ComponentProps<'main'>) => {
+type SidebarInsetProps = React.ComponentProps<'main'>
+
+export const SidebarInset = (props: SidebarInsetProps) => {
   const { className, ...rest } = props
 
   return (
@@ -316,7 +321,9 @@ export const SidebarInset = (props: React.ComponentProps<'main'>) => {
   )
 }
 
-export const SidebarInput = (props: React.ComponentProps<typeof Input>) => {
+type SidebarInputProps = React.ComponentProps<typeof Input>
+
+export const SidebarInput = (props: SidebarInputProps) => {
   const { className, ...rest } = props
 
   return (
@@ -331,7 +338,9 @@ export const SidebarInput = (props: React.ComponentProps<typeof Input>) => {
   )
 }
 
-export const SidebarHeader = (props: React.ComponentProps<'div'>) => {
+type SidebarHeaderProps = React.ComponentProps<'div'>
+
+export const SidebarHeader = (props: SidebarHeaderProps) => {
   const { className, ...rest } = props
 
   return (
@@ -339,7 +348,9 @@ export const SidebarHeader = (props: React.ComponentProps<'div'>) => {
   )
 }
 
-export const SidebarFooter = (props: React.ComponentProps<'div'>) => {
+type SidebarFooterProps = React.ComponentProps<'div'>
+
+export const SidebarFooter = (props: SidebarFooterProps) => {
   const { className, ...rest } = props
 
   return (
@@ -347,7 +358,9 @@ export const SidebarFooter = (props: React.ComponentProps<'div'>) => {
   )
 }
 
-export const SidebarSeparator = (props: React.ComponentProps<typeof Separator>) => {
+type SidebarSeparatorProps = React.ComponentProps<typeof Separator>
+
+export const SidebarSeparator = (props: SidebarSeparatorProps) => {
   const { className, ...rest } = props
 
   return (
@@ -359,7 +372,9 @@ export const SidebarSeparator = (props: React.ComponentProps<typeof Separator>) 
   )
 }
 
-export const SidebarContent = (props: React.ComponentProps<'div'>) => {
+type SidebarContentProps = React.ComponentProps<'div'>
+
+export const SidebarContent = (props: SidebarContentProps) => {
   const { className, ...rest } = props
 
   return (
@@ -374,7 +389,9 @@ export const SidebarContent = (props: React.ComponentProps<'div'>) => {
   )
 }
 
-export const SidebarGroup = (props: React.ComponentProps<'div'>) => {
+type SidebarGroupProps = React.ComponentProps<'div'>
+
+export const SidebarGroup = (props: SidebarGroupProps) => {
   const { className, ...rest } = props
 
   return (
@@ -386,7 +403,11 @@ export const SidebarGroup = (props: React.ComponentProps<'div'>) => {
   )
 }
 
-export const SidebarGroupLabel = (props: { asChild?: boolean } & React.ComponentProps<'div'>) => {
+type SidebarGroupLabelProps = {
+  asChild?: boolean
+} & React.ComponentProps<'div'>
+
+export const SidebarGroupLabel = (props: SidebarGroupLabelProps) => {
   const { className, asChild = false, ...rest } = props
   const Comp = asChild ? Slot : 'div'
 
@@ -403,9 +424,11 @@ export const SidebarGroupLabel = (props: { asChild?: boolean } & React.Component
   )
 }
 
-export const SidebarGroupAction = (
-  props: { asChild?: boolean } & React.ComponentProps<'button'>
-) => {
+type SidebarGroupActionProps = {
+  asChild?: boolean
+} & React.ComponentProps<'button'>
+
+export const SidebarGroupAction = (props: SidebarGroupActionProps) => {
   const { className, asChild = false, ...rest } = props
   const Comp = asChild ? Slot : 'button'
 
@@ -424,13 +447,17 @@ export const SidebarGroupAction = (
   )
 }
 
-export const SidebarGroupContent = (props: React.ComponentProps<'div'>) => {
+type SidebarGroupContentProps = React.ComponentProps<'div'>
+
+export const SidebarGroupContent = (props: SidebarGroupContentProps) => {
   const { className, ...rest } = props
 
   return <div data-sidebar='group-content' className={cn('w-full text-sm', className)} {...rest} />
 }
 
-export const SidebarMenu = (props: React.ComponentProps<'ul'>) => {
+type SidebarMenuProps = React.ComponentProps<'ul'>
+
+export const SidebarMenu = (props: SidebarMenuProps) => {
   const { className, ...rest } = props
 
   return (
@@ -442,7 +469,9 @@ export const SidebarMenu = (props: React.ComponentProps<'ul'>) => {
   )
 }
 
-export const SidebarMenuItem = (props: React.ComponentProps<'li'>) => {
+type SidebarMenuItemProps = React.ComponentProps<'li'>
+
+export const SidebarMenuItem = (props: SidebarMenuItemProps) => {
   const { className, ...rest } = props
 
   return (
@@ -472,14 +501,14 @@ const sidebarMenuButtonVariants = cva(
   }
 )
 
-export const SidebarMenuButton = (
-  props: {
-    asChild?: boolean
-    isActive?: boolean
-    tooltip?: string | React.ComponentProps<typeof TooltipContent>
-  } & React.ComponentProps<'button'> &
-    VariantProps<typeof sidebarMenuButtonVariants>
-) => {
+type SidebarMenuButtonProps = {
+  asChild?: boolean
+  isActive?: boolean
+  tooltip?: string | React.ComponentProps<typeof TooltipContent>
+} & React.ComponentProps<'button'> &
+  VariantProps<typeof sidebarMenuButtonVariants>
+
+export const SidebarMenuButton = (props: SidebarMenuButtonProps) => {
   const {
     asChild = false,
     isActive = false,
@@ -526,12 +555,12 @@ export const SidebarMenuButton = (
   )
 }
 
-export const SidebarMenuAction = (
-  props: {
-    asChild?: boolean
-    showOnHover?: boolean
-  } & React.ComponentProps<'button'>
-) => {
+type SidebarMenuActionProps = {
+  asChild?: boolean
+  showOnHover?: boolean
+} & React.ComponentProps<'button'>
+
+export const SidebarMenuAction = (props: SidebarMenuActionProps) => {
   const { className, asChild = false, showOnHover = false, ...rest } = props
   const Comp = asChild ? Slot : 'button'
 
@@ -555,7 +584,9 @@ export const SidebarMenuAction = (
   )
 }
 
-export const SidebarMenuBadge = (props: React.ComponentProps<'div'>) => {
+type SidebarMenuIconProps = React.ComponentProps<'div'>
+
+export const SidebarMenuBadge = (props: SidebarMenuIconProps) => {
   const { className, ...rest } = props
 
   return (
@@ -575,11 +606,11 @@ export const SidebarMenuBadge = (props: React.ComponentProps<'div'>) => {
   )
 }
 
-export const SidebarMenuSkeleton = (
-  props: {
-    showIcon?: boolean
-  } & React.ComponentProps<'div'>
-) => {
+type SidebarMenuSkeletonProps = {
+  showIcon?: boolean
+} & React.ComponentProps<'div'>
+
+export const SidebarMenuSkeleton = (props: SidebarMenuSkeletonProps) => {
   const { className, showIcon = false, ...rest } = props
 
   // Random width between 50 to 90%.
@@ -606,7 +637,9 @@ export const SidebarMenuSkeleton = (
   )
 }
 
-export const SidebarMenuSub = (props: React.ComponentProps<'ul'>) => {
+type SidebarMenuSubProps = React.ComponentProps<'ul'>
+
+export const SidebarMenuSub = (props: SidebarMenuSubProps) => {
   const { className, ...rest } = props
 
   return (
@@ -622,15 +655,17 @@ export const SidebarMenuSub = (props: React.ComponentProps<'ul'>) => {
   )
 }
 
-export const SidebarMenuSubItem = (props: React.ComponentProps<'li'>) => <li {...props} />
+type SidebarMenuSubItemProps = React.ComponentProps<'li'>
 
-export const SidebarMenuSubButton = (
-  props: {
-    asChild?: boolean
-    size?: 'sm' | 'md'
-    isActive?: boolean
-  } & React.ComponentProps<'a'>
-) => {
+export const SidebarMenuSubItem = (props: SidebarMenuSubItemProps) => <li {...props} />
+
+type SidebarMenuSubButtonProps = {
+  asChild?: boolean
+  size?: 'sm' | 'md'
+  isActive?: boolean
+} & React.ComponentProps<'a'>
+
+export const SidebarMenuSubButton = (props: SidebarMenuSubButtonProps) => {
   const { asChild = false, size = 'md', isActive, className, ...rest } = props
 
   const Comp = asChild ? Slot : 'a'

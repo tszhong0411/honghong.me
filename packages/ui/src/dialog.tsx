@@ -7,9 +7,11 @@ import { XIcon } from 'lucide-react'
 export const Dialog = DialogPrimitive.Root
 export const DialogTrigger = DialogPrimitive.Trigger
 export const DialogClose = DialogPrimitive.Close
-const DialogPortal = DialogPrimitive.Portal
+export const DialogPortal = DialogPrimitive.Portal
 
-const DialogOverlay = (props: React.ComponentProps<typeof DialogPrimitive.Overlay>) => {
+type propsProps = React.ComponentProps<typeof DialogPrimitive.Overlay>
+
+export const DialogOverlay = (props: propsProps) => {
   const { className, ...rest } = props
 
   return (
@@ -25,7 +27,9 @@ const DialogOverlay = (props: React.ComponentProps<typeof DialogPrimitive.Overla
   )
 }
 
-export const DialogContent = (props: React.ComponentProps<typeof DialogPrimitive.Content>) => {
+type DialogContentProps = React.ComponentProps<typeof DialogPrimitive.Content>
+
+export const DialogContent = (props: DialogContentProps) => {
   const { className, children, ...rest } = props
 
   return (
@@ -58,7 +62,9 @@ export const DialogContent = (props: React.ComponentProps<typeof DialogPrimitive
   )
 }
 
-export const DialogHeader = (props: React.ComponentProps<'div'>) => {
+type DialogHeaderProps = React.ComponentProps<'div'>
+
+export const DialogHeader = (props: DialogHeaderProps) => {
   const { className, ...rest } = props
 
   return (
@@ -66,7 +72,9 @@ export const DialogHeader = (props: React.ComponentProps<'div'>) => {
   )
 }
 
-export const DialogFooter = (props: React.ComponentProps<'div'>) => {
+type DialogFooterProps = React.ComponentProps<'div'>
+
+export const DialogFooter = (props: DialogFooterProps) => {
   const { className, ...rest } = props
 
   return (
@@ -77,7 +85,9 @@ export const DialogFooter = (props: React.ComponentProps<'div'>) => {
   )
 }
 
-export const DialogTitle = (props: React.ComponentProps<typeof DialogPrimitive.Title>) => {
+type DialogTitleProps = React.ComponentProps<typeof DialogPrimitive.Title>
+
+export const DialogTitle = (props: DialogTitleProps) => {
   const { className, ...rest } = props
 
   return (
@@ -88,9 +98,9 @@ export const DialogTitle = (props: React.ComponentProps<typeof DialogPrimitive.T
   )
 }
 
-export const DialogDescription = (
-  props: React.ComponentProps<typeof DialogPrimitive.Description>
-) => {
+type DialogDescriptionProps = React.ComponentProps<typeof DialogPrimitive.Description>
+
+export const DialogDescription = (props: DialogDescriptionProps) => {
   const { className, ...rest } = props
 
   return (

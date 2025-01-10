@@ -8,7 +8,9 @@ import { SearchIcon } from 'lucide-react'
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from './dialog'
 import { VisuallyHidden } from './visually-hidden'
 
-export const Command = (props: React.ComponentProps<typeof CommandPrimitive>) => {
+type CommandProps = React.ComponentProps<typeof CommandPrimitive>
+
+export const Command = (props: CommandProps) => {
   const { className, ...rest } = props
 
   return (
@@ -50,7 +52,9 @@ export const CommandDialog = (props: CommandDialogProps) => {
   )
 }
 
-export const CommandInput = (props: React.ComponentProps<typeof CommandPrimitive.Input>) => {
+type CommandInputProps = React.ComponentProps<typeof CommandPrimitive.Input>
+
+export const CommandInput = (props: CommandInputProps) => {
   const { className, ...rest } = props
 
   return (
@@ -69,7 +73,9 @@ export const CommandInput = (props: React.ComponentProps<typeof CommandPrimitive
   )
 }
 
-export const CommandList = (props: React.ComponentProps<typeof CommandPrimitive.List>) => {
+type CommandListProps = React.ComponentProps<typeof CommandPrimitive.List>
+
+export const CommandList = (props: CommandListProps) => {
   const { className, ...rest } = props
 
   return (
@@ -80,11 +86,15 @@ export const CommandList = (props: React.ComponentProps<typeof CommandPrimitive.
   )
 }
 
-export const CommandEmpty = (props: React.ComponentProps<typeof CommandPrimitive.Empty>) => {
+type CommandEmptyProps = React.ComponentProps<typeof CommandPrimitive.Empty>
+
+export const CommandEmpty = (props: CommandEmptyProps) => {
   return <CommandPrimitive.Empty className='py-6 text-center text-sm' {...props} />
 }
 
-export const CommandGroup = (props: React.ComponentProps<typeof CommandPrimitive.Group>) => {
+type CommandGroupProps = React.ComponentProps<typeof CommandPrimitive.Group>
+
+export const CommandGroup = (props: CommandGroupProps) => {
   const { className, ...rest } = props
 
   return (
@@ -99,15 +109,17 @@ export const CommandGroup = (props: React.ComponentProps<typeof CommandPrimitive
   )
 }
 
-export const CommandSeparator = (
-  props: React.ComponentProps<typeof CommandPrimitive.Separator>
-) => {
+type CommandSeparatorProps = React.ComponentProps<typeof CommandPrimitive.Separator>
+
+export const CommandSeparator = (props: CommandSeparatorProps) => {
   const { className, ...rest } = props
 
   return <CommandPrimitive.Separator className={cn('bg-border -mx-1 h-px', className)} {...rest} />
 }
 
-export const CommandItem = (props: React.ComponentProps<typeof CommandPrimitive.Item>) => {
+type CommandItemProps = React.ComponentProps<typeof CommandPrimitive.Item>
+
+export const CommandItem = (props: CommandItemProps) => {
   const { className, ...rest } = props
 
   return (
@@ -123,7 +135,9 @@ export const CommandItem = (props: React.ComponentProps<typeof CommandPrimitive.
   )
 }
 
-export const CommandShortcut = (props: React.ComponentProps<'span'>) => {
+type CommandShortcutProps = React.ComponentProps<'span'>
+
+export const CommandShortcut = (props: CommandShortcutProps) => {
   const { className, ...rest } = props
 
   return (

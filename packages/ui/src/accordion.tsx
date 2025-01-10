@@ -6,15 +6,17 @@ import { ChevronDownIcon } from 'lucide-react'
 
 export const Accordion = AccordionPrimitive.Root
 
-export const AccordionItem = (props: React.ComponentProps<typeof AccordionPrimitive.Item>) => {
+type AccordionItemProps = React.ComponentProps<typeof AccordionPrimitive.Item>
+
+export const AccordionItem = (props: AccordionItemProps) => {
   const { className, ...rest } = props
 
   return <AccordionPrimitive.Item className={cn('border-b', className)} {...rest} />
 }
 
-export const AccordionTrigger = (
-  props: React.ComponentProps<typeof AccordionPrimitive.Trigger>
-) => {
+type AccordionTriggerProps = React.ComponentProps<typeof AccordionPrimitive.Trigger>
+
+export const AccordionTrigger = (props: AccordionTriggerProps) => {
   const { className, children, ...rest } = props
 
   return (
@@ -33,9 +35,9 @@ export const AccordionTrigger = (
   )
 }
 
-export const AccordionContent = (
-  props: React.ComponentProps<typeof AccordionPrimitive.Content>
-) => {
+type AccordionContentProps = React.ComponentProps<typeof AccordionPrimitive.Content>
+
+export const AccordionContent = (props: AccordionContentProps) => {
   const { className, children, ...rest } = props
 
   return (

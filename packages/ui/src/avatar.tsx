@@ -3,7 +3,9 @@
 import * as AvatarPrimitive from '@radix-ui/react-avatar'
 import { cn } from '@tszhong0411/utils'
 
-export const Avatar = (props: React.ComponentProps<typeof AvatarPrimitive.Root>) => {
+type AvatarProps = React.ComponentProps<typeof AvatarPrimitive.Root>
+
+export const Avatar = (props: AvatarProps) => {
   const { className, ...rest } = props
 
   return (
@@ -14,13 +16,17 @@ export const Avatar = (props: React.ComponentProps<typeof AvatarPrimitive.Root>)
   )
 }
 
-export const AvatarImage = (props: React.ComponentProps<typeof AvatarPrimitive.Image>) => {
+type AvatarImageProps = React.ComponentProps<typeof AvatarPrimitive.Image>
+
+export const AvatarImage = (props: AvatarImageProps) => {
   const { className, ...rest } = props
 
   return <AvatarPrimitive.Image className={cn('aspect-square size-full', className)} {...rest} />
 }
 
-export const AvatarFallback = (props: React.ComponentProps<typeof AvatarPrimitive.Fallback>) => {
+type AvatarFallbackProps = React.ComponentProps<typeof AvatarPrimitive.Fallback>
+
+export const AvatarFallback = (props: AvatarFallbackProps) => {
   const { className, ...rest } = props
 
   return (
