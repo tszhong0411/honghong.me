@@ -149,7 +149,6 @@ const DataTablePagination = <TData,>(props: DataTablePaginationProps<TData>) => 
               table.setPageIndex(0)
             }}
             disabled={!table.getCanPreviousPage()}
-            type='button'
           >
             <span className='sr-only'>Go to first page</span>
             <ChevronsLeftIcon className='size-4' aria-hidden='true' />
@@ -163,7 +162,6 @@ const DataTablePagination = <TData,>(props: DataTablePaginationProps<TData>) => 
               table.previousPage()
             }}
             disabled={!table.getCanPreviousPage()}
-            type='button'
           >
             <span className='sr-only'>Go to previous page</span>
             <ChevronLeftIcon className='size-4' aria-hidden='true' />
@@ -177,7 +175,6 @@ const DataTablePagination = <TData,>(props: DataTablePaginationProps<TData>) => 
               table.nextPage()
             }}
             disabled={!table.getCanNextPage()}
-            type='button'
           >
             <span className='sr-only'>Go to next page</span>
             <ChevronRightIcon className='size-4' aria-hidden='true' />
@@ -191,7 +188,6 @@ const DataTablePagination = <TData,>(props: DataTablePaginationProps<TData>) => 
               table.setPageIndex(table.getPageCount() - 1)
             }}
             disabled={!table.getCanNextPage()}
-            type='button'
           >
             <span className='sr-only'>Go to last page</span>
             <ChevronsRightIcon className='size-4' aria-hidden='true' />
@@ -224,12 +220,7 @@ export const DataTableColumnHeader = <TData, TValue>(
     <div className={cn('flex items-center gap-2', className)}>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button
-            variant='ghost'
-            size='sm'
-            className='data-[state=open]:bg-accent -ml-3 h-8'
-            type='button'
-          >
+          <Button variant='ghost' size='sm' className='data-[state=open]:bg-accent -ml-3 h-8'>
             <span>{title}</span>
             {isDesc ? <ArrowDownIcon className='ml-2.5 size-4' /> : null}
             {isAsc ? <ArrowUpIcon className='ml-2.5 size-4' /> : null}
@@ -278,7 +269,7 @@ export const DataTableViewOptions = <TData,>(props: DataTableViewOptionsProps<TD
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant='outline' size='sm' className='ml-auto hidden h-8 lg:flex' type='button'>
+        <Button variant='outline' size='sm' className='ml-auto hidden h-8 lg:flex'>
           <Settings2Icon className='mr-2 size-4' />
           View
         </Button>
@@ -337,7 +328,7 @@ export const DataTableFacetedFilter = <TData, TValue>(
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant='outline' size='sm' className='h-8 border-dashed' type='button'>
+        <Button variant='outline' size='sm' className='h-8 border-dashed'>
           <PlusCircleIcon className='mr-2 size-4' />
           {title}
           {selectedValues.size > 0 && (
@@ -491,7 +482,6 @@ export const DataTableToolbar = <TData,>(props: DataTableToolbarProps<TData>) =>
             onClick={() => {
               table.resetColumnFilters()
             }}
-            type='button'
           >
             Reset
             <XIcon className='ml-2 size-4' aria-hidden='true' />
