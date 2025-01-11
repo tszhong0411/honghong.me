@@ -27,7 +27,7 @@ const Connect = () => {
               className='text-muted-foreground hover:text-foreground flex items-center gap-3 transition-colors'
             >
               <Icon className='size-[18px]' />
-              <h2>{title}</h2>
+              <h3>{title}</h3>
             </Link>
           )
         })}
