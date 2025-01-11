@@ -4,22 +4,27 @@ import {
   Button,
   CommandDialog,
   CommandEmpty,
+  CommandFooter,
+  CommandFooterTrigger,
   CommandGroup,
   CommandInput,
   CommandItem,
   CommandList,
-  CommandSeparator
+  CommandSeparator,
+  Kbd,
+  Logo
 } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { ComponentIcon, MoonIcon, SearchIcon, SunIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useTheme } from 'next-themes'
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 
 import { SIDEBAR_LINKS } from '@/config/links'
 
 const Search = () => {
   const [isOpened, setIsOpened] = useState(false)
+  const [value, setValue] = useState('')
   const { setTheme } = useTheme()
   const router = useRouter()
 
@@ -27,6 +32,8 @@ const Search = () => {
     setIsOpened(false)
     command()
   }
+
+  const isSelectingTheme = value === 'Light' || value === 'Dark'
 
   return (
     <>
@@ -56,29 +63,36 @@ const Search = () => {
       >
         <SearchIcon className='size-5' />
       </Button>
-      <CommandDialog open={isOpened} onOpenChange={setIsOpened}>
+      <CommandDialog
+        open={isOpened}
+        onOpenChange={setIsOpened}
+        value={value}
+        onValueChange={setValue}
+      >
         <CommandInput placeholder='Type a command or search...' />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           {SIDEBAR_LINKS.map((group) => (
-            <CommandGroup key={group.title} heading={group.title}>
-              {group.links.map((link) => (
-                <CommandItem
-                  key={link.href}
-                  value={link.text}
-                  onSelect={() => {
-                    runCommand(() => {
-                      router.push(link.href)
-                    })
-                  }}
-                >
-                  <ComponentIcon className='mr-3' />
-                  {link.text}
-                </CommandItem>
-              ))}
-            </CommandGroup>
+            <Fragment key={group.title}>
+              <CommandGroup heading={group.title}>
+                {group.links.map((link) => (
+                  <CommandItem
+                    key={link.href}
+                    value={link.text}
+                    onSelect={() => {
+                      runCommand(() => {
+                        router.push(link.href)
+                      })
+                    }}
+                  >
+                    <ComponentIcon />
+                    {link.text}
+                  </CommandItem>
+                ))}
+              </CommandGroup>
+              <CommandSeparator />
+            </Fragment>
           ))}
-          <CommandSeparator />
           <CommandGroup heading='Theme'>
             <CommandItem
               onSelect={() => {
@@ -87,7 +101,7 @@ const Search = () => {
                 })
               }}
             >
-              <SunIcon className='mr-3' />
+              <SunIcon />
               Light
             </CommandItem>
             <CommandItem
@@ -97,11 +111,17 @@ const Search = () => {
                 })
               }}
             >
-              <MoonIcon className='mr-3' />
+              <MoonIcon />
               Dark
             </CommandItem>
           </CommandGroup>
         </CommandList>
+        <CommandFooter>
+          <Logo className='size-4' />
+          <CommandFooterTrigger triggerKey={<Kbd keys={['enter']} className='py-0' />}>
+            {isSelectingTheme ? 'Switch Theme' : 'Open Link'}
+          </CommandFooterTrigger>
+        </CommandFooter>
       </CommandDialog>
     </>
   )
