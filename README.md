@@ -1,16 +1,19 @@
-<p align="center">
-  <img alt="" src="https://honghong.me/images/projects/blog/cover.png">
-</p>
+<div align="center">
+  <a href="https://honghong.me">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="assets/dark-header.png">
+      <img alt="Project Cover" src="assets/light-header.png">
+    </picture>
+  </a>
 
-<h1 align="center">
-  honghong.me
-</h1>
+  <h1 align="center">
+    honghong.me
+  </h1>
 
-<p align="center">
-  <img alt="" src="https://img.shields.io/badge/Next.js-000000.svg?style=for-the-badge&logo=Next.js&labelColor=000">
-  <img alt="" src="https://img.shields.io/github/languages/top/tszhong0411/honghong.me?style=for-the-badge&labelColor=000">
-  <img alt="" src="https://img.shields.io/github/license/tszhong0411/honghong.me?style=for-the-badge&labelColor=000">
-</p>
+  <img src="https://img.shields.io/badge/Next.js-000000.svg?style=for-the-badge&logo=Next.js&labelColor=000" alt="Framework" />
+  <img src="https://img.shields.io/github/languages/top/tszhong0411/honghong.me?style=for-the-badge&labelColor=000" alt="Language" />
+  <img src="https://img.shields.io/github/license/tszhong0411/honghong.me?style=for-the-badge&labelColor=000" alt="License" />
+</div>
 
 Welcome to the monorepo of my personal blog! This repository houses the code for my blog, where I share my thoughts, projects, and insights. Feel free to explore and get inspired.
 
@@ -69,6 +72,26 @@ Welcome to the monorepo of my personal blog! This repository houses the code for
 - Upstash for API rate limiting
 - t3-env for environment variables
 - Umami Analytics
+
+### Email Templates
+
+#### Comment Notification
+
+<div align="center">
+  <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="assets/dark-comment-email-notification.png">
+      <img alt="Comment notification template" src="assets/light-comment-email-notification.png">
+    </picture>
+</div>
+
+#### Reply Notification
+
+<div align="center">
+  <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="assets/dark-reply-email-notification.png">
+      <img alt="Reply notification template" src="assets/light-reply-email-notification.png">
+    </picture>
+</div>
 
 ## Requirements
 

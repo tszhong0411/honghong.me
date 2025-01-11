@@ -31,8 +31,8 @@ const CommentPost = () => {
     }
   })
 
-  const commentHandler = (value?: string) => {
-    if (!content && !value) {
+  const commentHandler = () => {
+    if (!content) {
       toast.error(t('blog.comments.comment-cannot-be-empty'))
 
       return
@@ -40,7 +40,12 @@ const CommentPost = () => {
 
     commentsMutation.mutate({
       slug,
-      content: value ?? content
+      content: content,
+      date: new Date().toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      })
     })
   }
 
