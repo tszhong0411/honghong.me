@@ -15,8 +15,8 @@ import {
   Text
 } from '@react-email/components'
 
-import Footer from '@/components/footer'
-import Logo from '@/components/logo'
+import Footer from '../components/footer'
+import Logo from '../components/logo'
 
 type CommentProps = {
   comment: string
