@@ -119,6 +119,10 @@ export const SIDEBAR_LINKS: SidebarLinks = [
         text: 'Input'
       },
       {
+        href: '/ui/components/kbd',
+        text: 'Kbd'
+      },
+      {
         href: '/ui/components/label',
         text: 'Label'
       },
