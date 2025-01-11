@@ -15,15 +15,13 @@
   "dependencies": {
     "@react-email/components": "^0.0.31",
     "react": "19.0.0",
-    "react-dom": "19.0.0",
     "react-email": "3.0.4"
   },
   "devDependencies": {
     "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
     "@types/node": "^22.10.2",
-    "@types/react": "19.0.2",
-    "@types/react-dom": "19.0.2"
+    "@types/react": "19.0.2"
   },
   "lint-staged": {
     "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix",

@@ -31,10 +31,6 @@ const config: KnipConfig = {
         config: '../../prettier.config.js'
       }
     },
-    'packages/emails': {
-      // Required for React 19
-      ignoreDependencies: ['react-dom', '@types/react-dom']
-    },
     'packages/ui': {
       // https://github.com/shadcn-ui/ui/issues/4792
       ignoreDependencies: ['@radix-ui/react-context']
