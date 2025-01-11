@@ -1,12 +1,15 @@
 import {
   Command,
   CommandEmpty,
+  CommandFooter,
+  CommandFooterTrigger,
   CommandGroup,
   CommandInput,
   CommandItem,
   CommandList,
   CommandSeparator,
-  CommandShortcut
+  Kbd,
+  Logo
 } from '@tszhong0411/ui'
 import {
   CalculatorIcon,
@@ -19,43 +22,49 @@ import {
 
 const CommandDemo = () => {
   return (
-    <Command className='max-w-md rounded-lg border shadow-md'>
+    <Command className='max-w-md'>
       <CommandInput placeholder='Type a command or search...' />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading='Suggestions'>
           <CommandItem>
-            <CalendarIcon className='mr-2 size-4' />
+            <CalendarIcon />
             <span>Calendar</span>
           </CommandItem>
           <CommandItem>
-            <SmileIcon className='mr-2 size-4' />
+            <SmileIcon />
             <span>Search Emoji</span>
           </CommandItem>
           <CommandItem>
-            <CalculatorIcon className='mr-2 size-4' />
+            <CalculatorIcon />
             <span>Calculator</span>
           </CommandItem>
         </CommandGroup>
         <CommandSeparator />
         <CommandGroup heading='Settings'>
           <CommandItem>
-            <UserIcon className='mr-2 size-4' />
+            <UserIcon />
             <span>Profile</span>
-            <CommandShortcut>⌘P</CommandShortcut>
+            <Kbd keys={['command']}>P</Kbd>
           </CommandItem>
           <CommandItem>
-            <CreditCardIcon className='mr-2 size-4' />
+            <CreditCardIcon />
             <span>Billing</span>
-            <CommandShortcut>⌘B</CommandShortcut>
+            <Kbd keys={['command']}>B</Kbd>
           </CommandItem>
           <CommandItem>
-            <SettingsIcon className='mr-2 size-4' />
+            <SettingsIcon />
             <span>Settings</span>
-            <CommandShortcut>⌘S</CommandShortcut>
+            <Kbd keys={['command']}>S</Kbd>
           </CommandItem>
         </CommandGroup>
       </CommandList>
+      <CommandFooter>
+        <Logo className='size-4' />
+        <CommandFooterTrigger triggerKey={<Kbd keys={['enter']} className='py-0' />}>
+          Open Command
+        </CommandFooterTrigger>
+      </CommandFooter>
     </Command>
   )
 }
