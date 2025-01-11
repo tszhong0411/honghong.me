@@ -24,7 +24,7 @@ const Connect = () => {
             <Link
               key={href}
               href={href}
-              className='text-muted-foreground hover:text-foreground flex items-center gap-3 transition-colors'
+              className='text-muted-foreground hover:text-foreground flex w-fit items-center gap-3 transition-colors'
             >
               <Icon className='size-[18px]' />
               <h3>{title}</h3>
