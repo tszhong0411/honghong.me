@@ -77,19 +77,13 @@ Welcome to the monorepo of my personal blog! This repository houses the code for
 #### Comment Notification
 
 <div align="center">
-  <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="assets/dark-comment-email-notification.png">
-      <img alt="Comment notification template" src="assets/light-comment-email-notification.png">
-    </picture>
+  <img alt="Comment notification template" src="assets/comment-email-notification.png">
 </div>
 
 #### Reply Notification
 
 <div align="center">
-  <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="assets/dark-reply-email-notification.png">
-      <img alt="Reply notification template" src="assets/light-reply-email-notification.png">
-    </picture>
+  <img alt="Reply notification template" src="assets/reply-email-notification.png">
 </div>
 
 ## Requirements
