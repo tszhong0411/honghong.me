@@ -124,7 +124,7 @@ const Card = (props: CardProps) => {
       <div className='flex items-center justify-between p-4'>
         <div className='flex items-center gap-3'>
           <PencilIcon className='size-[18px]' />
-          <h2 className='font-light'>{t('homepage.latest-articles.card')}</h2>
+          <h2>{t('homepage.latest-articles.card')}</h2>
         </div>
         <ArrowUpRightIcon className='size-[18px] opacity-0 transition-opacity group-hover:opacity-100' />
       </div>
