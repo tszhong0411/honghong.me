@@ -6,11 +6,15 @@ import {
   Button,
   CommandDialog,
   CommandEmpty,
+  CommandFooter,
+  CommandFooterTrigger,
   CommandGroup,
   CommandInput,
   CommandItem,
   CommandList,
-  CommandSeparator
+  CommandSeparator,
+  Kbd,
+  Logo
 } from '@tszhong0411/ui'
 import { CodeIcon, CommandIcon, LinkIcon, LogInIcon, LogOutIcon } from 'lucide-react'
 import { signOut, useSession } from 'next-auth/react'
@@ -37,9 +41,14 @@ type Groups = Array<{
 
 const CommandMenu = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [selectingValue, setSelectingValue] = useState('')
   const [copy] = useCopyToClipboard()
   const { status } = useSession()
   const t = useTranslations()
+
+  const isSelectingCommand = [t('common.sign-out'), t('command-menu.actions.copy-link')].includes(
+    selectingValue
+  )
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -162,7 +171,12 @@ const CommandMenu = () => {
         <span className='sr-only'>{t('command-menu.open-menu')}</span>
         <CommandIcon className='size-4' />
       </Button>
-      <CommandDialog open={isOpen} onOpenChange={setIsOpen}>
+      <CommandDialog
+        open={isOpen}
+        onOpenChange={setIsOpen}
+        value={selectingValue}
+        onValueChange={setSelectingValue}
+      >
         <CommandInput placeholder={t('command-menu.placeholder')} />
         <CommandList>
           <CommandEmpty>{t('command-menu.no-results')}</CommandEmpty>
@@ -180,6 +194,14 @@ const CommandMenu = () => {
             </Fragment>
           ))}
         </CommandList>
+        <CommandFooter>
+          <Logo className='size-4' />
+          <CommandFooterTrigger triggerKey={<Kbd keys={['enter']} className='py-0' />}>
+            {isSelectingCommand
+              ? t('command-menu.trigger.open-command')
+              : t('command-menu.trigger.open-link')}
+          </CommandFooterTrigger>
+        </CommandFooter>
       </CommandDialog>
     </>
   )

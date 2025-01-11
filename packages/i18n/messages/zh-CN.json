@@ -32,7 +32,7 @@
       },
       "users": {
         "email": "电子邮件",
-        "failed-to-fetch-users": "无法获取用户数据。请刷新页面。",
+        "failed-to-fetch-users-data": "无法获取用户数据。请刷新页面。",
         "filter-names": "过滤名称...",
         "name": "名称",
         "role": "角色"
@@ -46,14 +46,14 @@
       "comment-posted": "评论已发布",
       "comments": "评论",
       "confirm-delete-comment": "您确定要删除此评论吗？此动作无法复原。",
-      "copy-link": "复制连结",
+      "copy-link": "复制链接",
       "delete-a-comment": "删除评论",
       "deleted-a-comment": "已删除评论",
       "dislike": "倒赞",
       "failed-to-load-comments": "无法载入评论。请刷新页面。",
       "failed-to-load-replies": "无法载入回复。请刷新页面。",
       "like": "赞",
-      "link-copied": "连结已复制到剪贴板",
+      "link-copied": "链接已复制到剪贴板",
       "need-logged-in-to-rate": "您必须登入才能评分评论",
       "newest": "最新",
       "no-comments": "没有评论",
@@ -89,7 +89,7 @@
   },
   "command-menu": {
     "actions": {
-      "copy-link": "复制连结",
+      "copy-link": "复制链接",
       "source-code": "源代码"
     },
     "groups": {
@@ -99,7 +99,11 @@
     },
     "no-results": "没有找到结果。",
     "open-menu": "开启指令选单",
-    "placeholder": "输入指令或搜寻"
+    "placeholder": "输入指令或搜寻",
+    "trigger": {
+      "open-command": "打开命令",
+      "open-link": "打开链接"
+    }
   },
   "common": {
     "cancel": "取消",
@@ -216,7 +220,7 @@
     "guestbook": "留言板",
     "home": "首页",
     "instagram": "Instagram",
-    "links": "连结",
+    "links": "链接",
     "now-playing": {
       "error": "无法获取 Spotify 资料",
       "loading": "载入中 ...",

@@ -89,7 +89,7 @@
   },
   "command-menu": {
     "actions": {
-      "copy-link": "Copy Link",
+      "copy-link": "Copy link",
       "source-code": "Source code"
     },
     "groups": {
@@ -99,7 +99,11 @@
     },
     "no-results": "No results found.",
     "open-menu": "Open command menu",
-    "placeholder": "Type a command or search"
+    "placeholder": "Type a command or search",
+    "trigger": {
+      "open-command": "Open Command",
+      "open-link": "Open Link"
+    }
   },
   "common": {
     "cancel": "Cancel",

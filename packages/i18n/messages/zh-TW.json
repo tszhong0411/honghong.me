@@ -99,7 +99,11 @@
     },
     "no-results": "沒有找到結果。",
     "open-menu": "開啟指令選單",
-    "placeholder": "輸入指令或搜尋"
+    "placeholder": "輸入指令或搜尋",
+    "trigger": {
+      "open-command": "打開命令",
+      "open-link": "打開連結"
+    }
   },
   "common": {
     "cancel": "取消",
