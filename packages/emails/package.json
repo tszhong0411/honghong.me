@@ -7,7 +7,7 @@
   "type": "module",
   "main": "src/index.ts",
   "scripts": {
-    "dev": "email dev --port 3001 --dir src",
+    "dev": "email dev --port 3001 --dir src/templates",
     "export": "email export",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint --fix ."
