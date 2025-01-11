@@ -3,7 +3,7 @@ import { cn } from '@tszhong0411/utils'
 /**
  * Inspired by: https://github.com/nextui-org/nextui/blob/93f68727c1cef10d8745d22099cf27011fd4dce3/packages/components/kbd/src/utils.ts
  */
-export type KbdKey =
+type KbdKey =
   | 'command'
   | 'shift'
   | 'ctrl'
@@ -24,7 +24,7 @@ export type KbdKey =
   | 'help'
   | 'space'
 
-export const kbdKeysMap: Record<KbdKey, string> = {
+const kbdKeysMap: Record<KbdKey, string> = {
   command: '⌘',
   shift: '⇧',
   ctrl: '⌃',
@@ -46,7 +46,7 @@ export const kbdKeysMap: Record<KbdKey, string> = {
   space: '␣'
 }
 
-export const kbdKeysLabelMap: Record<KbdKey, string> = {
+const kbdKeysLabelMap: Record<KbdKey, string> = {
   command: 'Command',
   shift: 'Shift',
   ctrl: 'Control',
