@@ -86,9 +86,8 @@ const Hero = () => {
                     exit='exit'
                     layout
                     transition={{
-                      type: 'spring',
-                      stiffness: 300,
-                      damping: 30
+                      type: 'tween',
+                      duration: 0.3
                     }}
                     className='inline-flex items-center justify-center leading-[30px] sm:leading-[45px]'
                   >
