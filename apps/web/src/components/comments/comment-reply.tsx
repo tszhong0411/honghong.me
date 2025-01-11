@@ -88,7 +88,12 @@ const CommentReply = () => {
     commentsMutation.mutate({
       slug,
       content,
-      parentId: comment.id
+      parentId: comment.id,
+      date: new Date().toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      })
     })
   }
 

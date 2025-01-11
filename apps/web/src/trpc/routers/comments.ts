@@ -14,7 +14,7 @@ import {
   ne,
   rates
 } from '@tszhong0411/db'
-import { CommentNotification } from '@tszhong0411/emails'
+import { Comment, Reply } from '@tszhong0411/emails'
 import { env } from '@tszhong0411/env'
 import { ratelimit } from '@tszhong0411/kv'
 import { allBlogPosts } from 'mdx/generated'
@@ -254,6 +254,7 @@ export const commentsRouter = createTRPCRouter({
       z.object({
         slug: z.string().min(1),
         content: z.string().min(1),
+        date: z.string().min(1),
         parentId: z.string().optional()
       })
     )
@@ -266,71 +267,78 @@ export const commentsRouter = createTRPCRouter({
 
       const commentId = createId()
 
-      await ctx.db.insert(comments).values({
-        id: commentId,
-        body: input.content,
-        userId: user.id,
-        postId: input.slug,
-        ...(input.parentId
-          ? {
-              parentId: input.parentId
-            }
-          : {})
-      })
-
       const page = allBlogPosts.find((post) => post.slug === input.slug)
 
-      if (!page) return
+      if (!page) throw new TRPCError({ code: 'NOT_FOUND', message: 'Blog post not found' })
 
       const title = page.title
       const { defaultImage, defaultName } = getDefaultUser(user.id)
 
-      const sendNotification = async (type: 'comment' | 'reply', to: string) => {
-        if (!isProduction) return
-        if (type === 'reply' && !input.parentId) return
+      const userProfile = {
+        name: user.name ?? defaultName,
+        image: user.image ?? defaultImage
+      }
 
-        await resend.emails.send({
-          from: 'Hong from honghong.me <me@honghong.me>',
-          to,
-          subject: `New ${type} posted`,
-          react: CommentNotification({
-            comment: input.content,
-            commenter: {
-              name: user.name ?? defaultName,
-              image: user.image ?? defaultImage
-            },
-            commentIdentifier:
-              type === 'comment'
-                ? `comment=${commentId}`
-                : `comment=${input.parentId}&reply=${commentId}`,
-            date: new Date().toDateString(),
-            post: {
-              title,
-              url: `https://honghong.me/blog/${input.slug}`
-            },
-            type
+      const post = {
+        title,
+        url: `https://honghong.me/blog/${input.slug}`
+      }
+
+      await ctx.db.transaction(async (tx) => {
+        await tx.insert(comments).values({
+          id: commentId,
+          body: input.content,
+          userId: user.id,
+          postId: input.slug,
+          parentId: input.parentId
+        })
+
+        // Notify the author of the blog post via email
+        if (!input.parentId && user.role === 'user') {
+          if (!isProduction) return
+
+          await resend.emails.send({
+            from: 'honghong.me <me@honghong.me>',
+            to: env.AUTHOR_EMAIL,
+            subject: 'New comment on your blog post',
+            react: Comment({
+              comment: input.content,
+              commenter: userProfile,
+              id: `comment=${commentId}`,
+              date: input.date,
+              post
+            })
           })
-        })
-      }
-
-      // Notify the author of the blog post via email
-      if (!input.parentId && user.role === 'user') {
-        await sendNotification('comment', env.AUTHOR_EMAIL)
-      }
-
-      // Notify the parent comment owner via email
-      if (input.parentId) {
-        const parentComment = await ctx.db.query.comments.findFirst({
-          where: eq(comments.id, input.parentId),
-          with: {
-            user: true
-          }
-        })
-
-        if (parentComment && parentComment.user.email !== user.email) {
-          await sendNotification('reply', parentComment.user.email)
         }
-      }
+
+        // Notify the parent comment owner via email
+        if (input.parentId) {
+          if (!isProduction) return
+
+          const parentComment = await tx.query.comments.findFirst({
+            where: eq(comments.id, input.parentId),
+            with: {
+              user: true
+            }
+          })
+
+          if (parentComment && parentComment.user.email !== user.email) {
+            await resend.emails.send({
+              from: 'honghong.me <me@honghong.me>',
+              to: parentComment.user.email,
+              subject: 'New reply to your comment',
+              react: Reply({
+                reply: input.content,
+                replier: userProfile,
+                comment: parentComment.body,
+                id: `comment=${input.parentId}&reply=${commentId}`,
+                date: input.date,
+                post
+              })
+            })
+          }
+        }
+      })
     }),
   delete: protectedProcedure
     .input(z.object({ id: z.string().min(1) }))
