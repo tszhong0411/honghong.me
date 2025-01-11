@@ -4,9 +4,7 @@ const PopoverDemo = () => {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button type='button' variant='outline'>
-          Open popover
-        </Button>
+        <Button variant='outline'>Open popover</Button>
       </PopoverTrigger>
       <PopoverContent className='w-80'>
         <div className='grid gap-4'>

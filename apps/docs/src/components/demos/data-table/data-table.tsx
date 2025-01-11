@@ -924,11 +924,7 @@ const columns: Array<ColumnDef<Task>> = [
     cell: ({ row }) => (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button
-            variant='ghost'
-            className='data-[state=open]:bg-muted flex size-8 p-0'
-            type='button'
-          >
+          <Button variant='ghost' className='data-[state=open]:bg-muted flex size-8 p-0'>
             <span className='sr-only'>Open menu</span>
             <MoreHorizontalIcon />
           </Button>

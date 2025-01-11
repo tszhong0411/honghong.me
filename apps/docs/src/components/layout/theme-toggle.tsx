@@ -10,7 +10,6 @@ const ThemeToggle = () => {
   return (
     <Button
       variant='ghost'
-      type='button'
       size='icon'
       onClick={() => {
         setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')

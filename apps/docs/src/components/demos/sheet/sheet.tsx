@@ -16,9 +16,7 @@ const SheetDemo = () => {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button type='button' variant='outline'>
-          Open
-        </Button>
+        <Button variant='outline'>Open</Button>
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>

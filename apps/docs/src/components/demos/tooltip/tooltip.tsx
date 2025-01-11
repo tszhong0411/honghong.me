@@ -5,9 +5,7 @@ const TooltipDemo = () => {
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger asChild>
-          <Button type='button' variant='outline'>
-            Hover
-          </Button>
+          <Button variant='outline'>Hover</Button>
         </TooltipTrigger>
         <TooltipContent>
           <p>Add to library</p>

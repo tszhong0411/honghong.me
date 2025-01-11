@@ -15,9 +15,7 @@ const AlertDialogDemo = () => {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button type='button' variant='outline'>
-          Show Dialog
-        </Button>
+        <Button variant='outline'>Show Dialog</Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>

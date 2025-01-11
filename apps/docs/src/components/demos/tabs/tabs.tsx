@@ -40,7 +40,7 @@ const TabsDemo = () => {
             </div>
           </CardContent>
           <CardFooter>
-            <Button type='button'>Save changes</Button>
+            <Button>Save changes</Button>
           </CardFooter>
         </Card>
       </TabsContent>
@@ -63,7 +63,7 @@ const TabsDemo = () => {
             </div>
           </CardContent>
           <CardFooter>
-            <Button type='button'>Save password</Button>
+            <Button>Save password</Button>
           </CardFooter>
         </Card>
       </TabsContent>

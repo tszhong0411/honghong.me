@@ -149,7 +149,6 @@ const CommentEditor = (props: CommentEditorProps) => {
       />
       <div className='flex flex-row items-center gap-0.5 px-1.5'>
         <Button
-          type='button'
           aria-label={t('blog.comments.toggle-bold')}
           variant='ghost'
           size='icon'
@@ -161,7 +160,6 @@ const CommentEditor = (props: CommentEditorProps) => {
           <BoldIcon className='size-4' />
         </Button>
         <Button
-          type='button'
           aria-label={t('blog.comments.toggle-strikethrough')}
           variant='ghost'
           size='icon'
@@ -173,7 +171,6 @@ const CommentEditor = (props: CommentEditorProps) => {
           <StrikethroughIcon className='size-4' />
         </Button>
         <Button
-          type='button'
           aria-label={t('blog.comments.toggle-italic')}
           variant='ghost'
           size='icon'

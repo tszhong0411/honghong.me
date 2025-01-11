@@ -130,7 +130,6 @@ const CommentReply = () => {
         <Button
           variant='secondary'
           className='h-8 px-2 text-xs font-medium'
-          type='button'
           onClick={() => {
             setIsReplying(false)
           }}

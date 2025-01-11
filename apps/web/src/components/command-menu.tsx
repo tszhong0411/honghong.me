@@ -165,7 +165,6 @@ const CommandMenu = () => {
         onClick={() => {
           setIsOpen(true)
         }}
-        type='button'
         aria-label={t('command-menu.open-menu')}
       >
         <span className='sr-only'>{t('command-menu.open-menu')}</span>

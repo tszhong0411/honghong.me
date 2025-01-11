@@ -27,7 +27,6 @@ const AdminProfileDropdown = () => {
   if (!data) {
     return (
       <Button
-        type='button'
         size='sm'
         onClick={() => {
           setDialogs({ signIn: true })
@@ -44,7 +43,7 @@ const AdminProfileDropdown = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className='size-9 rounded-full' variant='ghost' type='button'>
+        <Button className='size-9 rounded-full' variant='ghost'>
           <Avatar className='size-9'>
             <AvatarImage className='size-9' src={image ?? defaultImage} />
             <AvatarFallback>{getAvatarAbbreviation(name ?? defaultName)}</AvatarFallback>

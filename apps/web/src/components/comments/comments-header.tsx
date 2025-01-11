@@ -54,7 +54,7 @@ const CommentHeader = () => {
       </NumberFlowGroup>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button type='button' variant='outline' size='sm' className='h-7 gap-1 text-sm'>
+          <Button variant='outline' size='sm' className='h-7 gap-1 text-sm'>
             <ListFilterIcon className='size-3.5' />
             <span>{t('blog.comments.sort-by')}</span>
           </Button>

@@ -5,7 +5,6 @@ import { Button, toast } from '@tszhong0411/ui'
 const ToasterDemo = () => {
   return (
     <Button
-      type='button'
       variant='outline'
       onClick={() =>
         toast('Event has been created', {

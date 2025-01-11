@@ -15,9 +15,7 @@ const DialogDemo = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button type='button' variant='outline'>
-          Edit Profile
-        </Button>
+        <Button variant='outline'>Edit Profile</Button>
       </DialogTrigger>
       <DialogContent className='sm:max-w-[425px]'>
         <DialogHeader>

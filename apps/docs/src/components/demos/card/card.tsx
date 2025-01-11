@@ -47,10 +47,8 @@ const CardDemo = () => {
         </form>
       </CardContent>
       <CardFooter className='flex justify-between'>
-        <Button type='button' variant='outline'>
-          Cancel
-        </Button>
-        <Button type='button'>Deploy</Button>
+        <Button variant='outline'>Cancel</Button>
+        <Button>Deploy</Button>
       </CardFooter>
     </Card>
   )

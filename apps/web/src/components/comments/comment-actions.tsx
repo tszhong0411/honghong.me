@@ -129,7 +129,6 @@ const CommentActions = () => {
     <>
       <div className='flex gap-1'>
         <Button
-          type='button'
           variant='secondary'
           onClick={() => {
             rateHandler(true)
@@ -143,7 +142,6 @@ const CommentActions = () => {
           <NumberFlow willChange continuous value={comment.likes} />
         </Button>
         <Button
-          type='button'
           variant='secondary'
           onClick={() => {
             rateHandler(false)
@@ -158,7 +156,6 @@ const CommentActions = () => {
         </Button>
         {comment.parentId ? null : (
           <Button
-            type='button'
             variant='secondary'
             className='text-muted-foreground h-8 gap-1.5 px-2 text-xs font-medium'
             onClick={() => {
@@ -178,7 +175,6 @@ const CommentActions = () => {
           onClick={() => {
             setIsOpenReplies(!isOpenReplies)
           }}
-          type='button'
         >
           <ChevronDownIcon
             className={cn('size-4 transition-transform', {

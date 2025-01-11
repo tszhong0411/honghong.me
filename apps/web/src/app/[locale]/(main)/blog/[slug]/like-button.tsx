@@ -98,9 +98,9 @@ const LikeButton = (props: LikeButtonProps) => {
       <button
         ref={buttonRef}
         className='flex items-center gap-3 rounded-xl bg-zinc-900 px-4 py-2 text-lg text-white'
-        type='button'
         onClick={likeHandler}
         aria-label={t('blog.like-this-post')}
+        type='button'
       >
         <svg
           xmlns='http://www.w3.org/2000/svg'

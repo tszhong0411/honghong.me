@@ -15,7 +15,6 @@ const SignIn = () => {
         onClick={() => {
           setDialogs({ signIn: true })
         }}
-        type='button'
       >
         {t('common.sign-in')}
       </Button>

@@ -88,7 +88,6 @@ const MessageBox = (props: FormProps) => {
               onClick={() => {
                 void signOut()
               }}
-              type='button'
             >
               {t('common.sign-out')}
             </Button>

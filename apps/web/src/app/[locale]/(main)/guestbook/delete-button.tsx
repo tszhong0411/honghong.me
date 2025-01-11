@@ -38,7 +38,6 @@ const DeleteButton = () => {
         <AlertDialogTrigger asChild>
           <Button
             variant='destructive'
-            type='button'
             disabled={guestbookMutation.isPending}
             aria-disabled={guestbookMutation.isPending}
           >

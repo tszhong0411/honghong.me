@@ -67,9 +67,7 @@ const DrawerDemo = () => {
   return (
     <Drawer>
       <DrawerTrigger asChild>
-        <Button variant='outline' type='button'>
-          Open Drawer
-        </Button>
+        <Button variant='outline'>Open Drawer</Button>
       </DrawerTrigger>
       <DrawerContent>
         <div className='mx-auto w-full max-w-sm'>
@@ -87,7 +85,6 @@ const DrawerDemo = () => {
                   onClick(-10)
                 }}
                 disabled={goal <= 200}
-                type='button'
               >
                 <MinusIcon />
                 <span className='sr-only'>Decrease</span>
@@ -104,7 +101,6 @@ const DrawerDemo = () => {
                   onClick(10)
                 }}
                 disabled={goal >= 400}
-                type='button'
               >
                 <PlusIcon />
                 <span className='sr-only'>Increase</span>
@@ -127,11 +123,9 @@ const DrawerDemo = () => {
             </div>
           </div>
           <DrawerFooter>
-            <Button type='button'>Submit</Button>
+            <Button>Submit</Button>
             <DrawerClose asChild>
-              <Button variant='outline' type='button'>
-                Cancel
-              </Button>
+              <Button variant='outline'>Cancel</Button>
             </DrawerClose>
           </DrawerFooter>
         </div>

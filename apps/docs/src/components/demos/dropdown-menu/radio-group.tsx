@@ -18,9 +18,7 @@ const DropdownMenuRadioGroupDemo = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button type='button' variant='outline'>
-          Open
-        </Button>
+        <Button variant='outline'>Open</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className='w-56'>
         <DropdownMenuLabel>Panel Position</DropdownMenuLabel>

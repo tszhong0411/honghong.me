@@ -68,7 +68,6 @@ const SignInDialog = () => {
         </DialogHeader>
         <div className='my-6 flex flex-col gap-4'>
           <Button
-            type='button'
             className='h-10 rounded-xl font-bold'
             onClick={() => {
               setIsGitHubLoading(true)
@@ -86,7 +85,6 @@ const SignInDialog = () => {
             )}
           </Button>
           <Button
-            type='button'
             className='h-10 rounded-xl border font-bold'
             variant='ghost'
             onClick={() => {

@@ -61,7 +61,6 @@ const CommentMenu = () => {
             size='icon'
             className='size-8'
             aria-label={t('blog.comments.open-menu')}
-            type='button'
           >
             <MoreVerticalIcon className='size-5' />
           </Button>

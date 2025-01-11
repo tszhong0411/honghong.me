@@ -19,7 +19,6 @@ const ThemeSwitcher = () => {
         <Button
           variant='ghost'
           className='size-9 p-0'
-          type='button'
           aria-label={t('theme-toggle.toggle-theme')}
           data-testid='theme-toggle'
         >
