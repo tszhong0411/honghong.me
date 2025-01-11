@@ -52,7 +52,6 @@ Welcome to the monorepo of my personal blog! This repository houses the code for
 - Lighthouse score of nearly 100
 - SEO optimized with meta tags and JSON-LD
 - Open graph images using `next/og`
-- Fast refresh when updating MDX
 
 ### Development Experience
 
