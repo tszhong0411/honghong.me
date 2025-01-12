@@ -40,7 +40,7 @@ const ProjectCard = (props: ProjectCardProps) => {
       />
       <div className='flex-1 px-2 py-4'>
         <div className='space-y-2'>
-          <h2 className='text-2xl font-bold'>{name}</h2>
+          <h2 className='text-2xl font-semibold'>{name}</h2>
           <div className='text-muted-foreground'>{description}</div>
         </div>
         <div className='mt-4 flex flex-wrap gap-2'>
