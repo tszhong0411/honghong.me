@@ -110,7 +110,6 @@
     "delete": "Delete",
     "error": "Error",
     "likes": "{count, plural, =1 {# like} other {# likes}}",
-    "on": "on",
     "sign-in": "Sign in",
     "sign-out": "Sign out",
     "views": "{count, plural, =1 {# view} other {# views}}"

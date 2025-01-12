@@ -1,4 +1,4 @@
-import { useFormatter, useTranslations } from '@tszhong0411/i18n/client'
+import { useFormatter } from '@tszhong0411/i18n/client'
 import dayjs from 'dayjs'
 
 type Options = {
@@ -17,7 +17,6 @@ export const useFormattedDate = (date: Date | string, options: Options = {}) => 
   } = options
 
   const format = useFormatter()
-  const t = useTranslations()
   const now = new Date()
 
   const convertedDate = typeof date === 'string' ? new Date(date) : date
@@ -26,7 +25,7 @@ export const useFormattedDate = (date: Date | string, options: Options = {}) => 
     const weeksDiff = dayjs().diff(date, 'week')
 
     return Math.abs(weeksDiff) > 1
-      ? `${t('common.on')} ${format.dateTime(convertedDate, formatOptions)}`
+      ? format.dateTime(convertedDate, formatOptions)
       : format.relativeTime(convertedDate, now)
   } else {
     return format.dateTime(convertedDate, formatOptions)
