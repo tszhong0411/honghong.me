@@ -1,5 +1,56 @@
 # @tszhong0411/ui
 
+## 0.0.45
+
+### Patch Changes
+
+- [`97e5327`](https://github.com/tszhong0411/honghong.me/commit/97e5327e651b5d185b02d732dec499699bc07203) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Font size for inputs should not be smaller than 16px to prevent iOS zooming on focus
+
+- [#951](https://github.com/tszhong0411/honghong.me/pull/951) [`a7bbddb`](https://github.com/tszhong0411/honghong.me/commit/a7bbddb800fd90beb41ec96398e648534f6ef8c6) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Add kbd component
+
+- [#930](https://github.com/tszhong0411/honghong.me/pull/930) [`0eba388`](https://github.com/tszhong0411/honghong.me/commit/0eba38880d154a1732bb8a25fdf5c0f197e74faa) Thanks [@tszhong0411](https://github.com/tszhong0411)! - add toggle component
+
+- [#934](https://github.com/tszhong0411/honghong.me/pull/934) [`11a8470`](https://github.com/tszhong0411/honghong.me/commit/11a847091333e6b93123f22a8b855ec55b3bb00d) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Add slider component
+
+- [#940](https://github.com/tszhong0411/honghong.me/pull/940) [`e1d5dd9`](https://github.com/tszhong0411/honghong.me/commit/e1d5dd902a73cef1126c73244e3fe045f15cf2b7) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Add resizable component
+
+- [#937](https://github.com/tszhong0411/honghong.me/pull/937) [`23bdedc`](https://github.com/tszhong0411/honghong.me/commit/23bdedc36ee6ef46f88bf4dae62ff5101ef247d7) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Standardize the styles of dropdown menu
+
+- [`4385e83`](https://github.com/tszhong0411/honghong.me/commit/4385e830462a5de0ea71d3abe9bbe252058f4d6a) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Replace AlertTriangle with AlertTriangleIcon for consistency
+
+- [#936](https://github.com/tszhong0411/honghong.me/pull/936) [`c6beea2`](https://github.com/tszhong0411/honghong.me/commit/c6beea25f1456ea82ac51e55e1e095c3e5cd4eb3) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Add switch component
+
+- [#939](https://github.com/tszhong0411/honghong.me/pull/939) [`c98045b`](https://github.com/tszhong0411/honghong.me/commit/c98045b00ed6839210aff4cdfa53b70a87af0e2f) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Add menubar component
+
+- [`9cabe98`](https://github.com/tszhong0411/honghong.me/commit/9cabe98975c2dc9a87ba6cd4f7705fc36ea532c8) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Remove type=button as it's default
+
+- [`fdba13e`](https://github.com/tszhong0411/honghong.me/commit/fdba13e933085bec17f85ec686161377295e13f7) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Update license
+
+- [`28c0f26`](https://github.com/tszhong0411/honghong.me/commit/28c0f26d75918586ad7fab34ba8e5d21193513b1) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Use Kbd instead of CommandShortcut, remove SearchIcon, add CommandFooter
+
+- [#941](https://github.com/tszhong0411/honghong.me/pull/941) [`6c107fc`](https://github.com/tszhong0411/honghong.me/commit/6c107fcd46faef2ff57dfc0eb56b21738bb85f51) Thanks [@tszhong0411](https://github.com/tszhong0411)! - add pagination component
+
+- [#945](https://github.com/tszhong0411/honghong.me/pull/945) [`06bf6b8`](https://github.com/tszhong0411/honghong.me/commit/06bf6b82b5b43038d91be55e49eaf8d3b00b27bf) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Remove asChild in button
+
+- [#938](https://github.com/tszhong0411/honghong.me/pull/938) [`a534cdc`](https://github.com/tszhong0411/honghong.me/commit/a534cdcc43134650be191075eef102305ce9f8fa) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Add navigation menu component
+
+- [`cc65095`](https://github.com/tszhong0411/honghong.me/commit/cc65095c472b39ba9a460706f47c5e9db4b0c4d9) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Show rounding on mobile as well for alert dialog and dialog
+
+- [#929](https://github.com/tszhong0411/honghong.me/pull/929) [`b3a181c`](https://github.com/tszhong0411/honghong.me/commit/b3a181cc0d4f778e2e9cb971b2121e685ecf994e) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Add accordion component
+
+- [`4f58d9e`](https://github.com/tszhong0411/honghong.me/commit/4f58d9ee87d10998f1f80db89e019b1e6a8c1ec4) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Remove redundant screen reader text and add aria-labels for better accessibility
+
+- [#937](https://github.com/tszhong0411/honghong.me/pull/937) [`a2d0518`](https://github.com/tszhong0411/honghong.me/commit/a2d0518e492aa576abff890ef74300147f6953b9) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Add context menu component
+
+- [#944](https://github.com/tszhong0411/honghong.me/pull/944) [`8b49052`](https://github.com/tszhong0411/honghong.me/commit/8b490527c76f8dd768e2efd0244c381dde61e7ab) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Remove all unnecessary display names
+
+- [#943](https://github.com/tszhong0411/honghong.me/pull/943) [`20c98be`](https://github.com/tszhong0411/honghong.me/commit/20c98be28ded680b47f5113ca2daca719dfa5f2f) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Add drawer component
+
+- [#942](https://github.com/tszhong0411/honghong.me/pull/942) [`1dc6492`](https://github.com/tszhong0411/honghong.me/commit/1dc6492348beee5011fbeb088720ddaf98f72b50) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Add breadcrumb component
+
+- Updated dependencies [[`fdba13e`](https://github.com/tszhong0411/honghong.me/commit/fdba13e933085bec17f85ec686161377295e13f7)]:
+  - @tszhong0411/utils@0.0.17
+
 ## 0.0.44
 
 ### Patch Changes

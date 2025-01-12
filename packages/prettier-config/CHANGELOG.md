@@ -1,5 +1,14 @@
 # @tszhong0411/prettier-config
 
+## 0.0.12
+
+### Patch Changes
+
+- [`fdba13e`](https://github.com/tszhong0411/honghong.me/commit/fdba13e933085bec17f85ec686161377295e13f7) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Update license
+
+- Updated dependencies [[`fdba13e`](https://github.com/tszhong0411/honghong.me/commit/fdba13e933085bec17f85ec686161377295e13f7)]:
+  - @tszhong0411/prettier-plugin-package-json@0.0.2
+
 ## 0.0.11
 
 ### Patch Changes
