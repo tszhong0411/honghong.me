@@ -144,4 +144,4 @@ and more but I can't remember them all
 
 Please do not deploy this directly to production. It is not a template and is not intended to be used as one.
 
-This project is open source and available under the [GPL3 License](LICENSE).
+This project is open source and available under the [MIT License](LICENSE).
