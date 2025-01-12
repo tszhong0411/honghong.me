@@ -46,7 +46,7 @@ const SelectedProjects = () => {
       className='relative my-24'
     >
       <motion.h2
-        className='font-title text-center text-3xl font-bold'
+        className='text-center text-3xl font-bold'
         initial={{
           y: 30,
           opacity: 0
@@ -122,7 +122,7 @@ const Card = (props: CardProps) => {
         className='rounded-lg'
       />
       <div className='absolute bottom-6 left-7 flex flex-col transition-[left] ease-out group-hover:left-[30px]'>
-        <h3 className='font-title text-2xl font-bold text-white'>{name}</h3>
+        <h3 className='text-2xl font-bold text-white'>{name}</h3>
         <p className='dark:text-muted-foreground mt-2 text-zinc-100'>{description}</p>
       </div>
     </Link>

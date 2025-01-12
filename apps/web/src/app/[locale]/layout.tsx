@@ -7,7 +7,6 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
 import type { Metadata, Viewport } from 'next'
-import localFont from 'next/font/local'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
 
 import '@/styles/globals.css'
@@ -124,11 +123,6 @@ export const viewport: Viewport = {
   ]
 }
 
-const CalSans = localFont({
-  src: '../../../public/fonts/CalSans-SemiBold.woff2',
-  variable: '--font-title'
-})
-
 const Layout = async (props: LayoutProps) => {
   const { children } = props
   const { locale } = await props.params
@@ -139,7 +133,7 @@ const Layout = async (props: LayoutProps) => {
   return (
     <html
       lang={locale}
-      className={cn(GeistSans.variable, GeistMono.variable, CalSans.variable, 'scroll-smooth')}
+      className={cn(GeistSans.variable, GeistMono.variable, 'scroll-smooth')}
       suppressHydrationWarning
     >
       <body className='relative'>

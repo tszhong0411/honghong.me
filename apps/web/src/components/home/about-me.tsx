@@ -41,7 +41,7 @@ const AboutMe = () => {
       className='relative my-24'
     >
       <motion.h2
-        className='font-title text-center text-3xl font-bold'
+        className='text-center text-3xl font-bold'
         initial={{
           y: 30,
           opacity: 0

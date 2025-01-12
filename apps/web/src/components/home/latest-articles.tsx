@@ -48,7 +48,7 @@ const LatestArticles = () => {
       className='my-24'
     >
       <motion.h2
-        className='font-title text-center text-3xl font-bold'
+        className='text-center text-3xl font-bold'
         initial={{
           y: 30,
           opacity: 0
@@ -152,7 +152,7 @@ const Card = (props: CardProps) => {
         </div>
       </div>
       <div className='flex flex-col px-2 py-4 transition-transform ease-out group-hover:translate-x-0.5'>
-        <h3 className='font-title text-2xl font-bold'>{title}</h3>
+        <h3 className='text-2xl font-bold'>{title}</h3>
         <p className='text-muted-foreground mt-2'>{summary}</p>
       </div>
     </Link>

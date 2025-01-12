@@ -66,7 +66,7 @@ const Hero = () => {
     <div className='my-16 space-y-6'>
       <div className='flex justify-between gap-8'>
         <div className='flex flex-col gap-4'>
-          <h1 className='font-title flex flex-col flex-wrap gap-2 text-xl font-bold sm:text-3xl'>
+          <h1 className='flex flex-col flex-wrap gap-2 text-xl font-bold sm:text-3xl'>
             <div>{t('homepage.hero.title-top')}</div>
             <div className='flex gap-2'>
               <motion.div
