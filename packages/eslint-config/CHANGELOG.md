@@ -1,5 +1,13 @@
 # @tszhong0411/eslint-config
 
+## 0.1.19
+
+### Patch Changes
+
+- [#942](https://github.com/tszhong0411/honghong.me/pull/942) [`bf027a4`](https://github.com/tszhong0411/honghong.me/commit/bf027a4130c3c1c47f9381b1160bc7496a12cfb0) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Turn off `jsx-a11y/no-aria-hidden-on-focusable`
+
+- [`fdba13e`](https://github.com/tszhong0411/honghong.me/commit/fdba13e933085bec17f85ec686161377295e13f7) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Update license
+
 ## 0.1.18
 
 ### Patch Changes

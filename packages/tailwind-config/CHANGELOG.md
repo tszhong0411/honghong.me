@@ -1,5 +1,15 @@
 # @tszhong0411/tailwind-config
 
+## 0.0.18
+
+### Patch Changes
+
+- [`73035da`](https://github.com/tszhong0411/honghong.me/commit/73035dad0a4baeaffe3f5fadc7a580b86349fd57) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Remove Cal Sans
+
+- [`fdba13e`](https://github.com/tszhong0411/honghong.me/commit/fdba13e933085bec17f85ec686161377295e13f7) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Update license
+
+- [#929](https://github.com/tszhong0411/honghong.me/pull/929) [`b3a181c`](https://github.com/tszhong0411/honghong.me/commit/b3a181cc0d4f778e2e9cb971b2121e685ecf994e) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Add accordion component
+
 ## 0.0.17
 
 ### Patch Changes
