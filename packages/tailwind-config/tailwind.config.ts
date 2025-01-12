@@ -60,8 +60,7 @@ const config: Partial<Config> = {
       },
       fontFamily: {
         sans: ['var(--font-geist-sans)'],
-        mono: ['var(--font-geist-mono)'],
-        title: ['var(--font-title)']
+        mono: ['var(--font-geist-mono)']
       },
       keyframes: {
         'accordion-down': {
