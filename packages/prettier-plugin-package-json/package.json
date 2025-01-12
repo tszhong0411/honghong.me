@@ -2,7 +2,7 @@
   "name": "@tszhong0411/prettier-plugin-package-json",
   "version": "0.0.1",
   "description": "A prettier plugin using prettier-package-json",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "author": "tszhong0411 <me@honghong.me> (https://github.com/tszhong0411)",
   "homepage": "https://github.com/tszhong0411/honghong.me#readme",
   "repository": {

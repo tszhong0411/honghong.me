@@ -3,7 +3,7 @@
   "name": "@tszhong0411/web",
   "version": "0.0.0",
   "description": "The personal portfolio of tszhong0411",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "build": "pnpm build:mdx && dotenv -e ../../.env.local -- next build",
