@@ -13,7 +13,7 @@ const Layout = (props: LayoutProps) => {
   return (
     <>
       <Header />
-      <main id='skip-nav' className='mx-auto mb-16 max-w-5xl px-5 py-24 sm:px-8'>
+      <main id='skip-nav' className='mx-auto mb-16 max-w-5xl px-4 py-24 sm:px-8'>
         {children}
       </main>
       <Footer />
