@@ -1,6 +1,6 @@
 import { Checkbox, Label } from '@tszhong0411/ui'
 
-const CheckboxDisabled = () => {
+const CheckboxDisabledDemo = () => {
   return (
     <div className='flex items-center gap-2'>
       <Checkbox id='terms-2' disabled />
@@ -9,4 +9,4 @@ const CheckboxDisabled = () => {
   )
 }
 
-export default CheckboxDisabled
+export default CheckboxDisabledDemo

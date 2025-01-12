@@ -1,7 +1,7 @@
 import { Toggle } from '@tszhong0411/ui'
 import { UnderlineIcon } from 'lucide-react'
 
-const ToggleDisabled = () => {
+const ToggleDisabledDemo = () => {
   return (
     <Toggle aria-label='Toggle underline' disabled>
       <UnderlineIcon className='size-4' />
@@ -9,4 +9,4 @@ const ToggleDisabled = () => {
   )
 }
 
-export default ToggleDisabled
+export default ToggleDisabledDemo

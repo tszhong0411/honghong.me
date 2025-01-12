@@ -11,7 +11,7 @@ import {
 } from '@tszhong0411/ui'
 import { useState } from 'react'
 
-const DropdownMenuCheckboxes = () => {
+const DropdownMenuCheckboxesDemo = () => {
   const [showStatusBar, setShowStatusBar] = useState(true)
   const [showActivityBar, setShowActivityBar] = useState(false)
   const [showPanel, setShowPanel] = useState(false)
@@ -42,4 +42,4 @@ const DropdownMenuCheckboxes = () => {
   )
 }
 
-export default DropdownMenuCheckboxes
+export default DropdownMenuCheckboxesDemo

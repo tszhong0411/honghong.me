@@ -1,7 +1,7 @@
 import { Badge } from '@tszhong0411/ui'
 
-const BadgeDestructive = () => {
+const BadgeDestructiveDemo = () => {
   return <Badge variant='destructive'>Badge</Badge>
 }
 
-export default BadgeDestructive
+export default BadgeDestructiveDemo

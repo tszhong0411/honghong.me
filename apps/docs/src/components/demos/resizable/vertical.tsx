@@ -1,6 +1,6 @@
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@tszhong0411/ui'
 
-const ResizableVertical = () => {
+const ResizableVerticalDemo = () => {
   return (
     <ResizablePanelGroup
       direction='vertical'
@@ -21,4 +21,4 @@ const ResizableVertical = () => {
   )
 }
 
-export default ResizableVertical
+export default ResizableVerticalDemo

@@ -1,6 +1,6 @@
 import { Callout } from '@tszhong0411/ui'
 
-const CalloutWarning = () => {
+const CalloutWarningDemo = () => {
   return (
     <Callout title='Title' type='warning' className='max-w-md'>
       This is a warning callout.
@@ -8,4 +8,4 @@ const CalloutWarning = () => {
   )
 }
 
-export default CalloutWarning
+export default CalloutWarningDemo

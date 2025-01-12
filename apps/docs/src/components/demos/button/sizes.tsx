@@ -1,6 +1,6 @@
 import { Button } from '@tszhong0411/ui'
 
-const ButtonSizes = () => {
+const ButtonSizesDemo = () => {
   return (
     <div className='space-x-4'>
       <Button size='lg'>Large</Button>
@@ -9,4 +9,4 @@ const ButtonSizes = () => {
   )
 }
 
-export default ButtonSizes
+export default ButtonSizesDemo

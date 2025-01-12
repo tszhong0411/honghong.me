@@ -1,7 +1,7 @@
 import { Button } from '@tszhong0411/ui'
 
-const ButtonGhost = () => {
+const ButtonGhostDemo = () => {
   return <Button variant='ghost'>Ghost</Button>
 }
 
-export default ButtonGhost
+export default ButtonGhostDemo

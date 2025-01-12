@@ -70,7 +70,7 @@ const ReviewCard = (props: ReviewCardProps) => {
   )
 }
 
-const MarqueeVertical = () => {
+const MarqueeVerticalDemo = () => {
   return (
     <div className='flex max-h-[500px] max-w-[calc(100%+80px)] gap-6'>
       <Marquee gap='20px' fade pauseOnHover direction='up'>
@@ -87,4 +87,4 @@ const MarqueeVertical = () => {
   )
 }
 
-export default MarqueeVertical
+export default MarqueeVerticalDemo

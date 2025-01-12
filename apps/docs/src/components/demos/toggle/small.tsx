@@ -1,7 +1,7 @@
 import { Toggle } from '@tszhong0411/ui'
 import { ItalicIcon } from 'lucide-react'
 
-const ToggleSmall = () => {
+const ToggleSmallDemo = () => {
   return (
     <Toggle size='sm' aria-label='Toggle italic'>
       <ItalicIcon className='size-4' />
@@ -9,4 +9,4 @@ const ToggleSmall = () => {
   )
 }
 
-export default ToggleSmall
+export default ToggleSmallDemo

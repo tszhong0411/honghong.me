@@ -1,7 +1,7 @@
 import { Button } from '@tszhong0411/ui'
 
-const ButtonSecondary = () => {
+const ButtonSecondaryDemo = () => {
   return <Button variant='secondary'>Secondary</Button>
 }
 
-export default ButtonSecondary
+export default ButtonSecondaryDemo

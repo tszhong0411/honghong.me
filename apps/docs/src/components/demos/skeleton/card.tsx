@@ -1,6 +1,6 @@
 import { Skeleton } from '@tszhong0411/ui'
 
-const SkeletonCard = () => {
+const SkeletonCardDemo = () => {
   return (
     <div className='flex flex-col gap-3'>
       <Skeleton className='h-[125px] w-[250px] rounded-xl' />
@@ -12,4 +12,4 @@ const SkeletonCard = () => {
   )
 }
 
-export default SkeletonCard
+export default SkeletonCardDemo

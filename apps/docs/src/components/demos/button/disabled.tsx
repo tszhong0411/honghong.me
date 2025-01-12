@@ -1,7 +1,7 @@
 import { Button } from '@tszhong0411/ui'
 
-const ButtonDisabled = () => {
+const ButtonDisabledDemo = () => {
   return <Button disabled>Disabled</Button>
 }
 
-export default ButtonDisabled
+export default ButtonDisabledDemo

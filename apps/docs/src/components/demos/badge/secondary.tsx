@@ -1,7 +1,7 @@
 import { Badge } from '@tszhong0411/ui'
 
-const BadgeSecondary = () => {
+const BadgeSecondaryDemo = () => {
   return <Badge variant='secondary'>Badge</Badge>
 }
 
-export default BadgeSecondary
+export default BadgeSecondaryDemo
