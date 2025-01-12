@@ -65,12 +65,7 @@ export const PaginationPrevious = (props: PaginationPreviousProps) => {
   const { className, ...rest } = props
 
   return (
-    <PaginationLink
-      aria-label='Go to previous page'
-      size='default'
-      className={cn('gap-1 pl-2.5', className)}
-      {...rest}
-    >
+    <PaginationLink size='default' className={cn('gap-1 pl-2.5', className)} {...rest}>
       <ChevronLeftIcon className='size-4' />
       <span>Previous</span>
     </PaginationLink>
@@ -83,12 +78,7 @@ export const PaginationNext = (props: PaginationNextProps) => {
   const { className, ...rest } = props
 
   return (
-    <PaginationLink
-      aria-label='Go to next page'
-      size='default'
-      className={cn('gap-1 pr-2.5', className)}
-      {...rest}
-    >
+    <PaginationLink size='default' className={cn('gap-1 pr-2.5', className)} {...rest}>
       <span>Next</span>
       <ChevronRightIcon className='size-4' />
     </PaginationLink>
@@ -101,13 +91,9 @@ export const PaginationEllipsis = (props: PaginationEllipsisProps) => {
   const { className, ...rest } = props
 
   return (
-    <span
-      aria-hidden
-      className={cn('flex size-9 items-center justify-center', className)}
-      {...rest}
-    >
-      <MoreHorizontalIcon className='size-4' />
+    <span className={cn('flex size-9 items-center justify-center', className)} {...rest}>
       <span className='sr-only'>More pages</span>
+      <MoreHorizontalIcon className='size-4' aria-hidden='true' />
     </span>
   )
 }

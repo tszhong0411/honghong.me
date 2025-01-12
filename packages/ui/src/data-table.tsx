@@ -150,7 +150,6 @@ const DataTablePagination = <TData,>(props: DataTablePaginationProps<TData>) => 
             }}
             disabled={!table.getCanPreviousPage()}
           >
-            <span className='sr-only'>Go to first page</span>
             <ChevronsLeftIcon className='size-4' aria-hidden='true' />
           </Button>
           <Button
@@ -163,7 +162,6 @@ const DataTablePagination = <TData,>(props: DataTablePaginationProps<TData>) => 
             }}
             disabled={!table.getCanPreviousPage()}
           >
-            <span className='sr-only'>Go to previous page</span>
             <ChevronLeftIcon className='size-4' aria-hidden='true' />
           </Button>
           <Button
@@ -176,7 +174,6 @@ const DataTablePagination = <TData,>(props: DataTablePaginationProps<TData>) => 
             }}
             disabled={!table.getCanNextPage()}
           >
-            <span className='sr-only'>Go to next page</span>
             <ChevronRightIcon className='size-4' aria-hidden='true' />
           </Button>
           <Button
@@ -189,7 +186,6 @@ const DataTablePagination = <TData,>(props: DataTablePaginationProps<TData>) => 
             }}
             disabled={!table.getCanNextPage()}
           >
-            <span className='sr-only'>Go to last page</span>
             <ChevronsRightIcon className='size-4' aria-hidden='true' />
           </Button>
         </div>
@@ -476,7 +472,6 @@ export const DataTableToolbar = <TData,>(props: DataTableToolbarProps<TData>) =>
           )}
         {isFiltered && (
           <Button
-            aria-label='Reset filters'
             variant='ghost'
             className='h-8 px-2 lg:px-3'
             onClick={() => {

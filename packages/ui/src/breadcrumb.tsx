@@ -84,7 +84,6 @@ export const BreadcrumbEllipsis = (props: BreadcrumbEllipsisProps) => {
       {...rest}
     >
       <MoreHorizontalIcon className='size-4' />
-      <span className='sr-only'>More</span>
     </span>
   )
 }

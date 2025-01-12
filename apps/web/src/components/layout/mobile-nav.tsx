@@ -25,7 +25,6 @@ const MobileNav = () => {
           aria-label={t('layout.toggle-menu')}
           variant='ghost'
         >
-          <span className='sr-only'>{t('layout.toggle-menu')}</span>
           <MenuIcon className='size-4' />
         </Button>
       </DropdownMenuTrigger>

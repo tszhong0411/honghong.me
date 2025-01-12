@@ -85,9 +85,9 @@ const DrawerDemo = () => {
                   onClick(-10)
                 }}
                 disabled={goal <= 200}
+                aria-label='Decrease'
               >
                 <MinusIcon />
-                <span className='sr-only'>Decrease</span>
               </Button>
               <div className='flex-1 text-center'>
                 <div className='text-7xl font-bold tracking-tighter'>{goal}</div>
@@ -101,9 +101,9 @@ const DrawerDemo = () => {
                   onClick(10)
                 }}
                 disabled={goal >= 400}
+                aria-label='Increase'
               >
                 <PlusIcon />
-                <span className='sr-only'>Increase</span>
               </Button>
             </div>
             <div className='mt-3 h-[120px]'>

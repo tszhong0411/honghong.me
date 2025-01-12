@@ -56,8 +56,11 @@ const Header = () => {
       >
         <span>{t('layout.skip-to-main-content')}</span>
       </a>
-      <Link href='/' className='flex items-center justify-center gap-1'>
-        <span className='sr-only'>{t('layout.home')}</span>
+      <Link
+        href='/'
+        className='flex items-center justify-center gap-1'
+        aria-label={t('layout.home')}
+      >
         <Logo width={28} height={28} aria-hidden='true' />
       </Link>
       <div className='flex items-center gap-2'>

@@ -268,10 +268,10 @@ export const SidebarTrigger = (props: SidebarTriggerProps) => {
         onClick?.(event)
         toggleSidebar()
       }}
+      aria-label='Toggle sidebar'
       {...rest}
     >
-      <span className='sr-only'>Toggle Sidebar</span>
-      <PanelLeftIcon className='size-4' />
+      <PanelLeftIcon className='size-4' aria-hidden='true' />
     </Button>
   )
 }

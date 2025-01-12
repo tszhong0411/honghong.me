@@ -22,7 +22,6 @@ const ThemeSwitcher = () => {
           aria-label={t('theme-toggle.toggle-theme')}
           data-testid='theme-toggle'
         >
-          <span className='sr-only'>{t('theme-toggle.toggle-theme')}</span>
           <SunIcon className='size-4 dark:hidden' />
           <MoonIcon className='hidden size-4 dark:block' />
         </Button>

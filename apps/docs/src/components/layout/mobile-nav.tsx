@@ -24,8 +24,7 @@ const MobileNav = () => {
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
-        <Button variant='ghost' size='icon' className='md:hidden'>
-          <span className='sr-only'>Toggle menu</span>
+        <Button variant='ghost' size='icon' className='md:hidden' aria-label='Open navigation menu'>
           <MenuIcon className='size-5' />
         </Button>
       </SheetTrigger>

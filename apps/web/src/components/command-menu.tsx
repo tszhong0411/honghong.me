@@ -167,7 +167,6 @@ const CommandMenu = () => {
         }}
         aria-label={t('command-menu.open-menu')}
       >
-        <span className='sr-only'>{t('command-menu.open-menu')}</span>
         <CommandIcon className='size-4' />
       </Button>
       <CommandDialog

@@ -55,7 +55,7 @@ export const DialogContent = (props: DialogContentProps) => {
           )}
         >
           <span className='sr-only'>Close</span>
-          <XIcon className='size-4' />
+          <XIcon className='size-4' aria-hidden='true' />
         </DialogPrimitive.Close>
       </DialogPrimitive.Content>
     </DialogPortal>

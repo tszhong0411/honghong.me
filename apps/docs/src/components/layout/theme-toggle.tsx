@@ -14,8 +14,8 @@ const ThemeToggle = () => {
       onClick={() => {
         setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
       }}
+      aria-label='Toggle theme'
     >
-      <span className='sr-only'>Toggle theme</span>
       <SunIcon className='size-5 dark:hidden' />
       <MoonIcon className='hidden size-5 dark:block' />
     </Button>
