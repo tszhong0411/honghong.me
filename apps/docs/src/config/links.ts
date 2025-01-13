@@ -17,6 +17,189 @@ export const HEADER_LINKS: HeaderLinks = [
   }
 ]
 
+const COMPONENT_LINKS = [
+  {
+    href: '/ui/components/accordion',
+    text: 'Accordion'
+  },
+  {
+    href: '/ui/components/alert-dialog',
+    text: 'Alert Dialog'
+  },
+  {
+    href: '/ui/components/aspect-ratio',
+    text: 'Aspect Ratio'
+  },
+  {
+    href: '/ui/components/avatar',
+    text: 'Avatar'
+  },
+  {
+    href: '/ui/components/badge',
+    text: 'Badge'
+  },
+  {
+    href: '/ui/components/blur-fade',
+    text: 'Blur Fade'
+  },
+  {
+    href: '/ui/components/blur-image',
+    text: 'Blur Image'
+  },
+  {
+    href: '/ui/components/breadcrumb',
+    text: 'Breadcrumb'
+  },
+  {
+    href: '/ui/components/button',
+    text: 'Button'
+  },
+  {
+    href: '/ui/components/callout',
+    text: 'Callout'
+  },
+  {
+    href: '/ui/components/card',
+    text: 'Card'
+  },
+  {
+    href: '/ui/components/checkbox',
+    text: 'Checkbox'
+  },
+  {
+    href: '/ui/components/collapsible',
+    text: 'Collapsible'
+  },
+  {
+    href: '/ui/components/command',
+    text: 'Command'
+  },
+  {
+    href: '/ui/components/context-menu',
+    text: 'Context Menu'
+  },
+  {
+    href: '/ui/components/data-table',
+    text: 'Data Table'
+  },
+  {
+    href: '/ui/components/dialog',
+    text: 'Dialog'
+  },
+  {
+    href: '/ui/components/drawer',
+    text: 'Drawer'
+  },
+  {
+    href: '/ui/components/dropdown-menu',
+    text: 'Dropdown Menu'
+  },
+  {
+    href: '/ui/components/files',
+    text: 'Files'
+  },
+  {
+    href: '/ui/components/form',
+    text: 'Form'
+  },
+  {
+    href: '/ui/components/input',
+    text: 'Input'
+  },
+  {
+    href: '/ui/components/kbd',
+    text: 'Kbd'
+  },
+  {
+    href: '/ui/components/label',
+    text: 'Label'
+  },
+  {
+    href: '/ui/components/link',
+    text: 'Link'
+  },
+  {
+    href: '/ui/components/marquee',
+    text: 'Marquee'
+  },
+  {
+    href: '/ui/components/menubar',
+    text: 'Menubar'
+  },
+  {
+    href: '/ui/components/navigation-menu',
+    text: 'Navigation Menu'
+  },
+  {
+    href: '/ui/components/pagination',
+    text: 'Pagination'
+  },
+  {
+    href: '/ui/components/popover',
+    text: 'Popover'
+  },
+  {
+    href: '/ui/components/resizable',
+    text: 'Resizable'
+  },
+  {
+    href: '/ui/components/scroll-area',
+    text: 'Scroll Area'
+  },
+  {
+    href: '/ui/components/select',
+    text: 'Select'
+  },
+  {
+    href: '/ui/components/separator',
+    text: 'Separator'
+  },
+  {
+    href: '/ui/components/sheet',
+    text: 'Sheet'
+  },
+  {
+    href: '/ui/components/sidebar',
+    text: 'Sidebar'
+  },
+  {
+    href: '/ui/components/skeleton',
+    text: 'Skeleton'
+  },
+  {
+    href: '/ui/components/slider',
+    text: 'Slider'
+  },
+  {
+    href: '/ui/components/switch',
+    text: 'Switch'
+  },
+  {
+    href: '/ui/components/table',
+    text: 'Table'
+  },
+  {
+    href: '/ui/components/tabs',
+    text: 'Tabs'
+  },
+  {
+    href: '/ui/components/textarea',
+    text: 'Textarea'
+  },
+  {
+    href: '/ui/components/toaster',
+    text: 'Toaster'
+  },
+  {
+    href: '/ui/components/toggle',
+    text: 'Toggle'
+  },
+  {
+    href: '/ui/components/tooltip',
+    text: 'Tooltip'
+  }
+]
+
 export const SIDEBAR_LINKS: SidebarLinks = [
   {
     title: 'Getting Started',
@@ -29,187 +212,6 @@ export const SIDEBAR_LINKS: SidebarLinks = [
   },
   {
     title: 'UI / Components',
-    links: [
-      {
-        href: '/ui/components/accordion',
-        text: 'Accordion'
-      },
-      {
-        href: '/ui/components/alert-dialog',
-        text: 'Alert Dialog'
-      },
-      {
-        href: '/ui/components/aspect-ratio',
-        text: 'Aspect Ratio'
-      },
-      {
-        href: '/ui/components/avatar',
-        text: 'Avatar'
-      },
-      {
-        href: '/ui/components/badge',
-        text: 'Badge'
-      },
-      {
-        href: '/ui/components/blur-fade',
-        text: 'Blur Fade'
-      },
-      {
-        href: '/ui/components/blur-image',
-        text: 'Blur Image'
-      },
-      {
-        href: '/ui/components/breadcrumb',
-        text: 'Breadcrumb'
-      },
-      {
-        href: '/ui/components/button',
-        text: 'Button'
-      },
-      {
-        href: '/ui/components/callout',
-        text: 'Callout'
-      },
-      {
-        href: '/ui/components/card',
-        text: 'Card'
-      },
-      {
-        href: '/ui/components/checkbox',
-        text: 'Checkbox'
-      },
-      {
-        href: '/ui/components/collapsible',
-        text: 'Collapsible'
-      },
-      {
-        href: '/ui/components/command',
-        text: 'Command'
-      },
-      {
-        href: '/ui/components/context-menu',
-        text: 'Context Menu'
-      },
-      {
-        href: '/ui/components/data-table',
-        text: 'Data Table'
-      },
-      {
-        href: '/ui/components/dialog',
-        text: 'Dialog'
-      },
-      {
-        href: '/ui/components/drawer',
-        text: 'Drawer'
-      },
-      {
-        href: '/ui/components/dropdown-menu',
-        text: 'Dropdown Menu'
-      },
-      {
-        href: '/ui/components/files',
-        text: 'Files'
-      },
-      {
-        href: '/ui/components/form',
-        text: 'Form'
-      },
-      {
-        href: '/ui/components/input',
-        text: 'Input'
-      },
-      {
-        href: '/ui/components/kbd',
-        text: 'Kbd'
-      },
-      {
-        href: '/ui/components/label',
-        text: 'Label'
-      },
-      {
-        href: '/ui/components/link',
-        text: 'Link'
-      },
-      {
-        href: '/ui/components/marquee',
-        text: 'Marquee'
-      },
-      {
-        href: '/ui/components/menubar',
-        text: 'Menubar'
-      },
-      {
-        href: '/ui/components/navigation-menu',
-        text: 'Navigation Menu'
-      },
-      {
-        href: '/ui/components/pagination',
-        text: 'Pagination'
-      },
-      {
-        href: '/ui/components/popover',
-        text: 'Popover'
-      },
-      {
-        href: '/ui/components/resizable',
-        text: 'Resizable'
-      },
-      {
-        href: '/ui/components/scroll-area',
-        text: 'Scroll Area'
-      },
-      {
-        href: '/ui/components/select',
-        text: 'Select'
-      },
-      {
-        href: '/ui/components/separator',
-        text: 'Separator'
-      },
-      {
-        href: '/ui/components/sheet',
-        text: 'Sheet'
-      },
-      {
-        href: '/ui/components/sidebar',
-        text: 'Sidebar'
-      },
-      {
-        href: '/ui/components/skeleton',
-        text: 'Skeleton'
-      },
-      {
-        href: '/ui/components/slider',
-        text: 'Slider'
-      },
-      {
-        href: '/ui/components/switch',
-        text: 'Switch'
-      },
-      {
-        href: '/ui/components/table',
-        text: 'Table'
-      },
-      {
-        href: '/ui/components/tabs',
-        text: 'Tabs'
-      },
-      {
-        href: '/ui/components/textarea',
-        text: 'Textarea'
-      },
-      {
-        href: '/ui/components/toaster',
-        text: 'Toaster'
-      },
-      {
-        href: '/ui/components/toggle',
-        text: 'Toggle'
-      },
-      {
-        href: '/ui/components/tooltip',
-        text: 'Tooltip'
-      }
-    ]
+    links: COMPONENT_LINKS
   }
 ]

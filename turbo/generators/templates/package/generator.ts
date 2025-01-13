@@ -109,7 +109,9 @@ export const packageGenerator = (plop: PlopTypes.NodePlopAPI): void => {
 
       // Install dependencies and format the code
       actions.push(() => {
-        const packageName = (answers as { name: string }).name
+        if (!answers?.name) throw new Error('Package name is required')
+
+        const packageName = answers.name
 
         /* eslint-disable sonarjs/no-os-command-from-path, sonarjs/os-command -- it's safe */
         execSync('pnpm install', {
