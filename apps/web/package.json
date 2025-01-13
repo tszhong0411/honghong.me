@@ -87,7 +87,7 @@
     "@types/canvas-confetti": "^1.9.0",
     "@types/node": "^22.10.2",
     "@types/react": "19.0.2",
-    "@types/react-dom": "19.0.2",
+    "@types/react-dom": "19.0.3",
     "@types/rss": "^0.0.32",
     "@types/tinycolor2": "^1.4.6",
     "@vitejs/plugin-react": "^4.3.4",
