@@ -9,6 +9,7 @@ contentlayer
 corepack
 dbaeumer
 dockercompose
+embla
 esbenp
 fuma
 fumadocs

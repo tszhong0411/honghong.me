@@ -63,6 +63,10 @@ const COMPONENT_LINKS = [
     text: 'Card'
   },
   {
+    href: '/ui/components/carousel',
+    text: 'Carousel'
+  },
+  {
     href: '/ui/components/checkbox',
     text: 'Checkbox'
   },
