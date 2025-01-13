@@ -195,6 +195,10 @@ const COMPONENT_LINKS = [
     text: 'Toaster'
   },
   {
+    href: '/ui/components/toggle-group',
+    text: 'Toggle Group'
+  },
+  {
     href: '/ui/components/toggle',
     text: 'Toggle'
   },
