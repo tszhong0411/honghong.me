@@ -49,7 +49,7 @@
     "@types/node": "^22.10.2",
     "@types/pluralize": "^0.0.33",
     "@types/react": "19.0.2",
-    "@types/react-dom": "19.0.2"
+    "@types/react-dom": "19.0.3"
   },
   "lint-staged": {
     "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix",
