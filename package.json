@@ -94,5 +94,5 @@
     "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix",
     "**/*": "prettier --write --ignore-unknown"
   },
-  "packageManager": "pnpm@9.15.3"
+  "packageManager": "pnpm@9.15.2"
 }
