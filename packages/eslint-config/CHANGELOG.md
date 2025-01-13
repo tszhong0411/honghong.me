@@ -1,5 +1,11 @@
 # @tszhong0411/eslint-config
 
+## 0.1.20
+
+### Patch Changes
+
+- [#955](https://github.com/tszhong0411/honghong.me/pull/955) [`6394741`](https://github.com/tszhong0411/honghong.me/commit/6394741ab8b550ac903adad165545d9babdd9557) Thanks [@dependabot](https://github.com/apps/dependabot)! - Bump eslint-config-flat-gitignore from 0.3.0 to 1.0.0
+
 ## 0.1.19
 
 ### Patch Changes

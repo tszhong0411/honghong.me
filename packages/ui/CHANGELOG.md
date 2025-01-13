@@ -1,5 +1,16 @@
 # @tszhong0411/ui
 
+## 0.0.46
+
+### Patch Changes
+
+- [#956](https://github.com/tszhong0411/honghong.me/pull/956) [`1ec8389`](https://github.com/tszhong0411/honghong.me/commit/1ec838917e1124133c928faed2fe5a8e5521ce4f) Thanks [@dependabot](https://github.com/apps/dependabot)! - Bump @types/react-dom from 19.0.2 to 19.0.3
+
+- [#958](https://github.com/tszhong0411/honghong.me/pull/958) [`ce41cb3`](https://github.com/tszhong0411/honghong.me/commit/ce41cb34db7caa177a11358814a5ee85cea826f0) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Add progress component
+
+- Updated dependencies []:
+  - @tszhong0411/utils@0.0.17
+
 ## 0.0.45
 
 ### Patch Changes
