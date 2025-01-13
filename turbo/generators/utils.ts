@@ -1,3 +1,6 @@
-export const capitalize = (text: string): string => {
-  return text.charAt(0).toUpperCase() + text.slice(1)
+export const titleCase = (str: string): string => {
+  return str
+    .split(/[\s-]+/)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(' ')
 }
