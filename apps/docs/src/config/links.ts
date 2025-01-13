@@ -139,6 +139,10 @@ const COMPONENT_LINKS = [
     text: 'Popover'
   },
   {
+    href: '/ui/components/progress',
+    text: 'Progress'
+  },
+  {
     href: '/ui/components/resizable',
     text: 'Resizable'
   },
