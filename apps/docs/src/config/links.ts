@@ -103,6 +103,10 @@ const COMPONENT_LINKS = [
     text: 'Form'
   },
   {
+    href: '/ui/components/hover-card',
+    text: 'Hover Card'
+  },
+  {
     href: '/ui/components/input',
     text: 'Input'
   },
