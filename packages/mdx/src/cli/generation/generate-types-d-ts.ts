@@ -5,7 +5,7 @@ import type { DocumentType, FieldDefs } from '@/types'
 import type { ComputedFields } from '../../types/config'
 import { AUTO_GENERATED_NOTE, BASE_FOLDER_PATH } from '../constants'
 import { getNestedDefs } from '../get-nested-defs'
-import { capitalizeFirstChar } from '../utils'
+import { capitalize } from '../utils'
 
 const renderComputedFields = (computedFields: ComputedFields): string => {
   const types = []
@@ -28,7 +28,7 @@ const renderFields = (fields: FieldDefs): string => {
         break
       }
       case 'list': {
-        types.push(`${field.name}: ${capitalizeFirstChar(field.name)}[]`)
+        types.push(`${field.name}: ${capitalize(field.name)}[]`)
         break
       }
     }
@@ -72,7 +72,7 @@ export const generateTypesDts = async (defs: DocumentType[]) => {
   if (nestedDefs.length > 0) {
     sourceFile.addTypeAliases(
       nestedDefs.map((def) => ({
-        name: capitalizeFirstChar(def.name),
+        name: capitalize(def.name),
         type: `\
 {
   ${renderFields(def.fields)}

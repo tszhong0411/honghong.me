@@ -1,17 +1,17 @@
 import fs from 'node:fs/promises'
 import { describe, expect, it, vi } from 'vitest'
 
-import { capitalizeFirstChar, writeJSON } from '@/cli/utils'
+import { capitalize, writeJSON } from '@/cli/utils'
 
 vi.mock('node:fs/promises')
 
-describe('capitalizeFirstChar', () => {
+describe('capitalize', () => {
   it('should capitalize the first character of a non-empty string', () => {
-    expect(capitalizeFirstChar('test')).toBe('Test')
+    expect(capitalize('test')).toBe('Test')
   })
 
   it('should return an empty string when input is an empty string', () => {
-    expect(capitalizeFirstChar('')).toBe('')
+    expect(capitalize('')).toBe('')
   })
 })
 
