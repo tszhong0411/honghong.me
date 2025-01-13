@@ -20,7 +20,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@auth/drizzle-adapter": "1.7.2",
+    "@auth/drizzle-adapter": "1.7.4",
     "@hookform/resolvers": "^3.9.1",
     "@icons-pack/react-simple-icons": "10.2.0",
     "@nanostores/react": "^0.8.4",
