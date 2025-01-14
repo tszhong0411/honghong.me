@@ -1,8 +1,7 @@
 import plugin from 'tailwindcss/plugin'
 
-// eslint-disable-next-line @typescript-eslint/unbound-method -- not sure why this is being flagged
-export const ui = plugin(({ addBase }) => {
-  addBase({
+export const ui = plugin((api) => {
+  api.addBase({
     ':root': {
       '--background': '0 0% 100%',
       '--foreground': '0 0% 3.9%',
