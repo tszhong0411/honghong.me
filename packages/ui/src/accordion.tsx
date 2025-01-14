@@ -23,7 +23,8 @@ export const AccordionTrigger = (props: AccordionTriggerProps) => {
     <AccordionPrimitive.Header className='flex'>
       <AccordionPrimitive.Trigger
         className={cn(
-          'flex flex-1 items-center justify-between py-4 text-left text-sm font-medium transition-all hover:underline [&[data-state=open]>svg]:rotate-180',
+          'flex flex-1 items-center justify-between py-4 text-left text-sm font-medium',
+          '[&[data-state=open]>svg]:rotate-180',
           className
         )}
         {...rest}
@@ -42,7 +43,11 @@ export const AccordionContent = (props: AccordionContentProps) => {
 
   return (
     <AccordionPrimitive.Content
-      className='data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm'
+      className={cn(
+        'overflow-hidden text-sm',
+        'data-[state=open]:animate-accordion-down',
+        'data-[state=closed]:animate-accordion-up'
+      )}
       {...rest}
     >
       <div className={cn('pb-4 pt-0', className)}>{children}</div>
