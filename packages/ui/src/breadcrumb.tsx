@@ -1,12 +1,13 @@
 import { Slot } from '@radix-ui/react-slot'
 import { cn } from '@tszhong0411/utils'
 import { ChevronRightIcon, MoreHorizontalIcon } from 'lucide-react'
+import { usePathname } from 'next/navigation'
 
 type BreadcrumbProps = {
   separator?: React.ReactNode
 } & React.ComponentProps<'nav'>
 
-export const Breadcrumb = (props: BreadcrumbProps) => <nav aria-label='breadcrumb' {...props} />
+export const Breadcrumb = (props: BreadcrumbProps) => <nav aria-label='Breadcrumb' {...props} />
 
 type BreadcrumbListProps = React.ComponentProps<'ol'>
 
@@ -39,8 +40,15 @@ type BreadcrumbLinkProps = {
 export const BreadcrumbLink = (props: BreadcrumbLinkProps) => {
   const { asChild, className, ...rest } = props
   const Comp = asChild ? Slot : 'a'
+  const pathname = usePathname()
 
-  return <Comp className={cn('hover:text-foreground transition-colors', className)} {...rest} />
+  return (
+    <Comp
+      className={cn('hover:text-foreground transition-colors', className)}
+      aria-current={props.href === pathname ? 'page' : undefined}
+      {...rest}
+    />
+  )
 }
 
 type BreadcrumbPageProps = React.ComponentProps<'span'>
@@ -53,7 +61,7 @@ export const BreadcrumbPage = (props: BreadcrumbPageProps) => {
       role='link'
       aria-disabled='true'
       aria-current='page'
-      className={cn('text-foreground font-normal', className)}
+      className={cn('text-foreground font-medium', className)}
       {...rest}
     />
   )
@@ -65,7 +73,12 @@ export const BreadcrumbSeparator = (props: BreadcrumbSeparatorProps) => {
   const { children, className, ...rest } = props
 
   return (
-    <li role='presentation' aria-hidden='true' className={cn(className)} {...rest}>
+    <li
+      role='presentation'
+      aria-hidden='true'
+      className={cn('text-muted-foreground', className)}
+      {...rest}
+    >
       {children ?? <ChevronRightIcon className='size-3.5' />}
     </li>
   )
@@ -80,7 +93,7 @@ export const BreadcrumbEllipsis = (props: BreadcrumbEllipsisProps) => {
     <span
       role='presentation'
       aria-hidden='true'
-      className={cn('flex size-9 items-center justify-center', className)}
+      className={cn('text-muted-foreground flex size-9 items-center justify-center', className)}
       {...rest}
     >
       <MoreHorizontalIcon className='size-4' />
