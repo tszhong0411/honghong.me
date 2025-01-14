@@ -18,7 +18,7 @@ export const tailwindcss: Linter.Config[] = [
     },
     settings: {
       tailwindcss: {
-        callees: ['cn', 'cva']
+        callees: ['cn', 'clsx', 'cva', 'tv']
       }
     }
   }
