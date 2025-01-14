@@ -8,7 +8,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle
+  navigationMenuTriggerVariants
 } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import Link from 'next/link'
@@ -91,7 +91,7 @@ const NavigationMenuDemo = () => {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
+          <NavigationMenuLink className={navigationMenuTriggerVariants()} asChild>
             <Link href='/introduction'>Introduction</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
