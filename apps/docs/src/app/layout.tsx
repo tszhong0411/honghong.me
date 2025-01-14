@@ -111,10 +111,10 @@ const Layout = (props: LayoutProps) => {
       className={cn(GeistSans.variable, GeistMono.variable, 'scroll-smooth')}
       suppressHydrationWarning
     >
-      {/* eslint-disable-next-line @eslint-react/dom/no-unknown-property -- custom attribute */}
-      <body vaul-drawer-wrapper=''>
+      <body>
         <Providers>
-          {children}
+          {/* eslint-disable-next-line @eslint-react/dom/no-unknown-property -- custom attribute */}
+          <div vaul-drawer-wrapper=''>{children}</div>
           <Toaster />
         </Providers>
       </body>
