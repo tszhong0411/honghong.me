@@ -49,7 +49,7 @@ type MenubarSubTriggerProps = {
 } & React.ComponentProps<typeof MenubarPrimitive.SubTrigger>
 
 export const MenubarSubTrigger = (props: MenubarSubTriggerProps) => {
-  const { className, inset, children, ...rest } = props
+  const { className, children, inset, ...rest } = props
 
   return (
     <MenubarPrimitive.SubTrigger

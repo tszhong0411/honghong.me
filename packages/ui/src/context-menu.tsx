@@ -16,7 +16,7 @@ type ContextMenuSubTriggerProps = {
 } & React.ComponentProps<typeof ContextMenuPrimitive.SubTrigger>
 
 export const ContextMenuSubTrigger = (props: ContextMenuSubTriggerProps) => {
-  const { className, inset, children, ...rest } = props
+  const { className, children, inset, ...rest } = props
 
   return (
     <ContextMenuPrimitive.SubTrigger
