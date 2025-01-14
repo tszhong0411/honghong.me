@@ -1,5 +1,17 @@
 # @tszhong0411/ui
 
+## 0.0.47
+
+### Patch Changes
+
+- [#971](https://github.com/tszhong0411/honghong.me/pull/971) [`fdedab4`](https://github.com/tszhong0411/honghong.me/commit/fdedab42a1ce95748fb5aeb6c06348c0a51e7080) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Add Hover Card
+
+- [#974](https://github.com/tszhong0411/honghong.me/pull/974) [`0686557`](https://github.com/tszhong0411/honghong.me/commit/06865572f420bde8a8f43203f3bde5f7a375db73) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Add Toggle Group
+
+- [#972](https://github.com/tszhong0411/honghong.me/pull/972) [`ae5999b`](https://github.com/tszhong0411/honghong.me/commit/ae5999b7c94fd423776ae32890667da2c12ba5bb) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Add Carousel
+
+- [#973](https://github.com/tszhong0411/honghong.me/pull/973) [`941fd16`](https://github.com/tszhong0411/honghong.me/commit/941fd16dac7c0460998c430004a7db9ac7db4408) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Add Radio Group
+
 ## 0.0.46
 
 ### Patch Changes
