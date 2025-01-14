@@ -1,0 +1,25 @@
+---
+title: Radio Group
+description: A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.
+---
+
+<ComponentPreview name='radio-group/radio-group' />
+
+## Usage
+
+```tsx
+import { Label, RadioGroup, RadioGroupItem } from '@tszhong0411/ui'
+```
+
+```tsx
+<RadioGroup defaultValue='option-one'>
+  <div className='flex items-center space-x-2'>
+    <RadioGroupItem value='option-one' id='option-one' />
+    <Label htmlFor='option-one'>Option One</Label>
+  </div>
+  <div className='flex items-center space-x-2'>
+    <RadioGroupItem value='option-two' id='option-two' />
+    <Label htmlFor='option-two'>Option Two</Label>
+  </div>
+</RadioGroup>
+```

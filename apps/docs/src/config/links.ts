@@ -151,6 +151,10 @@ const COMPONENT_LINKS = [
     text: 'Progress'
   },
   {
+    href: '/ui/components/radio-group',
+    text: 'Radio Group'
+  },
+  {
     href: '/ui/components/resizable',
     text: 'Resizable'
   },
