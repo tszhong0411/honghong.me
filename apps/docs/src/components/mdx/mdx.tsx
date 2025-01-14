@@ -11,6 +11,7 @@ type MdxProps = {
 
 const components: MDXComponents = {
   ...uiComponents,
+  Callout: (props) => <uiComponents.Callout className='[&_p]:m-0' {...props} />,
   ComponentPreview,
   EmbedComponentPreview,
 
