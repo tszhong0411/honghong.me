@@ -72,7 +72,7 @@ const Page = async (props: PageProps) => {
 
   return (
     <div>
-      <div className='space-y-2'>
+      <div className='space-y-4'>
         <h1 className='relative text-3xl font-extrabold tracking-tight md:text-4xl'>{title}</h1>
         <p className='text-muted-foreground'>{description}</p>
       </div>
