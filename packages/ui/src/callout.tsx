@@ -18,6 +18,7 @@ export const Callout = (props: CalloutProps) => {
 
   return (
     <div
+      role='alert'
       className={cn(
         'bg-card text-muted-foreground my-6 flex w-full flex-row gap-2 rounded-lg border p-3 text-sm shadow-md',
         className
