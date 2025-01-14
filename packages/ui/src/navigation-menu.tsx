@@ -5,7 +5,7 @@ import { ChevronDownIcon } from 'lucide-react'
 
 type NavigationMenuProps = React.ComponentProps<typeof NavigationMenuPrimitive.Root>
 
-export const NavigationMenu = (props: NavigationMenuProps) => {
+const NavigationMenu = (props: NavigationMenuProps) => {
   const { className, children, ...rest } = props
 
   return (
@@ -21,7 +21,7 @@ export const NavigationMenu = (props: NavigationMenuProps) => {
 
 type NavigationMenuListProps = React.ComponentProps<typeof NavigationMenuPrimitive.List>
 
-export const NavigationMenuList = (props: NavigationMenuListProps) => {
+const NavigationMenuList = (props: NavigationMenuListProps) => {
   const { className, ...rest } = props
 
   return (
@@ -32,15 +32,15 @@ export const NavigationMenuList = (props: NavigationMenuListProps) => {
   )
 }
 
-export const NavigationMenuItem = NavigationMenuPrimitive.Item
+const NavigationMenuItem = NavigationMenuPrimitive.Item
 
-export const navigationMenuTriggerStyle = cva(
+const navigationMenuTriggerStyle = cva(
   'bg-background hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50'
 )
 
 type NavigationMenuTriggerProps = React.ComponentProps<typeof NavigationMenuPrimitive.Trigger>
 
-export const NavigationMenuTrigger = (props: NavigationMenuTriggerProps) => {
+const NavigationMenuTrigger = (props: NavigationMenuTriggerProps) => {
   const { className, children, ...rest } = props
 
   return (
@@ -59,7 +59,7 @@ export const NavigationMenuTrigger = (props: NavigationMenuTriggerProps) => {
 
 type NavigationMenuContentProps = React.ComponentProps<typeof NavigationMenuPrimitive.Content>
 
-export const NavigationMenuContent = (props: NavigationMenuContentProps) => {
+const NavigationMenuContent = (props: NavigationMenuContentProps) => {
   const { className, ...rest } = props
 
   return (
@@ -73,11 +73,11 @@ export const NavigationMenuContent = (props: NavigationMenuContentProps) => {
   )
 }
 
-export const NavigationMenuLink = NavigationMenuPrimitive.Link
+const NavigationMenuLink = NavigationMenuPrimitive.Link
 
 type NavigationMenuViewportProps = React.ComponentProps<typeof NavigationMenuPrimitive.Viewport>
 
-export const NavigationMenuViewport = (props: NavigationMenuViewportProps) => {
+const NavigationMenuViewport = (props: NavigationMenuViewportProps) => {
   const { className, ...rest } = props
 
   return (
@@ -95,7 +95,7 @@ export const NavigationMenuViewport = (props: NavigationMenuViewportProps) => {
 
 type NavigationMenuIndicatorProps = React.ComponentProps<typeof NavigationMenuPrimitive.Indicator>
 
-export const NavigationMenuIndicator = (props: NavigationMenuIndicatorProps) => {
+const NavigationMenuIndicator = (props: NavigationMenuIndicatorProps) => {
   const { className, ...rest } = props
 
   return (
@@ -109,4 +109,16 @@ export const NavigationMenuIndicator = (props: NavigationMenuIndicatorProps) => 
       <div className='bg-border relative top-[60%] size-2 rotate-45 rounded-tl-sm shadow-md' />
     </NavigationMenuPrimitive.Indicator>
   )
+}
+
+export {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+  NavigationMenuViewport
 }

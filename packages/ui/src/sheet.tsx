@@ -3,7 +3,7 @@ import { cn } from '@tszhong0411/utils'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { XIcon } from 'lucide-react'
 
-export const sheetVariants = cva(
+const sheetVariants = cva(
   'bg-background data-[state=open]:animate-in data-[state=closed]:animate-out fixed z-50 p-6 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500',
   {
     variants: {
@@ -22,14 +22,14 @@ export const sheetVariants = cva(
   }
 )
 
-export const Sheet = SheetPrimitive.Root
-export const SheetTrigger = SheetPrimitive.Trigger
-export const SheetPortal = SheetPrimitive.Portal
-export const SheetClose = SheetPrimitive.Close
+const Sheet = SheetPrimitive.Root
+const SheetTrigger = SheetPrimitive.Trigger
+const SheetPortal = SheetPrimitive.Portal
+const SheetClose = SheetPrimitive.Close
 
 type SheetOverlayProps = React.ComponentProps<typeof SheetPrimitive.Overlay>
 
-export const SheetOverlay = (props: SheetOverlayProps) => {
+const SheetOverlay = (props: SheetOverlayProps) => {
   const { className, ...rest } = props
 
   return (
@@ -48,7 +48,7 @@ export const SheetOverlay = (props: SheetOverlayProps) => {
 type SheetContentProps = React.ComponentProps<typeof SheetPrimitive.Content> &
   VariantProps<typeof sheetVariants>
 
-export const SheetContent = (props: SheetContentProps) => {
+const SheetContent = (props: SheetContentProps) => {
   const { side = 'right', className, children, ...rest } = props
 
   return (
@@ -67,7 +67,7 @@ export const SheetContent = (props: SheetContentProps) => {
 
 type SheetHeaderProps = React.ComponentProps<'div'>
 
-export const SheetHeader = (props: SheetHeaderProps) => {
+const SheetHeader = (props: SheetHeaderProps) => {
   const { className, ...rest } = props
 
   return <div className={cn('flex flex-col gap-2 text-center sm:text-left', className)} {...rest} />
@@ -75,7 +75,7 @@ export const SheetHeader = (props: SheetHeaderProps) => {
 
 type SheetFooterProps = React.ComponentProps<'div'>
 
-export const SheetFooter = (props: SheetFooterProps) => {
+const SheetFooter = (props: SheetFooterProps) => {
   const { className, ...rest } = props
 
   return (
@@ -88,7 +88,7 @@ export const SheetFooter = (props: SheetFooterProps) => {
 
 type SheetTitleProps = React.ComponentProps<typeof SheetPrimitive.Title>
 
-export const SheetTitle = (props: SheetTitleProps) => {
+const SheetTitle = (props: SheetTitleProps) => {
   const { className, ...rest } = props
 
   return (
@@ -101,7 +101,7 @@ export const SheetTitle = (props: SheetTitleProps) => {
 
 type SheetDescriptionProps = React.ComponentProps<typeof SheetPrimitive.Description>
 
-export const SheetDescription = (props: SheetDescriptionProps) => {
+const SheetDescription = (props: SheetDescriptionProps) => {
   const { className, ...rest } = props
 
   return (
@@ -110,4 +110,18 @@ export const SheetDescription = (props: SheetDescriptionProps) => {
       {...rest}
     />
   )
+}
+
+export {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetOverlay,
+  SheetPortal,
+  SheetTitle,
+  SheetTrigger,
+  sheetVariants
 }

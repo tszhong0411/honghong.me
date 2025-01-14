@@ -14,7 +14,7 @@ type CodeBlockProps = {
   figureClassName?: string
 } & React.ComponentProps<'pre'>
 
-export const CodeBlock = (props: CodeBlockProps) => {
+const CodeBlock = (props: CodeBlockProps) => {
   const { children, className, title, 'data-lang': lang, figureClassName, ref, ...rest } = props
 
   const textInput = useRef<HTMLPreElement>(null)
@@ -86,3 +86,5 @@ const CopyButton = (props: CopyButtonProps) => {
     </Button>
   )
 }
+
+export { CodeBlock }

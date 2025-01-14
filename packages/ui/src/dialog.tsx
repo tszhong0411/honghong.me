@@ -4,14 +4,14 @@ import * as DialogPrimitive from '@radix-ui/react-dialog'
 import { cn } from '@tszhong0411/utils'
 import { XIcon } from 'lucide-react'
 
-export const Dialog = DialogPrimitive.Root
-export const DialogTrigger = DialogPrimitive.Trigger
-export const DialogClose = DialogPrimitive.Close
-export const DialogPortal = DialogPrimitive.Portal
+const Dialog = DialogPrimitive.Root
+const DialogTrigger = DialogPrimitive.Trigger
+const DialogClose = DialogPrimitive.Close
+const DialogPortal = DialogPrimitive.Portal
 
 type propsProps = React.ComponentProps<typeof DialogPrimitive.Overlay>
 
-export const DialogOverlay = (props: propsProps) => {
+const DialogOverlay = (props: propsProps) => {
   const { className, ...rest } = props
 
   return (
@@ -29,7 +29,7 @@ export const DialogOverlay = (props: propsProps) => {
 
 type DialogContentProps = React.ComponentProps<typeof DialogPrimitive.Content>
 
-export const DialogContent = (props: DialogContentProps) => {
+const DialogContent = (props: DialogContentProps) => {
   const { className, children, ...rest } = props
 
   return (
@@ -64,7 +64,7 @@ export const DialogContent = (props: DialogContentProps) => {
 
 type DialogHeaderProps = React.ComponentProps<'div'>
 
-export const DialogHeader = (props: DialogHeaderProps) => {
+const DialogHeader = (props: DialogHeaderProps) => {
   const { className, ...rest } = props
 
   return <div className={cn('flex flex-col gap-2 text-center sm:text-left', className)} {...rest} />
@@ -72,7 +72,7 @@ export const DialogHeader = (props: DialogHeaderProps) => {
 
 type DialogFooterProps = React.ComponentProps<'div'>
 
-export const DialogFooter = (props: DialogFooterProps) => {
+const DialogFooter = (props: DialogFooterProps) => {
   const { className, ...rest } = props
 
   return (
@@ -85,7 +85,7 @@ export const DialogFooter = (props: DialogFooterProps) => {
 
 type DialogTitleProps = React.ComponentProps<typeof DialogPrimitive.Title>
 
-export const DialogTitle = (props: DialogTitleProps) => {
+const DialogTitle = (props: DialogTitleProps) => {
   const { className, ...rest } = props
 
   return <DialogPrimitive.Title className={cn('text-lg font-semibold', className)} {...rest} />
@@ -93,7 +93,7 @@ export const DialogTitle = (props: DialogTitleProps) => {
 
 type DialogDescriptionProps = React.ComponentProps<typeof DialogPrimitive.Description>
 
-export const DialogDescription = (props: DialogDescriptionProps) => {
+const DialogDescription = (props: DialogDescriptionProps) => {
   const { className, ...rest } = props
 
   return (
@@ -102,4 +102,16 @@ export const DialogDescription = (props: DialogDescriptionProps) => {
       {...rest}
     />
   )
+}
+
+export {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  DialogTitle,
+  DialogTrigger
 }

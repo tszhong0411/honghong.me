@@ -34,7 +34,7 @@ type SidebarContext = {
 
 const SidebarContext = createContext<SidebarContext | null>(null)
 
-export const useSidebar = () => {
+const useSidebar = () => {
   const context = useContext(SidebarContext)
 
   if (!context) {
@@ -50,7 +50,7 @@ type SidebarProviderProps = {
   onOpenChange?: (open: boolean) => void
 } & React.ComponentProps<'div'>
 
-export const SidebarProvider = (props: SidebarProviderProps) => {
+const SidebarProvider = (props: SidebarProviderProps) => {
   const {
     defaultOpen = true,
     open: openProp,
@@ -156,7 +156,7 @@ type SidebarProps = {
   collapsible?: 'offcanvas' | 'icon' | 'none'
 } & React.ComponentProps<'div'>
 
-export const Sidebar = (props: SidebarProps) => {
+const Sidebar = (props: SidebarProps) => {
   const {
     side = 'left',
     variant = 'sidebar',
@@ -254,7 +254,7 @@ export const Sidebar = (props: SidebarProps) => {
 
 type SidebarTriggerProps = React.ComponentProps<typeof Button>
 
-export const SidebarTrigger = (props: SidebarTriggerProps) => {
+const SidebarTrigger = (props: SidebarTriggerProps) => {
   const { className, onClick, ...rest } = props
   const { toggleSidebar } = useSidebar()
 
@@ -278,7 +278,7 @@ export const SidebarTrigger = (props: SidebarTriggerProps) => {
 
 type SidebarRailProps = React.ComponentProps<'button'>
 
-export const SidebarRail = (props: SidebarRailProps) => {
+const SidebarRail = (props: SidebarRailProps) => {
   const { className, ...rest } = props
   const { toggleSidebar } = useSidebar()
 
@@ -306,7 +306,7 @@ export const SidebarRail = (props: SidebarRailProps) => {
 
 type SidebarInsetProps = React.ComponentProps<'main'>
 
-export const SidebarInset = (props: SidebarInsetProps) => {
+const SidebarInset = (props: SidebarInsetProps) => {
   const { className, ...rest } = props
 
   return (
@@ -323,7 +323,7 @@ export const SidebarInset = (props: SidebarInsetProps) => {
 
 type SidebarInputProps = React.ComponentProps<typeof Input>
 
-export const SidebarInput = (props: SidebarInputProps) => {
+const SidebarInput = (props: SidebarInputProps) => {
   const { className, ...rest } = props
 
   return (
@@ -340,7 +340,7 @@ export const SidebarInput = (props: SidebarInputProps) => {
 
 type SidebarHeaderProps = React.ComponentProps<'div'>
 
-export const SidebarHeader = (props: SidebarHeaderProps) => {
+const SidebarHeader = (props: SidebarHeaderProps) => {
   const { className, ...rest } = props
 
   return (
@@ -350,7 +350,7 @@ export const SidebarHeader = (props: SidebarHeaderProps) => {
 
 type SidebarFooterProps = React.ComponentProps<'div'>
 
-export const SidebarFooter = (props: SidebarFooterProps) => {
+const SidebarFooter = (props: SidebarFooterProps) => {
   const { className, ...rest } = props
 
   return (
@@ -360,7 +360,7 @@ export const SidebarFooter = (props: SidebarFooterProps) => {
 
 type SidebarSeparatorProps = React.ComponentProps<typeof Separator>
 
-export const SidebarSeparator = (props: SidebarSeparatorProps) => {
+const SidebarSeparator = (props: SidebarSeparatorProps) => {
   const { className, ...rest } = props
 
   return (
@@ -374,7 +374,7 @@ export const SidebarSeparator = (props: SidebarSeparatorProps) => {
 
 type SidebarContentProps = React.ComponentProps<'div'>
 
-export const SidebarContent = (props: SidebarContentProps) => {
+const SidebarContent = (props: SidebarContentProps) => {
   const { className, ...rest } = props
 
   return (
@@ -391,7 +391,7 @@ export const SidebarContent = (props: SidebarContentProps) => {
 
 type SidebarGroupProps = React.ComponentProps<'div'>
 
-export const SidebarGroup = (props: SidebarGroupProps) => {
+const SidebarGroup = (props: SidebarGroupProps) => {
   const { className, ...rest } = props
 
   return (
@@ -407,7 +407,7 @@ type SidebarGroupLabelProps = {
   asChild?: boolean
 } & React.ComponentProps<'div'>
 
-export const SidebarGroupLabel = (props: SidebarGroupLabelProps) => {
+const SidebarGroupLabel = (props: SidebarGroupLabelProps) => {
   const { className, asChild = false, ...rest } = props
   const Comp = asChild ? Slot : 'div'
 
@@ -428,7 +428,7 @@ type SidebarGroupActionProps = {
   asChild?: boolean
 } & React.ComponentProps<'button'>
 
-export const SidebarGroupAction = (props: SidebarGroupActionProps) => {
+const SidebarGroupAction = (props: SidebarGroupActionProps) => {
   const { className, asChild = false, ...rest } = props
   const Comp = asChild ? Slot : 'button'
 
@@ -449,7 +449,7 @@ export const SidebarGroupAction = (props: SidebarGroupActionProps) => {
 
 type SidebarGroupContentProps = React.ComponentProps<'div'>
 
-export const SidebarGroupContent = (props: SidebarGroupContentProps) => {
+const SidebarGroupContent = (props: SidebarGroupContentProps) => {
   const { className, ...rest } = props
 
   return <div data-sidebar='group-content' className={cn('w-full text-sm', className)} {...rest} />
@@ -457,7 +457,7 @@ export const SidebarGroupContent = (props: SidebarGroupContentProps) => {
 
 type SidebarMenuProps = React.ComponentProps<'ul'>
 
-export const SidebarMenu = (props: SidebarMenuProps) => {
+const SidebarMenu = (props: SidebarMenuProps) => {
   const { className, ...rest } = props
 
   return (
@@ -471,7 +471,7 @@ export const SidebarMenu = (props: SidebarMenuProps) => {
 
 type SidebarMenuItemProps = React.ComponentProps<'li'>
 
-export const SidebarMenuItem = (props: SidebarMenuItemProps) => {
+const SidebarMenuItem = (props: SidebarMenuItemProps) => {
   const { className, ...rest } = props
 
   return (
@@ -508,7 +508,7 @@ type SidebarMenuButtonProps = {
 } & React.ComponentProps<'button'> &
   VariantProps<typeof sidebarMenuButtonVariants>
 
-export const SidebarMenuButton = (props: SidebarMenuButtonProps) => {
+const SidebarMenuButton = (props: SidebarMenuButtonProps) => {
   const {
     asChild = false,
     isActive = false,
@@ -560,7 +560,7 @@ type SidebarMenuActionProps = {
   showOnHover?: boolean
 } & React.ComponentProps<'button'>
 
-export const SidebarMenuAction = (props: SidebarMenuActionProps) => {
+const SidebarMenuAction = (props: SidebarMenuActionProps) => {
   const { className, asChild = false, showOnHover = false, ...rest } = props
   const Comp = asChild ? Slot : 'button'
 
@@ -586,7 +586,7 @@ export const SidebarMenuAction = (props: SidebarMenuActionProps) => {
 
 type SidebarMenuIconProps = React.ComponentProps<'div'>
 
-export const SidebarMenuBadge = (props: SidebarMenuIconProps) => {
+const SidebarMenuBadge = (props: SidebarMenuIconProps) => {
   const { className, ...rest } = props
 
   return (
@@ -610,7 +610,7 @@ type SidebarMenuSkeletonProps = {
   showIcon?: boolean
 } & React.ComponentProps<'div'>
 
-export const SidebarMenuSkeleton = (props: SidebarMenuSkeletonProps) => {
+const SidebarMenuSkeleton = (props: SidebarMenuSkeletonProps) => {
   const { className, showIcon = false, ...rest } = props
 
   // Random width between 50 to 90%.
@@ -639,7 +639,7 @@ export const SidebarMenuSkeleton = (props: SidebarMenuSkeletonProps) => {
 
 type SidebarMenuSubProps = React.ComponentProps<'ul'>
 
-export const SidebarMenuSub = (props: SidebarMenuSubProps) => {
+const SidebarMenuSub = (props: SidebarMenuSubProps) => {
   const { className, ...rest } = props
 
   return (
@@ -657,7 +657,7 @@ export const SidebarMenuSub = (props: SidebarMenuSubProps) => {
 
 type SidebarMenuSubItemProps = React.ComponentProps<'li'>
 
-export const SidebarMenuSubItem = (props: SidebarMenuSubItemProps) => <li {...props} />
+const SidebarMenuSubItem = (props: SidebarMenuSubItemProps) => <li {...props} />
 
 type SidebarMenuSubButtonProps = {
   asChild?: boolean
@@ -665,7 +665,7 @@ type SidebarMenuSubButtonProps = {
   isActive?: boolean
 } & React.ComponentProps<'a'>
 
-export const SidebarMenuSubButton = (props: SidebarMenuSubButtonProps) => {
+const SidebarMenuSubButton = (props: SidebarMenuSubButtonProps) => {
   const { asChild = false, size = 'md', isActive, className, ...rest } = props
 
   const Comp = asChild ? Slot : 'a'
@@ -686,4 +686,30 @@ export const SidebarMenuSubButton = (props: SidebarMenuSubButtonProps) => {
       {...rest}
     />
   )
+}
+
+export {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupAction,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarHeader,
+  SidebarInput,
+  SidebarInset,
+  SidebarMenu,
+  SidebarMenuAction,
+  SidebarMenuBadge,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarMenuSkeleton,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
+  SidebarProvider,
+  SidebarRail,
+  SidebarSeparator,
+  SidebarTrigger
 }

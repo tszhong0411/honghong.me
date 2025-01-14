@@ -4,13 +4,13 @@ import * as SelectPrimitive from '@radix-ui/react-select'
 import { cn } from '@tszhong0411/utils'
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from 'lucide-react'
 
-export const Select = SelectPrimitive.Root
-export const SelectGroup = SelectPrimitive.Group
-export const SelectValue = SelectPrimitive.Value
+const Select = SelectPrimitive.Root
+const SelectGroup = SelectPrimitive.Group
+const SelectValue = SelectPrimitive.Value
 
 type SelectTriggerProps = React.ComponentProps<typeof SelectPrimitive.Trigger>
 
-export const SelectTrigger = (props: SelectTriggerProps) => {
+const SelectTrigger = (props: SelectTriggerProps) => {
   const { className, children, ...rest } = props
 
   return (
@@ -35,7 +35,7 @@ export const SelectTrigger = (props: SelectTriggerProps) => {
 
 type SelectScrollUpButtonProps = React.ComponentProps<typeof SelectPrimitive.ScrollUpButton>
 
-export const SelectScrollUpButton = (props: SelectScrollUpButtonProps) => {
+const SelectScrollUpButton = (props: SelectScrollUpButtonProps) => {
   const { className, ...rest } = props
 
   return (
@@ -50,7 +50,7 @@ export const SelectScrollUpButton = (props: SelectScrollUpButtonProps) => {
 
 type SelectScrollDownButtonProps = React.ComponentProps<typeof SelectPrimitive.ScrollDownButton>
 
-export const SelectScrollDownButton = (props: SelectScrollDownButtonProps) => {
+const SelectScrollDownButton = (props: SelectScrollDownButtonProps) => {
   const { className, ...rest } = props
 
   return (
@@ -65,7 +65,7 @@ export const SelectScrollDownButton = (props: SelectScrollDownButtonProps) => {
 
 type SelectContentProps = React.ComponentProps<typeof SelectPrimitive.Content>
 
-export const SelectContent = (props: SelectContentProps) => {
+const SelectContent = (props: SelectContentProps) => {
   const { className, children, position = 'popper', ...rest } = props
 
   return (
@@ -104,7 +104,7 @@ export const SelectContent = (props: SelectContentProps) => {
 
 type SelectLabelProps = React.ComponentProps<typeof SelectPrimitive.Label>
 
-export const SelectLabel = (props: SelectLabelProps) => {
+const SelectLabel = (props: SelectLabelProps) => {
   const { className, ...rest } = props
 
   return (
@@ -117,7 +117,7 @@ export const SelectLabel = (props: SelectLabelProps) => {
 
 type SelectItemProps = React.ComponentProps<typeof SelectPrimitive.Item>
 
-export const SelectItem = (props: SelectItemProps) => {
+const SelectItem = (props: SelectItemProps) => {
   const { className, children, ...rest } = props
 
   return (
@@ -142,10 +142,23 @@ export const SelectItem = (props: SelectItemProps) => {
 
 type SelectSeparatorProps = React.ComponentProps<typeof SelectPrimitive.Separator>
 
-export const SelectSeparator = (props: SelectSeparatorProps) => {
+const SelectSeparator = (props: SelectSeparatorProps) => {
   const { className, ...rest } = props
 
   return (
     <SelectPrimitive.Separator className={cn('bg-muted -mx-1 my-1 h-px', className)} {...rest} />
   )
+}
+
+export {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectScrollDownButton,
+  SelectScrollUpButton,
+  SelectSeparator,
+  SelectTrigger,
+  SelectValue
 }

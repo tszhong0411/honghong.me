@@ -13,7 +13,7 @@ import {
 
 import { Label } from './label'
 
-export const Form = FormProvider
+const Form = FormProvider
 
 type FormFieldContextValue<
   TFieldValues extends FieldValues = FieldValues,
@@ -29,7 +29,7 @@ type FormItemContextValue = {
 const FormFieldContext = createContext<FormFieldContextValue | undefined>(undefined)
 const FormItemContext = createContext<FormItemContextValue | undefined>(undefined)
 
-export const FormField = <
+const FormField = <
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
 >(
@@ -71,7 +71,7 @@ const useFormField = () => {
 
 type FormItemProps = React.ComponentProps<'div'>
 
-export const FormItem = (props: FormItemProps) => {
+const FormItem = (props: FormItemProps) => {
   const { className, ...rest } = props
   const id = useId()
 
@@ -86,7 +86,7 @@ export const FormItem = (props: FormItemProps) => {
 
 type FormLabelProps = React.ComponentProps<typeof LabelPrimitive.Root>
 
-export const FormLabel = (props: FormLabelProps) => {
+const FormLabel = (props: FormLabelProps) => {
   const { className, ...rest } = props
   const { error, formItemId } = useFormField()
 
@@ -97,7 +97,7 @@ export const FormLabel = (props: FormLabelProps) => {
 
 type FormControlProps = React.ComponentProps<typeof Slot>
 
-export const FormControl = (props: FormControlProps) => {
+const FormControl = (props: FormControlProps) => {
   const { error, formItemId, formDescriptionId, formMessageId } = useFormField()
 
   return (
@@ -112,7 +112,7 @@ export const FormControl = (props: FormControlProps) => {
 
 type FormDescriptionProps = React.ComponentProps<'p'>
 
-export const FormDescription = (props: FormDescriptionProps) => {
+const FormDescription = (props: FormDescriptionProps) => {
   const { className, ...rest } = props
   const { formDescriptionId } = useFormField()
 
@@ -127,7 +127,7 @@ export const FormDescription = (props: FormDescriptionProps) => {
 
 type FormMessageProps = React.ComponentProps<'p'>
 
-export const FormMessage = (props: FormMessageProps) => {
+const FormMessage = (props: FormMessageProps) => {
   const { className, children, ...rest } = props
   const { error, formMessageId } = useFormField()
   const body = error ? String(error.message) : children
@@ -144,3 +144,5 @@ export const FormMessage = (props: FormMessageProps) => {
     </p>
   )
 }
+
+export { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage }

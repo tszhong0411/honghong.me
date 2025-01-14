@@ -5,19 +5,19 @@ import { Drawer as DrawerPrimitive } from 'vaul'
 
 type DrawerProps = React.ComponentProps<typeof DrawerPrimitive.Root>
 
-export const Drawer = (props: DrawerProps) => {
+const Drawer = (props: DrawerProps) => {
   const { shouldScaleBackground = true, ...rest } = props
 
   return <DrawerPrimitive.Root shouldScaleBackground={shouldScaleBackground} {...rest} />
 }
 
-export const DrawerTrigger = DrawerPrimitive.Trigger
-export const DrawerPortal = DrawerPrimitive.Portal
-export const DrawerClose = DrawerPrimitive.Close
+const DrawerTrigger = DrawerPrimitive.Trigger
+const DrawerPortal = DrawerPrimitive.Portal
+const DrawerClose = DrawerPrimitive.Close
 
 type DrawerOverlayProps = React.ComponentProps<typeof DrawerPrimitive.Overlay>
 
-export const DrawerOverlay = (props: DrawerOverlayProps) => {
+const DrawerOverlay = (props: DrawerOverlayProps) => {
   const { className, ...rest } = props
 
   return (
@@ -30,7 +30,7 @@ export const DrawerOverlay = (props: DrawerOverlayProps) => {
 
 type DrawerContentProps = React.ComponentProps<typeof DrawerPrimitive.Content>
 
-export const DrawerContent = (props: DrawerContentProps) => {
+const DrawerContent = (props: DrawerContentProps) => {
   const { className, children, ...rest } = props
 
   return (
@@ -52,7 +52,7 @@ export const DrawerContent = (props: DrawerContentProps) => {
 
 type DrawerHeaderProps = React.ComponentProps<'div'>
 
-export const DrawerHeader = (props: DrawerHeaderProps) => {
+const DrawerHeader = (props: DrawerHeaderProps) => {
   const { className, ...rest } = props
 
   return <div className={cn('grid gap-1.5 p-4 text-center sm:text-left', className)} {...rest} />
@@ -60,7 +60,7 @@ export const DrawerHeader = (props: DrawerHeaderProps) => {
 
 type DrawerFooterProps = React.ComponentProps<'div'>
 
-export const DrawerFooter = (props: DrawerFooterProps) => {
+const DrawerFooter = (props: DrawerFooterProps) => {
   const { className, ...rest } = props
 
   return <div className={cn('mt-auto flex flex-col gap-2 p-4', className)} {...rest} />
@@ -68,7 +68,7 @@ export const DrawerFooter = (props: DrawerFooterProps) => {
 
 type DrawerTitleProps = React.ComponentProps<typeof DrawerPrimitive.Title>
 
-export const DrawerTitle = (props: DrawerTitleProps) => {
+const DrawerTitle = (props: DrawerTitleProps) => {
   const { className, ...rest } = props
 
   return (
@@ -81,7 +81,7 @@ export const DrawerTitle = (props: DrawerTitleProps) => {
 
 type DrawerDescriptionProps = React.ComponentProps<typeof DrawerPrimitive.Description>
 
-export const DrawerDescription = (props: DrawerDescriptionProps) => {
+const DrawerDescription = (props: DrawerDescriptionProps) => {
   const { className, ...rest } = props
 
   return (
@@ -90,4 +90,16 @@ export const DrawerDescription = (props: DrawerDescriptionProps) => {
       {...rest}
     />
   )
+}
+
+export {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerTitle,
+  DrawerTrigger
 }

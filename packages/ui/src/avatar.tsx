@@ -5,7 +5,7 @@ import { cn } from '@tszhong0411/utils'
 
 type AvatarProps = React.ComponentProps<typeof AvatarPrimitive.Root>
 
-export const Avatar = (props: AvatarProps) => {
+const Avatar = (props: AvatarProps) => {
   const { className, ...rest } = props
 
   return (
@@ -18,7 +18,7 @@ export const Avatar = (props: AvatarProps) => {
 
 type AvatarImageProps = React.ComponentProps<typeof AvatarPrimitive.Image>
 
-export const AvatarImage = (props: AvatarImageProps) => {
+const AvatarImage = (props: AvatarImageProps) => {
   const { className, ...rest } = props
 
   return <AvatarPrimitive.Image className={cn('aspect-square size-full', className)} {...rest} />
@@ -26,7 +26,7 @@ export const AvatarImage = (props: AvatarImageProps) => {
 
 type AvatarFallbackProps = React.ComponentProps<typeof AvatarPrimitive.Fallback>
 
-export const AvatarFallback = (props: AvatarFallbackProps) => {
+const AvatarFallback = (props: AvatarFallbackProps) => {
   const { className, ...rest } = props
 
   return (
@@ -37,7 +37,7 @@ export const AvatarFallback = (props: AvatarFallbackProps) => {
   )
 }
 
-export const getAvatarAbbreviation = (name: string) => {
+const getAvatarAbbreviation = (name: string) => {
   const abbreviation = name
     .split(' ')
     .map((n) => n[0])
@@ -49,3 +49,5 @@ export const getAvatarAbbreviation = (name: string) => {
 
   return abbreviation
 }
+
+export { Avatar, AvatarFallback, AvatarImage, getAvatarAbbreviation }

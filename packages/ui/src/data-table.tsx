@@ -49,7 +49,7 @@ type DataTableProps<TData> = {
   table: TanstackTable<TData>
 } & React.ComponentProps<'div'>
 
-export const DataTable = <TData,>(props: DataTableProps<TData>) => {
+const DataTable = <TData,>(props: DataTableProps<TData>) => {
   const { table, children, ...rest } = props
 
   return (
@@ -199,9 +199,7 @@ type DataTableColumnHeaderProps<TData, TValue> = {
   title: string
 } & React.ComponentProps<'div'>
 
-export const DataTableColumnHeader = <TData, TValue>(
-  props: DataTableColumnHeaderProps<TData, TValue>
-) => {
+const DataTableColumnHeader = <TData, TValue>(props: DataTableColumnHeaderProps<TData, TValue>) => {
   const { column, title, className } = props
 
   if (!column.getCanSort()) {
@@ -259,7 +257,7 @@ type DataTableViewOptionsProps<TData> = {
   table: TanstackTable<TData>
 }
 
-export const DataTableViewOptions = <TData,>(props: DataTableViewOptionsProps<TData>) => {
+const DataTableViewOptions = <TData,>(props: DataTableViewOptionsProps<TData>) => {
   const { table } = props
 
   return (
@@ -301,7 +299,7 @@ type Option = {
   icon?: React.FC<React.SVGProps<SVGSVGElement>>
 }
 
-export type DataTableFilterField<TData> = {
+type DataTableFilterField<TData> = {
   id: Extract<keyof TData, string>
   label: string
   placeholder?: string
@@ -314,7 +312,7 @@ type DataTableFacetedFilterProps<TData, TValue> = {
   options: Option[]
 }
 
-export const DataTableFacetedFilter = <TData, TValue>(
+const DataTableFacetedFilter = <TData, TValue>(
   props: DataTableFacetedFilterProps<TData, TValue>
 ) => {
   const { column, title, options } = props
@@ -425,7 +423,7 @@ type DataTableToolbarProps<TData> = {
 
 const defaultFilterFields: Array<DataTableFilterField<unknown>> = []
 
-export const DataTableToolbar = <TData,>(props: DataTableToolbarProps<TData>) => {
+const DataTableToolbar = <TData,>(props: DataTableToolbarProps<TData>) => {
   const { table, filterFields = defaultFilterFields } = props
 
   const { searchableColumns, filterableColumns } = useMemo(() => {
@@ -501,7 +499,7 @@ type DataTableSkeletonProps = {
 
 const defaultCellWidths = ['auto']
 
-export const DataTableSkeleton = (props: DataTableSkeletonProps) => {
+const DataTableSkeleton = (props: DataTableSkeletonProps) => {
   const {
     columnCount,
     rowCount = 10,
@@ -588,4 +586,12 @@ export const DataTableSkeleton = (props: DataTableSkeletonProps) => {
       </div>
     </div>
   )
+}
+
+export {
+  DataTable,
+  DataTableColumnHeader,
+  type DataTableFilterField,
+  DataTableSkeleton,
+  DataTableToolbar
 }

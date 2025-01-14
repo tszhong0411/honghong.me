@@ -3,9 +3,9 @@
 import { AlertCircleIcon, AlertTriangleIcon, CheckCircle2Icon, InfoIcon } from 'lucide-react'
 import { Toaster as Sonner } from 'sonner'
 
-export type ToasterProps = React.ComponentProps<typeof Sonner>
+type ToasterProps = React.ComponentProps<typeof Sonner>
 
-export const Toaster = (props: ToasterProps) => {
+const Toaster = (props: ToasterProps) => {
   const { theme = 'system', toastOptions, ...rest } = props
 
   return (
@@ -34,4 +34,5 @@ export const Toaster = (props: ToasterProps) => {
   )
 }
 
+export { Toaster, type ToasterProps }
 export { toast } from 'sonner'

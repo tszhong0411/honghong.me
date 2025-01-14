@@ -3,12 +3,12 @@
 import * as HoverCardPrimitive from '@radix-ui/react-hover-card'
 import { cn } from '@tszhong0411/utils'
 
-export const HoverCard = HoverCardPrimitive.Root
-export const HoverCardTrigger = HoverCardPrimitive.Trigger
+const HoverCard = HoverCardPrimitive.Root
+const HoverCardTrigger = HoverCardPrimitive.Trigger
 
 type HoverCardProps = React.ComponentProps<typeof HoverCardPrimitive.Content>
 
-export const HoverCardContent = (props: HoverCardProps) => {
+const HoverCardContent = (props: HoverCardProps) => {
   const { className, align = 'center', sideOffset = 4, ...rest } = props
 
   return (
@@ -23,3 +23,5 @@ export const HoverCardContent = (props: HoverCardProps) => {
     />
   )
 }
+
+export { HoverCard, HoverCardContent, HoverCardTrigger }

@@ -3,12 +3,12 @@
 import * as PopoverPrimitive from '@radix-ui/react-popover'
 import { cn } from '@tszhong0411/utils'
 
-export const Popover = PopoverPrimitive.Root
-export const PopoverTrigger = PopoverPrimitive.Trigger
+const Popover = PopoverPrimitive.Root
+const PopoverTrigger = PopoverPrimitive.Trigger
 
 type PopoverContentProps = React.ComponentProps<typeof PopoverPrimitive.Content>
 
-export const PopoverContent = (props: PopoverContentProps) => {
+const PopoverContent = (props: PopoverContentProps) => {
   const { className, align = 'center', sideOffset = 4, ...rest } = props
 
   return (
@@ -31,3 +31,5 @@ export const PopoverContent = (props: PopoverContentProps) => {
     </PopoverPrimitive.Portal>
   )
 }
+
+export { Popover, PopoverContent, PopoverTrigger }

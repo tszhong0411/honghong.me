@@ -5,7 +5,7 @@ import { cn } from '@tszhong0411/utils'
 
 type ProgressProps = React.ComponentProps<typeof ProgressPrimitive.Root>
 
-export const Progress = (props: ProgressProps) => {
+const Progress = (props: ProgressProps) => {
   const { className, value, ...rest } = props
 
   return (
@@ -20,3 +20,5 @@ export const Progress = (props: ProgressProps) => {
     </ProgressPrimitive.Root>
   )
 }
+
+export { Progress }

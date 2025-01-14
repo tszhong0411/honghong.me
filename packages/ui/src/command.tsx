@@ -9,7 +9,7 @@ import { VisuallyHidden } from './visually-hidden'
 
 type CommandProps = React.ComponentProps<typeof CommandPrimitive>
 
-export const Command = (props: CommandProps) => {
+const Command = (props: CommandProps) => {
   const { className, ...rest } = props
 
   return (
@@ -26,7 +26,7 @@ export const Command = (props: CommandProps) => {
 
 type CommandDialogProps = DialogProps & Pick<CommandProps, 'value' | 'onValueChange'>
 
-export const CommandDialog = (props: CommandDialogProps) => {
+const CommandDialog = (props: CommandDialogProps) => {
   const { children, value, onValueChange, ...rest } = props
 
   return (
@@ -46,7 +46,7 @@ export const CommandDialog = (props: CommandDialogProps) => {
 
 type CommandInputProps = React.ComponentProps<typeof CommandPrimitive.Input>
 
-export const CommandInput = (props: CommandInputProps) => {
+const CommandInput = (props: CommandInputProps) => {
   const { className, ...rest } = props
 
   return (
@@ -66,7 +66,7 @@ export const CommandInput = (props: CommandInputProps) => {
 
 type CommandListProps = React.ComponentProps<typeof CommandPrimitive.List>
 
-export const CommandList = (props: CommandListProps) => {
+const CommandList = (props: CommandListProps) => {
   const { className, ...rest } = props
 
   return (
@@ -79,13 +79,13 @@ export const CommandList = (props: CommandListProps) => {
 
 type CommandEmptyProps = React.ComponentProps<typeof CommandPrimitive.Empty>
 
-export const CommandEmpty = (props: CommandEmptyProps) => {
+const CommandEmpty = (props: CommandEmptyProps) => {
   return <CommandPrimitive.Empty className='py-6 text-center text-sm' {...props} />
 }
 
 type CommandGroupProps = React.ComponentProps<typeof CommandPrimitive.Group>
 
-export const CommandGroup = (props: CommandGroupProps) => {
+const CommandGroup = (props: CommandGroupProps) => {
   const { className, ...rest } = props
 
   return (
@@ -102,7 +102,7 @@ export const CommandGroup = (props: CommandGroupProps) => {
 
 type CommandSeparatorProps = React.ComponentProps<typeof CommandPrimitive.Separator>
 
-export const CommandSeparator = (props: CommandSeparatorProps) => {
+const CommandSeparator = (props: CommandSeparatorProps) => {
   const { className, ...rest } = props
 
   return (
@@ -112,7 +112,7 @@ export const CommandSeparator = (props: CommandSeparatorProps) => {
 
 type CommandItemProps = React.ComponentProps<typeof CommandPrimitive.Item>
 
-export const CommandItem = (props: CommandItemProps) => {
+const CommandItem = (props: CommandItemProps) => {
   const { className, ...rest } = props
 
   return (
@@ -132,7 +132,7 @@ export const CommandItem = (props: CommandItemProps) => {
 
 type CommandFooterProps = React.ComponentProps<'div'>
 
-export const CommandFooter = (props: CommandFooterProps) => {
+const CommandFooter = (props: CommandFooterProps) => {
   return (
     <div
       className='mt-2 flex h-10 w-full items-center justify-between rounded-b-lg border-t px-2 pt-2'
@@ -145,7 +145,7 @@ type CommandFooterTriggerProps = {
   triggerKey: React.ReactNode
 } & React.ComponentProps<'div'>
 
-export const CommandFooterTrigger = (props: CommandFooterTriggerProps) => {
+const CommandFooterTrigger = (props: CommandFooterTriggerProps) => {
   const { triggerKey, children, className, ...rest } = props
 
   return (
@@ -154,4 +154,17 @@ export const CommandFooterTrigger = (props: CommandFooterTriggerProps) => {
       {triggerKey}
     </div>
   )
+}
+
+export {
+  Command,
+  CommandDialog,
+  CommandEmpty,
+  CommandFooter,
+  CommandFooterTrigger,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator
 }

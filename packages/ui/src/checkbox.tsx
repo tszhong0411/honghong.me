@@ -6,7 +6,7 @@ import { CheckIcon } from 'lucide-react'
 
 type CheckboxProps = React.ComponentProps<typeof CheckboxPrimitive.Root>
 
-export const Checkbox = (props: CheckboxProps) => {
+const Checkbox = (props: CheckboxProps) => {
   const { className, ...rest } = props
 
   return (
@@ -26,3 +26,5 @@ export const Checkbox = (props: CheckboxProps) => {
     </CheckboxPrimitive.Root>
   )
 }
+
+export { Checkbox }

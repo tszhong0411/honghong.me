@@ -5,13 +5,13 @@ import { cn } from '@tszhong0411/utils'
 
 import { buttonVariants } from './button'
 
-export const AlertDialog = AlertDialogPrimitive.Root
-export const AlertDialogTrigger = AlertDialogPrimitive.Trigger
-export const AlertDialogPortal = AlertDialogPrimitive.Portal
+const AlertDialog = AlertDialogPrimitive.Root
+const AlertDialogTrigger = AlertDialogPrimitive.Trigger
+const AlertDialogPortal = AlertDialogPrimitive.Portal
 
 type AlertDialogOverlayProps = React.ComponentProps<typeof AlertDialogPrimitive.Overlay>
 
-export const AlertDialogOverlay = (props: AlertDialogOverlayProps) => {
+const AlertDialogOverlay = (props: AlertDialogOverlayProps) => {
   const { className, ...rest } = props
 
   return (
@@ -29,7 +29,7 @@ export const AlertDialogOverlay = (props: AlertDialogOverlayProps) => {
 
 type AlertDialogContentProps = React.ComponentProps<typeof AlertDialogPrimitive.Content>
 
-export const AlertDialogContent = (props: AlertDialogContentProps) => {
+const AlertDialogContent = (props: AlertDialogContentProps) => {
   const { className, ...rest } = props
 
   return (
@@ -50,7 +50,7 @@ export const AlertDialogContent = (props: AlertDialogContentProps) => {
 
 type AlertDialogHeaderProps = React.ComponentProps<'div'>
 
-export const AlertDialogHeader = (props: AlertDialogHeaderProps) => {
+const AlertDialogHeader = (props: AlertDialogHeaderProps) => {
   const { className, ...rest } = props
 
   return <div className={cn('flex flex-col gap-2 text-center sm:text-left', className)} {...rest} />
@@ -58,7 +58,7 @@ export const AlertDialogHeader = (props: AlertDialogHeaderProps) => {
 
 type AlertDialogFooterProps = React.ComponentProps<'div'>
 
-export const AlertDialogFooter = (props: AlertDialogFooterProps) => {
+const AlertDialogFooter = (props: AlertDialogFooterProps) => {
   const { className, ...rest } = props
 
   return (
@@ -71,7 +71,7 @@ export const AlertDialogFooter = (props: AlertDialogFooterProps) => {
 
 type AlertDialogTitleProps = React.ComponentProps<typeof AlertDialogPrimitive.Title>
 
-export const AlertDialogTitle = (props: AlertDialogTitleProps) => {
+const AlertDialogTitle = (props: AlertDialogTitleProps) => {
   const { className, ...rest } = props
 
   return <AlertDialogPrimitive.Title className={cn('text-lg font-semibold', className)} {...rest} />
@@ -79,7 +79,7 @@ export const AlertDialogTitle = (props: AlertDialogTitleProps) => {
 
 type AlertDialogDescriptionProps = React.ComponentProps<typeof AlertDialogPrimitive.Description>
 
-export const AlertDialogDescription = (props: AlertDialogDescriptionProps) => {
+const AlertDialogDescription = (props: AlertDialogDescriptionProps) => {
   const { className, ...rest } = props
 
   return (
@@ -92,7 +92,7 @@ export const AlertDialogDescription = (props: AlertDialogDescriptionProps) => {
 
 type AlertDialogActionProps = React.ComponentProps<typeof AlertDialogPrimitive.Action>
 
-export const AlertDialogAction = (props: AlertDialogActionProps) => {
+const AlertDialogAction = (props: AlertDialogActionProps) => {
   const { className, ...rest } = props
 
   return <AlertDialogPrimitive.Action className={cn(buttonVariants(), className)} {...rest} />
@@ -100,7 +100,7 @@ export const AlertDialogAction = (props: AlertDialogActionProps) => {
 
 type AlertDialogCancelProps = React.ComponentProps<typeof AlertDialogPrimitive.Cancel>
 
-export const AlertDialogCancel = (props: AlertDialogCancelProps) => {
+const AlertDialogCancel = (props: AlertDialogCancelProps) => {
   const { className, ...rest } = props
 
   return (
@@ -109,4 +109,17 @@ export const AlertDialogCancel = (props: AlertDialogCancelProps) => {
       {...rest}
     />
   )
+}
+
+export {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogOverlay,
+  AlertDialogTitle,
+  AlertDialogTrigger
 }

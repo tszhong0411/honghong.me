@@ -5,7 +5,7 @@ import { cn } from '@tszhong0411/utils'
 
 type SeparatorProps = React.ComponentProps<typeof SeparatorPrimitive.Root>
 
-export const Separator = (props: SeparatorProps) => {
+const Separator = (props: SeparatorProps) => {
   const { className, orientation = 'horizontal', decorative = true, ...rest } = props
 
   return (
@@ -21,3 +21,5 @@ export const Separator = (props: SeparatorProps) => {
     />
   )
 }
+
+export { Separator }

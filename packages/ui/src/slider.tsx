@@ -5,7 +5,7 @@ import { cn } from '@tszhong0411/utils'
 
 type SliderProps = React.ComponentProps<typeof SliderPrimitive.Root>
 
-export const Slider = (props: SliderProps) => {
+const Slider = (props: SliderProps) => {
   const { className, ...rest } = props
 
   return (
@@ -20,3 +20,5 @@ export const Slider = (props: SliderProps) => {
     </SliderPrimitive.Root>
   )
 }
+
+export { Slider }

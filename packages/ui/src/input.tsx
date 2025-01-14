@@ -2,7 +2,7 @@ import { cn } from '@tszhong0411/utils'
 
 type InputProps = React.ComponentProps<'input'>
 
-export const Input = (props: InputProps) => {
+const Input = (props: InputProps) => {
   const { className, ...rest } = props
 
   return (
@@ -19,3 +19,5 @@ export const Input = (props: InputProps) => {
     />
   )
 }
+
+export { Input }

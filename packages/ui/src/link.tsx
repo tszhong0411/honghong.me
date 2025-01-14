@@ -2,7 +2,7 @@ import { cn } from '@tszhong0411/utils'
 import { cva, type VariantProps } from 'class-variance-authority'
 import NextLink from 'next/link'
 
-export const linkVariants = cva('', {
+const linkVariants = cva('', {
   variants: {
     variant: {
       muted: 'text-muted-foreground hover:text-foreground transition-colors'
@@ -15,7 +15,7 @@ type LinkProps = {
 } & Omit<React.ComponentProps<'a'>, 'href'> &
   VariantProps<typeof linkVariants>
 
-export const Link = (props: LinkProps) => {
+const Link = (props: LinkProps) => {
   const { href, className, children, variant, ...rest } = props
 
   if (href.startsWith('/')) {
@@ -46,3 +46,5 @@ export const Link = (props: LinkProps) => {
     </a>
   )
 }
+
+export { Link, linkVariants }

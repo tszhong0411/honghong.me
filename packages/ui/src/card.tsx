@@ -2,7 +2,7 @@ import { cn } from '@tszhong0411/utils'
 
 type CardProps = React.ComponentProps<'div'>
 
-export const Card = (props: CardProps) => {
+const Card = (props: CardProps) => {
   const { className, ...rest } = props
 
   return (
@@ -15,7 +15,7 @@ export const Card = (props: CardProps) => {
 
 type CardHeaderProps = React.ComponentProps<'div'>
 
-export const CardHeader = (props: CardHeaderProps) => {
+const CardHeader = (props: CardHeaderProps) => {
   const { className, ...rest } = props
 
   return <div className={cn('flex flex-col gap-1.5 p-6', className)} {...rest} />
@@ -23,7 +23,7 @@ export const CardHeader = (props: CardHeaderProps) => {
 
 type CardTitleProps = React.ComponentProps<'h3'>
 
-export const CardTitle = (props: CardTitleProps) => {
+const CardTitle = (props: CardTitleProps) => {
   const { className, ...rest } = props
 
   return (
@@ -34,7 +34,7 @@ export const CardTitle = (props: CardTitleProps) => {
 
 type CardDescriptionProps = React.ComponentProps<'p'>
 
-export const CardDescription = (props: CardDescriptionProps) => {
+const CardDescription = (props: CardDescriptionProps) => {
   const { className, ...rest } = props
 
   return <p className={cn('text-muted-foreground text-sm', className)} {...rest} />
@@ -42,7 +42,7 @@ export const CardDescription = (props: CardDescriptionProps) => {
 
 type CardContentProps = React.ComponentProps<'div'>
 
-export const CardContent = (props: CardContentProps) => {
+const CardContent = (props: CardContentProps) => {
   const { className, ...rest } = props
 
   return <div className={cn('px-6 pb-6', className)} {...rest} />
@@ -50,8 +50,10 @@ export const CardContent = (props: CardContentProps) => {
 
 type CardFooterProps = React.ComponentProps<'div'>
 
-export const CardFooter = (props: CardFooterProps) => {
+const CardFooter = (props: CardFooterProps) => {
   const { className, ...rest } = props
 
   return <div className={cn('flex items-center px-6 pb-6', className)} {...rest} />
 }
+
+export { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }

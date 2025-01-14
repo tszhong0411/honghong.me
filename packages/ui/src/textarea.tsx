@@ -3,7 +3,7 @@ import TextareaAutosize, { type TextareaAutosizeProps } from 'react-textarea-aut
 
 type TextareaProps = TextareaAutosizeProps & React.ComponentProps<'textarea'>
 
-export const Textarea = (props: TextareaProps) => {
+const Textarea = (props: TextareaProps) => {
   const { className, ...rest } = props
 
   return (
@@ -19,3 +19,5 @@ export const Textarea = (props: TextareaProps) => {
     />
   )
 }
+
+export { Textarea }

@@ -17,7 +17,7 @@ const item = cva(
 
 type FilesProps = React.ComponentProps<'div'>
 
-export const Files = (props: FilesProps) => {
+const Files = (props: FilesProps) => {
   const { children, className, ...rest } = props
 
   return (
@@ -32,7 +32,7 @@ type FileProps = {
   icon?: React.ReactNode
 } & React.ComponentProps<'div'>
 
-export const File = (props: FileProps) => {
+const File = (props: FileProps) => {
   const { name, className, ...rest } = props
 
   const Icon = getIconByFilename(name)
@@ -50,7 +50,7 @@ type FolderProps = {
   defaultOpen?: boolean
 } & React.ComponentProps<'div'>
 
-export const Folder = (props: FolderProps) => {
+const Folder = (props: FolderProps) => {
   const { children, name, defaultOpen = false, ...rest } = props
   const [open, setOpen] = useState(defaultOpen)
 
@@ -66,3 +66,5 @@ export const Folder = (props: FolderProps) => {
     </Collapsible>
   )
 }
+
+export { File, Files, Folder }

@@ -1,6 +1,6 @@
 type LogoProps = React.SVGAttributes<SVGElement>
 
-export const Logo = (props: LogoProps) => {
+const Logo = (props: LogoProps) => {
   return (
     <svg
       version='1.0'
@@ -17,3 +17,5 @@ export const Logo = (props: LogoProps) => {
     </svg>
   )
 }
+
+export { Logo }

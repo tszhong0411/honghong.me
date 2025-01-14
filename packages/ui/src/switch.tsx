@@ -5,7 +5,7 @@ import { cn } from '@tszhong0411/utils'
 
 type SwitchProps = React.ComponentProps<typeof SwitchPrimitives.Root>
 
-export const Switch = (props: SwitchProps) => {
+const Switch = (props: SwitchProps) => {
   const { className, ...rest } = props
 
   return (
@@ -24,3 +24,5 @@ export const Switch = (props: SwitchProps) => {
     </SwitchPrimitives.Root>
   )
 }
+
+export { Switch }

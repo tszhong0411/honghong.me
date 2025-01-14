@@ -6,7 +6,7 @@ import * as ResizablePrimitive from 'react-resizable-panels'
 
 type ResizablePanelGroupProps = React.ComponentProps<typeof ResizablePrimitive.PanelGroup>
 
-export const ResizablePanelGroup = (props: ResizablePanelGroupProps) => {
+const ResizablePanelGroup = (props: ResizablePanelGroupProps) => {
   const { className, ...rest } = props
 
   return (
@@ -17,13 +17,13 @@ export const ResizablePanelGroup = (props: ResizablePanelGroupProps) => {
   )
 }
 
-export const ResizablePanel = ResizablePrimitive.Panel
+const ResizablePanel = ResizablePrimitive.Panel
 
 type ResizableHandleProps = {
   withHandle?: boolean
 } & React.ComponentProps<typeof ResizablePrimitive.PanelResizeHandle>
 
-export const ResizableHandle = (props: ResizableHandleProps) => {
+const ResizableHandle = (props: ResizableHandleProps) => {
   const { withHandle, className, ...rest } = props
 
   return (
@@ -46,3 +46,5 @@ export const ResizableHandle = (props: ResizableHandleProps) => {
     </ResizablePrimitive.PanelResizeHandle>
   )
 }
+
+export { ResizableHandle, ResizablePanel, ResizablePanelGroup }

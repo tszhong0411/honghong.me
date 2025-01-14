@@ -3,7 +3,7 @@
 import { cn } from '@tszhong0411/utils'
 import { cva, type VariantProps } from 'class-variance-authority'
 
-export const buttonVariants = cva(
+const buttonVariants = cva(
   [
     'ring-offset-background inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors',
     'focus-visible:ring-ring focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
@@ -33,12 +33,14 @@ export const buttonVariants = cva(
   }
 )
 
-export type ButtonProps = React.ComponentProps<'button'> & VariantProps<typeof buttonVariants>
+type ButtonProps = React.ComponentProps<'button'> & VariantProps<typeof buttonVariants>
 
-export const Button = (props: ButtonProps) => {
+const Button = (props: ButtonProps) => {
   const { className, variant, size, type = 'button', ...rest } = props
 
   return (
     <button className={cn(buttonVariants({ variant, size, className }))} type={type} {...rest} />
   )
 }
+
+export { Button, type ButtonProps, buttonVariants }

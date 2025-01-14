@@ -2,7 +2,7 @@ import { cn } from '@tszhong0411/utils'
 
 type TableProps = React.ComponentProps<'table'>
 
-export const Table = (props: TableProps) => {
+const Table = (props: TableProps) => {
   const { className, ...rest } = props
 
   return (
@@ -15,7 +15,7 @@ export const Table = (props: TableProps) => {
 
 type TableHeaderProps = React.ComponentProps<'thead'>
 
-export const TableHeader = (props: TableHeaderProps) => {
+const TableHeader = (props: TableHeaderProps) => {
   const { className, ...rest } = props
 
   return <thead className={cn('[&_tr]:border-b', className)} {...rest} />
@@ -23,7 +23,7 @@ export const TableHeader = (props: TableHeaderProps) => {
 
 type TableBodyProps = React.ComponentProps<'tbody'>
 
-export const TableBody = (props: TableBodyProps) => {
+const TableBody = (props: TableBodyProps) => {
   const { className, ...rest } = props
 
   return <tbody className={cn('[&_tr:last-child]:border-0', className)} {...rest} />
@@ -31,7 +31,7 @@ export const TableBody = (props: TableBodyProps) => {
 
 type TableFooterProps = React.ComponentProps<'tfoot'>
 
-export const TableFooter = (props: TableFooterProps) => {
+const TableFooter = (props: TableFooterProps) => {
   const { className, ...rest } = props
 
   return (
@@ -44,7 +44,7 @@ export const TableFooter = (props: TableFooterProps) => {
 
 type TableRowProps = React.ComponentProps<'tr'>
 
-export const TableRow = (props: TableRowProps) => {
+const TableRow = (props: TableRowProps) => {
   const { className, ...rest } = props
 
   return (
@@ -62,7 +62,7 @@ export const TableRow = (props: TableRowProps) => {
 
 type TableHeadProps = React.ComponentProps<'th'>
 
-export const TableHead = (props: TableHeadProps) => {
+const TableHead = (props: TableHeadProps) => {
   const { className, ...rest } = props
 
   return (
@@ -79,7 +79,7 @@ export const TableHead = (props: TableHeadProps) => {
 
 type TableCellProps = React.ComponentProps<'td'>
 
-export const TableCell = (props: TableCellProps) => {
+const TableCell = (props: TableCellProps) => {
   const { className, ...rest } = props
 
   return (
@@ -89,8 +89,10 @@ export const TableCell = (props: TableCellProps) => {
 
 type TableCaptionProps = React.ComponentProps<'caption'>
 
-export const TableCaption = (props: TableCaptionProps) => {
+const TableCaption = (props: TableCaptionProps) => {
   const { className, ...rest } = props
 
   return <caption className={cn('text-muted-foreground mt-4 text-sm', className)} {...rest} />
 }
+
+export { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow }

@@ -7,11 +7,11 @@ type BreadcrumbProps = {
   separator?: React.ReactNode
 } & React.ComponentProps<'nav'>
 
-export const Breadcrumb = (props: BreadcrumbProps) => <nav aria-label='Breadcrumb' {...props} />
+const Breadcrumb = (props: BreadcrumbProps) => <nav aria-label='Breadcrumb' {...props} />
 
 type BreadcrumbListProps = React.ComponentProps<'ol'>
 
-export const BreadcrumbList = (props: BreadcrumbListProps) => {
+const BreadcrumbList = (props: BreadcrumbListProps) => {
   const { className, ...rest } = props
 
   return (
@@ -27,7 +27,7 @@ export const BreadcrumbList = (props: BreadcrumbListProps) => {
 
 type BreadcrumbItemProps = React.ComponentProps<'li'>
 
-export const BreadcrumbItem = (props: BreadcrumbItemProps) => {
+const BreadcrumbItem = (props: BreadcrumbItemProps) => {
   const { className, ...rest } = props
 
   return <li className={cn('inline-flex items-center gap-1.5', className)} {...rest} />
@@ -37,7 +37,7 @@ type BreadcrumbLinkProps = {
   asChild?: boolean
 } & React.ComponentProps<'a'>
 
-export const BreadcrumbLink = (props: BreadcrumbLinkProps) => {
+const BreadcrumbLink = (props: BreadcrumbLinkProps) => {
   const { asChild, className, ...rest } = props
   const Comp = asChild ? Slot : 'a'
   const pathname = usePathname()
@@ -53,7 +53,7 @@ export const BreadcrumbLink = (props: BreadcrumbLinkProps) => {
 
 type BreadcrumbPageProps = React.ComponentProps<'span'>
 
-export const BreadcrumbPage = (props: BreadcrumbPageProps) => {
+const BreadcrumbPage = (props: BreadcrumbPageProps) => {
   const { className, ...rest } = props
 
   return (
@@ -69,7 +69,7 @@ export const BreadcrumbPage = (props: BreadcrumbPageProps) => {
 
 type BreadcrumbSeparatorProps = React.ComponentProps<'li'>
 
-export const BreadcrumbSeparator = (props: BreadcrumbSeparatorProps) => {
+const BreadcrumbSeparator = (props: BreadcrumbSeparatorProps) => {
   const { children, className, ...rest } = props
 
   return (
@@ -86,7 +86,7 @@ export const BreadcrumbSeparator = (props: BreadcrumbSeparatorProps) => {
 
 type BreadcrumbEllipsisProps = React.ComponentProps<'span'>
 
-export const BreadcrumbEllipsis = (props: BreadcrumbEllipsisProps) => {
+const BreadcrumbEllipsis = (props: BreadcrumbEllipsisProps) => {
   const { className, ...rest } = props
 
   return (
@@ -99,4 +99,14 @@ export const BreadcrumbEllipsis = (props: BreadcrumbEllipsisProps) => {
       <MoreHorizontalIcon className='size-4' />
     </span>
   )
+}
+
+export {
+  Breadcrumb,
+  BreadcrumbEllipsis,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator
 }

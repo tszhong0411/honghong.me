@@ -24,7 +24,7 @@ type BlurFadeProps = {
   blur?: string
 }
 
-export const BlurFade = (props: BlurFadeProps) => {
+const BlurFade = (props: BlurFadeProps) => {
   const {
     children,
     className,
@@ -67,3 +67,5 @@ export const BlurFade = (props: BlurFadeProps) => {
     </AnimatePresence>
   )
 }
+
+export { BlurFade }

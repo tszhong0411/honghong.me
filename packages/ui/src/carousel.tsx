@@ -42,7 +42,7 @@ const useCarousel = () => {
 
 type CarouselRootProps = React.ComponentProps<'div'> & CarouselProps
 
-export const Carousel = (props: CarouselRootProps) => {
+const Carousel = (props: CarouselRootProps) => {
   const {
     orientation = 'horizontal',
     options,
@@ -142,7 +142,7 @@ export const Carousel = (props: CarouselRootProps) => {
 
 type CarouselContentProps = React.ComponentProps<'div'>
 
-export const CarouselContent = (props: CarouselContentProps) => {
+const CarouselContent = (props: CarouselContentProps) => {
   const { className, ...rest } = props
   const { carouselRef, orientation } = useCarousel()
 
@@ -158,7 +158,7 @@ export const CarouselContent = (props: CarouselContentProps) => {
 
 type CarouselItemProps = React.ComponentProps<'div'>
 
-export const CarouselItem = (props: CarouselItemProps) => {
+const CarouselItem = (props: CarouselItemProps) => {
   const { className, ...rest } = props
   const { orientation } = useCarousel()
 
@@ -178,7 +178,7 @@ export const CarouselItem = (props: CarouselItemProps) => {
 
 type CarouselPreviousProps = React.ComponentProps<typeof Button>
 
-export const CarouselPrevious = (props: CarouselPreviousProps) => {
+const CarouselPrevious = (props: CarouselPreviousProps) => {
   const { className, variant = 'outline', size = 'icon', ...rest } = props
   const { orientation, scrollPrev, canScrollPrev } = useCarousel()
 
@@ -205,7 +205,7 @@ export const CarouselPrevious = (props: CarouselPreviousProps) => {
 
 type CarouselNextProps = React.ComponentProps<typeof Button>
 
-export const CarouselNext = (props: CarouselNextProps) => {
+const CarouselNext = (props: CarouselNextProps) => {
   const { className, variant = 'outline', size = 'icon', ...rest } = props
   const { orientation, scrollNext, canScrollNext } = useCarousel()
 
@@ -229,3 +229,5 @@ export const CarouselNext = (props: CarouselNextProps) => {
     </Button>
   )
 }
+
+export { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious }

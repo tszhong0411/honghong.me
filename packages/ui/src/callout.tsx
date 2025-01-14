@@ -7,7 +7,7 @@ type CalloutProps = {
   icon?: React.ReactNode
 } & React.ComponentProps<'div'>
 
-export const Callout = (props: CalloutProps) => {
+const Callout = (props: CalloutProps) => {
   const { title, type = 'info', icon, className, children, ...rest } = props
 
   const icons = {
@@ -33,3 +33,5 @@ export const Callout = (props: CalloutProps) => {
     </div>
   )
 }
+
+export { Callout }

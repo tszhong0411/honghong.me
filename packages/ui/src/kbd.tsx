@@ -72,7 +72,7 @@ type KbdProps = {
   keys?: KbdKey[]
 } & React.ComponentProps<'kbd'>
 
-export const Kbd = (props: KbdProps) => {
+const Kbd = (props: KbdProps) => {
   const { children, keys, className, ...rest } = props
 
   return (
@@ -92,3 +92,5 @@ export const Kbd = (props: KbdProps) => {
     </kbd>
   )
 }
+
+export { Kbd }

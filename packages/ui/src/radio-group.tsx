@@ -6,7 +6,7 @@ import { CircleIcon } from 'lucide-react'
 
 type RadioGroupProps = React.ComponentProps<typeof RadioGroupPrimitive.Root>
 
-export const RadioGroup = (props: RadioGroupProps) => {
+const RadioGroup = (props: RadioGroupProps) => {
   const { className, ...rest } = props
 
   return <RadioGroupPrimitive.Root className={cn('grid gap-2', className)} {...rest} />
@@ -14,7 +14,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
 
 type RadioGroupItemProps = React.ComponentProps<typeof RadioGroupPrimitive.Item>
 
-export const RadioGroupItem = (props: RadioGroupItemProps) => {
+const RadioGroupItem = (props: RadioGroupItemProps) => {
   const { className, ...rest } = props
 
   return (
@@ -34,3 +34,5 @@ export const RadioGroupItem = (props: RadioGroupItemProps) => {
     </RadioGroupPrimitive.Item>
   )
 }
+
+export { RadioGroup, RadioGroupItem }

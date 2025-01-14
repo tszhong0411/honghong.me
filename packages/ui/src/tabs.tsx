@@ -3,11 +3,11 @@
 import * as TabsPrimitive from '@radix-ui/react-tabs'
 import { cn } from '@tszhong0411/utils'
 
-export const Tabs = TabsPrimitive.Root
+const Tabs = TabsPrimitive.Root
 
 type TabsListProps = React.ComponentProps<typeof TabsPrimitive.List>
 
-export const TabsList = (props: TabsListProps) => {
+const TabsList = (props: TabsListProps) => {
   const { className, ...rest } = props
 
   return (
@@ -23,7 +23,7 @@ export const TabsList = (props: TabsListProps) => {
 
 type TabsTriggerProps = React.ComponentProps<typeof TabsPrimitive.Trigger>
 
-export const TabsTrigger = (props: TabsTriggerProps) => {
+const TabsTrigger = (props: TabsTriggerProps) => {
   const { className, ...rest } = props
 
   return (
@@ -42,7 +42,7 @@ export const TabsTrigger = (props: TabsTriggerProps) => {
 
 type TabsContentProps = React.ComponentProps<typeof TabsPrimitive.Content>
 
-export const TabsContent = (props: TabsContentProps) => {
+const TabsContent = (props: TabsContentProps) => {
   const { className, ...rest } = props
 
   return (
@@ -56,3 +56,5 @@ export const TabsContent = (props: TabsContentProps) => {
     />
   )
 }
+
+export { Tabs, TabsContent, TabsList, TabsTrigger }

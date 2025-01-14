@@ -4,11 +4,11 @@ import * as AccordionPrimitive from '@radix-ui/react-accordion'
 import { cn } from '@tszhong0411/utils'
 import { ChevronDownIcon } from 'lucide-react'
 
-export const Accordion = AccordionPrimitive.Root
+const Accordion = AccordionPrimitive.Root
 
 type AccordionItemProps = React.ComponentProps<typeof AccordionPrimitive.Item>
 
-export const AccordionItem = (props: AccordionItemProps) => {
+const AccordionItem = (props: AccordionItemProps) => {
   const { className, ...rest } = props
 
   return <AccordionPrimitive.Item className={cn('border-b', className)} {...rest} />
@@ -16,7 +16,7 @@ export const AccordionItem = (props: AccordionItemProps) => {
 
 type AccordionTriggerProps = React.ComponentProps<typeof AccordionPrimitive.Trigger>
 
-export const AccordionTrigger = (props: AccordionTriggerProps) => {
+const AccordionTrigger = (props: AccordionTriggerProps) => {
   const { className, children, ...rest } = props
 
   return (
@@ -38,7 +38,7 @@ export const AccordionTrigger = (props: AccordionTriggerProps) => {
 
 type AccordionContentProps = React.ComponentProps<typeof AccordionPrimitive.Content>
 
-export const AccordionContent = (props: AccordionContentProps) => {
+const AccordionContent = (props: AccordionContentProps) => {
   const { className, children, ...rest } = props
 
   return (
@@ -54,3 +54,5 @@ export const AccordionContent = (props: AccordionContentProps) => {
     </AccordionPrimitive.Content>
   )
 }
+
+export { Accordion, AccordionContent, AccordionItem, AccordionTrigger }
