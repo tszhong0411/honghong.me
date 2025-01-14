@@ -34,7 +34,7 @@ const tszhong0411 = (options: Options = {}): Options => {
     jsonRecursiveSort: true,
 
     // Tailwind CSS
-    tailwindFunctions: ['cn', 'clsx', 'cva'],
+    tailwindFunctions: ['cn', 'clsx', 'cva', 'tv'],
 
     ...rest
   }
