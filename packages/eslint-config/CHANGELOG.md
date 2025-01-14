@@ -1,5 +1,11 @@
 # @tszhong0411/eslint-config
 
+## 0.1.21
+
+### Patch Changes
+
+- [`7098116`](https://github.com/tszhong0411/honghong.me/commit/70981167e4db89df97eba5f213aa44460e9cb04a) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Add clsx and tv as tailwind callees
+
 ## 0.1.20
 
 ### Patch Changes

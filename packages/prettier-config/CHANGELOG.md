@@ -1,5 +1,14 @@
 # @tszhong0411/prettier-config
 
+## 0.0.13
+
+### Patch Changes
+
+- [`1996bfc`](https://github.com/tszhong0411/honghong.me/commit/1996bfcef91f09fa5e10a4108610d28ea80601ae) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Add tv as a tailwind function
+
+- Updated dependencies []:
+  - @tszhong0411/prettier-plugin-package-json@0.0.2
+
 ## 0.0.12
 
 ### Patch Changes

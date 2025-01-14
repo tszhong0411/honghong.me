@@ -1,5 +1,11 @@
 # @tszhong0411/tailwind-config
 
+## 0.0.19
+
+### Patch Changes
+
+- [`9dd5a76`](https://github.com/tszhong0411/honghong.me/commit/9dd5a76f1174c3bff26fdf377c5f678756afbcca) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Refactor tailwind plugin to solve a ESLint error
+
 ## 0.0.18
 
 ### Patch Changes
