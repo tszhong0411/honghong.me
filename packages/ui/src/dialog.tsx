@@ -53,8 +53,8 @@ export const DialogContent = (props: DialogContentProps) => {
             'disabled:pointer-events-none',
             'data-[state=open]:bg-accent data-[state=open]:text-muted-foreground'
           )}
+          aria-label='Close'
         >
-          <span className='sr-only'>Close</span>
           <XIcon className='size-4' aria-hidden='true' />
         </DialogPrimitive.Close>
       </DialogPrimitive.Content>
@@ -67,9 +67,7 @@ type DialogHeaderProps = React.ComponentProps<'div'>
 export const DialogHeader = (props: DialogHeaderProps) => {
   const { className, ...rest } = props
 
-  return (
-    <div className={cn('flex flex-col gap-1.5 text-center sm:text-left', className)} {...rest} />
-  )
+  return <div className={cn('flex flex-col gap-2 text-center sm:text-left', className)} {...rest} />
 }
 
 type DialogFooterProps = React.ComponentProps<'div'>
@@ -79,7 +77,7 @@ export const DialogFooter = (props: DialogFooterProps) => {
 
   return (
     <div
-      className={cn('flex flex-col-reverse sm:flex-row sm:justify-end sm:gap-2', className)}
+      className={cn('flex flex-col-reverse gap-2 sm:flex-row sm:justify-end', className)}
       {...rest}
     />
   )
@@ -90,12 +88,7 @@ type DialogTitleProps = React.ComponentProps<typeof DialogPrimitive.Title>
 export const DialogTitle = (props: DialogTitleProps) => {
   const { className, ...rest } = props
 
-  return (
-    <DialogPrimitive.Title
-      className={cn('text-lg font-semibold leading-none tracking-tight', className)}
-      {...rest}
-    />
-  )
+  return <DialogPrimitive.Title className={cn('text-lg font-semibold', className)} {...rest} />
 }
 
 type DialogDescriptionProps = React.ComponentProps<typeof DialogPrimitive.Description>
