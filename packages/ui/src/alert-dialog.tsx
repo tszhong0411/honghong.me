@@ -63,7 +63,7 @@ export const AlertDialogFooter = (props: AlertDialogFooterProps) => {
 
   return (
     <div
-      className={cn('flex flex-col-reverse sm:flex-row sm:justify-end sm:gap-2', className)}
+      className={cn('flex flex-col-reverse gap-2 sm:flex-row sm:justify-end', className)}
       {...rest}
     />
   )
@@ -105,7 +105,7 @@ export const AlertDialogCancel = (props: AlertDialogCancelProps) => {
 
   return (
     <AlertDialogPrimitive.Cancel
-      className={cn(buttonVariants({ variant: 'outline' }), 'mt-2 sm:mt-0', className)}
+      className={cn(buttonVariants({ variant: 'outline' }), className)}
       {...rest}
     />
   )
