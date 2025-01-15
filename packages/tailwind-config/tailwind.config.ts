@@ -103,8 +103,8 @@ const config: Partial<Config> = {
             '--tw-prose-th-borders': "theme('colors.border')",
             '--tw-prose-td-borders': "theme('colors.border')",
             '--tw-prose-code': "theme('colors.foreground')",
-            '--tw-prose-kbd': "theme('colors.foreground')",
-            '--tw-prose-kbd-shadows': "theme('colors.primary.DEFAULT / 50%')",
+            '--tw-prose-kbd': false,
+            '--tw-prose-kbd-shadows': false,
             '--tw-prose-pre-bg': false,
             '--tw-prose-pre-code': false,
 
@@ -114,9 +114,7 @@ const config: Partial<Config> = {
               margin: '0 auto'
             },
 
-            kbd: {
-              boxShadow: '0 0 0 1px var(--tw-prose-kbd-shadows),0 3px 0 var(--tw-prose-kbd-shadows)'
-            },
+            kbd: false,
 
             code: {
               padding: '2px 4px',
