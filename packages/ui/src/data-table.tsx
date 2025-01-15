@@ -55,7 +55,7 @@ const DataTable = <TData,>(props: DataTableProps<TData>) => {
   return (
     <div className='w-full space-y-2.5' {...rest}>
       {children}
-      <div className='rounded-md border'>
+      <div className='rounded-lg border'>
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -527,7 +527,7 @@ const DataTableSkeleton = (props: DataTableSkeletonProps) => {
         <Skeleton className='ml-auto hidden h-8 w-[4.5rem] lg:flex' />
       </div>
       {/* Table skeleton */}
-      <div className='rounded-md border'>
+      <div className='rounded-lg border'>
         <Table>
           <TableHeader>
             {range(1).map((i) => (

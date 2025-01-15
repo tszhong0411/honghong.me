@@ -21,7 +21,7 @@ const Files = (props: FilesProps) => {
   const { children, className, ...rest } = props
 
   return (
-    <div className={cn('not-prose bg-card rounded-md border p-2', className)} {...rest}>
+    <div className={cn('not-prose bg-card rounded-lg border p-2', className)} {...rest}>
       {children}
     </div>
   )
