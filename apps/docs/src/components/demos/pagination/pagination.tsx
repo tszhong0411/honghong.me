@@ -1,38 +1,32 @@
+'use client'
+
 import {
   Pagination,
-  PaginationContent,
+  PaginationContext,
   PaginationEllipsis,
   PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious
+  PaginationNextTrigger,
+  PaginationPrevTrigger
 } from '@tszhong0411/ui'
 
 const PaginationDemo = () => {
   return (
-    <Pagination>
-      <PaginationContent>
-        <PaginationItem>
-          <PaginationPrevious href='#' />
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href='#'>1</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href='#' isActive>
-            2
-          </PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href='#'>3</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationEllipsis />
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationNext href='#' />
-        </PaginationItem>
-      </PaginationContent>
+    <Pagination count={100}>
+      <PaginationPrevTrigger />
+      <PaginationContext>
+        {(context) =>
+          context.pages.map((page, index) =>
+            page.type === 'page' ? (
+              <PaginationItem key={index} {...page}>
+                {page.value}
+              </PaginationItem>
+            ) : (
+              <PaginationEllipsis key={index} index={index} />
+            )
+          )
+        }
+      </PaginationContext>
+      <PaginationNextTrigger />
     </Pagination>
   )
 }

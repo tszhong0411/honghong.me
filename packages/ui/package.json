@@ -29,6 +29,7 @@
   "sideEffects": false,
   "types": "./dist/index.d.ts",
   "dependencies": {
+    "@ark-ui/react": "^4.8.1",
     "@icons-pack/react-simple-icons": "10.2.0",
     "@radix-ui/react-accordion": "^1.2.2",
     "@radix-ui/react-alert-dialog": "^1.1.4",

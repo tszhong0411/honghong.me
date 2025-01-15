@@ -1,109 +1,105 @@
+import { Pagination as PaginationPrimitive } from '@ark-ui/react/pagination'
 import { cn } from '@tszhong0411/utils'
 import { ChevronLeftIcon, ChevronRightIcon, MoreHorizontalIcon } from 'lucide-react'
-import Link from 'next/link'
 
 import { type ButtonProps, buttonVariants } from './button'
 
-type PaginationProps = React.ComponentProps<'nav'>
+const PaginationContext = PaginationPrimitive.Context
+
+type PaginationProps = PaginationPrimitive.RootProps
 
 const Pagination = (props: PaginationProps) => {
-  const { className, ...rest } = props
+  const { className, translations, ...rest } = props
 
   return (
-    <nav
-      role='navigation'
-      aria-label='pagination'
-      className={cn('mx-auto flex w-full justify-center', className)}
+    <PaginationPrimitive.Root
+      translations={{
+        // Capitalize the first letter
+        nextTriggerLabel: 'Next page',
+        prevTriggerLabel: 'Previous page',
+        itemLabel: (details) => `Page ${details.page}`,
+        ...translations
+      }}
+      className={cn('mx-auto flex w-full flex-wrap items-center justify-center gap-1', className)}
       {...rest}
     />
   )
 }
 
-type PaginationContentProps = React.ComponentProps<'ul'>
-
-const PaginationContent = (props: PaginationContentProps) => {
-  const { className, ...rest } = props
-
-  return <ul className={cn('flex flex-row items-center gap-1', className)} {...rest} />
-}
-
-type PaginationItemProps = React.ComponentProps<'li'>
+type PaginationItemProps = PaginationPrimitive.ItemProps
 
 const PaginationItem = (props: PaginationItemProps) => {
-  const { className, ...rest } = props
-
-  return <li className={cn(className)} {...rest} />
-}
-
-type PaginationLinkProps = {
-  isActive?: boolean
-} & Pick<ButtonProps, 'size'> &
-  React.ComponentProps<typeof Link>
-
-const PaginationLink = (props: PaginationLinkProps) => {
-  const { className, isActive, size = 'icon', ...rest } = props
+  const { className, value, ...rest } = props
 
   return (
-    // eslint-disable-next-line jsx-a11y/anchor-has-content -- it's a component
-    <Link
-      aria-current={isActive ? 'page' : undefined}
-      className={cn(
-        buttonVariants({
-          variant: isActive ? 'outline' : 'ghost',
-          size
-        }),
-        className
+    <PaginationContext>
+      {(context) => (
+        <PaginationPrimitive.Item
+          className={cn(
+            buttonVariants({ variant: context.page === value ? 'outline' : 'ghost', size: 'icon' }),
+            className
+          )}
+          value={value}
+          {...rest}
+        />
       )}
-      {...rest}
-    />
+    </PaginationContext>
   )
 }
 
-type PaginationPreviousProps = React.ComponentProps<typeof PaginationLink>
+type PaginationPrevTriggerProps = PaginationPrimitive.PrevTriggerProps & Pick<ButtonProps, 'size'>
 
-const PaginationPrevious = (props: PaginationPreviousProps) => {
-  const { className, ...rest } = props
+const PaginationPrevTrigger = (props: PaginationPrevTriggerProps) => {
+  const { className, size = 'default', ...rest } = props
 
   return (
-    <PaginationLink size='default' className={cn('gap-1 pl-2.5', className)} {...rest}>
+    <PaginationPrimitive.PrevTrigger
+      className={cn(buttonVariants({ variant: 'ghost', size }), 'gap-1 pl-2.5', className)}
+      {...rest}
+    >
       <ChevronLeftIcon className='size-4' />
       <span>Previous</span>
-    </PaginationLink>
+    </PaginationPrimitive.PrevTrigger>
   )
 }
 
-type PaginationNextProps = React.ComponentProps<typeof PaginationLink>
+type PaginationNextTriggerProps = PaginationPrimitive.NextTriggerProps & Pick<ButtonProps, 'size'>
 
-const PaginationNext = (props: PaginationNextProps) => {
-  const { className, ...rest } = props
+const PaginationNextTrigger = (props: PaginationNextTriggerProps) => {
+  const { className, size = 'default', ...rest } = props
 
   return (
-    <PaginationLink size='default' className={cn('gap-1 pr-2.5', className)} {...rest}>
+    <PaginationPrimitive.NextTrigger
+      className={cn(buttonVariants({ variant: 'ghost', size }), 'gap-1 pr-2.5', className)}
+      {...rest}
+    >
       <span>Next</span>
       <ChevronRightIcon className='size-4' />
-    </PaginationLink>
+    </PaginationPrimitive.NextTrigger>
   )
 }
 
-type PaginationEllipsisProps = React.ComponentProps<'span'>
+type PaginationEllipsisProps = PaginationPrimitive.EllipsisProps
 
 const PaginationEllipsis = (props: PaginationEllipsisProps) => {
   const { className, ...rest } = props
 
   return (
-    <span className={cn('flex size-9 items-center justify-center', className)} {...rest}>
-      <span className='sr-only'>More pages</span>
+    <PaginationPrimitive.Ellipsis
+      className={cn('flex size-9 items-center justify-center', className)}
+      aria-label='More pages'
+      {...rest}
+    >
       <MoreHorizontalIcon className='size-4' aria-hidden='true' />
-    </span>
+    </PaginationPrimitive.Ellipsis>
   )
 }
 
 export {
   Pagination,
-  PaginationContent,
+  PaginationContext,
   PaginationEllipsis,
   PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious
+  PaginationNextTrigger,
+  PaginationPrevTrigger
 }
