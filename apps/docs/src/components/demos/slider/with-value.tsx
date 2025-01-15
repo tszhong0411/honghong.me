@@ -1,4 +1,11 @@
-import { Slider, SliderControl, SliderRange, SliderThumb, SliderTrack } from '@tszhong0411/ui'
+import {
+  Slider,
+  SliderControl,
+  SliderRange,
+  SliderThumb,
+  SliderTrack,
+  SliderValueText
+} from '@tszhong0411/ui'
 
 const SliderDemo = () => {
   return (
@@ -9,6 +16,7 @@ const SliderDemo = () => {
         </SliderTrack>
         <SliderThumb index={0} />
       </SliderControl>
+      <SliderValueText />
     </Slider>
   )
 }

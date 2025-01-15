@@ -1,8 +1,16 @@
-import { Slider, SliderControl, SliderRange, SliderThumb, SliderTrack } from '@tszhong0411/ui'
+import {
+  Slider,
+  SliderControl,
+  SliderLabel,
+  SliderRange,
+  SliderThumb,
+  SliderTrack
+} from '@tszhong0411/ui'
 
-const SliderDemo = () => {
+const SliderWithLabelDemo = () => {
   return (
     <Slider defaultValue={[10]} className='w-3/5'>
+      <SliderLabel>Label</SliderLabel>
       <SliderControl>
         <SliderTrack>
           <SliderRange />
@@ -13,4 +21,4 @@ const SliderDemo = () => {
   )
 }
 
-export default SliderDemo
+export default SliderWithLabelDemo
