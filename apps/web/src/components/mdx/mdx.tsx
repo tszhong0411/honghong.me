@@ -1,5 +1,5 @@
 import { getMDXComponent, type MDXComponents } from '@tszhong0411/mdx'
-import { BlurImage, CodeBlock, File, Files, Folder } from '@tszhong0411/ui'
+import { BlurImage, CodeBlock, File, Files, Folder, Kbd } from '@tszhong0411/ui'
 
 import ImageZoom from '../image-zoom'
 import Link from '../link'
@@ -56,7 +56,8 @@ const components: MDXComponents = {
   Logo,
   Files,
   File,
-  Folder
+  Folder,
+  Kbd
 }
 
 const Mdx = (props: MdxProps) => {
