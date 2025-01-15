@@ -6,7 +6,7 @@ import { type ButtonProps, buttonVariants } from './button'
 
 const PaginationContext = PaginationPrimitive.Context
 
-type PaginationProps = PaginationPrimitive.RootProps
+type PaginationProps = React.ComponentProps<typeof PaginationPrimitive.Root>
 
 const Pagination = (props: PaginationProps) => {
   const { className, translations, ...rest } = props
@@ -26,7 +26,7 @@ const Pagination = (props: PaginationProps) => {
   )
 }
 
-type PaginationItemProps = PaginationPrimitive.ItemProps
+type PaginationItemProps = React.ComponentProps<typeof PaginationPrimitive.Item>
 
 const PaginationItem = (props: PaginationItemProps) => {
   const { className, value, ...rest } = props
@@ -47,7 +47,8 @@ const PaginationItem = (props: PaginationItemProps) => {
   )
 }
 
-type PaginationPrevTriggerProps = PaginationPrimitive.PrevTriggerProps & Pick<ButtonProps, 'size'>
+type PaginationPrevTriggerProps = React.ComponentProps<typeof PaginationPrimitive.PrevTrigger> &
+  Pick<ButtonProps, 'size'>
 
 const PaginationPrevTrigger = (props: PaginationPrevTriggerProps) => {
   const { className, size = 'default', ...rest } = props
@@ -63,7 +64,8 @@ const PaginationPrevTrigger = (props: PaginationPrevTriggerProps) => {
   )
 }
 
-type PaginationNextTriggerProps = PaginationPrimitive.NextTriggerProps & Pick<ButtonProps, 'size'>
+type PaginationNextTriggerProps = React.ComponentProps<typeof PaginationPrimitive.NextTrigger> &
+  Pick<ButtonProps, 'size'>
 
 const PaginationNextTrigger = (props: PaginationNextTriggerProps) => {
   const { className, size = 'default', ...rest } = props
@@ -79,7 +81,7 @@ const PaginationNextTrigger = (props: PaginationNextTriggerProps) => {
   )
 }
 
-type PaginationEllipsisProps = PaginationPrimitive.EllipsisProps
+type PaginationEllipsisProps = React.ComponentProps<typeof PaginationPrimitive.Ellipsis>
 
 const PaginationEllipsis = (props: PaginationEllipsisProps) => {
   const { className, ...rest } = props
