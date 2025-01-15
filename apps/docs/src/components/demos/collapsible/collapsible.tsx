@@ -12,8 +12,7 @@ const CollapsibleDemo = () => {
       <div className='flex items-center justify-between gap-4 px-4'>
         <h4 className='text-sm font-semibold'>@peduarte starred 3 repositories</h4>
         <CollapsibleTrigger asChild>
-          <Button variant='ghost' size='sm' className='w-9 p-0'>
-            <span className='sr-only'>Toggle</span>
+          <Button variant='ghost' size='sm' className='w-9 p-0' aria-label='Toggle'>
             <ChevronsUpDown className='size-4' />
           </Button>
         </CollapsibleTrigger>

@@ -22,8 +22,7 @@ const BreadcrumbDemo = () => {
         <BreadcrumbSeparator />
         <BreadcrumbItem>
           <DropdownMenu>
-            <DropdownMenuTrigger className='flex items-center gap-1'>
-              <span className='sr-only'>Toggle menu</span>
+            <DropdownMenuTrigger className='flex items-center gap-1' aria-label='Toggle menu'>
               <BreadcrumbEllipsis className='size-4' />
             </DropdownMenuTrigger>
             <DropdownMenuContent align='start'>
