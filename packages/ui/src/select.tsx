@@ -109,7 +109,7 @@ const SelectLabel = (props: SelectLabelProps) => {
 
   return (
     <SelectPrimitive.Label
-      className={cn('py-1.5 pl-8 pr-2 text-sm font-semibold', className)}
+      className={cn('px-2 py-1.5 text-sm font-semibold', className)}
       {...rest}
     />
   )
@@ -146,7 +146,7 @@ const SelectSeparator = (props: SelectSeparatorProps) => {
   const { className, ...rest } = props
 
   return (
-    <SelectPrimitive.Separator className={cn('bg-muted -mx-1 my-1 h-px', className)} {...rest} />
+    <SelectPrimitive.Separator className={cn('bg-border -mx-1 my-1 h-px', className)} {...rest} />
   )
 }
 
