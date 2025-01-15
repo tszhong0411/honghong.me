@@ -102,7 +102,7 @@ const MenubarContent = (props: MenubarContentProps) => {
         alignOffset={alignOffset}
         sideOffset={sideOffset}
         className={cn(
-          'bg-popover text-popover-foreground z-50 min-w-48 overflow-hidden rounded-lg border p-1 shadow-md',
+          'bg-popover text-popover-foreground z-50 min-w-48 overflow-hidden rounded-lg border p-1 shadow-lg',
           'data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95',
           'data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',
           'data-[side=top]:slide-in-from-bottom-2',

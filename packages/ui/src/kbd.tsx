@@ -78,7 +78,7 @@ const Kbd = (props: KbdProps) => {
   return (
     <kbd
       className={cn(
-        'bg-muted inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 font-mono text-sm shadow-sm',
+        'bg-muted inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 font-mono text-sm',
         className
       )}
       {...rest}
