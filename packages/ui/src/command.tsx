@@ -50,7 +50,7 @@ const CommandInput = (props: CommandInputProps) => {
   const { className, ...rest } = props
 
   return (
-    <div className='mb-3 border-b pb-2'>
+    <div className='border-b pb-2'>
       <CommandPrimitive.Input
         className={cn(
           'w-full bg-transparent px-4 py-2 text-sm outline-none',
@@ -71,7 +71,10 @@ const CommandList = (props: CommandListProps) => {
 
   return (
     <CommandPrimitive.List
-      className={cn('max-h-[50vh] overflow-y-auto overflow-x-hidden px-2', className)}
+      className={cn(
+        'max-h-[50vh] overflow-y-auto overflow-x-hidden px-2 [&:has(+[cmdk-footer])>[cmdk-list-sizer]>:last-child]:mb-2 [&>[cmdk-list-sizer]>:first-child]:mt-2',
+        className
+      )}
       {...rest}
     />
   )
@@ -135,7 +138,9 @@ type CommandFooterProps = React.ComponentProps<'div'>
 const CommandFooter = (props: CommandFooterProps) => {
   return (
     <div
-      className='mt-2 flex h-10 w-full items-center justify-between rounded-b-lg border-t px-2 pt-2'
+      // eslint-disable-next-line @eslint-react/dom/no-unknown-property -- custom attribute
+      cmdk-footer=''
+      className='flex h-10 w-full items-center justify-between rounded-b-lg border-t px-2 pt-2'
       {...props}
     />
   )
