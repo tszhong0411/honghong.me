@@ -1,22 +1,32 @@
 'use client'
 
-import { Progress } from '@tszhong0411/ui'
+import { Progress, ProgressRange, ProgressTrack, ProgressValueText } from '@tszhong0411/ui'
 import { useEffect, useState } from 'react'
 
 const ProgressDemo = () => {
-  const [progress, setProgress] = useState(13)
+  const [progress, setProgress] = useState(0)
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setProgress(66)
-    }, 500)
+    const interval = setInterval(() => {
+      setProgress((value) => (value === 100 ? 0 : value + 1))
+      // eslint-disable-next-line sonarjs/pseudo-random -- it's safe
+    }, Math.random() * 500)
 
     return () => {
-      clearTimeout(timer)
+      clearInterval(interval)
     }
   }, [])
 
-  return <Progress aria-label='Loading...' value={progress} className='max-w-md' />
+  return (
+    <Progress value={progress} min={0} max={100} className='w-3/5 max-w-md'>
+      <ProgressTrack>
+        <ProgressRange />
+      </ProgressTrack>
+      <div className='w-full text-center'>
+        <ProgressValueText />
+      </div>
+    </Progress>
+  )
 }
 
 export default ProgressDemo
