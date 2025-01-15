@@ -18,20 +18,35 @@ import { cn } from '@tszhong0411/utils'
 import { ComponentIcon, MoonIcon, SearchIcon, SunIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useTheme } from 'next-themes'
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 
 import { SIDEBAR_LINKS } from '@/config/links'
 
 const Search = () => {
-  const [isOpened, setIsOpened] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
   const [value, setValue] = useState('')
   const { setTheme } = useTheme()
   const router = useRouter()
 
   const runCommand = (command: () => void) => {
-    setIsOpened(false)
+    setIsOpen(false)
     command()
   }
+
+  useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault()
+        setIsOpen((prev) => !prev)
+      }
+    }
+
+    document.addEventListener('keydown', down)
+
+    return () => {
+      document.removeEventListener('keydown', down)
+    }
+  }, [])
 
   const isSelectingTheme = value === 'Light' || value === 'Dark'
 
@@ -43,7 +58,7 @@ const Search = () => {
           'bg-muted/50 text-muted-foreground hidden h-10 items-center justify-between gap-3 rounded-lg pr-2 font-normal sm:flex lg:w-64'
         )}
         onClick={() => {
-          setIsOpened(true)
+          setIsOpen(true)
         }}
       >
         <span>Search documentation</span>
@@ -57,18 +72,13 @@ const Search = () => {
         size='icon'
         className='sm:hidden'
         onClick={() => {
-          setIsOpened(true)
+          setIsOpen(true)
         }}
         aria-label='Search documentation'
       >
         <SearchIcon className='size-5' />
       </Button>
-      <CommandDialog
-        open={isOpened}
-        onOpenChange={setIsOpened}
-        value={value}
-        onValueChange={setValue}
-      >
+      <CommandDialog open={isOpen} onOpenChange={setIsOpen} value={value} onValueChange={setValue}>
         <CommandInput placeholder='Type a command or search...' />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
