@@ -50,8 +50,7 @@ const DialogContent = (props: DialogContentProps) => {
             'ring-offset-background absolute right-4 top-4 rounded-sm opacity-70 transition-opacity',
             'hover:opacity-100',
             'focus:ring-ring focus:outline-none focus:ring-2 focus:ring-offset-2',
-            'disabled:pointer-events-none',
-            'data-[state=open]:bg-accent data-[state=open]:text-muted-foreground'
+            'disabled:pointer-events-none'
           )}
           aria-label='Close'
         >

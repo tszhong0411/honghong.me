@@ -61,7 +61,12 @@ const SheetContent = (props: SheetContentProps) => {
       <SheetPrimitive.Content className={cn(sheetVariants({ side }), className)} {...rest}>
         {children}
         <SheetPrimitive.Close
-          className='ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none'
+          className={cn(
+            'ring-offset-background absolute right-4 top-4 rounded-sm opacity-70 transition-opacity',
+            'hover:opacity-100',
+            'focus:ring-ring focus:outline-none focus:ring-2 focus:ring-offset-2',
+            'disabled:pointer-events-none'
+          )}
           aria-label='Close'
         >
           <XIcon className='size-4' aria-hidden='true' />
