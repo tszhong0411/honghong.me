@@ -47,14 +47,14 @@ const GoogleIcon = () => {
 }
 
 const SignInDialog = () => {
-  const { signIn: isOpened } = useStore(dialogs)
+  const { signIn: isOpen } = useStore(dialogs)
   const [isGitHubLoading, setIsGitHubLoading] = useState(false)
   const [isGoogleLoading, setIsGoogleLoading] = useState(false)
   const t = useTranslations()
 
   return (
     <Dialog
-      open={isOpened}
+      open={isOpen}
       onOpenChange={(v) => {
         setDialogs({ signIn: v })
       }}
