@@ -18,7 +18,7 @@ const ProgressDemo = () => {
   }, [])
 
   return (
-    <Progress value={progress} min={0} max={100} className='w-3/5 max-w-md'>
+    <Progress value={progress} min={0} max={100} className='w-3/5'>
       <ProgressTrack>
         <ProgressRange />
       </ProgressTrack>
