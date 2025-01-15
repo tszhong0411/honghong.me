@@ -4,7 +4,11 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { XIcon } from 'lucide-react'
 
 const sheetVariants = cva(
-  'bg-background data-[state=open]:animate-in data-[state=closed]:animate-out fixed z-50 p-6 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500',
+  [
+    'bg-background fixed z-50 p-6 shadow-lg transition ease-in-out',
+    'data-[state=open]:animate-in data-[state=closed]:duration-300',
+    'data-[state=closed]:animate-out data-[state=open]:duration-500'
+  ],
   {
     variants: {
       side: {
@@ -56,8 +60,10 @@ const SheetContent = (props: SheetContentProps) => {
       <SheetOverlay />
       <SheetPrimitive.Content className={cn(sheetVariants({ side }), className)} {...rest}>
         {children}
-        <SheetPrimitive.Close className='ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none'>
-          <span className='sr-only'>Close</span>
+        <SheetPrimitive.Close
+          className='ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none'
+          aria-label='Close'
+        >
           <XIcon className='size-4' aria-hidden='true' />
         </SheetPrimitive.Close>
       </SheetPrimitive.Content>
