@@ -34,9 +34,14 @@ const NavigationMenuList = (props: NavigationMenuListProps) => {
 
 const NavigationMenuItem = NavigationMenuPrimitive.Item
 
-const navigationMenuTriggerVariants = cva(
-  'bg-background hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50'
-)
+const navigationMenuTriggerVariants = cva([
+  'bg-background group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors',
+  'focus:bg-accent focus:text-accent-foreground focus:outline-none',
+  'disabled:pointer-events-none disabled:opacity-50',
+  'hover:bg-accent hover:text-accent-foreground',
+  'data-[active]:bg-accent/50',
+  'data-[state=open]:bg-accent/50'
+])
 
 type NavigationMenuTriggerProps = React.ComponentProps<typeof NavigationMenuPrimitive.Trigger>
 
@@ -65,7 +70,11 @@ const NavigationMenuContent = (props: NavigationMenuContentProps) => {
   return (
     <NavigationMenuPrimitive.Content
       className={cn(
-        'data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 left-0 top-0 w-full md:absolute md:w-auto',
+        'left-0 top-0 w-full md:absolute md:w-auto',
+        'data-[motion^=from-]:animate-in data-[motion^=from-]:fade-in',
+        'data-[motion^=to-]:animate-out data-[motion^=to-]:fade-out',
+        'data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-start]:slide-out-to-left-52',
+        'data-[motion=from-end]:slide-in-from-right-52 data-[motion=to-end]:slide-out-to-right-52',
         className
       )}
       {...rest}
@@ -84,7 +93,9 @@ const NavigationMenuViewport = (props: NavigationMenuViewportProps) => {
     <div className={cn('absolute left-0 top-full flex justify-center')}>
       <NavigationMenuPrimitive.Viewport
         className={cn(
-          'origin-top-center bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border shadow-lg duration-200 md:w-[var(--radix-navigation-menu-viewport-width)]',
+          'origin-top-center bg-popover text-popover-foreground relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border shadow-lg duration-200 md:w-[var(--radix-navigation-menu-viewport-width)]',
+          'data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-90',
+          'data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',
           className
         )}
         {...rest}
@@ -101,7 +112,9 @@ const NavigationMenuIndicator = (props: NavigationMenuIndicatorProps) => {
   return (
     <NavigationMenuPrimitive.Indicator
       className={cn(
-        'data-[state=visible]:animate-in data-[state=hidden]:animate-out data-[state=hidden]:fade-out data-[state=visible]:fade-in top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden',
+        'top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden',
+        'data-[state=visible]:animate-in data-[state=visible]:fade-in',
+        'data-[state=hidden]:animate-out data-[state=hidden]:fade-out',
         className
       )}
       {...rest}
