@@ -63,7 +63,7 @@ const DropdownMenuContent = (props: DropdownMenuContentProps) => {
   const { className, sideOffset = 4, ...rest } = props
 
   return (
-    <DropdownMenuPrimitive.Portal>
+    <DropdownMenuPortal>
       <DropdownMenuPrimitive.Content
         sideOffset={sideOffset}
         className={cn(
@@ -78,7 +78,7 @@ const DropdownMenuContent = (props: DropdownMenuContentProps) => {
         )}
         {...rest}
       />
-    </DropdownMenuPrimitive.Portal>
+    </DropdownMenuPortal>
   )
 }
 

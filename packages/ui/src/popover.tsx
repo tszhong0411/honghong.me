@@ -5,6 +5,7 @@ import { cn } from '@tszhong0411/utils'
 
 const Popover = PopoverPrimitive.Root
 const PopoverTrigger = PopoverPrimitive.Trigger
+const PopoverPortal = PopoverPrimitive.Portal
 
 type PopoverContentProps = React.ComponentProps<typeof PopoverPrimitive.Content>
 
@@ -12,7 +13,7 @@ const PopoverContent = (props: PopoverContentProps) => {
   const { className, align = 'center', sideOffset = 4, ...rest } = props
 
   return (
-    <PopoverPrimitive.Portal>
+    <PopoverPortal>
       <PopoverPrimitive.Content
         align={align}
         sideOffset={sideOffset}
@@ -28,8 +29,8 @@ const PopoverContent = (props: PopoverContentProps) => {
         )}
         {...rest}
       />
-    </PopoverPrimitive.Portal>
+    </PopoverPortal>
   )
 }
 
-export { Popover, PopoverContent, PopoverTrigger }
+export { Popover, PopoverContent, PopoverPortal, PopoverTrigger }

@@ -63,7 +63,7 @@ const ContextMenuContent = (props: ContextMenuContentProps) => {
   const { className, ...rest } = props
 
   return (
-    <ContextMenuPrimitive.Portal>
+    <ContextMenuPortal>
       <ContextMenuPrimitive.Content
         className={cn(
           'bg-popover text-popover-foreground z-50 min-w-32 overflow-hidden rounded-lg border p-1 shadow-lg',
@@ -77,7 +77,7 @@ const ContextMenuContent = (props: ContextMenuContentProps) => {
         )}
         {...rest}
       />
-    </ContextMenuPrimitive.Portal>
+    </ContextMenuPortal>
   )
 }
 

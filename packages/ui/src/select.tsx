@@ -7,6 +7,7 @@ import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from 'lucide-react'
 const Select = SelectPrimitive.Root
 const SelectGroup = SelectPrimitive.Group
 const SelectValue = SelectPrimitive.Value
+const SelectPortal = SelectPrimitive.Portal
 
 type SelectTriggerProps = React.ComponentProps<typeof SelectPrimitive.Trigger>
 
@@ -69,7 +70,7 @@ const SelectContent = (props: SelectContentProps) => {
   const { className, children, position = 'popper', ...rest } = props
 
   return (
-    <SelectPrimitive.Portal>
+    <SelectPortal>
       <SelectPrimitive.Content
         className={cn(
           'bg-popover text-popover-foreground relative z-50 max-h-96 min-w-32 overflow-hidden rounded-lg border shadow-lg',
@@ -98,7 +99,7 @@ const SelectContent = (props: SelectContentProps) => {
         </SelectPrimitive.Viewport>
         <SelectScrollDownButton />
       </SelectPrimitive.Content>
-    </SelectPrimitive.Portal>
+    </SelectPortal>
   )
 }
 
@@ -156,6 +157,7 @@ export {
   SelectGroup,
   SelectItem,
   SelectLabel,
+  SelectPortal,
   SelectScrollDownButton,
   SelectScrollUpButton,
   SelectSeparator,

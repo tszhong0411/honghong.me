@@ -100,6 +100,7 @@ export {
   DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
+  DrawerPortal,
   DrawerTitle,
   DrawerTrigger
 }

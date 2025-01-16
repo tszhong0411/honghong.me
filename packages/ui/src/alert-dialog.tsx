@@ -120,6 +120,7 @@ export {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogOverlay,
+  AlertDialogPortal,
   AlertDialogTitle,
   AlertDialogTrigger
 }

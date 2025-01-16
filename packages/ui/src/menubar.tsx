@@ -96,7 +96,7 @@ const MenubarContent = (props: MenubarContentProps) => {
   const { className, align = 'start', alignOffset = -4, sideOffset = 8, ...rest } = props
 
   return (
-    <MenubarPrimitive.Portal>
+    <MenubarPortal>
       <MenubarPrimitive.Content
         align={align}
         alignOffset={alignOffset}
@@ -113,7 +113,7 @@ const MenubarContent = (props: MenubarContentProps) => {
         )}
         {...rest}
       />
-    </MenubarPrimitive.Portal>
+    </MenubarPortal>
   )
 }
 
