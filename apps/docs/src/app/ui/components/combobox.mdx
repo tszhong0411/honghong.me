@@ -1,0 +1,48 @@
+---
+title: Combobox
+description: Autocomplete input and command palette with a list of suggestions.
+---
+
+<ComponentPreview name='combobox/combobox' />
+
+## Usage
+
+```tsx
+import {
+  Combobox,
+  ComboboxContent,
+  ComboboxControl,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxItemGroup,
+  ComboboxItemGroupLabel,
+  ComboboxItemIndicator,
+  ComboboxItemText,
+  ComboboxTrigger
+} from '@tszhong0411/ui'
+```
+
+```tsx
+<Combobox items={['React', 'Vue']}>
+  <ComboboxLabel>Framework</ComboboxLabel>
+  <ComboboxControl>
+    <ComboboxInput placeholder='Select a framework' />
+    <ComboboxTrigger>
+      <ChevronsUpDownIcon />
+    </ComboboxTrigger>
+  </ComboboxControl>
+  <ComboboxContent>
+    <ComboboxItemGroup>
+      <ComboboxItemGroupLabel>Frameworks</ComboboxItemGroupLabel>
+      {['React', 'Vue'].map((item) => (
+        <ComboboxItem key={item} item={item}>
+          <ComboboxItemText>{item}</ComboboxItemText>
+          <ComboboxItemIndicator>
+            <CheckIcon />
+          </ComboboxItemIndicator>
+        </ComboboxItem>
+      ))}
+    </ComboboxItemGroup>
+  </ComboboxContent>
+</Combobox>
+```

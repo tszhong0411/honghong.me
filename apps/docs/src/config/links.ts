@@ -75,6 +75,10 @@ const COMPONENT_LINKS = [
     text: 'Collapsible'
   },
   {
+    href: '/ui/components/combobox',
+    text: 'Combobox'
+  },
+  {
     href: '/ui/components/command',
     text: 'Command'
   },
