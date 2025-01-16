@@ -15,7 +15,7 @@ const Command = (props: CommandProps) => {
   return (
     <CommandPrimitive
       className={cn(
-        'bg-popover text-popover-foreground flex size-full flex-col overflow-hidden rounded-lg border py-2 shadow-md',
+        'bg-popover text-popover-foreground flex size-full flex-col overflow-hidden rounded-lg border pt-2 shadow-md',
         '[&_[cmdk-group]:not([hidden])_~[cmdk-group]]:mt-2',
         className
       )}
@@ -72,7 +72,7 @@ const CommandList = (props: CommandListProps) => {
   return (
     <CommandPrimitive.List
       className={cn(
-        'max-h-[50vh] overflow-y-auto overflow-x-hidden px-2 [&:has(+[cmdk-footer])>[cmdk-list-sizer]>:last-child]:mb-2 [&>[cmdk-list-sizer]>:first-child]:mt-2',
+        'max-h-[50vh] overflow-y-auto overflow-x-hidden px-2 [&>[cmdk-list-sizer]]:py-2',
         className
       )}
       {...rest}
@@ -95,6 +95,7 @@ const CommandGroup = (props: CommandGroupProps) => {
     <CommandPrimitive.Group
       className={cn(
         'text-foreground overflow-hidden',
+        '[&>[cmdk-group-items]]:mt-2',
         '[&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:text-xs',
         className
       )}
@@ -109,7 +110,7 @@ const CommandSeparator = (props: CommandSeparatorProps) => {
   const { className, ...rest } = props
 
   return (
-    <CommandPrimitive.Separator className={cn('bg-border -mx-2 my-3 h-px', className)} {...rest} />
+    <CommandPrimitive.Separator className={cn('bg-border -mx-2 my-2 h-px', className)} {...rest} />
   )
 }
 
@@ -121,7 +122,7 @@ const CommandItem = (props: CommandItemProps) => {
   return (
     <CommandPrimitive.Item
       className={cn(
-        'mt-1 flex h-10 cursor-default select-none items-center rounded-lg px-2 text-sm outline-none first:mt-2',
+        'flex h-10 cursor-default select-none items-center rounded-lg px-2 text-sm outline-none [&:not(:first-child)]:mt-1',
         '[&_svg]:pointer-events-none [&_svg]:mr-2 [&_svg]:size-3.5',
         'aria-[selected=true]:bg-accent',
         'data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50',
@@ -140,7 +141,7 @@ const CommandFooter = (props: CommandFooterProps) => {
     <div
       // eslint-disable-next-line @eslint-react/dom/no-unknown-property -- custom attribute
       cmdk-footer=''
-      className='flex h-10 w-full items-center justify-between rounded-b-lg border-t px-2 pt-2'
+      className='flex h-10 w-full items-center justify-between rounded-b-lg border-t p-2'
       {...props}
     />
   )
