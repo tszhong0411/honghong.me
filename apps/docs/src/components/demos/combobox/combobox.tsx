@@ -3,6 +3,8 @@
 import {
   type ComboboxInputValueChangeDetails,
   ComboboxLabel,
+  ComboboxPortal,
+  ComboboxPositioner,
   createListCollection
 } from '@tszhong0411/ui'
 import {
@@ -73,19 +75,23 @@ const ComboboxDemo = () => {
           <ChevronsUpDownIcon className='size-4 shrink-0 opacity-50' />
         </ComboboxTrigger>
       </ComboboxControl>
-      <ComboboxContent>
-        <ComboboxItemGroup>
-          <ComboboxItemGroupLabel>Frameworks</ComboboxItemGroupLabel>
-          {collection.items.map((item) => (
-            <ComboboxItem key={item.value} item={item}>
-              <ComboboxItemText>{item.label}</ComboboxItemText>
-              <ComboboxItemIndicator className='ml-auto'>
-                <CheckIcon className='size-4' />
-              </ComboboxItemIndicator>
-            </ComboboxItem>
-          ))}
-        </ComboboxItemGroup>
-      </ComboboxContent>
+      <ComboboxPortal>
+        <ComboboxPositioner>
+          <ComboboxContent>
+            <ComboboxItemGroup>
+              <ComboboxItemGroupLabel>Frameworks</ComboboxItemGroupLabel>
+              {collection.items.map((item) => (
+                <ComboboxItem key={item.value} item={item}>
+                  <ComboboxItemText>{item.label}</ComboboxItemText>
+                  <ComboboxItemIndicator className='ml-auto'>
+                    <CheckIcon className='size-4' />
+                  </ComboboxItemIndicator>
+                </ComboboxItem>
+              ))}
+            </ComboboxItemGroup>
+          </ComboboxContent>
+        </ComboboxPositioner>
+      </ComboboxPortal>
     </Combobox>
   )
 }
