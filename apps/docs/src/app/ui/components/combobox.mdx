@@ -23,7 +23,7 @@ import {
 ```
 
 ```tsx
-<Combobox items={['React', 'Vue']}>
+<Combobox collection={collection}>
   <ComboboxLabel>Framework</ComboboxLabel>
   <ComboboxControl>
     <ComboboxInput placeholder='Select a framework' />
@@ -34,7 +34,7 @@ import {
   <ComboboxContent>
     <ComboboxItemGroup>
       <ComboboxItemGroupLabel>Frameworks</ComboboxItemGroupLabel>
-      {['React', 'Vue'].map((item) => (
+      {collection.map((item) => (
         <ComboboxItem key={item} item={item}>
           <ComboboxItemText>{item}</ComboboxItemText>
           <ComboboxItemIndicator>
