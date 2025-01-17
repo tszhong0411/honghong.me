@@ -76,7 +76,7 @@ const CommentReply = () => {
     }
   })
 
-  const replyHandler = (e?: React.FormEvent<HTMLFormElement>) => {
+  const submitCommentReply = (e?: React.FormEvent<HTMLFormElement>) => {
     e?.preventDefault()
 
     if (!content) {
@@ -100,13 +100,13 @@ const CommentReply = () => {
   const disabled = status === 'unauthenticated' || commentsMutation.isPending
 
   return (
-    <form onSubmit={replyHandler}>
+    <form onSubmit={submitCommentReply}>
       <div className='relative'>
         <CommentEditor
           onChange={(e) => {
             setContent(e.target.value)
           }}
-          onModEnter={replyHandler}
+          onModEnter={submitCommentReply}
           onEscape={() => {
             setIsReplying(false)
           }}

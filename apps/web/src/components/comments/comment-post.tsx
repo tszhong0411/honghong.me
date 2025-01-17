@@ -31,7 +31,7 @@ const CommentPost = () => {
     }
   })
 
-  const commentHandler = () => {
+  const submitComment = () => {
     if (!content) {
       toast.error(t('blog.comments.comment-cannot-be-empty'))
 
@@ -65,7 +65,7 @@ const CommentPost = () => {
     <form
       onSubmit={(e) => {
         e.preventDefault()
-        commentHandler()
+        submitComment()
       }}
     >
       <div className='relative'>
@@ -74,7 +74,7 @@ const CommentPost = () => {
           onChange={(e) => {
             setContent(e.target.value)
           }}
-          onModEnter={commentHandler}
+          onModEnter={submitComment}
           placeholder={t('blog.comments.placeholder')}
           disabled={disabled}
         />

@@ -52,7 +52,7 @@ const LikeButton = (props: LikeButtonProps) => {
     onSettled: () => utils.likes.get.invalidate()
   })
 
-  const confettiHandler = async () => {
+  const showConfettiAnimation = async () => {
     const { clientWidth, clientHeight } = document.documentElement
     const boundingBox = buttonRef.current?.getBoundingClientRect()
 
@@ -80,14 +80,14 @@ const LikeButton = (props: LikeButtonProps) => {
     setCacheCount(0)
   }, 1000)
 
-  const likeHandler = () => {
+  const handleLikeButtonClick = () => {
     if (status === 'pending' || !data || data.currentUserLikes + cacheCount >= 3) return
 
     const value = cacheCount === 3 ? cacheCount : cacheCount + 1
     setCacheCount(value)
 
     if (data.currentUserLikes + cacheCount === 2) {
-      void confettiHandler()
+      void showConfettiAnimation()
     }
 
     return onLikeSaving(value)
@@ -98,7 +98,7 @@ const LikeButton = (props: LikeButtonProps) => {
       <motion.button
         ref={buttonRef}
         className='flex items-center gap-3 rounded-xl bg-zinc-900 px-4 py-2 text-lg text-white'
-        onClick={likeHandler}
+        onClick={handleLikeButtonClick}
         aria-label={t('blog.like-this-post')}
         whileTap={{ scale: 0.96 }}
         type='button'

@@ -28,7 +28,7 @@ const DeleteButton = () => {
     onError: (error) => toast.error(error.message)
   })
 
-  const deleteMessageHandler = (id: string) => {
+  const handleDeleteMessage = (id: string) => {
     guestbookMutation.mutate({ id })
   }
 
@@ -55,7 +55,7 @@ const DeleteButton = () => {
             <AlertDialogCancel>{t('common.cancel')}</AlertDialogCancel>
             <AlertDialogAction
               onClick={() => {
-                deleteMessageHandler(message.id)
+                handleDeleteMessage(message.id)
               }}
               className={buttonVariants({ variant: 'destructive' })}
             >

@@ -115,7 +115,7 @@ const CommentActions = () => {
 
   const isAuthenticated = status === 'authenticated'
 
-  const rateHandler = (like: boolean) => {
+  const handleRateComment = (like: boolean) => {
     if (!isAuthenticated) {
       toast.error(t('blog.comments.need-logged-in-to-rate'))
       return
@@ -131,7 +131,7 @@ const CommentActions = () => {
         <Button
           variant='secondary'
           onClick={() => {
-            rateHandler(true)
+            handleRateComment(true)
           }}
           className={rateVariants({
             active: comment.liked === true
@@ -144,7 +144,7 @@ const CommentActions = () => {
         <Button
           variant='secondary'
           onClick={() => {
-            rateHandler(false)
+            handleRateComment(false)
           }}
           className={rateVariants({
             active: comment.liked === false

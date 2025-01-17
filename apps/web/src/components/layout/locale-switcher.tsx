@@ -40,14 +40,14 @@ const Item = (props: ItemProps) => {
   const router = useRouter()
   const pathname = usePathname()
 
-  const languageSwitchHandler = () => {
+  const switchLanguage = () => {
     startTransition(() => {
       router.replace(pathname, { locale })
     })
   }
 
   return (
-    <DropdownMenuItem key={locale} disabled={isPending} onClick={languageSwitchHandler}>
+    <DropdownMenuItem key={locale} disabled={isPending} onClick={switchLanguage}>
       {supportedLanguages.find((l) => l.code === locale)?.label}
     </DropdownMenuItem>
   )
