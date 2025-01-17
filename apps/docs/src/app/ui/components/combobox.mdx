@@ -36,10 +36,10 @@ import {
       <ComboboxItemGroupLabel>Frameworks</ComboboxItemGroupLabel>
       {collection.map((item) => (
         <ComboboxItem key={item} item={item}>
-          <ComboboxItemText>{item}</ComboboxItemText>
           <ComboboxItemIndicator>
             <CheckIcon />
           </ComboboxItemIndicator>
+          <ComboboxItemText>{item}</ComboboxItemText>
         </ComboboxItem>
       ))}
     </ComboboxItemGroup>

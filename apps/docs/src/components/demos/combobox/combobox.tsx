@@ -81,11 +81,13 @@ const ComboboxDemo = () => {
             <ComboboxItemGroup>
               <ComboboxItemGroupLabel>Frameworks</ComboboxItemGroupLabel>
               {collection.items.map((item) => (
-                <ComboboxItem key={item.value} item={item}>
+                <ComboboxItem key={item.value} item={item} className='relative pl-8'>
+                  <span className='absolute left-2 flex size-3.5 items-center justify-center'>
+                    <ComboboxItemIndicator>
+                      <CheckIcon className='size-4' />
+                    </ComboboxItemIndicator>
+                  </span>
                   <ComboboxItemText>{item.label}</ComboboxItemText>
-                  <ComboboxItemIndicator className='ml-auto'>
-                    <CheckIcon className='size-4' />
-                  </ComboboxItemIndicator>
                 </ComboboxItem>
               ))}
             </ComboboxItemGroup>
