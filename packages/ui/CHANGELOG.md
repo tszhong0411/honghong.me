@@ -1,5 +1,100 @@
 # @tszhong0411/ui
 
+## 0.0.48
+
+### Patch Changes
+
+- [`328aa20`](https://github.com/tszhong0411/honghong.me/commit/328aa208efbff76e1d26d9ee454fde50d969433a) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Update ring styles in Toggle component for consistency
+
+- [`e78bf29`](https://github.com/tszhong0411/honghong.me/commit/e78bf2975d1d74532fb8198037d0b1005f480d38) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Callout - fix a11y by adding role=alert
+
+- [`443c3eb`](https://github.com/tszhong0411/honghong.me/commit/443c3eb37744e92f50960d2d1c5bd294d188b78f) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Simplify classNames for AccordionTrigger and AccordionContent
+
+- [`6fffd9c`](https://github.com/tszhong0411/honghong.me/commit/6fffd9cbccc48546df7ad3ecc829a30a7d20bc0e) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Update the way of exporting types to improve readability
+
+- [`b7b0ade`](https://github.com/tszhong0411/honghong.me/commit/b7b0adec05b38add708014b4b96b746241e9417a) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Adjust padding and margin in Command components for improved layout
+
+- [`f724594`](https://github.com/tszhong0411/honghong.me/commit/f724594aafd35880c0fe4442b910379e316cd1e4) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Remove unnecessary class from CardTitle component
+
+- [`6a27682`](https://github.com/tszhong0411/honghong.me/commit/6a27682ccac01fff6c2025e4a923dd76b39475c3) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Add aria-label to Close button in Sheet component and split class names
+
+- [`cb1125f`](https://github.com/tszhong0411/honghong.me/commit/cb1125f4012e54ff2e6f149c755accd48c07917b) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Add Combobox component
+
+- [`52342f1`](https://github.com/tszhong0411/honghong.me/commit/52342f1d668723eb9c98be5aee6dd135f0764947) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Optimize classNames in AlertDialog components
+
+- [`d52dc27`](https://github.com/tszhong0411/honghong.me/commit/d52dc27c79c4e37701b5acfce1fe3e8322097f81) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Update HoverCardContent styles for improved consistency and clarity
+
+- [`49be385`](https://github.com/tszhong0411/honghong.me/commit/49be385fde0945345d588f692b2730bd85b3ff83) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Move the CheckIcon to the left in Select component
+
+- [`5af0b9e`](https://github.com/tszhong0411/honghong.me/commit/5af0b9e09ebb87ec81bf789ea6082d7a908b7728) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Simplify class names in Dialog and Sheet components for clarity
+
+- [`577413c`](https://github.com/tszhong0411/honghong.me/commit/577413c25f941032a2478f4c5a51a12bbc1ce7d2) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Update overlay background opacity for improved visibility and consistency
+
+- [`49dce4a`](https://github.com/tszhong0411/honghong.me/commit/49dce4ae8dbcfe015cd2bf5ae11f8c4c8f443689) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Update Command component styles for improved layout
+
+- [`66cc83e`](https://github.com/tszhong0411/honghong.me/commit/66cc83ef7c3d9e77f82660b652196e9d34f8b733) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Improve Dialog component structure and accessibility
+
+- [`f37d344`](https://github.com/tszhong0411/honghong.me/commit/f37d344f756336ecca4a660d03838655c94b4780) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Reorganize class names in Switch and Toggle components for improved readability
+
+- [`21e5b1c`](https://github.com/tszhong0411/honghong.me/commit/21e5b1cd2823a8759fbc296a05c541fadc9ad7cb) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Breadcrumb - improve a11y, set `text-muted-foreground` on separator and ellipsis
+
+- [`cf041b7`](https://github.com/tszhong0411/honghong.me/commit/cf041b7375ee378653b1a563f6db52f1d143ea09) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Reorder props destructuring in ContextMenuSubTrigger and MenubarSubTrigger components
+
+- [`a86b223`](https://github.com/tszhong0411/honghong.me/commit/a86b223df49c7bb2af25c69061f5f2a8a041c8e3) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Extract and export ComboboxPortal and ComboboxPositioner from Combobox component
+
+- [`03220a7`](https://github.com/tszhong0411/honghong.me/commit/03220a75520ace2f54639b8f09adb3ff97b38f90) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Badge - remove focus and hover state styles, use rounded-full, add shadow to secondary variant
+
+- [`7adcccc`](https://github.com/tszhong0411/honghong.me/commit/7adcccc1a83e5d7f96c114756742482d544bb9ac) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Reorganize navigation menu styles for improved readability and maintainability
+
+- [`6cae65c`](https://github.com/tszhong0411/honghong.me/commit/6cae65ca80033923c9cead1c893d5770b902e5dd) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Add getAvatarAbbreviation utility
+
+- [`c266d6f`](https://github.com/tszhong0411/honghong.me/commit/c266d6f1bdebf1baf8c87c2b32eef9e98f062282) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Update Select component styles for improved consistency
+
+- [`41ff7cc`](https://github.com/tszhong0411/honghong.me/commit/41ff7ccd417137938c75c27e659d7630a65737c1) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Update transition in badge and navigation menu for better appearance
+
+- [`c50b0aa`](https://github.com/tszhong0411/honghong.me/commit/c50b0aa80438c8d7a9233636751cd735d8582295) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Update components to use rounded-lg for improved aesthetics
+
+- [`0205113`](https://github.com/tszhong0411/honghong.me/commit/020511368b65249942317113944a29bd8d750dfa) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Update pagination component props to use React.ComponentProps for better type safety
+
+- [`3833c1d`](https://github.com/tszhong0411/honghong.me/commit/3833c1d920612830ff5726c513e0806bc319db13) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Update Input component to use rounded-lg border for improved aesthetics
+
+- [`ba46363`](https://github.com/tszhong0411/honghong.me/commit/ba463634cfbec662146a3e8a08e2c14e2bd49454) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Replace Command component with Combobox for improved filtering in DataTable
+
+- [`c5bff20`](https://github.com/tszhong0411/honghong.me/commit/c5bff20fbc690f69e4227d5e4a1b2ca529ee2bfd) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Add border to Kbd component for improved styling
+
+- [`3d0e470`](https://github.com/tszhong0411/honghong.me/commit/3d0e47096035f82b96be1d58c9a0ad6f52876b43) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Adjust CopyButton positioning and props for improved layout and clarity
+
+- [`354e1ba`](https://github.com/tszhong0411/honghong.me/commit/354e1ba610d386a342990fa20b440c7c2ff52d3f) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Update PopoverContent to use rounded-lg for improved aesthetics
+
+- [`006d019`](https://github.com/tszhong0411/honghong.me/commit/006d0195b100187139f1cd538f205b4349f975a4) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Update shadow styles across components for consistency
+
+- [`ab5de8c`](https://github.com/tszhong0411/honghong.me/commit/ab5de8ccc66d565a41f737c8c48e46a91e9c927c) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Change export style to named exports for consistency across components
+
+- [`a18660a`](https://github.com/tszhong0411/honghong.me/commit/a18660a5607a0f000d8c3cadbcf5e92908f5cdcf) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Update Progress to use Ark UI and add Progress Circular
+
+- [`9d999bf`](https://github.com/tszhong0411/honghong.me/commit/9d999bfde61575aea29148504a70742390001037) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Remove animation class from MenubarContent to fix a bug
+
+- [`d8826cb`](https://github.com/tszhong0411/honghong.me/commit/d8826cb348d482fbd3e02bd5535dc003234d7afb) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Rename navigationMenuTriggerStyle to navigationMenuTriggerVariants for consistency
+
+- [`90d90f6`](https://github.com/tszhong0411/honghong.me/commit/90d90f6c897ff5e739cf5c68138db4a2452bbbb4) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Remove unused dependencies
+
+- [`3fc171d`](https://github.com/tszhong0411/honghong.me/commit/3fc171d9d1baa3ecc2e2433fbeb9a8541a7b32c5) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Remove backdrop-blur from alert and dialog overlays for consistency
+
+- [`9bb6639`](https://github.com/tszhong0411/honghong.me/commit/9bb6639781cc079bf67f29e6ff040d2b7a052be2) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Update Slider to use Ark UI with various examples
+
+- [`7f4807c`](https://github.com/tszhong0411/honghong.me/commit/7f4807cb5443d1c7bbd99ea38662c8c33d2ee15c) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Rename Portal components for consistency across UI elements
+
+- [`08c4f6c`](https://github.com/tszhong0411/honghong.me/commit/08c4f6cdfbbfd3ab51134234a8ffa3719240cb0b) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Reorganize class names in Switch and Radio Group components for improved readability
+
+- [`58af593`](https://github.com/tszhong0411/honghong.me/commit/58af5932665f4a6781b7deb5b344b8c1515dce67) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Update pagination component to use Ark UI for better a11y
+
+- [`663c5df`](https://github.com/tszhong0411/honghong.me/commit/663c5df918464f146627e0d2ef88f6c1d37b7e1d) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Update focus-visible ring styles in ResizableHandle for improved accessibility
+
+- [`cd78e02`](https://github.com/tszhong0411/honghong.me/commit/cd78e02585d7b1f04f08413223dbce20305cdf11) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Update Sidebar component class names for improved readability and maintainability
+
+- Updated dependencies []:
+  - @tszhong0411/utils@0.0.17
+
 ## 0.0.47
 
 ### Patch Changes
