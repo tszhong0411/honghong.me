@@ -2,6 +2,7 @@ import { coverageConfigDefaults, defineConfig } from 'vitest/config'
 
 export default defineConfig({
   test: {
+    workspace: ['apps/*/vitest.config.ts', 'packages/*/vitest.config.ts'],
     coverage: {
       reporter: ['lcov', 'html'],
       all: true,
