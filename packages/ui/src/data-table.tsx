@@ -16,19 +16,21 @@ import {
   Settings2Icon,
   XIcon
 } from 'lucide-react'
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 
 import { Badge } from './badge'
 import { Button } from './button'
 import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator
-} from './command'
+  Combobox,
+  ComboboxClearTrigger,
+  ComboboxContent,
+  ComboboxInput,
+  type ComboboxInputValueChangeDetails,
+  ComboboxItem,
+  ComboboxItemText,
+  type ComboboxValueChangeDetails,
+  createListCollection
+} from './combobox'
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -318,6 +320,24 @@ const DataTableFacetedFilter = <TData, TValue>(
   const { column, title, options } = props
   const facets = column?.getFacetedUniqueValues()
   const selectedValues = new Set(column?.getFilterValue() as string[])
+  const [collection, setCollection] = useState(() => createListCollection({ items: options }))
+
+  const handleInputValueChange = (details: ComboboxInputValueChangeDetails) => {
+    const filtered = options.filter((item) =>
+      item.label.toLowerCase().includes(details.inputValue.toLowerCase())
+    )
+
+    if (filtered.length > 0) setCollection(() => createListCollection({ items: filtered }))
+    else setCollection(() => createListCollection({ items: [] }))
+  }
+
+  const handleValueChange = (details: ComboboxValueChangeDetails) => {
+    if (!Array.isArray(details.value)) return
+    selectedValues.clear()
+    for (const value of details.value) selectedValues.add(value)
+    const filterValues = [...selectedValues]
+    column?.setFilterValue(filterValues.length > 0 ? filterValues : undefined)
+  }
 
   return (
     <Popover>
@@ -355,62 +375,63 @@ const DataTableFacetedFilter = <TData, TValue>(
         </Button>
       </PopoverTrigger>
       <PopoverContent className='w-[200px] p-0' align='start'>
-        <Command>
-          <CommandInput placeholder={title} />
-          <CommandList>
-            <CommandEmpty>No results found.</CommandEmpty>
-            <CommandGroup>
-              {options.map((option) => {
-                const isSelected = selectedValues.has(option.value)
-                return (
-                  <CommandItem
-                    key={option.value}
-                    onSelect={() => {
-                      if (isSelected) {
-                        selectedValues.delete(option.value)
-                      } else {
-                        selectedValues.add(option.value)
-                      }
-                      const filterValues = [...selectedValues]
-                      column?.setFilterValue(filterValues.length > 0 ? filterValues : undefined)
+        <Combobox
+          collection={collection}
+          onValueChange={handleValueChange}
+          onInputValueChange={handleInputValueChange}
+          multiple
+          open
+        >
+          <ComboboxInput
+            placeholder={title}
+            className='rounded-none border-0 border-b bg-transparent py-0 text-sm focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0'
+          />
+          <ComboboxContent className='rounded-none border-0 bg-transparent p-1 shadow-none data-[state=closed]:!animate-none data-[state=open]:!animate-none'>
+            {collection.items.length === 0 ? (
+              <div className='py-6 text-center text-sm'>No results found.</div>
+            ) : null}
+            {collection.items.map((item) => (
+              <ComboboxItem key={item.value} item={item}>
+                <div
+                  className={cn(
+                    'border-primary mr-2 flex size-4 items-center justify-center rounded-sm border',
+                    selectedValues.has(item.value)
+                      ? 'bg-primary text-primary-foreground'
+                      : 'opacity-50 [&_svg]:invisible'
+                  )}
+                >
+                  <CheckIcon />
+                </div>
+                {item.icon && <item.icon className='text-muted-foreground mr-2 size-4' />}
+                <ComboboxItemText>{item.label}</ComboboxItemText>
+                {facets?.get(item.value) !== undefined && (
+                  <span className='ml-auto flex size-4 items-center justify-center font-mono text-xs'>
+                    {facets.get(item.value)}
+                  </span>
+                )}
+              </ComboboxItem>
+            ))}
+          </ComboboxContent>
+          {selectedValues.size > 0 && (
+            <>
+              <Separator />
+              <div className='p-1'>
+                <ComboboxClearTrigger asChild>
+                  <Button
+                    variant='ghost'
+                    onClick={() => {
+                      column?.setFilterValue(undefined)
+                      console.log(selectedValues)
                     }}
-                  >
-                    <div
-                      className={cn(
-                        'border-primary mr-2 flex size-4 items-center justify-center rounded-sm border',
-                        isSelected
-                          ? 'bg-primary text-primary-foreground'
-                          : 'opacity-50 [&_svg]:invisible'
-                      )}
-                    >
-                      <CheckIcon />
-                    </div>
-                    {option.icon && <option.icon className='text-muted-foreground mr-2 size-4' />}
-                    <span>{option.label}</span>
-                    {facets?.get(option.value) !== undefined && (
-                      <span className='ml-auto flex size-4 items-center justify-center font-mono text-xs'>
-                        {facets.get(option.value)}
-                      </span>
-                    )}
-                  </CommandItem>
-                )
-              })}
-            </CommandGroup>
-            {selectedValues.size > 0 && (
-              <>
-                <CommandSeparator />
-                <CommandGroup>
-                  <CommandItem
-                    onSelect={() => column?.setFilterValue(undefined)}
-                    className='justify-center text-center'
+                    className='h-8 w-full rounded-md'
                   >
                     Clear filters
-                  </CommandItem>
-                </CommandGroup>
-              </>
-            )}
-          </CommandList>
-        </Command>
+                  </Button>
+                </ComboboxClearTrigger>
+              </div>
+            </>
+          )}
+        </Combobox>
       </PopoverContent>
     </Popover>
   )
