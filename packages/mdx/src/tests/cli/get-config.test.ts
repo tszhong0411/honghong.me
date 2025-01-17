@@ -1,7 +1,7 @@
+import { getErrorMessage } from '@tszhong0411/utils'
 import path from 'node:path'
 import { describe, expect, it } from 'vitest'
 
-import { LOG_PREFIX } from '@/cli/constants'
 import { getConfig } from '@/cli/get-config'
 
 describe('getConfig', () => {
@@ -10,7 +10,7 @@ describe('getConfig', () => {
       await getConfig(path.resolve(import.meta.dirname, '../fixtures/config-empty'))
     } catch (error) {
       expect(error).toBeInstanceOf(Error)
-      expect((error as Error).message).toBe(`${LOG_PREFIX}No configuration found`)
+      expect(getErrorMessage(error)).includes('No configuration found')
     }
   })
 

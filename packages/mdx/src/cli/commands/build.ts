@@ -1,3 +1,4 @@
+import { getErrorMessage } from '@tszhong0411/utils'
 import matter from 'gray-matter'
 import fs from 'node:fs/promises'
 import path from 'node:path'
@@ -5,7 +6,7 @@ import pluralize from 'pluralize'
 
 import type { DocumentType, FieldDefs } from '@/types'
 
-import { LOG_PREFIX } from '../constants'
+import { logger } from '../../utils/logger'
 import { generateData } from '../generation'
 import { getConfig } from '../get-config'
 import { getDocumentsCount } from '../get-documents-count'
@@ -35,17 +36,16 @@ export const build = async () => {
     const errors = await findErrors(defs, contentDirPath)
 
     if (errors.length > 0) {
-      console.error(LOG_PREFIX, formatErrorMessage(errors))
-      return
+      throw new Error(formatErrorMessage(errors))
     }
 
     await generateData(config)
 
     const count = await getDocumentsCount(contentDirPath)
 
-    console.log(`${LOG_PREFIX}Generated ${pluralize('document', count, true)} in .mdx.`)
+    logger.info(`Generated ${pluralize('document', count, true)} in .mdx.`)
   } catch (error) {
-    console.error(`${LOG_PREFIX}An error occurred during the build process:`, error)
+    throw new Error(`An error occurred during the build process: ${getErrorMessage(error)}`)
   }
 }
 
@@ -53,9 +53,7 @@ const ensureDirectoryExists = async (dirPath: string) => {
   try {
     await fs.access(dirPath)
   } catch {
-    throw new Error(
-      `${LOG_PREFIX}Directory ${dirPath} does not exist. Please check your configuration.`
-    )
+    throw new Error(`Directory ${dirPath} does not exist. Please check your configuration.`)
   }
 }
 
@@ -121,7 +119,7 @@ const validateRequiredFields = async (
 }
 
 const formatErrorMessage = (errors: Error[]): string => {
-  let errorMessage = 'Error: Generation Failed\n\n'
+  let errorMessage = 'Generation Failed\n\n'
   errorMessage += `└── Missing required fields for ${errors.length} documents.\n\n`
 
   for (const { file, type, missingFields } of errors) {

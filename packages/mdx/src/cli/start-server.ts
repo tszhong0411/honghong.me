@@ -1,8 +1,8 @@
 import chokidar from 'chokidar'
 import { exit } from 'node:process'
 
+import { logger } from '../utils/logger'
 import { build } from './commands'
-import { LOG_PREFIX } from './constants'
 import { getConfig } from './get-config'
 
 const startServer = async () => {
@@ -29,32 +29,32 @@ const startServer = async () => {
 
   mdxWatcher
     .on('ready', async () => {
-      console.log(`${LOG_PREFIX}Watching for file changes...`)
+      logger.info('Watching for file changes...')
       await build()
     })
     .on('add', async (path) => {
-      console.log(`${LOG_PREFIX}${path} has been added.`)
+      logger.info(`${path} has been added.`)
       await build()
     })
     .on('change', async (path) => {
-      console.log(`${LOG_PREFIX}${path} has been changed.`)
+      logger.info(`${path} has been changed.`)
       await build()
     })
     .on('unlink', async (path) => {
-      console.log(`${LOG_PREFIX}${path} has been removed.`)
+      logger.info(`${path} has been removed.`)
       await build()
     })
 
   configWatcher.on('change', () => {
-    console.log(`${LOG_PREFIX}Config file changed. Restarting...`)
+    logger.warn('Config file changed. Restarting...')
     exit(99)
   })
 
   const handleTermination = async () => {
-    console.log(`${LOG_PREFIX}Terminating watcher...`)
+    logger.info('Terminating watcher...')
     await Promise.all([mdxWatcher.close(), configWatcher.close()])
-    console.log(`${LOG_PREFIX}Watcher closed.`)
-    console.log(`${LOG_PREFIX}Exiting...`)
+    logger.info('Watcher closed.')
+    logger.info('Exiting...')
   }
 
   const signals: NodeJS.Signals[] = ['SIGINT', 'SIGTERM']
