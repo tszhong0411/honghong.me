@@ -1,11 +1,11 @@
 import pluralize from 'pluralize'
 import { Project, QuoteKind, ts, VariableDeclarationKind } from 'ts-morph'
 
-import type { DocumentType } from '@/types'
+import type { Collection } from '@/types'
 
 import { AUTO_GENERATED_NOTE, BASE_FOLDER_PATH } from '../constants'
 
-export const generateIndexDts = async (defs: DocumentType[]) => {
+export const generateIndexDts = async (collections: Collection[]) => {
   const project = new Project({
     manipulationSettings: {
       quoteKind: QuoteKind.Single
@@ -17,7 +17,7 @@ export const generateIndexDts = async (defs: DocumentType[]) => {
   })
 
   sourceFile.addImportDeclaration({
-    namedImports: [...defs.map((def) => def.name), 'DocumentTypes'],
+    namedImports: [...collections.map((collection) => collection.name), 'DocumentTypes'],
     moduleSpecifier: './types',
     leadingTrivia: AUTO_GENERATED_NOTE
   })
@@ -29,9 +29,9 @@ export const generateIndexDts = async (defs: DocumentType[]) => {
   sourceFile.addVariableStatement({
     declarationKind: VariableDeclarationKind.Const,
     declarations: [
-      ...defs.map((def) => ({
-        name: `all${pluralize(def.name)}`,
-        type: `${def.name}[]`
+      ...collections.map((collection) => ({
+        name: `all${pluralize(collection.name)}`,
+        type: `${collection.name}[]`
       })),
       {
         name: 'allDocuments',

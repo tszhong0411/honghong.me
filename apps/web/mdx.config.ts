@@ -1,6 +1,6 @@
-import { type DocumentType, type MakeSourceOptions } from '@tszhong0411/mdx'
+import { defineCollection, defineConfig } from '@tszhong0411/mdx'
 
-const BlogPost = {
+const BlogPost = defineCollection({
   name: 'BlogPost',
   filePathPattern: '**/blog/*.mdx',
   fields: [
@@ -39,9 +39,9 @@ const BlogPost = {
       }
     }
   ]
-} satisfies DocumentType
+})
 
-const Project = {
+const Project = defineCollection({
   name: 'Project',
   filePathPattern: '**/projects/*.mdx',
   fields: [
@@ -96,9 +96,9 @@ const Project = {
       }
     }
   ]
-} satisfies DocumentType
+})
 
-const Page = {
+const Page = defineCollection({
   name: 'Page',
   filePathPattern: '**/pages/*.mdx',
   fields: [
@@ -117,9 +117,9 @@ const Page = {
       }
     }
   ]
-} satisfies DocumentType
+})
 
-export default {
+export default defineConfig({
   contentDirPath: 'src/content',
-  defs: [BlogPost, Project, Page]
-} satisfies MakeSourceOptions
+  collections: [BlogPost, Project, Page]
+})

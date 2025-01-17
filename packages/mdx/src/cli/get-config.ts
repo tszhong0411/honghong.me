@@ -1,7 +1,7 @@
 import { cosmiconfig } from 'cosmiconfig'
 import { createJiti } from 'jiti'
 
-import type { MakeSourceOptions } from '@/types'
+import type { Config } from '@/types'
 
 const jiti = createJiti(import.meta.url)
 
@@ -20,7 +20,7 @@ export const getConfig = async (cwd: string) => {
   }
 
   return {
-    config: configResult.config as MakeSourceOptions,
+    config: configResult.config as Config,
     filepath: configResult.filepath
   }
 }

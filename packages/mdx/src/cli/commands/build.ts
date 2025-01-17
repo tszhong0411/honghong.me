@@ -4,7 +4,7 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import pluralize from 'pluralize'
 
-import type { DocumentType, FieldDefs } from '@/types'
+import type { Collection, Fields } from '@/types'
 
 import { logger } from '../../utils/logger'
 import { generateData } from '../generation'
@@ -26,14 +26,14 @@ type Error = {
 
 export const build = async () => {
   const { config } = await getConfig(process.cwd())
-  const { contentDirPath, defs } = config
+  const { contentDirPath, collections } = config
 
   try {
     await ensureDirectoryExists(contentDirPath)
     await createGeneratedDirectory()
     await createPackageJson()
 
-    const errors = await findErrors(defs, contentDirPath)
+    const errors = await findErrors(collections, contentDirPath)
 
     if (errors.length > 0) {
       throw new Error(formatErrorMessage(errors))
@@ -81,21 +81,21 @@ const createPackageJson = async () => {
   await writeJSON('.mdx/package.json', packageJsonContent)
 }
 
-const findErrors = async (defs: DocumentType[], contentDirPath: string): Promise<Error[]> => {
+const findErrors = async (collections: Collection[], contentDirPath: string): Promise<Error[]> => {
   const errors: Error[] = []
 
-  for (const def of defs) {
-    const entries = await getEntries(def.filePathPattern, contentDirPath)
+  for (const collection of collections) {
+    const entries = await getEntries(collection.filePathPattern, contentDirPath)
 
     for (const entry of entries) {
       const fullPath = path.join(process.cwd(), contentDirPath, entry)
 
-      if (def.fields) {
-        const missingFields = await validateRequiredFields(def.fields, fullPath)
+      if (collection.fields) {
+        const missingFields = await validateRequiredFields(collection.fields, fullPath)
         if (missingFields.length > 0) {
           errors.push({
             file: entry,
-            type: def.name,
+            type: collection.name,
             missingFields
           })
         }
@@ -107,7 +107,7 @@ const findErrors = async (defs: DocumentType[], contentDirPath: string): Promise
 }
 
 const validateRequiredFields = async (
-  fields: FieldDefs,
+  fields: Fields,
   fullPath: string
 ): Promise<MissingField[]> => {
   const requiredFields = fields.filter((field) => field.required)

@@ -21,7 +21,7 @@ describe('getConfig', () => {
       config: {
         default: {
           contentDirPath: 'content',
-          defs: [
+          collections: [
             {
               name: 'Page',
               filePathPattern: 'pages/*.mdx'

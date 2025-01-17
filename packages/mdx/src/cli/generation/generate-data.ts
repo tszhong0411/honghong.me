@@ -3,7 +3,7 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 
 import { defaultRehypePlugins, defaultRemarkPlugins } from '@/plugins'
-import type { MakeSourceOptions } from '@/types'
+import type { Config } from '@/types'
 
 import { BASE_FOLDER_PATH } from '../constants'
 import { getEntries } from '../get-entries'
@@ -12,13 +12,13 @@ import { generateIndexDts } from './generate-index-d-ts'
 import { generateIndexMjs } from './generate-index-mjs'
 import { generateTypesDts } from './generate-types-d-ts'
 
-export const generateData = async (config: MakeSourceOptions) => {
-  const { contentDirPath, defs, remarkPlugins = [], rehypePlugins = [] } = config
+export const generateData = async (config: Config) => {
+  const { contentDirPath, collections, remarkPlugins = [], rehypePlugins = [] } = config
 
-  for (const def of defs) {
-    const entries = await getEntries(def.filePathPattern, contentDirPath)
+  for (const collection of collections) {
+    const entries = await getEntries(collection.filePathPattern, contentDirPath)
 
-    const defFolderPath = `${BASE_FOLDER_PATH}/${def.name}`
+    const defFolderPath = `${BASE_FOLDER_PATH}/${collection.name}`
 
     const indexJson = []
 
@@ -59,8 +59,8 @@ export const generateData = async (config: MakeSourceOptions) => {
 
       const computedFields: Record<string, unknown> = {}
 
-      if (def.computedFields) {
-        for (const computedField of def.computedFields) {
+      if (collection.computedFields) {
+        for (const computedField of collection.computedFields) {
           computedFields[computedField.name] = computedField.resolve({
             ...staticFields
           })
@@ -76,7 +76,7 @@ export const generateData = async (config: MakeSourceOptions) => {
     await writeJSON(`${defFolderPath}/index.json`, indexJson)
   }
 
-  await generateIndexDts(defs)
-  await generateTypesDts(defs)
-  await generateIndexMjs(defs)
+  await generateIndexDts(collections)
+  await generateTypesDts(collections)
+  await generateIndexMjs(collections)
 }

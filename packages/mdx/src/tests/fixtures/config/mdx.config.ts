@@ -1,11 +1,11 @@
-import type { DocumentType, MakeSourceOptions } from '@/types'
+import { defineCollection, defineConfig } from '../../../types/config'
 
-const Page = {
+const Page = defineCollection({
   name: 'Page',
   filePathPattern: 'pages/*.mdx'
-} satisfies DocumentType
+})
 
-export default {
+export default defineConfig({
   contentDirPath: 'content',
-  defs: [Page]
-} satisfies MakeSourceOptions
+  collections: [Page]
+})
