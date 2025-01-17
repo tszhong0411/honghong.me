@@ -16,6 +16,11 @@ const ComboboxItemGroup = ComboboxPrimitive.ItemGroup
 const ComboboxPositioner = ComboboxPrimitive.Positioner
 const ComboboxPortal = Portal
 
+type ComboboxHighlightChangeDetails = ComboboxPrimitive.HighlightChangeDetails
+type ComboboxInputValueChangeDetails = ComboboxPrimitive.InputValueChangeDetails
+type ComboboxOpenChangeDetails = ComboboxPrimitive.OpenChangeDetails
+type ComboboxValueChangeDetails = ComboboxPrimitive.ValueChangeDetails
+
 type ComboboxProps = React.ComponentProps<typeof ComboboxPrimitive.Root>
 
 const Combobox = (props: ComboboxProps) => {
@@ -126,11 +131,10 @@ export {
 }
 
 export type {
-  CollectionItem,
   ComboboxHighlightChangeDetails,
   ComboboxInputValueChangeDetails,
   ComboboxOpenChangeDetails,
-  ComboboxValueChangeDetails,
-  ListCollection
-} from '@ark-ui/react/combobox'
+  ComboboxValueChangeDetails
+}
+
 export { createListCollection } from '@ark-ui/react/combobox'
