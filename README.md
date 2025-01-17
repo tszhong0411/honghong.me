@@ -142,7 +142,7 @@ and more but I can't remember them all
 
 ## Donation
 
-If you find this project helpful, consider supporting me by [sponsoring the project](https://github.com/sponsors/tszhong0411)
+If you find this project helpful, consider supporting me by [sponsoring the project](https://github.com/sponsors/tszhong0411).
 
 This project is also participating in GitSponsors:
 
