@@ -29,7 +29,7 @@ const startServer = async () => {
 
   mdxWatcher
     .on('ready', async () => {
-      logger.info('Watching for file changes...')
+      logger.info(`Watching for changes in '${config.contentDirPath}'`)
       await build()
     })
     .on('add', async (path) => {
