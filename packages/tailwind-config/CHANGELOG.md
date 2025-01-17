@@ -1,5 +1,11 @@
 # @tszhong0411/tailwind-config
 
+## 0.0.20
+
+### Patch Changes
+
+- [`e7f7d28`](https://github.com/tszhong0411/honghong.me/commit/e7f7d286936c594f041bcc1c79f5525e1135012d) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Disable kbd styles in tailwind prose
+
 ## 0.0.19
 
 ### Patch Changes

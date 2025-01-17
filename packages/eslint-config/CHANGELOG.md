@@ -1,5 +1,11 @@
 # @tszhong0411/eslint-config
 
+## 0.1.22
+
+### Patch Changes
+
+- [`5e4e995`](https://github.com/tszhong0411/honghong.me/commit/5e4e99503511f92418085c2b1df8dbe4f4e019e6) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Disable no-array-index-key rule in react
+
 ## 0.1.21
 
 ### Patch Changes
