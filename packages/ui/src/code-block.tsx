@@ -27,7 +27,7 @@ const CodeBlock = (props: CodeBlockProps) => {
   return (
     <figure
       className={cn(
-        'not-prose bg-secondary/50 group relative my-6 overflow-hidden rounded-lg border text-sm',
+        'not-prose bg-secondary/50 relative my-6 overflow-hidden rounded-lg border text-sm',
         figureClassName
       )}
     >
@@ -40,7 +40,7 @@ const CodeBlock = (props: CodeBlockProps) => {
           <CopyButton onCopy={onCopy} />
         </div>
       ) : (
-        <CopyButton className='absolute right-4 top-3 z-10' onCopy={onCopy} />
+        <CopyButton className='absolute right-1.5 top-1.5 z-10' onCopy={onCopy} />
       )}
 
       <ScrollArea>
@@ -58,7 +58,7 @@ type CopyButtonProps = {
 } & ButtonProps
 
 const CopyButton = (props: CopyButtonProps) => {
-  const { onCopy, className, ...rest } = props
+  const { onCopy, ...rest } = props
   const [isCopied, setIsCopied] = useState(false)
 
   useEffect(() => {
@@ -73,8 +73,8 @@ const CopyButton = (props: CopyButtonProps) => {
 
   return (
     <Button
-      className={cn('size-8 p-0 opacity-0 transition-opacity group-hover:opacity-100', className)}
       variant='outline'
+      size='icon'
       onClick={() => {
         onCopy()
         setIsCopied(true)
