@@ -23,11 +23,11 @@ const renderFields = (fields: Fields): string => {
     switch (field.type) {
       case 'boolean':
       case 'string': {
-        types.push(`${field.name}: ${field.type}`)
+        types.push(`${field.name}${field.required ? '' : '?'}: ${field.type}`)
         break
       }
       case 'list': {
-        types.push(`${field.name}: ${capitalize(field.name)}[]`)
+        types.push(`${field.name}${field.required ? '' : '?'}: ${capitalize(field.name)}[]`)
         break
       }
     }
