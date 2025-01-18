@@ -18,8 +18,6 @@ try {
 
   await program.parseAsync()
 } catch (error) {
-  console.log(error)
-
   logger.error(getErrorMessage(error))
 }
 
