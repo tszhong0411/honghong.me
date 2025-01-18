@@ -7,7 +7,7 @@
   "type": "module",
   "main": "./src/index.ts",
   "bin": {
-    "mdx": "./cli.js"
+    "mdx": "./bin/cli.js"
   },
   "scripts": {
     "build": "tsup",

@@ -8,5 +8,5 @@
   },
   "exclude": ["node_modules"],
   "extends": "@tszhong0411/tsconfig/react-library.json",
-  "include": ["**/*.ts", "**/*.tsx", "eslint.config.mjs", "cli.js"]
+  "include": ["**/*.ts", "**/*.tsx", "eslint.config.mjs", "bin/cli.js"]
 }
