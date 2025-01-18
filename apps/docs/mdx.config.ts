@@ -13,6 +13,22 @@ const Doc = defineCollection({
       name: 'description',
       type: 'string',
       required: true
+    },
+    {
+      name: 'link',
+      type: 'nested',
+      of: {
+        fields: [
+          {
+            name: 'doc',
+            type: 'string'
+          },
+          {
+            name: 'api',
+            type: 'string'
+          }
+        ]
+      }
     }
   ],
   computedFields: [

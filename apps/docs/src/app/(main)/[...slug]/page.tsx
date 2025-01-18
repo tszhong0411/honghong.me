@@ -4,6 +4,8 @@ import { notFound } from 'next/navigation'
 
 import Mdx from '@/components/mdx'
 
+import LinkBadges from './link-badges'
+
 type PageProps = {
   params: Promise<{
     slug?: string[]
@@ -68,13 +70,16 @@ const Page = async (props: PageProps) => {
     notFound()
   }
 
-  const { title, description, code } = doc
+  const { title, description, link, code } = doc
+
+  const hasLinks = link?.doc !== undefined || link?.api !== undefined
 
   return (
     <div>
       <div className='space-y-4'>
         <h1 className='relative text-3xl font-extrabold tracking-tight md:text-4xl'>{title}</h1>
         <p className='text-muted-foreground'>{description}</p>
+        {hasLinks ? <LinkBadges {...link} /> : null}
       </div>
       <Mdx className='mt-8' code={code} />
     </div>
