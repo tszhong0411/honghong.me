@@ -1,15 +1,15 @@
 import chalk from 'chalk'
 
+type ChalkInstance = typeof chalk
+
+const getMs = (begin?: number) => (begin ? `(${(performance.now() - begin).toFixed(2)}ms)` : '')
+
+const createLogger = (color: ChalkInstance) => (message: string, begin?: number) => {
+  console.log(color('[MDX]'), message, getMs(begin))
+}
+
 export const logger = {
-  info: (message: string) => {
-    console.log(chalk.green('[MDX]'), message)
-  },
-
-  warn: (message: string) => {
-    console.warn(chalk.yellow('[MDX]'), message)
-  },
-
-  error: (message: string) => {
-    console.error(chalk.red('[MDX]'), message)
-  }
+  info: createLogger(chalk.green),
+  warn: createLogger(chalk.yellow),
+  error: createLogger(chalk.red)
 }
