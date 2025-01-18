@@ -50,6 +50,7 @@ const watchImpl = (config: Config) => {
     if (p === 'mdx.config.ts') {
       logger.warn('Config file changed, restarting...')
       watcher.close()
+      cache.clear()
       build({ watch: true })
       return
     }

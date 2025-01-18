@@ -7,7 +7,8 @@ import type { Config } from '@/types'
 const jiti = createJiti(import.meta.url, {
   alias: {
     '@': path.join(process.cwd(), '../../packages/mdx/src')
-  }
+  },
+  fsCache: false // disable config import cache
 })
 
 export const getConfig = async (cwd: string) => {
