@@ -31,12 +31,10 @@ export type BaseField = {
 
 export type StringField = BaseField & {
   type: 'string'
-  fields?: Fields
 }
 
 export type BooleanField = BaseField & {
   type: 'boolean'
-  fields?: Fields
 }
 
 export type ListField = BaseField & {
