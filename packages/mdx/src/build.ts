@@ -56,8 +56,8 @@ export const build = async (options: Options = {}) => {
   try {
     const begin = performance.now()
 
-    await createPackageJson()
     await fs.mkdir('.mdx/generated', { recursive: true })
+    await createPackageJson()
     const count = await generateData(config)
 
     logger.info(`Generated ${pluralize('document', count, true)} in .mdx`, begin)
