@@ -7,7 +7,7 @@ import { getConfig } from '@/utils/get-config'
 describe('getConfig', () => {
   it('should throw an error if no configuration is found', async () => {
     try {
-      await getConfig(path.resolve(import.meta.dirname, '../fixtures/config-empty'))
+      await getConfig(path.resolve(import.meta.dirname, './fixtures/config-empty'))
     } catch (error) {
       expect(error).toBeInstanceOf(Error)
       expect(getErrorMessage(error)).includes('No configuration found')
@@ -15,7 +15,7 @@ describe('getConfig', () => {
   })
 
   it('should return the configuration if found', async () => {
-    const config = await getConfig(path.resolve(import.meta.dirname, '../fixtures/config'))
+    const config = await getConfig(path.resolve(import.meta.dirname, './fixtures/config'))
 
     expect(config).toEqual({
       config: {
@@ -28,7 +28,7 @@ describe('getConfig', () => {
         ],
         cache: new Map()
       },
-      filepath: path.resolve(import.meta.dirname, '../fixtures/config/mdx.config.ts')
+      filepath: path.resolve(import.meta.dirname, './fixtures/config/mdx.config.ts')
     })
   })
 })
