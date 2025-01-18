@@ -5,6 +5,15 @@
   "description": "The internationalization package for tszhong0411's projects",
   "license": "MIT",
   "type": "module",
+  "exports": {
+    "./client": "./src/client.ts",
+    "./config": "./src/config.ts",
+    "./middleware": "./src/middleware.ts",
+    "./plugin": "./src/plugin.ts",
+    "./routing": "./src/routing.ts",
+    "./server": "./src/server.ts",
+    "./messages/*.json": "./src/messages/*.json"
+  },
   "scripts": {
     "clean": "rm -rf .turbo",
     "lint": "eslint . --max-warnings 0",
