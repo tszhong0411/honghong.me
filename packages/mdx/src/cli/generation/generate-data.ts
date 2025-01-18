@@ -2,12 +2,13 @@ import { bundleMDX } from 'mdx-bundler'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 
+import { BASE_FOLDER_PATH } from '@/cli/constants'
+import { getEntries } from '@/cli/get-entries'
 import { defaultRehypePlugins, defaultRemarkPlugins } from '@/plugins'
 import type { Config } from '@/types'
+import { computeHash } from '@/utils/compute-hash'
+import { writeJSON } from '@/utils/write-json'
 
-import { BASE_FOLDER_PATH } from '../constants'
-import { getEntries } from '../get-entries'
-import { writeJSON } from '../utils'
 import { generateIndexDts } from './generate-index-d-ts'
 import { generateIndexMjs } from './generate-index-mjs'
 import { generateTypesDts } from './generate-types-d-ts'
@@ -28,6 +29,10 @@ export const generateData = async (config: Config) => {
       const fullPath = path.join(contentDirPath, entry)
       const fileName = path.basename(entry, '.mdx')
       const fileContent = await fs.readFile(fullPath, 'utf8')
+
+      const newHash = computeHash(fileContent)
+
+      if (config.cache.get(fullPath) === newHash) continue
 
       const { code, matter } = await bundleMDX({
         source: fileContent,
@@ -71,6 +76,8 @@ export const generateData = async (config: Config) => {
         ...staticFields,
         ...computedFields
       })
+
+      config.cache.set(fullPath, newHash)
     }
 
     await writeJSON(`${defFolderPath}/index.json`, indexJson)

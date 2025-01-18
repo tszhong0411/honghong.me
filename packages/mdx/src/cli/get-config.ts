@@ -1,9 +1,14 @@
 import { cosmiconfig } from 'cosmiconfig'
 import { createJiti } from 'jiti'
+import path from 'node:path'
 
 import type { Config } from '@/types'
 
-const jiti = createJiti(import.meta.url)
+const jiti = createJiti(import.meta.url, {
+  alias: {
+    '@': path.join(process.cwd(), '../../packages/mdx/src')
+  }
+})
 
 export const getConfig = async (cwd: string) => {
   const explorer = cosmiconfig('mdx', {
@@ -20,7 +25,10 @@ export const getConfig = async (cwd: string) => {
   }
 
   return {
-    config: configResult.config as Config,
+    config: {
+      ...configResult.config.default,
+      cache: new Map()
+    } as Config,
     filepath: configResult.filepath
   }
 }

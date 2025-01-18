@@ -1,7 +1,8 @@
 import fs from 'node:fs/promises'
 import { describe, expect, it, vi } from 'vitest'
 
-import { capitalize, writeJSON } from '@/cli/utils'
+import { capitalize } from '@/utils/capitalize'
+import { writeJSON } from '@/utils/write-json'
 
 vi.mock('node:fs/promises')
 

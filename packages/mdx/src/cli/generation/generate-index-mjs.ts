@@ -1,9 +1,8 @@
 import pluralize from 'pluralize'
 import { Project, QuoteKind, ts, VariableDeclarationKind } from 'ts-morph'
 
+import { AUTO_GENERATED_NOTE, BASE_FOLDER_PATH } from '@/cli/constants'
 import type { Collection } from '@/types'
-
-import { AUTO_GENERATED_NOTE, BASE_FOLDER_PATH } from '../constants'
 
 export const generateIndexMjs = async (collections: Collection[]) => {
   const project = new Project({

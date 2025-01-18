@@ -19,15 +19,14 @@ describe('getConfig', () => {
 
     expect(config).toEqual({
       config: {
-        default: {
-          contentDirPath: 'content',
-          collections: [
-            {
-              name: 'Page',
-              filePathPattern: 'pages/*.mdx'
-            }
-          ]
-        }
+        contentDirPath: 'content',
+        collections: [
+          {
+            name: 'Page',
+            filePathPattern: 'pages/*.mdx'
+          }
+        ],
+        cache: new Map()
       },
       filepath: path.resolve(import.meta.dirname, '../fixtures/config/mdx.config.ts')
     })

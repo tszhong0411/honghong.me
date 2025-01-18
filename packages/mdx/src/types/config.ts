@@ -48,12 +48,16 @@ export type Field = StringField | BooleanField | ListField
 
 export type Fields = Field[]
 
-export type Config = {
+export type UserConfig<T extends Collection[] = Collection[]> = {
   contentDirPath: string
-  collections: Collection[]
+  collections: T
   remarkPlugins?: PluggableList
   rehypePlugins?: PluggableList
 }
 
+export type Config = {
+  cache: Map<string, string>
+} & UserConfig
+
 export const defineCollection = <T extends Collection>(collection: T) => collection
-export const defineConfig = <T extends Config>(config: T) => config
+export const defineConfig = <T extends UserConfig>(config: T) => config
