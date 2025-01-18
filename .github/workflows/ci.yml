@@ -29,6 +29,9 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
 
+      - name: Build MDX
+        run: pnpm build:mdx
+
       - name: Run ESLint
         run: pnpm lint
 
@@ -83,6 +86,9 @@ jobs:
 
       - name: Setup
         uses: ./.github/actions/setup
+
+      - name: Build MDX
+        run: pnpm build:mdx
 
       - name: Run Knip
         run: pnpm check:knip

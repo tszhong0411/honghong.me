@@ -43,6 +43,10 @@
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**", "dist/**", ".mdx/**"]
     },
+    "build:mdx": {
+      "dependsOn": ["@tszhong0411/mdx#build"],
+      "outputs": [".mdx/**"]
+    },
     "build:packages": {
       "dependsOn": ["^build:packages"],
       "outputs": ["dist/**"]
