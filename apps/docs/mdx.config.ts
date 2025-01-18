@@ -1,6 +1,6 @@
-import type { DocumentType, MakeSourceOptions } from '@tszhong0411/mdx'
+import { defineCollection, defineConfig } from '@tszhong0411/mdx'
 
-const Doc = {
+const Doc = defineCollection({
   name: 'Doc',
   filePathPattern: '**/*.mdx',
   fields: [
@@ -24,9 +24,9 @@ const Doc = {
       }
     }
   ]
-} satisfies DocumentType
+})
 
-export default {
+export default defineConfig({
   contentDirPath: 'src/app',
-  defs: [Doc]
-} satisfies MakeSourceOptions
+  collections: [Doc]
+})

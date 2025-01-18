@@ -16,41 +16,48 @@ export type ComputedField = {
 
 export type ComputedFields = ComputedField[]
 
-export type DocumentType = {
+export type Collection = {
   name: string
   filePathPattern: string
-  fields?: FieldDefs
+  fields?: Fields
   computedFields?: ComputedFields
 }
 
-export type BaseFieldDef = {
+export type BaseField = {
   name: string
   type: 'string' | 'boolean' | 'list'
   required?: boolean
 }
 
-export type StringFieldDef = BaseFieldDef & {
+export type StringField = BaseField & {
   type: 'string'
-  fields?: FieldDefs
+  fields?: Fields
 }
 
-export type BooleanFieldDef = BaseFieldDef & {
+export type BooleanField = BaseField & {
   type: 'boolean'
-  fields?: FieldDefs
+  fields?: Fields
 }
 
-export type ListFieldDef = BaseFieldDef & {
+export type ListField = BaseField & {
   type: 'list'
-  fields: FieldDefs
+  fields: Fields
 }
 
-export type FieldDef = StringFieldDef | BooleanFieldDef | ListFieldDef
+export type Field = StringField | BooleanField | ListField
 
-export type FieldDefs = FieldDef[]
+export type Fields = Field[]
 
-export type MakeSourceOptions = {
+export type UserConfig<T extends Collection[] = Collection[]> = {
   contentDirPath: string
-  defs: DocumentType[]
+  collections: T
   remarkPlugins?: PluggableList
   rehypePlugins?: PluggableList
 }
+
+export type Config = {
+  cache: Map<string, Record<string, unknown>>
+} & UserConfig
+
+export const defineCollection = <T extends Collection>(collection: T) => collection
+export const defineConfig = <T extends UserConfig>(config: T) => config

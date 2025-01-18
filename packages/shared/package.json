@@ -5,13 +5,20 @@
   "description": "The shared stuff for tszhong0411's projects",
   "license": "MIT",
   "type": "module",
-  "main": "./src/index.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "clean": "rm -rf .turbo",
+    "build": "tsup",
+    "clean": "rm -rf .turbo dist",
+    "dev": "tsup --watch",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint --fix .",
     "type-check": "tsc --noEmit"
   },
+  "types": "./dist/index.d.ts",
   "devDependencies": {
     "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*"

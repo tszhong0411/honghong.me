@@ -1,11 +1,10 @@
 import { Project, QuoteKind, ts } from 'ts-morph'
 
-import type { DocumentType, FieldDefs } from '@/types'
-
-import type { ComputedFields } from '../../types/config'
-import { AUTO_GENERATED_NOTE, BASE_FOLDER_PATH } from '../constants'
-import { getNestedDefs } from '../get-nested-defs'
-import { capitalize } from '../utils'
+import { AUTO_GENERATED_NOTE, BASE_FOLDER_PATH } from '@/constants'
+import type { Collection, Fields } from '@/types'
+import type { ComputedFields } from '@/types/config'
+import { capitalize } from '@/utils/capitalize'
+import { getNestedCollections } from '@/utils/get-nested-collections'
 
 const renderComputedFields = (computedFields: ComputedFields): string => {
   const types = []
@@ -17,7 +16,7 @@ const renderComputedFields = (computedFields: ComputedFields): string => {
   return types.join('\n')
 }
 
-const renderFields = (fields: FieldDefs): string => {
+const renderFields = (fields: Fields): string => {
   const types = []
 
   for (const field of fields) {
@@ -37,8 +36,8 @@ const renderFields = (fields: FieldDefs): string => {
   return types.join('\n')
 }
 
-export const generateTypesDts = async (defs: DocumentType[]) => {
-  const nestedDefs = getNestedDefs(defs)
+export const generateTypesDts = async (collections: Collection[]) => {
+  const nestedCollections = getNestedCollections(collections)
 
   const project = new Project({
     manipulationSettings: {
@@ -51,16 +50,21 @@ export const generateTypesDts = async (defs: DocumentType[]) => {
   })
 
   sourceFile.addTypeAliases(
-    defs.map((def, i) => ({
-      name: def.name,
+    collections.map((collection, i) => ({
+      name: collection.name,
       type: `\
 {
-  ${def.fields ? renderFields(def.fields) : ''}
-  ${def.computedFields ? renderComputedFields(def.computedFields) : ''}
+  ${collection.fields ? renderFields(collection.fields) : ''}
+  ${collection.computedFields ? renderComputedFields(collection.computedFields) : ''}
   code: string;
   raw: string;
   fileName: string;
   filePath: string;
+  toc: Array<{
+    title: string
+    url: string
+    depth: number
+  }>;
 }`,
       isExported: true,
       ...(i === 0 && {
@@ -69,13 +73,13 @@ export const generateTypesDts = async (defs: DocumentType[]) => {
     }))
   )
 
-  if (nestedDefs.length > 0) {
+  if (nestedCollections.length > 0) {
     sourceFile.addTypeAliases(
-      nestedDefs.map((def) => ({
-        name: capitalize(def.name),
+      nestedCollections.map((collection) => ({
+        name: capitalize(collection.name),
         type: `\
 {
-  ${renderFields(def.fields)}
+  ${renderFields(collection.fields)}
 }`,
         isExported: true
       }))
@@ -83,8 +87,8 @@ export const generateTypesDts = async (defs: DocumentType[]) => {
   }
 
   sourceFile.addTypeAlias({
-    name: 'DocumentTypes',
-    type: defs.map((def) => def.name).join(' | '),
+    name: 'Collection',
+    type: collections.map((collection) => collection.name).join(' | '),
     isExported: true
   })
 

@@ -1,11 +1,10 @@
 import pluralize from 'pluralize'
 import { Project, QuoteKind, ts, VariableDeclarationKind } from 'ts-morph'
 
-import type { DocumentType } from '@/types'
+import { AUTO_GENERATED_NOTE, BASE_FOLDER_PATH } from '@/constants'
+import type { Collection } from '@/types'
 
-import { AUTO_GENERATED_NOTE, BASE_FOLDER_PATH } from '../constants'
-
-export const generateIndexMjs = async (defs: DocumentType[]) => {
+export const generateIndexMjs = async (collections: Collection[]) => {
   const project = new Project({
     manipulationSettings: {
       quoteKind: QuoteKind.Single
@@ -17,9 +16,9 @@ export const generateIndexMjs = async (defs: DocumentType[]) => {
   })
 
   sourceFile.addImportDeclarations(
-    defs.map((def, i) => ({
-      defaultImport: `all${pluralize(def.name)}`,
-      moduleSpecifier: `./${def.name}/index.json`,
+    collections.map((collection, i) => ({
+      defaultImport: `all${pluralize(collection.name)}`,
+      moduleSpecifier: `./${collection.name}/index.json`,
       ...(i === 0 && {
         leadingTrivia: AUTO_GENERATED_NOTE
       })
@@ -27,17 +26,19 @@ export const generateIndexMjs = async (defs: DocumentType[]) => {
   )
 
   sourceFile.addExportDeclaration({
-    namedExports: defs.map((def) => `all${pluralize(def.name)}`)
+    namedExports: collections.map((collection) => `all${pluralize(collection.name)}`)
   })
 
-  const allDocuments = defs.map((def) => `...all${pluralize(def.name)}`).join(', ')
+  const allCollections = collections
+    .map((collection) => `...all${pluralize(collection.name)}`)
+    .join(', ')
 
   sourceFile.addVariableStatement({
     declarationKind: VariableDeclarationKind.Const,
     declarations: [
       {
-        name: 'allDocuments',
-        initializer: `[${allDocuments}]`
+        name: 'allCollections',
+        initializer: `[${allCollections}]`
       }
     ],
     isExported: true

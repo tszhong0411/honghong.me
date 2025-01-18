@@ -1,15 +1,23 @@
 import bundleAnalyzer from '@next/bundle-analyzer'
-import { env } from '@tszhong0411/env'
-import { withI18n } from '@tszhong0411/i18n/plugin'
+import { withMDX } from '@tszhong0411/mdx/next'
 import { NextConfigHeaders } from '@tszhong0411/shared'
-import type { NextConfig } from 'next'
+import { createJiti } from 'jiti'
+import createNextIntlPlugin from 'next-intl/plugin'
+import { fileURLToPath } from 'node:url'
 import ReactComponentName from 'react-scan/react-component-name/webpack'
+
+const jiti = createJiti(fileURLToPath(import.meta.url))
+
+jiti.import('@tszhong0411/env')
+
+const withNextIntl = createNextIntlPlugin()
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true'
 })
 
-const config: NextConfig = {
+/** @type {import('next').NextConfig} */
+const config = {
   experimental: {
     optimizePackageImports: ['shiki']
   },
@@ -41,7 +49,6 @@ const config: NextConfig = {
     ]
   },
 
-  // eslint-disable-next-line @typescript-eslint/require-await -- it must return a promise
   async redirects() {
     return [
       {
@@ -67,19 +74,17 @@ const config: NextConfig = {
     ]
   },
 
-  // eslint-disable-next-line @typescript-eslint/require-await -- it must return a promise
   async headers() {
     return NextConfigHeaders
   },
 
   webpack: (c) => {
-    if (env.REACT_SCAN_MONITOR_API_KEY) {
+    if (process.env.REACT_SCAN_MONITOR_API_KEY) {
       c.plugins.push(ReactComponentName({}))
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- it's any
     return c
   }
 }
 
-export default withI18n('./i18n.config.ts', withBundleAnalyzer(config))
+export default withMDX(withNextIntl(withBundleAnalyzer(config)))

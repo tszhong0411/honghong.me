@@ -1,12 +1,13 @@
 import bundleAnalyzer from '@next/bundle-analyzer'
+import { withMDX } from '@tszhong0411/mdx/next'
 import { NextConfigHeaders } from '@tszhong0411/shared'
-import type { NextConfig } from 'next'
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true'
 })
 
-const config: NextConfig = {
+/** @type {import('next').NextConfig} */
+const config = {
   experimental: {
     optimizePackageImports: ['shiki']
   },
@@ -26,12 +27,10 @@ const config: NextConfig = {
 
   transpilePackages: ['@tszhong0411/*'],
 
-  // eslint-disable-next-line @typescript-eslint/require-await -- it must return a promise
   async headers() {
     return NextConfigHeaders
   },
 
-  // eslint-disable-next-line @typescript-eslint/require-await -- it must return a promise
   async redirects() {
     return [
       {
@@ -48,4 +47,4 @@ const config: NextConfig = {
   }
 }
 
-export default withBundleAnalyzer(config)
+export default withMDX(withBundleAnalyzer(config))

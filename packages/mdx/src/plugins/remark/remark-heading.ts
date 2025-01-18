@@ -4,7 +4,7 @@ import type { Heading } from 'mdast'
 import { type Plugin } from 'unified'
 import { visit } from 'unist-util-visit'
 
-import { type TOC } from '../../types'
+import { type TOC } from '@/types'
 
 const slugger = new Slugger()
 
