@@ -5,6 +5,7 @@ import type { Collection, Fields } from '@/types'
 import type { ComputedFields } from '@/types/config'
 import { capitalize } from '@/utils/capitalize'
 import { getListFields } from '@/utils/get-list-fields'
+import { getNestedFields } from '@/utils/get-nested-fields'
 
 const renderComputedFields = (computedFields: ComputedFields): string => {
   const types = []
@@ -30,6 +31,10 @@ const renderFields = (fields: Fields): string => {
         types.push(`${field.name}${field.required ? '' : '?'}: ${capitalize(field.name)}[]`)
         break
       }
+      case 'nested': {
+        types.push(`${field.name}${field.required ? '' : '?'}: ${capitalize(field.name)}`)
+        break
+      }
     }
   }
 
@@ -38,6 +43,7 @@ const renderFields = (fields: Fields): string => {
 
 export const generateTypesDts = async (collections: Collection[]) => {
   const listFields = getListFields(collections)
+  const nestedFields = getNestedFields(collections)
 
   const project = new Project({
     manipulationSettings: {
@@ -75,11 +81,24 @@ export const generateTypesDts = async (collections: Collection[]) => {
 
   if (listFields.length > 0) {
     sourceFile.addTypeAliases(
-      listFields.map((collection) => ({
-        name: capitalize(collection.name),
+      listFields.map((listField) => ({
+        name: capitalize(listField.name),
         type: `\
 {
-  ${renderFields(collection.fields)}
+  ${renderFields(listField.fields)}
+}`,
+        isExported: true
+      }))
+    )
+  }
+
+  if (nestedFields.length > 0) {
+    sourceFile.addTypeAliases(
+      nestedFields.map((nestedField) => ({
+        name: capitalize(nestedField.name),
+        type: `\
+{
+  ${renderFields(nestedField.of.fields)}
 }`,
         isExported: true
       }))
