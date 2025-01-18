@@ -33,15 +33,15 @@ const startServer = async () => {
       await build()
     })
     .on('add', async (path) => {
-      logger.info(`${path} has been added.`)
+      logger.info(`${path} has been added, rebuilding...`)
       await build()
     })
     .on('change', async (path) => {
-      logger.info(`${path} has been changed.`)
+      logger.info(`${path} has been changed, rebuilding...`)
       await build()
     })
     .on('unlink', async (path) => {
-      logger.info(`${path} has been removed.`)
+      logger.info(`${path} has been removed, rebuilding...`)
       await build()
     })
 
