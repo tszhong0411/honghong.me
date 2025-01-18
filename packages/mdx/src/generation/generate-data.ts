@@ -59,7 +59,7 @@ const processFields = async (
 
   if (collection.computedFields) {
     for (const computedField of collection.computedFields) {
-      computedFields[computedField.name] = computedField.resolve({
+      computedFields[computedField.name] = await computedField.resolve({
         ...staticFields
       })
     }
