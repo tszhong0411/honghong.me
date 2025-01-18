@@ -60,6 +60,7 @@
     "shiki": "^1.24.0"
   },
   "devDependencies": {
+    "@mdx-js/esbuild": "^3.1.0",
     "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
     "@tszhong0411/utils": "workspace:*",
