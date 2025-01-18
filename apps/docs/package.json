@@ -9,7 +9,7 @@
     "build": "next build",
     "bundle-analyzer": "cross-env ANALYZE=true pnpm run build",
     "clean": "rm -rf .next .turbo .mdx",
-    "dev": "concurrently \"mdx dev\" \"next dev --turbopack -p 3002\"",
+    "dev": "next dev --turbopack -p 3002",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint --fix .",
     "start": "next start -p 3002",

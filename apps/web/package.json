@@ -9,7 +9,7 @@
     "build": "dotenv -e ../../.env.local -- next build",
     "bundle-analyzer": "cross-env ANALYZE=true pnpm run build",
     "clean": "rm -rf .next .turbo .mdx test-results playwright-report",
-    "dev": "concurrently \"mdx dev\" \"dotenv -e ../../.env.local -- next dev --turbopack -p 3000\"",
+    "dev": "dotenv -e ../../.env.local -- next dev --turbopack -p 3000",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint --fix .",
     "start": "dotenv -e ../../.env.local -- next start -p 3000",
