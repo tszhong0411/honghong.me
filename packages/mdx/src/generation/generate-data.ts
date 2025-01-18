@@ -1,20 +1,79 @@
+import type { Options } from '@mdx-js/esbuild'
 import { bundleMDX } from 'mdx-bundler'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 
 import { BASE_FOLDER_PATH } from '@/constants'
 import { defaultRehypePlugins, defaultRemarkPlugins } from '@/plugins'
-import type { Config } from '@/types'
+import type { Collection, Config } from '@/types'
 import { getEntries } from '@/utils/get-entries'
 import { getTOC } from '@/utils/get-toc'
+import { logger } from '@/utils/logger'
+import { validateFrontmatter } from '@/utils/validate-frontmatter'
 import { writeJSON } from '@/utils/write-json'
 
 import { generateIndexDts } from './generate-index-d-ts'
 import { generateIndexMjs } from './generate-index-mjs'
 import { generateTypesDts } from './generate-types-d-ts'
 
-export const generateData = async (config: Config) => {
-  const { contentDirPath, collections, remarkPlugins = [], rehypePlugins = [], cache } = config
+const processMDXContent = (source: string, config: Config) => {
+  const { remarkPlugins = [], rehypePlugins = [] } = config
+
+  return bundleMDX({
+    source,
+    mdxOptions: (options: Options) => {
+      options.remarkPlugins = [
+        ...(options.remarkPlugins ?? []),
+        ...defaultRemarkPlugins,
+        ...remarkPlugins
+      ]
+      options.rehypePlugins = [
+        ...(options.rehypePlugins ?? []),
+        ...defaultRehypePlugins,
+        ...rehypePlugins
+      ]
+
+      return options
+    }
+  })
+}
+
+const processFields = async (
+  entry: string,
+  content: string,
+  data: Record<string, unknown>,
+  code: string,
+  collection: Collection
+) => {
+  const fileName = path.basename(entry, '.mdx')
+  const staticFields = {
+    ...data,
+    code,
+    raw: content,
+    fileName: fileName,
+    filePath: entry,
+    toc: await getTOC(content)
+  }
+
+  const computedFields: Record<string, unknown> = {}
+
+  if (collection.computedFields) {
+    for (const computedField of collection.computedFields) {
+      computedFields[computedField.name] = await computedField.resolve({
+        ...staticFields
+      })
+    }
+  }
+
+  return {
+    ...staticFields,
+    ...computedFields
+  }
+}
+
+export const generateData = async (config: Config): Promise<number> => {
+  const { contentDirPath, collections, cache } = config
+  let documentGenerationCount = 0
 
   for (const collection of collections) {
     const entries = await getEntries(collection.filePathPattern, contentDirPath)
@@ -27,7 +86,6 @@ export const generateData = async (config: Config) => {
 
     for (const entry of entries) {
       const fullPath = path.join(contentDirPath, entry)
-      const fileName = path.basename(entry, '.mdx')
       const fileContent = await fs.readFile(fullPath, 'utf8')
 
       const cached = cache.get(fullPath)
@@ -37,52 +95,28 @@ export const generateData = async (config: Config) => {
         continue
       }
 
-      const { code, matter } = await bundleMDX({
-        source: fileContent,
-        mdxOptions: (options) => {
-          options.remarkPlugins = [
-            ...(options.remarkPlugins ?? []),
-            ...defaultRemarkPlugins,
-            ...remarkPlugins
-          ]
-          options.rehypePlugins = [
-            ...(options.rehypePlugins ?? []),
-            ...defaultRehypePlugins,
-            ...rehypePlugins
-          ]
+      const { code, matter } = await processMDXContent(fileContent, config)
 
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- not sure why, but the type is correct
-          return options
-        }
-      })
       const { data, content } = matter
 
-      const staticFields = {
-        ...data,
-        code,
-        raw: content,
-        fileName: fileName,
-        filePath: entry,
-        toc: await getTOC(content)
-      }
+      if (collection.fields) {
+        const errors = validateFrontmatter(data, collection.fields)
 
-      const computedFields: Record<string, unknown> = {}
-
-      if (collection.computedFields) {
-        for (const computedField of collection.computedFields) {
-          computedFields[computedField.name] = computedField.resolve({
-            ...staticFields
-          })
+        if (errors.length > 0) {
+          logger.warn(
+            `Invalid frontmatter in ${entry}:\n${errors
+              .map((e) => `  ${e.field}: expected ${e.expected}, received ${e.received}`)
+              .join('\n')}`
+          )
+          continue
         }
       }
 
-      const fields = {
-        ...staticFields,
-        ...computedFields
-      }
+      const fields = await processFields(entry, content, data, code, collection)
 
       indexJson.push(fields)
       cache.set(fullPath, fields)
+      documentGenerationCount++
     }
 
     await writeJSON(`${collectionFolderPath}/index.json`, indexJson)
@@ -91,4 +125,6 @@ export const generateData = async (config: Config) => {
   await generateIndexDts(collections)
   await generateTypesDts(collections)
   await generateIndexMjs(collections)
+
+  return documentGenerationCount
 }

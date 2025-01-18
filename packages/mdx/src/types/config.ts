@@ -25,26 +25,31 @@ export type Collection = {
 
 export type BaseField = {
   name: string
-  type: 'string' | 'boolean' | 'list'
+  type: 'string' | 'boolean' | 'list' | 'nested'
   required?: boolean
 }
 
-export type StringField = BaseField & {
+export type StringField = {
   type: 'string'
-  fields?: Fields
-}
+} & BaseField
 
-export type BooleanField = BaseField & {
+export type BooleanField = {
   type: 'boolean'
-  fields?: Fields
-}
+} & BaseField
 
-export type ListField = BaseField & {
+export type ListField = {
   type: 'list'
   fields: Fields
-}
+} & BaseField
 
-export type Field = StringField | BooleanField | ListField
+export type NestedField = {
+  type: 'nested'
+  of: {
+    fields: Fields
+  }
+} & BaseField
+
+export type Field = StringField | BooleanField | ListField | NestedField
 
 export type Fields = Field[]
 

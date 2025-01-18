@@ -1,17 +1,17 @@
 import type { Collection, ListField } from '@/types'
 
-export const getNestedCollections = (collections: Collection[]): ListField[] => {
-  const nestedCollections = []
+export const getListFields = (collections: Collection[]): ListField[] => {
+  const listFields = []
 
   for (const collection of collections) {
     if (collection.fields) {
       for (const field of collection.fields) {
         if (field.type === 'list') {
-          nestedCollections.push(field)
+          listFields.push(field)
         }
       }
     }
   }
 
-  return nestedCollections
+  return listFields
 }

@@ -4,12 +4,20 @@ import { cn } from '@tszhong0411/utils'
 
 import ComponentPreview from './component-preview'
 import EmbedComponentPreview from './embed-component-preview'
+import Heading from './heading'
 
 type MdxProps = {
   code: string
 } & React.ComponentProps<'div'>
 
 const components: MDXComponents = {
+  h2: (props: React.ComponentProps<'h2'>) => <Heading as='h2' {...props} />,
+  h3: (props: React.ComponentProps<'h3'>) => <Heading as='h3' {...props} />,
+  h4: (props: React.ComponentProps<'h4'>) => <Heading as='h4' {...props} />,
+  h5: (props: React.ComponentProps<'h5'>) => <Heading as='h5' {...props} />,
+  h6: (props: React.ComponentProps<'h6'>) => <Heading as='h6' {...props} />,
+
+  // Custom components
   ...uiComponents,
   Callout: (props) => <uiComponents.Callout className='[&_p]:m-0' {...props} />,
   ComponentPreview,
