@@ -1,10 +1,10 @@
 import { Project, QuoteKind, ts } from 'ts-morph'
 
-import { AUTO_GENERATED_NOTE, BASE_FOLDER_PATH } from '@/cli/constants'
-import { getNestedCollections } from '@/cli/get-nested-collections'
+import { AUTO_GENERATED_NOTE, BASE_FOLDER_PATH } from '@/constants'
 import type { Collection, Fields } from '@/types'
 import type { ComputedFields } from '@/types/config'
 import { capitalize } from '@/utils/capitalize'
+import { getNestedCollections } from '@/utils/get-nested-collections'
 
 const renderComputedFields = (computedFields: ComputedFields): string => {
   const types = []

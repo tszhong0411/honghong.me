@@ -3,7 +3,7 @@ import { program } from 'commander'
 
 import { logger } from '@/utils/logger'
 
-import { version } from '../../package.json'
+import { version } from '../package.json'
 import { build } from './build'
 
 try {

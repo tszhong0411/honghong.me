@@ -1,7 +1,7 @@
 import pluralize from 'pluralize'
 import { Project, QuoteKind, ts, VariableDeclarationKind } from 'ts-morph'
 
-import { AUTO_GENERATED_NOTE, BASE_FOLDER_PATH } from '@/cli/constants'
+import { AUTO_GENERATED_NOTE, BASE_FOLDER_PATH } from '@/constants'
 import type { Collection } from '@/types'
 
 export const generateIndexDts = async (collections: Collection[]) => {

@@ -2,7 +2,7 @@ import { getErrorMessage } from '@tszhong0411/utils'
 import path from 'node:path'
 import { describe, expect, it } from 'vitest'
 
-import { getConfig } from '@/cli/get-config'
+import { getConfig } from '@/utils/get-config'
 
 describe('getConfig', () => {
   it('should throw an error if no configuration is found', async () => {

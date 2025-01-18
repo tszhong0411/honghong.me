@@ -2,11 +2,11 @@ import { bundleMDX } from 'mdx-bundler'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 
-import { BASE_FOLDER_PATH } from '@/cli/constants'
-import { getEntries } from '@/cli/get-entries'
+import { BASE_FOLDER_PATH } from '@/constants'
 import { defaultRehypePlugins, defaultRemarkPlugins } from '@/plugins'
 import type { Config } from '@/types'
 import { computeHash } from '@/utils/compute-hash'
+import { getEntries } from '@/utils/get-entries'
 import { getTOC } from '@/utils/get-toc'
 import { writeJSON } from '@/utils/write-json'
 

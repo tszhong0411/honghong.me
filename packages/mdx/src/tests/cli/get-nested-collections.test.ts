@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { getNestedCollections } from '@/cli/get-nested-collections'
+import { getNestedCollections } from '@/utils/get-nested-collections'
 
 describe('getNestedCollections', () => {
   it('should return a list of list field definitions', () => {

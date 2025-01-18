@@ -6,8 +6,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "build": "pnpm build:mdx && dotenv -e ../../.env.local -- next build",
-    "build:mdx": "mdx build",
+    "build": "dotenv -e ../../.env.local -- next build",
     "bundle-analyzer": "cross-env ANALYZE=true pnpm run build",
     "clean": "rm -rf .next .turbo .mdx test-results playwright-report",
     "dev": "concurrently \"mdx dev\" \"dotenv -e ../../.env.local -- next dev --turbopack -p 3000\"",
@@ -92,6 +91,7 @@
     "@types/rss": "^0.0.32",
     "@types/tinycolor2": "^1.4.6",
     "@vitejs/plugin-react": "^4.3.4",
+    "jiti": "^2.4.2",
     "postcss": "^8.4.49",
     "postcss-lightningcss": "^1.0.1",
     "postcss-load-config": "^6.0.1",
