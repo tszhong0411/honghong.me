@@ -17,3 +17,8 @@ try {
 } catch (error) {
   logger.error(getErrorMessage(error))
 }
+
+process.on('unhandledRejection', (error) => {
+  logger.error(getErrorMessage(error))
+  process.exit(1)
+})
