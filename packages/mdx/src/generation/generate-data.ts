@@ -19,11 +19,11 @@ export const generateData = async (config: Config) => {
   for (const collection of collections) {
     const entries = await getEntries(collection.filePathPattern, contentDirPath)
 
-    const defFolderPath = `${BASE_FOLDER_PATH}/${collection.name}`
+    const collectionFolderPath = `${BASE_FOLDER_PATH}/${collection.name}`
 
     const indexJson = []
 
-    await fs.mkdir(defFolderPath, { recursive: true })
+    await fs.mkdir(collectionFolderPath, { recursive: true })
 
     for (const entry of entries) {
       const fullPath = path.join(contentDirPath, entry)
@@ -85,7 +85,7 @@ export const generateData = async (config: Config) => {
       cache.set(fullPath, fields)
     }
 
-    await writeJSON(`${defFolderPath}/index.json`, indexJson)
+    await writeJSON(`${collectionFolderPath}/index.json`, indexJson)
   }
 
   await generateIndexDts(collections)
