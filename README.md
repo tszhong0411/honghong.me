@@ -107,8 +107,7 @@ Without them, this project would not have been possible:
 
 - Comment System - from [fuma-comment](https://github.com/fuma-nama/fuma-comment)
 - Rehype Plugins - from [fuma-docs](https://github.com/fuma-nama/fumadocs)
-- MDX Rendering - from [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote)
-- MDX Handling - from [contentlayer](https://github.com/contentlayerdev/contentlayer)
+- MDX Handling - from [contentlayer](https://github.com/contentlayerdev/contentlayer) + [Velite](https://github.com/zce/velite)
 - UI - from [shadcn/ui](https://github.com/shadcn-ui/ui)
 - ESLint config - from [@antfu/eslint-config](https://github.com/antfu/eslint-config)
 - Admin UI - from [shadcn-admin](https://github.com/satnaing/shadcn-admin)
