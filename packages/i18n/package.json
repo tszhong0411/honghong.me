@@ -9,7 +9,7 @@
     "./client": "./src/client.ts",
     "./config": "./src/config.ts",
     "./middleware": "./src/middleware.ts",
-    "./plugin": "./src/plugin.ts",
+    "./request": "./src/request.ts",
     "./routing": "./src/routing.ts",
     "./server": "./src/server.ts",
     "./messages/*.json": "./src/messages/*.json"
@@ -29,7 +29,6 @@
   "devDependencies": {
     "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
-    "@types/react": "19.0.2",
     "next": "^15.1.3"
   },
   "lint-staged": {
