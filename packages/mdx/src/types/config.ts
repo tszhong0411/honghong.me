@@ -29,18 +29,18 @@ export type BaseField = {
   required?: boolean
 }
 
-export type StringField = BaseField & {
+export type StringField = {
   type: 'string'
-}
+} & BaseField
 
-export type BooleanField = BaseField & {
+export type BooleanField = {
   type: 'boolean'
-}
+} & BaseField
 
-export type ListField = BaseField & {
+export type ListField = {
   type: 'list'
   fields: Fields
-}
+} & BaseField
 
 export type Field = StringField | BooleanField | ListField
 
