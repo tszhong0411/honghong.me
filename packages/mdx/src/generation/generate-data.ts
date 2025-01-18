@@ -5,7 +5,6 @@ import path from 'node:path'
 import { BASE_FOLDER_PATH } from '@/constants'
 import { defaultRehypePlugins, defaultRemarkPlugins } from '@/plugins'
 import type { Config } from '@/types'
-import { computeHash } from '@/utils/compute-hash'
 import { getEntries } from '@/utils/get-entries'
 import { getTOC } from '@/utils/get-toc'
 import { writeJSON } from '@/utils/write-json'
@@ -15,7 +14,7 @@ import { generateIndexMjs } from './generate-index-mjs'
 import { generateTypesDts } from './generate-types-d-ts'
 
 export const generateData = async (config: Config) => {
-  const { contentDirPath, collections, remarkPlugins = [], rehypePlugins = [] } = config
+  const { contentDirPath, collections, remarkPlugins = [], rehypePlugins = [], cache } = config
 
   for (const collection of collections) {
     const entries = await getEntries(collection.filePathPattern, contentDirPath)
@@ -31,9 +30,12 @@ export const generateData = async (config: Config) => {
       const fileName = path.basename(entry, '.mdx')
       const fileContent = await fs.readFile(fullPath, 'utf8')
 
-      const newHash = computeHash(fileContent)
+      const cached = cache.get(fullPath)
 
-      if (config.cache.get(fullPath) === newHash) continue
+      if (cached) {
+        indexJson.push(cached)
+        continue
+      }
 
       const { code, matter } = await bundleMDX({
         source: fileContent,
@@ -74,12 +76,13 @@ export const generateData = async (config: Config) => {
         }
       }
 
-      indexJson.push({
+      const fields = {
         ...staticFields,
         ...computedFields
-      })
+      }
 
-      config.cache.set(fullPath, newHash)
+      indexJson.push(fields)
+      cache.set(fullPath, fields)
     }
 
     await writeJSON(`${defFolderPath}/index.json`, indexJson)

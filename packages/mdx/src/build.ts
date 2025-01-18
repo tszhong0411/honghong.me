@@ -29,7 +29,7 @@ type Options = {
 }
 
 const watchImpl = (config: Config) => {
-  const { contentDirPath } = config
+  const { contentDirPath, cache } = config
 
   const watcher = chokidar.watch([contentDirPath, 'mdx.config.ts'], {
     ignored: (p, stats) =>
@@ -53,6 +53,8 @@ const watchImpl = (config: Config) => {
       build({ watch: true })
       return
     }
+
+    if (cache.has(p)) cache.delete(p)
 
     const begin = performance.now()
     logger.info(`${p} has been changed, rebuilding...`)

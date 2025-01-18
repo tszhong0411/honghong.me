@@ -56,7 +56,7 @@ export type UserConfig<T extends Collection[] = Collection[]> = {
 }
 
 export type Config = {
-  cache: Map<string, string>
+  cache: Map<string, Record<string, unknown>>
 } & UserConfig
 
 export const defineCollection = <T extends Collection>(collection: T) => collection
