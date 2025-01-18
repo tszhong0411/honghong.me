@@ -1,6 +1,5 @@
 import { flags } from '@tszhong0411/env'
 import { setRequestLocale } from '@tszhong0411/i18n/server'
-import { getTOC } from '@tszhong0411/mdx'
 import { allBlogPosts } from 'mdx/generated'
 import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
@@ -106,9 +105,7 @@ const Page = async (props: PageProps) => {
     notFound()
   }
 
-  const { title, summary, date, modifiedTime, code, raw } = post
-
-  const toc = await getTOC(raw)
+  const { title, summary, date, modifiedTime, code, toc } = post
 
   const jsonLd: WithContext<Article> = {
     '@context': 'https://schema.org',

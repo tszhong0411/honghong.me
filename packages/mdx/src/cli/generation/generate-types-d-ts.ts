@@ -60,6 +60,11 @@ export const generateTypesDts = async (collections: Collection[]) => {
   raw: string;
   fileName: string;
   filePath: string;
+  toc: Array<{
+    title: string
+    url: string
+    depth: number
+  }>;
 }`,
       isExported: true,
       ...(i === 0 && {
@@ -82,7 +87,7 @@ export const generateTypesDts = async (collections: Collection[]) => {
   }
 
   sourceFile.addTypeAlias({
-    name: 'DocumentTypes',
+    name: 'Collection',
     type: collections.map((collection) => collection.name).join(' | '),
     isExported: true
   })

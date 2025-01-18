@@ -7,6 +7,7 @@ import { getEntries } from '@/cli/get-entries'
 import { defaultRehypePlugins, defaultRemarkPlugins } from '@/plugins'
 import type { Config } from '@/types'
 import { computeHash } from '@/utils/compute-hash'
+import { getTOC } from '@/utils/get-toc'
 import { writeJSON } from '@/utils/write-json'
 
 import { generateIndexDts } from './generate-index-d-ts'
@@ -59,7 +60,8 @@ export const generateData = async (config: Config) => {
         code,
         raw: content,
         fileName: fileName,
-        filePath: entry
+        filePath: entry,
+        toc: await getTOC(content)
       }
 
       const computedFields: Record<string, unknown> = {}

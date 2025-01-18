@@ -29,7 +29,7 @@ export const generateIndexMjs = async (collections: Collection[]) => {
     namedExports: collections.map((collection) => `all${pluralize(collection.name)}`)
   })
 
-  const allDocuments = collections
+  const allCollections = collections
     .map((collection) => `...all${pluralize(collection.name)}`)
     .join(', ')
 
@@ -37,8 +37,8 @@ export const generateIndexMjs = async (collections: Collection[]) => {
     declarationKind: VariableDeclarationKind.Const,
     declarations: [
       {
-        name: 'allDocuments',
-        initializer: `[${allDocuments}]`
+        name: 'allCollections',
+        initializer: `[${allCollections}]`
       }
     ],
     isExported: true

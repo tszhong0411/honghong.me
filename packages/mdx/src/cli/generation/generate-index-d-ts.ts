@@ -16,7 +16,7 @@ export const generateIndexDts = async (collections: Collection[]) => {
   })
 
   sourceFile.addImportDeclaration({
-    namedImports: [...collections.map((collection) => collection.name), 'DocumentTypes'],
+    namedImports: [...collections.map((collection) => collection.name), 'Collection'],
     moduleSpecifier: './types',
     leadingTrivia: AUTO_GENERATED_NOTE
   })
@@ -33,8 +33,8 @@ export const generateIndexDts = async (collections: Collection[]) => {
         type: `${collection.name}[]`
       })),
       {
-        name: 'allDocuments',
-        type: 'DocumentTypes[]'
+        name: 'allCollections',
+        type: 'Collection[]'
       }
     ],
     hasDeclareKeyword: true,
