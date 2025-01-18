@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest'
 
-import { getNestedCollections } from '@/utils/get-nested-collections'
+import { getListFields } from '@/utils/get-list-fields'
 
-describe('getNestedCollections', () => {
+describe('getListFields', () => {
   it('should return a list of list field definitions', () => {
-    const nestedCollections = getNestedCollections([
+    const listFields = getListFields([
       {
         name: 'Foo',
         filePathPattern: 'foo/*.mdx',
@@ -29,7 +29,7 @@ describe('getNestedCollections', () => {
       }
     ])
 
-    expect(nestedCollections).toEqual([
+    expect(listFields).toEqual([
       {
         name: 'baz',
         type: 'list',

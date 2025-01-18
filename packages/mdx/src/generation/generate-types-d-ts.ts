@@ -4,7 +4,7 @@ import { AUTO_GENERATED_NOTE, BASE_FOLDER_PATH } from '@/constants'
 import type { Collection, Fields } from '@/types'
 import type { ComputedFields } from '@/types/config'
 import { capitalize } from '@/utils/capitalize'
-import { getNestedCollections } from '@/utils/get-nested-collections'
+import { getListFields } from '@/utils/get-list-fields'
 
 const renderComputedFields = (computedFields: ComputedFields): string => {
   const types = []
@@ -37,7 +37,7 @@ const renderFields = (fields: Fields): string => {
 }
 
 export const generateTypesDts = async (collections: Collection[]) => {
-  const nestedCollections = getNestedCollections(collections)
+  const listFields = getListFields(collections)
 
   const project = new Project({
     manipulationSettings: {
@@ -73,9 +73,9 @@ export const generateTypesDts = async (collections: Collection[]) => {
     }))
   )
 
-  if (nestedCollections.length > 0) {
+  if (listFields.length > 0) {
     sourceFile.addTypeAliases(
-      nestedCollections.map((collection) => ({
+      listFields.map((collection) => ({
         name: capitalize(collection.name),
         type: `\
 {
