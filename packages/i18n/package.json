@@ -29,6 +29,7 @@
   "devDependencies": {
     "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
+    "@types/react": "19.0.2",
     "next": "^15.1.3"
   },
   "lint-staged": {

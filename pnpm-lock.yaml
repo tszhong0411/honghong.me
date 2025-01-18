@@ -606,6 +606,9 @@ importers:
       '@tszhong0411/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
+      '@types/react':
+        specifier: 19.0.2
+        version: 19.0.2
       next:
         specifier: ^15.1.3
         version: 15.1.3(@opentelemetry/api@1.9.0)(@playwright/test@1.49.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
