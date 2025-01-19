@@ -115,6 +115,10 @@ const COMPONENT_LINKS = [
     text: 'Hover Card'
   },
   {
+    href: '/ui/components/input-otp',
+    text: 'Input OTP'
+  },
+  {
     href: '/ui/components/input',
     text: 'Input'
   },
