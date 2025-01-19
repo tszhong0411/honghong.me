@@ -1,5 +1,11 @@
 # @tszhong0411/tailwind-config
 
+## 0.0.21
+
+### Patch Changes
+
+- [#987](https://github.com/tszhong0411/honghong.me/pull/987) [`0729a10`](https://github.com/tszhong0411/honghong.me/commit/0729a107f17a8946f4d70b6b2f0b8481169300da) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Add input-otp component
+
 ## 0.0.20
 
 ### Patch Changes

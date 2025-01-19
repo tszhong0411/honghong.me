@@ -1,5 +1,13 @@
 # @tszhong0411/ui
 
+## 0.0.49
+
+### Patch Changes
+
+- [#987](https://github.com/tszhong0411/honghong.me/pull/987) [`95a3097`](https://github.com/tszhong0411/honghong.me/commit/95a3097512136247d02788550cd5d25d4630b3f5) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Enhance accessibility for input-otp component
+
+- [#987](https://github.com/tszhong0411/honghong.me/pull/987) [`0729a10`](https://github.com/tszhong0411/honghong.me/commit/0729a107f17a8946f4d70b6b2f0b8481169300da) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Add input-otp component
+
 ## 0.0.48
 
 ### Patch Changes
