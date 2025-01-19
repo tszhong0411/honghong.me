@@ -27,7 +27,13 @@ type InputOTPGroupProps = React.ComponentProps<'div'>
 const InputOTPGroup = (props: InputOTPGroupProps) => {
   const { className, ...rest } = props
 
-  return <div className={cn('flex items-center', className)} {...rest} />
+  return (
+    <div
+      aria-label='One-time password input'
+      className={cn('flex items-center', className)}
+      {...rest}
+    />
+  )
 }
 
 type InputOTPSlotProps = React.ComponentProps<'div'> & { index: number }
@@ -42,6 +48,7 @@ const InputOTPSlot = (props: InputOTPSlotProps) => {
 
   return (
     <div
+      role='presentation'
       className={cn(
         'border-input relative flex size-9 items-center justify-center border-y border-r shadow-sm transition-all',
         'first:rounded-l-md first:border-l',
@@ -64,7 +71,7 @@ const InputOTPSlot = (props: InputOTPSlotProps) => {
 type InputOTPSeparatorProps = React.ComponentProps<'div'>
 
 const InputOTPSeparator = (props: InputOTPSeparatorProps) => (
-  <div role='separator' {...props}>
+  <div role='separator' aria-hidden='true' {...props}>
     <MinusIcon />
   </div>
 )
