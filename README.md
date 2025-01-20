@@ -143,10 +143,6 @@ and more but I can't remember them all
 
 If you find this project helpful, consider supporting me by [sponsoring the project](https://github.com/sponsors/tszhong0411).
 
-This project is also participating in GitSponsors:
-
-[<img src="https://api.gitsponsors.com/api/badge/img?id=454149532" height="20">](https://api.gitsponsors.com/api/badge/link?p=t8qN9ukISmByyLNJ7Z/p1s+wBtsWWYHcWQIJs8GcvW+hH8sPNlHZoyHMKpo0FdazDe3xbQUmFKO+o4mO/Qj5xzEl7LGQynTtgOYL9ssl94njjgXvNnQQyQHQccs6PVmKqa/8Fg289NUkqTXRJeqWZA==)
-
 ## License
 
 Please do not deploy this directly to production. It is not a template and is not intended to be used as one.
