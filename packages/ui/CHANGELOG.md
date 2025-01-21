@@ -1,5 +1,16 @@
 # @tszhong0411/ui
 
+## 0.0.50
+
+### Patch Changes
+
+- [#996](https://github.com/tszhong0411/honghong.me/pull/996) [`d289167`](https://github.com/tszhong0411/honghong.me/commit/d28916754d20c9439ba47d12770af2ebdbff738c) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Remove Files component
+
+- [#996](https://github.com/tszhong0411/honghong.me/pull/996) [`a5bd348`](https://github.com/tszhong0411/honghong.me/commit/a5bd3488276a5defc06af8fe62dd3521870e69c0) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Add Tree View component
+
+- Updated dependencies []:
+  - @tszhong0411/utils@0.0.17
+
 ## 0.0.49
 
 ### Patch Changes
