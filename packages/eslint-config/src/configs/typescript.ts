@@ -1,8 +1,8 @@
-import type { Options } from '../index'
+import type { Options } from '@/index'
 import type { Linter } from 'eslint'
 
-import { GLOB_TS, GLOB_TSX } from '../globs'
-import { typescriptParser, typescriptPlugin } from '../plugins'
+import { GLOB_TS, GLOB_TSX } from '@/globs'
+import { typescriptParser, typescriptPlugin } from '@/plugins'
 
 export const typescript = (options?: Options): Linter.Config[] => [
   {

@@ -1,6 +1,6 @@
 import type { Linter } from 'eslint'
 
-import { tailwindcssPlugin } from '../plugins'
+import { tailwindcssPlugin } from '@/plugins'
 
 export const tailwindcss: Linter.Config[] = [
   {

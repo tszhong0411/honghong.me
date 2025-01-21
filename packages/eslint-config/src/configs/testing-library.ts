@@ -1,7 +1,7 @@
 import type { Linter } from 'eslint'
 
-import { GLOB_TEST } from '../globs'
-import { testingLibraryPlugin } from '../plugins'
+import { GLOB_TEST } from '@/globs'
+import { testingLibraryPlugin } from '@/plugins'
 
 export const testingLibrary: Linter.Config[] = [
   {

@@ -1,7 +1,7 @@
 import type { Linter } from 'eslint'
 
-import { GLOB_E2E } from '../globs'
-import { playwrightPlugin } from '../plugins'
+import { GLOB_E2E } from '@/globs'
+import { playwrightPlugin } from '@/plugins'
 
 export const playwright: Linter.Config[] = [
   {

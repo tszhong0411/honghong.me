@@ -1,6 +1,6 @@
 import type { Linter } from 'eslint'
 
-import { prettierConfig, prettierPlugin } from '../plugins'
+import { prettierConfig, prettierPlugin } from '@/plugins'
 
 export const prettier: Linter.Config[] = [
   {

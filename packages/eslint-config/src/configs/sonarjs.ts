@@ -1,6 +1,6 @@
 import type { Linter } from 'eslint'
 
-import { sonarjsPlugin } from '../plugins'
+import { sonarjsPlugin } from '@/plugins'
 
 export const sonarjs: Linter.Config[] = [
   {

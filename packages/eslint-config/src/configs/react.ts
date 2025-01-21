@@ -1,8 +1,8 @@
-import type { Options } from '../index'
+import type { Options } from '@/index'
 import type { ESLint, Linter } from 'eslint'
 
-import { GLOB_JS, GLOB_JSX, GLOB_TS, GLOB_TSX } from '../globs'
-import { jsxA11yPlugin, reactHooksPlugin, reactPlugin, typescriptParser } from '../plugins'
+import { GLOB_JS, GLOB_JSX, GLOB_TS, GLOB_TSX } from '@/globs'
+import { jsxA11yPlugin, reactHooksPlugin, reactPlugin, typescriptParser } from '@/plugins'
 
 export const react = (options?: Options): Linter.Config[] => {
   const reactPluginAll = reactPlugin.configs.all

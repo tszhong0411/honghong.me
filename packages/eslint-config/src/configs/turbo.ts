@@ -1,6 +1,6 @@
 import type { Linter } from 'eslint'
 
-import { turboPlugin } from '../plugins'
+import { turboPlugin } from '@/plugins'
 
 export const turbo: Linter.Config[] = [
   {

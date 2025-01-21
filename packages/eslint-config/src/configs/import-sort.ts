@@ -1,6 +1,6 @@
 import type { Linter } from 'eslint'
 
-import { simpleImportSortPlugin } from '../plugins'
+import { simpleImportSortPlugin } from '@/plugins'
 
 export const importSort: Linter.Config[] = [
   {
