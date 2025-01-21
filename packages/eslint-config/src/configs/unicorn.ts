@@ -13,7 +13,8 @@ export const unicorn: Linter.Config[] = [
       'unicorn/no-await-expression-member': 'off',
       'unicorn/no-null': 'off',
       'unicorn/prefer-export-from': ['error', { ignoreUsedVariables: true }],
-      'unicorn/prevent-abbreviations': 'off'
+      'unicorn/prevent-abbreviations': 'off',
+      'unicorn/prefer-string-raw': 'off'
     }
   }
 ]
