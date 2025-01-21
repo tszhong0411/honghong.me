@@ -41,6 +41,6 @@ turbopack
 unifiedjs
 usehooks
 vaul
-Velite
+velite
 vfile
 zustand

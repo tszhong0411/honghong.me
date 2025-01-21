@@ -15,7 +15,7 @@ ghostty
 goodnotes
 googleusercontent
 gstatic
-IINA
+iina
 jahir
 joshwcomeau
 karabiner
@@ -40,7 +40,7 @@ samuelkraft
 tableplus
 tabtab
 theodorusclarence
-Tuite
+tuite
 umami
 visualstudiocode
 vocs

@@ -14,9 +14,9 @@ nodedotjs
 nosniff
 nums
 postpublish
-Radixui
+radixui
 ratelimit
-Reactquery
+reactquery
 sameorigin
 simulately
 srcset
