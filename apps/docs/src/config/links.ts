@@ -103,10 +103,6 @@ const COMPONENT_LINKS = [
     text: 'Dropdown Menu'
   },
   {
-    href: '/ui/components/files',
-    text: 'Files'
-  },
-  {
     href: '/ui/components/form',
     text: 'Form'
   },
