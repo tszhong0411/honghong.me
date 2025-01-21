@@ -71,6 +71,14 @@ const config: Partial<Config> = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' }
         },
+        'tree-view-content-down': {
+          from: { height: '0' },
+          to: { height: 'var(--height)' }
+        },
+        'tree-view-content-up': {
+          from: { height: 'var(--height)' },
+          to: { height: '0' }
+        },
         'caret-blink': {
           '0%, 70%, 100%': { opacity: '1' },
           '20%, 50%': { opacity: '0' }
@@ -87,6 +95,8 @@ const config: Partial<Config> = {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'tree-view-content-down': 'tree-view-content-down 0.2s ease-out',
+        'tree-view-content-up': 'tree-view-content-up 0.2s ease-out',
         'caret-blink': 'caret-blink 1.25s ease-out infinite',
         'marquee-left': 'marquee-left var(--duration, 30s) linear infinite',
         'marquee-up': 'marquee-up var(--duration, 30s) linear infinite'

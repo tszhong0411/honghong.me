@@ -103,10 +103,6 @@ const COMPONENT_LINKS = [
     text: 'Dropdown Menu'
   },
   {
-    href: '/ui/components/files',
-    text: 'Files'
-  },
-  {
     href: '/ui/components/form',
     text: 'Form'
   },
@@ -225,6 +221,10 @@ const COMPONENT_LINKS = [
   {
     href: '/ui/components/tooltip',
     text: 'Tooltip'
+  },
+  {
+    href: '/ui/components/tree-view',
+    text: 'Tree View'
   }
 ]
 

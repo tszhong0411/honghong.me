@@ -6,6 +6,8 @@ summary: 使用 Next.js 建立部落格非常簡單！
 language: zh-TW
 ---
 
+import { createTreeCollection } from '@tszhong0411/ui'
+
 ## 前言
 
 將使用的套件：
@@ -43,27 +45,58 @@ yarn create next-app nextjs-mdx-blog
 - `lib/format-date.js` - 將日期格式化為 `MM DD, YYYY`
 - `pages/blog/[slug].jsx` - 文章頁面，使用 [動態路由](https://nextjs.org/docs/routing/dynamic-routes)
 
-<Files>
-  <Folder name='components' defaultOpen>
-    <File name='layout.jsx' />
-  </Folder>
-  <Folder name='data' defaultOpen>
-    <Folder name='blog' defaultOpen>
-      <File name='markdown.mdx' />
-      <File name='nextjs.mdx' />
-      <File name='react.mdx' />
-    </Folder>
-  </Folder>
-  <Folder name='lib' defaultOpen>
-    <File name='format-date.js' />
-    <File name='mdx.js' />
-  </Folder>
-  <Folder name='pages' defaultOpen>
-    <Folder name='blog' defaultOpen>
-      <File name='[slug].jsx' />
-    </Folder>
-  </Folder>
-</Files>
+<TreeView
+  defaultExpandedValue={['components', 'data', 'data/blog', 'lib', 'pages', 'pages/blog']}
+  collection={createTreeCollection({
+    nodeToValue: (node) => node.id,
+    nodeToString: (node) => node.name,
+    rootNode: {
+      id: 'ROOT',
+      name: '',
+      children: [
+        {
+          id: 'components',
+          name: 'components',
+          children: [{ id: 'components/layout.jsx', name: 'layout.jsx' }]
+        },
+        {
+          id: 'data',
+          name: 'data',
+          children: [
+            {
+              id: 'data/blog',
+              name: 'blog',
+              children: [
+                { id: 'data/blog/markdown.mdx', name: 'markdown.mdx' },
+                { id: 'data/blog/nextjs.mdx', name: 'nextjs.mdx' },
+                { id: 'data/blog/react.mdx', name: 'react.mdx' }
+              ]
+            }
+          ]
+        },
+        {
+          id: 'lib',
+          name: 'lib',
+          children: [
+            { id: 'lib/format-date.js', name: 'format-date.js' },
+            { id: 'lib/mdx.js', name: 'mdx.js' }
+          ]
+        },
+        {
+          id: 'pages',
+          name: 'pages',
+          children: [
+            {
+              id: 'pages/blog',
+              name: 'blog',
+              children: [{ id: 'pages/blog/[slug].jsx', name: '[slug].jsx' }]
+            }
+          ]
+        }
+      ]
+    }
+  })}
+/>
 
 ### 如何處理 Markdown 檔案
 
