@@ -79,7 +79,7 @@
     "@axe-core/playwright": "^4.10.1",
     "@next/bundle-analyzer": "^15.1.3",
     "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.1.0",
+    "@testing-library/react": "^16.2.0",
     "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/kv": "workspace:*",
     "@tszhong0411/shared": "workspace:*",
