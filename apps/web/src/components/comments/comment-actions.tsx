@@ -177,7 +177,7 @@ const CommentActions = () => {
           }}
         >
           <ChevronDownIcon
-            className={cn('size-4 transition-transform', {
+            className={cn('size-4 transition-transform duration-200', {
               'rotate-180': isOpenReplies
             })}
           />
