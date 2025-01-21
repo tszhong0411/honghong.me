@@ -1,5 +1,15 @@
 # @tszhong0411/eslint-config
 
+## 0.1.23
+
+### Patch Changes
+
+- [`8987924`](https://github.com/tszhong0411/honghong.me/commit/8987924d3ef98b1eb092bc3fad8bdbbe09b894f1) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Modify accessibility rules for non-interactive elements
+
+- [#990](https://github.com/tszhong0411/honghong.me/pull/990) [`68e6a9f`](https://github.com/tszhong0411/honghong.me/commit/68e6a9f1c116f7962e14778b95d0bae34008f508) Thanks [@dependabot](https://github.com/apps/dependabot)! - Bump local-pkg from 0.5.1 to 1.0.0
+
+- [#992](https://github.com/tszhong0411/honghong.me/pull/992) [`ea2de1e`](https://github.com/tszhong0411/honghong.me/commit/ea2de1ef9cf9fce968a6a2d1ee10c5d30c6d406e) Thanks [@dependabot](https://github.com/apps/dependabot)! - Bump @next/eslint-plugin-next from 15.1.3 to 15.1.5
+
 ## 0.1.22
 
 ### Patch Changes

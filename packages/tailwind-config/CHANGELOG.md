@@ -1,5 +1,11 @@
 # @tszhong0411/tailwind-config
 
+## 0.0.22
+
+### Patch Changes
+
+- [#996](https://github.com/tszhong0411/honghong.me/pull/996) [`a5bd348`](https://github.com/tszhong0411/honghong.me/commit/a5bd3488276a5defc06af8fe62dd3521870e69c0) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Add Tree View component
+
 ## 0.0.21
 
 ### Patch Changes
