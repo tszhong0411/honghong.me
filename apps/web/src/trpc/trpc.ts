@@ -16,7 +16,7 @@ export const createContext = async (opts: FetchCreateContextFnOptions) => {
   }
 }
 
-type Context = Awaited<ReturnType<typeof createContext>>
+type Context = typeof createContext
 
 const t = initTRPC.context<Context>().create({
   transformer: SuperJSON,
