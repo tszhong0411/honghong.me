@@ -1,5 +1,3 @@
-'use client'
-
 import * as ContextMenuPrimitive from '@radix-ui/react-context-menu'
 import { cn } from '@tszhong0411/utils'
 import { CheckIcon, ChevronRightIcon, DotIcon } from 'lucide-react'

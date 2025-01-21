@@ -1,5 +1,3 @@
-'use client'
-
 import * as SeparatorPrimitive from '@radix-ui/react-separator'
 import { cn } from '@tszhong0411/utils'
 

@@ -5,8 +5,5 @@ export default defineConfig({
   dts: true,
   format: ['esm'],
   target: 'esnext',
-  clean: true,
-  banner: {
-    js: '"use client";'
-  }
+  clean: true
 })

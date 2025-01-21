@@ -1,5 +1,3 @@
-'use client'
-
 import { Progress as ProgressPrimitive } from '@ark-ui/react'
 import { cn } from '@tszhong0411/utils'
 

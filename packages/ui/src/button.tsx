@@ -1,5 +1,3 @@
-'use client'
-
 import { cn } from '@tszhong0411/utils'
 import { cva, type VariantProps } from 'class-variance-authority'
 

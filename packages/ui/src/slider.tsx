@@ -1,5 +1,3 @@
-'use client'
-
 import { Slider as SliderPrimitive } from '@ark-ui/react'
 import { cn } from '@tszhong0411/utils'
 

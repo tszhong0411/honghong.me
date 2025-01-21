@@ -1,5 +1,3 @@
-'use client'
-
 import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog'
 import { cn } from '@tszhong0411/utils'
 

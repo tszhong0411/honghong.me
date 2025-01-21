@@ -1,5 +1,3 @@
-'use client'
-
 import * as MenubarPrimitive from '@radix-ui/react-menubar'
 import { cn } from '@tszhong0411/utils'
 import { CheckIcon, ChevronRightIcon, DotIcon } from 'lucide-react'

@@ -1,5 +1,3 @@
-'use client'
-
 import { AlertCircleIcon, AlertTriangleIcon, CheckCircle2Icon, InfoIcon } from 'lucide-react'
 import { Toaster as Sonner } from 'sonner'
 

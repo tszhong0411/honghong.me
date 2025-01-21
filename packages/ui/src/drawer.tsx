@@ -1,5 +1,3 @@
-'use client'
-
 import { cn } from '@tszhong0411/utils'
 import { Drawer as DrawerPrimitive } from 'vaul'
 
