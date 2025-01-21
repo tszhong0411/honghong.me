@@ -1,9 +1,10 @@
+'use client'
+
 import { getMDXComponent, type MDXComponents } from '@tszhong0411/mdx'
-import { BlurImage, CodeBlock, File, Files, Folder, Kbd } from '@tszhong0411/ui'
+import { BlurImage, CodeBlock, Kbd, TreeView } from '@tszhong0411/ui'
 
 import ImageZoom from '../image-zoom'
 import Link from '../link'
-import Checkbox from './checkbox'
 import Heading from './heading'
 import ItemGrid from './item-grid'
 import LinkCard from './link-card'
@@ -46,7 +47,6 @@ const components: MDXComponents = {
     )
   },
   pre: CodeBlock,
-  input: Checkbox,
 
   // Custom components
   Table,
@@ -54,9 +54,7 @@ const components: MDXComponents = {
   Video,
   LinkCard,
   Logo,
-  Files,
-  File,
-  Folder,
+  TreeView,
   Kbd
 }
 

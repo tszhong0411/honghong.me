@@ -6,6 +6,8 @@ summary: Using Next.js to build a blog is very easy!
 language: en
 ---
 
+import { createTreeCollection } from '@tszhong0411/ui'
+
 ## Preface
 
 The packages to be used:
@@ -43,27 +45,58 @@ Next, create the following file:
 - `lib/format-date.js` - Format the date as `MM DD, YYYY`
 - `pages/blog/[slug].jsx` - article page, using [dynamic routes](https://nextjs.org/docs/routing/dynamic-routes)
 
-<Files>
-  <Folder name='components' defaultOpen>
-    <File name='layout.jsx' />
-  </Folder>
-  <Folder name='data' defaultOpen>
-    <Folder name='blog' defaultOpen>
-      <File name='markdown.mdx' />
-      <File name='nextjs.mdx' />
-      <File name='react.mdx' />
-    </Folder>
-  </Folder>
-  <Folder name='lib' defaultOpen>
-    <File name='format-date.js' />
-    <File name='mdx.js' />
-  </Folder>
-  <Folder name='pages' defaultOpen>
-    <Folder name='blog' defaultOpen>
-      <File name='[slug].jsx' />
-    </Folder>
-  </Folder>
-</Files>
+<TreeView
+  defaultExpandedValue={['components', 'data', 'data/blog', 'lib', 'pages', 'pages/blog']}
+  collection={createTreeCollection({
+    nodeToValue: (node) => node.id,
+    nodeToString: (node) => node.name,
+    rootNode: {
+      id: 'ROOT',
+      name: '',
+      children: [
+        {
+          id: 'components',
+          name: 'components',
+          children: [{ id: 'components/layout.jsx', name: 'layout.jsx' }]
+        },
+        {
+          id: 'data',
+          name: 'data',
+          children: [
+            {
+              id: 'data/blog',
+              name: 'blog',
+              children: [
+                { id: 'data/blog/markdown.mdx', name: 'markdown.mdx' },
+                { id: 'data/blog/nextjs.mdx', name: 'nextjs.mdx' },
+                { id: 'data/blog/react.mdx', name: 'react.mdx' }
+              ]
+            }
+          ]
+        },
+        {
+          id: 'lib',
+          name: 'lib',
+          children: [
+            { id: 'lib/format-date.js', name: 'format-date.js' },
+            { id: 'lib/mdx.js', name: 'mdx.js' }
+          ]
+        },
+        {
+          id: 'pages',
+          name: 'pages',
+          children: [
+            {
+              id: 'pages/blog',
+              name: 'blog',
+              children: [{ id: 'pages/blog/[slug].jsx', name: '[slug].jsx' }]
+            }
+          ]
+        }
+      ]
+    }
+  })}
+/>
 
 ### How to handle Markdown files
 
