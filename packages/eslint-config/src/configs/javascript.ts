@@ -1,4 +1,5 @@
 import type { Linter } from 'eslint'
+
 import globals from 'globals'
 
 import { eslintPlugin, unusedImportsPlugin } from '../plugins'
