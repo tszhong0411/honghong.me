@@ -1,10 +1,11 @@
 /**
  * Adapted from: https://github.com/fuma-nama/fumadocs/blob/691f12aa93df25bd10fa5bd6f91f70766c1fef12/packages/core/src/mdx-plugins/rehype-code.ts
  */
-import rehypeShiki, { type RehypeShikiOptions } from '@shikijs/rehype'
-import { transformerMetaHighlight } from '@shikijs/transformers'
 import type { Root } from 'hast'
 import type { Plugin } from 'unified'
+
+import rehypeShiki, { type RehypeShikiOptions } from '@shikijs/rehype'
+import { transformerMetaHighlight } from '@shikijs/transformers'
 
 const titleRegex = /title=["']([^"']*)["']/
 

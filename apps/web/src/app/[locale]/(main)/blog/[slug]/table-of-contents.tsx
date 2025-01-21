@@ -1,7 +1,8 @@
 'use client'
 
+import type { TOC } from '@tszhong0411/mdx'
+
 import { useTranslations } from '@tszhong0411/i18n/client'
-import { type TOC } from '@tszhong0411/mdx'
 import { cn } from '@tszhong0411/utils'
 
 import Link from '@/components/link'

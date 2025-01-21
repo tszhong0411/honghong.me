@@ -1,5 +1,6 @@
+import type { PluggableList } from 'unified'
+
 import remarkGfm from 'remark-gfm'
-import { type PluggableList } from 'unified'
 
 import { rehypeCode } from './rehype/rehype-code'
 import { rehypeInlineCode } from './rehype/rehype-inline-code'

@@ -1,9 +1,10 @@
+import type { Metadata, ResolvingMetadata } from 'next'
+import type { AboutPage, WithContext } from 'schema-dts'
+
 import { i18n } from '@tszhong0411/i18n/config'
 import { getTranslations, setRequestLocale } from '@tszhong0411/i18n/server'
 import { allPages } from 'mdx/generated'
-import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
-import type { AboutPage, WithContext } from 'schema-dts'
 
 import Mdx from '@/components/mdx'
 import PageTitle from '@/components/page-title'

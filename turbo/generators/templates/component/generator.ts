@@ -1,5 +1,7 @@
 import type { PlopTypes } from '@turbo/gen'
+
 import { execSync } from 'node:child_process'
+
 import { Project, type PropertyAssignment, SyntaxKind } from 'ts-morph'
 
 import { titleCase } from '../../utils'

@@ -1,17 +1,17 @@
 'use client'
 
+import type { AppRouter } from './root'
+import type { inferRouterInputs, inferRouterOutputs } from '@trpc/server'
+
 import { QueryNormalizerProvider } from '@normy/react-query'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { ReactQueryStreamedHydration } from '@tanstack/react-query-next-experimental'
 import { loggerLink, unstable_httpBatchStreamLink } from '@trpc/client'
 import { createTRPCReact } from '@trpc/react-query'
-import { type inferRouterInputs, type inferRouterOutputs } from '@trpc/server'
 import { env } from '@tszhong0411/env'
 import { useState } from 'react'
 import { SuperJSON } from 'superjson'
-
-import type { AppRouter } from './root'
 
 const createQueryClient = () => new QueryClient()
 

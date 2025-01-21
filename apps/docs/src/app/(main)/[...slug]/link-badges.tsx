@@ -1,9 +1,10 @@
 'use client'
 
+import type { Link as DocLink } from 'mdx/generated'
+
 import { badgeVariants, Link } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { ExternalLinkIcon } from 'lucide-react'
-import type { Link as DocLink } from 'mdx/generated'
 
 const LinkBadges = (props: DocLink) => {
   const { doc, api } = props

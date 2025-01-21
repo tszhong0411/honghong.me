@@ -1,7 +1,8 @@
 'use client'
 
-import { useTranslations } from '@tszhong0411/i18n/client'
 import type { TOC } from '@tszhong0411/mdx'
+
+import { useTranslations } from '@tszhong0411/i18n/client'
 import { Button, Popover, PopoverContent, PopoverTrigger } from '@tszhong0411/ui'
 import { AlignLeftIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'

@@ -1,5 +1,7 @@
 'use client'
 
+import type { GetInfiniteCommentsInput } from '@/trpc/routers/comments'
+
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { Button, toast } from '@tszhong0411/ui'
 import { useSession } from 'next-auth/react'
@@ -8,7 +10,6 @@ import { useState } from 'react'
 import { useCommentContext } from '@/contexts/comment'
 import { useCommentsContext } from '@/contexts/comments'
 import { api } from '@/trpc/react'
-import type { GetInfiniteCommentsInput } from '@/trpc/routers/comments'
 
 import CommentEditor from './comment-editor'
 import UnauthorizedOverlay from './unauthorized-overlay'

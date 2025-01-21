@@ -1,8 +1,9 @@
 'use client'
 
+import type { BlogPost } from 'mdx/generated'
+
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { BlurImage } from '@tszhong0411/ui'
-import type { BlogPost } from 'mdx/generated'
 
 import { useFormattedDate } from '@/hooks/use-formatted-date'
 import { api } from '@/trpc/react'

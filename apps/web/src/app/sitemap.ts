@@ -1,6 +1,7 @@
+import type { MetadataRoute } from 'next'
+
 import { supportedLanguages } from '@tszhong0411/i18n/config'
 import { allBlogPosts, allPages, allProjects } from 'mdx/generated'
-import { type MetadataRoute } from 'next'
 
 import { SITE_URL } from '@/lib/constants'
 import { getLocalizedPath } from '@/utils/get-localized-path'

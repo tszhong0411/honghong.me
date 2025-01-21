@@ -1,3 +1,5 @@
+import type { GetInfiniteCommentsInput } from '@/trpc/routers/comments'
+
 import NumberFlow, { NumberFlowGroup } from '@number-flow/react'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import {
@@ -12,7 +14,6 @@ import { ListFilterIcon } from 'lucide-react'
 
 import { useCommentsContext } from '@/contexts/comments'
 import { api } from '@/trpc/react'
-import type { GetInfiniteCommentsInput } from '@/trpc/routers/comments'
 
 const CommentHeader = () => {
   const { slug, sort, setSort } = useCommentsContext()

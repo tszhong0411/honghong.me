@@ -1,5 +1,7 @@
 'use client'
 
+import type { GetInfiniteCommentsOutput } from '@/trpc/routers/comments'
+
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { Skeleton, Tooltip, TooltipContent, TooltipTrigger } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
@@ -11,9 +13,9 @@ import { type CommentContext, CommentProvider } from '@/contexts/comment'
 import { useCommentsContext } from '@/contexts/comments'
 import { useCommentParams } from '@/hooks/use-comment-params'
 import { useFormattedDate } from '@/hooks/use-formatted-date'
-import type { GetInfiniteCommentsOutput } from '@/trpc/routers/comments'
 
 import Markdown from '../mdx/markdown'
+
 import CommentActions from './comment-actions'
 import CommentMenu from './comment-menu'
 import CommentReplies from './comment-replies'

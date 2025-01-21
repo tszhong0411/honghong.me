@@ -1,3 +1,5 @@
+import type { RouterOutputs } from '../react'
+
 import { createId } from '@paralleldrive/cuid2'
 import { TRPCError } from '@trpc/server'
 import { and, desc, eq, guestbook, lt } from '@tszhong0411/db'
@@ -9,7 +11,6 @@ import { isProduction } from '@/lib/constants'
 import { getDefaultUser } from '@/utils/get-default-user'
 import { getIp } from '@/utils/get-ip'
 
-import type { RouterOutputs } from '../react'
 import { createTRPCRouter, protectedProcedure, publicProcedure } from '../trpc'
 
 const getKey = (id: string) => `guestbook:${id}`

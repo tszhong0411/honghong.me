@@ -1,3 +1,5 @@
+import type { RouterInputs, RouterOutputs } from '../react'
+
 import { createId } from '@paralleldrive/cuid2'
 import { TRPCError } from '@trpc/server'
 import {
@@ -25,7 +27,6 @@ import { isProduction } from '@/lib/constants'
 import { getDefaultUser } from '@/utils/get-default-user'
 import { getIp } from '@/utils/get-ip'
 
-import type { RouterInputs, RouterOutputs } from '../react'
 import { adminProcedure, createTRPCRouter, protectedProcedure, publicProcedure } from '../trpc'
 
 const resend = new Resend(env.RESEND_API_KEY)

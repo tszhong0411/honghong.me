@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react'
 import CommandMenu from '@/components/command-menu'
 
 import Link from '../link'
+
 import LocaleSwitcher from './locale-switcher'
 import MobileNav from './mobile-nav'
 import Navbar from './navbar'

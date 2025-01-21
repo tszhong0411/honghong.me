@@ -1,5 +1,6 @@
-import { initTRPC, TRPCError } from '@trpc/server'
 import type { FetchCreateContextFnOptions } from '@trpc/server/adapters/fetch'
+
+import { initTRPC, TRPCError } from '@trpc/server'
 import { db } from '@tszhong0411/db'
 import { SuperJSON } from 'superjson'
 import { ZodError } from 'zod'

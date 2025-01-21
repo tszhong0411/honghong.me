@@ -1,11 +1,13 @@
 'use client'
 
+import type { GetInfiniteCommentsInput } from '@/trpc/routers/comments'
+
 import { useCallback, useRef, useState } from 'react'
 
 import { CommentsProvider } from '@/contexts/comments'
-import type { GetInfiniteCommentsInput } from '@/trpc/routers/comments'
 
 import { RatesProvider } from '../../contexts/rates'
+
 import CommentPost from './comment-post'
 import CommentsList from './comments-list'
 

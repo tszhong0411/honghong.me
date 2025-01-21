@@ -1,10 +1,11 @@
+import type { Metadata, ResolvingMetadata } from 'next'
+import type { Article, WithContext } from 'schema-dts'
+
 import { flags } from '@tszhong0411/env'
 import { setRequestLocale } from '@tszhong0411/i18n/server'
 import { allBlogPosts } from 'mdx/generated'
-import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
-import { type Article, type WithContext } from 'schema-dts'
 
 import Comments from '@/components/comments'
 import Mdx from '@/components/mdx'

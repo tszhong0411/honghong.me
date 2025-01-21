@@ -1,9 +1,9 @@
-import Slugger from 'github-slugger'
+import type { TOC } from '@/types'
 import type { Heading } from 'mdast'
-import { type Plugin } from 'unified'
-import { visit } from 'unist-util-visit'
+import type { Plugin } from 'unified'
 
-import { type TOC } from '@/types'
+import Slugger from 'github-slugger'
+import { visit } from 'unist-util-visit'
 
 const slugger = new Slugger()
 

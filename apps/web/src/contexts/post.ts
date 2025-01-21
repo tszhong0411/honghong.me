@@ -1,4 +1,5 @@
 import type { BlogPost } from 'mdx/generated'
+
 import { createContext, useContext } from 'react'
 
 type PostContext = BlogPost

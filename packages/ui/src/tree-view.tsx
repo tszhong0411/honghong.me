@@ -68,5 +68,4 @@ const TreeViewNode = (props: TreeViewNodeProps) => {
   )
 }
 
-export { TreeView, TreeViewNode }
-export type { Node }
+export { type Node, TreeView, TreeViewNode }

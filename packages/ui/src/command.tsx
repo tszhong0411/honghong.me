@@ -1,4 +1,5 @@
-import { type DialogProps } from '@radix-ui/react-dialog'
+import type { DialogProps } from '@radix-ui/react-dialog'
+
 import { cn } from '@tszhong0411/utils'
 import { Command as CommandPrimitive } from 'cmdk'
 

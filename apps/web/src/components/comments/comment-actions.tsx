@@ -1,3 +1,5 @@
+import type { GetInfiniteCommentsInput } from '@/trpc/routers/comments'
+
 import NumberFlow from '@number-flow/react'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { Button, buttonVariants, toast } from '@tszhong0411/ui'
@@ -11,7 +13,6 @@ import { useCommentsContext } from '@/contexts/comments'
 import { useRatesContext } from '@/contexts/rates'
 import { useCommentParams } from '@/hooks/use-comment-params'
 import { api } from '@/trpc/react'
-import type { GetInfiniteCommentsInput } from '@/trpc/routers/comments'
 
 const rateVariants = cva(
   buttonVariants({

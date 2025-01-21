@@ -1,9 +1,10 @@
+import { fileURLToPath } from 'node:url'
+
 import bundleAnalyzer from '@next/bundle-analyzer'
 import { withMDX } from '@tszhong0411/mdx/next'
 import { NextConfigHeaders } from '@tszhong0411/shared'
 import { createJiti } from 'jiti'
 import createNextIntlPlugin from 'next-intl/plugin'
-import { fileURLToPath } from 'node:url'
 import ReactComponentName from 'react-scan/react-component-name/webpack'
 
 const jiti = createJiti(fileURLToPath(import.meta.url))

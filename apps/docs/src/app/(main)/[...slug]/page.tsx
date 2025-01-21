@@ -1,5 +1,6 @@
-import { allDocs } from 'mdx/generated'
 import type { Metadata, ResolvingMetadata } from 'next'
+
+import { allDocs } from 'mdx/generated'
 import { notFound } from 'next/navigation'
 
 import Mdx from '@/components/mdx'

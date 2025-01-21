@@ -1,6 +1,6 @@
-import { createContext, useContext } from 'react'
-
 import type { GetInfiniteCommentsOutput } from '@/trpc/routers/comments'
+
+import { createContext, useContext } from 'react'
 
 export type CommentContext = {
   isEditing: boolean

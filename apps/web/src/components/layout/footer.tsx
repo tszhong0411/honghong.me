@@ -9,6 +9,7 @@ import { FOOTER_LINKS } from '@/config/links'
 import { api } from '@/trpc/react'
 
 import Link from '../link'
+
 import NowPlaying from './now-playing'
 
 const Footer = () => {

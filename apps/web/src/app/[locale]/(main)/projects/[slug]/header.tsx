@@ -1,10 +1,11 @@
 'use client'
 
+import type { Project } from 'mdx/generated'
+
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { buttonVariants } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { ArrowUpRightIcon } from 'lucide-react'
-import type { Project } from 'mdx/generated'
 import { motion } from 'motion/react'
 
 import Link from '@/components/link'

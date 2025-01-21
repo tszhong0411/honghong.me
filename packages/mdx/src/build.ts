@@ -1,10 +1,12 @@
+import type { Config } from '@/types'
+
+import fs from 'node:fs/promises'
+
 import { getErrorMessage } from '@tszhong0411/utils'
 import chokidar from 'chokidar'
-import fs from 'node:fs/promises'
 import pluralize from 'pluralize'
 
 import { generateData } from '@/generation'
-import type { Config } from '@/types'
 import { getConfig } from '@/utils/get-config'
 import { logger } from '@/utils/logger'
 import { writeJSON } from '@/utils/write-json'

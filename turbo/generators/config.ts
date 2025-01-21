@@ -1,4 +1,4 @@
-import { type PlopTypes } from '@turbo/gen'
+import type { PlopTypes } from '@turbo/gen'
 
 import { componentGenerator } from './templates/component/generator'
 import { packageGenerator } from './templates/package/generator'

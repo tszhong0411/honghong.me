@@ -1,6 +1,6 @@
-import { createContext, useContext } from 'react'
-
 import type { GetInfiniteCommentsInput } from '@/trpc/routers/comments'
+
+import { createContext, useContext } from 'react'
 
 type CommentsContext = {
   slug: string

@@ -1,4 +1,5 @@
 import fs from 'node:fs/promises'
+
 import { describe, expect, it, vi } from 'vitest'
 
 import { writeJSON } from '@/utils/write-json'

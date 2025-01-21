@@ -1,5 +1,7 @@
 'use client'
 
+import type { User } from '@/lib/auth'
+
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import {
@@ -20,7 +22,6 @@ import { signOut } from 'next-auth/react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
-import type { User } from '@/lib/auth'
 import { api } from '@/trpc/react'
 
 type FormProps = {

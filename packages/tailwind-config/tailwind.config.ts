@@ -1,5 +1,6 @@
-import typography from '@tailwindcss/typography'
 import type { Config } from 'tailwindcss'
+
+import typography from '@tailwindcss/typography'
 import animate from 'tailwindcss-animate'
 
 import { ui } from './src/plugin'

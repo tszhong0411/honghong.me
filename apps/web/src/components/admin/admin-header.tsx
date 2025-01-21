@@ -4,6 +4,7 @@ import { SidebarTrigger } from '@tszhong0411/ui'
 
 import LocaleSwitcher from '../layout/locale-switcher'
 import ThemeSwitcher from '../layout/theme-switcher'
+
 import AdminProfileDropdown from './admin-profile-dropdown'
 
 const AdminHeader = () => {

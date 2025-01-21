@@ -1,3 +1,7 @@
+import type { Metadata, Viewport } from 'next'
+
+import '@/styles/globals.css'
+
 import { env, flags } from '@tszhong0411/env'
 import { NextIntlClientProvider } from '@tszhong0411/i18n/client'
 import { i18n } from '@tszhong0411/i18n/config'
@@ -6,10 +10,8 @@ import { cn } from '@tszhong0411/utils'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
-import type { Metadata, Viewport } from 'next'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
 
-import '@/styles/globals.css'
 import Analytics from '@/components/analytics'
 import Hello from '@/components/hello'
 import SignInDialog from '@/components/sign-in-dialog'

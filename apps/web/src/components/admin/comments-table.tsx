@@ -1,5 +1,7 @@
 'use client'
 
+import type { GetCommentsOutput } from '@/trpc/routers/comments'
+
 import {
   type ColumnDef,
   getCoreRowModel,
@@ -17,8 +19,6 @@ import {
   DataTableToolbar
 } from '@tszhong0411/ui'
 import { useState } from 'react'
-
-import type { GetCommentsOutput } from '@/trpc/routers/comments'
 
 type Comment = GetCommentsOutput['comments'][number]
 

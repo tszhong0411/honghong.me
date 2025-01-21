@@ -1,10 +1,12 @@
+import type { Metadata, Viewport } from 'next'
+
+import '@/styles/globals.css'
+
 import { Toaster } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
-import type { Metadata, Viewport } from 'next'
 
-import '@/styles/globals.css'
 import { SITE_DESCRIPTION, SITE_KEYWORDS, SITE_TITLE, SITE_URL } from '@/lib/constants'
 
 import Providers from './providers'

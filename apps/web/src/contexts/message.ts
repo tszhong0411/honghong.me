@@ -1,6 +1,6 @@
-import { createContext, useContext } from 'react'
-
 import type { GetInfiniteMessagesOutput } from '@/trpc/routers/guestbook'
+
+import { createContext, useContext } from 'react'
 
 export type MessageContext = {
   message: GetInfiniteMessagesOutput['messages'][number]

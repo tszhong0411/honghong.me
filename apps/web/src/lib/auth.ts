@@ -1,8 +1,9 @@
-import { DrizzleAdapter } from '@auth/drizzle-adapter'
 import type { InferSelectModel } from '@tszhong0411/db'
+import type { DefaultSession, NextAuthConfig } from 'next-auth'
+
+import { DrizzleAdapter } from '@auth/drizzle-adapter'
 import { accounts, db, eq, sessions, users, verificationTokens } from '@tszhong0411/db'
 import { env } from '@tszhong0411/env'
-import type { DefaultSession, NextAuthConfig } from 'next-auth'
 import NextAuth from 'next-auth'
 import GithubProvider from 'next-auth/providers/github'
 import GoogleProvider from 'next-auth/providers/google'

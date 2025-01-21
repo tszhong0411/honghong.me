@@ -1,8 +1,9 @@
+import type { Metadata, ResolvingMetadata } from 'next'
+import type { WebPage, WithContext } from 'schema-dts'
+
 import { flags } from '@tszhong0411/env'
 import { i18n } from '@tszhong0411/i18n/config'
 import { getTranslations, setRequestLocale } from '@tszhong0411/i18n/server'
-import type { Metadata, ResolvingMetadata } from 'next'
-import type { WebPage, WithContext } from 'schema-dts'
 
 import PageTitle from '@/components/page-title'
 import { getCurrentUser } from '@/lib/auth'

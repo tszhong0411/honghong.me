@@ -1,5 +1,7 @@
 'use client'
 
+import type { GetUsersOutput } from '@/trpc/routers/users'
+
 import {
   type ColumnDef,
   getCoreRowModel,
@@ -16,8 +18,6 @@ import {
   DataTableToolbar
 } from '@tszhong0411/ui'
 import { UserCogIcon, UserIcon } from 'lucide-react'
-
-import type { GetUsersOutput } from '@/trpc/routers/users'
 
 type User = GetUsersOutput['users'][number]
 

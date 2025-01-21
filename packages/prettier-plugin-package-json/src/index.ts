@@ -1,8 +1,9 @@
 import type { ParserOptions, Plugin } from 'prettier'
+import type { Options, PackageJson } from 'prettier-package-json/build/types'
+
 import { parsers } from 'prettier/plugins/babel'
 import { format } from 'prettier-package-json'
 import { defaultOptions } from 'prettier-package-json/build/defaultOptions.js'
-import type { Options, PackageJson } from 'prettier-package-json/build/types'
 
 const parser = parsers['json-stringify']
 

@@ -1,7 +1,8 @@
+import path from 'node:path'
+
 import { test as setup } from '@playwright/test'
 import { accounts, db, sessions, users } from '@tszhong0411/db'
 import dayjs from 'dayjs'
-import path from 'node:path'
 
 import { TEST_USER } from './constants'
 

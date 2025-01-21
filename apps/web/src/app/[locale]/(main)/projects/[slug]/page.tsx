@@ -1,9 +1,10 @@
+import type { Metadata, ResolvingMetadata } from 'next'
+import type { SoftwareApplication, WithContext } from 'schema-dts'
+
 import { setRequestLocale } from '@tszhong0411/i18n/server'
 import { BlurImage } from '@tszhong0411/ui'
 import { allProjects } from 'mdx/generated'
-import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
-import type { SoftwareApplication, WithContext } from 'schema-dts'
 
 import Mdx from '@/components/mdx'
 import { SITE_NAME, SITE_URL } from '@/lib/constants'

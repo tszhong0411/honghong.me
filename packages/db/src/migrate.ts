@@ -1,7 +1,8 @@
+import path from 'node:path'
+
 import { env } from '@tszhong0411/env'
 import { drizzle } from 'drizzle-orm/node-postgres'
 import { migrate } from 'drizzle-orm/node-postgres/migrator'
-import path from 'node:path'
 
 import * as schema from './schema'
 

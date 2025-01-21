@@ -1,5 +1,7 @@
 'use client'
 
+import type { GetInfiniteMessagesOutput } from '@/trpc/routers/guestbook'
+
 import { keepPreviousData } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { Avatar, AvatarFallback, AvatarImage, Skeleton } from '@tszhong0411/ui'
@@ -10,7 +12,6 @@ import { useInView } from 'react-intersection-observer'
 import { type MessageContext, MessageProvider } from '@/contexts/message'
 import { useFormattedDate } from '@/hooks/use-formatted-date'
 import { api } from '@/trpc/react'
-import type { GetInfiniteMessagesOutput } from '@/trpc/routers/guestbook'
 
 import DeleteButton from './delete-button'
 import Loader from './loader'

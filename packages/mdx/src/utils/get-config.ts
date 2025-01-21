@@ -1,8 +1,9 @@
-import { cosmiconfig } from 'cosmiconfig'
-import { createJiti } from 'jiti'
+import type { Config } from '@/types'
+
 import path from 'node:path'
 
-import type { Config } from '@/types'
+import { cosmiconfig } from 'cosmiconfig'
+import { createJiti } from 'jiti'
 
 const jiti = createJiti(import.meta.url, {
   alias: {

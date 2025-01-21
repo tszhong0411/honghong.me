@@ -1,9 +1,10 @@
 'use client'
 
+import type { BlogPost } from 'mdx/generated'
+
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { Input, Label } from '@tszhong0411/ui'
 import { SearchIcon } from 'lucide-react'
-import type { BlogPost } from 'mdx/generated'
 import { useState } from 'react'
 
 import PostCards from './post-cards'

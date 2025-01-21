@@ -7,6 +7,7 @@ import { motion, useInView } from 'motion/react'
 import { useRef } from 'react'
 
 import Link from '../link'
+
 import CodingHours from './coding-hours'
 import Connect from './connect'
 import FavoriteFramework from './favorite-framework'

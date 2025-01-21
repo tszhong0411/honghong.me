@@ -114,7 +114,9 @@ export {
   ComboboxContent,
   ComboboxContext,
   ComboboxControl,
+  type ComboboxHighlightChangeDetails,
   ComboboxInput,
+  type ComboboxInputValueChangeDetails,
   ComboboxItem,
   ComboboxItemContext,
   ComboboxItemGroup,
@@ -123,16 +125,10 @@ export {
   ComboboxItemText,
   ComboboxLabel,
   ComboboxList,
+  type ComboboxOpenChangeDetails,
   ComboboxPortal,
   ComboboxPositioner,
-  ComboboxTrigger
+  ComboboxTrigger,
+  type ComboboxValueChangeDetails
 }
-
-export type {
-  ComboboxHighlightChangeDetails,
-  ComboboxInputValueChangeDetails,
-  ComboboxOpenChangeDetails,
-  ComboboxValueChangeDetails
-}
-
 export { createListCollection } from '@ark-ui/react/combobox'

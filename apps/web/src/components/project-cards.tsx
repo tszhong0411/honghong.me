@@ -1,7 +1,8 @@
 'use client'
 
-import { BlurImage } from '@tszhong0411/ui'
 import type { Project } from 'mdx/generated'
+
+import { BlurImage } from '@tszhong0411/ui'
 
 import Link from './link'
 

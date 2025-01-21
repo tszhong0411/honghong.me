@@ -5,8 +5,9 @@
  */
 import type { RehypeShikiCoreOptions } from '@shikijs/rehype/core'
 import type { Root } from 'hast'
-import { bundledLanguages, getSingletonHighlighter, type Highlighter } from 'shiki'
 import type { Plugin } from 'unified'
+
+import { bundledLanguages, getSingletonHighlighter, type Highlighter } from 'shiki'
 import { visit } from 'unist-util-visit'
 
 import { DEFAULT_SHIKI_THEMES } from './rehype-code'

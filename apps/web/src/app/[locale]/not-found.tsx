@@ -1,7 +1,8 @@
 'use client'
 
-import { useTranslations } from '@tszhong0411/i18n/client'
 import type { Metadata } from 'next'
+
+import { useTranslations } from '@tszhong0411/i18n/client'
 
 import GoToHomepage from '@/components/go-to-homepage'
 

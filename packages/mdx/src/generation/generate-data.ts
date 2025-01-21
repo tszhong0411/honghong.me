@@ -1,11 +1,13 @@
+import type { Collection, Config } from '@/types'
 import type { Options } from '@mdx-js/esbuild'
-import { bundleMDX } from 'mdx-bundler'
+
 import fs from 'node:fs/promises'
 import path from 'node:path'
 
+import { bundleMDX } from 'mdx-bundler'
+
 import { BASE_FOLDER_PATH } from '@/constants'
 import { defaultRehypePlugins, defaultRemarkPlugins } from '@/plugins'
-import type { Collection, Config } from '@/types'
 import { getEntries } from '@/utils/get-entries'
 import { getTOC } from '@/utils/get-toc'
 import { logger } from '@/utils/logger'

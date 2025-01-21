@@ -1,4 +1,5 @@
 import type { MDXComponents } from 'mdx/types'
+
 import React from 'react'
 import * as _jsx_runtime from 'react/jsx-runtime'
 import ReactDOM from 'react-dom'

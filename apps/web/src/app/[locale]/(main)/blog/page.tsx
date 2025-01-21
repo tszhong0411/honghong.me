@@ -1,8 +1,9 @@
+import type { Metadata, ResolvingMetadata } from 'next'
+import type { Blog, WithContext } from 'schema-dts'
+
 import { i18n } from '@tszhong0411/i18n/config'
 import { getTranslations, setRequestLocale } from '@tszhong0411/i18n/server'
 import { allBlogPosts } from 'mdx/generated'
-import type { Metadata, ResolvingMetadata } from 'next'
-import type { Blog, WithContext } from 'schema-dts'
 
 import FilteredPosts from '@/components/filtered-posts'
 import PageTitle from '@/components/page-title'

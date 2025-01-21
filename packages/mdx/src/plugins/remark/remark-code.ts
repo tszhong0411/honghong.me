@@ -1,5 +1,6 @@
 import type { Code } from 'mdast'
 import type { Plugin } from 'unified'
+
 import { visit } from 'unist-util-visit'
 
 /**
