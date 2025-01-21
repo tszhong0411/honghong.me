@@ -225,6 +225,10 @@ const COMPONENT_LINKS = [
   {
     href: '/ui/components/tooltip',
     text: 'Tooltip'
+  },
+  {
+    href: '/ui/components/tree-view',
+    text: 'Tree View'
   }
 ]
 
