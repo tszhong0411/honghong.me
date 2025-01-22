@@ -1,5 +1,13 @@
 # @tszhong0411/eslint-config
 
+## 0.1.24
+
+### Patch Changes
+
+- [`ef4e2ad`](https://github.com/tszhong0411/honghong.me/commit/ef4e2ad7db590a228f9a05c536cf5f206a59e76e) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Disable `unicorn/prefer-string-raw` rule
+
+- [`dfc7149`](https://github.com/tszhong0411/honghong.me/commit/dfc71494d2c6d8853b4c6c66f4d7897bc7981aff) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Enhance import sorting rules for better organization
+
 ## 0.1.23
 
 ### Patch Changes
