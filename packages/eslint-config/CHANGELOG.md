@@ -1,5 +1,11 @@
 # @tszhong0411/eslint-config
 
+## 0.1.25
+
+### Patch Changes
+
+- [`35961d4`](https://github.com/tszhong0411/honghong.me/commit/35961d402c0cc75f681b4d957f05b28ade02de62) Thanks [@tszhong0411](https://github.com/tszhong0411)! - It's deprecated. Use `no-complex-conditional-rendering` instead.
+
 ## 0.1.24
 
 ### Patch Changes
