@@ -24,7 +24,6 @@
     ".env*": "properties"
   },
 
-  // Not sure why `fileWatcher` is using 100% CPU, exclude some folders to reduce the load
   "files.watcherExclude": {
     "**/.auth/**": true,
     "**/.eslint-config-inspector": true,
@@ -34,6 +33,7 @@
     "**/.mdx/**": true,
     "**/.next/**": true,
     "**/.turbo/**": true,
+    "**/.vercel/**": true,
     "**/coverage/**": true,
     "**/dist/**": true,
     "**/node_modules/**": true,
