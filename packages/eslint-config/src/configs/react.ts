@@ -32,7 +32,6 @@ export const react = (options?: Options): Linter.Config[] => {
         ...jsxA11yPlugin.configs.strict.rules,
 
         // @eslint-react
-        '@eslint-react/no-complicated-conditional-rendering': 'error',
         '@eslint-react/no-leaked-conditional-rendering': 'error',
         '@eslint-react/avoid-shorthand-boolean': 'off',
         '@eslint-react/avoid-shorthand-fragment': 'off',
