@@ -506,7 +506,11 @@ const DataTableToolbar = <TData,>(props: DataTableToolbarProps<TData>) => {
 }
 
 /**
- * Adapted from: https://github.com/sadmann7/shadcn-table/blob/88abb37998be2ceb1c9b558beff05bb7d839b8cc/src/components/data-table/data-table-skeleton.tsx
+ * shadcn-table (MIT License)
+ * Copyright (c) Sadman Sakib
+ * Source: https://github.com/sadmann7/shadcn-table/blob/88abb37998be2ceb1c9b558beff05bb7d839b8cc/src/components/data-table/data-table-skeleton.tsx
+ *
+ * Modified by: tszhong0411
  */
 type DataTableSkeletonProps = {
   columnCount: number

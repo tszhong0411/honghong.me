@@ -1,7 +1,13 @@
 /**
- * Adapted from:
- * - https://github.com/wevm/vocs/blob/75e0cfc874e7abe8648be139a8554e1fe87a18d1/src/vite/plugins/rehype/inline-shiki.ts
- * - https://github.com/shikijs/shiki/blob/481135b16287d7dabc2e155f427af63d3ff3536d/packages/rehype/src/index.ts
+ * vocs (MIT License)
+ * Copyright (c) weth, LLC
+ * Source: https://github.com/wevm/vocs/blob/75e0cfc874e7abe8648be139a8554e1fe87a18d1/src/vite/plugins/rehype/inline-shiki.ts
+ *
+ * shiki (MIT License)
+ * Copyright (c) Pine Wu and Anthony Fu
+ * Source: https://github.com/shikijs/shiki/blob/481135b16287d7dabc2e155f427af63d3ff3536d/packages/rehype/src/index.ts
+ *
+ * Modified by: tszhong0411
  */
 import type { RehypeShikiCoreOptions } from '@shikijs/rehype/core'
 import type { Root } from 'hast'

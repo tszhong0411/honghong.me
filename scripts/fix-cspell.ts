@@ -1,5 +1,9 @@
 /**
- * Adapted from: https://github.com/mermaid-js/mermaid/blob/7bcba294930aadeaa3960865c26a06ebc7ff907a/scripts/fixCSpell.ts
+ * mermaid (MIT License)
+ * Copyright (c) Knut Sveidqvist
+ * Source: https://github.com/mermaid-js/mermaid/blob/7bcba294930aadeaa3960865c26a06ebc7ff907a/scripts/fixCSpell.ts
+ *
+ * Modified by: tszhong0411
  */
 import fs from 'node:fs/promises'
 

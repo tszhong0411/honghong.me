@@ -21,6 +21,7 @@ joshwcomeau
 karabiner
 keka
 keychron
+Knut
 leerob
 lightroom
 linktree
@@ -30,13 +31,17 @@ motrix
 mounty
 nerdfish
 nikolovlazar
+Oliveira
 orbstack
 peduarte
 photoshop
 pixelsnap
 planetscale
 raycast
+Sadman
+Sakib
 samuelkraft
+Sveidqvist
 tableplus
 tabtab
 theodorusclarence

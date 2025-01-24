@@ -13,6 +13,7 @@ embla
 esbenp
 fuma
 fumadocs
+heroui
 hiett
 knip
 lightningcss

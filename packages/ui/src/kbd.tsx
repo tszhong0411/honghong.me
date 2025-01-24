@@ -1,7 +1,11 @@
 import { cn } from '@tszhong0411/utils'
 
 /**
- * Inspired by: https://github.com/nextui-org/nextui/blob/93f68727c1cef10d8745d22099cf27011fd4dce3/packages/components/kbd/src/utils.ts
+ * heroui (MIT License)
+ * Copyright (c) Next UI Inc.
+ * Source: https://github.com/heroui-inc/heroui/blob/93f68727c1cef10d8745d22099cf27011fd4dce3/packages/components/kbd/src/utils.ts
+ *
+ * Modified by: tszhong0411
  */
 type KbdKey =
   | 'command'

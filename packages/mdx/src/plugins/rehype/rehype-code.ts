@@ -1,5 +1,9 @@
 /**
- * Adapted from: https://github.com/fuma-nama/fumadocs/blob/691f12aa93df25bd10fa5bd6f91f70766c1fef12/packages/core/src/mdx-plugins/rehype-code.ts
+ * fumadocs (MIT License)
+ * Copyright (c) fuma-nama
+ * Source: https://github.com/fuma-nama/fumadocs/blob/691f12aa93df25bd10fa5bd6f91f70766c1fef12/packages/core/src/mdx-plugins/rehype-code.ts
+ *
+ * Modified by: tszhong0411
  */
 import type { Root } from 'hast'
 import type { Plugin } from 'unified'
