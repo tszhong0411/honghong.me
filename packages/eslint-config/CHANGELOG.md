@@ -1,5 +1,13 @@
 # @tszhong0411/eslint-config
 
+## 0.1.26
+
+### Patch Changes
+
+- [`3533dc2`](https://github.com/tszhong0411/honghong.me/commit/3533dc245971e6966fabd4af44f98d0b07da2544) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Disable sonarjs/pseudo-random rule in ESLint config
+
+- [`995c4ed`](https://github.com/tszhong0411/honghong.me/commit/995c4ed804cf08f961a6486fa9a3676360f7a1fe) Thanks [@tszhong0411](https://github.com/tszhong0411)! - Disable no-complex-conditional-rendering rule in ESLint config for React
+
 ## 0.1.25
 
 ### Patch Changes
