@@ -37,6 +37,7 @@ export const react = (options?: Options): Linter.Config[] => {
         '@eslint-react/avoid-shorthand-fragment': 'off',
         '@eslint-react/prefer-destructuring-assignment': 'off',
         '@eslint-react/no-array-index-key': 'off',
+        '@eslint-react/no-complex-conditional-rendering': 'off',
 
         // @eslint-react/hooks-extra
         '@eslint-react/hooks-extra/no-direct-set-state-in-use-effect': 'off',
