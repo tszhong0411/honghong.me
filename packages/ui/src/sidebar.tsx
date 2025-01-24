@@ -632,7 +632,6 @@ const SidebarMenuSkeleton = (props: SidebarMenuSkeletonProps) => {
   const { className, showIcon = false, ...rest } = props
 
   // Random width between 50 to 90%.
-  // eslint-disable-next-line sonarjs/pseudo-random -- safe
   const width = `${Math.floor(Math.random() * 40) + 50}%`
 
   return (

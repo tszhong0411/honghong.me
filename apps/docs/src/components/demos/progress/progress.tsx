@@ -9,7 +9,6 @@ const ProgressDemo = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setProgress((value) => (value === 100 ? 0 : value + 1))
-      // eslint-disable-next-line sonarjs/pseudo-random -- it's safe
     }, Math.random() * 500)
 
     return () => {
