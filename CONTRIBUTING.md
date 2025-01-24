@@ -8,6 +8,7 @@ Welcome to the honghong.me repository! We're glad you're interested in contribut
 - [Pull Requests](#pull-requests)
 - [Setup](#setup)
 - [Flags](#flags)
+- [Deployment](#deployment)
 - [Conventional Commits](#conventional-commits)
 - [Code Formatting](#code-formatting)
 
@@ -94,6 +95,15 @@ The following flags can be set in the `.env.local` file to enable specific featu
 - `NEXT_PUBLIC_FLAG_ANALYTICS`: Umami analytics.
 - `NEXT_PUBLIC_FLAG_GUESTBOOK_NOTIFICATION`: Discord notification for guestbook.
 - `NEXT_PUBLIC_FLAG_LIKE_BUTTON`: Like button for blog posts.
+
+## Deployment
+
+This project contains two deployable applications:
+
+- Portfolio: Set root directory to `apps/web`
+- Documentation: Set root directory to `apps/docs`
+
+⚠️ **Important Note**: This repository is a personal project, not a template. Please do not deploy it directly to production environments.
 
 ## Conventional Commits
 
