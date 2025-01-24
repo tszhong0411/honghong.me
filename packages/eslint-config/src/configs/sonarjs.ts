@@ -11,7 +11,8 @@ export const sonarjs: Linter.Config[] = [
     rules: {
       ...sonarjsPlugin.configs.recommended.rules,
       'sonarjs/no-duplicate-string': 'off',
-      'sonarjs/no-nested-functions': 'off'
+      'sonarjs/no-nested-functions': 'off',
+      'sonarjs/pseudo-random': 'off'
     }
   }
 ]
