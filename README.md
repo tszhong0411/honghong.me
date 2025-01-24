@@ -145,6 +145,4 @@ If you find this project helpful, consider supporting me by [sponsoring the proj
 
 ## License
 
-Please do not deploy this directly to production. It is not a template and is not intended to be used as one.
-
 This project is open source and available under the [MIT License](LICENSE).
