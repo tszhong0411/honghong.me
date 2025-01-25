@@ -135,7 +135,7 @@ const Layout = async (props: LayoutProps) => {
   return (
     <html
       lang={locale}
-      className={cn(GeistSans.variable, GeistMono.variable, 'scroll-smooth')}
+      className={cn(GeistSans.variable, GeistMono.variable)}
       suppressHydrationWarning
     >
       <body className='relative'>

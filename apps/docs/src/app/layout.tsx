@@ -110,7 +110,7 @@ const Layout = (props: LayoutProps) => {
   return (
     <html
       lang='en-US'
-      className={cn(GeistSans.variable, GeistMono.variable, 'scroll-smooth')}
+      className={cn(GeistSans.variable, GeistMono.variable)}
       suppressHydrationWarning
     >
       <body>
