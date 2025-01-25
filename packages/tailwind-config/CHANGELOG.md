@@ -1,5 +1,11 @@
 # @tszhong0411/tailwind-config
 
+## 0.0.23
+
+### Patch Changes
+
+- 2fe0305: Move the custom plugin directly into the Tailwind config file
+
 ## 0.0.22
 
 ### Patch Changes
