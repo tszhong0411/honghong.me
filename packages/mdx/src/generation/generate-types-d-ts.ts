@@ -60,19 +60,20 @@ export const generateTypesDts = async (collections: Collection[]) => {
     collections.map((collection, i) => ({
       name: collection.name,
       type: `\
-{
-  ${collection.fields ? renderFields(collection.fields) : ''}
-  ${collection.computedFields ? renderComputedFields(collection.computedFields) : ''}
-  code: string;
-  raw: string;
-  fileName: string;
-  filePath: string;
-  toc: Array<{
-    title: string
-    url: string
-    depth: number
-  }>;
-}`,
+        {
+          ${collection.fields ? renderFields(collection.fields) : ''}
+          ${collection.computedFields ? renderComputedFields(collection.computedFields) : ''}
+          code: string;
+          raw: string;
+          fileName: string;
+          filePath: string;
+          toc: Array<{
+            title: string
+            url: string
+            depth: number
+          }>;
+        }
+      `,
       isExported: true,
       ...(i === 0 && {
         leadingTrivia: AUTO_GENERATED_NOTE
@@ -85,9 +86,10 @@ export const generateTypesDts = async (collections: Collection[]) => {
       listFields.map((listField) => ({
         name: capitalize(listField.name),
         type: `\
-{
-  ${renderFields(listField.fields)}
-}`,
+          {
+            ${renderFields(listField.fields)}
+          }
+        `,
         isExported: true
       }))
     )
@@ -98,9 +100,10 @@ export const generateTypesDts = async (collections: Collection[]) => {
       nestedFields.map((nestedField) => ({
         name: capitalize(nestedField.name),
         type: `\
-{
-  ${renderFields(nestedField.of.fields)}
-}`,
+          {
+            ${renderFields(nestedField.of.fields)}
+          }
+        `,
         isExported: true
       }))
     )

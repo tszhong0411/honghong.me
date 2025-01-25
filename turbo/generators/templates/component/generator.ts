@@ -96,10 +96,11 @@ export const componentGenerator = (plop: PlopTypes.NodePlopAPI): void => {
           }
           for (const element of elements) {
             initializer.addElement(`\
-{
-  href: ${element.href},
-  text: ${element.text}
-}`)
+              {
+                href: ${element.href},
+                text: ${element.text}
+              }
+            `)
           }
 
           await sourceFile.save()
