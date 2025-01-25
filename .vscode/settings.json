@@ -69,10 +69,7 @@
   "i18n-ally.localesPaths": ["packages/i18n/messages"],
 
   "tailwindCSS.experimental.classRegex": [
-    ["cva\\(([^)]*)\\)", "'([^']*)'"],
-    ["cn\\(([^)]*)\\)", "'([^']*)'"],
-    "className\\: '([^']*)'",
-    ["classNames\\: {([^}]*)", "'([^']*)'"]
+    ["([\"'`][^\"'`]*.*?[\"'`])", "[\"'`]([^\"'`]*).*?[\"'`]"]
   ],
 
   "typescript.enablePromptUseWorkspaceTsdk": true,
