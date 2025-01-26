@@ -1,6 +1,6 @@
-import fs from 'node:fs/promises'
+import type { UserConfig } from 'cz-git'
 
-import { type UserConfig } from 'cz-git'
+import fs from 'node:fs/promises'
 
 const getDirectories = async (source: string) => {
   const directories = await fs.readdir(source, { withFileTypes: true })
