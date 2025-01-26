@@ -4,7 +4,6 @@ autosize
 bradlc
 cmdk
 cobe
-commitlintrc
 contentlayer
 corepack
 dbaeumer
