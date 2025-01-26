@@ -1,8 +1,8 @@
 import { cn } from '@tszhong0411/utils'
-import { cva, type VariantProps } from 'class-variance-authority'
+import { cva, type VariantProps } from 'cva'
 import NextLink from 'next/link'
 
-const linkVariants = cva('', {
+const linkVariants = cva({
   variants: {
     variant: {
       muted: 'text-muted-foreground hover:text-foreground transition-colors'

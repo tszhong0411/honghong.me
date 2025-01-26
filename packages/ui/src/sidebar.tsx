@@ -1,6 +1,6 @@
 import { Slot } from '@radix-ui/react-slot'
 import { cn } from '@tszhong0411/utils'
-import { cva, type VariantProps } from 'class-variance-authority'
+import { cva, type VariantProps } from 'cva'
 import { PanelLeftIcon } from 'lucide-react'
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 
@@ -482,8 +482,8 @@ const SidebarMenuItem = (props: SidebarMenuItemProps) => {
   )
 }
 
-const sidebarMenuButtonVariants = cva(
-  [
+const sidebarMenuButtonVariants = cva({
+  base: [
     'peer/menu-button ring-sidebar-ring flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-none transition-[width,height,padding]',
     'hover:bg-sidebar-accent hover:text-sidebar-accent-foreground',
     'active:bg-sidebar-accent active:text-sidebar-accent-foreground',
@@ -495,25 +495,23 @@ const sidebarMenuButtonVariants = cva(
     'focus-visible:ring-2',
     'group-data-[collapsible=icon]:!size-8 group-data-[collapsible=icon]:!p-2 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0'
   ],
-  {
-    variants: {
-      variant: {
-        default: 'hover:bg-sidebar-accent hover:text-sidebar-accent-foreground',
-        outline:
-          'bg-background hover:bg-sidebar-accent hover:text-sidebar-accent-foreground shadow-[0_0_0_1px_hsl(var(--sidebar-border))] hover:shadow-[0_0_0_1px_hsl(var(--sidebar-accent))]'
-      },
-      size: {
-        default: 'h-8 text-sm',
-        sm: 'h-7 text-xs',
-        lg: 'h-12 text-sm group-data-[collapsible=icon]:!p-0'
-      }
+  variants: {
+    variant: {
+      default: 'hover:bg-sidebar-accent hover:text-sidebar-accent-foreground',
+      outline:
+        'bg-background hover:bg-sidebar-accent hover:text-sidebar-accent-foreground shadow-[0_0_0_1px_hsl(var(--sidebar-border))] hover:shadow-[0_0_0_1px_hsl(var(--sidebar-accent))]'
     },
-    defaultVariants: {
-      variant: 'default',
-      size: 'default'
+    size: {
+      default: 'h-8 text-sm',
+      sm: 'h-7 text-xs',
+      lg: 'h-12 text-sm group-data-[collapsible=icon]:!p-0'
     }
+  },
+  defaultVariants: {
+    variant: 'default',
+    size: 'default'
   }
-)
+})
 
 type SidebarMenuButtonProps = {
   asChild?: boolean

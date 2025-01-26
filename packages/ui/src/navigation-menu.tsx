@@ -1,6 +1,6 @@
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu'
 import { cn } from '@tszhong0411/utils'
-import { cva } from 'class-variance-authority'
+import { cva } from 'cva'
 import { ChevronDownIcon } from 'lucide-react'
 
 type NavigationMenuProps = React.ComponentProps<typeof NavigationMenuPrimitive.Root>
@@ -34,14 +34,16 @@ const NavigationMenuList = (props: NavigationMenuListProps) => {
 
 const NavigationMenuItem = NavigationMenuPrimitive.Item
 
-const navigationMenuTriggerVariants = cva([
-  'bg-background group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors',
-  'focus:bg-accent focus:text-accent-foreground focus:outline-none',
-  'disabled:pointer-events-none disabled:opacity-50',
-  'hover:bg-accent hover:text-accent-foreground',
-  'data-[active]:bg-accent/50',
-  'data-[state=open]:bg-accent/50'
-])
+const navigationMenuTriggerVariants = cva({
+  base: [
+    'bg-background group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors',
+    'focus:bg-accent focus:text-accent-foreground focus:outline-none',
+    'disabled:pointer-events-none disabled:opacity-50',
+    'hover:bg-accent hover:text-accent-foreground',
+    'data-[active]:bg-accent/50',
+    'data-[state=open]:bg-accent/50'
+  ]
+})
 
 type NavigationMenuTriggerProps = React.ComponentProps<typeof NavigationMenuPrimitive.Trigger>
 
