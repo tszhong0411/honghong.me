@@ -40,7 +40,7 @@
     "chokidar": "^4.0.3",
     "commander": "^12.1.0",
     "cosmiconfig": "^9.0.0",
-    "fast-glob": "^3.3.2",
+    "fast-glob": "^3.3.3",
     "github-slugger": "^2.0.0",
     "hast": "^1.0.0",
     "jiti": "^2.4.2",
