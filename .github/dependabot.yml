@@ -4,7 +4,9 @@ updates:
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
-      interval: 'weekly'
+      interval: 'daily'
+    open-pull-requests-limit: 5
+    versioning-strategy: 'increase'
 
   - package-ecosystem: 'github-actions'
     directory: '/'
