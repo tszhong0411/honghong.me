@@ -33,7 +33,7 @@
     "@tanstack/react-query-next-experimental": "^5.62.10",
     "@tanstack/react-table": "^8.20.6",
     "@trpc/client": "11.0.0-rc.666",
-    "@trpc/react-query": "11.0.0-rc.666",
+    "@trpc/react-query": "11.0.0-rc.729",
     "@trpc/server": "11.0.0-rc.666",
     "@tszhong0411/db": "workspace:*",
     "@tszhong0411/emails": "workspace:*",
