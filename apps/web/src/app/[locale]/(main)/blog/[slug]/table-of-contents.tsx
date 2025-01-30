@@ -3,9 +3,9 @@
 import type { TOC } from '@tszhong0411/mdx'
 
 import { useTranslations } from '@tszhong0411/i18n/client'
-import { cn } from '@tszhong0411/utils'
+import { SegmentGroup, SegmentGroupItem } from '@tszhong0411/ui'
+import { useRouter } from 'next/navigation'
 
-import Link from '@/components/link'
 import { useScrollspy } from '@/hooks/use-scrollspy'
 
 type TableOfContentsProps = {
@@ -19,31 +19,31 @@ const TableOfContents = (props: TableOfContentsProps) => {
     { rootMargin: '0% 0% -80% 0%' }
   )
   const t = useTranslations()
+  const router = useRouter()
 
   return (
-    <div className='hidden lg:block'>
-      <div className='mb-4 pl-4'>{t('blog.on-this-page')}</div>
-      <div>
-        {toc.map((item) => {
-          const { title, url, depth } = item
-
-          return (
-            <Link
-              key={url}
-              href={`#${url}`}
-              className={cn(
-                'text-muted-foreground hover:text-foreground block py-2.5 pr-2.5 text-sm leading-[1.2] transition-colors',
-                url === activeId && 'text-foreground'
-              )}
-              style={{
-                paddingLeft: (depth - 1) * 16
-              }}
-            >
-              {title}
-            </Link>
-          )
-        })}
-      </div>
+    <div className='hidden pl-4 lg:block'>
+      <div className='mb-4'>{t('blog.on-this-page')}</div>
+      <SegmentGroup
+        orientation='vertical'
+        value={activeId}
+        onValueChange={(details) => {
+          router.push(`#${details.value}`)
+        }}
+        className='text-sm'
+      >
+        {toc.map((item) => (
+          <SegmentGroupItem
+            key={item.url}
+            value={item.url}
+            style={{
+              paddingLeft: (item.depth - 1) * 12
+            }}
+          >
+            {item.title}
+          </SegmentGroupItem>
+        ))}
+      </SegmentGroup>
     </div>
   )
 }
