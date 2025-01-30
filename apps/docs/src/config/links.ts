@@ -167,6 +167,10 @@ const COMPONENT_LINKS = [
     text: 'Scroll Area'
   },
   {
+    href: '/ui/components/segment-group',
+    text: 'Segment Group'
+  },
+  {
     href: '/ui/components/select',
     text: 'Select'
   },
