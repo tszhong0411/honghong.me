@@ -1,5 +1,11 @@
 # @tszhong0411/ui
 
+## 0.0.52
+
+### Patch Changes
+
+- 9be3acf: Add Segment Group component
+
 ## 0.0.51
 
 ### Patch Changes
