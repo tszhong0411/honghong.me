@@ -6,8 +6,6 @@ services:
     container_name: honghongme-postgres
     ports:
       - 5432:5432
-    volumes:
-      - ./volumes/postgresql:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
@@ -17,8 +15,6 @@ services:
     container_name: honghongme-redis
     ports:
       - '6379:6379'
-    volumes:
-      - ./volumes/redis:/data
 
   serverless-redis-http:
     image: hiett/serverless-redis-http:latest

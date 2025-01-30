@@ -38,8 +38,7 @@
     "**/dist/**": true,
     "**/node_modules/**": true,
     "**/playwright-report/**": true,
-    "**/test-results/**": true,
-    "**/volumes/**": true
+    "**/test-results/**": true
   },
 
   "i18n-ally.enabledFrameworks": ["react", "next-intl", "general"],

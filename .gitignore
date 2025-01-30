@@ -33,9 +33,6 @@ build/
 dist/
 .eslint-config-inspector/
 
-# Docker data folder
-volumes/
-
 # MDX
 .mdx/
 
