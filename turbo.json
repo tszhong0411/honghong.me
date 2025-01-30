@@ -98,5 +98,5 @@
     },
     "type-check": {}
   },
-  "ui": "tui"
+  "ui": "stream"
 }
