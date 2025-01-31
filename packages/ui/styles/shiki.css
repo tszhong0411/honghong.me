@@ -1,8 +1,8 @@
-.shiki code span {
+.shiki span {
   color: var(--shiki-light);
 }
 
-.dark .shiki code span {
+.dark .shiki span {
   color: var(--shiki-dark);
 }
 
