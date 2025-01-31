@@ -2,6 +2,8 @@
 
 import { ThemeProvider } from 'next-themes'
 
+import Sonner from '@/components/sonner'
+
 type ProvidesProps = {
   children: React.ReactNode
 }
@@ -18,6 +20,7 @@ const Providers = (props: ProvidesProps) => {
       disableTransitionOnChange
     >
       {children}
+      <Sonner />
     </ThemeProvider>
   )
 }
