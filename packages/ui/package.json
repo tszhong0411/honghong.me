@@ -18,14 +18,14 @@
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
-    "./preset.css": "./dist/styles/preset.css",
-    "./shiki.css": "./dist/styles/shiki.css"
+    "./styles/*": "./styles/*"
   },
   "files": [
-    "dist"
+    "dist",
+    "styles"
   ],
   "scripts": {
-    "build": "tsup && cp -r src/styles/* dist",
+    "build": "tsup",
     "clean": "rm -rf .turbo dist",
     "dev": "tsup --watch",
     "lint": "eslint . --max-warnings 0",

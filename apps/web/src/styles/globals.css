@@ -1,6 +1,6 @@
 @import 'tailwindcss';
-@import '@tszhong0411/ui/preset.css';
-@import '@tszhong0411/ui/shiki.css';
+@import '@tszhong0411/ui/styles/preset.css';
+@import '@tszhong0411/ui/styles/shiki.css';
 @source '../../../../packages/ui/src/**/*.{js,jsx,ts,tsx}';
 
 @utility h-content {
