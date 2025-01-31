@@ -1,8 +1,12 @@
 @import 'tailwindcss';
 @import '@tszhong0411/ui/styles/preset.css';
 @import '@tszhong0411/ui/styles/shiki.css';
+@import '@tszhong0411/ui/styles/typography.css';
 @source '../../../../packages/ui/src/**/*.{js,jsx,ts,tsx}';
 
 @theme {
   --max-width-8xl: 92rem;
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
 }
