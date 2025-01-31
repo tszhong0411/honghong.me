@@ -57,7 +57,7 @@ const TreeViewNode = (props: TreeViewNodeProps) => {
           </TreeViewPrimitive.BranchContent>
         </TreeViewPrimitive.Branch>
       ) : (
-        <TreeViewPrimitive.Item className='hover:bg-accent hover:text-accent-foreground data-[selected]:bg-accent relative rounded-md px-2 py-1.5 pl-[calc(var(--depth)*8px)] text-sm'>
+        <TreeViewPrimitive.Item className='hover:bg-accent hover:text-accent-foreground data-selected:bg-accent relative rounded-md px-2 py-1.5 pl-[calc(var(--depth)*8px)] text-sm'>
           <TreeViewPrimitive.ItemText className='flex items-center gap-2'>
             <FileIcon className='size-4' />
             {node.name}

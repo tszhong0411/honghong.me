@@ -13,21 +13,25 @@
     "url": "https://github.com/tszhong0411/honghong.me/issues"
   },
   "type": "module",
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./preset.css": "./dist/preset.css",
+    "./shiki.css": "./dist/shiki.css"
+  },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "tsup && cp -r src/styles/* dist",
     "clean": "rm -rf .turbo dist",
     "dev": "tsup --watch",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint --fix .",
     "type-check": "tsc --noEmit"
   },
-  "sideEffects": false,
-  "types": "./dist/index.d.ts",
   "dependencies": {
     "@ark-ui/react": "^4.8.1",
     "@icons-pack/react-simple-icons": "10.2.0",
@@ -80,7 +84,6 @@
   "devDependencies": {
     "@tanstack/react-table": "^8.20.6",
     "@tszhong0411/eslint-config": "workspace:*",
-    "@tszhong0411/tailwind-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
     "@tszhong0411/utils": "workspace:*",
     "@types/react": "19.0.2",
@@ -88,7 +91,7 @@
     "next": "^15.1.3",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^4.0.1"
   },
   "publishConfig": {
     "access": "public"

@@ -136,7 +136,7 @@ const Metrics = () => {
           <Link
             key={metric.title}
             href={link}
-            className='group relative overflow-hidden rounded-lg border p-4 shadow-sm transition-colors hover:bg-zinc-100 dark:bg-zinc-900/50 dark:hover:bg-zinc-900'
+            className='shadow-xs group relative overflow-hidden rounded-lg border p-4 transition-colors hover:bg-zinc-100 dark:bg-zinc-900/50 dark:hover:bg-zinc-900'
           >
             <div className='flex flex-col items-center justify-center gap-2 transition-transform group-hover:-translate-y-24 group-focus:-translate-y-24'>
               <div className='flex items-center gap-2 text-3xl font-semibold'>

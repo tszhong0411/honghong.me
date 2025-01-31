@@ -1,35 +1,42 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@import '@tszhong0411/ui/preset.css';
+@import '@tszhong0411/ui/shiki.css';
+@source '../../../../packages/ui/src/**/*.{js,jsx,ts,tsx}';
 
-@layer components {
-  .h-content {
-    min-height: calc(100vh - 416px - 96px - 96px - 64px - 24px);
-  }
+@utility h-content {
+  min-height: calc(100vh - 416px - 96px - 96px - 64px - 24px);
 
   @media (max-width: 640px) {
-    .h-content {
-      min-height: calc(100vh - 600px - 96px - 96px - 64px - 24px);
-    }
+    min-height: calc(100vh - 600px - 96px - 96px - 64px - 24px);
   }
 }
 
-.shiki span {
-  color: var(--shiki-light);
+@theme {
+  --background-image-nav-link-indicator: var(--nav-link-indicator);
+  --background-image-email-button: var(--email-button);
+
+  --shadow-feature-card: var(--feature-card);
 }
 
-.dark .shiki span {
-  color: var(--shiki-dark);
-}
+@layer base {
+  :root {
+    --nav-link-indicator: radial-gradient(
+      44.6% 825% at 50% 50%,
+      rgb(255 133 133) 0%,
+      rgb(255 72 109 / 0) 100%
+    );
+    --email-button: linear-gradient(180deg, rgb(210 10 30) 5%, rgb(239 90 90) 100%);
 
-pre.shiki {
-  font-size: 13px;
-}
+    --feature-card: 0 -1px 3px 0 rgb(0 0 0 / 0.05);
+  }
 
-pre.shiki .highlighted {
-  margin: 0 -16px;
-  padding: 0 16px;
-  display: inline-block;
-  min-width: calc(100% + 32px);
-  background-color: theme('colors.primary.DEFAULT / 10%');
+  .dark {
+    --nav-link-indicator: radial-gradient(
+      44.6% 825% at 50% 50%,
+      rgb(255 28 28) 0%,
+      rgb(255 72 109 / 0) 100%
+    );
+
+    --feature-card: 0 0 0 1px rgb(255 255 255 / 0.06), 0 -1px rgb(255 255 255 / 0.1);
+  }
 }

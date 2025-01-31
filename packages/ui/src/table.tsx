@@ -36,7 +36,7 @@ const TableFooter = (props: TableFooterProps) => {
 
   return (
     <tfoot
-      className={cn('bg-muted/50 border-t font-medium [&>tr]:last:border-b-0', className)}
+      className={cn('bg-muted/50 border-t font-medium last:[&>tr]:border-b-0', className)}
       {...rest}
     />
   )

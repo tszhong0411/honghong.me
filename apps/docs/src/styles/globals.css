@@ -1,23 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@import '@tszhong0411/ui/preset.css';
+@import '@tszhong0411/ui/shiki.css';
+@source '../../../../packages/ui/src/**/*.{js,jsx,ts,tsx}';
 
-.shiki span {
-  color: var(--shiki-light);
-}
-
-.dark .shiki span {
-  color: var(--shiki-dark);
-}
-
-pre.shiki {
-  font-size: 13px;
-}
-
-pre.shiki .highlighted {
-  margin: 0 -16px;
-  padding: 0 16px;
-  display: inline-block;
-  min-width: calc(100% + 32px);
-  background-color: theme('colors.primary.DEFAULT / 10%');
+@theme {
+  --max-width-8xl: 92rem;
 }

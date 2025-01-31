@@ -60,7 +60,7 @@ const SliderThumb = (props: SliderThumbProps) => {
     <SliderPrimitive.Thumb
       className={cn(
         'border-primary bg-background ring-offset-background size-5 rounded-full border-2 transition-colors',
-        'focus-visible:ring-ring focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
+        'focus-visible:ring-ring focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2',
         'disabled:pointer-events-none disabled:opacity-50',
         className
       )}
@@ -79,7 +79,7 @@ const SliderMarker = (props: SliderMarkProps) => {
   return (
     <SliderPrimitive.Marker
       className={cn(
-        "text-muted-foreground before:bg-background dark:before:bg-foreground dark:before:data-[state=under-value]:bg-background text-sm before:relative before:-top-1.5 before:left-1/2 before:block before:size-1 before:-translate-x-1/2 before:rounded-full before:content-['']",
+        "text-muted-foreground before:bg-background dark:before:bg-foreground dark:data-[state=under-value]:before:bg-background text-sm before:relative before:-top-1.5 before:left-1/2 before:block before:size-1 before:-translate-x-1/2 before:rounded-full before:content-['']",
         className
       )}
       {...rest}

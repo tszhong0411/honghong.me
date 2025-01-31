@@ -6,8 +6,8 @@ import { XIcon } from 'lucide-react'
 const sheetVariants = cva({
   base: [
     'bg-background fixed z-50 p-6 shadow-lg transition ease-in-out',
-    'data-[state=open]:animate-in data-[state=closed]:duration-300',
-    'data-[state=closed]:animate-out data-[state=open]:duration-500'
+    'data-[state=open]:animate-in data-[state=open]:duration-500',
+    'data-[state=closed]:animate-out data-[state=closed]:duration-300'
   ],
   variants: {
     side: {
@@ -60,9 +60,9 @@ const SheetContent = (props: SheetContentProps) => {
         {children}
         <SheetPrimitive.Close
           className={cn(
-            'ring-offset-background absolute right-4 top-4 rounded-sm opacity-70 transition-opacity',
+            'ring-offset-background rounded-xs absolute right-4 top-4 opacity-70 transition-opacity',
             'hover:opacity-100',
-            'focus:ring-ring focus:outline-none focus:ring-2 focus:ring-offset-2',
+            'focus:ring-ring focus:outline-hidden focus:ring-2 focus:ring-offset-2',
             'disabled:pointer-events-none'
           )}
           aria-label='Close'

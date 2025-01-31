@@ -52,7 +52,7 @@ const SegmentGroupItem = (props: SegmentGroupItemProps) => {
         'data-[orientation=horizontal]:px-1 data-[orientation=horizontal]:pb-3',
         'data-[orientation=vertical]:px-3 data-[orientation=vertical]:py-1.5',
         'data-[state=checked]:text-foreground',
-        'data-[disabled]:text-muted-foreground data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50',
+        'data-disabled:text-muted-foreground data-disabled:cursor-not-allowed data-disabled:opacity-50',
         className
       )}
       {...rest}

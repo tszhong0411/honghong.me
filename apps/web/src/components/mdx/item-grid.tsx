@@ -25,7 +25,7 @@ const ItemGrid = (props: ItemGridProps) => {
         <Link
           key={item.name}
           href={item.url}
-          className='flex gap-6 rounded-lg border p-4 no-underline shadow-sm transition-colors hover:bg-zinc-100 sm:flex-col sm:gap-3 dark:bg-zinc-900 dark:hover:bg-zinc-800'
+          className='shadow-xs flex gap-6 rounded-lg border p-4 no-underline transition-colors hover:bg-zinc-100 sm:flex-col sm:gap-3 dark:bg-zinc-900 dark:hover:bg-zinc-800'
         >
           <BlurImage
             src={item.image}

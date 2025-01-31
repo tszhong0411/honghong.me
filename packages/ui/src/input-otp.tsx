@@ -10,10 +10,7 @@ const InputOTP = (props: InputOTPProps) => {
 
   return (
     <OTPInput
-      containerClassName={cn(
-        'flex items-center gap-2 has-[:disabled]:opacity-50',
-        containerClassName
-      )}
+      containerClassName={cn('has-disabled:opacity-50 flex items-center gap-2', containerClassName)}
       className={cn('disabled:cursor-not-allowed', className)}
       {...rest}
     />
@@ -48,7 +45,7 @@ const InputOTPSlot = (props: InputOTPSlotProps) => {
     <div
       role='presentation'
       className={cn(
-        'border-input relative flex size-9 items-center justify-center border-y border-r shadow-sm transition-all',
+        'border-input shadow-xs relative flex size-9 items-center justify-center border-y border-r transition-all',
         'first:rounded-l-md first:border-l',
         'last:rounded-r-md',
         isActive && 'ring-ring z-10 ring-1',
