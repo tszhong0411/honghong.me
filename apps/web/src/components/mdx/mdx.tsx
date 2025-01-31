@@ -1,7 +1,7 @@
 'use client'
 
 import { getMDXComponent, type MDXComponents } from '@tszhong0411/mdx'
-import { BlurImage, CodeBlock, Kbd, TreeView } from '@tszhong0411/ui'
+import { BlurImage, CodeBlock, Kbd } from '@tszhong0411/ui'
 
 import ImageZoom from '../image-zoom'
 import Link from '../link'
@@ -11,6 +11,7 @@ import ItemGrid from './item-grid'
 import LinkCard from './link-card'
 import Logo from './logo'
 import Table from './table'
+import TreeView from './tree-view'
 import Video from './video'
 
 type MdxProps = {
