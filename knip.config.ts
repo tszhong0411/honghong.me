@@ -35,7 +35,7 @@ const config: KnipConfig = {
     },
     'packages/ui': {
       // https://github.com/shadcn-ui/ui/issues/4792
-      ignoreDependencies: ['@radix-ui/react-context']
+      ignoreDependencies: ['@radix-ui/react-context', '@tailwindcss/typography']
     }
   }
 }
