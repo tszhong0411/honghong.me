@@ -18,8 +18,8 @@
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
-    "./preset.css": "./dist/preset.css",
-    "./shiki.css": "./dist/shiki.css"
+    "./preset.css": "./dist/styles/preset.css",
+    "./shiki.css": "./dist/styles/shiki.css"
   },
   "files": [
     "dist"
