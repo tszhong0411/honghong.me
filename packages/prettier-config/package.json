@@ -26,7 +26,6 @@
     "lint:fix": "eslint --fix .",
     "type-check": "tsc --noEmit"
   },
-  "sideEffects": false,
   "types": "./dist/index.d.ts",
   "dependencies": {
     "@tszhong0411/prettier-plugin-package-json": "workspace:*",
