@@ -60,13 +60,11 @@
       "cache": false
     },
     "db:push": {
-      "cache": false,
-      "interactive": true
+      "cache": false
     },
     "db:seed": {},
     "db:studio": {
       "cache": false,
-      "interactive": true,
       "persistent": true
     },
     "dev": {
