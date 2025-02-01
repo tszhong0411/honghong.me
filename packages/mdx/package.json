@@ -33,8 +33,8 @@
   },
   "types": "./dist/index.d.ts",
   "dependencies": {
-    "@shikijs/rehype": "^1.24.4",
-    "@shikijs/transformers": "^1.24.4",
+    "@shikijs/rehype": "^2.2.0",
+    "@shikijs/transformers": "^2.2.0",
     "chalk": "^5.4.1",
     "chokidar": "^4.0.3",
     "commander": "^12.1.0",
@@ -55,7 +55,7 @@
   },
   "peerDependencies": {
     "@tszhong0411/utils": ">=0",
-    "shiki": "^1.24.0"
+    "shiki": "^2.2.0"
   },
   "devDependencies": {
     "@mdx-js/esbuild": "^3.1.0",
@@ -70,7 +70,7 @@
     "@types/react": "19.0.2",
     "@types/react-dom": "19.0.3",
     "next": "^15.1.3",
-    "shiki": "^1.24.4"
+    "shiki": "^2.2.0"
   },
   "lint-staged": {
     "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix",
