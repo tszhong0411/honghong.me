@@ -1,6 +1,6 @@
 {
   "about": {
-    "description": "👋 Hi there! I am Hong, a student who loves web development.",
+    "description": "👋 Hi there! I am Nelson Lai, a student who loves web development.",
     "title": "About"
   },
   "admin": {
@@ -190,7 +190,7 @@
       "title-bottom": "React",
       "title-middle-left": "building",
       "title-middle-right": "websites using",
-      "title-top": "I'm Hong, a Full Stack Engineer"
+      "title-top": "I'm Nelson, a Full Stack Engineer"
     },
     "latest-articles": {
       "card": "Article",
@@ -235,8 +235,8 @@
     "link-to-section": "Link to section"
   },
   "metadata": {
-    "site-description": "Hong • 18 y/o • Student • Full Stack Engineer",
-    "site-title": "Hong - A Full Stack Engineer"
+    "site-description": "Nelson Lai • 18 y/o • Student • Full Stack Engineer",
+    "site-title": "Nelson Lai - A Full Stack Engineer"
   },
   "not-found": "404 Not Found",
   "projects": {

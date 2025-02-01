@@ -24,7 +24,7 @@ const Footer = () => {
         </Row>
       </Section>
       <Text className='m-0 mt-6 p-0 text-xs font-normal text-gray-500'>
-        © {new Date().getFullYear()} Hong. All rights reserved.
+        © {new Date().getFullYear()} Nelson Lai. All rights reserved.
       </Text>
     </>
   )

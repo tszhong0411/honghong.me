@@ -4,7 +4,7 @@ export const SITE_URL = isProduction ? 'https://honghong.me' : 'http://localhost
 
 export const GITHUB_USERNAME = 'tszhong0411'
 
-export const SITE_NAME = 'Hong'
+export const SITE_NAME = 'Nelson Lai'
 export const SITE_KEYWORDS = ['tszhong0411', 'Next.js', 'React', 'TypeScript', 'Node.js']
 
 export const SITE_GITHUB_URL = 'https://github.com/tszhong0411'

@@ -13,6 +13,6 @@ describe('<Hero />', () => {
       </NextIntlClientProvider>
     )
 
-    expect(screen.getByAltText('Hong')).toBeInTheDocument()
+    expect(screen.getByAltText('Nelson Lai')).toBeInTheDocument()
   })
 })
