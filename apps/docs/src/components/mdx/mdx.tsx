@@ -16,6 +16,13 @@ const components: MDXComponents = {
   h4: (props: React.ComponentProps<'h4'>) => <Heading as='h4' {...props} />,
   h5: (props: React.ComponentProps<'h5'>) => <Heading as='h5' {...props} />,
   h6: (props: React.ComponentProps<'h6'>) => <Heading as='h6' {...props} />,
+  a: (props: React.ComponentProps<'a'>) => {
+    const { href, ...rest } = props
+
+    if (!href) throw new Error('Link must have an href')
+
+    return <uiComponents.Link href={href} {...rest} />
+  },
 
   // Custom components
   ...uiComponents,
