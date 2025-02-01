@@ -54,12 +54,14 @@ const CommentCodeBlock = (props: CommentCodeBlockProps) => {
     })
   }, [code, highlighter, lang])
 
+  const codeHtml = /<code\b[^>]*>([\s\S]*?)<\/code>/.exec(highlightedHtml)?.[1]
+
   return (
     <CodeBlock data-lang={lang} title={title} className='shiki' figureClassName='my-2'>
-      {isHighlighted ? (
+      {isHighlighted && codeHtml ? (
         <code
           dangerouslySetInnerHTML={{
-            __html: /<code\b[^>]*>([\s\S]*?)<\/code>/.exec(highlightedHtml)?.[1] ?? code
+            __html: codeHtml
           }}
         />
       ) : (
