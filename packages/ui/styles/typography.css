@@ -47,4 +47,9 @@
       }
     }
   }
+
+  :where(video):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
 }
