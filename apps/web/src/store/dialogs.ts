@@ -1,13 +1,9 @@
-import { atom } from 'nanostores'
+import { atom } from 'jotai'
 
-type DialogsState = {
+type Dialogs = {
   signIn: boolean
 }
 
-export const dialogs = atom<DialogsState>({
+export const dialogsAtom = atom<Dialogs>({
   signIn: false
 })
-
-export const setDialogs = (value: DialogsState) => {
-  dialogs.set({ ...dialogs.get(), ...value })
-}
