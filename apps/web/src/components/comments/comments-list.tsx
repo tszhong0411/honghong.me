@@ -2,11 +2,16 @@
 
 import { keepPreviousData } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
+import { useAtom } from 'jotai'
 import { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
+import { createOnigurumaEngine, getSingletonHighlighterCore } from 'shiki'
+import githubDarkDefault from 'shiki/themes/github-dark-default.mjs'
+import githubLightDefault from 'shiki/themes/github-light-default.mjs'
 
 import { useCommentsContext } from '@/contexts/comments'
 import { useCommentParams } from '@/hooks/use-comment-params'
+import { highlighterAtom } from '@/store/highlighter'
 import { api } from '@/trpc/react'
 
 import Comment from './comment'
@@ -17,6 +22,7 @@ const CommentsList = () => {
   const { slug, sort } = useCommentsContext()
   const [params] = useCommentParams()
   const t = useTranslations()
+  const [highlighter, setHighlighter] = useAtom(highlighterAtom)
 
   const { status, data, fetchNextPage, hasNextPage, isFetchingNextPage } =
     api.comments.getInfiniteComments.useInfiniteQuery(
@@ -36,6 +42,18 @@ const CommentsList = () => {
   useEffect(() => {
     if (inView && hasNextPage) fetchNextPage()
   }, [fetchNextPage, hasNextPage, inView])
+
+  useEffect(() => {
+    if (highlighter) return
+
+    getSingletonHighlighterCore({
+      themes: [githubLightDefault, githubDarkDefault],
+      engine: createOnigurumaEngine(import('shiki/wasm'))
+    }).then((instance) => {
+      setHighlighter(instance)
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- only run once
+  }, [])
 
   const isSuccess = status === 'success'
   const isError = status === 'error'

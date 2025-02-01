@@ -351,6 +351,9 @@ importers:
       rss:
         specifier: ^1.2.2
         version: 1.2.2
+      shiki:
+        specifier: ^2.2.0
+        version: 2.2.0
       superjson:
         specifier: ^2.2.2
         version: 2.2.2

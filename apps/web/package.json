@@ -68,6 +68,7 @@
     "react-spring": "^9.7.5",
     "resend": "^4.0.1",
     "rss": "^1.2.2",
+    "shiki": "^2.2.0",
     "superjson": "^2.2.2",
     "tinycolor2": "^1.6.0",
     "use-debounce": "^10.0.4",
