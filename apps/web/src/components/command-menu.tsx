@@ -16,6 +16,7 @@ import {
   Kbd,
   Logo
 } from '@tszhong0411/ui'
+import { useSetAtom } from 'jotai'
 import { CodeIcon, CommandIcon, LinkIcon, LogInIcon, LogOutIcon } from 'lucide-react'
 import { signOut, useSession } from 'next-auth/react'
 import { Fragment, useCallback, useEffect, useState } from 'react'
@@ -28,7 +29,7 @@ import {
   SITE_X_URL,
   SITE_YOUTUBE_URL
 } from '@/lib/constants'
-import { setDialogs } from '@/store/dialogs'
+import { dialogsAtom } from '@/store/dialogs'
 
 type Groups = Array<{
   name: string
@@ -45,6 +46,7 @@ const CommandMenu = () => {
   const [copy] = useCopyToClipboard()
   const { status } = useSession()
   const t = useTranslations()
+  const setDialogs = useSetAtom(dialogsAtom)
 
   const isSelectingCommand = [t('common.sign-out'), t('command-menu.actions.copy-link')].includes(
     selectingValue
@@ -88,7 +90,7 @@ const CommandMenu = () => {
                 icon: <LogInIcon className='mr-3 size-4' />,
                 onSelect: () => {
                   setIsOpen(false)
-                  setDialogs({ signIn: true })
+                  setDialogs((dialogs) => ({ ...dialogs, signIn: true }))
                 }
               }
             ])

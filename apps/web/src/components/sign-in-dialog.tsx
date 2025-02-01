@@ -1,7 +1,6 @@
 'use client'
 
 import { SiGithub } from '@icons-pack/react-simple-icons'
-import { useStore } from '@nanostores/react'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import {
   Button,
@@ -11,11 +10,12 @@ import {
   DialogHeader,
   DialogTitle
 } from '@tszhong0411/ui'
+import { useAtom } from 'jotai'
 import { Loader2Icon } from 'lucide-react'
 import { signIn } from 'next-auth/react'
 import { useState } from 'react'
 
-import { dialogs, setDialogs } from '@/store/dialogs'
+import { dialogsAtom } from '@/store/dialogs'
 
 const GoogleIcon = () => {
   return (
@@ -47,16 +47,16 @@ const GoogleIcon = () => {
 }
 
 const SignInDialog = () => {
-  const { signIn: isOpen } = useStore(dialogs)
+  const [dialogs, setDialogs] = useAtom(dialogsAtom)
   const [isGitHubLoading, setIsGitHubLoading] = useState(false)
   const [isGoogleLoading, setIsGoogleLoading] = useState(false)
   const t = useTranslations()
 
   return (
     <Dialog
-      open={isOpen}
+      open={dialogs.signIn}
       onOpenChange={(v) => {
-        setDialogs({ signIn: v })
+        setDialogs((d) => ({ ...d, signIn: v }))
       }}
     >
       <DialogContent className='sm:max-w-[425px]'>
