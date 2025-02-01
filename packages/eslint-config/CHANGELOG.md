@@ -1,5 +1,11 @@
 # @tszhong0411/eslint-config
 
+## 0.1.27
+
+### Patch Changes
+
+- fbd59cb: Temporarily disable tailwindcss plugin
+
 ## 0.1.26
 
 ### Patch Changes
