@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 
 import { Button, type ButtonProps } from './button'
 import { ScrollArea, ScrollBar } from './scroll-area'
-import { getIconByFilename } from './utils/get-icon-by-filename'
+import { getIconByLanguage } from './utils/get-icon-by-language'
 
 type CodeBlockProps = {
   'data-lang'?: string
@@ -16,7 +16,7 @@ const CodeBlock = (props: CodeBlockProps) => {
   const { children, className, title, 'data-lang': lang, figureClassName, ref, ...rest } = props
 
   const textInput = useRef<HTMLPreElement>(null)
-  const Icon = getIconByFilename(lang ?? '')
+  const Icon = getIconByLanguage(lang ?? '')
 
   const onCopy = () => {
     void navigator.clipboard.writeText(textInput.current?.textContent ?? '')
