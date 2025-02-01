@@ -10,7 +10,12 @@ import type { Plugin } from 'unified'
 
 import { type RehypeShikiOptions } from '@shikijs/rehype'
 import rehypeShikiFromHighlighter from '@shikijs/rehype/core'
-import { transformerNotationHighlight } from '@shikijs/transformers'
+import {
+  transformerNotationDiff,
+  transformerNotationFocus,
+  transformerNotationHighlight,
+  transformerNotationWordHighlight
+} from '@shikijs/transformers'
 import {
   bundledLanguages,
   createOnigurumaEngine,
@@ -53,6 +58,15 @@ export const rehypeCode: Plugin<[RehypeShikiOptions], Root> = () => {
       }
     },
     transformerNotationHighlight({
+      matchAlgorithm: 'v3'
+    }),
+    transformerNotationWordHighlight({
+      matchAlgorithm: 'v3'
+    }),
+    transformerNotationDiff({
+      matchAlgorithm: 'v3'
+    }),
+    transformerNotationFocus({
       matchAlgorithm: 'v3'
     })
   ]
