@@ -71,17 +71,17 @@ const CopyButton = (props: CopyButtonProps) => {
 
   return (
     <Button
-      variant='outline'
+      variant='ghost'
       size='icon'
       onClick={() => {
         onCopy()
         setIsCopied(true)
       }}
-      className={cn('opacity-0 transition-opacity group-hover:opacity-100', className)}
+      className={cn('size-7.5 opacity-0 transition-opacity group-hover:opacity-100', className)}
       aria-label='Copy code to clipboard'
       {...rest}
     >
-      {isCopied ? <CheckIcon className='size-4' /> : <CopyIcon className='size-4' />}
+      {isCopied ? <CheckIcon className='size-3.5' /> : <CopyIcon className='size-3.5' />}
     </Button>
   )
 }
