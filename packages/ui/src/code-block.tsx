@@ -38,7 +38,7 @@ const CodeBlock = (props: CodeBlockProps) => {
           <CopyButton onCopy={onCopy} />
         </div>
       ) : (
-        <CopyButton className='absolute right-1.5 top-1.5 z-10' onCopy={onCopy} />
+        <CopyButton className='absolute right-2 top-2 z-10' onCopy={onCopy} />
       )}
 
       <ScrollArea>
