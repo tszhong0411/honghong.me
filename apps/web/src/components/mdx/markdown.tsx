@@ -1,6 +1,6 @@
 import { Link, TableCell, TableHead, TableHeader, TableRow } from '@tszhong0411/ui'
 import MarkdownToJSX from 'markdown-to-jsx'
-import { memo } from 'react'
+import { Fragment, memo } from 'react'
 
 import CommentCodeBlock from '../comments/comment-code-block'
 import CommentTable from '../comments/comment-table'
@@ -25,7 +25,8 @@ const Markdown = memo((props: MarkdownProps) => {
             th: TableHead,
             td: TableCell
           },
-          disableParsingRawHTML: true
+          disableParsingRawHTML: true,
+          wrapper: Fragment
         }}
       >
         {children}
