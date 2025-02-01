@@ -71,6 +71,10 @@ const COMPONENT_LINKS = [
     text: 'Checkbox'
   },
   {
+    href: '/ui/components/code-block',
+    text: 'Code Block'
+  },
+  {
     href: '/ui/components/collapsible',
     text: 'Collapsible'
   },
