@@ -16,4 +16,5 @@ pre.shiki .highlighted {
   display: inline-block;
   min-width: calc(100% + 32px);
   background-color: color-mix(in oklab, var(--color-primary) 10%, transparent);
+  line-height: 20px;
 }
