@@ -111,7 +111,7 @@ const Message = (props: MessageProps) => {
 
   return (
     <MessageProvider value={context}>
-      <div className='rounded-lg border p-4 shadow-sm dark:bg-zinc-900/30' id={`message-${id}`}>
+      <div className='shadow-xs rounded-lg border p-4 dark:bg-zinc-900/30' id={`message-${id}`}>
         <div className='mb-3 flex gap-3'>
           <Avatar>
             <AvatarImage

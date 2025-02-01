@@ -32,7 +32,7 @@ const MenubarTrigger = (props: MenubarTriggerProps) => {
   return (
     <MenubarPrimitive.Trigger
       className={cn(
-        'flex cursor-default select-none items-center rounded-md px-3 py-1.5 text-sm font-medium outline-none',
+        'outline-hidden flex cursor-default select-none items-center rounded-md px-3 py-1.5 text-sm font-medium',
         'focus:bg-accent focus:text-accent-foreground',
         'data-[state=open]:bg-accent data-[state=open]:text-accent-foreground',
         className
@@ -52,7 +52,7 @@ const MenubarSubTrigger = (props: MenubarSubTriggerProps) => {
   return (
     <MenubarPrimitive.SubTrigger
       className={cn(
-        'flex cursor-default select-none items-center rounded-md px-2 py-1.5 text-sm outline-none',
+        'outline-hidden flex cursor-default select-none items-center rounded-md px-2 py-1.5 text-sm',
         'focus:bg-accent focus:text-accent-foreground',
         'data-[state=open]:bg-accent data-[state=open]:text-accent-foreground',
         inset && 'pl-8',
@@ -125,9 +125,9 @@ const MenubarItem = (props: MenubarItemProps) => {
   return (
     <MenubarPrimitive.Item
       className={cn(
-        'relative flex cursor-default select-none items-center rounded-md px-2 py-1.5 text-sm outline-none transition-colors',
+        'outline-hidden relative flex cursor-default select-none items-center rounded-md px-2 py-1.5 text-sm transition-colors',
         'focus:bg-accent focus:text-accent-foreground',
-        'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+        'data-disabled:pointer-events-none data-disabled:opacity-50',
         inset && 'pl-8',
         className
       )}
@@ -144,9 +144,9 @@ const MenubarCheckboxItem = (props: MenubarCheckboxItemProps) => {
   return (
     <MenubarPrimitive.CheckboxItem
       className={cn(
-        'relative flex cursor-default select-none items-center rounded-md py-1.5 pl-8 pr-2 text-sm outline-none transition-colors',
+        'outline-hidden relative flex cursor-default select-none items-center rounded-md py-1.5 pl-8 pr-2 text-sm transition-colors',
         'focus:bg-accent focus:text-accent-foreground',
-        'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+        'data-disabled:pointer-events-none data-disabled:opacity-50',
         className
       )}
       checked={checked}
@@ -170,9 +170,9 @@ const MenubarRadioItem = (props: MenubarRadioItemProps) => {
   return (
     <MenubarPrimitive.RadioItem
       className={cn(
-        'relative flex cursor-default select-none items-center rounded-md py-1.5 pl-8 pr-2 text-sm outline-none transition-colors',
+        'outline-hidden relative flex cursor-default select-none items-center rounded-md py-1.5 pl-8 pr-2 text-sm transition-colors',
         'focus:bg-accent focus:text-accent-foreground',
-        'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+        'data-disabled:pointer-events-none data-disabled:opacity-50',
         className
       )}
       {...rest}

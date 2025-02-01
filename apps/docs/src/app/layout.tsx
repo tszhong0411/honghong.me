@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from 'next'
 
 import '@/styles/globals.css'
 
-import { Toaster } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
@@ -119,7 +118,6 @@ const Layout = (props: LayoutProps) => {
           <div vaul-drawer-wrapper='' className='bg-background'>
             {children}
           </div>
-          <Toaster />
         </Providers>
       </body>
     </html>

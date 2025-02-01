@@ -1,7 +1,7 @@
 /** @type {import('postcss-load-config').Config} */
 export default {
   plugins: {
-    tailwindcss: {},
+    '@tailwindcss/postcss': {},
     'postcss-lightningcss': {
       browsers: '>= .25%'
     }

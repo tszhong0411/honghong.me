@@ -129,7 +129,7 @@ const CommentEditor = (props: CommentEditorProps) => {
     <div
       className={cn(
         'bg-background ring-offset-background focus-within:ring-ring rounded-lg border pb-1',
-        'focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2',
+        'focus-within:outline-hidden focus-within:ring-2 focus-within:ring-offset-2',
         'aria-disabled:cursor-not-allowed aria-disabled:opacity-80'
       )}
     >

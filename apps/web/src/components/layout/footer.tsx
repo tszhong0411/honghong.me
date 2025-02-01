@@ -19,7 +19,7 @@ const Footer = () => {
   const t = useTranslations()
 
   return (
-    <footer className='bg-background/30 relative mx-auto mb-6 flex max-w-5xl flex-col rounded-2xl p-8 shadow-sm saturate-100 backdrop-blur-[10px]'>
+    <footer className='bg-background/30 shadow-xs relative mx-auto mb-6 flex max-w-5xl flex-col rounded-2xl p-8 saturate-100 backdrop-blur-[10px]'>
       {flags.spotify ? <NowPlaying /> : null}
       <div className='mt-12 grid grid-cols-2 sm:grid-cols-3'>
         {FOOTER_LINKS.map((list) => (

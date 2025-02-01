@@ -52,7 +52,7 @@ const CommandInput = (props: CommandInputProps) => {
     <div className='border-b pb-2'>
       <CommandPrimitive.Input
         className={cn(
-          'w-full bg-transparent px-4 py-2 text-sm outline-none',
+          'outline-hidden w-full bg-transparent px-4 py-2 text-sm',
           'placeholder:text-muted-foreground',
           'disabled:cursor-not-allowed disabled:opacity-50',
           className
@@ -121,9 +121,9 @@ const CommandItem = (props: CommandItemProps) => {
   return (
     <CommandPrimitive.Item
       className={cn(
-        'flex h-10 cursor-default select-none items-center rounded-lg px-2 text-sm outline-none [&:not(:first-child)]:mt-1',
+        'outline-hidden not-first:mt-1 flex h-10 cursor-default select-none items-center rounded-lg px-2 text-sm',
         '[&_svg]:pointer-events-none [&_svg]:mr-2 [&_svg]:size-3.5',
-        'aria-[selected=true]:bg-accent',
+        'aria-selected:bg-accent',
         'data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50',
         '[&_kbd]:text-muted-foreground [&_kbd]:ml-auto [&_kbd]:text-xs',
         className

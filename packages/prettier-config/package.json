@@ -26,13 +26,12 @@
     "lint:fix": "eslint --fix .",
     "type-check": "tsc --noEmit"
   },
-  "sideEffects": false,
   "types": "./dist/index.d.ts",
   "dependencies": {
     "@tszhong0411/prettier-plugin-package-json": "workspace:*",
     "prettier-plugin-prisma": "^5.0.0",
-    "prettier-plugin-sort-json": "^4.0.0",
-    "prettier-plugin-tailwindcss": "^0.6.9"
+    "prettier-plugin-sort-json": "^4.1.1",
+    "prettier-plugin-tailwindcss": "^0.6.11"
   },
   "peerDependencies": {
     "prettier": "3.x"

@@ -346,12 +346,12 @@ const DataTableFacetedFilter = <TData, TValue>(
           {selectedValues.size > 0 && (
             <>
               <Separator orientation='vertical' className='mx-2 h-4' />
-              <Badge variant='secondary' className='rounded-sm px-1 font-normal lg:hidden'>
+              <Badge variant='secondary' className='rounded-xs px-1 font-normal lg:hidden'>
                 {selectedValues.size}
               </Badge>
               <div className='hidden space-x-1 lg:flex'>
                 {selectedValues.size > 2 ? (
-                  <Badge variant='secondary' className='rounded-sm px-1 font-normal'>
+                  <Badge variant='secondary' className='rounded-xs px-1 font-normal'>
                     {selectedValues.size} selected
                   </Badge>
                 ) : (
@@ -361,7 +361,7 @@ const DataTableFacetedFilter = <TData, TValue>(
                       <Badge
                         variant='secondary'
                         key={option.value}
-                        className='rounded-sm px-1 font-normal'
+                        className='rounded-xs px-1 font-normal'
                       >
                         {option.label}
                       </Badge>
@@ -384,7 +384,7 @@ const DataTableFacetedFilter = <TData, TValue>(
             placeholder={title}
             className='rounded-none border-0 border-b bg-transparent py-0 text-sm focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0'
           />
-          <ComboboxContent className='rounded-none border-0 bg-transparent p-1 shadow-none data-[state=closed]:!animate-none data-[state=open]:!animate-none'>
+          <ComboboxContent className='data-[state=closed]:animate-none! data-[state=open]:animate-none! rounded-none border-0 bg-transparent p-1 shadow-none'>
             {collection.items.length === 0 ? (
               <div className='py-6 text-center text-sm'>No results found.</div>
             ) : null}
@@ -392,7 +392,7 @@ const DataTableFacetedFilter = <TData, TValue>(
               <ComboboxItem key={item.value} item={item}>
                 <div
                   className={cn(
-                    'border-primary mr-2 flex size-4 items-center justify-center rounded-sm border',
+                    'border-primary rounded-xs mr-2 flex size-4 items-center justify-center border',
                     selectedValues.has(item.value)
                       ? 'bg-primary text-primary-foreground'
                       : 'opacity-50 [&_svg]:invisible'

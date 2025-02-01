@@ -19,7 +19,7 @@ const ContextMenuSubTrigger = (props: ContextMenuSubTriggerProps) => {
   return (
     <ContextMenuPrimitive.SubTrigger
       className={cn(
-        'flex cursor-default select-none items-center rounded-md px-2 py-1.5 text-sm outline-none',
+        'outline-hidden flex cursor-default select-none items-center rounded-md px-2 py-1.5 text-sm',
         'focus:bg-accent focus:text-accent-foreground',
         'data-[state=open]:bg-accent data-[state=open]:text-accent-foreground',
         inset && 'pl-8',
@@ -89,9 +89,9 @@ const ContextMenuItem = (props: ContextMenuItemProps) => {
   return (
     <ContextMenuPrimitive.Item
       className={cn(
-        'relative flex cursor-default select-none items-center rounded-md px-2 py-1.5 text-sm outline-none transition-colors',
+        'outline-hidden relative flex cursor-default select-none items-center rounded-md px-2 py-1.5 text-sm transition-colors',
         'focus:bg-accent focus:text-accent-foreground',
-        'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+        'data-disabled:pointer-events-none data-disabled:opacity-50',
         inset && 'pl-8',
         className
       )}
@@ -108,9 +108,9 @@ const ContextMenuCheckboxItem = (props: ContextMenuCheckboxItemProps) => {
   return (
     <ContextMenuPrimitive.CheckboxItem
       className={cn(
-        'relative flex cursor-default select-none items-center rounded-md py-1.5 pl-8 pr-2 text-sm outline-none transition-colors',
+        'outline-hidden relative flex cursor-default select-none items-center rounded-md py-1.5 pl-8 pr-2 text-sm transition-colors',
         'focus:bg-accent focus:text-accent-foreground',
-        'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+        'data-disabled:pointer-events-none data-disabled:opacity-50',
         className
       )}
       checked={checked}
@@ -134,9 +134,9 @@ const ContextMenuRadioItem = (props: ContextMenuRadioItemProps) => {
   return (
     <ContextMenuPrimitive.RadioItem
       className={cn(
-        'relative flex cursor-default select-none items-center rounded-md py-1.5 pl-8 pr-2 text-sm outline-none transition-colors',
+        'outline-hidden relative flex cursor-default select-none items-center rounded-md py-1.5 pl-8 pr-2 text-sm transition-colors',
         'focus:bg-accent focus:text-accent-foreground',
-        'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+        'data-disabled:pointer-events-none data-disabled:opacity-50',
         className
       )}
       {...rest}

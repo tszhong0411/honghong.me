@@ -5,7 +5,8 @@ const config: KnipConfig = {
   vitest: {
     config: ['vitest.{config,shared,workspace}.ts']
   },
-  ignoreDependencies: ['prettier-plugin-*', 'sharp'],
+  // tailwindcss v4 is not supported currently
+  ignoreDependencies: ['prettier-plugin-*', 'sharp', 'tailwindcss'],
   workspaces: {
     '.': {
       entry: ['turbo/generators/config.ts']
@@ -24,7 +25,8 @@ const config: KnipConfig = {
       }
     },
     'packages/eslint-config': {
-      ignoreDependencies: ['@eslint/config-inspector']
+      // @see https://github.com/francoismassart/eslint-plugin-tailwindcss/issues/325
+      ignoreDependencies: ['@eslint/config-inspector', 'eslint-plugin-tailwindcss']
     },
     'packages/prettier-config': {
       prettier: {
@@ -33,7 +35,7 @@ const config: KnipConfig = {
     },
     'packages/ui': {
       // https://github.com/shadcn-ui/ui/issues/4792
-      ignoreDependencies: ['@radix-ui/react-context']
+      ignoreDependencies: ['@radix-ui/react-context', '@tailwindcss/typography']
     }
   }
 }

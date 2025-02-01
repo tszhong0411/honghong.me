@@ -17,7 +17,7 @@ const SelectTrigger = (props: SelectTriggerProps) => {
       className={cn(
         'border-input bg-background ring-offset-background flex h-10 w-full items-center justify-between rounded-lg border px-3 py-2 text-sm',
         'placeholder:text-muted-foreground',
-        'focus:ring-ring focus:outline-none focus:ring-2 focus:ring-offset-2',
+        'focus:ring-ring focus:outline-hidden focus:ring-2 focus:ring-offset-2',
         'disabled:cursor-not-allowed disabled:opacity-50',
         '[&>span]:line-clamp-1',
         className
@@ -122,9 +122,9 @@ const SelectItem = (props: SelectItemProps) => {
   return (
     <SelectPrimitive.Item
       className={cn(
-        'relative flex w-full cursor-default select-none items-center rounded-md py-1.5 pl-8 pr-2 text-sm outline-none transition-colors',
+        'outline-hidden relative flex w-full cursor-default select-none items-center rounded-md py-1.5 pl-8 pr-2 text-sm transition-colors',
         'focus:bg-accent focus:text-accent-foreground',
-        'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+        'data-disabled:pointer-events-none data-disabled:opacity-50',
         className
       )}
       {...rest}

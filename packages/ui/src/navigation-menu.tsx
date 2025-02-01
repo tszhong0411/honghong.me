@@ -37,10 +37,10 @@ const NavigationMenuItem = NavigationMenuPrimitive.Item
 const navigationMenuTriggerVariants = cva({
   base: [
     'bg-background group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors',
-    'focus:bg-accent focus:text-accent-foreground focus:outline-none',
+    'focus:bg-accent focus:text-accent-foreground focus:outline-hidden',
     'disabled:pointer-events-none disabled:opacity-50',
     'hover:bg-accent hover:text-accent-foreground',
-    'data-[active]:bg-accent/50',
+    'data-active:bg-accent/50',
     'data-[state=open]:bg-accent/50'
   ]
 })
@@ -114,7 +114,7 @@ const NavigationMenuIndicator = (props: NavigationMenuIndicatorProps) => {
   return (
     <NavigationMenuPrimitive.Indicator
       className={cn(
-        'top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden',
+        'z-1 top-full flex h-1.5 items-end justify-center overflow-hidden',
         'data-[state=visible]:animate-in data-[state=visible]:fade-in',
         'data-[state=hidden]:animate-out data-[state=hidden]:fade-out',
         className

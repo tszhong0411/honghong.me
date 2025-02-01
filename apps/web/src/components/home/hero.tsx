@@ -9,22 +9,22 @@ const TEXTS = [
   {
     key: 'amazing',
     className:
-      'bg-clip-text text-center text-transparent bg-gradient-to-r from-[#ff1835] to-[#ffc900]'
+      'bg-clip-text text-center text-transparent bg-linear-to-r from-[#ff1835] to-[#ffc900]'
   },
   {
     key: 'stunning',
     className:
-      'bg-clip-text text-center text-transparent bg-gradient-to-r from-[#0077ff] to-[#00e7df]'
+      'bg-clip-text text-center text-transparent bg-linear-to-r from-[#0077ff] to-[#00e7df]'
   },
   {
     key: 'fantastic',
     className:
-      'bg-clip-text text-center text-transparent bg-gradient-to-r from-[#7f00de] to-[#ff007f]'
+      'bg-clip-text text-center text-transparent bg-linear-to-r from-[#7f00de] to-[#ff007f]'
   },
   {
     key: 'attractive',
     className:
-      'bg-clip-text text-center text-transparent bg-gradient-to-r from-[#2ecc70] to-[#1ca085]'
+      'bg-clip-text text-center text-transparent bg-linear-to-r from-[#2ecc70] to-[#1ca085]'
   }
 ] as const
 
@@ -129,7 +129,7 @@ const Hero = () => {
             alt='Hong'
             lazy={false}
           />
-          <div className='absolute inset-0 -z-10 bg-gradient-to-tl from-purple-700 to-orange-700 opacity-50 blur-2xl' />
+          <div className='bg-linear-to-tl absolute inset-0 -z-10 from-purple-700 to-orange-700 opacity-50 blur-2xl' />
         </motion.div>
       </div>
     </div>

@@ -20,7 +20,7 @@ const Callout = (props: CalloutProps) => {
     <div
       role='alert'
       className={cn(
-        'bg-card text-muted-foreground my-6 flex w-full flex-row gap-2 rounded-lg border p-3 text-sm shadow-md',
+        'bg-card text-muted-foreground shadow-xs my-6 flex w-full flex-row gap-2 rounded-lg border p-3 text-sm',
         className
       )}
       {...rest}

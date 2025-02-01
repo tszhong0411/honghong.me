@@ -70,25 +70,25 @@ const GetInTouch = () => {
             />
             <div
               id='next-js'
-              className='absolute bottom-12 left-14 rounded-3xl border bg-gradient-to-b from-zinc-50 to-zinc-100 px-2 py-1.5 text-xs opacity-40 dark:from-zinc-800 dark:to-zinc-900'
+              className='bg-linear-to-b absolute bottom-12 left-14 rounded-3xl border from-zinc-50 to-zinc-100 px-2 py-1.5 text-xs opacity-40 dark:from-zinc-800 dark:to-zinc-900'
             >
               Next.js
             </div>
             <div
               id='react-js'
-              className='absolute left-2 top-20 rounded-3xl border bg-gradient-to-b from-zinc-50 to-zinc-100 px-2 py-1.5 text-xs opacity-40 dark:from-zinc-800 dark:to-zinc-900'
+              className='bg-linear-to-b absolute left-2 top-20 rounded-3xl border from-zinc-50 to-zinc-100 px-2 py-1.5 text-xs opacity-40 dark:from-zinc-800 dark:to-zinc-900'
             >
               React.js
             </div>
             <div
               id='typescript'
-              className='absolute bottom-20 right-1 rounded-3xl border bg-gradient-to-b from-zinc-50 to-zinc-100 px-2 py-1.5 text-xs opacity-40 dark:from-zinc-800 dark:to-zinc-900'
+              className='bg-linear-to-b absolute bottom-20 right-1 rounded-3xl border from-zinc-50 to-zinc-100 px-2 py-1.5 text-xs opacity-40 dark:from-zinc-800 dark:to-zinc-900'
             >
               TypeScript
             </div>
             <div
               id='javascript'
-              className='absolute right-8 top-10 rounded-3xl border bg-gradient-to-b from-zinc-50 to-zinc-100 px-2 py-1.5 text-xs opacity-40 dark:from-zinc-800 dark:to-zinc-900'
+              className='bg-linear-to-b absolute right-8 top-10 rounded-3xl border from-zinc-50 to-zinc-100 px-2 py-1.5 text-xs opacity-40 dark:from-zinc-800 dark:to-zinc-900'
             >
               JavaScript
             </div>
@@ -116,7 +116,7 @@ const GetInTouch = () => {
           </div>
 
           <div className='flex flex-col justify-center px-4'>
-            <p className='mb-2 bg-gradient-to-r from-black to-black/70 bg-clip-text text-3xl font-semibold text-transparent dark:from-zinc-100 dark:to-zinc-400'>
+            <p className='bg-linear-to-r mb-2 from-black to-black/70 bg-clip-text text-3xl font-semibold text-transparent dark:from-zinc-100 dark:to-zinc-400'>
               {t('homepage.get-in-touch.title')}
             </p>
             <p className='text-zinc-800 dark:text-zinc-300'>
