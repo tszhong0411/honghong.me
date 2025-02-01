@@ -35,7 +35,7 @@ const CodeBlock = (props: CodeBlockProps) => {
             <Icon className='size-3.5' />
           </div>
           <figcaption className='text-muted-foreground flex-1 truncate'>{title}</figcaption>
-          <CopyButton onCopy={onCopy} />
+          <CopyButton className='-me-2' onCopy={onCopy} />
         </div>
       ) : (
         <CopyButton className='absolute right-2 top-2 z-10' onCopy={onCopy} />
