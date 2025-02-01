@@ -102,10 +102,10 @@ const root = process.cwd()
 
 Another variable `POSTS_PATH{:.entity.name.constant}` for the path where the article files are stored.
 
-```js title='lib/mdx.js' {3}
+```js title='lib/mdx.js'
 import path from 'path'
 
-const POSTS_PATH = path.join(root, 'data', 'blog')
+const POSTS_PATH = path.join(root, 'data', 'blog') // [!code highlight]
 // Output: A:/nextjs-mdx-blog/data/blog
 ```
 

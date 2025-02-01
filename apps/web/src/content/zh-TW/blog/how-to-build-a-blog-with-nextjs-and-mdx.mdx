@@ -102,10 +102,10 @@ const root = process.cwd()
 
 接著定義變數 `POSTS_PATH`，用於儲存文章檔案的路徑。
 
-```js title='lib/mdx.js' {3}
+```js title='lib/mdx.js'
 import path from 'path'
 
-const POSTS_PATH = path.join(root, 'data', 'blog')
+const POSTS_PATH = path.join(root, 'data', 'blog') // [!code highlight]
 // 輸出: A:/nextjs-mdx-blog/data/blog
 ```
 

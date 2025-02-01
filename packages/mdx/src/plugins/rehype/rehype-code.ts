@@ -9,7 +9,7 @@ import type { Root } from 'hast'
 import type { Plugin } from 'unified'
 
 import rehypeShiki, { type RehypeShikiOptions } from '@shikijs/rehype'
-import { transformerMetaHighlight } from '@shikijs/transformers'
+import { transformerNotationHighlight } from '@shikijs/transformers'
 
 const titleRegex = /title=["']([^"']*)["']/
 
@@ -49,7 +49,7 @@ export const rehypeCode: [Plugin<[RehypeShikiOptions], Root>, RehypeShikiOptions
           ]
         }
       },
-      transformerMetaHighlight()
+      transformerNotationHighlight()
     ],
     parseMetaString: (meta) => {
       const titleMatch = titleRegex.exec(meta)
