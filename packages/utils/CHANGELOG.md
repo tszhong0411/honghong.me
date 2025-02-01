@@ -1,5 +1,11 @@
 # @tszhong0411/utils
 
+## 0.0.18
+
+### Patch Changes
+
+- 681e29d: Remove `sideEffects` in package.json
+
 ## 0.0.17
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "@tszhong0411/prettier-plugin-package-json",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A prettier plugin using prettier-package-json",
   "license": "MIT",
   "author": "tszhong0411 <me@honghong.me> (https://github.com/tszhong0411)",

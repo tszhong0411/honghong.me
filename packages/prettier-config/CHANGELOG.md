@@ -1,5 +1,18 @@
 # @tszhong0411/prettier-config
 
+## 0.0.14
+
+### Patch Changes
+
+- e066949: Upgrade some dependencies
+
+  - Upgrade prettier-plugin-sort-json from `^4.0.0` to `^4.1.1`
+  - Upgrade prettier-plugin-tailwindcss from `^0.6.9` to `^0.6.11`
+
+- 681e29d: Remove `sideEffects` in package.json
+- Updated dependencies [681e29d]
+  - @tszhong0411/prettier-plugin-package-json@0.0.3
+
 ## 0.0.13
 
 ### Patch Changes

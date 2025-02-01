@@ -1,5 +1,11 @@
 # @tszhong0411/prettier-plugin-package-json
 
+## 0.0.3
+
+### Patch Changes
+
+- 681e29d: Remove `sideEffects` in package.json
+
 ## 0.0.2
 
 ### Patch Changes

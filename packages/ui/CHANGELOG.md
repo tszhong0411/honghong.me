@@ -1,5 +1,20 @@
 # @tszhong0411/ui
 
+## 0.0.53
+
+### Patch Changes
+
+- fd83d7f: Update styles of toaster
+- 17e167b: Add margin to video elements in typography styles
+- 1a39968: Update build process and style imports for better organization
+- 5f8b695: Update paths for CSS files and include CSS in build process
+- cdc4d3b: Add `@tailwindcss/typography` for v4
+- 77f76a2: Adjust Callout component styles for improved appearance
+- cdbce93: Simplify CSS selectors for Shiki styles
+- c3cf6ee: Adjust line-height for highlighted code blocks in shiki.css
+- Updated dependencies [681e29d]
+  - @tszhong0411/utils@0.0.18
+
 ## 0.0.52
 
 ### Patch Changes
