@@ -1,15 +1,22 @@
 /**
  * fumadocs (MIT License)
  * Copyright (c) fuma-nama
- * Source: https://github.com/fuma-nama/fumadocs/blob/691f12aa93df25bd10fa5bd6f91f70766c1fef12/packages/core/src/mdx-plugins/rehype-code.ts
+ * Source: https://github.com/fuma-nama/fumadocs/blob/7b18075cc97ca876ab14b22f05349a09dc0e4025/packages/core/src/mdx-plugins/rehype-code.ts
  *
  * Modified by: tszhong0411
  */
 import type { Root } from 'hast'
 import type { Plugin } from 'unified'
 
-import rehypeShiki, { type RehypeShikiOptions } from '@shikijs/rehype'
+import { type RehypeShikiOptions } from '@shikijs/rehype'
+import rehypeShikiFromHighlighter from '@shikijs/rehype/core'
 import { transformerNotationHighlight } from '@shikijs/transformers'
+import {
+  bundledLanguages,
+  createOnigurumaEngine,
+  getSingletonHighlighter,
+  type ShikiTransformer
+} from 'shiki'
 
 const titleRegex = /title=["']([^"']*)["']/
 
@@ -18,46 +25,64 @@ export const DEFAULT_SHIKI_THEMES = {
   dark: 'github-dark-default'
 }
 
-export const rehypeCode: [Plugin<[RehypeShikiOptions], Root>, RehypeShikiOptions] = [
-  rehypeShiki,
-  {
-    transformers: [
-      {
-        /**
-         * - Remove trailing newline
-         * - Remove title from meta
-         */
-        preprocess(code, { meta }) {
-          if (meta) {
-            meta.__raw = meta.__raw?.replace(titleRegex, '')
-          }
-
-          return code.replace(/\n$/, '')
-        },
-        root(hast) {
-          const pre = hast.children[0]
-          if (pre?.type !== 'element') return
-
-          hast.children = [
-            {
-              ...pre,
-              properties: {
-                ...pre.properties,
-                'data-lang': this.options.lang
-              }
-            }
-          ]
+export const rehypeCode: Plugin<[RehypeShikiOptions], Root> = () => {
+  const transformers: ShikiTransformer[] = [
+    {
+      /**
+       * - Remove trailing newline
+       * - Remove title from meta
+       */
+      preprocess(code, { meta }) {
+        if (meta) {
+          meta.__raw = meta.__raw?.replace(titleRegex, '')
         }
+        return code.replace(/\n$/, '')
       },
-      transformerNotationHighlight()
-    ],
-    parseMetaString: (meta) => {
-      const titleMatch = titleRegex.exec(meta)
-      const title = titleMatch?.[1] ?? null
-
-      return { title }
+      root(hast) {
+        const pre = hast.children[0]
+        if (pre?.type !== 'element') return
+        hast.children = [
+          {
+            ...pre,
+            properties: {
+              ...pre.properties,
+              'data-lang': this.options.lang
+            }
+          }
+        ]
+      }
     },
-    themes: DEFAULT_SHIKI_THEMES,
-    defaultColor: false
+    transformerNotationHighlight({
+      matchAlgorithm: 'v3'
+    })
+  ]
+
+  const highlighter = getSingletonHighlighter({
+    engine: createOnigurumaEngine(import('shiki/wasm')),
+    themes: Object.values(DEFAULT_SHIKI_THEMES),
+    langs: Object.keys(bundledLanguages)
+  })
+
+  const transformer = highlighter.then((instance) =>
+    rehypeShikiFromHighlighter(instance, {
+      themes: DEFAULT_SHIKI_THEMES,
+      defaultColor: false,
+      defaultLanguage: 'plaintext',
+      transformers,
+      parseMetaString: (meta) => {
+        const titleMatch = titleRegex.exec(meta)
+        const title = titleMatch?.[1] ?? null
+
+        return { title }
+      }
+    })
+  )
+
+  return async (tree, file) => {
+    await (
+      await transformer
+    )(tree, file, () => {
+      // do nothing
+    })
   }
-]
+}
