@@ -13,6 +13,8 @@
 }
 
 @theme {
+  --color-anchor: var(--anchor);
+
   --background-image-nav-link-indicator: var(--nav-link-indicator);
   --background-image-email-button: var(--email-button);
 
@@ -24,6 +26,8 @@
 
 @layer base {
   :root {
+    --anchor: rgb(255, 34, 14);
+
     --nav-link-indicator: radial-gradient(
       44.6% 825% at 50% 50%,
       rgb(255 133 133) 0%,
@@ -35,6 +39,8 @@
   }
 
   .dark {
+    --anchor: rgb(255, 69, 51);
+
     --nav-link-indicator: radial-gradient(
       44.6% 825% at 50% 50%,
       rgb(255 28 28) 0%,

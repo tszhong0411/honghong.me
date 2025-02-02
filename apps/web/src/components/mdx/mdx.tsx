@@ -28,10 +28,7 @@ const components: MDXComponents = {
     const { children, ...rest } = props
 
     return (
-      <Link
-        className='hover:text-foreground text-[#ff6363] no-underline transition-colors'
-        {...rest}
-      >
+      <Link className='hover:text-foreground text-anchor no-underline transition-colors' {...rest}>
         {children}
       </Link>
     )
