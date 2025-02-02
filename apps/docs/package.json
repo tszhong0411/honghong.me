@@ -47,7 +47,6 @@
     "@types/react-dom": "19.0.3",
     "cross-env": "^7.0.3",
     "postcss": "^8.5.1",
-    "postcss-lightningcss": "^1.0.1",
     "postcss-load-config": "^6.0.1",
     "tailwindcss": "^4.0.1"
   },
