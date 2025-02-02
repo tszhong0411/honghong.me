@@ -4,6 +4,7 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
+  SidebarHeader,
   SidebarInset,
   SidebarMenu,
   SidebarMenuButton,
@@ -12,6 +13,8 @@ import {
   SidebarTrigger
 } from '@tszhong0411/ui'
 import { CalendarIcon, HomeIcon, InboxIcon, SearchIcon, SettingsIcon } from 'lucide-react'
+
+import TeamSwitcher from './components/team-switcher'
 
 const items = [
   {
@@ -44,7 +47,10 @@ const items = [
 const SidebarDemo = () => {
   return (
     <SidebarProvider>
-      <Sidebar>
+      <Sidebar collapsible='icon'>
+        <SidebarHeader>
+          <TeamSwitcher />
+        </SidebarHeader>
         <SidebarContent>
           <SidebarGroup>
             <SidebarGroupLabel>Application</SidebarGroupLabel>
