@@ -68,9 +68,9 @@ const TeamSwitcher = () => {
               <div className='bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg'>
                 <activeTeam.logo className='size-4' />
               </div>
-              <div className='flex flex-1 flex-col text-sm leading-tight'>
-                <span className='font-semibold'>{activeTeam.name}</span>
-                <span className='text-xs'>{activeTeam.plan}</span>
+              <div className='flex flex-col text-sm leading-tight'>
+                <span className='truncate font-semibold'>{activeTeam.name}</span>
+                <span className='truncate text-xs'>{activeTeam.plan}</span>
               </div>
               <ChevronsUpDownIcon className='ml-auto' />
             </SidebarMenuButton>
