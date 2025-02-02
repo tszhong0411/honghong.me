@@ -493,7 +493,7 @@ const sidebarMenuButtonVariants = cva({
     'data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground',
     'disabled:pointer-events-none disabled:opacity-50',
     'focus-visible:ring-2',
-    'group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0'
+    'group-data-[collapsible=icon]:size-8 group-data-[collapsible=icon]:p-2 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0'
   ],
   variants: {
     variant: {
@@ -504,7 +504,7 @@ const sidebarMenuButtonVariants = cva({
     size: {
       default: 'h-8 text-sm',
       sm: 'h-7 text-xs',
-      lg: 'group-data-[collapsible=icon]:p-0! h-12 text-sm'
+      lg: 'h-12 text-sm group-data-[collapsible=icon]:p-0'
     }
   },
   defaultVariants: {
@@ -732,5 +732,6 @@ export {
   SidebarProvider,
   SidebarRail,
   SidebarSeparator,
-  SidebarTrigger
+  SidebarTrigger,
+  useSidebar
 }
