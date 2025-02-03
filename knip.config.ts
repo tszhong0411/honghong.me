@@ -12,26 +12,15 @@ const config: KnipConfig = {
       entry: ['turbo/generators/config.ts']
     },
     'apps/docs': {
-      entry: ['mdx.config.ts', 'src/components/demos/**/*.tsx'],
-      postcss: {
-        config: 'postcss.config.mjs'
-      }
+      entry: ['mdx.config.ts', 'src/components/demos/**/*.tsx']
     },
     'apps/web': {
       entry: ['mdx.config.ts', 'src/i18n/request.ts'],
-      ignore: ['**/e2e/**'],
-      postcss: {
-        config: 'postcss.config.mjs'
-      }
+      ignore: ['**/e2e/**']
     },
     'packages/eslint-config': {
       // @see https://github.com/francoismassart/eslint-plugin-tailwindcss/issues/325
       ignoreDependencies: ['@eslint/config-inspector', 'eslint-plugin-tailwindcss']
-    },
-    'packages/prettier-config': {
-      prettier: {
-        config: '../../prettier.config.js'
-      }
     },
     'packages/ui': {
       // https://github.com/shadcn-ui/ui/issues/4792
