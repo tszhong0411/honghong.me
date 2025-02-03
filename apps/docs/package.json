@@ -45,7 +45,6 @@
     "@types/node": "^22.10.2",
     "@types/react": "19.0.2",
     "@types/react-dom": "19.0.3",
-    "cross-env": "^7.0.3",
     "postcss": "^8.5.1",
     "postcss-load-config": "^6.0.1",
     "tailwindcss": "^4.0.1"
