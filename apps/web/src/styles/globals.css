@@ -4,14 +4,6 @@
 @import '@tszhong0411/ui/styles/typography.css';
 @source '../../../../packages/ui/src/**/*.{js,jsx,ts,tsx}';
 
-@utility h-content {
-  min-height: calc(100vh - 416px - 96px - 96px - 64px - 24px);
-
-  @media (max-width: 640px) {
-    min-height: calc(100vh - 600px - 96px - 96px - 64px - 24px);
-  }
-}
-
 @theme {
   --color-anchor: var(--anchor);
 

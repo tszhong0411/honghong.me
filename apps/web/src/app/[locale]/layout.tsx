@@ -138,7 +138,7 @@ const Layout = async (props: LayoutProps) => {
       className={cn(GeistSans.variable, GeistMono.variable)}
       suppressHydrationWarning
     >
-      <body className='relative'>
+      <body className='relative flex min-h-screen flex-col'>
         <NuqsAdapter>
           <Providers>
             <NextIntlClientProvider messages={messages}>
