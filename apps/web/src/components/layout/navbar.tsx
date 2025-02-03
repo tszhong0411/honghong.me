@@ -13,8 +13,8 @@ const Navbar = () => {
   const t = useTranslations()
 
   return (
-    <nav>
-      <ul className='hidden gap-2 md:flex'>
+    <nav className='hidden md:block'>
+      <ul className='flex gap-2'>
         {HEADER_LINKS.map((link) => {
           const isActive = link.href === pathname
 

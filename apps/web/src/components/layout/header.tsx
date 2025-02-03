@@ -1,7 +1,7 @@
 'use client'
 
 import { useTranslations } from '@tszhong0411/i18n/client'
-import { Logo, Separator } from '@tszhong0411/ui'
+import { Logo } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { motion } from 'motion/react'
 import { useEffect, useState } from 'react'
@@ -66,7 +66,6 @@ const Header = () => {
       </Link>
       <div className='flex items-center gap-2'>
         <Navbar />
-        <Separator orientation='vertical' className='h-6' />
         <ThemeSwitcher />
         <LocaleSwitcher />
         <CommandMenu />
