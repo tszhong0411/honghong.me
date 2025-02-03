@@ -28,7 +28,7 @@ const MobileNav = () => {
           <MenuIcon className='size-4' />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align='end' className='min-w-40'>
+      <DropdownMenuContent align='end' sideOffset={20} className='min-w-40'>
         {HEADER_LINKS.map((link) => (
           <DropdownMenuItem key={link.key} asChild>
             <Link href={link.href} className='flex items-center gap-4'>
