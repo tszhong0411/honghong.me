@@ -49,7 +49,7 @@ const GetInTouch = () => {
 
   return (
     <motion.div
-      className='shadow-feature-card dark:shadow-feature-card-dark relative rounded-xl p-1 backdrop-blur-lg'
+      className='shadow-feature-card relative rounded-xl p-1 backdrop-blur-lg'
       initial='initial'
       animate={isInView ? 'animate' : 'initial'}
       variants={variants}

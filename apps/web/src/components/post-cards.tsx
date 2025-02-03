@@ -42,10 +42,7 @@ const PostCard = (props: PostCardProps) => {
   })
 
   return (
-    <Link
-      href={`/blog/${slug}`}
-      className='shadow-feature-card dark:shadow-feature-card-dark group rounded-xl px-2 py-4'
-    >
+    <Link href={`/blog/${slug}`} className='shadow-feature-card group rounded-xl px-2 py-4'>
       <BlurImage
         src={`/images/blog/${slug}/cover.png`}
         className='rounded-lg'
