@@ -1,5 +1,18 @@
 # @tszhong0411/ui
 
+## 0.0.54
+
+### Patch Changes
+
+- 3f6621c: Should be `getIconByLanguage` instead of `getIconByFilename`
+- 12e29ca: Adjust the position of the copy button in code block
+- d00a5b4: Fix sidebar icon
+- c433b34: Upgrade radix packages
+- 5302289: Update transition property for blur image effect
+- 7b9bd00: Adjust CopyButton position in CodeBlock component
+- 10fc68e: Show copy button when hovering on code block
+- 9ef78b8: Make the copy button of code block smaller, and use ghost style
+
 ## 0.0.53
 
 ### Patch Changes
