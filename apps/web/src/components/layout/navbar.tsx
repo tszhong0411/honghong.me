@@ -21,15 +21,10 @@ const Navbar = () => {
           return (
             <li key={link.key} className='relative flex h-[60px] items-center justify-center'>
               <Link
-                className={cn(
-                  'rounded-sm px-3 py-2 text-sm font-medium transition-colors',
-                  {
-                    ['text-muted-foreground hover:text-foreground']: !isActive
-                  },
-                  {
-                    ['text-foreground']: isActive
-                  }
-                )}
+                className={cn('rounded-sm px-3 py-2 text-sm font-medium transition-colors', {
+                  'text-muted-foreground hover:text-foreground': !isActive,
+                  'text-foreground': isActive
+                })}
                 href={link.href}
               >
                 {t(`layout.${link.key}`)}
