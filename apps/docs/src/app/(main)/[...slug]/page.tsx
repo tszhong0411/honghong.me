@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 
 import Mdx from '@/components/mdx'
 
+import DocsNavigation from './docs-navigation'
 import EditOnGitHub from './edit-on-github'
 import LinkBadges from './link-badges'
 
@@ -83,10 +84,9 @@ const Page = async (props: PageProps) => {
         <p className='text-muted-foreground'>{description}</p>
         {hasLinks ? <LinkBadges {...link} /> : null}
       </div>
-      <Mdx className='mt-8' code={code} />
-      <div className='flex items-center justify-between'>
-        <EditOnGitHub path={slug!.join('/')} />
-      </div>
+      <Mdx className='my-12' code={code} />
+      <EditOnGitHub path={slug!.join('/')} />
+      <DocsNavigation />
     </div>
   )
 }
