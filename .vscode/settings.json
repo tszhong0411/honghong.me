@@ -1,7 +1,6 @@
 {
   "cSpell.diagnosticLevel": "Warning",
   "cSpell.enabled": true,
-  "cSpell.ignorePaths": ["package-lock.json", "node_modules", "vscode-extension", ".git/objects"],
 
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
@@ -13,11 +12,7 @@
 
   "eslint.runtime": "node",
   "eslint.useFlatConfig": true,
-  "eslint.workingDirectories": [
-    {
-      "mode": "auto"
-    }
-  ],
+  "eslint.workingDirectories": [{ "mode": "auto" }],
 
   "files.associations": {
     "*.css": "tailwindcss",

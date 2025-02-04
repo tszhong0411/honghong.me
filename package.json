@@ -14,7 +14,7 @@
     "build:packages": "turbo build --filter=./packages/*",
     "check": "turbo lint && turbo type-check && pnpm format:check && pnpm check:spelling && pnpm check:knip",
     "check:knip": "dotenv -e .env.local -- knip",
-    "check:spelling": "cspell --show-context --show-suggestions",
+    "check:spelling": "cspell -c .cspell.json --no-progress --no-summary --no-must-find-files --unique",
     "clean": "turbo clean && rm -rf .turbo coverage",
     "commit": "cz",
     "db:check": "turbo db:check",
@@ -31,7 +31,7 @@
     "format:write": "prettier --cache --write --list-different --ignore-path .gitignore --ignore-path .prettierignore .",
     "preinstall": "npx --yes only-allow pnpm",
     "lint": "turbo lint && eslint . --max-warnings 0",
-    "lint:fix": "turbo lint:fix && eslint --fix . && pnpm format:write && tsx scripts/fix-cspell.ts",
+    "lint:fix": "turbo lint:fix && eslint --fix .",
     "prepare": "simple-git-hooks && pnpm build:packages",
     "release": "changeset publish",
     "test:e2e": "turbo test:e2e",
@@ -53,10 +53,6 @@
     "@changesets/cli": "^2.27.12",
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
-    "@cspell/dict-fullstack": "^3.2.3",
-    "@cspell/dict-npm": "^5.1.24",
-    "@cspell/dict-redis": "^1.0.5",
-    "@cspell/dict-software-terms": "^4.2.4",
     "@playwright/test": "^1.50.0",
     "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/prettier-config": "workspace:*",
@@ -90,12 +86,14 @@
   },
   "lint-staged": {
     "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix",
-    "**/*": "prettier --write --ignore-unknown",
-    ".cspell/*.txt": "tsx scripts/fix-cspell.ts"
+    "**/*": [
+      "prettier --write --ignore-unknown",
+      "pnpm check:spelling"
+    ]
   },
   "packageManager": "pnpm@9.15.4",
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged",
-    "commit-msg": "pnpm commitlint --edit $1"
+    "commit-msg": "pnpm commitlint --edit $1 && pnpm check:spelling $1"
   }
 }

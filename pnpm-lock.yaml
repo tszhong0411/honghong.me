@@ -17,18 +17,6 @@ importers:
       '@commitlint/config-conventional':
         specifier: ^19.6.0
         version: 19.6.0
-      '@cspell/dict-fullstack':
-        specifier: ^3.2.3
-        version: 3.2.3
-      '@cspell/dict-npm':
-        specifier: ^5.1.24
-        version: 5.1.24
-      '@cspell/dict-redis':
-        specifier: ^1.0.5
-        version: 1.0.5
-      '@cspell/dict-software-terms':
-        specifier: ^4.2.4
-        version: 4.2.4
       '@playwright/test':
         specifier: ^1.50.0
         version: 1.50.0
@@ -2064,9 +2052,6 @@ packages:
 
   '@cspell/dict-r@2.1.0':
     resolution: {integrity: sha512-k2512wgGG0lTpTYH9w5Wwco+lAMf3Vz7mhqV8+OnalIE7muA0RSuD9tWBjiqLcX8zPvEJr4LdgxVju8Gk3OKyA==}
-
-  '@cspell/dict-redis@1.0.5':
-    resolution: {integrity: sha512-+9enro/qcLqgtwJ4NdeqbvuhD79x0L4c8wJ2nPP9YTaVqQWBEuVBgEtARf3zc+gYqvbDvlixw8NfaTjFy25VmA==}
 
   '@cspell/dict-ruby@5.0.7':
     resolution: {integrity: sha512-4/d0hcoPzi5Alk0FmcyqlzFW9lQnZh9j07MJzPcyVO62nYJJAGKaPZL2o4qHeCS/od/ctJC5AHRdoUm0ktsw6Q==}
@@ -13222,8 +13207,6 @@ snapshots:
       '@cspell/dict-data-science': 2.0.7
 
   '@cspell/dict-r@2.1.0': {}
-
-  '@cspell/dict-redis@1.0.5': {}
 
   '@cspell/dict-ruby@5.0.7': {}
 
