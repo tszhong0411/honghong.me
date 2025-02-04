@@ -14,7 +14,6 @@
     "build:packages": "turbo build --filter=./packages/*",
     "check": "turbo lint && turbo type-check && pnpm format:check && pnpm check:spelling && pnpm check:knip",
     "check:knip": "dotenv -e .env.local -- knip",
-    "check:npm": "pnpm dlx npm-check-updates --deep --interactive --format group",
     "check:spelling": "cspell --show-context --show-suggestions",
     "clean": "turbo clean && rm -rf .turbo coverage",
     "commit": "cz",
