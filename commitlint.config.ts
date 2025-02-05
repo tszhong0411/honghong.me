@@ -16,7 +16,7 @@ const scopes = [...apps, ...packages]
 const config: UserConfig = {
   extends: ['@commitlint/config-conventional'],
   rules: {
-    'scope-enum': [2, 'always', ['root', 'release', ...scopes]]
+    'scope-enum': [2, 'always', ['release', ...scopes]]
   }
 }
 
