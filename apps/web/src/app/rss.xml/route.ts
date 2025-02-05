@@ -1,6 +1,6 @@
 import { i18n } from '@tszhong0411/i18n/config'
 import { getTranslations } from '@tszhong0411/i18n/server'
-import { allBlogPosts } from 'mdx/generated'
+import { allPosts } from 'content-collections'
 import { NextResponse } from 'next/server'
 import RSS from 'rss'
 
@@ -18,7 +18,7 @@ export const GET = async () => {
     image_url: `${SITE_URL}/images/og.png`
   })
 
-  const posts = allBlogPosts.filter((p) => p.language === i18n.defaultLocale)
+  const posts = allPosts.filter((p) => p.locale === i18n.defaultLocale)
 
   for (const post of posts) {
     const { title, summary, date, slug } = post

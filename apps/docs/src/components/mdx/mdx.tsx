@@ -1,4 +1,4 @@
-import { getMDXComponent, type MDXComponents } from '@tszhong0411/mdx'
+import { useMDXComponent } from '@content-collections/mdx/react'
 import * as uiComponents from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 
@@ -10,7 +10,7 @@ type MdxProps = {
   code: string
 } & React.ComponentProps<'div'>
 
-const components: MDXComponents = {
+const components = {
   h2: (props: React.ComponentProps<'h2'>) => <Heading as='h2' {...props} />,
   h3: (props: React.ComponentProps<'h3'>) => <Heading as='h3' {...props} />,
   h4: (props: React.ComponentProps<'h4'>) => <Heading as='h4' {...props} />,
@@ -26,7 +26,9 @@ const components: MDXComponents = {
 
   // Custom components
   ...uiComponents,
-  Callout: (props) => <uiComponents.Callout className='[&_p]:m-0' {...props} />,
+  Callout: (props: React.ComponentProps<typeof uiComponents.Callout>) => (
+    <uiComponents.Callout className='[&_p]:m-0' {...props} />
+  ),
   ComponentPreview,
   EmbedComponentPreview,
 
@@ -35,7 +37,7 @@ const components: MDXComponents = {
 
 const Mdx = (props: MdxProps) => {
   const { code, className, ...rest } = props
-  const MDXContent = getMDXComponent(code)
+  const MDXContent = useMDXComponent(code)
 
   return (
     <div className={cn('prose w-full', className)} {...rest}>

@@ -3,7 +3,7 @@ import type { Blog, WithContext } from 'schema-dts'
 
 import { i18n } from '@tszhong0411/i18n/config'
 import { getTranslations, setRequestLocale } from '@tszhong0411/i18n/server'
-import { allBlogPosts } from 'mdx/generated'
+import { allPosts } from 'content-collections'
 
 import FilteredPosts from '@/components/filtered-posts'
 import PageTitle from '@/components/page-title'
@@ -61,11 +61,11 @@ const Page = async (props: PageProps) => {
   const description = t('description')
   const url = `${SITE_URL}${getLocalizedPath({ slug: '/blog', locale })}`
 
-  const posts = allBlogPosts
+  const posts = allPosts
     .toSorted((a, b) => {
       return new Date(b.date).getTime() - new Date(a.date).getTime()
     })
-    .filter((post) => post.language === locale)
+    .filter((post) => post.locale === locale)
 
   const jsonLd: WithContext<Blog> = {
     '@context': 'https://schema.org',
@@ -79,7 +79,7 @@ const Page = async (props: PageProps) => {
       name: SITE_NAME,
       url: SITE_URL
     },
-    blogPost: allBlogPosts.map((post) => ({
+    blogPost: allPosts.map((post) => ({
       '@type': 'BlogPosting',
       headline: post.title,
       url: `${url}/${post.slug}`,

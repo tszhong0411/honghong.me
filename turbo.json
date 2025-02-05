@@ -35,17 +35,15 @@
     "NEXT_PUBLIC_FLAG_ANALYTICS",
     "NEXT_PUBLIC_FLAG_GUESTBOOK_NOTIFICATION",
     "NEXT_PUBLIC_FLAG_LIKE_BUTTON",
-    "NEXT_RUNTIME",
-    "MDX_STARTED"
+    "NEXT_RUNTIME"
   ],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**", "dist/**", ".mdx/**"]
+      "outputs": [".next/**", "!.next/cache/**", "dist/**", ".content-collections/**"]
     },
     "build:mdx": {
-      "dependsOn": ["@tszhong0411/mdx#build"],
-      "outputs": [".mdx/**"]
+      "outputs": [".content-collections/**"]
     },
     "build:packages": {
       "dependsOn": ["^build:packages"],

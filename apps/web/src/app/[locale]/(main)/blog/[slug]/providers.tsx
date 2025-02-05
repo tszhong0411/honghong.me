@@ -1,12 +1,12 @@
 'use client'
 
-import type { BlogPost } from 'mdx/generated'
+import type { Post } from 'content-collections'
 
 import { PostProvider } from '@/contexts/post'
 
 type ProvidersProps = {
   children: React.ReactNode
-  post: BlogPost
+  post: Post
 }
 
 const Providers = (props: ProvidersProps) => {

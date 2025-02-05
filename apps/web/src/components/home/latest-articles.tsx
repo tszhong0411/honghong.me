@@ -3,8 +3,8 @@
 import { useLocale, useTranslations } from '@tszhong0411/i18n/client'
 import { BlurImage, buttonVariants } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
+import { allPosts, type Post } from 'content-collections'
 import { ArrowUpRightIcon, PencilIcon } from 'lucide-react'
-import { allBlogPosts, type BlogPost } from 'mdx/generated'
 import { motion, useInView } from 'motion/react'
 import { useRef } from 'react'
 
@@ -29,11 +29,11 @@ const LatestArticles = () => {
   const isInView = useInView(projectsRef, { once: true, margin: '-100px' })
   const t = useTranslations()
   const locale = useLocale()
-  const filteredPosts = allBlogPosts
+  const filteredPosts = allPosts
     .toSorted((a, b) => {
       return new Date(b.date).getTime() - new Date(a.date).getTime()
     })
-    .filter((post) => post.language === locale)
+    .filter((post) => post.locale === locale)
     .slice(0, 2)
 
   return (
@@ -99,7 +99,7 @@ const LatestArticles = () => {
 }
 
 type CardProps = {
-  post: BlogPost
+  post: Post
 }
 
 const Card = (props: CardProps) => {

@@ -1,6 +1,6 @@
 'use client'
 
-import type { Project } from 'mdx/generated'
+import type { Project } from 'content-collections'
 
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { buttonVariants } from '@tszhong0411/ui'

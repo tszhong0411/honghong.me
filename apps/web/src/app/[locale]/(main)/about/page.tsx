@@ -3,7 +3,7 @@ import type { AboutPage, WithContext } from 'schema-dts'
 
 import { i18n } from '@tszhong0411/i18n/config'
 import { getTranslations, setRequestLocale } from '@tszhong0411/i18n/server'
-import { allPages } from 'mdx/generated'
+import { allPages } from 'content-collections'
 import { notFound } from 'next/navigation'
 
 import Mdx from '@/components/mdx'
@@ -70,7 +70,7 @@ const Page = async (props: PageProps) => {
   const title = t('about.title')
   const description = t('about.description')
   const url = `${SITE_URL}${getLocalizedPath({ slug: '/about', locale })}`
-  const page = allPages.find((p) => p.slug === 'about' && p.language === locale)
+  const page = allPages.find((p) => p.slug === 'about' && p.locale === locale)
 
   const jsonLd: WithContext<AboutPage> = {
     '@context': 'https://schema.org',

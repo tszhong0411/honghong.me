@@ -3,7 +3,7 @@ import type { CollectionPage, WithContext } from 'schema-dts'
 
 import { i18n } from '@tszhong0411/i18n/config'
 import { getTranslations, setRequestLocale } from '@tszhong0411/i18n/server'
-import { allProjects } from 'mdx/generated'
+import { allProjects } from 'content-collections'
 
 import PageTitle from '@/components/page-title'
 import ProjectCards from '@/components/project-cards'
@@ -61,7 +61,7 @@ const Page = async (props: PageProps) => {
   const description = t('projects.description')
   const url = `${SITE_URL}${getLocalizedPath({ slug: '/projects', locale })}`
 
-  const projects = allProjects.filter((project) => project.language === locale)
+  const projects = allProjects.filter((project) => project.locale === locale)
 
   const jsonLd: WithContext<CollectionPage> = {
     '@context': 'https://schema.org',
