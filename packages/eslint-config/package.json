@@ -49,8 +49,7 @@
     "eslint-plugin-turbo": "^2.3.3",
     "eslint-plugin-unicorn": "^56.0.1",
     "eslint-plugin-unused-imports": "^4.1.4",
-    "globals": "^15.14.0",
-    "local-pkg": "^1.0.0"
+    "globals": "^15.14.0"
   },
   "peerDependencies": {
     "eslint": "^9.10.0"

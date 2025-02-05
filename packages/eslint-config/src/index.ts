@@ -15,7 +15,6 @@ import { testingLibrary } from './configs/testing-library'
 import { turbo } from './configs/turbo'
 import { typescript } from './configs/typescript'
 import { unicorn } from './configs/unicorn'
-import { hasTurbo, hasTypeScript } from './env'
 
 export type Options = {
   typescript?: boolean
@@ -35,9 +34,9 @@ export type Configs = Linter.Config[]
 
 const tszhong0411 = async (options: Options = {}, ...userConfigs: Configs): Promise<Configs> => {
   const {
-    typescript: enableTypeScript = hasTypeScript,
+    typescript: enableTypeScript = false,
     react: enableReact = false,
-    turbo: enableTurbo = hasTurbo,
+    turbo: enableTurbo = false,
     next: enableNext = false,
     playwright: enablePlaywright = false,
     testingLibrary: enableTestingLibrary = false,
