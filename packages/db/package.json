@@ -12,7 +12,6 @@
     "db:generate": "dotenv -e ../../.env.local -- drizzle-kit generate",
     "db:migrate": "dotenv -e ../../.env.local -- drizzle-kit migrate",
     "db:push": "dotenv -e ../../.env.local -- drizzle-kit push",
-    "db:seed": "dotenv -e ../../.env.local -- tsx ./src/seed.ts",
     "db:studio": "dotenv -e ../../.env.local -- drizzle-kit studio",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint --fix .",
