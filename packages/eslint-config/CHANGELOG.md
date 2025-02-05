@@ -1,5 +1,11 @@
 # @tszhong0411/eslint-config
 
+## 0.1.29
+
+### Patch Changes
+
+- cc0a23e: Enable auto-detection for typescript and turbo
+
 ## 0.1.28
 
 ### Patch Changes
