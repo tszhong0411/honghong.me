@@ -1,5 +1,11 @@
 # @tszhong0411/eslint-config
 
+## 0.1.28
+
+### Patch Changes
+
+- 53f3741: Remove auto-detection support
+
 ## 0.1.27
 
 ### Patch Changes
