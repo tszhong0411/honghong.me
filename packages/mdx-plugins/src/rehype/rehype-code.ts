@@ -16,12 +16,8 @@ import {
   transformerNotationHighlight,
   transformerNotationWordHighlight
 } from '@shikijs/transformers'
-import {
-  bundledLanguages,
-  createOnigurumaEngine,
-  getSingletonHighlighter,
-  type ShikiTransformer
-} from 'shiki'
+import { bundledLanguages, getSingletonHighlighter, type ShikiTransformer } from 'shiki'
+import { createOnigurumaEngine } from 'shiki/engine/oniguruma'
 
 const titleRegex = /title=["']([^"']*)["']/
 
