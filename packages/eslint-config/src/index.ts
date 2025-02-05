@@ -1,5 +1,7 @@
 import type { Linter } from 'eslint'
 
+import { isPackageExists } from 'local-pkg'
+
 import { comments } from './configs/comments'
 import { ignores } from './configs/ignores'
 import { importSort } from './configs/import-sort'
@@ -32,11 +34,14 @@ export type Options = {
 
 export type Configs = Linter.Config[]
 
+const hasTypeScript = isPackageExists('typescript')
+const hasTurbo = isPackageExists('turbo')
+
 const tszhong0411 = async (options: Options = {}, ...userConfigs: Configs): Promise<Configs> => {
   const {
-    typescript: enableTypeScript = false,
+    typescript: enableTypeScript = hasTypeScript,
     react: enableReact = false,
-    turbo: enableTurbo = false,
+    turbo: enableTurbo = hasTurbo,
     next: enableNext = false,
     playwright: enablePlaywright = false,
     testingLibrary: enableTestingLibrary = false,
