@@ -88,8 +88,8 @@ Welcome to the monorepo of my personal blog! This repository houses the code for
 
 ## Requirements
 
-- Node, recommended `>=20.11.0` with [corepack](https://nodejs.org/api/corepack.html) enabled
-- pnpm, recommended `>=9.x`
+- Node, recommended `>=22` with [corepack](https://nodejs.org/api/corepack.html) enabled
+- pnpm, recommended `>=10`
 - [Visual Studio Code](https://code.visualstudio.com/) with [recommended extensions](.vscode/extensions.json)
 - Optionally [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
 
