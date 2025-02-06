@@ -5,6 +5,7 @@ import { cn } from '@tszhong0411/utils'
 import ComponentPreview from './component-preview'
 import EmbedComponentPreview from './embed-component-preview'
 import Heading from './heading'
+import TreeView from './tree-view'
 
 type MdxProps = {
   code: string
@@ -31,6 +32,7 @@ const components = {
   ),
   ComponentPreview,
   EmbedComponentPreview,
+  TreeView,
 
   pre: uiComponents.CodeBlock
 }

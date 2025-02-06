@@ -1,0 +1,102 @@
+---
+title: Drizzle
+description: Initialize Drizzle in your app
+---
+
+## 1. Install dependencies
+
+```bash
+pnpm add drizzle-orm pg dotenv server-only
+pnpm add -D drizzle-kit @types/pg
+```
+
+## 2. .env
+
+Create a `.env` file in the root of your project and add the following:
+
+```properties
+DATABASE_URL="postgres://postgres:postgres@localhost:5432/database-name"
+```
+
+## 3. Folder Structure
+
+<TreeView
+  defaultExpandedValue={['src', 'src/db', 'src/db/schema']}
+  collection={{
+    id: 'ROOT',
+    name: '',
+    children: [
+      {
+        id: 'src',
+        name: 'src',
+        children: [
+          {
+            id: 'src/db',
+            name: 'db',
+            children: [
+              {
+                id: 'src/db/schema',
+                name: 'schema',
+                children: [{ id: 'schema/index.ts', name: 'index.ts' }]
+              },
+              {
+                id: 'src/db/db',
+                name: 'db.ts'
+              },
+              {
+                id: 'src/db/index',
+                name: 'index.ts'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        id: 'drizzle-config',
+        name: 'drizzle.config.ts'
+      }
+    ]
+  }}
+/>
+
+<Callout title='Note'>You may need to initialize the [`env.ts`](/recipes/env) first.</Callout>
+
+```ts title='src/db/db.ts'
+import 'server-only'
+
+import { drizzle } from 'drizzle-orm/node-postgres'
+
+import { env } from '@/env'
+
+import * as schema from './schema'
+
+export const db = drizzle({ connection: env.DATABASE_URL, schema })
+```
+
+```ts title='src/db/index.ts'
+export * from './db'
+```
+
+```ts title='drizzle.config.ts'
+import type { Config } from 'drizzle-kit'
+
+import { env } from './src/env'
+
+export default {
+  dialect: 'postgresql',
+  schema: './src/db/schema/index.ts',
+  dbCredentials: {
+    url: env.DATABASE_URL
+  },
+  out: './src/db/migrations',
+  strict: true,
+  verbose: true
+} satisfies Config
+```
+
+## 4. Apply Migrations
+
+```bash
+pnpm db:generate
+pnpm db:migrate
+```

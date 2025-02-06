@@ -247,6 +247,15 @@ export const SIDEBAR_LINKS: SidebarLinks = [
     ]
   },
   {
+    title: 'Recipes',
+    links: [
+      {
+        href: '/recipes/drizzle',
+        text: 'Drizzle'
+      }
+    ]
+  },
+  {
     title: 'UI / Components',
     links: COMPONENT_LINKS
   },
