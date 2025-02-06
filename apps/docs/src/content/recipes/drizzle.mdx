@@ -9,7 +9,7 @@ description: Initialize Drizzle in your app
 
 ```bash
 pnpm add drizzle-orm pg dotenv server-only
-pnpm add -D drizzle-kit @types/pg
+pnpm add -D drizzle-kit @types/pg dotenv-cli
 ```
 
 ## 2. .env
@@ -154,7 +154,22 @@ export const usersTable = pgTable('users', {
 export * from './users'
 ```
 
-## 7. Apply Migrations
+## 7. Add scripts to `package.json`
+
+```json title='package.json'
+{
+  "scripts": {
+    "db:check": "pnpm with-env drizzle-kit check",
+    "db:generate": "pnpm with-env drizzle-kit generate",
+    "db:migrate": "pnpm with-env drizzle-kit migrate",
+    "db:push": "pnpm with-env drizzle-kit push",
+    "db:studio": "pnpm with-env drizzle-kit studio",
+    "with-env": "dotenv -e .env.local --"
+  }
+}
+```
+
+## 8. Apply Migrations
 
 ```bash
 pnpm db:generate
