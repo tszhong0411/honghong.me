@@ -3,6 +3,8 @@ title: Drizzle
 description: Initialize Drizzle in your app
 ---
 
+<Callout title='Note'>You may need to initialize the [`env.ts`](/recipes/env) first.</Callout>
+
 ## 1. Install dependencies
 
 ```bash
@@ -62,8 +64,6 @@ DATABASE_URL="postgres://postgres:postgres@localhost:5432/<project-name>"
     ]
   }}
 />
-
-<Callout title='Note'>You may need to initialize the [`env.ts`](/recipes/env) first.</Callout>
 
 ```ts title='src/db/db.ts'
 import 'server-only'
