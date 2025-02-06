@@ -1,8 +1,7 @@
 'use client'
 
-import { ThemeProvider } from 'next-themes'
-
-import Sonner from '@/components/sonner'
+import { Toaster, type ToasterProps } from '@tszhong0411/ui'
+import { ThemeProvider, useTheme } from 'next-themes'
 
 type ProvidesProps = {
   children: React.ReactNode
@@ -10,6 +9,7 @@ type ProvidesProps = {
 
 const Providers = (props: ProvidesProps) => {
   const { children } = props
+  const { theme } = useTheme()
 
   return (
     <ThemeProvider
@@ -20,7 +20,14 @@ const Providers = (props: ProvidesProps) => {
       disableTransitionOnChange
     >
       {children}
-      <Sonner />
+      <Toaster
+        toastOptions={{
+          duration: 2500
+        }}
+        visibleToasts={5}
+        theme={theme as ToasterProps['theme']}
+        expand
+      />
     </ThemeProvider>
   )
 }

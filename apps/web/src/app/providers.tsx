@@ -1,11 +1,10 @@
 'use client'
 
-import { TooltipProvider } from '@tszhong0411/ui'
+import { Toaster, type ToasterProps, TooltipProvider } from '@tszhong0411/ui'
 import { SessionProvider } from 'next-auth/react'
-import { ThemeProvider } from 'next-themes'
+import { ThemeProvider, useTheme } from 'next-themes'
 import { Suspense } from 'react'
 
-import Sonner from '@/components/sonner'
 import { TRPCReactProvider } from '@/trpc/react'
 
 import Debug from './debug'
@@ -16,6 +15,7 @@ type ProvidesProps = {
 
 const Providers = (props: ProvidesProps) => {
   const { children } = props
+  const { theme } = useTheme()
 
   return (
     <TRPCReactProvider>
@@ -29,7 +29,14 @@ const Providers = (props: ProvidesProps) => {
         <SessionProvider>
           <TooltipProvider>
             {children}
-            <Sonner />
+            <Toaster
+              toastOptions={{
+                duration: 2500
+              }}
+              visibleToasts={5}
+              theme={theme as ToasterProps['theme']}
+              expand
+            />
             <Suspense>
               <Debug />
             </Suspense>
