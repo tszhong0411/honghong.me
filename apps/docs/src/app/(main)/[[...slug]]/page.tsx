@@ -78,7 +78,7 @@ const Page = async (props: PageProps) => {
     notFound()
   }
 
-  const { title, description, link, code, slug } = doc
+  const { title, description, link, code, _meta } = doc
 
   const hasLinks = link?.doc !== undefined || link?.api !== undefined
 
@@ -90,7 +90,7 @@ const Page = async (props: PageProps) => {
         {hasLinks ? <LinkBadges {...link} /> : null}
       </div>
       <Mdx className='my-12' code={code} />
-      <EditOnGitHub path={slug} />
+      <EditOnGitHub filePath={_meta.filePath} />
       <DocsNavigation />
     </div>
   )
