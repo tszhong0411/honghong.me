@@ -123,7 +123,24 @@ services:
 docker compose up -d
 ```
 
-## 5. Apply Migrations
+## 5. Add your schema (Example)
+
+```ts title='src/db/schema/users.ts'
+import { integer, pgTable, varchar } from 'drizzle-orm/pg-core'
+
+export const usersTable = pgTable('users', {
+  id: integer().primaryKey().generatedAlwaysAsIdentity(),
+  name: varchar({ length: 255 }).notNull(),
+  age: integer().notNull(),
+  email: varchar({ length: 255 }).notNull().unique()
+})
+```
+
+```ts title='src/db/schema/index.ts'
+export * from './users'
+```
+
+## 6. Apply Migrations
 
 ```bash
 pnpm db:generate
