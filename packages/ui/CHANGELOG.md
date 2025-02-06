@@ -1,5 +1,11 @@
 # @tszhong0411/ui
 
+## 0.0.56
+
+### Patch Changes
+
+- 4c0a9c4: Fix typography of anchor in heading
+
 ## 0.0.55
 
 ### Patch Changes
