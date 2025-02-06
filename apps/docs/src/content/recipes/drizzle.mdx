@@ -15,7 +15,7 @@ pnpm add -D drizzle-kit @types/pg
 Create a `.env` file in the root of your project and add the following:
 
 ```properties
-DATABASE_URL="postgres://postgres:postgres@localhost:5432/database-name"
+DATABASE_URL="postgres://postgres:postgres@localhost:5432/<project-name>"
 ```
 
 ## 3. Folder Structure
@@ -50,6 +50,10 @@ DATABASE_URL="postgres://postgres:postgres@localhost:5432/database-name"
             ]
           }
         ]
+      },
+      {
+        id: 'docker-compose',
+        name: 'docker-compose.yml'
       },
       {
         id: 'drizzle-config',
@@ -94,7 +98,32 @@ export default {
 } satisfies Config
 ```
 
-## 4. Apply Migrations
+```yml title='docker-compose.yml'
+version: '3'
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: <project-name>_postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=<project-name>
+```
+
+<Callout title='Note'>
+  Remember to replace `<project-name>` with the name of your project.
+</Callout>
+
+## 4. Start Database
+
+```bash
+docker compose up -d
+```
+
+## 5. Apply Migrations
 
 ```bash
 pnpm db:generate
