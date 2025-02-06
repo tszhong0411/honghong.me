@@ -4,7 +4,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "mdx/generated": ["./.mdx/generated"],
+      "content-collections": ["./.content-collections/generated"],
       "~/*": ["./public/*"]
     },
     "plugins": [{ "name": "next" }]
@@ -18,7 +18,6 @@
     "postcss.config.mjs",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
-    ".mdx/generated"
+    ".next/types/**/*.ts"
   ]
 }

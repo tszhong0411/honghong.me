@@ -3,8 +3,8 @@
 import { useLocale, useTranslations } from '@tszhong0411/i18n/client'
 import { BlurImage, buttonVariants } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
+import { allProjects, type Project } from 'content-collections'
 import { ArrowUpRightIcon, LightbulbIcon } from 'lucide-react'
-import { allProjects, type Project } from 'mdx/generated'
 import { motion, useInView } from 'motion/react'
 import { useRef } from 'react'
 
@@ -31,7 +31,7 @@ const SelectedProjects = () => {
   const t = useTranslations()
   const locale = useLocale()
   const filteredProjects = allProjects.filter(
-    (project) => project.selected && project.language === locale
+    (project) => project.selected && project.locale === locale
   )
 
   return (

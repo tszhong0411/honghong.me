@@ -3,7 +3,7 @@ import type { Article, WithContext } from 'schema-dts'
 
 import { flags } from '@tszhong0411/env'
 import { setRequestLocale } from '@tszhong0411/i18n/server'
-import { allBlogPosts } from 'mdx/generated'
+import { allPosts } from 'content-collections'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 
@@ -29,9 +29,9 @@ type PageProps = {
 }
 
 export const generateStaticParams = (): Array<{ slug: string; locale: string }> => {
-  return allBlogPosts.map((post) => ({
+  return allPosts.map((post) => ({
     slug: post.slug,
-    locale: post.language
+    locale: post.locale
   }))
 }
 
@@ -41,7 +41,7 @@ export const generateMetadata = async (
 ): Promise<Metadata> => {
   const { slug, locale } = await props.params
 
-  const post = allBlogPosts.find((p) => p.slug === slug && p.language === locale)
+  const post = allPosts.find((p) => p.slug === slug && p.locale === locale)
 
   if (!post) return {}
 
@@ -98,7 +98,7 @@ const Page = async (props: PageProps) => {
   const { slug, locale } = await props.params
   setRequestLocale(locale)
 
-  const post = allBlogPosts.find((p) => p.slug === slug && p.language === locale)
+  const post = allPosts.find((p) => p.slug === slug && p.locale === locale)
   const localizedPath = getLocalizedPath({ slug: `/blog/${slug}`, locale })
   const url = `${SITE_URL}${localizedPath}`
 

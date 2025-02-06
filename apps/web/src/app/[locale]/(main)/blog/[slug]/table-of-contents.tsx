@@ -1,6 +1,6 @@
 'use client'
 
-import type { TOC } from '@tszhong0411/mdx'
+import type { TOC } from '@tszhong0411/mdx-plugins'
 
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { SegmentGroup, SegmentGroupItem } from '@tszhong0411/ui'

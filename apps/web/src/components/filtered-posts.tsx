@@ -1,6 +1,6 @@
 'use client'
 
-import type { BlogPost } from 'mdx/generated'
+import type { Post } from 'content-collections'
 
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { Input, Label } from '@tszhong0411/ui'
@@ -10,7 +10,7 @@ import { useState } from 'react'
 import PostCards from './post-cards'
 
 type FilteredPostsProps = {
-  posts: BlogPost[]
+  posts: Post[]
 }
 
 const FilteredPosts = (props: FilteredPostsProps) => {

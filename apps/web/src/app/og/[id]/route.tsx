@@ -3,7 +3,7 @@ import path from 'node:path'
 
 import { db, eq, posts } from '@tszhong0411/db'
 import { getErrorMessage } from '@tszhong0411/utils'
-import { allBlogPosts } from 'mdx/generated'
+import { allPosts } from 'content-collections'
 import { ImageResponse } from 'next/og'
 import { NextResponse } from 'next/server'
 
@@ -18,7 +18,7 @@ type OGRouteProps = {
 export const GET = async (_: Request, props: OGRouteProps) => {
   try {
     const { id } = await props.params
-    const postMetadata = allBlogPosts.find((p) => p.slug === id)
+    const postMetadata = allPosts.find((p) => p.slug === id)
 
     if (!postMetadata) {
       return NextResponse.json(

@@ -3,7 +3,7 @@ import type { SoftwareApplication, WithContext } from 'schema-dts'
 
 import { setRequestLocale } from '@tszhong0411/i18n/server'
 import { BlurImage } from '@tszhong0411/ui'
-import { allProjects } from 'mdx/generated'
+import { allProjects } from 'content-collections'
 import { notFound } from 'next/navigation'
 
 import Mdx from '@/components/mdx'
@@ -23,7 +23,7 @@ type PageProps = {
 export const generateStaticParams = (): Array<{ slug: string; locale: string }> => {
   return allProjects.map((project) => ({
     slug: project.slug,
-    locale: project.language
+    locale: project.locale
   }))
 }
 
@@ -33,7 +33,7 @@ export const generateMetadata = async (
 ): Promise<Metadata> => {
   const { slug, locale } = await props.params
 
-  const project = allProjects.find((p) => p.slug === slug && p.language === locale)
+  const project = allProjects.find((p) => p.slug === slug && p.locale === locale)
 
   if (!project) {
     return {}
@@ -85,7 +85,7 @@ const Page = async (props: PageProps) => {
   const { slug, locale } = await props.params
   setRequestLocale(locale)
 
-  const project = allProjects.find((p) => p.slug === slug && p.language === locale)
+  const project = allProjects.find((p) => p.slug === slug && p.locale === locale)
   const localizedPath = getLocalizedPath({ slug: `/projects/${slug}`, locale })
   const url = `${SITE_URL}${localizedPath}`
 

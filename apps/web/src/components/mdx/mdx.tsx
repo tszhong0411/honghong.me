@@ -1,6 +1,6 @@
 'use client'
 
-import { getMDXComponent, type MDXComponents } from '@tszhong0411/mdx'
+import { useMDXComponent } from '@content-collections/mdx/react'
 import { BlurImage, CodeBlock, Kbd } from '@tszhong0411/ui'
 
 import ImageZoom from '../image-zoom'
@@ -18,7 +18,7 @@ type MdxProps = {
   code: string
 }
 
-const components: MDXComponents = {
+const components = {
   h2: (props: React.ComponentProps<'h2'>) => <Heading as='h2' {...props} />,
   h3: (props: React.ComponentProps<'h3'>) => <Heading as='h3' {...props} />,
   h4: (props: React.ComponentProps<'h4'>) => <Heading as='h4' {...props} />,
@@ -59,7 +59,7 @@ const components: MDXComponents = {
 
 const Mdx = (props: MdxProps) => {
   const { code } = props
-  const MDXContent = getMDXComponent(code)
+  const MDXContent = useMDXComponent(code)
 
   return (
     <div className='prose w-full'>

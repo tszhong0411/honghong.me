@@ -30,8 +30,8 @@ build/
 dist/
 .eslint-config-inspector/
 
-# MDX
-.mdx/
+# Content Collections
+.content-collections
 
 # Testing
 playwright-report/

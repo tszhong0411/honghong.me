@@ -1,6 +1,6 @@
 'use client'
 
-import type { BlogPost } from 'mdx/generated'
+import type { Post } from 'content-collections'
 
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { BlurImage } from '@tszhong0411/ui'
@@ -11,10 +11,10 @@ import { api } from '@/trpc/react'
 import Link from './link'
 
 type PostCardsProps = {
-  posts: BlogPost[]
+  posts: Post[]
 }
 
-type PostCardProps = BlogPost
+type PostCardProps = Post
 
 const PostCards = (props: PostCardsProps) => {
   const { posts } = props

@@ -21,11 +21,11 @@
 
   "files.watcherExclude": {
     "**/.auth/**": true,
+    "**/.content-collections/**": true,
     "**/.eslint-config-inspector": true,
     "**/.git/objects/**": true,
     "**/.git/subtree-cache/**": true,
     "**/.hg/store/**": true,
-    "**/.mdx/**": true,
     "**/.next/**": true,
     "**/.turbo/**": true,
     "**/.vercel/**": true,

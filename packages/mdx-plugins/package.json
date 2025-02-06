@@ -1,0 +1,38 @@
+{
+  "private": true,
+  "name": "@tszhong0411/mdx-plugins",
+  "version": "0.0.0",
+  "description": "Useful MDX plugins",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "scripts": {
+    "build": "tsup",
+    "clean": "rm -rf .turbo dist",
+    "dev": "tsup --watch",
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint --fix .",
+    "type-check": "tsc --noEmit"
+  },
+  "types": "./dist/index.d.ts",
+  "dependencies": {
+    "@shikijs/rehype": "^2.2.0",
+    "@shikijs/transformers": "^2.2.0",
+    "github-slugger": "^2.0.0",
+    "remark": "^15.0.1",
+    "remark-gfm": "^4.0.0",
+    "shiki": "^2.3.1",
+    "unified": "^11.0.5",
+    "unist-util-visit": "^5.0.0"
+  },
+  "devDependencies": {
+    "@tszhong0411/eslint-config": "workspace:*",
+    "@tszhong0411/tsconfig": "workspace:*",
+    "@types/hast": "^3.0.4",
+    "@types/mdast": "^4.0.4"
+  },
+  "lint-staged": {
+    "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix"
+  }
+}

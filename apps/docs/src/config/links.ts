@@ -241,7 +241,7 @@ export const SIDEBAR_LINKS: SidebarLinks = [
     title: 'Getting Started',
     links: [
       {
-        href: '/introduction',
+        href: '/',
         text: 'Introduction'
       }
     ]

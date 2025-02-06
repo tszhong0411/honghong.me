@@ -19,7 +19,7 @@ import {
 import { Comment, Reply } from '@tszhong0411/emails'
 import { env } from '@tszhong0411/env'
 import { ratelimit } from '@tszhong0411/kv'
-import { allBlogPosts } from 'mdx/generated'
+import { allPosts } from 'content-collections'
 import { Resend } from 'resend'
 import { z } from 'zod'
 
@@ -268,7 +268,7 @@ export const commentsRouter = createTRPCRouter({
 
       const commentId = createId()
 
-      const page = allBlogPosts.find((post) => post.slug === input.slug)
+      const page = allPosts.find((post) => post.slug === input.slug)
 
       if (!page) throw new TRPCError({ code: 'NOT_FOUND', message: 'Blog post not found' })
 

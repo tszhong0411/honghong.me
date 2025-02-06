@@ -12,10 +12,10 @@ const config: KnipConfig = {
       entry: ['turbo/generators/config.ts']
     },
     'apps/docs': {
-      entry: ['mdx.config.ts', 'src/components/demos/**/*.tsx']
+      entry: ['content-collections.ts', 'src/components/demos/**/*.tsx']
     },
     'apps/web': {
-      entry: ['mdx.config.ts', 'src/i18n/request.ts'],
+      entry: ['content-collections.ts', 'src/i18n/request.ts'],
       ignore: ['**/e2e/**']
     },
     'packages/eslint-config': {

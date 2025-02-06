@@ -1,6 +1,6 @@
 'use client'
 
-import type { Project } from 'mdx/generated'
+import type { Project } from 'content-collections'
 
 import { BlurImage } from '@tszhong0411/ui'
 
@@ -42,9 +42,7 @@ const ProjectCard = (props: ProjectCardProps) => {
           <div className='text-muted-foreground'>{description}</div>
         </div>
         <div className='mt-4 flex flex-wrap gap-2'>
-          {techstack.map((t) => {
-            const { label } = t
-
+          {techstack.map((label) => {
             return (
               <div
                 key={label}
