@@ -1,3 +1,5 @@
+'use client'
+
 import { createTreeCollection, type Node, TreeView as UITreeView } from '@tszhong0411/ui'
 
 type TreeViewProps = { collection: Node } & Omit<
