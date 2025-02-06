@@ -20,7 +20,21 @@ Create a `.env` file in the root of your project and add the following:
 DATABASE_URL="postgres://postgres:postgres@localhost:5432/<project-name>"
 ```
 
-## 3. Folder Structure
+## 3. Add `DATABASE_URL` to `env.ts` if needed
+
+```ts title='src/env.ts'
+import { createEnv } from '@t3-oss/env-nextjs'
+import { z } from 'zod'
+
+export const env = createEnv({
+  server: {
+    DATABASE_URL: z.string().url() // [!code ++]
+  }
+  // other configs
+})
+```
+
+## 4. Folder Structure
 
 <TreeView
   defaultExpandedValue={['src', 'src/db', 'src/db/schema']}
@@ -117,13 +131,13 @@ services:
   Remember to replace `<project-name>` with the name of your project.
 </Callout>
 
-## 4. Start Database
+## 5. Start Database
 
 ```bash
 docker compose up -d
 ```
 
-## 5. Add your schema (Example)
+## 6. Add your schema (Example)
 
 ```ts title='src/db/schema/users.ts'
 import { integer, pgTable, varchar } from 'drizzle-orm/pg-core'
@@ -140,7 +154,7 @@ export const usersTable = pgTable('users', {
 export * from './users'
 ```
 
-## 6. Apply Migrations
+## 7. Apply Migrations
 
 ```bash
 pnpm db:generate
