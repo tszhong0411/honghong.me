@@ -252,6 +252,10 @@ export const SIDEBAR_LINKS: SidebarLinks = [
       {
         href: '/recipes/drizzle',
         text: 'Drizzle'
+      },
+      {
+        href: '/recipes/env',
+        text: 'env'
       }
     ]
   },
