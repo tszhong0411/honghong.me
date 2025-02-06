@@ -21,7 +21,7 @@ const Heading = <T extends Types = 'h1'>(props: HeadingProps<T>) => {
 
   return (
     <Component className={cn('scroll-m-32', className)} id={id} {...rest}>
-      <a href={`#${id}`} className='not-prose group'>
+      <a href={`#${id}`} className='group'>
         {children}
         <LinkIcon
           aria-label={t('mdx.link-to-section')}
