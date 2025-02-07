@@ -1,5 +1,4 @@
 pnpm-lock.yaml
-*.code-snippets
 **/migrations/**
 **/*.hbs
 
