@@ -66,7 +66,13 @@ docker compose up -d
 pnpm db:migrate
 ```
 
-7. Run the app in development mode:
+7. Seed the database:
+
+```bash
+pnpm db:seed
+```
+
+8. Run the app in development mode:
 
 ```bash
 pnpm dev # Run all services (may take more resources to run)
