@@ -2,7 +2,6 @@
 
 import { keepPreviousData } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
-import { useAtom } from 'jotai'
 import { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { getSingletonHighlighterCore } from 'shiki'
@@ -12,7 +11,7 @@ import githubLightDefault from 'shiki/themes/github-light-default.mjs'
 
 import { useCommentsContext } from '@/contexts/comments'
 import { useCommentParams } from '@/hooks/use-comment-params'
-import { highlighterAtom } from '@/store/highlighter'
+import { useHighlighterStore } from '@/store/highlighter'
 import { api } from '@/trpc/react'
 
 import Comment from './comment'
@@ -23,7 +22,7 @@ const CommentsList = () => {
   const { slug, sort } = useCommentsContext()
   const [params] = useCommentParams()
   const t = useTranslations()
-  const [highlighter, setHighlighter] = useAtom(highlighterAtom)
+  const { highlighter, setHighlighter } = useHighlighterStore()
 
   const { status, data, fetchNextPage, hasNextPage, isFetchingNextPage } =
     api.comments.getInfiniteComments.useInfiniteQuery(

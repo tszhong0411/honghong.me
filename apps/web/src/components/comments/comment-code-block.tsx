@@ -1,9 +1,8 @@
 import { CodeBlock } from '@tszhong0411/ui'
-import { useAtomValue } from 'jotai'
 import { useEffect, useState } from 'react'
 import { type BundledLanguage, bundledLanguages } from 'shiki'
 
-import { highlighterAtom } from '@/store/highlighter'
+import { useHighlighterStore } from '@/store/highlighter'
 
 type CommentCodeBlockProps = {
   children: {
@@ -22,7 +21,7 @@ const CommentCodeBlock = (props: CommentCodeBlockProps) => {
     }
   } = props
   const lang = className?.replace('lang-', '') ?? 'plaintext'
-  const highlighter = useAtomValue(highlighterAtom)
+  const { highlighter } = useHighlighterStore()
   const [highlightedHtml, setHighlightedHtml] = useState('')
   const [isHighlighted, setIsHighlighted] = useState(false)
 

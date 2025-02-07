@@ -10,17 +10,16 @@ import {
   DropdownMenuTrigger,
   Skeleton
 } from '@tszhong0411/ui'
-import { useSetAtom } from 'jotai'
 import { useSession } from 'next-auth/react'
 
-import { dialogsAtom } from '@/store/dialogs'
+import { useDialogsStore } from '@/store/dialogs'
 import { getAvatarAbbreviation } from '@/utils/get-avatar-abbreviation'
 import { getDefaultUser } from '@/utils/get-default-user'
 
 const AdminProfileDropdown = () => {
   const { data, status } = useSession()
   const t = useTranslations()
-  const setDialogs = useSetAtom(dialogsAtom)
+  const { setIsSignInOpen } = useDialogsStore()
 
   if (status === 'loading') {
     return <Skeleton className='size-9 rounded-full' />
@@ -31,7 +30,7 @@ const AdminProfileDropdown = () => {
       <Button
         size='sm'
         onClick={() => {
-          setDialogs((dialogs) => ({ ...dialogs, signIn: true }))
+          setIsSignInOpen(true)
         }}
       >
         {t('common.sign-in')}

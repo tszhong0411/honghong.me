@@ -1,9 +1,13 @@
-import { atom } from 'jotai'
+import { create } from 'zustand'
 
-type Dialogs = {
-  signIn: boolean
+type DialogsStore = {
+  isSignInOpen: boolean
+  setIsSignInOpen: (value: boolean) => void
 }
 
-export const dialogsAtom = atom<Dialogs>({
-  signIn: false
-})
+export const useDialogsStore = create<DialogsStore>((set) => ({
+  isSignInOpen: false,
+  setIsSignInOpen: (isSignInOpen) => {
+    set({ isSignInOpen })
+  }
+}))

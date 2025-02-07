@@ -1,5 +1,15 @@
 import type { HighlighterCore } from 'shiki'
 
-import { atom } from 'jotai'
+import { create } from 'zustand'
 
-export const highlighterAtom = atom<HighlighterCore | null>(null)
+type HighlighterStore = {
+  highlighter: HighlighterCore | null
+  setHighlighter: (highlighter: HighlighterCore | null) => void
+}
+
+export const useHighlighterStore = create<HighlighterStore>((set) => ({
+  highlighter: null,
+  setHighlighter: (highlighter) => {
+    set({ highlighter })
+  }
+}))
