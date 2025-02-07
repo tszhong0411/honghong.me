@@ -5,7 +5,7 @@ const config: KnipConfig = {
   vitest: {
     config: ['vitest.{config,shared,workspace}.ts']
   },
-  // tailwindcss v4 is not supported currently
+  // TailwindCSS v4 is not detectable currently
   ignoreDependencies: ['prettier-plugin-*', 'sharp', 'tailwindcss'],
   workspaces: {
     '.': {
@@ -23,7 +23,7 @@ const config: KnipConfig = {
       ignoreDependencies: ['@eslint/config-inspector', 'eslint-plugin-tailwindcss']
     },
     'packages/ui': {
-      // https://github.com/shadcn-ui/ui/issues/4792
+      // @see https://github.com/shadcn-ui/ui/issues/4792
       ignoreDependencies: ['@radix-ui/react-context', '@tailwindcss/typography']
     }
   }
