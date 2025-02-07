@@ -69,7 +69,11 @@ pnpm db:migrate
 7. Run the app in development mode:
 
 ```bash
-pnpm dev
+pnpm dev # Run all services (may take more resources to run)
+# or
+pnpm dev:web # Run only the web app
+# or
+pnpm dev:docs # Run only the documentation app
 ```
 
 The services will be available at the following URLs:
@@ -95,15 +99,6 @@ The following flags can be set in the `.env.local` file to enable specific featu
 - `NEXT_PUBLIC_FLAG_ANALYTICS`: Umami analytics.
 - `NEXT_PUBLIC_FLAG_GUESTBOOK_NOTIFICATION`: Discord notification for guestbook.
 - `NEXT_PUBLIC_FLAG_LIKE_BUTTON`: Like button for blog posts.
-
-## Deployment
-
-This project contains two deployable applications:
-
-- Portfolio: Set root directory to `apps/web`
-- Documentation: Set root directory to `apps/docs`
-
-⚠️ **Important Note**: This repository is a personal project, not a template. Please do not deploy it directly to production environments.
 
 ## Conventional Commits
 
