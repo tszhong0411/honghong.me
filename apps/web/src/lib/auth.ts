@@ -50,7 +50,7 @@ const config: NextAuthConfig = {
   callbacks: {
     async signIn({ account, profile, user }) {
       try {
-        // Update data when user signs in every time
+        // Update data when users sign in every time
         if (account?.provider === 'google') {
           if (!profile) return true
 
