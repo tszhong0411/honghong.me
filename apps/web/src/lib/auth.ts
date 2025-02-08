@@ -12,14 +12,14 @@ import { cache } from 'react'
 import { getDefaultUser } from '@/utils/get-default-user'
 
 declare module 'next-auth' {
-  interface Session extends Omit<DefaultSession, 'user'> {
+  interface Session {
     user: {
       id: string
       name?: string | null
       email: string
       image?: string | null
       role: InferSelectModel<typeof users>['role']
-    }
+    } & DefaultSession['user']
   }
 
   interface User {
