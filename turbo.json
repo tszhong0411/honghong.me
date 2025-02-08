@@ -42,6 +42,10 @@
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**", "dist/**", ".content-collections/**"]
     },
+    "build:apps": {
+      "dependsOn": ["^build:apps"],
+      "outputs": [".next/**", "!.next/cache/**", ".content-collections/**"]
+    },
     "build:mdx": {
       "outputs": [".content-collections/**"]
     },
@@ -52,8 +56,12 @@
     "clean": {
       "cache": false
     },
-    "db:check": {},
-    "db:generate": {},
+    "db:check": {
+      "cache": false
+    },
+    "db:generate": {
+      "cache": false
+    },
     "db:migrate": {
       "cache": false
     },
