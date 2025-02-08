@@ -19,23 +19,6 @@
     ".env*": "properties"
   },
 
-  "files.watcherExclude": {
-    "**/.auth/**": true,
-    "**/.content-collections/**": true,
-    "**/.eslint-config-inspector": true,
-    "**/.git/objects/**": true,
-    "**/.git/subtree-cache/**": true,
-    "**/.hg/store/**": true,
-    "**/.next/**": true,
-    "**/.turbo/**": true,
-    "**/.vercel/**": true,
-    "**/coverage/**": true,
-    "**/dist/**": true,
-    "**/node_modules/**": true,
-    "**/playwright-report/**": true,
-    "**/test-results/**": true
-  },
-
   "i18n-ally.enabledFrameworks": ["react", "next-intl", "general"],
   "i18n-ally.extract.autoDetect": true,
   "i18n-ally.keysInUse": [
