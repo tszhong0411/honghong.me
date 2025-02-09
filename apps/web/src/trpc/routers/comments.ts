@@ -294,7 +294,7 @@ export const commentsRouter = createTRPCRouter({
 
         // Notify the author of the blog post via email
         if (!input.parentId && user.role === 'user') {
-          if (!isProduction) return
+          if (!isProduction || !resend) return
 
           await resend.emails.send({
             from: 'honghong.me <me@honghong.me>',
@@ -312,7 +312,7 @@ export const commentsRouter = createTRPCRouter({
 
         // Notify the parent comment owner via email
         if (input.parentId) {
-          if (!isProduction) return
+          if (!isProduction || !resend) return
 
           const parentComment = await tx.query.comments.findFirst({
             where: eq(comments.id, input.parentId),
