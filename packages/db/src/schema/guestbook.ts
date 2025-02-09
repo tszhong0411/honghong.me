@@ -4,7 +4,7 @@ import { pgTable, text, timestamp } from 'drizzle-orm/pg-core'
 import { users } from './auth'
 
 export const guestbook = pgTable('guestbook', {
-  id: text('id').notNull().primaryKey(),
+  id: text('id').primaryKey(),
   body: text('body').notNull(),
   userId: text('user_id')
     .notNull()

@@ -5,7 +5,7 @@ import { users } from './auth'
 import { posts } from './posts'
 
 export const comments = pgTable('comment', {
-  id: text('id').notNull().primaryKey(),
+  id: text('id').primaryKey(),
   body: text('body').notNull(),
   userId: text('user_id')
     .notNull()

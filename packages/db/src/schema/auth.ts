@@ -8,10 +8,7 @@ import { guestbook } from './guestbook'
 export const roleEnum = pgEnum('role', ['user', 'admin'])
 
 export const users = pgTable('user', {
-  id: text('id')
-    .notNull()
-    .primaryKey()
-    .$defaultFn(() => createId()),
+  id: text('id').primaryKey().$defaultFn(createId),
   name: text('name'),
   email: text('email').notNull().unique(),
   emailVerified: timestamp('email_verified', { precision: 3 }),
@@ -48,7 +45,7 @@ export const accounts = pgTable(
 )
 
 export const sessions = pgTable('session', {
-  sessionToken: text('session_token').notNull().primaryKey(),
+  sessionToken: text('session_token').primaryKey(),
   userId: text('user_id')
     .notNull()
     .references(() => users.id, { onDelete: 'cascade' }),
