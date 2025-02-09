@@ -20,16 +20,14 @@ import { Comment, Reply } from '@tszhong0411/emails'
 import { env } from '@tszhong0411/env'
 import { ratelimit } from '@tszhong0411/kv'
 import { allPosts } from 'content-collections'
-import { Resend } from 'resend'
 import { z } from 'zod'
 
 import { isProduction } from '@/lib/constants'
+import { resend } from '@/lib/resend'
 import { getDefaultUser } from '@/utils/get-default-user'
 import { getIp } from '@/utils/get-ip'
 
 import { adminProcedure, createTRPCRouter, protectedProcedure, publicProcedure } from '../trpc'
-
-const resend = new Resend(env.RESEND_API_KEY)
 
 const getKey = (id: string) => `comments:${id}`
 
