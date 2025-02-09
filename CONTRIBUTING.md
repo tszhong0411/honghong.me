@@ -48,31 +48,38 @@ cd honghong.me
 cp .env.example .env.local
 ```
 
-4. Install the dependencies:
+4. Fill in the NextAuth secret:
+
+```properties
+# Generate a random secret: https://generate-secret.vercel.app/32 or `openssl rand -base64 32`
+AUTH_SECRET=""
+```
+
+5. Install the dependencies:
 
 ```bash
 pnpm install
 ```
 
-5. Run PostgreSQL using Docker (or your preferred method):
+6. Run PostgreSQL using Docker (or your preferred method):
 
 ```bash
 docker compose up -d
 ```
 
-6. Run the database migrations:
+7. Run the database migrations:
 
 ```bash
 pnpm db:migrate
 ```
 
-7. Seed the database:
+8. Seed the database:
 
 ```bash
 pnpm db:seed
 ```
 
-8. Run the app in development mode:
+9. Run the app in development mode:
 
 ```bash
 pnpm dev # Run all services (may take more resources to run)
