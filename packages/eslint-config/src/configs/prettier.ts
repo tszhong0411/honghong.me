@@ -12,7 +12,7 @@ export const prettier: Linter.Config[] = [
       // Avoid conflicts
       ...prettierConfig.rules,
 
-      'prettier/prettier': 'error',
+      'prettier/prettier': ['error', { endOfLine: 'auto' }],
       'arrow-body-style': 'off',
       'prefer-arrow-callback': 'off'
     }
