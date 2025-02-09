@@ -47,8 +47,7 @@ const GoogleIcon = () => {
 
 const SignInDialog = () => {
   const { isSignInOpen, setIsSignInOpen } = useDialogsStore()
-  const [isGitHubLoading, setIsGitHubLoading] = useState(false)
-  const [isGoogleLoading, setIsGoogleLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const t = useTranslations()
 
   return (
@@ -69,12 +68,12 @@ const SignInDialog = () => {
           <Button
             className='h-10 rounded-xl font-semibold'
             onClick={() => {
-              setIsGitHubLoading(true)
+              setIsLoading(true)
               void signIn('github')
             }}
-            disabled={isGitHubLoading || isGoogleLoading}
+            disabled={isLoading}
           >
-            {isGitHubLoading ? (
+            {isLoading ? (
               <Loader2Icon className='animate-spin' />
             ) : (
               <>
@@ -87,12 +86,12 @@ const SignInDialog = () => {
             className='h-10 rounded-xl border font-semibold'
             variant='ghost'
             onClick={() => {
-              setIsGoogleLoading(true)
+              setIsLoading(true)
               void signIn('google')
             }}
-            disabled={isGitHubLoading || isGoogleLoading}
+            disabled={isLoading}
           >
-            {isGoogleLoading ? (
+            {isLoading ? (
               <Loader2Icon className='animate-spin' />
             ) : (
               <>
