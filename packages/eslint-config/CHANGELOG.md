@@ -1,5 +1,11 @@
 # @tszhong0411/eslint-config
 
+## 0.1.30
+
+### Patch Changes
+
+- f57ea28: Set `endOfLine` to auto in prettier rules
+
 ## 0.1.29
 
 ### Patch Changes
