@@ -5,8 +5,14 @@ const config: KnipConfig = {
   vitest: {
     config: ['vitest.{config,shared,workspace}.ts']
   },
-  // TailwindCSS v4 is not detectable currently
-  ignoreDependencies: ['prettier-plugin-*', 'sharp', 'tailwindcss'],
+  ignoreDependencies: [
+    'prettier-plugin-*',
+    'sharp',
+    // TailwindCSS v4 is not detectable currently
+    'tailwindcss',
+    // Can't detect `pnpm with-env tsx`
+    'tsx'
+  ],
   workspaces: {
     '.': {
       entry: ['turbo/generators/config.ts']
@@ -17,6 +23,9 @@ const config: KnipConfig = {
     'apps/web': {
       entry: ['content-collections.ts', 'src/i18n/request.ts'],
       ignore: ['**/e2e/**']
+    },
+    'packages/db': {
+      entry: ['src/seed.ts']
     },
     'packages/eslint-config': {
       // @see https://github.com/francoismassart/eslint-plugin-tailwindcss/issues/325
