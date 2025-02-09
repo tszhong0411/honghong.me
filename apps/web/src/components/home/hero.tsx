@@ -67,8 +67,19 @@ const Hero = () => {
       <div className='flex justify-between gap-8'>
         <div className='flex flex-col gap-4'>
           <h1 className='flex flex-col flex-wrap gap-2 text-xl font-bold sm:text-3xl'>
-            <div>{t('homepage.hero.title-top')}</div>
-            <div className='flex gap-2'>
+            <motion.div
+              initial={{ x: 20, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ ease: 'easeOut' }}
+            >
+              {t('homepage.hero.title-top')}
+            </motion.div>
+            <motion.div
+              initial={{ x: 30, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ ease: 'easeOut' }}
+              className='flex gap-2'
+            >
               <motion.div
                 layout
                 key='title-middle-left'
@@ -102,12 +113,23 @@ const Hero = () => {
               >
                 {t('homepage.hero.title-middle-right')}
               </motion.div>
-            </div>
-            <div>{t('homepage.hero.title-bottom')}</div>
+            </motion.div>
+            <motion.div
+              initial={{ x: 40, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ ease: 'easeOut' }}
+            >
+              {t('homepage.hero.title-bottom')}
+            </motion.div>
           </h1>
-          <div className='text-muted-foreground text-sm'>
+          <motion.div
+            initial={{ x: 50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ ease: 'easeOut' }}
+            className='text-muted-foreground text-sm'
+          >
             {t('homepage.hero.location-timezone')}
-          </div>
+          </motion.div>
         </div>
         <motion.div
           className='relative hidden size-28 md:block'
