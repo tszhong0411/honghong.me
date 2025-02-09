@@ -7,10 +7,10 @@ import { Skeleton, Tooltip, TooltipContent, TooltipTrigger } from '@tszhong0411/
 import { cn } from '@tszhong0411/utils'
 import Image from 'next/image'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { useOnClickOutside } from 'usehooks-ts'
 
 import { type CommentContext, CommentProvider } from '@/contexts/comment'
 import { useCommentsContext } from '@/contexts/comments'
+import { useClickOutside } from '@/hooks/use-click-outside'
 import { useCommentParams } from '@/hooks/use-comment-params'
 import { useFormattedDate } from '@/hooks/use-formatted-date'
 
@@ -51,8 +51,7 @@ const Comment = (props: CommentProps) => {
     relative: true
   })
 
-  // @ts-expect-error -- https://github.com/juliencrn/usehooks-ts/issues/663
-  useOnClickOutside<HTMLDivElement>(commentRef, () => {
+  useClickOutside<HTMLDivElement>(commentRef, () => {
     setIsHighlighted(false)
   })
 
