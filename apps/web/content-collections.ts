@@ -12,7 +12,7 @@ const transform = async <D extends BaseDoc>(document: D, context: Context) => {
     remarkPlugins,
     rehypePlugins
   })
-  const [locale, path] = document._meta.path.split('/')
+  const [locale, path] = document._meta.path.split(/[/\\]/)
 
   if (!locale || !path) {
     throw new Error(`Invalid path: ${document._meta.path}`)
