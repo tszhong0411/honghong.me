@@ -210,9 +210,6 @@ importers:
       '@icons-pack/react-simple-icons':
         specifier: 10.2.0
         version: 10.2.0(react@19.0.0)
-      '@normy/react-query':
-        specifier: ^0.17.1
-        version: 0.17.1(@tanstack/react-query@5.62.15(react@19.0.0))
       '@number-flow/react':
         specifier: ^0.4.4
         version: 0.4.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -228,9 +225,6 @@ importers:
       '@tanstack/react-query-devtools':
         specifier: ^5.62.10
         version: 5.62.10(@tanstack/react-query@5.62.15(react@19.0.0))(react@19.0.0)
-      '@tanstack/react-query-next-experimental':
-        specifier: ^5.62.10
-        version: 5.62.10(@tanstack/react-query@5.62.15(react@19.0.0))(next@15.1.3(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(@playwright/test@1.50.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
       '@tanstack/react-table':
         specifier: ^8.20.6
         version: 8.20.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -3643,14 +3637,6 @@ packages:
     resolution: {integrity: sha512-nIh/M6Kh3ZtOmlY00DaUYB4xeeV6F3/ts1l29iwl3/cfyY/OuCfUx+v08zgx8TKPTifXRcjjqVQ4KB2zOYSbyw==}
     engines: {node: '>=18.18.0'}
 
-  '@normy/core@0.11.1':
-    resolution: {integrity: sha512-Gj2JPR8PTlLcyaw7gLwGNAdeiOlyvb5OXn5n1jqvlQo8mG7Gv8x4v6uvVSVdYKJcHcDPtenbJ+jzKU/EHYT5aw==}
-
-  '@normy/react-query@0.17.1':
-    resolution: {integrity: sha512-xml2LiISPwbqwS2HrXsAIBtea1dKpL1tUYvALNGbSY37t3ZQ7g2slaaQlU+UwnUim7Rm2XttHjCVaRLFfvVTtQ==}
-    peerDependencies:
-      '@tanstack/react-query': '>=5.4.3'
-
   '@number-flow/react@0.4.4':
     resolution: {integrity: sha512-m2FW55jnWqiJzKNRETgyxgR7a8x0WYIZ1uyiIW8C5g6HyjIynryJJop1mEcmHG6OyNePkcb8OQIcjKlV5TfHAw==}
     peerDependencies:
@@ -5060,13 +5046,6 @@ packages:
     resolution: {integrity: sha512-TnFcvfEnOvH9j8iYKRl8Qn/U2P0NijdQ6nilhHobpdAcF4DLUwlKKufJZAlc759+1HBZ/jEvCqWo2g3mO9Ttvg==}
     peerDependencies:
       '@tanstack/react-query': ^5.62.10
-      react: ^18 || ^19
-
-  '@tanstack/react-query-next-experimental@5.62.10':
-    resolution: {integrity: sha512-qfLlnSaJzIQU6kIynxp0iMDkNP0Dsgj/kd3xe9+I+0FsA26P3MCC9tcHj9QuXMNountNUZIcd2gLryMtOpT5ow==}
-    peerDependencies:
-      '@tanstack/react-query': ^5.62.10
-      next: ^13 || ^14 || ^15
       react: ^18 || ^19
 
   '@tanstack/react-query@5.62.15':
@@ -14612,16 +14591,6 @@ snapshots:
       '@nodelib/fs.scandir': 4.0.1
       fastq: 1.18.0
 
-  '@normy/core@0.11.1':
-    dependencies:
-      '@babel/runtime': 7.25.4
-      deepmerge: 4.3.1
-
-  '@normy/react-query@0.17.1(@tanstack/react-query@5.62.15(react@19.0.0))':
-    dependencies:
-      '@normy/core': 0.11.1
-      '@tanstack/react-query': 5.62.15(react@19.0.0)
-
   '@number-flow/react@0.4.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
       esm-env: 1.2.1
@@ -16236,12 +16205,6 @@ snapshots:
     dependencies:
       '@tanstack/query-devtools': 5.62.9
       '@tanstack/react-query': 5.62.15(react@19.0.0)
-      react: 19.0.0
-
-  '@tanstack/react-query-next-experimental@5.62.10(@tanstack/react-query@5.62.15(react@19.0.0))(next@15.1.3(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(@playwright/test@1.50.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)':
-    dependencies:
-      '@tanstack/react-query': 5.62.15(react@19.0.0)
-      next: 15.1.3(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(@playwright/test@1.50.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react: 19.0.0
 
   '@tanstack/react-query@5.62.15(react@19.0.0)':

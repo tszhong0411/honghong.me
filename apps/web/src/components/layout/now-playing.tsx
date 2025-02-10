@@ -7,7 +7,9 @@ import { api } from '@/trpc/react'
 import Link from '../link'
 
 const NowPlaying = () => {
-  const { status, data } = api.spotify.get.useQuery()
+  const { status, data } = api.spotify.get.useQuery(undefined, {
+    staleTime: 1000 * 60
+  })
   const t = useTranslations()
 
   const isPlaying = status === 'success' && data.isPlaying && data.songUrl

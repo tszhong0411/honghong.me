@@ -1,5 +1,3 @@
-import type { FetchCreateContextFnOptions } from '@trpc/server/adapters/fetch'
-
 import { initTRPC, TRPCError } from '@trpc/server'
 import { db } from '@tszhong0411/db'
 import { SuperJSON } from 'superjson'
@@ -7,19 +5,17 @@ import { ZodError } from 'zod'
 
 import { auth } from '@/lib/auth'
 
-export const createContext = async (opts: FetchCreateContextFnOptions) => {
+export const createTRPCContext = async (opts: { headers: Headers }) => {
   const session = await auth()
 
   return {
     db,
     session,
-    headers: opts.req.headers
+    ...opts
   }
 }
 
-type Context = typeof createContext
-
-const t = initTRPC.context<Context>().create({
+const t = initTRPC.context<typeof createTRPCContext>().create({
   transformer: SuperJSON,
   errorFormatter({ shape, error }) {
     return {
@@ -34,9 +30,26 @@ const t = initTRPC.context<Context>().create({
 
 export const createTRPCRouter = t.router
 
-export const publicProcedure = t.procedure
+const timingMiddleware = t.middleware(async ({ next, path }) => {
+  const start = Date.now()
 
-export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
+  if (t._config.isDev) {
+    // artificial delay in dev
+    const waitMs = Math.floor(Math.random() * 400) + 100
+    await new Promise((resolve) => setTimeout(resolve, waitMs))
+  }
+
+  const result = await next()
+
+  const end = Date.now()
+  console.log(`[TRPC] ${path} took ${end - start}ms to execute`)
+
+  return result
+})
+
+export const publicProcedure = t.procedure.use(timingMiddleware)
+
+export const protectedProcedure = publicProcedure.use(({ ctx, next }) => {
   if (!ctx.session?.user) {
     throw new TRPCError({ code: 'UNAUTHORIZED' })
   }
