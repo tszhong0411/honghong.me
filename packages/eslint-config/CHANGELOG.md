@@ -1,5 +1,11 @@
 # @tszhong0411/eslint-config
 
+## 0.1.31
+
+### Patch Changes
+
+- d7cc990: Turn off `unicorn/prefer-spread` due to a conflict
+
 ## 0.1.30
 
 ### Patch Changes
