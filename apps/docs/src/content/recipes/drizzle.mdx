@@ -12,9 +12,9 @@ pnpm add drizzle-orm pg dotenv server-only
 pnpm add -D drizzle-kit @types/pg dotenv-cli
 ```
 
-## 2. .env
+## 2. `.env.local`
 
-Create a `.env` file in the root of your project and add the following:
+Create a `.env.local` file in the root of your project and add the following:
 
 ```properties
 DATABASE_URL="postgres://postgres:postgres@localhost:5432/<project-name>"
@@ -125,6 +125,17 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=<project-name>
+    volumes:
+      - db:/var/lib/postgresql/data
+    networks:
+      - <project-name>-network
+
+volumes:
+  db:
+
+networks:
+  <project-name>-network:
+    driver: bridge
 ```
 
 <Callout title='Note'>
