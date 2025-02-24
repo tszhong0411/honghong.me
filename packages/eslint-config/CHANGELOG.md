@@ -1,5 +1,11 @@
 # @tszhong0411/eslint-config
 
+## 0.1.32
+
+### Patch Changes
+
+- f26d25a: Remove `turbo` auto-detection as it has a false positive
+
 ## 0.1.31
 
 ### Patch Changes

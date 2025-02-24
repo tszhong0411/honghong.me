@@ -1,5 +1,11 @@
 # @tszhong0411/prettier-plugin-package-json
 
+## 0.0.4
+
+### Patch Changes
+
+- f26d25a: Remove `turbo` auto-detection as it has a false positive
+
 ## 0.0.3
 
 ### Patch Changes
