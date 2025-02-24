@@ -1,5 +1,13 @@
 # @tszhong0411/ui
 
+## 0.0.57
+
+### Patch Changes
+
+- f26d25a: Remove `turbo` auto-detection as it has a false positive
+- Updated dependencies [f26d25a]
+  - @tszhong0411/utils@0.0.19
+
 ## 0.0.56
 
 ### Patch Changes

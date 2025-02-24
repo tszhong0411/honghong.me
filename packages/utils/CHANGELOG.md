@@ -1,5 +1,11 @@
 # @tszhong0411/utils
 
+## 0.0.19
+
+### Patch Changes
+
+- f26d25a: Remove `turbo` auto-detection as it has a false positive
+
 ## 0.0.18
 
 ### Patch Changes
