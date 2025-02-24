@@ -35,13 +35,12 @@ export type Options = {
 export type Configs = Linter.Config[]
 
 const hasTypeScript = isPackageExists('typescript')
-const hasTurbo = isPackageExists('turbo')
 
 const tszhong0411 = async (options: Options = {}, ...userConfigs: Configs): Promise<Configs> => {
   const {
     typescript: enableTypeScript = hasTypeScript,
     react: enableReact = false,
-    turbo: enableTurbo = hasTurbo,
+    turbo: enableTurbo = false,
     next: enableNext = false,
     playwright: enablePlaywright = false,
     testingLibrary: enableTestingLibrary = false,

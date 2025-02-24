@@ -7,7 +7,8 @@ export default tszhong0411(
     react: true,
     next: true,
     playwright: true,
-    testingLibrary: true
+    testingLibrary: true,
+    turbo: true
   },
   {
     files: [GLOB_E2E],
