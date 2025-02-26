@@ -1,5 +1,11 @@
 # @tszhong0411/utils
 
+## 0.0.20
+
+### Patch Changes
+
+- b932b38: Update code style
+
 ## 0.0.19
 
 ### Patch Changes
