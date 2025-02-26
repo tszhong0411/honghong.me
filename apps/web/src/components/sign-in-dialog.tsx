@@ -3,6 +3,7 @@
 import { SiGithub } from '@icons-pack/react-simple-icons'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import {
+  Badge,
   Button,
   Dialog,
   DialogContent,
@@ -12,9 +13,11 @@ import {
 } from '@tszhong0411/ui'
 import { Loader2Icon } from 'lucide-react'
 import { signIn } from 'next-auth/react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { useDialogsStore } from '@/store/dialogs'
+
+type Provider = 'github' | 'google'
 
 const GoogleIcon = () => {
   return (
@@ -48,7 +51,21 @@ const GoogleIcon = () => {
 const SignInDialog = () => {
   const { isSignInOpen, setIsSignInOpen } = useDialogsStore()
   const [isLoading, setIsLoading] = useState(false)
+  const [lastUsedProvider, setLastUsedProvider] = useState<Provider | null>(null)
   const t = useTranslations()
+
+  useEffect(() => {
+    if (typeof globalThis !== 'undefined') {
+      const provider = localStorage.getItem('last-used-provider') as Provider | null
+      setLastUsedProvider(provider)
+    }
+  }, [])
+
+  const handleSignIn = (provider: Provider) => {
+    localStorage.setItem('last-used-provider', provider)
+    setIsLoading(true)
+    void signIn(provider)
+  }
 
   return (
     <Dialog
@@ -66,10 +83,9 @@ const SignInDialog = () => {
         </DialogHeader>
         <div className='my-6 flex flex-col gap-4'>
           <Button
-            className='h-10 rounded-xl font-semibold'
+            className='relative h-10 rounded-xl font-semibold'
             onClick={() => {
-              setIsLoading(true)
-              void signIn('github')
+              handleSignIn('github')
             }}
             disabled={isLoading}
           >
@@ -81,13 +97,13 @@ const SignInDialog = () => {
                 {t('dialog.sign-in.continue-with', { provider: 'GitHub' })}
               </>
             )}
+            {lastUsedProvider === 'github' && <LastUsed />}
           </Button>
           <Button
-            className='h-10 rounded-xl border font-semibold'
+            className='relative h-10 rounded-xl border font-semibold'
             variant='ghost'
             onClick={() => {
-              setIsLoading(true)
-              void signIn('google')
+              handleSignIn('google')
             }}
             disabled={isLoading}
           >
@@ -99,10 +115,19 @@ const SignInDialog = () => {
                 {t('dialog.sign-in.continue-with', { provider: 'Google' })}
               </>
             )}
+            {lastUsedProvider === 'google' && <LastUsed />}
           </Button>
         </div>
       </DialogContent>
     </Dialog>
+  )
+}
+
+const LastUsed = () => {
+  return (
+    <Badge variant='outline' className='bg-background absolute -right-2 -top-2'>
+      Last used
+    </Badge>
   )
 }
 
