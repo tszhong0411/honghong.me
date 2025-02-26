@@ -153,9 +153,7 @@ const CommentEditor = (props: CommentEditorProps) => {
           variant='ghost'
           size='icon'
           className='size-7'
-          onClick={() => {
-            decorateText(textareaRef.current, 'bold')
-          }}
+          onClick={() => decorateText(textareaRef.current, 'bold')}
         >
           <BoldIcon className='size-4' />
         </Button>
@@ -164,9 +162,7 @@ const CommentEditor = (props: CommentEditorProps) => {
           variant='ghost'
           size='icon'
           className='size-7'
-          onClick={() => {
-            decorateText(textareaRef.current, 'strikethrough')
-          }}
+          onClick={() => decorateText(textareaRef.current, 'strikethrough')}
         >
           <StrikethroughIcon className='size-4' />
         </Button>
@@ -175,9 +171,7 @@ const CommentEditor = (props: CommentEditorProps) => {
           variant='ghost'
           size='icon'
           className='size-7'
-          onClick={() => {
-            decorateText(textareaRef.current, 'italic')
-          }}
+          onClick={() => decorateText(textareaRef.current, 'italic')}
         >
           <ItalicIcon className='size-4' />
         </Button>

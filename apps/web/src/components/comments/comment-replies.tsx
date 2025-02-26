@@ -40,9 +40,7 @@ const CommentReplies = () => {
   }, [fetchNextPage, hasNextPage, inView])
 
   useEffect(() => {
-    if (params.comment === comment.id) {
-      setIsOpenReplies(true)
-    }
+    if (params.comment === comment.id) setIsOpenReplies(true)
   }, [comment.id, params.comment, setIsOpenReplies])
 
   const isSuccess = status === 'success'

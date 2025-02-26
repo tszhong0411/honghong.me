@@ -19,17 +19,9 @@ const getDoc = (params: Awaited<PageProps['params']>) => {
   const slug = params.slug?.join('/') ?? ''
   const doc = allDocs.find((d) => d.slug === slug)
 
-  if (!doc) {
-    return null
-  }
+  if (!doc) return null
 
   return doc
-}
-
-export const generateStaticParams = (): Array<{ slug: string[] }> => {
-  return allDocs.map((doc) => ({
-    slug: doc.slug.split('/')
-  }))
 }
 
 export const generateMetadata = async (

@@ -50,13 +50,12 @@ const Hero = () => {
   const t = useTranslations()
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % TEXTS.length)
-    }, SPEED * 1000)
+    const timer = setInterval(
+      () => setCurrentIndex((prev) => (prev + 1) % TEXTS.length),
+      SPEED * 1000
+    )
 
-    return () => {
-      clearInterval(timer)
-    }
+    return () => clearInterval(timer)
   }, [])
 
   const textItem = TEXTS[currentIndex]

@@ -21,9 +21,7 @@ export const useCopyToClipboard = (): [(options: CopyOptions) => Promise<void>, 
       setIsCopied(true)
       toast.success(successMessage ?? t('hook.copy-to-clipboard.copied'))
 
-      setTimeout(() => {
-        setIsCopied(false)
-      }, timeout ?? 2000)
+      setTimeout(() => setIsCopied(false), timeout ?? 2000)
     } catch {
       toast.error(errorMessage ?? t('hook.copy-to-clipboard.error'))
     }

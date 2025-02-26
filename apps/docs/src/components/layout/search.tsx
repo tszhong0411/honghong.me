@@ -43,9 +43,7 @@ const Search = () => {
 
     document.addEventListener('keydown', down)
 
-    return () => {
-      document.removeEventListener('keydown', down)
-    }
+    return () => document.removeEventListener('keydown', down)
   }, [])
 
   const isSelectingTheme = value === 'Light' || value === 'Dark'
@@ -57,9 +55,7 @@ const Search = () => {
         className={cn(
           'bg-muted/50 text-muted-foreground hidden h-10 items-center justify-between gap-3 rounded-lg pr-2 font-normal sm:flex lg:w-64'
         )}
-        onClick={() => {
-          setIsOpen(true)
-        }}
+        onClick={() => setIsOpen(true)}
       >
         <span>Search documentation</span>
         <kbd className='bg-muted flex select-none gap-1 rounded-sm border px-1.5 font-mono text-xs font-medium'>
@@ -71,9 +67,7 @@ const Search = () => {
         variant='ghost'
         size='icon'
         className='sm:hidden'
-        onClick={() => {
-          setIsOpen(true)
-        }}
+        onClick={() => setIsOpen(true)}
         aria-label='Search documentation'
       >
         <SearchIcon className='size-5' />
@@ -89,11 +83,7 @@ const Search = () => {
                   <CommandItem
                     key={link.href}
                     value={link.text}
-                    onSelect={() => {
-                      runCommand(() => {
-                        router.push(link.href)
-                      })
-                    }}
+                    onSelect={() => runCommand(() => router.push(link.href))}
                   >
                     <ComponentIcon />
                     {link.text}
@@ -104,23 +94,11 @@ const Search = () => {
             </Fragment>
           ))}
           <CommandGroup heading='Theme'>
-            <CommandItem
-              onSelect={() => {
-                runCommand(() => {
-                  setTheme('light')
-                })
-              }}
-            >
+            <CommandItem onSelect={() => runCommand(() => setTheme('light'))}>
               <SunIcon />
               Light
             </CommandItem>
-            <CommandItem
-              onSelect={() => {
-                runCommand(() => {
-                  setTheme('dark')
-                })
-              }}
-            >
+            <CommandItem onSelect={() => runCommand(() => setTheme('dark'))}>
               <MoonIcon />
               Dark
             </CommandItem>

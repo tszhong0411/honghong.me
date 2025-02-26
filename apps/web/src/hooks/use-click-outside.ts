@@ -8,14 +8,11 @@ export const useClickOutside = <T extends HTMLElement = HTMLElement>(
     const listener = (event: MouseEvent | TouchEvent) => {
       const target = event.target as Node
 
-      if (!ref.current || ref.current.contains(target)) {
-        return
-      }
+      if (!ref.current || ref.current.contains(target)) return
 
       callback(event)
     }
 
-    document.addEventListener('mousedown', listener)
     document.addEventListener('touchstart', listener)
 
     return () => {

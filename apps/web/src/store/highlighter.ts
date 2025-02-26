@@ -9,7 +9,5 @@ type HighlighterStore = {
 
 export const useHighlighterStore = create<HighlighterStore>((set) => ({
   highlighter: null,
-  setHighlighter: (highlighter) => {
-    set({ highlighter })
-  }
+  setHighlighter: (highlighter) => set({ highlighter })
 }))

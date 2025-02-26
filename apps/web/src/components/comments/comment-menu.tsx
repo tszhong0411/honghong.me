@@ -36,9 +36,7 @@ const CommentMenu = () => {
   const deleteCommentMutation = api.comments.delete.useMutation({
     onSuccess: () => toast.success(t('blog.comments.deleted-a-comment')),
     onError: (error) => toast.error(error.message),
-    onSettled: () => {
-      utils.comments.invalidate()
-    }
+    onSettled: () => utils.comments.invalidate()
   })
 
   const {
@@ -99,9 +97,7 @@ const CommentMenu = () => {
         <AlertDialogFooter>
           <AlertDialogCancel>{t('common.cancel')}</AlertDialogCancel>
           <AlertDialogAction
-            onClick={() => {
-              deleteCommentMutation.mutate({ id })
-            }}
+            onClick={() => deleteCommentMutation.mutate({ id })}
             className={buttonVariants({ variant: 'destructive' })}
           >
             {t('common.delete')}

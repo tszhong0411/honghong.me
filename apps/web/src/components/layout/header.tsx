@@ -30,9 +30,7 @@ const Header = () => {
 
     document.addEventListener('scroll', changeBackground)
 
-    return () => {
-      document.removeEventListener('scroll', changeBackground)
-    }
+    return () => document.removeEventListener('scroll', changeBackground)
   }, [])
 
   return (

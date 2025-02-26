@@ -61,9 +61,7 @@ const CommandMenu = () => {
 
     document.addEventListener('keydown', down)
 
-    return () => {
-      document.removeEventListener('keydown', down)
-    }
+    return () => document.removeEventListener('keydown', down)
   }, [])
 
   const openLink = useCallback((url: string) => {
@@ -110,9 +108,7 @@ const CommandMenu = () => {
         {
           title: t('command-menu.actions.source-code'),
           icon: <CodeIcon className='mr-3 size-4' />,
-          onSelect: () => {
-            openLink('https://github.com/tszhong0411/honghong.me')
-          }
+          onSelect: () => openLink('https://github.com/tszhong0411/honghong.me')
         }
       ]
     },
@@ -122,37 +118,27 @@ const CommandMenu = () => {
         {
           title: 'GitHub',
           icon: <SiGithub className='mr-3 size-4' />,
-          onSelect: () => {
-            openLink(SITE_GITHUB_URL)
-          }
+          onSelect: () => openLink(SITE_GITHUB_URL)
         },
         {
           title: 'Facebook',
           icon: <SiFacebook className='mr-3 size-4' />,
-          onSelect: () => {
-            openLink(SITE_FACEBOOK_URL)
-          }
+          onSelect: () => openLink(SITE_FACEBOOK_URL)
         },
         {
           title: 'Instagram',
           icon: <SiInstagram className='mr-3 size-4' />,
-          onSelect: () => {
-            openLink(SITE_INSTAGRAM_URL)
-          }
+          onSelect: () => openLink(SITE_INSTAGRAM_URL)
         },
         {
           title: 'X',
           icon: <SiX className='mr-3 size-4' />,
-          onSelect: () => {
-            openLink(SITE_X_URL)
-          }
+          onSelect: () => openLink(SITE_X_URL)
         },
         {
           title: 'YouTube',
           icon: <SiYoutube className='mr-3 size-4' />,
-          onSelect: () => {
-            openLink(SITE_YOUTUBE_URL)
-          }
+          onSelect: () => openLink(SITE_YOUTUBE_URL)
         }
       ]
     }
@@ -163,9 +149,7 @@ const CommandMenu = () => {
       <Button
         variant='ghost'
         className='size-9 p-0'
-        onClick={() => {
-          setIsOpen(true)
-        }}
+        onClick={() => setIsOpen(true)}
         aria-label={t('command-menu.open-menu')}
       >
         <CommandIcon className='size-4' />

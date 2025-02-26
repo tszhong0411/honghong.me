@@ -41,9 +41,7 @@ const Item = (props: ItemProps) => {
   const pathname = usePathname()
 
   const switchLanguage = () => {
-    startTransition(() => {
-      router.replace(pathname, { locale })
-    })
+    startTransition(() => router.replace(pathname, { locale }))
   }
 
   return (

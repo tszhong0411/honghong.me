@@ -84,12 +84,7 @@ const MessageBox = (props: FormProps) => {
             )}
           />
           <div className='mt-4 flex justify-end gap-2'>
-            <Button
-              variant='outline'
-              onClick={() => {
-                void signOut()
-              }}
-            >
+            <Button variant='outline' onClick={() => void signOut()}>
               {t('common.sign-out')}
             </Button>
             <Button

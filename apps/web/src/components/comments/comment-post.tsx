@@ -26,9 +26,7 @@ const CommentPost = () => {
       toast.success(t('blog.comments.comment-posted'))
     },
     onError: (error) => toast.error(error.message),
-    onSettled: () => {
-      utils.comments.invalidate()
-    }
+    onSettled: () => utils.comments.invalidate()
   })
 
   const submitComment = () => {
@@ -52,9 +50,7 @@ const CommentPost = () => {
   useEffect(() => {
     setIsMounted(true)
 
-    return () => {
-      setIsMounted(false)
-    }
+    return () => setIsMounted(false)
   }, [])
 
   if (status === 'loading' || !isMounted) return null

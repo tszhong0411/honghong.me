@@ -54,9 +54,7 @@ const DeleteButton = () => {
           <AlertDialogFooter>
             <AlertDialogCancel>{t('common.cancel')}</AlertDialogCancel>
             <AlertDialogAction
-              onClick={() => {
-                handleDeleteMessage(message.id)
-              }}
+              onClick={() => handleDeleteMessage(message.id)}
               className={buttonVariants({ variant: 'destructive' })}
             >
               {t('common.delete')}

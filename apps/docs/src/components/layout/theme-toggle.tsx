@@ -11,9 +11,7 @@ const ThemeToggle = () => {
     <Button
       variant='ghost'
       size='icon'
-      onClick={() => {
-        setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
-      }}
+      onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
       aria-label='Toggle theme'
     >
       <SunIcon className='size-5 dark:hidden' />

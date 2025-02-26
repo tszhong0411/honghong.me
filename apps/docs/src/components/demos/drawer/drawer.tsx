@@ -81,9 +81,7 @@ const DrawerDemo = () => {
                 variant='outline'
                 size='icon'
                 className='size-8 shrink-0 rounded-full'
-                onClick={() => {
-                  onClick(-10)
-                }}
+                onClick={() => onClick(-10)}
                 disabled={goal <= 200}
                 aria-label='Decrease'
               >
@@ -97,9 +95,7 @@ const DrawerDemo = () => {
                 variant='outline'
                 size='icon'
                 className='size-8 shrink-0 rounded-full'
-                onClick={() => {
-                  onClick(10)
-                }}
+                onClick={() => onClick(10)}
                 disabled={goal >= 400}
                 aria-label='Increase'
               >

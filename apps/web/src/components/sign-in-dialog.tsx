@@ -84,9 +84,7 @@ const SignInDialog = () => {
         <div className='my-6 flex flex-col gap-4'>
           <Button
             className='relative h-10 rounded-xl font-semibold'
-            onClick={() => {
-              handleSignIn('github')
-            }}
+            onClick={() => handleSignIn('github')}
             disabled={isLoading}
           >
             {isLoading ? (
@@ -102,9 +100,7 @@ const SignInDialog = () => {
           <Button
             className='relative h-10 rounded-xl border font-semibold'
             variant='ghost'
-            onClick={() => {
-              handleSignIn('google')
-            }}
+            onClick={() => handleSignIn('google')}
             disabled={isLoading}
           >
             {isLoading ? (

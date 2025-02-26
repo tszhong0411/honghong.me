@@ -7,9 +7,7 @@ import { postGenerator } from './templates/post/generator'
 const generators = [packageGenerator, postGenerator, componentGenerator]
 
 const generator = (plop: PlopTypes.NodePlopAPI): void => {
-  for (const gen of generators) {
-    gen(plop)
-  }
+  for (const gen of generators) gen(plop)
 }
 
 export default generator

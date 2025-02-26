@@ -131,9 +131,7 @@ const CommentActions = () => {
       <div className='flex gap-1'>
         <Button
           variant='secondary'
-          onClick={() => {
-            handleRateComment(true)
-          }}
+          onClick={() => handleRateComment(true)}
           className={rateVariants({
             active: comment.liked === true
           })}
@@ -144,9 +142,7 @@ const CommentActions = () => {
         </Button>
         <Button
           variant='secondary'
-          onClick={() => {
-            handleRateComment(false)
-          }}
+          onClick={() => handleRateComment(false)}
           className={rateVariants({
             active: comment.liked === false
           })}
@@ -159,9 +155,7 @@ const CommentActions = () => {
           <Button
             variant='secondary'
             className='text-muted-foreground h-8 gap-1.5 px-2 text-xs font-medium'
-            onClick={() => {
-              setIsReplying(true)
-            }}
+            onClick={() => setIsReplying(true)}
           >
             <MessageSquareIcon className='size-4' />
             {t('blog.comments.reply')}
@@ -173,9 +167,7 @@ const CommentActions = () => {
           variant='ghost'
           size='sm'
           className='mt-4 h-8 gap-1.5 px-2 text-xs font-medium'
-          onClick={() => {
-            setIsOpenReplies(!isOpenReplies)
-          }}
+          onClick={() => setIsOpenReplies(!isOpenReplies)}
         >
           <ChevronDownIcon
             className={cn('size-4 transition-transform duration-200', {

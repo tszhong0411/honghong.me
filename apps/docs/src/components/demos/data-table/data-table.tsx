@@ -887,9 +887,7 @@ const columns: Array<ColumnDef<Task>> = [
     cell: ({ row }) => {
       const status = statuses.find((s) => s.value === row.getValue('status'))
 
-      if (!status) {
-        return null
-      }
+      if (!status) return null
 
       return (
         <div className='flex w-[100px] items-center'>

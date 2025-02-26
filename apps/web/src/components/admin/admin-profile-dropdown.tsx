@@ -27,12 +27,7 @@ const AdminProfileDropdown = () => {
 
   if (!data) {
     return (
-      <Button
-        size='sm'
-        onClick={() => {
-          setIsSignInOpen(true)
-        }}
-      >
+      <Button size='sm' onClick={() => setIsSignInOpen(true)}>
         {t('common.sign-in')}
       </Button>
     )

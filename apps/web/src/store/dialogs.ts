@@ -7,7 +7,5 @@ type DialogsStore = {
 
 export const useDialogsStore = create<DialogsStore>((set) => ({
   isSignInOpen: false,
-  setIsSignInOpen: (isSignInOpen) => {
-    set({ isSignInOpen })
-  }
+  setIsSignInOpen: (isSignInOpen) => set({ isSignInOpen })
 }))

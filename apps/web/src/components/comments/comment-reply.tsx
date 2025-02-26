@@ -63,18 +63,14 @@ const CommentReply = () => {
 
       return { previousData }
     },
-    onSuccess: () => {
-      setIsReplying(false)
-    },
+    onSuccess: () => setIsReplying(false),
     onError: (error, _, ctx) => {
       if (ctx?.previousData) {
         utils.comments.getInfiniteComments.setInfiniteData(queryKey, ctx.previousData)
       }
       toast.error(error.message)
     },
-    onSettled: () => {
-      utils.comments.invalidate()
-    }
+    onSettled: () => utils.comments.invalidate()
   })
 
   const submitCommentReply = (e?: React.FormEvent<HTMLFormElement>) => {
@@ -108,9 +104,7 @@ const CommentReply = () => {
             setContent(e.target.value)
           }}
           onModEnter={submitCommentReply}
-          onEscape={() => {
-            setIsReplying(false)
-          }}
+          onEscape={() => setIsReplying(false)}
           placeholder={t('blog.comments.reply-to-comment')}
           disabled={disabled}
           // eslint-disable-next-line jsx-a11y/no-autofocus -- Autofocus is necessary because user is replying to a comment
@@ -131,9 +125,7 @@ const CommentReply = () => {
         <Button
           variant='secondary'
           className='h-8 px-2 text-xs font-medium'
-          onClick={() => {
-            setIsReplying(false)
-          }}
+          onClick={() => setIsReplying(false)}
         >
           {t('common.cancel')}
         </Button>

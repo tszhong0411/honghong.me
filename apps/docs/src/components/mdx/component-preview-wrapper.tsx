@@ -24,9 +24,7 @@ const ComponentPreviewWrapper = (props: ComponentPreviewWrapperProps) => {
           className='absolute right-1.5 top-1.5 z-10'
           variant='outline'
           size='icon'
-          onClick={() => {
-            setKey((prev) => prev + 1)
-          }}
+          onClick={() => setKey((prev) => prev + 1)}
           aria-label='Reload preview'
         >
           <RotateCcwIcon className='size-4' />
