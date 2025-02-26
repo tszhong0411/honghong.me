@@ -39,6 +39,14 @@ export const typescript = (options?: Options): Linter.Config[] => [
         }
       ],
       '@typescript-eslint/restrict-template-expressions': ['error', { allowNumber: true }],
+      '@typescript-eslint/no-confusing-void-expression': [
+        'error',
+        {
+          ignoreArrowShorthand: true,
+          ignoreVoidOperator: true,
+          ignoreVoidReturningFunctions: true
+        }
+      ],
 
       '@typescript-eslint/no-namespace': 'off',
       '@typescript-eslint/no-unsafe-call': 'off',
