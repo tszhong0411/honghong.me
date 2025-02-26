@@ -60,13 +60,9 @@ const CopyButton = (props: CopyButtonProps) => {
   const [isCopied, setIsCopied] = useState(false)
 
   useEffect(() => {
-    const copyResetTimeoutId = setTimeout(() => {
-      setIsCopied(false)
-    }, 2000)
+    const copyResetTimeoutId = setTimeout(() => setIsCopied(false), 2000)
 
-    return () => {
-      clearTimeout(copyResetTimeoutId)
-    }
+    return () => clearTimeout(copyResetTimeoutId)
   }, [isCopied])
 
   return (

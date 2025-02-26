@@ -102,9 +102,7 @@ const SidebarProvider = (props: SidebarProviderProps) => {
     }
 
     globalThis.addEventListener('keydown', handleKeyDown)
-    return () => {
-      globalThis.removeEventListener('keydown', handleKeyDown)
-    }
+    return () => globalThis.removeEventListener('keydown', handleKeyDown)
   }, [toggleSidebar])
 
   // We add a state so that we can do data-state="expanded" or "collapsed".

@@ -145,9 +145,7 @@ const DataTablePagination = <TData,>(props: DataTablePaginationProps<TData>) => 
             aria-label='Go to first page'
             variant='outline'
             className='hidden size-8 p-0 lg:flex'
-            onClick={() => {
-              table.setPageIndex(0)
-            }}
+            onClick={() => table.setPageIndex(0)}
             disabled={!table.getCanPreviousPage()}
           >
             <ChevronsLeftIcon className='size-4' aria-hidden='true' />
@@ -157,9 +155,7 @@ const DataTablePagination = <TData,>(props: DataTablePaginationProps<TData>) => 
             variant='outline'
             size='icon'
             className='size-8'
-            onClick={() => {
-              table.previousPage()
-            }}
+            onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
             <ChevronLeftIcon className='size-4' aria-hidden='true' />
@@ -169,9 +165,7 @@ const DataTablePagination = <TData,>(props: DataTablePaginationProps<TData>) => 
             variant='outline'
             size='icon'
             className='size-8'
-            onClick={() => {
-              table.nextPage()
-            }}
+            onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           >
             <ChevronRightIcon className='size-4' aria-hidden='true' />
@@ -181,9 +175,7 @@ const DataTablePagination = <TData,>(props: DataTablePaginationProps<TData>) => 
             variant='outline'
             size='icon'
             className='hidden size-8 lg:flex'
-            onClick={() => {
-              table.setPageIndex(table.getPageCount() - 1)
-            }}
+            onClick={() => table.setPageIndex(table.getPageCount() - 1)}
             disabled={!table.getCanNextPage()}
           >
             <ChevronsRightIcon className='size-4' aria-hidden='true' />
@@ -222,28 +214,16 @@ const DataTableColumnHeader = <TData, TValue>(props: DataTableColumnHeaderProps<
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align='start'>
-          <DropdownMenuItem
-            onClick={() => {
-              column.toggleSorting(false)
-            }}
-          >
+          <DropdownMenuItem onClick={() => column.toggleSorting(false)}>
             <ArrowUpIcon className='text-muted-foreground/70 mr-2 size-3.5' />
             Asc
           </DropdownMenuItem>
-          <DropdownMenuItem
-            onClick={() => {
-              column.toggleSorting(true)
-            }}
-          >
+          <DropdownMenuItem onClick={() => column.toggleSorting(true)}>
             <ArrowDownIcon className='text-muted-foreground/70 mr-2 size-3.5' />
             Desc
           </DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem
-            onClick={() => {
-              column.toggleVisibility(false)
-            }}
-          >
+          <DropdownMenuItem onClick={() => column.toggleVisibility(false)}>
             <EyeOffIcon className='text-muted-foreground/70 mr-2 size-3.5' />
             Hide
           </DropdownMenuItem>
@@ -445,12 +425,13 @@ const defaultFilterFields: Array<DataTableFilterField<unknown>> = []
 const DataTableToolbar = <TData,>(props: DataTableToolbarProps<TData>) => {
   const { table, filterFields = defaultFilterFields } = props
 
-  const { searchableColumns, filterableColumns } = useMemo(() => {
-    return {
+  const { searchableColumns, filterableColumns } = useMemo(
+    () => ({
       searchableColumns: filterFields.filter((field) => !field.options),
       filterableColumns: filterFields.filter((field) => field.options)
-    }
-  }, [filterFields])
+    }),
+    [filterFields]
+  )
 
   const isFiltered = table.getState().columnFilters.length > 0
 
@@ -491,9 +472,7 @@ const DataTableToolbar = <TData,>(props: DataTableToolbarProps<TData>) => {
           <Button
             variant='ghost'
             className='h-8 px-2 lg:px-3'
-            onClick={() => {
-              table.resetColumnFilters()
-            }}
+            onClick={() => table.resetColumnFilters()}
           >
             Reset
             <XIcon className='ml-2 size-4' aria-hidden='true' />

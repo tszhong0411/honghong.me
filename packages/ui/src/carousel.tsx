@@ -61,21 +61,15 @@ const Carousel = (props: CarouselRootProps) => {
   const [canScrollNext, setCanScrollNext] = useState(false)
 
   const onSelect = useCallback((a: CarouselApi) => {
-    if (!a) {
-      return
-    }
+    if (!a) return
 
     setCanScrollPrev(a.canScrollPrev())
     setCanScrollNext(a.canScrollNext())
   }, [])
 
-  const scrollPrev = useCallback(() => {
-    api?.scrollPrev()
-  }, [api])
+  const scrollPrev = useCallback(() => api?.scrollPrev(), [api])
 
-  const scrollNext = useCallback(() => {
-    api?.scrollNext()
-  }, [api])
+  const scrollNext = useCallback(() => api?.scrollNext(), [api])
 
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -91,23 +85,20 @@ const Carousel = (props: CarouselRootProps) => {
   )
 
   useEffect(() => {
-    if (!api || !setApi) {
-      return
-    }
+    if (!api || !setApi) return
 
     setApi(api)
   }, [api, setApi])
 
   useEffect(() => {
-    if (!api) {
-      return
-    }
+    if (!api) return
 
     onSelect(api)
     api.on('reInit', onSelect)
     api.on('select', onSelect)
 
     return () => {
+      api.off('reInit', onSelect)
       api.off('select', onSelect)
     }
   }, [api, onSelect])
