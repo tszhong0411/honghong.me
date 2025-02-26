@@ -1,5 +1,11 @@
 # @tszhong0411/eslint-config
 
+## 0.1.33
+
+### Patch Changes
+
+- 0e4db9d: Update options of rule `no-confusing-void-expression`
+
 ## 0.1.32
 
 ### Patch Changes

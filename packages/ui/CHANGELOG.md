@@ -1,5 +1,13 @@
 # @tszhong0411/ui
 
+## 0.0.58
+
+### Patch Changes
+
+- 2826de0: Update code style
+- Updated dependencies [b932b38]
+  - @tszhong0411/utils@0.0.20
+
 ## 0.0.57
 
 ### Patch Changes
