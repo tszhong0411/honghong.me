@@ -1,5 +1,11 @@
 # @tszhong0411/ui
 
+## 0.0.59
+
+### Patch Changes
+
+- abfb7cd: Fix background color of skeleton
+
 ## 0.0.58
 
 ### Patch Changes
