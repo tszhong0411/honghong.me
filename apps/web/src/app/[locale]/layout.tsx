@@ -10,7 +10,9 @@ import { cn } from '@tszhong0411/utils'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
+import Script from 'next/script'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
+import { Monitoring } from 'react-scan/monitoring/next'
 
 import Analytics from '@/components/analytics'
 import Hello from '@/components/hello'
@@ -18,7 +20,6 @@ import SignInDialog from '@/components/sign-in-dialog'
 import { SITE_KEYWORDS, SITE_NAME, SITE_URL } from '@/lib/constants'
 
 import Providers from '../providers'
-import ReactScan from '../react-scan'
 
 type LayoutProps = {
   children: React.ReactNode
@@ -138,7 +139,23 @@ const Layout = async (props: LayoutProps) => {
       className={cn(GeistSans.variable, GeistMono.variable)}
       suppressHydrationWarning
     >
+      <head>
+        {env.REACT_SCAN_MONITOR_API_KEY ? (
+          <Script
+            src='https://unpkg.com/react-scan/dist/install-hook.global.js'
+            strategy='beforeInteractive'
+          />
+        ) : null}
+      </head>
       <body className='relative flex min-h-screen flex-col'>
+        {env.REACT_SCAN_MONITOR_API_KEY ? (
+          <Monitoring
+            apiKey={env.REACT_SCAN_MONITOR_API_KEY}
+            url='https://monitoring.react-scan.com/api/v1/ingest'
+            commit={env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA}
+            branch={env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF}
+          />
+        ) : null}
         <NuqsAdapter>
           <Providers>
             <NextIntlClientProvider messages={messages}>
@@ -150,9 +167,6 @@ const Layout = async (props: LayoutProps) => {
           </Providers>
         </NuqsAdapter>
         <SpeedInsights />
-        {env.REACT_SCAN_MONITOR_API_KEY ? (
-          <ReactScan apiKey={env.REACT_SCAN_MONITOR_API_KEY} />
-        ) : null}
       </body>
     </html>
   )
