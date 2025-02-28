@@ -50,35 +50,35 @@
     }
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.12",
-    "@commitlint/cli": "^19.6.1",
-    "@commitlint/config-conventional": "^19.6.0",
-    "@playwright/test": "^1.50.0",
+    "@changesets/cli": "^2.28.1",
+    "@commitlint/cli": "^19.7.1",
+    "@commitlint/config-conventional": "^19.7.1",
+    "@playwright/test": "^1.50.1",
     "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/prettier-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
-    "@turbo/gen": "^2.3.4",
-    "@types/node": "^22.10.10",
-    "@vitest/coverage-v8": "^3.0.4",
-    "@vitest/ui": "^3.0.4",
+    "@turbo/gen": "^2.4.4",
+    "@types/node": "^22.13.5",
+    "@vitest/coverage-v8": "^3.0.7",
+    "@vitest/ui": "^3.0.7",
     "commitizen": "^4.3.1",
     "concurrently": "^9.1.2",
     "cross-env": "^7.0.3",
-    "cspell": "^8.17.2",
+    "cspell": "^8.17.5",
     "cz-git": "^1.11.0",
     "dotenv-cli": "^8.0.0",
-    "eslint": "^9.19.0",
+    "eslint": "^9.21.0",
     "jsdom": "^26.0.0",
-    "knip": "^5.43.5",
+    "knip": "^5.45.0",
     "lint-staged": "^15.4.3",
-    "prettier": "^3.4.2",
+    "prettier": "^3.5.2",
     "simple-git-hooks": "^2.11.1",
-    "ts-morph": "^25.0.0",
+    "ts-morph": "^25.0.1",
     "tsup": "8.3.0",
-    "tsx": "^4.19.2",
+    "tsx": "^4.19.3",
     "turbo": "^2.4.4",
     "typescript": "5.7.3",
-    "vitest": "^3.0.4"
+    "vitest": "^3.0.7"
   },
   "engines": {
     "node": ">=22"
@@ -90,7 +90,7 @@
       "pnpm check:spelling"
     ]
   },
-  "packageManager": "pnpm@9.15.4",
+  "packageManager": "pnpm@9.15.6",
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged",
     "commit-msg": "pnpm commitlint --edit $1 && pnpm check:spelling $1"
