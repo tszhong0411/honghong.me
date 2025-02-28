@@ -2,7 +2,7 @@ import { Slot } from '@radix-ui/react-slot'
 import { cn } from '@tszhong0411/utils'
 import { cva, type VariantProps } from 'cva'
 import { PanelLeftIcon } from 'lucide-react'
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import { createContext, use, useCallback, useEffect, useMemo, useState } from 'react'
 
 import { Button } from './button'
 import { useIsMobile } from './hooks/use-is-mobile'
@@ -31,9 +31,10 @@ type SidebarContext = {
 }
 
 const SidebarContext = createContext<SidebarContext | null>(null)
+SidebarContext.displayName = 'SidebarContext'
 
 const useSidebar = () => {
-  const context = useContext(SidebarContext)
+  const context = use(SidebarContext)
 
   if (!context) {
     throw new Error('useSidebar must be used within a SidebarProvider.')
@@ -64,7 +65,7 @@ const SidebarProvider = (props: SidebarProviderProps) => {
 
   // This is the internal state of the sidebar.
   // We use openProp and setOpenProp for control from outside the component.
-  // eslint-disable-next-line @eslint-react/naming-convention/use-state -- internal state
+
   const [_open, _setOpen] = useState(defaultOpen)
   const open = openProp ?? _open
   const setOpen = useCallback(

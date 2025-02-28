@@ -2,7 +2,7 @@ import type * as LabelPrimitive from '@radix-ui/react-label'
 
 import { Slot } from '@radix-ui/react-slot'
 import { cn } from '@tszhong0411/utils'
-import { createContext, useContext, useId, useMemo } from 'react'
+import { createContext, use, useId, useMemo } from 'react'
 import {
   Controller,
   type ControllerProps,
@@ -30,6 +30,9 @@ type FormItemContextValue = {
 const FormFieldContext = createContext<FormFieldContextValue | undefined>(undefined)
 const FormItemContext = createContext<FormItemContextValue | undefined>(undefined)
 
+FormFieldContext.displayName = 'FormFieldContext'
+FormItemContext.displayName = 'FormItemContext'
+
 const FormField = <
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
@@ -48,8 +51,8 @@ const FormField = <
 }
 
 const useFormField = () => {
-  const fieldContext = useContext(FormFieldContext)
-  const itemContext = useContext(FormItemContext)
+  const fieldContext = use(FormFieldContext)
+  const itemContext = use(FormItemContext)
   const { getFieldState, formState } = useFormContext()
 
   if (!fieldContext || !itemContext) {
