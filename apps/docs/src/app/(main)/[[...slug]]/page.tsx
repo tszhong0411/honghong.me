@@ -24,6 +24,12 @@ const getDoc = (params: Awaited<PageProps['params']>) => {
   return doc
 }
 
+export const generateStaticParams = (): Array<{ slug: string[] }> => {
+  return allDocs.map((doc) => ({
+    slug: doc.slug.split('/')
+  }))
+}
+
 export const generateMetadata = async (
   props: PageProps,
   parent: ResolvingMetadata
