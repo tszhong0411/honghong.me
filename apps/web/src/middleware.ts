@@ -39,6 +39,7 @@ export const config = {
    * - folders in public (which resolve to /foldername)
    * - sitemap.xml
    * - robots.txt
+   * - rss.xml
    */
   matcher: [
     '/((?!api|_next/static|_next/image|_vercel|og|favicon|fonts|images|videos|favicon.ico|sitemap.xml|robots.txt|rss.xml).*)'
