@@ -578,9 +578,6 @@ importers:
       '@tszhong0411/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
-      '@types/eslint':
-        specifier: ^9.6.1
-        version: 9.6.1
       eslint:
         specifier: ^9.21.0
         version: 9.21.0(jiti@2.4.2)
@@ -16277,6 +16274,7 @@ snapshots:
     dependencies:
       '@types/estree': 1.0.6
       '@types/json-schema': 7.0.15
+    optional: true
 
   '@types/estree-jsx@1.0.5':
     dependencies:
