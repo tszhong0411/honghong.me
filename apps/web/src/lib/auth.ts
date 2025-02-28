@@ -22,6 +22,7 @@ declare module 'next-auth' {
     } & DefaultSession['user']
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-shadow -- it's fine
   interface User {
     role: InferSelectModel<typeof users>['role']
   }
