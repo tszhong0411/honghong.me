@@ -605,10 +605,10 @@ importers:
     dependencies:
       '@upstash/ratelimit':
         specifier: ^2.0.5
-        version: 2.0.5(@upstash/redis@1.34.3)
+        version: 2.0.5(@upstash/redis@1.34.4)
       '@upstash/redis':
-        specifier: ^1.34.3
-        version: 1.34.3
+        specifier: ^1.34.4
+        version: 1.34.4
     devDependencies:
       '@tszhong0411/env':
         specifier: workspace:*
@@ -5324,8 +5324,8 @@ packages:
     peerDependencies:
       '@upstash/redis': ^1.34.3
 
-  '@upstash/redis@1.34.3':
-    resolution: {integrity: sha512-VT25TyODGy/8ljl7GADnJoMmtmJ1F8d84UXfGonRRF8fWYJz7+2J6GzW+a6ETGtk4OyuRTt7FRSvFG5GvrfSdQ==}
+  '@upstash/redis@1.34.4':
+    resolution: {integrity: sha512-AZx2iD5s1Pu/KCrRA7KVCffu3NSoaYnNY7N9YI7aLAYhcJfsriQKTe+8OxQWJqGqFbrvm17Lyr9HFnDLvqNpfA==}
 
   '@vercel/speed-insights@1.2.0':
     resolution: {integrity: sha512-y9GVzrUJ2xmgtQlzFP2KhVRoCglwfRQgjyfY607aU0hh0Un6d0OUyrJkjuAlsV18qR4zfoFPs/BiIj9YDS6Wzw==}
@@ -16383,14 +16383,14 @@ snapshots:
 
   '@upstash/core-analytics@0.0.10':
     dependencies:
-      '@upstash/redis': 1.34.3
+      '@upstash/redis': 1.34.4
 
-  '@upstash/ratelimit@2.0.5(@upstash/redis@1.34.3)':
+  '@upstash/ratelimit@2.0.5(@upstash/redis@1.34.4)':
     dependencies:
       '@upstash/core-analytics': 0.0.10
-      '@upstash/redis': 1.34.3
+      '@upstash/redis': 1.34.4
 
-  '@upstash/redis@1.34.3':
+  '@upstash/redis@1.34.4':
     dependencies:
       crypto-js: 4.2.0
 
