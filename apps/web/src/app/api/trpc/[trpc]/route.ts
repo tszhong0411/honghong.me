@@ -16,6 +16,7 @@ const handler = async (req: NextRequest) =>
     endpoint: '/api/trpc',
     req,
     router: appRouter,
+    // eslint-disable-next-line @eslint-react/no-missing-context-display-name -- not react context
     createContext: () => createContext(req),
     onError:
       process.env.NODE_ENV === 'development'

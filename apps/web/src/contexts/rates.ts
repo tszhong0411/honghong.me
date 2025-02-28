@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'react'
+import { createContext, use } from 'react'
 
 type RatesContext = {
   increment: () => void
@@ -7,9 +7,10 @@ type RatesContext = {
 }
 
 const Context = createContext<RatesContext | undefined>(undefined)
+Context.displayName = 'RatesContext'
 
 export const useRatesContext = () => {
-  const context = useContext(Context)
+  const context = use(Context)
 
   if (!context) {
     throw new Error('useRatesContext must be used within a RatesProvider')

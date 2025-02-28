@@ -1,13 +1,14 @@
 import type { Post } from 'content-collections'
 
-import { createContext, useContext } from 'react'
+import { createContext, use } from 'react'
 
 type PostContext = Post
 
 const Context = createContext<PostContext | undefined>(undefined)
+Context.displayName = 'PostContext'
 
 export const usePostContext = () => {
-  const context = useContext(Context)
+  const context = use(Context)
 
   if (!context) {
     throw new Error('usePostContext must be used within a PostProvider')

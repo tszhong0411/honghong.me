@@ -1,6 +1,6 @@
 import type { GetInfiniteCommentsOutput } from '@/trpc/routers/comments'
 
-import { createContext, useContext } from 'react'
+import { createContext, use } from 'react'
 
 export type CommentContext = {
   isEditing: boolean
@@ -14,9 +14,10 @@ export type CommentContext = {
 }
 
 const Context = createContext<CommentContext | undefined>(undefined)
+Context.displayName = 'CommentContext'
 
 export const useCommentContext = () => {
-  const context = useContext(Context)
+  const context = use(Context)
 
   if (!context) {
     throw new Error('useCommentContext must be used within a CommentProvider')

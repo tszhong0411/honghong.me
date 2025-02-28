@@ -1,6 +1,6 @@
 import type { GetInfiniteCommentsInput } from '@/trpc/routers/comments'
 
-import { createContext, useContext } from 'react'
+import { createContext, use } from 'react'
 
 type CommentsContext = {
   slug: string
@@ -9,9 +9,10 @@ type CommentsContext = {
 }
 
 const Context = createContext<CommentsContext | undefined>(undefined)
+Context.displayName = 'CommentsContext'
 
 export const useCommentsContext = () => {
-  const context = useContext(Context)
+  const context = use(Context)
 
   if (!context) {
     throw new Error('useCommentsContext must be used within a CommentsProvider')
