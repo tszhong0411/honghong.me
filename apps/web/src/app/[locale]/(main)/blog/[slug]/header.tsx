@@ -1,6 +1,6 @@
 'use client'
 
-import NumberFlow from '@number-flow/react'
+import NumberFlow, { continuous } from '@number-flow/react'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { BlurImage } from '@tszhong0411/ui'
 import { useEffect, useRef } from 'react'
@@ -67,7 +67,7 @@ const Header = () => {
             {viewsCountQuery.status === 'pending' ? '--' : null}
             {viewsCountQuery.status === 'error' ? t('common.error') : null}
             {viewsCountQuery.status === 'success' ? (
-              <NumberFlow willChange continuous value={viewsCountQuery.data.views} />
+              <NumberFlow willChange plugins={[continuous]} value={viewsCountQuery.data.views} />
             ) : null}
           </div>
           <div className='space-y-1 md:mx-auto'>
@@ -75,7 +75,11 @@ const Header = () => {
             {commentsCountQuery.status === 'pending' ? '--' : null}
             {commentsCountQuery.status === 'error' ? t('common.error') : null}
             {commentsCountQuery.status === 'success' ? (
-              <NumberFlow willChange continuous value={commentsCountQuery.data.comments} />
+              <NumberFlow
+                willChange
+                plugins={[continuous]}
+                value={commentsCountQuery.data.comments}
+              />
             ) : null}
           </div>
         </div>

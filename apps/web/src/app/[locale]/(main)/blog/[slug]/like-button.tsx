@@ -3,7 +3,7 @@
 /**
  * Inspired by: https://framer.university/resources/like-button-component
  */
-import NumberFlow from '@number-flow/react'
+import NumberFlow, { continuous } from '@number-flow/react'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { Separator } from '@tszhong0411/ui'
 import { motion } from 'motion/react'
@@ -142,7 +142,7 @@ const LikeButton = (props: LikeButtonProps) => {
         {status === 'pending' ? <div>--</div> : null}
         {status === 'error' ? <div>{t('common.error')}</div> : null}
         {status === 'success' ? (
-          <NumberFlow willChange continuous value={data.likes + cacheCount} />
+          <NumberFlow willChange plugins={[continuous]} value={data.likes + cacheCount} />
         ) : null}
       </motion.button>
     </div>

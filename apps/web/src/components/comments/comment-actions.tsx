@@ -1,6 +1,6 @@
 import type { GetInfiniteCommentsInput } from '@/trpc/routers/comments'
 
-import NumberFlow from '@number-flow/react'
+import NumberFlow, { continuous } from '@number-flow/react'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { Button, buttonVariants, toast } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
@@ -138,7 +138,7 @@ const CommentActions = () => {
           aria-label={t('blog.comments.like')}
         >
           <ThumbsUpIcon className='size-4' />
-          <NumberFlow willChange continuous value={comment.likes} />
+          <NumberFlow willChange plugins={[continuous]} value={comment.likes} />
         </Button>
         <Button
           variant='secondary'
@@ -149,7 +149,7 @@ const CommentActions = () => {
           aria-label={t('blog.comments.dislike')}
         >
           <ThumbsDownIcon className='size-4' />
-          <NumberFlow willChange continuous value={comment.dislikes} />
+          <NumberFlow willChange plugins={[continuous]} value={comment.dislikes} />
         </Button>
         {comment.parentId ? null : (
           <Button
@@ -174,7 +174,7 @@ const CommentActions = () => {
               'rotate-180': isOpenReplies
             })}
           />
-          <NumberFlow willChange continuous value={comment.replies} />
+          <NumberFlow willChange plugins={[continuous]} value={comment.replies} />
           {t('blog.comments.replies', { count: comment.replies })}
         </Button>
       ) : null}
