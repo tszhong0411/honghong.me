@@ -47,8 +47,8 @@
     "@tszhong0411/shared": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
     "@types/node": "^22.13.5",
-    "@types/react": "19.0.2",
-    "@types/react-dom": "19.0.3",
+    "@types/react": "19.0.10",
+    "@types/react-dom": "19.0.4",
     "postcss": "^8.5.3",
     "postcss-load-config": "^6.0.1",
     "tailwindcss": "^4.0.9"
