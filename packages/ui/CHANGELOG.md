@@ -1,5 +1,14 @@
 # @tszhong0411/ui
 
+## 0.0.60
+
+### Patch Changes
+
+- f399304: Update @types/react and @types/react-dom
+- cae03ca: Use `use`
+- Updated dependencies [d1a3c54]
+  - @tszhong0411/utils@0.0.21
+
 ## 0.0.59
 
 ### Patch Changes
