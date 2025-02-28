@@ -19,11 +19,6 @@ const config: NextConfig = {
     optimizePackageImports: ['shiki']
   },
 
-  devIndicators: {
-    appIsrStatus: process.env.NODE_ENV !== 'test',
-    buildActivity: process.env.NODE_ENV !== 'test'
-  },
-
   eslint: {
     ignoreDuringBuilds: !!process.env.CI
   },

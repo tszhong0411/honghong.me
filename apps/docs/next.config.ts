@@ -13,6 +13,13 @@ const config: NextConfig = {
     optimizePackageImports: ['shiki']
   },
 
+  eslint: {
+    ignoreDuringBuilds: !!process.env.CI
+  },
+  typescript: {
+    ignoreBuildErrors: !!process.env.CI
+  },
+
   images: {
     remotePatterns: [
       {
