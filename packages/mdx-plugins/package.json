@@ -17,12 +17,12 @@
   },
   "types": "./dist/index.d.ts",
   "dependencies": {
-    "@shikijs/rehype": "^2.2.0",
-    "@shikijs/transformers": "^2.2.0",
+    "@shikijs/rehype": "^3.1.0",
+    "@shikijs/transformers": "^3.1.0",
     "github-slugger": "^2.0.0",
     "remark": "^15.0.1",
-    "remark-gfm": "^4.0.0",
-    "shiki": "^2.3.1",
+    "remark-gfm": "^4.0.1",
+    "shiki": "^3.1.0",
     "unified": "^11.0.5",
     "unist-util-visit": "^5.0.0"
   },
