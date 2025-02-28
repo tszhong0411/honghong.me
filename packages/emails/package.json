@@ -13,14 +13,14 @@
     "lint:fix": "eslint --fix ."
   },
   "dependencies": {
-    "@react-email/components": "^0.0.31",
+    "@react-email/components": "^0.0.33",
     "react": "19.0.0",
-    "react-email": "3.0.4"
+    "react-email": "3.0.7"
   },
   "devDependencies": {
     "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
-    "@types/node": "^22.10.2",
+    "@types/node": "^22.13.5",
     "@types/react": "19.0.10"
   },
   "lint-staged": {
