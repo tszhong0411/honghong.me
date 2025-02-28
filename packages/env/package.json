@@ -13,8 +13,8 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@t3-oss/env-nextjs": "^0.11.1",
-    "zod": "^3.24.1"
+    "@t3-oss/env-nextjs": "^0.12.0",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@tszhong0411/eslint-config": "workspace:*",
