@@ -49,6 +49,9 @@
       "path": "./node_modules/cz-git"
     }
   },
+  "dependencies": {
+    "server-only": "^0.0.1"
+  },
   "devDependencies": {
     "@changesets/cli": "^2.28.1",
     "@commitlint/cli": "^19.7.1",
