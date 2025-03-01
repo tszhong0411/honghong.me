@@ -18,7 +18,7 @@ const middleware = (request: NextRequest) => {
     frame-src vercel.live;
     block-all-mixed-content;
     upgrade-insecure-requests;
-    worker-src blob:;
+    worker-src blob: 'self';
   `
 
   const response = i18nMiddleware(request)
