@@ -60,7 +60,7 @@ setup('authenticate user', async ({ page }) => {
 
   await page.context().addCookies([
     {
-      name: 'authjs.session-token',
+      name: 'better-auth.session_token',
       value: token,
       domain: 'localhost',
       path: '/',
