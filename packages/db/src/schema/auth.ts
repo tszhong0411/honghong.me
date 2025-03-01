@@ -8,7 +8,7 @@ export const roleEnum = pgEnum('role', ['user', 'admin'])
 
 export const users = pgTable('user', {
   id: text('id').primaryKey(),
-  name: text('name').default('Anonymous').notNull(),
+  name: text('name').notNull(),
   email: text('email').notNull().unique(),
   emailVerified: boolean('email_verified').notNull(),
   image: text('image'),
