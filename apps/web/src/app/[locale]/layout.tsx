@@ -1,6 +1,3 @@
-// eslint-disable-next-line simple-import-sort/imports -- must be the top-most import in this file
-import ReactScan from '@/components/react-scan'
-
 import type { Metadata, Viewport } from 'next'
 
 import '@/styles/globals.css'
@@ -13,6 +10,7 @@ import { cn } from '@tszhong0411/utils'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
+import Script from 'next/script'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
 import { Monitoring } from 'react-scan/monitoring/next'
 
@@ -141,7 +139,9 @@ const Layout = async (props: LayoutProps) => {
       className={cn(GeistSans.variable, GeistMono.variable)}
       suppressHydrationWarning
     >
-      <ReactScan />
+      <head>
+        <Script src='https://unpkg.com/react-scan/dist/auto.global.js' />
+      </head>
       <body className='relative flex min-h-screen flex-col'>
         {env.REACT_SCAN_MONITOR_API_KEY ? (
           <Monitoring
