@@ -48,11 +48,11 @@ cd honghong.me
 cp .env.example .env.local
 ```
 
-4. Fill in the NextAuth secret:
+4. Fill in the Better Auth secret:
 
 ```properties
-# Generate a random secret: https://generate-secret.vercel.app/32 or `openssl rand -base64 32`
-AUTH_SECRET=""
+# https://www.better-auth.com/docs/installation
+BETTER_AUTH_SECRET=""
 ```
 
 5. Install the dependencies:
