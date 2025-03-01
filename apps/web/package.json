@@ -39,7 +39,7 @@
     "@tszhong0411/ui": "workspace:*",
     "@tszhong0411/utils": "workspace:*",
     "@vercel/speed-insights": "^1.2.0",
-    "better-auth": "^1.1.21",
+    "better-auth": "^1.2.0",
     "better-call": "^1.0.3",
     "canvas-confetti": "^1.9.3",
     "class-variance-authority": "^0.7.1",
