@@ -10,22 +10,22 @@ import {
   DropdownMenuTrigger,
   Skeleton
 } from '@tszhong0411/ui'
-import { useSession } from 'next-auth/react'
 
+import { useSession } from '@/lib/auth-client'
 import { useDialogsStore } from '@/store/dialogs'
 import { getAvatarAbbreviation } from '@/utils/get-avatar-abbreviation'
-import { getDefaultUser } from '@/utils/get-default-user'
+import { getDefaultImage } from '@/utils/get-default-image'
 
 const AdminProfileDropdown = () => {
-  const { data, status } = useSession()
+  const { data: session, isPending } = useSession()
   const t = useTranslations()
   const { setIsSignInOpen } = useDialogsStore()
 
-  if (status === 'loading') {
+  if (isPending) {
     return <Skeleton className='size-9 rounded-full' />
   }
 
-  if (!data) {
+  if (!session) {
     return (
       <Button size='sm' onClick={() => setIsSignInOpen(true)}>
         {t('common.sign-in')}
@@ -33,8 +33,8 @@ const AdminProfileDropdown = () => {
     )
   }
 
-  const { id, image, name, email } = data.user
-  const { defaultImage, defaultName } = getDefaultUser(id)
+  const { id, image, name, email } = session.user
+  const defaultImage = getDefaultImage(id)
 
   return (
     <DropdownMenu>
@@ -42,7 +42,7 @@ const AdminProfileDropdown = () => {
         <Button className='size-9 rounded-full' variant='ghost'>
           <Avatar className='size-9'>
             <AvatarImage className='size-9' src={image ?? defaultImage} />
-            <AvatarFallback>{getAvatarAbbreviation(name ?? defaultName)}</AvatarFallback>
+            <AvatarFallback>{getAvatarAbbreviation(name)}</AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>

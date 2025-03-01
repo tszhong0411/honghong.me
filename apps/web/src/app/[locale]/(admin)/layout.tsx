@@ -3,7 +3,7 @@ import { SidebarProvider } from '@tszhong0411/ui'
 
 import AdminHeader from '@/components/admin/admin-header'
 import AdminSidebar from '@/components/admin/admin-sidebar'
-import { getCurrentUser } from '@/lib/auth'
+import { getSession } from '@/lib/auth'
 
 type LayoutProps = {
   params: Promise<{
@@ -16,9 +16,9 @@ type LayoutProps = {
 const Layout = async (props: LayoutProps) => {
   const { children } = props
   const { locale } = await props.params
-  const session = await getCurrentUser()
+  const session = await getSession()
 
-  if (!session || session.role !== 'admin') {
+  if (!session || session.user.role !== 'admin') {
     redirect({
       href: '/',
       locale

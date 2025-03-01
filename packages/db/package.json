@@ -20,7 +20,6 @@
     "with-env": "dotenv -e ../../.env.local --"
   },
   "dependencies": {
-    "@paralleldrive/cuid2": "^2.2.2",
     "@tszhong0411/env": "workspace:*",
     "drizzle-orm": "^0.40.0"
   },

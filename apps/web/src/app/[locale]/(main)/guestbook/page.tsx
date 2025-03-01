@@ -6,7 +6,7 @@ import { i18n } from '@tszhong0411/i18n/config'
 import { getTranslations, setRequestLocale } from '@tszhong0411/i18n/server'
 
 import PageTitle from '@/components/page-title'
-import { getCurrentUser } from '@/lib/auth'
+import { getSession } from '@/lib/auth'
 import { SITE_URL } from '@/lib/constants'
 import { getLocalizedPath } from '@/utils/get-localized-path'
 
@@ -63,7 +63,7 @@ const Page = async (props: PageProps) => {
 
   const { locale } = await props.params
   setRequestLocale(locale)
-  const user = await getCurrentUser()
+  const session = await getSession()
   const t = await getTranslations()
   const title = t('guestbook.title')
   const description = t('guestbook.description')
@@ -90,7 +90,7 @@ const Page = async (props: PageProps) => {
       <PageTitle title={title} description={description} />
       <div className='mx-auto max-w-xl space-y-10'>
         <Pinned />
-        {user ? <MessageBox user={user} /> : <SignIn />}
+        {session ? <MessageBox user={session.user} /> : <SignIn />}
         <Messages />
       </div>
     </>

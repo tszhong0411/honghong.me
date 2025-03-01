@@ -2,6 +2,9 @@ import path from 'node:path'
 
 import { test as setup } from '@playwright/test'
 import { accounts, db, sessions, users } from '@tszhong0411/db'
+import { env } from '@tszhong0411/env'
+import { generateId } from 'better-auth'
+import { serializeSignedCookie } from 'better-call'
 import dayjs from 'dayjs'
 
 import { TEST_USER } from './constants'
@@ -14,54 +17,71 @@ setup('unauthenticated', async ({ page }) => {
 })
 
 setup('authenticate user', async ({ page }) => {
-  const userId = TEST_USER.id
-  const sessionToken = TEST_USER.sessionToken
-  const expires = dayjs().add(1, 'month').toDate()
+  const expiresAt = dayjs().add(7, 'day').toDate()
 
-  await db
-    .insert(users)
-    .values({
-      id: userId,
-      name: 'Test User',
-      email: 'user@honghong.me',
-      image: 'http://localhost:3000/api/avatar/test',
-      role: 'user'
-    })
-    .onConflictDoNothing({ target: users.id })
+  await db.transaction(async (tx) => {
+    await tx
+      .insert(users)
+      .values({
+        id: TEST_USER.id,
+        name: TEST_USER.name,
+        email: TEST_USER.email,
+        image: TEST_USER.image,
+        emailVerified: false,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      })
+      .onConflictDoNothing({ target: users.id })
 
-  await db
-    .insert(sessions)
-    .values({
-      sessionToken,
-      userId,
-      expires
-    })
-    .onConflictDoUpdate({ target: sessions.sessionToken, set: { expires } })
+    await tx
+      .insert(accounts)
+      .values({
+        id: generateId(),
+        accountId: TEST_USER.accountId,
+        providerId: 'github',
+        userId: TEST_USER.id,
+        accessToken: 'gho_1234567890',
+        scope: 'read:user,user:email',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      })
+      .onConflictDoNothing({ target: accounts.id })
 
-  await db
-    .insert(accounts)
-    .values({
-      userId,
-      type: 'oauth',
-      provider: 'github',
-      providerAccountId: '00000000',
-      access_token: 'gho_0000',
-      token_type: 'bearer',
-      scope: 'read:user,user:email'
-    })
-    .onConflictDoNothing({ target: [accounts.provider, accounts.providerAccountId] })
+    await tx
+      .insert(sessions)
+      .values({
+        id: generateId(),
+        token: TEST_USER.sessionToken,
+        userId: TEST_USER.id,
+        expiresAt: expiresAt,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      })
+      .onConflictDoUpdate({
+        target: sessions.token,
+        set: { expiresAt: expiresAt }
+      })
+  })
+
+  const cookie = await serializeSignedCookie(
+    'better-auth.session_token',
+    TEST_USER.sessionToken,
+    env.BETTER_AUTH_SECRET
+  )
 
   await page.context().addCookies([
     {
-      name: 'authjs.session-token',
-      value: sessionToken,
+      name: 'better-auth.session_token',
+      value: `${TEST_USER.sessionToken}.${cookie.split('.')[2]!}`,
       domain: 'localhost',
       path: '/',
       httpOnly: true,
       sameSite: 'Lax',
-      expires: Math.floor(expires.getTime() / 1000)
+      expires: Math.floor(expiresAt.valueOf() / 1000)
     }
   ])
+
+  await page.goto('http://localhost:3000/')
 
   await page.context().storageState({ path: authenticatedStoragePath })
 })

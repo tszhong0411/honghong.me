@@ -3,10 +3,10 @@ import { db } from '@tszhong0411/db'
 import { SuperJSON } from 'superjson'
 import { ZodError } from 'zod'
 
-import { auth } from '@/lib/auth'
+import { getSession } from '@/lib/auth'
 
 export const createTRPCContext = async (opts: { headers: Headers }) => {
-  const session = await auth()
+  const session = await getSession()
 
   return {
     db,

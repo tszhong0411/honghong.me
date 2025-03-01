@@ -21,8 +21,7 @@ const config: KnipConfig = {
       entry: ['content-collections.ts', 'src/components/demos/**/*.tsx']
     },
     'apps/web': {
-      entry: ['content-collections.ts', 'src/i18n/request.ts'],
-      ignore: ['**/e2e/**']
+      entry: ['content-collections.ts', 'src/i18n/request.ts', 'src/e2e/auth.setup.ts']
     },
     'packages/db': {
       entry: ['src/seed.ts']

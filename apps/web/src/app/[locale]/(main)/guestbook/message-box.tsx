@@ -1,9 +1,8 @@
 'use client'
 
-import type { User } from '@/lib/auth'
-
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useTranslations } from '@tszhong0411/i18n/client'
+import { useRouter } from '@tszhong0411/i18n/routing'
 import {
   Avatar,
   AvatarFallback,
@@ -18,11 +17,12 @@ import {
   Textarea,
   toast
 } from '@tszhong0411/ui'
-import { signOut } from 'next-auth/react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
+import { signOut, type User } from '@/lib/auth-client'
 import { api } from '@/trpc/react'
+import { getDefaultImage } from '@/utils/get-default-image'
 
 type FormProps = {
   user: User
@@ -32,6 +32,7 @@ const MessageBox = (props: FormProps) => {
   const { user } = props
   const utils = api.useUtils()
   const t = useTranslations()
+  const router = useRouter()
 
   const guestbookFormSchema = z.object({
     message: z.string().min(1, {
@@ -61,10 +62,18 @@ const MessageBox = (props: FormProps) => {
     })
   }
 
+  const defaultImage = getDefaultImage(user.id)
+
   return (
     <div className='flex gap-3'>
       <Avatar>
-        <AvatarImage src={user.image} width={40} height={40} alt={user.name} className='size-10' />
+        <AvatarImage
+          src={user.image ?? defaultImage}
+          width={40}
+          height={40}
+          alt={user.name}
+          className='size-10'
+        />
         <AvatarFallback className='bg-transparent'>
           <Skeleton className='size-10 rounded-full' />
         </AvatarFallback>
@@ -84,7 +93,18 @@ const MessageBox = (props: FormProps) => {
             )}
           />
           <div className='mt-4 flex justify-end gap-2'>
-            <Button variant='outline' onClick={() => void signOut()}>
+            <Button
+              variant='outline'
+              onClick={async () => {
+                await signOut({
+                  fetchOptions: {
+                    onSuccess: () => {
+                      router.refresh()
+                    }
+                  }
+                })
+              }}
+            >
               {t('common.sign-out')}
             </Button>
             <Button

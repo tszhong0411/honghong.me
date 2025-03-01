@@ -10,8 +10,8 @@ export const comments = pgTable('comment', {
   userId: text('user_id')
     .notNull()
     .references(() => users.id),
-  createdAt: timestamp('created_at', { precision: 3 }).notNull().defaultNow(),
-  updatedAt: timestamp('updated_at', { precision: 3 }).notNull().defaultNow(),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at').notNull().defaultNow(),
   postId: text('post_id')
     .notNull()
     .references(() => posts.slug),

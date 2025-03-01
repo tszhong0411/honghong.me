@@ -10,12 +10,12 @@ import { cn } from '@tszhong0411/utils'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
+import Script from 'next/script'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
 import { Monitoring } from 'react-scan/monitoring/next'
 
 import Analytics from '@/components/analytics'
 import Hello from '@/components/hello'
-import ReactScan from '@/components/react-scan'
 import SignInDialog from '@/components/sign-in-dialog'
 import { SITE_KEYWORDS, SITE_NAME, SITE_URL } from '@/lib/constants'
 
@@ -139,7 +139,11 @@ const Layout = async (props: LayoutProps) => {
       className={cn(GeistSans.variable, GeistMono.variable)}
       suppressHydrationWarning
     >
-      <ReactScan />
+      <head>
+        {env.NODE_ENV === 'development' ? (
+          <Script src='https://unpkg.com/react-scan/dist/auto.global.js' />
+        ) : null}
+      </head>
       <body className='relative flex min-h-screen flex-col'>
         {env.REACT_SCAN_MONITOR_API_KEY ? (
           <Monitoring

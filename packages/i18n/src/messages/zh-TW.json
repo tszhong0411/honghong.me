@@ -111,6 +111,7 @@
     "error": "錯誤",
     "likes": "{count} 按讚",
     "sign-in": "登入",
+    "sign-in-error": "登入失敗。請再試一次。",
     "sign-out": "登出",
     "views": "{count} 瀏覽次數"
   },

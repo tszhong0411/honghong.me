@@ -111,6 +111,7 @@
     "error": "Error",
     "likes": "{count, plural, =1 {# like} other {# likes}}",
     "sign-in": "Sign in",
+    "sign-in-error": "Failed to sign in. Please try again.",
     "sign-out": "Sign out",
     "views": "{count, plural, =1 {# view} other {# views}}"
   },

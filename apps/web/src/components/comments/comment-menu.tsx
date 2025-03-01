@@ -18,17 +18,17 @@ import {
   toast
 } from '@tszhong0411/ui'
 import { MoreVerticalIcon } from 'lucide-react'
-import { useSession } from 'next-auth/react'
 
 import { useCommentContext } from '@/contexts/comment'
 import { useCommentsContext } from '@/contexts/comments'
 import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard'
+import { useSession } from '@/lib/auth-client'
 import { api } from '@/trpc/react'
 
 const CommentMenu = () => {
   const { comment } = useCommentContext()
   const { slug } = useCommentsContext()
-  const { data } = useSession()
+  const { data: session } = useSession()
   const utils = api.useUtils()
   const [copy] = useCopyToClipboard()
   const t = useTranslations()
@@ -48,7 +48,7 @@ const CommentMenu = () => {
 
   const commentQuery = parentId ? `comment=${parentId}&reply=${id}` : `comment=${id}`
 
-  const isAuthor = !isDeleted && data?.user.id === userId
+  const isAuthor = !isDeleted && session?.user.id === userId
 
   return (
     <AlertDialog>
