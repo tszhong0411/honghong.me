@@ -140,7 +140,9 @@ const Layout = async (props: LayoutProps) => {
       suppressHydrationWarning
     >
       <head>
-        <Script src='https://unpkg.com/react-scan/dist/auto.global.js' />
+        {env.NODE_ENV === 'development' ? (
+          <Script src='https://unpkg.com/react-scan/dist/auto.global.js' />
+        ) : null}
       </head>
       <body className='relative flex min-h-screen flex-col'>
         {env.REACT_SCAN_MONITOR_API_KEY ? (
