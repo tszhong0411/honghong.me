@@ -1,3 +1,6 @@
+// eslint-disable-next-line simple-import-sort/imports -- must be the top-most import in this file
+import ReactScan from '@/components/react-scan'
+
 import type { Metadata, Viewport } from 'next'
 
 import '@/styles/globals.css'
@@ -15,7 +18,6 @@ import { Monitoring } from 'react-scan/monitoring/next'
 
 import Analytics from '@/components/analytics'
 import Hello from '@/components/hello'
-import ReactScan from '@/components/react-scan'
 import SignInDialog from '@/components/sign-in-dialog'
 import { SITE_KEYWORDS, SITE_NAME, SITE_URL } from '@/lib/constants'
 
