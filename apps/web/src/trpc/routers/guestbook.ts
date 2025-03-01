@@ -8,7 +8,7 @@ import { ratelimit } from '@tszhong0411/kv'
 import { z } from 'zod'
 
 import { isProduction } from '@/lib/constants'
-import { getDefaultUser } from '@/utils/get-default-user'
+import { getDefaultImage } from '@/utils/get-default-image'
 import { getIp } from '@/utils/get-ip'
 
 import { createTRPCRouter, protectedProcedure, publicProcedure } from '../trpc'
@@ -46,13 +46,13 @@ export const guestbookRouter = createTRPCRouter({
       })
 
       const result = query.map((message) => {
-        const { defaultImage, defaultName } = getDefaultUser(message.user.id)
+        const defaultImage = getDefaultImage(message.user.id)
 
         return {
           ...message,
           user: {
             ...message.user,
-            name: message.user.name ?? defaultName,
+            name: message.user.name,
             image: message.user.image ?? defaultImage
           }
         }

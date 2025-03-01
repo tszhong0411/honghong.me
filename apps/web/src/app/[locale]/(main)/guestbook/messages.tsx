@@ -5,12 +5,12 @@ import type { GetInfiniteMessagesOutput } from '@/trpc/routers/guestbook'
 import { keepPreviousData } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { Avatar, AvatarFallback, AvatarImage, Skeleton } from '@tszhong0411/ui'
-import { useSession } from 'next-auth/react'
 import { useEffect, useMemo } from 'react'
 import { useInView } from 'react-intersection-observer'
 
 import { type MessageContext, MessageProvider } from '@/contexts/message'
 import { useFormattedDate } from '@/hooks/use-formatted-date'
+import { useSession } from '@/lib/auth-client'
 import { api } from '@/trpc/react'
 
 import DeleteButton from './delete-button'
@@ -89,7 +89,7 @@ const Messages = () => {
 
 const Message = (props: MessageProps) => {
   const { message } = props
-  const { data } = useSession()
+  const { data: session } = useSession()
 
   const {
     message: {
@@ -107,7 +107,7 @@ const Message = (props: MessageProps) => {
     [message]
   )
 
-  const isAuthor = data?.user && userId === data.user.id
+  const isAuthor = session?.user && userId === session.user.id
 
   return (
     <MessageProvider value={context}>

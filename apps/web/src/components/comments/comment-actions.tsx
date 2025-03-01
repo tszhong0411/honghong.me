@@ -6,12 +6,12 @@ import { Button, buttonVariants, toast } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { cva } from 'class-variance-authority'
 import { ChevronDownIcon, MessageSquareIcon, ThumbsDownIcon, ThumbsUpIcon } from 'lucide-react'
-import { useSession } from 'next-auth/react'
 
 import { useCommentContext } from '@/contexts/comment'
 import { useCommentsContext } from '@/contexts/comments'
 import { useRatesContext } from '@/contexts/rates'
 import { useCommentParams } from '@/hooks/use-comment-params'
+import { useSession } from '@/lib/auth-client'
 import { api } from '@/trpc/react'
 
 const rateVariants = cva(
@@ -33,7 +33,7 @@ const CommentActions = () => {
   const { comment, setIsReplying, isOpenReplies, setIsOpenReplies } = useCommentContext()
   const { increment, decrement, getCount } = useRatesContext()
   const { slug, sort } = useCommentsContext()
-  const { status } = useSession()
+  const { data: session } = useSession()
   const utils = api.useUtils()
   const [params] = useCommentParams()
   const t = useTranslations()
@@ -114,7 +114,7 @@ const CommentActions = () => {
     }
   })
 
-  const isAuthenticated = status === 'authenticated'
+  const isAuthenticated = session !== null
 
   const handleRateComment = (like: boolean) => {
     if (!isAuthenticated) {

@@ -2,6 +2,7 @@ import path from 'node:path'
 
 import { test as setup } from '@playwright/test'
 import { accounts, db, sessions, users } from '@tszhong0411/db'
+import { generateId } from 'better-auth'
 import dayjs from 'dayjs'
 
 import { TEST_USER } from './constants'
@@ -14,9 +15,8 @@ setup('unauthenticated', async ({ page }) => {
 })
 
 setup('authenticate user', async ({ page }) => {
-  const userId = TEST_USER.id
-  const sessionToken = TEST_USER.sessionToken
-  const expires = dayjs().add(1, 'month').toDate()
+  const { id: userId, token, accountId } = TEST_USER
+  const expiresAt = dayjs().add(1, 'month').toDate()
 
   await db
     .insert(users)
@@ -24,7 +24,10 @@ setup('authenticate user', async ({ page }) => {
       id: userId,
       name: 'Test User',
       email: 'user@honghong.me',
+      emailVerified: true,
       image: 'http://localhost:3000/api/avatar/test',
+      createdAt: new Date(),
+      updatedAt: new Date(),
       role: 'user'
     })
     .onConflictDoNothing({ target: users.id })
@@ -32,34 +35,38 @@ setup('authenticate user', async ({ page }) => {
   await db
     .insert(sessions)
     .values({
-      sessionToken,
+      id: generateId(),
+      token,
       userId,
-      expires
+      expiresAt,
+      createdAt: new Date(),
+      updatedAt: new Date()
     })
-    .onConflictDoUpdate({ target: sessions.sessionToken, set: { expires } })
+    .onConflictDoUpdate({ target: sessions.token, set: { expiresAt } })
 
   await db
     .insert(accounts)
     .values({
+      id: generateId(),
+      accountId,
+      providerId: 'github',
       userId,
-      type: 'oauth',
-      provider: 'github',
-      providerAccountId: '00000000',
-      access_token: 'gho_0000',
-      token_type: 'bearer',
-      scope: 'read:user,user:email'
+      accessToken: 'gho_0000',
+      scope: 'read:user,user:email',
+      createdAt: new Date(),
+      updatedAt: new Date()
     })
-    .onConflictDoNothing({ target: [accounts.provider, accounts.providerAccountId] })
+    .onConflictDoNothing({ target: [accounts.id] })
 
   await page.context().addCookies([
     {
       name: 'authjs.session-token',
-      value: sessionToken,
+      value: token,
       domain: 'localhost',
       path: '/',
       httpOnly: true,
       sameSite: 'Lax',
-      expires: Math.floor(expires.getTime() / 1000)
+      expires: Math.floor(expiresAt.getTime() / 1000)
     }
   ])
 

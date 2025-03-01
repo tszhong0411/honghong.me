@@ -2,6 +2,7 @@
 
 import { SiGithub } from '@icons-pack/react-simple-icons'
 import { useTranslations } from '@tszhong0411/i18n/client'
+import { usePathname } from '@tszhong0411/i18n/routing'
 import {
   Badge,
   Button,
@@ -9,12 +10,13 @@ import {
   DialogContent,
   DialogDescription,
   DialogHeader,
-  DialogTitle
+  DialogTitle,
+  toast
 } from '@tszhong0411/ui'
 import { Loader2Icon } from 'lucide-react'
-import { signIn } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 
+import { signIn } from '@/lib/auth-client'
 import { useDialogsStore } from '@/store/dialogs'
 
 type Provider = 'github' | 'google'
@@ -53,6 +55,7 @@ const SignInDialog = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [lastUsedProvider, setLastUsedProvider] = useState<Provider | null>(null)
   const t = useTranslations()
+  const pathname = usePathname()
 
   useEffect(() => {
     if (typeof globalThis !== 'undefined') {
@@ -61,10 +64,24 @@ const SignInDialog = () => {
     }
   }, [])
 
-  const handleSignIn = (provider: Provider) => {
+  const handleSignIn = async (provider: Provider) => {
     localStorage.setItem('last-used-provider', provider)
-    setIsLoading(true)
-    void signIn(provider)
+    await signIn.social({
+      provider,
+      callbackURL: pathname,
+      fetchOptions: {
+        onSuccess: () => {
+          setIsLoading(false)
+        },
+        onError: () => {
+          setIsLoading(false)
+          toast.error(t('common.sign-in-error'))
+        },
+        onRequest: () => {
+          setIsLoading(true)
+        }
+      }
+    })
   }
 
   return (

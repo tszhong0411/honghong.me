@@ -24,7 +24,7 @@ import { z } from 'zod'
 
 import { isProduction } from '@/lib/constants'
 import { resend } from '@/lib/resend'
-import { getDefaultUser } from '@/utils/get-default-user'
+import { getDefaultImage } from '@/utils/get-default-image'
 import { getIp } from '@/utils/get-ip'
 
 import { adminProcedure, createTRPCRouter, protectedProcedure, publicProcedure } from '../trpc'
@@ -165,7 +165,7 @@ export const commentsRouter = createTRPCRouter({
             .from(rates)
             .where(and(eq(rates.commentId, comment.id), eq(rates.like, false)))
 
-          const { defaultImage, defaultName } = getDefaultUser(comment.user.id)
+          const defaultImage = getDefaultImage(comment.user.id)
 
           return {
             ...comment,
@@ -177,7 +177,7 @@ export const commentsRouter = createTRPCRouter({
             user: {
               ...comment.user,
               image: comment.user.image ?? defaultImage,
-              name: comment.user.name ?? defaultName
+              name: comment.user.name
             }
           }
         })
@@ -271,10 +271,10 @@ export const commentsRouter = createTRPCRouter({
       if (!page) throw new TRPCError({ code: 'NOT_FOUND', message: 'Blog post not found' })
 
       const title = page.title
-      const { defaultImage, defaultName } = getDefaultUser(user.id)
+      const defaultImage = getDefaultImage(user.id)
 
       const userProfile = {
-        name: user.name ?? defaultName,
+        name: user.name,
         image: user.image ?? defaultImage
       }
 

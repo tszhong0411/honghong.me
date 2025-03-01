@@ -2,6 +2,7 @@
 
 import { SiFacebook, SiGithub, SiInstagram, SiX, SiYoutube } from '@icons-pack/react-simple-icons'
 import { useTranslations } from '@tszhong0411/i18n/client'
+import { useRouter } from '@tszhong0411/i18n/routing'
 import {
   Button,
   CommandDialog,
@@ -17,10 +18,10 @@ import {
   Logo
 } from '@tszhong0411/ui'
 import { CodeIcon, CommandIcon, LinkIcon, LogInIcon, LogOutIcon } from 'lucide-react'
-import { signOut, useSession } from 'next-auth/react'
 import { Fragment, useCallback, useEffect, useState } from 'react'
 
 import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard'
+import { signOut, useSession } from '@/lib/auth-client'
 import {
   SITE_FACEBOOK_URL,
   SITE_GITHUB_URL,
@@ -43,9 +44,10 @@ const CommandMenu = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [selectingValue, setSelectingValue] = useState('')
   const [copy] = useCopyToClipboard()
-  const { status } = useSession()
+  const { data: session } = useSession()
   const t = useTranslations()
   const { setIsSignInOpen } = useDialogsStore()
+  const router = useRouter()
 
   const isSelectingCommand = [t('common.sign-out'), t('command-menu.actions.copy-link')].includes(
     selectingValue
@@ -73,12 +75,20 @@ const CommandMenu = () => {
     {
       name: t('command-menu.groups.account'),
       actions: [
-        ...(status === 'authenticated'
+        ...(session
           ? [
               {
                 title: t('common.sign-out'),
                 icon: <LogOutIcon className='mr-3 size-4' />,
-                onSelect: () => signOut()
+                onSelect: async () => {
+                  await signOut({
+                    fetchOptions: {
+                      onSuccess: () => {
+                        router.refresh()
+                      }
+                    }
+                  })
+                }
               }
             ]
           : [
