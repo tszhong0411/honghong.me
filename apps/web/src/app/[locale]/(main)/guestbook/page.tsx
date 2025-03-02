@@ -81,6 +81,7 @@ const Page = async (props: PageProps) => {
       url: SITE_URL
     }
   }
+
   return (
     <>
       <script
