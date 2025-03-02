@@ -8,6 +8,13 @@
       "when": 1740841128008,
       "tag": "0000_simple_vengeance",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1740906040796,
+      "tag": "0001_dark_chameleon",
+      "breakpoints": true
     }
   ]
 }
