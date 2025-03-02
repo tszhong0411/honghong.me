@@ -114,13 +114,7 @@ const Message = (props: MessageProps) => {
       <div className='shadow-xs rounded-lg border p-4 dark:bg-zinc-900/30' id={`message-${id}`}>
         <div className='mb-3 flex gap-3'>
           <Avatar>
-            <AvatarImage
-              src={image}
-              width={40}
-              height={40}
-              className='size-10 rounded-full'
-              alt={name}
-            />
+            <AvatarImage src={image} className='size-10 rounded-full' alt={name} />
             <AvatarFallback className='bg-transparent'>
               <Skeleton className='size-10 rounded-full' />
             </AvatarFallback>
