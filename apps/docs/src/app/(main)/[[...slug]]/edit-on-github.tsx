@@ -13,7 +13,7 @@ const EditOnGitHub = (props: EditOnGitHubProps) => {
   return (
     <Link href={url} className='inline-flex items-center gap-2 text-sm font-medium' variant='muted'>
       <EditIcon className='size-4' />
-      Edit this page on GitHub
+      Edit on GitHub
     </Link>
   )
 }
