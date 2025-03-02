@@ -13,6 +13,7 @@ export const useClickOutside = <T extends HTMLElement = HTMLElement>(
       callback(event)
     }
 
+    document.addEventListener('mousedown', listener)
     document.addEventListener('touchstart', listener)
 
     return () => {
