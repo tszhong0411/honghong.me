@@ -14,7 +14,7 @@ import { useSession } from '@/lib/auth-client'
 import { api } from '@/trpc/react'
 
 import DeleteButton from './delete-button'
-import Loader from './loader'
+import MessagesLoader from './messages-loader'
 
 type UpdatedDateProps = {
   date: Date
@@ -81,7 +81,7 @@ const Messages = () => {
           <p className='text-muted-foreground text-sm'>{t('guestbook.failed-to-load-messages')}</p>
         </div>
       ) : null}
-      {isLoading ? <Loader /> : null}
+      {isLoading ? <MessagesLoader /> : null}
       <span ref={ref} className='invisible' />
     </div>
   )

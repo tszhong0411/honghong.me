@@ -14,7 +14,7 @@ const Placeholder = () => (
   </div>
 )
 
-const Loader = (props: React.ComponentProps<'div'>) => {
+const MessagesLoader = (props: React.ComponentProps<'div'>) => {
   const { className, ...rest } = props
 
   return (
@@ -26,4 +26,4 @@ const Loader = (props: React.ComponentProps<'div'>) => {
   )
 }
 
-export default Loader
+export default MessagesLoader
