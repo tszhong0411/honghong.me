@@ -13,7 +13,6 @@ import {
   DialogTitle,
   toast
 } from '@tszhong0411/ui'
-import { Loader2Icon } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 import { signIn } from '@/lib/auth-client'
@@ -52,7 +51,7 @@ const GoogleIcon = () => {
 
 const SignInDialog = () => {
   const { isSignInOpen, setIsSignInOpen } = useDialogsStore()
-  const [isLoading, setIsLoading] = useState(false)
+  const [isPending, setIsPending] = useState(false)
   const [lastUsedProvider, setLastUsedProvider] = useState<Provider | null>(null)
   const t = useTranslations()
   const pathname = usePathname()
@@ -71,14 +70,14 @@ const SignInDialog = () => {
       callbackURL: pathname,
       fetchOptions: {
         onSuccess: () => {
-          setIsLoading(false)
+          setIsPending(false)
         },
         onError: () => {
-          setIsLoading(false)
+          setIsPending(false)
           toast.error(t('common.sign-in-error'))
         },
         onRequest: () => {
-          setIsLoading(true)
+          setIsPending(true)
         }
       }
     })
@@ -102,32 +101,20 @@ const SignInDialog = () => {
           <Button
             className='relative h-10 rounded-xl font-semibold'
             onClick={() => handleSignIn('github')}
-            disabled={isLoading}
+            isPending={isPending}
           >
-            {isLoading ? (
-              <Loader2Icon className='animate-spin' />
-            ) : (
-              <>
-                <SiGithub className='mr-3' />
-                {t('dialog.sign-in.continue-with', { provider: 'GitHub' })}
-              </>
-            )}
+            {isPending ? null : <SiGithub className='mr-3' />}
+            {t('dialog.sign-in.continue-with', { provider: 'GitHub' })}
             {lastUsedProvider === 'github' && <LastUsed />}
           </Button>
           <Button
             className='relative h-10 rounded-xl border font-semibold'
             variant='ghost'
             onClick={() => handleSignIn('google')}
-            disabled={isLoading}
+            isPending={isPending}
           >
-            {isLoading ? (
-              <Loader2Icon className='animate-spin' />
-            ) : (
-              <>
-                <GoogleIcon />
-                {t('dialog.sign-in.continue-with', { provider: 'Google' })}
-              </>
-            )}
+            {isPending ? null : <GoogleIcon />}
+            {t('dialog.sign-in.continue-with', { provider: 'Google' })}
             {lastUsedProvider === 'google' && <LastUsed />}
           </Button>
         </div>
