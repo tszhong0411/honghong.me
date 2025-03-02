@@ -15,6 +15,13 @@
       "when": 1740906040796,
       "tag": "0001_dark_chameleon",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1740907130428,
+      "tag": "0002_numerous_argent",
+      "breakpoints": true
     }
   ]
 }
