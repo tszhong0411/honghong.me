@@ -66,7 +66,7 @@ Welcome to the monorepo of my personal blog! This repository houses the code for
 
 ### Authentication & Data
 
-- NextAuth.js authentication
+- Better Auth
 - Redis caching
 - Upstash for API rate limiting
 - t3-env for environment variables
