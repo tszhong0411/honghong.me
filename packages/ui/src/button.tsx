@@ -1,5 +1,6 @@
 import { cn } from '@tszhong0411/utils'
 import { cva, type VariantProps } from 'cva'
+import { LoaderIcon } from 'lucide-react'
 
 const buttonVariants = cva({
   base: [
@@ -29,13 +30,31 @@ const buttonVariants = cva({
   }
 })
 
-type ButtonProps = React.ComponentProps<'button'> & VariantProps<typeof buttonVariants>
+type ButtonProps = { isPending?: boolean } & React.ComponentProps<'button'> &
+  VariantProps<typeof buttonVariants>
 
 const Button = (props: ButtonProps) => {
-  const { className, variant, size, type = 'button', ...rest } = props
+  const {
+    className,
+    variant,
+    size,
+    type = 'button',
+    isPending,
+    disabled,
+    children,
+    ...rest
+  } = props
 
   return (
-    <button className={cn(buttonVariants({ variant, size, className }))} type={type} {...rest} />
+    <button
+      className={cn(buttonVariants({ variant, size, className }))}
+      type={type}
+      disabled={disabled ?? isPending}
+      {...rest}
+    >
+      {isPending && <LoaderIcon className='mr-2 size-4 animate-spin' />}
+      {children}
+    </button>
   )
 }
 
