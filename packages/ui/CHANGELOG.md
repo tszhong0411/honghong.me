@@ -1,5 +1,11 @@
 # @tszhong0411/ui
 
+## 0.0.61
+
+### Patch Changes
+
+- b744f74: Add pending state to Button component
+
 ## 0.0.60
 
 ### Patch Changes
