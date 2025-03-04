@@ -83,6 +83,7 @@
       "written-by": "撰寫者"
     },
     "like": "讚",
+    "like-limit-reached": "您只能對每篇文章按讚 3 次",
     "like-this-post": "喜歡這個文章",
     "on-this-page": "目錄",
     "title": "部落格"

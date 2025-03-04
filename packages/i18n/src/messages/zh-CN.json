@@ -83,6 +83,7 @@
       "written-by": "撰写者"
     },
     "like": "赞",
+    "like-limit-reached": "您只能对每篇文章点赞 3 次",
     "like-this-post": "喜欢这个文章",
     "on-this-page": "目录",
     "title": "博客"

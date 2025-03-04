@@ -83,6 +83,7 @@
       "written-by": "Written by"
     },
     "like": "Like",
+    "like-limit-reached": "You can only like 3 times per post",
     "like-this-post": "Like this post",
     "on-this-page": "On this page",
     "title": "Blog"

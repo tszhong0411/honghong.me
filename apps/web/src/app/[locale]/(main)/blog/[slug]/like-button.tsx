@@ -5,7 +5,7 @@
  */
 import NumberFlow, { continuous } from '@number-flow/react'
 import { useTranslations } from '@tszhong0411/i18n/client'
-import { Separator } from '@tszhong0411/ui'
+import { Separator, toast } from '@tszhong0411/ui'
 import { motion } from 'motion/react'
 import { useRef, useState } from 'react'
 import { useDebouncedCallback } from 'use-debounce'
@@ -81,7 +81,11 @@ const LikeButton = (props: LikeButtonProps) => {
   }, 1000)
 
   const handleLikeButtonClick = () => {
-    if (status === 'pending' || !data || data.currentUserLikes + cacheCount >= 3) return
+    if (status === 'pending' || !data) return
+    if (data.currentUserLikes + cacheCount >= 3) {
+      toast.error(t('blog.like-limit-reached'))
+      return
+    }
 
     const value = cacheCount === 3 ? cacheCount : cacheCount + 1
     setCacheCount(value)
