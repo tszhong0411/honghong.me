@@ -38,6 +38,7 @@ runs:
       run: |
         cat << EOF > .env.local
         DATABASE_URL=postgres://postgres:postgres@localhost:5432/honghongme
+        RESEND_API_KEY=re_fake_api_key
         UPSTASH_REDIS_REST_URL=http://127.0.0.1:8079
         UPSTASH_REDIS_REST_TOKEN=honghongme
         BETTER_AUTH_SECRET=1234567890
