@@ -13,19 +13,17 @@ test.describe('guestbook page', () => {
     const message = createId()
 
     await page.waitForResponse(
-      (res) => res.url().includes('/api/trpc/guestbook.getInfiniteMessages') && res.status() === 200
+      (res) => res.url().includes('guestbook.getInfiniteMessages') && res.status() === 200
     )
 
     await page.getByPlaceholder('Leave a message').fill(message)
     await page.getByRole('button', { name: 'Submit' }).click()
 
     await page.waitForResponse(
-      (res) => res.url().includes('/api/trpc/guestbook.create?batch=1') && res.status() === 200
+      (res) => res.url().includes('guestbook.create') && res.status() === 200
     )
     await page.waitForResponse(
-      (res) =>
-        res.url().includes('/api/trpc/guestbook.getInfiniteMessages?batch=1') &&
-        res.status() === 200
+      (res) => res.url().includes('guestbook.getInfiniteMessages') && res.status() === 200
     )
 
     await expect(page.getByTestId('guestbook-messages-list').getByText(message)).toBeVisible()
@@ -41,7 +39,7 @@ test.describe('guestbook page', () => {
     })
 
     await page.waitForResponse(
-      (res) => res.url().includes('/api/trpc/guestbook.getInfiniteMessages') && res.status() === 200
+      (res) => res.url().includes('guestbook.getInfiniteMessages') && res.status() === 200
     )
 
     const messageBlock = page.locator('div[id^=message]', { hasText: message })
@@ -50,12 +48,10 @@ test.describe('guestbook page', () => {
     await page.getByRole('button', { name: 'Delete' }).click()
 
     await page.waitForResponse(
-      (res) => res.url().includes('/api/trpc/guestbook.delete?batch=1') && res.status() === 200
+      (res) => res.url().includes('guestbook.delete') && res.status() === 200
     )
     await page.waitForResponse(
-      (res) =>
-        res.url().includes('/api/trpc/guestbook.getInfiniteMessages?batch=1') &&
-        res.status() === 200
+      (res) => res.url().includes('guestbook.getInfiniteMessages') && res.status() === 200
     )
 
     await expect(page.getByTestId('guestbook-messages-list').getByText(message)).toBeHidden()
