@@ -40,8 +40,8 @@ Welcome to the monorepo of my personal blog! This repository houses the code for
 
 ### Blog Features
 
-- Comments system
-- Like functionality
+- Comment system
+- Like Functionality
 - Post view counter
 - Blog post search
 - RSS feed
@@ -101,7 +101,7 @@ Please refer to the [contributing guidelines](./CONTRIBUTING.md) for detailed in
 
 This project has been possible thanks to the wonderful open-source community. Special thanks to [Timothy](https://www.timlrx.com/) for the [Tailwind nextjs starter blog template](https://github.com/timlrx/tailwind-nextjs-starter-blog).
 
-This project also uses / adapts the following open-source projects.
+This project also uses/adapts the following open-source projects.
 
 Without them, this project would not have been possible:
 
