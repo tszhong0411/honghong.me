@@ -1,5 +1,11 @@
 # @tszhong0411/tsconfig
 
+## 0.0.12
+
+### Patch Changes
+
+- 10ccc18: Upgrade next from ^15.2.0 to ^15.2.3
+
 ## 0.0.11
 
 ### Patch Changes

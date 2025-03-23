@@ -1,5 +1,12 @@
 # @tszhong0411/ui
 
+## 0.0.62
+
+### Patch Changes
+
+- 10ccc18: Upgrade next from ^15.2.0 to ^15.2.3
+  - @tszhong0411/utils@0.0.21
+
 ## 0.0.61
 
 ### Patch Changes
