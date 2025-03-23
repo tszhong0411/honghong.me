@@ -135,6 +135,9 @@ jobs:
       - name: Migrate database
         run: pnpm run db:migrate
 
+      - name: Seed database
+        run: pnpm run db:seed
+
       - name: Run Playwright tests
         run: pnpm run test:e2e
 
