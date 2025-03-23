@@ -1,5 +1,11 @@
 # @tszhong0411/eslint-config
 
+## 0.1.35
+
+### Patch Changes
+
+- 10ccc18: Upgrade next from ^15.2.0 to ^15.2.3
+
 ## 0.1.34
 
 ### Patch Changes
