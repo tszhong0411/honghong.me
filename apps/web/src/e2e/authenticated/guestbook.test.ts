@@ -45,7 +45,8 @@ test.describe('guestbook page', () => {
     const messageBlock = page.locator('div[id^=message]', { hasText: message })
     await messageBlock.getByRole('button', { name: 'Delete' }).click()
 
-    await page.getByRole('button', { name: 'Delete' }).click()
+    const deleteDialog = page.locator('div[role=alertdialog]')
+    await deleteDialog.getByRole('button', { name: 'Delete' }).click()
 
     await page.waitForResponse(
       (res) => res.url().includes('guestbook.delete') && res.status() === 200
