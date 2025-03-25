@@ -13,7 +13,6 @@ export const a11y = async (options: Options) => {
   const { violations } = await new AxeBuilder({ page })
     .disableRules(['color-contrast'])
     .withTags(A11Y_TAGS)
-    .exclude('#react-scan-root')
     .analyze()
 
   if (violations.length > 0) {

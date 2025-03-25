@@ -6,7 +6,6 @@ import { withContentCollections } from '@content-collections/next'
 import bundleAnalyzer from '@next/bundle-analyzer'
 import { NextConfigHeaders } from '@tszhong0411/shared'
 import createNextIntlPlugin from 'next-intl/plugin'
-import ReactComponentName from 'react-scan/react-component-name/webpack'
 
 const withNextIntl = createNextIntlPlugin()
 
@@ -70,15 +69,6 @@ const config: NextConfig = {
   // eslint-disable-next-line @typescript-eslint/require-await -- must be async
   async headers() {
     return NextConfigHeaders
-  },
-
-  webpack: (c) => {
-    if (process.env.REACT_SCAN_MONITOR_API_KEY) {
-      c.plugins.push(ReactComponentName({}))
-    }
-
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- it's unknown
-    return c
   }
 }
 
