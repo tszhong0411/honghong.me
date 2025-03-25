@@ -1,6 +1,6 @@
 import { createId } from '@paralleldrive/cuid2'
-import test, { expect } from '@playwright/test'
-import { db, guestbook } from '@tszhong0411/db'
+import { expect, test } from '@playwright/test'
+import { db, eq, guestbook } from '@tszhong0411/db'
 
 import { TEST_USER } from '../constants'
 
@@ -56,4 +56,8 @@ test.describe('guestbook page', () => {
 
     await expect(page.getByTestId('guestbook-messages-list').getByText(message)).toBeHidden()
   })
+})
+
+test.afterAll(async () => {
+  await db.delete(guestbook).where(eq(guestbook.userId, TEST_USER.id))
 })

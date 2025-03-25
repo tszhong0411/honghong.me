@@ -7,16 +7,19 @@ import { generateId } from 'better-auth'
 import { serializeSignedCookie } from 'better-call'
 import dayjs from 'dayjs'
 
-import { TEST_USER } from './constants'
+import { TEST_USER } from '../constants'
 
-const authenticatedStoragePath = path.resolve(import.meta.dirname, '.auth/user.json')
-const unauthenticatedStoragePath = path.resolve(import.meta.dirname, '.auth/unauthenticated.json')
+const authenticatedStoragePath = path.resolve(import.meta.dirname, '../.auth/user.json')
+const unauthenticatedStoragePath = path.resolve(
+  import.meta.dirname,
+  '../.auth/unauthenticated.json'
+)
 
-setup('unauthenticated', async ({ page }) => {
+setup('setup unauthenticated', async ({ page }) => {
   await page.context().storageState({ path: unauthenticatedStoragePath })
 })
 
-setup('authenticate user', async ({ page }) => {
+setup('setup authenticated', async ({ page }) => {
   const expiresAt = dayjs().add(7, 'day').toDate()
 
   await db.transaction(async (tx) => {

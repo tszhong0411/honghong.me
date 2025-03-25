@@ -37,7 +37,8 @@ const config: NextConfig = {
         protocol: 'https',
         hostname: '**.googleusercontent.com'
       }
-    ]
+    ],
+    domains: ['localhost']
   },
 
   // eslint-disable-next-line @typescript-eslint/require-await -- must be async

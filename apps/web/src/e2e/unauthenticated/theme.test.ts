@@ -1,4 +1,4 @@
-import test from '@playwright/test'
+import { test } from '@playwright/test'
 
 import { checkAppliedTheme, checkStoredTheme, createBrowserContext } from '../utils/theme'
 
