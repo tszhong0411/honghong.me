@@ -105,6 +105,21 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
 
+      - name: Write test post
+        run: |
+          cat << EOF > apps/web/src/content/blog/en/test.mdx
+          ---
+          title: Test Post
+          date: '2000-01-01T00:00:00Z'
+          modifiedTime: '2000-01-01T00:00:00Z'
+          summary: This is a test post.
+          ---
+
+          # Test Post
+
+          This is a test post.
+          EOF
+
       - name: Build apps
         run: pnpm build:apps
 

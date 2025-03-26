@@ -36,6 +36,10 @@ const config: NextConfig = {
       {
         protocol: 'https',
         hostname: '**.googleusercontent.com'
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost'
       }
     ]
   },

@@ -80,7 +80,11 @@ const MessageBox = (props: FormProps) => {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Textarea placeholder={t('guestbook.placeholder')} {...field} />
+                  <Textarea
+                    placeholder={t('guestbook.placeholder')}
+                    data-testid='guestbook-textarea'
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -105,6 +109,7 @@ const MessageBox = (props: FormProps) => {
               type='submit'
               disabled={guestbookMutation.isPending}
               aria-disabled={guestbookMutation.isPending}
+              data-testid='guestbook-submit-button'
             >
               {t('guestbook.submit')}
             </Button>

@@ -73,6 +73,7 @@ const CommentPost = () => {
           onModEnter={submitComment}
           placeholder={t('blog.comments.placeholder')}
           disabled={disabled}
+          data-testid='comment-textarea'
         />
         <Button
           variant='ghost'
@@ -82,6 +83,7 @@ const CommentPost = () => {
           disabled={disabled || !content}
           aria-label={t('blog.comments.send-comment')}
           aria-disabled={disabled || !content}
+          data-testid='comment-submit-button'
         >
           <SendIcon className='size-4' />
         </Button>

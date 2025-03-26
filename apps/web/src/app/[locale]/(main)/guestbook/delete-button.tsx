@@ -40,11 +40,12 @@ const DeleteButton = () => {
             variant='destructive'
             disabled={guestbookMutation.isPending}
             aria-disabled={guestbookMutation.isPending}
+            data-testid='guestbook-delete-button'
           >
             {t('common.delete')}
           </Button>
         </AlertDialogTrigger>
-        <AlertDialogContent>
+        <AlertDialogContent data-testid='guestbook-dialog'>
           <AlertDialogHeader>
             <AlertDialogTitle>{t('guestbook.delete-dialog.title')}</AlertDialogTitle>
             <AlertDialogDescription>
@@ -56,6 +57,7 @@ const DeleteButton = () => {
             <AlertDialogAction
               onClick={() => handleDeleteMessage(message.id)}
               className={buttonVariants({ variant: 'destructive' })}
+              data-testid='guestbook-dialog-delete-button'
             >
               {t('common.delete')}
             </AlertDialogAction>
