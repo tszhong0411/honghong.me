@@ -7,19 +7,12 @@ test.describe('comment page', () => {
   })
 
   test('should be able to submit a comment', async ({ page }) => {
-    await page.waitForResponse(
-      (res) => res.url().includes('comments.getInfiniteComments') && res.status() === 200
-    )
+    const message = 'Test Comment'
 
-    await page.getByPlaceholder('Leave a comment').fill('Test Comment')
-    await page.getByRole('button', { name: 'Send comment' }).click()
+    await page.getByTestId('comment-textarea').fill(message)
+    await page.getByTestId('comment-submit-button').click()
 
-    await page.waitForResponse((res) => res.url().includes('comments.post') && res.status() === 200)
-    await page.waitForResponse(
-      (res) => res.url().includes('comments.getInfiniteComments') && res.status() === 200
-    )
-
-    await expect(page.getByTestId('comments-list').getByText('Test Comment')).toBeVisible()
+    await expect(page.getByTestId('comments-list').getByText(message)).toBeVisible()
   })
 })
 

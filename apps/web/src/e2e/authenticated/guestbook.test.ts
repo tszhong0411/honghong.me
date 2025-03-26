@@ -12,50 +12,29 @@ test.describe('guestbook page', () => {
   test('should be able to submit a message', async ({ page }) => {
     const message = createId()
 
-    await page.waitForResponse(
-      (res) => res.url().includes('guestbook.getInfiniteMessages') && res.status() === 200
-    )
-
-    await page.getByPlaceholder('Leave a message').fill(message)
-    await page.getByRole('button', { name: 'Submit' }).click()
-
-    await page.waitForResponse(
-      (res) => res.url().includes('guestbook.create') && res.status() === 200
-    )
-    await page.waitForResponse(
-      (res) => res.url().includes('guestbook.getInfiniteMessages') && res.status() === 200
-    )
+    await page.getByTestId('guestbook-textarea').fill(message)
+    await page.getByTestId('guestbook-submit-button').click()
 
     await expect(page.getByTestId('guestbook-messages-list').getByText(message)).toBeVisible()
   })
 
   test('should be able to delete a message', async ({ page }) => {
-    const message = createId()
+    const id = createId()
+    const message = 'Test message'
 
     await db.insert(guestbook).values({
-      id: createId(),
+      id,
       body: message,
       userId: TEST_USER.id
     })
 
-    await page.waitForResponse(
-      (res) => res.url().includes('guestbook.getInfiniteMessages') && res.status() === 200
-    )
+    const messageBlock = page.getByTestId(`message-${id}`)
+    await messageBlock.getByTestId('guestbook-delete-button').click()
 
-    const messageBlock = page.locator('div[id^=message]', { hasText: message })
-    await messageBlock.getByRole('button', { name: 'Delete' }).click()
+    const deleteDialog = page.getByTestId('guestbook-dialog')
+    await deleteDialog.getByTestId('guestbook-dialog-delete-button').click()
 
-    const deleteDialog = page.locator('div[role=alertdialog]')
-    await deleteDialog.getByRole('button', { name: 'Delete' }).click()
-
-    await page.waitForResponse(
-      (res) => res.url().includes('guestbook.delete') && res.status() === 200
-    )
-    await page.waitForResponse(
-      (res) => res.url().includes('guestbook.getInfiniteMessages') && res.status() === 200
-    )
-
-    await expect(page.getByTestId('guestbook-messages-list').getByText(message)).toBeHidden()
+    await expect(messageBlock).toBeHidden()
   })
 })
 
