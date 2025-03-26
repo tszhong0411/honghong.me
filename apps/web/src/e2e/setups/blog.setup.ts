@@ -1,3 +1,4 @@
+import { execSync } from 'node:child_process'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 
@@ -29,4 +30,7 @@ setup('setup blog', async () => {
     .onConflictDoNothing({ target: posts.slug })
 
   await fs.writeFile(testPostPath, TEST_POST)
+
+  // eslint-disable-next-line sonarjs/no-os-command-from-path -- it's safe
+  execSync('pnpm --filter=web build:mdx')
 })
