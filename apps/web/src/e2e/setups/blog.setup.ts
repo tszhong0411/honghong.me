@@ -1,4 +1,3 @@
-import { execSync } from 'node:child_process'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 
@@ -29,8 +28,7 @@ setup('setup blog', async () => {
     })
     .onConflictDoNothing({ target: posts.slug })
 
+  // Only works in dev mode since content-collections will build the test post
+  // In CI, we have a GitHub Action to write the test post before building the apps
   await fs.writeFile(testPostPath, TEST_POST)
-
-  // eslint-disable-next-line sonarjs/no-os-command-from-path -- it's safe
-  execSync('pnpm --filter=web build:mdx')
 })
