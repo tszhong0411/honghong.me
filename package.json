@@ -53,6 +53,7 @@
     "@changesets/cli": "^2.28.1",
     "@commitlint/cli": "^19.7.1",
     "@commitlint/config-conventional": "^19.7.1",
+    "@cspell/dict-redis": "^1.0.5",
     "@playwright/test": "^1.50.1",
     "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/prettier-config": "workspace:*",
