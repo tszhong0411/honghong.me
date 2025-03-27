@@ -297,7 +297,7 @@ export const commentsRouter = createTRPCRouter({
           if (!isProduction || !resend) return
 
           await resend.emails.send({
-            from: 'honghong.me <me@honghong.me>',
+            from: 'Nelson Lai <me@honghong.me>',
             to: env.AUTHOR_EMAIL,
             subject: 'New comment on your blog post',
             react: Comment({
@@ -323,7 +323,7 @@ export const commentsRouter = createTRPCRouter({
 
           if (parentComment && parentComment.user.email !== user.email) {
             await resend.emails.send({
-              from: 'honghong.me <me@honghong.me>',
+              from: 'Nelson Lai <me@honghong.me>',
               to: parentComment.user.email,
               subject: 'New reply to your comment',
               react: Reply({
