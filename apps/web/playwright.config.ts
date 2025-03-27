@@ -21,7 +21,7 @@ export default defineConfig({
     { name: 'setup', testMatch: /\.setup\.ts$/, teardown: 'teardown' },
     { name: 'authenticated', testMatch: /\.authenticated\.test\.ts$/, dependencies: ['setup'] },
     { name: 'unauthenticated', testMatch: /\.unauthenticated\.test\.ts$/, dependencies: ['setup'] },
-    { name: 'teardown', testMatch: /\.teardown\.ts$/ },
+    { name: 'teardown', testMatch: /global\.teardown\.ts$/ },
     {
       name: 'chromium',
       use: {
