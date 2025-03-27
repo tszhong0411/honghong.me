@@ -106,6 +106,7 @@ const LikeButton = (props: LikeButtonProps) => {
         aria-label={t('blog.like-this-post')}
         whileTap={{ scale: 0.96 }}
         type='button'
+        data-testid='like-button'
       >
         <svg
           xmlns='http://www.w3.org/2000/svg'
@@ -146,7 +147,12 @@ const LikeButton = (props: LikeButtonProps) => {
         {status === 'pending' ? <div>--</div> : null}
         {status === 'error' ? <div>{t('common.error')}</div> : null}
         {status === 'success' ? (
-          <NumberFlow willChange plugins={[continuous]} value={data.likes + cacheCount} />
+          <NumberFlow
+            willChange
+            plugins={[continuous]}
+            value={data.likes + cacheCount}
+            data-testid='like-count'
+          />
         ) : null}
       </motion.button>
     </div>

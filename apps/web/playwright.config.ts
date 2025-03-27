@@ -20,7 +20,7 @@ export default defineConfig({
   projects: [
     { name: 'setup', testMatch: /\.setup\.ts$/, teardown: 'teardown' },
     { name: 'authenticated', testMatch: /\.authenticated\.test\.ts$/, dependencies: ['setup'] },
-    { name: 'unauthenticated', testMatch: /\.unauthenticated\.test\.ts$/ },
+    { name: 'unauthenticated', testMatch: /\.unauthenticated\.test\.ts$/, dependencies: ['setup'] },
     { name: 'teardown', testMatch: /\.teardown\.ts$/ },
     {
       name: 'chromium',
