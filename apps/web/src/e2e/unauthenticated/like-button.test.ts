@@ -6,6 +6,8 @@ test.describe('like button', () => {
   })
 
   test('should be able to like a post', async ({ page }) => {
+    await expect(page.getByTestId('like-count')).toHaveAttribute('aria-label', '0')
+
     await page.getByTestId('like-button').click()
     await expect(page.getByTestId('like-count')).toHaveAttribute('aria-label', '1')
 
