@@ -24,7 +24,8 @@ setup('setup blog', async () => {
     .insert(posts)
     .values({
       slug: 'test',
-      views: 0
+      views: 0,
+      likes: 0
     })
     .onConflictDoNothing({ target: posts.slug })
 

@@ -39,6 +39,7 @@ const Comment = (props: CommentProps) => {
   const t = useTranslations()
 
   const {
+    id,
     body,
     createdAt,
     isDeleted,
@@ -86,6 +87,7 @@ const Comment = (props: CommentProps) => {
         className={cn('p-2.5', {
           'bg-accent/40 rounded-lg': isHighlighted
         })}
+        data-testid={`comment-${id}`}
       >
         <div className='flex gap-4'>
           <Image
