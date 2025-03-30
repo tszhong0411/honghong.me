@@ -62,7 +62,7 @@ const Header = () => {
             <div className='text-muted-foreground'>{t('blog.header.published-on')}</div>
             <div>{formattedDate}</div>
           </div>
-          <div className='space-y-1 md:mx-auto'>
+          <div className='space-y-1 md:mx-auto' data-testid='views-count'>
             <div className='text-muted-foreground'>{t('blog.header.views')}</div>
             {viewsCountQuery.status === 'pending' ? '--' : null}
             {viewsCountQuery.status === 'error' ? t('common.error') : null}
