@@ -8,8 +8,8 @@ import { CommentsProvider } from '@/contexts/comments'
 
 import { RatesProvider } from '../../contexts/rates'
 
+import CommentList from './comment-list'
 import CommentPost from './comment-post'
-import CommentsList from './comments-list'
 
 type CommentsProps = {
   slug: string
@@ -41,7 +41,7 @@ const Comments = (props: CommentsProps) => {
       >
         <div className='space-y-6'>
           <CommentPost />
-          <CommentsList />
+          <CommentList />
         </div>
       </CommentsProvider>
     </RatesProvider>
