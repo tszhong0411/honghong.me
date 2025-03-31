@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test'
 import { redis, redisKeys } from '@tszhong0411/kv'
 
-import { getSessionId } from '@/trpc/routers/likes'
+import { getSessionId } from '@/utils/get-session-id'
 
 test.describe('like button', () => {
   test.beforeEach(async ({ page }) => {
