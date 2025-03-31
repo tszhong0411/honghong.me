@@ -1,10 +1,10 @@
 import { createId } from '@paralleldrive/cuid2'
 import { expect, test } from '@playwright/test'
-import { db, guestbook } from '@tszhong0411/db'
+import { db, eq, guestbook } from '@tszhong0411/db'
 
 import { TEST_USER } from '../constants'
 
-test.describe('guestbook page', () => {
+test.describe.serial('guestbook page', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/guestbook')
   })
@@ -17,6 +17,9 @@ test.describe('guestbook page', () => {
 
     await expect(page.getByTestId('guestbook-messages-list').getByText(message)).toBeVisible()
     await expect(page.locator('li[data-sonner-toast]')).toContainText('Create message successfully')
+
+    // Remove the message
+    await db.delete(guestbook).where(eq(guestbook.body, message))
   })
 
   test('should be able to delete a message', async ({ page }) => {
@@ -37,5 +40,8 @@ test.describe('guestbook page', () => {
 
     await expect(messageBlock).toBeHidden()
     await expect(page.locator('li[data-sonner-toast]')).toContainText('Delete message successfully')
+
+    // Remove the message
+    await db.delete(guestbook).where(eq(guestbook.id, id))
   })
 })
