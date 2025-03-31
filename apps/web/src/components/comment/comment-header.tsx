@@ -36,6 +36,7 @@ const CommentHeader = () => {
               plugins={[continuous]}
               value={commentsCountQuery.data.comments}
               suffix={` ${t('blog.comments.comments', { count: commentsCountQuery.data.comments })}`}
+              data-testid='blog-comment-count'
             />
           ) : null}
           {' · '}

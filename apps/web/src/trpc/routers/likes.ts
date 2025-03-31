@@ -1,19 +1,12 @@
 import { TRPCError } from '@trpc/server'
 import { eq, likesSessions, posts, sql, sum } from '@tszhong0411/db'
-import { env } from '@tszhong0411/env'
 import { ratelimit, redis, redisKeys } from '@tszhong0411/kv'
-import { sha512 } from 'js-sha512'
 import { z } from 'zod'
 
 import { getIp } from '@/utils/get-ip'
+import { getSessionId } from '@/utils/get-session-id'
 
 import { createTRPCRouter, publicProcedure } from '../trpc'
-
-const getSessionId = (slug: string, ip: string): string => {
-  const currentUserId = sha512(ip + env.IP_ADDRESS_SALT)
-
-  return `${slug}___${currentUserId}`
-}
 
 const getKey = (id: string) => `likes:${id}`
 

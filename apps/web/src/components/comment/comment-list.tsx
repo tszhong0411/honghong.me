@@ -15,10 +15,10 @@ import { useHighlighterStore } from '@/store/highlighter'
 import { api } from '@/trpc/react'
 
 import Comment from './comment'
+import CommentHeader from './comment-header'
 import CommentLoader from './comment-loader'
-import CommentHeader from './comments-header'
 
-const CommentsList = () => {
+const CommentList = () => {
   const { slug, sort } = useCommentsContext()
   const [params] = useCommentParams()
   const t = useTranslations()
@@ -88,4 +88,4 @@ const CommentsList = () => {
   )
 }
 
-export default CommentsList
+export default CommentList

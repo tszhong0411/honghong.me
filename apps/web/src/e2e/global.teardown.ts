@@ -13,7 +13,7 @@ teardown('teardown global', async () => {
   // Delete test user related data
   await db.delete(comments).where(eq(comments.postId, 'test'))
   await db.delete(guestbook).where(eq(guestbook.userId, TEST_USER.id))
-  await db.delete(likesSessions).where(like(likesSessions.id, 'test___'))
+  await db.delete(likesSessions).where(like(likesSessions.id, 'test___%'))
   await db.delete(posts).where(eq(posts.slug, 'test'))
   await db.delete(users).where(eq(users.id, TEST_USER.id))
 

@@ -1,10 +1,10 @@
 import { createId } from '@paralleldrive/cuid2'
 import { expect, test } from '@playwright/test'
-import { comments, db } from '@tszhong0411/db'
+import { comments, db, eq } from '@tszhong0411/db'
 
 import { TEST_USER } from '../constants'
 
-test.describe('comment page', () => {
+test.describe.serial('comment page', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/blog/test')
   })
@@ -17,6 +17,13 @@ test.describe('comment page', () => {
 
     await expect(page.getByTestId('comments-list').getByText(message)).toBeVisible()
     await expect(page.locator('li[data-sonner-toast]')).toContainText('Comment posted')
+
+    // Comments count should be updated in the blog header and comment header
+    await expect(page.getByTestId('comment-count')).toHaveAttribute('aria-label', '1')
+    await expect(page.getByTestId('blog-comment-count')).toHaveAttribute('aria-label', '1 comment')
+
+    // Remove the comment
+    await db.delete(comments).where(eq(comments.body, message))
   })
 
   test('should be able to delete a comment', async ({ page }) => {
@@ -40,5 +47,12 @@ test.describe('comment page', () => {
 
     await expect(commentBlock).toBeHidden()
     await expect(page.locator('li[data-sonner-toast]')).toContainText('Deleted a comment')
+
+    // Comments count should be updated in the blog header and comment header
+    await expect(page.getByTestId('comment-count')).toHaveAttribute('aria-label', '0')
+    await expect(page.getByTestId('blog-comment-count')).toHaveAttribute('aria-label', '0 comments')
+
+    // Remove the comment
+    await db.delete(comments).where(eq(comments.id, id))
   })
 })
