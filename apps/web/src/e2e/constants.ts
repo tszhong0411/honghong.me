@@ -11,10 +11,6 @@ export const TEST_USER = {
 
 export const TEST_POSTS = [
   {
-    slug: 'test',
-    title: 'Test Post'
-  },
-  {
     slug: 'test-submit',
     title: 'Test Submit Comment'
   },
@@ -33,5 +29,9 @@ export const TEST_POSTS = [
   {
     slug: 'test-view',
     title: 'Test View Post'
+  },
+  {
+    slug: 'test-like',
+    title: 'Test Like Post'
   }
 ]

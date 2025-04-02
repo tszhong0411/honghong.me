@@ -125,12 +125,12 @@ jobs:
           }
 
           # Create posts
-          frontmatter "Test Post" > apps/web/src/content/blog/en/test.mdx
           frontmatter "Test Submit Comment" > apps/web/src/content/blog/en/test-submit.mdx
           frontmatter "Test Delete Comment" > apps/web/src/content/blog/en/test-delete.mdx
           frontmatter "Test Reply Comment" > apps/web/src/content/blog/en/test-reply.mdx
           frontmatter "Test Delete Reply" > apps/web/src/content/blog/en/test-delete-reply.mdx
           frontmatter "Test View Post" > apps/web/src/content/blog/en/test-view.mdx
+          frontmatter "Test Like Post" > apps/web/src/content/blog/en/test-like.mdx
 
       - name: Build apps
         run: pnpm build:apps
