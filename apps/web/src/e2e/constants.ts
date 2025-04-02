@@ -8,3 +8,30 @@ export const TEST_USER = {
   accountId: '00000000',
   sessionToken: '00000000000000000000000000000000'
 }
+
+export const TEST_POSTS = [
+  {
+    slug: 'test',
+    title: 'Test Post'
+  },
+  {
+    slug: 'test-submit',
+    title: 'Test Submit Comment'
+  },
+  {
+    slug: 'test-delete',
+    title: 'Test Delete Comment'
+  },
+  {
+    slug: 'test-reply',
+    title: 'Test Reply Comment'
+  },
+  {
+    slug: 'test-delete-reply',
+    title: 'Test Delete Reply'
+  },
+  {
+    slug: 'test-view',
+    title: 'Test View Post'
+  }
+]
