@@ -156,6 +156,7 @@ const CommentActions = () => {
             variant='secondary'
             className='text-muted-foreground h-8 gap-1.5 px-2 text-xs font-medium'
             onClick={() => setIsReplying(true)}
+            data-testid='comment-reply-button'
           >
             <MessageSquareIcon className='size-4' />
             {t('blog.comments.reply')}
@@ -168,13 +169,19 @@ const CommentActions = () => {
           size='sm'
           className='mt-4 h-8 gap-1.5 px-2 text-xs font-medium'
           onClick={() => setIsOpenReplies(!isOpenReplies)}
+          data-testid='comment-replies-expand-button'
         >
           <ChevronDownIcon
             className={cn('size-4 transition-transform duration-200', {
               'rotate-180': isOpenReplies
             })}
           />
-          <NumberFlow willChange plugins={[continuous]} value={comment.replies} />
+          <NumberFlow
+            willChange
+            plugins={[continuous]}
+            value={comment.replies}
+            data-testid='comment-reply-count'
+          />
           {t('blog.comments.replies', { count: comment.replies })}
         </Button>
       ) : null}

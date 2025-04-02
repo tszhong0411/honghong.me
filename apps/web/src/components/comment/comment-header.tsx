@@ -50,6 +50,7 @@ const CommentHeader = () => {
               plugins={[continuous]}
               value={repliesCountQuery.data.replies}
               suffix={` ${t('blog.comments.replies', { count: repliesCountQuery.data.replies })}`}
+              data-testid='reply-count'
             />
           ) : null}
         </div>

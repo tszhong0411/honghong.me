@@ -4,32 +4,35 @@ import path from 'node:path'
 import { test as setup } from '@playwright/test'
 import { db, posts } from '@tszhong0411/db'
 
-const TEST_POST = `\
+import { TEST_POSTS } from '../constants'
+
+const createTestPost = (title: string) => `\
 ---
-title: Test Post
+title: ${title}
 date: '2000-01-01T00:00:00Z'
 modifiedTime: '2000-01-01T00:00:00Z'
 summary: This is a test post.
 ---
 
-# Test Post
+# ${title}
 
 This is a test post.
 `
 
-const testPostPath = path.join(process.cwd(), 'src/content/blog/en/test.mdx')
-
 setup('setup blog', async () => {
-  await db
-    .insert(posts)
-    .values({
-      slug: 'test',
-      views: 0,
-      likes: 0
-    })
-    .onConflictDoNothing({ target: posts.slug })
+  for (const post of TEST_POSTS) {
+    await db
+      .insert(posts)
+      .values({
+        slug: post.slug,
+        views: 0,
+        likes: 0
+      })
+      .onConflictDoNothing({ target: posts.slug })
 
-  // Only works in dev mode since content-collections will build the test post
-  // In CI, we have a GitHub Action to write the test post before building the apps
-  await fs.writeFile(testPostPath, TEST_POST)
+    // Only works in dev mode since content-collections will build the test post
+    // In CI, we have a GitHub Action to write the test post before building the apps
+    const testPostPath = path.join(process.cwd(), `src/content/blog/en/${post.slug}.mdx`)
+    await fs.writeFile(testPostPath, createTestPost(post.title))
+  }
 })

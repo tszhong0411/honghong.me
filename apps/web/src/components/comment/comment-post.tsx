@@ -73,7 +73,7 @@ const CommentPost = () => {
           onModEnter={submitComment}
           placeholder={t('blog.comments.placeholder')}
           disabled={disabled}
-          data-testid='comment-textarea'
+          data-testid='comment-textarea-post'
         />
         <Button
           variant='ghost'
