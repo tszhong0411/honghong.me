@@ -63,7 +63,10 @@ const CommentReply = () => {
 
       return { previousData }
     },
-    onSuccess: () => setIsReplying(false),
+    onSuccess: () => {
+      setIsReplying(false)
+      toast.success(t('blog.comments.reply-posted'))
+    },
     onError: (error, _, ctx) => {
       if (ctx?.previousData) {
         utils.comments.getInfiniteComments.setInfiniteData(queryKey, ctx.previousData)
@@ -110,6 +113,7 @@ const CommentReply = () => {
           disabled={disabled}
           // eslint-disable-next-line jsx-a11y/no-autofocus -- Autofocus is necessary because user is replying to a comment
           autoFocus
+          data-testid='comment-textarea-reply'
         />
         {isAuthenticated ? null : <UnauthorizedOverlay />}
       </div>
@@ -120,6 +124,7 @@ const CommentReply = () => {
           type='submit'
           disabled={disabled || !content}
           aria-disabled={disabled || !content}
+          data-testid='comment-submit-reply-button'
         >
           {t('blog.comments.reply')}
         </Button>
