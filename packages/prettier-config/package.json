@@ -37,7 +37,8 @@
     "prettier": "3.x"
   },
   "devDependencies": {
-    "@tszhong0411/eslint-config": "workspace:*"
+    "@tszhong0411/eslint-config": "workspace:*",
+    "@tszhong0411/tsconfig": "workspace:*"
   },
   "publishConfig": {
     "access": "public"
