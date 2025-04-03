@@ -4,7 +4,7 @@ import { db, eq, guestbook } from '@tszhong0411/db'
 
 import { TEST_USER } from '../constants'
 
-test.describe.serial('guestbook page', () => {
+test.describe('guestbook page', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/guestbook')
   })
@@ -24,11 +24,10 @@ test.describe.serial('guestbook page', () => {
 
   test('should be able to delete a message', async ({ page }) => {
     const id = createId()
-    const message = 'Test message'
 
     await db.insert(guestbook).values({
       id,
-      body: message,
+      body: 'Test message',
       userId: TEST_USER.id
     })
 
