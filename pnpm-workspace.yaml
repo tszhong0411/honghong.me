@@ -1,3 +1,10 @@
 packages:
-  - 'apps/*'
-  - 'packages/*'
+  - apps/*
+  - packages/*
+onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - '@vercel/speed-insights'
+  - core-js-pure
+  - esbuild
+  - sharp
+  - simple-git-hooks

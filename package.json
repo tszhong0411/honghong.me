@@ -91,7 +91,7 @@
       "pnpm check:spelling"
     ]
   },
-  "packageManager": "pnpm@9.15.6",
+  "packageManager": "pnpm@10.7.1",
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged",
     "commit-msg": "pnpm commitlint --edit $1 && pnpm check:spelling $1"
