@@ -1,5 +1,11 @@
 # @tszhong0411/utils
 
+## 0.0.22
+
+### Patch Changes
+
+- 4d4d556: Upgrade dependencies
+
 ## 0.0.21
 
 ### Patch Changes

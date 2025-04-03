@@ -1,5 +1,11 @@
 # @tszhong0411/eslint-config
 
+## 0.1.36
+
+### Patch Changes
+
+- b152423: Upgrade dependencies
+
 ## 0.1.35
 
 ### Patch Changes
