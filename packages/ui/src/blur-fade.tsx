@@ -4,7 +4,7 @@ import {
   useInView,
   type UseInViewOptions,
   type Variants
-} from 'framer-motion'
+} from 'motion/react'
 import { useRef } from 'react'
 
 type BlurFadeProps = {

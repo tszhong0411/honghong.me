@@ -1,5 +1,5 @@
 import { Portal } from '@ark-ui/react'
-import { Combobox as ComboboxPrimitive } from '@ark-ui/react/combobox'
+import { type CollectionItem, Combobox as ComboboxPrimitive } from '@ark-ui/react/combobox'
 import { cn } from '@tszhong0411/utils'
 
 const ComboboxContext = ComboboxPrimitive.Context
@@ -19,7 +19,7 @@ type ComboboxInputValueChangeDetails = ComboboxPrimitive.InputValueChangeDetails
 type ComboboxOpenChangeDetails = ComboboxPrimitive.OpenChangeDetails
 type ComboboxValueChangeDetails = ComboboxPrimitive.ValueChangeDetails
 
-type ComboboxProps = React.ComponentProps<typeof ComboboxPrimitive.Root>
+type ComboboxProps = React.ComponentProps<typeof ComboboxPrimitive.Root<CollectionItem>>
 
 const Combobox = (props: ComboboxProps) => {
   const { openOnClick = true, ...rest } = props
