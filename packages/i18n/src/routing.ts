@@ -10,7 +10,8 @@ export const routing = defineRouting({
   localeDetection: true,
   localeCookie: {
     secure: true,
-    sameSite: 'strict'
+    sameSite: 'strict',
+    maxAge: 60 * 60 * 24 * 365
   }
 })
 
