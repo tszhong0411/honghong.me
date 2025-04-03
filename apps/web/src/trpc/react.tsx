@@ -33,9 +33,7 @@ const getQueryClient = () => {
     return createQueryClient()
   }
 
-  if (!clientQueryClientSingleton) {
-    clientQueryClientSingleton = createQueryClient()
-  }
+  clientQueryClientSingleton ??= createQueryClient()
 
   return clientQueryClientSingleton
 }
@@ -53,6 +51,7 @@ export const TRPCReactProvider = (props: TRPCReactProviderProps) => {
   const { children } = props
   const queryClient = getQueryClient()
 
+  // eslint-disable-next-line @eslint-react/naming-convention/use-state -- it's fine
   const [trpcClient] = useState(() =>
     api.createClient({
       links: [

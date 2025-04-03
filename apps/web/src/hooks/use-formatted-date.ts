@@ -1,9 +1,9 @@
-import { useFormatter } from '@tszhong0411/i18n/client'
+import { type DateTimeFormatOptions, useFormatter } from '@tszhong0411/i18n/client'
 import dayjs from 'dayjs'
 
 type Options = {
   relative?: boolean
-  formatOptions?: Parameters<ReturnType<typeof useFormatter>['dateTime']>['1']
+  formatOptions?: DateTimeFormatOptions
 }
 
 export const useFormattedDate = (date: Date | string, options: Options = {}) => {

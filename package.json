@@ -59,7 +59,7 @@
     "@tszhong0411/prettier-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
     "@turbo/gen": "^2.4.4",
-    "@types/node": "^22.13.5",
+    "@types/node": "^22.14.0",
     "@vitest/coverage-v8": "^3.1.1",
     "@vitest/ui": "^3.1.1",
     "commitizen": "^4.3.1",

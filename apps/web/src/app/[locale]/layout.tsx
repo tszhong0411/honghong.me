@@ -3,13 +3,15 @@ import type { Metadata, Viewport } from 'next'
 import '@/styles/globals.css'
 
 import { flags } from '@tszhong0411/env'
-import { NextIntlClientProvider } from '@tszhong0411/i18n/client'
+import { hasLocale, NextIntlClientProvider } from '@tszhong0411/i18n/client'
 import { i18n } from '@tszhong0411/i18n/config'
-import { getMessages, getTranslations, setRequestLocale } from '@tszhong0411/i18n/server'
+import { routing } from '@tszhong0411/i18n/routing'
+import { getTranslations, setRequestLocale } from '@tszhong0411/i18n/server'
 import { cn } from '@tszhong0411/utils'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
+import { notFound } from 'next/navigation'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
 
 import Analytics from '@/components/analytics'
@@ -127,9 +129,12 @@ export const viewport: Viewport = {
 const Layout = async (props: LayoutProps) => {
   const { children } = props
   const { locale } = await props.params
-  setRequestLocale(locale)
 
-  const messages = await getMessages()
+  if (!hasLocale(routing.locales, locale)) {
+    notFound()
+  }
+
+  setRequestLocale(locale)
 
   return (
     <html
@@ -140,7 +145,7 @@ const Layout = async (props: LayoutProps) => {
       <body className='relative flex min-h-screen flex-col'>
         <NuqsAdapter>
           <Providers>
-            <NextIntlClientProvider messages={messages}>
+            <NextIntlClientProvider>
               <Hello />
               {children}
               {flags.analytics ? <Analytics /> : null}
