@@ -1,5 +1,11 @@
 # @tszhong0411/tsconfig
 
+## 0.0.13
+
+### Patch Changes
+
+- 91a2da5: Move next to dev dependencies
+
 ## 0.0.12
 
 ### Patch Changes

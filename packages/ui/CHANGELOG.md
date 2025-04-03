@@ -1,5 +1,13 @@
 # @tszhong0411/ui
 
+## 0.0.63
+
+### Patch Changes
+
+- 0fdf4d5: Upgrade dependencies
+- Updated dependencies [4d4d556]
+  - @tszhong0411/utils@0.0.22
+
 ## 0.0.62
 
 ### Patch Changes
