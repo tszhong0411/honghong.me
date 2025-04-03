@@ -306,7 +306,7 @@ const DataTableFacetedFilter = <TData, TValue>(
     )
 
     if (filtered.length > 0) setCollection(() => createListCollection({ items: filtered }))
-    else setCollection(() => createListCollection({ items: [] }))
+    else setCollection(() => createListCollection({ items: options }))
   }
 
   const handleValueChange = (details: ComboboxValueChangeDetails) => {

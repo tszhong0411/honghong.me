@@ -18,11 +18,12 @@
     "nextjs.json",
     "react-library.json"
   ],
-  "dependencies": {
-    "next": "^15.2.3"
-  },
   "peerDependencies": {
+    "next": "^15",
     "typescript": "5.x"
+  },
+  "devDependencies": {
+    "next": "^15.2.4"
   },
   "publishConfig": {
     "access": "public"

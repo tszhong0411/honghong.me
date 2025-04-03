@@ -17,8 +17,16 @@ test.describe('comment page', () => {
     await expect(page.locator('li[data-sonner-toast]')).toContainText('Comment posted')
 
     // Comment count should be updated in the blog header and comment header
-    await expect(page.getByTestId('comment-count')).toHaveAttribute('aria-label', '1')
-    await expect(page.getByTestId('blog-comment-count')).toHaveAttribute('aria-label', '1 comment')
+    expect(
+      // @ts-expect-error -- internal property
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- internal property
+      await page.getByTestId('comment-count').evaluate((flow) => flow._internals.ariaLabel)
+    ).toBe('1')
+    expect(
+      // @ts-expect-error -- internal property
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- internal property
+      await page.getByTestId('blog-comment-count').evaluate((flow) => flow._internals.ariaLabel)
+    ).toBe('1 comment')
   })
 
   test('should be able to delete a comment', async ({ page }) => {
@@ -45,8 +53,16 @@ test.describe('comment page', () => {
     await expect(page.locator('li[data-sonner-toast]')).toContainText('Deleted a comment')
 
     // Comment count should be updated in the blog header and comment header
-    await expect(page.getByTestId('comment-count')).toHaveAttribute('aria-label', '0')
-    await expect(page.getByTestId('blog-comment-count')).toHaveAttribute('aria-label', '0 comments')
+    expect(
+      // @ts-expect-error -- internal property
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- internal property
+      await page.getByTestId('comment-count').evaluate((flow) => flow._internals.ariaLabel)
+    ).toBe('0')
+    expect(
+      // @ts-expect-error -- internal property
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- internal property
+      await page.getByTestId('blog-comment-count').evaluate((flow) => flow._internals.ariaLabel)
+    ).toBe('0 comments')
   })
 
   test('should be able to reply to a comment', async ({ page }) => {
@@ -77,7 +93,11 @@ test.describe('comment page', () => {
     await expect(page.getByTestId('comments-list').getByText(replyText)).toBeVisible()
 
     // Reply count should be updated in the comment header
-    await expect(page.getByTestId('reply-count')).toHaveAttribute('aria-label', '1 reply')
+    expect(
+      // @ts-expect-error -- internal property
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- internal property
+      await page.getByTestId('reply-count').evaluate((flow) => flow._internals.ariaLabel)
+    ).toBe('1 reply')
 
     await expect(page.locator('li[data-sonner-toast]')).toContainText('Reply posted')
   })
@@ -118,6 +138,10 @@ test.describe('comment page', () => {
     await expect(page.locator('li[data-sonner-toast]')).toContainText('Deleted a comment')
 
     // Reply count should be updated in the comment header
-    await expect(page.getByTestId('reply-count')).toHaveAttribute('aria-label', '0 replies')
+    expect(
+      // @ts-expect-error -- internal property
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- internal property
+      await page.getByTestId('reply-count').evaluate((flow) => flow._internals.ariaLabel)
+    ).toBe('0 replies')
   })
 })

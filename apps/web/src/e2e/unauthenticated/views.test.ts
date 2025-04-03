@@ -6,6 +6,12 @@ test.describe('views', () => {
   })
 
   test('should be able to view a post', async ({ page }) => {
-    await expect(page.getByTestId('view-count')).toHaveAttribute('aria-label', '1')
+    const viewCount = page.getByTestId('view-count')
+
+    // @ts-expect-error -- internal property
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- internal property
+    const ariaLabel = await viewCount.evaluate((flow) => flow._internals.ariaLabel)
+
+    expect(ariaLabel).toBe('1')
   })
 })
