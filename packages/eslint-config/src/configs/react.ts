@@ -38,6 +38,7 @@ export const react = (options?: Options): Linter.Config[] => {
         '@eslint-react/prefer-destructuring-assignment': 'off',
         '@eslint-react/no-array-index-key': 'off',
         '@eslint-react/no-complex-conditional-rendering': 'off',
+        '@eslint-react/jsx-uses-react': 'off',
 
         // @eslint-react/hooks-extra
         '@eslint-react/hooks-extra/no-direct-set-state-in-use-effect': 'off',
