@@ -7,4 +7,3 @@ onlyBuiltDependencies:
   - core-js-pure
   - esbuild
   - sharp
-  - simple-git-hooks
