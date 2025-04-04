@@ -32,7 +32,7 @@
     "preinstall": "npx --yes only-allow pnpm",
     "lint": "turbo lint && eslint . --max-warnings 0",
     "lint:fix": "turbo lint:fix && eslint --fix .",
-    "prepare": "simple-git-hooks && pnpm build:packages",
+    "prepare": "husky && pnpm build:packages",
     "release": "changeset publish",
     "test:e2e": "turbo test:e2e",
     "test:e2e:inspector": "turbo test:e2e:inspector",
@@ -69,11 +69,11 @@
     "cz-git": "^1.11.1",
     "dotenv-cli": "^8.0.0",
     "eslint": "^9.23.0",
+    "husky": "^9.1.7",
     "jsdom": "^26.0.0",
     "knip": "^5.46.5",
     "lint-staged": "^15.5.0",
     "prettier": "^3.5.3",
-    "simple-git-hooks": "^2.12.1",
     "ts-morph": "^25.0.1",
     "tsup": "8.3.0",
     "tsx": "^4.19.3",
@@ -91,9 +91,5 @@
       "pnpm check:spelling"
     ]
   },
-  "packageManager": "pnpm@10.7.1",
-  "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged",
-    "commit-msg": "pnpm commitlint --edit $1 && pnpm check:spelling $1"
-  }
+  "packageManager": "pnpm@10.7.1"
 }
