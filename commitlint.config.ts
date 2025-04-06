@@ -1,6 +1,6 @@
-import type { UserConfig } from 'cz-git'
-
 import fs from 'node:fs/promises'
+
+import { defineConfig } from 'czg'
 
 const getDirectories = async (source: string) => {
   const directories = await fs.readdir(source, { withFileTypes: true })
@@ -13,11 +13,12 @@ const packages = await getDirectories(`${import.meta.dirname}/packages`)
 
 const scopes = [...apps, ...packages]
 
-const config: UserConfig = {
+export default defineConfig({
   extends: ['@commitlint/config-conventional'],
   rules: {
     'scope-enum': [2, 'always', ['release', ...scopes]]
+  },
+  prompt: {
+    customScopesAlign: 'top'
   }
-}
-
-export default config
+})
