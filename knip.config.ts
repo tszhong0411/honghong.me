@@ -2,9 +2,6 @@ import type { KnipConfig } from 'knip'
 
 const config: KnipConfig = {
   ignore: ['**/fixtures/**'],
-  vitest: {
-    config: ['vitest.{config,shared,workspace}.ts']
-  },
   ignoreDependencies: [
     'prettier-plugin-*',
     'sharp',
