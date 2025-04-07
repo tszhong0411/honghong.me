@@ -105,7 +105,7 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
 
-      - name: Write test post
+      - name: Create test posts
         run: |
           mkdir -p apps/web/src/content/blog/en/
 
