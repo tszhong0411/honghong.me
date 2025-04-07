@@ -13,9 +13,9 @@
     "lint:fix": "eslint --fix ."
   },
   "dependencies": {
-    "@react-email/components": "^0.0.35",
+    "@react-email/components": "^0.0.36",
     "react": "^19.1.0",
-    "react-email": "4.0.3"
+    "react-email": "^4.0.4"
   },
   "devDependencies": {
     "@tszhong0411/eslint-config": "workspace:*",
