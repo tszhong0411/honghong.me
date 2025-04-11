@@ -3,14 +3,12 @@
 import type { GetInfiniteCommentsOutput } from '@/trpc/routers/comments'
 
 import { useTranslations } from '@tszhong0411/i18n/client'
-import { Skeleton, Tooltip, TooltipContent, TooltipTrigger } from '@tszhong0411/ui'
-import { cn } from '@tszhong0411/utils'
+import { Badge, Skeleton, Tooltip, TooltipContent, TooltipTrigger } from '@tszhong0411/ui'
 import Image from 'next/image'
 import { useEffect, useMemo, useRef, useState } from 'react'
 
 import { type CommentContext, CommentProvider } from '@/contexts/comment'
 import { useCommentsContext } from '@/contexts/comments'
-import { useClickOutside } from '@/hooks/use-click-outside'
 import { useCommentParams } from '@/hooks/use-comment-params'
 import { useFormattedDate } from '@/hooks/use-formatted-date'
 
@@ -33,10 +31,9 @@ const Comment = (props: CommentProps) => {
   const [isOpenReplies, setIsOpenReplies] = useState(false)
   const commentRef = useRef<HTMLDivElement>(null)
   const [params] = useCommentParams()
-  const [isHighlighted, setIsHighlighted] = useState(
-    params.comment === comment.id || params.reply === comment.id
-  )
   const t = useTranslations()
+
+  const isHighlighted = params.reply ? params.reply === comment.id : params.comment === comment.id
 
   const {
     id,
@@ -50,10 +47,6 @@ const Comment = (props: CommentProps) => {
 
   const formattedDate = useFormattedDate(comment.createdAt, {
     relative: true
-  })
-
-  useClickOutside<HTMLDivElement>(commentRef, () => {
-    setIsHighlighted(false)
   })
 
   const context = useMemo<CommentContext>(
@@ -82,13 +75,8 @@ const Comment = (props: CommentProps) => {
 
   return (
     <CommentProvider value={context}>
-      <div
-        ref={commentRef}
-        className={cn('p-2.5', {
-          'bg-accent/40 rounded-lg': isHighlighted
-        })}
-        data-testid={`comment-${id}`}
-      >
+      <div ref={commentRef} className='p-2.5' data-testid={`comment-${id}`}>
+        {isHighlighted ? <Badge className='mb-4'>Highlighted comment</Badge> : null}
         <div className='flex gap-4'>
           <Image
             src={image}
