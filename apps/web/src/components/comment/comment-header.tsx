@@ -34,7 +34,6 @@ const CommentHeader = () => {
           {commentsCountQuery.status === 'error' ? t('common.error') : null}
           {commentsCountQuery.status === 'success' ? (
             <NumberFlow
-              willChange
               value={commentsCountQuery.data.comments}
               suffix={` ${t('blog.comments.comments', { count: commentsCountQuery.data.comments })}`}
               data-testid='blog-comment-count'
@@ -47,7 +46,6 @@ const CommentHeader = () => {
           {repliesCountQuery.status === 'error' ? t('common.error') : null}
           {repliesCountQuery.status === 'success' ? (
             <NumberFlow
-              willChange
               value={repliesCountQuery.data.replies}
               suffix={` ${t('blog.comments.replies', { count: repliesCountQuery.data.replies })}`}
               data-testid='reply-count'

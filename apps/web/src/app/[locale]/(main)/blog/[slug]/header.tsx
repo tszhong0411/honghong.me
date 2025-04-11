@@ -69,7 +69,7 @@ const Header = () => {
             {viewsCountQuery.status === 'pending' ? '--' : null}
             {viewsCountQuery.status === 'error' ? t('common.error') : null}
             {viewsCountQuery.status === 'success' ? (
-              <NumberFlow willChange value={viewsCountQuery.data.views} data-testid='view-count' />
+              <NumberFlow value={viewsCountQuery.data.views} data-testid='view-count' />
             ) : null}
           </div>
           <div className='space-y-1 md:mx-auto'>
@@ -77,11 +77,7 @@ const Header = () => {
             {commentsCountQuery.status === 'pending' ? '--' : null}
             {commentsCountQuery.status === 'error' ? t('common.error') : null}
             {commentsCountQuery.status === 'success' ? (
-              <NumberFlow
-                willChange
-                value={commentsCountQuery.data.comments}
-                data-testid='comment-count'
-              />
+              <NumberFlow value={commentsCountQuery.data.comments} data-testid='comment-count' />
             ) : null}
           </div>
         </div>

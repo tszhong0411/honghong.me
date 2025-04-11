@@ -154,7 +154,7 @@ const LikeButton = (props: LikeButtonProps) => {
         {status === 'pending' ? <div>--</div> : null}
         {status === 'error' ? <div>{t('common.error')}</div> : null}
         {status === 'success' ? (
-          <NumberFlow willChange value={data.likes + cacheCount} data-testid='like-count' />
+          <NumberFlow value={data.likes + cacheCount} data-testid='like-count' />
         ) : null}
       </motion.button>
     </div>

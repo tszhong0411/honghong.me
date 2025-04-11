@@ -145,7 +145,7 @@ const CommentActions = () => {
           aria-label={t('blog.comments.like')}
         >
           <ThumbsUpIcon className='size-4' />
-          <NumberFlow willChange value={comment.likes} />
+          <NumberFlow value={comment.likes} />
         </Button>
         <Button
           variant='secondary'
@@ -156,7 +156,7 @@ const CommentActions = () => {
           aria-label={t('blog.comments.dislike')}
         >
           <ThumbsDownIcon className='size-4' />
-          <NumberFlow willChange value={comment.dislikes} />
+          <NumberFlow value={comment.dislikes} />
         </Button>
         {comment.parentId ? null : (
           <Button
@@ -183,7 +183,7 @@ const CommentActions = () => {
               'rotate-180': isOpenReplies
             })}
           />
-          <NumberFlow willChange value={comment.replies} data-testid='comment-reply-count' />
+          <NumberFlow value={comment.replies} data-testid='comment-reply-count' />
           {t('blog.comments.replies', { count: comment.replies })}
         </Button>
       ) : null}
