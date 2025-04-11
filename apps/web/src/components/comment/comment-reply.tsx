@@ -22,23 +22,25 @@ const CommentReply = () => {
   const queryClient = useQueryClient()
   const t = useTranslations()
 
+  const queryKey = {
+    slug,
+    sort,
+    type: 'comments'
+  }
+
   const commentsMutation = useMutation(
     trpc.comments.post.mutationOptions({
       onMutate: async () => {
         await queryClient.cancelQueries({
-          queryKey: trpc.comments.getInfiniteComments.infiniteQueryKey()
+          queryKey: trpc.comments.getInfiniteComments.infiniteQueryKey(queryKey)
         })
 
         const previousData = queryClient.getQueryData(
-          trpc.comments.getInfiniteComments.infiniteQueryKey()
+          trpc.comments.getInfiniteComments.infiniteQueryKey(queryKey)
         )
 
         queryClient.setQueryData(
-          trpc.comments.getInfiniteComments.infiniteQueryKey({
-            slug,
-            sort,
-            type: 'comments'
-          }),
+          trpc.comments.getInfiniteComments.infiniteQueryKey(queryKey),
           (oldData) => {
             if (!oldData) {
               return {
@@ -76,7 +78,7 @@ const CommentReply = () => {
       onError: (error, _, ctx) => {
         if (ctx?.previousData) {
           queryClient.setQueryData(
-            trpc.comments.getInfiniteComments.infiniteQueryKey(),
+            trpc.comments.getInfiniteComments.infiniteQueryKey(queryKey),
             ctx.previousData
           )
         }
@@ -84,7 +86,7 @@ const CommentReply = () => {
       },
       onSettled: () => {
         queryClient.invalidateQueries({
-          queryKey: trpc.comments.getInfiniteComments.infiniteQueryKey()
+          queryKey: trpc.comments.getInfiniteComments.infiniteQueryKey(queryKey)
         })
         queryClient.invalidateQueries({
           queryKey: trpc.comments.getCommentsCount.queryKey({ slug })
