@@ -3,6 +3,7 @@ import { expect, test } from '@playwright/test'
 import { comments, db } from '@tszhong0411/db'
 
 import { TEST_USER } from '../constants'
+import { getNumberFlow } from '../utils/number-flow'
 
 test.describe('comment page', () => {
   test('should be able to submit a comment', async ({ page }) => {
@@ -17,16 +18,8 @@ test.describe('comment page', () => {
     await expect(page.locator('li[data-sonner-toast]')).toContainText('Comment posted')
 
     // Comment count should be updated in the blog header and comment header
-    expect(
-      // @ts-expect-error -- internal property
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- internal property
-      await page.getByTestId('comment-count').evaluate((flow) => flow._internals.ariaLabel)
-    ).toBe('1')
-    expect(
-      // @ts-expect-error -- internal property
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- internal property
-      await page.getByTestId('blog-comment-count').evaluate((flow) => flow._internals.ariaLabel)
-    ).toBe('1 comment')
+    expect(await getNumberFlow(page.getByTestId('comment-count'))).toBe('1')
+    expect(await getNumberFlow(page.getByTestId('blog-comment-count'))).toBe('1 comment')
   })
 
   test('should be able to delete a comment', async ({ page }) => {
@@ -53,16 +46,8 @@ test.describe('comment page', () => {
     await expect(page.locator('li[data-sonner-toast]')).toContainText('Deleted a comment')
 
     // Comment count should be updated in the blog header and comment header
-    expect(
-      // @ts-expect-error -- internal property
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- internal property
-      await page.getByTestId('comment-count').evaluate((flow) => flow._internals.ariaLabel)
-    ).toBe('0')
-    expect(
-      // @ts-expect-error -- internal property
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- internal property
-      await page.getByTestId('blog-comment-count').evaluate((flow) => flow._internals.ariaLabel)
-    ).toBe('0 comments')
+    expect(await getNumberFlow(page.getByTestId('comment-count'))).toBe('0')
+    expect(await getNumberFlow(page.getByTestId('blog-comment-count'))).toBe('0 comments')
   })
 
   test('should be able to reply to a comment', async ({ page }) => {
@@ -93,11 +78,7 @@ test.describe('comment page', () => {
     await expect(page.getByTestId('comments-list').getByText(replyText)).toBeVisible()
 
     // Reply count should be updated in the comment header
-    expect(
-      // @ts-expect-error -- internal property
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- internal property
-      await page.getByTestId('reply-count').evaluate((flow) => flow._internals.ariaLabel)
-    ).toBe('1 reply')
+    expect(await getNumberFlow(page.getByTestId('reply-count'))).toBe('1 reply')
 
     await expect(page.locator('li[data-sonner-toast]')).toContainText('Reply posted')
   })
@@ -138,10 +119,6 @@ test.describe('comment page', () => {
     await expect(page.locator('li[data-sonner-toast]')).toContainText('Deleted a comment')
 
     // Reply count should be updated in the comment header
-    expect(
-      // @ts-expect-error -- internal property
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- internal property
-      await page.getByTestId('reply-count').evaluate((flow) => flow._internals.ariaLabel)
-    ).toBe('0 replies')
+    expect(await getNumberFlow(page.getByTestId('reply-count'))).toBe('0 replies')
   })
 })
