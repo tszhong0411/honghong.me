@@ -1,6 +1,6 @@
 import type { GetInfiniteCommentsInput } from '@/trpc/routers/comments'
 
-import NumberFlow, { continuous, NumberFlowGroup } from '@number-flow/react'
+import NumberFlow, { NumberFlowGroup } from '@number-flow/react'
 import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import {
@@ -35,7 +35,6 @@ const CommentHeader = () => {
           {commentsCountQuery.status === 'success' ? (
             <NumberFlow
               willChange
-              plugins={[continuous]}
               value={commentsCountQuery.data.comments}
               suffix={` ${t('blog.comments.comments', { count: commentsCountQuery.data.comments })}`}
               data-testid='blog-comment-count'
@@ -49,7 +48,6 @@ const CommentHeader = () => {
           {repliesCountQuery.status === 'success' ? (
             <NumberFlow
               willChange
-              plugins={[continuous]}
               value={repliesCountQuery.data.replies}
               suffix={` ${t('blog.comments.replies', { count: repliesCountQuery.data.replies })}`}
               data-testid='reply-count'

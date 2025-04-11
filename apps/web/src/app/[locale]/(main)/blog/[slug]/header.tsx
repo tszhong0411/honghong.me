@@ -1,6 +1,6 @@
 'use client'
 
-import NumberFlow, { continuous } from '@number-flow/react'
+import NumberFlow from '@number-flow/react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { BlurImage } from '@tszhong0411/ui'
@@ -69,12 +69,7 @@ const Header = () => {
             {viewsCountQuery.status === 'pending' ? '--' : null}
             {viewsCountQuery.status === 'error' ? t('common.error') : null}
             {viewsCountQuery.status === 'success' ? (
-              <NumberFlow
-                willChange
-                plugins={[continuous]}
-                value={viewsCountQuery.data.views}
-                data-testid='view-count'
-              />
+              <NumberFlow willChange value={viewsCountQuery.data.views} data-testid='view-count' />
             ) : null}
           </div>
           <div className='space-y-1 md:mx-auto'>
@@ -84,7 +79,6 @@ const Header = () => {
             {commentsCountQuery.status === 'success' ? (
               <NumberFlow
                 willChange
-                plugins={[continuous]}
                 value={commentsCountQuery.data.comments}
                 data-testid='comment-count'
               />

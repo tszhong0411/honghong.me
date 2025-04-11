@@ -1,4 +1,4 @@
-import NumberFlow, { continuous } from '@number-flow/react'
+import NumberFlow from '@number-flow/react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { Button, buttonVariants, toast } from '@tszhong0411/ui'
@@ -145,7 +145,7 @@ const CommentActions = () => {
           aria-label={t('blog.comments.like')}
         >
           <ThumbsUpIcon className='size-4' />
-          <NumberFlow willChange plugins={[continuous]} value={comment.likes} />
+          <NumberFlow willChange value={comment.likes} />
         </Button>
         <Button
           variant='secondary'
@@ -156,7 +156,7 @@ const CommentActions = () => {
           aria-label={t('blog.comments.dislike')}
         >
           <ThumbsDownIcon className='size-4' />
-          <NumberFlow willChange plugins={[continuous]} value={comment.dislikes} />
+          <NumberFlow willChange value={comment.dislikes} />
         </Button>
         {comment.parentId ? null : (
           <Button
@@ -183,12 +183,7 @@ const CommentActions = () => {
               'rotate-180': isOpenReplies
             })}
           />
-          <NumberFlow
-            willChange
-            plugins={[continuous]}
-            value={comment.replies}
-            data-testid='comment-reply-count'
-          />
+          <NumberFlow willChange value={comment.replies} data-testid='comment-reply-count' />
           {t('blog.comments.replies', { count: comment.replies })}
         </Button>
       ) : null}
