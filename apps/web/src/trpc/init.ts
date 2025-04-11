@@ -1,19 +1,21 @@
 import { initTRPC, TRPCError } from '@trpc/server'
 import { db } from '@tszhong0411/db'
+import { headers } from 'next/headers'
+import { cache } from 'react'
 import { SuperJSON } from 'superjson'
 import { ZodError } from 'zod'
 
 import { getSession } from '@/lib/auth'
 
-export const createTRPCContext = async (opts: { headers: Headers }) => {
+export const createTRPCContext = cache(async () => {
   const session = await getSession()
 
   return {
     db,
     session,
-    ...opts
+    headers: await headers()
   }
-}
+})
 
 const t = initTRPC.context<typeof createTRPCContext>().create({
   transformer: SuperJSON,

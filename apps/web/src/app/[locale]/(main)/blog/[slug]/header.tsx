@@ -1,6 +1,7 @@
 'use client'
 
-import NumberFlow, { continuous } from '@number-flow/react'
+import NumberFlow from '@number-flow/react'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { BlurImage } from '@tszhong0411/ui'
 import { useEffect, useRef } from 'react'
@@ -9,25 +10,26 @@ import ImageZoom from '@/components/image-zoom'
 import Link from '@/components/link'
 import { usePostContext } from '@/contexts/post'
 import { useFormattedDate } from '@/hooks/use-formatted-date'
-import { api } from '@/trpc/react'
+import { useTRPC } from '@/trpc/client'
 
 const Header = () => {
   const { date, title, slug } = usePostContext()
   const formattedDate = useFormattedDate(date)
-  const utils = api.useUtils()
+  const trpc = useTRPC()
+  const queryClient = useQueryClient()
   const t = useTranslations()
 
-  const incrementMutation = api.views.increment.useMutation({
-    onSettled: () => utils.views.get.invalidate()
-  })
+  const incrementMutation = useMutation(
+    trpc.views.increment.mutationOptions({
+      onSettled: () =>
+        queryClient.invalidateQueries({
+          queryKey: trpc.views.get.queryKey({ slug })
+        })
+    })
+  )
 
-  const viewsCountQuery = api.views.get.useQuery({
-    slug
-  })
-
-  const commentsCountQuery = api.comments.getTotalCommentsCount.useQuery({
-    slug
-  })
+  const viewsCountQuery = useQuery(trpc.views.get.queryOptions({ slug }))
+  const commentsCountQuery = useQuery(trpc.comments.getTotalCommentsCount.queryOptions({ slug }))
 
   const incremented = useRef(false)
 
@@ -67,12 +69,7 @@ const Header = () => {
             {viewsCountQuery.status === 'pending' ? '--' : null}
             {viewsCountQuery.status === 'error' ? t('common.error') : null}
             {viewsCountQuery.status === 'success' ? (
-              <NumberFlow
-                willChange
-                plugins={[continuous]}
-                value={viewsCountQuery.data.views}
-                data-testid='view-count'
-              />
+              <NumberFlow value={viewsCountQuery.data.views} data-testid='view-count' />
             ) : null}
           </div>
           <div className='space-y-1 md:mx-auto'>
@@ -80,12 +77,7 @@ const Header = () => {
             {commentsCountQuery.status === 'pending' ? '--' : null}
             {commentsCountQuery.status === 'error' ? t('common.error') : null}
             {commentsCountQuery.status === 'success' ? (
-              <NumberFlow
-                willChange
-                plugins={[continuous]}
-                value={commentsCountQuery.data.comments}
-                data-testid='comment-count'
-              />
+              <NumberFlow value={commentsCountQuery.data.comments} data-testid='comment-count' />
             ) : null}
           </div>
         </div>

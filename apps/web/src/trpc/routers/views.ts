@@ -5,7 +5,7 @@ import { z } from 'zod'
 
 import { getIp } from '@/utils/get-ip'
 
-import { createTRPCRouter, publicProcedure } from '../trpc'
+import { createTRPCRouter, publicProcedure } from '../init'
 
 const getKey = (id: string) => `views:${id}`
 

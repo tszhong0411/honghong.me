@@ -1,14 +1,16 @@
 'use client'
 
+import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { DataTableSkeleton } from '@tszhong0411/ui'
 
 import AdminPageHeader from '@/components/admin/admin-page-header'
 import CommentsTable from '@/components/admin/comments-table'
-import { api } from '@/trpc/react'
+import { useTRPC } from '@/trpc/client'
 
 const Page = () => {
-  const { status, data } = api.comments.getComments.useQuery()
+  const trpc = useTRPC()
+  const { status, data } = useQuery(trpc.comments.getComments.queryOptions())
   const t = useTranslations()
 
   const isSuccess = status === 'success'

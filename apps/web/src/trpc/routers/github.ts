@@ -6,7 +6,7 @@ import { ratelimit } from '@tszhong0411/kv'
 import { GITHUB_USERNAME } from '@/lib/constants'
 import { getIp } from '@/utils/get-ip'
 
-import { createTRPCRouter, publicProcedure } from '../trpc'
+import { createTRPCRouter, publicProcedure } from '../init'
 
 const getKey = (id: string) => `github:${id}`
 

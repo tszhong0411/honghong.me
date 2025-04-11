@@ -1,5 +1,6 @@
 'use client'
 
+import { useQuery } from '@tanstack/react-query'
 import { useLocale, useTranslations } from '@tszhong0411/i18n/client'
 import { BlurImage, buttonVariants } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
@@ -9,7 +10,7 @@ import { motion, useInView } from 'motion/react'
 import { useRef } from 'react'
 
 import { useFormattedDate } from '@/hooks/use-formatted-date'
-import { api } from '@/trpc/react'
+import { useTRPC } from '@/trpc/client'
 
 import Link from '../link'
 
@@ -106,15 +107,11 @@ const Card = (props: CardProps) => {
   const { post } = props
   const { slug, title, summary, date } = post
   const formattedDate = useFormattedDate(date)
+  const trpc = useTRPC()
   const t = useTranslations()
 
-  const viewsQuery = api.views.get.useQuery({
-    slug
-  })
-
-  const likesQuery = api.likes.get.useQuery({
-    slug
-  })
+  const viewsQuery = useQuery(trpc.views.get.queryOptions({ slug }))
+  const likesQuery = useQuery(trpc.likes.get.queryOptions({ slug }))
 
   return (
     <Link href={`/blog/${slug}`} className='shadow-feature-card group relative rounded-xl p-2'>

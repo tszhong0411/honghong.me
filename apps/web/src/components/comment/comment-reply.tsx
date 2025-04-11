@@ -1,80 +1,108 @@
 'use client'
 
-import type { GetInfiniteCommentsInput } from '@/trpc/routers/comments'
-
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { Button, toast } from '@tszhong0411/ui'
 import { useState } from 'react'
 
 import { useCommentContext } from '@/contexts/comment'
 import { useCommentsContext } from '@/contexts/comments'
+import { useCommentParams } from '@/hooks/use-comment-params'
 import { useSession } from '@/lib/auth-client'
-import { api } from '@/trpc/react'
+import { useTRPC } from '@/trpc/client'
 
 import CommentEditor from './comment-editor'
 import UnauthorizedOverlay from './unauthorized-overlay'
 
 const CommentReply = () => {
   const [content, setContent] = useState('')
-  const { comment, setIsReplying } = useCommentContext()
   const { data: session } = useSession()
+  const { comment, setIsReplying } = useCommentContext()
   const { slug, sort } = useCommentsContext()
-  const utils = api.useUtils()
+  const [params] = useCommentParams()
+  const trpc = useTRPC()
+  const queryClient = useQueryClient()
   const t = useTranslations()
 
-  const queryKey: GetInfiniteCommentsInput = {
+  const queryKey = {
     slug,
-    sort
-  }
+    sort,
+    type: 'comments',
+    highlightedCommentId: params.comment ?? undefined
+  } as const
 
-  const commentsMutation = api.comments.post.useMutation({
-    onMutate: async () => {
-      await utils.comments.getInfiniteComments.cancel(queryKey)
+  const commentsMutation = useMutation(
+    trpc.comments.post.mutationOptions({
+      onMutate: async () => {
+        await queryClient.cancelQueries({
+          queryKey: trpc.comments.getInfiniteComments.infiniteQueryKey(queryKey)
+        })
 
-      const previousData = utils.comments.getInfiniteComments.getInfiniteData(queryKey)
+        const previousData = queryClient.getQueryData(
+          trpc.comments.getInfiniteComments.infiniteQueryKey(queryKey)
+        )
 
-      utils.comments.getInfiniteComments.setInfiniteData(queryKey, (oldData) => {
-        if (!oldData) {
-          return {
-            pages: [],
-            pageParams: []
-          }
-        }
+        queryClient.setQueryData(
+          trpc.comments.getInfiniteComments.infiniteQueryKey(queryKey),
+          (oldData) => {
+            if (!oldData) {
+              return {
+                pages: [],
+                pageParams: []
+              }
+            }
 
-        return {
-          ...oldData,
-          pages: oldData.pages.map((page) => {
             return {
-              ...page,
-              comments: page.comments.map((c) => {
-                if (c.id === comment.id) {
-                  return {
-                    ...c,
-                    replies: c.replies + 1
-                  }
+              ...oldData,
+              pages: oldData.pages.map((page) => {
+                return {
+                  ...page,
+                  comments: page.comments.map((c) => {
+                    if (c.id === comment.id) {
+                      return {
+                        ...c,
+                        replies: c.replies + 1
+                      }
+                    }
+                    return c
+                  })
                 }
-
-                return c
               })
             }
-          })
-        }
-      })
+          }
+        )
 
-      return { previousData }
-    },
-    onSuccess: () => {
-      setIsReplying(false)
-      toast.success(t('blog.comments.reply-posted'))
-    },
-    onError: (error, _, ctx) => {
-      if (ctx?.previousData) {
-        utils.comments.getInfiniteComments.setInfiniteData(queryKey, ctx.previousData)
+        return { previousData }
+      },
+      onSuccess: () => {
+        setIsReplying(false)
+        toast.success(t('blog.comments.reply-posted'))
+      },
+      onError: (error, _, ctx) => {
+        if (ctx?.previousData) {
+          queryClient.setQueryData(
+            trpc.comments.getInfiniteComments.infiniteQueryKey(queryKey),
+            ctx.previousData
+          )
+        }
+        toast.error(error.message)
+      },
+      onSettled: () => {
+        queryClient.invalidateQueries({
+          queryKey: trpc.comments.getInfiniteComments.infiniteQueryKey(queryKey)
+        })
+        queryClient.invalidateQueries({
+          queryKey: trpc.comments.getCommentsCount.queryKey({ slug })
+        })
+        queryClient.invalidateQueries({
+          queryKey: trpc.comments.getRepliesCount.queryKey({ slug })
+        })
+        queryClient.invalidateQueries({
+          queryKey: trpc.comments.getTotalCommentsCount.queryKey({ slug })
+        })
       }
-      toast.error(error.message)
-    },
-    onSettled: () => utils.comments.invalidate()
-  })
+    })
+  )
 
   const submitCommentReply = (e?: React.FormEvent<HTMLFormElement>) => {
     e?.preventDefault()

@@ -1,5 +1,3 @@
-import 'server-only'
-
 import { env } from '@tszhong0411/env'
 import { Ratelimit } from '@upstash/ratelimit'
 import { Redis } from '@upstash/redis'

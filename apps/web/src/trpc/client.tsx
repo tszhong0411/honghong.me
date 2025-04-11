@@ -3,24 +3,19 @@
 import type { AppRouter } from './root'
 import type { inferRouterInputs, inferRouterOutputs } from '@trpc/server'
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { type QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import { httpBatchStreamLink, loggerLink } from '@trpc/client'
-import { createTRPCReact } from '@trpc/react-query'
+import { createTRPCClient, httpBatchStreamLink, loggerLink } from '@trpc/client'
+import { createTRPCContext } from '@trpc/tanstack-react-query'
 import { env } from '@tszhong0411/env'
 import { useState } from 'react'
 import { SuperJSON } from 'superjson'
 
-const createQueryClient = () =>
-  new QueryClient({
-    defaultOptions: {
-      queries: {
-        staleTime: 1000 * 60 * 5
-      }
-    }
-  })
+import { makeQueryClient } from './query-client'
 
-let clientQueryClientSingleton: QueryClient | undefined
+export const { TRPCProvider, useTRPC } = createTRPCContext<AppRouter>()
+
+let browserQueryClient: QueryClient | undefined
 
 const getBaseUrl = () => {
   if (typeof globalThis !== 'undefined') return ''
@@ -30,15 +25,13 @@ const getBaseUrl = () => {
 
 const getQueryClient = () => {
   if (typeof globalThis === 'undefined') {
-    return createQueryClient()
+    return makeQueryClient()
   }
 
-  clientQueryClientSingleton ??= createQueryClient()
+  browserQueryClient ??= makeQueryClient()
 
-  return clientQueryClientSingleton
+  return browserQueryClient
 }
-
-export const api = createTRPCReact<AppRouter>()
 
 export type RouterInputs = inferRouterInputs<AppRouter>
 export type RouterOutputs = inferRouterOutputs<AppRouter>
@@ -53,7 +46,7 @@ export const TRPCReactProvider = (props: TRPCReactProviderProps) => {
 
   // eslint-disable-next-line @eslint-react/naming-convention/use-state -- it's fine
   const [trpcClient] = useState(() =>
-    api.createClient({
+    createTRPCClient<AppRouter>({
       links: [
         loggerLink({
           enabled: (op) =>
@@ -75,11 +68,10 @@ export const TRPCReactProvider = (props: TRPCReactProviderProps) => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* eslint-disable-next-line @eslint-react/no-context-provider -- custom context */}
-      <api.Provider client={trpcClient} queryClient={queryClient}>
+      <TRPCProvider trpcClient={trpcClient} queryClient={queryClient}>
         {children}
         <ReactQueryDevtools />
-      </api.Provider>
+      </TRPCProvider>
     </QueryClientProvider>
   )
 }

@@ -1,21 +1,21 @@
 'use client'
 
+import { useQuery } from '@tanstack/react-query'
 import { flags } from '@tszhong0411/env'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { linkVariants } from '@tszhong0411/ui'
 import { StarIcon } from 'lucide-react'
 
 import { FOOTER_LINKS } from '@/config/links'
-import { api } from '@/trpc/react'
+import { useTRPC } from '@/trpc/client'
 
 import Link from '../link'
 
 import NowPlaying from './now-playing'
 
 const Footer = () => {
-  const { status, data } = api.github.getRepoStars.useQuery(undefined, {
-    staleTime: 1000 * 60 * 60
-  })
+  const trpc = useTRPC()
+  const { status, data } = useQuery(trpc.github.getRepoStars.queryOptions())
   const t = useTranslations()
 
   return (

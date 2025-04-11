@@ -6,7 +6,7 @@ import { z } from 'zod'
 import { getIp } from '@/utils/get-ip'
 import { getSessionId } from '@/utils/get-session-id'
 
-import { createTRPCRouter, publicProcedure } from '../trpc'
+import { createTRPCRouter, publicProcedure } from '../init'
 
 const getKey = (id: string) => `likes:${id}`
 

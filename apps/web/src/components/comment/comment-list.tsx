@@ -1,6 +1,6 @@
 'use client'
 
-import { keepPreviousData } from '@tanstack/react-query'
+import { keepPreviousData, useInfiniteQuery } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
@@ -12,7 +12,7 @@ import githubLightDefault from 'shiki/themes/github-light-default.mjs'
 import { useCommentsContext } from '@/contexts/comments'
 import { useCommentParams } from '@/hooks/use-comment-params'
 import { useHighlighterStore } from '@/store/highlighter'
-import { api } from '@/trpc/react'
+import { useTRPC } from '@/trpc/client'
 
 import Comment from './comment'
 import CommentHeader from './comment-header'
@@ -24,11 +24,13 @@ const CommentList = () => {
   const t = useTranslations()
   const { highlighter, setHighlighter } = useHighlighterStore()
 
-  const { status, data, fetchNextPage, hasNextPage, isFetchingNextPage } =
-    api.comments.getInfiniteComments.useInfiniteQuery(
+  const trpc = useTRPC()
+  const { status, data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery(
+    trpc.comments.getInfiniteComments.infiniteQueryOptions(
       {
         slug,
         sort,
+        type: 'comments',
         highlightedCommentId: params.comment ?? undefined
       },
       {
@@ -36,6 +38,7 @@ const CommentList = () => {
         placeholderData: keepPreviousData
       }
     )
+  )
 
   const { ref, inView } = useInView()
 

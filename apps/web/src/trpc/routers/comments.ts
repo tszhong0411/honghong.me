@@ -1,4 +1,4 @@
-import type { RouterInputs, RouterOutputs } from '../react'
+import type { RouterInputs, RouterOutputs } from '../client'
 
 import { createId } from '@paralleldrive/cuid2'
 import { TRPCError } from '@trpc/server'
@@ -27,7 +27,7 @@ import { resend } from '@/lib/resend'
 import { getDefaultImage } from '@/utils/get-default-image'
 import { getIp } from '@/utils/get-ip'
 
-import { adminProcedure, createTRPCRouter, protectedProcedure, publicProcedure } from '../trpc'
+import { adminProcedure, createTRPCRouter, protectedProcedure, publicProcedure } from '../init'
 
 const getKey = (id: string) => `comments:${id}`
 
