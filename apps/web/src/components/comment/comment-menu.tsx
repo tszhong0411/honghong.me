@@ -1,3 +1,4 @@
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import {
   AlertDialog,
@@ -23,21 +24,37 @@ import { useCommentContext } from '@/contexts/comment'
 import { useCommentsContext } from '@/contexts/comments'
 import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard'
 import { useSession } from '@/lib/auth-client'
-import { api } from '@/trpc/react'
+import { useTRPC } from '@/trpc/client'
 
 const CommentMenu = () => {
   const { comment } = useCommentContext()
   const { slug } = useCommentsContext()
   const { data: session } = useSession()
-  const utils = api.useUtils()
+  const trpc = useTRPC()
+  const queryClient = useQueryClient()
   const [copy] = useCopyToClipboard()
   const t = useTranslations()
 
-  const deleteCommentMutation = api.comments.delete.useMutation({
-    onSuccess: () => toast.success(t('blog.comments.deleted-a-comment')),
-    onError: (error) => toast.error(error.message),
-    onSettled: () => utils.comments.invalidate()
-  })
+  const deleteCommentMutation = useMutation(
+    trpc.comments.delete.mutationOptions({
+      onSuccess: () => toast.success(t('blog.comments.deleted-a-comment')),
+      onError: (error) => toast.error(error.message),
+      onSettled: () => {
+        queryClient.invalidateQueries({
+          queryKey: trpc.comments.getInfiniteComments.infiniteQueryKey()
+        })
+        queryClient.invalidateQueries({
+          queryKey: trpc.comments.getCommentsCount.queryKey({ slug })
+        })
+        queryClient.invalidateQueries({
+          queryKey: trpc.comments.getRepliesCount.queryKey({ slug })
+        })
+        queryClient.invalidateQueries({
+          queryKey: trpc.comments.getTotalCommentsCount.queryKey({ slug })
+        })
+      }
+    })
+  )
 
   const {
     isDeleted,

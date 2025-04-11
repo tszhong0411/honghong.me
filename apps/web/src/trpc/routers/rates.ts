@@ -3,7 +3,7 @@ import { and, eq, rates } from '@tszhong0411/db'
 import { ratelimit } from '@tszhong0411/kv'
 import { z } from 'zod'
 
-import { createTRPCRouter, protectedProcedure } from '../trpc'
+import { createTRPCRouter, protectedProcedure } from '../init'
 
 const getKey = (id: string) => `rates:${id}`
 

@@ -1,3 +1,4 @@
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import {
   AlertDialog,
@@ -15,18 +16,24 @@ import {
 } from '@tszhong0411/ui'
 
 import { useMessageContext } from '@/contexts/message'
-import { api } from '@/trpc/react'
+import { useTRPC } from '@/trpc/client'
 
 const DeleteButton = () => {
   const { message } = useMessageContext()
-  const utils = api.useUtils()
+  const trpc = useTRPC()
+  const queryClient = useQueryClient()
   const t = useTranslations()
 
-  const guestbookMutation = api.guestbook.delete.useMutation({
-    onSuccess: () => toast.success(t('guestbook.delete-message-successfully')),
-    onSettled: () => utils.guestbook.invalidate(),
-    onError: (error) => toast.error(error.message)
-  })
+  const guestbookMutation = useMutation(
+    trpc.guestbook.delete.mutationOptions({
+      onSuccess: () => toast.success(t('guestbook.delete-message-successfully')),
+      onSettled: () =>
+        queryClient.invalidateQueries({
+          queryKey: trpc.guestbook.getInfiniteMessages.infiniteQueryKey()
+        }),
+      onError: (error) => toast.error(error.message)
+    })
+  )
 
   const handleDeleteMessage = (id: string) => {
     guestbookMutation.mutate({ id })

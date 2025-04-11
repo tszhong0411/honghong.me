@@ -1,5 +1,6 @@
 'use client'
 
+import { useInfiniteQuery } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
@@ -7,7 +8,7 @@ import { useInView } from 'react-intersection-observer'
 import { useCommentContext } from '@/contexts/comment'
 import { useCommentsContext } from '@/contexts/comments'
 import { useCommentParams } from '@/hooks/use-comment-params'
-import { api } from '@/trpc/react'
+import { useTRPC } from '@/trpc/client'
 
 import Comment from './comment'
 import CommentLoader from './comment-loader'
@@ -18,8 +19,9 @@ const CommentReplies = () => {
   const [params] = useCommentParams()
   const t = useTranslations()
 
-  const { status, data, fetchNextPage, hasNextPage, isFetchingNextPage } =
-    api.comments.getInfiniteComments.useInfiniteQuery(
+  const trpc = useTRPC()
+  const { status, data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery(
+    trpc.comments.getInfiniteComments.infiniteQueryOptions(
       {
         slug,
         sort: 'oldest',
@@ -32,6 +34,7 @@ const CommentReplies = () => {
         enabled: isOpenReplies
       }
     )
+  )
 
   const { ref, inView } = useInView()
 

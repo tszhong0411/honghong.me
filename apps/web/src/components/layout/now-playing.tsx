@@ -1,15 +1,15 @@
 'use client'
 
+import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
 
-import { api } from '@/trpc/react'
+import { useTRPC } from '@/trpc/client'
 
 import Link from '../link'
 
 const NowPlaying = () => {
-  const { status, data } = api.spotify.get.useQuery(undefined, {
-    staleTime: 1000 * 60
-  })
+  const trpc = useTRPC()
+  const { status, data } = useQuery(trpc.spotify.get.queryOptions())
   const t = useTranslations()
 
   const isPlaying = status === 'success' && data.isPlaying && data.songUrl

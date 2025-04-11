@@ -1,5 +1,6 @@
 'use client'
 
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { Button, toast } from '@tszhong0411/ui'
 import { SendIcon } from 'lucide-react'
@@ -7,7 +8,7 @@ import { useEffect, useState } from 'react'
 
 import { useCommentsContext } from '@/contexts/comments'
 import { useSession } from '@/lib/auth-client'
-import { api } from '@/trpc/react'
+import { useTRPC } from '@/trpc/client'
 
 import CommentEditor from './comment-editor'
 import UnauthorizedOverlay from './unauthorized-overlay'
@@ -17,17 +18,33 @@ const CommentPost = () => {
   const [content, setContent] = useState('')
   const [isMounted, setIsMounted] = useState(false)
   const { data: session, isPending } = useSession()
-  const utils = api.useUtils()
+  const trpc = useTRPC()
+  const queryClient = useQueryClient()
   const t = useTranslations()
 
-  const commentsMutation = api.comments.post.useMutation({
-    onSuccess: () => {
-      setContent('')
-      toast.success(t('blog.comments.comment-posted'))
-    },
-    onError: (error) => toast.error(error.message),
-    onSettled: () => utils.comments.invalidate()
-  })
+  const commentsMutation = useMutation(
+    trpc.comments.post.mutationOptions({
+      onSuccess: () => {
+        setContent('')
+        toast.success(t('blog.comments.comment-posted'))
+      },
+      onError: (error) => toast.error(error.message),
+      onSettled: () => {
+        queryClient.invalidateQueries({
+          queryKey: trpc.comments.getInfiniteComments.infiniteQueryKey()
+        })
+        queryClient.invalidateQueries({
+          queryKey: trpc.comments.getCommentsCount.queryKey({ slug })
+        })
+        queryClient.invalidateQueries({
+          queryKey: trpc.comments.getRepliesCount.queryKey({ slug })
+        })
+        queryClient.invalidateQueries({
+          queryKey: trpc.comments.getTotalCommentsCount.queryKey({ slug })
+        })
+      }
+    })
+  )
 
   const submitComment = () => {
     if (!content) {

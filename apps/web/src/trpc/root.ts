@@ -1,3 +1,4 @@
+import { createTRPCRouter } from './init'
 import { commentsRouter } from './routers/comments'
 import { githubRouter } from './routers/github'
 import { guestbookRouter } from './routers/guestbook'
@@ -8,7 +9,6 @@ import { usersRouter } from './routers/users'
 import { viewsRouter } from './routers/views'
 import { wakatimeRouter } from './routers/wakatime'
 import { youtubeRouter } from './routers/youtube'
-import { createTRPCRouter } from './trpc'
 
 export const appRouter = createTRPCRouter({
   github: githubRouter,

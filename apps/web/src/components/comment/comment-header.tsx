@@ -1,6 +1,7 @@
 import type { GetInfiniteCommentsInput } from '@/trpc/routers/comments'
 
 import NumberFlow, { continuous, NumberFlowGroup } from '@number-flow/react'
+import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import {
   Button,
@@ -13,14 +14,15 @@ import {
 import { ListFilterIcon } from 'lucide-react'
 
 import { useCommentsContext } from '@/contexts/comments'
-import { api } from '@/trpc/react'
+import { useTRPC } from '@/trpc/client'
 
 const CommentHeader = () => {
   const { slug, sort, setSort } = useCommentsContext()
+  const trpc = useTRPC()
   const t = useTranslations()
 
-  const commentsCountQuery = api.comments.getCommentsCount.useQuery({ slug })
-  const repliesCountQuery = api.comments.getRepliesCount.useQuery({ slug })
+  const commentsCountQuery = useQuery(trpc.comments.getCommentsCount.queryOptions({ slug }))
+  const repliesCountQuery = useQuery(trpc.comments.getRepliesCount.queryOptions({ slug }))
 
   return (
     <div className='flex items-center justify-between px-1'>

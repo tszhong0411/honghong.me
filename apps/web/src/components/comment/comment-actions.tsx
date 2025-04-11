@@ -1,6 +1,5 @@
-import type { GetInfiniteCommentsInput } from '@/trpc/routers/comments'
-
 import NumberFlow, { continuous } from '@number-flow/react'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { Button, buttonVariants, toast } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
@@ -10,9 +9,8 @@ import { ChevronDownIcon, MessageSquareIcon, ThumbsDownIcon, ThumbsUpIcon } from
 import { useCommentContext } from '@/contexts/comment'
 import { useCommentsContext } from '@/contexts/comments'
 import { useRatesContext } from '@/contexts/rates'
-import { useCommentParams } from '@/hooks/use-comment-params'
 import { useSession } from '@/lib/auth-client'
-import { api } from '@/trpc/react'
+import { useTRPC } from '@/trpc/client'
 
 const rateVariants = cva(
   buttonVariants({
@@ -31,88 +29,97 @@ const rateVariants = cva(
 
 const CommentActions = () => {
   const { comment, setIsReplying, isOpenReplies, setIsOpenReplies } = useCommentContext()
-  const { increment, decrement, getCount } = useRatesContext()
   const { slug, sort } = useCommentsContext()
+  const { increment, decrement, getCount } = useRatesContext()
   const { data: session } = useSession()
-  const utils = api.useUtils()
-  const [params] = useCommentParams()
+  const trpc = useTRPC()
+  const queryClient = useQueryClient()
   const t = useTranslations()
 
-  const queryKey: GetInfiniteCommentsInput = {
+  const queryKey = {
     slug,
-    ...(comment.parentId
-      ? {
-          parentId: comment.parentId,
-          sort: 'oldest',
-          type: 'replies',
-          ...(params.reply ? { highlightedCommentId: params.reply } : {})
-        }
-      : { sort, ...(params.comment ? { highlightedCommentId: params.comment } : {}) })
-  }
+    sort: comment.parentId ? 'oldest' : sort,
+    parentId: comment.parentId ?? undefined,
+    type: comment.parentId ? 'replies' : 'comments'
+  } as const
 
-  const ratesSetMutation = api.rates.set.useMutation({
-    onMutate: async (newData) => {
-      increment()
+  const ratesSetMutation = useMutation(
+    trpc.rates.set.mutationOptions({
+      onMutate: async (newData) => {
+        increment()
 
-      await utils.comments.getInfiniteComments.cancel(queryKey)
+        await queryClient.cancelQueries({
+          queryKey: trpc.comments.getInfiniteComments.infiniteQueryKey(queryKey)
+        })
 
-      const previousData = utils.comments.getInfiniteComments.getInfiniteData(queryKey)
+        const previousData = queryClient.getQueryData(
+          trpc.comments.getInfiniteComments.infiniteQueryKey(queryKey)
+        )
 
-      utils.comments.getInfiniteComments.setInfiniteData(queryKey, (oldData) => {
-        if (!oldData) {
-          return {
-            pages: [],
-            pageParams: []
-          }
-        }
+        queryClient.setQueryData(
+          trpc.comments.getInfiniteComments.infiniteQueryKey(queryKey),
+          (oldData) => {
+            if (!oldData) {
+              return {
+                pages: [],
+                pageParams: []
+              }
+            }
 
-        return {
-          ...oldData,
-          pages: oldData.pages.map((page) => {
             return {
-              ...page,
-              comments: page.comments.map((c) => {
-                if (c.id === newData.id) {
-                  let likes: number = c.likes
-                  let dislikes: number = c.dislikes
+              ...oldData,
+              pages: oldData.pages.map((page) => {
+                return {
+                  ...page,
+                  comments: page.comments.map((c) => {
+                    if (c.id === newData.id) {
+                      let likes: number = c.likes
+                      let dislikes: number = c.dislikes
 
-                  if (c.liked === true) likes--
-                  if (c.liked === false) dislikes--
+                      if (c.liked === true) likes--
+                      if (c.liked === false) dislikes--
 
-                  if (newData.like === true) likes++
-                  if (newData.like === false) dislikes++
+                      if (newData.like === true) likes++
+                      if (newData.like === false) dislikes++
 
-                  return {
-                    ...c,
-                    likes,
-                    dislikes,
-                    liked: newData.like
-                  }
+                      return {
+                        ...c,
+                        likes,
+                        dislikes,
+                        liked: newData.like
+                      }
+                    }
+
+                    return c
+                  })
                 }
-
-                return c
               })
             }
+          }
+        )
+
+        return { previousData }
+      },
+      onError: (error, _, ctx) => {
+        if (ctx?.previousData) {
+          queryClient.setQueryData(
+            trpc.comments.getInfiniteComments.infiniteQueryKey(queryKey),
+            ctx.previousData
+          )
+        }
+        toast.error(error.message)
+      },
+      onSettled: () => {
+        decrement()
+
+        if (getCount() === 0) {
+          queryClient.invalidateQueries({
+            queryKey: trpc.comments.getInfiniteComments.infiniteQueryKey(queryKey)
           })
         }
-      })
-
-      return { previousData }
-    },
-    onError: (error, _, ctx) => {
-      if (ctx?.previousData) {
-        utils.comments.getInfiniteComments.setInfiniteData(queryKey, ctx.previousData)
       }
-      toast.error(error.message)
-    },
-    onSettled: () => {
-      decrement()
-
-      if (getCount() === 0) {
-        void utils.comments.getInfiniteComments.invalidate()
-      }
-    }
-  })
+    })
+  )
 
   const isAuthenticated = session !== null
 

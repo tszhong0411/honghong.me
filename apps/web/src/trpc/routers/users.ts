@@ -1,6 +1,6 @@
-import type { RouterOutputs } from '../react'
+import type { RouterOutputs } from '../client'
 
-import { adminProcedure, createTRPCRouter } from '../trpc'
+import { adminProcedure, createTRPCRouter } from '../init'
 
 export const usersRouter = createTRPCRouter({
   getUsers: adminProcedure.query(async ({ ctx }) => {

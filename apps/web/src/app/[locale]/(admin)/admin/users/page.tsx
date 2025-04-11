@@ -1,14 +1,16 @@
 'use client'
 
+import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { DataTableSkeleton } from '@tszhong0411/ui'
 
 import AdminPageHeader from '@/components/admin/admin-page-header'
 import UsersTable from '@/components/admin/users-table'
-import { api } from '@/trpc/react'
+import { useTRPC } from '@/trpc/client'
 
 const Page = () => {
-  const { status, data } = api.users.getUsers.useQuery()
+  const trpc = useTRPC()
+  const { status, data } = useQuery(trpc.users.getUsers.queryOptions())
   const t = useTranslations()
 
   const isSuccess = status === 'success'
