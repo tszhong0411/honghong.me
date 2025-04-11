@@ -9,6 +9,7 @@ import { ChevronDownIcon, MessageSquareIcon, ThumbsDownIcon, ThumbsUpIcon } from
 import { useCommentContext } from '@/contexts/comment'
 import { useCommentsContext } from '@/contexts/comments'
 import { useRatesContext } from '@/contexts/rates'
+import { useCommentParams } from '@/hooks/use-comment-params'
 import { useSession } from '@/lib/auth-client'
 import { useTRPC } from '@/trpc/client'
 
@@ -28,9 +29,10 @@ const rateVariants = cva(
 )
 
 const CommentActions = () => {
-  const { comment, setIsReplying, isOpenReplies, setIsOpenReplies } = useCommentContext()
   const { slug, sort } = useCommentsContext()
+  const { comment, setIsReplying, isOpenReplies, setIsOpenReplies } = useCommentContext()
   const { increment, decrement, getCount } = useRatesContext()
+  const [params] = useCommentParams()
   const { data: session } = useSession()
   const trpc = useTRPC()
   const queryClient = useQueryClient()
@@ -40,7 +42,10 @@ const CommentActions = () => {
     slug,
     sort: comment.parentId ? 'oldest' : sort,
     parentId: comment.parentId ?? undefined,
-    type: comment.parentId ? 'replies' : 'comments'
+    type: comment.parentId ? 'replies' : 'comments',
+    highlightedCommentId: comment.parentId
+      ? (params.reply ?? undefined)
+      : (params.comment ?? undefined)
   } as const
 
   const ratesSetMutation = useMutation(

@@ -7,6 +7,7 @@ import { useState } from 'react'
 
 import { useCommentContext } from '@/contexts/comment'
 import { useCommentsContext } from '@/contexts/comments'
+import { useCommentParams } from '@/hooks/use-comment-params'
 import { useSession } from '@/lib/auth-client'
 import { useTRPC } from '@/trpc/client'
 
@@ -18,6 +19,7 @@ const CommentReply = () => {
   const { data: session } = useSession()
   const { comment, setIsReplying } = useCommentContext()
   const { slug, sort } = useCommentsContext()
+  const [params] = useCommentParams()
   const trpc = useTRPC()
   const queryClient = useQueryClient()
   const t = useTranslations()
@@ -25,8 +27,9 @@ const CommentReply = () => {
   const queryKey = {
     slug,
     sort,
-    type: 'comments'
-  }
+    type: 'comments',
+    highlightedCommentId: params.comment ?? undefined
+  } as const
 
   const commentsMutation = useMutation(
     trpc.comments.post.mutationOptions({

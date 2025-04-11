@@ -7,6 +7,7 @@ import { SendIcon } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 import { useCommentsContext } from '@/contexts/comments'
+import { useCommentParams } from '@/hooks/use-comment-params'
 import { useSession } from '@/lib/auth-client'
 import { useTRPC } from '@/trpc/client'
 
@@ -14,7 +15,8 @@ import CommentEditor from './comment-editor'
 import UnauthorizedOverlay from './unauthorized-overlay'
 
 const CommentPost = () => {
-  const { slug } = useCommentsContext()
+  const { slug, sort } = useCommentsContext()
+  const [params] = useCommentParams()
   const [content, setContent] = useState('')
   const [isMounted, setIsMounted] = useState(false)
   const { data: session, isPending } = useSession()
@@ -31,7 +33,12 @@ const CommentPost = () => {
       onError: (error) => toast.error(error.message),
       onSettled: () => {
         queryClient.invalidateQueries({
-          queryKey: trpc.comments.getInfiniteComments.infiniteQueryKey()
+          queryKey: trpc.comments.getInfiniteComments.infiniteQueryKey({
+            slug,
+            sort,
+            type: 'comments',
+            highlightedCommentId: params.comment ?? undefined
+          })
         })
         queryClient.invalidateQueries({
           queryKey: trpc.comments.getCommentsCount.queryKey({ slug })
