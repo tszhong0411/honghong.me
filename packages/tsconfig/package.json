@@ -23,7 +23,7 @@
     "typescript": "5.x"
   },
   "devDependencies": {
-    "next": "^15.2.4"
+    "next": "^15.3.0"
   },
   "publishConfig": {
     "access": "public"

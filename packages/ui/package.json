@@ -87,9 +87,9 @@
     "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
     "@tszhong0411/utils": "workspace:*",
-    "@types/react": "^19.1.0",
-    "@types/react-dom": "^19.1.1",
-    "next": "^15.2.4",
+    "@types/react": "^19.1.1",
+    "@types/react-dom": "^19.1.2",
+    "next": "^15.3.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "tailwindcss": "^4.1.3"
