@@ -1,5 +1,11 @@
 # @tszhong0411/eslint-config
 
+## 0.1.37
+
+### Patch Changes
+
+- 36fcc48: Upgrade next to 15.3
+
 ## 0.1.36
 
 ### Patch Changes
