@@ -1,19 +1,20 @@
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+
+import { Button } from '@/components/ui/button'
 import {
-  Button,
   Form,
   FormControl,
   FormDescription,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
-  Input
-} from '@tszhong0411/ui'
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
+  FormMessage
+} from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -35,7 +36,7 @@ const FormDemo = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className='w-full max-w-md space-y-8'>
+      <form onSubmit={form.handleSubmit(onSubmit)} className='w-full max-w-md space-y-4'>
         <FormField
           control={form.control}
           name='username'

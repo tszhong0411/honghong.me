@@ -1,7 +1,8 @@
 'use client'
 
-import { Progress, ProgressLabel, ProgressRange, ProgressTrack } from '@tszhong0411/ui'
 import { useEffect, useState } from 'react'
+
+import { Progress, ProgressLabel, ProgressRange, ProgressTrack } from '@/components/ui/progress'
 
 const ProgressWithLabelDemo = () => {
   const [progress, setProgress] = useState(13)

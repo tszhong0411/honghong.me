@@ -1,5 +1,6 @@
-import { Link } from '@tszhong0411/ui'
 import { EditIcon } from 'lucide-react'
+
+import { Link } from '@/components/ui/link'
 
 type EditOnGitHubProps = {
   filePath: string

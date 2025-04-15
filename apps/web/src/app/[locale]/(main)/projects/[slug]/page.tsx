@@ -2,7 +2,7 @@ import type { Metadata, ResolvingMetadata } from 'next'
 import type { SoftwareApplication, WithContext } from 'schema-dts'
 
 import { setRequestLocale } from '@tszhong0411/i18n/server'
-import { BlurImage } from '@tszhong0411/ui'
+import { BlurImage } from '@tszhong0411/ui/blur-image'
 import { allProjects } from 'content-collections'
 import { notFound } from 'next/navigation'
 

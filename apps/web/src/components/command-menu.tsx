@@ -3,20 +3,16 @@
 import { SiFacebook, SiGithub, SiInstagram, SiX, SiYoutube } from '@icons-pack/react-simple-icons'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { useRouter } from '@tszhong0411/i18n/routing'
+import { Button } from '@tszhong0411/ui/button'
 import {
-  Button,
   CommandDialog,
   CommandEmpty,
-  CommandFooter,
-  CommandFooterTrigger,
   CommandGroup,
   CommandInput,
   CommandItem,
   CommandList,
-  CommandSeparator,
-  Kbd,
-  Logo
-} from '@tszhong0411/ui'
+  CommandSeparator
+} from '@tszhong0411/ui/command'
 import { CodeIcon, CommandIcon, LinkIcon, LogInIcon, LogOutIcon } from 'lucide-react'
 import { Fragment, useCallback, useEffect, useState } from 'react'
 
@@ -42,16 +38,11 @@ type Groups = Array<{
 
 const CommandMenu = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const [selectingValue, setSelectingValue] = useState('')
   const [copy] = useCopyToClipboard()
   const { data: session } = useSession()
   const t = useTranslations()
   const { setIsSignInOpen } = useDialogsStore()
   const router = useRouter()
-
-  const isSelectingCommand = [t('common.sign-out'), t('command-menu.actions.copy-link')].includes(
-    selectingValue
-  )
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -164,12 +155,7 @@ const CommandMenu = () => {
       >
         <CommandIcon className='size-4' />
       </Button>
-      <CommandDialog
-        open={isOpen}
-        onOpenChange={setIsOpen}
-        value={selectingValue}
-        onValueChange={setSelectingValue}
-      >
+      <CommandDialog open={isOpen} onOpenChange={setIsOpen}>
         <CommandInput placeholder={t('command-menu.placeholder')} />
         <CommandList>
           <CommandEmpty>{t('command-menu.no-results')}</CommandEmpty>
@@ -187,14 +173,6 @@ const CommandMenu = () => {
             </Fragment>
           ))}
         </CommandList>
-        <CommandFooter>
-          <Logo className='size-4' />
-          <CommandFooterTrigger triggerKey={<Kbd keys={['enter']} className='py-0' />}>
-            {isSelectingCommand
-              ? t('command-menu.trigger.open-command')
-              : t('command-menu.trigger.open-link')}
-          </CommandFooterTrigger>
-        </CommandFooter>
       </CommandDialog>
     </>
   )

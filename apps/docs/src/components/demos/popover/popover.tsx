@@ -1,4 +1,7 @@
-import { Button, Input, Label, Popover, PopoverContent, PopoverTrigger } from '@tszhong0411/ui'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 
 const PopoverDemo = () => {
   return (

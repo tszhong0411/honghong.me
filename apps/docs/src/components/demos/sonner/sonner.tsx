@@ -1,8 +1,10 @@
 'use client'
 
-import { Button, toast } from '@tszhong0411/ui'
+import { toast } from 'sonner'
 
-const ToasterDemo = () => {
+import { Button } from '@/components/ui/button'
+
+const SonnerDemo = () => {
   return (
     <Button
       variant='outline'
@@ -21,4 +23,4 @@ const ToasterDemo = () => {
   )
 }
 
-export default ToasterDemo
+export default SonnerDemo

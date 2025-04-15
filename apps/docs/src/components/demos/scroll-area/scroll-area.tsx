@@ -1,4 +1,4 @@
-import { ScrollArea } from '@tszhong0411/ui'
+import { ScrollArea } from '@/components/ui/scroll-area'
 
 const TAGS = Array.from({ length: 50 }).map((_, i, a) => `v1.2.0-beta.${a.length - i}`)
 

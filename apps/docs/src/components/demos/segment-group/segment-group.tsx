@@ -1,4 +1,4 @@
-import { SegmentGroup, SegmentGroupItem } from '@tszhong0411/ui'
+import { SegmentGroup, SegmentGroupItem } from '@/components/ui/segment-group'
 
 const frameworks = [
   { label: 'React', value: 'react' },

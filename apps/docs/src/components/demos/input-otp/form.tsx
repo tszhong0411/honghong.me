@@ -1,22 +1,21 @@
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { toast } from 'sonner'
+import { z } from 'zod'
+
+import { Button } from '@/components/ui/button'
 import {
-  Button,
   Form,
   FormControl,
   FormDescription,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSlot,
-  toast
-} from '@tszhong0411/ui'
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
+  FormMessage
+} from '@/components/ui/form'
+import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp'
 
 const FormSchema = z.object({
   pin: z.string().min(6, {

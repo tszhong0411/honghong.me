@@ -1,30 +1,26 @@
 'use client'
 
-import {
-  Button,
-  CommandDialog,
-  CommandEmpty,
-  CommandFooter,
-  CommandFooterTrigger,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator,
-  Kbd,
-  Logo
-} from '@tszhong0411/ui'
-import { cn } from '@tszhong0411/utils'
 import { ComponentIcon, MoonIcon, SearchIcon, SunIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useTheme } from 'next-themes'
 import { Fragment, useEffect, useState } from 'react'
 
 import { SIDEBAR_LINKS } from '@/config/links'
+import { cn } from '@/utils/cn'
+
+import { Button } from '../ui/button'
+import {
+  CommandDialog,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator
+} from '../ui/command'
 
 const Search = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const [value, setValue] = useState('')
   const { setTheme } = useTheme()
   const router = useRouter()
 
@@ -45,8 +41,6 @@ const Search = () => {
 
     return () => document.removeEventListener('keydown', down)
   }, [])
-
-  const isSelectingTheme = value === 'Light' || value === 'Dark'
 
   return (
     <>
@@ -72,7 +66,7 @@ const Search = () => {
       >
         <SearchIcon className='size-5' />
       </Button>
-      <CommandDialog open={isOpen} onOpenChange={setIsOpen} value={value} onValueChange={setValue}>
+      <CommandDialog open={isOpen} onOpenChange={setIsOpen}>
         <CommandInput placeholder='Type a command or search...' />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
@@ -104,12 +98,6 @@ const Search = () => {
             </CommandItem>
           </CommandGroup>
         </CommandList>
-        <CommandFooter>
-          <Logo className='size-4' />
-          <CommandFooterTrigger triggerKey={<Kbd keys={['enter']} className='py-0' />}>
-            {isSelectingTheme ? 'Switch Theme' : 'Open Link'}
-          </CommandFooterTrigger>
-        </CommandFooter>
       </CommandDialog>
     </>
   )

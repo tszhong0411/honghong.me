@@ -1,7 +1,7 @@
 'use client'
 
 import { useTranslations } from '@tszhong0411/i18n/client'
-import { linkVariants } from '@tszhong0411/ui'
+import { linkVariants } from '@tszhong0411/ui/link'
 
 import Link from '@/components/link'
 import { usePostContext } from '@/contexts/post'

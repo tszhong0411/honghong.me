@@ -1,4 +1,4 @@
-import { CodeBlock } from '@tszhong0411/ui'
+import { CodeBlock } from '@/components/ui/code-block'
 
 const CodeBlockDemo = () => {
   return (

@@ -1,9 +1,11 @@
 'use client'
 
-import { getAvatarAbbreviation, Input } from '@tszhong0411/ui'
 import { useState } from 'react'
 
-const GetAvatarAbbreviationDemo = () => {
+import { Input } from '@/components/ui/input'
+import { getAbbreviation } from '@/utils/get-abbreviation'
+
+const GetAbbreviationDemo = () => {
   const [value, setValue] = useState('John Doe')
 
   return (
@@ -17,11 +19,9 @@ const GetAvatarAbbreviationDemo = () => {
         placeholder='Enter a name...'
         className='input'
       />
-      <p className='text-muted-foreground mt-2 text-sm'>
-        Abbreviation: {getAvatarAbbreviation(value)}
-      </p>
+      <p className='text-muted-foreground mt-2 text-sm'>Abbreviation: {getAbbreviation(value)}</p>
     </div>
   )
 }
 
-export default GetAvatarAbbreviationDemo
+export default GetAbbreviationDemo

@@ -1,4 +1,4 @@
-export const getAvatarAbbreviation = (name: string) => {
+export const getAbbreviation = (name: string) => {
   const abbreviation = name
     .split(' ')
     .map((n) => n[0])

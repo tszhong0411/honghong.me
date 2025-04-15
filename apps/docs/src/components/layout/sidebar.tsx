@@ -1,12 +1,14 @@
 'use client'
 
-import { Link, ScrollArea } from '@tszhong0411/ui'
-import { cva } from 'class-variance-authority'
+import { cva } from 'cva'
 import { usePathname } from 'next/navigation'
 
 import { SIDEBAR_LINKS } from '../../config/links'
+import { Link } from '../ui/link'
+import { ScrollArea } from '../ui/scroll-area'
 
-const sidebarLinkVariants = cva('block rounded-lg px-4 py-2', {
+const sidebarLinkVariants = cva({
+  base: 'block rounded-lg px-4 py-2',
   variants: {
     active: {
       true: 'bg-red-500/10 font-semibold text-red-500',

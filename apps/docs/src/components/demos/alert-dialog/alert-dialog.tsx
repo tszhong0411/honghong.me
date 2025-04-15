@@ -7,9 +7,9 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
-  Button
-} from '@tszhong0411/ui'
+  AlertDialogTrigger
+} from '@/components/ui/alert-dialog'
+import { Button } from '@/components/ui/button'
 
 const AlertDialogDemo = () => {
   return (

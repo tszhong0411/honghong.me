@@ -1,6 +1,6 @@
-import { Link } from '@tszhong0411/ui'
-
 import { HEADER_LINKS } from '@/config/links'
+
+import { Link } from '../ui/link'
 
 import MobileNav from './mobile-nav'
 import Search from './search'

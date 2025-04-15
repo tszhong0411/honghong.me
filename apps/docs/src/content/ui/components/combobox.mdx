@@ -8,6 +8,12 @@ link:
 
 <ComponentPreview name='combobox/combobox' />
 
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add "https://docs.honghong.me/r/combobox"
+```
+
 ## Usage
 
 ```tsx
@@ -22,27 +28,21 @@ import {
   ComboboxItemIndicator,
   ComboboxItemText,
   ComboboxTrigger
-} from '@tszhong0411/ui'
+} from '@/components/ui/combobox'
 ```
 
 ```tsx
 <Combobox collection={collection}>
   <ComboboxLabel>Framework</ComboboxLabel>
-  <ComboboxControl>
-    <ComboboxInput placeholder='Select a framework' />
-    <ComboboxTrigger>
-      <ChevronsUpDownIcon />
-    </ComboboxTrigger>
-  </ComboboxControl>
+  <ComboboxTrigger>
+    <ComboboxValue placeholder='Select a framework' />
+  </ComboboxTrigger>
   <ComboboxContent>
     <ComboboxItemGroup>
       <ComboboxItemGroupLabel>Frameworks</ComboboxItemGroupLabel>
       {collection.map((item) => (
         <ComboboxItem key={item} item={item}>
-          <ComboboxItemIndicator>
-            <CheckIcon />
-          </ComboboxItemIndicator>
-          <ComboboxItemText>{item}</ComboboxItemText>
+          {item}
         </ComboboxItem>
       ))}
     </ComboboxItemGroup>

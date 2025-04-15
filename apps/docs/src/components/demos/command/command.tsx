@@ -1,17 +1,4 @@
 import {
-  Command,
-  CommandEmpty,
-  CommandFooter,
-  CommandFooterTrigger,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator,
-  Kbd,
-  Logo
-} from '@tszhong0411/ui'
-import {
   CalculatorIcon,
   CalendarIcon,
   CreditCardIcon,
@@ -19,6 +6,17 @@ import {
   SmileIcon,
   UserIcon
 } from 'lucide-react'
+
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator,
+  CommandShortcut
+} from '@/components/ui/command'
 
 const CommandDemo = () => {
   return (
@@ -45,26 +43,20 @@ const CommandDemo = () => {
           <CommandItem>
             <UserIcon />
             <span>Profile</span>
-            <Kbd keys={['command']}>P</Kbd>
+            <CommandShortcut keys={['command']}>P</CommandShortcut>
           </CommandItem>
           <CommandItem>
             <CreditCardIcon />
             <span>Billing</span>
-            <Kbd keys={['command']}>B</Kbd>
+            <CommandShortcut keys={['command']}>B</CommandShortcut>
           </CommandItem>
           <CommandItem>
             <SettingsIcon />
             <span>Settings</span>
-            <Kbd keys={['command']}>S</Kbd>
+            <CommandShortcut keys={['command']}>S</CommandShortcut>
           </CommandItem>
         </CommandGroup>
       </CommandList>
-      <CommandFooter>
-        <Logo className='size-4' />
-        <CommandFooterTrigger triggerKey={<Kbd keys={['enter']} className='py-0' />}>
-          Open Command
-        </CommandFooterTrigger>
-      </CommandFooter>
     </Command>
   )
 }

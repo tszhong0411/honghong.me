@@ -215,8 +215,8 @@ const COMPONENT_LINKS = [
     text: 'Textarea'
   },
   {
-    href: '/ui/components/toaster',
-    text: 'Toaster'
+    href: '/ui/components/sonner',
+    text: 'Sonner'
   },
   {
     href: '/ui/components/toggle-group',
@@ -267,8 +267,8 @@ export const SIDEBAR_LINKS: SidebarLinks = [
     title: 'UI / Utilities',
     links: [
       {
-        href: '/ui/utilities/get-avatar-abbreviation',
-        text: 'getAvatarAbbreviation'
+        href: '/ui/utilities/get-abbreviation',
+        text: 'getAbbreviation'
       }
     ]
   }

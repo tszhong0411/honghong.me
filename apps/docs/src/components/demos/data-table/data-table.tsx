@@ -9,13 +9,27 @@ import {
   useReactTable
 } from '@tanstack/react-table'
 import {
-  Badge,
-  Button,
-  Checkbox,
+  ArrowDownIcon,
+  ArrowRightIcon,
+  ArrowUpIcon,
+  CheckCircleIcon,
+  CircleIcon,
+  CircleOffIcon,
+  HelpCircleIcon,
+  MoreHorizontalIcon,
+  TimerIcon
+} from 'lucide-react'
+
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Checkbox } from '@/components/ui/checkbox'
+import {
   DataTable,
   DataTableColumnHeader,
   type DataTableFilterField,
-  DataTableToolbar,
+  DataTableToolbar
+} from '@/components/ui/data-table'
+import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -27,18 +41,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger
-} from '@tszhong0411/ui'
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  ArrowUpIcon,
-  CheckCircleIcon,
-  CircleIcon,
-  CircleOffIcon,
-  HelpCircleIcon,
-  MoreHorizontalIcon,
-  TimerIcon
-} from 'lucide-react'
+} from '@/components/ui/dropdown-menu'
 
 type Task = {
   id: string

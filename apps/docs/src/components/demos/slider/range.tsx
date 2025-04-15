@@ -1,25 +1,29 @@
-import {
-  Slider,
-  SliderControl,
-  SliderRange,
-  SliderThumb,
-  SliderTrack,
-  SliderValueText
-} from '@tszhong0411/ui'
+'use client'
 
-const SliderDemo = () => {
+import { useState } from 'react'
+
+import { Label } from '@/components/ui/label'
+import { Slider } from '@/components/ui/slider'
+
+const SliderRangeDemo = () => {
+  const [value, setValue] = useState([0.3, 0.7])
+
   return (
-    <Slider defaultValue={[10, 50]} className='w-3/5'>
-      <SliderControl>
-        <SliderTrack>
-          <SliderRange />
-        </SliderTrack>
-        <SliderThumb index={0} />
-        <SliderThumb index={1} />
-      </SliderControl>
-      <SliderValueText />
-    </Slider>
+    <div className='grid w-full max-w-sm gap-3'>
+      <div className='flex items-center justify-between gap-2'>
+        <Label htmlFor='slider-demo-temperature'>Temperature</Label>
+        <span className='text-muted-foreground text-sm'>{value.join(', ')}</span>
+      </div>
+      <Slider
+        id='slider-demo-temperature'
+        value={value}
+        onValueChange={setValue}
+        min={0}
+        max={1}
+        step={0.1}
+      />
+    </div>
   )
 }
 
-export default SliderDemo
+export default SliderRangeDemo

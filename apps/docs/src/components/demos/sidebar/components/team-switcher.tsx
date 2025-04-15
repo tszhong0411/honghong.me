@@ -1,19 +1,6 @@
 'use client'
 
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuTrigger,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  useSidebar
-} from '@tszhong0411/ui'
-import {
   AudioWaveformIcon,
   ChevronsUpDownIcon,
   CommandIcon,
@@ -21,6 +8,22 @@ import {
   PlusIcon
 } from 'lucide-react'
 import { useState } from 'react'
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuTrigger
+} from '@/components/ui/dropdown-menu'
+import {
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  useSidebar
+} from '@/components/ui/sidebar'
 
 type Team = {
   name: string

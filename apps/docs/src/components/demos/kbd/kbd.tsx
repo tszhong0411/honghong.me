@@ -1,4 +1,4 @@
-import { Kbd } from '@tszhong0411/ui'
+import { Kbd } from '@/components/ui/kbd'
 
 const KbdDemo = () => {
   return (

@@ -1,6 +1,6 @@
 'use client'
 
-import { SidebarTrigger } from '@tszhong0411/ui'
+import { SidebarTrigger } from '@tszhong0411/ui/sidebar'
 
 import LocaleSwitcher from '../layout/locale-switcher'
 import ThemeSwitcher from '../layout/theme-switcher'

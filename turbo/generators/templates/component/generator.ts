@@ -49,7 +49,7 @@ export const componentGenerator = (plop: PlopTypes.NodePlopAPI): void => {
     actions: (answers) => [
       {
         type: 'add',
-        path: 'packages/ui/src/{{ name }}.tsx',
+        path: 'apps/docs/src/components/ui/{{ name }}.tsx',
         templateFile: 'templates/component/component.tsx.hbs'
       },
       {
@@ -110,22 +110,11 @@ export const componentGenerator = (plop: PlopTypes.NodePlopAPI): void => {
           throw new Error('Failed to modify links.ts')
         }
       },
-      // Update the index.ts file in UI package
-      {
-        type: 'append',
-        path: 'packages/ui/src/index.ts',
-        template: `export * from './${(answers as { name: string }).name}'`
-      },
       // Format and lint the code
       () => {
         /* eslint-disable sonarjs/os-command -- it's safe */
         execSync(`pnpm prettier --write ${LINKS_CONFIG_PATH}`, {
           stdio: 'inherit'
-        })
-
-        execSync(`eslint --fix src/index.ts`, {
-          stdio: 'inherit',
-          cwd: 'packages/ui'
         })
         /* eslint-enable sonarjs/os-command -- enable it again */
 

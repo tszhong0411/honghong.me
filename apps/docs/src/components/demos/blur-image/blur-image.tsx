@@ -1,4 +1,4 @@
-import { BlurImage } from '@tszhong0411/ui'
+import { BlurImage } from '@/components/ui/blur-image'
 
 const BlurImageDemo = () => {
   return (

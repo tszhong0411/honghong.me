@@ -4,7 +4,8 @@ import type { GetInfiniteMessagesOutput } from '@/trpc/routers/guestbook'
 
 import { keepPreviousData, useInfiniteQuery } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
-import { Avatar, AvatarFallback, AvatarImage, Skeleton } from '@tszhong0411/ui'
+import { Avatar, AvatarFallback, AvatarImage } from '@tszhong0411/ui/avatar'
+import { Skeleton } from '@tszhong0411/ui/skeleton'
 import { useEffect, useMemo } from 'react'
 import { useInView } from 'react-intersection-observer'
 

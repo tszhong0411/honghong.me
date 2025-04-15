@@ -21,6 +21,7 @@
     "with-env": "dotenv -e ../../.env.local --"
   },
   "dependencies": {
+    "@ark-ui/react": "^5.5.0",
     "@hookform/resolvers": "^5.0.1",
     "@icons-pack/react-simple-icons": "^12.5.0",
     "@number-flow/react": "^0.5.9",
@@ -36,14 +37,13 @@
     "@tszhong0411/emails": "workspace:*",
     "@tszhong0411/env": "workspace:*",
     "@tszhong0411/i18n": "workspace:*",
-    "@tszhong0411/ui": "workspace:*",
-    "@tszhong0411/utils": "workspace:*",
     "@vercel/speed-insights": "^1.2.0",
     "better-auth": "^1.2.5",
     "better-call": "^1.0.7",
     "canvas-confetti": "^1.9.3",
-    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "cobe": "^0.6.3",
+    "cva": "^1.0.0-beta.3",
     "dayjs": "^1.11.13",
     "fast-xml-parser": "^5.2.0",
     "geist": "^1.3.1",
@@ -65,7 +65,9 @@
     "resend": "^4.2.0",
     "rss": "^1.2.2",
     "shiki": "^3.2.1",
+    "sonner": "^2.0.3",
     "superjson": "^2.2.2",
+    "tailwind-merge": "^3.2.0",
     "tinycolor2": "^1.6.0",
     "use-debounce": "^10.0.4",
     "zod": "^3.24.2",
@@ -79,6 +81,7 @@
     "@content-collections/next": "^0.2.6",
     "@next/bundle-analyzer": "^15.3.0",
     "@tailwindcss/postcss": "^4.1.3",
+    "@tailwindcss/typography": "^0.5.16",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@tszhong0411/eslint-config": "workspace:*",
@@ -98,7 +101,8 @@
     "postcss-load-config": "^6.0.1",
     "schema-dts": "^1.1.5",
     "sharp": "^0.34.0",
-    "tailwindcss": "^4.1.3"
+    "tailwindcss": "^4.1.3",
+    "tw-animate-css": "^1.2.5"
   },
   "lint-staged": {
     "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix"

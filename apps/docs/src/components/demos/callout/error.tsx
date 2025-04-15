@@ -1,4 +1,4 @@
-import { Callout } from '@tszhong0411/ui'
+import { Callout } from '@/components/ui/callout'
 
 const CalloutErrorDemo = () => {
   return (

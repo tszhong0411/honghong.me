@@ -101,11 +101,7 @@
     },
     "no-results": "No results found.",
     "open-menu": "Open command menu",
-    "placeholder": "Type a command or search",
-    "trigger": {
-      "open-command": "Open Command",
-      "open-link": "Open Link"
-    }
+    "placeholder": "Type a command or search"
   },
   "common": {
     "cancel": "Cancel",

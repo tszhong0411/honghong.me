@@ -2,9 +2,10 @@
 
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
-import { Button, toast } from '@tszhong0411/ui'
+import { Button } from '@tszhong0411/ui/button'
 import { SendIcon } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { toast } from 'sonner'
 
 import { useCommentsContext } from '@/contexts/comments'
 import { useCommentParams } from '@/hooks/use-comment-params'

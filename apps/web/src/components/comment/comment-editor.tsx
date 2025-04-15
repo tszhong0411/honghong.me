@@ -1,8 +1,10 @@
 import { useTranslations } from '@tszhong0411/i18n/client'
-import { Button, Textarea } from '@tszhong0411/ui'
-import { cn } from '@tszhong0411/utils'
+import { Button } from '@tszhong0411/ui/button'
+import { Textarea } from '@tszhong0411/ui/textarea'
 import { BoldIcon, ItalicIcon, StrikethroughIcon } from 'lucide-react'
 import { useRef } from 'react'
+
+import { cn } from '@/utils/cn'
 
 type Command = {
   onModEnter?: () => void
@@ -128,9 +130,8 @@ const CommentEditor = (props: CommentEditorProps) => {
   return (
     <div
       className={cn(
-        'bg-background ring-offset-background focus-within:ring-ring rounded-lg border pb-1',
-        'focus-within:outline-hidden focus-within:ring-2 focus-within:ring-offset-2',
-        'aria-disabled:cursor-not-allowed aria-disabled:opacity-80'
+        'border-input dark:bg-input/30 rounded-md border bg-transparent pb-1 transition-[color,box-shadow]',
+        'focus-within:border-ring focus-within:ring-ring/50 focus-within:ring-[3px]'
       )}
     >
       <Textarea
@@ -140,7 +141,7 @@ const CommentEditor = (props: CommentEditorProps) => {
         }}
         ref={textareaRef}
         defaultValue={initialValue}
-        className='min-h-10 resize-none border-none focus-visible:ring-0 focus-visible:ring-offset-0'
+        className='min-h-10 resize-none border-none bg-transparent shadow-none focus-visible:ring-0 dark:bg-transparent'
         autoComplete='off'
         autoCorrect='off'
         autoCapitalize='off'

@@ -15,7 +15,13 @@ const config: KnipConfig = {
       entry: ['turbo/generators/config.ts']
     },
     'apps/docs': {
-      entry: ['content-collections.ts', 'src/components/demos/**/*.tsx']
+      entry: [
+        'content-collections.ts',
+        'src/components/demos/**/*.tsx',
+        'src/components/ui/**/*.tsx'
+      ],
+      // They are used in css files, but can't be detected by knip
+      ignoreDependencies: ['tw-animate-css', '@tailwindcss/typography']
     },
     'apps/web': {
       entry: [
@@ -23,7 +29,9 @@ const config: KnipConfig = {
         'src/i18n/request.ts',
         'src/e2e/**/*.setup.ts',
         'src/e2e/**/*.teardown.ts'
-      ]
+      ],
+      // They are used in css files, but can't be detected by knip
+      ignoreDependencies: ['tw-animate-css', '@tailwindcss/typography']
     },
     'packages/db': {
       entry: ['src/seed.ts']
@@ -31,10 +39,6 @@ const config: KnipConfig = {
     'packages/eslint-config': {
       // @see https://github.com/francoismassart/eslint-plugin-tailwindcss/issues/325
       ignoreDependencies: ['@eslint/config-inspector', 'eslint-plugin-tailwindcss']
-    },
-    'packages/ui': {
-      // @see https://github.com/shadcn-ui/ui/issues/4792
-      ignoreDependencies: ['@radix-ui/react-context', '@tailwindcss/typography']
     }
   }
 }

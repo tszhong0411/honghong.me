@@ -1,10 +1,10 @@
 import NumberFlow from '@number-flow/react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
-import { Button, buttonVariants, toast } from '@tszhong0411/ui'
-import { cn } from '@tszhong0411/utils'
-import { cva } from 'class-variance-authority'
+import { Button, buttonVariants } from '@tszhong0411/ui/button'
+import { cva } from 'cva'
 import { ChevronDownIcon, MessageSquareIcon, ThumbsDownIcon, ThumbsUpIcon } from 'lucide-react'
+import { toast } from 'sonner'
 
 import { useCommentContext } from '@/contexts/comment'
 import { useCommentsContext } from '@/contexts/comments'
@@ -12,21 +12,20 @@ import { useRatesContext } from '@/contexts/rates'
 import { useCommentParams } from '@/hooks/use-comment-params'
 import { useSession } from '@/lib/auth-client'
 import { useTRPC } from '@/trpc/client'
+import { cn } from '@/utils/cn'
 
-const rateVariants = cva(
-  buttonVariants({
+const rateVariants = cva({
+  base: buttonVariants({
     variant: 'secondary',
     className: 'h-8 gap-1.5 px-2 font-mono text-xs font-medium'
   }),
-  {
-    variants: {
-      active: {
-        true: 'bg-accent text-accent-foreground',
-        false: 'text-muted-foreground'
-      }
+  variants: {
+    active: {
+      true: 'bg-accent text-accent-foreground',
+      false: 'text-muted-foreground'
     }
   }
-)
+})
 
 const CommentActions = () => {
   const { slug, sort } = useCommentsContext()

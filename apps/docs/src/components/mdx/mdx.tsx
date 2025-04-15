@@ -1,6 +1,10 @@
 import { useMDXComponent } from '@content-collections/mdx/react'
-import * as uiComponents from '@tszhong0411/ui'
-import { cn } from '@tszhong0411/utils'
+
+import { cn } from '@/utils/cn'
+
+import { Callout } from '../ui/callout'
+import { CodeBlock } from '../ui/code-block'
+import { Link } from '../ui/link'
 
 import ComponentPreview from './component-preview'
 import EmbedComponentPreview from './embed-component-preview'
@@ -22,19 +26,19 @@ const components = {
 
     if (!href) throw new Error('Link must have an href')
 
-    return <uiComponents.Link href={href} {...rest} />
+    // eslint-disable-next-line jsx-a11y/anchor-has-content -- it's a custom component
+    return <Link href={href} {...rest} />
   },
 
   // Custom components
-  ...uiComponents,
-  Callout: (props: React.ComponentProps<typeof uiComponents.Callout>) => (
-    <uiComponents.Callout className='[&_p]:m-0' {...props} />
+  Callout: (props: React.ComponentProps<typeof Callout>) => (
+    <Callout className='[&_p]:m-0' {...props} />
   ),
   ComponentPreview,
   EmbedComponentPreview,
   TreeView,
 
-  pre: uiComponents.CodeBlock
+  pre: CodeBlock
 }
 
 const Mdx = (props: MdxProps) => {

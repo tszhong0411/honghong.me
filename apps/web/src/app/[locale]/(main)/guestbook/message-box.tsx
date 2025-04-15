@@ -4,21 +4,13 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { useRouter } from '@tszhong0411/i18n/routing'
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-  Button,
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-  Skeleton,
-  Textarea,
-  toast
-} from '@tszhong0411/ui'
+import { Avatar, AvatarFallback, AvatarImage } from '@tszhong0411/ui/avatar'
+import { Button } from '@tszhong0411/ui/button'
+import { Form, FormControl, FormField, FormItem, FormMessage } from '@tszhong0411/ui/form'
+import { Skeleton } from '@tszhong0411/ui/skeleton'
+import { Textarea } from '@tszhong0411/ui/textarea'
 import { useForm } from 'react-hook-form'
+import { toast } from 'sonner'
 import { z } from 'zod'
 
 import { signOut, type User } from '@/lib/auth-client'

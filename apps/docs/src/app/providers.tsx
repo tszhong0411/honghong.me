@@ -1,7 +1,8 @@
 'use client'
 
-import { Toaster } from '@tszhong0411/ui'
 import { ThemeProvider } from 'next-themes'
+
+import { Toaster } from '@/components/ui/sonner'
 
 type ProvidesProps = {
   children: React.ReactNode

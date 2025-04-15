@@ -9,16 +9,17 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
-  Button,
-  buttonVariants,
+  AlertDialogTrigger
+} from '@tszhong0411/ui/alert-dialog'
+import { Button, buttonVariants } from '@tszhong0411/ui/button'
+import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger,
-  toast
-} from '@tszhong0411/ui'
+  DropdownMenuTrigger
+} from '@tszhong0411/ui/dropdown-menu'
 import { MoreVerticalIcon } from 'lucide-react'
+import { toast } from 'sonner'
 
 import { useCommentContext } from '@/contexts/comment'
 import { useCommentsContext } from '@/contexts/comments'
@@ -95,10 +96,10 @@ const CommentMenu = () => {
           <AlertDialogTrigger asChild>
             {isAuthor ? (
               <DropdownMenuItem
-                className='text-red-600 focus:text-red-500'
                 disabled={deleteCommentMutation.isPending}
                 aria-disabled={deleteCommentMutation.isPending}
                 data-testid='comment-delete-button'
+                variant='destructive'
               >
                 {t('common.delete')}
               </DropdownMenuItem>

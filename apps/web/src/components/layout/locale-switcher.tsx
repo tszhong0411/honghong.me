@@ -1,13 +1,13 @@
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { i18n, supportedLanguages } from '@tszhong0411/i18n/config'
 import { usePathname, useRouter } from '@tszhong0411/i18n/routing'
+import { Button } from '@tszhong0411/ui/button'
 import {
-  Button,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger
-} from '@tszhong0411/ui'
+} from '@tszhong0411/ui/dropdown-menu'
 import { LanguagesIcon } from 'lucide-react'
 import { useTransition } from 'react'
 

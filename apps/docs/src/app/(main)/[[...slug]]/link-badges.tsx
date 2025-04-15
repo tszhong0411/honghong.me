@@ -2,9 +2,11 @@
 
 import type { Doc } from 'content-collections'
 
-import { badgeVariants, Link } from '@tszhong0411/ui'
-import { cn } from '@tszhong0411/utils'
 import { ExternalLinkIcon } from 'lucide-react'
+
+import { badgeVariants } from '@/components/ui/badge'
+import { Link } from '@/components/ui/link'
+import { cn } from '@/utils/cn'
 
 const LinkBadges = (props: Doc['link'] = {}) => {
   const { doc, api } = props

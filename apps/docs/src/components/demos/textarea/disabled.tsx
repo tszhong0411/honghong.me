@@ -1,4 +1,4 @@
-import { Textarea } from '@tszhong0411/ui'
+import { Textarea } from '@/components/ui/textarea'
 
 const TextareaDisabledDemo = () => {
   return <Textarea placeholder='Type your message here.' className='max-w-sm' disabled />

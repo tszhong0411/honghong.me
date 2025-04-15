@@ -1,7 +1,11 @@
 'use client'
 
+import { MinusIcon, PlusIcon } from 'lucide-react'
+import { useState } from 'react'
+import { Bar, BarChart, ResponsiveContainer } from 'recharts'
+
+import { Button } from '@/components/ui/button'
 import {
-  Button,
   Drawer,
   DrawerClose,
   DrawerContent,
@@ -10,10 +14,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger
-} from '@tszhong0411/ui'
-import { MinusIcon, PlusIcon } from 'lucide-react'
-import { useState } from 'react'
-import { Bar, BarChart, ResponsiveContainer } from 'recharts'
+} from '@/components/ui/drawer'
 
 const data = [
   {
@@ -109,7 +110,7 @@ const DrawerDemo = () => {
                     dataKey='goal'
                     style={
                       {
-                        fill: 'hsl(var(--foreground))',
+                        fill: 'var(--primary)',
                         opacity: 0.9
                       } as React.CSSProperties
                     }

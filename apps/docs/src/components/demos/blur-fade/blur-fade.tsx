@@ -1,4 +1,4 @@
-import { BlurFade } from '@tszhong0411/ui'
+import { BlurFade } from '@/components/ui/blur-fade'
 
 const BlurFadeDemo = () => {
   return (

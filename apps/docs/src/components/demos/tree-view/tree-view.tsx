@@ -1,6 +1,8 @@
 'use client'
 
-import { createTreeCollection, type Node, TreeView } from '@tszhong0411/ui'
+import { createTreeCollection } from '@ark-ui/react'
+
+import { type Node, TreeView } from '@/components/ui/tree-view'
 
 const collection = createTreeCollection<Node>({
   nodeToValue: (node) => node.id,

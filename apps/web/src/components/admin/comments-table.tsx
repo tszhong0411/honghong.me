@@ -17,7 +17,7 @@ import {
   DataTableColumnHeader,
   type DataTableFilterField,
   DataTableToolbar
-} from '@tszhong0411/ui'
+} from '@tszhong0411/ui/data-table'
 import { useState } from 'react'
 
 type Comment = GetCommentsOutput['comments'][number]

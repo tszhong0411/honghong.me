@@ -16,7 +16,7 @@ import {
   DataTableColumnHeader,
   type DataTableFilterField,
   DataTableToolbar
-} from '@tszhong0411/ui'
+} from '@tszhong0411/ui/data-table'
 import { UserCogIcon, UserIcon } from 'lucide-react'
 
 type User = GetUsersOutput['users'][number]

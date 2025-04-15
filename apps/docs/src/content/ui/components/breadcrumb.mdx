@@ -5,6 +5,12 @@ description: Displays the path to the current resource using a hierarchy of link
 
 <ComponentPreview name='breadcrumb/breadcrumb' />
 
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add "https://docs.honghong.me/r/breadcrumb"
+```
+
 ## Usage
 
 ```tsx
@@ -15,7 +21,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator
-} from '@tszhong0411/ui'
+} from '@/components/ui/breadcrumb'
 ```
 
 ```tsx
@@ -35,3 +41,7 @@ import {
   </BreadcrumbList>
 </Breadcrumb>
 ```
+
+## Notes
+
+- The `BreadcrumbLink` is using anchor tag by default. If needed, you can use the `asChild` prop to wrap it with a `Link` component from `next/link`.

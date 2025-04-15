@@ -1,8 +1,10 @@
 'use client'
 
-import { Button, Tabs, TabsContent, TabsList, TabsTrigger } from '@tszhong0411/ui'
 import { RotateCcwIcon } from 'lucide-react'
 import { useState } from 'react'
+
+import { Button } from '../ui/button'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs'
 
 type ComponentPreviewWrapperProps = {
   component: React.ReactNode

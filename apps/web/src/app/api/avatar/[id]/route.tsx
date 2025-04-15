@@ -5,10 +5,11 @@
  *
  * Modified by: tszhong0411
  */
-import { getErrorMessage } from '@tszhong0411/utils'
 import { ImageResponse } from 'next/og'
 import { NextResponse } from 'next/server'
 import color from 'tinycolor2'
+
+import { getErrorMessage } from '@/utils/get-error-message'
 
 export const runtime = 'edge'
 

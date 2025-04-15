@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect, useState } from 'react'
+
 import {
   Progress,
   ProgressCircle,
@@ -7,8 +9,7 @@ import {
   ProgressCircleTrack,
   ProgressLabel,
   ProgressValueText
-} from '@tszhong0411/ui'
-import { useEffect, useState } from 'react'
+} from '@/components/ui/progress'
 
 const ProgressCircularDemo = () => {
   const [progress, setProgress] = useState(13)

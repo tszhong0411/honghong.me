@@ -1,21 +1,22 @@
 'use client'
 
-import {
-  Button,
-  ScrollArea,
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetTitle,
-  SheetTrigger,
-  VisuallyHidden
-} from '@tszhong0411/ui'
 import { MenuIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
 import { SIDEBAR_LINKS } from '@/config/links'
+
+import { Button } from '../ui/button'
+import { ScrollArea } from '../ui/scroll-area'
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger
+} from '../ui/sheet'
 
 const MobileNav = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -29,10 +30,10 @@ const MobileNav = () => {
         </Button>
       </SheetTrigger>
       <SheetContent side='left' className='flex flex-col gap-8'>
-        <VisuallyHidden>
+        <SheetHeader className='sr-only'>
           <SheetTitle>Navigation menu</SheetTitle>
           <SheetDescription>Navigation menu of the documentation site</SheetDescription>
-        </VisuallyHidden>
+        </SheetHeader>
         <Link href='/' className='font-semibold tracking-tighter'>
           @tszhong0411/docs
         </Link>

@@ -1,6 +1,8 @@
 'use client'
 
-import { createTreeCollection, type Node, TreeView as UITreeView } from '@tszhong0411/ui'
+import { createTreeCollection } from '@ark-ui/react'
+
+import { type Node, TreeView as UITreeView } from '@/components/ui/tree-view'
 
 type TreeViewProps = { collection: Node } & Omit<
   React.ComponentProps<typeof UITreeView>,

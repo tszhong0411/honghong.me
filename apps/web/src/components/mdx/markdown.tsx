@@ -1,4 +1,5 @@
-import { Link, TableCell, TableHead, TableHeader, TableRow } from '@tszhong0411/ui'
+import { Link } from '@tszhong0411/ui/link'
+import { TableCell, TableHead, TableHeader, TableRow } from '@tszhong0411/ui/table'
 import MarkdownToJSX from 'markdown-to-jsx'
 import { Fragment, memo } from 'react'
 
