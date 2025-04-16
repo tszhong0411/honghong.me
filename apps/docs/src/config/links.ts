@@ -23,6 +23,10 @@ const COMPONENT_LINKS = [
     text: 'Accordion'
   },
   {
+    href: '/ui/components/alert',
+    text: 'Alert'
+  },
+  {
     href: '/ui/components/alert-dialog',
     text: 'Alert Dialog'
   },
@@ -39,20 +43,12 @@ const COMPONENT_LINKS = [
     text: 'Badge'
   },
   {
-    href: '/ui/components/blur-image',
-    text: 'Blur Image'
-  },
-  {
     href: '/ui/components/breadcrumb',
     text: 'Breadcrumb'
   },
   {
     href: '/ui/components/button',
     text: 'Button'
-  },
-  {
-    href: '/ui/components/callout',
-    text: 'Callout'
   },
   {
     href: '/ui/components/card',
