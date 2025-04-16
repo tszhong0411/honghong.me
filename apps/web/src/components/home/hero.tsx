@@ -1,9 +1,10 @@
 'use client'
 
 import { useTranslations } from '@tszhong0411/i18n/client'
-import { BlurImage } from '@tszhong0411/ui/blur-image'
 import { AnimatePresence, motion } from 'motion/react'
 import { useEffect, useState } from 'react'
+
+import { BlurImage } from '@/components/ui/blur-image'
 
 const TEXTS = [
   {

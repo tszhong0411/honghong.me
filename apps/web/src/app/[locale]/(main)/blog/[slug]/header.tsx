@@ -3,11 +3,11 @@
 import NumberFlow from '@number-flow/react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
-import { BlurImage } from '@tszhong0411/ui/blur-image'
 import { useEffect, useRef } from 'react'
 
 import ImageZoom from '@/components/image-zoom'
 import Link from '@/components/link'
+import { BlurImage } from '@/components/ui/blur-image'
 import { usePostContext } from '@/contexts/post'
 import { useFormattedDate } from '@/hooks/use-formatted-date'
 import { useTRPC } from '@/trpc/client'
