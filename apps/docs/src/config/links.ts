@@ -39,10 +39,6 @@ const COMPONENT_LINKS = [
     text: 'Badge'
   },
   {
-    href: '/ui/components/blur-fade',
-    text: 'Blur Fade'
-  },
-  {
     href: '/ui/components/blur-image',
     text: 'Blur Image'
   },
