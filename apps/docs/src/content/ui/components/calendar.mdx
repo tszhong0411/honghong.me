@@ -1,0 +1,36 @@
+---
+title: Calendar
+description: A date field component that allows users to enter and edit date.
+---
+
+<ComponentPreview name='calendar/calendar' />
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add "https://docs.honghong.me/r/calendar"
+```
+
+## Usage
+
+```tsx
+import { Calendar } from '@/components/ui/calendar'
+```
+
+```tsx
+<Calendar mode='single' selected={date} onSelect={setDate} />
+```
+
+## Examples
+
+### Single
+
+<ComponentPreview name='calendar/calendar' />
+
+### Range
+
+<ComponentPreview name='calendar/range' />
+
+## Notes
+
+- Currently, the calendar component is using `react-day-picker@8.10.1`. v9 is not yet supported.

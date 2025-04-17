@@ -27,12 +27,12 @@ const COMPONENT_LINKS = [
     text: 'Accordion'
   },
   {
-    href: '/ui/components/alert',
-    text: 'Alert'
-  },
-  {
     href: '/ui/components/alert-dialog',
     text: 'Alert Dialog'
+  },
+  {
+    href: '/ui/components/alert',
+    text: 'Alert'
   },
   {
     href: '/ui/components/aspect-ratio',
@@ -55,12 +55,20 @@ const COMPONENT_LINKS = [
     text: 'Button'
   },
   {
+    href: '/ui/components/calendar',
+    text: 'Calendar'
+  },
+  {
     href: '/ui/components/card',
     text: 'Card'
   },
   {
     href: '/ui/components/carousel',
     text: 'Carousel'
+  },
+  {
+    href: '/ui/components/chart',
+    text: 'Chart'
   },
   {
     href: '/ui/components/checkbox',
@@ -144,8 +152,7 @@ const COMPONENT_LINKS = [
   },
   {
     href: '/ui/components/pagination',
-    text: 'Pagination',
-    isArkUI: true
+    text: 'Pagination'
   },
   {
     href: '/ui/components/popover',
@@ -169,8 +176,7 @@ const COMPONENT_LINKS = [
   },
   {
     href: '/ui/components/segment-group',
-    text: 'Segment Group',
-    isArkUI: true
+    text: 'Segment Group'
   },
   {
     href: '/ui/components/select',
@@ -197,6 +203,10 @@ const COMPONENT_LINKS = [
     text: 'Slider'
   },
   {
+    href: '/ui/components/sonner',
+    text: 'Sonner'
+  },
+  {
     href: '/ui/components/switch',
     text: 'Switch'
   },
@@ -213,10 +223,6 @@ const COMPONENT_LINKS = [
     text: 'Textarea'
   },
   {
-    href: '/ui/components/sonner',
-    text: 'Sonner'
-  },
-  {
     href: '/ui/components/toggle-group',
     text: 'Toggle Group'
   },
@@ -230,8 +236,7 @@ const COMPONENT_LINKS = [
   },
   {
     href: '/ui/components/tree-view',
-    text: 'Tree View',
-    isArkUI: true
+    text: 'Tree View'
   }
 ]
 

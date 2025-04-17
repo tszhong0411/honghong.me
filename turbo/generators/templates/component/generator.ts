@@ -59,7 +59,7 @@ export const componentGenerator = (plop: PlopTypes.NodePlopAPI): void => {
       },
       {
         type: 'add',
-        path: 'apps/docs/src/app/ui/components/{{ name }}.mdx',
+        path: 'apps/docs/src/content/ui/components/{{ name }}.mdx',
         templateFile: 'templates/component/component.mdx.hbs'
       },
       async () => {
