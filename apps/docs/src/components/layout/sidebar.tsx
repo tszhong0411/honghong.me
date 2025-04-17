@@ -4,6 +4,7 @@ import { cva } from 'cva'
 import { usePathname } from 'next/navigation'
 
 import { SIDEBAR_LINKS } from '../../config/links'
+import { Badge } from '../ui/badge'
 import { Link } from '../ui/link'
 import { ScrollArea } from '../ui/scroll-area'
 
@@ -36,6 +37,9 @@ const Sidebar = () => {
                     })}
                   >
                     {link.text}
+                    {'isArkUI' in link && link.isArkUI && (
+                      <Badge className='ml-2 bg-[#EB5E41] text-white'>Ark UI</Badge>
+                    )}
                   </Link>
                 </li>
               ))}

@@ -8,6 +8,7 @@ import { Fragment, useEffect, useState } from 'react'
 import { SIDEBAR_LINKS } from '@/config/links'
 import { cn } from '@/utils/cn'
 
+import { Badge } from '../ui/badge'
 import { Button } from '../ui/button'
 import {
   CommandDialog,
@@ -81,6 +82,9 @@ const Search = () => {
                   >
                     <ComponentIcon />
                     {link.text}
+                    {'isArkUI' in link && link.isArkUI && (
+                      <Badge className='bg-[#EB5E41] text-white'>Ark UI</Badge>
+                    )}
                   </CommandItem>
                 ))}
               </CommandGroup>
