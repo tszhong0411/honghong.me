@@ -3,14 +3,18 @@ title: Introduction
 description: Welcome to the @tszhong0411/docs.
 ---
 
-## UI
+## What is this?
 
-WIP.
+This is a collection of components that are built using the [shadcn/ui](https://ui.shadcn.com/) library.
+The main difference between this and the original library is the code style.
+I've changed to use arrow functions, and not to destructure the `props` in the function parameters. Write separate props type for each component. Long Tailwind CSS classes are divided into multiple lines for better readability.
+
+Also, I've used [Ark UI](https://ark-ui.com/) for the components that are not yet available in the [shadcn/ui](https://ui.shadcn.com/)/[Radix UI](https://www.radix-ui.com/primitives) library. E.g. SegmentGroup and TreeView.
+
+Pagination is also rewritten using the [Ark UI](https://ark-ui.com/) library for better accessibility.
 
 ### Installation
 
-WIP.
-
-### Usage
-
-WIP.
+```bash
+pnpm dlx shadcn@latest add "https://docs.honghong.me/r/<component-name>"
+```
