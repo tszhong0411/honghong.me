@@ -8,7 +8,6 @@
   "scripts": {
     "build": "next build",
     "build:mdx": "content-collections build",
-    "build:registry": "shadcn build",
     "bundle-analyzer": "cross-env ANALYZE=true pnpm run build",
     "clean": "rm -rf .next .turbo .content-collections",
     "dev": "next dev --turbopack -p 3002",
@@ -90,7 +89,6 @@
     "@types/react-dom": "^19.1.2",
     "postcss": "^8.5.3",
     "postcss-load-config": "^6.0.1",
-    "shadcn": "^2.4.1",
     "tailwindcss": "^4.1.3",
     "tw-animate-css": "^1.2.5"
   },

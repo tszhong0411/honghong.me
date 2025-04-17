@@ -1,9 +1,8 @@
 import { Pagination as PaginationPrimitive } from '@ark-ui/react'
 import { ChevronLeftIcon, ChevronRightIcon, MoreHorizontalIcon } from 'lucide-react'
 
+import { type Button, buttonVariants } from '@/components/ui/button'
 import { cn } from '@/utils/cn'
-
-import { type Button, buttonVariants } from './button'
 
 const PaginationContext = PaginationPrimitive.Context
 

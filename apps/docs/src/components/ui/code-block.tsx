@@ -4,11 +4,10 @@ import { CheckIcon, CopyIcon } from 'lucide-react'
 import mergeRefs from 'merge-refs'
 import { useEffect, useRef, useState } from 'react'
 
+import { Button } from '@/components/ui/button'
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
 import { cn } from '@/utils/cn'
 import { getIconByLanguage } from '@/utils/get-icon-by-language'
-
-import { Button } from './button'
-import { ScrollArea, ScrollBar } from './scroll-area'
 
 type CodeBlockProps = {
   'data-lang'?: string
