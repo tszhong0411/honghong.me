@@ -11,13 +11,13 @@ const linkVariants = cva({
   }
 })
 
-type LinkProps = {
-  href: string
-} & Omit<React.ComponentProps<'a'>, 'href'> &
-  VariantProps<typeof linkVariants>
+type LinkProps = Omit<React.ComponentProps<typeof NextLink>, 'href'> &
+  VariantProps<typeof linkVariants> & {
+    href: string
+  }
 
 const Link = (props: LinkProps) => {
-  const { href, className, children, variant, ...rest } = props
+  const { className, variant, href, children, ...rest } = props
 
   if (href.startsWith('/')) {
     return (
@@ -48,4 +48,4 @@ const Link = (props: LinkProps) => {
   )
 }
 
-export { Link, linkVariants }
+export { Link }

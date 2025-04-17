@@ -2,7 +2,7 @@ import { useMDXComponent } from '@content-collections/mdx/react'
 
 import { cn } from '@/utils/cn'
 
-import { Alert } from '../ui/alert'
+import { Alert, AlertDescription, AlertTitle } from '../ui/alert'
 import { CodeBlock } from '../ui/code-block'
 import { Link } from '../ui/link'
 
@@ -31,7 +31,11 @@ const components = {
   },
 
   // Custom components
-  Alert: (props: React.ComponentProps<typeof Alert>) => <Alert className='[&_p]:m-0' {...props} />,
+  Alert: (props: React.ComponentProps<typeof Alert>) => <Alert className='my-4' {...props} />,
+  AlertTitle: (props: React.ComponentProps<typeof AlertTitle>) => <AlertTitle {...props} />,
+  AlertDescription: (props: React.ComponentProps<typeof AlertDescription>) => (
+    <AlertDescription className='[&_p]:m-0' {...props} />
+  ),
   ComponentPreview,
   EmbedComponentPreview,
   TreeView,

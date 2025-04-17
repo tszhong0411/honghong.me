@@ -1,18 +1,19 @@
 'use client'
 
-import { type ComboboxInputValueChangeDetails, createListCollection } from '@ark-ui/react'
-import { useState } from 'react'
+import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react'
+import { useId, useState } from 'react'
 
+import { Button } from '@/components/ui/button'
 import {
-  Combobox,
-  ComboboxContent,
-  ComboboxInput,
-  ComboboxItem,
-  ComboboxItemGroup,
-  ComboboxItemGroupLabel,
-  ComboboxLabel,
-  ComboboxTrigger
-} from '@/components/ui/combobox'
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList
+} from '@/components/ui/command'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import { cn } from '@/utils/cn'
 
 const frameworks = [
   {
@@ -21,8 +22,7 @@ const frameworks = [
   },
   {
     value: 'sveltekit',
-    label: 'SvelteKit',
-    disabled: true
+    label: 'SvelteKit'
   },
   {
     value: 'nuxt.js',
@@ -38,43 +38,56 @@ const frameworks = [
   }
 ]
 
-const initialCollection = createListCollection({ items: frameworks })
-
 const ComboboxDemo = () => {
-  const [collection, setCollection] = useState(initialCollection)
-  const handleInputChange = (details: ComboboxInputValueChangeDetails) => {
-    const filtered = frameworks.filter((item) =>
-      item.label.toLowerCase().includes(details.inputValue.toLowerCase())
-    )
-    if (filtered.length > 0) setCollection(createListCollection({ items: filtered }))
-  }
-
-  const handleOpenChange = () => {
-    setCollection(initialCollection)
-  }
+  const [open, setOpen] = useState(false)
+  const [value, setValue] = useState('')
+  const id = useId()
 
   return (
-    <Combobox
-      className='w-48'
-      collection={collection}
-      onInputValueChange={handleInputChange}
-      onOpenChange={handleOpenChange}
-    >
-      <ComboboxLabel>Framework</ComboboxLabel>
-      <ComboboxTrigger>
-        <ComboboxInput placeholder='Select a framework' />
-      </ComboboxTrigger>
-      <ComboboxContent>
-        <ComboboxItemGroup>
-          <ComboboxItemGroupLabel>Frameworks</ComboboxItemGroupLabel>
-          {collection.items.map((item) => (
-            <ComboboxItem key={item.value} item={item}>
-              {item.label}
-            </ComboboxItem>
-          ))}
-        </ComboboxItemGroup>
-      </ComboboxContent>
-    </Combobox>
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
+        <Button
+          variant='outline'
+          role='combobox'
+          aria-controls={id}
+          aria-expanded={open}
+          className='w-full justify-between md:max-w-[200px]'
+        >
+          {value
+            ? frameworks.find((framework) => framework.value === value)?.label
+            : 'Select framework...'}
+          <ChevronsUpDownIcon className='text-muted-foreground' />
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className='w-(--radix-popover-trigger-width) p-0'>
+        <Command>
+          <CommandInput placeholder='Search framework...' />
+          <CommandList aria-labelledby={id}>
+            <CommandEmpty>No framework found.</CommandEmpty>
+            <CommandGroup>
+              {frameworks.map((framework) => (
+                <CommandItem
+                  key={framework.value}
+                  value={framework.value}
+                  onSelect={(currentValue) => {
+                    setValue(currentValue === value ? '' : currentValue)
+                    setOpen(false)
+                  }}
+                >
+                  {framework.label}
+                  <CheckIcon
+                    className={cn(
+                      'ml-auto',
+                      value === framework.value ? 'opacity-100' : 'opacity-0'
+                    )}
+                  />
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          </CommandList>
+        </Command>
+      </PopoverContent>
+    </Popover>
   )
 }
 
