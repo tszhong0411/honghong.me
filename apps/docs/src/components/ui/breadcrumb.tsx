@@ -5,9 +5,9 @@ import { cn } from '@/utils/cn'
 
 type BreadcrumbProps = React.ComponentProps<'nav'>
 
-const Breadcrumb = (props: BreadcrumbProps) => {
-  return <nav aria-label='breadcrumb' data-slot='breadcrumb' {...props} />
-}
+const Breadcrumb = (props: BreadcrumbProps) => (
+  <nav aria-label='breadcrumb' data-slot='breadcrumb' {...props} />
+)
 
 type BreadcrumbListProps = React.ComponentProps<'ol'>
 
@@ -40,10 +40,12 @@ const BreadcrumbItem = (props: BreadcrumbItemProps) => {
   )
 }
 
-type BreadcrumbLinkProps = React.ComponentProps<'a'> & { asChild?: boolean }
+type BreadcrumbLinkProps = React.ComponentProps<'a'> & {
+  asChild?: boolean
+}
 
 const BreadcrumbLink = (props: BreadcrumbLinkProps) => {
-  const { className, asChild = false, ...rest } = props
+  const { className, asChild, ...rest } = props
   const Comp = asChild ? Slot : 'a'
 
   return (

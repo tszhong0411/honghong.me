@@ -28,9 +28,10 @@ const RadioGroupItem = (props: RadioGroupItemProps) => {
     <RadioGroupPrimitive.Item
       data-slot='radio-group-item'
       className={cn(
-        'border-input text-primary dark:bg-input/30 shadow-xs aspect-square size-4 shrink-0 rounded-full border outline-none transition-[color,box-shadow]',
+        'border-input text-primary shadow-xs aspect-square size-4 shrink-0 rounded-full border outline-none transition-[color,box-shadow]',
+        'dark:aria-invalid:ring-destructive/40 dark:bg-input/30',
         'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-        'aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive',
+        'aria-invalid:ring-destructive/20 aria-invalid:border-destructive',
         'disabled:cursor-not-allowed disabled:opacity-50',
         className
       )}

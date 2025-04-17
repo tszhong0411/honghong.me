@@ -1,16 +1,17 @@
 import { Slot } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'cva'
-import { LoaderIcon } from 'lucide-react'
 
 import { cn } from '@/utils/cn'
 
 const buttonVariants = cva({
   base: [
     'inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium outline-none transition-all',
+    'dark:aria-invalid:ring-destructive/40',
     'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
+    'aria-invalid:ring-destructive/20 aria-invalid:border-destructive',
     'disabled:pointer-events-none disabled:opacity-50',
-    'aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive',
-    "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0"
+    '[&_svg]:pointer-events-none [&_svg]:shrink-0',
+    "[&_svg:not([class*='size-'])]:size-4"
   ],
   variants: {
     variant: {
@@ -36,18 +37,22 @@ const buttonVariants = cva({
   }
 })
 
-type ButtonProps = { isPending?: boolean } & React.ComponentProps<'button'> &
-  VariantProps<typeof buttonVariants> & { asChild?: boolean }
+type ButtonProps = React.ComponentProps<'button'> &
+  VariantProps<typeof buttonVariants> & {
+    asChild?: boolean
+  }
 
 const Button = (props: ButtonProps) => {
-  const { className, variant, size, asChild = false, isPending = false, children, ...rest } = props
+  const { className, variant, size, asChild = false, ...rest } = props
+
   const Comp = asChild ? Slot : 'button'
 
   return (
-    <Comp data-slot='button' className={cn(buttonVariants({ variant, size, className }))} {...rest}>
-      {isPending && <LoaderIcon className='animate-spin' />}
-      {children}
-    </Comp>
+    <Comp
+      data-slot='button'
+      className={cn(buttonVariants({ variant, size, className }))}
+      {...rest}
+    />
   )
 }
 

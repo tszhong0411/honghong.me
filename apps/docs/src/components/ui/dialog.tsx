@@ -7,27 +7,25 @@ import { cn } from '@/utils/cn'
 
 type DialogProps = React.ComponentProps<typeof DialogPrimitive.Root>
 
-const Dialog = (props: DialogProps) => {
-  return <DialogPrimitive.Root data-slot='dialog' {...props} />
-}
+const Dialog = (props: DialogProps) => <DialogPrimitive.Root data-slot='dialog' {...props} />
 
 type DialogTriggerProps = React.ComponentProps<typeof DialogPrimitive.Trigger>
 
-const DialogTrigger = (props: DialogTriggerProps) => {
-  return <DialogPrimitive.Trigger data-slot='dialog-trigger' {...props} />
-}
+const DialogTrigger = (props: DialogTriggerProps) => (
+  <DialogPrimitive.Trigger data-slot='dialog-trigger' {...props} />
+)
 
 type DialogPortalProps = React.ComponentProps<typeof DialogPrimitive.Portal>
 
-const DialogPortal = (props: DialogPortalProps) => {
-  return <DialogPrimitive.Portal data-slot='dialog-portal' {...props} />
-}
+const DialogPortal = (props: DialogPortalProps) => (
+  <DialogPrimitive.Portal data-slot='dialog-portal' {...props} />
+)
 
 type DialogCloseProps = React.ComponentProps<typeof DialogPrimitive.Close>
 
-const DialogClose = (props: DialogCloseProps) => {
-  return <DialogPrimitive.Close data-slot='dialog-close' {...props} />
-}
+const DialogClose = (props: DialogCloseProps) => (
+  <DialogPrimitive.Close data-slot='dialog-close' {...props} />
+)
 
 type DialogOverlayProps = React.ComponentProps<typeof DialogPrimitive.Overlay>
 
@@ -59,7 +57,7 @@ const DialogContent = (props: DialogContentProps) => {
       <DialogPrimitive.Content
         data-slot='dialog-content'
         className={cn(
-          'bg-background fixed left-1/2 top-1/2 z-50 grid w-full max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 gap-4 rounded-lg border p-6 shadow-lg duration-200',
+          'bg-background fixed left-[50%] top-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border p-6 shadow-lg duration-200',
           'sm:max-w-lg',
           'data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95',
           'data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',
@@ -70,12 +68,13 @@ const DialogContent = (props: DialogContentProps) => {
         {children}
         <DialogPrimitive.Close
           className={cn(
-            'ring-offset-background rounded-xs focus:outline-hidden absolute right-4 top-4 opacity-70 transition-opacity',
+            'ring-offset-background rounded-xs absolute right-4 top-4 opacity-70 transition-opacity',
             'hover:opacity-100',
-            'focus:ring-ring focus:ring-2 focus:ring-offset-2',
+            'focus:ring-ring focus:outline-hidden focus:ring-2 focus:ring-offset-2',
             'disabled:pointer-events-none',
             'data-[state=open]:bg-accent data-[state=open]:text-muted-foreground',
-            "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0"
+            '[&_svg]:pointer-events-none [&_svg]:shrink-0',
+            "[&_svg:not([class*='size-'])]:size-4"
           )}
         >
           <XIcon />

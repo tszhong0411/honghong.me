@@ -24,27 +24,27 @@ const Menubar = (props: MenubarProps) => {
 
 type MenubarMenuProps = React.ComponentProps<typeof MenubarPrimitive.Menu>
 
-const MenubarMenu = (props: MenubarMenuProps) => {
-  return <MenubarPrimitive.Menu data-slot='menubar-menu' {...props} />
-}
+const MenubarMenu = (props: MenubarMenuProps) => (
+  <MenubarPrimitive.Menu data-slot='menubar-menu' {...props} />
+)
 
 type MenubarGroupProps = React.ComponentProps<typeof MenubarPrimitive.Group>
 
-const MenubarGroup = (props: MenubarGroupProps) => {
-  return <MenubarPrimitive.Group data-slot='menubar-group' {...props} />
-}
+const MenubarGroup = (props: MenubarGroupProps) => (
+  <MenubarPrimitive.Group data-slot='menubar-group' {...props} />
+)
 
 type MenubarPortalProps = React.ComponentProps<typeof MenubarPrimitive.Portal>
 
-const MenubarPortal = (props: MenubarPortalProps) => {
-  return <MenubarPrimitive.Portal data-slot='menubar-portal' {...props} />
-}
+const MenubarPortal = (props: MenubarPortalProps) => (
+  <MenubarPrimitive.Portal data-slot='menubar-portal' {...props} />
+)
 
 type MenubarRadioGroupProps = React.ComponentProps<typeof MenubarPrimitive.RadioGroup>
 
-const MenubarRadioGroup = (props: MenubarRadioGroupProps) => {
-  return <MenubarPrimitive.RadioGroup data-slot='menubar-radio-group' {...props} />
-}
+const MenubarRadioGroup = (props: MenubarRadioGroupProps) => (
+  <MenubarPrimitive.RadioGroup data-slot='menubar-radio-group' {...props} />
+)
 
 type MenubarTriggerProps = React.ComponentProps<typeof MenubarPrimitive.Trigger>
 
@@ -56,8 +56,8 @@ const MenubarTrigger = (props: MenubarTriggerProps) => {
       data-slot='menubar-trigger'
       className={cn(
         'outline-hidden flex select-none items-center rounded-sm px-2 py-1 text-sm font-medium',
-        'data-[state=open]:bg-accent data-[state=open]:text-accent-foreground',
         'focus:bg-accent focus:text-accent-foreground',
+        'data-[state=open]:bg-accent data-[state=open]:text-accent-foreground',
         className
       )}
       {...rest}
@@ -78,9 +78,9 @@ const MenubarContent = (props: MenubarContentProps) => {
         alignOffset={alignOffset}
         sideOffset={sideOffset}
         className={cn(
-          'bg-popover text-popover-foreground origin-(--radix-menubar-content-transform-origin) z-50 min-w-48 overflow-hidden rounded-md border p-1 shadow-md',
+          'bg-popover text-popover-foreground origin-(--radix-menubar-content-transform-origin) z-50 min-w-[12rem] overflow-hidden rounded-md border p-1 shadow-md',
           'data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95',
-          'data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',
+          'data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',
           'data-[side=top]:slide-in-from-bottom-2',
           'data-[side=right]:slide-in-from-left-2',
           'data-[side=bottom]:slide-in-from-top-2',
@@ -108,12 +108,14 @@ const MenubarItem = (props: MenubarItemProps) => {
       data-variant={variant}
       className={cn(
         'outline-hidden relative flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm',
-        'data-[inset]:pl-8',
+        'dark:data-[variant=destructive]:focus:bg-destructive/20',
         'focus:bg-accent focus:text-accent-foreground',
         'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
-        'data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:!text-destructive',
+        'data-[inset]:pl-8',
+        'data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:!text-destructive',
+        '[&_svg]:pointer-events-none [&_svg]:shrink-0',
         "[&_svg:not([class*='text-'])]:text-muted-foreground",
-        "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "[&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...rest}
@@ -133,7 +135,8 @@ const MenubarCheckboxItem = (props: MenubarCheckboxItemProps) => {
         'rounded-xs outline-hidden relative flex cursor-default select-none items-center gap-2 py-1.5 pl-8 pr-2 text-sm',
         'focus:bg-accent focus:text-accent-foreground',
         'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
-        "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        '[&_svg]:pointer-events-none [&_svg]:shrink-0',
+        "[&_svg:not([class*='size-'])]:size-4",
         className
       )}
       checked={checked}
@@ -161,7 +164,8 @@ const MenubarRadioItem = (props: MenubarRadioItemProps) => {
         'rounded-xs outline-hidden relative flex cursor-default select-none items-center gap-2 py-1.5 pl-8 pr-2 text-sm',
         'focus:bg-accent focus:text-accent-foreground',
         'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
-        "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        '[&_svg]:pointer-events-none [&_svg]:shrink-0',
+        "[&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...rest}
@@ -223,9 +227,9 @@ const MenubarShortcut = (props: MenubarShortcutProps) => {
 
 type MenubarSubProps = React.ComponentProps<typeof MenubarPrimitive.Sub>
 
-const MenubarSub = (props: MenubarSubProps) => {
-  return <MenubarPrimitive.Sub data-slot='menubar-sub' {...props} />
-}
+const MenubarSub = (props: MenubarSubProps) => (
+  <MenubarPrimitive.Sub data-slot='menubar-sub' {...props} />
+)
 
 type MenubarSubTriggerProps = React.ComponentProps<typeof MenubarPrimitive.SubTrigger> & {
   inset?: boolean
@@ -240,8 +244,8 @@ const MenubarSubTrigger = (props: MenubarSubTriggerProps) => {
       data-inset={inset}
       className={cn(
         'flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none',
-        'data-[inset]:pl-8',
         'focus:bg-accent focus:text-accent-foreground',
+        'data-[inset]:pl-8',
         'data-[state=open]:bg-accent data-[state=open]:text-accent-foreground',
         className
       )}
@@ -262,7 +266,7 @@ const MenubarSubContent = (props: MenubarSubContentProps) => {
     <MenubarPrimitive.SubContent
       data-slot='menubar-sub-content'
       className={cn(
-        'bg-popover text-popover-foreground origin-(--radix-menubar-content-transform-origin) z-50 min-w-32 overflow-hidden rounded-md border p-1 shadow-lg',
+        'bg-popover text-popover-foreground origin-(--radix-menubar-content-transform-origin) z-50 min-w-[8rem] overflow-hidden rounded-md border p-1 shadow-lg',
         'data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95',
         'data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',
         'data-[side=top]:slide-in-from-bottom-2',

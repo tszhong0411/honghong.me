@@ -10,7 +10,7 @@ const TooltipProvider = (props: TooltipProviderProps) => {
   const { delayDuration = 0, ...rest } = props
 
   return (
-    // eslint-disable-next-line @eslint-react/no-context-provider -- custom provider
+    // eslint-disable-next-line @eslint-react/no-context-provider -- custom component
     <TooltipPrimitive.Provider
       data-slot='tooltip-provider'
       delayDuration={delayDuration}
@@ -21,21 +21,17 @@ const TooltipProvider = (props: TooltipProviderProps) => {
 
 type TooltipProps = React.ComponentProps<typeof TooltipPrimitive.Root>
 
-const Tooltip = (props: TooltipProps) => {
-  const { delayDuration = 0, ...rest } = props
-
-  return (
-    <TooltipProvider delayDuration={delayDuration}>
-      <TooltipPrimitive.Root data-slot='tooltip' {...rest} />
-    </TooltipProvider>
-  )
-}
+const Tooltip = (props: TooltipProps) => (
+  <TooltipProvider>
+    <TooltipPrimitive.Root data-slot='tooltip' {...props} />
+  </TooltipProvider>
+)
 
 type TooltipTriggerProps = React.ComponentProps<typeof TooltipPrimitive.Trigger>
 
-const TooltipTrigger = (props: TooltipTriggerProps) => {
-  return <TooltipPrimitive.Trigger data-slot='tooltip-trigger' {...props} />
-}
+const TooltipTrigger = (props: TooltipTriggerProps) => (
+  <TooltipPrimitive.Trigger data-slot='tooltip-trigger' {...props} />
+)
 
 type TooltipContentProps = React.ComponentProps<typeof TooltipPrimitive.Content>
 

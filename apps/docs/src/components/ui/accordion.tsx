@@ -7,9 +7,9 @@ import { cn } from '@/utils/cn'
 
 type AccordionProps = React.ComponentProps<typeof AccordionPrimitive.Root>
 
-const Accordion = (props: AccordionProps) => {
-  return <AccordionPrimitive.Root data-slot='accordion' {...props} />
-}
+const Accordion = (props: AccordionProps) => (
+  <AccordionPrimitive.Root data-slot='accordion' {...props} />
+)
 
 type AccordionItemProps = React.ComponentProps<typeof AccordionPrimitive.Item>
 
@@ -59,7 +59,11 @@ const AccordionContent = (props: AccordionContentProps) => {
   return (
     <AccordionPrimitive.Content
       data-slot='accordion-content'
-      className='data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm'
+      className={cn(
+        'overflow-hidden text-sm',
+        'data-[state=open]:animate-accordion-down',
+        'data-[state=closed]:animate-accordion-up'
+      )}
       {...rest}
     >
       <div className={cn('pb-4 pt-0', className)}>{children}</div>

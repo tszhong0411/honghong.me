@@ -3,10 +3,14 @@
 import { Command as CommandPrimitive } from 'cmdk'
 import { SearchIcon } from 'lucide-react'
 
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle
+} from '@/components/ui/dialog'
 import { cn } from '@/utils/cn'
-
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from './dialog'
-import { Kbd } from './kbd'
 
 type CommandProps = React.ComponentProps<typeof CommandPrimitive>
 
@@ -47,11 +51,14 @@ const CommandDialog = (props: CommandDialogProps) => {
       <DialogContent className='overflow-hidden p-0'>
         <Command
           className={cn(
+            '**:data-[slot=command-input-wrapper]:h-12',
             '[&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium',
-            '[&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2',
-            '[&_[cmdk-input-wrapper]_svg]:size-5 [&_[cmdk-input]]:h-12',
-            '[&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:size-5',
-            '**:data-[slot=command-input-wrapper]:h-12'
+            '[&_[cmdk-group]]:px-2',
+            '[&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0',
+            '[&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5',
+            '[&_[cmdk-input]]:h-12',
+            '[&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3',
+            '[&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5'
           )}
         >
           {children}
@@ -153,9 +160,11 @@ const CommandItem = (props: CommandItemProps) => {
       data-slot='command-item'
       className={cn(
         'outline-hidden relative flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm',
-        'data-[selected=true]:bg-accent data-[selected=true]:text-accent-foreground',
         'data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50',
-        "[&_svg:not([class*='text-'])]:text-muted-foreground [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        'data-[selected=true]:bg-accent data-[selected=true]:text-accent-foreground',
+        '[&_svg]:pointer-events-none [&_svg]:shrink-0',
+        "[&_svg:not([class*='text-'])]:text-muted-foreground",
+        "[&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...rest}
@@ -163,12 +172,18 @@ const CommandItem = (props: CommandItemProps) => {
   )
 }
 
-type CommandShortcutProps = React.ComponentProps<typeof Kbd>
+type CommandShortcutProps = React.ComponentProps<'span'>
 
 const CommandShortcut = (props: CommandShortcutProps) => {
   const { className, ...rest } = props
 
-  return <Kbd data-slot='command-shortcut' className={cn('ml-auto', className)} {...rest} />
+  return (
+    <span
+      data-slot='command-shortcut'
+      className={cn('text-muted-foreground ml-auto text-xs tracking-widest', className)}
+      {...rest}
+    />
+  )
 }
 
 export {

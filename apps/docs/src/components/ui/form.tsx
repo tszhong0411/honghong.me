@@ -14,9 +14,8 @@ import {
   useFormState
 } from 'react-hook-form'
 
+import { Label } from '@/components/ui/label'
 import { cn } from '@/utils/cn'
-
-import { Label } from './label'
 
 const Form = FormProvider
 
@@ -41,7 +40,8 @@ const FormField = <
 >(
   props: FormFieldProps<TFieldValues, TName>
 ) => {
-  const value = useMemo(() => ({ name: props.name }), [props.name])
+  const { name } = props
+  const value = useMemo(() => ({ name }), [name])
 
   return (
     <FormFieldContext value={value}>
@@ -142,9 +142,9 @@ const FormDescription = (props: FormDescriptionProps) => {
 type FormMessageProps = React.ComponentProps<'p'>
 
 const FormMessage = (props: FormMessageProps) => {
-  const { className, ...rest } = props
+  const { className, children, ...rest } = props
   const { error, formMessageId } = useFormField()
-  const body = error ? String(error.message ?? '') : rest.children
+  const body = error ? String(error.message ?? '') : children
 
   if (!body) {
     return null

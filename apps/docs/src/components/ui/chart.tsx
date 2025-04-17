@@ -42,7 +42,8 @@ type ChartContainerProps = React.ComponentProps<'div'> & {
 }
 
 const ChartContainer = (props: ChartContainerProps) => {
-  const { id, className, config, children, ...rest } = props
+  const { id, className, children, config, ...rest } = props
+
   const uniqueId = useId()
   const chartId = `chart-${id ?? uniqueId.replaceAll(':', '')}`
 
@@ -54,7 +55,19 @@ const ChartContainer = (props: ChartContainerProps) => {
         data-slot='chart'
         data-chart={chartId}
         className={cn(
-          "[&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-border [&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-reference-line_[stroke='#ccc']]:stroke-border [&_.recharts-layer]:outline-hidden [&_.recharts-sector]:outline-hidden [&_.recharts-surface]:outline-hidden flex aspect-video justify-center text-xs [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-sector[stroke='#fff']]:stroke-transparent",
+          'flex aspect-video justify-center text-xs',
+          '[&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground',
+          "[&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-border/50",
+          '[&_.recharts-curve.recharts-tooltip-cursor]:stroke-border',
+          "[&_.recharts-polar-grid_[stroke='#ccc']]:stroke-border",
+          '[&_.recharts-radial-bar-background-sector]:fill-muted',
+          '[&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted',
+          "[&_.recharts-reference-line_[stroke='#ccc']]:stroke-border",
+          "[&_.recharts-dot[stroke='#fff']]:stroke-transparent",
+          '[&_.recharts-layer]:outline-hidden',
+          '[&_.recharts-sector]:outline-hidden',
+          "[&_.recharts-sector[stroke='#fff']]:stroke-transparent",
+          '[&_.recharts-surface]:outline-hidden',
           className
         )}
         {...rest}
@@ -163,7 +176,7 @@ const ChartTooltipContent = (props: ChartTooltipContentProps) => {
   return (
     <div
       className={cn(
-        'border-border/50 bg-background grid min-w-32 items-start gap-1.5 rounded-lg border px-2.5 py-1.5 text-xs shadow-xl',
+        'border-border/50 bg-background grid min-w-[8rem] items-start gap-1.5 rounded-lg border px-2.5 py-1.5 text-xs shadow-xl',
         className
       )}
     >
@@ -183,7 +196,7 @@ const ChartTooltipContent = (props: ChartTooltipContentProps) => {
               )}
             >
               {formatter && item.value !== undefined && item.name ? (
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- should be safe
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- safe
                 formatter(item.value, item.name, item, index, item.payload)
               ) : (
                 <>
@@ -223,7 +236,7 @@ const ChartTooltipContent = (props: ChartTooltipContentProps) => {
                         {itemConfig?.label ?? item.name}
                       </span>
                     </div>
-                    {/* eslint-disable-next-line @eslint-react/no-leaked-conditional-rendering -- should be safe */}
+                    {/* eslint-disable-next-line @eslint-react/no-leaked-conditional-rendering -- safe */}
                     {item.value && (
                       <span className='text-foreground font-mono font-medium tabular-nums'>
                         {item.value.toLocaleString()}
@@ -249,7 +262,7 @@ type ChartLegendContentProps = React.ComponentProps<'div'> &
   }
 
 const ChartLegendContent = (props: ChartLegendContentProps) => {
-  const { className, hideIcon = false, payload, verticalAlign = 'bottom', nameKey } = props
+  const { className, hideIcon = false, payload, verticalAlign = 'bottom', nameKey, ...rest } = props
   const { config } = useChart()
 
   if (!payload?.length) {
@@ -263,16 +276,19 @@ const ChartLegendContent = (props: ChartLegendContentProps) => {
         verticalAlign === 'top' ? 'pb-3' : 'pt-3',
         className
       )}
+      {...rest}
     >
       {payload.map((item) => {
-        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions -- should be safe
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions -- safe
         const key = `${nameKey ?? item.dataKey ?? 'value'}`
         const itemConfig = getPayloadConfigFromPayload(config, item, key)
 
         return (
           <div
             key={item.value}
-            className={cn('[&>svg]:text-muted-foreground flex items-center gap-1.5 [&>svg]:size-3')}
+            className={cn(
+              '[&>svg]:text-muted-foreground flex items-center gap-1.5 [&>svg]:h-3 [&>svg]:w-3'
+            )}
           >
             {itemConfig?.icon && !hideIcon ? (
               <itemConfig.icon />

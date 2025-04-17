@@ -21,29 +21,26 @@ const ResizablePanelGroup = (props: ResizablePanelGroupProps) => {
 
 type ResizablePanelProps = React.ComponentProps<typeof ResizablePrimitive.Panel>
 
-const ResizablePanel = (props: ResizablePanelProps) => {
-  const { className, ...rest } = props
-
-  return (
-    <ResizablePrimitive.Panel data-slot='resizable-panel' className={cn(className)} {...rest} />
-  )
-}
+const ResizablePanel = (props: ResizablePanelProps) => (
+  <ResizablePrimitive.Panel data-slot='resizable-panel' {...props} />
+)
 
 type ResizableHandleProps = React.ComponentProps<typeof ResizablePrimitive.PanelResizeHandle> & {
   withHandle?: boolean
 }
 
 const ResizableHandle = (props: ResizableHandleProps) => {
-  const { className, withHandle = true, ...rest } = props
+  const { withHandle, className, ...rest } = props
 
   return (
     <ResizablePrimitive.PanelResizeHandle
       data-slot='resizable-handle'
       className={cn(
         'bg-border relative flex w-px items-center justify-center',
-        'focus-visible:ring-ring focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-offset-1',
         'after:absolute after:inset-y-0 after:left-1/2 after:w-1 after:-translate-x-1/2',
-        'data-[panel-group-direction=vertical]:h-px data-[panel-group-direction=vertical]:w-full data-[panel-group-direction=vertical]:after:left-0 data-[panel-group-direction=vertical]:after:h-1 data-[panel-group-direction=vertical]:after:w-full data-[panel-group-direction=vertical]:after:-translate-y-1/2 data-[panel-group-direction=vertical]:after:translate-x-0 [&[data-panel-group-direction=vertical]>div]:rotate-90',
+        'focus-visible:ring-ring focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-offset-1',
+        'data-[panel-group-direction=vertical]:h-px data-[panel-group-direction=vertical]:w-full data-[panel-group-direction=vertical]:after:left-0 data-[panel-group-direction=vertical]:after:h-1 data-[panel-group-direction=vertical]:after:w-full data-[panel-group-direction=vertical]:after:-translate-y-1/2 data-[panel-group-direction=vertical]:after:translate-x-0',
+        '[&[data-panel-group-direction=vertical]>div]:rotate-90',
         className
       )}
       {...rest}

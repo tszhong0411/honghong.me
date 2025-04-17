@@ -4,9 +4,8 @@ import useEmblaCarousel, { type UseEmblaCarouselType } from 'embla-carousel-reac
 import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react'
 import { createContext, use, useCallback, useEffect, useMemo, useState } from 'react'
 
+import { Button } from '@/components/ui/button'
 import { cn } from '@/utils/cn'
-
-import { Button } from './button'
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
@@ -18,7 +17,7 @@ type CarouselProps = {
   plugins?: CarouselPlugin
   orientation?: 'horizontal' | 'vertical'
   setApi?: (api: CarouselApi) => void
-}
+} & React.ComponentProps<'div'>
 
 type CarouselContextProps = {
   carouselRef: ReturnType<typeof useEmblaCarousel>[0]
@@ -42,10 +41,8 @@ const useCarousel = () => {
   return context
 }
 
-type CarouselRootProps = React.ComponentProps<'div'> & CarouselProps
-
-const Carousel = (props: CarouselRootProps) => {
-  const { className, orientation = 'horizontal', opts, setApi, plugins, children, ...rest } = props
+const Carousel = (props: CarouselProps) => {
+  const { orientation = 'horizontal', opts, setApi, plugins, className, children, ...rest } = props
 
   const [carouselRef, api] = useEmblaCarousel(
     {

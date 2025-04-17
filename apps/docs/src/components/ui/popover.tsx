@@ -6,15 +6,13 @@ import { cn } from '@/utils/cn'
 
 type PopoverProps = React.ComponentProps<typeof PopoverPrimitive.Root>
 
-const Popover = (props: PopoverProps) => {
-  return <PopoverPrimitive.Root data-slot='popover' {...props} />
-}
+const Popover = (props: PopoverProps) => <PopoverPrimitive.Root data-slot='popover' {...props} />
 
 type PopoverTriggerProps = React.ComponentProps<typeof PopoverPrimitive.Trigger>
 
-const PopoverTrigger = (props: PopoverTriggerProps) => {
-  return <PopoverPrimitive.Trigger data-slot='popover-trigger' {...props} />
-}
+const PopoverTrigger = (props: PopoverTriggerProps) => (
+  <PopoverPrimitive.Trigger data-slot='popover-trigger' {...props} />
+)
 
 type PopoverContentProps = React.ComponentProps<typeof PopoverPrimitive.Content>
 
@@ -45,8 +43,8 @@ const PopoverContent = (props: PopoverContentProps) => {
 
 type PopoverAnchorProps = React.ComponentProps<typeof PopoverPrimitive.Anchor>
 
-const PopoverAnchor = (props: PopoverAnchorProps) => {
-  return <PopoverPrimitive.Anchor data-slot='popover-anchor' {...props} />
-}
+const PopoverAnchor = (props: PopoverAnchorProps) => (
+  <PopoverPrimitive.Anchor data-slot='popover-anchor' {...props} />
+)
 
 export { Popover, PopoverAnchor, PopoverContent, PopoverTrigger }

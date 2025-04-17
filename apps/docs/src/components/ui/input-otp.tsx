@@ -38,8 +38,7 @@ type InputOTPSlotProps = React.ComponentProps<'div'> & {
 }
 
 const InputOTPSlot = (props: InputOTPSlotProps) => {
-  const { className, index, ...rest } = props
-
+  const { index, className, ...rest } = props
   const inputOTPContext = use(OTPInputContext)
   const { char, hasFakeCaret, isActive } = inputOTPContext.slots[index] ?? {}
 
@@ -48,12 +47,12 @@ const InputOTPSlot = (props: InputOTPSlotProps) => {
       data-slot='input-otp-slot'
       data-active={isActive}
       className={cn(
-        'dark:bg-input/30 border-input shadow-xs relative flex h-9 w-9 items-center justify-center border-y border-r text-sm outline-none transition-all',
+        'border-input shadow-xs relative flex h-9 w-9 items-center justify-center border-y border-r text-sm outline-none transition-all',
+        'dark:data-[active=true]:aria-invalid:ring-destructive/40 dark:bg-input/30',
         'first:rounded-l-md first:border-l',
         'last:rounded-r-md',
-        'data-[active=true]:border-ring data-[active=true]:ring-ring/50 data-[active=true]:z-10 data-[active=true]:ring-[3px]',
         'aria-invalid:border-destructive',
-        'data-[active=true]:aria-invalid:ring-destructive/20 dark:data-[active=true]:aria-invalid:ring-destructive/40 data-[active=true]:aria-invalid:border-destructive',
+        'data-[active=true]:border-ring data-[active=true]:ring-ring/50 data-[active=true]:aria-invalid:ring-destructive/20 data-[active=true]:aria-invalid:border-destructive data-[active=true]:z-10 data-[active=true]:ring-[3px]',
         className
       )}
       {...rest}
@@ -70,12 +69,10 @@ const InputOTPSlot = (props: InputOTPSlotProps) => {
 
 type InputOTPSeparatorProps = React.ComponentProps<'div'>
 
-const InputOTPSeparator = (props: InputOTPSeparatorProps) => {
-  return (
-    <div data-slot='input-otp-separator' role='separator' {...props}>
-      <MinusIcon />
-    </div>
-  )
-}
+const InputOTPSeparator = (props: InputOTPSeparatorProps) => (
+  <div data-slot='input-otp-separator' role='separator' {...props}>
+    <MinusIcon />
+  </div>
+)
 
 export { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot }

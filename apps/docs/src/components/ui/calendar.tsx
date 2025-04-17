@@ -1,33 +1,10 @@
 'use client'
 
-import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon, ChevronUpIcon } from 'lucide-react'
-import { type ChevronProps, DayPicker } from 'react-day-picker'
+import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
+import { DayPicker } from 'react-day-picker'
 
+import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/utils/cn'
-
-import { buttonVariants } from './button'
-
-const Chevron = (props: ChevronProps) => {
-  const { orientation, ...rest } = props
-
-  switch (orientation) {
-    case 'left': {
-      return <ChevronLeftIcon className='size-4' {...rest} />
-    }
-    case 'right': {
-      return <ChevronRightIcon className='size-4' {...rest} />
-    }
-    case 'up': {
-      return <ChevronUpIcon className='size-4' {...rest} />
-    }
-    case 'down': {
-      return <ChevronDownIcon className='size-4' {...rest} />
-    }
-    default: {
-      throw new Error('Invalid orientation')
-    }
-  }
-}
 
 type CalendarProps = React.ComponentProps<typeof DayPicker>
 
@@ -55,10 +32,8 @@ const Calendar = (props: CalendarProps) => {
         head_cell: 'text-muted-foreground rounded-md w-8 font-normal text-[0.8rem]',
         row: 'flex w-full mt-2',
         cell: cn(
-          'relative p-0 text-center text-sm',
-          'focus-within:relative focus-within:z-20',
-          '[&:has([aria-selected])]:bg-accent [&:has([aria-selected].day-range-end)]:rounded-r-md',
-          props.mode === 'range'
+          '[&:has([aria-selected])]:bg-accent relative p-0 text-center text-sm focus-within:relative focus-within:z-20 [&:has([aria-selected].day-range-end)]:rounded-r-md',
+          rest.mode === 'range'
             ? '[&:has(>.day-range-end)]:rounded-r-md [&:has(>.day-range-start)]:rounded-l-md first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md'
             : '[&:has([aria-selected])]:rounded-md'
         ),
@@ -80,11 +55,28 @@ const Calendar = (props: CalendarProps) => {
         ...classNames
       }}
       components={{
-        Chevron
+        IconLeft,
+        IconRight
       }}
       {...rest}
     />
   )
+}
+
+type IconLeftProps = React.ComponentProps<typeof ChevronLeftIcon>
+
+const IconLeft = (props: IconLeftProps) => {
+  const { className, ...rest } = props
+
+  return <ChevronLeftIcon className={cn('size-4', className)} {...rest} />
+}
+
+type IconRightProps = React.ComponentProps<typeof ChevronRightIcon>
+
+const IconRight = (props: IconRightProps) => {
+  const { className, ...rest } = props
+
+  return <ChevronRightIcon className={cn('size-4', className)} {...rest} />
 }
 
 export { Calendar }
