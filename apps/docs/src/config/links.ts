@@ -152,7 +152,8 @@ const COMPONENT_LINKS = [
   },
   {
     href: '/ui/components/pagination',
-    text: 'Pagination'
+    text: 'Pagination',
+    isArkUI: true
   },
   {
     href: '/ui/components/popover',
@@ -176,7 +177,8 @@ const COMPONENT_LINKS = [
   },
   {
     href: '/ui/components/segment-group',
-    text: 'Segment Group'
+    text: 'Segment Group',
+    isArkUI: true
   },
   {
     href: '/ui/components/select',
@@ -236,7 +238,8 @@ const COMPONENT_LINKS = [
   },
   {
     href: '/ui/components/tree-view',
-    text: 'Tree View'
+    text: 'Tree View',
+    isArkUI: true
   }
 ]
 
