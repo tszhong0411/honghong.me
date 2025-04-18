@@ -250,6 +250,10 @@ export const SIDEBAR_LINKS: SidebarLinks = [
       {
         href: '/',
         text: 'Introduction'
+      },
+      {
+        href: '/getting-started/ui',
+        text: 'UI'
       }
     ]
   },
