@@ -1,9 +1,9 @@
 'use client'
 
+import { Link } from '@tszhong0411/ui'
 import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 
-import { Link } from '@/components/ui/link'
 import { SIDEBAR_LINKS } from '@/config/links'
 
 const DocsNavigation = () => {

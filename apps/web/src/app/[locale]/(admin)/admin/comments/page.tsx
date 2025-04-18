@@ -5,7 +5,7 @@ import { useTranslations } from '@tszhong0411/i18n/client'
 
 import AdminPageHeader from '@/components/admin/admin-page-header'
 import CommentsTable from '@/components/admin/comments-table'
-import { DataTableSkeleton } from '@/components/ui/data-table'
+import { Skeleton } from '@/components/ui/skeleton'
 import { useTRPC } from '@/trpc/client'
 
 const Page = () => {
@@ -23,7 +23,7 @@ const Page = () => {
         title={t('admin.page-header.comments.title')}
         description={t('admin.page-header.comments.description')}
       />
-      {isLoading ? <DataTableSkeleton columnCount={3} searchableColumnsCount={2} /> : null}
+      {isLoading ? <Skeleton className='h-[500px] w-full' /> : null}
       {isError ? <div>{t('admin.table.comments.failed-to-fetch-comments-data')}</div> : null}
       {isSuccess ? <CommentsTable data={data.comments} /> : null}
     </div>

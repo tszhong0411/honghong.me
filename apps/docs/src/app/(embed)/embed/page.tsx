@@ -1,4 +1,4 @@
-import { getErrorMessage } from '@/utils/get-error-message'
+import { getErrorMessage } from '@tszhong0411/utils'
 
 type PageProps = {
   params: Promise<Record<string, string | string[] | undefined>>

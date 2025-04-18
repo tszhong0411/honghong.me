@@ -7,7 +7,7 @@ import {
   PaginationItem,
   PaginationNextTrigger,
   PaginationPrevTrigger
-} from '@/components/ui/pagination'
+} from '@tszhong0411/ui'
 
 const PaginationDemo = () => {
   return (

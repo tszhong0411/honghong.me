@@ -1,12 +1,10 @@
 'use client'
 
+import { Badge, Link, ScrollArea } from '@tszhong0411/ui'
 import { cva } from 'cva'
 import { usePathname } from 'next/navigation'
 
 import { SIDEBAR_LINKS } from '../../config/links'
-import { Badge } from '../ui/badge'
-import { Link } from '../ui/link'
-import { ScrollArea } from '../ui/scroll-area'
 
 const sidebarLinkVariants = cva({
   base: 'block rounded-lg px-4 py-2',

@@ -2,11 +2,11 @@ import type { Metadata, Viewport } from 'next'
 
 import '@/styles/globals.css'
 
+import { cn } from '@tszhong0411/utils'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
 
 import { SITE_DESCRIPTION, SITE_KEYWORDS, SITE_TITLE, SITE_URL } from '@/lib/constants'
-import { cn } from '@/utils/cn'
 
 import Providers from './providers'
 

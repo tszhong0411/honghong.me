@@ -5,9 +5,8 @@
  *
  * Modified by: tszhong0411
  */
+import { cn } from '@tszhong0411/utils'
 import { LinkIcon } from 'lucide-react'
-
-import { cn } from '@/utils/cn'
 
 type Types = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 type HeadingProps<T extends Types> = Omit<React.ComponentProps<T>, 'as'> & {

@@ -1,16 +1,15 @@
 'use client'
 
-import { useState } from 'react'
-
-import { Button } from '@/components/ui/button'
 import {
+  Button,
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu'
+} from '@tszhong0411/ui'
+import { useState } from 'react'
 
 const DropdownMenuCheckboxesDemo = () => {
   const [showStatusBar, setShowStatusBar] = useState(true)

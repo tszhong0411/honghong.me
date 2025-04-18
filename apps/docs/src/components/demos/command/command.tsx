@@ -1,13 +1,4 @@
 import {
-  CalculatorIcon,
-  CalendarIcon,
-  CreditCardIcon,
-  SettingsIcon,
-  SmileIcon,
-  UserIcon
-} from 'lucide-react'
-
-import {
   Command,
   CommandEmpty,
   CommandGroup,
@@ -16,7 +7,15 @@ import {
   CommandList,
   CommandSeparator,
   CommandShortcut
-} from '@/components/ui/command'
+} from '@tszhong0411/ui'
+import {
+  CalculatorIcon,
+  CalendarIcon,
+  CreditCardIcon,
+  SettingsIcon,
+  SmileIcon,
+  UserIcon
+} from 'lucide-react'
 
 const CommandDemo = () => {
   return (

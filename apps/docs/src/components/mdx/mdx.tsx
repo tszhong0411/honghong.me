@@ -1,16 +1,11 @@
 import { useMDXComponent } from '@content-collections/mdx/react'
+import { Alert, AlertDescription, AlertTitle, CodeBlock, Link } from '@tszhong0411/ui'
+import { cn } from '@tszhong0411/utils'
 import { InfoIcon } from 'lucide-react'
-
-import { cn } from '@/utils/cn'
-
-import { Alert, AlertDescription, AlertTitle } from '../ui/alert'
-import { CodeBlock } from '../ui/code-block'
-import { Link } from '../ui/link'
 
 import ComponentPreview from './component-preview'
 import EmbedComponentPreview from './embed-component-preview'
 import Heading from './heading'
-import Installation from './installation'
 import TreeView from './tree-view'
 
 type MdxProps = {
@@ -49,7 +44,6 @@ const components = {
   ),
   ComponentPreview,
   EmbedComponentPreview,
-  Installation,
   TreeView,
 
   pre: CodeBlock

@@ -1,6 +1,5 @@
+import { Marquee } from '@tszhong0411/ui'
 import Image from 'next/image'
-
-import { Marquee } from '@/components/ui/marquee'
 
 const reviews = [
   {

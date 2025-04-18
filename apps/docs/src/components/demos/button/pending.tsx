@@ -1,6 +1,5 @@
+import { Button } from '@tszhong0411/ui'
 import { LoaderIcon } from 'lucide-react'
-
-import { Button } from '@/components/ui/button'
 
 const ButtonPendingDemo = () => {
   return (

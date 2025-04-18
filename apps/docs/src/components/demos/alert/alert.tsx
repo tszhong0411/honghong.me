@@ -1,6 +1,5 @@
+import { Alert, AlertDescription, AlertTitle } from '@tszhong0411/ui'
 import { CheckCircle2Icon } from 'lucide-react'
-
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 
 const AlertDemo = () => {
   return (

@@ -1,8 +1,7 @@
 'use client'
 
+import { InputOTP, InputOTPGroup, InputOTPSlot } from '@tszhong0411/ui'
 import { REGEXP_ONLY_DIGITS_AND_CHARS } from 'input-otp'
-
-import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp'
 
 const InputOTPPatternDemo = () => {
   return (

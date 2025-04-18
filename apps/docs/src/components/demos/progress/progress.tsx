@@ -1,8 +1,7 @@
 'use client'
 
+import { Progress } from '@tszhong0411/ui'
 import { useEffect, useState } from 'react'
-
-import { Progress } from '@/components/ui/progress'
 
 const ProgressDemo = () => {
   const [progress, setProgress] = useState(0)

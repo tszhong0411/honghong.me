@@ -1,5 +1,4 @@
-import { Button } from '@/components/ui/button'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { Button, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@tszhong0411/ui'
 
 const TooltipDemo = () => {
   return (

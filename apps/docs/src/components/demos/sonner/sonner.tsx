@@ -1,8 +1,7 @@
 'use client'
 
+import { Button } from '@tszhong0411/ui'
 import { toast } from 'sonner'
-
-import { Button } from '@/components/ui/button'
 
 const SonnerDemo = () => {
   return (

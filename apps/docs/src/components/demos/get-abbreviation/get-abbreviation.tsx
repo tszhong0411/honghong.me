@@ -1,8 +1,8 @@
 'use client'
 
+import { Input } from '@tszhong0411/ui'
 import { useState } from 'react'
 
-import { Input } from '@/components/ui/input'
 import { getAbbreviation } from '@/utils/get-abbreviation'
 
 const GetAbbreviationDemo = () => {

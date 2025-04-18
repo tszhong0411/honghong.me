@@ -2,10 +2,9 @@
 
 import type { DateRange } from 'react-day-picker'
 
+import { Calendar } from '@tszhong0411/ui'
 import { addDays } from 'date-fns'
 import { useState } from 'react'
-
-import { Calendar } from '@/components/ui/calendar'
 
 const CalendarRangeDemo = () => {
   const [dateRange, setDateRange] = useState<DateRange | undefined>(() => ({

@@ -1,8 +1,5 @@
 'use client'
 
-import { TrendingUpIcon } from 'lucide-react'
-import { Area, AreaChart, CartesianGrid, XAxis } from 'recharts'
-
 import {
   Card,
   CardContent,
@@ -10,13 +7,15 @@ import {
   CardFooter,
   CardHeader,
   CardTitle
-} from '@/components/ui/card'
+} from '@tszhong0411/ui'
 import {
   type ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent
-} from '@/components/ui/chart'
+} from '@tszhong0411/ui'
+import { TrendingUpIcon } from 'lucide-react'
+import { Area, AreaChart, CartesianGrid, XAxis } from 'recharts'
 
 const chartData = [
   { month: 'January', desktop: 186 },

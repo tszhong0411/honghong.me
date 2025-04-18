@@ -1,9 +1,7 @@
 'use client'
 
-import Link from 'next/link'
-
-import { Logo } from '@/components/ui/logo'
 import {
+  Logo,
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
@@ -11,8 +9,9 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerVariants
-} from '@/components/ui/navigation-menu'
-import { cn } from '@/utils/cn'
+} from '@tszhong0411/ui'
+import { cn } from '@tszhong0411/utils'
+import Link from 'next/link'
 
 const components: Array<{ title: string; href: string; description: string }> = [
   {

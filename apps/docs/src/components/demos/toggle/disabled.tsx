@@ -1,6 +1,5 @@
+import { Toggle } from '@tszhong0411/ui'
 import { UnderlineIcon } from 'lucide-react'
-
-import { Toggle } from '@/components/ui/toggle'
 
 const ToggleDisabledDemo = () => {
   return (

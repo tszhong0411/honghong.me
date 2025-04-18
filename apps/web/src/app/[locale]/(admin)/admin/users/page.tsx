@@ -5,7 +5,7 @@ import { useTranslations } from '@tszhong0411/i18n/client'
 
 import AdminPageHeader from '@/components/admin/admin-page-header'
 import UsersTable from '@/components/admin/users-table'
-import { DataTableSkeleton } from '@/components/ui/data-table'
+import { Skeleton } from '@/components/ui/skeleton'
 import { useTRPC } from '@/trpc/client'
 
 const Page = () => {
@@ -23,9 +23,7 @@ const Page = () => {
         title={t('admin.page-header.users.title')}
         description={t('admin.page-header.users.description')}
       />
-      {isLoading ? (
-        <DataTableSkeleton columnCount={3} searchableColumnsCount={1} filterableColumnCount={1} />
-      ) : null}
+      {isLoading ? <Skeleton className='h-[500px] w-full' /> : null}
       {isError ? <div>{t('admin.table.users.failed-to-fetch-users-data')}</div> : null}
       {isSuccess ? <UsersTable data={data.users} /> : null}
     </div>

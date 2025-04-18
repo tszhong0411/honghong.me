@@ -1,22 +1,21 @@
 'use client'
 
-import { MenuIcon } from 'lucide-react'
-import Link from 'next/link'
-import { useState } from 'react'
-
-import { SIDEBAR_LINKS } from '@/config/links'
-
-import { Badge } from '../ui/badge'
-import { Button } from '../ui/button'
-import { ScrollArea } from '../ui/scroll-area'
 import {
+  Badge,
+  Button,
+  ScrollArea,
   Sheet,
   SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger
-} from '../ui/sheet'
+} from '@tszhong0411/ui'
+import { MenuIcon } from 'lucide-react'
+import Link from 'next/link'
+import { useState } from 'react'
+
+import { SIDEBAR_LINKS } from '@/config/links'
 
 const MobileNav = () => {
   const [isOpen, setIsOpen] = useState(false)

@@ -1,4 +1,4 @@
-import { Separator } from '@/components/ui/separator'
+import { Separator } from '@tszhong0411/ui'
 
 const SeparatorDemo = () => {
   return (

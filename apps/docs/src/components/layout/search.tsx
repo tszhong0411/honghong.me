@@ -1,16 +1,8 @@
 'use client'
 
-import { ComponentIcon, MoonIcon, SearchIcon, SunIcon } from 'lucide-react'
-import { useRouter } from 'next/navigation'
-import { useTheme } from 'next-themes'
-import { Fragment, useEffect, useState } from 'react'
-
-import { SIDEBAR_LINKS } from '@/config/links'
-import { cn } from '@/utils/cn'
-
-import { Badge } from '../ui/badge'
-import { Button } from '../ui/button'
 import {
+  Badge,
+  Button,
   CommandDialog,
   CommandEmpty,
   CommandGroup,
@@ -18,7 +10,14 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator
-} from '../ui/command'
+} from '@tszhong0411/ui'
+import { cn } from '@tszhong0411/utils'
+import { ComponentIcon, MoonIcon, SearchIcon, SunIcon } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { useTheme } from 'next-themes'
+import { Fragment, useEffect, useState } from 'react'
+
+import { SIDEBAR_LINKS } from '@/config/links'
 
 const Search = () => {
   const [isOpen, setIsOpen] = useState(false)

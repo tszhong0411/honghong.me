@@ -1,9 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-
-import { Button } from '@/components/ui/button'
 import {
+  Button,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuLabel,
@@ -11,7 +9,8 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu'
+} from '@tszhong0411/ui'
+import { useState } from 'react'
 
 const DropdownMenuRadioGroupDemo = () => {
   const [position, setPosition] = useState('bottom')

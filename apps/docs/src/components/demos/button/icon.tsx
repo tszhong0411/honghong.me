@@ -1,6 +1,5 @@
+import { Button } from '@tszhong0411/ui'
 import { CopyIcon } from 'lucide-react'
-
-import { Button } from '@/components/ui/button'
 
 const ButtonIconDemo = () => {
   return (
