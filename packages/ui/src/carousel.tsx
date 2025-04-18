@@ -11,7 +11,7 @@ type CarouselOptions = UseCarouselParameters[0]
 type CarouselPlugin = UseCarouselParameters[1]
 
 type CarouselProps = {
-  opts?: CarouselOptions
+  options?: CarouselOptions
   plugins?: CarouselPlugin
   orientation?: 'horizontal' | 'vertical'
   setApi?: (api: CarouselApi) => void
@@ -40,11 +40,19 @@ const useCarousel = () => {
 }
 
 const Carousel = (props: CarouselProps) => {
-  const { orientation = 'horizontal', opts, setApi, plugins, className, children, ...rest } = props
+  const {
+    orientation = 'horizontal',
+    options: options,
+    setApi,
+    plugins,
+    className,
+    children,
+    ...rest
+  } = props
 
   const [carouselRef, api] = useEmblaCarousel(
     {
-      ...opts,
+      ...options,
       axis: orientation === 'horizontal' ? 'x' : 'y'
     },
     plugins
@@ -58,13 +66,8 @@ const Carousel = (props: CarouselProps) => {
     setCanScrollNext(a.canScrollNext())
   }, [])
 
-  const scrollPrev = useCallback(() => {
-    api?.scrollPrev()
-  }, [api])
-
-  const scrollNext = useCallback(() => {
-    api?.scrollNext()
-  }, [api])
+  const scrollPrev = useCallback(() => api?.scrollPrev(), [api])
+  const scrollNext = useCallback(() => api?.scrollNext(), [api])
 
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -81,11 +84,13 @@ const Carousel = (props: CarouselProps) => {
 
   useEffect(() => {
     if (!api || !setApi) return
+
     setApi(api)
   }, [api, setApi])
 
   useEffect(() => {
     if (!api) return
+
     onSelect(api)
     api.on('reInit', onSelect)
     api.on('select', onSelect)
@@ -99,14 +104,14 @@ const Carousel = (props: CarouselProps) => {
     () => ({
       carouselRef,
       api,
-      opts,
+      options,
       orientation,
       scrollPrev,
       scrollNext,
       canScrollPrev,
       canScrollNext
     }),
-    [carouselRef, api, opts, orientation, scrollPrev, scrollNext, canScrollPrev, canScrollNext]
+    [carouselRef, api, options, orientation, scrollPrev, scrollNext, canScrollPrev, canScrollNext]
   )
 
   return (
