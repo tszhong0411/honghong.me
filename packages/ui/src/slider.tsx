@@ -1,5 +1,3 @@
-'use client'
-
 import * as SliderPrimitive from '@radix-ui/react-slider'
 import { cn } from '@tszhong0411/utils'
 import { useMemo } from 'react'

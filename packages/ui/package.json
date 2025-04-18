@@ -82,7 +82,9 @@
     "@tszhong0411/utils": ">=0",
     "next": "^15",
     "react": "^19",
-    "react-dom": "^19"
+    "react-day-picker": "^8",
+    "react-dom": "^19",
+    "recharts": "^2"
   },
   "devDependencies": {
     "@tanstack/react-table": "^8.21.2",
@@ -92,7 +94,6 @@
     "@types/react": "^19.1.1",
     "@types/react-dom": "^19.1.2",
     "next": "^15.3.0",
-    "next-themes": "^0.4.6",
     "react": "^19.1.0",
     "react-day-picker": "8.10.1",
     "react-dom": "^19.1.0",

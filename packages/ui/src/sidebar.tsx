@@ -1,5 +1,3 @@
-'use client'
-
 import { Slot } from '@radix-ui/react-slot'
 import { cn } from '@tszhong0411/utils'
 import { cva, type VariantProps } from 'cva'

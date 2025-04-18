@@ -1,5 +1,3 @@
-'use client'
-
 import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group'
 import { cn } from '@tszhong0411/utils'
 import { type VariantProps } from 'cva'

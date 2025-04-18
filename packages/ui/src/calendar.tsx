@@ -1,5 +1,3 @@
-'use client'
-
 import { cn } from '@tszhong0411/utils'
 import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
 import { DayPicker } from 'react-day-picker'

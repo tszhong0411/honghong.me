@@ -1,5 +1,3 @@
-'use client'
-
 import { cn } from '@tszhong0411/utils'
 
 type TableProps = React.ComponentProps<'table'>

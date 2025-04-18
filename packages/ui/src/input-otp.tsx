@@ -1,5 +1,3 @@
-'use client'
-
 import { cn } from '@tszhong0411/utils'
 import { OTPInput, OTPInputContext } from 'input-otp'
 import { MinusIcon } from 'lucide-react'

@@ -1,5 +1,3 @@
-'use client'
-
 import * as CollapsiblePrimitive from '@radix-ui/react-collapsible'
 
 type CollapsibleProps = React.ComponentProps<typeof CollapsiblePrimitive.Root>
