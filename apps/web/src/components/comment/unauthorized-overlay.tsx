@@ -1,6 +1,6 @@
 import { useTranslations } from '@tszhong0411/i18n/client'
-import { Button } from '@tszhong0411/ui/button'
 
+import { Button } from '@/components/ui/button'
 import { useDialogsStore } from '@/store/dialogs'
 
 const UnauthorizedOverlay = () => {

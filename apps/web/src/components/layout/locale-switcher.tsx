@@ -1,15 +1,16 @@
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { i18n, supportedLanguages } from '@tszhong0411/i18n/config'
 import { usePathname, useRouter } from '@tszhong0411/i18n/routing'
-import { Button } from '@tszhong0411/ui/button'
+import { LanguagesIcon } from 'lucide-react'
+import { useTransition } from 'react'
+
+import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger
-} from '@tszhong0411/ui/dropdown-menu'
-import { LanguagesIcon } from 'lucide-react'
-import { useTransition } from 'react'
+} from '@/components/ui/dropdown-menu'
 
 const LocaleSwitcher = () => {
   const t = useTranslations()

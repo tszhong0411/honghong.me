@@ -11,13 +11,14 @@ import {
   useReactTable
 } from '@tanstack/react-table'
 import { useTranslations } from '@tszhong0411/i18n/client'
+import { UserCogIcon, UserIcon } from 'lucide-react'
+
 import {
   DataTable,
   DataTableColumnHeader,
   type DataTableFilterField,
   DataTableToolbar
-} from '@tszhong0411/ui/data-table'
-import { UserCogIcon, UserIcon } from 'lucide-react'
+} from '@/components/ui/data-table'
 
 type User = GetUsersOutput['users'][number]
 

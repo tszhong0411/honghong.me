@@ -12,13 +12,14 @@ import {
   useReactTable
 } from '@tanstack/react-table'
 import { useTranslations } from '@tszhong0411/i18n/client'
+import { useState } from 'react'
+
 import {
   DataTable,
   DataTableColumnHeader,
   type DataTableFilterField,
   DataTableToolbar
-} from '@tszhong0411/ui/data-table'
-import { useState } from 'react'
+} from '@/components/ui/data-table'
 
 type Comment = GetCommentsOutput['comments'][number]
 

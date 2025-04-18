@@ -4,9 +4,6 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@/hooks/use-is-mobile": ["../docs/src/hooks/use-is-mobile.ts"],
-      "@/utils/get-icon-by-language": ["../docs/src/utils/get-icon-by-language.ts"],
-      "@tszhong0411/ui/*": ["../docs/src/components/ui/*"],
       "content-collections": ["./.content-collections/generated"],
       "~/*": ["./public/*"]
     },

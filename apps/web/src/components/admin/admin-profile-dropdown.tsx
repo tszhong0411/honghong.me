@@ -1,14 +1,14 @@
 import { useTranslations } from '@tszhong0411/i18n/client'
-import { Avatar, AvatarFallback, AvatarImage } from '@tszhong0411/ui/avatar'
-import { Button } from '@tszhong0411/ui/button'
+
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuLabel,
   DropdownMenuTrigger
-} from '@tszhong0411/ui/dropdown-menu'
-import { Skeleton } from '@tszhong0411/ui/skeleton'
-
+} from '@/components/ui/dropdown-menu'
+import { Skeleton } from '@/components/ui/skeleton'
 import { useSession } from '@/lib/auth-client'
 import { useDialogsStore } from '@/store/dialogs'
 import { getAbbreviation } from '@/utils/get-abbreviation'

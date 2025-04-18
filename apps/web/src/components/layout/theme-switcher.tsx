@@ -1,13 +1,14 @@
 import { useTranslations } from '@tszhong0411/i18n/client'
-import { Button } from '@tszhong0411/ui/button'
+import { MonitorIcon, MoonIcon, SunIcon } from 'lucide-react'
+import { useTheme } from 'next-themes'
+
+import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger
-} from '@tszhong0411/ui/dropdown-menu'
-import { MonitorIcon, MoonIcon, SunIcon } from 'lucide-react'
-import { useTheme } from 'next-themes'
+} from '@/components/ui/dropdown-menu'
 
 const ThemeSwitcher = () => {
   const { setTheme } = useTheme()

@@ -1,11 +1,11 @@
 'use client'
 
 import { useTranslations } from '@tszhong0411/i18n/client'
-import { Logo } from '@tszhong0411/ui/logo'
 import { motion } from 'motion/react'
 import { useEffect, useState } from 'react'
 
 import CommandMenu from '@/components/command-menu'
+import { Logo } from '@/components/ui/logo'
 import { cn } from '@/utils/cn'
 
 import Link from '../link'

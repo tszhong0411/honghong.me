@@ -3,18 +3,18 @@
 import { SiGithub } from '@icons-pack/react-simple-icons'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { usePathname } from '@tszhong0411/i18n/routing'
-import { Badge } from '@tszhong0411/ui/badge'
-import { Button } from '@tszhong0411/ui/button'
+import { useEffect, useState } from 'react'
+import { toast } from 'sonner'
+
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle
-} from '@tszhong0411/ui/dialog'
-import { useEffect, useState } from 'react'
-import { toast } from 'sonner'
-
+} from '@/components/ui/dialog'
 import { signIn } from '@/lib/auth-client'
 import { useDialogsStore } from '@/store/dialogs'
 

@@ -1,5 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
+import { toast } from 'sonner'
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -10,10 +12,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger
-} from '@tszhong0411/ui/alert-dialog'
-import { Button, buttonVariants } from '@tszhong0411/ui/button'
-import { toast } from 'sonner'
-
+} from '@/components/ui/alert-dialog'
+import { Button, buttonVariants } from '@/components/ui/button'
 import { useMessageContext } from '@/contexts/message'
 import { useTRPC } from '@/trpc/client'
 

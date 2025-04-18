@@ -3,12 +3,12 @@
 import type { GetInfiniteCommentsOutput } from '@/trpc/routers/comments'
 
 import { useTranslations } from '@tszhong0411/i18n/client'
-import { Badge } from '@tszhong0411/ui/badge'
-import { Skeleton } from '@tszhong0411/ui/skeleton'
-import { Tooltip, TooltipContent, TooltipTrigger } from '@tszhong0411/ui/tooltip'
 import Image from 'next/image'
 import { useEffect, useMemo, useRef, useState } from 'react'
 
+import { Badge } from '@/components/ui/badge'
+import { Skeleton } from '@/components/ui/skeleton'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { type CommentContext, CommentProvider } from '@/contexts/comment'
 import { useCommentsContext } from '@/contexts/comments'
 import { useCommentParams } from '@/hooks/use-comment-params'

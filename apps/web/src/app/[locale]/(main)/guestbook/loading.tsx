@@ -1,7 +1,7 @@
 import { useTranslations } from '@tszhong0411/i18n/client'
-import { Skeleton } from '@tszhong0411/ui/skeleton'
 
 import PageTitle from '@/components/page-title'
+import { Skeleton } from '@/components/ui/skeleton'
 
 import Pinned from './pinned'
 

@@ -1,9 +1,9 @@
 'use client'
 
-import { Toaster } from '@tszhong0411/ui/sonner'
-import { TooltipProvider } from '@tszhong0411/ui/tooltip'
 import { ThemeProvider } from 'next-themes'
 
+import { Toaster } from '@/components/ui/sonner'
+import { TooltipProvider } from '@/components/ui/tooltip'
 import { TRPCReactProvider } from '@/trpc/client'
 
 type ProvidesProps = {

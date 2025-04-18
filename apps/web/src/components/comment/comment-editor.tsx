@@ -1,9 +1,9 @@
 import { useTranslations } from '@tszhong0411/i18n/client'
-import { Button } from '@tszhong0411/ui/button'
-import { Textarea } from '@tszhong0411/ui/textarea'
 import { BoldIcon, ItalicIcon, StrikethroughIcon } from 'lucide-react'
 import { useRef } from 'react'
 
+import { Button } from '@/components/ui/button'
+import { Textarea } from '@/components/ui/textarea'
 import { cn } from '@/utils/cn'
 
 type Command = {

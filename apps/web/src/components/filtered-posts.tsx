@@ -3,10 +3,11 @@
 import type { Post } from 'content-collections'
 
 import { useTranslations } from '@tszhong0411/i18n/client'
-import { Input } from '@tszhong0411/ui/input'
-import { Label } from '@tszhong0411/ui/label'
 import { SearchIcon } from 'lucide-react'
 import { useState } from 'react'
+
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 
 import PostCards from './post-cards'
 

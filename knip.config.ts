@@ -28,7 +28,8 @@ const config: KnipConfig = {
         'content-collections.ts',
         'src/i18n/request.ts',
         'src/e2e/**/*.setup.ts',
-        'src/e2e/**/*.teardown.ts'
+        'src/e2e/**/*.teardown.ts',
+        'src/components/ui/**/*.tsx'
       ],
       // They are used in css files, but can't be detected by knip
       ignoreDependencies: ['tw-animate-css', '@tailwindcss/typography']

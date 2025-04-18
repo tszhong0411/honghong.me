@@ -3,9 +3,9 @@
 import { useQuery } from '@tanstack/react-query'
 import { flags } from '@tszhong0411/env'
 import { useTranslations } from '@tszhong0411/i18n/client'
-import { linkVariants } from '@tszhong0411/ui/link'
 import { StarIcon } from 'lucide-react'
 
+import { linkVariants } from '@/components/ui/link'
 import { FOOTER_LINKS } from '@/config/links'
 import { useTRPC } from '@/trpc/client'
 

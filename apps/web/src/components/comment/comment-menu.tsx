@@ -1,5 +1,8 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
+import { MoreVerticalIcon } from 'lucide-react'
+import { toast } from 'sonner'
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -10,17 +13,14 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger
-} from '@tszhong0411/ui/alert-dialog'
-import { Button, buttonVariants } from '@tszhong0411/ui/button'
+} from '@/components/ui/alert-dialog'
+import { Button, buttonVariants } from '@/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger
-} from '@tszhong0411/ui/dropdown-menu'
-import { MoreVerticalIcon } from 'lucide-react'
-import { toast } from 'sonner'
-
+} from '@/components/ui/dropdown-menu'
 import { useCommentContext } from '@/contexts/comment'
 import { useCommentsContext } from '@/contexts/comments'
 import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard'

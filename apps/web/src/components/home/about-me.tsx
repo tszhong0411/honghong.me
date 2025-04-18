@@ -1,10 +1,10 @@
 'use client'
 
 import { useTranslations } from '@tszhong0411/i18n/client'
-import { buttonVariants } from '@tszhong0411/ui/button'
 import { motion, useInView } from 'motion/react'
 import { useRef } from 'react'
 
+import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/utils/cn'
 
 import Link from '../link'

@@ -3,16 +3,16 @@ import type { GetInfiniteCommentsInput } from '@/trpc/routers/comments'
 import NumberFlow, { NumberFlowGroup } from '@number-flow/react'
 import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
-import { Button } from '@tszhong0411/ui/button'
+import { ListFilterIcon } from 'lucide-react'
+
+import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuTrigger
-} from '@tszhong0411/ui/dropdown-menu'
-import { ListFilterIcon } from 'lucide-react'
-
+} from '@/components/ui/dropdown-menu'
 import { useCommentsContext } from '@/contexts/comments'
 import { useTRPC } from '@/trpc/client'
 

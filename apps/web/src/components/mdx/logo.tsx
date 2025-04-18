@@ -1,4 +1,4 @@
-import { Logo as NelsonLogo } from '@tszhong0411/ui/logo'
+import { Logo as NelsonLogo } from '@/components/ui/logo'
 
 const Logo = () => {
   return (
