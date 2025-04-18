@@ -78,7 +78,7 @@ const ContextMenuSubContent = (props: ContextMenuSubContentProps) => {
     <ContextMenuPrimitive.SubContent
       data-slot='context-menu-sub-content'
       className={cn(
-        'bg-popover text-popover-foreground origin-(--radix-context-menu-content-transform-origin) z-50 min-w-[8rem] overflow-hidden rounded-md border p-1 shadow-lg',
+        'bg-popover text-popover-foreground origin-(--radix-context-menu-content-transform-origin) z-50 min-w-32 overflow-hidden rounded-md border p-1 shadow-lg',
         'data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95',
         'data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',
         'data-[side=top]:slide-in-from-bottom-2',
@@ -102,7 +102,7 @@ const ContextMenuContent = (props: ContextMenuContentProps) => {
       <ContextMenuPrimitive.Content
         data-slot='context-menu-content'
         className={cn(
-          'bg-popover text-popover-foreground max-h-(--radix-context-menu-content-available-height) origin-(--radix-context-menu-content-transform-origin) z-50 min-w-[8rem] overflow-y-auto overflow-x-hidden rounded-md border p-1 shadow-md',
+          'bg-popover text-popover-foreground max-h-(--radix-context-menu-content-available-height) origin-(--radix-context-menu-content-transform-origin) z-50 min-w-32 overflow-y-auto overflow-x-hidden rounded-md border p-1 shadow-md',
           'data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95',
           'data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',
           'data-[side=top]:slide-in-from-bottom-2',

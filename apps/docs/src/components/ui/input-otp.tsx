@@ -47,7 +47,7 @@ const InputOTPSlot = (props: InputOTPSlotProps) => {
       data-slot='input-otp-slot'
       data-active={isActive}
       className={cn(
-        'border-input shadow-xs relative flex h-9 w-9 items-center justify-center border-y border-r text-sm outline-none transition-all',
+        'border-input shadow-xs relative flex size-9 items-center justify-center border-y border-r text-sm outline-none transition-all',
         'dark:data-[active=true]:aria-invalid:ring-destructive/40 dark:bg-input/30',
         'first:rounded-l-md first:border-l',
         'last:rounded-r-md',

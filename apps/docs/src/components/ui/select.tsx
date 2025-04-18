@@ -67,7 +67,7 @@ const SelectContent = (props: SelectContentProps) => {
       <SelectPrimitive.Content
         data-slot='select-content'
         className={cn(
-          'bg-popover text-popover-foreground max-h-(--radix-select-content-available-height) origin-(--radix-select-content-transform-origin) relative z-50 min-w-[8rem] overflow-y-auto overflow-x-hidden rounded-md border shadow-md',
+          'bg-popover text-popover-foreground max-h-(--radix-select-content-available-height) origin-(--radix-select-content-transform-origin) relative z-50 min-w-32 overflow-y-auto overflow-x-hidden rounded-md border shadow-md',
           'data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95',
           'data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',
           'data-[side=top]:slide-in-from-bottom-2',
