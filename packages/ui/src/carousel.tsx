@@ -42,7 +42,7 @@ const useCarousel = () => {
 const Carousel = (props: CarouselProps) => {
   const {
     orientation = 'horizontal',
-    options: options,
+    options,
     setApi,
     plugins,
     className,
