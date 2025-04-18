@@ -23,9 +23,9 @@ const Page = () => {
         title={t('admin.page-header.comments.title')}
         description={t('admin.page-header.comments.description')}
       />
-      {isLoading ? <Skeleton className='h-[500px] w-full' /> : null}
-      {isError ? <div>{t('admin.table.comments.failed-to-fetch-comments-data')}</div> : null}
-      {isSuccess ? <CommentsTable data={data.comments} /> : null}
+      {isLoading && <Skeleton className='h-[500px] w-full' />}
+      {isError && <div>{t('admin.table.comments.failed-to-fetch-comments-data')}</div>}
+      {isSuccess && <CommentsTable data={data.comments} />}
     </div>
   )
 }

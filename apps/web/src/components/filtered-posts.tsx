@@ -40,11 +40,11 @@ const FilteredPosts = (props: FilteredPostsProps) => {
           <SearchIcon className='absolute left-4 top-1/2 size-4 -translate-y-1/2' />
         </Label>
       </div>
-      {filteredPosts.length === 0 ? (
+      {filteredPosts.length === 0 && (
         <div className='my-24 text-center text-xl'>
           {t('component.filtered-posts.no-posts-found')}
         </div>
-      ) : null}
+      )}
       <PostCards posts={filteredPosts} />
     </>
   )

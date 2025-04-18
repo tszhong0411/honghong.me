@@ -146,22 +146,22 @@ const Page = async (props: PageProps) => {
           </article>
           <aside className='lg:min-w-[270px] lg:max-w-[270px]'>
             <div className='sticky top-24'>
-              {toc.length > 0 ? <TableOfContents toc={toc} /> : null}
-              {flags.likeButton ? <LikeButton slug={slug} /> : null}
+              {toc.length > 0 && <TableOfContents toc={toc} />}
+              {flags.likeButton && <LikeButton slug={slug} />}
             </div>
           </aside>
         </div>
         <ProgressBar />
 
-        {toc.length > 0 ? <MobileTableOfContents toc={toc} /> : null}
+        {toc.length > 0 && <MobileTableOfContents toc={toc} />}
         <Footer />
       </Providers>
 
-      {flags.comment ? (
+      {flags.comment && (
         <Suspense>
           <Comment slug={slug} />
         </Suspense>
-      ) : null}
+      )}
     </>
   )
 }

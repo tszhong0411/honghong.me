@@ -111,7 +111,7 @@ const CommentPost = () => {
         >
           <SendIcon />
         </Button>
-        {session === null ? <UnauthorizedOverlay /> : null}
+        {session === null && <UnauthorizedOverlay />}
       </div>
     </form>
   )

@@ -93,7 +93,7 @@ const CommentMenu = () => {
             {t('blog.comments.copy-link')}
           </DropdownMenuItem>
           <AlertDialogTrigger asChild>
-            {isAuthor ? (
+            {isAuthor && (
               <DropdownMenuItem
                 disabled={deleteCommentMutation.isPending}
                 aria-disabled={deleteCommentMutation.isPending}
@@ -102,7 +102,7 @@ const CommentMenu = () => {
               >
                 {t('common.delete')}
               </DropdownMenuItem>
-            ) : null}
+            )}
           </AlertDialogTrigger>
         </DropdownMenuContent>
       </DropdownMenu>

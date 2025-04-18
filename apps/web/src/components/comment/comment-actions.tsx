@@ -173,7 +173,7 @@ const CommentActions = () => {
           </Button>
         )}
       </div>
-      {hasReplies ? (
+      {hasReplies && (
         <Button
           variant='ghost'
           size='sm'
@@ -189,7 +189,7 @@ const CommentActions = () => {
           <NumberFlow value={comment.replies} data-testid='comment-reply-count' />
           {t('blog.comments.replies', { count: comment.replies })}
         </Button>
-      ) : null}
+      )}
     </>
   )
 }

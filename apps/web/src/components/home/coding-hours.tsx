@@ -22,9 +22,9 @@ const CodingHours = () => {
         <h2 className='text-sm'>{t('homepage.about-me.coding-hours')}</h2>
       </div>
       <div className='flex grow items-center justify-center text-4xl font-semibold'>
-        {status === 'pending' ? '--' : null}
-        {status === 'error' ? t('common.error') : null}
-        {status === 'success' ? Math.round(data.seconds / 60 / 60) : null} hrs
+        {status === 'pending' && '--'}
+        {status === 'error' && t('common.error')}
+        {status === 'success' && Math.round(data.seconds / 60 / 60)} hrs
       </div>
     </div>
   )

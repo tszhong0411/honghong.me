@@ -11,18 +11,18 @@ const LinkBadges = (props: Doc['link'] = {}) => {
 
   return (
     <div className='flex items-center gap-2 pt-4'>
-      {doc ? (
+      {doc && (
         <Link href={doc} className={cn(badgeVariants({ variant: 'secondary' }), 'gap-1')}>
           Docs
           <ExternalLinkIcon className='size-3' />
         </Link>
-      ) : null}
-      {api ? (
+      )}
+      {api && (
         <Link href={api} className={cn(badgeVariants({ variant: 'secondary' }), 'gap-1')}>
           API Reference
           <ExternalLinkIcon className='size-3' />
         </Link>
-      ) : null}
+      )}
     </div>
   )
 }

@@ -66,19 +66,19 @@ const Header = () => {
           </div>
           <div className='space-y-1 md:mx-auto'>
             <div className='text-muted-foreground'>{t('blog.header.views')}</div>
-            {viewsCountQuery.status === 'pending' ? '--' : null}
-            {viewsCountQuery.status === 'error' ? t('common.error') : null}
-            {viewsCountQuery.status === 'success' ? (
+            {viewsCountQuery.status === 'pending' && '--'}
+            {viewsCountQuery.status === 'error' && t('common.error')}
+            {viewsCountQuery.status === 'success' && (
               <NumberFlow value={viewsCountQuery.data.views} data-testid='view-count' />
-            ) : null}
+            )}
           </div>
           <div className='space-y-1 md:mx-auto'>
             <div className='text-muted-foreground'>{t('blog.header.comments')}</div>
-            {commentsCountQuery.status === 'pending' ? '--' : null}
-            {commentsCountQuery.status === 'error' ? t('common.error') : null}
-            {commentsCountQuery.status === 'success' ? (
+            {commentsCountQuery.status === 'pending' && '--'}
+            {commentsCountQuery.status === 'error' && t('common.error')}
+            {commentsCountQuery.status === 'success' && (
               <NumberFlow value={commentsCountQuery.data.comments} data-testid='comment-count' />
-            ) : null}
+            )}
           </div>
         </div>
       </div>

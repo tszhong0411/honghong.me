@@ -52,24 +52,23 @@ const CommentReplies = () => {
 
   return (
     <>
-      {isOpenReplies ? (
+      {isOpenReplies && (
         <div className='space-y-8 pl-7'>
-          {isSuccess
-            ? data.pages.map((page) =>
-                page.comments.map((reply) => <Comment key={reply.id} comment={reply} />)
-              )
-            : null}
-          {isError ? (
+          {isSuccess &&
+            data.pages.map((page) =>
+              page.comments.map((reply) => <Comment key={reply.id} comment={reply} />)
+            )}
+          {isError && (
             <div className='flex min-h-20 items-center justify-center'>
               <p className='text-muted-foreground text-sm'>
                 {t('blog.comments.failed-to-load-replies')}
               </p>
             </div>
-          ) : null}
-          {isLoading ? <CommentLoader /> : null}
+          )}
+          {isLoading && <CommentLoader />}
           <span ref={ref} className='invisible' />
         </div>
-      ) : null}
+      )}
     </>
   )
 }

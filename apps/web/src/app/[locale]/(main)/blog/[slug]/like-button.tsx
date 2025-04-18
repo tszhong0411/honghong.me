@@ -151,11 +151,11 @@ const LikeButton = (props: LikeButtonProps) => {
         </svg>
         {t('blog.like')}
         <Separator orientation='vertical' className='bg-zinc-700' />
-        {status === 'pending' ? <div>--</div> : null}
-        {status === 'error' ? <div>{t('common.error')}</div> : null}
-        {status === 'success' ? (
+        {status === 'pending' && <div>--</div>}
+        {status === 'error' && <div>{t('common.error')}</div>}
+        {status === 'success' && (
           <NumberFlow value={data.likes + cacheCount} data-testid='like-count' />
-        ) : null}
+        )}
       </motion.button>
     </div>
   )

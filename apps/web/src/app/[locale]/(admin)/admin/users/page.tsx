@@ -23,9 +23,9 @@ const Page = () => {
         title={t('admin.page-header.users.title')}
         description={t('admin.page-header.users.description')}
       />
-      {isLoading ? <Skeleton className='h-[500px] w-full' /> : null}
-      {isError ? <div>{t('admin.table.users.failed-to-fetch-users-data')}</div> : null}
-      {isSuccess ? <UsersTable data={data.users} /> : null}
+      {isLoading && <Skeleton className='h-[500px] w-full' />}
+      {isError && <div>{t('admin.table.users.failed-to-fetch-users-data')}</div>}
+      {isSuccess && <UsersTable data={data.users} />}
     </div>
   )
 }
