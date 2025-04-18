@@ -1,7 +1,5 @@
 import { Skeleton } from '@tszhong0411/ui'
-import { cn } from '@tszhong0411/utils'
-
-import { range } from '@/utils/range'
+import { cn, range } from '@tszhong0411/utils'
 
 const Placeholder = () => (
   <div className='shadow-xs rounded-lg border p-4 dark:bg-zinc-900/30'>
