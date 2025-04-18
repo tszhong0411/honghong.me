@@ -6,9 +6,9 @@ const AspectRatioDemo = () => {
   return (
     <AspectRatio ratio={16 / 9}>
       <Image
-        src='https://images.unsplash.com/photo-1717765911288-5512eba79b41?q=80&w=3270'
+        src='https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80'
+        alt='A smooth, minimalist white background with subtle diagonal light-gray gradients by Drew Beamer'
         fill
-        alt='A grassy field with trees and a mountain in the background, by Benjamin Ashton'
         className='rounded-lg object-cover'
       />
     </AspectRatio>
