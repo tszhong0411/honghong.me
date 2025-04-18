@@ -43,17 +43,17 @@ const CommandDemo = () => {
           <CommandItem>
             <UserIcon />
             <span>Profile</span>
-            <CommandShortcut keys={['command']}>P</CommandShortcut>
+            <CommandShortcut>⌘ P</CommandShortcut>
           </CommandItem>
           <CommandItem>
             <CreditCardIcon />
             <span>Billing</span>
-            <CommandShortcut keys={['command']}>B</CommandShortcut>
+            <CommandShortcut>⌘ B</CommandShortcut>
           </CommandItem>
           <CommandItem>
             <SettingsIcon />
             <span>Settings</span>
-            <CommandShortcut keys={['command']}>S</CommandShortcut>
+            <CommandShortcut>⌘ S</CommandShortcut>
           </CommandItem>
         </CommandGroup>
       </CommandList>
