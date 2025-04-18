@@ -269,14 +269,5 @@ export const SIDEBAR_LINKS: SidebarLinks = [
   {
     title: 'UI / Components',
     links: COMPONENT_LINKS
-  },
-  {
-    title: 'UI / Utilities',
-    links: [
-      {
-        href: '/ui/utilities/get-abbreviation',
-        text: 'getAbbreviation'
-      }
-    ]
   }
 ]

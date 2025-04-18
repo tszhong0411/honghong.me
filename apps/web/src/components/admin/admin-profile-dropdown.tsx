@@ -11,7 +11,6 @@ import {
 import { Skeleton } from '@/components/ui/skeleton'
 import { useSession } from '@/lib/auth-client'
 import { useDialogsStore } from '@/store/dialogs'
-import { getAbbreviation } from '@/utils/get-abbreviation'
 import { getDefaultImage } from '@/utils/get-default-image'
 
 const AdminProfileDropdown = () => {
