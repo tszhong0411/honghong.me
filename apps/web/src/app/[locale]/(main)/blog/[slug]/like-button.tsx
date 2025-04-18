@@ -6,10 +6,9 @@
 import NumberFlow from '@number-flow/react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
-import { Separator } from '@tszhong0411/ui'
+import { Separator, toast } from '@tszhong0411/ui'
 import { motion } from 'motion/react'
 import { useRef, useState } from 'react'
-import { toast } from 'sonner'
 import { useDebouncedCallback } from 'use-debounce'
 
 import { useTRPC } from '@/trpc/client'

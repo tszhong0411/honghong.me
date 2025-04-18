@@ -1,7 +1,6 @@
 import type { KnipConfig } from 'knip'
 
 const config: KnipConfig = {
-  ignore: ['**/fixtures/**'],
   ignoreDependencies: [
     'prettier-plugin-*',
     'sharp',
@@ -15,24 +14,15 @@ const config: KnipConfig = {
       entry: ['turbo/generators/config.ts']
     },
     'apps/docs': {
-      entry: [
-        'content-collections.ts',
-        'src/components/demos/**/*.tsx',
-        'src/components/ui/**/*.tsx'
-      ],
-      // They are used in css files, but can't be detected by knip
-      ignoreDependencies: ['tw-animate-css', '@tailwindcss/typography']
+      entry: ['content-collections.ts', 'src/components/demos/**/*.tsx']
     },
     'apps/web': {
       entry: [
         'content-collections.ts',
         'src/i18n/request.ts',
         'src/e2e/**/*.setup.ts',
-        'src/e2e/**/*.teardown.ts',
-        'src/components/ui/**/*.tsx'
-      ],
-      // They are used in css files, but can't be detected by knip
-      ignoreDependencies: ['tw-animate-css', '@tailwindcss/typography']
+        'src/e2e/**/*.teardown.ts'
+      ]
     },
     'packages/db': {
       entry: ['src/seed.ts']

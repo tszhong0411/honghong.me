@@ -15,10 +15,10 @@ import {
   FormItem,
   FormMessage,
   Skeleton,
-  Textarea
+  Textarea,
+  toast
 } from '@tszhong0411/ui'
 import { useForm } from 'react-hook-form'
-import { toast } from 'sonner'
 import { z } from 'zod'
 
 import { signOut, type User } from '@/lib/auth-client'

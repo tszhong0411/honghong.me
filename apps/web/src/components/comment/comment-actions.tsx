@@ -1,11 +1,10 @@
 import NumberFlow from '@number-flow/react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
-import { Button, buttonVariants } from '@tszhong0411/ui'
+import { Button, buttonVariants, toast } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { cva } from 'cva'
 import { ChevronDownIcon, MessageSquareIcon, ThumbsDownIcon, ThumbsUpIcon } from 'lucide-react'
-import { toast } from 'sonner'
 
 import { useCommentContext } from '@/contexts/comment'
 import { useCommentsContext } from '@/contexts/comments'

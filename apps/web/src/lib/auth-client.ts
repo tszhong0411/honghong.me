@@ -1,8 +1,8 @@
 import type { auth } from './auth'
 
+import { toast } from '@tszhong0411/ui'
 import { inferAdditionalFields } from 'better-auth/client/plugins'
 import { createAuthClient } from 'better-auth/react'
-import { toast } from 'sonner'
 
 // @see https://github.com/better-auth/better-auth/issues/1391
 const authClient: ReturnType<typeof createAuthClient> = createAuthClient({

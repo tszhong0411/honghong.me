@@ -1,6 +1,6 @@
 import { useTranslations } from '@tszhong0411/i18n/client'
+import { toast } from '@tszhong0411/ui'
 import { useState } from 'react'
-import { toast } from 'sonner'
 
 type CopyOptions = {
   text: string

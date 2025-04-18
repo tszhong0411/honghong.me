@@ -10,6 +10,7 @@ import {
   DropdownMenuTrigger,
   Skeleton
 } from '@tszhong0411/ui'
+import { getAbbreviation } from '@tszhong0411/utils'
 
 import { useSession } from '@/lib/auth-client'
 import { useDialogsStore } from '@/store/dialogs'

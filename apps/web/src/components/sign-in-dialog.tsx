@@ -10,11 +10,11 @@ import {
   DialogContent,
   DialogDescription,
   DialogHeader,
-  DialogTitle
+  DialogTitle,
+  toast
 } from '@tszhong0411/ui'
 import { LoaderIcon } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import { toast } from 'sonner'
 
 import { signIn } from '@/lib/auth-client'
 import { useDialogsStore } from '@/store/dialogs'

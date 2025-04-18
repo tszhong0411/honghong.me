@@ -15,10 +15,10 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
+  toast
 } from '@tszhong0411/ui'
 import { MoreVerticalIcon } from 'lucide-react'
-import { toast } from 'sonner'
 
 import { useCommentContext } from '@/contexts/comment'
 import { useCommentsContext } from '@/contexts/comments'
