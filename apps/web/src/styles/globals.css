@@ -4,7 +4,7 @@
 @import '@tszhong0411/ui/styles/typography.css';
 @source '../../../../packages/ui/src/**/*.{js,jsx,ts,tsx}';
 
-@theme inline {
+@theme {
   --color-anchor: var(--anchor);
 
   --background-image-nav-link-indicator: var(--nav-link-indicator);
