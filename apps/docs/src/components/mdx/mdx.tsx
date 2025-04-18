@@ -1,4 +1,5 @@
 import { useMDXComponent } from '@content-collections/mdx/react'
+import { InfoIcon } from 'lucide-react'
 
 import { cn } from '@/utils/cn'
 
@@ -32,7 +33,16 @@ const components = {
   },
 
   // Custom components
-  Alert: (props: React.ComponentProps<typeof Alert>) => <Alert className='my-4' {...props} />,
+  Alert: (props: React.ComponentProps<typeof Alert>) => {
+    const { className, children, ...rest } = props
+
+    return (
+      <Alert className={cn('my-4', className)} {...rest}>
+        <InfoIcon className='size-4' />
+        {children}
+      </Alert>
+    )
+  },
   AlertTitle: (props: React.ComponentProps<typeof AlertTitle>) => <AlertTitle {...props} />,
   AlertDescription: (props: React.ComponentProps<typeof AlertDescription>) => (
     <AlertDescription className='[&_p]:m-0' {...props} />
