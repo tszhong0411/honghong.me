@@ -3,7 +3,7 @@ import NextLink from 'next/link'
 
 import { cn } from '@/utils/cn'
 
-const linkVariants = cva({
+export const linkVariants = cva({
   variants: {
     variant: {
       muted: 'text-muted-foreground hover:text-foreground transition-colors'
