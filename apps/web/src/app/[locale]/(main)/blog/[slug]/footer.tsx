@@ -1,9 +1,9 @@
 'use client'
 
 import { useTranslations } from '@tszhong0411/i18n/client'
+import { linkVariants } from '@tszhong0411/ui'
 
 import Link from '@/components/link'
-import { linkVariants } from '@/components/ui/link'
 import { usePostContext } from '@/contexts/post'
 import { useFormattedDate } from '@/hooks/use-formatted-date'
 

@@ -3,13 +3,13 @@
 import type { Project } from 'content-collections'
 
 import { useTranslations } from '@tszhong0411/i18n/client'
+import { buttonVariants } from '@tszhong0411/ui'
+import { cn } from '@tszhong0411/utils'
 import { ArrowUpRightIcon } from 'lucide-react'
 import { motion } from 'motion/react'
 
 import Link from '@/components/link'
-import { buttonVariants } from '@/components/ui/button'
 import { GITHUB_USERNAME } from '@/lib/constants'
-import { cn } from '@/utils/cn'
 
 const animation = {
   hide: {

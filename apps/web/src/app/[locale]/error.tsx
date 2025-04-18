@@ -1,9 +1,9 @@
 'use client'
 
 import { useTranslations } from '@tszhong0411/i18n/client'
+import { Button } from '@tszhong0411/ui'
 
 import MainLayout from '@/components/main-layout'
-import { Button } from '@/components/ui/button'
 
 type PageProps = {
   error: Error & { digest?: string }

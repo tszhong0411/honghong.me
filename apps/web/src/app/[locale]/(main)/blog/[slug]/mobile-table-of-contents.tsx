@@ -4,12 +4,11 @@ import type { TOC } from '@tszhong0411/mdx-plugins'
 
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { useRouter } from '@tszhong0411/i18n/routing'
+import { Button, Popover, PopoverContent, PopoverTrigger } from '@tszhong0411/ui'
 import { AlignLeftIcon } from 'lucide-react'
 import { useState } from 'react'
 
 import Link from '@/components/link'
-import { Button } from '@/components/ui/button'
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 
 type MobileTableOfContentsProps = {
   toc: TOC[]

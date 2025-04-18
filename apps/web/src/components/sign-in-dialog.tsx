@@ -3,19 +3,19 @@
 import { SiGithub } from '@icons-pack/react-simple-icons'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { usePathname } from '@tszhong0411/i18n/routing'
-import { LoaderIcon } from 'lucide-react'
-import { useEffect, useState } from 'react'
-import { toast } from 'sonner'
-
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
 import {
+  Badge,
+  Button,
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle
-} from '@/components/ui/dialog'
+} from '@tszhong0411/ui'
+import { LoaderIcon } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { toast } from 'sonner'
+
 import { signIn } from '@/lib/auth-client'
 import { useDialogsStore } from '@/store/dialogs'
 

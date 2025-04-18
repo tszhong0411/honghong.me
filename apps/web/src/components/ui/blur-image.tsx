@@ -6,10 +6,9 @@
  *
  * Modified by: tszhong0411
  */
+import { cn } from '@tszhong0411/utils'
 import NextImage from 'next/image'
 import { useState } from 'react'
-
-import { cn } from '@/utils/cn'
 
 type ImageProps = {
   imageClassName?: string

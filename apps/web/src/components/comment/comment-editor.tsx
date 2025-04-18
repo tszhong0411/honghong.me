@@ -1,10 +1,8 @@
 import { useTranslations } from '@tszhong0411/i18n/client'
+import { Button, Textarea } from '@tszhong0411/ui'
+import { cn } from '@tszhong0411/utils'
 import { BoldIcon, ItalicIcon, StrikethroughIcon } from 'lucide-react'
 import { useRef } from 'react'
-
-import { Button } from '@/components/ui/button'
-import { Textarea } from '@/components/ui/textarea'
-import { cn } from '@/utils/cn'
 
 type Command = {
   onModEnter?: () => void

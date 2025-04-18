@@ -1,8 +1,6 @@
+import { Link, TableCell, TableHead, TableHeader, TableRow } from '@tszhong0411/ui'
 import MarkdownToJSX from 'markdown-to-jsx'
 import { Fragment, memo } from 'react'
-
-import { Link } from '@/components/ui/link'
-import { TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 
 import CommentCodeBlock from '../comment/comment-code-block'
 import CommentTable from '../comment/comment-table'

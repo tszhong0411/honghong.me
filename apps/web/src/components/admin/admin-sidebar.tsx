@@ -1,6 +1,7 @@
 'use client'
 
-import { Sidebar, SidebarContent } from '@/components/ui/sidebar'
+import { Sidebar, SidebarContent } from '@tszhong0411/ui'
+
 import { ADMIN_SIDEBAR_LINKS } from '@/config/admin-sidebar-links'
 
 import AdminNavGroup from './admin-nav-group'

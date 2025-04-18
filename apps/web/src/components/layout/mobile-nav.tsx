@@ -1,15 +1,15 @@
 'use client'
 
 import { useTranslations } from '@tszhong0411/i18n/client'
-import { MenuIcon } from 'lucide-react'
-
-import { Button } from '@/components/ui/button'
 import {
+  Button,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu'
+} from '@tszhong0411/ui'
+import { MenuIcon } from 'lucide-react'
+
 import { HEADER_LINKS } from '@/config/links'
 
 import Link from '../link'

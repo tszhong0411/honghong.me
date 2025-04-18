@@ -2,12 +2,12 @@ import fs from 'node:fs'
 import path from 'node:path'
 
 import { db, eq, posts } from '@tszhong0411/db'
+import { getErrorMessage } from '@tszhong0411/utils'
 import { allPosts } from 'content-collections'
 import { ImageResponse } from 'next/og'
 import { NextResponse } from 'next/server'
 
 import { SITE_URL } from '@/lib/constants'
-import { getErrorMessage } from '@/utils/get-error-message'
 
 type OGRouteProps = {
   params: Promise<{

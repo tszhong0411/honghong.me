@@ -1,14 +1,16 @@
 import { useTranslations } from '@tszhong0411/i18n/client'
-
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Button } from '@/components/ui/button'
 import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+  Button,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuLabel,
-  DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu'
-import { Skeleton } from '@/components/ui/skeleton'
+  DropdownMenuTrigger,
+  Skeleton
+} from '@tszhong0411/ui'
+
 import { useSession } from '@/lib/auth-client'
 import { useDialogsStore } from '@/store/dialogs'
 import { getDefaultImage } from '@/utils/get-default-image'

@@ -3,11 +3,8 @@
 import { SiFacebook, SiGithub, SiInstagram, SiX, SiYoutube } from '@icons-pack/react-simple-icons'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { useRouter } from '@tszhong0411/i18n/routing'
-import { CodeIcon, CommandIcon, LinkIcon, LogInIcon, LogOutIcon } from 'lucide-react'
-import { Fragment, useCallback, useEffect, useState } from 'react'
-
-import { Button } from '@/components/ui/button'
 import {
+  Button,
   CommandDialog,
   CommandEmpty,
   CommandGroup,
@@ -15,7 +12,10 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator
-} from '@/components/ui/command'
+} from '@tszhong0411/ui'
+import { CodeIcon, CommandIcon, LinkIcon, LogInIcon, LogOutIcon } from 'lucide-react'
+import { Fragment, useCallback, useEffect, useState } from 'react'
+
 import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard'
 import { signOut, useSession } from '@/lib/auth-client'
 import {

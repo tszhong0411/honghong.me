@@ -2,10 +2,10 @@
 
 import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
+import { Skeleton } from '@tszhong0411/ui'
 
 import AdminPageHeader from '@/components/admin/admin-page-header'
 import UsersTable from '@/components/admin/users-table'
-import { Skeleton } from '@/components/ui/skeleton'
 import { useTRPC } from '@/trpc/client'
 
 const Page = () => {

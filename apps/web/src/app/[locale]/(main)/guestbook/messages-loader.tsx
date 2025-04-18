@@ -1,5 +1,6 @@
-import { Skeleton } from '@/components/ui/skeleton'
-import { cn } from '@/utils/cn'
+import { Skeleton } from '@tszhong0411/ui'
+import { cn } from '@tszhong0411/utils'
+
 import { range } from '@/utils/range'
 
 const Placeholder = () => (

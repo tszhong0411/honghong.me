@@ -11,18 +11,16 @@ import {
   useReactTable
 } from '@tanstack/react-table'
 import { useTranslations } from '@tszhong0411/i18n/client'
-import { useState } from 'react'
-
 import {
+  Input,
   Table,
   TableBody,
   TableCell,
   TableHead,
   TableHeader,
   TableRow
-} from '@/components/ui/table'
-
-import { Input } from '../ui/input'
+} from '@tszhong0411/ui'
+import { useState } from 'react'
 
 type Comment = GetCommentsOutput['comments'][number]
 
@@ -71,6 +69,7 @@ const CommentsTable = (props: CommentsTableProps) => {
       <div className='flex items-center py-4'>
         <Input
           placeholder='Filter user id...'
+          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- ignore for now
           value={(table.getColumn('userId')?.getFilterValue() as string) ?? ''}
           onChange={(event) => table.getColumn('userId')?.setFilterValue(event.target.value)}
           className='max-w-sm'

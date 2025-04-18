@@ -1,8 +1,8 @@
 import { redirect } from '@tszhong0411/i18n/routing'
+import { SidebarProvider } from '@tszhong0411/ui'
 
 import AdminHeader from '@/components/admin/admin-header'
 import AdminSidebar from '@/components/admin/admin-sidebar'
-import { SidebarProvider } from '@/components/ui/sidebar'
 import { getSession } from '@/lib/auth'
 
 type LayoutProps = {

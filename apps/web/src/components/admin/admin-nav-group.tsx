@@ -1,13 +1,7 @@
 import type { SidebarGroup as SidebarGroupConfig } from '@/config/admin-sidebar-links'
 
 import { useTranslations } from '@tszhong0411/i18n/client'
-
-import {
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarMenu
-} from '@/components/ui/sidebar'
+import { SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu } from '@tszhong0411/ui'
 
 import AdminNavLink from './admin-nav-link'
 
