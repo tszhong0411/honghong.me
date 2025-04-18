@@ -6,6 +6,7 @@ import { Alert, AlertDescription, AlertTitle } from '../ui/alert'
 import { CodeBlock } from '../ui/code-block'
 import { Link } from '../ui/link'
 
+import ComponentInstallation from './component-installation'
 import ComponentPreview from './component-preview'
 import EmbedComponentPreview from './embed-component-preview'
 import Heading from './heading'
@@ -37,6 +38,7 @@ const components = {
     <AlertDescription className='[&_p]:m-0' {...props} />
   ),
   ComponentPreview,
+  ComponentInstallation,
   EmbedComponentPreview,
   TreeView,
 
