@@ -48,7 +48,7 @@ const SelectTrigger = (props: SelectTriggerProps) => {
     >
       {children}
       <SelectPrimitive.Icon asChild>
-        <ChevronDownIcon className='size-4 opacity-50' />
+        <ChevronDownIcon className='opacity-50' />
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
   )
@@ -130,7 +130,7 @@ const SelectItem = (props: SelectItemProps) => {
     >
       <span className='absolute right-2 flex size-3.5 items-center justify-center'>
         <SelectPrimitive.ItemIndicator>
-          <CheckIcon className='size-4' />
+          <CheckIcon />
         </SelectPrimitive.ItemIndicator>
       </span>
       <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>

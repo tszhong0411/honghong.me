@@ -51,12 +51,12 @@ const Header = (props: HeaderProps) => {
         {homepage ? (
           <Link href={homepage} className={cn(buttonVariants(), 'group')}>
             {t('projects.visit-website')}
-            <ArrowUpRightIcon className='ml-2 size-5 transition-transform group-hover:-rotate-12' />
+            <ArrowUpRightIcon className='size-5 transition-transform group-hover:-rotate-12' />
           </Link>
         ) : null}
         <Link href={github} className={cn(buttonVariants(), 'group')}>
           {GITHUB_USERNAME}/{repo}
-          <ArrowUpRightIcon className='ml-2 size-5 transition-transform group-hover:-rotate-12' />
+          <ArrowUpRightIcon className='size-5 transition-transform group-hover:-rotate-12' />
         </Link>
       </motion.div>
     </div>

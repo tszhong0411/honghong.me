@@ -154,7 +154,7 @@ const CommentEditor = (props: CommentEditorProps) => {
           className='size-7'
           onClick={() => decorateText(textareaRef.current, 'bold')}
         >
-          <BoldIcon className='size-4' />
+          <BoldIcon />
         </Button>
         <Button
           aria-label={t('blog.comments.toggle-strikethrough')}
@@ -163,7 +163,7 @@ const CommentEditor = (props: CommentEditorProps) => {
           className='size-7'
           onClick={() => decorateText(textareaRef.current, 'strikethrough')}
         >
-          <StrikethroughIcon className='size-4' />
+          <StrikethroughIcon />
         </Button>
         <Button
           aria-label={t('blog.comments.toggle-italic')}
@@ -172,7 +172,7 @@ const CommentEditor = (props: CommentEditorProps) => {
           className='size-7'
           onClick={() => decorateText(textareaRef.current, 'italic')}
         >
-          <ItalicIcon className='size-4' />
+          <ItalicIcon />
         </Button>
       </div>
     </div>

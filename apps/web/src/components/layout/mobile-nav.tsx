@@ -25,7 +25,7 @@ const MobileNav = () => {
           aria-label={t('layout.toggle-menu')}
           variant='ghost'
         >
-          <MenuIcon className='size-4' />
+          <MenuIcon />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align='end' sideOffset={20} className='min-w-40'>

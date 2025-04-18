@@ -4,7 +4,7 @@ import { ItalicIcon } from 'lucide-react'
 const ToggleWithTextDemo = () => {
   return (
     <Toggle aria-label='Toggle italic'>
-      <ItalicIcon className='size-4' />
+      <ItalicIcon />
       Italic
     </Toggle>
   )

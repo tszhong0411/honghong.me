@@ -147,7 +147,7 @@ const CommentActions = () => {
           })}
           aria-label={t('blog.comments.like')}
         >
-          <ThumbsUpIcon className='size-4' />
+          <ThumbsUpIcon />
           <NumberFlow value={comment.likes} />
         </Button>
         <Button
@@ -158,7 +158,7 @@ const CommentActions = () => {
           })}
           aria-label={t('blog.comments.dislike')}
         >
-          <ThumbsDownIcon className='size-4' />
+          <ThumbsDownIcon />
           <NumberFlow value={comment.dislikes} />
         </Button>
         {comment.parentId ? null : (
@@ -168,7 +168,7 @@ const CommentActions = () => {
             onClick={() => setIsReplying(true)}
             data-testid='comment-reply-button'
           >
-            <MessageSquareIcon className='size-4' />
+            <MessageSquareIcon />
             {t('blog.comments.reply')}
           </Button>
         )}

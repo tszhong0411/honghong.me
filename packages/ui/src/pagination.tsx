@@ -61,7 +61,7 @@ const PaginationPrevTrigger = (props: PaginationPrevTriggerProps) => {
       className={cn(buttonVariants({ variant: 'ghost', size }), 'gap-1 pl-2.5', className)}
       {...rest}
     >
-      <ChevronLeftIcon className='size-4' />
+      <ChevronLeftIcon />
       <span>Previous</span>
     </PaginationPrimitive.PrevTrigger>
   )
@@ -80,7 +80,7 @@ const PaginationNextTrigger = (props: PaginationNextTriggerProps) => {
       {...rest}
     >
       <span>Next</span>
-      <ChevronRightIcon className='size-4' />
+      <ChevronRightIcon />
     </PaginationPrimitive.NextTrigger>
   )
 }

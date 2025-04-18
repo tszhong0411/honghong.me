@@ -70,7 +70,7 @@ const CommandMenu = () => {
           ? [
               {
                 title: t('common.sign-out'),
-                icon: <LogOutIcon className='mr-3 size-4' />,
+                icon: <LogOutIcon />,
                 onSelect: async () => {
                   await signOut({
                     fetchOptions: {
@@ -85,7 +85,7 @@ const CommandMenu = () => {
           : [
               {
                 title: t('common.sign-in'),
-                icon: <LogInIcon className='mr-3 size-4' />,
+                icon: <LogInIcon />,
                 onSelect: () => {
                   setIsOpen(false)
                   setIsSignInOpen(true)
@@ -99,7 +99,7 @@ const CommandMenu = () => {
       actions: [
         {
           title: t('command-menu.actions.copy-link'),
-          icon: <LinkIcon className='mr-3 size-4' />,
+          icon: <LinkIcon />,
           onSelect: async () => {
             setIsOpen(false)
 
@@ -108,7 +108,7 @@ const CommandMenu = () => {
         },
         {
           title: t('command-menu.actions.source-code'),
-          icon: <CodeIcon className='mr-3 size-4' />,
+          icon: <CodeIcon />,
           onSelect: () => openLink('https://github.com/tszhong0411/honghong.me')
         }
       ]
@@ -118,27 +118,27 @@ const CommandMenu = () => {
       actions: [
         {
           title: 'GitHub',
-          icon: <SiGithub className='mr-3 size-4' />,
+          icon: <SiGithub />,
           onSelect: () => openLink(SITE_GITHUB_URL)
         },
         {
           title: 'Facebook',
-          icon: <SiFacebook className='mr-3 size-4' />,
+          icon: <SiFacebook />,
           onSelect: () => openLink(SITE_FACEBOOK_URL)
         },
         {
           title: 'Instagram',
-          icon: <SiInstagram className='mr-3 size-4' />,
+          icon: <SiInstagram />,
           onSelect: () => openLink(SITE_INSTAGRAM_URL)
         },
         {
           title: 'X',
-          icon: <SiX className='mr-3 size-4' />,
+          icon: <SiX />,
           onSelect: () => openLink(SITE_X_URL)
         },
         {
           title: 'YouTube',
-          icon: <SiYoutube className='mr-3 size-4' />,
+          icon: <SiYoutube />,
           onSelect: () => openLink(SITE_YOUTUBE_URL)
         }
       ]
@@ -153,7 +153,7 @@ const CommandMenu = () => {
         onClick={() => setIsOpen(true)}
         aria-label={t('command-menu.open-menu')}
       >
-        <CommandIcon className='size-4' />
+        <CommandIcon />
       </Button>
       <CommandDialog open={isOpen} onOpenChange={setIsOpen}>
         <CommandInput placeholder={t('command-menu.placeholder')} />

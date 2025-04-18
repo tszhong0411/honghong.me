@@ -25,7 +25,7 @@ const HoverCardDemo = () => {
             <h4 className='text-sm font-semibold'>@nextjs</h4>
             <p className='text-sm'>The React Framework – created and maintained by @vercel.</p>
             <div className='flex items-center pt-2'>
-              <CalendarDaysIcon className='mr-2 size-4 opacity-70' />{' '}
+              <CalendarDaysIcon className='text-muted-foreground mr-2 size-4' />
               <span className='text-muted-foreground text-xs'>Joined December 2021</span>
             </div>
           </div>
