@@ -59,7 +59,7 @@ export const componentGenerator = (plop: PlopTypes.NodePlopAPI): void => {
       },
       {
         type: 'add',
-        path: 'apps/docs/src/content/ui/components/{{ name }}.mdx',
+        path: 'apps/docs/src/content/ui/{{ name }}.mdx',
         templateFile: 'templates/component/component.mdx.hbs'
       },
       async () => {
@@ -85,7 +85,7 @@ export const componentGenerator = (plop: PlopTypes.NodePlopAPI): void => {
             }))
 
           elements.push({
-            href: `'/ui/components/${name}'`,
+            href: `'/ui/${name}'`,
             text: `'${titleCase(name)}'`
           })
 

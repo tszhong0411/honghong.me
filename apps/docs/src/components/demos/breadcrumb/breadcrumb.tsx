@@ -34,7 +34,7 @@ const BreadcrumbDemo = () => {
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink href='/ui/components'>Components</BreadcrumbLink>
+          <BreadcrumbLink href='/ui'>Components</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>

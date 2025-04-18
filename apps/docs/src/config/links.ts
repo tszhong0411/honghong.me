@@ -23,221 +23,221 @@ export const HEADER_LINKS: HeaderLinks = [
 
 const COMPONENT_LINKS = [
   {
-    href: '/ui/components/accordion',
+    href: '/ui/accordion',
     text: 'Accordion'
   },
   {
-    href: '/ui/components/alert-dialog',
+    href: '/ui/alert-dialog',
     text: 'Alert Dialog'
   },
   {
-    href: '/ui/components/alert',
+    href: '/ui/alert',
     text: 'Alert'
   },
   {
-    href: '/ui/components/aspect-ratio',
+    href: '/ui/aspect-ratio',
     text: 'Aspect Ratio'
   },
   {
-    href: '/ui/components/avatar',
+    href: '/ui/avatar',
     text: 'Avatar'
   },
   {
-    href: '/ui/components/badge',
+    href: '/ui/badge',
     text: 'Badge'
   },
   {
-    href: '/ui/components/breadcrumb',
+    href: '/ui/breadcrumb',
     text: 'Breadcrumb'
   },
   {
-    href: '/ui/components/button',
+    href: '/ui/button',
     text: 'Button'
   },
   {
-    href: '/ui/components/calendar',
+    href: '/ui/calendar',
     text: 'Calendar'
   },
   {
-    href: '/ui/components/card',
+    href: '/ui/card',
     text: 'Card'
   },
   {
-    href: '/ui/components/carousel',
+    href: '/ui/carousel',
     text: 'Carousel'
   },
   {
-    href: '/ui/components/chart',
+    href: '/ui/chart',
     text: 'Chart'
   },
   {
-    href: '/ui/components/checkbox',
+    href: '/ui/checkbox',
     text: 'Checkbox'
   },
   {
-    href: '/ui/components/code-block',
+    href: '/ui/code-block',
     text: 'Code Block'
   },
   {
-    href: '/ui/components/collapsible',
+    href: '/ui/collapsible',
     text: 'Collapsible'
   },
   {
-    href: '/ui/components/combobox',
+    href: '/ui/combobox',
     text: 'Combobox'
   },
   {
-    href: '/ui/components/command',
+    href: '/ui/command',
     text: 'Command'
   },
   {
-    href: '/ui/components/context-menu',
+    href: '/ui/context-menu',
     text: 'Context Menu'
   },
   {
-    href: '/ui/components/data-table',
+    href: '/ui/data-table',
     text: 'Data Table'
   },
   {
-    href: '/ui/components/dialog',
+    href: '/ui/dialog',
     text: 'Dialog'
   },
   {
-    href: '/ui/components/drawer',
+    href: '/ui/drawer',
     text: 'Drawer'
   },
   {
-    href: '/ui/components/dropdown-menu',
+    href: '/ui/dropdown-menu',
     text: 'Dropdown Menu'
   },
   {
-    href: '/ui/components/form',
+    href: '/ui/form',
     text: 'Form'
   },
   {
-    href: '/ui/components/hover-card',
+    href: '/ui/hover-card',
     text: 'Hover Card'
   },
   {
-    href: '/ui/components/input-otp',
+    href: '/ui/input-otp',
     text: 'Input OTP'
   },
   {
-    href: '/ui/components/input',
+    href: '/ui/input',
     text: 'Input'
   },
   {
-    href: '/ui/components/kbd',
+    href: '/ui/kbd',
     text: 'Kbd'
   },
   {
-    href: '/ui/components/label',
+    href: '/ui/label',
     text: 'Label'
   },
   {
-    href: '/ui/components/link',
+    href: '/ui/link',
     text: 'Link'
   },
   {
-    href: '/ui/components/marquee',
+    href: '/ui/marquee',
     text: 'Marquee'
   },
   {
-    href: '/ui/components/menubar',
+    href: '/ui/menubar',
     text: 'Menubar'
   },
   {
-    href: '/ui/components/navigation-menu',
+    href: '/ui/navigation-menu',
     text: 'Navigation Menu'
   },
   {
-    href: '/ui/components/pagination',
+    href: '/ui/pagination',
     text: 'Pagination',
     isArkUI: true
   },
   {
-    href: '/ui/components/popover',
+    href: '/ui/popover',
     text: 'Popover'
   },
   {
-    href: '/ui/components/progress',
+    href: '/ui/progress',
     text: 'Progress'
   },
   {
-    href: '/ui/components/radio-group',
+    href: '/ui/radio-group',
     text: 'Radio Group'
   },
   {
-    href: '/ui/components/resizable',
+    href: '/ui/resizable',
     text: 'Resizable'
   },
   {
-    href: '/ui/components/scroll-area',
+    href: '/ui/scroll-area',
     text: 'Scroll Area'
   },
   {
-    href: '/ui/components/segment-group',
+    href: '/ui/segment-group',
     text: 'Segment Group',
     isArkUI: true
   },
   {
-    href: '/ui/components/select',
+    href: '/ui/select',
     text: 'Select'
   },
   {
-    href: '/ui/components/separator',
+    href: '/ui/separator',
     text: 'Separator'
   },
   {
-    href: '/ui/components/sheet',
+    href: '/ui/sheet',
     text: 'Sheet'
   },
   {
-    href: '/ui/components/sidebar',
+    href: '/ui/sidebar',
     text: 'Sidebar'
   },
   {
-    href: '/ui/components/skeleton',
+    href: '/ui/skeleton',
     text: 'Skeleton'
   },
   {
-    href: '/ui/components/slider',
+    href: '/ui/slider',
     text: 'Slider'
   },
   {
-    href: '/ui/components/sonner',
+    href: '/ui/sonner',
     text: 'Sonner'
   },
   {
-    href: '/ui/components/switch',
+    href: '/ui/switch',
     text: 'Switch'
   },
   {
-    href: '/ui/components/table',
+    href: '/ui/table',
     text: 'Table'
   },
   {
-    href: '/ui/components/tabs',
+    href: '/ui/tabs',
     text: 'Tabs'
   },
   {
-    href: '/ui/components/textarea',
+    href: '/ui/textarea',
     text: 'Textarea'
   },
   {
-    href: '/ui/components/toggle-group',
+    href: '/ui/toggle-group',
     text: 'Toggle Group'
   },
   {
-    href: '/ui/components/toggle',
+    href: '/ui/toggle',
     text: 'Toggle'
   },
   {
-    href: '/ui/components/tooltip',
+    href: '/ui/tooltip',
     text: 'Tooltip'
   },
   {
-    href: '/ui/components/tree-view',
+    href: '/ui/tree-view',
     text: 'Tree View',
     isArkUI: true
   }
