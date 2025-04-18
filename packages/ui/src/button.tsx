@@ -1,4 +1,3 @@
-import { Slot } from '@radix-ui/react-slot'
 import { cn } from '@tszhong0411/utils'
 import { cva, type VariantProps } from 'cva'
 
@@ -36,19 +35,15 @@ const buttonVariants = cva({
   }
 })
 
-type ButtonProps = React.ComponentProps<'button'> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean
-  }
+type ButtonProps = React.ComponentProps<'button'> & VariantProps<typeof buttonVariants>
 
 const Button = (props: ButtonProps) => {
-  const { className, variant, size, asChild = false, ...rest } = props
-
-  const Comp = asChild ? Slot : 'button'
+  const { className, variant, size, type = 'button', ...rest } = props
 
   return (
-    <Comp
+    <button
       data-slot='button'
+      type={type}
       className={cn(buttonVariants({ variant, size, className }))}
       {...rest}
     />

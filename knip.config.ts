@@ -30,6 +30,10 @@ const config: KnipConfig = {
     'packages/eslint-config': {
       // @see https://github.com/francoismassart/eslint-plugin-tailwindcss/issues/325
       ignoreDependencies: ['@eslint/config-inspector', 'eslint-plugin-tailwindcss']
+    },
+    'packages/ui': {
+      // @see https://github.com/shadcn-ui/ui/issues/4792
+      ignoreDependencies: ['tw-animate-css', '@tailwindcss/typography']
     }
   }
 }
