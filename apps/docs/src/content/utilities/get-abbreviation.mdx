@@ -1,0 +1,31 @@
+---
+title: getAbbreviation Utility
+description: Generates an abbreviation from a given string, typically a name.
+---
+
+The `getAbbreviation` function takes a string, splits it into words, and returns a string composed of the first letter of each word. If the resulting abbreviation is longer than two characters, it is truncated to the first two characters.
+
+## Usage
+
+```typescript
+import { getAbbreviation } from '@tszhong0411/utils'
+
+const abbreviation1 = getAbbreviation('John Doe')
+// abbreviation1 will be "JD"
+
+const abbreviation2 = getAbbreviation('Pedro Duarte')
+// abbreviation2 will be "PD"
+
+const abbreviation3 = getAbbreviation('Colm Tuite')
+// abbreviation3 will be "CT"
+```
+
+## API
+
+### `getAbbreviation(name: string): string`
+
+Generates an abbreviation from a string.
+
+- `name`: The input string, typically a name.
+
+**Returns:** `string` - The generated abbreviation.

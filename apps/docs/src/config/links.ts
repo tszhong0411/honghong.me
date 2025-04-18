@@ -267,6 +267,27 @@ export const SIDEBAR_LINKS: SidebarLinks = [
     ]
   },
   {
+    title: 'Utilities',
+    links: [
+      {
+        href: '/utilities/cn',
+        text: 'cn'
+      },
+      {
+        href: '/utilities/get-abbreviation',
+        text: 'getAbbreviation'
+      },
+      {
+        href: '/utilities/get-error-message',
+        text: 'getErrorMessage'
+      },
+      {
+        href: '/utilities/range',
+        text: 'range'
+      }
+    ]
+  },
+  {
     title: 'UI / Components',
     links: COMPONENT_LINKS
   }

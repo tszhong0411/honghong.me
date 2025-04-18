@@ -1,0 +1,54 @@
+---
+title: getErrorMessage Utility
+description: Extracts a user-friendly error message from various error types.
+---
+
+The `getErrorMessage` function is a utility designed to safely extract a string message from an unknown error type. It handles instances of `Error`, objects with a `message` property, and string types, providing a fallback message for all other cases.
+
+## Usage
+
+```typescript
+import { getErrorMessage } from '@tszhong0411/utils'
+
+try {
+  // Some operation that might throw an error
+  throw new Error('Something went wrong!')
+} catch (error) {
+  const message = getErrorMessage(error)
+  // message will be "Something went wrong!"
+}
+
+try {
+  // Some operation that might throw a string
+  throw 'An error occurred.'
+} catch (error) {
+  const message = getErrorMessage(error)
+  // message will be "An error occurred."
+}
+
+try {
+  // Some operation that might throw an object with a message property
+  throw { message: 'Operation failed.' }
+} catch (error) {
+  const message = getErrorMessage(error)
+  // message will be "Operation failed."
+}
+
+try {
+  // Some operation that might throw an unknown type
+  throw 123
+} catch (error) {
+  const message = getErrorMessage(error)
+  // message will be "Something went wrong"
+}
+```
+
+## API
+
+### `getErrorMessage(error: unknown): string`
+
+Extracts a user-friendly error message from an unknown error type.
+
+- `error`: The unknown error value.
+
+**Returns:** `string` - The extracted error message or a default fallback message.
