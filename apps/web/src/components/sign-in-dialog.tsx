@@ -3,6 +3,7 @@
 import { SiGithub } from '@icons-pack/react-simple-icons'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { usePathname } from '@tszhong0411/i18n/routing'
+import { LoaderIcon } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { toast } from 'sonner'
 
@@ -101,9 +102,9 @@ const SignInDialog = () => {
           <Button
             className='relative h-10 rounded-xl font-semibold'
             onClick={() => handleSignIn('github')}
-            isPending={isPending}
+            disabled={isPending}
           >
-            {isPending ? null : <SiGithub className='mr-3' />}
+            {isPending ? <LoaderIcon className='animate-spin' /> : <SiGithub className='mr-3' />}
             {t('dialog.sign-in.continue-with', { provider: 'GitHub' })}
             {lastUsedProvider === 'github' && <LastUsed />}
           </Button>
@@ -111,9 +112,9 @@ const SignInDialog = () => {
             className='relative h-10 rounded-xl border font-semibold'
             variant='ghost'
             onClick={() => handleSignIn('google')}
-            isPending={isPending}
+            disabled={isPending}
           >
-            {isPending ? null : <GoogleIcon />}
+            {isPending ? <LoaderIcon className='animate-spin' /> : <GoogleIcon />}
             {t('dialog.sign-in.continue-with', { provider: 'Google' })}
             {lastUsedProvider === 'google' && <LastUsed />}
           </Button>
