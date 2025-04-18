@@ -2,7 +2,7 @@ import { cn } from '@tszhong0411/utils'
 import { cva, type VariantProps } from 'cva'
 import NextLink from 'next/link'
 
-export const linkVariants = cva({
+const linkVariants = cva({
   variants: {
     variant: {
       muted: 'text-muted-foreground hover:text-foreground transition-colors'
@@ -47,4 +47,4 @@ const Link = (props: LinkProps) => {
   )
 }
 
-export { Link }
+export { Link, linkVariants }
