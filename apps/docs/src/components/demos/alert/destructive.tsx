@@ -4,7 +4,7 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 
 const AlertDestructiveDemo = () => {
   return (
-    <Alert variant='destructive'>
+    <Alert variant='destructive' className='max-w-md'>
       <AlertCircleIcon />
       <AlertTitle>Something went wrong!</AlertTitle>
       <AlertDescription>Your session has expired. Please log in again.</AlertDescription>
