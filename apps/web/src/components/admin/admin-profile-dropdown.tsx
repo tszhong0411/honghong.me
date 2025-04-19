@@ -39,7 +39,7 @@ const AdminProfileDropdown = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className='size-9 rounded-full' variant='ghost'>
+        <Button className='size-9 rounded-full' variant='ghost' aria-label={t('layout.profile')}>
           <Avatar className='size-9'>
             <AvatarImage src={image ?? defaultImage} />
             <AvatarFallback>{getAbbreviation(name)}</AvatarFallback>
