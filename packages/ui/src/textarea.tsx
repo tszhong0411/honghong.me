@@ -1,12 +1,13 @@
 import { cn } from '@tszhong0411/utils'
+import TextareaAutosize from 'react-textarea-autosize'
 
-type TextareaProps = React.ComponentProps<'textarea'>
+type TextareaProps = React.ComponentProps<typeof TextareaAutosize>
 
 const Textarea = (props: TextareaProps) => {
   const { className, ...rest } = props
 
   return (
-    <textarea
+    <TextareaAutosize
       data-slot='textarea'
       className={cn(
         'border-input field-sizing-content shadow-xs flex min-h-16 w-full rounded-md border bg-transparent px-3 py-2 text-base outline-none transition-[color,box-shadow]',

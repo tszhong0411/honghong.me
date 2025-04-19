@@ -70,6 +70,7 @@
     "merge-refs": "^2.0.0",
     "react-hook-form": "^7.55.0",
     "react-resizable-panels": "^2.1.7",
+    "react-textarea-autosize": "^8.5.9",
     "sonner": "^2.0.3",
     "tw-animate-css": "^1.2.5",
     "vaul": "^1.1.2"
