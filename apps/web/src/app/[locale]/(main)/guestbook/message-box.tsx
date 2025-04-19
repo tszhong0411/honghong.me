@@ -14,10 +14,10 @@ import {
   FormField,
   FormItem,
   FormMessage,
-  Skeleton,
   Textarea,
   toast
 } from '@tszhong0411/ui'
+import { getAbbreviation } from '@tszhong0411/utils'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
@@ -73,11 +73,9 @@ const MessageBox = (props: FormProps) => {
 
   return (
     <div className='flex gap-3'>
-      <Avatar>
-        <AvatarImage src={user.image ?? defaultImage} alt={user.name} className='size-10' />
-        <AvatarFallback className='bg-transparent'>
-          <Skeleton className='size-10 rounded-full' />
-        </AvatarFallback>
+      <Avatar className='size-10'>
+        <AvatarImage src={user.image ?? defaultImage} alt={user.name} />
+        <AvatarFallback>{getAbbreviation(user.name)}</AvatarFallback>
       </Avatar>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className='w-full'>
