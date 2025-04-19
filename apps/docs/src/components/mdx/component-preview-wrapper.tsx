@@ -27,7 +27,7 @@ const ComponentPreviewWrapper = (props: ComponentPreviewWrapperProps) => {
           onClick={() => setKey((prev) => prev + 1)}
           aria-label='Reload preview'
         >
-          <RotateCcwIcon className='size-4' />
+          <RotateCcwIcon />
         </Button>
         <div className='not-prose flex min-h-[350px] items-center justify-center rounded-lg border px-10 py-12'>
           {Component}

@@ -18,7 +18,7 @@ const LocaleSwitcher = () => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant='ghost' className='size-9 p-0' aria-label={t('layout.change-language')}>
-          <LanguagesIcon className='size-4' />
+          <LanguagesIcon />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align='end'>

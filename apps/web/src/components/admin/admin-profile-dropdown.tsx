@@ -10,10 +10,10 @@ import {
   DropdownMenuTrigger,
   Skeleton
 } from '@tszhong0411/ui'
+import { getAbbreviation } from '@tszhong0411/utils'
 
 import { useSession } from '@/lib/auth-client'
 import { useDialogsStore } from '@/store/dialogs'
-import { getAvatarAbbreviation } from '@/utils/get-avatar-abbreviation'
 import { getDefaultImage } from '@/utils/get-default-image'
 
 const AdminProfileDropdown = () => {
@@ -42,7 +42,7 @@ const AdminProfileDropdown = () => {
         <Button className='size-9 rounded-full' variant='ghost'>
           <Avatar className='size-9'>
             <AvatarImage className='size-9' src={image ?? defaultImage} />
-            <AvatarFallback>{getAvatarAbbreviation(name)}</AvatarFallback>
+            <AvatarFallback>{getAbbreviation(name)}</AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>

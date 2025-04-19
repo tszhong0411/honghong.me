@@ -4,10 +4,11 @@ import { cn } from '@tszhong0411/utils'
 type SegmentGroupProps = React.ComponentProps<typeof SegmentGroupPrimitive.Root>
 
 const SegmentGroup = (props: SegmentGroupProps) => {
-  const { className, children, orientation = 'horizontal', ...rest } = props
+  const { className, children, orientation, ...rest } = props
 
   return (
     <SegmentGroupPrimitive.Root
+      data-slot='segment-group'
       orientation={orientation}
       className={cn(
         'flex items-start',
@@ -16,27 +17,17 @@ const SegmentGroup = (props: SegmentGroupProps) => {
       )}
       {...rest}
     >
-      <SegmentGroupIndicator />
+      <SegmentGroupPrimitive.Indicator
+        data-slot='segment-group-indicator'
+        className={cn(
+          'border-foreground',
+          'data-[orientation=horizontal]:bottom-0 data-[orientation=horizontal]:w-[var(--width)] data-[orientation=horizontal]:translate-y-px data-[orientation=horizontal]:border-b-2',
+          'data-[orientation=vertical]:h-[var(--height)] data-[orientation=vertical]:-translate-x-px data-[orientation=vertical]:border-l-2',
+          className
+        )}
+      />
       {children}
     </SegmentGroupPrimitive.Root>
-  )
-}
-
-type SegmentGroupIndicatorProps = React.ComponentProps<typeof SegmentGroupPrimitive.Indicator>
-
-const SegmentGroupIndicator = (props: SegmentGroupIndicatorProps) => {
-  const { className, ...rest } = props
-
-  return (
-    <SegmentGroupPrimitive.Indicator
-      className={cn(
-        'border-foreground',
-        'data-[orientation=horizontal]:bottom-0 data-[orientation=horizontal]:w-[var(--width)] data-[orientation=horizontal]:translate-y-px data-[orientation=horizontal]:border-b-2',
-        'data-[orientation=vertical]:h-[var(--height)] data-[orientation=vertical]:-translate-x-px data-[orientation=vertical]:border-l-2',
-        className
-      )}
-      {...rest}
-    />
   )
 }
 
@@ -47,21 +38,23 @@ const SegmentGroupItem = (props: SegmentGroupItemProps) => {
 
   return (
     <SegmentGroupPrimitive.Item
+      data-slot='segment-group-item'
       className={cn(
-        'text-muted-foreground hover:text-accent-foreground cursor-pointer font-medium transition-colors',
+        'text-muted-foreground cursor-pointer font-medium transition-colors',
+        'hover:text-accent-foreground',
+        'data-[state=checked]:text-foreground',
         'data-[orientation=horizontal]:px-1 data-[orientation=horizontal]:pb-3',
         'data-[orientation=vertical]:px-3 data-[orientation=vertical]:py-1.5',
-        'data-[state=checked]:text-foreground',
         'data-disabled:text-muted-foreground data-disabled:cursor-not-allowed data-disabled:opacity-50',
         className
       )}
       {...rest}
     >
-      {children}
+      <SegmentGroupPrimitive.ItemText>{children}</SegmentGroupPrimitive.ItemText>
       <SegmentGroupPrimitive.ItemControl />
       <SegmentGroupPrimitive.ItemHiddenInput />
     </SegmentGroupPrimitive.Item>
   )
 }
 
-export { SegmentGroup, SegmentGroupIndicator, SegmentGroupItem }
+export { SegmentGroup, SegmentGroupItem }

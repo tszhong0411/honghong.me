@@ -4,12 +4,15 @@ import { cva, type VariantProps } from 'cva'
 
 const toggleVariants = cva({
   base: [
-    'inline-flex items-center justify-center gap-2 rounded-lg text-sm font-medium transition-colors',
-    'data-[state=on]:bg-accent data-[state=on]:text-accent-foreground',
+    'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium outline-none transition-[color,box-shadow]',
+    'dark:aria-invalid:ring-destructive/40',
     'hover:bg-muted hover:text-muted-foreground',
-    'focus-visible:ring-ring focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2',
+    'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
+    'aria-invalid:ring-destructive/20 aria-invalid:border-destructive',
     'disabled:pointer-events-none disabled:opacity-50',
-    '[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0'
+    'data-[state=on]:bg-accent data-[state=on]:text-accent-foreground',
+    '[&_svg]:pointer-events-none [&_svg]:shrink-0',
+    "[&_svg:not([class*='size-'])]:size-4"
   ],
   variants: {
     variant: {
@@ -36,7 +39,11 @@ const Toggle = (props: ToggleProps) => {
   const { className, variant, size, ...rest } = props
 
   return (
-    <TogglePrimitive.Root className={cn(toggleVariants({ variant, size, className }))} {...rest} />
+    <TogglePrimitive.Root
+      data-slot='toggle'
+      className={cn(toggleVariants({ variant, size, className }))}
+      {...rest}
+    />
   )
 }
 

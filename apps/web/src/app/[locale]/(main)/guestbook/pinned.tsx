@@ -1,12 +1,11 @@
 import { useTranslations } from '@tszhong0411/i18n/client'
-import { Card } from '@tszhong0411/ui'
 import { MessageCircleIcon, PinIcon } from 'lucide-react'
 
 const Pinned = () => {
   const t = useTranslations()
 
   return (
-    <Card className='relative overflow-hidden'>
+    <div className='text-card-foreground shadow-xs relative overflow-hidden rounded-lg border'>
       <div className='bg-linear-to-br absolute inset-0 from-blue-50/80 via-purple-50/50 to-rose-50/30 dark:from-blue-900/20 dark:via-purple-900/20 dark:to-rose-900/10' />
 
       <div className='absolute right-4 top-4'>
@@ -28,7 +27,7 @@ const Pinned = () => {
       </div>
 
       <div className='bg-linear-to-r h-1 w-full from-blue-500/30 via-purple-500/30 to-pink-500/30 dark:from-blue-400/40 dark:via-purple-400/40 dark:to-pink-400/40' />
-    </Card>
+    </div>
   )
 }
 

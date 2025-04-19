@@ -7,15 +7,11 @@ import {
   Button,
   CommandDialog,
   CommandEmpty,
-  CommandFooter,
-  CommandFooterTrigger,
   CommandGroup,
   CommandInput,
   CommandItem,
   CommandList,
-  CommandSeparator,
-  Kbd,
-  Logo
+  CommandSeparator
 } from '@tszhong0411/ui'
 import { CodeIcon, CommandIcon, LinkIcon, LogInIcon, LogOutIcon } from 'lucide-react'
 import { Fragment, useCallback, useEffect, useState } from 'react'
@@ -42,16 +38,11 @@ type Groups = Array<{
 
 const CommandMenu = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const [selectingValue, setSelectingValue] = useState('')
   const [copy] = useCopyToClipboard()
   const { data: session } = useSession()
   const t = useTranslations()
   const { setIsSignInOpen } = useDialogsStore()
   const router = useRouter()
-
-  const isSelectingCommand = [t('common.sign-out'), t('command-menu.actions.copy-link')].includes(
-    selectingValue
-  )
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -79,7 +70,7 @@ const CommandMenu = () => {
           ? [
               {
                 title: t('common.sign-out'),
-                icon: <LogOutIcon className='mr-3 size-4' />,
+                icon: <LogOutIcon />,
                 onSelect: async () => {
                   await signOut({
                     fetchOptions: {
@@ -94,7 +85,7 @@ const CommandMenu = () => {
           : [
               {
                 title: t('common.sign-in'),
-                icon: <LogInIcon className='mr-3 size-4' />,
+                icon: <LogInIcon />,
                 onSelect: () => {
                   setIsOpen(false)
                   setIsSignInOpen(true)
@@ -108,7 +99,7 @@ const CommandMenu = () => {
       actions: [
         {
           title: t('command-menu.actions.copy-link'),
-          icon: <LinkIcon className='mr-3 size-4' />,
+          icon: <LinkIcon />,
           onSelect: async () => {
             setIsOpen(false)
 
@@ -117,7 +108,7 @@ const CommandMenu = () => {
         },
         {
           title: t('command-menu.actions.source-code'),
-          icon: <CodeIcon className='mr-3 size-4' />,
+          icon: <CodeIcon />,
           onSelect: () => openLink('https://github.com/tszhong0411/honghong.me')
         }
       ]
@@ -127,27 +118,27 @@ const CommandMenu = () => {
       actions: [
         {
           title: 'GitHub',
-          icon: <SiGithub className='mr-3 size-4' />,
+          icon: <SiGithub />,
           onSelect: () => openLink(SITE_GITHUB_URL)
         },
         {
           title: 'Facebook',
-          icon: <SiFacebook className='mr-3 size-4' />,
+          icon: <SiFacebook />,
           onSelect: () => openLink(SITE_FACEBOOK_URL)
         },
         {
           title: 'Instagram',
-          icon: <SiInstagram className='mr-3 size-4' />,
+          icon: <SiInstagram />,
           onSelect: () => openLink(SITE_INSTAGRAM_URL)
         },
         {
           title: 'X',
-          icon: <SiX className='mr-3 size-4' />,
+          icon: <SiX />,
           onSelect: () => openLink(SITE_X_URL)
         },
         {
           title: 'YouTube',
-          icon: <SiYoutube className='mr-3 size-4' />,
+          icon: <SiYoutube />,
           onSelect: () => openLink(SITE_YOUTUBE_URL)
         }
       ]
@@ -162,14 +153,9 @@ const CommandMenu = () => {
         onClick={() => setIsOpen(true)}
         aria-label={t('command-menu.open-menu')}
       >
-        <CommandIcon className='size-4' />
+        <CommandIcon />
       </Button>
-      <CommandDialog
-        open={isOpen}
-        onOpenChange={setIsOpen}
-        value={selectingValue}
-        onValueChange={setSelectingValue}
-      >
+      <CommandDialog open={isOpen} onOpenChange={setIsOpen}>
         <CommandInput placeholder={t('command-menu.placeholder')} />
         <CommandList>
           <CommandEmpty>{t('command-menu.no-results')}</CommandEmpty>
@@ -187,14 +173,6 @@ const CommandMenu = () => {
             </Fragment>
           ))}
         </CommandList>
-        <CommandFooter>
-          <Logo className='size-4' />
-          <CommandFooterTrigger triggerKey={<Kbd keys={['enter']} className='py-0' />}>
-            {isSelectingCommand
-              ? t('command-menu.trigger.open-command')
-              : t('command-menu.trigger.open-link')}
-          </CommandFooterTrigger>
-        </CommandFooter>
       </CommandDialog>
     </>
   )

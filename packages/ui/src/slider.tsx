@@ -1,113 +1,70 @@
-import { Slider as SliderPrimitive } from '@ark-ui/react'
+import * as SliderPrimitive from '@radix-ui/react-slider'
 import { cn } from '@tszhong0411/utils'
+import { useMemo } from 'react'
 
-const Slider = SliderPrimitive.Root
-const SliderMarkerGroup = SliderPrimitive.MarkerGroup
+type SliderProps = React.ComponentProps<typeof SliderPrimitive.Root>
 
-type SliderControlProps = React.ComponentProps<typeof SliderPrimitive.Control>
+const Slider = (props: SliderProps) => {
+  const { className, defaultValue, value, min = 0, max = 100, ...rest } = props
 
-const SliderControl = (props: SliderControlProps) => {
-  const { className, ...rest } = props
+  const getInitialValues = () => {
+    if (Array.isArray(value)) {
+      return value
+    }
+    if (Array.isArray(defaultValue)) {
+      return defaultValue
+    }
+    return [min, max]
+  }
 
-  return (
-    <SliderPrimitive.Control
-      className={cn('flex w-full touch-none select-none items-center rounded-full', className)}
-      {...rest}
-    />
-  )
-}
-
-type SliderLabelProps = React.ComponentProps<typeof SliderPrimitive.Label>
-
-const SliderLabel = (props: SliderLabelProps) => {
-  const { className, ...rest } = props
+  const _values = useMemo(getInitialValues, [value, defaultValue, min, max])
 
   return (
-    <SliderPrimitive.Label
-      className={cn('text-sm font-medium leading-none', className)}
-      {...rest}
-    />
-  )
-}
-
-type SliderTrackProps = React.ComponentProps<typeof SliderPrimitive.Track>
-
-const SliderTrack = (props: SliderTrackProps) => {
-  const { className, ...rest } = props
-
-  return (
-    <SliderPrimitive.Track
-      className={cn('bg-primary/20 h-2 w-full grow overflow-hidden rounded-full', className)}
-      {...rest}
-    />
-  )
-}
-
-type SliderRangeProps = React.ComponentProps<typeof SliderPrimitive.Range>
-
-const SliderRange = (props: SliderRangeProps) => {
-  const { className, ...rest } = props
-
-  return <SliderPrimitive.Range className={cn('bg-primary h-full', className)} {...rest} />
-}
-
-type SliderThumbProps = React.ComponentProps<typeof SliderPrimitive.Thumb>
-
-const SliderThumb = (props: SliderThumbProps) => {
-  const { className, ...rest } = props
-
-  return (
-    <SliderPrimitive.Thumb
+    <SliderPrimitive.Root
+      data-slot='slider'
+      defaultValue={defaultValue}
+      value={value}
+      min={min}
+      max={max}
       className={cn(
-        'border-primary bg-background ring-offset-background size-5 rounded-full border-2 transition-colors',
-        'focus-visible:ring-ring focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2',
-        'disabled:pointer-events-none disabled:opacity-50',
+        'relative flex w-full touch-none select-none items-center',
+        'data-[disabled]:opacity-50',
+        'data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col',
         className
       )}
       {...rest}
     >
-      <SliderPrimitive.HiddenInput />
-    </SliderPrimitive.Thumb>
+      <SliderPrimitive.Track
+        data-slot='slider-track'
+        className={cn(
+          'bg-muted relative grow overflow-hidden rounded-full',
+          'data-[orientation=horizontal]:h-1.5 data-[orientation=horizontal]:w-full',
+          'data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1.5'
+        )}
+      >
+        <SliderPrimitive.Range
+          data-slot='slider-range'
+          className={cn(
+            'bg-primary absolute',
+            'data-[orientation=horizontal]:h-full',
+            'data-[orientation=vertical]:w-full'
+          )}
+        />
+      </SliderPrimitive.Track>
+      {Array.from({ length: _values.length }, (_, index) => (
+        <SliderPrimitive.Thumb
+          data-slot='slider-thumb'
+          key={index}
+          className={cn(
+            'border-primary bg-background ring-ring/50 block size-4 shrink-0 rounded-full border shadow-sm transition-[color,box-shadow]',
+            'hover:ring-4',
+            'focus-visible:outline-hidden focus-visible:ring-4',
+            'disabled:pointer-events-none disabled:opacity-50'
+          )}
+        />
+      ))}
+    </SliderPrimitive.Root>
   )
 }
 
-type SliderMarkProps = React.ComponentProps<typeof SliderPrimitive.Marker>
-
-const SliderMarker = (props: SliderMarkProps) => {
-  const { className, ...rest } = props
-
-  return (
-    <SliderPrimitive.Marker
-      className={cn(
-        "text-muted-foreground before:bg-background dark:before:bg-foreground dark:data-[state=under-value]:before:bg-background text-sm before:relative before:-top-1.5 before:left-1/2 before:block before:size-1 before:-translate-x-1/2 before:rounded-full before:content-['']",
-        className
-      )}
-      {...rest}
-    />
-  )
-}
-
-type SliderValueTextProps = React.ComponentProps<typeof SliderPrimitive.ValueText>
-
-const SliderValueText = (props: SliderValueTextProps) => {
-  const { className, ...rest } = props
-
-  return (
-    <SliderPrimitive.ValueText
-      className={cn('text-muted-foreground text-sm', className)}
-      {...rest}
-    />
-  )
-}
-
-export {
-  Slider,
-  SliderControl,
-  SliderLabel,
-  SliderMarker,
-  SliderMarkerGroup,
-  SliderRange,
-  SliderThumb,
-  SliderTrack,
-  SliderValueText
-}
+export { Slider }

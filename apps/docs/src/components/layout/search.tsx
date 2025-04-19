@@ -1,18 +1,15 @@
 'use client'
 
 import {
+  Badge,
   Button,
   CommandDialog,
   CommandEmpty,
-  CommandFooter,
-  CommandFooterTrigger,
   CommandGroup,
   CommandInput,
   CommandItem,
   CommandList,
-  CommandSeparator,
-  Kbd,
-  Logo
+  CommandSeparator
 } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { ComponentIcon, MoonIcon, SearchIcon, SunIcon } from 'lucide-react'
@@ -24,7 +21,6 @@ import { SIDEBAR_LINKS } from '@/config/links'
 
 const Search = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const [value, setValue] = useState('')
   const { setTheme } = useTheme()
   const router = useRouter()
 
@@ -45,8 +41,6 @@ const Search = () => {
 
     return () => document.removeEventListener('keydown', down)
   }, [])
-
-  const isSelectingTheme = value === 'Light' || value === 'Dark'
 
   return (
     <>
@@ -72,7 +66,7 @@ const Search = () => {
       >
         <SearchIcon className='size-5' />
       </Button>
-      <CommandDialog open={isOpen} onOpenChange={setIsOpen} value={value} onValueChange={setValue}>
+      <CommandDialog open={isOpen} onOpenChange={setIsOpen}>
         <CommandInput placeholder='Type a command or search...' />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
@@ -87,6 +81,9 @@ const Search = () => {
                   >
                     <ComponentIcon />
                     {link.text}
+                    {'isArkUI' in link && link.isArkUI && (
+                      <Badge className='bg-[#EB5E41] text-white'>Ark UI</Badge>
+                    )}
                   </CommandItem>
                 ))}
               </CommandGroup>
@@ -104,12 +101,6 @@ const Search = () => {
             </CommandItem>
           </CommandGroup>
         </CommandList>
-        <CommandFooter>
-          <Logo className='size-4' />
-          <CommandFooterTrigger triggerKey={<Kbd keys={['enter']} className='py-0' />}>
-            {isSelectingTheme ? 'Switch Theme' : 'Open Link'}
-          </CommandFooterTrigger>
-        </CommandFooter>
       </CommandDialog>
     </>
   )

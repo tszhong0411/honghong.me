@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { Button, buttonVariants, toast } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
-import { cva } from 'class-variance-authority'
+import { cva } from 'cva'
 import { ChevronDownIcon, MessageSquareIcon, ThumbsDownIcon, ThumbsUpIcon } from 'lucide-react'
 
 import { useCommentContext } from '@/contexts/comment'
@@ -13,20 +13,18 @@ import { useCommentParams } from '@/hooks/use-comment-params'
 import { useSession } from '@/lib/auth-client'
 import { useTRPC } from '@/trpc/client'
 
-const rateVariants = cva(
-  buttonVariants({
+const rateVariants = cva({
+  base: buttonVariants({
     variant: 'secondary',
     className: 'h-8 gap-1.5 px-2 font-mono text-xs font-medium'
   }),
-  {
-    variants: {
-      active: {
-        true: 'bg-accent text-accent-foreground',
-        false: 'text-muted-foreground'
-      }
+  variants: {
+    active: {
+      true: 'bg-accent text-accent-foreground',
+      false: 'text-muted-foreground'
     }
   }
-)
+})
 
 const CommentActions = () => {
   const { slug, sort } = useCommentsContext()
@@ -149,7 +147,7 @@ const CommentActions = () => {
           })}
           aria-label={t('blog.comments.like')}
         >
-          <ThumbsUpIcon className='size-4' />
+          <ThumbsUpIcon />
           <NumberFlow value={comment.likes} />
         </Button>
         <Button
@@ -160,7 +158,7 @@ const CommentActions = () => {
           })}
           aria-label={t('blog.comments.dislike')}
         >
-          <ThumbsDownIcon className='size-4' />
+          <ThumbsDownIcon />
           <NumberFlow value={comment.dislikes} />
         </Button>
         {comment.parentId ? null : (
@@ -170,12 +168,12 @@ const CommentActions = () => {
             onClick={() => setIsReplying(true)}
             data-testid='comment-reply-button'
           >
-            <MessageSquareIcon className='size-4' />
+            <MessageSquareIcon />
             {t('blog.comments.reply')}
           </Button>
         )}
       </div>
-      {hasReplies ? (
+      {hasReplies && (
         <Button
           variant='ghost'
           size='sm'
@@ -191,7 +189,7 @@ const CommentActions = () => {
           <NumberFlow value={comment.replies} data-testid='comment-reply-count' />
           {t('blog.comments.replies', { count: comment.replies })}
         </Button>
-      ) : null}
+      )}
     </>
   )
 }

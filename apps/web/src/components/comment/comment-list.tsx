@@ -67,24 +67,23 @@ const CommentList = () => {
     <>
       <CommentHeader />
       <div className='space-y-8 py-2' data-testid='comments-list'>
-        {isSuccess
-          ? data.pages.map((page) =>
-              page.comments.map((comment) => <Comment key={comment.id} comment={comment} />)
-            )
-          : null}
-        {noComments ? (
+        {isSuccess &&
+          data.pages.map((page) =>
+            page.comments.map((comment) => <Comment key={comment.id} comment={comment} />)
+          )}
+        {noComments && (
           <div className='flex min-h-20 items-center justify-center'>
             <p className='text-muted-foreground text-sm'>{t('blog.comments.no-comments')}</p>
           </div>
-        ) : null}
-        {isError ? (
+        )}
+        {isError && (
           <div className='flex min-h-20 items-center justify-center'>
             <p className='text-muted-foreground text-sm'>
               {t('blog.comments.failed-to-load-comments')}
             </p>
           </div>
-        ) : null}
-        {isLoading ? <CommentLoader /> : null}
+        )}
+        {isLoading && <CommentLoader />}
         <span ref={ref} className='invisible' />
       </div>
     </>

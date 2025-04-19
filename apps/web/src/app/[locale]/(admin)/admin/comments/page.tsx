@@ -2,7 +2,7 @@
 
 import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
-import { DataTableSkeleton } from '@tszhong0411/ui'
+import { Skeleton } from '@tszhong0411/ui'
 
 import AdminPageHeader from '@/components/admin/admin-page-header'
 import CommentsTable from '@/components/admin/comments-table'
@@ -23,9 +23,9 @@ const Page = () => {
         title={t('admin.page-header.comments.title')}
         description={t('admin.page-header.comments.description')}
       />
-      {isLoading ? <DataTableSkeleton columnCount={3} searchableColumnsCount={2} /> : null}
-      {isError ? <div>{t('admin.table.comments.failed-to-fetch-comments-data')}</div> : null}
-      {isSuccess ? <CommentsTable data={data.comments} /> : null}
+      {isLoading && <Skeleton className='h-[500px] w-full' />}
+      {isError && <div>{t('admin.table.comments.failed-to-fetch-comments-data')}</div>}
+      {isSuccess && <CommentsTable data={data.comments} />}
     </div>
   )
 }

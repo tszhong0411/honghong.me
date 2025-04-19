@@ -25,18 +25,14 @@ const SheetDemo = () => {
             Make changes to your profile here. Click save when you're done.
           </SheetDescription>
         </SheetHeader>
-        <div className='grid gap-4 py-4'>
-          <div className='grid grid-cols-4 items-center gap-4'>
-            <Label htmlFor='name' className='text-right'>
-              Name
-            </Label>
-            <Input id='name' defaultValue='Pedro Duarte' className='col-span-3' />
+        <div className='grid flex-1 auto-rows-min gap-6 px-4'>
+          <div className='grid gap-3'>
+            <Label htmlFor='sheet-demo-name'>Name</Label>
+            <Input id='sheet-demo-name' defaultValue='Pedro Duarte' />
           </div>
-          <div className='grid grid-cols-4 items-center gap-4'>
-            <Label htmlFor='username' className='text-right'>
-              Username
-            </Label>
-            <Input id='username' defaultValue='@peduarte' className='col-span-3' />
+          <div className='grid gap-3'>
+            <Label htmlFor='sheet-demo-username'>Username</Label>
+            <Input id='sheet-demo-username' defaultValue='@peduarte' />
           </div>
         </div>
         <SheetFooter>

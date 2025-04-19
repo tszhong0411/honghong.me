@@ -68,22 +68,21 @@ const Messages = () => {
 
   return (
     <div className='flex flex-col gap-4' data-testid='guestbook-messages-list'>
-      {isSuccess
-        ? data.pages.map((page) =>
-            page.messages.map((message) => <Message key={message.id} message={message} />)
-          )
-        : null}
-      {noMessages ? (
+      {isSuccess &&
+        data.pages.map((page) =>
+          page.messages.map((message) => <Message key={message.id} message={message} />)
+        )}
+      {noMessages && (
         <div className='flex min-h-24 items-center justify-center'>
           <p className='text-muted-foreground text-sm'>{t('guestbook.no-messages')}</p>
         </div>
-      ) : null}
-      {isError ? (
+      )}
+      {isError && (
         <div className='flex min-h-24 items-center justify-center'>
           <p className='text-muted-foreground text-sm'>{t('guestbook.failed-to-load-messages')}</p>
         </div>
-      ) : null}
-      {isLoading ? <MessagesLoader /> : null}
+      )}
+      {isLoading && <MessagesLoader />}
       <span ref={ref} className='invisible' />
     </div>
   )
@@ -130,7 +129,7 @@ const Message = (props: MessageProps) => {
           </div>
         </div>
         <div className='break-words pl-[52px]'>{body}</div>
-        {isAuthor ? <DeleteButton /> : null}
+        {isAuthor && <DeleteButton />}
       </div>
     </MessageProvider>
   )

@@ -1,0 +1,42 @@
+---
+title: UI
+description: A collection of UI components.
+---
+
+## Prerequisites
+
+- React 19
+- Next.js 15
+- Tailwind CSS
+- TypeScript
+
+## Installation
+
+```bash
+npm i @tszhong0411/ui @tszhong0411/utils
+# or
+pnpm add @tszhong0411/ui @tszhong0411/utils
+# or
+yarn add @tszhong0411/ui @tszhong0411/utils
+# or
+bun add @tszhong0411/ui @tszhong0411/utils
+```
+
+```css title='globals.css'
+@import 'tailwindcss';
+@import '@tszhong0411/ui/styles/preset.css';
+@import '@tszhong0411/ui/styles/shiki.css'; /* Optional */
+@import '@tszhong0411/ui/styles/typography.css'; /* Optional */
+/* Make sure it's pointing to the ROOT node_modules folder  */
+@source '../../node_modules/@tszhong0411/ui/dist/**/*.js';
+```
+
+## Usage
+
+```tsx
+import { Button } from '@tszhong0411/ui'
+```
+
+```tsx
+<Button>Click me</Button>
+```

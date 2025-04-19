@@ -32,14 +32,14 @@ const NowPlaying = () => {
 
       <div className='inline-flex w-full items-center justify-center gap-1 text-sm md:justify-start'>
         <p>
-          {status === 'pending' ? t('layout.now-playing.loading') : null}
-          {status === 'error' ? t('layout.now-playing.error') : null}
-          {isPlaying ? (
+          {status === 'pending' && t('layout.now-playing.loading')}
+          {status === 'error' && t('layout.now-playing.error')}
+          {isPlaying && (
             <Link href={data.songUrl}>
               {data.name} - {data.artist}
             </Link>
-          ) : null}
-          {notListening ? t('layout.now-playing.not-listening') : null}
+          )}
+          {notListening && t('layout.now-playing.not-listening')}
         </p>
       </div>
     </div>

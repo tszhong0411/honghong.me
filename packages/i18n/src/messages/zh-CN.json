@@ -101,11 +101,7 @@
     },
     "no-results": "没有找到结果。",
     "open-menu": "开启指令选单",
-    "placeholder": "输入指令或搜寻",
-    "trigger": {
-      "open-command": "打开命令",
-      "open-link": "打开链接"
-    }
+    "placeholder": "输入指令或搜寻"
   },
   "common": {
     "cancel": "取消",

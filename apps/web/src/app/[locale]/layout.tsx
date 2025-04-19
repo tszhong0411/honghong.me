@@ -148,7 +148,7 @@ const Layout = async (props: LayoutProps) => {
             <NextIntlClientProvider>
               <Hello />
               {children}
-              {flags.analytics ? <Analytics /> : null}
+              {flags.analytics && <Analytics />}
               <SignInDialog />
             </NextIntlClientProvider>
           </Providers>

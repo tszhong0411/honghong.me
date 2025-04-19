@@ -1,26 +1,20 @@
 'use client'
 
 import {
-  type ComboboxInputValueChangeDetails,
-  ComboboxLabel,
-  ComboboxPortal,
-  ComboboxPositioner,
-  createListCollection
+  Button,
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  Popover,
+  PopoverContent,
+  PopoverTrigger
 } from '@tszhong0411/ui'
-import {
-  Combobox,
-  ComboboxContent,
-  ComboboxControl,
-  ComboboxInput,
-  ComboboxItem,
-  ComboboxItemGroup,
-  ComboboxItemGroupLabel,
-  ComboboxItemIndicator,
-  ComboboxItemText,
-  ComboboxTrigger
-} from '@tszhong0411/ui'
+import { cn } from '@tszhong0411/utils'
 import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react'
-import { useState } from 'react'
+import { useId, useState } from 'react'
 
 const frameworks = [
   {
@@ -29,8 +23,7 @@ const frameworks = [
   },
   {
     value: 'sveltekit',
-    label: 'SvelteKit',
-    disabled: true
+    label: 'SvelteKit'
   },
   {
     value: 'nuxt.js',
@@ -46,55 +39,56 @@ const frameworks = [
   }
 ]
 
-const initialCollection = createListCollection({ items: frameworks })
-
 const ComboboxDemo = () => {
-  const [collection, setCollection] = useState(initialCollection)
-  const handleInputChange = (details: ComboboxInputValueChangeDetails) => {
-    const filtered = frameworks.filter((item) =>
-      item.label.toLowerCase().includes(details.inputValue.toLowerCase())
-    )
-    if (filtered.length > 0) setCollection(createListCollection({ items: filtered }))
-  }
-
-  const handleOpenChange = () => {
-    setCollection(initialCollection)
-  }
+  const [open, setOpen] = useState(false)
+  const [value, setValue] = useState('')
+  const id = useId()
 
   return (
-    <Combobox
-      className='w-64'
-      collection={collection}
-      onInputValueChange={handleInputChange}
-      onOpenChange={handleOpenChange}
-    >
-      <ComboboxLabel>Framework</ComboboxLabel>
-      <ComboboxControl className='relative'>
-        <ComboboxInput placeholder='Select a framework' className='pr-6' />
-        <ComboboxTrigger className='absolute right-2 top-0 h-full'>
-          <ChevronsUpDownIcon className='size-4 shrink-0 opacity-50' />
-        </ComboboxTrigger>
-      </ComboboxControl>
-      <ComboboxPortal>
-        <ComboboxPositioner>
-          <ComboboxContent>
-            <ComboboxItemGroup>
-              <ComboboxItemGroupLabel>Frameworks</ComboboxItemGroupLabel>
-              {collection.items.map((item) => (
-                <ComboboxItem key={item.value} item={item} className='relative pl-8'>
-                  <span className='absolute left-2 flex size-3.5 items-center justify-center'>
-                    <ComboboxItemIndicator>
-                      <CheckIcon className='size-4' />
-                    </ComboboxItemIndicator>
-                  </span>
-                  <ComboboxItemText>{item.label}</ComboboxItemText>
-                </ComboboxItem>
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
+        <Button
+          variant='outline'
+          role='combobox'
+          aria-controls={id}
+          aria-expanded={open}
+          className='w-full justify-between md:max-w-[200px]'
+        >
+          {value
+            ? frameworks.find((framework) => framework.value === value)?.label
+            : 'Select framework...'}
+          <ChevronsUpDownIcon className='text-muted-foreground' />
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className='w-(--radix-popover-trigger-width) p-0'>
+        <Command>
+          <CommandInput placeholder='Search framework...' />
+          <CommandList aria-labelledby={id}>
+            <CommandEmpty>No framework found.</CommandEmpty>
+            <CommandGroup>
+              {frameworks.map((framework) => (
+                <CommandItem
+                  key={framework.value}
+                  value={framework.value}
+                  onSelect={(currentValue) => {
+                    setValue(currentValue === value ? '' : currentValue)
+                    setOpen(false)
+                  }}
+                >
+                  {framework.label}
+                  <CheckIcon
+                    className={cn(
+                      'ml-auto',
+                      value === framework.value ? 'opacity-100' : 'opacity-0'
+                    )}
+                  />
+                </CommandItem>
               ))}
-            </ComboboxItemGroup>
-          </ComboboxContent>
-        </ComboboxPositioner>
-      </ComboboxPortal>
-    </Combobox>
+            </CommandGroup>
+          </CommandList>
+        </Command>
+      </PopoverContent>
+    </Popover>
   )
 }
 

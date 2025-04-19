@@ -28,29 +28,27 @@ const CommentHeader = () => {
     <div className='flex items-center justify-between px-1'>
       <NumberFlowGroup>
         <div>
-          {commentsCountQuery.status === 'pending'
-            ? `-- ${t('blog.comments.comments', { count: 0 })}`
-            : null}
-          {commentsCountQuery.status === 'error' ? t('common.error') : null}
-          {commentsCountQuery.status === 'success' ? (
+          {commentsCountQuery.status === 'pending' &&
+            `-- ${t('blog.comments.comments', { count: 0 })}`}
+          {commentsCountQuery.status === 'error' && t('common.error')}
+          {commentsCountQuery.status === 'success' && (
             <NumberFlow
               value={commentsCountQuery.data.comments}
               suffix={` ${t('blog.comments.comments', { count: commentsCountQuery.data.comments })}`}
               data-testid='blog-comment-count'
             />
-          ) : null}
+          )}
           {' · '}
-          {repliesCountQuery.status === 'pending'
-            ? `-- ${t('blog.comments.replies', { count: 0 })}`
-            : null}
-          {repliesCountQuery.status === 'error' ? t('common.error') : null}
-          {repliesCountQuery.status === 'success' ? (
+          {repliesCountQuery.status === 'pending' &&
+            `-- ${t('blog.comments.replies', { count: 0 })}`}
+          {repliesCountQuery.status === 'error' && t('common.error')}
+          {repliesCountQuery.status === 'success' && (
             <NumberFlow
               value={repliesCountQuery.data.replies}
               suffix={` ${t('blog.comments.replies', { count: repliesCountQuery.data.replies })}`}
               data-testid='reply-count'
             />
-          ) : null}
+          )}
         </div>
       </NumberFlowGroup>
       <DropdownMenu>

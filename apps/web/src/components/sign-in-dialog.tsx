@@ -13,6 +13,7 @@ import {
   DialogTitle,
   toast
 } from '@tszhong0411/ui'
+import { LoaderIcon } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 import { signIn } from '@/lib/auth-client'
@@ -22,12 +23,7 @@ type Provider = 'github' | 'google'
 
 const GoogleIcon = () => {
   return (
-    <svg
-      version='1.1'
-      xmlns='http://www.w3.org/2000/svg'
-      viewBox='0 0 48 48'
-      className='mr-3 size-6'
-    >
+    <svg version='1.1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'>
       <path
         fill='#EA4335'
         d='M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z'
@@ -99,21 +95,21 @@ const SignInDialog = () => {
         </DialogHeader>
         <div className='my-6 flex flex-col gap-4'>
           <Button
-            className='relative h-10 rounded-xl font-semibold'
+            className='relative h-10 gap-3 rounded-xl font-semibold'
             onClick={() => handleSignIn('github')}
-            isPending={isPending}
+            disabled={isPending}
           >
-            {isPending ? null : <SiGithub className='mr-3' />}
+            {isPending ? <LoaderIcon className='animate-spin' /> : <SiGithub />}
             {t('dialog.sign-in.continue-with', { provider: 'GitHub' })}
             {lastUsedProvider === 'github' && <LastUsed />}
           </Button>
           <Button
-            className='relative h-10 rounded-xl border font-semibold'
+            className='relative h-10 gap-3 rounded-xl border font-semibold'
             variant='ghost'
             onClick={() => handleSignIn('google')}
-            isPending={isPending}
+            disabled={isPending}
           >
-            {isPending ? null : <GoogleIcon />}
+            {isPending ? <LoaderIcon className='animate-spin' /> : <GoogleIcon />}
             {t('dialog.sign-in.continue-with', { provider: 'Google' })}
             {lastUsedProvider === 'google' && <LastUsed />}
           </Button>

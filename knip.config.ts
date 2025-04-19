@@ -1,7 +1,6 @@
 import type { KnipConfig } from 'knip'
 
 const config: KnipConfig = {
-  ignore: ['**/fixtures/**'],
   ignoreDependencies: [
     'prettier-plugin-*',
     'sharp',
@@ -34,7 +33,7 @@ const config: KnipConfig = {
     },
     'packages/ui': {
       // @see https://github.com/shadcn-ui/ui/issues/4792
-      ignoreDependencies: ['@radix-ui/react-context', '@tailwindcss/typography']
+      ignoreDependencies: ['tw-animate-css', '@tailwindcss/typography']
     }
   }
 }

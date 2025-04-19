@@ -109,9 +109,9 @@ const CommentPost = () => {
           aria-disabled={disabled || !content}
           data-testid='comment-submit-button'
         >
-          <SendIcon className='size-4' />
+          <SendIcon />
         </Button>
-        {session === null ? <UnauthorizedOverlay /> : null}
+        {session === null && <UnauthorizedOverlay />}
       </div>
     </form>
   )

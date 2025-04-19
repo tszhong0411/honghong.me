@@ -1,4 +1,6 @@
 import {
+  SiCss3,
+  SiHtml5,
   SiJavascript,
   SiMarkdown,
   SiMdx,
@@ -21,6 +23,14 @@ const icons: Icon[] = [
   {
     language: ['typescript', 'ts', 'mts', 'cts'],
     icon: SiTypescript
+  },
+  {
+    language: ['html'],
+    icon: SiHtml5
+  },
+  {
+    language: ['css'],
+    icon: SiCss3
   },
   {
     language: ['jsx', 'tsx'],

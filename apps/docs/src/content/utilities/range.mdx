@@ -1,0 +1,25 @@
+---
+title: range Utility
+description: Creates an array of numbers from 0 up to (but not including) the specified length.
+---
+
+The `range` function is a simple utility that creates an array of numbers starting from 0 up to, but not including, the specified `length`.
+
+## Usage
+
+```typescript
+import { range } from '@tszhong0411/utils'
+
+const numbers = range(5)
+// numbers will be [0, 1, 2, 3, 4]
+```
+
+## API
+
+### `range(length: number): number[]`
+
+Creates an array of numbers.
+
+- `length`: The number of elements in the array. The array will contain numbers from 0 up to `length - 1`.
+
+**Returns:** `number[]` - An array of numbers.

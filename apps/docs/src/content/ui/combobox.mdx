@@ -1,0 +1,85 @@
+---
+title: Combobox
+description: Autocomplete input and command palette with a list of suggestions.
+---
+
+<ComponentPreview name='combobox/combobox' />
+
+## Installation
+
+The Combobox is built using a composition of the `<Popover />` and the `<Command />` components.
+
+See installation instructions for the [Popover](/ui/popover#installation) and the [Command](/ui/command#installation) components.
+
+## Usage
+
+```tsx
+const frameworks = [
+  {
+    value: 'next.js',
+    label: 'Next.js'
+  },
+  {
+    value: 'sveltekit',
+    label: 'SvelteKit'
+  },
+  {
+    value: 'nuxt.js',
+    label: 'Nuxt.js'
+  },
+  {
+    value: 'remix',
+    label: 'Remix'
+  },
+  {
+    value: 'astro',
+    label: 'Astro'
+  }
+]
+
+<Popover open={open} onOpenChange={setOpen}>
+  <PopoverTrigger asChild>
+    <Button
+      variant='outline'
+      role='combobox'
+      aria-controls={id}
+      aria-expanded={open}
+      className='w-full justify-between md:max-w-[200px]'
+    >
+      {value
+        ? frameworks.find((framework) => framework.value === value)?.label
+        : 'Select framework...'}
+      <ChevronsUpDownIcon className='text-muted-foreground' />
+    </Button>
+  </PopoverTrigger>
+  <PopoverContent className='w-(--radix-popover-trigger-width) p-0'>
+    <Command>
+      <CommandInput placeholder='Search framework...' />
+      <CommandList aria-labelledby={id}>
+        <CommandEmpty>No framework found.</CommandEmpty>
+        <CommandGroup>
+          {frameworks.map((framework) => (
+            <CommandItem
+              key={framework.value}
+              value={framework.value}
+              onSelect={(currentValue) => {
+                setValue(currentValue === value ? '' : currentValue)
+                setOpen(false)
+              }}
+            >
+              {framework.label}
+              <CheckIcon
+                className={cn('ml-auto', value === framework.value ? 'opacity-100' : 'opacity-0')}
+              />
+            </CommandItem>
+          ))}
+        </CommandGroup>
+      </CommandList>
+    </Command>
+  </PopoverContent>
+</Popover>
+```
+
+## Accessibility
+
+Don't forget to add the `aria-controls={id}{:tsx}` prop to the `<PopoverTrigger />{:tsx}` component. Also, make sure to pass the `aria-labelledby={id}{:tsx}` prop to the `<CommandList />{:tsx}` component.

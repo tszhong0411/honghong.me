@@ -153,7 +153,7 @@ const Metrics = () => {
                       }}
                     >
                       <Counter value={Number(value)} />
-                      {suffix ? <span>{` ${suffix}`}</span> : null}
+                      {suffix && <span>{` ${suffix}`}</span>}
                     </div>
                   </>
                 ) : (

@@ -2,11 +2,11 @@ import type { Metadata, ResolvingMetadata } from 'next'
 import type { SoftwareApplication, WithContext } from 'schema-dts'
 
 import { setRequestLocale } from '@tszhong0411/i18n/server'
-import { BlurImage } from '@tszhong0411/ui'
 import { allProjects } from 'content-collections'
 import { notFound } from 'next/navigation'
 
 import Mdx from '@/components/mdx'
+import { BlurImage } from '@/components/ui/blur-image'
 import { SITE_NAME, SITE_URL } from '@/lib/constants'
 import { getLocalizedPath } from '@/utils/get-localized-path'
 

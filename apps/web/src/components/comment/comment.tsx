@@ -76,7 +76,7 @@ const Comment = (props: CommentProps) => {
   return (
     <CommentProvider value={context}>
       <div ref={commentRef} className='p-2.5' data-testid={`comment-${id}`}>
-        {isHighlighted ? <Badge className='mb-4'>Highlighted comment</Badge> : null}
+        {isHighlighted && <Badge className='mb-4'>Highlighted comment</Badge>}
         <div className='flex gap-4'>
           <Image
             src={image}
@@ -101,11 +101,11 @@ const Comment = (props: CommentProps) => {
                     <Skeleton className='h-4 w-24' />
                   )}
                 </div>
-                {role === 'admin' ? (
+                {role === 'admin' && (
                   <div className='rounded-full border border-red-500/50 bg-red-100/50 px-2 py-0.5 text-sm dark:bg-red-900/50'>
                     {t('blog.comments.author')}
                   </div>
-                ) : null}
+                )}
               </div>
               <CommentMenu />
             </div>
@@ -122,7 +122,7 @@ const Comment = (props: CommentProps) => {
           </div>
         </div>
       </div>
-      {hasReplies ? <CommentReplies /> : null}
+      {hasReplies && <CommentReplies />}
     </CommentProvider>
   )
 }

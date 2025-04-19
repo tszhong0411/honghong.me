@@ -1,6 +1,6 @@
 import { cn } from '@tszhong0411/utils'
 import useEmblaCarousel, { type UseEmblaCarouselType } from 'embla-carousel-react'
-import { ArrowLeft, ArrowRight } from 'lucide-react'
+import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react'
 import { createContext, use, useCallback, useEffect, useMemo, useState } from 'react'
 
 import { Button } from './button'
@@ -15,7 +15,7 @@ type CarouselProps = {
   plugins?: CarouselPlugin
   orientation?: 'horizontal' | 'vertical'
   setApi?: (api: CarouselApi) => void
-}
+} & React.ComponentProps<'div'>
 
 type CarouselContextProps = {
   carouselRef: ReturnType<typeof useEmblaCarousel>[0]
@@ -39,9 +39,7 @@ const useCarousel = () => {
   return context
 }
 
-type CarouselRootProps = React.ComponentProps<'div'> & CarouselProps
-
-const Carousel = (props: CarouselRootProps) => {
+const Carousel = (props: CarouselProps) => {
   const {
     orientation = 'horizontal',
     options,
@@ -51,6 +49,7 @@ const Carousel = (props: CarouselRootProps) => {
     children,
     ...rest
   } = props
+
   const [carouselRef, api] = useEmblaCarousel(
     {
       ...options,
@@ -63,13 +62,11 @@ const Carousel = (props: CarouselRootProps) => {
 
   const onSelect = useCallback((a: CarouselApi) => {
     if (!a) return
-
     setCanScrollPrev(a.canScrollPrev())
     setCanScrollNext(a.canScrollNext())
   }, [])
 
   const scrollPrev = useCallback(() => api?.scrollPrev(), [api])
-
   const scrollNext = useCallback(() => api?.scrollNext(), [api])
 
   const handleKeyDown = useCallback(
@@ -99,7 +96,6 @@ const Carousel = (props: CarouselRootProps) => {
     api.on('select', onSelect)
 
     return () => {
-      api.off('reInit', onSelect)
       api.off('select', onSelect)
     }
   }, [api, onSelect])
@@ -107,7 +103,7 @@ const Carousel = (props: CarouselRootProps) => {
   const value = useMemo(
     () => ({
       carouselRef,
-      api: api,
+      api,
       options,
       orientation,
       scrollPrev,
@@ -117,6 +113,7 @@ const Carousel = (props: CarouselRootProps) => {
     }),
     [carouselRef, api, options, orientation, scrollPrev, scrollNext, canScrollPrev, canScrollNext]
   )
+
   return (
     <CarouselContext value={value}>
       <div
@@ -124,6 +121,7 @@ const Carousel = (props: CarouselRootProps) => {
         className={cn('relative', className)}
         role='region'
         aria-roledescription='carousel'
+        data-slot='carousel'
         {...rest}
       >
         {children}
@@ -139,7 +137,7 @@ const CarouselContent = (props: CarouselContentProps) => {
   const { carouselRef, orientation } = useCarousel()
 
   return (
-    <div ref={carouselRef} className='overflow-hidden'>
+    <div ref={carouselRef} className='overflow-hidden' data-slot='carousel-content'>
       <div
         className={cn('flex', orientation === 'horizontal' ? '-ml-4' : '-mt-4 flex-col', className)}
         {...rest}
@@ -158,6 +156,7 @@ const CarouselItem = (props: CarouselItemProps) => {
     <div
       role='group'
       aria-roledescription='slide'
+      data-slot='carousel-item'
       className={cn(
         'min-w-0 shrink-0 grow-0 basis-full',
         orientation === 'horizontal' ? 'pl-4' : 'pt-4',
@@ -176,6 +175,7 @@ const CarouselPrevious = (props: CarouselPreviousProps) => {
 
   return (
     <Button
+      data-slot='carousel-previous'
       variant={variant}
       size={size}
       className={cn(
@@ -187,10 +187,10 @@ const CarouselPrevious = (props: CarouselPreviousProps) => {
       )}
       disabled={!canScrollPrev}
       onClick={scrollPrev}
-      aria-label='Previous slide'
       {...rest}
     >
-      <ArrowLeft className='size-4' />
+      <ArrowLeftIcon />
+      <span className='sr-only'>Previous slide</span>
     </Button>
   )
 }
@@ -203,6 +203,7 @@ const CarouselNext = (props: CarouselNextProps) => {
 
   return (
     <Button
+      data-slot='carousel-next'
       variant={variant}
       size={size}
       className={cn(
@@ -214,12 +215,12 @@ const CarouselNext = (props: CarouselNextProps) => {
       )}
       disabled={!canScrollNext}
       onClick={scrollNext}
-      aria-label='Next slide'
       {...rest}
     >
-      <ArrowRight className='size-4' />
+      <ArrowRightIcon />
+      <span className='sr-only'>Next slide</span>
     </Button>
   )
 }
 
-export { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious }
+export { Carousel, type CarouselApi, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious }
