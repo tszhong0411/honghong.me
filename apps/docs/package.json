@@ -17,7 +17,9 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@faker-js/faker": "^9.7.0",
     "@hookform/resolvers": "^5.0.1",
+    "@tanstack/react-table": "^8.21.3",
     "@tszhong0411/ui": "workspace:*",
     "@tszhong0411/utils": "workspace:*",
     "cva": "^1.0.0-beta.3",
@@ -27,6 +29,7 @@
     "lucide-react": "^0.487.0",
     "next": "^15.3.0",
     "next-themes": "^0.4.6",
+    "nuqs": "^2.4.1",
     "react": "^19.1.0",
     "react-day-picker": "8.10.1",
     "react-dom": "^19.1.0",
@@ -47,6 +50,7 @@
     "@tszhong0411/mdx-plugins": "workspace:*",
     "@tszhong0411/shared": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
+    "@types/faker": "^6.6.11",
     "@types/node": "^22.14.0",
     "@types/react": "^19.1.1",
     "@types/react-dom": "^19.1.2",

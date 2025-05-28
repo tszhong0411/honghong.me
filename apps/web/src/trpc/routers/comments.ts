@@ -10,11 +10,16 @@ import {
   desc,
   eq,
   gt,
+  gte,
+  ilike,
   isNotNull,
   isNull,
   lt,
+  lte,
   ne,
-  rates
+  or,
+  rates,
+  type SQLWrapper
 } from '@tszhong0411/db'
 import { Comment, Reply } from '@tszhong0411/emails'
 import { env } from '@tszhong0411/env'
@@ -22,7 +27,7 @@ import { ratelimit } from '@tszhong0411/kv'
 import { allPosts } from 'content-collections'
 import { z } from 'zod'
 
-import { isProduction } from '@/lib/constants'
+import { COMMENT_TYPES, isProduction } from '@/lib/constants'
 import { resend } from '@/lib/resend'
 import { getDefaultImage } from '@/utils/get-default-image'
 import { getIp } from '@/utils/get-ip'
@@ -31,27 +36,82 @@ import { adminProcedure, createTRPCRouter, protectedProcedure, publicProcedure }
 
 const getKey = (id: string) => `comments:${id}`
 
+const getTypeFilter = (types: Array<(typeof COMMENT_TYPES)[number]>) => {
+  const conditions: SQLWrapper[] = []
+  if (types.includes('comment')) conditions.push(isNull(comments.parentId))
+  if (types.includes('reply')) conditions.push(isNotNull(comments.parentId))
+  return conditions.length > 0 ? or(...conditions) : void 0
+}
+
+const getDateFilter = (from?: Date, to?: Date) => {
+  const conditions: SQLWrapper[] = []
+  if (from) conditions.push(gte(comments.createdAt, from))
+  if (to) conditions.push(lte(comments.createdAt, to))
+  return conditions.length > 0 ? and(...conditions) : void 0
+}
+
 export const commentsRouter = createTRPCRouter({
-  getComments: adminProcedure.query(async ({ ctx }) => {
-    const query = await ctx.db.query.comments.findMany({
-      columns: {
-        id: true,
-        userId: true,
-        parentId: true,
-        body: true,
-        createdAt: true
+  getComments: adminProcedure
+    .input(
+      z.object({
+        page: z.number().min(1).default(1),
+        perPage: z.number().min(1).default(10),
+        body: z.string(),
+        type: z.array(z.enum(COMMENT_TYPES)).default([]),
+        createdAt: z.array(z.coerce.date().optional()).default([])
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      const offset = (input.page - 1) * input.perPage
+
+      const createdFrom = input.createdAt[0] ? new Date(input.createdAt[0]) : undefined
+      const createdTo = input.createdAt[1] ? new Date(input.createdAt[1]) : undefined
+
+      if (createdFrom) createdFrom.setHours(0, 0, 0, 0)
+      if (createdTo) createdTo.setHours(23, 59, 59, 999)
+
+      const query = await ctx.db.transaction(async (tx) => {
+        const data = await tx
+          .select({
+            id: comments.id,
+            userId: comments.userId,
+            parentId: comments.parentId,
+            body: comments.body,
+            createdAt: comments.createdAt
+          })
+          .from(comments)
+          .limit(input.perPage)
+          .where(
+            and(
+              input.body ? ilike(comments.body, `%${input.body}%`) : undefined,
+              input.type.length > 0 ? getTypeFilter(input.type) : undefined,
+              input.createdAt.length > 0 ? getDateFilter(createdFrom, createdTo) : undefined
+            )
+          )
+          .offset(offset)
+
+        const total = await tx
+          .select({
+            count: count()
+          })
+          .from(comments)
+          .execute()
+          .then((res) => res[0]?.count ?? 0)
+
+        return { data, total }
+      })
+
+      const result = query.data.map((comment) => ({
+        ...comment,
+        type: comment.parentId ? 'reply' : 'comment',
+        createdAt: new Date(comment.createdAt)
+      }))
+
+      return {
+        comments: result,
+        pageCount: Math.ceil(query.total / input.perPage)
       }
-    })
-
-    const result = query.map((comment) => ({
-      ...comment,
-      type: comment.parentId ? 'reply' : 'comment'
-    }))
-
-    return {
-      comments: result
-    }
-  }),
+    }),
   getInfiniteComments: publicProcedure
     .input(
       z.object({

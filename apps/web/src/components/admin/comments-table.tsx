@@ -1,119 +1,140 @@
 'use client'
 
-import type { GetCommentsOutput } from '@/trpc/routers/comments'
-
-import {
-  type ColumnDef,
-  type ColumnFiltersState,
-  flexRender,
-  getCoreRowModel,
-  getFilteredRowModel,
-  useReactTable
-} from '@tanstack/react-table'
+import { type ColumnDef } from '@tanstack/react-table'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import {
-  Input,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow
+  Checkbox,
+  DataTable,
+  DataTableColumnHeader,
+  DataTableToolbar,
+  formatDate,
+  useDataTable
 } from '@tszhong0411/ui'
-import { useState } from 'react'
+import {
+  CalendarIcon,
+  CircleDashedIcon,
+  MessageSquareIcon,
+  MessageSquareMoreIcon
+} from 'lucide-react'
+
+import { COMMENT_TYPES } from '@/lib/constants'
+import { type GetCommentsOutput } from '@/trpc/routers/comments'
 
 type Comment = GetCommentsOutput['comments'][number]
 
 type CommentsTableProps = {
   data: Comment[]
+  pageCount: number
+}
+
+const getTypeIcon = (type: (typeof COMMENT_TYPES)[number]) => {
+  const icons = {
+    comment: MessageSquareIcon,
+    reply: MessageSquareMoreIcon
+  }
+
+  return icons[type]
 }
 
 const CommentsTable = (props: CommentsTableProps) => {
-  const { data } = props
+  const { data, pageCount } = props
   const t = useTranslations()
-  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
 
   const columns: Array<ColumnDef<Comment>> = [
     {
+      id: 'select',
+      header: ({ table }) => (
+        <Checkbox
+          checked={
+            table.getIsAllPageRowsSelected() ||
+            (table.getIsSomePageRowsSelected() && 'indeterminate')
+          }
+          onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+          aria-label='Select all'
+        />
+      ),
+      cell: ({ row }) => (
+        <Checkbox
+          checked={row.getIsSelected()}
+          onCheckedChange={(value) => row.toggleSelected(!!value)}
+          aria-label='Select row'
+        />
+      ),
+      enableSorting: false,
+      enableHiding: false,
+      size: 40
+    },
+    {
+      id: 'userId',
       accessorKey: 'userId',
-      header: t('admin.table.comments.userId')
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title={t('admin.table.comments.userId')} />
+      )
     },
     {
+      id: 'body',
       accessorKey: 'body',
-      header: t('admin.table.comments.body')
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title={t('admin.table.comments.body')} />
+      ),
+      meta: {
+        label: 'Body',
+        placeholder: 'Search body...',
+        variant: 'text',
+        icon: Text
+      },
+      enableColumnFilter: true
     },
     {
+      id: 'type',
       accessorKey: 'type',
-      header: t('admin.table.comments.type')
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title={t('admin.table.comments.type')} />
+      ),
+      meta: {
+        label: 'Type',
+        variant: 'multiSelect',
+        options: COMMENT_TYPES.map((type) => ({
+          label: type.charAt(0).toUpperCase() + type.slice(1),
+          value: type,
+          count: 0,
+          icon: getTypeIcon(type)
+        })),
+        icon: CircleDashedIcon
+      },
+      enableColumnFilter: true
     },
     {
+      id: 'createdAt',
       accessorKey: 'createdAt',
-      header: t('admin.table.comments.createdAt'),
-      cell: ({ row }) => row.original.createdAt.toLocaleString()
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title={t('admin.table.comments.createdAt')} />
+      ),
+      cell: ({ row }) =>
+        formatDate(row.original.createdAt, {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric'
+        }),
+      meta: {
+        label: 'Created At',
+        variant: 'dateRange',
+        icon: CalendarIcon
+      },
+      enableColumnFilter: true
     }
   ]
 
-  const table = useReactTable({
+  const { table } = useDataTable({
     data,
     columns,
-    getCoreRowModel: getCoreRowModel(),
-    onColumnFiltersChange: setColumnFilters,
-    getFilteredRowModel: getFilteredRowModel(),
-    state: {
-      columnFilters
-    }
+    pageCount
   })
 
   return (
-    <div>
-      <div className='flex items-center py-4'>
-        <Input
-          placeholder='Filter user id...'
-          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- ignore for now
-          value={(table.getColumn('userId')?.getFilterValue() as string) ?? ''}
-          onChange={(event) => table.getColumn('userId')?.setFilterValue(event.target.value)}
-          className='max-w-sm'
-        />
-      </div>
-      <div className='rounded-md border'>
-        <Table>
-          <TableHeader>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => {
-                  return (
-                    <TableHead key={header.id}>
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(header.column.columnDef.header, header.getContext())}
-                    </TableHead>
-                  )
-                })}
-              </TableRow>
-            ))}
-          </TableHeader>
-          <TableBody>
-            {table.getRowModel().rows.length > 0 ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'}>
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell colSpan={columns.length} className='h-24 text-center'>
-                  No results.
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
-      </div>
-    </div>
+    <DataTable table={table}>
+      <DataTableToolbar table={table}></DataTableToolbar>
+    </DataTable>
   )
 }
 
