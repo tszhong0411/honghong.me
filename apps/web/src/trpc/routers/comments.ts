@@ -64,8 +64,8 @@ export const commentsRouter = createTRPCRouter({
     .query(async ({ ctx, input }) => {
       const offset = (input.page - 1) * input.perPage
 
-      const createdFrom = input.createdAt[0] ? new Date(input.createdAt[0]) : undefined
-      const createdTo = input.createdAt[1] ? new Date(input.createdAt[1]) : undefined
+      const createdFrom = input.createdAt[0]
+      const createdTo = input.createdAt[1]
 
       if (createdFrom) createdFrom.setHours(0, 0, 0, 0)
       if (createdTo) createdTo.setHours(23, 59, 59, 999)
@@ -103,8 +103,7 @@ export const commentsRouter = createTRPCRouter({
 
       const result = query.data.map((comment) => ({
         ...comment,
-        type: comment.parentId ? 'reply' : 'comment',
-        createdAt: new Date(comment.createdAt)
+        type: comment.parentId ? 'reply' : 'comment'
       }))
 
       return {
