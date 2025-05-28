@@ -50,7 +50,6 @@
     "@tszhong0411/mdx-plugins": "workspace:*",
     "@tszhong0411/shared": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
-    "@types/faker": "^6.6.11",
     "@types/node": "^22.14.0",
     "@types/react": "^19.1.1",
     "@types/react-dom": "^19.1.2",
