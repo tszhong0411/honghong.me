@@ -2,6 +2,7 @@ import type { Metadata, ResolvingMetadata } from 'next'
 
 import { allDocs } from 'content-collections'
 import { notFound } from 'next/navigation'
+import { Suspense } from 'react'
 
 import Mdx from '@/components/mdx'
 
@@ -87,7 +88,9 @@ const Page = async (props: PageProps) => {
         <p className='text-muted-foreground'>{description}</p>
         {hasLinks && <LinkBadges {...link} />}
       </div>
-      <Mdx className='my-12' code={code} />
+      <Suspense>
+        <Mdx className='my-12' code={code} />
+      </Suspense>
       <EditOnGitHub filePath={_meta.filePath} />
       <DocsNavigation />
     </div>
