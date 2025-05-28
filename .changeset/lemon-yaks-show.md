@@ -10,7 +10,8 @@
 - Updated code style from `? <component /> : null` to `&& <component />`
 - Updated to use oklch colors.
 - Updated to divide long tailwindcss classes into multiple lines
-- Added `oklab` and `oklch` to known word list.
+- Updated `<DataTable />` to use shadcn-table
+- Added `oklab` and `oklch` to known word list
 - Added Ark UI badges
 - Added `Chart`, `Calendar`
 - Replaced `<Callout />` with `<Alert />`
