@@ -23,7 +23,6 @@
     "table": {
       "comments": {
         "body": "内容",
-        "createdAt": "创建时间",
         "failed-to-fetch-comments-data": "无法获取评论数据。请刷新页面。",
         "filter-body": "过滤内容...",
         "filter-userId": "过滤用户 ID...",
@@ -36,7 +35,8 @@
         "filter-names": "过滤名称...",
         "name": "名称",
         "role": "角色"
-      }
+      },
+      "createdAt": "创建时间"
     }
   },
   "blog": {

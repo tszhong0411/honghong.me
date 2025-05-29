@@ -98,7 +98,29 @@ export const commentsRouter = createTRPCRouter({
           .execute()
           .then((res) => res[0]?.count ?? 0)
 
-        return { data, total }
+        const typeCounts = await tx
+          .select({
+            parentId: comments.parentId,
+            count: count()
+          })
+          .from(comments)
+          .groupBy(comments.parentId)
+          .then((res) => {
+            const result = {
+              comment: 0,
+              reply: 0
+            }
+            for (const { parentId, count: typeCount } of res) {
+              if (parentId) {
+                result.reply += typeCount
+              } else {
+                result.comment = typeCount
+              }
+            }
+            return result
+          })
+
+        return { data, total, typeCounts }
       })
 
       const result = query.data.map((comment) => ({
@@ -108,7 +130,8 @@ export const commentsRouter = createTRPCRouter({
 
       return {
         comments: result,
-        pageCount: Math.ceil(query.total / input.perPage)
+        pageCount: Math.ceil(query.total / input.perPage),
+        typeCounts: query.typeCounts
       }
     }),
   getInfiniteComments: publicProcedure

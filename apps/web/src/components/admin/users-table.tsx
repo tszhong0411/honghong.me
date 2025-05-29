@@ -2,113 +2,132 @@
 
 import type { GetUsersOutput } from '@/trpc/routers/users'
 
-import {
-  type ColumnDef,
-  type ColumnFiltersState,
-  flexRender,
-  getCoreRowModel,
-  getFilteredRowModel,
-  useReactTable
-} from '@tanstack/react-table'
+import { type ColumnDef } from '@tanstack/react-table'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import {
-  Input,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow
+  Checkbox,
+  DataTable,
+  DataTableColumnHeader,
+  DataTableToolbar,
+  formatDate,
+  useDataTable
 } from '@tszhong0411/ui'
-import { useState } from 'react'
+import { CalendarIcon, CircleDashedIcon, UserIcon, UserLockIcon } from 'lucide-react'
+
+import { USER_ROLES } from '@/lib/constants'
 
 type User = GetUsersOutput['users'][number]
 
 type UsersTableProps = {
   data: User[]
+  pageCount: number
+  roleCounts: Record<string, number>
+}
+
+const getRoleIcon = (role: (typeof USER_ROLES)[number]) => {
+  const roleIcons = {
+    user: UserIcon,
+    admin: UserLockIcon
+  }
+
+  return roleIcons[role]
 }
 
 const UsersTable = (props: UsersTableProps) => {
-  const { data } = props
+  const { data, pageCount, roleCounts } = props
   const t = useTranslations()
-  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
 
   const columns: Array<ColumnDef<User>> = [
     {
-      accessorKey: 'name',
-      header: t('admin.table.users.name')
+      id: 'select',
+      header: ({ table }) => (
+        <Checkbox
+          checked={
+            table.getIsAllPageRowsSelected() ||
+            (table.getIsSomePageRowsSelected() && 'indeterminate')
+          }
+          onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+          aria-label='Select all'
+        />
+      ),
+      cell: ({ row }) => (
+        <Checkbox
+          checked={row.getIsSelected()}
+          onCheckedChange={(value) => row.toggleSelected(!!value)}
+          aria-label='Select row'
+        />
+      ),
+      enableSorting: false,
+      enableHiding: false,
+      size: 40
     },
     {
+      id: 'name',
+      accessorKey: 'name',
+      header: t('admin.table.users.name'),
+      meta: {
+        label: 'Name',
+        placeholder: 'Search name...',
+        variant: 'text',
+        icon: UserIcon
+      },
+      enableColumnFilter: true
+    },
+    {
+      id: 'email',
       accessorKey: 'email',
       header: t('admin.table.users.email')
     },
     {
+      id: 'role',
       accessorKey: 'role',
-      header: t('admin.table.users.role')
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title={t('admin.table.users.role')} />
+      ),
+      meta: {
+        label: 'Role',
+        variant: 'multiSelect',
+        options: USER_ROLES.map((role) => ({
+          label: role.charAt(0).toUpperCase() + role.slice(1),
+          value: role,
+          count: roleCounts[role],
+          icon: getRoleIcon(role)
+        })),
+        icon: CircleDashedIcon
+      },
+      enableColumnFilter: true
+    },
+    {
+      id: 'createdAt',
+      accessorKey: 'createdAt',
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title={t('admin.table.createdAt')} />
+      ),
+      cell: ({ row }) =>
+        formatDate(row.original.createdAt, {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric'
+        }),
+      meta: {
+        label: 'Created At',
+        variant: 'dateRange',
+        icon: CalendarIcon
+      },
+      enableColumnFilter: true
     }
   ]
 
-  const table = useReactTable({
+  const { table } = useDataTable({
     data,
     columns,
-    getCoreRowModel: getCoreRowModel(),
-    onColumnFiltersChange: setColumnFilters,
-    getFilteredRowModel: getFilteredRowModel(),
-    state: {
-      columnFilters
-    }
+    pageCount
   })
 
   return (
-    <div>
-      <div className='flex items-center py-4'>
-        <Input
-          placeholder='Filter names...'
-          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- ignore for now
-          value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}
-          onChange={(event) => table.getColumn('name')?.setFilterValue(event.target.value)}
-          className='max-w-sm'
-        />
-      </div>
-      <div className='rounded-md border'>
-        <Table>
-          <TableHeader>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => {
-                  return (
-                    <TableHead key={header.id}>
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(header.column.columnDef.header, header.getContext())}
-                    </TableHead>
-                  )
-                })}
-              </TableRow>
-            ))}
-          </TableHeader>
-          <TableBody>
-            {table.getRowModel().rows.length > 0 ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'}>
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell colSpan={columns.length} className='h-24 text-center'>
-                  No results.
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
-      </div>
-    </div>
+    <DataTable table={table}>
+      <DataTableToolbar table={table}></DataTableToolbar>
+    </DataTable>
   )
 }
 

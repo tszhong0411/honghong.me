@@ -14,3 +14,4 @@ export const SITE_X_URL = 'https://x.com/tszhong0411'
 export const SITE_YOUTUBE_URL = 'https://www.youtube.com/@tszhong0411'
 
 export const COMMENT_TYPES = ['comment', 'reply'] as const
+export const USER_ROLES = ['user', 'admin'] as const

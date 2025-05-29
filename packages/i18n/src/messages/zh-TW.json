@@ -23,7 +23,6 @@
     "table": {
       "comments": {
         "body": "內容",
-        "createdAt": "建立時間",
         "failed-to-fetch-comments-data": "無法獲取評論資料。請重新整理頁面。",
         "filter-body": "篩選內容...",
         "filter-userId": "篩選使用者 ID...",
@@ -36,7 +35,8 @@
         "filter-names": "篩選名稱...",
         "name": "名稱",
         "role": "角色"
-      }
+      },
+      "createdAt": "建立時間"
     }
   },
   "blog": {

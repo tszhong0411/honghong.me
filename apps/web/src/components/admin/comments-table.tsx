@@ -25,6 +25,7 @@ type Comment = GetCommentsOutput['comments'][number]
 type CommentsTableProps = {
   data: Comment[]
   pageCount: number
+  typeCounts: Record<string, number>
 }
 
 const getTypeIcon = (type: (typeof COMMENT_TYPES)[number]) => {
@@ -37,7 +38,7 @@ const getTypeIcon = (type: (typeof COMMENT_TYPES)[number]) => {
 }
 
 const CommentsTable = (props: CommentsTableProps) => {
-  const { data, pageCount } = props
+  const { data, pageCount, typeCounts } = props
   const t = useTranslations()
 
   const columns: Array<ColumnDef<Comment>> = [
@@ -97,7 +98,7 @@ const CommentsTable = (props: CommentsTableProps) => {
         options: COMMENT_TYPES.map((type) => ({
           label: type.charAt(0).toUpperCase() + type.slice(1),
           value: type,
-          count: 0,
+          count: typeCounts[type],
           icon: getTypeIcon(type)
         })),
         icon: CircleDashedIcon
@@ -108,7 +109,7 @@ const CommentsTable = (props: CommentsTableProps) => {
       id: 'createdAt',
       accessorKey: 'createdAt',
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title={t('admin.table.comments.createdAt')} />
+        <DataTableColumnHeader column={column} title={t('admin.table.createdAt')} />
       ),
       cell: ({ row }) =>
         formatDate(row.original.createdAt, {
