@@ -29,14 +29,14 @@
         "type": "类型",
         "userId": "用户 ID"
       },
+      "createdAt": "创建时间",
       "users": {
         "email": "电子邮件",
         "failed-to-fetch-users-data": "无法获取用户数据。请刷新页面。",
         "filter-names": "过滤名称...",
         "name": "名称",
         "role": "角色"
-      },
-      "createdAt": "创建时间"
+      }
     }
   },
   "blog": {

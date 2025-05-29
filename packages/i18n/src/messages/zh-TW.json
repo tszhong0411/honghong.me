@@ -29,14 +29,14 @@
         "type": "類型",
         "userId": "使用者 ID"
       },
+      "createdAt": "建立時間",
       "users": {
         "email": "電子郵件",
         "failed-to-fetch-users-data": "無法獲取使用者資料。請重新整理頁面。",
         "filter-names": "篩選名稱...",
         "name": "名稱",
         "role": "角色"
-      },
-      "createdAt": "建立時間"
+      }
     }
   },
   "blog": {
