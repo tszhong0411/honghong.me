@@ -209,6 +209,10 @@ const COMPONENT_LINKS = [
     text: 'Sonner'
   },
   {
+    href: '/ui/sortable',
+    text: 'Sortable'
+  },
+  {
     href: '/ui/switch',
     text: 'Switch'
   },
