@@ -1,3 +1,14 @@
+/**
+ * shadcn-table (MIT License)
+ * Copyright (c) Sadman Sakib
+ * Source:
+ *  - https://github.com/sadmann7/shadcn-table/blob/67bfe74c0454c7f657aa22c3d39a4926d6ebaf37/src/lib/data-table.ts
+ *  - https://github.com/sadmann7/shadcn-table/blob/67bfe74c0454c7f657aa22c3d39a4926d6ebaf37/src/lib/format.ts
+ *  - https://github.com/sadmann7/shadcn-table/blob/67bfe74c0454c7f657aa22c3d39a4926d6ebaf37/src/config/data-table.ts
+ *  - https://github.com/sadmann7/shadcn-table/blob/67bfe74c0454c7f657aa22c3d39a4926d6ebaf37/src/lib/parsers.ts
+ *
+ * Modified by: tszhong0411
+ */
 import type { ExtendedColumnSort } from '../data-table'
 import type { Column } from '@tanstack/react-table'
 

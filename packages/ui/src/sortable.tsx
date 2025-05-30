@@ -1,3 +1,10 @@
+/**
+ * shadcn-table (MIT License)
+ * Copyright (c) Sadman Sakib
+ * Source: https://github.com/sadmann7/shadcn-table/blob/67bfe74c0454c7f657aa22c3d39a4926d6ebaf37/src/components/ui/sortable.tsx
+ *
+ * Modified by: tszhong0411
+ */
 'use client'
 
 import {
