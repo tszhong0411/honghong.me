@@ -79,10 +79,21 @@ export const componentGenerator = (plop: PlopTypes.NodePlopAPI): void => {
             .getElements()
             .map((element) => element.asKind(SyntaxKind.ObjectLiteralExpression))
             .filter((obj): obj is NonNullable<typeof obj> => obj !== undefined)
-            .map((obj) => ({
-              href: (obj.getProperty('href') as PropertyAssignment).getInitializer()!.getText(),
-              text: (obj.getProperty('text') as PropertyAssignment).getInitializer()!.getText()
-            }))
+            .map((obj) => {
+              const href = (obj.getProperty('href') as PropertyAssignment)
+                .getInitializer()!
+                .getText()
+              const text = (obj.getProperty('text') as PropertyAssignment)
+                .getInitializer()!
+                .getText()
+              const isArkUI = obj.getProperty('isArkUI') as PropertyAssignment | undefined
+
+              return {
+                href,
+                text,
+                ...(isArkUI && { isArkUI: isArkUI.getInitializer()!.getText() })
+              }
+            })
 
           elements.push({
             href: `'/ui/${name}'`,
@@ -95,12 +106,15 @@ export const componentGenerator = (plop: PlopTypes.NodePlopAPI): void => {
             initializer.removeElement(i)
           }
           for (const element of elements) {
-            initializer.addElement(`\
-              {
+            initializer.addElement(`{
                 href: ${element.href},
-                text: ${element.text}
-              }
-            `)
+                text: ${element.text}${
+                  element.isArkUI
+                    ? `,
+                isArkUI: ${element.isArkUI}`
+                    : ''
+                }
+              }`)
           }
 
           await sourceFile.save()
