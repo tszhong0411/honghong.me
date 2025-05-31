@@ -5,8 +5,6 @@
  *
  * Modified by: tszhong0411
  */
-'use client'
-
 import {
   type ColumnFiltersState,
   getCoreRowModel,

@@ -5,8 +5,6 @@
  *
  * Modified by: tszhong0411
  */
-'use client'
-
 import type { ColumnSort, SortDirection, Table } from '@tanstack/react-table'
 
 import { cn } from '@tszhong0411/utils'
