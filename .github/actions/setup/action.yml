@@ -27,7 +27,7 @@ runs:
           ${{ runner.os }}-pnpm-store-
 
     - name: Cache for Turbo
-      uses: rharkor/caching-for-turbo@v1.7
+      uses: rharkor/caching-for-turbo@v1.8
 
     - name: Install dependencies
       shell: bash
