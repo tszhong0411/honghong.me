@@ -21,7 +21,7 @@ import {
   rates,
   type SQLWrapper
 } from '@tszhong0411/db'
-import { Comment, Reply } from '@tszhong0411/emails'
+import { CommentEmailTemplate, ReplyEmailTemplate } from '@tszhong0411/emails'
 import { env } from '@tszhong0411/env'
 import { ratelimit } from '@tszhong0411/kv'
 import { allPosts } from 'content-collections'
@@ -396,7 +396,7 @@ export const commentsRouter = createTRPCRouter({
             from: 'Nelson Lai <me@honghong.me>',
             to: env.AUTHOR_EMAIL,
             subject: 'New comment on your blog post',
-            react: Comment({
+            react: CommentEmailTemplate({
               comment: input.content,
               commenter: userProfile,
               id: `comment=${commentId}`,
@@ -422,7 +422,7 @@ export const commentsRouter = createTRPCRouter({
               from: 'Nelson Lai <me@honghong.me>',
               to: parentComment.user.email,
               subject: 'New reply to your comment',
-              react: Reply({
+              react: ReplyEmailTemplate({
                 reply: input.content,
                 replier: userProfile,
                 comment: parentComment.body,
@@ -500,5 +500,3 @@ export const commentsRouter = createTRPCRouter({
 export type GetInfiniteCommentsInput = RouterInputs['comments']['getInfiniteComments']
 export type GetInfiniteCommentsOutput = RouterOutputs['comments']['getInfiniteComments']
 export type GetCommentsOutput = RouterOutputs['comments']['getComments']
-
-type Comment = GetCommentsOutput['comments'][number]

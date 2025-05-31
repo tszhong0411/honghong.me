@@ -18,7 +18,7 @@ import {
 import Footer from '../components/footer'
 import Logo from '../components/logo'
 
-type ReplyProps = {
+type ReplyEmailTemplateProps = {
   reply: string
   replier: {
     name: string
@@ -33,7 +33,7 @@ type ReplyProps = {
   }
 }
 
-const Reply = (props: ReplyProps) => {
+const ReplyEmailTemplate = (props: ReplyEmailTemplateProps) => {
   const { reply, replier, comment, date, id, post } = props
 
   return (
@@ -107,7 +107,7 @@ const Reply = (props: ReplyProps) => {
   )
 }
 
-Reply.PreviewProps = {
+ReplyEmailTemplate.PreviewProps = {
   reply:
     "Thank you for your kind words! I'm glad you found the article helpful. Let me know if you have any questions!",
   replier: {
@@ -122,6 +122,6 @@ Reply.PreviewProps = {
     title: 'Understanding Modern Web Development',
     url: 'http://localhost:3000/blog/understanding-modern-web-development'
   }
-} satisfies ReplyProps
+} satisfies ReplyEmailTemplateProps
 
-export default Reply
+export default ReplyEmailTemplate

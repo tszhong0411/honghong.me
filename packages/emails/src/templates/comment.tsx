@@ -18,7 +18,7 @@ import {
 import Footer from '../components/footer'
 import Logo from '../components/logo'
 
-type CommentProps = {
+type CommentEmailTemplateProps = {
   comment: string
   commenter: {
     name: string
@@ -32,7 +32,7 @@ type CommentProps = {
   }
 }
 
-const Comment = (props: CommentProps) => {
+const CommentEmailTemplate = (props: CommentEmailTemplateProps) => {
   const { comment, commenter, date, id, post } = props
 
   return (
@@ -103,7 +103,7 @@ const Comment = (props: CommentProps) => {
   )
 }
 
-Comment.PreviewProps = {
+CommentEmailTemplate.PreviewProps = {
   comment:
     'This is exactly what I needed! The explanations are clear and concise. Thanks for sharing! 👏',
   commenter: {
@@ -116,6 +116,6 @@ Comment.PreviewProps = {
     title: 'Understanding Modern Web Development',
     url: 'http://localhost:3000/blog/understanding-modern-web-development'
   }
-} satisfies CommentProps
+} satisfies CommentEmailTemplateProps
 
-export default Comment
+export default CommentEmailTemplate
