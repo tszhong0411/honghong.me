@@ -1,5 +1,4 @@
 import type { RouterInputs, RouterOutputs } from '../client'
-import type { Comment } from '@/hooks/use-admin-comments-params'
 
 import { createId } from '@paralleldrive/cuid2'
 import { TRPCError } from '@trpc/server'
@@ -63,7 +62,7 @@ export const commentsRouter = createTRPCRouter({
         sort: z
           .array(
             z.object({
-              id: z.string() as z.ZodType<keyof Comment>,
+              id: z.string() as z.ZodType<keyof typeof comments.$inferSelect>,
               desc: z.boolean()
             })
           )

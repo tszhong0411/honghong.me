@@ -12,8 +12,6 @@ import { z } from 'zod'
 
 import { COMMENT_TYPES } from '@/lib/constants'
 
-export type Comment = typeof comments.$inferSelect
-
 export const useAdminCommentsParams = () => {
   return useQueryStates({
     page: parseAsInteger.withDefault(1),
@@ -21,6 +19,8 @@ export const useAdminCommentsParams = () => {
     body: parseAsString.withDefault(''),
     parentId: parseAsArrayOf(z.enum(COMMENT_TYPES)).withDefault([]),
     createdAt: parseAsArrayOf(parseAsTimestamp).withDefault([]),
-    sort: getSortingStateParser<Comment>().withDefault([{ id: 'createdAt', desc: true }])
+    sort: getSortingStateParser<typeof comments.$inferSelect>().withDefault([
+      { id: 'createdAt', desc: true }
+    ])
   })
 }
