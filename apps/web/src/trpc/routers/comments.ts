@@ -1,4 +1,5 @@
 import type { RouterInputs, RouterOutputs } from '../client'
+import type { Comment } from '@/hooks/use-admin-comments-params'
 
 import { createId } from '@paralleldrive/cuid2'
 import { TRPCError } from '@trpc/server'
@@ -36,10 +37,10 @@ import { adminProcedure, createTRPCRouter, protectedProcedure, publicProcedure }
 
 const getKey = (id: string) => `comments:${id}`
 
-const getTypeFilter = (types: Array<(typeof COMMENT_TYPES)[number]>) => {
+const getParentIdFilter = (parentId: Array<(typeof COMMENT_TYPES)[number]>) => {
   const conditions: SQLWrapper[] = []
-  if (types.includes('comment')) conditions.push(isNull(comments.parentId))
-  if (types.includes('reply')) conditions.push(isNotNull(comments.parentId))
+  if (parentId.includes('comment')) conditions.push(isNull(comments.parentId))
+  if (parentId.includes('reply')) conditions.push(isNotNull(comments.parentId))
   return conditions.length > 0 ? or(...conditions) : void 0
 }
 
@@ -57,12 +58,12 @@ export const commentsRouter = createTRPCRouter({
         page: z.number().min(1).default(1),
         perPage: z.number().min(1).default(10),
         body: z.string(),
-        type: z.array(z.enum(COMMENT_TYPES)).default([]),
+        parentId: z.array(z.enum(COMMENT_TYPES)).default([]),
         createdAt: z.array(z.coerce.date().optional()).default([]),
         sort: z
           .array(
             z.object({
-              id: z.string() as z.ZodType<keyof typeof comments.$inferSelect>,
+              id: z.string() as z.ZodType<keyof Comment>,
               desc: z.boolean()
             })
           )
@@ -85,19 +86,13 @@ export const commentsRouter = createTRPCRouter({
 
       const query = await ctx.db.transaction(async (tx) => {
         const data = await tx
-          .select({
-            id: comments.id,
-            userId: comments.userId,
-            parentId: comments.parentId,
-            body: comments.body,
-            createdAt: comments.createdAt
-          })
+          .select()
           .from(comments)
           .limit(input.perPage)
           .where(
             and(
               input.body ? ilike(comments.body, `%${input.body}%`) : undefined,
-              input.type.length > 0 ? getTypeFilter(input.type) : undefined,
+              input.parentId.length > 0 ? getParentIdFilter(input.parentId) : undefined,
               input.createdAt.length > 0 ? getDateFilter(createdFrom, createdTo) : undefined
             )
           )
@@ -137,13 +132,8 @@ export const commentsRouter = createTRPCRouter({
         return { data, total, typeCounts }
       })
 
-      const result = query.data.map((comment) => ({
-        ...comment,
-        type: comment.parentId ? 'reply' : 'comment'
-      }))
-
       return {
-        comments: result,
+        comments: query.data,
         pageCount: Math.ceil(query.total / input.perPage),
         typeCounts: query.typeCounts
       }

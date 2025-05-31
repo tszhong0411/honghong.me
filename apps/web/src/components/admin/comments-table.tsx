@@ -71,7 +71,10 @@ const CommentsTable = (props: CommentsTableProps) => {
       accessorKey: 'userId',
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={t('admin.table.comments.userId')} />
-      )
+      ),
+      meta: {
+        label: 'User ID'
+      }
     },
     {
       id: 'body',
@@ -88,11 +91,14 @@ const CommentsTable = (props: CommentsTableProps) => {
       enableColumnFilter: true
     },
     {
-      id: 'type',
-      accessorKey: 'type',
+      id: 'parentId',
+      accessorKey: 'parentId',
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={t('admin.table.comments.type')} />
       ),
+      cell: ({ row }) => {
+        return row.original.parentId ? 'reply' : 'comment'
+      },
       meta: {
         label: 'Type',
         variant: 'multiSelect',

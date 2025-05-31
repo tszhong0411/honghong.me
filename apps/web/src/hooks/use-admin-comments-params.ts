@@ -1,4 +1,4 @@
-import type { GetCommentsOutput } from '@/trpc/routers/comments'
+import type { comments } from '@tszhong0411/db'
 
 import { getSortingStateParser } from '@tszhong0411/ui'
 import {
@@ -12,14 +12,14 @@ import { z } from 'zod'
 
 import { COMMENT_TYPES } from '@/lib/constants'
 
-type Comment = GetCommentsOutput['comments'][number]
+export type Comment = typeof comments.$inferSelect
 
 export const useAdminCommentsParams = () => {
   return useQueryStates({
     page: parseAsInteger.withDefault(1),
     perPage: parseAsInteger.withDefault(10),
     body: parseAsString.withDefault(''),
-    type: parseAsArrayOf(z.enum(COMMENT_TYPES)).withDefault([]),
+    parentId: parseAsArrayOf(z.enum(COMMENT_TYPES)).withDefault([]),
     createdAt: parseAsArrayOf(parseAsTimestamp).withDefault([]),
     sort: getSortingStateParser<Comment>().withDefault([{ id: 'createdAt', desc: true }])
   })
