@@ -1,6 +1,18 @@
 import type { RouterOutputs } from '../client'
 
-import { and, count, gt, gte, ilike, inArray, lte, type SQLWrapper, users } from '@tszhong0411/db'
+import {
+  and,
+  asc,
+  count,
+  desc,
+  gt,
+  gte,
+  ilike,
+  inArray,
+  lte,
+  type SQLWrapper,
+  users
+} from '@tszhong0411/db'
 import { z } from 'zod'
 
 import { USER_ROLES } from '@/lib/constants'
@@ -22,7 +34,15 @@ export const usersRouter = createTRPCRouter({
         perPage: z.number().min(1).default(10),
         name: z.string().optional(),
         role: z.array(z.enum(USER_ROLES)).default([]),
-        createdAt: z.array(z.coerce.date().optional()).default([])
+        createdAt: z.array(z.coerce.date().optional()).default([]),
+        sort: z
+          .array(
+            z.object({
+              id: z.string() as z.ZodType<keyof typeof users.$inferSelect>,
+              desc: z.boolean().default(false)
+            })
+          )
+          .default([{ id: 'createdAt', desc: true }])
       })
     )
     .query(async ({ ctx, input }) => {
@@ -33,6 +53,11 @@ export const usersRouter = createTRPCRouter({
 
       if (createdFrom) createdFrom.setHours(0, 0, 0, 0)
       if (createdTo) createdTo.setHours(23, 59, 59, 999)
+
+      const orderBy =
+        input.sort.length > 0
+          ? input.sort.map((item) => (item.desc ? desc(users[item.id]) : asc(users[item.id])))
+          : [asc(users.createdAt)]
 
       const query = await ctx.db.transaction(async (tx) => {
         const data = await tx
@@ -53,6 +78,7 @@ export const usersRouter = createTRPCRouter({
             )
           )
           .offset(offset)
+          .orderBy(...orderBy)
 
         const total = await tx
           .select({

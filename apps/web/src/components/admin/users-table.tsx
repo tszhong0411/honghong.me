@@ -8,6 +8,7 @@ import {
   Checkbox,
   DataTable,
   DataTableColumnHeader,
+  DataTableSortList,
   DataTableToolbar,
   formatDate,
   useDataTable
@@ -76,7 +77,12 @@ const UsersTable = (props: UsersTableProps) => {
     {
       id: 'email',
       accessorKey: 'email',
-      header: t('admin.table.users.email')
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title={t('admin.table.users.email')} />
+      ),
+      meta: {
+        label: 'Email'
+      }
     },
     {
       id: 'role',
@@ -121,12 +127,17 @@ const UsersTable = (props: UsersTableProps) => {
   const { table } = useDataTable({
     data,
     columns,
-    pageCount
+    pageCount,
+    initialState: {
+      sorting: [{ id: 'createdAt', desc: true }]
+    }
   })
 
   return (
     <DataTable table={table}>
-      <DataTableToolbar table={table}></DataTableToolbar>
+      <DataTableToolbar table={table}>
+        <DataTableSortList table={table} align='end' />
+      </DataTableToolbar>
     </DataTable>
   )
 }

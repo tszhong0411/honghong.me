@@ -58,7 +58,15 @@ export const commentsRouter = createTRPCRouter({
         perPage: z.number().min(1).default(10),
         body: z.string(),
         type: z.array(z.enum(COMMENT_TYPES)).default([]),
-        createdAt: z.array(z.coerce.date().optional()).default([])
+        createdAt: z.array(z.coerce.date().optional()).default([]),
+        sort: z
+          .array(
+            z.object({
+              id: z.string() as z.ZodType<keyof typeof comments.$inferSelect>,
+              desc: z.boolean()
+            })
+          )
+          .default([{ id: 'createdAt', desc: true }])
       })
     )
     .query(async ({ ctx, input }) => {
@@ -69,6 +77,11 @@ export const commentsRouter = createTRPCRouter({
 
       if (createdFrom) createdFrom.setHours(0, 0, 0, 0)
       if (createdTo) createdTo.setHours(23, 59, 59, 999)
+
+      const orderBy =
+        input.sort.length > 0
+          ? input.sort.map((item) => (item.desc ? desc(comments[item.id]) : asc(comments[item.id])))
+          : [asc(comments.createdAt)]
 
       const query = await ctx.db.transaction(async (tx) => {
         const data = await tx
@@ -89,6 +102,7 @@ export const commentsRouter = createTRPCRouter({
             )
           )
           .offset(offset)
+          .orderBy(...orderBy)
 
         const total = await tx
           .select({
@@ -486,3 +500,5 @@ export const commentsRouter = createTRPCRouter({
 export type GetInfiniteCommentsInput = RouterInputs['comments']['getInfiniteComments']
 export type GetInfiniteCommentsOutput = RouterOutputs['comments']['getInfiniteComments']
 export type GetCommentsOutput = RouterOutputs['comments']['getComments']
+
+type Comment = GetCommentsOutput['comments'][number]
