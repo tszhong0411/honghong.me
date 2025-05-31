@@ -1,5 +1,6 @@
 'use client'
 
+import { useSuspenseQuery } from '@tanstack/react-query'
 import { type ColumnDef } from '@tanstack/react-table'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import {
@@ -18,16 +19,12 @@ import {
   MessageSquareMoreIcon
 } from 'lucide-react'
 
+import { useAdminCommentsParams } from '@/hooks/use-admin-comments-params'
 import { COMMENT_TYPES } from '@/lib/constants'
+import { useTRPC } from '@/trpc/client'
 import { type GetCommentsOutput } from '@/trpc/routers/comments'
 
 type Comment = GetCommentsOutput['comments'][number]
-
-type CommentsTableProps = {
-  data: Comment[]
-  pageCount: number
-  typeCounts: Record<string, number>
-}
 
 const getTypeIcon = (type: (typeof COMMENT_TYPES)[number]) => {
   const icons = {
@@ -38,8 +35,10 @@ const getTypeIcon = (type: (typeof COMMENT_TYPES)[number]) => {
   return icons[type]
 }
 
-const CommentsTable = (props: CommentsTableProps) => {
-  const { data, pageCount, typeCounts } = props
+const CommentsTable = () => {
+  const [params] = useAdminCommentsParams()
+  const trpc = useTRPC()
+  const { data } = useSuspenseQuery(trpc.comments.getComments.queryOptions(params))
   const t = useTranslations()
 
   const columns: Array<ColumnDef<Comment>> = [
@@ -105,7 +104,7 @@ const CommentsTable = (props: CommentsTableProps) => {
         options: COMMENT_TYPES.map((type) => ({
           label: type.charAt(0).toUpperCase() + type.slice(1),
           value: type,
-          count: typeCounts[type],
+          count: data.typeCounts[type],
           icon: getTypeIcon(type)
         })),
         icon: CircleDashedIcon
@@ -134,9 +133,9 @@ const CommentsTable = (props: CommentsTableProps) => {
   ]
 
   const { table } = useDataTable({
-    data,
+    data: data.comments,
     columns,
-    pageCount,
+    pageCount: data.pageCount,
     initialState: {
       sorting: [{ id: 'createdAt', desc: true }]
     }

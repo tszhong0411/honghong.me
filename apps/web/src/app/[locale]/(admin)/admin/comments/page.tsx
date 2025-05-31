@@ -1,40 +1,35 @@
-'use client'
-
-import { useQuery } from '@tanstack/react-query'
-import { useTranslations } from '@tszhong0411/i18n/client'
 import { DataTableSkeleton } from '@tszhong0411/ui'
+import { getTranslations } from 'next-intl/server'
+import { Suspense } from 'react'
 
 import AdminPageHeader from '@/components/admin/admin-page-header'
 import CommentsTable from '@/components/admin/comments-table'
-import { useAdminCommentsParams } from '@/hooks/use-admin-comments-params'
-import { useTRPC } from '@/trpc/client'
+import { searchParamsCaches } from '@/lib/search-params'
+import { HydrateClient, prefetch, trpc } from '@/trpc/server'
 
-const Page = () => {
-  const [params] = useAdminCommentsParams()
-  const trpc = useTRPC()
-  const { status, data } = useQuery(trpc.comments.getComments.queryOptions({ ...params }))
-  const t = useTranslations()
+type PageProps = {
+  searchParams: Promise<Record<string, string | string[] | undefined>>
+}
 
-  const isSuccess = status === 'success'
-  const isLoading = status === 'pending'
-  const isError = status === 'error'
+const Page = async (props: PageProps) => {
+  const searchParams = await props.searchParams
+  const params = searchParamsCaches.adminComments.parse(searchParams)
+  prefetch(trpc.comments.getComments.queryOptions(params))
+
+  const t = await getTranslations()
 
   return (
-    <div className='space-y-6'>
-      <AdminPageHeader
-        title={t('admin.page-header.comments.title')}
-        description={t('admin.page-header.comments.description')}
-      />
-      {isLoading && <DataTableSkeleton columnCount={4} rowCount={10} filterCount={3} />}
-      {isError && <div>{t('admin.table.comments.failed-to-fetch-comments-data')}</div>}
-      {isSuccess && (
-        <CommentsTable
-          data={data.comments}
-          pageCount={data.pageCount}
-          typeCounts={data.typeCounts}
+    <HydrateClient>
+      <div className='space-y-6'>
+        <AdminPageHeader
+          title={t('admin.page-header.comments.title')}
+          description={t('admin.page-header.comments.description')}
         />
-      )}
-    </div>
+        <Suspense fallback={<DataTableSkeleton columnCount={4} rowCount={10} filterCount={3} />}>
+          <CommentsTable />
+        </Suspense>
+      </div>
+    </HydrateClient>
   )
 }
 
