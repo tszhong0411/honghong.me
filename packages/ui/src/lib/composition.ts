@@ -46,4 +46,4 @@ const useComposedRefs = <T>(...refs: Array<PossibleRef<T>>): React.RefCallback<T
   return useCallback(composeRefs(...refs), refs)
 }
 
-export { composeEventHandlers, composeRefs, useComposedRefs }
+export { composeEventHandlers, useComposedRefs }
