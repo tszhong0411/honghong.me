@@ -2,7 +2,7 @@
 
 import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
-import { Skeleton } from '@tszhong0411/ui'
+import { DataTableSkeleton } from '@tszhong0411/ui'
 
 import AdminPageHeader from '@/components/admin/admin-page-header'
 import UsersTable from '@/components/admin/users-table'
@@ -25,7 +25,7 @@ const Page = () => {
         title={t('admin.page-header.users.title')}
         description={t('admin.page-header.users.description')}
       />
-      {isLoading && <Skeleton className='h-[500px] w-full' />}
+      {isLoading && <DataTableSkeleton columnCount={4} rowCount={10} filterCount={3} />}
       {isError && <div>{t('admin.table.users.failed-to-fetch-users-data')}</div>}
       {isSuccess && (
         <UsersTable data={data.users} pageCount={data.pageCount} roleCounts={data.roleCounts} />

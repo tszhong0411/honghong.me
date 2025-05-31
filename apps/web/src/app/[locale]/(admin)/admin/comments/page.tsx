@@ -25,7 +25,7 @@ const Page = () => {
         title={t('admin.page-header.comments.title')}
         description={t('admin.page-header.comments.description')}
       />
-      {isLoading && <DataTableSkeleton columnCount={4} rowCount={10} />}
+      {isLoading && <DataTableSkeleton columnCount={4} rowCount={10} filterCount={3} />}
       {isError && <div>{t('admin.table.comments.failed-to-fetch-comments-data')}</div>}
       {isSuccess && (
         <CommentsTable
