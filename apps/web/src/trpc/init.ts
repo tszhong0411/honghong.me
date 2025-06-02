@@ -1,5 +1,6 @@
 import { initTRPC, TRPCError } from '@trpc/server'
 import { db } from '@tszhong0411/db'
+import { headers } from 'next/headers'
 import { cache } from 'react'
 import { SuperJSON } from 'superjson'
 import { ZodError } from 'zod'
@@ -11,7 +12,8 @@ export const createTRPCContext = cache(async () => {
 
   return {
     db,
-    session
+    session,
+    headers: await headers()
   }
 })
 
