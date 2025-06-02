@@ -15,7 +15,6 @@
   },
   "type": "module",
   "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -27,6 +26,7 @@
     "lint:fix": "eslint --fix .",
     "type-check": "tsc --noEmit"
   },
+  "types": "./dist/index.d.ts",
   "dependencies": {
     "prettier-package-json": "^2.8.0"
   },
