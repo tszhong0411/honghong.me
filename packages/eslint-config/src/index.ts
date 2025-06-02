@@ -12,7 +12,6 @@ import { playwright } from './configs/playwright'
 import { prettier } from './configs/prettier'
 import { react } from './configs/react'
 import { sonarjs } from './configs/sonarjs'
-// import { tailwindcss } from './configs/tailwindcss'
 import { testingLibrary } from './configs/testing-library'
 import { turbo } from './configs/turbo'
 import { typescript } from './configs/typescript'
@@ -60,8 +59,6 @@ const tszhong0411 = async (options: Options = {}, ...userConfigs: Configs): Prom
     ...comments,
     ...importSort,
     ...sonarjs,
-    // @see https://github.com/francoismassart/eslint-plugin-tailwindcss/issues/325
-    // ...tailwindcss,
     ...imports,
     ...prettier
   )

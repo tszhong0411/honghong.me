@@ -4,11 +4,13 @@ const config: KnipConfig = {
   ignoreDependencies: [
     'prettier-plugin-*',
     'sharp',
-    // TailwindCSS v4 is not detectable currently
-    'tailwindcss',
-    // Can't detect `pnpm with-env tsx`
-    'tsx'
+    // not sure why it can't detect `pnpm with-env tsx ./src/seed.ts` in packages/db/package.json
+    'tsx',
+    // @see https://github.com/webpro-nl/knip/issues/870
+    '@rsbuild/plugin-react'
   ],
+  // see above ignoreDependencies['@rsbuild/plugin-react']
+  ignore: ['**/rslib.config.ts'],
   workspaces: {
     '.': {
       entry: ['turbo/generators/config.ts']
@@ -28,13 +30,19 @@ const config: KnipConfig = {
       entry: ['src/seed.ts']
     },
     'packages/eslint-config': {
-      // @see https://github.com/francoismassart/eslint-plugin-tailwindcss/issues/325
-      ignoreDependencies: ['@eslint/config-inspector', 'eslint-plugin-tailwindcss']
+      ignoreDependencies: ['@eslint/config-inspector']
     },
     'packages/ui': {
-      // @see https://github.com/shadcn-ui/ui/issues/4792
-      ignoreDependencies: ['tw-animate-css', '@tailwindcss/typography']
+      ignore: ['src/styles.css']
     }
+  },
+  // credit to https://github.com/webpro-nl/knip/issues/1008#issuecomment-2756559038
+  compilers: {
+    css: (text: string) =>
+      [...text.matchAll(/(?<=@)(import|plugin)[^;]+/g)].join('\n').replace('plugin', 'import')
+  },
+  tsx: {
+    entry: ['packages/db/package.json']
   }
 }
 

@@ -48,7 +48,6 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-sonarjs": "^3.0.2",
-    "eslint-plugin-tailwindcss": "^3.18.0",
     "eslint-plugin-testing-library": "^7.1.1",
     "eslint-plugin-turbo": "^2.5.0",
     "eslint-plugin-unicorn": "^58.0.0",
