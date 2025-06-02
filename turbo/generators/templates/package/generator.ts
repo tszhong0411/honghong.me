@@ -132,13 +132,6 @@ export const packageGenerator = (plop: PlopTypes.NodePlopAPI): void => {
             templateFile: 'templates/package/tsconfig.build.json.hbs'
           }
         )
-      } else {
-        // Add tsconfig.app.json
-        actions.push({
-          type: 'add',
-          path: 'packages/{{ name }}/tsconfig.app.json',
-          templateFile: 'templates/package/tsconfig.app.json.hbs'
-        })
       }
 
       // Install dependencies and format the code

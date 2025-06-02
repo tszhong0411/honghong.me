@@ -5,16 +5,9 @@
   "description": "The shared stuff for tszhong0411's projects",
   "license": "MIT",
   "type": "module",
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    }
-  },
+  "main": "./src/index.ts",
   "scripts": {
-    "build": "rslib build",
     "clean": "rm -rf .turbo",
-    "dev": "rslib build --watch",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint --fix .",
     "type-check": "tsc --noEmit"
