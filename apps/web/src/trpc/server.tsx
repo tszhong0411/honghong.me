@@ -8,7 +8,7 @@ import { createTRPCContext } from './init'
 import { makeQueryClient } from './query-client'
 import { appRouter } from './root'
 
-export const getQueryClient = cache(makeQueryClient)
+const getQueryClient = cache(makeQueryClient)
 
 export const trpc = createTRPCOptionsProxy({
   ctx: createTRPCContext,
