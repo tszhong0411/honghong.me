@@ -21,3 +21,4 @@ const Toaster = (props: ToasterProps) => {
 }
 
 export { Toaster }
+export { toast, useSonner } from 'sonner'
