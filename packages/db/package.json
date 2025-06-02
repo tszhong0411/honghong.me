@@ -5,7 +5,11 @@
   "description": "The ORM for tszhong0411's projects",
   "license": "MIT",
   "type": "module",
-  "main": "./src/index.ts",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts"
+    }
+  },
   "scripts": {
     "clean": "rm -rf .turbo",
     "db:check": "pnpm with-env drizzle-kit check",

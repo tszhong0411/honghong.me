@@ -5,5 +5,6 @@ export default defineConfig({
   dts: true,
   format: ['esm'],
   target: 'esnext',
-  clean: true
+  clean: true,
+  treeshake: true
 })
