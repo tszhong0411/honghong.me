@@ -1,35 +1,34 @@
+import { useQuery } from '@tanstack/react-query'
 import { DataTableSkeleton } from '@tszhong0411/ui'
-import { getTranslations } from 'next-intl/server'
-import { Suspense } from 'react'
+import { useTranslations } from 'next-intl'
 
 import AdminPageHeader from '@/components/admin/admin-page-header'
 import UsersTable from '@/components/admin/users-table'
-import { searchParamsCaches } from '@/lib/search-params'
-import { HydrateClient, prefetch, trpc } from '@/trpc/server'
+import { useAdminUsersParams } from '@/hooks/use-admin-users-params'
+import { useTRPC } from '@/trpc/client'
 
-type PageProps = {
-  searchParams: Promise<Record<string, string | string[] | undefined>>
-}
+const Page = () => {
+  const [params] = useAdminUsersParams()
+  const trpc = useTRPC()
+  const { status, data } = useQuery(trpc.users.getUsers.queryOptions({ ...params }))
+  const t = useTranslations()
 
-const Page = async (props: PageProps) => {
-  const searchParams = await props.searchParams
-  const params = searchParamsCaches.adminUsers.parse(searchParams)
-  prefetch(trpc.users.getUsers.queryOptions(params))
-
-  const t = await getTranslations()
+  const isSuccess = status === 'success'
+  const isLoading = status === 'pending'
+  const isError = status === 'error'
 
   return (
-    <HydrateClient>
-      <div className='space-y-6'>
-        <AdminPageHeader
-          title={t('admin.page-header.users.title')}
-          description={t('admin.page-header.users.description')}
-        />
-        <Suspense fallback={<DataTableSkeleton columnCount={4} rowCount={10} filterCount={3} />}>
-          <UsersTable />
-        </Suspense>
-      </div>
-    </HydrateClient>
+    <div className='space-y-6'>
+      <AdminPageHeader
+        title={t('admin.page-header.users.title')}
+        description={t('admin.page-header.users.description')}
+      />
+      {isLoading && <DataTableSkeleton columnCount={4} rowCount={10} filterCount={3} />}
+      {isError && <div>{t('admin.table.users.failed-to-fetch-users-data')}</div>}
+      {isSuccess && (
+        <UsersTable data={data.users} pageCount={data.pageCount} roleCounts={data.roleCounts} />
+      )}
+    </div>
   )
 }
 

@@ -2,7 +2,6 @@
 
 import type { GetUsersOutput } from '@/trpc/routers/users'
 
-import { useSuspenseQuery } from '@tanstack/react-query'
 import { type ColumnDef } from '@tanstack/react-table'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import {
@@ -16,11 +15,15 @@ import {
 } from '@tszhong0411/ui'
 import { CalendarIcon, CircleDashedIcon, UserIcon, UserLockIcon } from 'lucide-react'
 
-import { useAdminUsersParams } from '@/hooks/use-admin-users-params'
 import { USER_ROLES } from '@/lib/constants'
-import { useTRPC } from '@/trpc/client'
 
 type User = GetUsersOutput['users'][number]
+
+type UsersTableProps = {
+  data: User[]
+  pageCount: number
+  roleCounts: Record<string, number>
+}
 
 const getRoleIcon = (role: (typeof USER_ROLES)[number]) => {
   const roleIcons = {
@@ -31,10 +34,8 @@ const getRoleIcon = (role: (typeof USER_ROLES)[number]) => {
   return roleIcons[role]
 }
 
-const UsersTable = () => {
-  const [params] = useAdminUsersParams()
-  const trpc = useTRPC()
-  const { data } = useSuspenseQuery(trpc.users.getUsers.queryOptions(params))
+const UsersTable = (props: UsersTableProps) => {
+  const { data, pageCount, roleCounts } = props
   const t = useTranslations()
 
   const columns: Array<ColumnDef<User>> = [
@@ -95,7 +96,7 @@ const UsersTable = () => {
         options: USER_ROLES.map((role) => ({
           label: role.charAt(0).toUpperCase() + role.slice(1),
           value: role,
-          count: data.roleCounts[role],
+          count: roleCounts[role],
           icon: getRoleIcon(role)
         })),
         icon: CircleDashedIcon
@@ -124,9 +125,9 @@ const UsersTable = () => {
   ]
 
   const { table } = useDataTable({
-    data: data.users,
+    data,
     columns,
-    pageCount: data.pageCount,
+    pageCount,
     initialState: {
       sorting: [{ id: 'createdAt', desc: true }]
     }
