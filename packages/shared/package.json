@@ -5,11 +5,7 @@
   "description": "The shared stuff for tszhong0411's projects",
   "license": "MIT",
   "type": "module",
-  "exports": {
-    ".": {
-      "import": "./src/index.ts"
-    }
-  },
+  "main": "./src/index.ts",
   "scripts": {
     "clean": "rm -rf .turbo",
     "lint": "eslint . --max-warnings 0",
