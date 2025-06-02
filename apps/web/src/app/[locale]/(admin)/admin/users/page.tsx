@@ -1,6 +1,6 @@
 'use client'
 
-import { useQuery } from '@tanstack/react-query'
+import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { DataTableSkeleton } from '@tszhong0411/ui'
 import { useTranslations } from 'next-intl'
 
@@ -12,12 +12,17 @@ import { useTRPC } from '@/trpc/client'
 const Page = () => {
   const [params] = useAdminUsersParams()
   const trpc = useTRPC()
-  const { status, data } = useQuery(trpc.users.getUsers.queryOptions({ ...params }))
+  const { data, isLoading, isError } = useQuery(
+    trpc.users.getUsers.queryOptions(
+      { ...params },
+      {
+        placeholderData: keepPreviousData
+      }
+    )
+  )
   const t = useTranslations()
 
-  const isSuccess = status === 'success'
-  const isLoading = status === 'pending'
-  const isError = status === 'error'
+  const isInitialLoading = isLoading && !data
 
   return (
     <div className='space-y-6'>
@@ -25,9 +30,9 @@ const Page = () => {
         title={t('admin.page-header.users.title')}
         description={t('admin.page-header.users.description')}
       />
-      {isLoading && <DataTableSkeleton columnCount={4} rowCount={10} filterCount={3} />}
+      {isInitialLoading && <DataTableSkeleton columnCount={4} rowCount={10} filterCount={3} />}
       {isError && <div>{t('admin.table.users.failed-to-fetch-users-data')}</div>}
-      {isSuccess && (
+      {!isInitialLoading && data && (
         <UsersTable data={data.users} pageCount={data.pageCount} roleCounts={data.roleCounts} />
       )}
     </div>

@@ -1,6 +1,6 @@
 'use client'
 
-import { useQuery } from '@tanstack/react-query'
+import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { DataTableSkeleton } from '@tszhong0411/ui'
 import { useTranslations } from 'next-intl'
 
@@ -12,12 +12,17 @@ import { useTRPC } from '@/trpc/client'
 const Page = () => {
   const [params] = useAdminCommentsParams()
   const trpc = useTRPC()
-  const { status, data } = useQuery(trpc.comments.getComments.queryOptions({ ...params }))
+  const { data, isLoading, isError } = useQuery(
+    trpc.comments.getComments.queryOptions(
+      { ...params },
+      {
+        placeholderData: keepPreviousData
+      }
+    )
+  )
   const t = useTranslations()
 
-  const isSuccess = status === 'success'
-  const isLoading = status === 'pending'
-  const isError = status === 'error'
+  const isInitialLoading = isLoading && !data
 
   return (
     <div className='space-y-6'>
@@ -27,7 +32,7 @@ const Page = () => {
       />
       {isLoading && <DataTableSkeleton columnCount={4} rowCount={10} filterCount={3} />}
       {isError && <div>{t('admin.table.comments.failed-to-fetch-comments-data')}</div>}
-      {isSuccess && (
+      {!isInitialLoading && data && (
         <CommentsTable
           data={data.comments}
           pageCount={data.pageCount}
