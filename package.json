@@ -32,7 +32,7 @@
     "preinstall": "npx --yes only-allow pnpm",
     "lint": "turbo lint && eslint . --max-warnings 0",
     "lint:fix": "turbo lint:fix && eslint --fix .",
-    "prepare": "husky && pnpm build:packages",
+    "prepare": "husky",
     "release": "changeset publish",
     "test:e2e": "turbo test:e2e",
     "test:e2e:inspector": "turbo test:e2e:inspector",
@@ -50,6 +50,7 @@
     "@commitlint/config-conventional": "^19.8.0",
     "@cspell/dict-redis": "^1.0.5",
     "@playwright/test": "^1.51.1",
+    "@rslib/core": "^0.9.1",
     "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/prettier-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
@@ -69,7 +70,6 @@
     "lint-staged": "^15.5.0",
     "prettier": "^3.5.3",
     "ts-morph": "^25.0.1",
-    "tsup": "8.3.0",
     "tsx": "^4.19.3",
     "turbo": "^2.5.0",
     "typescript": "^5.8.3",
@@ -89,6 +89,14 @@
   "pnpm": {
     "overrides": {
       "prettier": "3.5.3"
-    }
+    },
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "@vercel/speed-insights",
+      "core-js",
+      "core-js-pure",
+      "esbuild",
+      "sharp"
+    ]
   }
 }

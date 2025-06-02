@@ -1,7 +1,7 @@
 import tszhong0411 from './dist/index.js'
 
 export default tszhong0411({
-  project: './tsconfig.json',
+  project: './tsconfig.lint.json',
   tsconfigRootDir: import.meta.dirname,
   react: true,
   next: true,

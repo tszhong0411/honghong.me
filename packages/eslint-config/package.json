@@ -24,9 +24,9 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "rslib build",
     "clean": "rm -rf .turbo dist",
-    "dev": "concurrently \"tsup --watch\" \"eslint-config-inspector\"",
+    "dev": "concurrently \"rslib build --watch\" \"eslint-config-inspector\"",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint --fix .",
     "postpublish": "bash ./scripts/update-git-repo.sh",

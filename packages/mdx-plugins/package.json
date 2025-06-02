@@ -12,9 +12,9 @@
     }
   },
   "scripts": {
-    "build": "tsup",
+    "build": "rslib build",
     "clean": "rm -rf .turbo dist",
-    "dev": "tsup --watch",
+    "dev": "rslib build --watch",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint --fix .",
     "type-check": "tsc --noEmit"

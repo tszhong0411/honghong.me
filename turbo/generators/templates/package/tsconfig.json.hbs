@@ -1,6 +1,13 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
+  {{#if shouldCompile}}
+  "exclude": ["node_modules", "dist"],
+  {{else}}
   "exclude": ["node_modules"],
-  "extends": "@tszhong0411/tsconfig/base.json",
-  "include": ["**/*.ts"]
+  {{/if}}
+  {{#if isReactPackage}}
+  "extends": "@tszhong0411/tsconfig/react-library.json"
+  {{else}}
+  "extends": "@tszhong0411/tsconfig/base.json"
+  {{/if}}
 }

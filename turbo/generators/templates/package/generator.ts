@@ -45,6 +45,12 @@ export const packageGenerator = (plop: PlopTypes.NodePlopAPI): void => {
       },
       {
         type: 'confirm',
+        name: 'isReactPackage',
+        message: 'Is this a React package?',
+        default: false
+      },
+      {
+        type: 'confirm',
         name: 'shouldPublish',
         message: 'Will it be published on npm registry?',
         default: false
@@ -59,6 +65,12 @@ export const packageGenerator = (plop: PlopTypes.NodePlopAPI): void => {
         type: 'checkbox',
         name: 'enabledESLintRuleSets',
         choices: ['react', 'next', 'playwright', 'testingLibrary']
+      },
+      {
+        type: 'confirm',
+        name: 'shouldRunInWeb',
+        message: 'Should the package run in web environment?',
+        default: false
       }
     ],
     actions: (answers) => {
@@ -81,6 +93,12 @@ export const packageGenerator = (plop: PlopTypes.NodePlopAPI): void => {
           path: 'packages/{{ name }}/tsconfig.json',
           templateFile: 'templates/package/tsconfig.json.hbs'
         },
+        // Add tsconfig.lint.json
+        {
+          type: 'add',
+          path: 'packages/{{ name }}/tsconfig.lint.json',
+          templateFile: 'templates/package/tsconfig.lint.json.hbs'
+        },
         // Add index.ts
         {
           type: 'add',
@@ -100,11 +118,26 @@ export const packageGenerator = (plop: PlopTypes.NodePlopAPI): void => {
       }
 
       if (answers?.shouldCompile) {
-        // Add tsup configuration
+        actions.push(
+          // Add rslib configuration
+          {
+            type: 'add',
+            path: 'packages/{{ name }}/rslib.config.ts',
+            templateFile: 'templates/package/rslib.config.ts.hbs'
+          },
+          // Add tsconfig.build.json
+          {
+            type: 'add',
+            path: 'packages/{{ name }}/tsconfig.build.json',
+            templateFile: 'templates/package/tsconfig.build.json.hbs'
+          }
+        )
+      } else {
+        // Add tsconfig.app.json
         actions.push({
           type: 'add',
-          path: 'packages/{{ name }}/tsup.config.ts',
-          templateFile: 'templates/package/tsup.config.ts.hbs'
+          path: 'packages/{{ name }}/tsconfig.app.json',
+          templateFile: 'templates/package/tsconfig.app.json.hbs'
         })
       }
 
