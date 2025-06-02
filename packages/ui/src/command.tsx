@@ -1,3 +1,5 @@
+'use client'
+
 import { cn } from '@tszhong0411/utils'
 import { Command as CommandPrimitive } from 'cmdk'
 import { SearchIcon } from 'lucide-react'

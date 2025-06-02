@@ -1,3 +1,5 @@
+'use client'
+
 import { cn } from '@tszhong0411/utils'
 import useEmblaCarousel, { type UseEmblaCarouselType } from 'embla-carousel-react'
 import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react'

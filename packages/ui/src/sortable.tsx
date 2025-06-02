@@ -1,3 +1,5 @@
+'use client'
+
 /**
  * shadcn-table (MIT License)
  * Copyright (c) Sadman Sakib
