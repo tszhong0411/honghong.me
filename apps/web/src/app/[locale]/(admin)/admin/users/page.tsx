@@ -1,3 +1,5 @@
+'use client'
+
 import { useQuery } from '@tanstack/react-query'
 import { DataTableSkeleton } from '@tszhong0411/ui'
 import { useTranslations } from 'next-intl'
