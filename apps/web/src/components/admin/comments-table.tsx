@@ -84,8 +84,7 @@ const CommentsTable = () => {
       meta: {
         label: 'Body',
         placeholder: 'Search body...',
-        variant: 'text',
-        icon: Text
+        variant: 'text'
       },
       enableColumnFilter: true
     },
