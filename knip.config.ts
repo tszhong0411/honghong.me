@@ -9,7 +9,7 @@ const config: KnipConfig = {
     // @see https://github.com/webpro-nl/knip/issues/870
     '@rsbuild/plugin-react'
   ],
-  // see above ignoreDependencies['@rsbuild/plugin-react']
+  // see above ignoreDependencies
   ignore: ['**/rslib.config.ts'],
   workspaces: {
     '.': {
