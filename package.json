@@ -92,10 +92,11 @@
     },
     "onlyBuiltDependencies": [
       "@parcel/watcher",
+      "@tailwindcss/oxide",
       "@vercel/speed-insights",
+      "core-js",
       "core-js-pure",
       "esbuild",
-      "msw",
       "sharp"
     ]
   }
