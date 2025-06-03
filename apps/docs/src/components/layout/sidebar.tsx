@@ -1,12 +1,13 @@
 'use client'
 
-import { Link, ScrollArea } from '@tszhong0411/ui'
-import { cva } from 'class-variance-authority'
+import { Badge, Link, ScrollArea } from '@tszhong0411/ui'
+import { cva } from 'cva'
 import { usePathname } from 'next/navigation'
 
 import { SIDEBAR_LINKS } from '../../config/links'
 
-const sidebarLinkVariants = cva('block rounded-lg px-4 py-2', {
+const sidebarLinkVariants = cva({
+  base: 'block rounded-lg px-4 py-2',
   variants: {
     active: {
       true: 'bg-red-500/10 font-semibold text-red-500',
@@ -34,6 +35,9 @@ const Sidebar = () => {
                     })}
                   >
                     {link.text}
+                    {'isArkUI' in link && link.isArkUI && (
+                      <Badge className='ml-2 bg-[#EB5E41] text-white'>Ark UI</Badge>
+                    )}
                   </Link>
                 </li>
               ))}

@@ -11,7 +11,8 @@
   "homepage": "https://github.com/tszhong0411/honghong.me#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tszhong0411/honghong.me.git"
+    "url": "git+https://github.com/tszhong0411/honghong.me.git",
+    "directory": "packages/{{ name }}"
   },
   "bugs": {
     "url": "https://github.com/tszhong0411/honghong.me/issues"
@@ -25,19 +26,26 @@
   {{/if}}
   "type": "module",
   {{#if shouldCompile}}
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   {{else}}
-  "main": "./src/index.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.ts"
+    }
+  },
   {{/if}}
   "scripts": {
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint --fix .",
     "type-check": "tsc --noEmit"
     {{#if shouldCompile}}
-    ,"build": "tsup",
-    "dev": "tsup --watch",
+    ,"build": "rslib build",
+    "dev": "rslib build --watch",
     "clean": "rm -rf .turbo dist"
     {{else}}
     ,"clean": "rm -rf .turbo"

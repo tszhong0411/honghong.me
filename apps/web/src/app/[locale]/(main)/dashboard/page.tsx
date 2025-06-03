@@ -82,7 +82,7 @@ const Page = async (props: PageProps) => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <PageTitle title={title} description={description} />
-      {flags.stats ? <Metrics /> : null}
+      {flags.stats && <Metrics />}
     </>
   )
 }

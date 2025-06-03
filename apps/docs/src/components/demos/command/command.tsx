@@ -1,15 +1,12 @@
 import {
   Command,
   CommandEmpty,
-  CommandFooter,
-  CommandFooterTrigger,
   CommandGroup,
   CommandInput,
   CommandItem,
   CommandList,
   CommandSeparator,
-  Kbd,
-  Logo
+  CommandShortcut
 } from '@tszhong0411/ui'
 import {
   CalculatorIcon,
@@ -45,26 +42,20 @@ const CommandDemo = () => {
           <CommandItem>
             <UserIcon />
             <span>Profile</span>
-            <Kbd keys={['command']}>P</Kbd>
+            <CommandShortcut>⌘ P</CommandShortcut>
           </CommandItem>
           <CommandItem>
             <CreditCardIcon />
             <span>Billing</span>
-            <Kbd keys={['command']}>B</Kbd>
+            <CommandShortcut>⌘ B</CommandShortcut>
           </CommandItem>
           <CommandItem>
             <SettingsIcon />
             <span>Settings</span>
-            <Kbd keys={['command']}>S</Kbd>
+            <CommandShortcut>⌘ S</CommandShortcut>
           </CommandItem>
         </CommandGroup>
       </CommandList>
-      <CommandFooter>
-        <Logo className='size-4' />
-        <CommandFooterTrigger triggerKey={<Kbd keys={['enter']} className='py-0' />}>
-          Open Command
-        </CommandFooterTrigger>
-      </CommandFooter>
     </Command>
   )
 }

@@ -6,7 +6,7 @@
       "@/*": ["src/*"]
     }
   },
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "dist"],
   "extends": "@tszhong0411/tsconfig/base.json",
-  "include": ["**/*.ts", "eslint.config.mjs"]
+  "include": ["**/*.ts", "**/*.mts", "**/*.js", "**/*.mjs"]
 }

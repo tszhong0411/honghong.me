@@ -7,7 +7,8 @@
   "homepage": "https://github.com/tszhong0411/honghong.me#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tszhong0411/honghong.me.git"
+    "url": "git+https://github.com/tszhong0411/honghong.me.git",
+    "directory": "packages/tsconfig"
   },
   "bugs": {
     "url": "https://github.com/tszhong0411/honghong.me/issues"

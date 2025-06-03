@@ -5,6 +5,7 @@ import type { GetInfiniteMessagesOutput } from '@/trpc/routers/guestbook'
 import { keepPreviousData, useInfiniteQuery } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { Avatar, AvatarFallback, AvatarImage, Skeleton } from '@tszhong0411/ui'
+import { getAbbreviation } from '@tszhong0411/utils'
 import { useEffect, useMemo } from 'react'
 import { useInView } from 'react-intersection-observer'
 
@@ -68,22 +69,21 @@ const Messages = () => {
 
   return (
     <div className='flex flex-col gap-4' data-testid='guestbook-messages-list'>
-      {isSuccess
-        ? data.pages.map((page) =>
-            page.messages.map((message) => <Message key={message.id} message={message} />)
-          )
-        : null}
-      {noMessages ? (
+      {isSuccess &&
+        data.pages.map((page) =>
+          page.messages.map((message) => <Message key={message.id} message={message} />)
+        )}
+      {noMessages && (
         <div className='flex min-h-24 items-center justify-center'>
           <p className='text-muted-foreground text-sm'>{t('guestbook.no-messages')}</p>
         </div>
-      ) : null}
-      {isError ? (
+      )}
+      {isError && (
         <div className='flex min-h-24 items-center justify-center'>
           <p className='text-muted-foreground text-sm'>{t('guestbook.failed-to-load-messages')}</p>
         </div>
-      ) : null}
-      {isLoading ? <MessagesLoader /> : null}
+      )}
+      {isLoading && <MessagesLoader />}
       <span ref={ref} className='invisible' />
     </div>
   )
@@ -118,11 +118,9 @@ const Message = (props: MessageProps) => {
         data-testid={`message-${id}`}
       >
         <div className='mb-3 flex gap-3'>
-          <Avatar>
-            <AvatarImage src={image} className='size-10 rounded-full' alt={name} />
-            <AvatarFallback className='bg-transparent'>
-              <Skeleton className='size-10 rounded-full' />
-            </AvatarFallback>
+          <Avatar className='size-10'>
+            <AvatarImage src={image} alt={name} />
+            <AvatarFallback>{getAbbreviation(name)}</AvatarFallback>
           </Avatar>
           <div className='flex flex-col justify-center gap-px text-sm'>
             <div>{name}</div>
@@ -130,7 +128,7 @@ const Message = (props: MessageProps) => {
           </div>
         </div>
         <div className='break-words pl-[52px]'>{body}</div>
-        {isAuthor ? <DeleteButton /> : null}
+        {isAuthor && <DeleteButton />}
       </div>
     </MessageProvider>
   )

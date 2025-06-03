@@ -12,12 +12,13 @@
   "exclude": ["node_modules"],
   "extends": "@tszhong0411/tsconfig/nextjs.json",
   "include": [
-    "next-env.d.ts",
-    "next.config.mjs",
-    "eslint.config.mjs",
-    "postcss.config.mjs",
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.mjs",
     "**/*.ts",
     "**/*.tsx",
+    "**/*.mts",
+    "next-env.d.ts",
     ".next/types/**/*.ts"
   ]
 }

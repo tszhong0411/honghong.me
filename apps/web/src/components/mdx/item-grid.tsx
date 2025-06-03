@@ -1,7 +1,7 @@
 /**
  * Inspired by: https://jahir.dev/uses
  */
-import { BlurImage } from '@tszhong0411/ui'
+import { BlurImage } from '@/components/ui/blur-image'
 
 import Link from '../link'
 
@@ -33,7 +33,7 @@ const ItemGrid = (props: ItemGridProps) => {
             height={256}
             alt={item.name}
             className='shrink-0'
-            imageClassName='m-0 size-24 sm:h-full sm:w-full'
+            imageClassName='m-0 size-24 sm:size-full'
           />
           <div className='flex flex-col justify-center gap-2'>
             <div className='text-lg font-extrabold'>{item.name}</div>

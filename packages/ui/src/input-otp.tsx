@@ -1,15 +1,20 @@
+'use client'
+
 import { cn } from '@tszhong0411/utils'
 import { OTPInput, OTPInputContext } from 'input-otp'
 import { MinusIcon } from 'lucide-react'
 import { use } from 'react'
 
-type InputOTPProps = React.ComponentProps<typeof OTPInput>
+type InputOTPProps = React.ComponentProps<typeof OTPInput> & {
+  containerClassName?: string
+}
 
 const InputOTP = (props: InputOTPProps) => {
   const { className, containerClassName, ...rest } = props
 
   return (
     <OTPInput
+      data-slot='input-otp'
       containerClassName={cn('has-disabled:opacity-50 flex items-center gap-2', containerClassName)}
       className={cn('disabled:cursor-not-allowed', className)}
       {...rest}
@@ -23,32 +28,30 @@ const InputOTPGroup = (props: InputOTPGroupProps) => {
   const { className, ...rest } = props
 
   return (
-    <div
-      aria-label='One-time password input'
-      className={cn('flex items-center', className)}
-      {...rest}
-    />
+    <div data-slot='input-otp-group' className={cn('flex items-center', className)} {...rest} />
   )
 }
 
-type InputOTPSlotProps = React.ComponentProps<'div'> & { index: number }
+type InputOTPSlotProps = React.ComponentProps<'div'> & {
+  index: number
+}
 
 const InputOTPSlot = (props: InputOTPSlotProps) => {
   const { index, className, ...rest } = props
-
   const inputOTPContext = use(OTPInputContext)
-
-  const slot = inputOTPContext.slots[index]
-  const { char, hasFakeCaret, isActive } = slot ?? {}
+  const { char, hasFakeCaret, isActive } = inputOTPContext.slots[index] ?? {}
 
   return (
     <div
-      role='presentation'
+      data-slot='input-otp-slot'
+      data-active={isActive}
       className={cn(
-        'border-input shadow-xs relative flex size-9 items-center justify-center border-y border-r transition-all',
+        'border-input shadow-xs relative flex size-9 items-center justify-center border-y border-r text-sm outline-none transition-all',
+        'dark:data-[active=true]:aria-invalid:ring-destructive/40 dark:bg-input/30',
         'first:rounded-l-md first:border-l',
         'last:rounded-r-md',
-        isActive && 'ring-ring z-10 ring-1',
+        'aria-invalid:border-destructive',
+        'data-[active=true]:border-ring data-[active=true]:ring-ring/50 data-[active=true]:aria-invalid:ring-destructive/20 data-[active=true]:aria-invalid:border-destructive data-[active=true]:z-10 data-[active=true]:ring-[3px]',
         className
       )}
       {...rest}
@@ -66,7 +69,7 @@ const InputOTPSlot = (props: InputOTPSlotProps) => {
 type InputOTPSeparatorProps = React.ComponentProps<'div'>
 
 const InputOTPSeparator = (props: InputOTPSeparatorProps) => (
-  <div role='separator' aria-hidden='true' {...props}>
+  <div data-slot='input-otp-separator' role='separator' {...props}>
     <MinusIcon />
   </div>
 )

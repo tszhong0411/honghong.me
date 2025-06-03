@@ -5,17 +5,20 @@
   "description": "Useful MDX plugins",
   "license": "MIT",
   "type": "module",
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "scripts": {
-    "build": "tsup",
+    "build": "rslib build",
     "clean": "rm -rf .turbo dist",
-    "dev": "tsup --watch",
+    "dev": "rslib build --watch",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint --fix .",
     "type-check": "tsc --noEmit"
   },
-  "types": "./dist/index.d.ts",
   "dependencies": {
     "@shikijs/rehype": "^3.2.1",
     "@shikijs/transformers": "^3.2.1",

@@ -40,22 +40,22 @@ const DropdownMenuDemo = () => {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
-            <UserIcon className='mr-2 size-4' />
+            <UserIcon />
             <span>Profile</span>
             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <CreditCardIcon className='mr-2 size-4' />
+            <CreditCardIcon />
             <span>Billing</span>
             <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <SettingsIcon className='mr-2 size-4' />
+            <SettingsIcon />
             <span>Settings</span>
             <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <KeyboardIcon className='mr-2 size-4' />
+            <KeyboardIcon />
             <span>Keyboard shortcuts</span>
             <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
           </DropdownMenuItem>
@@ -63,50 +63,50 @@ const DropdownMenuDemo = () => {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
-            <UsersIcon className='mr-2 size-4' />
+            <UsersIcon />
             <span>Team</span>
           </DropdownMenuItem>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>
-              <UserPlusIcon className='mr-2 size-4' />
+              <UserPlusIcon />
               <span>Invite users</span>
             </DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent>
                 <DropdownMenuItem>
-                  <MailIcon className='mr-2 size-4' />
+                  <MailIcon />
                   <span>Email</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <MessageSquareIcon className='mr-2 size-4' />
+                  <MessageSquareIcon />
                   <span>Message</span>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
-                  <PlusCircleIcon className='mr-2 size-4' />
+                  <PlusCircleIcon />
                   <span>More...</span>
                 </DropdownMenuItem>
               </DropdownMenuSubContent>
             </DropdownMenuPortal>
           </DropdownMenuSub>
           <DropdownMenuItem>
-            <PlusIcon className='mr-2 size-4' />
+            <PlusIcon />
             <span>New Team</span>
             <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <LifeBuoyIcon className='mr-2 size-4' />
+          <LifeBuoyIcon />
           <span>Support</span>
         </DropdownMenuItem>
         <DropdownMenuItem disabled>
-          <CloudIcon className='mr-2 size-4' />
+          <CloudIcon />
           <span>API</span>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <LogOutIcon className='mr-2 size-4' />
+          <LogOutIcon />
           <span>Log out</span>
           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>

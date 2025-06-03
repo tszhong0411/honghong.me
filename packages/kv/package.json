@@ -5,7 +5,11 @@
   "description": "The key-value store for tszhong0411's projects",
   "license": "MIT",
   "type": "module",
-  "main": "./src/index.ts",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts"
+    }
+  },
   "scripts": {
     "clean": "rm -rf .turbo",
     "lint": "eslint . --max-warnings 0",

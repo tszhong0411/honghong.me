@@ -1,0 +1,36 @@
+---
+title: Sonner
+description: A notification component for displaying brief, non-intrusive messages to the user.
+link:
+  doc: https://sonner.emilkowal.ski/getting-started
+  api: https://sonner.emilkowal.ski/toast
+---
+
+<ComponentPreview name='sonner/sonner' />
+
+## Usage
+
+```tsx title='app/layout.tsx'
+import { Toaster } from '@tszhong0411/ui'
+
+const Layout = ({ children }) => {
+  return (
+    <html>
+      <body>
+        {children}
+        <Toaster />
+      </body>
+    </html>
+  )
+}
+
+export default Layout
+```
+
+```tsx
+import { toast } from '@tszhong0411/ui'
+```
+
+```tsx
+toast('Event has been created.')
+```

@@ -1,8 +1,8 @@
-import { Pagination as PaginationPrimitive } from '@ark-ui/react/pagination'
+import { Pagination as PaginationPrimitive } from '@ark-ui/react'
 import { cn } from '@tszhong0411/utils'
 import { ChevronLeftIcon, ChevronRightIcon, MoreHorizontalIcon } from 'lucide-react'
 
-import { type ButtonProps, buttonVariants } from './button'
+import { type Button, buttonVariants } from './button'
 
 const PaginationContext = PaginationPrimitive.Context
 
@@ -13,6 +13,7 @@ const Pagination = (props: PaginationProps) => {
 
   return (
     <PaginationPrimitive.Root
+      data-slot='pagination'
       translations={{
         // Capitalize the first letter
         nextTriggerLabel: 'Next page',
@@ -35,6 +36,7 @@ const PaginationItem = (props: PaginationItemProps) => {
     <PaginationContext>
       {(context) => (
         <PaginationPrimitive.Item
+          data-slot='pagination-item'
           className={cn(
             buttonVariants({ variant: context.page === value ? 'outline' : 'ghost', size: 'icon' }),
             className
@@ -48,35 +50,37 @@ const PaginationItem = (props: PaginationItemProps) => {
 }
 
 type PaginationPrevTriggerProps = React.ComponentProps<typeof PaginationPrimitive.PrevTrigger> &
-  Pick<ButtonProps, 'size'>
+  Pick<React.ComponentProps<typeof Button>, 'size'>
 
 const PaginationPrevTrigger = (props: PaginationPrevTriggerProps) => {
   const { className, size = 'default', ...rest } = props
 
   return (
     <PaginationPrimitive.PrevTrigger
+      data-slot='pagination-prev-trigger'
       className={cn(buttonVariants({ variant: 'ghost', size }), 'gap-1 pl-2.5', className)}
       {...rest}
     >
-      <ChevronLeftIcon className='size-4' />
+      <ChevronLeftIcon />
       <span>Previous</span>
     </PaginationPrimitive.PrevTrigger>
   )
 }
 
 type PaginationNextTriggerProps = React.ComponentProps<typeof PaginationPrimitive.NextTrigger> &
-  Pick<ButtonProps, 'size'>
+  Pick<React.ComponentProps<typeof Button>, 'size'>
 
 const PaginationNextTrigger = (props: PaginationNextTriggerProps) => {
   const { className, size = 'default', ...rest } = props
 
   return (
     <PaginationPrimitive.NextTrigger
+      data-slot='pagination-next-trigger'
       className={cn(buttonVariants({ variant: 'ghost', size }), 'gap-1 pr-2.5', className)}
       {...rest}
     >
       <span>Next</span>
-      <ChevronRightIcon className='size-4' />
+      <ChevronRightIcon />
     </PaginationPrimitive.NextTrigger>
   )
 }
@@ -88,6 +92,7 @@ const PaginationEllipsis = (props: PaginationEllipsisProps) => {
 
   return (
     <PaginationPrimitive.Ellipsis
+      data-slot='pagination-ellipsis'
       className={cn('flex size-9 items-center justify-center', className)}
       aria-label='More pages'
       {...rest}

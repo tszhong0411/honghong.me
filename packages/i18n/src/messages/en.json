@@ -23,13 +23,13 @@
     "table": {
       "comments": {
         "body": "Body",
-        "createdAt": "Created At",
         "failed-to-fetch-comments-data": "Failed to fetch comments data. Please refresh the page.",
         "filter-body": "Filter body...",
         "filter-userId": "Filter user ID...",
         "type": "Type",
         "userId": "User ID"
       },
+      "createdAt": "Created At",
       "users": {
         "email": "Email",
         "failed-to-fetch-users-data": "Failed to fetch users data. Please refresh the page.",
@@ -101,11 +101,7 @@
     },
     "no-results": "No results found.",
     "open-menu": "Open command menu",
-    "placeholder": "Type a command or search",
-    "trigger": {
-      "open-command": "Open Command",
-      "open-link": "Open Link"
-    }
+    "placeholder": "Type a command or search"
   },
   "common": {
     "cancel": "Cancel",
@@ -228,6 +224,7 @@
       "loading": "Loading ...",
       "not-listening": "Not Listening - Spotify"
     },
+    "profile": "Profile",
     "projects": "Projects",
     "skip-to-main-content": "Skip to main content",
     "toggle-menu": "Toggle menu",

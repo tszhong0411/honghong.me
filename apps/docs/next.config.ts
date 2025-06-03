@@ -44,8 +44,8 @@ const config: NextConfig = {
   async redirects() {
     return [
       {
-        source: '/ui/components',
-        destination: '/ui/components/accordion',
+        source: '/ui',
+        destination: '/ui/accordion',
         permanent: true
       }
     ]

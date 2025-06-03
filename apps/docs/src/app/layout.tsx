@@ -5,6 +5,7 @@ import '@/styles/globals.css'
 import { cn } from '@tszhong0411/utils'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
+import { NuqsAdapter } from 'nuqs/adapters/next/app'
 
 import { SITE_DESCRIPTION, SITE_KEYWORDS, SITE_TITLE, SITE_URL } from '@/lib/constants'
 
@@ -113,12 +114,14 @@ const Layout = (props: LayoutProps) => {
       suppressHydrationWarning
     >
       <body>
-        <Providers>
-          {/* eslint-disable-next-line @eslint-react/dom/no-unknown-property -- custom attribute */}
-          <div vaul-drawer-wrapper='' className='bg-background'>
-            {children}
-          </div>
-        </Providers>
+        <NuqsAdapter>
+          <Providers>
+            {/* eslint-disable-next-line @eslint-react/dom/no-unknown-property -- custom attribute */}
+            <div vaul-drawer-wrapper='' className='bg-background'>
+              {children}
+            </div>
+          </Providers>
+        </NuqsAdapter>
       </body>
     </html>
   )

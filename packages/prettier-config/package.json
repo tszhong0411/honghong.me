@@ -7,26 +7,30 @@
   "homepage": "https://github.com/tszhong0411/honghong.me#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tszhong0411/honghong.me.git"
+    "url": "git+https://github.com/tszhong0411/honghong.me.git",
+    "directory": "packages/prettier-config"
   },
   "bugs": {
     "url": "https://github.com/tszhong0411/honghong.me/issues"
   },
   "type": "module",
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "rslib build",
     "clean": "rm -rf .turbo dist",
-    "dev": "tsup --watch",
+    "dev": "rslib build --watch",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint --fix .",
     "type-check": "tsc --noEmit"
   },
-  "types": "./dist/index.d.ts",
   "dependencies": {
     "@tszhong0411/prettier-plugin-package-json": "workspace:*",
     "prettier-plugin-prisma": "^5.0.0",

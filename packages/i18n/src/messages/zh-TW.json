@@ -23,13 +23,13 @@
     "table": {
       "comments": {
         "body": "內容",
-        "createdAt": "建立時間",
         "failed-to-fetch-comments-data": "無法獲取評論資料。請重新整理頁面。",
         "filter-body": "篩選內容...",
         "filter-userId": "篩選使用者 ID...",
         "type": "類型",
         "userId": "使用者 ID"
       },
+      "createdAt": "建立時間",
       "users": {
         "email": "電子郵件",
         "failed-to-fetch-users-data": "無法獲取使用者資料。請重新整理頁面。",
@@ -101,11 +101,7 @@
     },
     "no-results": "沒有找到結果。",
     "open-menu": "開啟指令選單",
-    "placeholder": "輸入指令或搜尋",
-    "trigger": {
-      "open-command": "打開命令",
-      "open-link": "打開連結"
-    }
+    "placeholder": "輸入指令或搜尋"
   },
   "common": {
     "cancel": "取消",
@@ -228,6 +224,7 @@
       "loading": "載入中 ...",
       "not-listening": "未在收聽 - Spotify"
     },
+    "profile": "個人資料",
     "projects": "專案",
     "skip-to-main-content": "跳至主要內容",
     "toggle-menu": "打開選單",

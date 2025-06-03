@@ -1,0 +1,25 @@
+---
+title: cn Utility
+description: A utility function for conditionally joining CSS class names together.
+---
+
+The `cn` function is a helper utility that simplifies the process of conditionally applying CSS class names. It combines the power of `clsx` for conditional class joining and `tailwind-merge` for intelligently merging Tailwind CSS classes without style conflicts.
+
+## Usage
+
+```typescript
+import { cn } from '@tszhong0411/utils'
+
+const className = cn('text-blue-500', 'font-bold', false && 'hidden', 'mt-4')
+// className will be "text-blue-500 font-bold mt-4"
+```
+
+## API
+
+### `cn(...inputs: ClassValue[]): string`
+
+Joins CSS class names together.
+
+- `...inputs`: A variable number of arguments, which can be strings, arrays of strings, or objects where keys are class names and values are booleans.
+
+**Returns:** `string` - A string of joined and merged CSS class names.

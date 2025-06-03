@@ -1,19 +1,31 @@
+'use client'
+
 import { cn } from '@tszhong0411/utils'
 import { CheckIcon, CopyIcon } from 'lucide-react'
 import mergeRefs from 'merge-refs'
 import { useEffect, useRef, useState } from 'react'
 
-import { Button, type ButtonProps } from './button'
+import { Button } from './button'
 import { ScrollArea, ScrollBar } from './scroll-area'
 import { getIconByLanguage } from './utils/get-icon-by-language'
 
 type CodeBlockProps = {
   'data-lang'?: string
   figureClassName?: string
+  scrollAreaClassName?: string
 } & React.ComponentProps<'pre'>
 
 const CodeBlock = (props: CodeBlockProps) => {
-  const { children, className, title, 'data-lang': lang, figureClassName, ref, ...rest } = props
+  const {
+    children,
+    className,
+    title,
+    'data-lang': lang,
+    figureClassName,
+    scrollAreaClassName,
+    ref,
+    ...rest
+  } = props
 
   const textInput = useRef<HTMLPreElement>(null)
   const Icon = getIconByLanguage(lang ?? '')
@@ -41,7 +53,7 @@ const CodeBlock = (props: CodeBlockProps) => {
         <CopyButton className='absolute right-2 top-2 z-10' onCopy={onCopy} />
       )}
 
-      <ScrollArea>
+      <ScrollArea className={scrollAreaClassName}>
         <pre ref={mergeRefs(textInput, ref)} className={cn('p-4 text-[13px]', className)} {...rest}>
           {children}
         </pre>
@@ -53,7 +65,7 @@ const CodeBlock = (props: CodeBlockProps) => {
 
 type CopyButtonProps = {
   onCopy: () => void
-} & ButtonProps
+} & React.ComponentProps<typeof Button>
 
 const CopyButton = (props: CopyButtonProps) => {
   const { onCopy, className, ...rest } = props

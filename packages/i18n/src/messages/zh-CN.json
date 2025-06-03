@@ -23,13 +23,13 @@
     "table": {
       "comments": {
         "body": "内容",
-        "createdAt": "创建时间",
         "failed-to-fetch-comments-data": "无法获取评论数据。请刷新页面。",
         "filter-body": "过滤内容...",
         "filter-userId": "过滤用户 ID...",
         "type": "类型",
         "userId": "用户 ID"
       },
+      "createdAt": "创建时间",
       "users": {
         "email": "电子邮件",
         "failed-to-fetch-users-data": "无法获取用户数据。请刷新页面。",
@@ -101,11 +101,7 @@
     },
     "no-results": "没有找到结果。",
     "open-menu": "开启指令选单",
-    "placeholder": "输入指令或搜寻",
-    "trigger": {
-      "open-command": "打开命令",
-      "open-link": "打开链接"
-    }
+    "placeholder": "输入指令或搜寻"
   },
   "common": {
     "cancel": "取消",
@@ -228,6 +224,7 @@
       "loading": "载入中 ...",
       "not-listening": "未在收听 - Spotify"
     },
+    "profile": "个人资料",
     "projects": "项目",
     "skip-to-main-content": "跳至主要内容",
     "toggle-menu": "打开选单",

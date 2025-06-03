@@ -22,8 +22,8 @@ const ThemeSwitcher = () => {
           aria-label={t('theme-toggle.toggle-theme')}
           data-testid='theme-toggle'
         >
-          <SunIcon className='size-4 dark:hidden' />
-          <MoonIcon className='hidden size-4 dark:block' />
+          <SunIcon className='dark:hidden' />
+          <MoonIcon className='hidden dark:block' />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align='end'>

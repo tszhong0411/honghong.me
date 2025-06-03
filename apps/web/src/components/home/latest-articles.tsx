@@ -2,13 +2,14 @@
 
 import { useQuery } from '@tanstack/react-query'
 import { useLocale, useTranslations } from '@tszhong0411/i18n/client'
-import { BlurImage, buttonVariants } from '@tszhong0411/ui'
+import { buttonVariants } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { allPosts, type Post } from 'content-collections'
 import { ArrowUpRightIcon, PencilIcon } from 'lucide-react'
 import { motion, useInView } from 'motion/react'
 import { useRef } from 'react'
 
+import { BlurImage } from '@/components/ui/blur-image'
 import { useFormattedDate } from '@/hooks/use-formatted-date'
 import { useTRPC } from '@/trpc/client'
 
@@ -132,17 +133,17 @@ const Card = (props: CardProps) => {
       <div className='flex items-center justify-between gap-2 px-2 pt-4 text-sm text-zinc-500'>
         {formattedDate}
         <div className='flex gap-2'>
-          {likesQuery.status === 'pending' ? '--' : null}
-          {likesQuery.status === 'error' ? t('common.error') : null}
-          {likesQuery.status === 'success' ? (
+          {likesQuery.status === 'pending' && '--'}
+          {likesQuery.status === 'error' && t('common.error')}
+          {likesQuery.status === 'success' && (
             <div>{t('common.likes', { count: likesQuery.data.likes })}</div>
-          ) : null}
+          )}
           <div>&middot;</div>
-          {viewsQuery.status === 'pending' ? '--' : null}
-          {viewsQuery.status === 'error' ? t('common.error') : null}
-          {viewsQuery.status === 'success' ? (
+          {viewsQuery.status === 'pending' && '--'}
+          {viewsQuery.status === 'error' && t('common.error')}
+          {viewsQuery.status === 'success' && (
             <div>{t('common.views', { count: viewsQuery.data.views })}</div>
-          ) : null}
+          )}
         </div>
       </div>
       <div className='flex flex-col px-2 py-4 transition-transform ease-out group-hover:translate-x-0.5'>

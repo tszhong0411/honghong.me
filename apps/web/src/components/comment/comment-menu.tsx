@@ -93,16 +93,16 @@ const CommentMenu = () => {
             {t('blog.comments.copy-link')}
           </DropdownMenuItem>
           <AlertDialogTrigger asChild>
-            {isAuthor ? (
+            {isAuthor && (
               <DropdownMenuItem
-                className='text-red-600 focus:text-red-500'
                 disabled={deleteCommentMutation.isPending}
                 aria-disabled={deleteCommentMutation.isPending}
                 data-testid='comment-delete-button'
+                variant='destructive'
               >
                 {t('common.delete')}
               </DropdownMenuItem>
-            ) : null}
+            )}
           </AlertDialogTrigger>
         </DropdownMenuContent>
       </DropdownMenu>

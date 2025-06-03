@@ -1,0 +1,46 @@
+---
+title: Tree View
+description: Displays a list of hierarchical data.
+link:
+  doc: https://ark-ui.com/react/docs/components/tree-view
+  api: https://ark-ui.com/react/docs/components/tree-view#api-reference
+---
+
+<ComponentPreview name='tree-view/tree-view' />
+
+## Installation
+
+```css title='app/globals.css'
+@theme {
+  --animate-tree-view-content-down: tree-view-content-down 0.2s ease-out;
+  --animate-tree-view-content-up: tree-view-content-up 0.2s ease-out;
+
+  @keyframes tree-view-content-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--height);
+    }
+  }
+
+  @keyframes tree-view-content-up {
+    from {
+      height: var(--height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+```
+
+## Usage
+
+```tsx
+import { TreeView } from '@tszhong0411/ui'
+```
+
+```tsx
+<TreeView collection={collection} />
+```

@@ -1,12 +1,14 @@
 'use client'
 
 import { useLocale, useTranslations } from '@tszhong0411/i18n/client'
-import { BlurImage, buttonVariants } from '@tszhong0411/ui'
+import { buttonVariants } from '@tszhong0411/ui'
 import { cn } from '@tszhong0411/utils'
 import { allProjects, type Project } from 'content-collections'
 import { ArrowUpRightIcon, LightbulbIcon } from 'lucide-react'
 import { motion, useInView } from 'motion/react'
 import { useRef } from 'react'
+
+import { BlurImage } from '@/components/ui/blur-image'
 
 import Link from '../link'
 

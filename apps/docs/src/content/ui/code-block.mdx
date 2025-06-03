@@ -1,0 +1,25 @@
+---
+title: Code Block
+description: A block of code that can be copied.
+---
+
+<ComponentPreview name='code-block/code-block' />
+
+<Alert>
+  <AlertTitle>Note</AlertTitle>
+  <AlertDescription>
+    You may use [shiki](https://shiki.style/) to highlight code blocks.
+  </AlertDescription>
+</Alert>
+
+## Usage
+
+```tsx
+import { CodeBlock } from '@tszhong0411/ui'
+```
+
+```tsx
+<CodeBlock title='main.js' data-lang='js'>
+  <code>console.log('hello world')</code>
+</CodeBlock>
+```

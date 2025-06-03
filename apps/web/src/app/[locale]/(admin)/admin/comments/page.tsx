@@ -1,21 +1,28 @@
 'use client'
 
-import { useQuery } from '@tanstack/react-query'
-import { useTranslations } from '@tszhong0411/i18n/client'
+import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { DataTableSkeleton } from '@tszhong0411/ui'
+import { useTranslations } from 'next-intl'
 
 import AdminPageHeader from '@/components/admin/admin-page-header'
 import CommentsTable from '@/components/admin/comments-table'
+import { useAdminCommentsParams } from '@/hooks/use-admin-comments-params'
 import { useTRPC } from '@/trpc/client'
 
 const Page = () => {
+  const [params] = useAdminCommentsParams()
   const trpc = useTRPC()
-  const { status, data } = useQuery(trpc.comments.getComments.queryOptions())
+  const { data, isLoading, isError } = useQuery(
+    trpc.comments.getComments.queryOptions(
+      { ...params },
+      {
+        placeholderData: keepPreviousData
+      }
+    )
+  )
   const t = useTranslations()
 
-  const isSuccess = status === 'success'
-  const isLoading = status === 'pending'
-  const isError = status === 'error'
+  const isInitialLoading = isLoading && !data
 
   return (
     <div className='space-y-6'>
@@ -23,9 +30,15 @@ const Page = () => {
         title={t('admin.page-header.comments.title')}
         description={t('admin.page-header.comments.description')}
       />
-      {isLoading ? <DataTableSkeleton columnCount={3} searchableColumnsCount={2} /> : null}
-      {isError ? <div>{t('admin.table.comments.failed-to-fetch-comments-data')}</div> : null}
-      {isSuccess ? <CommentsTable data={data.comments} /> : null}
+      {isLoading && <DataTableSkeleton columnCount={4} rowCount={10} filterCount={3} />}
+      {isError && <div>{t('admin.table.comments.failed-to-fetch-comments-data')}</div>}
+      {!isInitialLoading && data && (
+        <CommentsTable
+          data={data.comments}
+          pageCount={data.pageCount}
+          typeCounts={data.typeCounts}
+        />
+      )}
     </div>
   )
 }

@@ -1,7 +1,8 @@
-import type { VariantProps } from 'cva'
+'use client'
 
 import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group'
 import { cn } from '@tszhong0411/utils'
+import { type VariantProps } from 'cva'
 import { createContext, use, useMemo } from 'react'
 
 import { toggleVariants } from './toggle'
@@ -21,7 +22,13 @@ const ToggleGroup = (props: ToggleGroupProps) => {
 
   return (
     <ToggleGroupPrimitive.Root
-      className={cn('flex items-center justify-center gap-1', className)}
+      data-slot='toggle-group'
+      data-variant={variant}
+      data-size={size}
+      className={cn(
+        'group/toggle-group data-[variant=outline]:shadow-xs flex w-fit items-center rounded-md',
+        className
+      )}
       {...rest}
     >
       <ToggleGroupContext value={value}>{children}</ToggleGroupContext>
@@ -34,16 +41,24 @@ type ToggleGroupItemProps = React.ComponentProps<typeof ToggleGroupPrimitive.Ite
 
 const ToggleGroupItem = (props: ToggleGroupItemProps) => {
   const { className, children, variant, size, ...rest } = props
-
   const context = use(ToggleGroupContext)
 
   return (
     <ToggleGroupPrimitive.Item
+      data-slot='toggle-group-item'
+      data-variant={context.variant ?? variant}
+      data-size={context.size ?? size}
       className={cn(
         toggleVariants({
           variant: context.variant ?? variant,
           size: context.size ?? size
         }),
+        'min-w-0 flex-1 shrink-0 rounded-none shadow-none',
+        'first:rounded-l-md',
+        'last:rounded-r-md',
+        'focus:z-10',
+        'focus-visible:z-10',
+        'data-[variant=outline]:border-l-0 data-[variant=outline]:first:border-l',
         className
       )}
       {...rest}
