@@ -30,7 +30,9 @@ const CommentPost = () => {
         setContent('')
         toast.success(t('blog.comments.comment-posted'))
       },
-      onError: (error) => toast.error(error.message),
+      onError: (error) => {
+        toast.error(error.message)
+      },
       onSettled: () => {
         queryClient.invalidateQueries({
           queryKey: trpc.comments.getInfiniteComments.infiniteQueryKey({

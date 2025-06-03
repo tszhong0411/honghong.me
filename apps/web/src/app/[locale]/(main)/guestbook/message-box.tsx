@@ -59,7 +59,9 @@ const MessageBox = (props: FormProps) => {
         queryClient.invalidateQueries({
           queryKey: trpc.guestbook.getInfiniteMessages.infiniteQueryKey()
         }),
-      onError: (error) => toast.error(error.message)
+      onError: (error) => {
+        toast.error(error.message)
+      }
     })
   )
 

@@ -37,8 +37,12 @@ const CommentMenu = () => {
 
   const deleteCommentMutation = useMutation(
     trpc.comments.delete.mutationOptions({
-      onSuccess: () => toast.success(t('blog.comments.deleted-a-comment')),
-      onError: (error) => toast.error(error.message),
+      onSuccess: () => {
+        toast.success(t('blog.comments.deleted-a-comment'))
+      },
+      onError: (error) => {
+        toast.error(error.message)
+      },
       onSettled: () => {
         queryClient.invalidateQueries({
           queryKey: trpc.comments.getInfiniteComments.infiniteQueryKey()

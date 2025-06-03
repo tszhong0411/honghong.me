@@ -26,12 +26,16 @@ const DeleteButton = () => {
 
   const guestbookMutation = useMutation(
     trpc.guestbook.delete.mutationOptions({
-      onSuccess: () => toast.success(t('guestbook.delete-message-successfully')),
+      onSuccess: () => {
+        toast.success(t('guestbook.delete-message-successfully'))
+      },
       onSettled: () =>
         queryClient.invalidateQueries({
           queryKey: trpc.guestbook.getInfiniteMessages.infiniteQueryKey()
         }),
-      onError: (error) => toast.error(error.message)
+      onError: (error) => {
+        toast.error(error.message)
+      }
     })
   )
 
