@@ -1,4 +1,4 @@
-import { SegmentGroup as SegmentGroupPrimitive } from '@ark-ui/react'
+import { SegmentGroup as SegmentGroupPrimitive } from '@ark-ui/react/segment-group'
 import { cn } from '@tszhong0411/utils'
 
 type SegmentGroupProps = React.ComponentProps<typeof SegmentGroupPrimitive.Root>

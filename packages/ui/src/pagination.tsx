@@ -1,4 +1,4 @@
-import { Pagination as PaginationPrimitive } from '@ark-ui/react'
+import { Pagination as PaginationPrimitive } from '@ark-ui/react/pagination'
 import { cn } from '@tszhong0411/utils'
 import { ChevronLeftIcon, ChevronRightIcon, MoreHorizontalIcon } from 'lucide-react'
 

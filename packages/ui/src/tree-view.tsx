@@ -1,4 +1,4 @@
-import { TreeView as TreeViewPrimitive } from '@ark-ui/react'
+import { TreeView as TreeViewPrimitive } from '@ark-ui/react/tree-view'
 import { cn } from '@tszhong0411/utils'
 import { ChevronRightIcon, FileIcon, FolderIcon } from 'lucide-react'
 
@@ -74,4 +74,4 @@ const TreeViewNode = (props: TreeViewNodeProps) => {
 }
 
 export { type Node, TreeView, TreeViewNode }
-export { createTreeCollection } from '@ark-ui/react'
+export { createTreeCollection } from '@ark-ui/react/tree-view'
