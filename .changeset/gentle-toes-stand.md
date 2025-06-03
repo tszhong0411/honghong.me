@@ -2,4 +2,4 @@
 '@tszhong0411/prettier-plugin-package-json': major
 ---
 
-- Migrate from `tsup` to `rslib`
+Migrate from `tsup` to `rslib`

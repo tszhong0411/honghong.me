@@ -2,7 +2,8 @@
 '@tszhong0411/ui': major
 ---
 
-- Migrate from `tsup` to `rslib`
+Migrate from `tsup` to `rslib`
+
 - Update the image in aspect ratio demo
 - Update to latest styles of shadcn/ui
 - Update to `cva` beta
