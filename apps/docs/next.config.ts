@@ -33,8 +33,6 @@ const config: NextConfig = {
     ]
   },
 
-  transpilePackages: ['@tszhong0411/*'],
-
   // eslint-disable-next-line @typescript-eslint/require-await -- must be async
   async headers() {
     return NextConfigHeaders
