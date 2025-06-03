@@ -1,6 +1,7 @@
 import { type Context, defineCollection, defineConfig, type Meta } from '@content-collections/core'
 import { compileMDX } from '@content-collections/mdx'
 import { getTOC, rehypePlugins, remarkPlugins } from '@tszhong0411/mdx-plugins'
+import { z } from 'zod'
 
 type BaseDoc = {
   _meta: Meta
@@ -31,7 +32,7 @@ const posts = defineCollection({
   name: 'Post',
   directory: 'src/content/blog',
   include: '**/*.mdx',
-  schema: (z) => ({
+  schema: z.object({
     title: z.string(),
     date: z.string(),
     modifiedTime: z.string(),
@@ -44,7 +45,7 @@ const projects = defineCollection({
   name: 'Project',
   directory: 'src/content/projects',
   include: '**/*.mdx',
-  schema: (z) => ({
+  schema: z.object({
     name: z.string(),
     description: z.string(),
     homepage: z.string().optional(),

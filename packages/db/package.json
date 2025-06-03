@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@tszhong0411/env": "workspace:*",
-    "drizzle-orm": "^0.41.0"
+    "drizzle-orm": "^0.44.1"
   },
   "peerDependencies": {
     "pg": "^8"
@@ -34,9 +34,9 @@
   "devDependencies": {
     "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
-    "@types/node": "^22.14.0",
-    "drizzle-kit": "^0.30.6",
-    "pg": "^8.14.1"
+    "@types/node": "^22.15.29",
+    "drizzle-kit": "^0.31.1",
+    "pg": "^8.16.0"
   },
   "lint-staged": {
     "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix"

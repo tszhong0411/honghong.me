@@ -2,7 +2,7 @@
 
 import {
   SiCloudflare,
-  SiCss3,
+  SiCss,
   SiDrizzle,
   SiFigma,
   SiFirebase,
@@ -39,7 +39,7 @@ const StacksCard = () => {
       </div>
       <Marquee gap='20px' className='py-4' fade pauseOnHover>
         <SiHtml5 className='size-10' />
-        <SiCss3 className='size-10' />
+        <SiCss className='size-10' />
         <SiJavascript className='size-10' />
         <SiTypescript className='size-10' />
         <SiFigma className='size-10' />

@@ -87,9 +87,6 @@
   },
   "packageManager": "pnpm@10.11.1",
   "pnpm": {
-    "overrides": {
-      "prettier": "3.5.3"
-    },
     "onlyBuiltDependencies": [
       "@parcel/watcher",
       "@tailwindcss/oxide",
