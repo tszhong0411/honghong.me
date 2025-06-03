@@ -1,9 +1,0 @@
-{
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "./tsconfig.json",
-  {{#if isReactPackage}}
-  "include": ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.js", "**/*.jsx", "**/*.mjs"]
-  {{else}}
-  "include": ["**/*.ts", "**/*.mts", "**/*.js", "**/*.mjs"]
-  {{/if}}
-}

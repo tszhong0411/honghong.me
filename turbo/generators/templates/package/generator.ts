@@ -93,12 +93,6 @@ export const packageGenerator = (plop: PlopTypes.NodePlopAPI): void => {
           path: 'packages/{{ name }}/tsconfig.json',
           templateFile: 'templates/package/tsconfig.json.hbs'
         },
-        // Add tsconfig.lint.json
-        {
-          type: 'add',
-          path: 'packages/{{ name }}/tsconfig.lint.json',
-          templateFile: 'templates/package/tsconfig.lint.json.hbs'
-        },
         // Add index.ts
         {
           type: 'add',
