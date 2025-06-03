@@ -10,6 +10,7 @@
       "import": "./src/index.ts"
     }
   },
+  "main": "./src/index.ts",
   "scripts": {
     "clean": "rm -rf .turbo",
     "lint": "eslint . --max-warnings 0",

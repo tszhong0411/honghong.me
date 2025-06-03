@@ -11,6 +11,7 @@
       "types": "./dist/index.d.ts"
     }
   },
+  "main": "./dist/index.js",
   "scripts": {
     "build": "rslib build",
     "clean": "rm -rf .turbo dist",
@@ -19,6 +20,7 @@
     "lint:fix": "eslint --fix .",
     "type-check": "tsc --noEmit"
   },
+  "types": "./dist/index.d.ts",
   "dependencies": {
     "@shikijs/rehype": "^3.2.1",
     "@shikijs/transformers": "^3.2.1",

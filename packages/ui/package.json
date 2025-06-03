@@ -21,6 +21,7 @@
     },
     "./styles/*": "./styles/*"
   },
+  "main": "./dist/index.js",
   "files": [
     "dist",
     "styles"
@@ -36,6 +37,7 @@
   "sideEffects": [
     "./styles/*.css"
   ],
+  "types": "./dist/index.d.ts",
   "dependencies": {
     "@ark-ui/react": "^5.5.0",
     "@dnd-kit/core": "^6.3.1",
