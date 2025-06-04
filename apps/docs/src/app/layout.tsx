@@ -3,8 +3,7 @@ import type { Metadata, Viewport } from 'next'
 import '@/styles/globals.css'
 
 import { cn } from '@tszhong0411/utils'
-import { GeistMono } from 'geist/font/mono'
-import { GeistSans } from 'geist/font/sans'
+import { Geist, Geist_Mono } from 'next/font/google'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
 
 import { SITE_DESCRIPTION, SITE_KEYWORDS, SITE_TITLE, SITE_URL } from '@/lib/constants'
@@ -104,13 +103,24 @@ export const viewport: Viewport = {
   ]
 }
 
+const fontSans = Geist({
+  subsets: ['latin'],
+  variable: '--font-sans'
+})
+
+const fontMono = Geist_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  weight: '400'
+})
+
 const Layout = (props: LayoutProps) => {
   const { children } = props
 
   return (
     <html
       lang='en-US'
-      className={cn(GeistSans.variable, GeistMono.variable)}
+      className={cn(fontSans.variable, fontMono.variable)}
       suppressHydrationWarning
     >
       <body>

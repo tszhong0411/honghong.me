@@ -24,7 +24,6 @@
     "@tszhong0411/utils": "workspace:*",
     "cva": "1.0.0-beta.4",
     "date-fns": "^4.1.0",
-    "geist": "^1.4.2",
     "hast-util-to-jsx-runtime": "^2.3.6",
     "lucide-react": "^0.513.0",
     "next": "^15.3.3",

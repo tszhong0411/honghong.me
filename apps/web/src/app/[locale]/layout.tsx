@@ -9,8 +9,7 @@ import { routing } from '@tszhong0411/i18n/routing'
 import { getTranslations, setRequestLocale } from '@tszhong0411/i18n/server'
 import { cn } from '@tszhong0411/utils'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import { GeistMono } from 'geist/font/mono'
-import { GeistSans } from 'geist/font/sans'
+import { Geist, Geist_Mono } from 'next/font/google'
 import { notFound } from 'next/navigation'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
 
@@ -126,6 +125,17 @@ export const viewport: Viewport = {
   ]
 }
 
+const fontSans = Geist({
+  subsets: ['latin'],
+  variable: '--font-sans'
+})
+
+const fontMono = Geist_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  weight: '400'
+})
+
 const Layout = async (props: LayoutProps) => {
   const { children } = props
   const { locale } = await props.params
@@ -139,7 +149,7 @@ const Layout = async (props: LayoutProps) => {
   return (
     <html
       lang={locale}
-      className={cn(GeistSans.variable, GeistMono.variable)}
+      className={cn(fontSans.variable, fontMono.variable)}
       suppressHydrationWarning
     >
       <body className='relative flex min-h-screen flex-col'>
