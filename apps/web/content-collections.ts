@@ -60,7 +60,7 @@ const pages = defineCollection({
   name: 'Page',
   directory: 'src/content/pages',
   include: '**/*.mdx',
-  schema: () => ({}),
+  schema: z.object({}),
   transform
 })
 
