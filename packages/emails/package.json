@@ -18,15 +18,15 @@
     "lint:fix": "eslint --fix ."
   },
   "dependencies": {
-    "@react-email/components": "^0.0.36",
+    "@react-email/components": "^0.0.41",
     "react": "^19.1.0",
-    "react-email": "^4.0.4"
+    "react-email": "^4.0.16"
   },
   "devDependencies": {
     "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
-    "@types/node": "^22.14.0",
-    "@types/react": "^19.1.1"
+    "@types/node": "^22.15.29",
+    "@types/react": "^19.1.6"
   },
   "lint-staged": {
     "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix"

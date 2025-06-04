@@ -1,5 +1,5 @@
 import {
-  SiCss3,
+  SiCss,
   SiHtml5,
   SiJavascript,
   SiMarkdown,
@@ -30,7 +30,7 @@ const icons: Icon[] = [
   },
   {
     language: ['css'],
-    icon: SiCss3
+    icon: SiCss
   },
   {
     language: ['jsx', 'tsx'],

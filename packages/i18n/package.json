@@ -27,9 +27,9 @@
   "devDependencies": {
     "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
-    "@types/react": "^19.1.1",
-    "next": "^15.3.0",
-    "next-intl": "^4.0.2"
+    "@types/react": "^19.1.6",
+    "next": "^15.3.3",
+    "next-intl": "^4.1.0"
   },
   "lint-staged": {
     "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix"
