@@ -3,7 +3,6 @@
   "dictionaries": ["software-terms", "npm", "fullstack", "redis"],
   "files": ["**", ".vscode/**", ".github/**"],
   "ignorePaths": ["pnpm-lock.yaml", ".pnpm-store/", "packages/db/src/migrations/**"],
-  "ignoreRegExpList": ["apiKey='[a-zA-Z0-9-]{32}'"],
   "import": ["@cspell/dict-redis/cspell-ext.json"],
   "useGitignore": true,
   "version": "0.2",
