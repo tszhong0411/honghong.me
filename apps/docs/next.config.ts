@@ -13,6 +13,8 @@ const config: NextConfig = {
     optimizePackageImports: ['shiki']
   },
 
+  productionBrowserSourceMaps: true,
+
   eslint: {
     ignoreDuringBuilds: !!process.env.CI
   },
