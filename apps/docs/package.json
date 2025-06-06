@@ -17,8 +17,8 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@faker-js/faker": "^9.8.0",
     "@hookform/resolvers": "^5.0.1",
+    "@ngneat/falso": "^7.4.0",
     "@tanstack/react-table": "^8.21.3",
     "@tszhong0411/ui": "workspace:*",
     "@tszhong0411/utils": "workspace:*",

@@ -1,6 +1,14 @@
 'use client'
 
-import { faker } from '@faker-js/faker'
+import {
+  rand,
+  randEmail,
+  randFullName,
+  randNumber,
+  randRecentDate,
+  randUuid,
+  seed
+} from '@ngneat/falso'
 import { type ColumnDef } from '@tanstack/react-table'
 import {
   Button,
@@ -74,15 +82,15 @@ const DataTableDemo = () => {
   })
 
   const getPayments = () => {
-    faker.seed(1)
+    seed('data-table-demo')
 
-    const allPayments = Array.from({ length: 1000 }, () => ({
-      id: faker.string.uuid(),
-      name: `${faker.person.firstName()} ${faker.person.lastName()}`,
-      email: faker.internet.email(),
-      status: faker.helpers.arrayElement(['success', 'processing', 'failed']),
-      amount: faker.number.int({ min: 0, max: 1000 }),
-      createdAt: faker.date.recent({ days: 30 })
+    const allPayments: Payment[] = Array.from({ length: 1000 }, () => ({
+      id: randUuid(),
+      name: randFullName(),
+      email: randEmail(),
+      status: rand(['success', 'processing', 'failed']),
+      amount: randNumber({ min: 0, max: 1000 }),
+      createdAt: randRecentDate({ days: 30 })
     }))
 
     let filtered = allPayments
