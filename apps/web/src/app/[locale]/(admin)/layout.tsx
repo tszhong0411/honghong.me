@@ -9,7 +9,6 @@ type LayoutProps = {
   params: Promise<{
     locale: string
   }>
-  searchParams: Promise<Record<string, string | string[] | undefined>>
   children: React.ReactNode
 }
 
