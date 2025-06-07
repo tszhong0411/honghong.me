@@ -1,7 +1,6 @@
 import { getErrorMessage } from '@tszhong0411/utils'
 
 type PageProps = {
-  params: Promise<Record<string, string | string[] | undefined>>
   searchParams: Promise<Record<string, string | string[] | undefined>>
 }
 
