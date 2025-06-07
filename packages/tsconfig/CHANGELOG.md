@@ -1,5 +1,11 @@
 # @tszhong0411/tsconfig
 
+## 1.0.0
+
+### Major Changes
+
+- 0a57faf: Update package.json
+
 ## 0.0.13
 
 ### Patch Changes
