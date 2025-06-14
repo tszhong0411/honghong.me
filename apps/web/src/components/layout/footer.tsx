@@ -15,7 +15,7 @@ import NowPlaying from './now-playing'
 
 const Footer = () => {
   const trpc = useTRPC()
-  const { status, data } = useQuery(trpc.github.getRepoStars.queryOptions())
+  const { status, data } = useQuery(trpc.github.getRepoStarCount.queryOptions())
   const t = useTranslations()
 
   return (

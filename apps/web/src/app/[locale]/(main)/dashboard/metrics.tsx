@@ -29,7 +29,7 @@ const Metrics = () => {
   const trpc = useTRPC()
 
   const youtubeQuery = useQuery(trpc.youtube.get.queryOptions())
-  const githubQuery = useQuery(trpc.github.get.queryOptions())
+  const githubQuery = useQuery(trpc.github.getStats.queryOptions())
   const likesQuery = useQuery(trpc.likes.getCount.queryOptions())
   const viewsQuery = useQuery(trpc.views.getCount.queryOptions())
   const wakatimeQuery = useQuery(trpc.wakatime.get.queryOptions())
