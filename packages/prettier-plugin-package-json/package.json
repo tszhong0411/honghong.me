@@ -3,15 +3,15 @@
   "version": "0.0.4",
   "description": "A prettier plugin using prettier-package-json",
   "license": "MIT",
-  "author": "tszhong0411 <me@honghong.me> (https://github.com/tszhong0411/)",
-  "homepage": "https://github.com/tszhong0411/honghong.me#readme",
+  "author": "tszhong0411 <me@nelsonlai.me> (https://github.com/tszhong0411/)",
+  "homepage": "https://github.com/tszhong0411/nelsonlai.me#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tszhong0411/honghong.me.git",
+    "url": "git+https://github.com/tszhong0411/nelsonlai.me.git",
     "directory": "packages/prettier-plugin-package-json"
   },
   "bugs": {
-    "url": "https://github.com/tszhong0411/honghong.me/issues"
+    "url": "https://github.com/tszhong0411/nelsonlai.me/issues"
   },
   "type": "module",
   "main": "./dist/index.js",

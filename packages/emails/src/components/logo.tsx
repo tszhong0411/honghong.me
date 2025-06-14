@@ -4,7 +4,7 @@ const Logo = () => {
   return (
     <Section className='mb-6'>
       <Img
-        src='https://honghong.me/images/avatar.png'
+        src='https://nelsonlai.me/images/avatar.png'
         alt="Nelson Lai's logo"
         width='48'
         height='48'

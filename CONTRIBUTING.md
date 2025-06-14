@@ -1,6 +1,6 @@
-# Contributing to honghong.me
+# Contributing to nelsonlai.me
 
-Welcome to the honghong.me repository! We're glad you're interested in contributing to our Next.js blog project. By contributing, you help make our project better and more useful for everyone. Below are some guidelines to get you started.
+Welcome to the nelsonlai.me repository! We're glad you're interested in contributing to our Next.js blog project. By contributing, you help make our project better and more useful for everyone. Below are some guidelines to get you started.
 
 ## Table of Contents
 
@@ -14,7 +14,7 @@ Welcome to the honghong.me repository! We're glad you're interested in contribut
 
 ## Issues
 
-If you encounter any issues, have suggestions, or want to report a bug, feel free to [create an issue](https://github.com/tszhong0411/honghong.me/issues). When creating an issue, please include a clear and descriptive title, along with relevant details about the problem or suggestion. This will help us understand and address the issue more effectively.
+If you encounter any issues, have suggestions, or want to report a bug, feel free to [create an issue](https://github.com/tszhong0411/nelsonlai.me/issues). When creating an issue, please include a clear and descriptive title, along with relevant details about the problem or suggestion. This will help us understand and address the issue more effectively.
 
 ## Pull Requests
 
@@ -37,7 +37,7 @@ To set up the project locally, follow these steps:
 
 ```bash
 git clone <your-forked-repo-url>
-cd honghong.me
+cd nelsonlai.me
 ```
 
 3. Copy the `.env.example` file to `.env.local`:
@@ -142,4 +142,4 @@ pnpm lint:fix
 pnpm check
 ```
 
-Make sure your changes are well-tested and your code follows best practices. Thank you for contributing to honghong.me!
+Make sure your changes are well-tested and your code follows best practices. Thank you for contributing to nelsonlai.me!

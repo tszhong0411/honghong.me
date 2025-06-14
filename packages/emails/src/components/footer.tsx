@@ -8,13 +8,13 @@ const Footer = () => {
         <Row className='mt-4' align='left' width='auto'>
           <Column className='pr-6 align-middle'>
             <Link href='https://x.com/tszhong0411' className='text-xl text-black'>
-              <Img src='https://honghong.me/images/email/x.png' alt='X' width={22} height={22} />
+              <Img src='https://nelsonlai.me/images/email/x.png' alt='X' width={22} height={22} />
             </Link>
           </Column>
           <Column className='align-middle'>
-            <Link href='https://github.com/tszhong0411/honghong.me' className='text-xl text-black'>
+            <Link href='https://github.com/tszhong0411/nelsonlai.me' className='text-xl text-black'>
               <Img
-                src='https://honghong.me/images/email/github.png'
+                src='https://nelsonlai.me/images/email/github.png'
                 alt='GitHub'
                 width={22}
                 height={22}

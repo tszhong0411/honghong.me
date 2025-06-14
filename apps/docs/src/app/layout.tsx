@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     creator: '@tszhong0411',
     images: [
       {
-        url: 'https://docs.honghong.me/images/og.png',
+        url: 'https://docs.nelsonlai.me/images/og.png',
         width: 1200,
         height: 630,
         alt: SITE_DESCRIPTION
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     locale: 'en-US',
     images: [
       {
-        url: 'https://docs.honghong.me/images/og.png',
+        url: 'https://docs.nelsonlai.me/images/og.png',
         width: 1200,
         height: 630,
         alt: SITE_DESCRIPTION,

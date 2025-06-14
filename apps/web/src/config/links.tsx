@@ -78,7 +78,7 @@ export const FOOTER_LINKS = [
       { href: '/guestbook', key: 'guestbook' },
       { href: '/uses', key: 'uses' },
       { href: '/projects', key: 'projects' },
-      { href: 'https://links.honghong.me', key: 'links' }
+      { href: 'https://links.nelsonlai.me', key: 'links' }
     ]
   },
   {

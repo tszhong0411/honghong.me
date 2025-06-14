@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://honghong.me">
+  <a href="https://nelsonlai.me">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="assets/dark-header.png">
       <img alt="Project Cover" src="assets/light-header.png">
@@ -7,12 +7,12 @@
   </a>
 
   <h1 align="center">
-    honghong.me
+    nelsonlai.me
   </h1>
 
   <img src="https://img.shields.io/badge/Next.js-000000.svg?style=for-the-badge&logo=Next.js&labelColor=000" alt="Framework" />
-  <img src="https://img.shields.io/github/languages/top/tszhong0411/honghong.me?style=for-the-badge&labelColor=000" alt="Language" />
-  <img src="https://img.shields.io/github/license/tszhong0411/honghong.me?style=for-the-badge&labelColor=000" alt="License" />
+  <img src="https://img.shields.io/github/languages/top/tszhong0411/nelsonlai.me?style=for-the-badge&labelColor=000" alt="Language" />
+  <img src="https://img.shields.io/github/license/tszhong0411/nelsonlai.me?style=for-the-badge&labelColor=000" alt="License" />
 </div>
 
 Welcome to the monorepo of my personal blog! This repository houses the code for my blog, where I share my thoughts, projects, and insights. Feel free to explore and get inspired.

@@ -1,10 +1,10 @@
 {
   "private": true,
   "name": "honghong-me",
-  "author": "tszhong0411 <me@honghong.me> (https://github.com/tszhong0411/)",
+  "author": "tszhong0411 <me@nelsonlai.me> (https://github.com/tszhong0411/)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tszhong0411/honghong.me.git"
+    "url": "git+https://github.com/tszhong0411/nelsonlai.me.git"
   },
   "type": "module",
   "scripts": {

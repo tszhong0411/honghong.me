@@ -30,7 +30,7 @@ const config: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'honghong.me'
+        hostname: 'nelsonlai.me'
       }
     ]
   },

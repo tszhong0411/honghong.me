@@ -6,37 +6,37 @@ const reviews = [
     name: 'Alice',
     username: '@alice',
     body: 'This product exceeded all my expectations. Highly recommended!',
-    img: 'https://honghong.me/api/avatar/alice'
+    img: 'https://nelsonlai.me/api/avatar/alice'
   },
   {
     name: 'Bob',
     username: '@bob',
     body: 'A fantastic experience from start to finish. Will definitely use it again.',
-    img: 'https://honghong.me/api/avatar/bob'
+    img: 'https://nelsonlai.me/api/avatar/bob'
   },
   {
     name: 'Charlie',
     username: '@charlie',
     body: "Absolutely phenomenal! The best I've ever used.",
-    img: 'https://honghong.me/api/avatar/charlie'
+    img: 'https://nelsonlai.me/api/avatar/charlie'
   },
   {
     name: 'Mary',
     username: '@mary',
     body: "I'm thoroughly impressed. This is a game-changer.",
-    img: 'https://honghong.me/api/avatar/mary'
+    img: 'https://nelsonlai.me/api/avatar/mary'
   },
   {
     name: 'Evan',
     username: '@evan',
     body: 'Remarkable quality and outstanding service. Five stars!',
-    img: 'https://honghong.me/api/avatar/evan'
+    img: 'https://nelsonlai.me/api/avatar/evan'
   },
   {
     name: 'Fiona',
     username: '@fiona',
     body: "I can't believe how good this is. Absolutely worth every penny.",
-    img: 'https://honghong.me/api/avatar/fiona'
+    img: 'https://nelsonlai.me/api/avatar/fiona'
   }
 ]
 

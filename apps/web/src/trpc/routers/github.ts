@@ -60,6 +60,6 @@ export const githubRouter = createTRPCRouter({
       username: GITHUB_USERNAME
     })
 
-    return repos.find((repo) => repo.name === 'honghong.me')?.stargazers_count ?? 0
+    return repos.find((repo) => repo.name === 'nelsonlai.me')?.stargazers_count ?? 0
   })
 })
