@@ -39,13 +39,20 @@ export const generateMetadata = async (
   const t = await getTranslations({ locale, namespace: 'about' })
   const title = t('title')
   const description = t('description')
-  const url = getLocalizedPath({ slug: '/about', locale })
+  const slug = '/about'
+  const url = getLocalizedPath({ slug, locale, absolute: false })
 
   return {
     title,
     description,
     alternates: {
-      canonical: url
+      canonical: url,
+      languages: {
+        ...Object.fromEntries(
+          i18n.locales.map((l) => [l, getLocalizedPath({ slug, locale: l, absolute: false })])
+        ),
+        'x-default': getLocalizedPath({ slug, locale: i18n.defaultLocale, absolute: false })
+      }
     },
     openGraph: {
       ...previousOpenGraph,
@@ -68,7 +75,7 @@ const Page = async (props: PageProps) => {
   const t = await getTranslations()
   const title = t('about.title')
   const description = t('about.description')
-  const url = `${SITE_URL}${getLocalizedPath({ slug: '/about', locale })}`
+  const url = getLocalizedPath({ slug: '/about', locale, absolute: true })
   const page = allPages.find((p) => p.slug === 'about' && p.locale === locale)
 
   const jsonLd: WithContext<AboutPage> = {

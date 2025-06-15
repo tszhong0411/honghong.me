@@ -2,6 +2,7 @@ import type { Metadata, ResolvingMetadata } from 'next'
 import type { Article, WithContext } from 'schema-dts'
 
 import { flags } from '@tszhong0411/env'
+import { i18n } from '@tszhong0411/i18n/config'
 import { setRequestLocale } from '@tszhong0411/i18n/server'
 import { allPosts } from 'content-collections'
 import { notFound } from 'next/navigation'
@@ -50,13 +51,27 @@ export const generateMetadata = async (
   const ISOModifiedTime = new Date(modifiedTime).toISOString()
   const previousTwitter = (await parent).twitter ?? {}
   const previousOpenGraph = (await parent).openGraph ?? {}
-  const url = getLocalizedPath({ slug: `/blog/${slug}`, locale })
+  const fullSlug = `/blog/${slug}`
+  const url = getLocalizedPath({ slug: fullSlug, locale, absolute: false })
 
   return {
     title: title,
     description: summary,
     alternates: {
-      canonical: url
+      canonical: url,
+      languages: {
+        ...Object.fromEntries(
+          i18n.locales.map((l) => [
+            l,
+            getLocalizedPath({ slug: fullSlug, locale: l, absolute: false })
+          ])
+        ),
+        'x-default': getLocalizedPath({
+          slug: fullSlug,
+          locale: i18n.defaultLocale,
+          absolute: false
+        })
+      }
     },
     openGraph: {
       ...previousOpenGraph,
@@ -98,8 +113,7 @@ const Page = async (props: PageProps) => {
   setRequestLocale(locale)
 
   const post = allPosts.find((p) => p.slug === slug && p.locale === locale)
-  const localizedPath = getLocalizedPath({ slug: `/blog/${slug}`, locale })
-  const url = `${SITE_URL}${localizedPath}`
+  const url = getLocalizedPath({ slug: `/blog/${slug}`, locale, absolute: true })
 
   if (!post) {
     notFound()

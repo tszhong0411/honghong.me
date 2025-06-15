@@ -3,7 +3,6 @@ import type { MetadataRoute } from 'next'
 import { supportedLanguages } from '@tszhong0411/i18n/config'
 import { allPages, allPosts, allProjects } from 'content-collections'
 
-import { SITE_URL } from '@/lib/constants'
 import { getLocalizedPath } from '@/utils/get-localized-path'
 
 const sitemap = (): MetadataRoute.Sitemap => {
@@ -20,7 +19,7 @@ const sitemap = (): MetadataRoute.Sitemap => {
 
   return supportedLanguages.flatMap((locale) => {
     return routes.map((route) => ({
-      url: `${SITE_URL}${getLocalizedPath({ slug: route, locale: locale.code })}`,
+      url: getLocalizedPath({ slug: route, locale: locale.code, absolute: true }),
       lastModified: new Date()
     }))
   })

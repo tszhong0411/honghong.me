@@ -1,6 +1,7 @@
 import type { Metadata, ResolvingMetadata } from 'next'
 import type { SoftwareApplication, WithContext } from 'schema-dts'
 
+import { i18n } from '@tszhong0411/i18n/config'
 import { setRequestLocale } from '@tszhong0411/i18n/server'
 import { allProjects } from 'content-collections'
 import { notFound } from 'next/navigation'
@@ -41,13 +42,27 @@ export const generateMetadata = async (
   const { name, description } = project
   const previousTwitter = (await parent).twitter ?? {}
   const previousOpenGraph = (await parent).openGraph ?? {}
-  const url = getLocalizedPath({ slug: `/projects/${slug}`, locale })
+  const fullSlug = `/projects/${slug}`
+  const url = getLocalizedPath({ slug: fullSlug, locale, absolute: false })
 
   return {
     title: name,
     description: description,
     alternates: {
-      canonical: url
+      canonical: url,
+      languages: {
+        ...Object.fromEntries(
+          i18n.locales.map((l) => [
+            l,
+            getLocalizedPath({ slug: fullSlug, locale: l, absolute: false })
+          ])
+        ),
+        'x-default': getLocalizedPath({
+          slug: fullSlug,
+          locale: i18n.defaultLocale,
+          absolute: false
+        })
+      }
     },
     openGraph: {
       ...previousOpenGraph,
@@ -85,8 +100,7 @@ const Page = async (props: PageProps) => {
   setRequestLocale(locale)
 
   const project = allProjects.find((p) => p.slug === slug && p.locale === locale)
-  const localizedPath = getLocalizedPath({ slug: `/projects/${slug}`, locale })
-  const url = `${SITE_URL}${localizedPath}`
+  const url = getLocalizedPath({ slug: `/projects/${slug}`, locale, absolute: true })
 
   if (!project) {
     notFound()

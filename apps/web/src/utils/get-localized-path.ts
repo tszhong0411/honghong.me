@@ -1,14 +1,23 @@
 import { i18n } from '@tszhong0411/i18n/config'
 
+import { SITE_URL } from '@/lib/constants'
+
 type LocalizedDocument = {
   slug: string
   locale: string
+  absolute: boolean
 }
 
 export const getLocalizedPath = (doc: LocalizedDocument) => {
-  const locale = doc.locale
+  const { slug, locale, absolute } = doc
 
-  const localePath = locale === i18n.defaultLocale ? '' : `/${locale}`
+  let localePath: string
 
-  return `${localePath}${doc.slug}`
+  if (locale === i18n.defaultLocale) {
+    localePath = absolute ? SITE_URL : '/'
+  } else {
+    localePath = `/${locale}`
+  }
+
+  return `${localePath}${slug}`
 }

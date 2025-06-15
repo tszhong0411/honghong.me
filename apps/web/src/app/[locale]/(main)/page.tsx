@@ -33,10 +33,17 @@ export const generateStaticParams = (): Array<{ locale: string }> => {
 
 export const generateMetadata = async (props: PageProps): Promise<Metadata> => {
   const { locale } = await props.params
+  const slug = ''
 
   return {
     alternates: {
-      canonical: getLocalizedPath({ slug: '', locale })
+      canonical: getLocalizedPath({ slug, locale, absolute: false }),
+      languages: {
+        ...Object.fromEntries(
+          i18n.locales.map((l) => [l, getLocalizedPath({ slug, locale: l, absolute: false })])
+        ),
+        'x-default': getLocalizedPath({ slug, locale: i18n.defaultLocale, absolute: false })
+      }
     }
   }
 }
@@ -46,7 +53,7 @@ const Page = async (props: PageProps) => {
   setRequestLocale(locale)
   const t = await getTranslations('metadata')
 
-  const url = `${SITE_URL}${getLocalizedPath({ slug: '', locale })}`
+  const url = getLocalizedPath({ slug: '', locale, absolute: true })
 
   const jsonLd: WithContext<WebSite> = {
     '@context': 'https://schema.org',
