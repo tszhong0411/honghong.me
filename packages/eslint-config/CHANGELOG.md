@@ -1,5 +1,15 @@
 # @tszhong0411/eslint-config
 
+## 0.1.37
+
+### Patch Changes
+
+- 399a368: Migrate from `tsup` to `rslib`
+
+  - Remove `eslint-plugin-tailwindcss` completely
+
+- 399a368: Upgrade next to 15.3
+
 ## 0.1.36
 
 ### Patch Changes

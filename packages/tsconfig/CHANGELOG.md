@@ -1,5 +1,12 @@
 # @tszhong0411/tsconfig
 
+## 0.0.14
+
+### Patch Changes
+
+- 399a368: Update package.json
+- ebe1037: Remove 'next' as a peer and dev dependency
+
 ## 0.0.13
 
 ### Patch Changes
