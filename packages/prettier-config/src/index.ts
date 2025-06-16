@@ -21,7 +21,6 @@ const tszhong0411 = (options: Options = {}): Options => {
     trailingComma: 'none',
     endOfLine: 'lf',
     plugins: [
-      'prettier-plugin-prisma',
       'prettier-plugin-sort-json',
       '@tszhong0411/prettier-plugin-package-json',
       ...plugins,
