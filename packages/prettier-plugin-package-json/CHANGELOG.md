@@ -1,5 +1,11 @@
 # @tszhong0411/prettier-plugin-package-json
 
+## 1.0.0
+
+### Major Changes
+
+- 0a57faf: Migrate from `tsup` to `rslib`
+
 ## 0.0.4
 
 ### Patch Changes
