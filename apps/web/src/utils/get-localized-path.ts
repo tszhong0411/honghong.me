@@ -16,7 +16,7 @@ export const getLocalizedPath = (doc: LocalizedDocument) => {
   if (locale === i18n.defaultLocale) {
     localePath = absolute ? SITE_URL : '/'
   } else {
-    localePath = `/${locale}`
+    localePath = absolute ? `${SITE_URL}/${locale}` : `/${locale}`
   }
 
   return `${localePath}${slug}`
