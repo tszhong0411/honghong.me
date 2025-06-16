@@ -20,16 +20,7 @@
     "react-library.json"
   ],
   "peerDependencies": {
-    "next": "^15",
     "typescript": "5.x"
-  },
-  "peerDependenciesMeta": {
-    "next": {
-      "optional": true
-    }
-  },
-  "devDependencies": {
-    "next": "^15.3.3"
   },
   "publishConfig": {
     "access": "public"
