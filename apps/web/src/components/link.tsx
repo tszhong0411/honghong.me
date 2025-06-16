@@ -11,6 +11,7 @@ const Link = (props: LinkProps) => {
 
   if (href.startsWith('http')) {
     return (
+      // eslint-disable-next-line no-restricted-syntax -- it's an external link
       <a target='_blank' rel='noopener noreferrer' href={href} {...rest}>
         {children}
       </a>

@@ -123,6 +123,7 @@ const GetInTouch = () => {
               {t('homepage.get-in-touch.description')}
             </p>
             <div className='my-8'>
+              {/* eslint-disable-next-line no-restricted-syntax -- it's mailto link */}
               <a
                 href='mailto:me@nelsonlai.me'
                 className='bg-email-button rounded-full px-4 py-2 text-sm text-white'

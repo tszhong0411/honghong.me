@@ -49,12 +49,12 @@ const Header = () => {
         duration: 0.3
       }}
     >
-      <a
+      <Link
         href='#skip-nav'
         className='bg-background focus-visible:ring-ring rounded-xs shadow-xs focus-visible:ring-3 fixed left-4 top-4 -translate-y-20 border p-2 font-medium transition-transform focus-visible:translate-y-0 focus-visible:ring-offset-2'
       >
         <span>{t('layout.skip-to-main-content')}</span>
-      </a>
+      </Link>
       <Link
         href='/'
         className='flex items-center justify-center gap-1'
