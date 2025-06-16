@@ -23,6 +23,11 @@
     "next": "^15",
     "typescript": "5.x"
   },
+  "peerDependenciesMeta": {
+    "next": {
+      "optional": true
+    }
+  },
   "devDependencies": {
     "next": "^15.3.3"
   },
