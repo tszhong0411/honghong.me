@@ -1,5 +1,13 @@
 # @tszhong0411/utils
 
+## 0.0.23
+
+### Patch Changes
+
+- 399a368: Migrate from `tsup` to `rslib`
+
+  - Add `get-abbreviation` utility function
+
 ## 0.0.22
 
 ### Patch Changes

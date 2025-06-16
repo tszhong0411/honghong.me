@@ -1,5 +1,14 @@
 # @tszhong0411/prettier-config
 
+## 0.0.16
+
+### Patch Changes
+
+- 399a368: Migrate from `tsup` to `rslib`
+
+  - Remove `prettier-plugin-prisma` as no longer needed
+  - @tszhong0411/prettier-plugin-package-json@1.0.0
+
 ## 0.0.15
 
 ### Patch Changes
