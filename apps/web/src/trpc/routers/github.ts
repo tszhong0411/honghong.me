@@ -13,6 +13,9 @@ const getKey = (id: string) => `github:${id}`
 export const githubRouter = createTRPCRouter({
   getStats: publicProcedure.query(async ({ ctx }) => {
     const ip = getIp(ctx.headers)
+    let stars = 0
+    let page = 1
+    const per_page = 100
 
     const { success } = await ratelimit.limit(getKey(ip))
 
@@ -22,21 +25,26 @@ export const githubRouter = createTRPCRouter({
       auth: env.GITHUB_TOKEN
     })
 
-    const { data: repos } = await octokit.request('GET /users/{username}/repos', {
-      username: GITHUB_USERNAME
-    })
+    for (;;) {
+      const response = await octokit.request('GET /users/{username}/repos', {
+        username: GITHUB_USERNAME,
+        per_page,
+        page
+      })
+
+      const repos = response.data
+      if (repos.length === 0) break
+
+      for (const repo of repos) {
+        stars += repo.stargazers_count ?? 0
+      }
+
+      page += 1
+    }
 
     const { data: user } = await octokit.request('GET /users/{username}', {
       username: GITHUB_USERNAME
     })
-
-    const stars = repos
-      .filter((repo) => {
-        return !repo.fork
-      })
-      .reduce((acc, repo) => {
-        return acc + (repo.stargazers_count ?? 0)
-      }, 0)
 
     const followers = user.followers
 
