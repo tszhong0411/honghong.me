@@ -3,3 +3,5 @@
 ---
 
 Migrate from `tsup` to `rslib`
+
+- Remove `prettier-plugin-prisma` as no longer needed
