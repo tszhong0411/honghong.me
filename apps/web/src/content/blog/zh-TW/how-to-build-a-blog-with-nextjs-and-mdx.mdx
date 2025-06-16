@@ -40,7 +40,7 @@ yarn create next-app nextjs-mdx-blog
 - `components/layout.jsx` - 將所有組件包裝在容器中（可選，用於樣式）
 - `data/blog/*.mdx` - 部落格文章
 - `lib/format-date.js` - 將日期格式化為 `MM DD, YYYY`
-- `pages/blog/[slug].jsx` - 文章頁面，使用 [動態路由](https://nextjs.org/docs/routing/dynamic-routes)
+- `pages/blog/[slug].jsx` - 文章頁面，使用 [動態路由](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes)
 
 <TreeView
   defaultExpandedValue={['components', 'data', 'data/blog', 'lib', 'pages', 'pages/blog']}
@@ -321,7 +321,7 @@ export const getStaticPaths = async () => {
 
 ## 相關連結
 
-- [getStaticPaths](https://nextjs.org/docs/basic-features/data-fetching/get-static-paths)
-- [getStaticProps](https://nextjs.org/docs/basic-features/data-fetching/get-static-props)
-- [動態路由](https://nextjs.org/docs/routing/dynamic-routes)
+- [getStaticPaths](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-paths)
+- [getStaticProps](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-props)
+- [動態路由](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes)
 - [mdx](https://mdxjs.com/)
