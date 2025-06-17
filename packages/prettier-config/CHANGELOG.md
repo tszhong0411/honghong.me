@@ -1,5 +1,11 @@
 # @tszhong0411/prettier-config
 
+## 0.0.17
+
+### Patch Changes
+
+- fd62232: Remove `prettier-plugin-sort-json` because it makes JSON files unreadable
+
 ## 0.0.16
 
 ### Patch Changes
