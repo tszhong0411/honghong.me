@@ -85,7 +85,7 @@ const Comment = (props: CommentProps) => {
             height={32}
             className='z-10 size-8 rounded-full'
           />
-          <div className='flex-1'>
+          <div className='flex-1 overflow-hidden'>
             <div className='ml-0.5 flex h-8 items-center justify-between'>
               <div className='flex items-center gap-2 text-sm'>
                 <div className='font-semibold'>{name}</div>
