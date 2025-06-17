@@ -52,6 +52,7 @@
       "dislike": "倒赞",
       "failed-to-load-comments": "无法载入评论。请刷新页面。",
       "failed-to-load-replies": "无法载入回复。请刷新页面。",
+      "highlighted-comment": "已标注评论",
       "like": "赞",
       "link-copied": "链接已复制到剪贴板",
       "need-logged-in-to-rate": "您必须登入才能评分评论",
@@ -136,7 +137,8 @@
   "dialog": {
     "sign-in": {
       "continue-with": "使用 {provider} 继续",
-      "description": "以继续使用 nelsonlai.me"
+      "description": "以继续使用 nelsonlai.me",
+      "last-used": "上次使用"
     }
   },
   "error": {

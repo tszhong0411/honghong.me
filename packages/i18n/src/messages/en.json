@@ -52,6 +52,7 @@
       "dislike": "Dislike",
       "failed-to-load-comments": "Failed to load comments. Please refresh the page.",
       "failed-to-load-replies": "Failed to load replies. Please refresh the page.",
+      "highlighted-comment": "Highlighted comment",
       "like": "Like",
       "link-copied": "Link copied to clipboard",
       "need-logged-in-to-rate": "You need to be logged in to rate comments",
@@ -136,7 +137,8 @@
   "dialog": {
     "sign-in": {
       "continue-with": "Continue with {provider}",
-      "description": "to continue to nelsonlai.me"
+      "description": "to continue to nelsonlai.me",
+      "last-used": "Last used"
     }
   },
   "error": {

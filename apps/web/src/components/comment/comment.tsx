@@ -76,7 +76,7 @@ const Comment = (props: CommentProps) => {
   return (
     <CommentProvider value={context}>
       <div ref={commentRef} className='p-2.5' data-testid={`comment-${id}`}>
-        {isHighlighted && <Badge className='mb-4'>Highlighted comment</Badge>}
+        {isHighlighted && <Badge className='mb-4'>{t('blog.comments.highlighted-comment')}</Badge>}
         <div className='flex gap-4'>
           <Image
             src={image}
