@@ -664,9 +664,6 @@ importers:
       prettier:
         specifier: 3.x
         version: 3.5.3
-      prettier-plugin-sort-json:
-        specifier: ^4.1.1
-        version: 4.1.1(prettier@3.5.3)
       prettier-plugin-tailwindcss:
         specifier: ^0.6.12
         version: 0.6.12(prettier@3.5.3)
@@ -8255,12 +8252,6 @@ packages:
   prettier-package-json@2.8.0:
     resolution: {integrity: sha512-WxtodH/wWavfw3MR7yK/GrS4pASEQ+iSTkdtSxPJWvqzG55ir5nvbLt9rw5AOiEcqqPCRM92WCtR1rk3TG3JSQ==}
     hasBin: true
-
-  prettier-plugin-sort-json@4.1.1:
-    resolution: {integrity: sha512-uJ49wCzwJ/foKKV4tIPxqi4jFFvwUzw4oACMRG2dcmDhBKrxBv0L2wSKkAqHCmxKCvj0xcCZS4jO2kSJO/tRJw==}
-    engines: {node: '>=18.0.0'}
-    peerDependencies:
-      prettier: ^3.0.0
 
   prettier-plugin-tailwindcss@0.6.12:
     resolution: {integrity: sha512-OuTQKoqNwV7RnxTPwXWzOFXy6Jc4z8oeRZYGuMpRyG3WbuR3jjXdQFK8qFBMBx8UHWdHrddARz2fgUenild6aw==}
@@ -18555,10 +18546,6 @@ snapshots:
       parse-author: 2.0.0
       sort-object-keys: 1.1.3
       sort-order: 1.1.2
-
-  prettier-plugin-sort-json@4.1.1(prettier@3.5.3):
-    dependencies:
-      prettier: 3.5.3
 
   prettier-plugin-tailwindcss@0.6.12(prettier@3.5.3):
     dependencies:
