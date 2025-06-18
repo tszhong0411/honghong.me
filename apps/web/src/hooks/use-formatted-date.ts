@@ -22,7 +22,7 @@ export const useFormattedDate = (date: Date | string, options: Options = {}) => 
   const convertedDate = typeof date === 'string' ? new Date(date) : date
 
   if (relative) {
-    const weeksDiff = dayjs().diff(date, 'week')
+    const weeksDiff = dayjs().diff(convertedDate, 'week')
 
     return Math.abs(weeksDiff) > 1
       ? format.dateTime(convertedDate, formatOptions)
