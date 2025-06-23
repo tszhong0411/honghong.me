@@ -33,12 +33,10 @@
     "type-check": "tsc --noEmit"
   },
   "types": "./dist/index.d.ts",
-  "dependencies": {
-    "@tszhong0411/prettier-plugin-package-json": "workspace:*",
-    "prettier-plugin-tailwindcss": "^0.6.12"
-  },
   "peerDependencies": {
-    "prettier": "3.x"
+    "@tszhong0411/prettier-plugin-package-json": "^1.0.0",
+    "prettier": "3.x",
+    "prettier-plugin-tailwindcss": "^0.6.12"
   },
   "devDependencies": {
     "@tszhong0411/eslint-config": "workspace:*",

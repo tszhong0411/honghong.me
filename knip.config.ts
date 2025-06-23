@@ -2,7 +2,6 @@ import type { KnipConfig } from 'knip'
 
 const config: KnipConfig = {
   ignoreDependencies: [
-    'prettier-plugin-*',
     'sharp',
     // not sure why it can't detect `pnpm with-env tsx ./src/seed.ts` in packages/db/package.json
     'tsx',
