@@ -1,5 +1,11 @@
 # @tszhong0411/prettier-config
 
+## 0.0.18
+
+### Patch Changes
+
+- 2d65f7f: Move deps to peerDeps
+
 ## 0.0.17
 
 ### Patch Changes
