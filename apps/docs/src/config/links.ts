@@ -262,6 +262,15 @@ export const SIDEBAR_LINKS: SidebarLinks = [
     ]
   },
   {
+    title: 'Packages',
+    links: [
+      {
+        href: '/packages/prettier-config',
+        text: 'Prettier Config'
+      }
+    ]
+  },
+  {
     title: 'Recipes',
     links: [
       {
