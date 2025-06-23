@@ -1,0 +1,59 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+
+# Project Structure and Navigation
+
+## Monorepo Overview
+
+This is a Next.js monorepo powered by Turborepo. Navigate to specific parts using these references:
+
+### Applications
+
+- [apps/web](mdc:apps/web) - Personal website with blog, projects, and interactive features
+- [apps/docs](mdc:apps/docs) - Component documentation site with demos
+
+### Core Packages
+
+- [packages/db](mdc:packages/db) - Database layer with Drizzle ORM schemas
+- [packages/ui](mdc:packages/ui) - Shared component library
+- [packages/i18n](mdc:packages/i18n) - Internationalization (en, zh-CN, zh-TW)
+- [packages/env](mdc:packages/env) - Type-safe environment variables
+
+### Development Tools
+
+- [packages/eslint-config](mdc:packages/eslint-config) - ESLint rules
+- [packages/prettier-config](mdc:packages/prettier-config) - Code formatting
+- [packages/tsconfig](mdc:packages/tsconfig) - TypeScript configurations
+- [packages/mdx-plugins](mdc:packages/mdx-plugins) - MDX transformations
+
+## Key Directories in Web App
+
+### Source Structure ([apps/web/src](mdc:apps/web/src))
+
+- `app/[locale]/` - Internationalized routes
+- `components/` - React components organized by feature
+- `trpc/routers/` - API endpoints
+- `content/` - MDX content for blog/projects/pages
+- `lib/` - Core utilities and configurations
+- `hooks/` - Custom React hooks
+- `store/` - Zustand state management
+
+### Content Structure
+
+- [apps/web/src/content/blog](mdc:apps/web/src/content/blog) - Blog posts in MDX
+- [apps/web/src/content/projects](mdc:apps/web/src/content/projects) - Project showcases
+- [apps/web/src/content/pages](mdc:apps/web/src/content/pages) - Static pages
+
+## Docs App Structure
+
+- [apps/docs/src/content](mdc:apps/docs/src/content) - Documentation MDX files
+- [apps/docs/src/components/demos](mdc:apps/docs/src/components/demos) - Component demos
+
+## Configuration Files
+
+- [turbo.json](mdc:turbo.json) - Turborepo pipeline configuration
+- [package.json](mdc:package.json) - Root workspace configuration
+- [.env.example](mdc:.env.example) - Environment variable template

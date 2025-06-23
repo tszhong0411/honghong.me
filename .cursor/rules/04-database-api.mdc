@@ -1,0 +1,266 @@
+---
+description: Guidelines for database and API development
+globs:
+alwaysApply: false
+---
+
+# Database and API Development
+
+## Database Schema (Drizzle ORM)
+
+### Schema Definition Location
+
+All schemas are in [packages/db/src/schema](mdc:packages/db/src/schema):
+
+- [auth.ts](mdc:packages/db/src/schema/auth.ts) - Authentication tables
+- [comments.ts](mdc:packages/db/src/schema/comments.ts) - Comment system
+- [guestbook.ts](mdc:packages/db/src/schema/guestbook.ts) - Guestbook entries
+- [stats.ts](mdc:packages/db/src/schema/stats.ts) - Analytics data
+
+### Creating New Tables
+
+```typescript
+// packages/db/src/schema/example.ts
+import { pgTable, text, timestamp, integer } from 'drizzle-orm/pg-core'
+
+export const examples = pgTable('examples', {
+  id: integer('id').primaryKey().generatedAlwaysAsIdentity(),
+  name: text('name').notNull(),
+  description: text('description'),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull()
+})
+
+// Export type
+export type Example = typeof examples.$inferSelect
+export type NewExample = typeof examples.$inferInsert
+```
+
+### Database Migrations
+
+```bash
+# After modifying schema
+pnpm db:generate   # Creates migration file
+pnpm db:migrate    # Applies migration to database
+pnpm db:studio     # Open Drizzle Studio to inspect
+```
+
+## tRPC API Development
+
+### Router Structure
+
+Create routers in [apps/web/src/trpc/routers](mdc:apps/web/src/trpc/routers):
+
+```typescript
+// apps/web/src/trpc/routers/example.ts
+import { z } from 'zod'
+import { createTRPCRouter, publicProcedure, protectedProcedure } from '../init'
+import { examples } from '@tszhong0411/db/schema'
+import { eq, desc } from 'drizzle-orm'
+
+export const exampleRouter = createTRPCRouter({
+  // Public query - no auth required
+  getAll: publicProcedure.query(async ({ ctx }) => {
+    return ctx.db.select().from(examples).orderBy(desc(examples.createdAt))
+  }),
+
+  // Get by ID with input validation
+  getById: publicProcedure
+    .input(
+      z.object({
+        id: z.number()
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      const [example] = await ctx.db
+        .select()
+        .from(examples)
+        .where(eq(examples.id, input.id))
+        .limit(1)
+
+      return example || null
+    }),
+
+  // Protected mutation - requires auth
+  create: protectedProcedure
+    .input(
+      z.object({
+        name: z.string().min(1).max(100),
+        description: z.string().optional()
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      const [newExample] = await ctx.db
+        .insert(examples)
+        .values({
+          name: input.name,
+          description: input.description,
+          userId: ctx.session.user.id // From auth context
+        })
+        .returning()
+
+      return newExample
+    }),
+
+  // Update with optimistic locking
+  update: protectedProcedure
+    .input(
+      z.object({
+        id: z.number(),
+        name: z.string().min(1).max(100),
+        description: z.string().optional()
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      const [updated] = await ctx.db
+        .update(examples)
+        .set({
+          name: input.name,
+          description: input.description,
+          updatedAt: new Date()
+        })
+        .where(eq(examples.id, input.id))
+        .returning()
+
+      if (!updated) {
+        throw new TRPCError({
+          code: 'NOT_FOUND',
+          message: 'Example not found'
+        })
+      }
+
+      return updated
+    }),
+
+  // Delete with authorization check
+  delete: protectedProcedure
+    .input(
+      z.object({
+        id: z.number()
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      // Check ownership first
+      const [example] = await ctx.db
+        .select()
+        .from(examples)
+        .where(eq(examples.id, input.id))
+        .limit(1)
+
+      if (!example || example.userId !== ctx.session.user.id) {
+        throw new TRPCError({
+          code: 'FORBIDDEN',
+          message: 'Not authorized to delete this example'
+        })
+      }
+
+      await ctx.db.delete(examples).where(eq(examples.id, input.id))
+
+      return { success: true }
+    })
+})
+```
+
+### Register Router
+
+```typescript
+// apps/web/src/trpc/routers/_app.ts
+import { exampleRouter } from './example'
+
+export const appRouter = createTRPCRouter({
+  // ... other routers
+  example: exampleRouter
+})
+```
+
+## Client Usage
+
+### React Query Integration
+
+```typescript
+// In a React component
+import { api } from '@/trpc/client'
+
+const ExampleList = () => {
+  // Query
+  const { data, isLoading } = api.example.getAll.useQuery()
+
+  // Mutation with optimistic updates
+  const utils = api.useUtils()
+  const createMutation = api.example.create.useMutation({
+    onMutate: async (newExample) => {
+      // Cancel outgoing queries
+      await utils.example.getAll.cancel()
+
+      // Get current data
+      const previousData = utils.example.getAll.getData()
+
+      // Optimistically update
+      utils.example.getAll.setData(undefined, (old) => {
+        if (!old) return []
+        return [newExample, ...old]
+      })
+
+      return { previousData }
+    },
+    onError: (err, newExample, context) => {
+      // Rollback on error
+      if (context?.previousData) {
+        utils.example.getAll.setData(undefined, context.previousData)
+      }
+    },
+    onSettled: () => {
+      // Refetch after mutation
+      utils.example.getAll.invalidate()
+    }
+  })
+
+  return (
+    // Component JSX
+  )
+}
+```
+
+### Server Components
+
+```typescript
+// Direct database access in server components
+import { db } from '@tszhong0411/db'
+import { examples } from '@tszhong0411/db/schema'
+
+const ServerComponent = async () => {
+  const data = await db.select().from(examples)
+
+  return (
+    <div>
+      {data.map((item) => (
+        <div key={item.id}>{item.name}</div>
+      ))}
+    </div>
+  )
+}
+```
+
+## Error Handling
+
+```typescript
+// API error handling
+import { TRPCError } from '@trpc/server'
+
+// Throw specific errors
+throw new TRPCError({
+  code: 'BAD_REQUEST',
+  message: 'Invalid input data'
+})
+
+// Client-side error handling
+const { mutate } = api.example.create.useMutation({
+  onError: (error) => {
+    if (error.data?.code === 'UNAUTHORIZED') {
+      router.push('/login')
+    } else {
+      toast.error(error.message)
+    }
+  }
+})
+```

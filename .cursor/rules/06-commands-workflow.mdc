@@ -1,0 +1,309 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+
+# Development Commands and Workflows
+
+## Essential Development Commands
+
+### Starting Development
+
+```bash
+# Start all apps in development mode
+pnpm dev
+
+# Start specific apps
+pnpm dev:web      # Main website only
+pnpm dev:docs     # Documentation site only
+
+# With specific environment
+pnpm dev --filter=@tszhong0411/web
+```
+
+### Building and Production
+
+```bash
+# Build all apps
+pnpm build
+
+# Build specific app
+pnpm build:web
+pnpm build:docs
+
+# Run production build locally
+pnpm build && pnpm start
+```
+
+## Database Commands
+
+### Schema Management
+
+```bash
+# Generate migration after schema changes
+pnpm db:generate
+
+# Apply migrations to database
+pnpm db:migrate
+
+# Seed database with initial data
+pnpm db:seed
+
+# Open Drizzle Studio for database inspection
+pnpm db:studio
+
+# Reset database (drop and recreate)
+pnpm db:push
+```
+
+## Code Quality Commands
+
+### Linting and Formatting
+
+```bash
+# Run all quality checks
+pnpm check
+
+# ESLint
+pnpm lint          # Check for issues
+pnpm lint:fix      # Auto-fix issues
+
+# Prettier
+pnpm format        # Check formatting
+pnpm format:fix    # Auto-format code
+
+# TypeScript
+pnpm typecheck     # Type checking
+```
+
+## Testing Commands
+
+### Running Tests
+
+```bash
+# Run all tests
+pnpm test
+
+# Unit tests with Vitest
+pnpm test:unit
+pnpm test:unit:ui     # Open Vitest UI
+pnpm test:watch       # Watch mode
+
+# E2E tests with Playwright
+pnpm test:e2e
+pnpm test:e2e:ui      # Interactive mode
+pnpm test:e2e:debug   # Debug mode
+
+# Test coverage
+pnpm test:coverage
+```
+
+## Package Management
+
+### Installing Dependencies
+
+```bash
+# Install all dependencies
+pnpm install
+
+# Add dependency to specific workspace
+pnpm add package-name --filter=@tszhong0411/web
+pnpm add -D package-name --filter=@tszhong0411/web  # Dev dependency
+
+# Add to root
+pnpm add -w package-name
+
+# Update dependencies
+pnpm update
+pnpm update package-name
+```
+
+### Workspace Commands
+
+```bash
+# Run command in all workspaces
+pnpm -r build
+
+# Run in specific workspace
+pnpm --filter=@tszhong0411/ui build
+
+# List all workspaces
+pnpm ls -r --depth=-1
+```
+
+## Generator Commands (Turbo)
+
+### Component Generation
+
+```bash
+# Generate new UI component
+pnpm gen component
+
+# Prompts:
+# - Component name (e.g., "dropdown-menu")
+# - Include demo? (y/n)
+# - Include tests? (y/n)
+```
+
+### Package Generation
+
+```bash
+# Generate new package
+pnpm gen package
+
+# Prompts:
+# - Package name
+# - Package type (library/config)
+```
+
+### Content Generation
+
+```bash
+# Generate blog post
+pnpm gen post
+
+# Prompts:
+# - Post title
+# - Post slug
+# - Author
+```
+
+## Git Workflows
+
+### Conventional Commits
+
+```bash
+# Commit types
+git commit -m "feat: add new feature"
+git commit -m "fix: resolve bug"
+git commit -m "docs: update README"
+git commit -m "style: format code"
+git commit -m "refactor: improve structure"
+git commit -m "test: add tests"
+git commit -m "chore: update dependencies"
+
+# With scope
+git commit -m "feat(web): add user dashboard"
+git commit -m "fix(ui): button hover state"
+```
+
+### Branch Naming
+
+```bash
+# Feature branches
+git checkout -b feat/user-dashboard
+git checkout -b feat/comment-system
+
+# Bug fixes
+git checkout -b fix/navigation-error
+git checkout -b fix/type-definitions
+
+# Other
+git checkout -b docs/api-guide
+git checkout -b chore/update-deps
+```
+
+## Environment Setup
+
+### Initial Setup
+
+```bash
+# Clone repository
+git clone https://github.com/tszhong0411/nelsonlai.me.git
+cd nelsonlai.me
+
+# Install dependencies
+pnpm install
+
+# Setup environment
+cp .env.example .env.local
+# Edit .env.local with your values
+
+# Setup database
+pnpm db:migrate
+pnpm db:seed
+
+# Start development
+pnpm dev
+```
+
+### Feature Flags
+
+```bash
+# Enable features in .env.local
+NEXT_PUBLIC_FLAG_COMMENT=true
+NEXT_PUBLIC_FLAG_AUTH=true
+NEXT_PUBLIC_FLAG_STATS=true
+NEXT_PUBLIC_FLAG_SPOTIFY=true
+NEXT_PUBLIC_FLAG_ANALYTICS=true
+NEXT_PUBLIC_FLAG_GUESTBOOK_NOTIFICATION=true
+NEXT_PUBLIC_FLAG_LIKE_BUTTON=true
+```
+
+## Deployment Commands
+
+### Preview Deployments
+
+```bash
+# Build for preview
+pnpm build
+
+# Check bundle size
+pnpm analyze
+```
+
+### Production Checks
+
+```bash
+# Full production check
+pnpm check && pnpm test && pnpm build
+
+# Verify no TypeScript errors
+pnpm typecheck
+
+# Check for security issues
+pnpm audit
+```
+
+## Troubleshooting Commands
+
+### Cache Cleaning
+
+```bash
+# Clear Next.js cache
+rm -rf apps/web/.next
+rm -rf apps/docs/.next
+
+# Clear node_modules
+pnpm clean
+pnpm install
+
+# Clear Turbo cache
+pnpm turbo daemon clean
+```
+
+### Debug Commands
+
+```bash
+# Debug Next.js
+NODE_OPTIONS='--inspect' pnpm dev:web
+
+# Debug tests
+pnpm test:e2e:debug
+
+# Verbose logging
+DEBUG=* pnpm dev
+```
+
+## Quick Command Reference
+
+```bash
+# Most used commands
+pnpm dev          # Start development
+pnpm check        # Run all checks
+pnpm test         # Run tests
+pnpm build        # Build apps
+pnpm db:studio    # Inspect database
+pnpm gen component # Generate component
+```

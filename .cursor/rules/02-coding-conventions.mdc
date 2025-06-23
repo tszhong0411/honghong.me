@@ -1,0 +1,156 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+
+# Coding Conventions and Style Guide
+
+## TypeScript Rules
+
+### Function Declarations
+
+```typescript
+// ✅ Always use arrow functions
+const myFunction = () => {
+  return 'result'
+}
+
+// ❌ Avoid function declarations
+function myFunction() {
+  return 'result'
+}
+```
+
+### Type Definitions
+
+```typescript
+// ✅ Use type instead of interface
+type UserProps = {
+  name: string
+  age: number
+}
+
+// ❌ Avoid interfaces
+interface UserProps {
+  name: string
+  age: number
+}
+```
+
+### Props Destructuring
+
+```typescript
+// ✅ Destructure inside function body
+const Component = (props: ComponentProps) => {
+  const { className, children } = props
+  return <div>{children}</div>
+}
+
+// ❌ Avoid destructuring in parameters
+const Component = ({ className, children }: ComponentProps) => {
+  return <div>{children}</div>
+}
+```
+
+## React Component Pattern
+
+### Standard Component Structure
+
+```typescript
+// 1. Import statements
+import { useState } from 'react'
+import { cn } from '@tszhong0411/utils'
+
+// 2. Type definitions
+type ComponentProps = {
+  className?: string
+  children: React.ReactNode
+  variant?: 'primary' | 'secondary'
+}
+
+// 3. Component definition
+const Component = (props: ComponentProps) => {
+  const { className, children, variant = 'primary' } = props
+
+  // 4. State and hooks
+  const [isOpen, setIsOpen] = useState(false)
+
+  // 5. Event handlers
+  const handleClick = () => {
+    setIsOpen(!isOpen)
+  }
+
+  // 6. Effects
+  useEffect(() => {
+    // Effect logic
+  }, [])
+
+  // 7. Render
+  return (
+    <div
+      className={cn(
+        'base-styles',
+        variant === 'primary' && 'primary-styles',
+        className
+      )}
+      onClick={handleClick}
+    >
+      {children}
+    </div>
+  )
+}
+
+// 8. Export
+export default Component
+```
+
+## File Naming Conventions
+
+### Files and Folders
+
+Always use kebab case. For examples:
+
+- Components: `dropdown-menu.tsx`, `use-debounce.ts`
+- Utilities: `get-user-data.ts`, `format-date.ts`
+- Types: `types.ts` or inline with component
+- Tests: `component.test.tsx`, `util.test.ts`
+
+### Constants and Variables
+
+```typescript
+// File-level constants
+const API_ENDPOINT = 'https://api.example.com'
+const MAX_RETRY_COUNT = 3
+
+// Component-level
+const defaultProps = {
+  size: 'medium',
+  variant: 'primary'
+}
+```
+
+## Error Handling
+
+```typescript
+// Use try-catch with proper error messages
+const fetchData = async () => {
+  try {
+    const data = await api.user.get.query()
+    return data
+  } catch (error) {
+    console.error('Failed to fetch user data:', error)
+    throw new Error('Unable to load user information')
+  }
+}
+
+// For mutations, show user-friendly messages
+const handleSubmit = async (data: FormData) => {
+  try {
+    await api.user.update.mutate(data)
+    toast.success('Profile updated successfully')
+  } catch (error) {
+    toast.error('Failed to update profile. Please try again.')
+  }
+}
+```

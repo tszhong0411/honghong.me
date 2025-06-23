@@ -1,0 +1,214 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+
+# Styling and UI Patterns
+
+## Tailwind CSS Usage
+
+### Class Organization with cn()
+
+Always use the `cn()` utility from `@tszhong0411/utils` for conditional classes:
+
+```typescript
+import { cn } from '@tszhong0411/utils'
+
+// ✅ Good - organized and readable
+<div className={cn(
+  // Base styles
+  'rounded-lg border p-4',
+  // Interactive states
+  'hover:border-accent transition-colors',
+  // Conditional styles
+  isActive && 'bg-accent text-accent-foreground',
+  // Props className
+  className
+)} />
+
+// ❌ Avoid - hard to read template literals
+<div className={`rounded-lg border p-4 ${isActive ? 'bg-accent' : ''} ${className}`} />
+```
+
+### Spacing Guidelines
+
+```typescript
+// ✅ Prefer gap for flex/grid containers
+<div className="flex items-center gap-4">
+  <Avatar />
+  <span>Username</span>
+</div>
+
+// ❌ Avoid space utilities when gap works
+<div className="flex items-center space-x-4">
+  <Avatar />
+  <span>Username</span>
+</div>
+
+// ✅ Use consistent padding/margin
+<Card className="p-6">
+  <CardHeader className="mb-4" />
+  <CardContent className="space-y-4" />
+</Card>
+```
+
+### Responsive Design
+
+```typescript
+// Mobile-first approach
+<div className={cn(
+  // Mobile (default)
+  'grid grid-cols-1 gap-4',
+  // Tablet
+  'md:grid-cols-2 md:gap-6',
+  // Desktop
+  'lg:grid-cols-3 lg:gap-8'
+)} />
+
+// Common breakpoint patterns
+const responsiveText = cn(
+  'text-sm',
+  'md:text-base',
+  'lg:text-lg'
+)
+```
+
+## Component Styling Patterns
+
+### Variant System
+
+```typescript
+const buttonVariants = {
+  base: 'inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2',
+  variants: {
+    variant: {
+      primary: 'bg-primary text-primary-foreground hover:bg-primary/90',
+      secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
+      ghost: 'hover:bg-accent hover:text-accent-foreground',
+    },
+    size: {
+      sm: 'h-8 px-3 text-xs',
+      md: 'h-10 px-4 text-sm',
+      lg: 'h-12 px-8 text-base',
+    },
+  },
+  defaultVariants: {
+    variant: 'primary',
+    size: 'md',
+  },
+}
+```
+
+### Dark Mode Support
+
+```typescript
+// Use Tailwind's dark: modifier
+<div className={cn(
+  // Light mode
+  'bg-white text-gray-900',
+  // Dark mode
+  'dark:bg-gray-900 dark:text-gray-100'
+)} />
+
+// For complex components, group related styles
+const cardStyles = cn(
+  // Structure
+  'rounded-lg border p-6',
+  // Light mode
+  'bg-card text-card-foreground',
+  'border-border',
+  // Dark mode automatically handled by CSS variables
+)
+```
+
+## Animation Patterns
+
+### Transitions
+```typescript
+// Simple transitions
+<Button className="transition-colors duration-200 hover:bg-accent" />
+
+// Complex animations
+<div className={cn(
+  'transform transition-all duration-300',
+  isOpen ? 'translate-y-0 opacity-100' : '-translate-y-2 opacity-0'
+)} />
+```
+
+### Loading States
+
+```typescript
+// Skeleton loading
+<div className="animate-pulse">
+  <div className="h-4 bg-gray-200 rounded w-3/4 mb-2" />
+  <div className="h-4 bg-gray-200 rounded w-1/2" />
+</div>
+
+// Spinner
+<div className="animate-spin rounded-full h-4 w-4 border-b-2 border-primary" />
+```
+
+## Accessibility Styling
+
+### Focus States
+
+```typescript
+// Always include focus-visible styles
+<button className={cn(
+  'rounded-md px-4 py-2',
+  'focus-visible:outline-none',
+  'focus-visible:ring-2',
+  'focus-visible:ring-primary',
+  'focus-visible:ring-offset-2'
+)} />
+```
+
+### Interactive Elements
+
+```typescript
+// Ensure sufficient touch targets
+<Button className="min-h-[44px] min-w-[44px]" />
+
+// Clear hover/active states
+<Link className={cn(
+  'text-primary underline-offset-4',
+  'hover:underline',
+  'active:text-primary/80'
+)} />
+```
+
+## Common UI Components Usage
+
+### From @tszhong0411/ui
+
+```typescript
+import { Button, Card, Dialog } from '@tszhong0411/ui'
+
+// Button usage
+<Button variant="primary" size="md">
+  Click me
+</Button>
+
+// Card composition
+<Card>
+  <CardHeader>
+    <CardTitle>Title</CardTitle>
+  </CardHeader>
+  <CardContent>
+    Content here
+  </CardContent>
+</Card>
+
+// Dialog pattern
+<Dialog>
+  <DialogTrigger asChild>
+    <Button>Open</Button>
+  </DialogTrigger>
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle>Title</DialogTitle>
+    </DialogHeader>
+  </DialogContent>
+</Dialog>
+```

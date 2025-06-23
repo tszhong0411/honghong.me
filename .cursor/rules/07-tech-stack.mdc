@@ -1,0 +1,122 @@
+---
+description: Technology stack and dependencies
+globs:
+alwaysApply: false
+---
+
+# Technology Stack and Dependencies
+
+## Core Framework
+
+- **Next.js 15+** - React framework with App Router
+- **React 19+** - React library
+- **TypeScript 5+** - Type safety (strict mode enabled)
+- **Node.js 22+** - Runtime environment
+
+## Monorepo Management
+
+- **Turborepo** - Build orchestration
+- **pnpm 10+** - Package manager with workspace support
+- **Changesets** - Version management
+
+## Database and ORM
+
+- **PostgreSQL** - Primary database
+- **Drizzle ORM** - Type-safe SQL
+- **Redis** - Caching and rate limiting
+
+## Authentication
+
+- **Better Auth** - Authentication system
+
+## API Layer
+
+- **tRPC v11** - Type-safe APIs
+- **React Query (TanStack Query)** - Data fetching and caching
+- **Zod** - Schema validation
+
+## Styling
+
+- **Tailwind CSS v4** - Utility-first CSS
+- **tailwind-merge** - Class merging utility
+- **PostCSS** - CSS processing
+- **CSS Variables** - Theme system
+
+## UI Components
+
+- **Radix UI** - Headless component primitives
+- **Framer Motion** - Animations
+- **React Hook Form** - Form handling
+- **Sonner** - Toast notifications
+- **Vaul** - Drawer component
+
+## Content Management
+
+- **MDX** - Markdown with JSX
+- **Content Collections** - Type-safe content
+- **Shiki** - Syntax highlighting
+- **rehype/remark plugins** - Content processing
+
+## Email
+
+- **React Email** - Email templates
+- **Resend** - Email delivery service
+
+## Internationalization
+
+- **next-intl** - i18n for Next.js
+- Supported locales: en, zh-CN, zh-TW
+
+## Testing
+
+- **Vitest** - Unit testing
+- **Playwright** - E2E testing
+- **Testing Library** - Component testing
+
+## Development Tools
+
+- **ESLint** - Code linting
+- **Prettier** - Code formatting
+- **Husky** - Git hooks
+- **Commitlint** - Commit message linting
+
+## Analytics
+
+- **Vercel Speed Insights** - Performance monitoring
+- **Umami** - Web analytics
+
+## State Management
+
+- **Zustand** - Client state management
+- **React Context** - Component state sharing
+
+## Environment Requirements
+
+### Required Services
+
+- PostgreSQL database
+- Redis instance
+- Serverless Redis (e.g. Upstash)
+
+### Optional Services
+
+- OAuth providers (GitHub, Google)
+- Analytics services
+
+## Package Structure
+
+### Workspace Packages
+
+- `@tszhong0411/web` - Main website
+- `@tszhong0411/docs` - Documentation
+- `@tszhong0411/db` - Database layer
+- `@tszhong0411/ui` - Component library
+- `@tszhong0411/emails` - Email templates
+- `@tszhong0411/env` - Environment config
+- `@tszhong0411/utils` - Utilities
+
+### Config Packages
+
+- `@tszhong0411/eslint-config` - ESLint rules
+- `@tszhong0411/prettier-config` - Prettier config
+- `@tszhong0411/tsconfig` - TypeScript config

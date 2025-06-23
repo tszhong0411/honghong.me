@@ -1,0 +1,270 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+
+# Best Practices and Common Patterns
+
+## File Creation Guidelines
+
+### Never Create Unless Necessary
+
+- **DO NOT** create new files unless explicitly requested
+- **ALWAYS** prefer editing existing files
+- **NEVER** create documentation files (README.md, etc.) proactively
+
+### When Creating Files
+
+- Follow kebab-case naming: `user-profile.tsx`, `get-user-data.ts`
+- Place files in appropriate directories
+- Include all necessary imports
+
+## Data Fetching Patterns
+
+### Client Components (Preferred)
+
+```typescript
+// Use tRPC hooks
+const PostList = () => {
+  const { data: posts, isLoading } = api.post.getAll.useQuery()
+
+  if (isLoading) return <Skeleton />
+  return <div>{/* render posts */}</div>
+}
+```
+
+### Server Components
+
+```typescript
+// Direct database access
+const Page = async () => {
+  const posts = await db.select().from(posts).orderBy(desc(posts.createdAt))
+
+  return <PostList posts={posts} />
+}
+```
+
+## Error Handling Patterns
+
+### API Errors
+
+```typescript
+try {
+  const result = await api.user.update.mutate(data)
+  toast.success('Updated successfully')
+} catch (error) {
+  console.error('Update failed:', error)
+  toast.error('Failed to update. Please try again.')
+}
+```
+
+### Component Errors
+
+```typescript
+// Use error boundaries
+class ErrorBoundary extends React.Component {
+  componentDidCatch(error: Error) {
+    console.error('Component error:', error)
+  }
+}
+```
+
+## Performance Optimization
+
+### Image Optimization
+
+```typescript
+import Image from 'next/image'
+
+// Always use Next.js Image
+<Image
+  src="/image.jpg"
+  alt="Description"
+  width={800}
+  height={600}
+  priority={isAboveFold}
+/>
+```
+
+### Code Splitting
+
+```typescript
+// Dynamic imports for large components
+const HeavyComponent = dynamic(() => import('./heavy-component'), {
+  loading: () => <Skeleton />,
+  ssr: false
+})
+```
+
+### Memo and Callbacks
+
+```typescript
+// Memoize expensive computations
+const expensiveValue = useMemo(() => {
+  return computeExpensiveValue(data)
+}, [data])
+
+// Stable callbacks
+const handleClick = useCallback(() => {
+  // handle click
+}, [dependency])
+```
+
+## Security Best Practices
+
+### Input Validation
+
+```typescript
+// Always validate with Zod
+const schema = z.object({
+  email: z.string().email(),
+  age: z.number().min(0).max(120)
+})
+
+const validated = schema.parse(input)
+```
+
+### Authentication Checks
+
+```typescript
+// Protected routes
+export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
+  if (!ctx.session?.user) {
+    throw new TRPCError({ code: 'UNAUTHORIZED' })
+  }
+  return next({ ctx: { session: ctx.session } })
+})
+```
+
+### Sanitization
+
+```typescript
+// Sanitize user content
+import DOMPurify from 'isomorphic-dompurify'
+
+const sanitized = DOMPurify.sanitize(userContent)
+```
+
+## Accessibility Patterns
+
+### Semantic HTML
+
+```typescript
+// Use proper elements
+<nav aria-label="Main navigation">
+<main>
+<article>
+<aside>
+```
+
+### ARIA Labels
+
+```typescript
+<button aria-label="Close dialog" aria-pressed={isPressed}>
+  <X className="h-4 w-4" />
+</button>
+```
+
+### Keyboard Navigation
+
+```typescript
+const handleKeyDown = (e: KeyboardEvent) => {
+  switch (e.key) {
+    case 'Enter':
+    case ' ':
+      handleSelect()
+      break
+    case 'Escape':
+      handleClose()
+      break
+  }
+}
+```
+
+## State Management Patterns
+
+### Local State
+
+```typescript
+// For component-specific state
+const [isOpen, setIsOpen] = useState(false)
+```
+
+### Zustand Store
+
+```typescript
+// For global client state
+const useStore = create((set) => ({
+  count: 0,
+  increment: () => set((state) => ({ count: state.count + 1 }))
+}))
+```
+
+### Server State
+
+```typescript
+// Use React Query / tRPC
+const { data, mutate } = api.resource.getAll.useQuery()
+```
+
+## Common Pitfalls to Avoid
+
+### Don't
+
+- Use `any` type
+- Create files unnecessarily
+- Use inline styles
+- Forget error handling
+- Skip accessibility
+- Use `interface` (use `type` instead)
+- Destructure props in parameters
+
+### Do
+
+- Use strict TypeScript
+- Handle loading states
+- Provide error feedback
+- Test on mobile
+- Use semantic HTML
+- Follow naming conventions
+- Validate all inputs
+
+## PR Checklist
+
+Before submitting:
+
+1. Run `pnpm check`
+2. Test functionality
+3. Check mobile responsiveness
+4. Verify accessibility
+5. Update types if needed
+6. Add/update tests
+7. No console.log statements
+
+## Debugging Tips
+
+### Console Debugging
+
+```typescript
+// Use descriptive labels
+console.log('User data:', { id: user.id, name: user.name })
+
+// Group related logs
+console.group('API Response')
+console.log('Status:', response.status)
+console.log('Data:', response.data)
+console.groupEnd()
+```
+
+### React DevTools
+
+- Check component props
+- Monitor re-renders
+- Inspect hooks state
+
+### Network Tab
+
+- Verify API calls
+- Check response data
+- Monitor performance
