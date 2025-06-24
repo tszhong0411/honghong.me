@@ -1,16 +1,11 @@
 import { createId } from '@paralleldrive/cuid2'
 import { expect, test } from '@playwright/test'
-import { comments, db, like } from '@tszhong0411/db'
+import { comments, db } from '@tszhong0411/db'
 
 import { TEST_USER } from '../constants'
 import { getNumberFlow } from '../utils/number-flow'
 
 test.describe('comment page', () => {
-  test.beforeEach(async () => {
-    // Clean up existing test comments before each test
-    await db.delete(comments).where(like(comments.postId, 'test%'))
-  })
-
   test('should be able to submit a comment', async ({ page }) => {
     const commentText = `comment-${createId()}`
 
@@ -91,7 +86,6 @@ test.describe('comment page', () => {
     await page.getByTestId('comment-textarea-reply').fill(replyText)
     await page.getByTestId('comment-submit-reply-button').click()
 
-    // Expand the replies section
     const expandButton = parentCommentBlock.getByTestId('comment-replies-expand-button')
     await expect(expandButton.getByTestId('comment-reply-count')).toContainText('1', {
       timeout: 5000
@@ -135,8 +129,10 @@ test.describe('comment page', () => {
 
     const parentCommentBlock = page.getByTestId(`comment-${parentId}`)
     await expect(parentCommentBlock).toBeVisible({ timeout: 5000 })
+
     const expandButton = parentCommentBlock.getByTestId('comment-replies-expand-button')
     await expandButton.click()
+
     const replyCommentBlock = page.getByTestId(`comment-${replyId}`)
     await expect(replyCommentBlock).toBeVisible({ timeout: 5000 })
     await replyCommentBlock.getByTestId('comment-menu-button').click()
