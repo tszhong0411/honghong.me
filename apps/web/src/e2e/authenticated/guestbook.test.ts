@@ -18,9 +18,7 @@ test.describe('guestbook page', () => {
     // Check toast immediately after submission
     await expect(page.locator('li[data-sonner-toast]')).toContainText(
       'Create message successfully',
-      {
-        timeout: 5000
-      }
+      { timeout: 5000 }
     )
 
     // Then verify the message appears in the list
@@ -54,9 +52,7 @@ test.describe('guestbook page', () => {
     await expect(messageBlock).toBeHidden({ timeout: 10_000 })
     await expect(page.locator('li[data-sonner-toast]')).toContainText(
       'Delete message successfully',
-      {
-        timeout: 5000
-      }
+      { timeout: 5000 }
     )
 
     // Remove the message
