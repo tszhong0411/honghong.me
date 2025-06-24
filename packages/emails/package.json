@@ -26,7 +26,8 @@
     "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
     "@types/node": "^22.15.29",
-    "@types/react": "^19.1.6"
+    "@types/react": "^19.1.6",
+    "tailwindcss": "^4.1.8"
   },
   "lint-staged": {
     "*.{cjs,mjs,js,jsx,cts,mts,ts,tsx,json}": "eslint --fix"

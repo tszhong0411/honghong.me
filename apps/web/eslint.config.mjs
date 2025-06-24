@@ -8,7 +8,12 @@ export default tszhong0411(
     next: true,
     playwright: true,
     testingLibrary: true,
-    turbo: true
+    turbo: true,
+    tailwindcss: true,
+    tailwindcssConfig: {
+      entryPoint: 'src/styles/globals.css',
+      ignoreClasses: ['shiki']
+    }
   },
   {
     files: [GLOB_E2E],

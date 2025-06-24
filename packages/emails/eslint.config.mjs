@@ -4,5 +4,9 @@ export default tszhong0411({
   project: './tsconfig.json',
   tsconfigRootDir: import.meta.dirname,
   react: true,
-  turbo: true
+  turbo: true,
+  tailwindcss: true,
+  tailwindcssConfig: {
+    entryPoint: 'src/styles.css'
+  }
 })

@@ -21,8 +21,8 @@ const SegmentGroup = (props: SegmentGroupProps) => {
         data-slot='segment-group-indicator'
         className={cn(
           'border-foreground',
-          'data-[orientation=horizontal]:bottom-0 data-[orientation=horizontal]:w-[var(--width)] data-[orientation=horizontal]:translate-y-px data-[orientation=horizontal]:border-b-2',
-          'data-[orientation=vertical]:h-[var(--height)] data-[orientation=vertical]:-translate-x-px data-[orientation=vertical]:border-l-2',
+          'data-[orientation=horizontal]:w-(--width) data-[orientation=horizontal]:bottom-0 data-[orientation=horizontal]:translate-y-px data-[orientation=horizontal]:border-b-2',
+          'data-[orientation=vertical]:h-(--height) data-[orientation=vertical]:-translate-x-px data-[orientation=vertical]:border-l-2',
           className
         )}
       />
