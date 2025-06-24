@@ -12,6 +12,7 @@ import { playwright } from './configs/playwright'
 import { prettier } from './configs/prettier'
 import { react } from './configs/react'
 import { sonarjs } from './configs/sonarjs'
+import { tailwindcss } from './configs/tailwindcss'
 import { testingLibrary } from './configs/testing-library'
 import { turbo } from './configs/turbo'
 import { typescript } from './configs/typescript'
@@ -24,11 +25,19 @@ export type Options = {
   next?: boolean
   playwright?: boolean
   testingLibrary?: boolean
+  tailwindcss?: boolean
   gitignore?: boolean
 
   // TypeScript options
   project?: string
   tsconfigRootDir?: string
+
+  // TailwindCSS options
+  tailwindcssConfig?: {
+    entryPoint?: string
+    tailwindConfig?: string
+    ignoreClasses?: string[]
+  }
 }
 
 export type Configs = Linter.Config[]
@@ -43,6 +52,7 @@ const tszhong0411 = async (options: Options = {}, ...userConfigs: Configs): Prom
     next: enableNext = false,
     playwright: enablePlaywright = false,
     testingLibrary: enableTestingLibrary = false,
+    tailwindcss: enableTailwindcss = false,
     gitignore: enableGitignore = true
   } = options
 
@@ -85,6 +95,10 @@ const tszhong0411 = async (options: Options = {}, ...userConfigs: Configs): Prom
 
   if (enableTestingLibrary) {
     configs.push(...testingLibrary)
+  }
+
+  if (enableTailwindcss) {
+    configs.push(...(await tailwindcss(options)))
   }
 
   configs.push(...userConfigs)
