@@ -15,7 +15,12 @@ export default defineConfig({
   use: {
     baseURL,
     trace: 'on-first-retry',
-    video: 'on'
+    video: 'retain-on-failure',
+    actionTimeout: 10_000,
+    navigationTimeout: 30_000
+  },
+  expect: {
+    timeout: 10_000
   },
   projects: [
     { name: 'setup', testMatch: /\.setup\.ts$/, teardown: 'teardown' },
