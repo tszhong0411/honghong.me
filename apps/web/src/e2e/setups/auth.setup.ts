@@ -85,6 +85,7 @@ setup('setup authenticated', async ({ page }) => {
   ])
 
   await page.goto('http://localhost:3000/')
+  await page.waitForLoadState('domcontentloaded')
 
   await page.context().storageState({ path: authenticatedStoragePath })
 })
