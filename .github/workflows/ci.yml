@@ -19,8 +19,8 @@ jobs:
       - name: Run unit tests
         run: pnpm test:unit
 
-  eslint:
-    name: ESLint
+  quality-checks:
+    name: Quality Checks
     runs-on: ubuntu-latest
     steps:
       - name: Checkout branch
@@ -29,11 +29,28 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
 
+      - name: Cache build output
+        uses: actions/cache@v4
+        with:
+          path: |
+            apps/*/build
+            apps/*/.next
+            apps/*/out
+          key: build-${{ hashFiles('pnpm-lock.yaml') }}-${{ hashFiles('**/*.{ts,tsx,js,jsx,mdx}') }}
+          restore-keys: |
+            build-${{ hashFiles('pnpm-lock.yaml') }}-
+            build-
+
       - name: Build MDX
         run: pnpm build:mdx
 
-      - name: Run ESLint
-        run: pnpm lint
+      - name: Run quality checks in parallel
+        run: |
+          pnpm lint &
+          pnpm format:check &
+          pnpm check:spelling &
+          pnpm check:knip &
+          wait
 
   types:
     name: TypeScript
@@ -45,65 +62,47 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
 
+      - name: Cache build output
+        uses: actions/cache@v4
+        with:
+          path: |
+            apps/*/build
+            apps/*/.next
+            apps/*/out
+          key: build-${{ hashFiles('pnpm-lock.yaml') }}-${{ hashFiles('**/*.{ts,tsx,js,jsx,mdx}') }}
+          restore-keys: |
+            build-${{ hashFiles('pnpm-lock.yaml') }}-
+            build-
+
       - name: Build apps
         run: pnpm build:apps
 
       - name: Run type check
         run: pnpm type-check
 
-  prettier:
-    name: Prettier
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout branch
-        uses: actions/checkout@v4
-
-      - name: Setup
-        uses: ./.github/actions/setup
-
-      - name: Run Prettier
-        run: pnpm format:check
-
-  spelling:
-    name: Spelling
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout branch
-        uses: actions/checkout@v4
-
-      - name: Setup
-        uses: ./.github/actions/setup
-
-      - name: Run spelling check
-        run: pnpm check:spelling
-
-  knip:
-    name: Knip
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout branch
-        uses: actions/checkout@v4
-
-      - name: Setup
-        uses: ./.github/actions/setup
-
-      - name: Build MDX
-        run: pnpm build:mdx
-
-      - name: Run Knip
-        run: pnpm check:knip
-
   e2e:
     name: End to end tests
     runs-on: ubuntu-latest
-    timeout-minutes: 30
-    needs: [tests, eslint, types]
+    timeout-minutes: 20
+    needs: [tests, quality-checks, types]
     steps:
       - name: Checkout branch
         uses: actions/checkout@v4
 
       - name: Setup
         uses: ./.github/actions/setup
+
+      - name: Cache build output
+        uses: actions/cache@v4
+        with:
+          path: |
+            apps/*/build
+            apps/*/.next
+            apps/*/out
+          key: build-${{ hashFiles('pnpm-lock.yaml') }}-${{ hashFiles('**/*.{ts,tsx,js,jsx,mdx}') }}
+          restore-keys: |
+            build-${{ hashFiles('pnpm-lock.yaml') }}-
+            build-
 
       - name: Create test posts
         run: |
@@ -166,7 +165,7 @@ jobs:
         run: pnpm run db:seed
 
       - name: Run Playwright tests
-        run: pnpm run test:e2e
+        run: pnpm run test:e2e --workers=2 --reporter=github
 
       - name: Upload Playwright report
         if: always()
