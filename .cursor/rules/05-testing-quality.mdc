@@ -187,7 +187,7 @@ pnpm check
 
 # Individual checks
 pnpm lint        # ESLint
-pnpm typecheck   # TypeScript
+pnpm type-check   # TypeScript
 pnpm format      # Prettier
 ```
 

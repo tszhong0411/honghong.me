@@ -74,7 +74,7 @@ pnpm format        # Check formatting
 pnpm format:fix    # Auto-format code
 
 # TypeScript
-pnpm typecheck     # Type checking
+pnpm type-check     # Type checking
 ```
 
 ## Testing Commands
@@ -260,7 +260,7 @@ pnpm analyze
 pnpm check && pnpm test && pnpm build
 
 # Verify no TypeScript errors
-pnpm typecheck
+pnpm type-check
 
 # Check for security issues
 pnpm audit
