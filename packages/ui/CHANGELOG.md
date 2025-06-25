@@ -1,5 +1,11 @@
 # @tszhong0411/ui
 
+## 0.0.65
+
+### Patch Changes
+
+- fe11e6b: Enable eslint tailwindcss plugin and fix eslint errors
+
 ## 0.0.64
 
 ### Patch Changes
