@@ -33,6 +33,10 @@ const config: KnipConfig = {
     },
     'packages/ui': {
       ignore: ['src/styles.css']
+    },
+    'packages/emails': {
+      ignoreDependencies: ['tailwindcss'], // for tailwindcss intellisense
+      ignore: ['src/styles.css']
     }
   },
   // credit to https://github.com/webpro-nl/knip/issues/1008#issuecomment-2756559038
