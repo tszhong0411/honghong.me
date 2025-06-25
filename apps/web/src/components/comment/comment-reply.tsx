@@ -92,13 +92,13 @@ const CommentReply = () => {
           queryKey: trpc.comments.getInfiniteComments.infiniteQueryKey(queryKey)
         })
         queryClient.invalidateQueries({
-          queryKey: trpc.comments.getCommentsCount.queryKey({ slug })
+          queryKey: trpc.comments.getCommentCount.queryKey({ slug })
         })
         queryClient.invalidateQueries({
-          queryKey: trpc.comments.getRepliesCount.queryKey({ slug })
+          queryKey: trpc.comments.getReplyCount.queryKey({ slug })
         })
         queryClient.invalidateQueries({
-          queryKey: trpc.comments.getTotalCommentsCount.queryKey({ slug })
+          queryKey: trpc.comments.getTotalCommentCount.queryKey({ slug })
         })
       }
     })

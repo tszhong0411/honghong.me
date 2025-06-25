@@ -28,8 +28,8 @@ const Header = () => {
     })
   )
 
-  const viewsCountQuery = useQuery(trpc.views.get.queryOptions({ slug }))
-  const commentsCountQuery = useQuery(trpc.comments.getTotalCommentsCount.queryOptions({ slug }))
+  const viewCountQuery = useQuery(trpc.views.get.queryOptions({ slug }))
+  const commentCountQuery = useQuery(trpc.comments.getTotalCommentCount.queryOptions({ slug }))
 
   const incremented = useRef(false)
 
@@ -66,18 +66,18 @@ const Header = () => {
           </div>
           <div className='space-y-1 md:mx-auto'>
             <div className='text-muted-foreground'>{t('blog.header.views')}</div>
-            {viewsCountQuery.status === 'pending' && '--'}
-            {viewsCountQuery.status === 'error' && t('common.error')}
-            {viewsCountQuery.status === 'success' && (
-              <NumberFlow value={viewsCountQuery.data.views} data-testid='view-count' />
+            {viewCountQuery.status === 'pending' && '--'}
+            {viewCountQuery.status === 'error' && t('common.error')}
+            {viewCountQuery.status === 'success' && (
+              <NumberFlow value={viewCountQuery.data.views} data-testid='view-count' />
             )}
           </div>
           <div className='space-y-1 md:mx-auto'>
             <div className='text-muted-foreground'>{t('blog.header.comments')}</div>
-            {commentsCountQuery.status === 'pending' && '--'}
-            {commentsCountQuery.status === 'error' && t('common.error')}
-            {commentsCountQuery.status === 'success' && (
-              <NumberFlow value={commentsCountQuery.data.comments} data-testid='comment-count' />
+            {commentCountQuery.status === 'pending' && '--'}
+            {commentCountQuery.status === 'error' && t('common.error')}
+            {commentCountQuery.status === 'success' && (
+              <NumberFlow value={commentCountQuery.data.comments} data-testid='comment-count' />
             )}
           </div>
         </div>

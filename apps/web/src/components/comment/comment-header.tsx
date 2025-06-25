@@ -21,31 +21,30 @@ const CommentHeader = () => {
   const trpc = useTRPC()
   const t = useTranslations()
 
-  const commentsCountQuery = useQuery(trpc.comments.getCommentsCount.queryOptions({ slug }))
-  const repliesCountQuery = useQuery(trpc.comments.getRepliesCount.queryOptions({ slug }))
+  const commentCountQuery = useQuery(trpc.comments.getCommentCount.queryOptions({ slug }))
+  const replyCountQuery = useQuery(trpc.comments.getReplyCount.queryOptions({ slug }))
 
   return (
     <div className='flex items-center justify-between px-1'>
       <NumberFlowGroup>
         <div>
-          {commentsCountQuery.status === 'pending' &&
+          {commentCountQuery.status === 'pending' &&
             `-- ${t('blog.comments.comments', { count: 0 })}`}
-          {commentsCountQuery.status === 'error' && t('common.error')}
-          {commentsCountQuery.status === 'success' && (
+          {commentCountQuery.status === 'error' && t('common.error')}
+          {commentCountQuery.status === 'success' && (
             <NumberFlow
-              value={commentsCountQuery.data.comments}
-              suffix={` ${t('blog.comments.comments', { count: commentsCountQuery.data.comments })}`}
+              value={commentCountQuery.data.comments}
+              suffix={` ${t('blog.comments.comments', { count: commentCountQuery.data.comments })}`}
               data-testid='blog-comment-count'
             />
           )}
           {' · '}
-          {repliesCountQuery.status === 'pending' &&
-            `-- ${t('blog.comments.replies', { count: 0 })}`}
-          {repliesCountQuery.status === 'error' && t('common.error')}
-          {repliesCountQuery.status === 'success' && (
+          {replyCountQuery.status === 'pending' && `-- ${t('blog.comments.replies', { count: 0 })}`}
+          {replyCountQuery.status === 'error' && t('common.error')}
+          {replyCountQuery.status === 'success' && (
             <NumberFlow
-              value={repliesCountQuery.data.replies}
-              suffix={` ${t('blog.comments.replies', { count: repliesCountQuery.data.replies })}`}
+              value={replyCountQuery.data.replies}
+              suffix={` ${t('blog.comments.replies', { count: replyCountQuery.data.replies })}`}
               data-testid='reply-count'
             />
           )}

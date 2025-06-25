@@ -257,12 +257,12 @@ export const commentsRouter = createTRPCRouter({
         nextCursor: result.at(-1)?.createdAt ?? null
       }
     }),
-  getTotalCommentsCount: publicProcedure
+  getTotalCommentCount: publicProcedure
     .input(z.object({ slug: z.string().min(1) }))
     .query(async ({ ctx, input }) => {
       const ip = getIp(ctx.headers)
 
-      const { success } = await ratelimit.limit(getKey(`getTotalCommentsCount:${ip}`))
+      const { success } = await ratelimit.limit(getKey(`getTotalCommentCount:${ip}`))
 
       if (!success) throw new TRPCError({ code: 'TOO_MANY_REQUESTS' })
 
@@ -277,12 +277,12 @@ export const commentsRouter = createTRPCRouter({
         comments: value[0]?.value ?? 0
       }
     }),
-  getCommentsCount: publicProcedure
+  getCommentCount: publicProcedure
     .input(z.object({ slug: z.string().min(1) }))
     .query(async ({ ctx, input }) => {
       const ip = getIp(ctx.headers)
 
-      const { success } = await ratelimit.limit(getKey(`getCommentsCount:${ip}`))
+      const { success } = await ratelimit.limit(getKey(`getCommentCount:${ip}`))
 
       if (!success) throw new TRPCError({ code: 'TOO_MANY_REQUESTS' })
 
@@ -297,12 +297,12 @@ export const commentsRouter = createTRPCRouter({
         comments: value[0]?.value ?? 0
       }
     }),
-  getRepliesCount: publicProcedure
+  getReplyCount: publicProcedure
     .input(z.object({ slug: z.string().min(1) }))
     .query(async ({ ctx, input }) => {
       const ip = getIp(ctx.headers)
 
-      const { success } = await ratelimit.limit(getKey(`getRepliesCount:${ip}`))
+      const { success } = await ratelimit.limit(getKey(`getReplyCount:${ip}`))
 
       if (!success) throw new TRPCError({ code: 'TOO_MANY_REQUESTS' })
 
