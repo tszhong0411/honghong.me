@@ -1,5 +1,11 @@
 # @tszhong0411/eslint-config
 
+## 0.1.38
+
+### Patch Changes
+
+- 39d7549: Add `eslint-plugin-better-tailwindcss` plugin
+
 ## 0.1.37
 
 ### Patch Changes
