@@ -3,7 +3,7 @@ import { Column, Hr, Img, Link, Row, Section, Text } from '@react-email/componen
 const Footer = () => {
   return (
     <>
-      <Hr className='border-t-border mb-3 mt-6' />
+      <Hr className='mb-3 mt-6' />
       <Section>
         <Row className='mt-4' align='left' width='auto'>
           <Column className='pr-6 align-middle'>

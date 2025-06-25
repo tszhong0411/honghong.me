@@ -48,7 +48,7 @@ const Marquee = (props: MarqueeProps) => {
             } as React.CSSProperties
           }
           className={cn(
-            'flex shrink-0 justify-around gap-[var(--gap)]',
+            'gap-(--gap) flex shrink-0 justify-around',
             direction === 'left' ? 'animate-marquee-left flex-row' : 'animate-marquee-up flex-col',
             pauseOnHover && 'group-hover:[animation-play-state:paused]',
             reverse && 'direction-reverse'
