@@ -194,7 +194,10 @@ export const commentsRouter = createTRPCRouter({
           parentId: true,
           body: true,
           createdAt: true,
-          isDeleted: true
+          isDeleted: true,
+          replyCount: true,
+          likeCount: true,
+          dislikeCount: true
         }
       })
 
@@ -220,53 +223,34 @@ export const commentsRouter = createTRPCRouter({
             parentId: true,
             body: true,
             createdAt: true,
-            isDeleted: true
+            isDeleted: true,
+            replyCount: true,
+            likeCount: true,
+            dislikeCount: true
           }
         })
 
         if (highlightedComment) query.unshift(highlightedComment)
       }
 
-      const result = await Promise.all(
-        query.map(async (comment) => {
-          const replies = await ctx.db
-            .select({
-              value: count()
-            })
-            .from(comments)
-            .where(eq(comments.parentId, comment.id))
+      const result = query.map((comment) => {
+        const selfRate = comment.rates.length > 0 ? comment.rates[0] : null
+        const defaultImage = getDefaultImage(comment.user.id)
 
-          const selfRate = comment.rates.length > 0 ? comment.rates[0] : null
-          const likes = await ctx.db
-            .select({
-              value: count()
-            })
-            .from(rates)
-            .where(and(eq(rates.commentId, comment.id), eq(rates.like, true)))
-          const dislikes = await ctx.db
-            .select({
-              value: count()
-            })
-            .from(rates)
-            .where(and(eq(rates.commentId, comment.id), eq(rates.like, false)))
-
-          const defaultImage = getDefaultImage(comment.user.id)
-
-          return {
-            ...comment,
-            body: comment.body,
-            replies: replies[0]?.value ?? 0,
-            likes: likes[0]?.value ?? 0,
-            dislikes: dislikes[0]?.value ?? 0,
-            liked: selfRate?.like ?? null,
-            user: {
-              ...comment.user,
-              image: comment.user.image ?? defaultImage,
-              name: comment.user.name
-            }
+        return {
+          ...comment,
+          body: comment.body,
+          replies: comment.replyCount,
+          likes: comment.likeCount,
+          dislikes: comment.dislikeCount,
+          liked: selfRate?.like ?? null,
+          user: {
+            ...comment.user,
+            image: comment.user.image ?? defaultImage,
+            name: comment.user.name
           }
-        })
-      )
+        }
+      })
 
       return {
         comments: result,

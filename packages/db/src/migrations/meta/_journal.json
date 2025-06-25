@@ -22,6 +22,13 @@
       "when": 1740907130428,
       "tag": "0002_numerous_argent",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1750834950312,
+      "tag": "0003_jazzy_veda",
+      "breakpoints": true
     }
   ]
 }
