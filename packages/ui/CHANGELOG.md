@@ -5,7 +5,6 @@
 ### Patch Changes
 
 - fe11e6b: Enable eslint tailwindcss plugin and fix eslint errors
-  - @tszhong0411/utils@0.0.23
 
 ## 0.0.64
 
