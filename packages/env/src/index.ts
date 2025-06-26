@@ -75,7 +75,7 @@ export const env = createEnv({
         }
       : {}),
 
-    NEXT_PUBLIC_SITE_URL: z.string().url().optional(),
+    NEXT_PUBLIC_SITE_URL: z.string().optional(),
     NEXT_PUBLIC_FLAG_COMMENT: z.string().min(1).optional(),
     NEXT_PUBLIC_FLAG_AUTH: z.string().min(1).optional(),
     NEXT_PUBLIC_FLAG_STATS: z.string().min(1).optional(),
