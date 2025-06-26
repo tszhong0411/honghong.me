@@ -1,7 +1,7 @@
 import { env } from '@tszhong0411/env'
 
 export const getBaseUrl = () => {
-  const base = env.DEPLOYMENT_URL ?? env.VERCEL_URL
+  const base = env.NEXT_PUBLIC_SITE_URL ?? env.VERCEL_URL
   if (base) {
     return `https://${base}`
   }
