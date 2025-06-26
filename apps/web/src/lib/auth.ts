@@ -7,6 +7,7 @@ import { headers } from 'next/headers'
 import { getBaseUrl } from '@/utils/get-base-url'
 
 export const auth = betterAuth({
+  baseURL: getBaseUrl(),
   database: drizzleAdapter(db, {
     provider: 'pg',
     usePlural: true
