@@ -1,3 +1,4 @@
+import { env } from '@tszhong0411/env'
 import { consola } from 'consola'
 import { sql } from 'drizzle-orm'
 import { execa } from 'execa'
@@ -5,13 +6,30 @@ import { execa } from 'execa'
 import { db } from './db'
 
 const main = async () => {
-  const confirmed = await consola.prompt('Are you sure you want to reset the database? (y/n)')
-  if (confirmed !== 'y') {
+  const confirmed = await consola.prompt('Are you sure you want to reset the database?', {
+    type: 'confirm'
+  })
+
+  if (!confirmed) {
     consola.info('Aborting...')
 
     return
   }
 
+  if (!env.DATABASE_URL.includes('localhost')) {
+    const nonLocalConfirmed = await consola.prompt(
+      'Non-local database detected. Are you sure you want to continue?',
+      {
+        type: 'confirm'
+      }
+    )
+
+    if (!nonLocalConfirmed) {
+      consola.info('Aborting...')
+
+      return
+    }
+  }
   consola.info('Resetting database...')
 
   try {
