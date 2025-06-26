@@ -1,7 +1,7 @@
 'use client'
 
 import NumberFlow from '@number-flow/react'
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { useEffect, useRef } from 'react'
 
@@ -10,26 +10,26 @@ import Link from '@/components/link'
 import { BlurImage } from '@/components/ui/blur-image'
 import { usePostContext } from '@/contexts/post'
 import { useFormattedDate } from '@/hooks/use-formatted-date'
+import { useTRPCInvalidator } from '@/lib/trpc-invalidator'
 import { useTRPC } from '@/trpc/client'
 
 const Header = () => {
   const { date, title, slug } = usePostContext()
   const formattedDate = useFormattedDate(date)
   const trpc = useTRPC()
-  const queryClient = useQueryClient()
+  const invalidator = useTRPCInvalidator()
   const t = useTranslations()
 
   const incrementMutation = useMutation(
     trpc.views.increment.mutationOptions({
-      onSettled: () =>
-        queryClient.invalidateQueries({
-          queryKey: trpc.views.get.queryKey({ slug })
-        })
+      onSettled: async () => {
+        await invalidator.views.invalidateBySlug(slug)
+      }
     })
   )
 
-  const viewsCountQuery = useQuery(trpc.views.get.queryOptions({ slug }))
-  const commentsCountQuery = useQuery(trpc.comments.getTotalCommentsCount.queryOptions({ slug }))
+  const viewCountQuery = useQuery(trpc.views.get.queryOptions({ slug }))
+  const commentCountQuery = useQuery(trpc.comments.getTotalCommentCount.queryOptions({ slug }))
 
   const incremented = useRef(false)
 
@@ -66,18 +66,18 @@ const Header = () => {
           </div>
           <div className='space-y-1 md:mx-auto'>
             <div className='text-muted-foreground'>{t('blog.header.views')}</div>
-            {viewsCountQuery.status === 'pending' && '--'}
-            {viewsCountQuery.status === 'error' && t('common.error')}
-            {viewsCountQuery.status === 'success' && (
-              <NumberFlow value={viewsCountQuery.data.views} data-testid='view-count' />
+            {viewCountQuery.status === 'pending' && '--'}
+            {viewCountQuery.status === 'error' && t('common.error')}
+            {viewCountQuery.status === 'success' && (
+              <NumberFlow value={viewCountQuery.data.views} data-testid='view-count' />
             )}
           </div>
           <div className='space-y-1 md:mx-auto'>
             <div className='text-muted-foreground'>{t('blog.header.comments')}</div>
-            {commentsCountQuery.status === 'pending' && '--'}
-            {commentsCountQuery.status === 'error' && t('common.error')}
-            {commentsCountQuery.status === 'success' && (
-              <NumberFlow value={commentsCountQuery.data.comments} data-testid='comment-count' />
+            {commentCountQuery.status === 'pending' && '--'}
+            {commentCountQuery.status === 'error' && t('common.error')}
+            {commentCountQuery.status === 'success' && (
+              <NumberFlow value={commentCountQuery.data.comments} data-testid='comment-count' />
             )}
           </div>
         </div>

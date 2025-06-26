@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutation } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import {
   AlertDialog,
@@ -22,16 +22,19 @@ import { MoreVerticalIcon } from 'lucide-react'
 
 import { useCommentContext } from '@/contexts/comment'
 import { useCommentsContext } from '@/contexts/comments'
+import { useCommentParams } from '@/hooks/use-comment-params'
 import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard'
 import { useSession } from '@/lib/auth-client'
+import { useTRPCInvalidator } from '@/lib/trpc-invalidator'
 import { useTRPC } from '@/trpc/client'
 
 const CommentMenu = () => {
   const { comment } = useCommentContext()
-  const { slug } = useCommentsContext()
+  const { slug, sort } = useCommentsContext()
+  const [params] = useCommentParams()
   const { data: session } = useSession()
   const trpc = useTRPC()
-  const queryClient = useQueryClient()
+  const invalidator = useTRPCInvalidator()
   const [copy] = useCopyToClipboard()
   const t = useTranslations()
 
@@ -43,19 +46,47 @@ const CommentMenu = () => {
       onError: (error) => {
         toast.error(error.message)
       },
-      onSettled: () => {
-        queryClient.invalidateQueries({
-          queryKey: trpc.comments.getInfiniteComments.infiniteQueryKey()
-        })
-        queryClient.invalidateQueries({
-          queryKey: trpc.comments.getCommentsCount.queryKey({ slug })
-        })
-        queryClient.invalidateQueries({
-          queryKey: trpc.comments.getRepliesCount.queryKey({ slug })
-        })
-        queryClient.invalidateQueries({
-          queryKey: trpc.comments.getTotalCommentsCount.queryKey({ slug })
-        })
+      onSettled: async () => {
+        // 根據評論類型使用不同的失效策略
+        if (comment.parentId) {
+          // 如果是回覆：失效主評論列表 + 對應的回覆列表
+          const mainCommentsParams = {
+            slug,
+            sort,
+            type: 'comments' as const,
+            highlightedCommentId: params.comment ?? undefined
+          }
+
+          const repliesParams = {
+            slug,
+            sort: 'oldest' as const,
+            parentId: comment.parentId,
+            type: 'replies' as const,
+            highlightedCommentId: params.reply ?? undefined
+          }
+
+          await Promise.all([
+            // 失效主評論列表
+            invalidator.comments.invalidateInfiniteComments(mainCommentsParams),
+            // 失效對應的回覆列表
+            invalidator.comments.invalidateInfiniteComments(repliesParams),
+            // 失效統計
+            invalidator.comments.invalidateCountsBySlug(slug)
+          ])
+        } else {
+          // 如果是主評論：失效主評論列表
+          const mainCommentsParams = {
+            slug,
+            sort,
+            type: 'comments' as const,
+            highlightedCommentId: params.comment ?? undefined
+          }
+
+          await invalidator.comments.invalidateAfterAction({
+            slug,
+            infiniteCommentsParams: mainCommentsParams
+          })
+        }
       }
     })
   )

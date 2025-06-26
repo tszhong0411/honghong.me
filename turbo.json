@@ -13,7 +13,6 @@
     "GITHUB_TOKEN",
     "WAKATIME_API_KEY",
     "BETTER_AUTH_SECRET",
-    "BETTER_AUTH_URL",
     "GOOGLE_CLIENT_ID",
     "GOOGLE_CLIENT_SECRET",
     "GITHUB_CLIENT_ID",
@@ -33,7 +32,8 @@
     "NEXT_PUBLIC_FLAG_SPOTIFY",
     "NEXT_PUBLIC_FLAG_ANALYTICS",
     "NEXT_PUBLIC_FLAG_GUESTBOOK_NOTIFICATION",
-    "NEXT_PUBLIC_FLAG_LIKE_BUTTON"
+    "NEXT_PUBLIC_FLAG_LIKE_BUTTON",
+    "NEXT_PUBLIC_SITE_URL"
   ],
   "tasks": {
     "build": {
@@ -64,6 +64,9 @@
       "cache": false
     },
     "db:push": {
+      "cache": false
+    },
+    "db:reset": {
       "cache": false
     },
     "db:seed": {

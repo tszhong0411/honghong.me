@@ -42,7 +42,6 @@ runs:
         UPSTASH_REDIS_REST_URL=http://127.0.0.1:8079
         UPSTASH_REDIS_REST_TOKEN=nelsonlaime
         BETTER_AUTH_SECRET=1234567890
-        BETTER_AUTH_URL=http://localhost:3000
         NEXT_PUBLIC_FLAG_COMMENT=true
         NEXT_PUBLIC_FLAG_AUTH=true
         NEXT_PUBLIC_FLAG_STATS=true

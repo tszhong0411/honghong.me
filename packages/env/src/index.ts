@@ -32,7 +32,6 @@ export const env = createEnv({
     ...(flags.auth
       ? {
           BETTER_AUTH_SECRET: z.string().min(1),
-          BETTER_AUTH_URL: z.string().url(),
           GOOGLE_CLIENT_ID: z.string().min(1),
           GOOGLE_CLIENT_SECRET: z.string().min(1),
           GITHUB_CLIENT_ID: z.string().min(1),
@@ -76,6 +75,7 @@ export const env = createEnv({
         }
       : {}),
 
+    NEXT_PUBLIC_SITE_URL: z.string().url().optional(),
     NEXT_PUBLIC_FLAG_COMMENT: z.string().min(1).optional(),
     NEXT_PUBLIC_FLAG_AUTH: z.string().min(1).optional(),
     NEXT_PUBLIC_FLAG_STATS: z.string().min(1).optional(),
@@ -89,6 +89,8 @@ export const env = createEnv({
 
     NEXT_PUBLIC_UMAMI_URL: process.env.NEXT_PUBLIC_UMAMI_URL,
     NEXT_PUBLIC_UMAMI_WEBSITE_ID: process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID,
+
+    NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
 
     NEXT_PUBLIC_FLAG_COMMENT: process.env.NEXT_PUBLIC_FLAG_COMMENT,
     NEXT_PUBLIC_FLAG_AUTH: process.env.NEXT_PUBLIC_FLAG_AUTH,

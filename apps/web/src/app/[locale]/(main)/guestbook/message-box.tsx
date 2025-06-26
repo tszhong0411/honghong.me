@@ -1,7 +1,7 @@
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutation } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { useRouter } from '@tszhong0411/i18n/routing'
 import {
@@ -22,6 +22,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
 import { signOut, type User } from '@/lib/auth-client'
+import { useTRPCInvalidator } from '@/lib/trpc-invalidator'
 import { useTRPC } from '@/trpc/client'
 import { getDefaultImage } from '@/utils/get-default-image'
 
@@ -32,7 +33,7 @@ type FormProps = {
 const MessageBox = (props: FormProps) => {
   const { user } = props
   const trpc = useTRPC()
-  const queryClient = useQueryClient()
+  const invalidator = useTRPCInvalidator()
   const t = useTranslations()
   const router = useRouter()
 
@@ -55,10 +56,9 @@ const MessageBox = (props: FormProps) => {
         form.reset()
         toast.success(t('guestbook.create-message-successfully'))
       },
-      onSettled: () =>
-        queryClient.invalidateQueries({
-          queryKey: trpc.guestbook.getInfiniteMessages.infiniteQueryKey()
-        }),
+      onSettled: async () => {
+        await invalidator.guestbook.invalidateAll()
+      },
       onError: (error) => {
         toast.error(error.message)
       }
