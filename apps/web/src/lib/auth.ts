@@ -9,6 +9,7 @@ export const auth = betterAuth({
     provider: 'pg',
     usePlural: true
   }),
+  trustedOrigins: [env.VERCEL_URL ?? 'http://localhost:3000'],
   socialProviders: {
     google: {
       clientId: env.GOOGLE_CLIENT_ID,
