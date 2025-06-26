@@ -4,12 +4,14 @@ import { betterAuth } from 'better-auth'
 import { drizzleAdapter } from 'better-auth/adapters/drizzle'
 import { headers } from 'next/headers'
 
+import { getBaseUrl } from '@/utils/get-base-url'
+
 export const auth = betterAuth({
   database: drizzleAdapter(db, {
     provider: 'pg',
     usePlural: true
   }),
-  trustedOrigins: [env.VERCEL_URL ?? 'http://localhost:3000'],
+  trustedOrigins: [getBaseUrl()],
   socialProviders: {
     google: {
       clientId: env.GOOGLE_CLIENT_ID,
