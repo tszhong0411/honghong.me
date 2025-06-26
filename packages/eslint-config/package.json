@@ -27,10 +27,9 @@
   "scripts": {
     "build": "rslib build",
     "clean": "rm -rf .turbo dist",
-    "dev": "concurrently \"rslib build --watch\" \"eslint-config-inspector\"",
+    "dev": "rslib build --watch",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint --fix .",
-    "postpublish": "bash ./scripts/update-git-repo.sh",
     "type-check": "tsc --noEmit"
   },
   "types": "./dist/index.d.ts",
@@ -62,7 +61,6 @@
     "eslint": "^9.20.0"
   },
   "devDependencies": {
-    "@eslint/config-inspector": "^1.0.2",
     "@tszhong0411/tsconfig": "workspace:*",
     "eslint": "^9.28.0"
   },
