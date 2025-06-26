@@ -11,6 +11,8 @@ import { useCommentsContext } from '@/contexts/comments'
 import { useRatesContext } from '@/contexts/rates'
 import { useCommentParams } from '@/hooks/use-comment-params'
 import { useSession } from '@/lib/auth-client'
+import { useTRPCInvalidator } from '@/lib/trpc-invalidator'
+import { createTRPCQueryKeys } from '@/lib/trpc-query-helpers'
 import { useTRPC } from '@/trpc/client'
 
 const rateVariants = cva({
@@ -34,9 +36,12 @@ const CommentActions = () => {
   const { data: session } = useSession()
   const trpc = useTRPC()
   const queryClient = useQueryClient()
+  const invalidator = useTRPCInvalidator()
   const t = useTranslations()
 
-  const queryKey = {
+  // 使用統一的查詢鍵助手
+  const queryKeys = createTRPCQueryKeys(trpc)
+  const infiniteCommentsParams = {
     slug,
     sort: comment.parentId ? 'oldest' : sort,
     parentId: comment.parentId ?? undefined,
@@ -51,74 +56,60 @@ const CommentActions = () => {
       onMutate: async (newData) => {
         increment()
 
-        await queryClient.cancelQueries({
-          queryKey: trpc.comments.getInfiniteComments.infiniteQueryKey(queryKey)
-        })
+        const queryKey = queryKeys.comments.infiniteComments(infiniteCommentsParams)
+        await queryClient.cancelQueries({ queryKey })
 
-        const previousData = queryClient.getQueryData(
-          trpc.comments.getInfiniteComments.infiniteQueryKey(queryKey)
-        )
+        const previousData = queryClient.getQueryData(queryKey)
 
-        queryClient.setQueryData(
-          trpc.comments.getInfiniteComments.infiniteQueryKey(queryKey),
-          (oldData) => {
-            if (!oldData) {
-              return {
-                pages: [],
-                pageParams: []
-              }
-            }
+        queryClient.setQueryData(queryKey, (oldData) => {
+          if (!oldData) return { pages: [], pageParams: [] }
 
-            return {
-              ...oldData,
-              pages: oldData.pages.map((page) => {
-                return {
-                  ...page,
-                  comments: page.comments.map((c) => {
-                    if (c.id === newData.id) {
-                      let likes: number = c.likes
-                      let dislikes: number = c.dislikes
+          return {
+            ...oldData,
+            pages: oldData.pages.map((page) => ({
+              ...page,
+              comments: page.comments.map((c) => {
+                if (c.id === newData.id) {
+                  let likes: number = c.likes
+                  let dislikes: number = c.dislikes
 
-                      if (c.liked === true) likes--
-                      if (c.liked === false) dislikes--
+                  if (c.liked === true) likes--
+                  if (c.liked === false) dislikes--
 
-                      if (newData.like === true) likes++
-                      if (newData.like === false) dislikes++
+                  if (newData.like === true) likes++
+                  if (newData.like === false) dislikes++
 
-                      return {
-                        ...c,
-                        likes,
-                        dislikes,
-                        liked: newData.like
-                      }
-                    }
-
-                    return c
-                  })
+                  return {
+                    ...c,
+                    likes,
+                    dislikes,
+                    liked: newData.like
+                  }
                 }
+
+                return c
               })
-            }
+            }))
           }
-        )
+        })
 
         return { previousData }
       },
       onError: (error, _, ctx) => {
         if (ctx?.previousData) {
           queryClient.setQueryData(
-            trpc.comments.getInfiniteComments.infiniteQueryKey(queryKey),
+            queryKeys.comments.infiniteComments(infiniteCommentsParams),
             ctx.previousData
           )
         }
         toast.error(error.message)
       },
-      onSettled: () => {
+      onSettled: async () => {
         decrement()
 
         if (getCount() === 0) {
-          queryClient.invalidateQueries({
-            queryKey: trpc.comments.getInfiniteComments.infiniteQueryKey(queryKey)
-          })
+          // 使用統一的失效邏輯
+          await invalidator.combinations.afterRateComment(infiniteCommentsParams)
         }
       }
     })

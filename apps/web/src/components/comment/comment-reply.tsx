@@ -9,6 +9,8 @@ import { useCommentContext } from '@/contexts/comment'
 import { useCommentsContext } from '@/contexts/comments'
 import { useCommentParams } from '@/hooks/use-comment-params'
 import { useSession } from '@/lib/auth-client'
+import { useTRPCInvalidator } from '@/lib/trpc-invalidator'
+import { createTRPCQueryKeys } from '@/lib/trpc-query-helpers'
 import { useTRPC } from '@/trpc/client'
 
 import CommentEditor from './comment-editor'
@@ -22,83 +24,66 @@ const CommentReply = () => {
   const [params] = useCommentParams()
   const trpc = useTRPC()
   const queryClient = useQueryClient()
+  const invalidator = useTRPCInvalidator()
   const t = useTranslations()
 
-  const queryKey = {
+  // 使用統一的查詢鍵助手
+  const queryKeys = createTRPCQueryKeys(trpc)
+  const infiniteCommentsParams = {
     slug,
     sort,
-    type: 'comments',
+    type: 'comments' as const,
     highlightedCommentId: params.comment ?? undefined
-  } as const
+  }
 
   const commentsMutation = useMutation(
     trpc.comments.post.mutationOptions({
       onMutate: async () => {
-        await queryClient.cancelQueries({
-          queryKey: trpc.comments.getInfiniteComments.infiniteQueryKey(queryKey)
-        })
+        const queryKey = queryKeys.comments.infiniteComments(infiniteCommentsParams)
 
-        const previousData = queryClient.getQueryData(
-          trpc.comments.getInfiniteComments.infiniteQueryKey(queryKey)
-        )
+        await queryClient.cancelQueries({ queryKey })
+        const previousData = queryClient.getQueryData(queryKey)
 
-        queryClient.setQueryData(
-          trpc.comments.getInfiniteComments.infiniteQueryKey(queryKey),
-          (oldData) => {
-            if (!oldData) {
-              return {
-                pages: [],
-                pageParams: []
-              }
-            }
+        // 樂觀更新
+        queryClient.setQueryData(queryKey, (oldData) => {
+          if (!oldData) return { pages: [], pageParams: [] }
 
-            return {
-              ...oldData,
-              pages: oldData.pages.map((page) => {
-                return {
-                  ...page,
-                  comments: page.comments.map((c) => {
-                    if (c.id === comment.id) {
-                      return {
-                        ...c,
-                        replies: c.replies + 1
-                      }
-                    }
-                    return c
-                  })
-                }
-              })
-            }
+          return {
+            ...oldData,
+            pages: oldData.pages.map((page) => ({
+              ...page,
+              comments: page.comments.map((c) =>
+                c.id === comment.id ? { ...c, replies: c.replies + 1 } : c
+              )
+            }))
           }
-        )
+        })
 
         return { previousData }
       },
+
       onSuccess: () => {
         setIsReplying(false)
         toast.success(t('blog.comments.reply-posted'))
       },
+
       onError: (error, _, ctx) => {
         if (ctx?.previousData) {
           queryClient.setQueryData(
-            trpc.comments.getInfiniteComments.infiniteQueryKey(queryKey),
+            queryKeys.comments.infiniteComments(infiniteCommentsParams),
             ctx.previousData
           )
         }
         toast.error(error.message)
       },
-      onSettled: () => {
-        queryClient.invalidateQueries({
-          queryKey: trpc.comments.getInfiniteComments.infiniteQueryKey(queryKey)
-        })
-        queryClient.invalidateQueries({
-          queryKey: trpc.comments.getCommentCount.queryKey({ slug })
-        })
-        queryClient.invalidateQueries({
-          queryKey: trpc.comments.getReplyCount.queryKey({ slug })
-        })
-        queryClient.invalidateQueries({
-          queryKey: trpc.comments.getTotalCommentCount.queryKey({ slug })
+
+      onSettled: async () => {
+        // 使用專門的回覆失效邏輯，確保主評論列表和回覆列表都被失效
+        await invalidator.comments.invalidateAfterReply({
+          slug,
+          parentCommentId: comment.id,
+          mainCommentsParams: infiniteCommentsParams,
+          replyHighlightedId: params.reply ?? undefined
         })
       }
     })
@@ -109,7 +94,6 @@ const CommentReply = () => {
 
     if (!content) {
       toast.error(t('blog.comments.reply-cannot-be-empty'))
-
       return
     }
 
@@ -132,9 +116,7 @@ const CommentReply = () => {
     <form onSubmit={submitCommentReply}>
       <div className='relative'>
         <CommentEditor
-          onChange={(e) => {
-            setContent(e.target.value)
-          }}
+          onChange={(e) => setContent(e.target.value)}
           onModEnter={submitCommentReply}
           onEscape={() => setIsReplying(false)}
           placeholder={t('blog.comments.reply-to-comment')}

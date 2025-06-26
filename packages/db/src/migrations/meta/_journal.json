@@ -29,6 +29,13 @@
       "when": 1750834950312,
       "tag": "0003_jazzy_veda",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1750872309784,
+      "tag": "0004_shallow_black_panther",
+      "breakpoints": true
     }
   ]
 }
