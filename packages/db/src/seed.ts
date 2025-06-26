@@ -1,6 +1,8 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
 
+import { consola } from 'consola'
+
 import { db } from './db'
 import { posts } from './schema'
 
@@ -13,12 +15,12 @@ const main = async () => {
       await db.insert(posts).values({ slug, views: 0 })
     }
 
-    console.log('🎉 Data inserted successfully!')
+    consola.success('Data inserted successfully!')
 
-    // eslint-disable-next-line unicorn/no-process-exit -- required here
+    // eslint-disable-next-line unicorn/no-process-exit -- required here to exit the process immediately
     process.exit(0)
   } catch (error) {
-    console.error('❌ Error inserting data:\n', error)
+    consola.error('Error inserting data:\n', error)
   }
 }
 

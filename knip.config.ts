@@ -26,7 +26,7 @@ const config: KnipConfig = {
       ]
     },
     'packages/db': {
-      entry: ['src/seed.ts']
+      entry: ['src/seed.ts', 'src/reset.ts']
     },
     'packages/eslint-config': {
       ignoreDependencies: ['@eslint/config-inspector']

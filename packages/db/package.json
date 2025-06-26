@@ -17,6 +17,7 @@
     "db:generate": "pnpm with-env drizzle-kit generate",
     "db:migrate": "pnpm with-env drizzle-kit migrate",
     "db:push": "pnpm with-env drizzle-kit push",
+    "db:reset": "pnpm with-env tsx ./src/reset.ts",
     "db:seed": "pnpm with-env tsx ./src/seed.ts",
     "db:studio": "pnpm with-env drizzle-kit studio",
     "lint": "eslint . --max-warnings 0",
@@ -35,7 +36,9 @@
     "@tszhong0411/eslint-config": "workspace:*",
     "@tszhong0411/tsconfig": "workspace:*",
     "@types/node": "^22.15.29",
+    "consola": "^3.4.2",
     "drizzle-kit": "^0.31.1",
+    "execa": "^9.6.0",
     "pg": "^8.16.0"
   },
   "lint-staged": {

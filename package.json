@@ -21,6 +21,7 @@
     "db:generate": "turbo db:generate",
     "db:migrate": "turbo db:migrate",
     "db:push": "turbo db:push",
+    "db:reset": "turbo db:reset",
     "db:seed": "turbo db:seed",
     "db:studio": "turbo db:studio",
     "dev": "turbo dev",
