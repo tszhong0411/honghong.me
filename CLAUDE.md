@@ -53,7 +53,7 @@ nelsonlai-me/
 
 ### Core Technologies
 
-- **Framework**: Next.js 15+ with App Router
+- **Framework**: Next.js 15 with App Router + React 19
 - **Language**: TypeScript (strict mode)
 - **Styling**: Tailwind CSS with custom utility classes
 - **Database**: PostgreSQL with Drizzle ORM
@@ -133,6 +133,40 @@ export default Component
 // ❌ Avoid
 <div style={{ display: 'flex', gap: '1rem' }}>
 ```
+
+### React 19 Guidelines
+
+React 19 is the latest version of React. It introduces a new way to write React components.
+
+#### Context & State Hooks
+
+- `use()` replaces `useContext()` and works anywhere
+- use `<MyContext value=…>` instead of `<MyContext.Provider>`
+
+#### Form & Action Hooks
+
+- `useActionState()` returns `[error, submit, pending]`
+- `<form action={handler}>` handles submit, reset, and errors
+- `useFormStatus()` reads the form’s pending state
+
+#### Optimistic Updates
+
+- `useOptimistic(init)` updates UI immediately while waiting
+
+#### Server Components & Actions
+
+- async components run on the server by default
+- mark server functions with `'use server'` and use them in form actions
+
+#### Rendering & Suspense
+
+- `prerender()` / `prerenderToNodeStream()` for static and streaming HTML
+- Suspense pre-warms data before first render
+
+#### Refs & Metadata
+
+- function components accept ref props without `forwardRef`
+- render title/meta tags in JSX and React moves them to `<head />`
 
 ## Testing Requirements
 
