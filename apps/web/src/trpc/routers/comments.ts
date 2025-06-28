@@ -239,10 +239,6 @@ export const commentsRouter = createTRPCRouter({
 
         return {
           ...comment,
-          body: comment.body,
-          replies: comment.replyCount,
-          likes: comment.likeCount,
-          dislikes: comment.dislikeCount,
           liked: selfRate?.like ?? null,
           user: {
             ...comment.user,

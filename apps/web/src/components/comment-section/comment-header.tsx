@@ -13,11 +13,15 @@ import {
 } from '@tszhong0411/ui'
 import { ListFilterIcon } from 'lucide-react'
 
-import { useCommentsContext } from '@/contexts/comments'
+import { useCommentsStore } from '@/stores/comments'
 import { useTRPC } from '@/trpc/client'
 
 const CommentHeader = () => {
-  const { slug, sort, setSort } = useCommentsContext()
+  const { slug, sort, setSort } = useCommentsStore((state) => ({
+    slug: state.slug,
+    sort: state.sort,
+    setSort: state.setSort
+  }))
   const trpc = useTRPC()
   const t = useTranslations()
 

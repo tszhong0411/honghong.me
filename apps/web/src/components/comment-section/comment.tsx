@@ -1,16 +1,13 @@
 'use client'
 
-import type { GetInfiniteCommentsOutput } from '@/trpc/routers/comments'
-
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { Badge, Skeleton, Tooltip, TooltipContent, TooltipTrigger } from '@tszhong0411/ui'
 import Image from 'next/image'
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 
-import { type CommentContext, CommentProvider } from '@/contexts/comment'
-import { useCommentsContext } from '@/contexts/comments'
 import { useCommentParams } from '@/hooks/use-comment-params'
 import { useFormattedDate } from '@/hooks/use-formatted-date'
+import { useCommentStore } from '@/stores/comment'
 
 import Markdown from '../mdx/markdown'
 
@@ -19,19 +16,18 @@ import CommentMenu from './comment-menu'
 import CommentReplies from './comment-replies'
 import CommentReply from './comment-reply'
 
-type CommentProps = {
-  comment: GetInfiniteCommentsOutput['comments'][number]
-}
-
-const Comment = (props: CommentProps) => {
-  const { comment } = props
-  const { slug } = useCommentsContext()
-  const [isEditing, setIsEditing] = useState(false)
-  const [isReplying, setIsReplying] = useState(false)
-  const [isOpenReplies, setIsOpenReplies] = useState(false)
+const Comment = () => {
   const commentRef = useRef<HTMLDivElement>(null)
+  const { comment, isReplying } = useCommentStore((state) => ({
+    comment: state.comment,
+    isReplying: state.isReplying
+  }))
   const [params] = useCommentParams()
   const t = useTranslations()
+
+  useEffect(() => {
+    console.log(comment)
+  }, [comment])
 
   const isHighlighted = params.reply ? params.reply === comment.id : params.comment === comment.id
 
@@ -42,26 +38,12 @@ const Comment = (props: CommentProps) => {
     isDeleted,
     parentId,
     user: { image, name, role },
-    replies
+    replyCount
   } = comment
 
   const formattedDate = useFormattedDate(comment.createdAt, {
     relative: true
   })
-
-  const context = useMemo<CommentContext>(
-    () => ({
-      isEditing,
-      isReplying,
-      isOpenReplies,
-      setIsEditing,
-      setIsReplying,
-      setIsOpenReplies,
-      slug,
-      comment
-    }),
-    [comment, isEditing, isOpenReplies, isReplying, slug]
-  )
 
   useEffect(() => {
     if (isHighlighted && commentRef.current) {
@@ -71,10 +53,10 @@ const Comment = (props: CommentProps) => {
     }
   }, [isHighlighted])
 
-  const hasReplies = !parentId && replies > 0
+  const hasReplies = !parentId && replyCount > 0
 
   return (
-    <CommentProvider value={context}>
+    <>
       <div ref={commentRef} className='p-2.5' data-testid={`comment-${id}`}>
         {isHighlighted && <Badge className='mb-4'>{t('blog.comments.highlighted-comment')}</Badge>}
         <div className='flex gap-4'>
@@ -123,7 +105,7 @@ const Comment = (props: CommentProps) => {
         </div>
       </div>
       {hasReplies && <CommentReplies />}
-    </CommentProvider>
+    </>
   )
 }
 

@@ -15,12 +15,12 @@ import {
   toast
 } from '@tszhong0411/ui'
 
-import { useMessageContext } from '@/contexts/message'
 import { useTRPCInvalidator } from '@/lib/trpc-invalidator'
+import { useMessageStore } from '@/stores/message'
 import { useTRPC } from '@/trpc/client'
 
 const DeleteButton = () => {
-  const { message } = useMessageContext()
+  const message = useMessageStore((state) => state.message)
   const trpc = useTRPC()
   const invalidator = useTRPCInvalidator()
   const t = useTranslations()

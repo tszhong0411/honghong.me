@@ -2,8 +2,8 @@ import { Link, TableCell, TableHead, TableHeader, TableRow } from '@tszhong0411/
 import MarkdownToJSX from 'markdown-to-jsx'
 import { Fragment, memo } from 'react'
 
-import CommentCodeBlock from '../comment/comment-code-block'
-import CommentTable from '../comment/comment-table'
+import CommentCodeBlock from '../comment-section/comment-code-block'
+import CommentTable from '../comment-section/comment-table'
 
 type MarkdownProps = {
   children: string

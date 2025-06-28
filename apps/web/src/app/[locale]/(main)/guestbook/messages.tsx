@@ -6,12 +6,12 @@ import { keepPreviousData, useInfiniteQuery } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { Avatar, AvatarFallback, AvatarImage, Skeleton } from '@tszhong0411/ui'
 import { getAbbreviation } from '@tszhong0411/utils'
-import { useEffect, useMemo } from 'react'
+import { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 
-import { type MessageContext, MessageProvider } from '@/contexts/message'
 import { useFormattedDate } from '@/hooks/use-formatted-date'
 import { useSession } from '@/lib/auth-client'
+import { MessageProvider } from '@/stores/message'
 import { useTRPC } from '@/trpc/client'
 
 import DeleteButton from './delete-button'
@@ -102,17 +102,10 @@ const Message = (props: MessageProps) => {
     }
   } = props
 
-  const context = useMemo<MessageContext>(
-    () => ({
-      message
-    }),
-    [message]
-  )
-
   const isAuthor = session?.user && userId === session.user.id
 
   return (
-    <MessageProvider value={context}>
+    <MessageProvider message={message}>
       <div
         className='shadow-xs rounded-lg border p-4 dark:bg-zinc-900/30'
         data-testid={`message-${id}`}

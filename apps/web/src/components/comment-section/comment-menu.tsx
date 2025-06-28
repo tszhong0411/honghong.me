@@ -20,17 +20,17 @@ import {
 } from '@tszhong0411/ui'
 import { MoreVerticalIcon } from 'lucide-react'
 
-import { useCommentContext } from '@/contexts/comment'
-import { useCommentsContext } from '@/contexts/comments'
 import { useCommentParams } from '@/hooks/use-comment-params'
 import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard'
 import { useSession } from '@/lib/auth-client'
 import { useTRPCInvalidator } from '@/lib/trpc-invalidator'
+import { useCommentStore } from '@/stores/comment'
+import { useCommentsStore } from '@/stores/comments'
 import { useTRPC } from '@/trpc/client'
 
 const CommentMenu = () => {
-  const { comment } = useCommentContext()
-  const { slug, sort } = useCommentsContext()
+  const comment = useCommentStore((state) => state.comment)
+  const { slug, sort } = useCommentsStore((state) => ({ slug: state.slug, sort: state.sort }))
   const [params] = useCommentParams()
   const { data: session } = useSession()
   const trpc = useTRPC()

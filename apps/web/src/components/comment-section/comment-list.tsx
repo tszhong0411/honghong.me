@@ -9,9 +9,10 @@ import { createOnigurumaEngine } from 'shiki/engine/oniguruma'
 import githubDarkDefault from 'shiki/themes/github-dark-default.mjs'
 import githubLightDefault from 'shiki/themes/github-light-default.mjs'
 
-import { useCommentsContext } from '@/contexts/comments'
 import { useCommentParams } from '@/hooks/use-comment-params'
-import { useHighlighterStore } from '@/store/highlighter'
+import { CommentProvider } from '@/stores/comment'
+import { useCommentsStore } from '@/stores/comments'
+import { useHighlighterStore } from '@/stores/highlighter'
 import { useTRPC } from '@/trpc/client'
 
 import Comment from './comment'
@@ -19,7 +20,7 @@ import CommentHeader from './comment-header'
 import CommentLoader from './comment-loader'
 
 const CommentList = () => {
-  const { slug, sort } = useCommentsContext()
+  const { slug, sort } = useCommentsStore((state) => ({ slug: state.slug, sort: state.sort }))
   const [params] = useCommentParams()
   const t = useTranslations()
   const { highlighter, setHighlighter } = useHighlighterStore()
@@ -69,7 +70,11 @@ const CommentList = () => {
       <div className='space-y-8 py-2' data-testid='comments-list'>
         {isSuccess &&
           data.pages.map((page) =>
-            page.comments.map((comment) => <Comment key={comment.id} comment={comment} />)
+            page.comments.map((comment) => (
+              <CommentProvider key={comment.id} comment={comment} slug={slug}>
+                <Comment />
+              </CommentProvider>
+            ))
           )}
         {noComments && (
           <div className='flex min-h-20 items-center justify-center'>
