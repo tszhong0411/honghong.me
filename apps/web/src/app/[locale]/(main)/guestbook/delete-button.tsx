@@ -31,7 +31,6 @@ const DeleteButton = () => {
         toast.success(t('guestbook.delete-message-successfully'))
       },
       onSettled: async () => {
-        // 使用統一的失效邏輯
         await invalidator.guestbook.invalidateAll()
       },
       onError: (error) => {

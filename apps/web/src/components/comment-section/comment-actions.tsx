@@ -48,7 +48,6 @@ const CommentActions = () => {
   const invalidator = useTRPCInvalidator()
   const t = useTranslations()
 
-  // 使用統一的查詢鍵助手
   const queryKeys = createTRPCQueryKeys(trpc)
   const infiniteCommentsParams = {
     slug,
@@ -117,7 +116,6 @@ const CommentActions = () => {
         decrement()
 
         if (getCount() === 0) {
-          // 使用統一的失效邏輯
           await invalidator.combinations.afterRateComment(infiniteCommentsParams)
         }
       }

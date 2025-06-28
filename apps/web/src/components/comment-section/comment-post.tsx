@@ -25,7 +25,6 @@ const CommentPost = () => {
   const invalidator = useTRPCInvalidator()
   const t = useTranslations()
 
-  // 使用統一的查詢鍵助手
   const infiniteCommentsParams = {
     slug,
     sort,
@@ -43,7 +42,6 @@ const CommentPost = () => {
         toast.error(error.message)
       },
       onSettled: async () => {
-        // 使用統一的失效邏輯
         await invalidator.comments.invalidateAfterAction({
           slug,
           infiniteCommentsParams

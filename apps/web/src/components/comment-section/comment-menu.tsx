@@ -47,9 +47,7 @@ const CommentMenu = () => {
         toast.error(error.message)
       },
       onSettled: async () => {
-        // 根據評論類型使用不同的失效策略
         if (comment.parentId) {
-          // 如果是回覆：失效主評論列表 + 對應的回覆列表
           const mainCommentsParams = {
             slug,
             sort,
@@ -66,15 +64,11 @@ const CommentMenu = () => {
           }
 
           await Promise.all([
-            // 失效主評論列表
             invalidator.comments.invalidateInfiniteComments(mainCommentsParams),
-            // 失效對應的回覆列表
             invalidator.comments.invalidateInfiniteComments(repliesParams),
-            // 失效統計
             invalidator.comments.invalidateCountsBySlug(slug)
           ])
         } else {
-          // 如果是主評論：失效主評論列表
           const mainCommentsParams = {
             slug,
             sort,

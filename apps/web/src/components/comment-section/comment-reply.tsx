@@ -30,7 +30,6 @@ const CommentReply = () => {
   const invalidator = useTRPCInvalidator()
   const t = useTranslations()
 
-  // 使用統一的查詢鍵助手
   const queryKeys = createTRPCQueryKeys(trpc)
   const infiniteCommentsParams = {
     slug,
@@ -47,7 +46,6 @@ const CommentReply = () => {
         await queryClient.cancelQueries({ queryKey })
         const previousData = queryClient.getQueryData(queryKey)
 
-        // 樂觀更新
         queryClient.setQueryData(queryKey, (oldData) => {
           if (!oldData) return { pages: [], pageParams: [] }
 
@@ -81,7 +79,6 @@ const CommentReply = () => {
       },
 
       onSettled: async () => {
-        // 使用專門的回覆失效邏輯，確保主評論列表和回覆列表都被失效
         await invalidator.comments.invalidateAfterReply({
           slug,
           parentCommentId: comment.id,

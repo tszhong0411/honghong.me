@@ -28,7 +28,6 @@ const LikeButton = (props: LikeButtonProps) => {
   const invalidator = useTRPCInvalidator()
   const t = useTranslations()
 
-  // 使用統一的查詢鍵助手
   const queryKeys = createTRPCQueryKeys(trpc)
   const queryKey = { slug }
 
@@ -57,7 +56,6 @@ const LikeButton = (props: LikeButtonProps) => {
         }
       },
       onSettled: async () => {
-        // 使用統一的失效邏輯
         await invalidator.likes.invalidateBySlug(slug)
       }
     })
