@@ -25,10 +25,6 @@ const Comment = () => {
   const [params] = useCommentParams()
   const t = useTranslations()
 
-  useEffect(() => {
-    console.log(comment)
-  }, [comment])
-
   const isHighlighted = params.reply ? params.reply === comment.id : params.comment === comment.id
 
   const {
