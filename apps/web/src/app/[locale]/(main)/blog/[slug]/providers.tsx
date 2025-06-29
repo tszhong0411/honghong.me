@@ -2,7 +2,7 @@
 
 import type { Post } from 'content-collections'
 
-import { PostProvider } from '@/contexts/post'
+import { PostProvider } from '@/stores/post'
 
 type ProvidersProps = {
   children: React.ReactNode
@@ -12,7 +12,7 @@ type ProvidersProps = {
 const Providers = (props: ProvidersProps) => {
   const { children, post } = props
 
-  return <PostProvider value={post}>{children}</PostProvider>
+  return <PostProvider post={post}>{children}</PostProvider>
 }
 
 export default Providers

@@ -5,12 +5,12 @@ import { useTranslations } from '@tszhong0411/i18n/client'
 import { Button, toast } from '@tszhong0411/ui'
 import { useState } from 'react'
 
-import { useCommentContext } from '@/contexts/comment'
-import { useCommentsContext } from '@/contexts/comments'
 import { useCommentParams } from '@/hooks/use-comment-params'
 import { useSession } from '@/lib/auth-client'
 import { useTRPCInvalidator } from '@/lib/trpc-invalidator'
 import { createTRPCQueryKeys } from '@/lib/trpc-query-helpers'
+import { useCommentStore } from '@/stores/comment'
+import { useCommentsStore } from '@/stores/comments'
 import { useTRPC } from '@/trpc/client'
 
 import CommentEditor from './comment-editor'
@@ -19,15 +19,17 @@ import UnauthorizedOverlay from './unauthorized-overlay'
 const CommentReply = () => {
   const [content, setContent] = useState('')
   const { data: session } = useSession()
-  const { comment, setIsReplying } = useCommentContext()
-  const { slug, sort } = useCommentsContext()
+  const { comment, setIsReplying } = useCommentStore((state) => ({
+    comment: state.comment,
+    setIsReplying: state.setIsReplying
+  }))
+  const { slug, sort } = useCommentsStore((state) => ({ slug: state.slug, sort: state.sort }))
   const [params] = useCommentParams()
   const trpc = useTRPC()
   const queryClient = useQueryClient()
   const invalidator = useTRPCInvalidator()
   const t = useTranslations()
 
-  // 使用統一的查詢鍵助手
   const queryKeys = createTRPCQueryKeys(trpc)
   const infiniteCommentsParams = {
     slug,
@@ -44,7 +46,6 @@ const CommentReply = () => {
         await queryClient.cancelQueries({ queryKey })
         const previousData = queryClient.getQueryData(queryKey)
 
-        // 樂觀更新
         queryClient.setQueryData(queryKey, (oldData) => {
           if (!oldData) return { pages: [], pageParams: [] }
 
@@ -53,7 +54,7 @@ const CommentReply = () => {
             pages: oldData.pages.map((page) => ({
               ...page,
               comments: page.comments.map((c) =>
-                c.id === comment.id ? { ...c, replies: c.replies + 1 } : c
+                c.id === comment.id ? { ...c, replyCount: c.replyCount + 1 } : c
               )
             }))
           }
@@ -78,7 +79,6 @@ const CommentReply = () => {
       },
 
       onSettled: async () => {
-        // 使用專門的回覆失效邏輯，確保主評論列表和回覆列表都被失效
         await invalidator.comments.invalidateAfterReply({
           slug,
           parentCommentId: comment.id,

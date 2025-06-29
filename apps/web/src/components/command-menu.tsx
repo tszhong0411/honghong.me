@@ -25,7 +25,7 @@ import {
   SITE_X_URL,
   SITE_YOUTUBE_URL
 } from '@/lib/constants'
-import { useDialogsStore } from '@/store/dialogs'
+import { useDialogsStore } from '@/stores/dialogs'
 
 type Groups = Array<{
   name: string

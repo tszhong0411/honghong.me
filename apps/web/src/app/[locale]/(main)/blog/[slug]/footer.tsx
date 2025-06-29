@@ -4,11 +4,11 @@ import { useLocale, useTranslations } from '@tszhong0411/i18n/client'
 import { linkVariants } from '@tszhong0411/ui'
 
 import Link from '@/components/link'
-import { usePostContext } from '@/contexts/post'
 import { useFormattedDate } from '@/hooks/use-formatted-date'
+import { usePostStore } from '@/stores/post'
 
 const Footer = () => {
-  const { slug, modifiedTime } = usePostContext()
+  const { slug, modifiedTime } = usePostStore((state) => state.post)
   const t = useTranslations()
   const locale = useLocale()
 

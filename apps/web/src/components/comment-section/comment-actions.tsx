@@ -6,13 +6,13 @@ import { cn } from '@tszhong0411/utils'
 import { cva } from 'cva'
 import { ChevronDownIcon, MessageSquareIcon, ThumbsDownIcon, ThumbsUpIcon } from 'lucide-react'
 
-import { useCommentContext } from '@/contexts/comment'
-import { useCommentsContext } from '@/contexts/comments'
-import { useRatesContext } from '@/contexts/rates'
 import { useCommentParams } from '@/hooks/use-comment-params'
 import { useSession } from '@/lib/auth-client'
 import { useTRPCInvalidator } from '@/lib/trpc-invalidator'
 import { createTRPCQueryKeys } from '@/lib/trpc-query-helpers'
+import { useCommentStore } from '@/stores/comment'
+import { useCommentsStore } from '@/stores/comments'
+import { useRatesStore } from '@/stores/rates'
 import { useTRPC } from '@/trpc/client'
 
 const rateVariants = cva({
@@ -29,9 +29,18 @@ const rateVariants = cva({
 })
 
 const CommentActions = () => {
-  const { slug, sort } = useCommentsContext()
-  const { comment, setIsReplying, isOpenReplies, setIsOpenReplies } = useCommentContext()
-  const { increment, decrement, getCount } = useRatesContext()
+  const { slug, sort } = useCommentsStore((state) => ({ slug: state.slug, sort: state.sort }))
+  const { comment, setIsReplying, isOpenReplies, setIsOpenReplies } = useCommentStore((state) => ({
+    comment: state.comment,
+    setIsReplying: state.setIsReplying,
+    isOpenReplies: state.isOpenReplies,
+    setIsOpenReplies: state.setIsOpenReplies
+  }))
+  const { increment, decrement, getCount } = useRatesStore((state) => ({
+    increment: state.increment,
+    decrement: state.decrement,
+    getCount: state.getCount
+  }))
   const [params] = useCommentParams()
   const { data: session } = useSession()
   const trpc = useTRPC()
@@ -39,7 +48,6 @@ const CommentActions = () => {
   const invalidator = useTRPCInvalidator()
   const t = useTranslations()
 
-  // 使用統一的查詢鍵助手
   const queryKeys = createTRPCQueryKeys(trpc)
   const infiniteCommentsParams = {
     slug,
@@ -70,19 +78,19 @@ const CommentActions = () => {
               ...page,
               comments: page.comments.map((c) => {
                 if (c.id === newData.id) {
-                  let likes: number = c.likes
-                  let dislikes: number = c.dislikes
+                  let likeCount: number = c.likeCount
+                  let dislikeCount: number = c.dislikeCount
 
-                  if (c.liked === true) likes--
-                  if (c.liked === false) dislikes--
+                  if (c.liked === true) likeCount--
+                  if (c.liked === false) dislikeCount--
 
-                  if (newData.like === true) likes++
-                  if (newData.like === false) dislikes++
+                  if (newData.like === true) likeCount++
+                  if (newData.like === false) dislikeCount++
 
                   return {
                     ...c,
-                    likes,
-                    dislikes,
+                    likeCount,
+                    dislikeCount,
                     liked: newData.like
                   }
                 }
@@ -108,7 +116,6 @@ const CommentActions = () => {
         decrement()
 
         if (getCount() === 0) {
-          // 使用統一的失效邏輯
           await invalidator.combinations.afterRateComment(infiniteCommentsParams)
         }
       }
@@ -125,7 +132,7 @@ const CommentActions = () => {
     ratesSetMutation.mutate({ id: comment.id, like: like === comment.liked ? null : like })
   }
 
-  const hasReplies = !comment.parentId && comment.replies > 0
+  const hasReplies = !comment.parentId && comment.replyCount > 0
 
   return (
     <>
@@ -139,7 +146,7 @@ const CommentActions = () => {
           aria-label={t('blog.comments.like')}
         >
           <ThumbsUpIcon />
-          <NumberFlow value={comment.likes} />
+          <NumberFlow value={comment.likeCount} />
         </Button>
         <Button
           variant='secondary'
@@ -150,7 +157,7 @@ const CommentActions = () => {
           aria-label={t('blog.comments.dislike')}
         >
           <ThumbsDownIcon />
-          <NumberFlow value={comment.dislikes} />
+          <NumberFlow value={comment.dislikeCount} />
         </Button>
         {comment.parentId ? null : (
           <Button
@@ -177,8 +184,8 @@ const CommentActions = () => {
               'rotate-180': isOpenReplies
             })}
           />
-          <NumberFlow value={comment.replies} data-testid='comment-reply-count' />
-          {t('blog.comments.replies', { count: comment.replies })}
+          <NumberFlow value={comment.replyCount} data-testid='comment-reply-count' />
+          {t('blog.comments.replies', { count: comment.replyCount })}
         </Button>
       )}
     </>

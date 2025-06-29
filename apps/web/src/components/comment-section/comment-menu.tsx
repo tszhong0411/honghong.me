@@ -20,17 +20,17 @@ import {
 } from '@tszhong0411/ui'
 import { MoreVerticalIcon } from 'lucide-react'
 
-import { useCommentContext } from '@/contexts/comment'
-import { useCommentsContext } from '@/contexts/comments'
 import { useCommentParams } from '@/hooks/use-comment-params'
 import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard'
 import { useSession } from '@/lib/auth-client'
 import { useTRPCInvalidator } from '@/lib/trpc-invalidator'
+import { useCommentStore } from '@/stores/comment'
+import { useCommentsStore } from '@/stores/comments'
 import { useTRPC } from '@/trpc/client'
 
 const CommentMenu = () => {
-  const { comment } = useCommentContext()
-  const { slug, sort } = useCommentsContext()
+  const comment = useCommentStore((state) => state.comment)
+  const { slug, sort } = useCommentsStore((state) => ({ slug: state.slug, sort: state.sort }))
   const [params] = useCommentParams()
   const { data: session } = useSession()
   const trpc = useTRPC()
@@ -47,9 +47,7 @@ const CommentMenu = () => {
         toast.error(error.message)
       },
       onSettled: async () => {
-        // 根據評論類型使用不同的失效策略
         if (comment.parentId) {
-          // 如果是回覆：失效主評論列表 + 對應的回覆列表
           const mainCommentsParams = {
             slug,
             sort,
@@ -66,15 +64,11 @@ const CommentMenu = () => {
           }
 
           await Promise.all([
-            // 失效主評論列表
             invalidator.comments.invalidateInfiniteComments(mainCommentsParams),
-            // 失效對應的回覆列表
             invalidator.comments.invalidateInfiniteComments(repliesParams),
-            // 失效統計
             invalidator.comments.invalidateCountsBySlug(slug)
           ])
         } else {
-          // 如果是主評論：失效主評論列表
           const mainCommentsParams = {
             slug,
             sort,

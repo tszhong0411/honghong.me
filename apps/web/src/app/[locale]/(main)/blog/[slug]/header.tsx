@@ -8,13 +8,13 @@ import { useEffect, useRef } from 'react'
 import ImageZoom from '@/components/image-zoom'
 import Link from '@/components/link'
 import { BlurImage } from '@/components/ui/blur-image'
-import { usePostContext } from '@/contexts/post'
 import { useFormattedDate } from '@/hooks/use-formatted-date'
 import { useTRPCInvalidator } from '@/lib/trpc-invalidator'
+import { usePostStore } from '@/stores/post'
 import { useTRPC } from '@/trpc/client'
 
 const Header = () => {
-  const { date, title, slug } = usePostContext()
+  const { date, title, slug } = usePostStore((state) => state.post)
   const formattedDate = useFormattedDate(date)
   const trpc = useTRPC()
   const invalidator = useTRPCInvalidator()

@@ -13,7 +13,7 @@ import {
 import { getAbbreviation } from '@tszhong0411/utils'
 
 import { useSession } from '@/lib/auth-client'
-import { useDialogsStore } from '@/store/dialogs'
+import { useDialogsStore } from '@/stores/dialogs'
 import { getDefaultImage } from '@/utils/get-default-image'
 
 const AdminProfileDropdown = () => {
