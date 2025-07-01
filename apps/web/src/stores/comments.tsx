@@ -1,4 +1,4 @@
-import type { GetInfiniteCommentsInput } from '@/trpc/routers/comments'
+import type { ListCommentsInput } from '@/orpc/routers'
 
 import { createContext, use, useEffect, useRef } from 'react'
 import { createStore } from 'zustand'
@@ -7,12 +7,12 @@ import { useStoreWithEqualityFn } from 'zustand/traditional'
 
 type CommentsState = {
   slug: string
-  sort: GetInfiniteCommentsInput['sort']
+  sort: ListCommentsInput['sort']
 }
 
 type CommentsActions = {
   setSlug: (slug: string) => void
-  setSort: (sort: GetInfiniteCommentsInput['sort']) => void
+  setSort: (sort: ListCommentsInput['sort']) => void
 }
 
 type CommentsStore = ReturnType<typeof createCommentsStore>
@@ -30,7 +30,7 @@ CommentsStoreContext.displayName = 'CommentsStoreContext'
 type CommentsProviderProps = {
   children: React.ReactNode
   slug: string
-  sort: GetInfiniteCommentsInput['sort']
+  sort: ListCommentsInput['sort']
 }
 
 export const CommentsProvider = (props: CommentsProviderProps) => {

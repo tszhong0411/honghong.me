@@ -32,6 +32,7 @@ export const config = {
   /*
    * Match all request paths except for the ones starting with:
    * - api (API routes)
+   * - rpc (oRPC routes)
    * - _next/static (static files)
    * - _next/image (image optimization files)
    * - _vercel (Vercel internal)
@@ -42,7 +43,7 @@ export const config = {
    * - rss.xml
    */
   matcher: [
-    '/((?!api|_next/static|_next/image|_vercel|og|favicon|fonts|images|videos|favicon.ico|sitemap.xml|robots.txt|rss.xml).*)'
+    '/((?!api|rpc|_next/static|_next/image|_vercel|og|favicon|fonts|images|videos|favicon.ico|sitemap.xml|robots.txt|rss.xml).*)'
   ]
 }
 

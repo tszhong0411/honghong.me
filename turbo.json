@@ -3,6 +3,7 @@
   "globalDependencies": [".env.*local"],
   "globalEnv": [
     "NODE_ENV",
+    "NEXT_RUNTIME",
     "CI",
     "ANALYZE",
     "PORT",

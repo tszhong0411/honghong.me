@@ -1,6 +1,6 @@
 'use client'
 
-import type { GetInfiniteMessagesOutput } from '@/trpc/routers/guestbook'
+import type { ListMessagesOutput } from '@/orpc/routers'
 
 import { keepPreviousData, useInfiniteQuery } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
@@ -11,8 +11,9 @@ import { useInView } from 'react-intersection-observer'
 
 import { useFormattedDate } from '@/hooks/use-formatted-date'
 import { useSession } from '@/lib/auth-client'
+import { orpc } from '@/orpc/client'
 import { MessageProvider } from '@/stores/message'
-import { useTRPC } from '@/trpc/client'
+import { getDefaultImage } from '@/utils/get-default-image'
 
 import DeleteButton from './delete-button'
 import MessagesLoader from './messages-loader'
@@ -22,7 +23,7 @@ type UpdatedDateProps = {
 }
 
 type MessageProps = {
-  message: GetInfiniteMessagesOutput['messages'][number]
+  message: ListMessagesOutput['messages'][number]
 }
 
 const UpdatedDate = (props: UpdatedDateProps) => {
@@ -44,15 +45,13 @@ const UpdatedDate = (props: UpdatedDateProps) => {
 }
 
 const Messages = () => {
-  const trpc = useTRPC()
   const { status, data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery(
-    trpc.guestbook.getInfiniteMessages.infiniteQueryOptions(
-      {},
-      {
-        getNextPageParam: (lastPage) => lastPage.nextCursor,
-        placeholderData: keepPreviousData
-      }
-    )
+    orpc.guestbook.list.infiniteOptions({
+      input: (pageParam: Date | undefined) => ({ cursor: pageParam }),
+      initialPageParam: undefined,
+      getNextPageParam: (lastPage) => lastPage.nextCursor,
+      placeholderData: keepPreviousData
+    })
   )
   const t = useTranslations()
 
@@ -104,6 +103,8 @@ const Message = (props: MessageProps) => {
 
   const isAuthor = session?.user && userId === session.user.id
 
+  const defaultImage = getDefaultImage(userId)
+
   return (
     <MessageProvider message={message}>
       <div
@@ -112,7 +113,7 @@ const Message = (props: MessageProps) => {
       >
         <div className='mb-3 flex gap-3'>
           <Avatar className='size-10'>
-            <AvatarImage src={image} alt={name} />
+            <AvatarImage src={image ?? defaultImage} alt={name} />
             <AvatarFallback>{getAbbreviation(name)}</AvatarFallback>
           </Avatar>
           <div className='flex flex-col justify-center gap-px text-sm'>

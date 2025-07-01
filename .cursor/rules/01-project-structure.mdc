@@ -35,7 +35,7 @@ This is a Next.js monorepo powered by Turborepo. Navigate to specific parts usin
 
 - `app/[locale]/` - Internationalized routes
 - `components/` - React components organized by feature
-- `trpc/routers/` - API endpoints
+- `orpc/routers/` - API endpoints
 - `content/` - MDX content for blog/projects/pages
 - `lib/` - Core utilities and configurations
 - `hooks/` - Custom React hooks

@@ -1,4 +1,4 @@
-import type { GetInfiniteMessagesOutput } from '@/trpc/routers/guestbook'
+import type { ListMessagesOutput } from '@/orpc/routers'
 
 import { createContext, use, useEffect, useRef } from 'react'
 import { createStore } from 'zustand'
@@ -6,11 +6,11 @@ import { shallow } from 'zustand/shallow'
 import { useStoreWithEqualityFn } from 'zustand/traditional'
 
 type MessageState = {
-  message: GetInfiniteMessagesOutput['messages'][number]
+  message: ListMessagesOutput['messages'][number]
 }
 
 type MessageActions = {
-  setMessage: (message: GetInfiniteMessagesOutput['messages'][number]) => void
+  setMessage: (message: ListMessagesOutput['messages'][number]) => void
 }
 
 type MessageStore = ReturnType<typeof createMessageStore>
@@ -26,7 +26,7 @@ MessageStoreContext.displayName = 'MessageStoreContext'
 
 type MessageProviderProps = {
   children: React.ReactNode
-  message: GetInfiniteMessagesOutput['messages'][number]
+  message: ListMessagesOutput['messages'][number]
 }
 
 export const MessageProvider = (props: MessageProviderProps) => {

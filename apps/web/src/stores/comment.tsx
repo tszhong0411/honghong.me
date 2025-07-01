@@ -1,4 +1,4 @@
-import type { GetInfiniteCommentsOutput } from '@/trpc/routers/comments'
+import type { ListCommentsOutput } from '@/orpc/routers'
 
 import { createContext, use, useEffect, useRef } from 'react'
 import { createStore } from 'zustand'
@@ -9,7 +9,7 @@ type CommentState = {
   isEditing: boolean
   isReplying: boolean
   isOpenReplies: boolean
-  comment: GetInfiniteCommentsOutput['comments'][number]
+  comment: ListCommentsOutput['comments'][number]
   slug: string
 }
 
@@ -17,7 +17,7 @@ type CommentActions = {
   setIsEditing: (value: boolean) => void
   setIsReplying: (value: boolean) => void
   setIsOpenReplies: (value: boolean) => void
-  setComment: (comment: GetInfiniteCommentsOutput['comments'][number]) => void
+  setComment: (comment: ListCommentsOutput['comments'][number]) => void
   setSlug: (slug: string) => void
 }
 
@@ -38,7 +38,7 @@ CommentStoreContext.displayName = 'CommentStoreContext'
 
 type CommentProviderProps = {
   children: React.ReactNode
-  comment: GetInfiniteCommentsOutput['comments'][number]
+  comment: ListCommentsOutput['comments'][number]
   slug: string
 }
 

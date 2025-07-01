@@ -5,12 +5,11 @@ import { flags } from '@tszhong0411/env'
 import { useTranslations } from '@tszhong0411/i18n/client'
 import { ClockIcon } from 'lucide-react'
 
-import { useTRPC } from '@/trpc/client'
+import { orpc } from '@/orpc/client'
 
 const CodingHours = () => {
-  const trpc = useTRPC()
   const { status, data } = useQuery({
-    ...trpc.wakatime.get.queryOptions(),
+    ...orpc.stats.wakatime.queryOptions(),
     enabled: flags.stats
   })
   const t = useTranslations()

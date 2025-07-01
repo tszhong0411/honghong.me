@@ -36,7 +36,8 @@ const main = async () => {
     consola.info('Dropping public schema...')
 
     await db.execute(sql`
-      DROP SCHEMA public CASCADE;
+      DROP SCHEMA IF EXISTS public CASCADE;
+      DROP SCHEMA IF EXISTS drizzle CASCADE;
     `)
 
     consola.info('Recreating public schema...')
@@ -54,7 +55,6 @@ const main = async () => {
 
     consola.info('Migrating database...')
 
-    await execa('pnpm', ['db:push', '--force'], { stdio: 'inherit' })
     await execa('pnpm', ['db:migrate'], { stdio: 'inherit' })
 
     consola.info('Seeding database...')

@@ -16,10 +16,6 @@ export const env = createEnv({
   skipValidation: !!process.env.CI,
   extends: [vercel()],
 
-  shared: {
-    NODE_ENV: z.enum(['development', 'production', 'test']).default('development')
-  },
-
   server: {
     ...(flags.spotify
       ? {
@@ -85,8 +81,6 @@ export const env = createEnv({
     NEXT_PUBLIC_FLAG_LIKE_BUTTON: z.string().min(1).optional()
   },
   experimental__runtimeEnv: {
-    NODE_ENV: process.env.NODE_ENV,
-
     NEXT_PUBLIC_UMAMI_URL: process.env.NEXT_PUBLIC_UMAMI_URL,
     NEXT_PUBLIC_UMAMI_WEBSITE_ID: process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID,
 

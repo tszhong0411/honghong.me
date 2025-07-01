@@ -1,10 +1,7 @@
-import { TRPCError } from '@trpc/server'
 import { env } from '@tszhong0411/env'
-import { ratelimit } from '@tszhong0411/kv'
 
-import { getIp } from '@/utils/get-ip'
-
-import { createTRPCRouter, publicProcedure } from '../init'
+import { publicProcedure } from '../root'
+import { spotifyStatsSchema } from '../schemas/spotify'
 
 const CLIENT_ID = env.SPOTIFY_CLIENT_ID
 const CLIENT_SECRET = env.SPOTIFY_CLIENT_SECRET
@@ -32,16 +29,15 @@ const getAccessToken = async () => {
   return data.access_token as string
 }
 
-const getKey = (id: string) => `spotify:${id}`
-
-export const spotifyRouter = createTRPCRouter({
-  get: publicProcedure.query(async ({ ctx }) => {
-    const ip = getIp(ctx.headers)
-
-    const { success } = await ratelimit.limit(getKey(ip))
-
-    if (!success) throw new TRPCError({ code: 'TOO_MANY_REQUESTS' })
-
+export const spotifyStats = publicProcedure
+  .route({
+    method: 'GET',
+    path: '/stats/spotify',
+    summary: 'Get Spotify stats',
+    tags: ['Spotify']
+  })
+  .output(spotifyStatsSchema)
+  .handler(async () => {
     const accessToken = await getAccessToken()
 
     const response = await fetch(NOW_PLAYING_ENDPOINT, {
@@ -68,4 +64,3 @@ export const spotifyRouter = createTRPCRouter({
       artist: song.item.artists.map((artist: { name: string }) => artist.name).join(', ') as string
     }
   })
-})

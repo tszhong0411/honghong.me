@@ -7,18 +7,12 @@ import { useTranslations } from 'next-intl'
 import AdminPageHeader from '@/components/admin/admin-page-header'
 import UsersTable from '@/components/admin/users-table'
 import { useAdminUsersParams } from '@/hooks/use-admin-users-params'
-import { useTRPC } from '@/trpc/client'
+import { orpc } from '@/orpc/client'
 
 const Page = () => {
   const [params] = useAdminUsersParams()
-  const trpc = useTRPC()
   const { data, isLoading, isError } = useQuery(
-    trpc.users.getUsers.queryOptions(
-      { ...params },
-      {
-        placeholderData: keepPreviousData
-      }
-    )
+    orpc.admin.listAllUsers.queryOptions({ input: params, placeholderData: keepPreviousData })
   )
   const t = useTranslations()
 

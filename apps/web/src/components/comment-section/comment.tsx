@@ -8,6 +8,7 @@ import { useEffect, useRef } from 'react'
 import { useCommentParams } from '@/hooks/use-comment-params'
 import { useFormattedDate } from '@/hooks/use-formatted-date'
 import { useCommentStore } from '@/stores/comment'
+import { getDefaultImage } from '@/utils/get-default-image'
 
 import Markdown from '../mdx/markdown'
 
@@ -33,7 +34,7 @@ const Comment = () => {
     createdAt,
     isDeleted,
     parentId,
-    user: { image, name, role },
+    user: { id: userId, image, name, role },
     replyCount
   } = comment
 
@@ -51,13 +52,15 @@ const Comment = () => {
 
   const hasReplies = !parentId && replyCount > 0
 
+  const defaultImage = getDefaultImage(userId)
+
   return (
     <>
       <div ref={commentRef} className='p-2.5' data-testid={`comment-${id}`}>
         {isHighlighted && <Badge className='mb-4'>{t('blog.comments.highlighted-comment')}</Badge>}
         <div className='flex gap-4'>
           <Image
-            src={image}
+            src={image ?? defaultImage}
             alt={name}
             width={32}
             height={32}

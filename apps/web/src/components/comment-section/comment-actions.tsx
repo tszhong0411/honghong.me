@@ -8,12 +8,12 @@ import { ChevronDownIcon, MessageSquareIcon, ThumbsDownIcon, ThumbsUpIcon } from
 
 import { useCommentParams } from '@/hooks/use-comment-params'
 import { useSession } from '@/lib/auth-client'
-import { useTRPCInvalidator } from '@/lib/trpc-invalidator'
-import { createTRPCQueryKeys } from '@/lib/trpc-query-helpers'
+import { useORPCInvalidator } from '@/lib/orpc-invalidator'
+import { oRPCQueryKeys } from '@/lib/orpc-query-keys'
+import { orpc } from '@/orpc/client'
 import { useCommentStore } from '@/stores/comment'
 import { useCommentsStore } from '@/stores/comments'
 import { useRatesStore } from '@/stores/rates'
-import { useTRPC } from '@/trpc/client'
 
 const rateVariants = cva({
   base: buttonVariants({
@@ -43,12 +43,10 @@ const CommentActions = () => {
   }))
   const [params] = useCommentParams()
   const { data: session } = useSession()
-  const trpc = useTRPC()
   const queryClient = useQueryClient()
-  const invalidator = useTRPCInvalidator()
+  const invalidator = useORPCInvalidator()
   const t = useTranslations()
 
-  const queryKeys = createTRPCQueryKeys(trpc)
   const infiniteCommentsParams = {
     slug,
     sort: comment.parentId ? 'oldest' : sort,
@@ -60,11 +58,11 @@ const CommentActions = () => {
   } as const
 
   const ratesSetMutation = useMutation(
-    trpc.rates.set.mutationOptions({
+    orpc.posts.rates.create.mutationOptions({
       onMutate: async (newData) => {
         increment()
 
-        const queryKey = queryKeys.comments.infiniteComments(infiniteCommentsParams)
+        const queryKey = oRPCQueryKeys.comments.list(infiniteCommentsParams)
         await queryClient.cancelQueries({ queryKey })
 
         const previousData = queryClient.getQueryData(queryKey)
@@ -106,7 +104,7 @@ const CommentActions = () => {
       onError: (error, _, ctx) => {
         if (ctx?.previousData) {
           queryClient.setQueryData(
-            queryKeys.comments.infiniteComments(infiniteCommentsParams),
+            oRPCQueryKeys.comments.list(infiniteCommentsParams),
             ctx.previousData
           )
         }

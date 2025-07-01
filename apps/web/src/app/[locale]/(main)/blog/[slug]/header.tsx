@@ -9,27 +9,28 @@ import ImageZoom from '@/components/image-zoom'
 import Link from '@/components/link'
 import { BlurImage } from '@/components/ui/blur-image'
 import { useFormattedDate } from '@/hooks/use-formatted-date'
-import { useTRPCInvalidator } from '@/lib/trpc-invalidator'
+import { useORPCInvalidator } from '@/lib/orpc-invalidator'
+import { orpc } from '@/orpc/client'
 import { usePostStore } from '@/stores/post'
-import { useTRPC } from '@/trpc/client'
 
 const Header = () => {
   const { date, title, slug } = usePostStore((state) => state.post)
   const formattedDate = useFormattedDate(date)
-  const trpc = useTRPC()
-  const invalidator = useTRPCInvalidator()
+  const invalidator = useORPCInvalidator()
   const t = useTranslations()
 
   const incrementMutation = useMutation(
-    trpc.views.increment.mutationOptions({
+    orpc.posts.views.increment.mutationOptions({
       onSettled: async () => {
         await invalidator.views.invalidateBySlug(slug)
       }
     })
   )
 
-  const viewCountQuery = useQuery(trpc.views.get.queryOptions({ slug }))
-  const commentCountQuery = useQuery(trpc.comments.getTotalCommentCount.queryOptions({ slug }))
+  const viewCountQuery = useQuery(orpc.posts.views.get.queryOptions({ input: { slug } }))
+  const commentCountQuery = useQuery(
+    orpc.posts.comments.count.queryOptions({ input: { slug, withReplies: true } })
+  )
 
   const incremented = useRef(false)
 
@@ -77,7 +78,7 @@ const Header = () => {
             {commentCountQuery.status === 'pending' && '--'}
             {commentCountQuery.status === 'error' && t('common.error')}
             {commentCountQuery.status === 'success' && (
-              <NumberFlow value={commentCountQuery.data.comments} data-testid='comment-count' />
+              <NumberFlow value={commentCountQuery.data.count} data-testid='comment-count' />
             )}
           </div>
         </div>

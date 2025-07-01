@@ -7,11 +7,11 @@ import { useState } from 'react'
 
 import { useCommentParams } from '@/hooks/use-comment-params'
 import { useSession } from '@/lib/auth-client'
-import { useTRPCInvalidator } from '@/lib/trpc-invalidator'
-import { createTRPCQueryKeys } from '@/lib/trpc-query-helpers'
+import { useORPCInvalidator } from '@/lib/orpc-invalidator'
+import { oRPCQueryKeys } from '@/lib/orpc-query-keys'
+import { orpc } from '@/orpc/client'
 import { useCommentStore } from '@/stores/comment'
 import { useCommentsStore } from '@/stores/comments'
-import { useTRPC } from '@/trpc/client'
 
 import CommentEditor from './comment-editor'
 import UnauthorizedOverlay from './unauthorized-overlay'
@@ -25,12 +25,10 @@ const CommentReply = () => {
   }))
   const { slug, sort } = useCommentsStore((state) => ({ slug: state.slug, sort: state.sort }))
   const [params] = useCommentParams()
-  const trpc = useTRPC()
   const queryClient = useQueryClient()
-  const invalidator = useTRPCInvalidator()
+  const invalidator = useORPCInvalidator()
   const t = useTranslations()
 
-  const queryKeys = createTRPCQueryKeys(trpc)
   const infiniteCommentsParams = {
     slug,
     sort,
@@ -39,9 +37,9 @@ const CommentReply = () => {
   }
 
   const commentsMutation = useMutation(
-    trpc.comments.post.mutationOptions({
+    orpc.posts.comments.create.mutationOptions({
       onMutate: async () => {
-        const queryKey = queryKeys.comments.infiniteComments(infiniteCommentsParams)
+        const queryKey = oRPCQueryKeys.comments.list(infiniteCommentsParams)
 
         await queryClient.cancelQueries({ queryKey })
         const previousData = queryClient.getQueryData(queryKey)
@@ -71,7 +69,7 @@ const CommentReply = () => {
       onError: (error, _, ctx) => {
         if (ctx?.previousData) {
           queryClient.setQueryData(
-            queryKeys.comments.infiniteComments(infiniteCommentsParams),
+            oRPCQueryKeys.comments.list(infiniteCommentsParams),
             ctx.previousData
           )
         }

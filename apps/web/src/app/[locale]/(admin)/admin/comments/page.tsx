@@ -7,18 +7,12 @@ import { useTranslations } from 'next-intl'
 import AdminPageHeader from '@/components/admin/admin-page-header'
 import CommentsTable from '@/components/admin/comments-table'
 import { useAdminCommentsParams } from '@/hooks/use-admin-comments-params'
-import { useTRPC } from '@/trpc/client'
+import { orpc } from '@/orpc/client'
 
 const Page = () => {
   const [params] = useAdminCommentsParams()
-  const trpc = useTRPC()
   const { data, isLoading, isError } = useQuery(
-    trpc.comments.getComments.queryOptions(
-      { ...params },
-      {
-        placeholderData: keepPreviousData
-      }
-    )
+    orpc.admin.listAllComments.queryOptions({ input: params, placeholderData: keepPreviousData })
   )
   const t = useTranslations()
 

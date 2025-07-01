@@ -1,3 +1,5 @@
+import type { NextRequest } from 'next/server'
+
 import { db } from '@tszhong0411/db'
 import { env } from '@tszhong0411/env'
 import { betterAuth } from 'better-auth'
@@ -30,8 +32,8 @@ export const auth = betterAuth({
   }
 })
 
-export const getSession = async () => {
-  return await auth.api.getSession({
-    headers: await headers()
+export const getSession = async (request?: NextRequest) => {
+  return auth.api.getSession({
+    headers: request ? request.headers : await headers()
   })
 }

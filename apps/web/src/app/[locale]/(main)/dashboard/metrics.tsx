@@ -10,7 +10,7 @@ import { ArrowRightIcon, PencilIcon, StarIcon } from 'lucide-react'
 
 import Counter from '@/components/counter'
 import Link from '@/components/link'
-import { useTRPC } from '@/trpc/client'
+import { orpc } from '@/orpc/client'
 
 type Card = {
   icon: React.ReactNode
@@ -26,13 +26,11 @@ type Card = {
 }
 
 const Metrics = () => {
-  const trpc = useTRPC()
-
-  const youtubeQuery = useQuery(trpc.youtube.get.queryOptions())
-  const githubQuery = useQuery(trpc.github.getStats.queryOptions())
-  const likesQuery = useQuery(trpc.likes.getCount.queryOptions())
-  const viewsQuery = useQuery(trpc.views.getCount.queryOptions())
-  const wakatimeQuery = useQuery(trpc.wakatime.get.queryOptions())
+  const youtubeQuery = useQuery(orpc.stats.youtube.queryOptions())
+  const githubQuery = useQuery(orpc.stats.github.queryOptions())
+  const likesQuery = useQuery(orpc.stats.blog.likes.queryOptions())
+  const viewsQuery = useQuery(orpc.stats.blog.views.queryOptions())
+  const wakatimeQuery = useQuery(orpc.stats.wakatime.queryOptions())
 
   const t = useTranslations()
 

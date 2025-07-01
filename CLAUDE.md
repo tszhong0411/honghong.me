@@ -35,7 +35,7 @@ nelsonlai-me/
 
   - `/app`: Next.js App Router pages and layouts
   - `/components`: React components
-  - `/trpc`: tRPC API routes and routers
+  - `/orpc`: oRPC API routes and routers
   - `/lib`: Core utilities and configurations
   - `/hooks`: Custom React hooks
   - `/store`: State management (Zustand)
@@ -59,7 +59,7 @@ nelsonlai-me/
 - **Database**: PostgreSQL with Drizzle ORM
 - **Cache**: Redis for caching and rate limiting
 - **Authentication**: Better Auth
-- **API**: tRPC for type-safe APIs
+- **API**: oRPC for type-safe APIs
 - **Email**: React Email for transactional emails
 - **Testing**: Playwright for E2E, Vitest for unit tests
 - **Package Manager**: pnpm (v10+)
@@ -237,19 +237,19 @@ pnpm db:seed
 pnpm db:studio
 ```
 
-## API Development (tRPC)
+## API Development (oRPC)
 
 ### Creating New Routes
 
 ```typescript
-// In apps/web/src/trpc/routers/example.ts
+// In apps/web/src/orpc/routers/example.ts
 import { z } from 'zod'
-import { createTRPCRouter, protectedProcedure, publicProcedure } from '../init'
+import { protectedProcedure, publicProcedure } from '../init'
 
-export const exampleRouter = createTRPCRouter({
+export const exampleRouter = {
   // Public endpoint
-  getAll: publicProcedure.query(async ({ ctx }) => {
-    return ctx.db.select().from(table)
+  getAll: publicProcedure.handler(async ({ context }) => {
+    return context.db.select().from(table)
   }),
 
   // Protected endpoint
@@ -259,10 +259,10 @@ export const exampleRouter = createTRPCRouter({
         name: z.string().min(1)
       })
     )
-    .mutation(async ({ ctx, input }) => {
+    .handler(async ({ context, input }) => {
       // Implementation
     })
-})
+}
 ```
 
 ## Environment Variables
@@ -396,9 +396,9 @@ const ServerComponent = async () => {
   return <div>{/* Render data */}</div>
 }
 
-// Client Component with tRPC (preferred)
+// Client Component with oRPC (preferred)
 const ClientComponent = () => {
-  const { data } = api.example.getAll.useQuery()
+  const { data } = useQuery(orpc.example.getAll.queryOptions())
   return <div>{/* Render data */}</div>
 }
 ```
@@ -407,7 +407,7 @@ const ClientComponent = () => {
 
 ```typescript
 // Use error boundaries for UI errors
-// Use tRPC error handling for API errors
+// Use oRPC error handling for API errors
 // Log errors appropriately
 ```
 

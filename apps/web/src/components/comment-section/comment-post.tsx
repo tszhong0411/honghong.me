@@ -8,9 +8,9 @@ import { useEffect, useState } from 'react'
 
 import { useCommentParams } from '@/hooks/use-comment-params'
 import { useSession } from '@/lib/auth-client'
-import { useTRPCInvalidator } from '@/lib/trpc-invalidator'
+import { useORPCInvalidator } from '@/lib/orpc-invalidator'
+import { orpc } from '@/orpc/client'
 import { useCommentsStore } from '@/stores/comments'
-import { useTRPC } from '@/trpc/client'
 
 import CommentEditor from './comment-editor'
 import UnauthorizedOverlay from './unauthorized-overlay'
@@ -21,8 +21,7 @@ const CommentPost = () => {
   const [content, setContent] = useState('')
   const [isMounted, setIsMounted] = useState(false)
   const { data: session, isPending } = useSession()
-  const trpc = useTRPC()
-  const invalidator = useTRPCInvalidator()
+  const invalidator = useORPCInvalidator()
   const t = useTranslations()
 
   const infiniteCommentsParams = {
@@ -33,7 +32,7 @@ const CommentPost = () => {
   }
 
   const commentsMutation = useMutation(
-    trpc.comments.post.mutationOptions({
+    orpc.posts.comments.create.mutationOptions({
       onSuccess: () => {
         setContent('')
         toast.success(t('blog.comments.comment-posted'))

@@ -25,9 +25,9 @@ alwaysApply: true
 ### Client Components (Preferred)
 
 ```typescript
-// Use tRPC hooks
+// Use oRPC hooks
 const PostList = () => {
-  const { data: posts, isLoading } = api.post.getAll.useQuery()
+  const { data: posts, isLoading } = useQuery(orpc.post.getAll.queryOptions())
 
   if (isLoading) return <Skeleton />
   return <div>{/* render posts */}</div>
@@ -50,13 +50,16 @@ const Page = async () => {
 ### API Errors
 
 ```typescript
-try {
-  const result = await api.user.update.mutate(data)
-  toast.success('Updated successfully')
-} catch (error) {
-  console.error('Update failed:', error)
-  toast.error('Failed to update. Please try again.')
-}
+const updateMutation = useMutation(
+  orpc.user.update.mutationOptions({
+    onSuccess: () => {
+      toast.success('Updated successfully')
+    },
+    onError: (error) => {
+      toast.error(error.message)
+    }
+  })
+)
 ```
 
 ### Component Errors
@@ -129,11 +132,8 @@ const validated = schema.parse(input)
 
 ```typescript
 // Protected routes
-export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
-  if (!ctx.session?.user) {
-    throw new TRPCError({ code: 'UNAUTHORIZED' })
-  }
-  return next({ ctx: { session: ctx.session } })
+export const example = protectedProcedure.handler(async () => {
+  // ...
 })
 ```
 
@@ -204,8 +204,8 @@ const useStore = create((set) => ({
 ### Server State
 
 ```typescript
-// Use React Query / tRPC
-const { data, mutate } = api.resource.getAll.useQuery()
+// Use React Query / oRPC
+const { data, mutate } = useQuery(orpc.resource.getAll.queryOptions())
 ```
 
 ## Common Pitfalls to Avoid

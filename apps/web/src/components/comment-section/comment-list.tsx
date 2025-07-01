@@ -10,10 +10,10 @@ import githubDarkDefault from 'shiki/themes/github-dark-default.mjs'
 import githubLightDefault from 'shiki/themes/github-light-default.mjs'
 
 import { useCommentParams } from '@/hooks/use-comment-params'
+import { orpc } from '@/orpc/client'
 import { CommentProvider } from '@/stores/comment'
 import { useCommentsStore } from '@/stores/comments'
 import { useHighlighterStore } from '@/stores/highlighter'
-import { useTRPC } from '@/trpc/client'
 
 import Comment from './comment'
 import CommentHeader from './comment-header'
@@ -25,20 +25,19 @@ const CommentList = () => {
   const t = useTranslations()
   const { highlighter, setHighlighter } = useHighlighterStore()
 
-  const trpc = useTRPC()
   const { status, data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery(
-    trpc.comments.getInfiniteComments.infiniteQueryOptions(
-      {
+    orpc.posts.comments.list.infiniteOptions({
+      input: (pageParam: Date | undefined) => ({
         slug,
         sort,
         type: 'comments',
-        highlightedCommentId: params.comment ?? undefined
-      },
-      {
-        getNextPageParam: (lastPage) => lastPage.nextCursor,
-        placeholderData: keepPreviousData
-      }
-    )
+        highlightedCommentId: params.comment ?? undefined,
+        cursor: pageParam
+      }),
+      initialPageParam: undefined,
+      getNextPageParam: (lastPage) => lastPage.nextCursor,
+      placeholderData: keepPreviousData
+    })
   )
 
   const { ref, inView } = useInView()

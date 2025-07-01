@@ -19,9 +19,9 @@ import {
 } from 'lucide-react'
 
 import { COMMENT_TYPES } from '@/lib/constants'
-import { type GetCommentsOutput } from '@/trpc/routers/comments'
+import { type ListAllCommentsOutput } from '@/orpc/routers'
 
-type Comment = GetCommentsOutput['comments'][number]
+type Comment = ListAllCommentsOutput['comments'][number]
 
 type CommentsTableProps = {
   data: Comment[]
