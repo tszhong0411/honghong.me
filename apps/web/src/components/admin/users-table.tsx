@@ -1,6 +1,6 @@
 'use client'
 
-import type { GetUsersOutput } from '@/trpc/routers/users'
+import type { GetUsersOutput } from '@/orpc/routers/users'
 
 import { type ColumnDef } from '@tanstack/react-table'
 import { useTranslations } from '@tszhong0411/i18n/client'

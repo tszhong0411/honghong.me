@@ -1,4 +1,4 @@
-import type { GetInfiniteCommentsInput } from '@/trpc/routers/comments'
+import type { GetInfiniteCommentsInput } from '@/orpc/routers/comments'
 
 import NumberFlow, { NumberFlowGroup } from '@number-flow/react'
 import { useQuery } from '@tanstack/react-query'
@@ -13,8 +13,8 @@ import {
 } from '@tszhong0411/ui'
 import { ListFilterIcon } from 'lucide-react'
 
+import { orpc } from '@/orpc/client'
 import { useCommentsStore } from '@/stores/comments'
-import { useTRPC } from '@/trpc/client'
 
 const CommentHeader = () => {
   const { slug, sort, setSort } = useCommentsStore((state) => ({
@@ -22,11 +22,12 @@ const CommentHeader = () => {
     sort: state.sort,
     setSort: state.setSort
   }))
-  const trpc = useTRPC()
   const t = useTranslations()
 
-  const commentCountQuery = useQuery(trpc.comments.getCommentCount.queryOptions({ slug }))
-  const replyCountQuery = useQuery(trpc.comments.getReplyCount.queryOptions({ slug }))
+  const commentCountQuery = useQuery(
+    orpc.comments.getCommentCount.queryOptions({ input: { slug } })
+  )
+  const replyCountQuery = useQuery(orpc.comments.getReplyCount.queryOptions({ input: { slug } }))
 
   return (
     <div className='flex items-center justify-between px-1'>

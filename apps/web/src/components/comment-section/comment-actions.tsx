@@ -8,12 +8,12 @@ import { ChevronDownIcon, MessageSquareIcon, ThumbsDownIcon, ThumbsUpIcon } from
 
 import { useCommentParams } from '@/hooks/use-comment-params'
 import { useSession } from '@/lib/auth-client'
-import { useTRPCInvalidator } from '@/lib/trpc-invalidator'
-import { createTRPCQueryKeys } from '@/lib/trpc-query-helpers'
+import { useORPCInvalidator } from '@/lib/orpc-invalidator'
+import { createORPCQueryKeys } from '@/lib/orpc-query-helpers'
+import { orpc } from '@/orpc/client'
 import { useCommentStore } from '@/stores/comment'
 import { useCommentsStore } from '@/stores/comments'
 import { useRatesStore } from '@/stores/rates'
-import { useTRPC } from '@/trpc/client'
 
 const rateVariants = cva({
   base: buttonVariants({
@@ -43,12 +43,11 @@ const CommentActions = () => {
   }))
   const [params] = useCommentParams()
   const { data: session } = useSession()
-  const trpc = useTRPC()
   const queryClient = useQueryClient()
-  const invalidator = useTRPCInvalidator()
+  const invalidator = useORPCInvalidator()
   const t = useTranslations()
 
-  const queryKeys = createTRPCQueryKeys(trpc)
+  const queryKeys = createORPCQueryKeys()
   const infiniteCommentsParams = {
     slug,
     sort: comment.parentId ? 'oldest' : sort,
@@ -60,7 +59,7 @@ const CommentActions = () => {
   } as const
 
   const ratesSetMutation = useMutation(
-    trpc.rates.set.mutationOptions({
+    orpc.rates.createRate.mutationOptions({
       onMutate: async (newData) => {
         increment()
 

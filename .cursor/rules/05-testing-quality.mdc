@@ -74,35 +74,11 @@ describe('useCounter', () => {
 })
 ```
 
-### API Testing with tRPC
+### API Testing with oRPC
 
-```typescript
-// api.test.ts
-import { createInnerTRPCContext } from '@/trpc/init'
-import { appRouter } from '@/trpc/routers/_app'
-import { db } from '@tszhong0411/db'
+<!-- TODO: Add API testing with oRPC -->
 
-describe('API Routes', () => {
-  it('creates new item', async () => {
-    const ctx = createInnerTRPCContext({
-      session: {
-        user: { id: 'test-user' }
-      }
-    })
-
-    const caller = appRouter.createCaller(ctx)
-
-    const result = await caller.example.create({
-      name: 'Test Item'
-    })
-
-    expect(result.name).toBe('Test Item')
-
-    // Cleanup
-    await db.delete(examples).where(eq(examples.id, result.id))
-  })
-})
-```
+Not applicable currently.
 
 ## E2E Testing with Playwright
 

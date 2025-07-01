@@ -1,6 +1,6 @@
 'use client'
 
-import type { GetInfiniteMessagesOutput } from '@/trpc/routers/guestbook'
+import type { GetInfiniteMessagesOutput } from '@/orpc/routers/guestbook'
 
 import { keepPreviousData, useInfiniteQuery } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
@@ -11,8 +11,8 @@ import { useInView } from 'react-intersection-observer'
 
 import { useFormattedDate } from '@/hooks/use-formatted-date'
 import { useSession } from '@/lib/auth-client'
+import { orpc } from '@/orpc/client'
 import { MessageProvider } from '@/stores/message'
-import { useTRPC } from '@/trpc/client'
 
 import DeleteButton from './delete-button'
 import MessagesLoader from './messages-loader'
@@ -44,15 +44,13 @@ const UpdatedDate = (props: UpdatedDateProps) => {
 }
 
 const Messages = () => {
-  const trpc = useTRPC()
   const { status, data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery(
-    trpc.guestbook.getInfiniteMessages.infiniteQueryOptions(
-      {},
-      {
-        getNextPageParam: (lastPage) => lastPage.nextCursor,
-        placeholderData: keepPreviousData
-      }
-    )
+    orpc.guestbook.getInfiniteMessages.infiniteOptions({
+      input: (pageParam: Date | undefined) => ({ cursor: pageParam }),
+      initialPageParam: undefined,
+      getNextPageParam: (lastPage) => lastPage.nextCursor,
+      placeholderData: keepPreviousData
+    })
   )
   const t = useTranslations()
 

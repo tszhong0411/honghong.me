@@ -31,7 +31,7 @@ alwaysApply: false
 
 ## API Layer
 
-- **tRPC v11** - Type-safe APIs
+- **oRPC v1** - Type-safe APIs
 - **React Query (TanStack Query)** - Data fetching and caching
 - **Zod** - Schema validation
 

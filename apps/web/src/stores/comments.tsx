@@ -1,4 +1,4 @@
-import type { GetInfiniteCommentsInput } from '@/trpc/routers/comments'
+import type { GetInfiniteCommentsInput } from '@/orpc/routers/comments'
 
 import { createContext, use, useEffect, useRef } from 'react'
 import { createStore } from 'zustand'

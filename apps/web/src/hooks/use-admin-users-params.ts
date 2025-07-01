@@ -1,4 +1,4 @@
-import type { GetUsersOutput } from '@/trpc/routers/users'
+import type { GetUsersOutput } from '@/orpc/routers/users'
 
 import { getSortingStateParser } from '@tszhong0411/ui'
 import {

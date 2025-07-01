@@ -7,15 +7,14 @@ import { linkVariants } from '@tszhong0411/ui'
 import { StarIcon } from 'lucide-react'
 
 import { FOOTER_LINKS } from '@/config/links'
-import { useTRPC } from '@/trpc/client'
+import { orpc } from '@/orpc/client'
 
 import Link from '../link'
 
 import NowPlaying from './now-playing'
 
 const Footer = () => {
-  const trpc = useTRPC()
-  const { status, data } = useQuery(trpc.github.getRepoStarCount.queryOptions())
+  const { status, data } = useQuery(orpc.github.getRepoStarCount.queryOptions())
   const t = useTranslations()
 
   return (

@@ -15,18 +15,17 @@ import {
   toast
 } from '@tszhong0411/ui'
 
-import { useTRPCInvalidator } from '@/lib/trpc-invalidator'
+import { useORPCInvalidator } from '@/lib/orpc-invalidator'
+import { orpc } from '@/orpc/client'
 import { useMessageStore } from '@/stores/message'
-import { useTRPC } from '@/trpc/client'
 
 const DeleteButton = () => {
   const message = useMessageStore((state) => state.message)
-  const trpc = useTRPC()
-  const invalidator = useTRPCInvalidator()
+  const invalidator = useORPCInvalidator()
   const t = useTranslations()
 
   const guestbookMutation = useMutation(
-    trpc.guestbook.delete.mutationOptions({
+    orpc.guestbook.deleteMessage.mutationOptions({
       onSuccess: () => {
         toast.success(t('guestbook.delete-message-successfully'))
       },

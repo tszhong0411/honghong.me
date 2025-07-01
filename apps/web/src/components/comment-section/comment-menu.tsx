@@ -23,23 +23,22 @@ import { MoreVerticalIcon } from 'lucide-react'
 import { useCommentParams } from '@/hooks/use-comment-params'
 import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard'
 import { useSession } from '@/lib/auth-client'
-import { useTRPCInvalidator } from '@/lib/trpc-invalidator'
+import { useORPCInvalidator } from '@/lib/orpc-invalidator'
+import { orpc } from '@/orpc/client'
 import { useCommentStore } from '@/stores/comment'
 import { useCommentsStore } from '@/stores/comments'
-import { useTRPC } from '@/trpc/client'
 
 const CommentMenu = () => {
   const comment = useCommentStore((state) => state.comment)
   const { slug, sort } = useCommentsStore((state) => ({ slug: state.slug, sort: state.sort }))
   const [params] = useCommentParams()
   const { data: session } = useSession()
-  const trpc = useTRPC()
-  const invalidator = useTRPCInvalidator()
+  const invalidator = useORPCInvalidator()
   const [copy] = useCopyToClipboard()
   const t = useTranslations()
 
   const deleteCommentMutation = useMutation(
-    trpc.comments.delete.mutationOptions({
+    orpc.comments.deleteComment.mutationOptions({
       onSuccess: () => {
         toast.success(t('blog.comments.deleted-a-comment'))
       },

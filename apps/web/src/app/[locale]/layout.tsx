@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 
 import '@/styles/globals.css'
+import '@/orpc/server'
 
 import { flags } from '@tszhong0411/env'
 import { hasLocale, NextIntlClientProvider } from '@tszhong0411/i18n/client'

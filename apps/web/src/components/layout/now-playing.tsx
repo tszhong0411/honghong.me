@@ -3,13 +3,12 @@
 import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
 
-import { useTRPC } from '@/trpc/client'
+import { orpc } from '@/orpc/client'
 
 import Link from '../link'
 
 const NowPlaying = () => {
-  const trpc = useTRPC()
-  const { status, data } = useQuery(trpc.spotify.get.queryOptions())
+  const { status, data } = useQuery(orpc.spotify.getNowPlaying.queryOptions())
   const t = useTranslations()
 
   const isPlaying = status === 'success' && data.isPlaying && data.songUrl

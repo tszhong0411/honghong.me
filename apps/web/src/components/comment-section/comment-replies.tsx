@@ -6,9 +6,9 @@ import { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 
 import { useCommentParams } from '@/hooks/use-comment-params'
+import { orpc } from '@/orpc/client'
 import { CommentProvider, useCommentStore } from '@/stores/comment'
 import { useCommentsStore } from '@/stores/comments'
-import { useTRPC } from '@/trpc/client'
 
 import Comment from './comment'
 import CommentLoader from './comment-loader'
@@ -23,21 +23,20 @@ const CommentReplies = () => {
   const [params] = useCommentParams()
   const t = useTranslations()
 
-  const trpc = useTRPC()
   const { status, data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery(
-    trpc.comments.getInfiniteComments.infiniteQueryOptions(
-      {
+    orpc.comments.getInfiniteComments.infiniteOptions({
+      input: (pageParam: Date | undefined) => ({
         slug,
         sort: 'oldest',
         parentId: comment.id,
         type: 'replies',
-        highlightedCommentId: params.reply ?? undefined
-      },
-      {
-        getNextPageParam: (lastPage) => lastPage.nextCursor,
-        enabled: isOpenReplies
-      }
-    )
+        highlightedCommentId: params.reply ?? undefined,
+        cursor: pageParam
+      }),
+      initialPageParam: undefined,
+      getNextPageParam: (lastPage) => lastPage.nextCursor,
+      enabled: isOpenReplies
+    })
   )
 
   const { ref, inView } = useInView()

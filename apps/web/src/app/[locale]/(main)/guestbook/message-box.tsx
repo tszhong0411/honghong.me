@@ -22,8 +22,8 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
 import { signOut, type User } from '@/lib/auth-client'
-import { useTRPCInvalidator } from '@/lib/trpc-invalidator'
-import { useTRPC } from '@/trpc/client'
+import { useORPCInvalidator } from '@/lib/orpc-invalidator'
+import { orpc } from '@/orpc/client'
 import { getDefaultImage } from '@/utils/get-default-image'
 
 type FormProps = {
@@ -32,8 +32,7 @@ type FormProps = {
 
 const MessageBox = (props: FormProps) => {
   const { user } = props
-  const trpc = useTRPC()
-  const invalidator = useTRPCInvalidator()
+  const invalidator = useORPCInvalidator()
   const t = useTranslations()
   const router = useRouter()
 
@@ -51,7 +50,7 @@ const MessageBox = (props: FormProps) => {
   })
 
   const guestbookMutation = useMutation(
-    trpc.guestbook.create.mutationOptions({
+    orpc.guestbook.createMessage.mutationOptions({
       onSuccess: () => {
         form.reset()
         toast.success(t('guestbook.create-message-successfully'))

@@ -19,7 +19,7 @@ import {
 } from 'lucide-react'
 
 import { COMMENT_TYPES } from '@/lib/constants'
-import { type GetCommentsOutput } from '@/trpc/routers/comments'
+import { type GetCommentsOutput } from '@/orpc/routers/comments'
 
 type Comment = GetCommentsOutput['comments'][number]
 

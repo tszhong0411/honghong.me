@@ -1,4 +1,4 @@
-import type { GetInfiniteMessagesOutput } from '@/trpc/routers/guestbook'
+import type { GetInfiniteMessagesOutput } from '@/orpc/routers/guestbook'
 
 import { createContext, use, useEffect, useRef } from 'react'
 import { createStore } from 'zustand'

@@ -11,7 +11,7 @@ import { useRef } from 'react'
 
 import { BlurImage } from '@/components/ui/blur-image'
 import { useFormattedDate } from '@/hooks/use-formatted-date'
-import { useTRPC } from '@/trpc/client'
+import { orpc } from '@/orpc/client'
 
 import Link from '../link'
 
@@ -108,11 +108,10 @@ const Card = (props: CardProps) => {
   const { post } = props
   const { slug, title, summary, date } = post
   const formattedDate = useFormattedDate(date)
-  const trpc = useTRPC()
   const t = useTranslations()
 
-  const viewsQuery = useQuery(trpc.views.get.queryOptions({ slug }))
-  const likesQuery = useQuery(trpc.likes.get.queryOptions({ slug }))
+  const viewsQuery = useQuery(orpc.views.getCount.queryOptions({ input: { slug } }))
+  const likesQuery = useQuery(orpc.likes.getCount.queryOptions({ input: { slug } }))
 
   return (
     <Link href={`/blog/${slug}`} className='shadow-feature-card group relative rounded-xl p-2'>

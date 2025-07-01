@@ -133,24 +133,21 @@ const defaultProps = {
 ## Error Handling
 
 ```typescript
-// Use try-catch with proper error messages
-const fetchData = async () => {
-  try {
-    const data = await api.user.get.query()
-    return data
-  } catch (error) {
-    console.error('Failed to fetch user data:', error)
-    throw new Error('Unable to load user information')
-  }
+// For queries, use the error property from useQuery
+const { data, error } = useQuery(orpc.user.get.queryOptions())
+if (error) {
+  toast.error(error.message)
 }
 
-// For mutations, show user-friendly messages
-const handleSubmit = async (data: FormData) => {
-  try {
-    await api.user.update.mutate(data)
-    toast.success('Profile updated successfully')
-  } catch (error) {
-    toast.error('Failed to update profile. Please try again.')
-  }
-}
+// For mutations, use the onError callback
+const updateMutation = useMutation(
+  orpc.user.update.mutationOptions({
+    onSuccess: () => {
+      toast.success('Profile updated successfully')
+    },
+    onError: (error) => {
+      toast.error(error.message)
+    }
+  })
+)
 ```

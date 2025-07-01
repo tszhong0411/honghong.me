@@ -11,9 +11,9 @@ import { motion } from 'motion/react'
 import { useRef, useState } from 'react'
 import { useDebouncedCallback } from 'use-debounce'
 
-import { useTRPCInvalidator } from '@/lib/trpc-invalidator'
-import { createTRPCQueryKeys } from '@/lib/trpc-query-helpers'
-import { useTRPC } from '@/trpc/client'
+import { useORPCInvalidator } from '@/lib/orpc-invalidator'
+import { createORPCQueryKeys } from '@/lib/orpc-query-helpers'
+import { orpc } from '@/orpc/client'
 
 type LikeButtonProps = {
   slug: string
@@ -23,17 +23,16 @@ const LikeButton = (props: LikeButtonProps) => {
   const { slug } = props
   const [cacheCount, setCacheCount] = useState(0)
   const buttonRef = useRef<HTMLButtonElement>(null)
-  const trpc = useTRPC()
   const queryClient = useQueryClient()
-  const invalidator = useTRPCInvalidator()
+  const invalidator = useORPCInvalidator()
   const t = useTranslations()
 
-  const queryKeys = createTRPCQueryKeys(trpc)
+  const queryKeys = createORPCQueryKeys()
   const queryKey = { slug }
 
-  const { status, data } = useQuery(trpc.likes.get.queryOptions(queryKey))
+  const { status, data } = useQuery(orpc.likes.getCount.queryOptions({ input: queryKey }))
   const likesMutation = useMutation(
-    trpc.likes.patch.mutationOptions({
+    orpc.likes.patchCount.mutationOptions({
       onMutate: async (newData) => {
         const likesQueryKey = queryKeys.likes.get(slug)
         await queryClient.cancelQueries({ queryKey: likesQueryKey })
