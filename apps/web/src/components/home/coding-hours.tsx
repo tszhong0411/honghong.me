@@ -9,7 +9,7 @@ import { orpc } from '@/orpc/client'
 
 const CodingHours = () => {
   const { status, data } = useQuery({
-    ...orpc.wakatime.getStats.queryOptions(),
+    ...orpc.stats.wakatime.queryOptions(),
     enabled: flags.stats
   })
   const t = useTranslations()

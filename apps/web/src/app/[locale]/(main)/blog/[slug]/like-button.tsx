@@ -12,7 +12,7 @@ import { useRef, useState } from 'react'
 import { useDebouncedCallback } from 'use-debounce'
 
 import { useORPCInvalidator } from '@/lib/orpc-invalidator'
-import { createORPCQueryKeys } from '@/lib/orpc-query-helpers'
+import { oRPCQueryKeys } from '@/lib/orpc-query-keys'
 import { orpc } from '@/orpc/client'
 
 type LikeButtonProps = {
@@ -27,14 +27,13 @@ const LikeButton = (props: LikeButtonProps) => {
   const invalidator = useORPCInvalidator()
   const t = useTranslations()
 
-  const queryKeys = createORPCQueryKeys()
   const queryKey = { slug }
 
-  const { status, data } = useQuery(orpc.likes.getCount.queryOptions({ input: queryKey }))
+  const { status, data } = useQuery(orpc.posts.likes.get.queryOptions({ input: queryKey }))
   const likesMutation = useMutation(
-    orpc.likes.patchCount.mutationOptions({
+    orpc.posts.likes.increment.mutationOptions({
       onMutate: async (newData) => {
-        const likesQueryKey = queryKeys.likes.get(slug)
+        const likesQueryKey = oRPCQueryKeys.likes.get(slug)
         await queryClient.cancelQueries({ queryKey: likesQueryKey })
 
         const previousData = queryClient.getQueryData(likesQueryKey)
@@ -51,7 +50,7 @@ const LikeButton = (props: LikeButtonProps) => {
       },
       onError: (_, __, ctx) => {
         if (ctx?.previousData) {
-          queryClient.setQueryData(queryKeys.likes.get(slug), ctx.previousData)
+          queryClient.setQueryData(oRPCQueryKeys.likes.get(slug), ctx.previousData)
         }
       },
       onSettled: async () => {

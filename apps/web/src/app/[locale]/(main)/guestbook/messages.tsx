@@ -1,6 +1,6 @@
 'use client'
 
-import type { GetInfiniteMessagesOutput } from '@/orpc/routers/guestbook'
+import type { ListMessagesOutput } from '@/orpc/routers'
 
 import { keepPreviousData, useInfiniteQuery } from '@tanstack/react-query'
 import { useTranslations } from '@tszhong0411/i18n/client'
@@ -23,7 +23,7 @@ type UpdatedDateProps = {
 }
 
 type MessageProps = {
-  message: GetInfiniteMessagesOutput['messages'][number]
+  message: ListMessagesOutput['messages'][number]
 }
 
 const UpdatedDate = (props: UpdatedDateProps) => {
@@ -46,7 +46,7 @@ const UpdatedDate = (props: UpdatedDateProps) => {
 
 const Messages = () => {
   const { status, data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery(
-    orpc.guestbook.getInfiniteMessages.infiniteOptions({
+    orpc.guestbook.list.infiniteOptions({
       input: (pageParam: Date | undefined) => ({ cursor: pageParam }),
       initialPageParam: undefined,
       getNextPageParam: (lastPage) => lastPage.nextCursor,

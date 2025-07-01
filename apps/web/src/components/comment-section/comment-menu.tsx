@@ -38,7 +38,7 @@ const CommentMenu = () => {
   const t = useTranslations()
 
   const deleteCommentMutation = useMutation(
-    orpc.comments.deleteComment.mutationOptions({
+    orpc.posts.comments.delete.mutationOptions({
       onSuccess: () => {
         toast.success(t('blog.comments.deleted-a-comment'))
       },

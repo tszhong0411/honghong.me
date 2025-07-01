@@ -8,7 +8,7 @@ import { orpc } from '@/orpc/client'
 import Link from '../link'
 
 const NowPlaying = () => {
-  const { status, data } = useQuery(orpc.spotify.getNowPlaying.queryOptions())
+  const { status, data } = useQuery(orpc.stats.spotify.queryOptions())
   const t = useTranslations()
 
   const isPlaying = status === 'success' && data.isPlaying && data.songUrl

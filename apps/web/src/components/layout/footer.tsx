@@ -14,7 +14,7 @@ import Link from '../link'
 import NowPlaying from './now-playing'
 
 const Footer = () => {
-  const { status, data } = useQuery(orpc.github.getRepoStarCount.queryOptions())
+  const { status, data } = useQuery(orpc.stats.github.queryOptions())
   const t = useTranslations()
 
   return (
@@ -53,7 +53,7 @@ const Footer = () => {
                 notation: 'compact',
                 minimumFractionDigits: 0,
                 maximumFractionDigits: 1
-              }).format(data)}
+              }).format(data.repoStars)}
           </div>
         </Link>
       </div>

@@ -34,8 +34,8 @@ const PostCard = (props: PostCardProps) => {
   const formattedDate = useFormattedDate(date)
   const t = useTranslations()
 
-  const viewsQuery = useQuery(orpc.views.getCount.queryOptions({ input: { slug } }))
-  const likesQuery = useQuery(orpc.likes.getCount.queryOptions({ input: { slug } }))
+  const viewsQuery = useQuery(orpc.posts.views.get.queryOptions({ input: { slug } }))
+  const likesQuery = useQuery(orpc.posts.likes.get.queryOptions({ input: { slug } }))
 
   return (
     <Link href={`/blog/${slug}`} className='shadow-feature-card group rounded-xl px-2 py-4'>

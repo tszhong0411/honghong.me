@@ -20,16 +20,16 @@ const Header = () => {
   const t = useTranslations()
 
   const incrementMutation = useMutation(
-    orpc.views.increment.mutationOptions({
+    orpc.posts.views.increment.mutationOptions({
       onSettled: async () => {
         await invalidator.views.invalidateBySlug(slug)
       }
     })
   )
 
-  const viewCountQuery = useQuery(orpc.views.getCount.queryOptions({ input: { slug } }))
+  const viewCountQuery = useQuery(orpc.posts.views.get.queryOptions({ input: { slug } }))
   const commentCountQuery = useQuery(
-    orpc.comments.getTotalCommentCount.queryOptions({ input: { slug } })
+    orpc.posts.comments.count.queryOptions({ input: { slug, withReplies: true } })
   )
 
   const incremented = useRef(false)
@@ -78,7 +78,7 @@ const Header = () => {
             {commentCountQuery.status === 'pending' && '--'}
             {commentCountQuery.status === 'error' && t('common.error')}
             {commentCountQuery.status === 'success' && (
-              <NumberFlow value={commentCountQuery.data.comments} data-testid='comment-count' />
+              <NumberFlow value={commentCountQuery.data.count} data-testid='comment-count' />
             )}
           </div>
         </div>

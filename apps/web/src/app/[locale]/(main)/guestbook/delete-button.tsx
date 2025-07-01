@@ -25,7 +25,7 @@ const DeleteButton = () => {
   const t = useTranslations()
 
   const guestbookMutation = useMutation(
-    orpc.guestbook.deleteMessage.mutationOptions({
+    orpc.guestbook.delete.mutationOptions({
       onSuccess: () => {
         toast.success(t('guestbook.delete-message-successfully'))
       },

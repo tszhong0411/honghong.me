@@ -32,7 +32,7 @@ const CommentPost = () => {
   }
 
   const commentsMutation = useMutation(
-    orpc.comments.postComment.mutationOptions({
+    orpc.posts.comments.create.mutationOptions({
       onSuccess: () => {
         setContent('')
         toast.success(t('blog.comments.comment-posted'))

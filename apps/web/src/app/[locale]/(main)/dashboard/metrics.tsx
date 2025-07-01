@@ -26,11 +26,11 @@ type Card = {
 }
 
 const Metrics = () => {
-  const youtubeQuery = useQuery(orpc.youtube.getStats.queryOptions())
-  const githubQuery = useQuery(orpc.github.getStats.queryOptions())
-  const likesQuery = useQuery(orpc.likes.getTotalCount.queryOptions())
-  const viewsQuery = useQuery(orpc.views.getTotalCount.queryOptions())
-  const wakatimeQuery = useQuery(orpc.wakatime.getStats.queryOptions())
+  const youtubeQuery = useQuery(orpc.stats.youtube.queryOptions())
+  const githubQuery = useQuery(orpc.stats.github.queryOptions())
+  const likesQuery = useQuery(orpc.stats.blog.likes.queryOptions())
+  const viewsQuery = useQuery(orpc.stats.blog.views.queryOptions())
+  const wakatimeQuery = useQuery(orpc.stats.wakatime.queryOptions())
 
   const t = useTranslations()
 

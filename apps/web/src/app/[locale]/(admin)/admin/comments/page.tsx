@@ -12,7 +12,7 @@ import { orpc } from '@/orpc/client'
 const Page = () => {
   const [params] = useAdminCommentsParams()
   const { data, isLoading, isError } = useQuery(
-    orpc.comments.getComments.queryOptions({ input: params, placeholderData: keepPreviousData })
+    orpc.admin.listAllComments.queryOptions({ input: params, placeholderData: keepPreviousData })
   )
   const t = useTranslations()
 

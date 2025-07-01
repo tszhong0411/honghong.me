@@ -26,7 +26,7 @@ const CommentList = () => {
   const { highlighter, setHighlighter } = useHighlighterStore()
 
   const { status, data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery(
-    orpc.comments.getInfiniteComments.infiniteOptions({
+    orpc.posts.comments.list.infiniteOptions({
       input: (pageParam: Date | undefined) => ({
         slug,
         sort,

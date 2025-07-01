@@ -18,7 +18,7 @@ const link = new RPCLink({
       throw new Error('RPCLink is not allowed on the server side.')
     }
 
-    return `${globalThis.location.origin}/api/rpc`
+    return `${globalThis.location.origin}/rpc`
   },
   plugins: [
     new BatchLinkPlugin({

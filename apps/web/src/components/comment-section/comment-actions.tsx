@@ -9,7 +9,7 @@ import { ChevronDownIcon, MessageSquareIcon, ThumbsDownIcon, ThumbsUpIcon } from
 import { useCommentParams } from '@/hooks/use-comment-params'
 import { useSession } from '@/lib/auth-client'
 import { useORPCInvalidator } from '@/lib/orpc-invalidator'
-import { createORPCQueryKeys } from '@/lib/orpc-query-helpers'
+import { oRPCQueryKeys } from '@/lib/orpc-query-keys'
 import { orpc } from '@/orpc/client'
 import { useCommentStore } from '@/stores/comment'
 import { useCommentsStore } from '@/stores/comments'
@@ -47,7 +47,6 @@ const CommentActions = () => {
   const invalidator = useORPCInvalidator()
   const t = useTranslations()
 
-  const queryKeys = createORPCQueryKeys()
   const infiniteCommentsParams = {
     slug,
     sort: comment.parentId ? 'oldest' : sort,
@@ -59,11 +58,11 @@ const CommentActions = () => {
   } as const
 
   const ratesSetMutation = useMutation(
-    orpc.rates.createRate.mutationOptions({
+    orpc.posts.rates.create.mutationOptions({
       onMutate: async (newData) => {
         increment()
 
-        const queryKey = queryKeys.comments.infiniteComments(infiniteCommentsParams)
+        const queryKey = oRPCQueryKeys.comments.list(infiniteCommentsParams)
         await queryClient.cancelQueries({ queryKey })
 
         const previousData = queryClient.getQueryData(queryKey)
@@ -105,7 +104,7 @@ const CommentActions = () => {
       onError: (error, _, ctx) => {
         if (ctx?.previousData) {
           queryClient.setQueryData(
-            queryKeys.comments.infiniteComments(infiniteCommentsParams),
+            oRPCQueryKeys.comments.list(infiniteCommentsParams),
             ctx.previousData
           )
         }

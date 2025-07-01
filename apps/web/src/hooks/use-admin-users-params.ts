@@ -1,4 +1,4 @@
-import type { GetUsersOutput } from '@/orpc/routers/users'
+import type { ListAllUsersOutput } from '@/orpc/routers'
 
 import { getSortingStateParser } from '@tszhong0411/ui'
 import {
@@ -12,7 +12,7 @@ import { z } from 'zod'
 
 import { USER_ROLES } from '@/lib/constants'
 
-type User = GetUsersOutput['users'][number]
+type User = ListAllUsersOutput['users'][number]
 
 export const useAdminUsersParams = () => {
   return useQueryStates({

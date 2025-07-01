@@ -1,6 +1,6 @@
 'use client'
 
-import type { GetUsersOutput } from '@/orpc/routers/users'
+import type { ListAllUsersOutput } from '@/orpc/routers'
 
 import { type ColumnDef } from '@tanstack/react-table'
 import { useTranslations } from '@tszhong0411/i18n/client'
@@ -17,7 +17,7 @@ import { CalendarIcon, CircleDashedIcon, UserIcon, UserLockIcon } from 'lucide-r
 
 import { USER_ROLES } from '@/lib/constants'
 
-type User = GetUsersOutput['users'][number]
+type User = ListAllUsersOutput['users'][number]
 
 type UsersTableProps = {
   data: User[]

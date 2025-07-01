@@ -12,7 +12,7 @@ import { orpc } from '@/orpc/client'
 const Page = () => {
   const [params] = useAdminUsersParams()
   const { data, isLoading, isError } = useQuery(
-    orpc.users.getUsers.queryOptions({ input: params, placeholderData: keepPreviousData })
+    orpc.admin.listAllUsers.queryOptions({ input: params, placeholderData: keepPreviousData })
   )
   const t = useTranslations()
 

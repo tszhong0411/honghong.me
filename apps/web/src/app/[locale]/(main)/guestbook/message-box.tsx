@@ -50,7 +50,7 @@ const MessageBox = (props: FormProps) => {
   })
 
   const guestbookMutation = useMutation(
-    orpc.guestbook.createMessage.mutationOptions({
+    orpc.guestbook.create.mutationOptions({
       onSuccess: () => {
         form.reset()
         toast.success(t('guestbook.create-message-successfully'))

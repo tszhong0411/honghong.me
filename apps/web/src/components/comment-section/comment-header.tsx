@@ -1,4 +1,4 @@
-import type { GetInfiniteCommentsInput } from '@/orpc/routers/comments'
+import type { ListCommentsInput } from '@/orpc/routers'
 
 import NumberFlow, { NumberFlowGroup } from '@number-flow/react'
 import { useQuery } from '@tanstack/react-query'
@@ -24,10 +24,8 @@ const CommentHeader = () => {
   }))
   const t = useTranslations()
 
-  const commentCountQuery = useQuery(
-    orpc.comments.getCommentCount.queryOptions({ input: { slug } })
-  )
-  const replyCountQuery = useQuery(orpc.comments.getReplyCount.queryOptions({ input: { slug } }))
+  const commentCountQuery = useQuery(orpc.posts.comments.count.queryOptions({ input: { slug } }))
+  const replyCountQuery = useQuery(orpc.posts.replies.count.queryOptions({ input: { slug } }))
 
   return (
     <div className='flex items-center justify-between px-1'>
@@ -38,8 +36,8 @@ const CommentHeader = () => {
           {commentCountQuery.status === 'error' && t('common.error')}
           {commentCountQuery.status === 'success' && (
             <NumberFlow
-              value={commentCountQuery.data.comments}
-              suffix={` ${t('blog.comments.comments', { count: commentCountQuery.data.comments })}`}
+              value={commentCountQuery.data.count}
+              suffix={` ${t('blog.comments.comments', { count: commentCountQuery.data.count })}`}
               data-testid='blog-comment-count'
             />
           )}
@@ -48,8 +46,8 @@ const CommentHeader = () => {
           {replyCountQuery.status === 'error' && t('common.error')}
           {replyCountQuery.status === 'success' && (
             <NumberFlow
-              value={replyCountQuery.data.replies}
-              suffix={` ${t('blog.comments.replies', { count: replyCountQuery.data.replies })}`}
+              value={replyCountQuery.data.count}
+              suffix={` ${t('blog.comments.replies', { count: replyCountQuery.data.count })}`}
               data-testid='reply-count'
             />
           )}
@@ -66,7 +64,7 @@ const CommentHeader = () => {
           <DropdownMenuRadioGroup
             value={sort}
             onValueChange={(value) => {
-              setSort(value as GetInfiniteCommentsInput['sort'])
+              setSort(value as ListCommentsInput['sort'])
             }}
           >
             <DropdownMenuRadioItem value='newest'>
