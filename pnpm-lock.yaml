@@ -237,6 +237,9 @@ importers:
       '@orpc/tanstack-query':
         specifier: ^1.6.0
         version: 1.6.0(@orpc/client@1.6.0)(@tanstack/query-core@5.80.2)
+      '@orpc/zod':
+        specifier: ^1.6.0
+        version: 1.6.0(@orpc/contract@1.6.0)(@orpc/server@1.6.0(ws@8.18.2))(ws@8.18.2)(zod@3.25.51)
       '@paralleldrive/cuid2':
         specifier: ^2.2.2
         version: 2.2.2
@@ -288,6 +291,9 @@ importers:
       dayjs:
         specifier: ^1.11.13
         version: 1.11.13
+      drizzle-zod:
+        specifier: ^0.7.1
+        version: 0.7.1(drizzle-orm@0.44.2(@upstash/redis@1.35.0)(gel@2.1.0)(kysely@0.28.2)(pg@8.16.0))(zod@3.25.51)
       fast-xml-parser:
         specifier: ^5.2.3
         version: 5.2.3
@@ -2543,6 +2549,13 @@ packages:
     peerDependencies:
       '@orpc/client': 1.6.0
       '@tanstack/query-core': '>=5.80.2'
+
+  '@orpc/zod@1.6.0':
+    resolution: {integrity: sha512-mzrGlV/yoWu7iztYzO/Tox8RwrxGP3n5l03j1Nez5Y0JEsT8QEE2k5qTOw7wRvMKQERAgbJgoxXck+6R6K9Icg==}
+    peerDependencies:
+      '@orpc/contract': 1.6.0
+      '@orpc/server': 1.6.0
+      zod: '>=3.24.2'
 
   '@oxc-resolver/binding-darwin-arm64@11.1.0':
     resolution: {integrity: sha512-n9y3Lb1+BwsOtm3BmXSUPu3iDtTq7Sf0gX4e+izFTfNrj+u6uTKqbmlq8ggV8CRdg1zGUaCvKNvg/9q3C/19gg==}
@@ -5658,6 +5671,12 @@ packages:
         optional: true
       sqlite3:
         optional: true
+
+  drizzle-zod@0.7.1:
+    resolution: {integrity: sha512-nZzALOdz44/AL2U005UlmMqaQ1qe5JfanvLujiTHiiT8+vZJTBFhj3pY4Vk+L6UWyKFfNmLhk602Hn4kCTynKQ==}
+    peerDependencies:
+      drizzle-orm: '>=0.36.0'
+      zod: '>=3.0.0'
 
   dunder-proto@1.0.1:
     resolution: {integrity: sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==}
@@ -9900,6 +9919,9 @@ packages:
     engines: {node: '>=8'}
     hasBin: true
 
+  wildcard-match@5.1.4:
+    resolution: {integrity: sha512-wldeCaczs8XXq7hj+5d/F38JE2r7EXgb6WQDM84RVwxy81T/sxB5e9+uZLK9Q9oNz1mlvjut+QtvgaOQFPVq/g==}
+
   word-wrap@1.2.5:
     resolution: {integrity: sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==}
     engines: {node: '>=0.10.0'}
@@ -11913,6 +11935,19 @@ snapshots:
       '@orpc/client': 1.6.0
       '@orpc/shared': 1.6.0
       '@tanstack/query-core': 5.80.2
+
+  '@orpc/zod@1.6.0(@orpc/contract@1.6.0)(@orpc/server@1.6.0(ws@8.18.2))(ws@8.18.2)(zod@3.25.51)':
+    dependencies:
+      '@orpc/contract': 1.6.0
+      '@orpc/openapi': 1.6.0(ws@8.18.2)
+      '@orpc/server': 1.6.0(ws@8.18.2)
+      '@orpc/shared': 1.6.0
+      escape-string-regexp: 5.0.0
+      wildcard-match: 5.1.4
+      zod: 3.25.51
+    transitivePeerDependencies:
+      - crossws
+      - ws
 
   '@oxc-resolver/binding-darwin-arm64@11.1.0':
     optional: true
@@ -15335,6 +15370,11 @@ snapshots:
       gel: 2.1.0
       kysely: 0.28.2
       pg: 8.16.0
+
+  drizzle-zod@0.7.1(drizzle-orm@0.44.2(@upstash/redis@1.35.0)(gel@2.1.0)(kysely@0.28.2)(pg@8.16.0))(zod@3.25.51):
+    dependencies:
+      drizzle-orm: 0.44.2(@upstash/redis@1.35.0)(gel@2.1.0)(kysely@0.28.2)(pg@8.16.0)
+      zod: 3.25.51
 
   dunder-proto@1.0.1:
     dependencies:
@@ -20462,6 +20502,8 @@ snapshots:
     dependencies:
       siginfo: 2.0.0
       stackback: 0.0.2
+
+  wildcard-match@5.1.4: {}
 
   word-wrap@1.2.5: {}
 

@@ -13,6 +13,7 @@ import { useFormattedDate } from '@/hooks/use-formatted-date'
 import { useSession } from '@/lib/auth-client'
 import { orpc } from '@/orpc/client'
 import { MessageProvider } from '@/stores/message'
+import { getDefaultImage } from '@/utils/get-default-image'
 
 import DeleteButton from './delete-button'
 import MessagesLoader from './messages-loader'
@@ -102,6 +103,8 @@ const Message = (props: MessageProps) => {
 
   const isAuthor = session?.user && userId === session.user.id
 
+  const defaultImage = getDefaultImage(userId)
+
   return (
     <MessageProvider message={message}>
       <div
@@ -110,7 +113,7 @@ const Message = (props: MessageProps) => {
       >
         <div className='mb-3 flex gap-3'>
           <Avatar className='size-10'>
-            <AvatarImage src={image} alt={name} />
+            <AvatarImage src={image ?? defaultImage} alt={name} />
             <AvatarFallback>{getAbbreviation(name)}</AvatarFallback>
           </Avatar>
           <div className='flex flex-col justify-center gap-px text-sm'>

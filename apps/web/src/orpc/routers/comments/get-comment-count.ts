@@ -5,6 +5,11 @@ import { publicProcedure } from '@/orpc/root'
 
 export const getCommentCount = publicProcedure
   .input(z.object({ slug: z.string().min(1) }))
+  .output(
+    z.object({
+      comments: z.number()
+    })
+  )
   .handler(async ({ input, context }) => {
     const value = await context.db
       .select({

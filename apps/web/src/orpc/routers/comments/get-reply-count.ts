@@ -5,6 +5,11 @@ import { publicProcedure } from '@/orpc/root'
 
 export const getReplyCount = publicProcedure
   .input(z.object({ slug: z.string().min(1) }))
+  .output(
+    z.object({
+      replies: z.number()
+    })
+  )
   .handler(async ({ input, context }) => {
     const value = await context.db
       .select({

@@ -8,6 +8,12 @@ import { getSessionId } from '@/utils/get-session-id'
 
 export const getCount = publicProcedure
   .input(z.object({ slug: z.string().min(1) }))
+  .output(
+    z.object({
+      likes: z.number(),
+      currentUserLikes: z.number()
+    })
+  )
   .handler(async ({ input, context }) => {
     const ip = getIp(context.headers)
     const sessionId = getSessionId(input.slug, ip)

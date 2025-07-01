@@ -1,4 +1,5 @@
-import { and, desc, guestbook, lt } from '@tszhong0411/db'
+import { and, desc, guestbook, lt, users } from '@tszhong0411/db'
+import { createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 
 import { publicProcedure } from '@/orpc/root'
@@ -9,6 +10,29 @@ export const getInfiniteMessages = publicProcedure
     z.object({
       cursor: z.date().nullish(),
       limit: z.number().min(1).max(50).default(10)
+    })
+  )
+  .output(
+    z.object({
+      messages: z.array(
+        createSelectSchema(guestbook)
+          .pick({
+            id: true,
+            createdAt: true,
+            updatedAt: true,
+            userId: true,
+            body: true
+          })
+          .extend({
+            user: createSelectSchema(users).pick({
+              name: true,
+              image: true,
+              id: true
+            })
+          })
+      ),
+
+      nextCursor: z.date().nullable()
     })
   )
   .handler(async ({ input, context }) => {

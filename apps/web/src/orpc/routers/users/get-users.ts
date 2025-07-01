@@ -11,6 +11,7 @@ import {
   type SQLWrapper,
   users
 } from '@tszhong0411/db'
+import { createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 
 import { USER_ROLES } from '@/lib/constants'
@@ -39,6 +40,24 @@ export const getUsers = adminProcedure
           })
         )
         .default([{ id: 'createdAt', desc: true }])
+    })
+  )
+  .output(
+    z.object({
+      users: z.array(
+        createSelectSchema(users).pick({
+          id: true,
+          name: true,
+          email: true,
+          role: true,
+          createdAt: true
+        })
+      ),
+      pageCount: z.number(),
+      roleCounts: z.object({
+        user: z.number(),
+        admin: z.number()
+      })
     })
   )
   .handler(async ({ input, context }) => {

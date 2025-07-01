@@ -12,6 +12,7 @@ import {
   or,
   type SQLWrapper
 } from '@tszhong0411/db'
+import { createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 
 import { COMMENT_TYPES } from '@/lib/constants'
@@ -47,6 +48,16 @@ export const getComments = adminProcedure
           })
         )
         .default([{ id: 'createdAt', desc: true }])
+    })
+  )
+  .output(
+    z.object({
+      comments: z.array(createSelectSchema(comments)),
+      pageCount: z.number(),
+      typeCounts: z.object({
+        comment: z.number(),
+        reply: z.number()
+      })
     })
   )
   .handler(async ({ input, context }) => {

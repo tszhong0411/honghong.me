@@ -1,4 +1,18 @@
-import { and, asc, comments, desc, eq, gt, isNotNull, isNull, lt, ne, rates } from '@tszhong0411/db'
+import {
+  and,
+  asc,
+  comments,
+  desc,
+  eq,
+  gt,
+  isNotNull,
+  isNull,
+  lt,
+  ne,
+  rates,
+  users
+} from '@tszhong0411/db'
+import { createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 
 import { publicProcedure } from '@/orpc/root'
@@ -14,6 +28,34 @@ export const getInfiniteComments = publicProcedure
       limit: z.number().min(1).max(50).default(10),
       type: z.enum(['comments', 'replies']).default('comments'),
       highlightedCommentId: z.string().optional()
+    })
+  )
+  .output(
+    z.object({
+      comments: z.array(
+        createSelectSchema(comments)
+          .pick({
+            id: true,
+            userId: true,
+            parentId: true,
+            body: true,
+            createdAt: true,
+            isDeleted: true,
+            replyCount: true,
+            likeCount: true,
+            dislikeCount: true
+          })
+          .extend({
+            user: createSelectSchema(users).pick({
+              id: true,
+              name: true,
+              image: true,
+              role: true
+            }),
+            liked: z.boolean().nullable()
+          })
+      ),
+      nextCursor: z.date().nullable()
     })
   )
   .handler(async ({ input, context }) => {

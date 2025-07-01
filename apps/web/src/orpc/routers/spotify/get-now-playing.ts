@@ -1,4 +1,5 @@
 import { env } from '@tszhong0411/env'
+import { z } from 'zod'
 
 import { publicProcedure } from '@/orpc/root'
 
@@ -28,7 +29,23 @@ const getAccessToken = async () => {
   return data.access_token as string
 }
 
-export const getNowPlaying = publicProcedure.handler(async () => {
+const PlayingSchema = z.object({
+  isPlaying: z.literal(true),
+  songUrl: z.string(),
+  name: z.string(),
+  artist: z.string()
+})
+
+const NotPlayingSchema = z.object({
+  isPlaying: z.literal(false),
+  songUrl: z.string().nullable(),
+  name: z.string().nullable(),
+  artist: z.string().nullable()
+})
+
+const SongSchema = z.discriminatedUnion('isPlaying', [PlayingSchema, NotPlayingSchema])
+
+export const getNowPlaying = publicProcedure.output(SongSchema).handler(async () => {
   const accessToken = await getAccessToken()
 
   const response = await fetch(NOW_PLAYING_ENDPOINT, {

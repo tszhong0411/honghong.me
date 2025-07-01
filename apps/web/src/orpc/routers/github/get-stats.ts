@@ -1,37 +1,46 @@
+import { z } from 'zod'
+
 import { GITHUB_USERNAME } from '@/lib/constants'
 import { octokit } from '@/lib/octokit'
 import { publicProcedure } from '@/orpc/root'
 
-export const getStats = publicProcedure.handler(async () => {
-  let stars = 0
-  let page = 1
-  const per_page = 100
-
-  for (;;) {
-    const response = await octokit.request('GET /users/{username}/repos', {
-      username: GITHUB_USERNAME,
-      per_page,
-      page
+export const getStats = publicProcedure
+  .output(
+    z.object({
+      stars: z.number(),
+      followers: z.number()
     })
+  )
+  .handler(async () => {
+    let stars = 0
+    let page = 1
+    const per_page = 100
 
-    const repos = response.data
-    if (repos.length === 0) break
+    for (;;) {
+      const response = await octokit.request('GET /users/{username}/repos', {
+        username: GITHUB_USERNAME,
+        per_page,
+        page
+      })
 
-    for (const repo of repos) {
-      stars += repo.stargazers_count ?? 0
+      const repos = response.data
+      if (repos.length === 0) break
+
+      for (const repo of repos) {
+        stars += repo.stargazers_count ?? 0
+      }
+
+      page += 1
     }
 
-    page += 1
-  }
+    const { data: user } = await octokit.request('GET /users/{username}', {
+      username: GITHUB_USERNAME
+    })
 
-  const { data: user } = await octokit.request('GET /users/{username}', {
-    username: GITHUB_USERNAME
+    const followers = user.followers
+
+    return {
+      stars,
+      followers
+    }
   })
-
-  const followers = user.followers
-
-  return {
-    stars,
-    followers
-  }
-})
