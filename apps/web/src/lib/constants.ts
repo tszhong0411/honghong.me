@@ -1,5 +1,6 @@
 export const isProduction = process.env.NODE_ENV === 'production'
-export const isServer = typeof globalThis === 'undefined'
+// eslint-disable-next-line unicorn/prefer-global-this -- using `typeof window` to safely detect non-browser environments; `globalThis` is always defined
+export const isServer = typeof window === 'undefined'
 
 export const SITE_URL = isProduction ? 'https://nelsonlai.me' : 'http://localhost:3000'
 

@@ -7,20 +7,10 @@ import { BatchLinkPlugin } from '@orpc/client/plugins'
 import { createTanstackQueryUtils } from '@orpc/tanstack-query'
 
 import { isServer } from '@/lib/constants'
-
-declare global {
-  // eslint-disable-next-line no-var -- it's a global variable
-  var $client: RouterClient<typeof router> | undefined
-}
+import { getBaseUrl } from '@/utils/get-base-url'
 
 const link = new RPCLink({
-  url: () => {
-    if (isServer) {
-      throw new Error('RPCLink is not allowed on the server side.')
-    }
-
-    return `${globalThis.location.origin}/rpc`
-  },
+  url: `${isServer ? getBaseUrl() : globalThis.location.origin}/rpc`,
   plugins: [
     new BatchLinkPlugin({
       groups: [{ condition: () => true, context: {} }]
@@ -28,7 +18,7 @@ const link = new RPCLink({
   ]
 })
 
-const client: RouterClient<typeof router> = globalThis.$client ?? createORPCClient(link)
+const client: RouterClient<typeof router> = createORPCClient(link)
 
 export const orpc = createTanstackQueryUtils(client)
 
