@@ -59,16 +59,20 @@
       "cache": false
     },
     "db:generate": {
-      "cache": false
+      "cache": false,
+      "persistent": true
     },
     "db:migrate": {
-      "cache": false
+      "cache": false,
+      "persistent": true
     },
     "db:push": {
-      "cache": false
+      "cache": false,
+      "persistent": true
     },
     "db:reset": {
-      "cache": false
+      "cache": false,
+      "persistent": true
     },
     "db:seed": {
       "cache": false
@@ -108,5 +112,5 @@
     },
     "type-check": {}
   },
-  "ui": "stream"
+  "ui": "tui"
 }
