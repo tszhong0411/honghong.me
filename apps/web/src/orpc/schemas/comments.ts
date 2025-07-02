@@ -1,4 +1,4 @@
-import { comments, rates, users } from '@tszhong0411/db'
+import { comments, users, votes } from '@tszhong0411/db'
 import { createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 
@@ -22,7 +22,7 @@ export const commentsSchema = z.object({
         image: true,
         role: true
       }),
-      rates: z.array(createSelectSchema(rates))
+      votes: z.array(createSelectSchema(votes))
     })
   ),
   nextCursor: z.date().nullable()

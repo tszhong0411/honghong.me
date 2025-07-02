@@ -6,10 +6,10 @@ import { countComments, createComment, deleteComment, listComments } from './com
 import { githubStats } from './github'
 import { createMessage, deleteMessage, listMessages } from './guestbook'
 import { getLike, incrementLike } from './likes'
-import { createRate } from './rates'
 import { countReplies } from './replies'
 import { spotifyStats } from './spotify'
 import { getView, incrementView } from './views'
+import { createVote } from './votes'
 import { wakatimeStats } from './wakatime'
 import { youtubeStats } from './youtube'
 
@@ -42,8 +42,8 @@ export const router = {
     replies: {
       count: countReplies
     },
-    rates: {
-      create: createRate
+    votes: {
+      create: createVote
     }
   },
   guestbook: {

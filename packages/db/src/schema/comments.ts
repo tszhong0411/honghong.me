@@ -41,8 +41,8 @@ export const comments = pgTable(
   ]
 )
 
-export const rates = pgTable(
-  'rate',
+export const votes = pgTable(
+  'vote',
   {
     userId: text('user_id')
       .notNull()
@@ -52,10 +52,10 @@ export const rates = pgTable(
       .references(() => comments.id, { onDelete: 'cascade' }),
     like: boolean('like').notNull()
   },
-  (rate) => [
-    primaryKey({ columns: [rate.userId, rate.commentId] }),
-    index('idx_rate_comment_like').on(rate.commentId, rate.like),
-    index('idx_rate_user_comment').on(rate.userId, rate.commentId)
+  (vote) => [
+    primaryKey({ columns: [vote.userId, vote.commentId] }),
+    index('idx_vote_comment_like').on(vote.commentId, vote.like),
+    index('idx_vote_user_comment').on(vote.userId, vote.commentId)
   ]
 )
 
@@ -76,16 +76,16 @@ export const commentsRelations = relations(comments, ({ one, many }) => ({
   replies: many(comments, {
     relationName: 'comment_replies'
   }),
-  rates: many(rates)
+  votes: many(votes)
 }))
 
-export const ratesRelations = relations(rates, ({ one }) => ({
+export const votesRelations = relations(votes, ({ one }) => ({
   user: one(users, {
-    fields: [rates.userId],
+    fields: [votes.userId],
     references: [users.id]
   }),
   comment: one(comments, {
-    fields: [rates.commentId],
+    fields: [votes.commentId],
     references: [comments.id]
   })
 }))
