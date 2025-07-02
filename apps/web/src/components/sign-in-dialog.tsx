@@ -17,7 +17,6 @@ import { LoaderIcon } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 import { signIn } from '@/lib/auth-client'
-import { isServer } from '@/lib/constants'
 import { useDialogsStore } from '@/stores/dialogs'
 
 type Provider = 'github' | 'google'
@@ -54,10 +53,8 @@ const SignInDialog = () => {
   const pathname = usePathname()
 
   useEffect(() => {
-    if (!isServer) {
-      const provider = localStorage.getItem('last-used-provider') as Provider | null
-      setLastUsedProvider(provider)
-    }
+    const provider = localStorage.getItem('last-used-provider') as Provider | null
+    setLastUsedProvider(provider)
   }, [])
 
   const handleSignIn = async (provider: Provider) => {
