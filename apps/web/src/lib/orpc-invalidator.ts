@@ -144,10 +144,10 @@ const createORPCInvalidator = (queryClient: QueryClient) => {
           commentsInvalidator.invalidateCountsBySlug(slug)
         ])
       },
-      afterRateComment: async (
+      afterVoteComment: async (
         infiniteCommentsParams: Parameters<typeof oRPCQueryKeys.comments.list>[0]
       ) => {
-        logger.info('[combinations] Invalidating after rating comment', { infiniteCommentsParams })
+        logger.info('[combinations] Invalidating after voting comment', { infiniteCommentsParams })
         await commentsInvalidator.invalidateInfiniteComments(infiniteCommentsParams)
       }
     }

@@ -13,9 +13,9 @@ import { oRPCQueryKeys } from '@/lib/orpc-query-keys'
 import { orpc } from '@/orpc/client'
 import { useCommentStore } from '@/stores/comment'
 import { useCommentsStore } from '@/stores/comments'
-import { useRatesStore } from '@/stores/rates'
+import { useVotesStore } from '@/stores/votes'
 
-const rateVariants = cva({
+const voteVariants = cva({
   base: buttonVariants({
     variant: 'secondary',
     className: 'h-8 gap-1.5 px-2 font-mono text-xs font-medium'
@@ -36,7 +36,7 @@ const CommentActions = () => {
     isOpenReplies: state.isOpenReplies,
     setIsOpenReplies: state.setIsOpenReplies
   }))
-  const { increment, decrement, getCount } = useRatesStore((state) => ({
+  const { increment, decrement, getCount } = useVotesStore((state) => ({
     increment: state.increment,
     decrement: state.decrement,
     getCount: state.getCount
@@ -57,8 +57,8 @@ const CommentActions = () => {
       : (params.comment ?? undefined)
   } as const
 
-  const ratesSetMutation = useMutation(
-    orpc.posts.rates.create.mutationOptions({
+  const votesSetMutation = useMutation(
+    orpc.posts.votes.create.mutationOptions({
       onMutate: async (newData) => {
         increment()
 
@@ -114,7 +114,7 @@ const CommentActions = () => {
         decrement()
 
         if (getCount() === 0) {
-          await invalidator.combinations.afterRateComment(infiniteCommentsParams)
+          await invalidator.combinations.afterVoteComment(infiniteCommentsParams)
         }
       }
     })
@@ -122,12 +122,12 @@ const CommentActions = () => {
 
   const isAuthenticated = session !== null
 
-  const handleRateComment = (like: boolean) => {
+  const handleVoteComment = (like: boolean) => {
     if (!isAuthenticated) {
-      toast.error(t('blog.comments.need-logged-in-to-rate'))
+      toast.error(t('blog.comments.need-logged-in-to-vote'))
       return
     }
-    ratesSetMutation.mutate({ id: comment.id, like: like === comment.liked ? null : like })
+    votesSetMutation.mutate({ id: comment.id, like: like === comment.liked ? null : like })
   }
 
   const hasReplies = !comment.parentId && comment.replyCount > 0
@@ -137,8 +137,8 @@ const CommentActions = () => {
       <div className='flex gap-1'>
         <Button
           variant='secondary'
-          onClick={() => handleRateComment(true)}
-          className={rateVariants({
+          onClick={() => handleVoteComment(true)}
+          className={voteVariants({
             active: comment.liked === true
           })}
           aria-label={t('blog.comments.like')}
@@ -148,8 +148,8 @@ const CommentActions = () => {
         </Button>
         <Button
           variant='secondary'
-          onClick={() => handleRateComment(false)}
-          className={rateVariants({
+          onClick={() => handleVoteComment(false)}
+          className={voteVariants({
             active: comment.liked === false
           })}
           aria-label={t('blog.comments.dislike')}

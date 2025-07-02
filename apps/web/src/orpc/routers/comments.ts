@@ -12,7 +12,7 @@ import {
   isNull,
   lt,
   ne,
-  rates
+  votes
 } from '@tszhong0411/db'
 import { CommentEmailTemplate, ReplyEmailTemplate } from '@tszhong0411/emails'
 import { env } from '@tszhong0411/env'
@@ -71,8 +71,8 @@ export const listComments = publicProcedure
             id: true
           }
         },
-        rates: {
-          where: eq(rates.userId, session?.user.id ?? '')
+        votes: {
+          where: eq(votes.userId, session?.user.id ?? '')
         }
       },
       orderBy: input.sort === 'newest' ? desc(comments.createdAt) : asc(comments.createdAt)
@@ -90,8 +90,8 @@ export const listComments = publicProcedure
               id: true
             }
           },
-          rates: {
-            where: eq(rates.userId, session?.user.id ?? '')
+          votes: {
+            where: eq(votes.userId, session?.user.id ?? '')
           }
         }
       })
@@ -100,12 +100,12 @@ export const listComments = publicProcedure
     }
 
     const result = query.map((comment) => {
-      const selfRate = comment.rates.length > 0 ? comment.rates[0] : null
+      const selfVote = comment.votes.length > 0 ? comment.votes[0] : null
       const defaultImage = getDefaultImage(comment.user.id)
 
       return {
         ...comment,
-        liked: selfRate?.like ?? null,
+        liked: selfVote?.like ?? null,
         user: {
           ...comment.user,
           image: comment.user.image ?? defaultImage,

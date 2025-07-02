@@ -1,7 +1,7 @@
 'use client'
 
 import { CommentsProvider } from '@/stores/comments'
-import { RatesProvider } from '@/stores/rates'
+import { VotesProvider } from '@/stores/votes'
 
 import CommentList from './comment-list'
 import CommentPost from './comment-post'
@@ -14,14 +14,14 @@ const CommentSection = (props: CommentSectionProps) => {
   const { slug } = props
 
   return (
-    <RatesProvider initialCount={0}>
+    <VotesProvider initialCount={0}>
       <CommentsProvider slug={slug} sort='newest'>
         <div className='space-y-6'>
           <CommentPost />
           <CommentList />
         </div>
       </CommentsProvider>
-    </RatesProvider>
+    </VotesProvider>
   )
 }
 
