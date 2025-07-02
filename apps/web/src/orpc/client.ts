@@ -6,6 +6,8 @@ import { RPCLink } from '@orpc/client/fetch'
 import { BatchLinkPlugin } from '@orpc/client/plugins'
 import { createTanstackQueryUtils } from '@orpc/tanstack-query'
 
+import { isServer } from '@/lib/constants'
+
 declare global {
   // eslint-disable-next-line no-var -- it's a global variable
   var $client: RouterClient<typeof router> | undefined
@@ -13,8 +15,7 @@ declare global {
 
 const link = new RPCLink({
   url: () => {
-    if (typeof globalThis === 'undefined') {
-      // eslint-disable-next-line unicorn/prefer-type-error -- false positive, this is checking whether the code is running on the server side
+    if (isServer) {
       throw new Error('RPCLink is not allowed on the server side.')
     }
 

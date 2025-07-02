@@ -1,4 +1,5 @@
 export const isProduction = process.env.NODE_ENV === 'production'
+export const isServer = typeof globalThis === 'undefined'
 
 export const SITE_URL = isProduction ? 'https://nelsonlai.me' : 'http://localhost:3000'
 
