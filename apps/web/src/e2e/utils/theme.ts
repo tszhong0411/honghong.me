@@ -24,7 +24,7 @@ export const createBrowserContext = async (
   browser: Browser,
   options: CreateBrowserContextOptions
 ) => {
-  return await browser.newContext({
+  return browser.newContext({
     colorScheme: options.colorScheme ?? 'no-preference',
     storageState: {
       cookies: [],
