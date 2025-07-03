@@ -1,6 +1,5 @@
 import { ORPCError } from '@orpc/client'
 import { eq, likesSessions, posts, sql } from '@tszhong0411/db'
-import { redis, redisKeys } from '@tszhong0411/kv'
 
 import { getIp } from '@/utils/get-ip'
 import { getSessionId } from '@/utils/get-session-id'
@@ -21,18 +20,6 @@ export const getLike = publicProcedure
     const ip = getIp(context.headers)
     const sessionId = getSessionId(input.slug, ip)
 
-    const cachedLikes = await redis.get<number>(redisKeys.postLikes(input.slug))
-    const cachedCurrentUserLikes = await redis.get<number>(
-      redisKeys.currentUserLikes(input.slug, sessionId)
-    )
-
-    if (cachedLikes && cachedCurrentUserLikes) {
-      return {
-        likes: cachedLikes,
-        currentUserLikes: cachedCurrentUserLikes
-      }
-    }
-
     const [post, user] = await Promise.all([
       context.db
         .select({
@@ -47,9 +34,6 @@ export const getLike = publicProcedure
         .from(likesSessions)
         .where(eq(likesSessions.id, sessionId))
     ])
-
-    await redis.set(redisKeys.postLikes(input.slug), post[0]?.likes ?? 0)
-    await redis.set(redisKeys.currentUserLikes(input.slug, sessionId), user[0]?.likes ?? 0)
 
     return {
       likes: post[0]?.likes ?? 0,
@@ -116,9 +100,6 @@ export const incrementLike = publicProcedure
         message: 'Failed to increment like'
       })
     }
-
-    await redis.set(redisKeys.postLikes(input.slug), post.likes)
-    await redis.set(redisKeys.currentUserLikes(input.slug, sessionId), currentUserLikes.likes)
 
     return {
       likes: post.likes,
