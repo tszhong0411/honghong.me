@@ -16,7 +16,7 @@ export const db = drizzle(pool, {
     token: env.UPSTASH_REDIS_REST_TOKEN,
     global: true,
     config: {
-      ex: 60
+      ex: 60 * 60 * 24 // 1 day
     }
   })
 })
