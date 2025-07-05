@@ -90,6 +90,7 @@
     "@tszhong0411/tsconfig": "workspace:*",
     "@types/canvas-confetti": "^1.9.0",
     "@types/node": "^22.15.29",
+    "@types/pg": "^8.15.4",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.6",
     "@types/rss": "^0.0.32",
